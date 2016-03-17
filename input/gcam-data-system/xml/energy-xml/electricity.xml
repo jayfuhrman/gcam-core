@@ -58731,7 +58731,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <input-capital name="capital">
-                     <capital-overnight>1642</capital-overnight>
+                     <capital-overnight>1797</capital-overnight>
                      <fixed-charge-rate>0.13</fixed-charge-rate>
                      <capacity-factor>0.37</capacity-factor>
                   </input-capital>
@@ -58751,7 +58751,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <input-capital name="capital">
-                     <capital-overnight>1642</capital-overnight>
+                     <capital-overnight>1797</capital-overnight>
                      <fixed-charge-rate>0.13</fixed-charge-rate>
                      <capacity-factor>0.37</capacity-factor>
                   </input-capital>
@@ -58772,7 +58772,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <input-capital name="capital">
-                     <capital-overnight>1572</capital-overnight>
+                     <capital-overnight>1721</capital-overnight>
                      <fixed-charge-rate>0.13</fixed-charge-rate>
                      <capacity-factor>0.37</capacity-factor>
                   </input-capital>
@@ -58793,7 +58793,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <input-capital name="capital">
-                     <capital-overnight>1513</capital-overnight>
+                     <capital-overnight>1655</capital-overnight>
                      <fixed-charge-rate>0.13</fixed-charge-rate>
                      <capacity-factor>0.37</capacity-factor>
                   </input-capital>
@@ -58814,7 +58814,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <input-capital name="capital">
-                     <capital-overnight>1461</capital-overnight>
+                     <capital-overnight>1599</capital-overnight>
                      <fixed-charge-rate>0.13</fixed-charge-rate>
                      <capacity-factor>0.37</capacity-factor>
                   </input-capital>
@@ -58835,7 +58835,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <input-capital name="capital">
-                     <capital-overnight>1417</capital-overnight>
+                     <capital-overnight>1551</capital-overnight>
                      <fixed-charge-rate>0.13</fixed-charge-rate>
                      <capacity-factor>0.37</capacity-factor>
                   </input-capital>
@@ -58856,7 +58856,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <input-capital name="capital">
-                     <capital-overnight>1380</capital-overnight>
+                     <capital-overnight>1510</capital-overnight>
                      <fixed-charge-rate>0.13</fixed-charge-rate>
                      <capacity-factor>0.37</capacity-factor>
                   </input-capital>
@@ -58877,7 +58877,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <input-capital name="capital">
-                     <capital-overnight>1347</capital-overnight>
+                     <capital-overnight>1474</capital-overnight>
                      <fixed-charge-rate>0.13</fixed-charge-rate>
                      <capacity-factor>0.37</capacity-factor>
                   </input-capital>
@@ -58898,7 +58898,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <input-capital name="capital">
-                     <capital-overnight>1319</capital-overnight>
+                     <capital-overnight>1444</capital-overnight>
                      <fixed-charge-rate>0.13</fixed-charge-rate>
                      <capacity-factor>0.37</capacity-factor>
                   </input-capital>
@@ -58919,7 +58919,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <input-capital name="capital">
-                     <capital-overnight>1295</capital-overnight>
+                     <capital-overnight>1417</capital-overnight>
                      <fixed-charge-rate>0.13</fixed-charge-rate>
                      <capacity-factor>0.37</capacity-factor>
                   </input-capital>
@@ -58940,7 +58940,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <input-capital name="capital">
-                     <capital-overnight>1275</capital-overnight>
+                     <capital-overnight>1395</capital-overnight>
                      <fixed-charge-rate>0.13</fixed-charge-rate>
                      <capacity-factor>0.37</capacity-factor>
                   </input-capital>
@@ -58961,7 +58961,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <input-capital name="capital">
-                     <capital-overnight>1257</capital-overnight>
+                     <capital-overnight>1375</capital-overnight>
                      <fixed-charge-rate>0.13</fixed-charge-rate>
                      <capacity-factor>0.37</capacity-factor>
                   </input-capital>
@@ -58982,7 +58982,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <input-capital name="capital">
-                     <capital-overnight>1242</capital-overnight>
+                     <capital-overnight>1359</capital-overnight>
                      <fixed-charge-rate>0.13</fixed-charge-rate>
                      <capacity-factor>0.37</capacity-factor>
                   </input-capital>
@@ -59003,7 +59003,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <input-capital name="capital">
-                     <capital-overnight>1229</capital-overnight>
+                     <capital-overnight>1345</capital-overnight>
                      <fixed-charge-rate>0.13</fixed-charge-rate>
                      <capacity-factor>0.37</capacity-factor>
                   </input-capital>
@@ -59024,7 +59024,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <input-capital name="capital">
-                     <capital-overnight>1217</capital-overnight>
+                     <capital-overnight>1332</capital-overnight>
                      <fixed-charge-rate>0.13</fixed-charge-rate>
                      <capacity-factor>0.37</capacity-factor>
                   </input-capital>
@@ -59045,7 +59045,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <input-capital name="capital">
-                     <capital-overnight>1208</capital-overnight>
+                     <capital-overnight>1322</capital-overnight>
                      <fixed-charge-rate>0.13</fixed-charge-rate>
                      <capacity-factor>0.37</capacity-factor>
                   </input-capital>
@@ -59066,7 +59066,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <input-capital name="capital">
-                     <capital-overnight>1200</capital-overnight>
+                     <capital-overnight>1313</capital-overnight>
                      <fixed-charge-rate>0.13</fixed-charge-rate>
                      <capacity-factor>0.37</capacity-factor>
                   </input-capital>
@@ -59087,7 +59087,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <input-capital name="capital">
-                     <capital-overnight>1193</capital-overnight>
+                     <capital-overnight>1305</capital-overnight>
                      <fixed-charge-rate>0.13</fixed-charge-rate>
                      <capacity-factor>0.37</capacity-factor>
                   </input-capital>
@@ -59108,7 +59108,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <input-capital name="capital">
-                     <capital-overnight>1186</capital-overnight>
+                     <capital-overnight>1298</capital-overnight>
                      <fixed-charge-rate>0.13</fixed-charge-rate>
                      <capacity-factor>0.37</capacity-factor>
                   </input-capital>
@@ -59136,7 +59136,7 @@
                      <efficiency>1</efficiency>
                   </minicam-energy-input>
                   <input-capital name="capital">
-                     <capital-overnight>620</capital-overnight>
+                     <capital-overnight>578</capital-overnight>
                      <fixed-charge-rate>0.13</fixed-charge-rate>
                      <capacity-factor>0.2</capacity-factor>
                   </input-capital>
@@ -59164,7 +59164,7 @@
                      <efficiency>1</efficiency>
                   </minicam-energy-input>
                   <input-capital name="capital">
-                     <capital-overnight>620</capital-overnight>
+                     <capital-overnight>578</capital-overnight>
                      <fixed-charge-rate>0.13</fixed-charge-rate>
                      <capacity-factor>0.2</capacity-factor>
                   </input-capital>
@@ -59192,7 +59192,7 @@
                      <efficiency>1</efficiency>
                   </minicam-energy-input>
                   <input-capital name="capital">
-                     <capital-overnight>620</capital-overnight>
+                     <capital-overnight>578</capital-overnight>
                      <fixed-charge-rate>0.13</fixed-charge-rate>
                      <capacity-factor>0.2</capacity-factor>
                   </input-capital>
@@ -59220,7 +59220,7 @@
                      <efficiency>1</efficiency>
                   </minicam-energy-input>
                   <input-capital name="capital">
-                     <capital-overnight>620</capital-overnight>
+                     <capital-overnight>578</capital-overnight>
                      <fixed-charge-rate>0.13</fixed-charge-rate>
                      <capacity-factor>0.2</capacity-factor>
                   </input-capital>
@@ -59249,7 +59249,7 @@
                      <efficiency>1</efficiency>
                   </minicam-energy-input>
                   <input-capital name="capital">
-                     <capital-overnight>620</capital-overnight>
+                     <capital-overnight>578</capital-overnight>
                      <fixed-charge-rate>0.13</fixed-charge-rate>
                      <capacity-factor>0.2</capacity-factor>
                   </input-capital>
@@ -59278,7 +59278,7 @@
                      <efficiency>1</efficiency>
                   </minicam-energy-input>
                   <input-capital name="capital">
-                     <capital-overnight>593</capital-overnight>
+                     <capital-overnight>554</capital-overnight>
                      <fixed-charge-rate>0.13</fixed-charge-rate>
                      <capacity-factor>0.2</capacity-factor>
                   </input-capital>
@@ -59307,7 +59307,7 @@
                      <efficiency>1</efficiency>
                   </minicam-energy-input>
                   <input-capital name="capital">
-                     <capital-overnight>571</capital-overnight>
+                     <capital-overnight>533</capital-overnight>
                      <fixed-charge-rate>0.13</fixed-charge-rate>
                      <capacity-factor>0.2</capacity-factor>
                   </input-capital>
@@ -59336,7 +59336,7 @@
                      <efficiency>1</efficiency>
                   </minicam-energy-input>
                   <input-capital name="capital">
-                     <capital-overnight>551</capital-overnight>
+                     <capital-overnight>515</capital-overnight>
                      <fixed-charge-rate>0.13</fixed-charge-rate>
                      <capacity-factor>0.2</capacity-factor>
                   </input-capital>
@@ -59365,7 +59365,7 @@
                      <efficiency>1</efficiency>
                   </minicam-energy-input>
                   <input-capital name="capital">
-                     <capital-overnight>535</capital-overnight>
+                     <capital-overnight>499</capital-overnight>
                      <fixed-charge-rate>0.13</fixed-charge-rate>
                      <capacity-factor>0.2</capacity-factor>
                   </input-capital>
@@ -59394,7 +59394,7 @@
                      <efficiency>1</efficiency>
                   </minicam-energy-input>
                   <input-capital name="capital">
-                     <capital-overnight>521</capital-overnight>
+                     <capital-overnight>486</capital-overnight>
                      <fixed-charge-rate>0.13</fixed-charge-rate>
                      <capacity-factor>0.2</capacity-factor>
                   </input-capital>
@@ -59423,7 +59423,7 @@
                      <efficiency>1</efficiency>
                   </minicam-energy-input>
                   <input-capital name="capital">
-                     <capital-overnight>508</capital-overnight>
+                     <capital-overnight>474</capital-overnight>
                      <fixed-charge-rate>0.13</fixed-charge-rate>
                      <capacity-factor>0.2</capacity-factor>
                   </input-capital>
@@ -59452,7 +59452,7 @@
                      <efficiency>1</efficiency>
                   </minicam-energy-input>
                   <input-capital name="capital">
-                     <capital-overnight>498</capital-overnight>
+                     <capital-overnight>465</capital-overnight>
                      <fixed-charge-rate>0.13</fixed-charge-rate>
                      <capacity-factor>0.2</capacity-factor>
                   </input-capital>
@@ -59481,7 +59481,7 @@
                      <efficiency>1</efficiency>
                   </minicam-energy-input>
                   <input-capital name="capital">
-                     <capital-overnight>489</capital-overnight>
+                     <capital-overnight>456</capital-overnight>
                      <fixed-charge-rate>0.13</fixed-charge-rate>
                      <capacity-factor>0.2</capacity-factor>
                   </input-capital>
@@ -59510,7 +59510,7 @@
                      <efficiency>1</efficiency>
                   </minicam-energy-input>
                   <input-capital name="capital">
-                     <capital-overnight>481</capital-overnight>
+                     <capital-overnight>449</capital-overnight>
                      <fixed-charge-rate>0.13</fixed-charge-rate>
                      <capacity-factor>0.2</capacity-factor>
                   </input-capital>
@@ -59539,7 +59539,7 @@
                      <efficiency>1</efficiency>
                   </minicam-energy-input>
                   <input-capital name="capital">
-                     <capital-overnight>474</capital-overnight>
+                     <capital-overnight>443</capital-overnight>
                      <fixed-charge-rate>0.13</fixed-charge-rate>
                      <capacity-factor>0.2</capacity-factor>
                   </input-capital>
@@ -59568,7 +59568,7 @@
                      <efficiency>1</efficiency>
                   </minicam-energy-input>
                   <input-capital name="capital">
-                     <capital-overnight>469</capital-overnight>
+                     <capital-overnight>437</capital-overnight>
                      <fixed-charge-rate>0.13</fixed-charge-rate>
                      <capacity-factor>0.2</capacity-factor>
                   </input-capital>
@@ -59597,7 +59597,7 @@
                      <efficiency>1</efficiency>
                   </minicam-energy-input>
                   <input-capital name="capital">
-                     <capital-overnight>464</capital-overnight>
+                     <capital-overnight>433</capital-overnight>
                      <fixed-charge-rate>0.13</fixed-charge-rate>
                      <capacity-factor>0.2</capacity-factor>
                   </input-capital>
@@ -59626,7 +59626,7 @@
                      <efficiency>1</efficiency>
                   </minicam-energy-input>
                   <input-capital name="capital">
-                     <capital-overnight>459</capital-overnight>
+                     <capital-overnight>429</capital-overnight>
                      <fixed-charge-rate>0.13</fixed-charge-rate>
                      <capacity-factor>0.2</capacity-factor>
                   </input-capital>
@@ -59655,7 +59655,7 @@
                      <efficiency>1</efficiency>
                   </minicam-energy-input>
                   <input-capital name="capital">
-                     <capital-overnight>456</capital-overnight>
+                     <capital-overnight>425</capital-overnight>
                      <fixed-charge-rate>0.13</fixed-charge-rate>
                      <capacity-factor>0.2</capacity-factor>
                   </input-capital>
@@ -59684,7 +59684,7 @@
                      <efficiency>1</efficiency>
                   </minicam-energy-input>
                   <input-capital name="capital">
-                     <capital-overnight>453</capital-overnight>
+                     <capital-overnight>423</capital-overnight>
                      <fixed-charge-rate>0.13</fixed-charge-rate>
                      <capacity-factor>0.2</capacity-factor>
                   </input-capital>
@@ -59713,7 +59713,7 @@
                      <efficiency>1</efficiency>
                   </minicam-energy-input>
                   <input-capital name="capital">
-                     <capital-overnight>450</capital-overnight>
+                     <capital-overnight>420</capital-overnight>
                      <fixed-charge-rate>0.13</fixed-charge-rate>
                      <capacity-factor>0.2</capacity-factor>
                   </input-capital>
@@ -59742,7 +59742,7 @@
                      <efficiency>1</efficiency>
                   </minicam-energy-input>
                   <input-capital name="capital">
-                     <capital-overnight>448</capital-overnight>
+                     <capital-overnight>418</capital-overnight>
                      <fixed-charge-rate>0.13</fixed-charge-rate>
                      <capacity-factor>0.2</capacity-factor>
                   </input-capital>
@@ -60407,7 +60407,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <input-capital name="capital">
-                     <capital-overnight>1301</capital-overnight>
+                     <capital-overnight>1363</capital-overnight>
                      <fixed-charge-rate>0.13</fixed-charge-rate>
                      <capacity-factor>0.2</capacity-factor>
                   </input-capital>
@@ -60424,7 +60424,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <input-capital name="capital">
-                     <capital-overnight>1301</capital-overnight>
+                     <capital-overnight>1363</capital-overnight>
                      <fixed-charge-rate>0.13</fixed-charge-rate>
                      <capacity-factor>0.2</capacity-factor>
                   </input-capital>
@@ -60441,7 +60441,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <input-capital name="capital">
-                     <capital-overnight>1301</capital-overnight>
+                     <capital-overnight>1363</capital-overnight>
                      <fixed-charge-rate>0.13</fixed-charge-rate>
                      <capacity-factor>0.2</capacity-factor>
                   </input-capital>
@@ -60458,7 +60458,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <input-capital name="capital">
-                     <capital-overnight>1301</capital-overnight>
+                     <capital-overnight>1363</capital-overnight>
                      <fixed-charge-rate>0.13</fixed-charge-rate>
                      <capacity-factor>0.2</capacity-factor>
                   </input-capital>
@@ -60475,7 +60475,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <input-capital name="capital">
-                     <capital-overnight>1301</capital-overnight>
+                     <capital-overnight>1363</capital-overnight>
                      <fixed-charge-rate>0.13</fixed-charge-rate>
                      <capacity-factor>0.2</capacity-factor>
                   </input-capital>
@@ -60493,7 +60493,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <input-capital name="capital">
-                     <capital-overnight>1246</capital-overnight>
+                     <capital-overnight>1305</capital-overnight>
                      <fixed-charge-rate>0.13</fixed-charge-rate>
                      <capacity-factor>0.2</capacity-factor>
                   </input-capital>
@@ -60511,7 +60511,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <input-capital name="capital">
-                     <capital-overnight>1199</capital-overnight>
+                     <capital-overnight>1256</capital-overnight>
                      <fixed-charge-rate>0.13</fixed-charge-rate>
                      <capacity-factor>0.2</capacity-factor>
                   </input-capital>
@@ -60529,7 +60529,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <input-capital name="capital">
-                     <capital-overnight>1158</capital-overnight>
+                     <capital-overnight>1213</capital-overnight>
                      <fixed-charge-rate>0.13</fixed-charge-rate>
                      <capacity-factor>0.2</capacity-factor>
                   </input-capital>
@@ -60547,7 +60547,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <input-capital name="capital">
-                     <capital-overnight>1123</capital-overnight>
+                     <capital-overnight>1177</capital-overnight>
                      <fixed-charge-rate>0.13</fixed-charge-rate>
                      <capacity-factor>0.2</capacity-factor>
                   </input-capital>
@@ -60565,7 +60565,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <input-capital name="capital">
-                     <capital-overnight>1093</capital-overnight>
+                     <capital-overnight>1145</capital-overnight>
                      <fixed-charge-rate>0.13</fixed-charge-rate>
                      <capacity-factor>0.2</capacity-factor>
                   </input-capital>
@@ -60583,7 +60583,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <input-capital name="capital">
-                     <capital-overnight>1067</capital-overnight>
+                     <capital-overnight>1118</capital-overnight>
                      <fixed-charge-rate>0.13</fixed-charge-rate>
                      <capacity-factor>0.2</capacity-factor>
                   </input-capital>
@@ -60601,7 +60601,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <input-capital name="capital">
-                     <capital-overnight>1045</capital-overnight>
+                     <capital-overnight>1095</capital-overnight>
                      <fixed-charge-rate>0.13</fixed-charge-rate>
                      <capacity-factor>0.2</capacity-factor>
                   </input-capital>
@@ -60619,7 +60619,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <input-capital name="capital">
-                     <capital-overnight>1026</capital-overnight>
+                     <capital-overnight>1075</capital-overnight>
                      <fixed-charge-rate>0.13</fixed-charge-rate>
                      <capacity-factor>0.2</capacity-factor>
                   </input-capital>
@@ -60637,7 +60637,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <input-capital name="capital">
-                     <capital-overnight>1010</capital-overnight>
+                     <capital-overnight>1058</capital-overnight>
                      <fixed-charge-rate>0.13</fixed-charge-rate>
                      <capacity-factor>0.2</capacity-factor>
                   </input-capital>
@@ -60655,7 +60655,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <input-capital name="capital">
-                     <capital-overnight>996</capital-overnight>
+                     <capital-overnight>1043</capital-overnight>
                      <fixed-charge-rate>0.13</fixed-charge-rate>
                      <capacity-factor>0.2</capacity-factor>
                   </input-capital>
@@ -60673,7 +60673,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <input-capital name="capital">
-                     <capital-overnight>984</capital-overnight>
+                     <capital-overnight>1031</capital-overnight>
                      <fixed-charge-rate>0.13</fixed-charge-rate>
                      <capacity-factor>0.2</capacity-factor>
                   </input-capital>
@@ -60691,7 +60691,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <input-capital name="capital">
-                     <capital-overnight>974</capital-overnight>
+                     <capital-overnight>1020</capital-overnight>
                      <fixed-charge-rate>0.13</fixed-charge-rate>
                      <capacity-factor>0.2</capacity-factor>
                   </input-capital>
@@ -60709,7 +60709,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <input-capital name="capital">
-                     <capital-overnight>965</capital-overnight>
+                     <capital-overnight>1011</capital-overnight>
                      <fixed-charge-rate>0.13</fixed-charge-rate>
                      <capacity-factor>0.2</capacity-factor>
                   </input-capital>
@@ -60727,7 +60727,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <input-capital name="capital">
-                     <capital-overnight>957</capital-overnight>
+                     <capital-overnight>1003</capital-overnight>
                      <fixed-charge-rate>0.13</fixed-charge-rate>
                      <capacity-factor>0.2</capacity-factor>
                   </input-capital>
@@ -60745,7 +60745,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <input-capital name="capital">
-                     <capital-overnight>951</capital-overnight>
+                     <capital-overnight>996</capital-overnight>
                      <fixed-charge-rate>0.13</fixed-charge-rate>
                      <capacity-factor>0.2</capacity-factor>
                   </input-capital>
@@ -60763,7 +60763,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <input-capital name="capital">
-                     <capital-overnight>945</capital-overnight>
+                     <capital-overnight>990</capital-overnight>
                      <fixed-charge-rate>0.13</fixed-charge-rate>
                      <capacity-factor>0.2</capacity-factor>
                   </input-capital>
@@ -60781,7 +60781,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <input-capital name="capital">
-                     <capital-overnight>940</capital-overnight>
+                     <capital-overnight>985</capital-overnight>
                      <fixed-charge-rate>0.13</fixed-charge-rate>
                      <capacity-factor>0.2</capacity-factor>
                   </input-capital>
@@ -68014,7 +68014,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <input-capital name="capital">
-                     <capital-overnight>1996</capital-overnight>
+                     <capital-overnight>2386</capital-overnight>
                      <fixed-charge-rate>0.13</fixed-charge-rate>
                      <capacity-factor>0.85</capacity-factor>
                   </input-capital>
@@ -68034,7 +68034,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <input-capital name="capital">
-                     <capital-overnight>1996</capital-overnight>
+                     <capital-overnight>2386</capital-overnight>
                      <fixed-charge-rate>0.13</fixed-charge-rate>
                      <capacity-factor>0.85</capacity-factor>
                   </input-capital>
@@ -68054,7 +68054,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <input-capital name="capital">
-                     <capital-overnight>1996</capital-overnight>
+                     <capital-overnight>2386</capital-overnight>
                      <fixed-charge-rate>0.13</fixed-charge-rate>
                      <capacity-factor>0.85</capacity-factor>
                   </input-capital>
@@ -68074,7 +68074,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <input-capital name="capital">
-                     <capital-overnight>1996</capital-overnight>
+                     <capital-overnight>2386</capital-overnight>
                      <fixed-charge-rate>0.13</fixed-charge-rate>
                      <capacity-factor>0.85</capacity-factor>
                   </input-capital>
@@ -68094,7 +68094,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <input-capital name="capital">
-                     <capital-overnight>1996</capital-overnight>
+                     <capital-overnight>2386</capital-overnight>
                      <fixed-charge-rate>0.13</fixed-charge-rate>
                      <capacity-factor>0.85</capacity-factor>
                   </input-capital>
@@ -68123,7 +68123,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <input-capital name="capital">
-                     <capital-overnight>1913</capital-overnight>
+                     <capital-overnight>2267</capital-overnight>
                      <fixed-charge-rate>0.13</fixed-charge-rate>
                      <capacity-factor>0.85</capacity-factor>
                   </input-capital>
@@ -68152,7 +68152,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <input-capital name="capital">
-                     <capital-overnight>1845</capital-overnight>
+                     <capital-overnight>2172</capital-overnight>
                      <fixed-charge-rate>0.13</fixed-charge-rate>
                      <capacity-factor>0.85</capacity-factor>
                   </input-capital>
@@ -68181,7 +68181,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <input-capital name="capital">
-                     <capital-overnight>1790</capital-overnight>
+                     <capital-overnight>2096</capital-overnight>
                      <fixed-charge-rate>0.13</fixed-charge-rate>
                      <capacity-factor>0.85</capacity-factor>
                   </input-capital>
@@ -68210,7 +68210,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <input-capital name="capital">
-                     <capital-overnight>1746</capital-overnight>
+                     <capital-overnight>2035</capital-overnight>
                      <fixed-charge-rate>0.13</fixed-charge-rate>
                      <capacity-factor>0.85</capacity-factor>
                   </input-capital>
@@ -68239,7 +68239,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <input-capital name="capital">
-                     <capital-overnight>1709</capital-overnight>
+                     <capital-overnight>1985</capital-overnight>
                      <fixed-charge-rate>0.13</fixed-charge-rate>
                      <capacity-factor>0.85</capacity-factor>
                   </input-capital>
@@ -68268,7 +68268,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <input-capital name="capital">
-                     <capital-overnight>1678</capital-overnight>
+                     <capital-overnight>1945</capital-overnight>
                      <fixed-charge-rate>0.13</fixed-charge-rate>
                      <capacity-factor>0.85</capacity-factor>
                   </input-capital>
@@ -68297,7 +68297,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <input-capital name="capital">
-                     <capital-overnight>1652</capital-overnight>
+                     <capital-overnight>1911</capital-overnight>
                      <fixed-charge-rate>0.13</fixed-charge-rate>
                      <capacity-factor>0.85</capacity-factor>
                   </input-capital>
@@ -68326,7 +68326,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <input-capital name="capital">
-                     <capital-overnight>1630</capital-overnight>
+                     <capital-overnight>1883</capital-overnight>
                      <fixed-charge-rate>0.13</fixed-charge-rate>
                      <capacity-factor>0.85</capacity-factor>
                   </input-capital>
@@ -68355,7 +68355,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <input-capital name="capital">
-                     <capital-overnight>1611</capital-overnight>
+                     <capital-overnight>1860</capital-overnight>
                      <fixed-charge-rate>0.13</fixed-charge-rate>
                      <capacity-factor>0.85</capacity-factor>
                   </input-capital>
@@ -68384,7 +68384,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <input-capital name="capital">
-                     <capital-overnight>1594</capital-overnight>
+                     <capital-overnight>1840</capital-overnight>
                      <fixed-charge-rate>0.13</fixed-charge-rate>
                      <capacity-factor>0.85</capacity-factor>
                   </input-capital>
@@ -68413,7 +68413,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <input-capital name="capital">
-                     <capital-overnight>1580</capital-overnight>
+                     <capital-overnight>1823</capital-overnight>
                      <fixed-charge-rate>0.13</fixed-charge-rate>
                      <capacity-factor>0.85</capacity-factor>
                   </input-capital>
@@ -68442,7 +68442,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <input-capital name="capital">
-                     <capital-overnight>1567</capital-overnight>
+                     <capital-overnight>1808</capital-overnight>
                      <fixed-charge-rate>0.13</fixed-charge-rate>
                      <capacity-factor>0.85</capacity-factor>
                   </input-capital>
@@ -68471,7 +68471,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <input-capital name="capital">
-                     <capital-overnight>1556</capital-overnight>
+                     <capital-overnight>1795</capital-overnight>
                      <fixed-charge-rate>0.13</fixed-charge-rate>
                      <capacity-factor>0.85</capacity-factor>
                   </input-capital>
@@ -68500,7 +68500,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <input-capital name="capital">
-                     <capital-overnight>1545</capital-overnight>
+                     <capital-overnight>1783</capital-overnight>
                      <fixed-charge-rate>0.13</fixed-charge-rate>
                      <capacity-factor>0.85</capacity-factor>
                   </input-capital>
@@ -68529,7 +68529,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <input-capital name="capital">
-                     <capital-overnight>1536</capital-overnight>
+                     <capital-overnight>1773</capital-overnight>
                      <fixed-charge-rate>0.13</fixed-charge-rate>
                      <capacity-factor>0.85</capacity-factor>
                   </input-capital>
@@ -68558,7 +68558,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <input-capital name="capital">
-                     <capital-overnight>1527</capital-overnight>
+                     <capital-overnight>1764</capital-overnight>
                      <fixed-charge-rate>0.13</fixed-charge-rate>
                      <capacity-factor>0.85</capacity-factor>
                   </input-capital>
@@ -68587,7 +68587,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <input-capital name="capital">
-                     <capital-overnight>1519</capital-overnight>
+                     <capital-overnight>1755</capital-overnight>
                      <fixed-charge-rate>0.13</fixed-charge-rate>
                      <capacity-factor>0.85</capacity-factor>
                   </input-capital>
@@ -69150,7 +69150,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <input-capital name="capital">
-                     <capital-overnight>2538</capital-overnight>
+                     <capital-overnight>2742</capital-overnight>
                      <fixed-charge-rate>0.13</fixed-charge-rate>
                      <capacity-factor>0.8</capacity-factor>
                   </input-capital>
@@ -69170,7 +69170,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <input-capital name="capital">
-                     <capital-overnight>2538</capital-overnight>
+                     <capital-overnight>2742</capital-overnight>
                      <fixed-charge-rate>0.13</fixed-charge-rate>
                      <capacity-factor>0.8</capacity-factor>
                   </input-capital>
@@ -69190,7 +69190,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <input-capital name="capital">
-                     <capital-overnight>2538</capital-overnight>
+                     <capital-overnight>2742</capital-overnight>
                      <fixed-charge-rate>0.13</fixed-charge-rate>
                      <capacity-factor>0.8</capacity-factor>
                   </input-capital>
@@ -69210,7 +69210,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <input-capital name="capital">
-                     <capital-overnight>2538</capital-overnight>
+                     <capital-overnight>2742</capital-overnight>
                      <fixed-charge-rate>0.13</fixed-charge-rate>
                      <capacity-factor>0.8</capacity-factor>
                   </input-capital>
@@ -69230,7 +69230,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <input-capital name="capital">
-                     <capital-overnight>2538</capital-overnight>
+                     <capital-overnight>2742</capital-overnight>
                      <fixed-charge-rate>0.13</fixed-charge-rate>
                      <capacity-factor>0.8</capacity-factor>
                   </input-capital>
@@ -69259,7 +69259,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <input-capital name="capital">
-                     <capital-overnight>2397</capital-overnight>
+                     <capital-overnight>2583</capital-overnight>
                      <fixed-charge-rate>0.13</fixed-charge-rate>
                      <capacity-factor>0.8</capacity-factor>
                   </input-capital>
@@ -69288,7 +69288,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <input-capital name="capital">
-                     <capital-overnight>2282</capital-overnight>
+                     <capital-overnight>2454</capital-overnight>
                      <fixed-charge-rate>0.13</fixed-charge-rate>
                      <capacity-factor>0.8</capacity-factor>
                   </input-capital>
@@ -69317,7 +69317,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <input-capital name="capital">
-                     <capital-overnight>2187</capital-overnight>
+                     <capital-overnight>2348</capital-overnight>
                      <fixed-charge-rate>0.13</fixed-charge-rate>
                      <capacity-factor>0.8</capacity-factor>
                   </input-capital>
@@ -69346,7 +69346,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <input-capital name="capital">
-                     <capital-overnight>2109</capital-overnight>
+                     <capital-overnight>2261</capital-overnight>
                      <fixed-charge-rate>0.13</fixed-charge-rate>
                      <capacity-factor>0.8</capacity-factor>
                   </input-capital>
@@ -69375,7 +69375,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <input-capital name="capital">
-                     <capital-overnight>2044</capital-overnight>
+                     <capital-overnight>2189</capital-overnight>
                      <fixed-charge-rate>0.13</fixed-charge-rate>
                      <capacity-factor>0.8</capacity-factor>
                   </input-capital>
@@ -69404,7 +69404,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <input-capital name="capital">
-                     <capital-overnight>1990</capital-overnight>
+                     <capital-overnight>2131</capital-overnight>
                      <fixed-charge-rate>0.13</fixed-charge-rate>
                      <capacity-factor>0.8</capacity-factor>
                   </input-capital>
@@ -69433,7 +69433,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <input-capital name="capital">
-                     <capital-overnight>1946</capital-overnight>
+                     <capital-overnight>2082</capital-overnight>
                      <fixed-charge-rate>0.13</fixed-charge-rate>
                      <capacity-factor>0.8</capacity-factor>
                   </input-capital>
@@ -69462,7 +69462,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <input-capital name="capital">
-                     <capital-overnight>1908</capital-overnight>
+                     <capital-overnight>2041</capital-overnight>
                      <fixed-charge-rate>0.13</fixed-charge-rate>
                      <capacity-factor>0.8</capacity-factor>
                   </input-capital>
@@ -69491,7 +69491,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <input-capital name="capital">
-                     <capital-overnight>1877</capital-overnight>
+                     <capital-overnight>2008</capital-overnight>
                      <fixed-charge-rate>0.13</fixed-charge-rate>
                      <capacity-factor>0.8</capacity-factor>
                   </input-capital>
@@ -69520,7 +69520,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <input-capital name="capital">
-                     <capital-overnight>1851</capital-overnight>
+                     <capital-overnight>1980</capital-overnight>
                      <fixed-charge-rate>0.13</fixed-charge-rate>
                      <capacity-factor>0.8</capacity-factor>
                   </input-capital>
@@ -69549,7 +69549,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <input-capital name="capital">
-                     <capital-overnight>1829</capital-overnight>
+                     <capital-overnight>1957</capital-overnight>
                      <fixed-charge-rate>0.13</fixed-charge-rate>
                      <capacity-factor>0.8</capacity-factor>
                   </input-capital>
@@ -69578,7 +69578,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <input-capital name="capital">
-                     <capital-overnight>1811</capital-overnight>
+                     <capital-overnight>1937</capital-overnight>
                      <fixed-charge-rate>0.13</fixed-charge-rate>
                      <capacity-factor>0.8</capacity-factor>
                   </input-capital>
@@ -69607,7 +69607,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <input-capital name="capital">
-                     <capital-overnight>1795</capital-overnight>
+                     <capital-overnight>1921</capital-overnight>
                      <fixed-charge-rate>0.13</fixed-charge-rate>
                      <capacity-factor>0.8</capacity-factor>
                   </input-capital>
@@ -69636,7 +69636,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <input-capital name="capital">
-                     <capital-overnight>1782</capital-overnight>
+                     <capital-overnight>1907</capital-overnight>
                      <fixed-charge-rate>0.13</fixed-charge-rate>
                      <capacity-factor>0.8</capacity-factor>
                   </input-capital>
@@ -69665,7 +69665,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <input-capital name="capital">
-                     <capital-overnight>1771</capital-overnight>
+                     <capital-overnight>1895</capital-overnight>
                      <fixed-charge-rate>0.13</fixed-charge-rate>
                      <capacity-factor>0.8</capacity-factor>
                   </input-capital>
@@ -69694,7 +69694,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <input-capital name="capital">
-                     <capital-overnight>1762</capital-overnight>
+                     <capital-overnight>1886</capital-overnight>
                      <fixed-charge-rate>0.13</fixed-charge-rate>
                      <capacity-factor>0.8</capacity-factor>
                   </input-capital>
@@ -69723,7 +69723,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <input-capital name="capital">
-                     <capital-overnight>1754</capital-overnight>
+                     <capital-overnight>1877</capital-overnight>
                      <fixed-charge-rate>0.13</fixed-charge-rate>
                      <capacity-factor>0.8</capacity-factor>
                   </input-capital>

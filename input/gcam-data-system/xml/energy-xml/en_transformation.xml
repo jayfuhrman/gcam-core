@@ -13264,7 +13264,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.37</input-cost>
+                     <input-cost>2.587</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>0</share-weight>
                </period>
@@ -13274,7 +13274,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.37</input-cost>
+                     <input-cost>3.4008</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>0</share-weight>
                </period>
@@ -13284,7 +13284,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.37</input-cost>
+                     <input-cost>4.2147</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>0</share-weight>
                </period>
@@ -13294,7 +13294,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.37</input-cost>
+                     <input-cost>4.4859</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>0</share-weight>
                   <lifetime>45</lifetime>
@@ -13313,7 +13313,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.3606</input-cost>
+                     <input-cost>4.7572</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>0</share-weight>
                   <lifetime>45</lifetime>
@@ -13332,7 +13332,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.3511</input-cost>
+                     <input-cost>4.5556</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <lifetime>45</lifetime>
@@ -13351,7 +13351,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.3417</input-cost>
+                     <input-cost>4.3947</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <lifetime>45</lifetime>
@@ -13370,7 +13370,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.3322</input-cost>
+                     <input-cost>4.2338</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <lifetime>45</lifetime>
@@ -13389,7 +13389,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.3228</input-cost>
+                     <input-cost>4.1151</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <lifetime>45</lifetime>
@@ -13408,7 +13408,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.3133</input-cost>
+                     <input-cost>3.9965</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <lifetime>45</lifetime>
@@ -13427,7 +13427,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.3039</input-cost>
+                     <input-cost>3.909</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <lifetime>45</lifetime>
@@ -13446,7 +13446,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.2944</input-cost>
+                     <input-cost>3.8215</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <lifetime>45</lifetime>
@@ -13465,7 +13465,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.285</input-cost>
+                     <input-cost>3.757</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <lifetime>45</lifetime>
@@ -13484,7 +13484,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.2756</input-cost>
+                     <input-cost>3.6925</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <lifetime>45</lifetime>
@@ -13503,7 +13503,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.2661</input-cost>
+                     <input-cost>3.6449</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <lifetime>45</lifetime>
@@ -13522,7 +13522,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.2567</input-cost>
+                     <input-cost>3.5973</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <lifetime>45</lifetime>
@@ -13541,7 +13541,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.2472</input-cost>
+                     <input-cost>3.5622</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <lifetime>45</lifetime>
@@ -13560,7 +13560,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.2378</input-cost>
+                     <input-cost>3.5271</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <lifetime>45</lifetime>
@@ -13579,7 +13579,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.2283</input-cost>
+                     <input-cost>3.5012</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <lifetime>45</lifetime>
@@ -13598,7 +13598,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.2189</input-cost>
+                     <input-cost>3.4754</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <lifetime>45</lifetime>
@@ -13617,7 +13617,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.2094</input-cost>
+                     <input-cost>3.4563</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <lifetime>45</lifetime>
@@ -13636,7 +13636,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.2</input-cost>
+                     <input-cost>3.4372</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <lifetime>45</lifetime>
@@ -13660,7 +13660,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.76</input-cost>
+                     <input-cost>3.2155</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>0</share-weight>
                </period>
@@ -13670,7 +13670,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.76</input-cost>
+                     <input-cost>4.9235</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>0</share-weight>
                </period>
@@ -13680,7 +13680,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.76</input-cost>
+                     <input-cost>6.6314</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>0</share-weight>
                </period>
@@ -13690,7 +13690,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.76</input-cost>
+                     <input-cost>7.2008</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>0</share-weight>
                   <lifetime>45</lifetime>
@@ -13709,7 +13709,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.7489</input-cost>
+                     <input-cost>7.7701</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>0</share-weight>
                   <lifetime>45</lifetime>
@@ -13728,7 +13728,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.7378</input-cost>
+                     <input-cost>7.4408</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <lifetime>45</lifetime>
@@ -13747,7 +13747,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.7267</input-cost>
+                     <input-cost>7.178</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <lifetime>45</lifetime>
@@ -13766,7 +13766,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.7156</input-cost>
+                     <input-cost>6.9152</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <lifetime>45</lifetime>
@@ -13785,7 +13785,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.7044</input-cost>
+                     <input-cost>6.7214</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <lifetime>45</lifetime>
@@ -13804,7 +13804,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.6933</input-cost>
+                     <input-cost>6.5276</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <lifetime>45</lifetime>
@@ -13823,7 +13823,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.6822</input-cost>
+                     <input-cost>6.3847</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <lifetime>45</lifetime>
@@ -13842,7 +13842,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.6711</input-cost>
+                     <input-cost>6.2418</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <lifetime>45</lifetime>
@@ -13861,7 +13861,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.66</input-cost>
+                     <input-cost>6.1364</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <lifetime>45</lifetime>
@@ -13880,7 +13880,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.6489</input-cost>
+                     <input-cost>6.031</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <lifetime>45</lifetime>
@@ -13899,7 +13899,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.6378</input-cost>
+                     <input-cost>5.9533</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <lifetime>45</lifetime>
@@ -13918,7 +13918,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.6267</input-cost>
+                     <input-cost>5.8756</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <lifetime>45</lifetime>
@@ -13937,7 +13937,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.6156</input-cost>
+                     <input-cost>5.8183</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <lifetime>45</lifetime>
@@ -13956,7 +13956,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.6044</input-cost>
+                     <input-cost>5.761</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <lifetime>45</lifetime>
@@ -13975,7 +13975,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.5933</input-cost>
+                     <input-cost>5.7187</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <lifetime>45</lifetime>
@@ -13994,7 +13994,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.5822</input-cost>
+                     <input-cost>5.6764</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <lifetime>45</lifetime>
@@ -14013,7 +14013,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.5711</input-cost>
+                     <input-cost>5.6453</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <lifetime>45</lifetime>
@@ -14032,7 +14032,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.56</input-cost>
+                     <input-cost>5.6141</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <lifetime>45</lifetime>
@@ -15439,7 +15439,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.89</input-cost>
+                     <input-cost>3.0838</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>0</share-weight>
                </period>
@@ -15449,7 +15449,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.89</input-cost>
+                     <input-cost>3.8104</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>0</share-weight>
                </period>
@@ -15459,7 +15459,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.89</input-cost>
+                     <input-cost>4.5371</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>0</share-weight>
                </period>
@@ -15469,7 +15469,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.89</input-cost>
+                     <input-cost>4.7793</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>0</share-weight>
                   <lifetime>45</lifetime>
@@ -15488,7 +15488,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.8783</input-cost>
+                     <input-cost>5.0215</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>0</share-weight>
                   <standard-capture-component>
@@ -15511,7 +15511,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.8667</input-cost>
+                     <input-cost>4.796</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>0.333</share-weight>
                   <standard-capture-component>
@@ -15534,7 +15534,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.855</input-cost>
+                     <input-cost>4.6187</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>0.555333333333333</share-weight>
                   <standard-capture-component>
@@ -15557,7 +15557,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.8433</input-cost>
+                     <input-cost>4.4413</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>0.777666666666667</share-weight>
                   <standard-capture-component>
@@ -15580,7 +15580,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.8317</input-cost>
+                     <input-cost>4.3129</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <standard-capture-component>
@@ -15603,7 +15603,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.82</input-cost>
+                     <input-cost>4.1844</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <standard-capture-component>
@@ -15626,7 +15626,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.8083</input-cost>
+                     <input-cost>4.091</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <standard-capture-component>
@@ -15649,7 +15649,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.7967</input-cost>
+                     <input-cost>3.9976</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <standard-capture-component>
@@ -15672,7 +15672,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.785</input-cost>
+                     <input-cost>3.9296</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <standard-capture-component>
@@ -15695,7 +15695,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.7733</input-cost>
+                     <input-cost>3.8615</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <standard-capture-component>
@@ -15718,7 +15718,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.7617</input-cost>
+                     <input-cost>3.8118</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <standard-capture-component>
@@ -15741,7 +15741,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.75</input-cost>
+                     <input-cost>3.7622</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <standard-capture-component>
@@ -15764,7 +15764,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.7383</input-cost>
+                     <input-cost>3.7258</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <standard-capture-component>
@@ -15787,7 +15787,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.7267</input-cost>
+                     <input-cost>3.6895</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <standard-capture-component>
@@ -15810,7 +15810,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.715</input-cost>
+                     <input-cost>3.6628</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <standard-capture-component>
@@ -15833,7 +15833,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.7033</input-cost>
+                     <input-cost>3.6362</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <standard-capture-component>
@@ -15856,7 +15856,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.6917</input-cost>
+                     <input-cost>3.6167</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <standard-capture-component>
@@ -15879,7 +15879,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.68</input-cost>
+                     <input-cost>3.5971</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <standard-capture-component>
@@ -15904,7 +15904,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>4.69</input-cost>
+                     <input-cost>4.8871</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>0</share-weight>
                </period>
@@ -15914,7 +15914,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>4.69</input-cost>
+                     <input-cost>5.6261</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>0</share-weight>
                </period>
@@ -15924,7 +15924,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>4.69</input-cost>
+                     <input-cost>6.3651</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>0</share-weight>
                </period>
@@ -15934,7 +15934,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>4.69</input-cost>
+                     <input-cost>6.6114</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>0</share-weight>
                   <lifetime>45</lifetime>
@@ -15953,7 +15953,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>4.6711</input-cost>
+                     <input-cost>6.8577</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>0</share-weight>
                   <standard-capture-component>
@@ -15976,7 +15976,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>4.6522</input-cost>
+                     <input-cost>6.4661</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>0.333</share-weight>
                   <standard-capture-component>
@@ -15999,7 +15999,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>4.6333</input-cost>
+                     <input-cost>6.1747</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>0.555333333333333</share-weight>
                   <standard-capture-component>
@@ -16022,7 +16022,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>4.6144</input-cost>
+                     <input-cost>5.8834</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>0.777666666666667</share-weight>
                   <standard-capture-component>
@@ -16045,7 +16045,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>4.5956</input-cost>
+                     <input-cost>5.6866</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <standard-capture-component>
@@ -16068,7 +16068,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>4.5767</input-cost>
+                     <input-cost>5.4899</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <standard-capture-component>
@@ -16091,7 +16091,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>4.5578</input-cost>
+                     <input-cost>5.3556</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <standard-capture-component>
@@ -16114,7 +16114,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>4.5389</input-cost>
+                     <input-cost>5.2214</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <standard-capture-component>
@@ -16137,7 +16137,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>4.52</input-cost>
+                     <input-cost>5.1289</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <standard-capture-component>
@@ -16160,7 +16160,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>4.5011</input-cost>
+                     <input-cost>5.0363</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <standard-capture-component>
@@ -16183,7 +16183,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>4.4822</input-cost>
+                     <input-cost>4.972</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <standard-capture-component>
@@ -16206,7 +16206,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>4.4633</input-cost>
+                     <input-cost>4.9076</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <standard-capture-component>
@@ -16229,7 +16229,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>4.4444</input-cost>
+                     <input-cost>4.8625</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <standard-capture-component>
@@ -16252,7 +16252,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>4.4256</input-cost>
+                     <input-cost>4.8174</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <standard-capture-component>
@@ -16275,7 +16275,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>4.4067</input-cost>
+                     <input-cost>4.7855</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <standard-capture-component>
@@ -16298,7 +16298,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>4.3878</input-cost>
+                     <input-cost>4.7536</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <standard-capture-component>
@@ -16321,7 +16321,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>4.3689</input-cost>
+                     <input-cost>4.731</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <standard-capture-component>
@@ -16344,7 +16344,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>4.35</input-cost>
+                     <input-cost>4.7083</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <standard-capture-component>
@@ -16369,7 +16369,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>3.46</input-cost>
+                     <input-cost>3.9161</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>0</share-weight>
                </period>
@@ -16379,7 +16379,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>3.46</input-cost>
+                     <input-cost>5.6263</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>0</share-weight>
                </period>
@@ -16389,7 +16389,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>3.46</input-cost>
+                     <input-cost>7.3365</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>0</share-weight>
                </period>
@@ -16399,7 +16399,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>3.46</input-cost>
+                     <input-cost>7.9066</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>0</share-weight>
                   <lifetime>45</lifetime>
@@ -16418,7 +16418,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>3.4461</input-cost>
+                     <input-cost>8.4767</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>0</share-weight>
                   <standard-capture-component>
@@ -16441,7 +16441,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>3.4322</input-cost>
+                     <input-cost>8.0835</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>0.333</share-weight>
                   <standard-capture-component>
@@ -16464,7 +16464,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>3.4183</input-cost>
+                     <input-cost>7.7768</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>0.555333333333333</share-weight>
                   <standard-capture-component>
@@ -16487,7 +16487,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>3.4044</input-cost>
+                     <input-cost>7.4701</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>0.777666666666667</share-weight>
                   <standard-capture-component>
@@ -16510,7 +16510,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>3.3906</input-cost>
+                     <input-cost>7.25</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <standard-capture-component>
@@ -16533,7 +16533,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>3.3767</input-cost>
+                     <input-cost>7.03</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <standard-capture-component>
@@ -16556,7 +16556,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>3.3628</input-cost>
+                     <input-cost>6.8713</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <standard-capture-component>
@@ -16579,7 +16579,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>3.3489</input-cost>
+                     <input-cost>6.7127</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <standard-capture-component>
@@ -16602,7 +16602,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>3.335</input-cost>
+                     <input-cost>6.5979</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <standard-capture-component>
@@ -16625,7 +16625,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>3.3211</input-cost>
+                     <input-cost>6.4831</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <standard-capture-component>
@@ -16648,7 +16648,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>3.3072</input-cost>
+                     <input-cost>6.3997</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <standard-capture-component>
@@ -16671,7 +16671,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>3.2933</input-cost>
+                     <input-cost>6.3164</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <standard-capture-component>
@@ -16694,7 +16694,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>3.2794</input-cost>
+                     <input-cost>6.2557</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <standard-capture-component>
@@ -16717,7 +16717,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>3.2656</input-cost>
+                     <input-cost>6.195</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <standard-capture-component>
@@ -16740,7 +16740,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>3.2517</input-cost>
+                     <input-cost>6.1507</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <standard-capture-component>
@@ -16763,7 +16763,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>3.2378</input-cost>
+                     <input-cost>6.1064</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <standard-capture-component>
@@ -16786,7 +16786,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>3.2239</input-cost>
+                     <input-cost>6.0741</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <standard-capture-component>
@@ -16809,7 +16809,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>3.21</input-cost>
+                     <input-cost>6.0417</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <standard-capture-component>
@@ -16834,7 +16834,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>3.93</input-cost>
+                     <input-cost>4.3833</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>0</share-weight>
                </period>
@@ -16844,7 +16844,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>3.93</input-cost>
+                     <input-cost>6.0833</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>0</share-weight>
                </period>
@@ -16854,7 +16854,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>3.93</input-cost>
+                     <input-cost>7.7833</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>0</share-weight>
                </period>
@@ -16864,7 +16864,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>3.93</input-cost>
+                     <input-cost>8.35</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>0</share-weight>
                   <lifetime>45</lifetime>
@@ -16883,7 +16883,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>3.9139</input-cost>
+                     <input-cost>8.9167</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>0</share-weight>
                   <standard-capture-component>
@@ -16906,7 +16906,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>3.8978</input-cost>
+                     <input-cost>8.4836</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>0.333</share-weight>
                   <standard-capture-component>
@@ -16929,7 +16929,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>3.8817</input-cost>
+                     <input-cost>8.1496</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>0.555333333333333</share-weight>
                   <standard-capture-component>
@@ -16952,7 +16952,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>3.8656</input-cost>
+                     <input-cost>7.8156</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>0.777666666666667</share-weight>
                   <standard-capture-component>
@@ -16975,7 +16975,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>3.8494</input-cost>
+                     <input-cost>7.5792</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <standard-capture-component>
@@ -16998,7 +16998,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>3.8333</input-cost>
+                     <input-cost>7.3428</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <standard-capture-component>
@@ -17021,7 +17021,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>3.8172</input-cost>
+                     <input-cost>7.1743</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <standard-capture-component>
@@ -17044,7 +17044,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>3.8011</input-cost>
+                     <input-cost>7.0059</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <standard-capture-component>
@@ -17067,7 +17067,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>3.785</input-cost>
+                     <input-cost>6.8852</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <standard-capture-component>
@@ -17090,7 +17090,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>3.7689</input-cost>
+                     <input-cost>6.7646</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <standard-capture-component>
@@ -17113,7 +17113,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>3.7528</input-cost>
+                     <input-cost>6.6777</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <standard-capture-component>
@@ -17136,7 +17136,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>3.7367</input-cost>
+                     <input-cost>6.5908</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <standard-capture-component>
@@ -17159,7 +17159,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>3.7206</input-cost>
+                     <input-cost>6.528</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <standard-capture-component>
@@ -17182,7 +17182,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>3.7044</input-cost>
+                     <input-cost>6.4653</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <standard-capture-component>
@@ -17205,7 +17205,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>3.6883</input-cost>
+                     <input-cost>6.4197</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <standard-capture-component>
@@ -17228,7 +17228,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>3.6722</input-cost>
+                     <input-cost>6.3742</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <standard-capture-component>
@@ -17251,7 +17251,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>3.6561</input-cost>
+                     <input-cost>6.341</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <standard-capture-component>
@@ -17274,7 +17274,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>3.64</input-cost>
+                     <input-cost>6.3079</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <standard-capture-component>
@@ -17525,7 +17525,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>3.85</input-cost>
+                     <input-cost>4.4291</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                </period>
@@ -17535,7 +17535,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>3.85</input-cost>
+                     <input-cost>6.6007</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                </period>
@@ -17545,7 +17545,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>3.85</input-cost>
+                     <input-cost>8.7723</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                </period>
@@ -17555,7 +17555,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>3.85</input-cost>
+                     <input-cost>9.4961</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                </period>
@@ -17565,7 +17565,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>3.7867</input-cost>
+                     <input-cost>10.22</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                </period>
@@ -17575,7 +17575,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>3.7233</input-cost>
+                     <input-cost>9.7869</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                </period>
@@ -17585,7 +17585,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>3.66</input-cost>
+                     <input-cost>9.4412</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                </period>
@@ -17595,7 +17595,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>3.5967</input-cost>
+                     <input-cost>9.0955</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                </period>
@@ -17605,7 +17605,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>3.5333</input-cost>
+                     <input-cost>8.8406</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                </period>
@@ -17615,7 +17615,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>3.47</input-cost>
+                     <input-cost>8.5857</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                </period>
@@ -17625,7 +17625,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>3.4067</input-cost>
+                     <input-cost>8.3978</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                </period>
@@ -17635,7 +17635,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>3.3433</input-cost>
+                     <input-cost>8.2098</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                </period>
@@ -17645,7 +17645,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>3.28</input-cost>
+                     <input-cost>8.0712</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                </period>
@@ -17655,7 +17655,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>3.2167</input-cost>
+                     <input-cost>7.9326</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                </period>
@@ -17665,7 +17665,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>3.1533</input-cost>
+                     <input-cost>7.8304</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                </period>
@@ -17675,7 +17675,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>3.09</input-cost>
+                     <input-cost>7.7281</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                </period>
@@ -17685,7 +17685,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>3.0267</input-cost>
+                     <input-cost>7.6528</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                </period>
@@ -17695,7 +17695,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.9633</input-cost>
+                     <input-cost>7.5774</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                </period>
@@ -17705,7 +17705,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.9</input-cost>
+                     <input-cost>7.5218</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                </period>
@@ -17715,7 +17715,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.8367</input-cost>
+                     <input-cost>7.4662</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                </period>
@@ -17725,7 +17725,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.7733</input-cost>
+                     <input-cost>7.4252</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                </period>
@@ -17735,7 +17735,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.71</input-cost>
+                     <input-cost>7.3842</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                </period>
@@ -17749,7 +17749,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.99</input-cost>
+                     <input-cost>3.3382</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                </period>
@@ -17759,7 +17759,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.99</input-cost>
+                     <input-cost>4.6439</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                </period>
@@ -17769,7 +17769,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.99</input-cost>
+                     <input-cost>5.9495</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                </period>
@@ -17779,7 +17779,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.99</input-cost>
+                     <input-cost>6.3848</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                </period>
@@ -17789,7 +17789,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.94</input-cost>
+                     <input-cost>6.82</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                </period>
@@ -17799,7 +17799,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.89</input-cost>
+                     <input-cost>6.531</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                </period>
@@ -17809,7 +17809,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.84</input-cost>
+                     <input-cost>6.3003</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                </period>
@@ -17819,7 +17819,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.79</input-cost>
+                     <input-cost>6.0696</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                </period>
@@ -17829,7 +17829,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.74</input-cost>
+                     <input-cost>5.8995</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                </period>
@@ -17839,7 +17839,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.69</input-cost>
+                     <input-cost>5.7294</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                </period>
@@ -17849,7 +17849,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.64</input-cost>
+                     <input-cost>5.604</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                </period>
@@ -17859,7 +17859,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.59</input-cost>
+                     <input-cost>5.4786</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                </period>
@@ -17869,7 +17869,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.54</input-cost>
+                     <input-cost>5.3861</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                </period>
@@ -17879,7 +17879,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.49</input-cost>
+                     <input-cost>5.2936</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                </period>
@@ -17889,7 +17889,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.44</input-cost>
+                     <input-cost>5.2253</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                </period>
@@ -17899,7 +17899,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.39</input-cost>
+                     <input-cost>5.1571</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                </period>
@@ -17909,7 +17909,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.34</input-cost>
+                     <input-cost>5.1068</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                </period>
@@ -17919,7 +17919,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.29</input-cost>
+                     <input-cost>5.0565</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                </period>
@@ -17929,7 +17929,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.24</input-cost>
+                     <input-cost>5.0194</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                </period>
@@ -17939,7 +17939,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.19</input-cost>
+                     <input-cost>4.9823</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                </period>
@@ -17949,7 +17949,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.14</input-cost>
+                     <input-cost>4.955</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                </period>
@@ -17959,7 +17959,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.09</input-cost>
+                     <input-cost>4.9276</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                </period>
@@ -18427,7 +18427,7 @@
                      <coefficient>0.005</coefficient>
                   </minicam-energy-input>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>0.84</input-cost>
+                     <input-cost>0.8405</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                </period>
@@ -18443,7 +18443,7 @@
                      <coefficient>0.005</coefficient>
                   </minicam-energy-input>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>0.84</input-cost>
+                     <input-cost>0.8425</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                </period>
@@ -18459,7 +18459,7 @@
                      <coefficient>0.005</coefficient>
                   </minicam-energy-input>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>0.84</input-cost>
+                     <input-cost>0.8444</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                </period>
@@ -18475,7 +18475,7 @@
                      <coefficient>0.005</coefficient>
                   </minicam-energy-input>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>0.84</input-cost>
+                     <input-cost>0.8451</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <lifetime>50</lifetime>
@@ -18500,7 +18500,7 @@
                      <coefficient>0.005</coefficient>
                   </minicam-energy-input>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>0.84</input-cost>
+                     <input-cost>0.8457</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <lifetime>45</lifetime>
@@ -18525,7 +18525,7 @@
                      <coefficient>0.005</coefficient>
                   </minicam-energy-input>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>0.84</input-cost>
+                     <input-cost>0.8457</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <lifetime>45</lifetime>
@@ -18550,7 +18550,7 @@
                      <coefficient>0.005</coefficient>
                   </minicam-energy-input>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>0.84</input-cost>
+                     <input-cost>0.8457</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <lifetime>45</lifetime>
@@ -18575,7 +18575,7 @@
                      <coefficient>0.005</coefficient>
                   </minicam-energy-input>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>0.84</input-cost>
+                     <input-cost>0.8457</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <lifetime>45</lifetime>
@@ -18600,7 +18600,7 @@
                      <coefficient>0.005</coefficient>
                   </minicam-energy-input>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>0.84</input-cost>
+                     <input-cost>0.8457</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <lifetime>45</lifetime>
@@ -18625,7 +18625,7 @@
                      <coefficient>0.005</coefficient>
                   </minicam-energy-input>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>0.84</input-cost>
+                     <input-cost>0.8457</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <lifetime>45</lifetime>
@@ -18650,7 +18650,7 @@
                      <coefficient>0.005</coefficient>
                   </minicam-energy-input>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>0.84</input-cost>
+                     <input-cost>0.8457</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <lifetime>45</lifetime>
@@ -18675,7 +18675,7 @@
                      <coefficient>0.005</coefficient>
                   </minicam-energy-input>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>0.84</input-cost>
+                     <input-cost>0.8457</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <lifetime>45</lifetime>
@@ -18700,7 +18700,7 @@
                      <coefficient>0.005</coefficient>
                   </minicam-energy-input>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>0.84</input-cost>
+                     <input-cost>0.8457</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <lifetime>45</lifetime>
@@ -18725,7 +18725,7 @@
                      <coefficient>0.005</coefficient>
                   </minicam-energy-input>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>0.84</input-cost>
+                     <input-cost>0.8457</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <lifetime>45</lifetime>
@@ -18750,7 +18750,7 @@
                      <coefficient>0.005</coefficient>
                   </minicam-energy-input>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>0.84</input-cost>
+                     <input-cost>0.8457</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <lifetime>45</lifetime>
@@ -18775,7 +18775,7 @@
                      <coefficient>0.005</coefficient>
                   </minicam-energy-input>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>0.84</input-cost>
+                     <input-cost>0.8457</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <lifetime>45</lifetime>
@@ -18800,7 +18800,7 @@
                      <coefficient>0.005</coefficient>
                   </minicam-energy-input>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>0.84</input-cost>
+                     <input-cost>0.8457</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <lifetime>45</lifetime>
@@ -18825,7 +18825,7 @@
                      <coefficient>0.005</coefficient>
                   </minicam-energy-input>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>0.84</input-cost>
+                     <input-cost>0.8457</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <lifetime>45</lifetime>
@@ -18850,7 +18850,7 @@
                      <coefficient>0.005</coefficient>
                   </minicam-energy-input>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>0.84</input-cost>
+                     <input-cost>0.8457</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <lifetime>45</lifetime>
@@ -18875,7 +18875,7 @@
                      <coefficient>0.005</coefficient>
                   </minicam-energy-input>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>0.84</input-cost>
+                     <input-cost>0.8457</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <lifetime>45</lifetime>
@@ -18900,7 +18900,7 @@
                      <coefficient>0.005</coefficient>
                   </minicam-energy-input>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>0.84</input-cost>
+                     <input-cost>0.8457</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <lifetime>45</lifetime>
@@ -18925,7 +18925,7 @@
                      <coefficient>0.005</coefficient>
                   </minicam-energy-input>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>0.84</input-cost>
+                     <input-cost>0.8457</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <lifetime>45</lifetime>
@@ -18948,7 +18948,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.7</input-cost>
+                     <input-cost>2.9351</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>0</share-weight>
                </period>
@@ -18958,7 +18958,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.7</input-cost>
+                     <input-cost>3.8166</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>0</share-weight>
                </period>
@@ -18968,7 +18968,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.7</input-cost>
+                     <input-cost>4.6981</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>0</share-weight>
                </period>
@@ -18978,7 +18978,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.7</input-cost>
+                     <input-cost>4.9919</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>0</share-weight>
                   <lifetime>45</lifetime>
@@ -18997,7 +18997,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.6889</input-cost>
+                     <input-cost>5.2858</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>0</share-weight>
                   <lifetime>45</lifetime>
@@ -19016,7 +19016,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.6778</input-cost>
+                     <input-cost>5.0618</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <lifetime>45</lifetime>
@@ -19035,7 +19035,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.6667</input-cost>
+                     <input-cost>4.883</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <lifetime>45</lifetime>
@@ -19054,7 +19054,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.6556</input-cost>
+                     <input-cost>4.7042</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <lifetime>45</lifetime>
@@ -19073,7 +19073,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.6444</input-cost>
+                     <input-cost>4.5724</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <lifetime>45</lifetime>
@@ -19092,7 +19092,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.6333</input-cost>
+                     <input-cost>4.4405</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <lifetime>45</lifetime>
@@ -19111,7 +19111,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.6222</input-cost>
+                     <input-cost>4.3433</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <lifetime>45</lifetime>
@@ -19130,7 +19130,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.6111</input-cost>
+                     <input-cost>4.2461</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <lifetime>45</lifetime>
@@ -19149,7 +19149,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.6</input-cost>
+                     <input-cost>4.1744</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <lifetime>45</lifetime>
@@ -19168,7 +19168,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.5889</input-cost>
+                     <input-cost>4.1027</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <lifetime>45</lifetime>
@@ -19187,7 +19187,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.5778</input-cost>
+                     <input-cost>4.0499</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <lifetime>45</lifetime>
@@ -19206,7 +19206,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.5667</input-cost>
+                     <input-cost>3.997</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <lifetime>45</lifetime>
@@ -19225,7 +19225,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.5556</input-cost>
+                     <input-cost>3.958</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <lifetime>45</lifetime>
@@ -19244,7 +19244,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.5444</input-cost>
+                     <input-cost>3.919</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <lifetime>45</lifetime>
@@ -19263,7 +19263,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.5333</input-cost>
+                     <input-cost>3.8903</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <lifetime>45</lifetime>
@@ -19282,7 +19282,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.5222</input-cost>
+                     <input-cost>3.8615</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <lifetime>45</lifetime>
@@ -19301,7 +19301,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.5111</input-cost>
+                     <input-cost>3.8403</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <lifetime>45</lifetime>
@@ -19320,7 +19320,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>2.5</input-cost>
+                     <input-cost>3.8191</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <lifetime>45</lifetime>
@@ -19341,7 +19341,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>3.41</input-cost>
+                     <input-cost>3.6457</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>0</share-weight>
                </period>
@@ -19351,7 +19351,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>3.41</input-cost>
+                     <input-cost>4.5295</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>0</share-weight>
                </period>
@@ -19361,7 +19361,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>3.41</input-cost>
+                     <input-cost>5.4133</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>0</share-weight>
                </period>
@@ -19371,7 +19371,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>3.41</input-cost>
+                     <input-cost>5.7079</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>0</share-weight>
                   <lifetime>45</lifetime>
@@ -19390,7 +19390,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>3.3961</input-cost>
+                     <input-cost>6.0025</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>0</share-weight>
                   <standard-capture-component>
@@ -19413,7 +19413,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>3.3822</input-cost>
+                     <input-cost>5.7136</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>0.333</share-weight>
                   <standard-capture-component>
@@ -19436,7 +19436,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>3.3683</input-cost>
+                     <input-cost>5.4903</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>0.555333333333333</share-weight>
                   <standard-capture-component>
@@ -19459,7 +19459,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>3.3544</input-cost>
+                     <input-cost>5.267</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>0.777666666666667</share-weight>
                   <standard-capture-component>
@@ -19482,7 +19482,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>3.3406</input-cost>
+                     <input-cost>5.1086</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <standard-capture-component>
@@ -19505,7 +19505,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>3.3267</input-cost>
+                     <input-cost>4.9501</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <standard-capture-component>
@@ -19528,7 +19528,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>3.3128</input-cost>
+                     <input-cost>4.8369</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <standard-capture-component>
@@ -19551,7 +19551,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>3.2989</input-cost>
+                     <input-cost>4.7237</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <standard-capture-component>
@@ -19574,7 +19574,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>3.285</input-cost>
+                     <input-cost>4.6425</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <standard-capture-component>
@@ -19597,7 +19597,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>3.2711</input-cost>
+                     <input-cost>4.5613</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <standard-capture-component>
@@ -19620,7 +19620,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>3.2572</input-cost>
+                     <input-cost>4.5027</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <standard-capture-component>
@@ -19643,7 +19643,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>3.2433</input-cost>
+                     <input-cost>4.4441</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <standard-capture-component>
@@ -19666,7 +19666,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>3.2294</input-cost>
+                     <input-cost>4.4017</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <standard-capture-component>
@@ -19689,7 +19689,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>3.2156</input-cost>
+                     <input-cost>4.3593</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <standard-capture-component>
@@ -19712,7 +19712,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>3.2017</input-cost>
+                     <input-cost>4.3285</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <standard-capture-component>
@@ -19735,7 +19735,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>3.1878</input-cost>
+                     <input-cost>4.2977</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <standard-capture-component>
@@ -19758,7 +19758,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>3.1739</input-cost>
+                     <input-cost>4.2752</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <standard-capture-component>
@@ -19781,7 +19781,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>3.16</input-cost>
+                     <input-cost>4.2528</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <standard-capture-component>
@@ -19806,7 +19806,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>3.87</input-cost>
+                     <input-cost>4.1061</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>0</share-weight>
                </period>
@@ -19816,7 +19816,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>3.87</input-cost>
+                     <input-cost>4.9914</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>0</share-weight>
                </period>
@@ -19826,7 +19826,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>3.87</input-cost>
+                     <input-cost>5.8766</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>0</share-weight>
                </period>
@@ -19836,7 +19836,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>3.87</input-cost>
+                     <input-cost>6.1717</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>0</share-weight>
                   <lifetime>45</lifetime>
@@ -19855,7 +19855,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>3.8544</input-cost>
+                     <input-cost>6.4668</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>0</share-weight>
                   <standard-capture-component>
@@ -19878,7 +19878,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>3.8389</input-cost>
+                     <input-cost>6.1359</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>0.333</share-weight>
                   <standard-capture-component>
@@ -19901,7 +19901,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>3.8233</input-cost>
+                     <input-cost>5.8838</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>0.555333333333333</share-weight>
                   <standard-capture-component>
@@ -19924,7 +19924,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>3.8078</input-cost>
+                     <input-cost>5.6317</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>0.777666666666667</share-weight>
                   <standard-capture-component>
@@ -19947,7 +19947,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>3.7922</input-cost>
+                     <input-cost>5.456</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <standard-capture-component>
@@ -19970,7 +19970,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>3.7767</input-cost>
+                     <input-cost>5.2802</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <standard-capture-component>
@@ -19993,7 +19993,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>3.7611</input-cost>
+                     <input-cost>5.1567</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <standard-capture-component>
@@ -20016,7 +20016,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>3.7456</input-cost>
+                     <input-cost>5.0332</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <standard-capture-component>
@@ -20039,7 +20039,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>3.73</input-cost>
+                     <input-cost>4.9458</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <standard-capture-component>
@@ -20062,7 +20062,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>3.7144</input-cost>
+                     <input-cost>4.8583</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <standard-capture-component>
@@ -20085,7 +20085,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>3.6989</input-cost>
+                     <input-cost>4.796</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <standard-capture-component>
@@ -20108,7 +20108,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>3.6833</input-cost>
+                     <input-cost>4.7337</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <standard-capture-component>
@@ -20131,7 +20131,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>3.6678</input-cost>
+                     <input-cost>4.6891</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <standard-capture-component>
@@ -20154,7 +20154,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>3.6522</input-cost>
+                     <input-cost>4.6445</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <standard-capture-component>
@@ -20177,7 +20177,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>3.6367</input-cost>
+                     <input-cost>4.6124</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <standard-capture-component>
@@ -20200,7 +20200,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>3.6211</input-cost>
+                     <input-cost>4.5802</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <standard-capture-component>
@@ -20223,7 +20223,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>3.6056</input-cost>
+                     <input-cost>4.557</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <standard-capture-component>
@@ -20246,7 +20246,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>3.59</input-cost>
+                     <input-cost>4.5338</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <standard-capture-component>
@@ -20273,7 +20273,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>1.8</input-cost>
+                     <input-cost>2.1169</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>0</share-weight>
                </period>
@@ -20283,7 +20283,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>1.8</input-cost>
+                     <input-cost>3.3052</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>0</share-weight>
                </period>
@@ -20293,7 +20293,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>1.8</input-cost>
+                     <input-cost>4.4936</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>0</share-weight>
                </period>
@@ -20303,7 +20303,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>1.8</input-cost>
+                     <input-cost>4.8897</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>0</share-weight>
                   <lifetime>45</lifetime>
@@ -20322,7 +20322,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>1.7928</input-cost>
+                     <input-cost>5.2858</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>0</share-weight>
                   <lifetime>45</lifetime>
@@ -20341,7 +20341,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>1.7856</input-cost>
+                     <input-cost>5.0618</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <lifetime>45</lifetime>
@@ -20360,7 +20360,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>1.7783</input-cost>
+                     <input-cost>4.883</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <lifetime>45</lifetime>
@@ -20379,7 +20379,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>1.7711</input-cost>
+                     <input-cost>4.7042</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <lifetime>45</lifetime>
@@ -20398,7 +20398,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>1.7639</input-cost>
+                     <input-cost>4.5724</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <lifetime>45</lifetime>
@@ -20417,7 +20417,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>1.7567</input-cost>
+                     <input-cost>4.4405</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <lifetime>45</lifetime>
@@ -20436,7 +20436,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>1.7494</input-cost>
+                     <input-cost>4.3433</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <lifetime>45</lifetime>
@@ -20455,7 +20455,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>1.7422</input-cost>
+                     <input-cost>4.2461</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <lifetime>45</lifetime>
@@ -20474,7 +20474,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>1.735</input-cost>
+                     <input-cost>4.1744</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <lifetime>45</lifetime>
@@ -20493,7 +20493,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>1.7278</input-cost>
+                     <input-cost>4.1027</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <lifetime>45</lifetime>
@@ -20512,7 +20512,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>1.7206</input-cost>
+                     <input-cost>4.0499</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <lifetime>45</lifetime>
@@ -20531,7 +20531,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>1.7133</input-cost>
+                     <input-cost>3.997</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <lifetime>45</lifetime>
@@ -20550,7 +20550,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>1.7061</input-cost>
+                     <input-cost>3.958</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <lifetime>45</lifetime>
@@ -20569,7 +20569,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>1.6989</input-cost>
+                     <input-cost>3.919</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <lifetime>45</lifetime>
@@ -20588,7 +20588,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>1.6917</input-cost>
+                     <input-cost>3.8903</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <lifetime>45</lifetime>
@@ -20607,7 +20607,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>1.6844</input-cost>
+                     <input-cost>3.8615</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <lifetime>45</lifetime>
@@ -20626,7 +20626,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>1.6772</input-cost>
+                     <input-cost>3.8403</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <lifetime>45</lifetime>
@@ -20645,7 +20645,7 @@
                   </minicam-energy-input>
                   <CO2 name="CO2"/>
                   <minicam-non-energy-input name="non-energy">
-                     <input-cost>1.67</input-cost>
+                     <input-cost>3.8191</input-cost>
                   </minicam-non-energy-input>
                   <share-weight>1</share-weight>
                   <lifetime>45</lifetime>

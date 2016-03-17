@@ -1,21 +1,21 @@
-# Primary energy transformation technologies default cost assumptions,,,,,,
-supplysector,subsector,technology,minicam.non.energy.input,1971,2010,2100
-gas processing,natural gas,natural gas,non-energy,0.2,0.2,0.2
-gas processing,biomass gasification,biomass gasification,non-energy,3.85,3.85,2.71
-gas processing,coal gasification,coal gasification,non-energy,2.99,2.99,2.09
-nuclearFuelGenII,enrichedUranium,enrichedUranium,non-energy,0.124464,0.124464,0.124464
-nuclearFuelGenIII,enrichedUranium,enrichedUranium,non-energy,0.124464,0.124464,0.124464
-refining,oil refining,oil refining,non-energy,0.84,0.84,0.84
-refining,coal to liquids,coal to liquids,non-energy,2.7,2.7,2.5
-refining,coal to liquids,coal to liquids CCS level 1,non-energy,3.41,3.41,3.16
-refining,coal to liquids,coal to liquids CCS level 2,non-energy,3.87,3.87,3.59
-refining,gas to liquids,gas to liquids,non-energy,1.8,1.8,1.67
-refining,biomass liquids,cellulosic ethanol,non-energy,2.37,2.37,2.2
-refining,biomass liquids,cellulosic ethanol CCS level 1,non-energy,2.89,2.89,2.68
-refining,biomass liquids,cellulosic ethanol CCS level 2,non-energy,4.69,4.69,4.35
-refining,biomass liquids,FT biofuels,non-energy,2.76,2.76,2.56
-refining,biomass liquids,FT biofuels CCS level 1,non-energy,3.46,3.46,3.21
-refining,biomass liquids,FT biofuels CCS level 2,non-energy,3.93,3.93,3.64
-refining,biomass liquids,corn ethanol,non-energy,2.38,2.38,2.38
-refining,biomass liquids,sugar cane ethanol,non-energy,0,0,0
-refining,biomass liquids,biodiesel,non-energy,1.88,1.88,1.88
+# Primary energy transformation technologies default cost assumptions,,,,,,,,,,,,,,
+supplysector,subsector,technology,minicam.non.energy.input,1971,2015,2020,2030,2040,2050,2060,2070,2080,2090,2100
+gas processing,natural gas,natural gas,non-energy,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2
+gas processing,biomass gasification,biomass gasification,non-energy,3.85,10.22,9.786878523,9.095548146,8.585744446,8.209802898,7.93257453,7.728139643,7.577384425,7.46621389,7.384234055
+gas processing,coal gasification,coal gasification,non-energy,2.99,6.82,6.530969817,6.069631933,5.729430247,5.478557316,5.293557563,5.157134283,5.056532464,4.982346255,4.927639555
+nuclearFuelGenII,enrichedUranium,enrichedUranium,non-energy,0.124464,0.124464,0.124464,0.124464,0.124464,0.124464,0.124464,0.124464,0.124464,0.124464,0.124464
+nuclearFuelGenIII,enrichedUranium,enrichedUranium,non-energy,0.124464,0.124464,0.124464,0.124464,0.124464,0.124464,0.124464,0.124464,0.124464,0.124464,0.124464
+refining,oil refining,oil refining,non-energy,0.84,0.845724692,0.845724692,0.845724692,0.845724692,0.845724692,0.845724692,0.845724692,0.845724692,0.845724692,0.845724692
+refining,coal to liquids,coal to liquids,non-energy,2.7,5.285779323,5.061769093,4.704213339,4.440543099,4.246106302,4.102723917,3.996990287,3.919019757,3.861522407,3.819122474
+refining,coal to liquids,coal to liquids CCS level 1,non-energy,3.41,6.002479163,5.713616467,5.267049543,4.950085028,4.72373898,4.561251348,4.4440787,4.359259208,4.297661132,4.252805942
+refining,coal to liquids,coal to liquids CCS level 2,non-energy,3.87,6.466819905,6.135940118,5.631703985,5.280210785,5.033191138,4.858325458,4.733741616,4.644484768,4.580229883,4.533783963
+refining,gas to liquids,gas to liquids,non-energy,1.8,5.285779323,5.061769093,4.704213339,4.440543099,4.246106302,4.102723917,3.996990287,3.919019757,3.861522407,3.819122474
+refining,biomass liquids,cellulosic ethanol,non-energy,2.37,4.757201391,4.555592184,4.233792005,3.996488789,3.821495672,3.692451525,3.597291258,3.527117781,3.475370167,3.437210227
+refining,biomass liquids,cellulosic ethanol CCS level 1,non-energy,2.89,5.021490357,4.795966269,4.441342489,4.18438657,3.997626654,3.86153729,3.762158791,3.689459703,3.636199912,3.597134576
+refining,biomass liquids,cellulosic ethanol CCS level 2,non-energy,4.69,6.85774956,6.466066739,5.883387125,5.489885755,5.221371033,5.036332047,4.907645601,4.817398763,4.753632485,4.708276527
+refining,biomass liquids,FT biofuels,non-energy,2.76,7.770095605,7.440800567,6.915193608,6.527598355,6.241776264,6.031004158,5.875575722,5.760959043,5.676437939,5.614110037
+refining,biomass liquids,FT biofuels CCS level 1,non-energy,3.46,8.476701081,8.083466992,7.470102542,7.029963637,6.712681721,6.483073456,6.316367115,6.194997938,6.106433864,6.041685287
+refining,biomass liquids,FT biofuels CCS level 2,non-energy,3.93,8.916670973,8.483625053,7.815618153,7.342762796,7.005892331,6.764555678,6.590827119,6.46525348,6.374172039,6.307916222
+refining,biomass liquids,corn ethanol,non-energy,2.38,2.38,2.38,2.38,2.38,2.38,2.38,2.38,2.38,2.38,2.38
+refining,biomass liquids,sugar cane ethanol,non-energy,0,0,0,0,0,0,0,0,0,0,0
+refining,biomass liquids,biodiesel,non-energy,1.88,1.88,1.88,1.88,1.88,1.88,1.88,1.88,1.88,1.88,1.88
