@@ -58,10 +58,7 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
                # EPA scaling process 2020
                FILE = "emissions/EPA/EPA_2019_raw",
                FILE = "emissions/EPA_CH4N2O_map",
-<<<<<<< HEAD
-=======
                FILE = "emissions/GCAM_EPA_CH4N2O_energy_map",
->>>>>>> origin/YO/feature/nonCO2mac
                FILE = "energy/rsrc_fol_prod_vintage"))
     } else if(command == driver.DECLARE_OUTPUTS) {
       return(c("L111.nonghg_tg_R_en_S_F_Yh",
@@ -141,8 +138,6 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
       # Temporary to run for testing and matching Animal emissions
       L103.ghg_tgmt_USA_an_Sepa_F_2005 <- get_data(all_data, "L103.ghg_tgmt_USA_an_Sepa_F_2005")
 
-<<<<<<< HEAD
-=======
       EPA_Ind <- get_data(all_data, "emissions/EPA_FCCC_IndProc_2005")
       EPA_country_map <- get_data(all_data,"emissions/EPA_country_map")
       # EPA Raw CH4 and N2O data files
@@ -152,7 +147,6 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
       GCAM_EPA_CH4N2O_map <- get_data(all_data, "emissions/GCAM_EPA_CH4N2O_energy_map")
       rsrc_fol_prod_vintage <- get_data(all_data, "energy/rsrc_fol_prod_vintage")
 
->>>>>>> origin/YO/feature/nonCO2mac
        #kbn adding notin for later calculations
       `%notin%` <- Negate(`%in%`)
 
@@ -193,11 +187,6 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
         select(GCAM_region_ID, year, energy, supplysector, subsector, stub.technology) ->
         L112.in_EJ_R_en_S_F_Yh_calib_trn
 
-
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/YO/feature/nonCO2mac
       # Rebind separate sectors into master list
       L112.in_EJ_R_en_S_F_Yh_calibtech %>%
         bind_rows(L112.in_EJ_R_en_S_F_Yh_calib_bld, L112.in_EJ_R_en_S_F_Yh_calib_trn) ->
@@ -220,12 +209,6 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
         #We will drop all electricity sectors here
         left_join_error_no_match(CEDS_sector_tech, by = c("supplysector", "subsector", "stub.technology")) ->L112.in_EJ_R_en_S_F_Yh_calib_all_baseenergy
 
-<<<<<<< HEAD
-
-
-
-=======
->>>>>>> origin/YO/feature/nonCO2mac
       # Aggregate GCAM energy to CEDS sector/fuel combinations and compute the total energy by CEDS sector
       L112.in_EJ_R_en_S_F_Yh_calib_all_baseenergy %>%
         group_by(GCAM_region_ID, year, CEDS_agg_sector, CEDS_agg_fuel) %>%
@@ -268,12 +251,6 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
         mutate(GCAMemissions = emissions * enshare) ->
         L112.CEDSGCAM_computedemissions
 
-<<<<<<< HEAD
-
-
-      #
-=======
->>>>>>> origin/YO/feature/nonCO2mac
       L112.CEDSGCAM_computedemissions -> L112.CEDSGCAM_computedemissions_complete
 
       L112.CEDSGCAM_computedemissions_complete %>%
@@ -290,8 +267,6 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
 
       # ========================================================================
 
-<<<<<<< HEAD
-=======
       #---------------------------------------------------------------
       # START NEW PROCESS
       # YO 2020
@@ -504,7 +479,6 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
         rename(value_adj = emfact)
 
       #END OF NEW PROCESS
->>>>>>> origin/YO/feature/nonCO2mac
       #--------------------------------------------------------------------------------------
       # Now join emissions and energy data together to calculate emissions factors
       L112.nonco2_tg_R_en_S_F_Yh %>%
@@ -559,11 +533,7 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
       GCAM_sector_tech %>%
         select(supplysector, subsector, stub.technology, EDGAR_agg_sector, EPA_agg_sector, EPA_agg_fuel_ghg) %>%
         filter(EDGAR_agg_sector %in% c("industry_processes" , "chemicals", "landfills", "wastewater",  # Filter for the agg sectors in EDGAR for all NonCO2s.
-<<<<<<< HEAD
                                         "solvents")) %>%
-=======
-                                       "solvents")) %>%
->>>>>>> origin/YO/feature/nonCO2mac
         repeat_add_columns(tibble(Non.CO2 = unique(L112.CEDS_GCAM_Proc$Non.CO2))) %>%
         group_by(supplysector, subsector, stub.technology, Non.CO2) %>%
         # left_join(L131.nonco2_pct_R_prc_S_S_2005,  # Then combine with the EPA sector information
@@ -583,9 +553,6 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
         replace_na(list(value = 0)) ->
         L131.nonco2_tg_R_prc_S_S_Yh
 
-<<<<<<< HEAD
-
-=======
       # YO
       # Mar 2020 - scaling to EPA 2019 total for CH4 and N2O industry processes
       # Apr 2020 - scaling to EPA 2019 total for CH4 and N2O waste (urban processes)
@@ -642,7 +609,6 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
 
       # END NEW PROCESS
       # ------------------------------------------------------------------------------------------------------------
->>>>>>> origin/YO/feature/nonCO2mac
 
       # Final sector outputs
       # "adipic acid" "HCFC_22_Prod" "nitric acid" "other industrial processes" "solvents"
@@ -695,11 +661,7 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
         left_join(L113.emiss_scalar, by = c("GCAM_region_ID", "Non.CO2", "CEDS_agg_sector", "year")) %>%
         mutate(emissions = epa_emissions * scalar) %>%
         select(-EPA_emissions, -CEDS_emissions) %>%
-<<<<<<< HEAD
-        filter(year %in% emissions.EDGAR_YEARS) %>%
-=======
         filter(year %in% emissions.CEDS_YEARS) %>%
->>>>>>> origin/YO/feature/nonCO2mac
         replace_na(list(emissions = 0)) %>%
         select(GCAM_region_ID, Non.CO2, supplysector = GCAM_commodity, subsector = system, stub.technology = feed,
                value = emissions, year) ->
@@ -795,15 +757,12 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
         summarise(value = sum(emissions)) %>%
         ungroup()
 
-<<<<<<< HEAD
-=======
       # Bind together dataframes & aggregate
       L122.ghg_tg_R_agr_C_Y_GLU_full <- bind_rows( L122.ghg_tg_R_rice_Y_GLU, L122.ghgsoil_tg_R_C_Y_GLU#, L122.ghgfert_tg_R_C_Y_GLU
       ) %>%
         group_by(GCAM_region_ID, GCAM_commodity, year, GLU, Non.CO2) %>%
         summarise(value = sum(emissions)) %>%
         ungroup()
->>>>>>> origin/YO/feature/nonCO2mac
 
       # ===================================================
       # AGRICULTURAL WASTE BURNING
@@ -932,11 +891,7 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
         filter(sector == "forest") %>%
         rename(forestfire = emissions) %>%
         left_join(L112.CEDS_GCAM_unmgd %>% filter(sector == "deforest") %>% rename(deforest = emissions),
-<<<<<<< HEAD
-                                 by = c("GCAM_region_ID", "Non.CO2", "year")) %>%
-=======
                   by = c("GCAM_region_ID", "Non.CO2", "year")) %>%
->>>>>>> origin/YO/feature/nonCO2mac
         mutate(deforest=if_else(is.na(deforest),0,deforest)) %>%
         select(GCAM_region_ID, Non.CO2, year, forestfire, deforest) %>%
         mutate(PctForestFire = forestfire / (forestfire + deforest)) %>%                               # Compute share of emissions from forest fires
@@ -1016,8 +971,6 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
         select(GCAM_region_ID, Non.CO2, supplysector, subsector, stub.technology, year, value = emfact) ->
         L112.ghg_tgej_R_en_S_F_Yh
 
-<<<<<<< HEAD
-=======
       # YO Mar 2020
       # update L112.ghg_tgej_R_en_S_F_Yh for resource production
       #--------------------------------------------------------------------------------------
@@ -1046,7 +999,6 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
 
       # END NEW PROCESS
       #--------------------------------------------------------------------------------------
->>>>>>> origin/YO/feature/nonCO2mac
 
       L112.nonco2_tgej_R_en_S_F_Yh %>%
         filter(!(Non.CO2 %in% c("CH4", "N2O", "BC", "OC"))) %>%
@@ -1067,8 +1019,6 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
       L113.ghg_tg_R_an_C_Sys_Fd_Yh_full %>%
         filter(Non.CO2 != "NH3_AGR") -> L113.ghg_tg_R_an_C_Sys_Fd_Yh
 
-<<<<<<< HEAD
-=======
       # YO Mar 2020
       # scale to EPA 2019 for agriculture - livestocks
       # -------------------------------------------------------------------------------------------------------
@@ -1124,7 +1074,6 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
       # END NEW PROCESS
       # -------------------------------------------------------------------------------------------------------
 
->>>>>>> origin/YO/feature/nonCO2mac
       # Ag Waste Burning
       L112.AWBshare_R_C_GLU ->
         L121.AWBshare_R_C_GLU
@@ -1133,8 +1082,6 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
         filter(!(Non.CO2 %in% c("BC_AWB", "OC_AWB"))) ->
         L121.nonco2_tg_R_awb_C_Y_GLU
 
-<<<<<<< HEAD
-=======
       # YO Jun 2020
       # scale to EPA 2019 for agriculture waste burning
       # -------------------------------------------------------------------------------------------------------
@@ -1193,7 +1140,6 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
       # END NEW PROCESS
       # -------------------------------------------------------------------------------------------------------
 
->>>>>>> origin/YO/feature/nonCO2mac
       L122.EmissShare_R_C_Y_GLU -> L122.EmissShare_R_C_Y_GLU
 
       # AGR emissions: Filter for gases present in original data set
@@ -1201,8 +1147,6 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
         # filter(Non.CO2 %in% c("NH3_AGR", "N2O_AGR", "NOx_AGR", "CH4_AGR")) ->
         L122.ghg_tg_R_agr_C_Y_GLU
 
-<<<<<<< HEAD
-=======
       # YO Mar 2020
       # scale to EPA 2019 for agriculture
       # -------------------------------------------------------------------------------------------------------
@@ -1257,7 +1201,6 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
 
       # END NEW PROCESS
       # -------------------------------------------------------------------------------------------------------
->>>>>>> origin/YO/feature/nonCO2mac
 
       # BCOC emissions from Ag Waste Burning
       L112.bcoc_tgej_R_awb_C_Y_GLU %>%
@@ -1302,36 +1245,6 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
         filter(Non.CO2 %in% c("BC", "OC")) ->
         L125.deforest_coefs_bcoc
 
-<<<<<<< HEAD
-
-
-      # Full outputs list - DONE means nothing. these are all successfully being read as outputs and in the xml, they may not match totals
-      # DONE"L111.nonghg_tg_R_en_S_F_Yh",
-      # DONE"L111.nonghg_tgej_R_en_S_F_Yh",
-      # DONE"L112.ceds_ghg_tg_R_en_S_F_Yh",
-      # DONE"L112.ceds_ghg_tgej_R_en_S_F_Yh",
-      # DONE "L113.ghg_tg_R_an_C_Sys_Fd_Yh"
-      # ISSUE: Uses EPA 2005 data to set baseline emissions factors that are then scaled to CEDS totals
-      # "L114.bcoc_tgej_R_en_S_F_2000",
-      # DONE "L115.nh3_tg_R_an_C_Sys_Fd_Yh", check match
-      # DONE "L121.nonco2_tg_R_awb_C_Y_GLU",
-      # L121.AWBshare_R_C_Y_GLU
-      # DONE "L122.ghg_tg_R_agr_C_Y_GLU",
-      # DONE "L122.EmissShare_R_C_Y_GLU",
-      # DONE "L123.bcoc_tgmt_R_awb_2000", this is matching now
-      # DONE "L124.nonco2_tg_R_grass_Y_GLU",
-      # DONE "L124.nonco2_tg_R_forest_Y_GLU",
-      # DONE "L124.deforest_coefs"
-      # DONE "L125.bcoc_tgbkm2_R_grass_2000",
-      # DONE "L125.bcoc_tgbkm2_R_forest_2000",
-      # DONE "L125.deforest_coefs_bcoc",
-      # DONE "L131.nonco2_tg_R_prc_S_S_Yh"
-      # ISSUE: Can we remove downscaling by EPA 2005 data. Nitric and Adipic acid split, but other industry processes as well
-
-      # NOTE: Chunk producing max reduction to reach min coefficient set by L151. Need to check output of that when finished: "L151.nonghg_ctrl_R_en_S_T",
-
-
-=======
       #---------------------------------------------------------------
       # START NEW PROCESS
       # YO 2020
@@ -1367,7 +1280,6 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
 
       # END OF NEW PROCESS
       # -------------------------------------------------------------------------------------------------------------
->>>>>>> origin/YO/feature/nonCO2mac
 
       # ===============
       # Produce outputs
@@ -1524,13 +1436,8 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
         add_legacy_name("L131.nonco2_tg_R_prc_S_S_Yh") %>%
         add_precursors("emissions/CEDS/ceds_sector_map","emissions/CEDS/ceds_fuel_map", "common/GCAM_region_names",
                        "common/iso_GCAM_regID","emissions/CEDS/CEDS_sector_tech",
-<<<<<<< HEAD
-                       "emissions/EPA_FCCC_IndProc_2005"
-                       ) ->
-=======
                        "emissions/EPA_FCCC_IndProc_2005", "emissions/EPA/EPA_2019_raw", "emissions/EPA_CH4N2O_map",
                        "emissions/GCAM_EPA_CH4N2O_energy_map") ->
->>>>>>> origin/YO/feature/nonCO2mac
         L131.nonco2_tg_R_prc_S_S_Yh
 
       return_data(L111.nonghg_tg_R_en_S_F_Yh, L111.nonghg_tgej_R_en_S_F_Yh, L112.ghg_tg_R_en_S_F_Yh, L112.ghg_tgej_R_en_S_F_Yh, L113.ghg_tg_R_an_C_Sys_Fd_Yh, L115.nh3_tg_R_an_C_Sys_Fd_Yh, L121.nonco2_tg_R_awb_C_Y_GLU,

@@ -236,7 +236,7 @@ void MACControl::calcEmissionsReduction( const std::string& aRegionName, const i
     // needed to overcome historical near-term inertia, retrofit old vintages, etc.
     // This will only work, in these units, for GHGs, not air pollutants, but the two
     // phase-in options below are not envisioned to be appropriate for air pollutants.
-    const double macCarbonPricePhaseInLimit = 400;
+    const double macCarbonPricePhaseInLimit = 1000;
     
     // Adjust to smoothly phase-in "no-cost" emission reductions
     // Some MAC curves have non-zero abatement at zero emissions price. Unless the users sets
@@ -294,11 +294,11 @@ void MACControl::calcEmissionsReduction( const std::string& aRegionName, const i
             
             // then multiplierPhaseIn is from 0 to 1 as price increases, when emissionsPrice is greater than
             // maxEmissionsTax, it will be kept as 1
-            // here this function is nonlinear to the power of 1.5, and the slope is also increasing as emissionsPrice goes up
-            // For reference, when maxEmissionsTax is set as 400($1990/tC), the multiplier will be 0.13 when emission price
-            // is 100; 0.35 when emission price is 200, and 0.65 when emimission price is 300, 0.82 when emission price is
-            // 350, and 0.96 when emission price is 390.
-            double multiplierPhaseIn = pow( adjEmissionsPricePhaseIn / macCarbonPricePhaseInLimit, 1.5);
+            // here multiplier is linearly increasing as emissionsPrice goes up
+            // For reference, when maxEmissionsTax is set as 3000($1990/tC), the multiplier will be 0.03 when emission price
+            // is 100; 0.07 when emission price is 200, and 0.1 when emimission price is 300, 0.13 when emission price is
+            // 400
+            double multiplierPhaseIn = adjEmissionsPricePhaseIn / macCarbonPricePhaseInLimit;
             
             // Finally just the phaseInFraction based on the calculated multiplierPhaseIn
             // here, when multiplierPhaseIn = 0, phaseInFraction will be itself
