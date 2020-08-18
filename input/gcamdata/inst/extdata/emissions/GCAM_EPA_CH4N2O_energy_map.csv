@@ -1,6 +1,7 @@
 # File: GCAM_EPA_CH4N2O_energy_map.csv
 # Title: Map of GCAM energy sectors to aggregated EPA sectors for scaling
 # Description: Detailed and aggregate EPA global emissions projections sectors mapped to their gas sources
+# This mapping file is suitable for both energy.TRAN_UCD_MODE
 # Units: Unitless
 # Column types: cccc
 supplysector,subsector,stub.technology,EPA_sector
@@ -123,6 +124,8 @@ industrial processes,HCFC_22_Prod,HCFC_22_Prod,Industrial processes
 industrial processes,nitric acid,nitric acid,Industrial processes
 industrial processes,other industrial processes,other industrial processes,Industrial processes
 industrial processes,solvents,solvents,Industrial processes
+urban processes,landfills,landfills,Waste
+urban processes,wastewater treatment,wastewater treatment,Waste
 comm cooling,gas,gas,Combustion_general
 comm heating,biomass,biomass,Combustion_Bio
 comm heating,coal,coal,Combustion_general
@@ -132,3 +135,17 @@ comm others,biomass,biomass,Combustion_Bio
 comm others,coal,coal,Combustion_general
 comm others,gas,gas,Combustion_general
 comm others,refined liquids,refined liquids,Combustion_general
+trn_freight_road,Heavy truck,Liquids,Combustion_general
+trn_freight_road,Heavy truck,NG,Combustion_general
+trn_freight_road,Light truck,Liquids,Combustion_general
+trn_freight_road,Light truck,NG,Combustion_general
+trn_freight_road,Medium truck,Liquids,Combustion_general
+trn_freight_road,Medium truck,NG,Combustion_general
+trn_pass_road_LDV,2W and 3W,Liquids,Combustion_general
+trn_pass_road_LDV_4W,Car,Liquids,Combustion_general
+trn_pass_road_LDV_4W,Car,NG,Combustion_general
+trn_pass_road_LDV_4W,Large Car and Truck,Liquids,Combustion_general
+trn_pass_road_LDV_4W,Large Car and Truck,NG,Combustion_general
+resid heating,traditional biomass,traditional biomass,Combustion_general
+resid others,traditional biomass,traditional biomass,Combustion_general
+trn_pass_road_LDV,2W and 3W,NG,Combustion_general

@@ -8,8 +8,9 @@
 #' @param ... other optional parameters, depending on command
 #' @return Depends on \code{command}: either a vector of required inputs,
 #' a vector of output names, or (if \code{command} is "MAKE") all
-#' the generated outputs: \code{ind_urb_processing_sectors.xml}. The corresponding file in the
-#' original data system was \code{batch_ind_urb_processing_sectors.xml} (emissions XML).
+#' the generated outputs: \code{ind_urb_processing_sectors.xml}, \code{ind_urb_processing_sectors_noMAC.xml}.
+#' The corresponding file in the original data system was
+#' \code{batch_ind_urb_processing_sectors.xml} (emissions XML).
 module_emissions_batch_ind_urb_processing_sectors_xml <- function(command, ...) {
   if(command == driver.DECLARE_INPUTS) {
     return(c("L231.UnlimitRsrc",
@@ -30,7 +31,8 @@ module_emissions_batch_ind_urb_processing_sectors_xml <- function(command, ...) 
              "L231.IndCoef",
              "L252.MAC_prc"))
   } else if(command == driver.DECLARE_OUTPUTS) {
-    return(c(XML = "ind_urb_processing_sectors.xml"))
+    return(c(XML = "ind_urb_processing_sectors.xml",
+             XML = "ind_urb_processing_sectors_noMAC.xml"))
   } else if(command == driver.MAKE) {
 
     all_data <- list(...)[[1]]
@@ -53,6 +55,17 @@ module_emissions_batch_ind_urb_processing_sectors_xml <- function(command, ...) 
     L231.RegionalTechCalValue_urb_ind <- get_data(all_data, "L231.RegionalTechCalValue_urb_ind")
     L231.IndCoef <- get_data(all_data, "L231.IndCoef")
     L252.MAC_prc <- get_data(all_data, "L252.MAC_prc")
+    # ===================================================
+
+    # YO - MAR 2020
+    # isloate zero-price MAC
+    # ===================================================
+    # START NEW PROCESS
+    L252.MAC_prc %>%
+      mutate(mac.reduction = 0) ->
+      L252.MAC_prc_zero_tax
+
+    # END NEW PROCESS
     # ===================================================
 
     # Produce outputs
@@ -94,7 +107,46 @@ module_emissions_batch_ind_urb_processing_sectors_xml <- function(command, ...) 
         add_xml_data(L231.SubsectorInterpTo_urb_ind, "SubsectorInterpTo")
     }
 
-    return_data(ind_urb_processing_sectors.xml)
+    # no MAC version
+    create_xml("ind_urb_processing_sectors_noMAC.xml") %>%
+      add_xml_data(L231.UnlimitRsrc, "UnlimitRsrc") %>%
+      add_xml_data(L231.UnlimitRsrcPrice, "UnlimitRsrcPrice") %>%
+      add_xml_data(L231.FinalDemand_urb, "FinalDemandInfo") %>%
+      add_xml_data(L231.StubTech_urb_ind, "StubTech") %>%
+      add_xml_data(L231.GlobalTechShrwt_urb_ind, "GlobalTechShrwt") %>%
+      add_xml_data(L231.GlobalTechEff_urb_ind, "GlobalTechEff") %>%
+      add_xml_data(L231.GlobalTechCoef_urb_ind, "GlobalTechCoef") %>%
+      add_xml_data(L231.GlobalTechCost_urb_ind, "GlobalTechCost") %>%
+      add_xml_data(L231.RegionalTechCalValue_urb_ind, "StubTechCalInputIndUrb") %>%
+      add_xml_data(L231.IndCoef, "StubTechCoefIndUrb") %>%
+      add_logit_tables_xml(L231.Supplysector_urb_ind, "Supplysector") %>%
+      add_logit_tables_xml(L231.SubsectorLogit_urb_ind, "SubsectorLogit") %>%
+      add_xml_data(L252.MAC_prc_zero_tax, "MAC") %>%
+      add_precursors("L231.UnlimitRsrc", "L231.UnlimitRsrcPrice", "L231.FinalDemand_urb", "L231.Supplysector_urb_ind", "L231.SubsectorLogit_urb_ind",
+                     "L231.SubsectorShrwt_urb_ind", "L231.SubsectorShrwtFllt_urb_ind", "L231.SubsectorInterp_urb_ind", "L231.SubsectorInterpTo_urb_ind",
+                     "L231.StubTech_urb_ind", "L231.GlobalTechShrwt_urb_ind", "L231.GlobalTechEff_urb_ind", "L231.GlobalTechCoef_urb_ind",
+                     "L231.GlobalTechCost_urb_ind", "L231.RegionalTechCalValue_urb_ind", "L231.IndCoef")->
+      ind_urb_processing_sectors_noMAC.xml
+
+    # Some data inputs may not actually contain data. If so, do not add_xml_data
+    if(!is.null(L231.SubsectorShrwt_urb_ind)) {
+      ind_urb_processing_sectors_noMAC.xml <- ind_urb_processing_sectors_noMAC.xml %>%
+        add_xml_data(L231.SubsectorShrwt_urb_ind, "SubsectorShrwt")
+    }
+    if(!is.null(L231.SubsectorShrwtFllt_urb_ind)) {
+      ind_urb_processing_sectors_noMAC.xml <- ind_urb_processing_sectors_noMAC.xml %>%
+        add_xml_data(L231.SubsectorShrwtFllt_urb_ind, "SubsectorShrwtFllt")
+    }
+    if(!is.null(L231.SubsectorInterp_urb_ind)) {
+      ind_urb_processing_sectors_noMAC.xml <- ind_urb_processing_sectors_noMAC.xml %>%
+        add_xml_data(L231.SubsectorInterp_urb_ind, "SubsectorInterp")
+    }
+    if(!is.null(L231.SubsectorInterpTo_urb_ind)) {
+      ind_urb_processing_sectors_noMAC.xml <- ind_urb_processing_sectors_noMAC.xml %>%
+        add_xml_data(L231.SubsectorInterpTo_urb_ind, "SubsectorInterpTo")
+    }
+
+    return_data(ind_urb_processing_sectors.xml, ind_urb_processing_sectors_noMAC.xml)
   } else {
     stop("Unknown command")
   }

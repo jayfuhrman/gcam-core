@@ -1319,6 +1319,9 @@ void XMLDBOutputter::startVisitClimateModel( const IClimateModel* aClimateModel,
          writeItemUsingYear( "HFC23-concentration", "PPT",
                              aClimateModel->getConcentration( "HFC23", year ),
                              year );
+        writeItemUsingYear( "HFC227ea-concentration", "PPT",
+                             aClimateModel->getConcentration( "HCFC227ea", year ),
+                             year );
          writeItemUsingYear( "SF6-concentration", "PPT",
                              aClimateModel->getConcentration( "SF6", year ),
                              year );
@@ -1402,9 +1405,9 @@ void XMLDBOutputter::startVisitClimateModel( const IClimateModel* aClimateModel,
 
         // N2O Forcing
         writeItemUsingYear( "forcing-N2O", "W/m^2",
-                           aClimateModel->getForcing( "N2O", util::round( year ) ),
-                           year );
-		
+						   aClimateModel->getForcing( "N2O", util::round( year ) ),
+						   year );
+                
 		// SO2 Forcing
         writeItemUsingYear( "forcing-SO2", "W/m^2",
 						   aClimateModel->getForcing( "SO2", util::round( year ) ),
@@ -1449,6 +1452,11 @@ void XMLDBOutputter::startVisitClimateModel( const IClimateModel* aClimateModel,
         // CF4 Forcing
         writeItemUsingYear( "forcing-CF4", "W/m^2",
                            aClimateModel->getForcing( "CF4", util::round( year ) ),
+                           year );
+              
+        // HFC125 Forcing
+        writeItemUsingYear( "forcing-HFC125", "W/m^2",
+                           aClimateModel->getForcing( "HFC125", util::round( year ) ),
                            year );
         
         // HFC134a Forcing

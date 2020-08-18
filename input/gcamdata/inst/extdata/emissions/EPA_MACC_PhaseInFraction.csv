@@ -1,0 +1,10 @@
+# File: EPA_MACC_PhaseInFraction.csv
+# Title: Map MAC phase in fractions for MAC curvers in early modeling period
+# Description: Phasing in fractions for MAC curvers in early modeling period allows a smoother phase in
+# Units: Unitless
+# Column types: in
+year,phase.in.fraction
+2020,0.2
+2025,0.4
+2030,0.6
+2035,0.8

@@ -261,6 +261,7 @@ OtherGrain,OtherGrainAEZ17,OtherGrainAEZ17,OtherGrain,OtherGrainAEZ17,OtherGrain
 OtherGrain,OtherGrainAEZ18,OtherGrainAEZ18,OtherGrain,OtherGrainAEZ18,OtherGrainAEZ18,,,,,,,,,,Cropland Management,
 out_resources,coal,coal,out_resources,coal,coal,coal,process,coal,all,all,coal,,,,Coal Mining Activities,
 out_resources,crude oil,crude oil,out_resources,crude oil,crude oil,oil_gas,process,oil_gas,all,all,oil_gas,,,,Natural Gas and Oil Systems,
+out_resources,unconventional oil,unconventional oil,out_resources,unconventional oil,unconventional oil,oil_gas,process,oil_gas,all,all,oil_gas,,,,Natural Gas and Oil Systems,
 out_resources,natural gas,natural gas,out_resources,natural gas,natural gas,oil_gas,process,oil_gas,all,all,oil_gas,,,,Natural Gas and Oil Systems,
 PalmFruit,PalmFruitAEZ01,PalmFruitAEZ01,PalmFruit,PalmFruitAEZ01,PalmFruitAEZ01,,,,,,,,,,Cropland Management,
 PalmFruit,PalmFruitAEZ02,PalmFruitAEZ02,PalmFruit,PalmFruitAEZ02,PalmFruitAEZ02,,,,,,,,,,Cropland Management,

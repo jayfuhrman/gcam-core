@@ -182,10 +182,16 @@ module_emissions_L142.pfc_R_S_T_Y <- function(command, ...) {
     if (emissions.DATA_SOURCE == "EPA") {
 
       # EDGAR data doesn't have 2010 data, so match EDGAR 2008 data with EPA/GV 2010 data
-      # Duplicate EDGAR 2008 data and rename as 2010
+      # YO MAR 2020
+      # make EDGAR data till 2015 for EPA BAU calibration
+      # Duplicate EDGAR 2008 data and rename as 2010 and 2015
       TEMP <- filter(L142.pfc_R_S_T_Yh, year == 2008) %>%
         mutate(year = 2010)
-      L142.pfc_R_S_T_Yh_base <- bind_rows(L142.pfc_R_S_T_Yh, TEMP)
+
+      TEMP2 <- filter(L142.pfc_R_S_T_Yh, year == 2008) %>%
+        mutate(year = 2015)
+
+      L142.pfc_R_S_T_Yh_base <- bind_rows(L142.pfc_R_S_T_Yh, TEMP, TEMP2)
 
       # Add EPA sector names to individual EPA files
       EPA_PFC_Al$EPA_sector <- "Aluminum"

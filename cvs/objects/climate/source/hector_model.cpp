@@ -202,9 +202,11 @@ void HectorModel::completeInit( const string& aScenarioName ) {
     mHectorEmissionsMsg["SO2tot"]        = D_EMISSIONS_SO2;
     mHectorEmissionsMsg["CF4"]           = D_EMISSIONS_CF4;
     mHectorEmissionsMsg["C2F6"]          = D_EMISSIONS_C2F6;
+    mHectorEmissionsMsg["HFC23"]        = D_EMISSIONS_HFC23;
     mHectorEmissionsMsg["HFC125"]        = D_EMISSIONS_HFC125;
     mHectorEmissionsMsg["HFC134a"]       = D_EMISSIONS_HFC134a;
     mHectorEmissionsMsg["HFC143a"]       = D_EMISSIONS_HFC143a;
+    mHectorEmissionsMsg["HFC227ea"]        = D_EMISSIONS_HFC227ea;
     mHectorEmissionsMsg["HFC245fa"]      = D_EMISSIONS_HFC245fa;
     mHectorEmissionsMsg["SF6"]           = D_EMISSIONS_SF6;
     mHectorEmissionsMsg["BC"]            = D_EMISSIONS_BC;
@@ -229,16 +231,16 @@ void HectorModel::completeInit( const string& aScenarioName ) {
     // that store their radiative forcing as a time series.
     mHectorRFTseriesMsg["CF4"]      = D_RF_CF4;
     mHectorRFTseriesMsg["C2F6"]     = D_RF_C2F6;
+    mHectorRFTseriesMsg["HFC23"]     = D_RF_HFC23;
     mHectorRFTseriesMsg["HFC125"]   = D_RF_HFC125;
     mHectorRFTseriesMsg["HFC134A"]  = D_RF_HFC134a;
     mHectorRFTseriesMsg["HFC143A"]  = D_RF_HFC143a;
+    mHectorRFTseriesMsg["HFC227ea"]  = D_RF_HFC227ea;
     mHectorRFTseriesMsg["HFC245fa"] = D_RF_HFC245fa;
     mHectorRFTseriesMsg["SF6"]      = D_RF_SF6;
     mHectorRFTseriesMsg["Albedo"]   = D_RF_T_ALBEDO;
-    mHectorRFTseriesMsg["HFC23"]     = D_RF_HFC23;
     mHectorRFTseriesMsg["HFC32"]     = D_RF_HFC32;
     mHectorRFTseriesMsg["HFC4310"]   = D_RF_HFC4310;
-    mHectorRFTseriesMsg["HFC227ea"]  = D_RF_HFC227ea;
     mHectorRFTseriesMsg["CFC11"]     = D_RF_CFC11;
     mHectorRFTseriesMsg["CFC12"]     = D_RF_CFC12;
     mHectorRFTseriesMsg["CFC113"]    = D_RF_CFC113;

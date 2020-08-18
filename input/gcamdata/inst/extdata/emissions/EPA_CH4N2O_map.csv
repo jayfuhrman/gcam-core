@@ -21,3 +21,8 @@ Agriculture,Livestock,Enteric,Agriculture
 Agriculture,Livestock,Manure,Agriculture
 Agriculture,OtherAg,,Agriculture
 Agriculture,Rice,,Agriculture
+Waste,Landfills,Industrial,Waste
+Waste,Landfills,MSW,Waste
+Waste,OtherWaste,,Waste
+Waste,Wastewater,Rural,Waste
+Waste,Wastewater,Urban,Waste
