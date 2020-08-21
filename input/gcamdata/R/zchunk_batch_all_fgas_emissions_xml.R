@@ -26,6 +26,7 @@ module_emissions_batch_all_fgas_emissions_xml <- function(command, ...) {
     return(c(XML = "all_fgas_emissions.xml",
              XML = "all_fgas_emissions_MAC.xml",
              XML = "all_fgas_emissions_MAC_TC.xml",
+             XML = "all_fgas_emissions_MAC_PhaseIn.xml",
              XML = "all_fgas_emissions_MAC_smth_highTC.xml",
              XML = "all_fgas_emissions_MAC_smth_averageTC.xml",
              XML = "all_fgas_emissions_MAC_smth_noTC.xml"))
@@ -84,17 +85,21 @@ module_emissions_batch_all_fgas_emissions_xml <- function(command, ...) {
     create_xml("all_fgas_emissions_MAC_TC.xml") %>%
       add_xml_data(L252.MAC_higwp, "MAC") %>%
       add_xml_data(L252.MAC_higwp_tc_average, "MACTC_allyear", NULL) %>%
-      add_xml_data(L252.MAC_higwp_phaseInFraction, "MACTC_allyear_PhaseIn", NULL) %>%
-      add_precursors("L252.MAC_higwp", "L252.MAC_higwp_tc_average",
-                     "L252.MAC_higwp_phaseInFraction") ->
+      add_precursors("L252.MAC_higwp", "L252.MAC_higwp_tc_average") ->
       all_fgas_emissions_MAC_TC.xml
+
+    create_xml("all_fgas_emissions_MAC_PhaseIn.xml") %>%
+      add_xml_data(L252.MAC_higwp_phaseInFraction, "MACTC_allyear_PhaseIn", NULL) %>%
+      add_precursors("L252.MAC_higwp_phaseInFraction") ->
+      all_fgas_emissions_MAC_PhaseIn.xml
 
     return_data(all_fgas_emissions.xml,
                 all_fgas_emissions_MAC.xml,
                 all_fgas_emissions_MAC_smth_highTC.xml,
                 all_fgas_emissions_MAC_smth_averageTC.xml,
                 all_fgas_emissions_MAC_smth_noTC.xml,
-                all_fgas_emissions_MAC_TC.xml)
+                all_fgas_emissions_MAC_TC.xml,
+                all_fgas_emissions_MAC_PhaseIn.xml)
   } else {
     stop("Unknown command")
   }

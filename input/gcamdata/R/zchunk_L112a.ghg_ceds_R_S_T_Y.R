@@ -256,6 +256,18 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
 
 
       # ===========================
+      # Part 0: clean EPA nonCO2 data
+      # ===========================
+
+      # remove Cameroon industrial process N2O emissions because it is an outlier
+      EPA_master_Cameroon_IP <- EPA_master %>%
+        filter(country == "Cameroon" & source == "OtherIPPU" & gas == "N2O") %>%
+        mutate(value = 0)
+
+      EPA_master <- rbind(EPA_master_Cameroon_IP,
+                          EPA_master %>% filter(!(country == "Cameroon" & source == "OtherIPPU" & gas == "N2O")))
+
+      # ===========================
       # Part 1:Combustion Energy Emissions
       # ===========================
 
@@ -661,7 +673,7 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
         ungroup() ->
         L131.EPA_CH4N2O_proc
 
-      # calculate scalers for combustion-related emissions by EPA_sector by year and region
+      # calculate scalers for process-related emissions by EPA_sector by year and region
       L131.nonco2_tg_R_prc_S_S_Yh %>%
         filter(supplysector %in% c("industrial processes", "urban processes") & Non.CO2 %in% c("CH4", "N2O")) ->
         L131.nonco2_tg_R_prc_S_S_Yh_change
@@ -681,7 +693,7 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
         select(-EPA_emissions, -tot_emissions) ->
         L131.nonco2_tg_R_prc_S_S_Yh_EPAscaler
 
-      # do the actual scaling for combustion-related emissions
+      # do the actual scaling for process emissions
       L131.nonco2_tg_R_prc_S_S_Yh_change %>%
         left_join_error_no_match(GCAM_EPA_CH4N2O_map,
                                  by = c("supplysector", "subsector", "stub.technology")) %>%

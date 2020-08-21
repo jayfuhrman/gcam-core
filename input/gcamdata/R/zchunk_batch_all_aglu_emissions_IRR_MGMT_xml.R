@@ -38,7 +38,8 @@ module_emissions_batch_all_aglu_emissions_IRR_MGMT_xml <- function(command, ...)
              XML = "all_aglu_emissions_IRR_MGMT_MAC_smth_highTC.xml",
              XML = "all_aglu_emissions_IRR_MGMT_MAC_smth_averageTC.xml",
              XML = "all_aglu_emissions_IRR_MGMT_MAC_smth_noTC.xml",
-             XML = "all_aglu_emissions_IRR_MGMT_MAC_TC.xml"))
+             XML = "all_aglu_emissions_IRR_MGMT_MAC_TC.xml",
+             XML = "all_aglu_emissions_IRR_MGMT_MAC_PhaseIn.xml"))
   } else if(command == driver.MAKE) {
 
     all_data <- list(...)[[1]]
@@ -140,17 +141,20 @@ module_emissions_batch_all_aglu_emissions_IRR_MGMT_xml <- function(command, ...)
     create_xml("all_aglu_emissions_IRR_MGMT_MAC_TC.xml") %>%
       add_xml_data(L252.AgMAC, "AgMAC") %>%
       add_xml_data(L252.AgMAC_tc_average, "AgMACTC_allyear", NULL) %>%
-      add_xml_data(L252.AgMAC_phaseInFraction, "AgMACTC_allyear_PhaseIn", NULL) %>%
       add_xml_data(L252.MAC_an, "MAC") %>%
       add_xml_data(L252.MAC_an_tc_average, "MACTC_allyear", NULL) %>%
-      add_xml_data(L252.MAC_an_phaseInFraction, "MACTC_allyear_PhaseIn", NULL) %>%
       add_precursors("L252.MAC_an",
                      "L252.MAC_an_tc_average",
-                     "L252.AgMAC_phaseInFraction",
                      "L252.AgMAC",
-                     "L252.AgMAC_tc_average",
-                     "L252.MAC_an_phaseInFraction") ->
+                     "L252.AgMAC_tc_average") ->
       all_aglu_emissions_IRR_MGMT_MAC_TC.xml
+
+    create_xml("all_aglu_emissions_IRR_MGMT_MAC_PhaseIn.xml") %>%
+      add_xml_data(L252.AgMAC_phaseInFraction, "AgMACTC_allyear_PhaseIn", NULL) %>%
+      add_xml_data(L252.MAC_an_phaseInFraction, "MACTC_allyear_PhaseIn", NULL) %>%
+      add_precursors("L252.AgMAC_phaseInFraction",
+                     "L252.MAC_an_phaseInFraction") ->
+      all_aglu_emissions_IRR_MGMT_MAC_PhaseIn.xml
 
 
     return_data(all_aglu_emissions_IRR_MGMT.xml,
@@ -158,7 +162,8 @@ module_emissions_batch_all_aglu_emissions_IRR_MGMT_xml <- function(command, ...)
                 all_aglu_emissions_IRR_MGMT_MAC_smth_highTC.xml,
                 all_aglu_emissions_IRR_MGMT_MAC_smth_averageTC.xml,
                 all_aglu_emissions_IRR_MGMT_MAC_smth_noTC.xml,
-                all_aglu_emissions_IRR_MGMT_MAC_TC.xml)
+                all_aglu_emissions_IRR_MGMT_MAC_TC.xml,
+                all_aglu_emissions_IRR_MGMT_MAC_PhaseIn.xml)
   } else {
     stop("Unknown command")
   }
