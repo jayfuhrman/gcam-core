@@ -1642,8 +1642,6 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
                        "common/iso_GCAM_regID","emissions/CEDS/CEDS_sector_tech",
                        "emissions/EPA_FCCC_IndProc_2005", "emissions/EPA/EPA_2019_raw", "emissions/EPA_CH4N2O_map",
                        "emissions/GCAM_EPA_CH4N2O_energy_map") ->
-                       "emissions/EPA_FCCC_IndProc_2005"
-        ) ->
         L131.nonco2_tg_R_prc_S_S_Yh
 
       return_data(L111.nonghg_tg_R_en_S_F_Yh, L111.nonghg_tgej_R_en_S_F_Yh, L112.ghg_tg_R_en_S_F_Yh, L112.ghg_tgej_R_en_S_F_Yh, L113.ghg_tg_R_an_C_Sys_Fd_Yh, L115.nh3_tg_R_an_C_Sys_Fd_Yh, L121.nonco2_tg_R_awb_C_Y_GLU,
