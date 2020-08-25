@@ -107,13 +107,13 @@ module_emissions_L252.MACC <- function(command, ...) {
     HFC_Abate_GV <- get_data(all_data, "emissions/HFC_Abate_GV")
     GV_mac_reduction <- get_data(all_data, "emissions/GV_mac_reduction")
     L152.MAC_pct_R_S_Proc_EPA <- get_data(all_data, "L152.MAC_pct_R_S_Proc_EPA")
-    L201.ghg_res <- get_data(all_data, "L201.ghg_res")
-    L211.AGREmissions <- get_data(all_data, "L211.AGREmissions")
-    L211.AnEmissions <- get_data(all_data, "L211.AnEmissions")
-    L211.AGRBio <- get_data(all_data, "L211.AGRBio")
-    L232.nonco2_prc <- get_data(all_data, "L232.nonco2_prc")
-    L241.hfc_all <- get_data(all_data, "L241.hfc_all")
-    L241.pfc_all <- get_data(all_data, "L241.pfc_all")
+    L201.ghg_res <- get_data(all_data, "L201.ghg_res", strip_attributes = TRUE)
+    L211.AGREmissions <- get_data(all_data, "L211.AGREmissions", strip_attributes = TRUE)
+    L211.AnEmissions <- get_data(all_data, "L211.AnEmissions", strip_attributes = TRUE)
+    L211.AGRBio <- get_data(all_data, "L211.AGRBio", strip_attributes = TRUE)
+    L232.nonco2_prc <- get_data(all_data, "L232.nonco2_prc", strip_attributes = TRUE)
+    L241.hfc_all <- get_data(all_data, "L241.hfc_all", strip_attributes = TRUE)
+    L241.pfc_all <- get_data(all_data, "L241.pfc_all", strip_attributes = TRUE)
     EPA_MACC_PhaseInFraction <- get_data(all_data, "emissions/EPA_MACC_PhaseInFraction")
 
 
@@ -141,6 +141,7 @@ module_emissions_L252.MACC <- function(command, ...) {
         repeat_add_columns(tibble(tax = MAC_taxes)) %>%
         repeat_add_columns(tibble(year = c(seq(2020, 2050, 5)))) %>%
         dplyr::arrange_("region", order)
+
       # Next, add in mac.reduction values
       if(error_no_match) {
         # Usually we use left_join_error_no_match
