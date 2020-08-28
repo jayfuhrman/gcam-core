@@ -15,6 +15,8 @@
 #' @author KRD September 2018; edited MTB September 2018
 
 module_gcamusa_L273.en_ghg_emissions_USA <- function(command, ...) {
+  UCD_tech_map_name <- if_else(energy.TRAN_UCD_MODE == 'rev.mode',
+                               "energy/mappings/UCD_techs_revised", "energy/mappings/UCD_techs")
   if(command == driver.DECLARE_INPUTS) {
     return(c(FILE = "gcam-usa/states_subregions",
              "L123.in_EJ_R_elec_F_Yh",
@@ -37,7 +39,12 @@ module_gcamusa_L273.en_ghg_emissions_USA <- function(command, ...) {
              # use for the input-driver
              FILE = "energy/A22.globaltech_input_driver",
              FILE = "energy/A23.globaltech_input_driver",
-             FILE = "energy/A25.globaltech_input_driver"))
+             FILE = "energy/A25.globaltech_input_driver",
+             # the following to be able to map in the input.name to
+             # use for the input-driver for res + ind
+             FILE = "energy/calibrated_techs",
+             FILE = "gcam-usa/calibrated_techs_bld_usa",
+             FILE = UCD_tech_map_name))
   } else if(command == driver.DECLARE_OUTPUTS) {
     return(c("L273.en_ghg_tech_coeff_USA",
              "L273.en_ghg_emissions_USA",
@@ -84,6 +91,19 @@ module_gcamusa_L273.en_ghg_emissions_USA <- function(command, ...) {
     ) %>%
       rename(stub.technology = technology) ->
       EnTechInputMap
+
+    # make a complete mapping to be able to look up with sector + subsector + tech the
+    # input name to use for an input-driver. Filter for industrial sector as all others are
+    # accounted for in previous EnTechInputMap
+    bind_rows(
+      get_data(all_data, "energy/calibrated_techs") %>% select(supplysector, subsector, technology, minicam.energy.input),
+      get_data(all_data, "gcam-usa/calibrated_techs_bld_usa") %>% select(supplysector, subsector, technology, minicam.energy.input),
+      get_data(all_data, UCD_tech_map_name) %>% select(supplysector, subsector = tranSubsector, technology = tranTechnology, minicam.energy.input)
+    ) %>%
+      rename(stub.technology = technology,
+             input.name = minicam.energy.input) %>%
+      distinct() ->
+      EnTechInputNameMap
 
     # ===================================================
 
@@ -264,7 +284,7 @@ module_gcamusa_L273.en_ghg_emissions_USA <- function(command, ...) {
        mutate(input.emissions = round(input.emissions, emissions.DIGITS_EMISSIONS)) %>%
        ## Thhe stub.techs and supplysectors here do not match. Therefore we join via the subsectors and we want to keep the first
        ## joined value to avoid duplicates
-       left_join_keep_first_only(EnTechInputMap %>% select(-supplysector,-stub.technology), by = c("subsector"))->
+       left_join_keep_first_only(EnTechInputNameMap %>% select(-stub.technology), by = c("supplysector", "subsector"))->
        L273.en_ghg_emissions_USA
 
      # 2d. Output emissions
@@ -369,8 +389,9 @@ module_gcamusa_L273.en_ghg_emissions_USA <- function(command, ...) {
      L273.out_ghg_emissions_USA %>%
        filter(!(is.na(output.emissions) & year == 2010 & Non.CO2 %in% unique(L241.pfc_all$Non.CO2))) %>%
        ungroup() %>%
-       ## Set input name to elect_td_bld as residential heating and cooling is driven by building elec
-       mutate(input.name="elect_td_bld")->
+       ## Set input name to elect_td_bld for all states as residential heating and cooling is driven by building elec
+       ## Set input name to electricity domestic supply for all grid regions
+       mutate(input.name=if_else(grepl("grid",region),"electricity domestic supply", "elect_td_bld"))->
        L273.out_ghg_emissions_USA
 
      # 2e. MAC curves
@@ -435,6 +456,9 @@ module_gcamusa_L273.en_ghg_emissions_USA <- function(command, ...) {
                      "L241.pfc_all",
                      "L252.ResMAC_fos",
                      "L252.MAC_higwp",
+                     "energy/A22.globaltech_input_driver",
+                     "energy/A23.globaltech_input_driver",
+                     "energy/A25.globaltech_input_driver",
                      "L222.StubTech_en_USA",
                      "L223.StubTech_elec_USA",
                      "L232.StubTechCalInput_indenergy_USA",
@@ -453,6 +477,9 @@ module_gcamusa_L273.en_ghg_emissions_USA <- function(command, ...) {
                       "L1231.in_EJ_state_elec_F_tech",
                       "L1322.in_EJ_state_Fert_Yh",
                       "L201.en_ghg_emissions",
+                      "energy/calibrated_techs",
+                      "gcam-usa/calibrated_techs_bld_usa",
+                      "energy/mappings/UCD_techs_revised",
                       "L201.ghg_res",
                       "L241.nonco2_tech_coeff",
                       "L241.hfc_all",
