@@ -306,9 +306,9 @@ module_gcamusa_L273.en_ghg_emissions_USA <- function(command, ...) {
      L123.out_EJ_state_ownuse_elec %>%
        #Subset relevant years
        filter(year %in% L241.hfc_pfc_USA$year) %>%
-       mutate(supplysector = "electricity domestic supply") %>%
-       mutate(subsector = "electricity_net_ownuse") %>%
-       mutate(stub.technology = subsector) ->
+       mutate(supplysector = "electricity_net_ownuse",
+              subsector = supplysector,
+              stub.technology = supplysector) ->
        L123.out_EJ_state_ownuse_elec.long
 
      # Compute aggregate USA electricity own use output
@@ -382,16 +382,13 @@ module_gcamusa_L273.en_ghg_emissions_USA <- function(command, ...) {
      #Combine output emissions into one table and organize
      bind_rows(L273.out_ghg_emissions_elec_ownuse,
                L273.out_ghg_emissions_bld_cool) %>%
-       arrange(Non.CO2,supplysector) ->
+       arrange(Non.CO2, supplysector) ->
        L273.out_ghg_emissions_USA
 
      # TODO: double check this, it seems we are missing PFCs in 2010
      L273.out_ghg_emissions_USA %>%
        filter(!(is.na(output.emissions) & year == 2010 & Non.CO2 %in% unique(L241.pfc_all$Non.CO2))) %>%
-       ungroup() %>%
-       ## Set input name to elect_td_bld for all states as residential heating and cooling is driven by building elec
-       ## Set input name to electricity domestic supply for all grid regions
-       mutate(input.name=if_else(grepl("grid",region),"electricity domestic supply", "elect_td_bld"))->
+       ungroup() ->
        L273.out_ghg_emissions_USA
 
      # 2e. MAC curves
@@ -425,7 +422,6 @@ module_gcamusa_L273.en_ghg_emissions_USA <- function(command, ...) {
      # Electricity own use will be written out at the grid region level
      L252.MAC_higwp_USA %>%
        filter(supplysector %in% L273.out_ghg_emissions_elec_ownuse$subsector) %>%
-       mutate(supplysector = "electricity domestic supply") %>%
        select(-region) %>%
        repeat_add_columns(tibble("region" = states_subregions$grid_region)) ->
        L273.MAC_higwp_elec_ownuse

@@ -38,7 +38,7 @@ module_gcamusa_batch_ghg_emissions_USA_xml <- function(command, ...) {
     create_xml("ghg_emissions_USA.xml") %>%
       add_xml_data(L273.en_ghg_tech_coeff_USA, "InputEmissCoeff") %>%
       add_xml_data(L273.en_ghg_emissions_USA, "InputEmissions") %>%
-      add_xml_data(L273.out_ghg_emissions_USA, "InputEmissions") %>%
+      add_xml_data(L273.out_ghg_emissions_USA, "StbTechOutputEmissions") %>%
       add_xml_data(L273.MAC_higwp_USA, "MAC") %>%
       add_precursors("L273.en_ghg_tech_coeff_USA",
                      "L273.en_ghg_emissions_USA",
