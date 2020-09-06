@@ -98,6 +98,9 @@ protected:
         
         //! Length of time in years to phase in no-cost MAC reductions
         DEFINE_VARIABLE( SIMPLE, "zero-cost-phase-in-time", mZeroCostPhaseInTime, int ),
+                            
+        //! Length of time in years to phase in postive cost MAC reductions
+        DEFINE_VARIABLE( SIMPLE, "mac-phase-in-time", mMacPhaseInTime, int ),
         
         //! Conversion factor if getting price from its own market.
         DEFINE_VARIABLE( SIMPLE, "mac-price-conversion", mCovertPriceValue, Value ),
@@ -111,13 +114,6 @@ protected:
     // not currently able to handle smart pointers.
     // DEFINE_VARIABLE( ARRAY, "tech-change", mTechChange, std::shared_ptr<objects::PeriodVector<double> > ),
     std::shared_ptr<objects::PeriodVector<double> > mTechChange;
-    
-    //! MAC curve Phase-in adjustment, % as the MAC-defined reductions
-    // Copy notes from technology above ...
-    // Note ideally this would be included for GCAMFusion with the following definition however it is
-    // not currently able to handle smart pointers.
-    // DEFINE_VARIABLE( ARRAY, "phase-in-fraction", mPhaseInFraction, std::shared_ptr<objects::PeriodVector<double> > ),
-    std::shared_ptr<objects::PeriodVector<double> > mPhaseInFraction;
 
 private:
     void copy( const MACControl& other );

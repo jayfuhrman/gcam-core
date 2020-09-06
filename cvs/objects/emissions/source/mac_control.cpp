@@ -66,8 +66,8 @@ MACControl::MACControl():
 AEmissionsControl(),
 mNoZeroCostReductions( false ),
 mTechChange( new objects::PeriodVector<double>( 0.0 ) ),
-mPhaseInFraction( new objects::PeriodVector<double>( 1.0 ) ),
 mZeroCostPhaseInTime( 25 ),
+mMacPhaseInTime( 0 ),
 mCovertPriceValue( 1 ),
 mPriceMarketName( "CO2" ),
 mMacCurve( new PointSetCurve( new ExplicitPointSet() ) )
@@ -113,8 +113,8 @@ void MACControl::copy( const MACControl& aOther ){
     mMacCurve = aOther.mMacCurve->clone();
     mNoZeroCostReductions = aOther.mNoZeroCostReductions;
     mTechChange = aOther.mTechChange;
-    mPhaseInFraction = aOther.mPhaseInFraction;
     mZeroCostPhaseInTime = aOther.mZeroCostPhaseInTime;
+    mMacPhaseInTime = aOther.mMacPhaseInTime;
     mCovertPriceValue = aOther.mCovertPriceValue;
     mPriceMarketName = aOther.mPriceMarketName;
 }
@@ -150,11 +150,11 @@ bool MACControl::XMLDerivedClassParse( const string& aNodeName, const DOMNode* a
     else if ( aNodeName == "tech-change" ){
         XMLHelper<double>::insertValueIntoVector( aCurrNode, *mTechChange, modeltime );
     }
-    else if ( aNodeName == "phase-in-fraction" ){
-        XMLHelper<double>::insertValueIntoVector( aCurrNode, *mPhaseInFraction, modeltime );
-    }
     else if ( aNodeName == "zero-cost-phase-in-time" ){
         mZeroCostPhaseInTime = XMLHelper<int>::getValue( aCurrNode );
+    }
+    else if ( aNodeName == "mac-phase-in-time" ){
+        mMacPhaseInTime = XMLHelper<int>::getValue( aCurrNode );
     }
     else if ( aNodeName == "mac-price-conversion" ){
         mCovertPriceValue = XMLHelper<Value>::getValue( aCurrNode );
@@ -179,12 +179,12 @@ void MACControl::toDebugXMLDerived( const int period, ostream& aOut, Tabs* aTabs
     const Modeltime* modeltime = scenario->getModeltime();
 
     XMLWriteElementCheckDefault( mZeroCostPhaseInTime, "zero-cost-phase-in-time", aOut, aTabs, 25 );
+    XMLWriteElementCheckDefault( mMacPhaseInTime, "mac-phase-in-time", aOut, aTabs, 0 );
     XMLWriteElementCheckDefault( mNoZeroCostReductions, "no-zero-cost-reductions", aOut, aTabs, false );
     XMLWriteElementCheckDefault( mCovertPriceValue, "mac-price-conversion", aOut, aTabs, Value( 1.0 ) );
     XMLWriteElement( mPriceMarketName, "market-name", aOut, aTabs );
     XMLWriteElement( mNoZeroCostReductions, "no-zero-cost-reductions", aOut, aTabs);
 	XMLWriteElement( (*mTechChange)[ period ], "tech-change", aOut, aTabs );
-    XMLWriteElement( (*mPhaseInFraction)[ period ], "phase-in-fraction", aOut, aTabs );
 }
 
 void MACControl::completeInit( const string& aRegionName, const string& aSectorName,
@@ -236,7 +236,7 @@ void MACControl::calcEmissionsReduction( const std::string& aRegionName, const i
     // needed to overcome historical near-term inertia, retrofit old vintages, etc.
     // This will only work, in these units, for GHGs, not air pollutants, but the two
     // phase-in options below are not envisioned to be appropriate for air pollutants.
-    const double macCarbonPricePhaseInLimit = 1000;
+    const double macCarbonPricePhaseInLimit = 400;
     
     // Adjust to smoothly phase-in "no-cost" emission reductions
     // Some MAC curves have non-zero abatement at zero emissions price. Unless the users sets
@@ -269,45 +269,36 @@ void MACControl::calcEmissionsReduction( const std::string& aRegionName, const i
             reduction = reduction - zeroCostReduction * multiplier;
         }
     
-    // Determine any phase-in of the reduction
-    // phaseInFraction offers users an option to make additional adjustment for the existing MAC
+    // Amount of mac reductions considering mac-phase-in-time
+    // MacPhaseInTime offers users an option to make additional adjustment for the existing MAC
     // reductions due to factors other than "no-cost" emission reductions and technological changes
     // A primary purpose is to smoothly phase in MACs in early modeling periods. In some cases, the
     // first MAC year (as well as carbon price year) would lead to a dramatic yet unrealistic
-    // MAC-driven emission reductions, and phaseInFraction(period) can be applied to tune those first
+    // MAC-driven emission reductions, and MacPhaseInTime(period) can be applied to tune those first
     // several modeling periods;
     // A second purpose is to allow users to explore scenarios when different regions have different
     // MAC phase-in periods.
-    // The phaseInFraction is initially set as 1 by default, and should be between 0 and 1.
-    // If a user assigns a phaseInFraction smaller than 0 or greater than 1, it will be ignored.
-    double phaseInFraction = 1;
-    if ( (*mPhaseInFraction)[ aPeriod ] >= 0 && (*mPhaseInFraction)[ aPeriod ] <= 1 ) {
-      phaseInFraction = (*mPhaseInFraction)[ aPeriod ];
-
-        // Adjust to provide a carbon-price response
-        // here we set a carbon price ceiling as the maxEmissionsTax to reflect a point
-        // when we think carbon price is "high enough" to fully dimish any smooth phase-in process
-        if( emissionsPrice > 0 ) {
-            // here define an adjusted emission price as the difference between current emission price and
-            // maxEmissionsTax; if emissionsPrice > maxEmissionsTax, then this adjusted emission price is 0
-            double adjEmissionsPricePhaseIn = min( emissionsPrice, macCarbonPricePhaseInLimit );
+    // The MacPhaseInTime is initially set as 0 years (so it is disabled by default)
+    // Users will need to explicitly add xmls to include MacPhaseInTime
+    // e.g. if 2015 is last calibration year, and MacPhaseIntime is set as 25
+    // 2020 will just phase in 20% of the originally defined MAC reduction
+    // 2025 is 40%.... and by 2040 the actual MAC will be fully phased in.
+    
+    // here also requie emissionsPrice > 0, so it will not double count the zeroCostReduction phase in
+    if ( ( emissionsPrice > 0.0 ) && ( modelYear <= ( lastCalYear + mMacPhaseInTime ) ) &&
+            ( modelYear >= lastCalYear ) && ( mMacPhaseInTime > 0 ) )
+        {
+            // Fraction applied to original reduction value
+            // Equal to 0 at last calibration year and 1 at the mac phase in time (fully phased in)
+            double multiplier = ( static_cast<double>( modelYear ) - static_cast<double>( lastCalYear ) ) / mMacPhaseInTime;
+    
+            // current emission price can linearly accelerate the phase in
+            // when current emission price exceeds macCarbonPricePhaseInLimit, the MAC will be fully phased in even before the MacPhaseInTime
+            double adjEmissionsPrice = min( emissionsPrice, macCarbonPricePhaseInLimit );
+            multiplier = multiplier + ( 1 - multiplier ) * ( adjEmissionsPrice / macCarbonPricePhaseInLimit );
             
-            // then multiplierPhaseIn is from 0 to 1 as price increases, when emissionsPrice is greater than
-            // maxEmissionsTax, it will be kept as 1
-            // here multiplier is linearly increasing as emissionsPrice goes up
-            // For reference, when maxEmissionsTax is set as 3000($1990/tC), the multiplier will be 0.03 when emission price
-            // is 100; 0.07 when emission price is 200, and 0.1 when emimission price is 300, 0.13 when emission price is
-            // 400
-            double multiplierPhaseIn = adjEmissionsPricePhaseIn / macCarbonPricePhaseInLimit;
-            
-            // Finally just the phaseInFraction based on the calculated multiplierPhaseIn
-            // here, when multiplierPhaseIn = 0, phaseInFraction will be itself
-            // when multiplierPhaseIn is closer to 1, phaseInFraction will be diminished to 1
-            phaseInFraction = phaseInFraction + ( 1 - phaseInFraction) * multiplierPhaseIn;
+            reduction = reduction * multiplier;
         }
-
-        reduction = reduction * phaseInFraction;
-    }
     
     setEmissionsReduction( reduction );
 }

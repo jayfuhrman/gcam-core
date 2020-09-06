@@ -15,8 +15,8 @@ module_emissions_batch_all_energy_emissions_xml(command, ...)
 Depends on \code{command}: either a vector of required inputs,
 a vector of output names, or (if \code{command} is "MAKE") all
 the generated outputs: \code{all_energy_emissions.xml}, \code{all_energy_emissions_MAC.xml} , \code{all_energy_emissions_MAC_TC.xml},
-\code{all_energy_emissions_MAC_smth_highTC.xml}, \code{all_energy_emissions_MAC_smth_averageTC.xml},
-\code{all_energy_emissions_MAC_smth_noTC.xml}.
+\code{all_energy_emissions_MAC_smth_highTC.xml}, \code{all_energy_emissions_MAC_smth_noTC.xml},
+\code{all_energy_emissions_MAC_PhaseIn.xml}
 The corresponding file in the original data system was \code{batch_all_energy_emissions.xml.R} (emissions XML).
 }
 \description{

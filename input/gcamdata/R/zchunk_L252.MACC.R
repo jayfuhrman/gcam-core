@@ -12,8 +12,7 @@
 #' \code{L252.MAC_higwp}, \code{L252.ResMAC_fos_tc}, \code{L252.AgMAC_tc}, \code{L252.MAC_an_tc}, \code{L252.MAC_prc_tc},
 #' \code{L252.MAC_higwp_tc}, \code{L252.ResMAC_fos_tc_average}, \code{L252.AgMAC_tc_average}, \code{L252.MAC_an_tc_average},
 #' \code{L252.MAC_prc_tc_average}, \code{L252.MAC_higwp_tc_average},
-#' \code{L252.ResMAC_fos_smth}, \code{L252.AgMAC_smth}, \code{L252.MAC_an_smth}, \code{L252.MAC_prc_smth},
-#' \code{L252.MAC_higwp_smth}, \code{L252.MAC_Ag_TC_SSP1}, \code{L252.MAC_An_TC_SSP1}, \code{L252.MAC_prc_TC_SSP1},
+#' \code{L252.MAC_Ag_TC_SSP1}, \code{L252.MAC_An_TC_SSP1}, \code{L252.MAC_prc_TC_SSP1},
 #' \code{L252.MAC_res_TC_SSP1}, \code{L252.MAC_Ag_TC_SSP2}, \code{L252.MAC_An_TC_SSP2}, \code{L252.MAC_prc_TC_SSP2},
 #' \code{L252.MAC_res_TC_SSP2}, \code{L252.MAC_Ag_TC_SSP5}, \code{L252.MAC_An_TC_SSP5}, \code{L252.MAC_prc_TC_SSP5},
 #' \code{L252.MAC_res_TC_SSP5}. The corresponding file in the
@@ -33,7 +32,7 @@ module_emissions_L252.MACC <- function(command, ...) {
              FILE = "emissions/HFC_Abate_GV",
              FILE = "emissions/GV_mac_reduction",
              FILE = "common/GCAM_region_names",
-             FILE = "emissions/EPA_MACC_PhaseInFraction",
+             FILE = "emissions/EPA_MACC_PhaseInTime",
              "L152.MAC_pct_R_S_Proc_EPA",
              "L201.ghg_res",
              "L211.AGREmissions",
@@ -53,21 +52,14 @@ module_emissions_L252.MACC <- function(command, ...) {
              "L252.MAC_an_tc",
              "L252.MAC_prc_tc",
              "L252.MAC_higwp_tc",
-             "L252.ResMAC_fos_phaseInFraction",
-             "L252.AgMAC_phaseInFraction",
-             "L252.MAC_an_phaseInFraction",
-             "L252.MAC_prc_phaseInFraction",
-             "L252.MAC_higwp_phaseInFraction",
+             "L252.ResMAC_fos_phaseInTime",
+             "L252.MAC_prc_phaseInTime",
+             "L252.MAC_higwp_phaseInTime",
              "L252.ResMAC_fos_tc_average",
              "L252.AgMAC_tc_average",
              "L252.MAC_an_tc_average",
              "L252.MAC_prc_tc_average",
              "L252.MAC_higwp_tc_average",
-             "L252.ResMAC_fos_smth",
-             "L252.AgMAC_smth",
-             "L252.MAC_an_smth",
-             "L252.MAC_prc_smth",
-             "L252.MAC_higwp_smth",
              "L252.MAC_Ag_TC_SSP1",
              "L252.MAC_An_TC_SSP1",
              "L252.MAC_prc_TC_SSP1",
@@ -114,7 +106,7 @@ module_emissions_L252.MACC <- function(command, ...) {
     L232.nonco2_prc <- get_data(all_data, "L232.nonco2_prc", strip_attributes = TRUE)
     L241.hfc_all <- get_data(all_data, "L241.hfc_all", strip_attributes = TRUE)
     L241.pfc_all <- get_data(all_data, "L241.pfc_all", strip_attributes = TRUE)
-    EPA_MACC_PhaseInFraction <- get_data(all_data, "emissions/EPA_MACC_PhaseInFraction")
+    EPA_MACC_PhaseInTime <- get_data(all_data, "emissions/EPA_MACC_PhaseInTime")
 
 
     # New process - update MAC using 2019 EPA
@@ -157,18 +149,6 @@ module_emissions_L252.MACC <- function(command, ...) {
       return(df)
     }
 
-    mac_reduction_smth <- function(df){
-      reduction_map <- tibble(year = c(2020, 2025, 2030, 2035, 2040, 2045, 2050),
-                              pct = c(0.2, 0.4, 0.6, 0.8, 1, 1, 1))
-      df %>%
-        left_join_error_no_match(reduction_map, by = "year") %>%
-        mutate(mac.reduction = mac.reduction * pct) %>%
-        select(-pct) ->
-        df_smth
-
-      return(df_smth)
-
-    }
 
     # L252.ResMAC_fos: Fossil resource MAC curves
     # NOTE: only applying the fossil resource MAC curves to the CH4 emissions
@@ -187,11 +167,6 @@ module_emissions_L252.MACC <- function(command, ...) {
       mutate(market.name = emissions.MAC_MARKET) %>%
       # Remove EPA_Region - useful up to now for diagnostic, but not needed for csv->xml conversion
       select(LEVEL2_DATA_NAMES[["ResMAC"]])
-
-    L252.ResMAC_fos_smth <- L252.ResMAC_fos_full %>%
-      mac_reduction_smth()
-
-    L252.ResMAC_fos_all <- L252.ResMAC_fos_full
 
     # L252.AgMAC: Agricultural abatement (including bioenergy)
     L252.AgMAC_full <- L211.AGREmissions %>%
@@ -215,11 +190,6 @@ module_emissions_L252.MACC <- function(command, ...) {
       select(region, AgSupplySector, AgSupplySubsector, AgProductionTechnology, year, Non.CO2,
              mac.control, tax, mac.reduction, market.name)
 
-    L252.AgMAC_smth <- L252.AgMAC_full %>%
-      mac_reduction_smth()
-
-    L252.AgMAC_all <- L252.AgMAC_full
-
     # L252.MAC_an: Abatement from animal production
     L252.MAC_an_full <- L211.AnEmissions %>%
       select(-input.emissions, -year) %>%
@@ -236,11 +206,6 @@ module_emissions_L252.MACC <- function(command, ...) {
       # Remove EPA_Region - useful up to now for diagnostic, but not needed for csv->xml conversion
       select(region, supplysector, subsector, stub.technology, year, Non.CO2, mac.control,
              tax, mac.reduction, market.name)
-
-    L252.MAC_an_smth <- L252.MAC_an_full %>%
-      mac_reduction_smth()
-
-    L252.MAC_an_all <- L252.MAC_an_full
 
     # L252.MAC_prc: Abatement from industrial and urban processes
     L252.MAC_prc_full <- L232.nonco2_prc %>%
@@ -262,11 +227,6 @@ module_emissions_L252.MACC <- function(command, ...) {
       # Remove EPA_Region - useful up to now for diagnostic, but not needed for csv->xml conversion
       select(region, supplysector, subsector, stub.technology, year, Non.CO2, mac.control, tax, mac.reduction, market.name)
 
-    L252.MAC_prc_smth <- L252.MAC_prc_full %>%
-      mac_reduction_smth()
-
-    L252.MAC_prc_all <- L252.MAC_prc_full
-
     # L252.MAC_higwp: Abatement from HFCs, PFCs, and SF6
     L252.MAC_higwp_full <- bind_rows(L241.hfc_all, L241.pfc_all) %>%
       select(-input.emissions, -year) %>%
@@ -281,11 +241,6 @@ module_emissions_L252.MACC <- function(command, ...) {
       mutate(market.name = emissions.MAC_MARKET) %>%
       # Remove EPA_Region - useful up to now for diagnostic, but not needed for csv->xml conversion
       select(region, supplysector, subsector, stub.technology, year, Non.CO2, mac.control, tax, mac.reduction, market.name)
-
-    L252.MAC_higwp_smth <- L252.MAC_higwp_full %>%
-      mac_reduction_smth()
-
-    L252.MAC_higwp_all <- L252.MAC_higwp_full
 
     # process tech.change together
     L252.MAC_summary <- L252.MAC_higwp_full %>%
@@ -303,6 +258,7 @@ module_emissions_L252.MACC <- function(command, ...) {
       select(-tax, -market.name) %>%
       distinct()
 
+    # remove unnecesary region/technology without any mac.reduction
     L252.MAC_remove <- L252.MAC_summary %>%
       group_by(region, supplysector, subsector, stub.technology, Non.CO2, mac.control) %>%
       summarise(sum = sum(mac.reduction)) %>%
@@ -514,45 +470,33 @@ module_emissions_L252.MACC <- function(command, ...) {
     # END NEW PROCESS
     # -------------------------------------------------------------------------------------------------------
 
-    # New process - create phase-in-fraction for MAC data
+    # New process - create mac-phase-in-time for MAC data
     # YO JUL 2020
     # -------------------------------------------------------------------------------------------------------
     # START NEW PROCESS
     # -------------------------------------------------------------------------------------------------------
-    # explicitly process this for five tibbles in case in future these phase-in-fractions will be varied by sector
-    # Besides, phase-in-fraction should be just applied to the year when MAC read in, same as technology changes
-    # so it would be best to just use the current technology-change data files to replace columns
-    Phase_in_years <- as.vector(unique(EPA_MACC_PhaseInFraction$year))
+    # explicitly process this for separated tibbles in case in these phase-in-fractions varied by sector
+    # currently only apply to energy and industry process sectors, agricultre sectors will not apply phaseInTime
+    # phase-in-fraction should be just applied to the year when MAC read in
+    # so it would be convenient to just use the current technology-change data files to replace columns
 
     L252.ResMAC_fos_tc %>%
       select(region, resource, subresource, technology, year, Non.CO2, mac.control) %>%
-      repeat_add_columns(tibble(phase.in.year = Phase_in_years)) %>%
-      left_join_error_no_match(EPA_MACC_PhaseInFraction, by = c("phase.in.year" = "year")) ->
-      L252.ResMAC_fos_phaseInFraction
+      distinct() %>%
+      left_join_error_no_match(EPA_MACC_PhaseInTime, by = c("mac.control")) ->
+      L252.ResMAC_fos_phaseInTime
 
     L252.MAC_higwp_tc %>%
       select(region, supplysector, subsector, stub.technology, year, Non.CO2, mac.control) %>%
-      repeat_add_columns(tibble(phase.in.year = Phase_in_years)) %>%
-      left_join_error_no_match(EPA_MACC_PhaseInFraction, by = c("phase.in.year" = "year")) ->
-      L252.MAC_higwp_phaseInFraction
+      distinct() %>%
+      left_join_error_no_match(EPA_MACC_PhaseInTime, by = c("mac.control")) ->
+      L252.MAC_higwp_phaseInTime
 
     L252.MAC_prc_tc %>%
       select(region, supplysector, subsector, stub.technology, year, Non.CO2, mac.control) %>%
-      repeat_add_columns(tibble(phase.in.year = Phase_in_years)) %>%
-      left_join_error_no_match(EPA_MACC_PhaseInFraction, by = c("phase.in.year" = "year")) ->
-      L252.MAC_prc_phaseInFraction
-
-    L252.MAC_an_tc %>%
-      select(region, supplysector, subsector, stub.technology, year, Non.CO2, mac.control) %>%
-      repeat_add_columns(tibble(phase.in.year = Phase_in_years)) %>%
-      left_join_error_no_match(EPA_MACC_PhaseInFraction, by = c("phase.in.year" = "year")) ->
-      L252.MAC_an_phaseInFraction
-
-    L252.AgMAC_tc %>%
-      select(region, AgSupplySector, AgSupplySubsector, AgProductionTechnology, year, Non.CO2, mac.control) %>%
-      repeat_add_columns(tibble(phase.in.year = Phase_in_years)) %>%
-      left_join_error_no_match(EPA_MACC_PhaseInFraction, by = c("phase.in.year" = "year")) ->
-      L252.AgMAC_phaseInFraction
+      distinct() %>%
+      left_join_error_no_match(EPA_MACC_PhaseInTime, by = c("mac.control")) ->
+      L252.MAC_prc_phaseInTime
 
     # END NEW PROCESS
     # -------------------------------------------------------------------------------------------------------
@@ -705,14 +649,14 @@ module_emissions_L252.MACC <- function(command, ...) {
                      "L152.MAC_pct_R_S_Proc_EPA", "L201.ghg_res", "common/GCAM_region_names") ->
       L252.ResMAC_fos_tc
 
-    L252.ResMAC_fos_phaseInFraction %>%
-      add_title("phase.in.fraction for Fossil Resources MAC") %>%
-      add_units("% of the original MAC reductions") %>%
+    L252.ResMAC_fos_phaseInTime %>%
+      add_title("mac.phase.in.time for Fossil Resources MAC") %>%
+      add_units("years of fully phasing in MAC reductions") %>%
       add_comments("smooth phase in for early modeling periods") %>%
-      add_legacy_name("L252.ResMAC_fos_phaseInFraction") %>%
+      add_legacy_name("L252.ResMAC_fos_phaseInTime") %>%
       same_precursors_as("L252.ResMAC_fos_tc") %>%
-      add_precursors("emissions/EPA_MACC_PhaseInFraction") ->
-      L252.ResMAC_fos_phaseInFraction
+      add_precursors("emissions/EPA_MACC_PhaseInTime") ->
+      L252.ResMAC_fos_phaseInTime
 
     L252.ResMAC_fos_tc_average %>%
       add_title("Tech.change for Fossil Resources MAC based on EPA 2020 level") %>%
@@ -721,15 +665,6 @@ module_emissions_L252.MACC <- function(command, ...) {
       add_legacy_name("L252.ResMAC_fos") %>%
       same_precursors_as("L252.ResMAC_fos_tc") ->
       L252.ResMAC_fos_tc_average
-
-    L252.ResMAC_fos_smth %>%
-      add_title("smooth phase-in for Fossil Resources MAC based on EPA 2020 level") %>%
-      add_units("tax: 1990 USD; mac.reduction: % reduction") %>%
-      add_comments("Category data from L201.ghg_res given tax and mac.reduction data from L152.MAC_pct_R_S_Proc_EPA") %>%
-      add_legacy_name("L252.ResMAC_fos") %>%
-      add_precursors("emissions/A_regions", "emissions/mappings/GCAM_sector_tech",
-                     "L152.MAC_pct_R_S_Proc_EPA", "L201.ghg_res", "common/GCAM_region_names") ->
-      L252.ResMAC_fos_smth
 
     L252.AgMAC %>%
       add_title("Marginal Abatement Cost Curves for Agriculture based on EPA 2020 level") %>%
@@ -749,15 +684,6 @@ module_emissions_L252.MACC <- function(command, ...) {
                      "L152.MAC_pct_R_S_Proc_EPA", "L211.AGREmissions", "L211.AGRBio", "common/GCAM_region_names") ->
       L252.AgMAC_tc
 
-    L252.AgMAC_phaseInFraction %>%
-      add_title("phase.in.fraction for Agriculture MAC") %>%
-      add_units("% of the original MAC reductions") %>%
-      add_comments("smooth phase in for early modeling periods") %>%
-      add_legacy_name("L252.AgMAC_phaseInFraction") %>%
-      same_precursors_as("L252.AgMAC_tc") %>%
-      add_precursors("emissions/EPA_MACC_PhaseInFraction") ->
-      L252.AgMAC_phaseInFraction
-
     L252.AgMAC_tc_average %>%
       add_title("tech.change for Agriculture MAC based on EPA 2020 level") %>%
       add_units("tax: 1990 USD; mac.reduction: % reduction") %>%
@@ -765,15 +691,6 @@ module_emissions_L252.MACC <- function(command, ...) {
       add_legacy_name("L252.AgMAC") %>%
       same_precursors_as("L252.AgMAC_tc") ->
       L252.AgMAC_tc_average
-
-    L252.AgMAC_smth %>%
-      add_title("smooth phase-in for Agriculture MAC based on EPA 2020 level") %>%
-      add_units("tax: 1990 USD; mac.reduction: % reduction") %>%
-      add_comments("Category data from L211.AGREmissions and L211.AGRBio given tax and mac.reduction data from L152.MAC_pct_R_S_Proc_EPA") %>%
-      add_legacy_name("L252.AgMAC") %>%
-      add_precursors("emissions/A_regions", "emissions/mappings/GCAM_sector_tech",
-                     "L152.MAC_pct_R_S_Proc_EPA", "L211.AGREmissions", "L211.AGRBio", "common/GCAM_region_names") ->
-      L252.AgMAC_smth
 
     L252.MAC_an %>%
       add_title("Marginal Abatement Cost Curves for Animals based on EPA 2020 level") %>%
@@ -793,15 +710,6 @@ module_emissions_L252.MACC <- function(command, ...) {
                      "L152.MAC_pct_R_S_Proc_EPA", "L211.AnEmissions", "common/GCAM_region_names") ->
       L252.MAC_an_tc
 
-    L252.MAC_an_phaseInFraction %>%
-      add_title("phase.in.fraction for Animals MAC") %>%
-      add_units("% of the original MAC reductions") %>%
-      add_comments("smooth phase in for early modeling periods") %>%
-      add_legacy_name("L252.MAC_an_phaseInFraction") %>%
-      same_precursors_as("L252.MAC_an_tc") %>%
-      add_precursors("emissions/EPA_MACC_PhaseInFraction") ->
-      L252.MAC_an_phaseInFraction
-
     L252.MAC_an_tc_average %>%
       add_title("Tech.chage for Animals MAC based on EPA 2020 level") %>%
       add_units("tax: 1990 USD; mac.reduction: % reduction") %>%
@@ -809,15 +717,6 @@ module_emissions_L252.MACC <- function(command, ...) {
       add_legacy_name("L252.MAC_an") %>%
       same_precursors_as("L252.MAC_an_tc") ->
       L252.MAC_an_tc_average
-
-    L252.MAC_an_smth %>%
-      add_title("smooth phase-in for Animals MAC based on EPA 2020 level") %>%
-      add_units("tax: 1990 USD; mac.reduction: % reduction") %>%
-      add_comments("Category data from L211.AnEmissions given tax and mac.reduction data from L152.MAC_pct_R_S_Proc_EPA") %>%
-      add_legacy_name("L252.MAC_an") %>%
-      add_precursors("emissions/A_regions", "emissions/mappings/GCAM_sector_tech",
-                     "L152.MAC_pct_R_S_Proc_EPA", "L211.AnEmissions", "common/GCAM_region_names") ->
-      L252.MAC_an_smth
 
     L252.MAC_prc %>%
       add_title("Marginal Abatement Cost Curves for Industrial and Urban Processing Greenhouse Gases based on EPA 2020 level") %>%
@@ -837,14 +736,14 @@ module_emissions_L252.MACC <- function(command, ...) {
                      "L152.MAC_pct_R_S_Proc_EPA", "L232.nonco2_prc", "common/GCAM_region_names") ->
       L252.MAC_prc_tc
 
-    L252.MAC_prc_phaseInFraction %>%
-      add_title("phase.in.fraction for Industrial and Urban Processing Greenhouse Gases MAC") %>%
-      add_units("% of the original MAC reductions") %>%
+    L252.MAC_prc_phaseInTime %>%
+      add_title("mac.phase.in.time for Industrial and Urban Processing Greenhouse Gases MAC") %>%
+      add_units("years of fully phasing in MAC reductions") %>%
       add_comments("smooth phase in for early modeling periods") %>%
-      add_legacy_name("L252.MAC_prc_phaseInFraction") %>%
+      add_legacy_name("L252.MAC_prc_phaseInTime") %>%
       same_precursors_as("L252.MAC_prc_tc") %>%
-      add_precursors("emissions/EPA_MACC_PhaseInFraction") ->
-      L252.MAC_prc_phaseInFraction
+      add_precursors("emissions/EPA_MACC_PhaseInTime") ->
+      L252.MAC_prc_phaseInTime
 
     L252.MAC_prc_tc_average %>%
       add_title("tech.change for Industrial and Urban Processing Greenhouse Gases MAC based on EPA 2020 level") %>%
@@ -853,15 +752,6 @@ module_emissions_L252.MACC <- function(command, ...) {
       add_legacy_name("L252.MAC_prc") %>%
       same_precursors_as("L252.MAC_prc_tc") ->
       L252.MAC_prc_tc_average
-
-    L252.MAC_prc_smth %>%
-      add_title("smooth phase-in for Industrial and Urban Processing Greenhouse Gases MAC based on EPA 2020 level") %>%
-      add_units("tax: 1990 USD; mac.reduction: % reduction") %>%
-      add_comments("Category data from L232.nonco2_prc given tax and mac.reduction data from L152.MAC_pct_R_S_Proc_EPA") %>%
-      add_legacy_name("L252.MAC_prc") %>%
-      add_precursors("emissions/A_regions", "emissions/mappings/GCAM_sector_tech",
-                     "L152.MAC_pct_R_S_Proc_EPA", "L232.nonco2_prc", "common/GCAM_region_names") ->
-      L252.MAC_prc_smth
 
     L252.MAC_higwp %>%
       add_title("Marginal Abatement Cost Curves for High GWP Gases based on EPA 2020 level") %>%
@@ -885,14 +775,14 @@ module_emissions_L252.MACC <- function(command, ...) {
                      "emissions/HFC_Abate_GV", "emissions/GV_mac_reduction", "common/GCAM_region_names") ->
       L252.MAC_higwp_tc
 
-    L252.MAC_higwp_phaseInFraction %>%
-      add_title("phase.in.fraction for High GWP Gases MAC") %>%
-      add_units("% of the original MAC reductions") %>%
+    L252.MAC_higwp_phaseInTime %>%
+      add_title("mac.phase.in.time for High GWP Gases MAC") %>%
+      add_units("years of fully phasing in MAC reductions") %>%
       add_comments("smooth phase in for early modeling periods") %>%
-      add_legacy_name("L252.MAC_higwp_phaseInFraction") %>%
+      add_legacy_name("L252.MAC_higwp_phaseInTime") %>%
       same_precursors_as("L252.MAC_higwp_tc") %>%
-      add_precursors("emissions/EPA_MACC_PhaseInFraction") ->
-      L252.MAC_higwp_phaseInFraction
+      add_precursors("emissions/EPA_MACC_PhaseInTime") ->
+      L252.MAC_higwp_phaseInTime
 
     L252.MAC_higwp_tc_average %>%
       add_title("tech.change for High GWP Gases MAC based on EPA 2020 level") %>%
@@ -902,17 +792,6 @@ module_emissions_L252.MACC <- function(command, ...) {
       add_legacy_name("L252.MAC_higwp") %>%
       same_precursors_as("L252.MAC_higwp_tc") ->
       L252.MAC_higwp_tc_average
-
-    L252.MAC_higwp_smth %>%
-      add_title("smooth phase-in for High GWP Gases MAC based on EPA 2020 level") %>%
-      add_units("tax: 1990 USD; mac.reduction: % reduction") %>%
-      add_comments("Category data from L241.hfc_all and L241.pfc_all given tax and mac.reduction data from L152.MAC_pct_R_S_Proc_EPA") %>%
-      add_comments("If using Guus Velders data, tax and mac.reduction values taken from HFC_Abate_GV and GV_mac_reduction") %>%
-      add_legacy_name("L252.MAC_higwp") %>%
-      add_precursors("emissions/A_regions", "emissions/mappings/GCAM_sector_tech",
-                     "L152.MAC_pct_R_S_Proc_EPA", "L241.hfc_all", "L241.pfc_all",
-                     "emissions/HFC_Abate_GV", "emissions/GV_mac_reduction", "common/GCAM_region_names") ->
-      L252.MAC_higwp_smth
 
     L252.MAC_Ag_TC[["SSP1"]] %>%
       add_legacy_name("L252.MAC_Ag_TC_SSP1") ->
@@ -966,9 +845,7 @@ module_emissions_L252.MACC <- function(command, ...) {
                 L252.ResMAC_fos_tc, L252.AgMAC_tc, L252.MAC_an_tc, L252.MAC_prc_tc, L252.MAC_higwp_tc,
                 L252.ResMAC_fos_tc_average, L252.AgMAC_tc_average, L252.MAC_an_tc_average,
                 L252.MAC_prc_tc_average, L252.MAC_higwp_tc_average,
-                L252.ResMAC_fos_phaseInFraction, L252.AgMAC_phaseInFraction, L252.MAC_an_phaseInFraction,
-                L252.MAC_prc_phaseInFraction, L252.MAC_higwp_phaseInFraction,
-                L252.ResMAC_fos_smth, L252.AgMAC_smth, L252.MAC_an_smth, L252.MAC_prc_smth, L252.MAC_higwp_smth,
+                L252.ResMAC_fos_phaseInTime, L252.MAC_prc_phaseInTime, L252.MAC_higwp_phaseInTime,
                 L252.MAC_Ag_TC_SSP1, L252.MAC_An_TC_SSP1, L252.MAC_prc_TC_SSP1, L252.MAC_res_TC_SSP1, L252.MAC_Ag_TC_SSP2,
                 L252.MAC_An_TC_SSP2, L252.MAC_prc_TC_SSP2, L252.MAC_res_TC_SSP2, L252.MAC_Ag_TC_SSP5,
                 L252.MAC_An_TC_SSP5, L252.MAC_prc_TC_SSP5, L252.MAC_res_TC_SSP5)

@@ -31,17 +31,15 @@ module_emissions_batch_ind_urb_processing_sectors_xml <- function(command, ...) 
              "L231.IndCoef",
              "L252.MAC_prc",
              "L252.MAC_prc_tc",
-             "L252.MAC_prc_phaseInFraction",
-             "L252.MAC_prc_tc_average",
-             "L252.MAC_prc_smth"))
+             "L252.MAC_prc_phaseInTime",
+             "L252.MAC_prc_tc_average"))
   } else if(command == driver.DECLARE_OUTPUTS) {
     return(c(XML = "ind_urb_processing_sectors.xml",
              XML = "ind_urb_processing_sectors_MAC.xml",
              XML = "ind_urb_processing_sectors_MAC_TC.xml",
              XML = "ind_urb_processing_sectors_MAC_PhaseIn.xml",
-             XML = "ind_urb_processing_sectors_MAC_smth_highTC.xml",
-             XML = "ind_urb_processing_sectors_MAC_smth_averageTC.xml",
-             XML = "ind_urb_processing_sectors_MAC_smth_noTC.xml"))
+             XML = "ind_urb_processing_sectors_MAC_highTC.xml",
+             XML = "ind_urb_processing_sectors_MAC_noTC.xml"))
   } else if(command == driver.MAKE) {
 
     all_data <- list(...)[[1]]
@@ -65,9 +63,8 @@ module_emissions_batch_ind_urb_processing_sectors_xml <- function(command, ...) 
     L231.IndCoef <- get_data(all_data, "L231.IndCoef")
     L252.MAC_prc <- get_data(all_data, "L252.MAC_prc")
     L252.MAC_prc_tc <- get_data(all_data, "L252.MAC_prc_tc")
-    L252.MAC_prc_phaseInFraction <- get_data(all_data, "L252.MAC_prc_phaseInFraction")
+    L252.MAC_prc_phaseInTime <- get_data(all_data, "L252.MAC_prc_phaseInTime")
     L252.MAC_prc_tc_average <- get_data(all_data, "L252.MAC_prc_tc_average")
-    L252.MAC_prc_smth <- get_data(all_data, "L252.MAC_prc_smth")
     # ===================================================
 
     # Produce outputs
@@ -95,27 +92,17 @@ module_emissions_batch_ind_urb_processing_sectors_xml <- function(command, ...) 
       add_precursors("L252.MAC_prc") ->
       ind_urb_processing_sectors_MAC.xml
 
-    create_xml("ind_urb_processing_sectors_MAC_smth_highTC.xml") %>%
+    create_xml("ind_urb_processing_sectors_MAC_highTC.xml") %>%
       add_xml_data(L252.MAC_prc, "MAC") %>%
-      add_xml_data(L252.MAC_prc_smth, "MAC") %>%
-      add_xml_data(L252.MAC_prc_tc %>% filter(tech.year >= 2055), "MACTC_allyear", NULL) %>%
-      add_precursors("L252.MAC_prc", "L252.MAC_prc_smth",
+      add_xml_data(L252.MAC_prc_tc, "MACTC_allyear", NULL) %>%
+      add_precursors("L252.MAC_prc",
                      "L252.MAC_prc_tc") ->
-      ind_urb_processing_sectors_MAC_smth_highTC.xml
+      ind_urb_processing_sectors_MAC_highTC.xml
 
-    create_xml("ind_urb_processing_sectors_MAC_smth_averageTC.xml") %>%
+    create_xml("ind_urb_processing_sectors_MAC_noTC.xml") %>%
       add_xml_data(L252.MAC_prc, "MAC") %>%
-      add_xml_data(L252.MAC_prc_smth, "MAC") %>%
-      add_xml_data(L252.MAC_prc_tc_average %>% filter(tech.year >= 2055), "MACTC_allyear", NULL) %>%
-      add_precursors("L252.MAC_prc", "L252.MAC_prc_smth",
-                     "L252.MAC_prc_tc_average") ->
-      ind_urb_processing_sectors_MAC_smth_averageTC.xml
-
-    create_xml("ind_urb_processing_sectors_MAC_smth_noTC.xml") %>%
-      add_xml_data(L252.MAC_prc, "MAC") %>%
-      add_xml_data(L252.MAC_prc_smth, "MAC") %>%
-      add_precursors("L252.MAC_prc", "L252.MAC_prc_smth") ->
-      ind_urb_processing_sectors_MAC_smth_noTC.xml
+      add_precursors("L252.MAC_prc") ->
+      ind_urb_processing_sectors_MAC_noTC.xml
 
     create_xml("ind_urb_processing_sectors_MAC_TC.xml") %>%
       add_xml_data(L252.MAC_prc, "MAC") %>%
@@ -124,8 +111,8 @@ module_emissions_batch_ind_urb_processing_sectors_xml <- function(command, ...) 
       ind_urb_processing_sectors_MAC_TC.xml
 
     create_xml("ind_urb_processing_sectors_MAC_PhaseIn.xml") %>%
-      add_xml_data(L252.MAC_prc_phaseInFraction, "MACTC_allyear_PhaseIn", NULL) %>%
-      add_precursors("L252.MAC_prc_phaseInFraction") ->
+      add_xml_data(L252.MAC_prc_phaseInTime, "MACTC_allyear_PhaseIn", NULL) %>%
+      add_precursors("L252.MAC_prc_phaseInTime") ->
       ind_urb_processing_sectors_MAC_PhaseIn.xml
 
 
@@ -151,9 +138,8 @@ module_emissions_batch_ind_urb_processing_sectors_xml <- function(command, ...) 
                 ind_urb_processing_sectors_MAC.xml,
                 ind_urb_processing_sectors_MAC_TC.xml,
                 ind_urb_processing_sectors_MAC_PhaseIn.xml,
-                ind_urb_processing_sectors_MAC_smth_highTC.xml,
-                ind_urb_processing_sectors_MAC_smth_averageTC.xml,
-                ind_urb_processing_sectors_MAC_smth_noTC.xml)
+                ind_urb_processing_sectors_MAC_highTC.xml,
+                ind_urb_processing_sectors_MAC_noTC.xml)
   } else {
     stop("Unknown command")
   }

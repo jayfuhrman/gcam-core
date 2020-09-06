@@ -15,7 +15,8 @@ module_emissions_batch_all_aglu_emissions_IRR_MGMT_xml(command, ...)
 Depends on \code{command}: either a vector of required inputs,
 a vector of output names, or (if \code{command} is "MAKE") all
 the generated outputs: \code{all_aglu_emissions_IRR_MGMT.xml}, \code{all_aglu_emissions_IRR_MGMT_MAC.xml},
-\code{all_aglu_emissions_IRR_MGMT_MAC_TC.xml}, \code{all_aglu_emissions_IRR_MGMT_MAC_smth.xml}.
+\code{all_aglu_emissions_IRR_MGMT_MAC_TC.xml}, \code{all_aglu_emissions_IRR_MGMT_MAC_noTC.xml},
+\code{all_aglu_emissions_IRR_MGMT_MAC_highTC.xml}, \code{all_aglu_emissions_IRR_MGMT_MAC_PhaseIn.xml}
 The corresponding file in the original data system was
 \code{batch_all_aglu_emissions_IRR_MGMT.xml} (emissions XML).
 }

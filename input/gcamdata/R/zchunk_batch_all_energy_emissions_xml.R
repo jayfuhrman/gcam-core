@@ -9,8 +9,8 @@
 #' @return Depends on \code{command}: either a vector of required inputs,
 #' a vector of output names, or (if \code{command} is "MAKE") all
 #' the generated outputs: \code{all_energy_emissions.xml}, \code{all_energy_emissions_MAC.xml} , \code{all_energy_emissions_MAC_TC.xml},
-#' \code{all_energy_emissions_MAC_smth_highTC.xml}, \code{all_energy_emissions_MAC_smth_averageTC.xml},
-#' \code{all_energy_emissions_MAC_smth_noTC.xml}.
+#' \code{all_energy_emissions_MAC_highTC.xml}, \code{all_energy_emissions_MAC_noTC.xml},
+#' \code{all_energy_emissions_MAC_PhaseIn.xml}
 #' The corresponding file in the original data system was \code{batch_all_energy_emissions.xml.R} (emissions XML).
 module_emissions_batch_all_energy_emissions_xml <- function(command, ...) {
   if(command == driver.DECLARE_INPUTS) {
@@ -34,17 +34,15 @@ module_emissions_batch_all_energy_emissions_xml <- function(command, ...) {
               "L241.nonco2_steepness",
               "L252.ResMAC_fos",
               "L252.ResMAC_fos_tc",
-              "L252.ResMAC_fos_phaseInFraction",
-              "L252.ResMAC_fos_tc_average",
-              "L252.ResMAC_fos_smth"))
+              "L252.ResMAC_fos_phaseInTime",
+              "L252.ResMAC_fos_tc_average"))
   } else if(command == driver.DECLARE_OUTPUTS) {
     return(c(XML = "all_energy_emissions.xml",
              XML = "all_energy_emissions_MAC.xml",
              XML = "all_energy_emissions_MAC_TC.xml",
              XML = "all_energy_emissions_MAC_PhaseIn.xml",
-             XML = "all_energy_emissions_MAC_smth_highTC.xml",
-             XML = "all_energy_emissions_MAC_smth_averageTC.xml",
-             XML = "all_energy_emissions_MAC_smth_noTC.xml"))
+             XML = "all_energy_emissions_MAC_highTC.xml",
+             XML = "all_energy_emissions_MAC_noTC.xml"))
   } else if(command == driver.MAKE) {
 
     all_data <- list(...)[[1]]
@@ -72,9 +70,8 @@ module_emissions_batch_all_energy_emissions_xml <- function(command, ...) {
     L241.nonco2_steepness <- get_data(all_data, "L241.nonco2_steepness")
     L252.ResMAC_fos <- get_data(all_data, "L252.ResMAC_fos")
     L252.ResMAC_fos_tc <- get_data(all_data, "L252.ResMAC_fos_tc")
-    L252.ResMAC_fos_phaseInFraction <- get_data(all_data, "L252.ResMAC_fos_phaseInFraction")
+    L252.ResMAC_fos_phaseInTime <- get_data(all_data, "L252.ResMAC_fos_phaseInTime")
     L252.ResMAC_fos_tc_average <- get_data(all_data, "L252.ResMAC_fos_tc_average")
-    L252.ResMAC_fos_smth <- get_data(all_data, "L252.ResMAC_fos_smth")
     # ===================================================
     # Produce outputs
     create_xml("all_energy_emissions.xml") %>%
@@ -109,25 +106,16 @@ module_emissions_batch_all_energy_emissions_xml <- function(command, ...) {
       add_precursors("L252.ResMAC_fos") ->
       all_energy_emissions_MAC.xml
 
-    create_xml("all_energy_emissions_MAC_smth_highTC.xml") %>%
+    create_xml("all_energy_emissions_MAC_highTC.xml") %>%
       add_xml_data(L252.ResMAC_fos, "ResMAC") %>%
-      add_xml_data(L252.ResMAC_fos_smth, "ResMAC") %>%
-      add_xml_data(L252.ResMAC_fos_tc %>% filter(tech.year >= 2055), "ResMACTC", NULL) %>%
-      add_precursors("L252.ResMAC_fos", "L252.ResMAC_fos_smth", "L252.ResMAC_fos_tc") ->
-      all_energy_emissions_MAC_smth_highTC.xml
+      add_xml_data(L252.ResMAC_fos_tc, "ResMACTC", NULL) %>%
+      add_precursors("L252.ResMAC_fos", "L252.ResMAC_fos_tc") ->
+      all_energy_emissions_MAC_highTC.xml
 
-    create_xml("all_energy_emissions_MAC_smth_averageTC.xml") %>%
+    create_xml("all_energy_emissions_MAC_noTC.xml") %>%
       add_xml_data(L252.ResMAC_fos, "ResMAC") %>%
-      add_xml_data(L252.ResMAC_fos_smth, "ResMAC") %>%
-      add_xml_data(L252.ResMAC_fos_tc_average %>% filter(tech.year >= 2055), "ResMACTC", NULL) %>%
-      add_precursors("L252.ResMAC_fos", "L252.ResMAC_fos_smth", "L252.ResMAC_fos_tc_average") ->
-      all_energy_emissions_MAC_smth_averageTC.xml
-
-    create_xml("all_energy_emissions_MAC_smth_noTC.xml") %>%
-      add_xml_data(L252.ResMAC_fos, "ResMAC") %>%
-      add_xml_data(L252.ResMAC_fos_smth, "ResMAC") %>%
-      add_precursors("L252.ResMAC_fos", "L252.ResMAC_fos_smth") ->
-      all_energy_emissions_MAC_smth_noTC.xml
+      add_precursors("L252.ResMAC_fos") ->
+      all_energy_emissions_MAC_noTC.xml
 
     create_xml("all_energy_emissions_MAC_TC.xml") %>%
       add_xml_data(L252.ResMAC_fos, "ResMAC") %>%
@@ -136,15 +124,14 @@ module_emissions_batch_all_energy_emissions_xml <- function(command, ...) {
       all_energy_emissions_MAC_TC.xml
 
     create_xml("all_energy_emissions_MAC_PhaseIn.xml") %>%
-      add_xml_data(L252.ResMAC_fos_phaseInFraction, "ResMACPhaseIn", NULL) %>%
-      add_precursors("L252.ResMAC_fos_phaseInFraction") ->
+      add_xml_data(L252.ResMAC_fos_phaseInTime, "ResMACPhaseIn", NULL) %>%
+      add_precursors("L252.ResMAC_fos_phaseInTime") ->
       all_energy_emissions_MAC_PhaseIn.xml
 
     return_data(all_energy_emissions.xml,
                 all_energy_emissions_MAC.xml,
-                all_energy_emissions_MAC_smth_highTC.xml,
-                all_energy_emissions_MAC_smth_averageTC.xml,
-                all_energy_emissions_MAC_smth_noTC.xml,
+                all_energy_emissions_MAC_highTC.xml,
+                all_energy_emissions_MAC_noTC.xml,
                 all_energy_emissions_MAC_TC.xml,
                 all_energy_emissions_MAC_PhaseIn.xml)
   } else {
