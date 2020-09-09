@@ -24,9 +24,7 @@ module_gcamusa_batch_transport_emissions_USA_xml <- function(command, ...) {
 
     # ===================================================
     # Rename the columns to match the level 2 data headers.
-    L271.nonco2_trn_tech_coeff_USA <- rename(L271.nonco2_trn_tech_coeff_USA, "emiss.coef" = "emiss.coeff") %>%
-      ## LEVEL2_DATA_NAMES is looking for "input.name" so it has been added as a blank
-      mutate(input.name="")
+    L271.nonco2_trn_tech_coeff_USA <- rename(L271.nonco2_trn_tech_coeff_USA, "emiss.coef" = "emiss.coeff")
 
     # Produce outputs
     create_xml("transport_emissions_USA.xml") %>%

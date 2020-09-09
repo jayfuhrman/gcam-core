@@ -22,6 +22,7 @@ module_gcamusa_L271.trn_nonco2_USA <- function(command, ...) {
              FILE = "energy/mappings/UCD_techs_revised",
              "L171.nonco2_tgej_censusR_trn_SMarkal_F_V_Y_USA",
              "L171.nonco2_tgej_state_trn_SMarkal_F_Y_USA",
+             "L201.en_pol_emissions",
              "L254.GlobalTranTechSCurve",
              "L254.StubTranTech_USA"))
   } else if(command == driver.DECLARE_OUTPUTS) {
@@ -40,6 +41,7 @@ module_gcamusa_L271.trn_nonco2_USA <- function(command, ...) {
       select(state, census_region = subregion9, census_region_id = DIVISION)
     L171.nonco2_tgej_censusR_trn_SMarkal_F_V_Y_USA <- get_data(all_data, "L171.nonco2_tgej_censusR_trn_SMarkal_F_V_Y_USA")
     L171.nonco2_tgej_state_trn_SMarkal_F_Y_USA     <- get_data(all_data, "L171.nonco2_tgej_state_trn_SMarkal_F_Y_USA")
+    L201.en_pol_emissions <- get_data(all_data, "L201.en_pol_emissions")
     L254.GlobalTranTechSCurve <- get_data(all_data, "L254.GlobalTranTechSCurve")
     L254.StubTranTech_USA     <- get_data(all_data, "L254.StubTranTech_USA")
 
@@ -148,9 +150,17 @@ module_gcamusa_L271.trn_nonco2_USA <- function(command, ...) {
     L271.nonco2_HDV_USA %>%
       bind_rows(L271.nonco2_LDV_USA) %>%
       # Re-name the pollutants to match names of existing gases
-      mutate(Non.CO2 = gsub("VOC","NMVOC",Non.CO2)) %>%
-      mutate(Non.CO2 = gsub("NOX","NOx",Non.CO2)) %>%
-      arrange(region, supplysector, tranSubsector, stub.technology, year, Non.CO2) ->
+      mutate(Non.CO2 = gsub("VOC","NMVOC",Non.CO2),
+             Non.CO2 = gsub("NOX","NOx",Non.CO2)) %>%
+      ## Quick fix below
+      ## Elimates BEV and FCEV from emissions and directly sets input drivers
+      ## FIX LATER
+      left_join_keep_first_only(L201.en_pol_emissions %>%
+                                 select(supplysector,subsector,stub.technology,input.name) %>%
+                                 unique(), by=c("supplysector", "tranSubsector" = "subsector","stub.technology" )) %>%
+      mutate(input.name = if_else(stub.technology=="Hybrid Liquids", "refined liquids enduse", input.name)) %>%
+      na.omit() %>%
+      arrange(region, supplysector, tranSubsector, stub.technology, year, Non.CO2,input.name) ->
       L271.nonco2_trn_tech_coeff_USA
 
     # L271.nonco2_trn_emiss_control_USA: Emissions coeff controls for transportation technologies in all U.S. states
@@ -367,6 +377,7 @@ module_gcamusa_L271.trn_nonco2_USA <- function(command, ...) {
                      "gcam-usa/states_subregions",
                      "L171.nonco2_tgej_censusR_trn_SMarkal_F_V_Y_USA",
                      "L171.nonco2_tgej_state_trn_SMarkal_F_Y_USA",
+                     "L201.en_pol_emissions",
                      "L254.GlobalTranTechSCurve",
                      "L254.StubTranTech_USA") ->
       L271.nonco2_trn_tech_coeff_USA
