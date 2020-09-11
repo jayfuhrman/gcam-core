@@ -71,7 +71,7 @@ module_gcamusa_L271.trn_nonco2_USA <- function(command, ...) {
       filter(supplysector == "trn_pass_road_LDV_4W") %>%
       left_join(MARKAL_UCD_class, by = c("tranSubsector")) %>%
       left_join_error_no_match(MARKAL_UCD_LDV_fuel, by = c("stub.technology" = "UCD_LDV_fuel" )) %>%
-      repeat_add_columns(tibble(year = c(2005, 2010,2015,MODEL_FUTURE_YEARS))) ->
+      repeat_add_columns(tibble(year = c(2005, 2010, 2015, MODEL_FUTURE_YEARS))) ->
       L254.StubTranTech_USA_LDV
 
 
@@ -112,7 +112,7 @@ module_gcamusa_L271.trn_nonco2_USA <- function(command, ...) {
       left_join(MARKAL_UCD_class, by = c("tranSubsector")) %>%
       left_join_error_no_match(MARKAL_UCD_HDV_fuel, by = c("stub.technology" = "UCD_HDV_fuel")) %>%
       ## EDIT by NTG to allow script to work with BYU, fix in future
-      repeat_add_columns(tibble(year = c(2005, 2010,2015,MODEL_FUTURE_YEARS))) ->
+      repeat_add_columns(tibble(year = c(2005, 2010, 2015, MODEL_FUTURE_YEARS))) ->
       L254.StubTranTech_USA_HDV
 
     # Subset relevant classes and fuels from emission factor table
@@ -357,6 +357,25 @@ module_gcamusa_L271.trn_nonco2_USA <- function(command, ...) {
       mutate(Non.CO2 = gsub("NOX","NOx",Non.CO2)) %>%
       arrange(region, supplysector, tranSubsector, stub.technology, year, Non.CO2) ->
       L271.nonco2_trn_emiss_control_USA
+
+    # Some additional fixes
+    # Multiple coefficients are present for a given region / supplysector / tranSubsector / stub.technology / year / Non.CO2
+    # Only the last value is being printed to XML and being read into the model
+    # TODO: figure out why there are multiple (different, not duplicated) emissions coefficients
+    # For now, sum emissions coefficients together
+    L271.nonco2_trn_tech_coeff_USA %>%
+      group_by(region, supplysector, tranSubsector, stub.technology, year, Non.CO2, input.name) %>%
+      summarise(emiss.coeff = sum(emiss.coeff)) %>%
+      ungroup() -> L271.nonco2_trn_tech_coeff_USA
+
+    # Linear controls are read in for BEV / FCEV techs with no emissions coeffs
+    # Use anti_join to remove these control objects
+    # Additionally, control objects are read in for 2010, which is not a vintage
+    L271.nonco2_trn_emiss_control_USA %>%
+      semi_join(L271.nonco2_trn_tech_coeff_USA,
+                by = c("region", "supplysector", "tranSubsector", "stub.technology", "year", "Non.CO2")) %>%
+      filter(year >= MODEL_FINAL_BASE_YEAR) -> L271.nonco2_trn_emiss_control_USA
+
 
     stopifnot(!any(is.na(L271.nonco2_trn_tech_coeff_USA)))
     stopifnot(!any(is.na(L271.nonco2_trn_emiss_control_USA)))
