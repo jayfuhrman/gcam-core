@@ -574,6 +574,9 @@ water.RENEW.COST.GRADE3 <- 10 #Renewable water grade3 cost
 # Flag which emissions data to use. Value "EPA" uses EPA data. All other values use EDGAR data.
 emissions.DATA_SOURCE <- "EPA"
 
+# scaling CH4 and N2O emissions to EPA 2019 mitigation report BAU emission trajectory
+emissions.nonCO2.EPA.scaling <- TRUE
+
 # Time
 emissions.CEDS_YEARS              <- 1971:2015
 emissions.CTRL_BASE_YEAR          <- 1975                # Year to read in pollution controls

@@ -108,23 +108,29 @@ module_emissions_batch_all_energy_emissions_xml <- function(command, ...) {
 
     create_xml("all_energy_emissions_MAC_highTC.xml") %>%
       add_xml_data(L252.ResMAC_fos, "ResMAC") %>%
-      add_xml_data(L252.ResMAC_fos_tc, "ResMACTC", NULL) %>%
+      add_xml_data(L252.ResMAC_fos_tc, "ResMACTC") %>%
       add_precursors("L252.ResMAC_fos", "L252.ResMAC_fos_tc") ->
       all_energy_emissions_MAC_highTC.xml
 
+    # temporarily create a "noTC" file assuming tech.change = 0 after 2050
+    # for validation and sensitivity purpose, will be deleted later
+    L252.ResMAC_fos_tc_zero2050 <- L252.ResMAC_fos_tc_average %>%
+      mutate(tech.change = ifelse(tech.change.year > 2050, 0, tech.change))
+
     create_xml("all_energy_emissions_MAC_noTC.xml") %>%
       add_xml_data(L252.ResMAC_fos, "ResMAC") %>%
-      add_precursors("L252.ResMAC_fos") ->
+      add_xml_data(L252.ResMAC_fos_tc_zero2050, "ResMACTC") %>%
+      add_precursors("L252.ResMAC_fos", "L252.ResMAC_fos_tc_average") ->
       all_energy_emissions_MAC_noTC.xml
 
     create_xml("all_energy_emissions_MAC_TC.xml") %>%
       add_xml_data(L252.ResMAC_fos, "ResMAC") %>%
-      add_xml_data(L252.ResMAC_fos_tc_average, "ResMACTC", NULL) %>%
+      add_xml_data(L252.ResMAC_fos_tc_average, "ResMACTC") %>%
       add_precursors("L252.ResMAC_fos", "L252.ResMAC_fos_tc_average") ->
       all_energy_emissions_MAC_TC.xml
 
     create_xml("all_energy_emissions_MAC_PhaseIn.xml") %>%
-      add_xml_data(L252.ResMAC_fos_phaseInTime, "ResMACPhaseIn", NULL) %>%
+      add_xml_data(L252.ResMAC_fos_phaseInTime, "ResMACPhaseIn") %>%
       add_precursors("L252.ResMAC_fos_phaseInTime") ->
       all_energy_emissions_MAC_PhaseIn.xml
 

@@ -12,10 +12,10 @@
 #' \code{L252.MAC_higwp}, \code{L252.ResMAC_fos_tc}, \code{L252.AgMAC_tc}, \code{L252.MAC_an_tc}, \code{L252.MAC_prc_tc},
 #' \code{L252.MAC_higwp_tc}, \code{L252.ResMAC_fos_tc_average}, \code{L252.AgMAC_tc_average}, \code{L252.MAC_an_tc_average},
 #' \code{L252.MAC_prc_tc_average}, \code{L252.MAC_higwp_tc_average},
-#' \code{L252.MAC_Ag_TC_SSP1}, \code{L252.MAC_An_TC_SSP1}, \code{L252.MAC_prc_TC_SSP1},
+#' \code{L252.MAC_Ag_TC_SSP1}, \code{L252.MAC_An_TC_SSP1}, \code{L252.MAC_prc_TC_SSP1}, \code{L252.MAC_higwp_TC_SSP1},
 #' \code{L252.MAC_res_TC_SSP1}, \code{L252.MAC_Ag_TC_SSP2}, \code{L252.MAC_An_TC_SSP2}, \code{L252.MAC_prc_TC_SSP2},
-#' \code{L252.MAC_res_TC_SSP2}, \code{L252.MAC_Ag_TC_SSP5}, \code{L252.MAC_An_TC_SSP5}, \code{L252.MAC_prc_TC_SSP5},
-#' \code{L252.MAC_res_TC_SSP5}. The corresponding file in the
+#' \code{L252.MAC_res_TC_SSP2}, \code{L252.MAC_higwp_TC_SSP2}, \code{L252.MAC_Ag_TC_SSP5}, \code{L252.MAC_An_TC_SSP5},
+#' \code{L252.MAC_prc_TC_SSP5}, \code{L252.MAC_res_TC_SSP5}, \code{L252.MAC_higwp_TC_SSP5}. The corresponding file in the
 #' original data system was \code{L252.MACC.R} (emissions level2).
 #' @details Creates marginal abatement cost curves "MACC", for fossil resources, agriculture, animals, and processing.
 #' @importFrom assertthat assert_that
@@ -25,12 +25,9 @@
 module_emissions_L252.MACC <- function(command, ...) {
   if(command == driver.DECLARE_INPUTS) {
     return(c(FILE = "emissions/A_regions",
-             FILE = "emissions/A_MACC_TechChange",
              FILE = "emissions/A_MACC_TechChange_SSP_Mult",
              FILE = "emissions/mappings/GCAM_sector_tech",
              FILE = "emissions/mappings/GCAM_sector_tech_Revised",
-             FILE = "emissions/HFC_Abate_GV",
-             FILE = "emissions/GV_mac_reduction",
              FILE = "common/GCAM_region_names",
              FILE = "emissions/EPA_MACC_PhaseInTime",
              "L152.MAC_pct_R_S_Proc_EPA",
@@ -64,30 +61,31 @@ module_emissions_L252.MACC <- function(command, ...) {
              "L252.MAC_An_TC_SSP1",
              "L252.MAC_prc_TC_SSP1",
              "L252.MAC_res_TC_SSP1",
+             "L252.MAC_higwp_TC_SSP1",
              "L252.MAC_Ag_TC_SSP2",
              "L252.MAC_An_TC_SSP2",
              "L252.MAC_prc_TC_SSP2",
              "L252.MAC_res_TC_SSP2",
+             "L252.MAC_higwp_TC_SSP2",
              "L252.MAC_Ag_TC_SSP5",
              "L252.MAC_An_TC_SSP5",
              "L252.MAC_prc_TC_SSP5",
-             "L252.MAC_res_TC_SSP5"))
+             "L252.MAC_res_TC_SSP5",
+             "L252.MAC_higwp_TC_SSP5"))
   } else if(command == driver.MAKE) {
 
     # Silence package checks
     . <- AgProductionTechnology <- AgSupplySector <- AgSupplySubsector <- EPA_MACC_Sector <- EPA_region <-
-      GV_year <- MAC_region <- Non.CO2 <- PCT_ABATE <- Process <- Species <- Year <- bio_N2O_coef <-
+      MAC_region <- Non.CO2 <- PCT_ABATE <- Process <- Species <- Year <- bio_N2O_coef <-
       resource <- emiss.coef <- input.emissions <- mac.control <- mac.reduction <- region <-
       scenario <- sector <- stub.technology <- subsector <- supplysector <- tax <- tech_change <-
-      market.name <- year <- Irr_Rfd <- mgmt <- LUCAS_2050 <- LUCAS_2100 <- tech.change.year <-
-      tech.change <- Non.CO2.join <- multiplier <- NULL
+      market.name <- year <- Irr_Rfd <- mgmt <- tech.change.year <- tech.change <- Non.CO2.join <- multiplier <- NULL
 
     all_data <- list(...)[[1]]
 
     # Load required inputs
     A_regions <- get_data(all_data, "emissions/A_regions")
     GCAM_region_names <- get_data(all_data, "common/GCAM_region_names")
-    A_MACC_TechChange <- get_data(all_data, "emissions/A_MACC_TechChange")
     A_MACC_TechChange_SSP_Mult <- get_data(all_data, "emissions/A_MACC_TechChange_SSP_Mult")
     GCAM_sector_tech <- get_data(all_data, "emissions/mappings/GCAM_sector_tech")
     if (energy.TRAN_UCD_MODE == "rev.mode"){
@@ -95,9 +93,6 @@ module_emissions_L252.MACC <- function(command, ...) {
 
     }
 
-
-    HFC_Abate_GV <- get_data(all_data, "emissions/HFC_Abate_GV")
-    GV_mac_reduction <- get_data(all_data, "emissions/GV_mac_reduction")
     L152.MAC_pct_R_S_Proc_EPA <- get_data(all_data, "L152.MAC_pct_R_S_Proc_EPA")
     L201.ghg_res <- get_data(all_data, "L201.ghg_res", strip_attributes = TRUE)
     L211.AGREmissions <- get_data(all_data, "L211.AGREmissions", strip_attributes = TRUE)
@@ -109,12 +104,7 @@ module_emissions_L252.MACC <- function(command, ...) {
     EPA_MACC_PhaseInTime <- get_data(all_data, "emissions/EPA_MACC_PhaseInTime")
 
 
-    # New process - update MAC using 2019 EPA
-    # Now the MACs are already grouped based on GCAM_regions, while baseline data are still EPA regions
-    # YO APR 2020
-    # -------------------------------------------------------------------------------------------------------
-    # START NEW PROCESS
-    # ===================================================
+    # update MAC using 2019 EPA
     # Prepare the table with all MAC curves for matching
     # This contains all tax and mac.reduction values
     L152.MAC_pct_R_S_Proc_EPA %>%
@@ -285,10 +275,6 @@ module_emissions_L252.MACC <- function(command, ...) {
       left_join(L252.MAC_base_TC,
                 by = c("region", "supplysector", "subsector", "stub.technology", "Non.CO2", "year")) %>%
       na.omit() %>%
-      mutate(period = (year - 1995) / 5) %>%
-      # group_by(region, supplysector, subsector, stub.technology, year, Non.CO2, mac.control, period) %>%
-      # mutate(mac.reduction.adj = max(mac.reduction, mac.reduction.base)) %>%
-      # ungroup() %>%
       mutate(tech.change = (mac.reduction / mac.reduction.base)^(1/5) - 1) %>%
       replace_na(list(tech.change = 0)) %>%
       select(region, supplysector, subsector, stub.technology, year, Non.CO2, mac.control, tech.change) %>%
@@ -313,8 +299,6 @@ module_emissions_L252.MACC <- function(command, ...) {
 
     L252.MAC_summary_TC_average <- rbind(L252.MAC_summary_TC_before2050,
                                          L252.MAC_summary_TC_post2050_average)
-
-
 
     # find the first non-all-zero-MAC year, maybe different by region/sector
     L252.MAC_base_year <- L252.MAC_summary %>%
@@ -346,20 +330,20 @@ module_emissions_L252.MACC <- function(command, ...) {
       rename(AgSupplySector = supplysector,
              AgSupplySubsector = subsector,
              AgProductionTechnology = stub.technology,
-             tech.year = year) %>%
+             tech.change.year = year) %>%
       left_join_error_no_match(L252.AgMAC %>% select(-tax, -mac.reduction) %>% distinct(),
                                by = c("region", "AgSupplySector", "AgSupplySubsector", "AgProductionTechnology", "Non.CO2", "mac.control")) %>%
-      select(region, AgSupplySector, AgSupplySubsector, AgProductionTechnology, year, Non.CO2, mac.control, tech.year, tech.change)
+      select(region, AgSupplySector, AgSupplySubsector, AgProductionTechnology, year, Non.CO2, mac.control, tech.change.year, tech.change)
 
     L252.AgMAC_tc_average <- L252.MAC_summary_TC_average %>%
       filter(key %in% Ag_key$key) %>%
       rename(AgSupplySector = supplysector,
              AgSupplySubsector = subsector,
              AgProductionTechnology = stub.technology,
-             tech.year = year) %>%
+             tech.change.year = year) %>%
       left_join_error_no_match(L252.AgMAC %>% select(-tax, -mac.reduction) %>% distinct(),
                                by = c("region", "AgSupplySector", "AgSupplySubsector", "AgProductionTechnology", "Non.CO2", "mac.control")) %>%
-      select(region, AgSupplySector, AgSupplySubsector, AgProductionTechnology, year, Non.CO2, mac.control, tech.year, tech.change)
+      select(region, AgSupplySector, AgSupplySubsector, AgProductionTechnology, year, Non.CO2, mac.control, tech.change.year, tech.change)
 
 
     L252.MAC_an <- L252.MAC_an_full %>%
@@ -375,17 +359,17 @@ module_emissions_L252.MACC <- function(command, ...) {
 
     L252.MAC_an_tc <- L252.MAC_summary_TC %>%
       filter(key %in% An_key$key) %>%
-      rename(tech.year = year) %>%
+      rename(tech.change.year = year) %>%
       left_join_error_no_match(L252.MAC_an %>% select(-tax, -mac.reduction) %>% distinct(),
                                by = c("region", "supplysector", "subsector", "stub.technology", "Non.CO2", "mac.control")) %>%
-      select(region, supplysector, subsector, stub.technology, year, Non.CO2, mac.control, tech.year, tech.change)
+      select(region, supplysector, subsector, stub.technology, year, Non.CO2, mac.control, tech.change.year, tech.change)
 
     L252.MAC_an_tc_average <- L252.MAC_summary_TC_average %>%
       filter(key %in% An_key$key) %>%
-      rename(tech.year = year) %>%
+      rename(tech.change.year = year) %>%
       left_join_error_no_match(L252.MAC_an %>% select(-tax, -mac.reduction) %>% distinct(),
                                by = c("region", "supplysector", "subsector", "stub.technology", "Non.CO2", "mac.control")) %>%
-      select(region, supplysector, subsector, stub.technology, year, Non.CO2, mac.control, tech.year, tech.change)
+      select(region, supplysector, subsector, stub.technology, year, Non.CO2, mac.control, tech.change.year, tech.change)
 
     L252.MAC_prc <- L252.MAC_prc_full %>%
       mutate(key = paste(region, supplysector, subsector, stub.technology, Non.CO2, year, sep = "-")) %>%
@@ -400,17 +384,17 @@ module_emissions_L252.MACC <- function(command, ...) {
 
     L252.MAC_prc_tc <- L252.MAC_summary_TC %>%
       filter(key %in% Proc_key$key) %>%
-      rename(tech.year = year) %>%
+      rename(tech.change.year = year) %>%
       left_join_error_no_match(L252.MAC_prc %>% select(-tax, -mac.reduction) %>% distinct(),
                                by = c("region", "supplysector", "subsector", "stub.technology", "Non.CO2", "mac.control")) %>%
-      select(region, supplysector, subsector, stub.technology, year, Non.CO2, mac.control, tech.year, tech.change)
+      select(region, supplysector, subsector, stub.technology, year, Non.CO2, mac.control, tech.change.year, tech.change)
 
     L252.MAC_prc_tc_average <- L252.MAC_summary_TC_average %>%
       filter(key %in% Proc_key$key) %>%
-      rename(tech.year = year) %>%
+      rename(tech.change.year = year) %>%
       left_join_error_no_match(L252.MAC_prc %>% select(-tax, -mac.reduction) %>% distinct(),
                                by = c("region", "supplysector", "subsector", "stub.technology", "Non.CO2", "mac.control")) %>%
-      select(region, supplysector, subsector, stub.technology, year, Non.CO2, mac.control, tech.year, tech.change)
+      select(region, supplysector, subsector, stub.technology, year, Non.CO2, mac.control, tech.change.year, tech.change)
 
     L252.MAC_higwp <- L252.MAC_higwp_full %>%
       mutate(key = paste(region, supplysector, subsector, stub.technology, Non.CO2, year, sep = "-")) %>%
@@ -425,17 +409,17 @@ module_emissions_L252.MACC <- function(command, ...) {
 
     L252.MAC_higwp_tc <- L252.MAC_summary_TC %>%
       filter(key %in% HighGwp_key$key) %>%
-      rename(tech.year = year) %>%
+      rename(tech.change.year = year) %>%
       left_join_error_no_match(L252.MAC_higwp %>% select(-tax, -mac.reduction) %>% distinct(),
                                by = c("region", "supplysector", "subsector", "stub.technology", "Non.CO2", "mac.control")) %>%
-      select(region, supplysector, subsector, stub.technology, year, Non.CO2, mac.control, tech.year, tech.change)
+      select(region, supplysector, subsector, stub.technology, year, Non.CO2, mac.control, tech.change.year, tech.change)
 
     L252.MAC_higwp_tc_average <- L252.MAC_summary_TC_average %>%
       filter(key %in% HighGwp_key$key) %>%
-      rename(tech.year = year) %>%
+      rename(tech.change.year = year) %>%
       left_join_error_no_match(L252.MAC_higwp %>% select(-tax, -mac.reduction) %>% distinct(),
                                by = c("region", "supplysector", "subsector", "stub.technology", "Non.CO2", "mac.control")) %>%
-      select(region, supplysector, subsector, stub.technology, year, Non.CO2, mac.control, tech.year, tech.change)
+      select(region, supplysector, subsector, stub.technology, year, Non.CO2, mac.control, tech.change.year, tech.change)
 
     L252.ResMAC_fos <- L252.ResMAC_fos_full %>%
       mutate(key = paste(region, resource, subresource, technology, Non.CO2, year, sep = "-")) %>%
@@ -454,27 +438,22 @@ module_emissions_L252.MACC <- function(command, ...) {
       rename(resource = supplysector,
              subresource = subsector,
              technology = stub.technology,
-             tech.year = year) %>%
+             tech.change.year = year) %>%
       mutate(year = 1975) %>%
-      select(region, resource, subresource, technology, year, Non.CO2, mac.control, tech.year, tech.change)
+      select(region, resource, subresource, technology, year, Non.CO2, mac.control, tech.change.year, tech.change)
 
     L252.ResMAC_fos_tc_average <- L252.MAC_summary_TC_average %>%
       filter(key %in% Res_key$key) %>%
       rename(resource = supplysector,
              subresource = subsector,
              technology = stub.technology,
-             tech.year = year) %>%
+             tech.change.year = year) %>%
       mutate(year = 1975) %>%
-      select(region, resource, subresource, technology, year, Non.CO2, mac.control, tech.year, tech.change)
+      select(region, resource, subresource, technology, year, Non.CO2, mac.control, tech.change.year, tech.change)
 
-    # END NEW PROCESS
-    # -------------------------------------------------------------------------------------------------------
 
-    # New process - create mac-phase-in-time for MAC data
-    # YO JUL 2020
-    # -------------------------------------------------------------------------------------------------------
-    # START NEW PROCESS
-    # -------------------------------------------------------------------------------------------------------
+    # create mac-phase-in-time for MAC data
+
     # explicitly process this for separated tibbles in case in these phase-in-fractions varied by sector
     # currently only apply to energy and industry process sectors, agricultre sectors will not apply phaseInTime
     # phase-in-fraction should be just applied to the year when MAC read in
@@ -498,67 +477,11 @@ module_emissions_L252.MACC <- function(command, ...) {
       left_join_error_no_match(EPA_MACC_PhaseInTime, by = c("mac.control")) ->
       L252.MAC_prc_phaseInTime
 
-    # END NEW PROCESS
-    # -------------------------------------------------------------------------------------------------------
-
     # Put the tech change pipeline into a helper function since it will be repeated for each
     # of the emissions sectors
-    calc_tech_change <- function(df) {
+    # here we directly process the XXX_tc tables for SSPs
+    adjust_tech_change_ssp <- function(df) {
       df %>%
-        # Use group_by_at to select a range instead of explicitly naming because some of the
-        # df will have AgSupplySector and other supplysector for instance
-        dplyr::group_by_at(dplyr::vars(region:mac.control)) %>%
-        # The tech change assumptions give what is thought to be the maximum reduction that
-        # could be achieved by some year so we will need to back calculate the rate of change
-        # from the max value in the MAC curve
-        summarize(mac.reduction = max(mac.reduction)) %>%
-        ungroup() %>%
-        # The assumptions file will have just the base gas name so let's create a column in
-        # df with that for the purposes of joining
-        mutate(Non.CO2.join = sub('_AGR', '', Non.CO2)) %>%
-        left_join_error_no_match(A_MACC_TechChange, by=c("Non.CO2.join" = "Non.CO2", "mac.control" = "MAC")) %>%
-        # Back calculate improvement rate so that the max matches the assumed reduction in the given year
-        mutate(tc1 = (LUCAS_2050 / mac.reduction)^(1.0/(2050.0 - dplyr::last(MODEL_BASE_YEARS))) - 1.0,
-               tc2 = (LUCAS_2100 / LUCAS_2050)^(1.0/(2100.0-2050.0)) - 1.0) %>%
-        gather(tech.change.year, tech.change, dplyr::starts_with("tc")) %>%
-        # We want to start the improvement in the first model future year and switch rates after 2050
-        mutate(tech.change.year = if_else(tech.change.year == "tc1", MODEL_FUTURE_YEARS[1], MODEL_FUTURE_YEARS[MODEL_FUTURE_YEARS > 2050][1])) %>%
-        select(-Non.CO2.join, -mac.reduction, -LUCAS_2050, -LUCAS_2100) %>%
-        # Different SSPs will have differing abilities to achive this assumed maximum and is
-        # provided in a seperate assumptions file so we join that on here and adjust the
-        # tech change by scenario accordingly
-        repeat_add_columns(tibble(scenario = A_MACC_TechChange_SSP_Mult$scenario)) %>%
-        left_join_error_no_match(A_MACC_TechChange_SSP_Mult, by = c("scenario")) %>%
-        mutate(tech.change = tech.change * multiplier) %>%
-        select(-multiplier)
-    }
-
-    # Put the tech change pipeline into a helper function since it will be repeated for each
-    # of the emissions sectors
-    calc_tech_change <- function(df) {
-      df %>%
-        # Use group_by_at to select a range instead of explicitly naming because some of the
-        # df will have AgSupplySector and other supplysector for instance
-        dplyr::group_by_at(dplyr::vars(region:mac.control)) %>%
-        # The tech change assumptions give what is thought to be the maximum reduction that
-        # could be achieved by some year so we will need to back calculate the rate of change
-        # from the max value in the MAC curve
-        summarize(mac.reduction = max(mac.reduction)) %>%
-        ungroup() %>%
-        # The assumptions file will have just the base gas name so let's create a column in
-        # df with that for the purposes of joining
-        mutate(Non.CO2.join = sub('_AGR', '', Non.CO2)) %>%
-        left_join_error_no_match(A_MACC_TechChange, by=c("Non.CO2.join" = "Non.CO2", "mac.control" = "MAC")) %>%
-        # Back calculate improvement rate so that the max matches the assumed reduction in the given year
-        mutate(tc1 = (LUCAS_2050 / mac.reduction)^(1.0/(2050.0 - dplyr::last(MODEL_BASE_YEARS))) - 1.0,
-               tc2 = (LUCAS_2100 / LUCAS_2050)^(1.0/(2100.0-2050.0)) - 1.0) %>%
-        gather(tech.change.year, tech.change, dplyr::starts_with("tc")) %>%
-        # We want to start the improvement in the first model future year and switch rates after 2050
-        mutate(tech.change.year = if_else(tech.change.year == "tc1", MODEL_FUTURE_YEARS[1], MODEL_FUTURE_YEARS[MODEL_FUTURE_YEARS > 2050][1])) %>%
-        select(-Non.CO2.join, -mac.reduction, -LUCAS_2050, -LUCAS_2100) %>%
-        # Different SSPs will have differing abilities to achive this assumed maximum and is
-        # provided in a seperate assumptions file so we join that on here and adjust the
-        # tech change by scenario accordingly
         repeat_add_columns(tibble(scenario = A_MACC_TechChange_SSP_Mult$scenario)) %>%
         left_join_error_no_match(A_MACC_TechChange_SSP_Mult, by = c("scenario")) %>%
         mutate(tech.change = tech.change * multiplier) %>%
@@ -567,67 +490,77 @@ module_emissions_L252.MACC <- function(command, ...) {
 
     # L252.MAC_TC: Tech Change on MACCs
     # For all tibbles, add in scenarios and tech change, then split by scenario and add in documentation
-    L252.MAC_Ag_TC <- L252.AgMAC %>%
-      calc_tech_change() %>%
+    L252.MAC_Ag_TC <- L252.AgMAC_tc_average %>%
+      adjust_tech_change_ssp() %>%
       split(.$scenario) %>%
       lapply(function(df) {
         df %>%
-          add_title("Marginal Abatement Cost Curves with Technology Changes for Agriculture") %>%
+          add_title("Marginal Abatement Cost Curves with Technology Changes for Agriculture crop") %>%
           add_units("tax: 1990 USD; mac.reduction: % reduction; tech_change: Unitless") %>%
-          add_comments("Category data from L211.AGREmissions and L211.AGRBio given tax and mac.reduction data from L152.MAC_pct_R_S_Proc_EPA") %>%
-          add_comments("Technology change data added in from A_MACC_TechChange") %>%
-          add_precursors("emissions/A_regions", "emissions/mappings/GCAM_sector_tech","emissions/mappings/GCAM_sector_tech_Revised",
-                         "L152.MAC_pct_R_S_Proc_EPA", "L211.AGREmissions", "L211.AGRBio", "emissions/A_MACC_TechChange",
-                         "emissions/A_MACC_TechChange_SSP_Mult") %>%
+          add_comments("adjust L252.AgMAC_tc_average to reflect variations in SSPs") %>%
+          add_comments("Technology change data added in from A_MACC_TechChange_SSP_Mult") %>%
+          same_precursors_as("L252.AgMAC_tc_average") %>%
+          add_precursors("emissions/A_MACC_TechChange_SSP_Mult") %>%
           select(-scenario)
       })
 
 
-    L252.MAC_An_TC <- L252.MAC_an %>%
-      calc_tech_change() %>%
+    L252.MAC_An_TC <- L252.MAC_an_tc_average %>%
+      adjust_tech_change_ssp() %>%
       split(.$scenario) %>%
       lapply(function(df) {
         df %>%
           add_title("Marginal Abatement Cost Curves with Technology Changes for Animals") %>%
           add_units("tax: 1990 USD; mac.reduction: % reduction; tech_change: Unitless") %>%
-          add_comments("Category data from L211.AnEmissions given tax and mac.reduction data from L152.MAC_pct_R_S_Proc_EPA") %>%
-          add_comments("Technology change data added in from A_MACC_TechChange") %>%
-          add_precursors("emissions/A_regions", "emissions/mappings/GCAM_sector_tech","emissions/mappings/GCAM_sector_tech_Revised",
-                         "L152.MAC_pct_R_S_Proc_EPA", "L211.AnEmissions", "emissions/A_MACC_TechChange",
-                         "emissions/A_MACC_TechChange_SSP_Mult") %>%
+          add_comments("adjust L252.MAC_an_tc_average to reflect variations in SSPs") %>%
+          add_comments("Technology change data added in from A_MACC_TechChange_SSP_Mult") %>%
+          same_precursors_as("L252.MAC_an_tc_average") %>%
+          add_precursors("emissions/A_MACC_TechChange_SSP_Mult") %>%
           select(-scenario)
       })
 
-    L252.MAC_prc_TC <- L252.MAC_prc %>%
-      filter(mac.control %in% unique(A_MACC_TechChange$MAC)) %>%
-      calc_tech_change() %>%
+    L252.MAC_prc_TC <- L252.MAC_prc_tc_average %>%
+      adjust_tech_change_ssp() %>%
       split(.$scenario) %>%
       lapply(function(df) {
         df %>%
           add_title("Marginal Abatement Cost Curves with Technology Changes for Industrial and Urban Processing Greenhouse Gases") %>%
           add_units("tax: 1990 USD; mac.reduction: % reduction; tech_change: Unitless") %>%
-          add_comments("Category data from L232.nonco2_prc given tax and mac.reduction data from L152.MAC_pct_R_S_Proc_EPA") %>%
-          add_comments("Technology change data added in from A_MACC_TechChange") %>%
-          add_precursors("emissions/A_regions", "emissions/mappings/GCAM_sector_tech","emissions/mappings/GCAM_sector_tech_Revised",
-                         "L152.MAC_pct_R_S_Proc_EPA", "L232.nonco2_prc", "emissions/A_MACC_TechChange",
-                         "emissions/A_MACC_TechChange_SSP_Mult") %>%
+          add_comments("adjust L252.MAC_prc_tc_average to reflect variations in SSPs") %>%
+          add_comments("Technology change data added in from A_MACC_TechChange_SSP_Mult") %>%
+          same_precursors_as("L252.MAC_prc_tc_average") %>%
+          add_precursors("emissions/A_MACC_TechChange_SSP_Mult") %>%
           select(-scenario)
       })
 
-    L252.MAC_res_TC <- L252.ResMAC_fos %>%
-      calc_tech_change() %>%
+    L252.MAC_res_TC <- L252.ResMAC_fos_tc_average %>%
+      adjust_tech_change_ssp() %>%
       split(.$scenario) %>%
       lapply(function(df) {
         df %>%
           add_title("Marginal Abatement Cost Curves with Technology Changes for Fossil Resources") %>%
           add_units("tax: 1990 USD; mac.reduction: % reduction; tech_change: Unitless") %>%
-          add_comments("Category data from L201.ghg_res given tax and mac.reduction data from L152.MAC_pct_R_S_Proc_EPA") %>%
+          add_comments("adjust L252.ResMAC_fos_tc_average to reflect variations in SSPs") %>%
           add_comments("Technology change data added in from A_MACC_TechChange") %>%
-          add_precursors("emissions/A_regions", "emissions/mappings/GCAM_sector_tech","emissions/mappings/GCAM_sector_tech_Revised",
-                         "L152.MAC_pct_R_S_Proc_EPA", "L201.ghg_res", "emissions/A_MACC_TechChange",
-                         "emissions/A_MACC_TechChange_SSP_Mult") %>%
+          same_precursors_as("L252.ResMAC_fos_tc_average") %>%
+          add_precursors("emissions/A_MACC_TechChange_SSP_Mult") %>%
           select(-scenario)
       })
+
+    L252.MAC_higwp_TC <- L252.MAC_higwp_tc_average %>%
+      adjust_tech_change_ssp() %>%
+      split(.$scenario) %>%
+      lapply(function(df) {
+        df %>%
+          add_title("Marginal Abatement Cost Curves with Technology Changes for F-gases") %>%
+          add_units("tax: 1990 USD; mac.reduction: % reduction; tech_change: Unitless") %>%
+          add_comments("adjust L252.MAC_higwp_tc_average to reflect variations in SSPs") %>%
+          add_comments("Technology change data added in from A_MACC_TechChange") %>%
+          same_precursors_as("L252.MAC_higwp_tc_average") %>%
+          add_precursors("emissions/A_MACC_TechChange_SSP_Mult") %>%
+          select(-scenario)
+      })
+
     # ===================================================
 
     # Produce outputs
@@ -757,22 +690,18 @@ module_emissions_L252.MACC <- function(command, ...) {
       add_title("Marginal Abatement Cost Curves for High GWP Gases based on EPA 2020 level") %>%
       add_units("tax: 1990 USD; mac.reduction: % reduction") %>%
       add_comments("Category data from L241.hfc_all and L241.pfc_all given tax and mac.reduction data from L152.MAC_pct_R_S_Proc_EPA") %>%
-      add_comments("If using Guus Velders data, tax and mac.reduction values taken from HFC_Abate_GV and GV_mac_reduction") %>%
       add_legacy_name("L252.MAC_higwp") %>%
       add_precursors("emissions/A_regions", "emissions/mappings/GCAM_sector_tech","emissions/mappings/GCAM_sector_tech_Revised",
-                     "L152.MAC_pct_R_S_Proc_EPA", "L241.hfc_all", "L241.pfc_all",
-                     "emissions/HFC_Abate_GV", "emissions/GV_mac_reduction", "common/GCAM_region_names") ->
+                     "L152.MAC_pct_R_S_Proc_EPA", "L241.hfc_all", "L241.pfc_all", "common/GCAM_region_names") ->
       L252.MAC_higwp
 
     L252.MAC_higwp_tc %>%
       add_title("tech.change for High GWP Gases MAC based on EPA 2020 level") %>%
       add_units("tax: 1990 USD; mac.reduction: % reduction") %>%
       add_comments("Category data from L241.hfc_all and L241.pfc_all given tax and mac.reduction data from L152.MAC_pct_R_S_Proc_EPA") %>%
-      add_comments("If using Guus Velders data, tax and mac.reduction values taken from HFC_Abate_GV and GV_mac_reduction") %>%
       add_legacy_name("L252.MAC_higwp") %>%
       add_precursors("emissions/A_regions", "emissions/mappings/GCAM_sector_tech",
-                     "L152.MAC_pct_R_S_Proc_EPA", "L241.hfc_all", "L241.pfc_all",
-                     "emissions/HFC_Abate_GV", "emissions/GV_mac_reduction", "common/GCAM_region_names") ->
+                     "L152.MAC_pct_R_S_Proc_EPA", "L241.hfc_all", "L241.pfc_all", "common/GCAM_region_names") ->
       L252.MAC_higwp_tc
 
     L252.MAC_higwp_phaseInTime %>%
@@ -788,7 +717,6 @@ module_emissions_L252.MACC <- function(command, ...) {
       add_title("tech.change for High GWP Gases MAC based on EPA 2020 level") %>%
       add_units("tax: 1990 USD; mac.reduction: % reduction") %>%
       add_comments("Category data from L241.hfc_all and L241.pfc_all given tax and mac.reduction data from L152.MAC_pct_R_S_Proc_EPA") %>%
-      add_comments("If using Guus Velders data, tax and mac.reduction values taken from HFC_Abate_GV and GV_mac_reduction") %>%
       add_legacy_name("L252.MAC_higwp") %>%
       same_precursors_as("L252.MAC_higwp_tc") ->
       L252.MAC_higwp_tc_average
@@ -809,6 +737,10 @@ module_emissions_L252.MACC <- function(command, ...) {
       add_legacy_name("L252.MAC_res_TC_SSP1") ->
       L252.MAC_res_TC_SSP1
 
+    L252.MAC_higwp_TC[["SSP1"]] %>%
+      add_legacy_name("L252.MAC_higwp_TC_SSP1") ->
+      L252.MAC_higwp_TC_SSP1
+
     L252.MAC_Ag_TC[["SSP2"]] %>%
       add_legacy_name("L252.MAC_Ag_TC_SSP2") ->
       L252.MAC_Ag_TC_SSP2
@@ -824,6 +756,10 @@ module_emissions_L252.MACC <- function(command, ...) {
     L252.MAC_res_TC[["SSP2"]] %>%
       add_legacy_name("L252.MAC_res_TC_SSP2") ->
       L252.MAC_res_TC_SSP2
+
+    L252.MAC_higwp_TC[["SSP2"]] %>%
+      add_legacy_name("L252.MAC_higwp_TC_SSP2") ->
+      L252.MAC_higwp_TC_SSP2
 
     L252.MAC_Ag_TC[["SSP5"]] %>%
       add_legacy_name("L252.MAC_Ag_TC_SSP5") ->
@@ -841,14 +777,18 @@ module_emissions_L252.MACC <- function(command, ...) {
       add_legacy_name("L252.MAC_res_TC_SSP5") ->
       L252.MAC_res_TC_SSP5
 
+    L252.MAC_higwp_TC[["SSP5"]] %>%
+      add_legacy_name("L252.MAC_higwp_TC_SSP5") ->
+      L252.MAC_higwp_TC_SSP5
+
     return_data(L252.ResMAC_fos, L252.AgMAC, L252.MAC_an, L252.MAC_prc, L252.MAC_higwp,
                 L252.ResMAC_fos_tc, L252.AgMAC_tc, L252.MAC_an_tc, L252.MAC_prc_tc, L252.MAC_higwp_tc,
                 L252.ResMAC_fos_tc_average, L252.AgMAC_tc_average, L252.MAC_an_tc_average,
                 L252.MAC_prc_tc_average, L252.MAC_higwp_tc_average,
                 L252.ResMAC_fos_phaseInTime, L252.MAC_prc_phaseInTime, L252.MAC_higwp_phaseInTime,
-                L252.MAC_Ag_TC_SSP1, L252.MAC_An_TC_SSP1, L252.MAC_prc_TC_SSP1, L252.MAC_res_TC_SSP1, L252.MAC_Ag_TC_SSP2,
-                L252.MAC_An_TC_SSP2, L252.MAC_prc_TC_SSP2, L252.MAC_res_TC_SSP2, L252.MAC_Ag_TC_SSP5,
-                L252.MAC_An_TC_SSP5, L252.MAC_prc_TC_SSP5, L252.MAC_res_TC_SSP5)
+                L252.MAC_Ag_TC_SSP1, L252.MAC_An_TC_SSP1, L252.MAC_prc_TC_SSP1, L252.MAC_res_TC_SSP1, L252.MAC_higwp_TC_SSP1,
+                L252.MAC_Ag_TC_SSP2, L252.MAC_An_TC_SSP2, L252.MAC_prc_TC_SSP2, L252.MAC_res_TC_SSP2, L252.MAC_higwp_TC_SSP2,
+                L252.MAC_Ag_TC_SSP5, L252.MAC_An_TC_SSP5, L252.MAC_prc_TC_SSP5, L252.MAC_res_TC_SSP5, L252.MAC_higwp_TC_SSP5)
   } else {
     stop("Unknown command")
   }

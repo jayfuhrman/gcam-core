@@ -91,26 +91,38 @@ module_emissions_batch_all_aglu_emissions_IRR_MGMT_xml <- function(command, ...)
     create_xml("all_aglu_emissions_IRR_MGMT_MAC_highTC.xml") %>%
       add_xml_data(L252.AgMAC, "AgMAC") %>%
       add_xml_data(L252.MAC_an, "MAC") %>%
-      add_xml_data(L252.AgMAC_tc, "AgMACTC_allyear", NULL) %>%
-      add_xml_data(L252.MAC_an_tc, "MACTC_allyear", NULL) %>%
+      add_xml_data(L252.AgMAC_tc, "AgMACTC") %>%
+      add_xml_data(L252.MAC_an_tc, "MACTC") %>%
       add_precursors("L252.MAC_an",
                      "L252.MAC_an_tc",
                      "L252.AgMAC",
                      "L252.AgMAC_tc") ->
       all_aglu_emissions_IRR_MGMT_MAC_highTC.xml
 
+    # temporarily create a "noTC" file assuming tech.change = 0 after 2050
+    # for validation and sensitivity purpose, will be deleted later
+    L252.AgMAC_tc_zero2050 <- L252.AgMAC_tc_average %>%
+      mutate(tech.change = ifelse(tech.change.year > 2050, 0, tech.change))
+
+    L252.MAC_an_tc_zero2050 <- L252.MAC_an_tc_average %>%
+      mutate(tech.change = ifelse(tech.change.year > 2050, 0, tech.change))
+
     create_xml("all_aglu_emissions_IRR_MGMT_MAC_noTC.xml") %>%
       add_xml_data(L252.AgMAC, "AgMAC") %>%
+      add_xml_data(L252.AgMAC_tc_zero2050, "AgMACTC") %>%
       add_xml_data(L252.MAC_an, "MAC") %>%
+      add_xml_data(L252.MAC_an_tc_zero2050, "MACTC") %>%
       add_precursors("L252.MAC_an",
-                     "L252.AgMAC") ->
+                     "L252.MAC_an_tc_average",
+                     "L252.AgMAC",
+                     "L252.AgMAC_tc_average") ->
       all_aglu_emissions_IRR_MGMT_MAC_noTC.xml
 
     create_xml("all_aglu_emissions_IRR_MGMT_MAC_TC.xml") %>%
       add_xml_data(L252.AgMAC, "AgMAC") %>%
-      add_xml_data(L252.AgMAC_tc_average, "AgMACTC_allyear", NULL) %>%
+      add_xml_data(L252.AgMAC_tc_average, "AgMACTC") %>%
       add_xml_data(L252.MAC_an, "MAC") %>%
-      add_xml_data(L252.MAC_an_tc_average, "MACTC_allyear", NULL) %>%
+      add_xml_data(L252.MAC_an_tc_average, "MACTC") %>%
       add_precursors("L252.MAC_an",
                      "L252.MAC_an_tc_average",
                      "L252.AgMAC",

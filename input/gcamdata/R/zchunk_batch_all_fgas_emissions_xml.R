@@ -63,23 +63,29 @@ module_emissions_batch_all_fgas_emissions_xml <- function(command, ...) {
 
     create_xml("all_fgas_emissions_MAC_highTC.xml") %>%
       add_xml_data(L252.MAC_higwp, "MAC") %>%
-      add_xml_data(L252.MAC_higwp_tc, "MACTC_allyear", NULL) %>%
+      add_xml_data(L252.MAC_higwp_tc, "MACTC") %>%
       add_precursors("L252.MAC_higwp", "L252.MAC_higwp_tc") ->
       all_fgas_emissions_MAC_highTC.xml
 
+    # temporarily create a "noTC" file assuming tech.change = 0 after 2050
+    # for validation and sensitivity purpose, will be deleted later
+    L252.MAC_higwp_tc_zero2050 <- L252.MAC_higwp_tc_average %>%
+      mutate(tech.change = ifelse(tech.change.year > 2050, 0, tech.change))
+
     create_xml("all_fgas_emissions_MAC_noTC.xml") %>%
       add_xml_data(L252.MAC_higwp, "MAC") %>%
-      add_precursors("L252.MAC_higwp") ->
+      add_xml_data(L252.MAC_higwp_tc_zero2050, "MACTC") %>%
+      add_precursors("L252.MAC_higwp", "L252.MAC_higwp_tc_average") ->
       all_fgas_emissions_MAC_noTC.xml
 
     create_xml("all_fgas_emissions_MAC_TC.xml") %>%
       add_xml_data(L252.MAC_higwp, "MAC") %>%
-      add_xml_data(L252.MAC_higwp_tc_average, "MACTC_allyear", NULL) %>%
+      add_xml_data(L252.MAC_higwp_tc_average, "MACTC") %>%
       add_precursors("L252.MAC_higwp", "L252.MAC_higwp_tc_average") ->
       all_fgas_emissions_MAC_TC.xml
 
     create_xml("all_fgas_emissions_MAC_PhaseIn.xml") %>%
-      add_xml_data(L252.MAC_higwp_phaseInTime, "MACTC_allyear_PhaseIn", NULL) %>%
+      add_xml_data(L252.MAC_higwp_phaseInTime, "MACPhaseIn") %>%
       add_precursors("L252.MAC_higwp_phaseInTime") ->
       all_fgas_emissions_MAC_PhaseIn.xml
 

@@ -94,24 +94,30 @@ module_emissions_batch_ind_urb_processing_sectors_xml <- function(command, ...) 
 
     create_xml("ind_urb_processing_sectors_MAC_highTC.xml") %>%
       add_xml_data(L252.MAC_prc, "MAC") %>%
-      add_xml_data(L252.MAC_prc_tc, "MACTC_allyear", NULL) %>%
+      add_xml_data(L252.MAC_prc_tc, "MACTC") %>%
       add_precursors("L252.MAC_prc",
                      "L252.MAC_prc_tc") ->
       ind_urb_processing_sectors_MAC_highTC.xml
 
+    # temporarily create a "noTC" file assuming tech.change = 0 after 2050
+    # for validation and sensitivity purpose, will be deleted later
+    L252.MAC_prc_tc_zero2050 <- L252.MAC_prc_tc_average %>%
+      mutate(tech.change = ifelse(tech.change.year > 2050, 0, tech.change))
+
     create_xml("ind_urb_processing_sectors_MAC_noTC.xml") %>%
       add_xml_data(L252.MAC_prc, "MAC") %>%
-      add_precursors("L252.MAC_prc") ->
+      add_xml_data(L252.MAC_prc_tc_zero2050, "MACTC") %>%
+      add_precursors("L252.MAC_prc", "L252.MAC_prc_tc_average") ->
       ind_urb_processing_sectors_MAC_noTC.xml
 
     create_xml("ind_urb_processing_sectors_MAC_TC.xml") %>%
       add_xml_data(L252.MAC_prc, "MAC") %>%
-      add_xml_data(L252.MAC_prc_tc_average, "MACTC_allyear", NULL) %>%
+      add_xml_data(L252.MAC_prc_tc_average, "MACTC") %>%
       add_precursors("L252.MAC_prc", "L252.MAC_prc_tc_average") ->
       ind_urb_processing_sectors_MAC_TC.xml
 
     create_xml("ind_urb_processing_sectors_MAC_PhaseIn.xml") %>%
-      add_xml_data(L252.MAC_prc_phaseInTime, "MACTC_allyear_PhaseIn", NULL) %>%
+      add_xml_data(L252.MAC_prc_phaseInTime, "MACPhaseIn") %>%
       add_precursors("L252.MAC_prc_phaseInTime") ->
       ind_urb_processing_sectors_MAC_PhaseIn.xml
 

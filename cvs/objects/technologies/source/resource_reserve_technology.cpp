@@ -212,6 +212,7 @@ void ResourceReserveTechnology::setProductionState( const int aPeriod ) {
     double annualAvgProd = mTotalReserve / mAvgProdLifetime;
     double productionPhaseScaler;
     bool active = true;
+    double effectiveDeclinePhasePct = aPeriod <= modeltime->getFinalCalibrationPeriod() ? 0.0 : mDeclinePhasePct;
     if( mYear >= currYear || mTotalReserve == 0.0 || ( mYear + mLifetimeYears ) <= currYear ) {
         // variable, retired, or future production
         productionPhaseScaler = 1.0;
@@ -221,11 +222,11 @@ void ResourceReserveTechnology::setProductionState( const int aPeriod ) {
         // phase in production linearly if we are within the buildup years
         productionPhaseScaler = (currYear - mYear + 1) / mBuildupYears;
     }
-    else if((mTotalReserve - mCumulProd[ aPeriod - 1]) <= (mTotalReserve * mDeclinePhasePct)) {
+    else if((mTotalReserve - mCumulProd[ aPeriod - 1]) <= (mTotalReserve * effectiveDeclinePhasePct)) {
         // phase out production linearly if we have depleted enough of the reserve to be
         // in the decline phase
         productionPhaseScaler = max((mTotalReserve - mCumulProd[ aPeriod - 1]) /
-                                    (mTotalReserve * mDeclinePhasePct), 0.0);
+                                    (mTotalReserve * effectiveDeclinePhasePct), 0.0);
     }
     else {
         productionPhaseScaler = 1.0;
@@ -276,8 +277,10 @@ double ResourceReserveTechnology::getFixedOutput( const string& aRegionName,
         const_cast<ResourceReserveTechnology*>(this)->mInvestmentCost = aMarginalRevenue;
     }
 
+    double margRevTest = aHasRequiredInput && aPeriod <= scenario->getModeltime()->getFinalCalibrationPeriod() ? 50.0 : aMarginalRevenue + mInvestmentCost;
+
     return Technology::getFixedOutput( aRegionName, aSectorName, aHasRequiredInput, aRequiredInput,
-                                       aMarginalRevenue + mInvestmentCost, aPeriod );
+                                       margRevTest, aPeriod );
 }
 
 /*!
