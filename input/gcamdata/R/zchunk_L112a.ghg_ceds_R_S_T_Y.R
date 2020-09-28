@@ -192,7 +192,7 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
       EPA_CH4N2O_map <- get_data(all_data, "emissions/EPA_CH4N2O_map")
       GCAM_EPA_CH4N2O_map <- get_data(all_data, "emissions/GCAM_EPA_CH4N2O_energy_map")
       A10.ResSubresourceProdLifetime <- get_data(all_data, "energy/A10.ResSubresourceProdLifetime")
-      
+
       #kbn adding notin for later calculations
       `%notin%` <- Negate(`%in%`)
 
@@ -956,7 +956,7 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
         # Filter out BC OC for its own output
         L124.deforest_coefs_full %>%
           filter(Non.CO2 %in% c("BC", "OC")) ->L125.deforest_coefs_bcoc
-          
+
       # ==============================
       # Part 8: SCALE TO EPA
       # ========================
@@ -1670,11 +1670,26 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
         add_comments("Emissions calculated with CEDS emissions factors.") %>%
         add_comments("Then, emissions factors computed by dividing calculated emissions by energy data") %>%
         add_legacy_name("L112.ghg_tgej_R_en_S_F_Yh") %>%
-        add_precursors("L102.ceds_GFED_nonco2_tg_R_S_F","emissions/CEDS/ceds_sector_map","emissions/CEDS/ceds_fuel_map", "common/GCAM_region_names",
-                       "common/iso_GCAM_regID","energy/mappings/UCD_techs","energy/calibrated_techs","energy/calibrated_techs_bld_det",
-                       "emissions/mappings/Trn_subsector", "emissions/CEDS/CEDS_sector_tech_combustion", "emissions/mappings/calibrated_outresources",
-                       "emissions/mappings/Trn_subsector_revised", "L101.in_EJ_R_en_Si_F_Yh", "emissions/EPA/EPA_2019_raw", "emissions/EPA_CH4N2O_map", "L111.Prod_EJ_R_F_Yh",
-                       "energy/A10.ResSubresourceProdLifetime","emissions/EPA_country_map","emissions/CEDS/CEDS_sector_tech_revised","emissions/CEDS/CEDS_sector_tech_combustion_revised", "emissions/mappings/UCD_techs_emissions_revised") ->
+        add_precursors("L102.ceds_GFED_nonco2_tg_R_S_F",
+                       "emissions/CEDS/ceds_sector_map",
+                       "emissions/CEDS/ceds_fuel_map",
+                       "common/GCAM_region_names",
+                       "common/iso_GCAM_regID",
+                       "energy/mappings/UCD_techs",
+                       "energy/calibrated_techs",
+                       "energy/calibrated_techs_bld_det",
+                       "emissions/mappings/Trn_subsector",
+                       "emissions/CEDS/CEDS_sector_tech_combustion",
+                       "emissions/mappings/calibrated_outresources",
+                       "emissions/mappings/Trn_subsector_revised",
+                       "L101.in_EJ_R_en_Si_F_Yh",
+                       "emissions/EPA/EPA_2019_raw",
+                       "emissions/EPA_CH4N2O_map",
+                       "L111.Prod_EJ_R_F_Yh",
+                       "energy/A10.ResSubresourceProdLifetime",
+                       "emissions/EPA_country_map",
+                       "emissions/CEDS/CEDS_sector_tech_combustion_revised",
+                       "emissions/mappings/UCD_techs_emissions_revised") ->
         L112.ghg_tgej_R_en_S_F_Yh
 
       L113.ghg_tg_R_an_C_Sys_Fd_Yh %>%

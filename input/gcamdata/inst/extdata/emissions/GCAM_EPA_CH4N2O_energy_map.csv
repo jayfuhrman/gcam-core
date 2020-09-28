@@ -126,6 +126,7 @@ industrial processes,other industrial processes,other industrial processes,Indus
 industrial processes,solvents,solvents,Industrial processes
 urban processes,landfills,landfills,Waste
 urban processes,wastewater treatment,wastewater treatment,Waste
+urban processes,waste_incineration,waste_incineration,Waste
 comm cooling,gas,gas,Combustion_general
 comm heating,biomass,biomass,Combustion_Bio
 comm heating,coal,coal,Combustion_general
