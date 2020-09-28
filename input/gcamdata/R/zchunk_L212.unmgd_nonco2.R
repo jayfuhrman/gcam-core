@@ -142,15 +142,14 @@ module_emissions_L212.unmgd_nonco2 <- function(command, ...) {
       left_join_error_no_match(GCAM_region_names, by = "region") %>%
       # Join in emission factor values
       left_join(L125.bcoc_tgbkm2_R_grass_2000, by = c("Non.CO2", "GCAM_region_ID","year")) %>%
-      mutate(em_factor=if_else(is.na(em_factor),0,em_factor)) %>%
-      mutate(em_factor = round(em_factor, emissions.DIGITS_EMISSIONS),
-             input.name = emissions.UNMGD_LAND_INPUT_NAME) %>%
+      mutate(em_factor=if_else(is.na(em_factor),0,round(em_factor, emissions.DIGITS_EMISSIONS)),input.name = emissions.UNMGD_LAND_INPUT_NAME) %>%
       select(region, AgSupplySector, AgSupplySubsector, UnmanagedLandTechnology, year, Non.CO2, emiss.coef = em_factor, input.name)
 
     # L212.Forest: Forest fire and deforestation emissions in all regions
     # Will split up by technology in final product creation
     L212.FOREST <- L124.nonco2_tg_R_forest_Y_GLU %>%
       filter(year %in% emissions.MODEL_BASE_YEARS) %>%
+      filter(year<= max(emissions.DEFOREST_COEF_YEARS)) %>%
       mutate(value = round(value, emissions.DIGITS_EMISSIONS),
              AgSupplySector = "UnmanagedLand",
              AgSupplySubsector = paste(technology, GLU, sep = "_"),
@@ -169,8 +168,7 @@ module_emissions_L212.unmgd_nonco2 <- function(command, ...) {
       left_join_error_no_match(GCAM_region_names, by = "region") %>%
       # Join in emission factor values
       left_join(L125.bcoc_tgbkm2_R_forest_2000, by = c("Non.CO2", "technology", "GCAM_region_ID")) %>%
-      mutate(em_factor = if_else(is.na(em_factor),0,em_factor)) %>%
-      mutate(em_factor = round(em_factor, emissions.DIGITS_EMISSIONS)) %>%
+      mutate(em_factor = if_else(is.na(em_factor),0,round(em_factor, emissions.DIGITS_EMISSIONS))) %>%
       select(region, AgSupplySector, AgSupplySubsector, UnmanagedLandTechnology, year, Non.CO2, emiss.coef = em_factor, technology)
 
     # Reading in default emissions factors for deforestation in future periods.
@@ -186,7 +184,7 @@ module_emissions_L212.unmgd_nonco2 <- function(command, ...) {
       select(region, AgSupplySector, AgSupplySubsector, UnmanagedLandTechnology) %>%
       distinct() %>%
       # Take minimum model year greater than emissions model base years
-      mutate(year = as.integer(min(MODEL_YEARS[MODEL_YEARS > max(emissions.MODEL_BASE_YEARS)]))) %>%
+      mutate(year = as.integer(min(MODEL_YEARS[MODEL_YEARS > max(emissions.DEFOREST_COEF_YEARS)]))) %>%
       repeat_add_columns(L212.default_coefs) %>%
       mutate(emiss.coef = round(emiss.coef, emissions.DIGITS_EMISSIONS)) %>%
       rename_SO2(A_regions) %>%

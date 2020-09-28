@@ -221,9 +221,7 @@ void HectorModel::completeInit( const string& aScenarioName ) {
     // Not implemented in hector at all: regional SO2 (total
     // SO2 is in)
 
-    // Implemented in Hector, but not in GCAM:
-    // CFC11, CFC12, CFC113, CFC114, CFC115,
-    // CCl4, CH3CCl3, HCF22, HCF141b, HCF142b, halon1200, halon1301,
+    // Implemented in Hector, but not in GCAM: CFC11, CFC12, CFC113, CFC114, CFC115, CCl4, CH3CCl3, HCF22, HCF141b, HCF142b, halon1200, halon1301,
     // halon2402, CH3Cl, CH3Br (default emissions will be used for
     // these.
 
@@ -721,7 +719,10 @@ void HectorModel::setupConcTbl() {
     mConcTable["CH4"].resize( size );
     mConcTable["N2O"].resize( size );
     mConcTable["O3"].resize( size );
+    //mConcTable["CO"].resize( size );
+    //mConcTable["NOX"].resize( size );
     mConcTable["CO2"].resize( size );
+    //mConcTable["NMVOC"].resize( size ); 
 }    
 
 // Be sure to keep this in sync with setupRFTbl.  If you add a gas
@@ -739,10 +740,7 @@ void HectorModel::storeRF(const int aYear, const bool aHadError ) {
     mGasRFTable["N2O"][i]      = aHadError ? numeric_limits<double>::quiet_NaN() : mHcore->sendMessage( M_GETDATA, D_RF_N2O );
     mGasRFTable["BC"][i]       = aHadError ? numeric_limits<double>::quiet_NaN() : mHcore->sendMessage( M_GETDATA, D_RF_BC );
     mGasRFTable["OC"][i]       = aHadError ? numeric_limits<double>::quiet_NaN() : mHcore->sendMessage( M_GETDATA, D_RF_OC );
-    mGasRFTable["SO2"][i]      = aHadError ? numeric_limits<double>::quiet_NaN() : mHcore->sendMessage( M_GETDATA, D_RF_SO2 );
-    mGasRFTable["StratH2O"][i] = aHadError ? numeric_limits<double>::quiet_NaN() : mHcore->sendMessage( M_GETDATA, D_RF_H2O );
-    mGasRFTable["DirSO2"][i]   = aHadError ? numeric_limits<double>::quiet_NaN() : mHcore->sendMessage( M_GETDATA, D_RF_SO2d );
-    mGasRFTable["TropO3"][i]   = aHadError ? numeric_limits<double>::quiet_NaN() : mHcore->sendMessage( M_GETDATA, D_RF_O3 );
+    mGasRFTable["SO2"][i]       = aHadError ? numeric_limits<double>::quiet_NaN() : mHcore->sendMessage( M_GETDATA, D_RF_SO2 );
 
 #if 0
     // Forcings that hector can provide, but which are not currently
@@ -751,10 +749,16 @@ void HectorModel::storeRF(const int aYear, const bool aHadError ) {
     // Remember, if you enable them here, then you also have to add
     // them in setupRFTbl below.
 
-    // Not added since can get from SO2 - SO2dir
+    // Water vapor
+    mGasRFTable["H2O"][i]   = mHcore->sendMessage( M_GETDATA, D_RF_H2O );
+    // SO2: direct and indirect
+    mGasRFTable["SO2d"][i]   = mHcore->sendMessage( M_GETDATA, D_RF_SO2d );
     mGasRFTable["SO2i"][i]   = mHcore->sendMessage( M_GETDATA, D_RF_SO2i );
+    // Ozone
+    mGasRFTable["O3"][i]    = mHcore->sendMessage( M_GETDATA, D_RF_O3 );
 
     // Volcanoes!  <- ?
+    mGasRFTable["HFC125"][i]   = mHcore->sendMessage( M_GETDATA, D_RF_HFC125 );
     
 #endif
 
@@ -777,9 +781,6 @@ void HectorModel::setupRFTbl() {
     mGasRFTable["BC"].resize( size );
     mGasRFTable["OC"].resize( size );
     mGasRFTable["SO2"].resize( size );
-    mGasRFTable["DirSO2"].resize( size );
-    mGasRFTable["StratH2O"].resize( size );
-    mGasRFTable["TropO3"].resize( size );
 }
 
 //! Store the global quantities retrieved from Hector, except total

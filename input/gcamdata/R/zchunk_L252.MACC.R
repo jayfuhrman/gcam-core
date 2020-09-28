@@ -123,7 +123,6 @@ module_emissions_L252.MACC <- function(command, ...) {
         repeat_add_columns(tibble(tax = MAC_taxes)) %>%
         repeat_add_columns(tibble(year = c(seq(2020, 2050, 5)))) %>%
         dplyr::arrange_("region", order)
-
       # Next, add in mac.reduction values
       if(error_no_match) {
         # Usually we use left_join_error_no_match
