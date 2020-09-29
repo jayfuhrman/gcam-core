@@ -192,6 +192,7 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
       EPA_CH4N2O_map <- get_data(all_data, "emissions/EPA_CH4N2O_map")
       GCAM_EPA_CH4N2O_map <- get_data(all_data, "emissions/GCAM_EPA_CH4N2O_energy_map")
       A10.ResSubresourceProdLifetime <- get_data(all_data, "energy/A10.ResSubresourceProdLifetime")
+      L111.Prod_EJ_R_F_Yh <- get_data(all_data, "L111.Prod_EJ_R_F_Yh",strip_attributes = TRUE)
 
       #kbn adding notin for later calculations
       `%notin%` <- Negate(`%in%`)
