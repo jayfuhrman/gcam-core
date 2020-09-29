@@ -190,7 +190,7 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
       # YO 2020 EPA scaling
       EPA_master <- get_data(all_data, "emissions/EPA/EPA_2019_raw")
       EPA_CH4N2O_map <- get_data(all_data, "emissions/EPA_CH4N2O_map")
-      EPA_country_map <- get_data(all_data = "emissions/EPA_country_map")
+      EPA_country_map <- get_data(all_data, "emissions/EPA_country_map")
       GCAM_EPA_CH4N2O_map <- get_data(all_data, "emissions/GCAM_EPA_CH4N2O_energy_map")
       A10.ResSubresourceProdLifetime <- get_data(all_data, "energy/A10.ResSubresourceProdLifetime")
       L111.Prod_EJ_R_F_Yh <- get_data(all_data, "L111.Prod_EJ_R_F_Yh",strip_attributes = TRUE)
