@@ -179,7 +179,7 @@ module_emissions_L142.pfc_R_S_T_Y <- function(command, ...) {
     # NEW DATA FLOW - SCALE EDGAR EMISSIONS TO MATCH EPA TOTALS
     # =========================================================
 
-    if (emissions.DATA_SOURCE == "EPA") {
+    if (emissions.Fgas.DATA_SOURCE == "EPA") {
 
       # EDGAR data doesn't have 2010 data, so match EDGAR 2008 data with EPA/GV 2010 data
       # YO MAR 2020

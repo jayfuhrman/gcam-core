@@ -191,7 +191,7 @@ module_emissions_L141.hfc_R_S_T_Y <- function(command, ...) {
     # =========================================================
     # NEW DATA FLOW - SCALE EDGAR EMISSIONS TO MATCH EPA TOTALS
     # =========================================================
-    if (emissions.DATA_SOURCE == "EPA") {
+    if (emissions.Fgas.DATA_SOURCE == "EPA") {
 
       # Prepare EPA data for matching
       # =============================
