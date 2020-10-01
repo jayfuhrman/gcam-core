@@ -60,6 +60,20 @@
 			<Value name = "wind_update">../input/gcamdata/xml/onshore_wind.xml</Value>
 			
 			<Value name = "solver">../input/solution/cal_broyden_config.xml</Value>
+			
+			<!-- China coal constraint to be consistent with IEO 2019 -->
+		<Value name="policy">../input/policy/add/coal_constr_China.xml</Value>
+		
+		<!-- MAC files -->
+		<Value name = "nonco2_energy">../input/gcamdata/xml/all_energy_emissions_MAC_TC.xml</Value>
+		<Value name = "nonco2_fgas">../input/gcamdata/xml/all_fgas_emissions_MAC_TC.xml</Value>
+		<Value name = "nonco2_aglu">../input/gcamdata/xml/all_aglu_emissions_IRR_MGMT_MAC_TC.xml</Value> 
+		<Value name = "nonco2_proc">../input/gcamdata/xml/ind_urb_processing_sectors_MAC_TC.xml</Value>  
+			
+		<Value name = "nonco2_energy">../input/gcamdata/xml/all_energy_emissions_MAC_PhaseIn.xml</Value>
+		<Value name = "nonco2_fgas">../input/gcamdata/xml/all_fgas_emissions_MAC_PhaseIn.xml</Value>
+		<Value name = "nonco2_proc">../input/gcamdata/xml/ind_urb_processing_sectors_MAC_PhaseIn.xml</Value> 
+
 		</FileSet>
 	</ComponentSet>
 	<ComponentSet name="SSP Harmonized">
