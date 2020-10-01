@@ -56,7 +56,7 @@ module_emissions_L141.hfc_R_S_T_Y <- function(command, ...) {
 
     # Load required inputs
     GCAM_region_names <- get_data(all_data, "common/GCAM_region_names")
-    gcam_fgas_tech <- get_data(all_data, "emissions/gcam_fgas_tech")
+    gcam_fgas_tech <- get_data(all_data, "emissions/gcam_fgas_tech", strip_attributes = TRUE)
     other_f_gases <- get_data(all_data, "emissions/other_f_gases")
     L144.in_EJ_R_bld_serv_F_Yh <- get_data(all_data, "L144.in_EJ_R_bld_serv_F_Yh")
     iso_GCAM_regID <- get_data(all_data, "common/iso_GCAM_regID")
