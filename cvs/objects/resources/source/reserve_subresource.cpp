@@ -142,7 +142,7 @@ void ReserveSubResource::annualsupply( const string& aRegionName, const string& 
     double fixedOutput = 0;
     double nonTechInvestmentCost = mEffectivePrice[ aPeriod ] - mTechnology->getNewVintageTechnology( aPeriod )->getCost( aPeriod );
     for( auto techIter = mTechnology->getVintageBegin( aPeriod ); techIter != mTechnology->getVintageEnd( aPeriod ); ++techIter ) {
-        fixedOutput += (*techIter).second->getFixedOutput( aRegionName, aResourceName, mCalProduction[ aPeriod ] != -1.0, "", nonTechInvestmentCost, aPeriod );
+        fixedOutput += (*techIter).second->getFixedOutput( aRegionName, aResourceName, false, "", nonTechInvestmentCost, aPeriod );
     }
     if( mCalProduction[ aPeriod ] != -1 ) {
         // Calculate the ratio from the actual production to the calibrated production
