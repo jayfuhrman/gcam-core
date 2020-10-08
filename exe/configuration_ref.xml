@@ -81,7 +81,7 @@
 		<Value name = "solver">../input/solution/cal_broyden_config.xml</Value>
 		
 		<!-- China coal constraint to be consistent with IEO 2019 -->
-		<Value name="policy">../input/policy/add/coal_constr_China.xml</Value>
+<!-- 		<Value name="policy">../input/policy/add/coal_constr_China.xml</Value> -->
 		
 		<!-- MAC files -->
 		<Value name = "nonco2_energy">../input/gcamdata/xml/all_energy_emissions_MAC_TC.xml</Value>
