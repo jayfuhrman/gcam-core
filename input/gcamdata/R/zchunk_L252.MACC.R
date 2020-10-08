@@ -281,6 +281,8 @@ module_emissions_L252.MACC <- function(command, ...) {
 
     # 1) copy and paste initial values for all future years, assuming constant tech.change (the largest tech.change)
     L252.MAC_summary_TC_post2050 <- L252.MAC_summary_TC_before2050 %>%
+      # some F-gas sectors have tech.change > 1 in 2025, which can weight too much in the post-2050 calculation
+      filter(tech.change < 1) %>%
       group_by(region, supplysector, subsector, stub.technology, Non.CO2, mac.control, key) %>%
       summarise(tech.change = max(tech.change)) %>%
       ungroup() %>%
@@ -291,6 +293,8 @@ module_emissions_L252.MACC <- function(command, ...) {
 
     # 2) copy and paste average values for all future years, assuming constant tech.change (the average tech.change)
     L252.MAC_summary_TC_post2050_average <- L252.MAC_summary_TC_before2050 %>%
+      # some F-gas sectors have tech.change > 1 in 2025, which can weight too much in the post-2050 calculation
+      filter(tech.change < 1) %>%
       group_by(region, supplysector, subsector, stub.technology, Non.CO2, mac.control, key) %>%
       summarise(tech.change = mean(tech.change)) %>%
       ungroup() %>%

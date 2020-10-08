@@ -1313,8 +1313,8 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
         L131.nonco2_tg_R_prc_S_S_Yh_EPAscaler %>%
           filter(emscaler != 1 & year == MODEL_FINAL_BASE_YEAR) %>%
           group_by(EPA_sector, Non.CO2, year) %>%
-          mutate(lower = quantile(emscaler, 0.25) - 1.5 * IQR(emscaler),
-                 upper = quantile(emscaler, 0.75) + 1.5 * IQR(emscaler)) %>%
+          mutate(lower = quantile(emscaler, 0.25) - 3 *   IQR(emscaler),
+                 upper = quantile(emscaler, 0.75) + 3 *   IQR(emscaler)) %>%
           ungroup() %>%
           group_by(GCAM_region_ID, EPA_sector, Non.CO2, year) %>%
           mutate(emscaler = max(emscaler, lower)) %>%
@@ -1388,8 +1388,8 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
         L113.ghg_tg_R_an_C_Sys_Fd_Yh_EPAscaler %>%
           filter(emscaler != 1 & year == MODEL_FINAL_BASE_YEAR) %>%
           group_by(EPA_sector, Non.CO2, year) %>%
-          mutate(lower = quantile(emscaler, 0.25) - 1.5 * IQR(emscaler),
-                 upper = quantile(emscaler, 0.75) + 1.5 * IQR(emscaler)) %>%
+          mutate(lower = quantile(emscaler, 0.25) - 3 *   IQR(emscaler),
+                 upper = quantile(emscaler, 0.75) + 3 *   IQR(emscaler)) %>%
           ungroup() %>%
           group_by(GCAM_region_ID, EPA_sector, Non.CO2, year) %>%
           mutate(emscaler = max(emscaler, lower)) %>%
@@ -1466,8 +1466,8 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
         L121.nonco2_tg_R_awb_C_Y_GLU_EPAscaler %>%
           filter(emscaler != 1 & year == MODEL_FINAL_BASE_YEAR) %>%
           group_by(EPA_sector, Non.CO2, year) %>%
-          mutate(lower = quantile(emscaler, 0.25) - 1.5 * IQR(emscaler),
-                 upper = quantile(emscaler, 0.75) + 1.5 * IQR(emscaler)) %>%
+          mutate(lower = quantile(emscaler, 0.25) - 3 *   IQR(emscaler),
+                 upper = quantile(emscaler, 0.75) + 3 *   IQR(emscaler)) %>%
           ungroup() %>%
           group_by(GCAM_region_ID, EPA_sector, Non.CO2, year) %>%
           mutate(emscaler = max(emscaler, lower)) %>%
@@ -1541,8 +1541,8 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
         L122.ghg_tg_R_agr_C_Y_GLU_EPAscaler %>%
           filter(emscaler != 1 & year == MODEL_FINAL_BASE_YEAR) %>%
           group_by(EPA_sector, Non.CO2, year) %>%
-          mutate(lower = quantile(emscaler, 0.25) - 1.5 * IQR(emscaler),
-                 upper = quantile(emscaler, 0.75) + 1.5 * IQR(emscaler)) %>%
+          mutate(lower = quantile(emscaler, 0.25) - 3 *   IQR(emscaler),
+                 upper = quantile(emscaler, 0.75) + 3 *   IQR(emscaler)) %>%
           ungroup() %>%
           group_by(GCAM_region_ID, EPA_sector, Non.CO2, year) %>%
           mutate(emscaler = max(emscaler, lower)) %>%
@@ -1602,8 +1602,8 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
         L112.ghg_tg_R_en_S_F_Yh_EPAscaler %>%
           filter(emscaler != 1 & year == MODEL_FINAL_BASE_YEAR) %>%
           group_by(EPA_sector, Non.CO2, year) %>%
-          mutate(lower = quantile(emscaler, 0.25) - 1.5 * IQR(emscaler),
-                 upper = quantile(emscaler, 0.75) + 1.5 * IQR(emscaler)) %>%
+          mutate(lower = quantile(emscaler, 0.25) - 3 *   IQR(emscaler),
+                 upper = quantile(emscaler, 0.75) + 3 *   IQR(emscaler)) %>%
           ungroup() %>%
           group_by(GCAM_region_ID, EPA_sector, Non.CO2, year) %>%
           mutate(emscaler = max(emscaler, lower)) %>%
