@@ -13,9 +13,9 @@ Energy,NGO,Oil Product,Fugitive_oil
 Energy,NGO,Oil Refining,Fugitive_oil
 Energy,OtherEnergy,,Fugitive_other
 Energy,Combustion,StatMob,Combustion_general
-Industrial Processes,NitricAdipic,Adipic,Industrial processes
-Industrial Processes,NitricAdipic,Nitric,Industrial processes
-Industrial Processes,OtherIPPU,,Industrial processes
+Industrial Processes,NitricAdipic,Adipic,Industrial processes Adipic
+Industrial Processes,NitricAdipic,Nitric,Industrial processes Nitric
+Industrial Processes,OtherIPPU,,Industrial processes Other
 Agriculture,AgSoils,,Agriculture
 Agriculture,Livestock,Enteric,Agriculture
 Agriculture,Livestock,Manure,Agriculture

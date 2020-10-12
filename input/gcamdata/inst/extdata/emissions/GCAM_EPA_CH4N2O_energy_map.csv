@@ -119,11 +119,11 @@ trn_pass_road_bus,Heavy Bus,NG,Combustion_general
 trn_pass_road_bus,Light Bus,Liquids,Combustion_general
 trn_pass_road_bus,Light Bus,NG,Combustion_general
 trn_pass_road_LDV_2W,Scooter,Liquids,Combustion_general
-industrial processes,adipic acid,adipic acid,Industrial processes
-industrial processes,HCFC_22_Prod,HCFC_22_Prod,Industrial processes
-industrial processes,nitric acid,nitric acid,Industrial processes
-industrial processes,other industrial processes,other industrial processes,Industrial processes
-industrial processes,solvents,solvents,Industrial processes
+industrial processes,adipic acid,adipic acid,Industrial processes Adipic
+industrial processes,HCFC_22_Prod,HCFC_22_Prod,Industrial processes Other
+industrial processes,nitric acid,nitric acid,Industrial processes Nitric
+industrial processes,other industrial processes,other industrial processes,Industrial processes Other
+industrial processes,solvents,solvents,Industrial processes Other
 urban processes,landfills,landfills,Waste
 urban processes,wastewater treatment,wastewater treatment,Waste
 urban processes,waste_incineration,waste_incineration,Waste
