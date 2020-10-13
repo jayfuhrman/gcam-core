@@ -24,8 +24,10 @@ module_gcamusa_L273.en_ghg_emissions_USA <- function(command, ...) {
              "L1231.in_EJ_state_elec_F_tech",
              "L1322.in_EJ_state_Fert_Yh",
              "L201.en_ghg_emissions",
+             "L201.OutputEmissions_elec",
              "L201.ghg_res",
              "L241.nonco2_tech_coeff",
+             "L241.OutputEmissCoeff_elec",
              "L241.hfc_all",
              "L241.pfc_all",
              "L252.ResMAC_fos",
@@ -70,8 +72,10 @@ module_gcamusa_L273.en_ghg_emissions_USA <- function(command, ...) {
     L1231.in_EJ_state_elec_F_tech <- get_data(all_data, "L1231.in_EJ_state_elec_F_tech")
     L1322.in_EJ_state_Fert_Yh <- get_data(all_data, "L1322.in_EJ_state_Fert_Yh")
     L201.en_ghg_emissions <- get_data(all_data, "L201.en_ghg_emissions")
+    L201.OutputEmissions_elec <- get_data(all_data, "L201.OutputEmissions_elec")
     L201.ghg_res <- get_data(all_data, "L201.ghg_res")
     L241.nonco2_tech_coeff <- get_data(all_data, "L241.nonco2_tech_coeff")
+    L241.OutputEmissCoeff_elec <- get_data(all_data, "L241.OutputEmissCoeff_elec")
     L241.hfc_all <- get_data(all_data, "L241.hfc_all")
     L241.pfc_all <- get_data(all_data, "L241.pfc_all")
     L252.ResMAC_fos <- get_data(all_data, "L252.ResMAC_fos")
@@ -141,7 +145,7 @@ module_gcamusa_L273.en_ghg_emissions_USA <- function(command, ...) {
        L273.ref_ghg_tech_coeff_USA
 
      # Write electricity emission coefficients to states for technologies shared by GCAMUSA and emissions data
-     L241.nonco2_tech_coeff %>%
+     L241.OutputEmissCoeff_elec %>%
        filter(region == gcam.USA_REGION & Non.CO2 %in% c("N2O","CH4") & supplysector == "electricity") ->
        L241.elc_ghg_tech_coeff_USA
 
@@ -180,14 +184,20 @@ module_gcamusa_L273.en_ghg_emissions_USA <- function(command, ...) {
        spread(Non.CO2, input.emissions) %>%
        ###NOTE: emissions from coal use in commercial buildings "other" category does not have an equivalent representation
        #in the fifty state data. For now move these emissions over to comm heating
-       mutate(supplysector = if_else(grepl("comm",supplysector) & subsector == "coal","comm heating", supplysector)) ->
+       mutate(supplysector = if_else(grepl("comm",supplysector) & subsector == "coal","comm heating", supplysector)) %>%
+       ## bind electricity emissions from USA
+       bind_rows(
+         L201.OutputEmissions_elec %>%
+           filter(region == gcam.USA_REGION & !grepl("trn",supplysector)) %>%
+           spread(Non.CO2, input.emissions)
+       )->
        en_ghg_emissions_USA
 
      # Organize the state fuel input data
      # Electricity
      L1231.in_EJ_state_elec_F_tech %>%
-       mutate(sector = "electricity") %>%
-       filter(year %in% en_ghg_emissions_USA$year & technology %in% en_ghg_emissions_USA$stub.technology) ->
+       mutate(sector = "electricity generation") %>%
+       filter(year %in% en_ghg_emissions_USA$year & fuel %in% en_ghg_emissions_USA$stub.technology) ->
        elec_fuel_input_state
 
      # Fertilizer
@@ -215,7 +225,8 @@ module_gcamusa_L273.en_ghg_emissions_USA <- function(command, ...) {
      # Bind the fuel input tables into one
      ind_fuel_input_state %>%
        rename(value = fuel_input) %>%
-       bind_rows(elec_fuel_input_state,
+       bind_rows(elec_fuel_input_state %>%
+                   mutate(sector="electricity"),
                  fert_fuel_input_state) ->
        fuel_input_state
 
@@ -282,9 +293,11 @@ module_gcamusa_L273.en_ghg_emissions_USA <- function(command, ...) {
      L273.en_ghg_emissions_USA %>%
        select(LEVEL2_DATA_NAMES$StubTechYr, "Non.CO2", "input.emissions") %>%
        mutate(input.emissions = round(input.emissions, emissions.DIGITS_EMISSIONS)) %>%
-       ## Thhe stub.techs and supplysectors here do not match. Therefore we join via the subsectors and we want to keep the first
+       ## The stub.techs and supplysectors here do not match. Therefore we join via the subsectors and we want to keep the first
        ## joined value to avoid duplicates
-       left_join_keep_first_only(EnTechInputNameMap %>% select(-stub.technology), by = c("supplysector", "subsector"))->
+       left_join_keep_first_only(EnTechInputNameMap %>% select(-stub.technology), by = c("supplysector", "subsector")) %>%
+       ## replace NAs with 0's for input emissions (mainly for biomass)
+       filter(!(is.na(input.emissions)))->
        L273.en_ghg_emissions_USA
 
      # 2d. Output emissions
@@ -448,6 +461,7 @@ module_gcamusa_L273.en_ghg_emissions_USA <- function(command, ...) {
                      "L201.en_ghg_emissions",
                      "L201.ghg_res",
                      "L241.nonco2_tech_coeff",
+                     "L241.OutputEmissCoeff_elec",
                      "L241.hfc_all",
                      "L241.pfc_all",
                      "L252.ResMAC_fos",
@@ -478,6 +492,7 @@ module_gcamusa_L273.en_ghg_emissions_USA <- function(command, ...) {
                       "energy/mappings/UCD_techs_revised",
                       "L201.ghg_res",
                       "L241.nonco2_tech_coeff",
+                      "L241.OutputEmissCoeff_elec",
                       "L241.hfc_all",
                       "L241.pfc_all",
                       "L252.ResMAC_fos",
@@ -502,6 +517,7 @@ module_gcamusa_L273.en_ghg_emissions_USA <- function(command, ...) {
                       "L201.en_ghg_emissions",
                       "L201.ghg_res",
                       "L241.nonco2_tech_coeff",
+                      "L241.OutputEmissCoeff_elec",
                       "L241.hfc_all",
                       "L241.pfc_all",
                       "L252.ResMAC_fos",
@@ -526,6 +542,7 @@ module_gcamusa_L273.en_ghg_emissions_USA <- function(command, ...) {
                       "L201.en_ghg_emissions",
                       "L201.ghg_res",
                       "L241.nonco2_tech_coeff",
+                      "L241.OutputEmissCoeff_elec",
                       "L241.hfc_all",
                       "L241.pfc_all",
                       "L252.ResMAC_fos",
