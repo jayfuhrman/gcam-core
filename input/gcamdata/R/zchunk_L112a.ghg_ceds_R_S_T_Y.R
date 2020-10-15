@@ -200,7 +200,7 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
 
       #kbn calculate emissions for different modes here
       # ===========================
-      #Part 1: Distributing road emissions from CEDS into different modes using GAINS data
+      # Part 1: Distributing road emissions from CEDS into different modes using GAINS data #
       # ===========================
 
       #Filter out road emissions
@@ -291,7 +291,7 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
 
 
       # ===========================
-      # Part 2:Combustion Energy Emissions
+      #Part 2:Combustion Energy Emissions#
       # ===========================
 
       # Filter down to combustion emissions plus fugitive process emissions from combustion resource production (out_resources)
@@ -914,50 +914,50 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
       L124.deforest_coefs_full %>%
         filter(Non.CO2 %in% c("BC", "OC")) ->L125.deforest_coefs_bcoc
 
-        L125.bcoc_tgbkm2_R_defor_2000 <-  L125.bcoc_tgbkm2_R_GLU_defor_2000 %>%
-          group_by(GCAM_region_ID, Land_Type) %>%
-          summarise_at(vars(D_driver), sum)
+      L125.bcoc_tgbkm2_R_defor_2000 <-  L125.bcoc_tgbkm2_R_GLU_defor_2000 %>%
+        group_by(GCAM_region_ID, Land_Type) %>%
+        summarise_at(vars(D_driver), sum)
 
 
-        L125.bcoc_tgbkm2_R_forest_2000_data %>%
-          filter(year==2000) %>%
-          filter(technology=="ForestFire") %>%
-          group_by(GCAM_region_ID,Land_Type,year,Non.CO2,technology) %>%
-          mutate(value=sum(value)) %>%
-          ungroup() %>%
-          select(GCAM_region_ID,Land_Type,year,Non.CO2,technology,value) %>%
-          distinct() %>%
-          #Join in forest fire data
-          inner_join(L125.bcoc_tgbkm2_R_forestfire_2000,by=c("GCAM_region_ID","Land_Type")) %>%
-          group_by("GCAM_region_ID","Land_Type","technology","Non.CO2") %>%
-          mutate(em_factor=(value)/(FF_driver)) %>%
-          ungroup() %>%
-          select(GCAM_region_ID,Land_Type,Non.CO2,technology,em_factor) %>%
-          distinct()->BC_OC_Forest
+      L125.bcoc_tgbkm2_R_forest_2000_data %>%
+        filter(year==2000) %>%
+        filter(technology=="ForestFire") %>%
+        group_by(GCAM_region_ID,Land_Type,year,Non.CO2,technology) %>%
+        mutate(value=sum(value)) %>%
+        ungroup() %>%
+        select(GCAM_region_ID,Land_Type,year,Non.CO2,technology,value) %>%
+        distinct() %>%
+        #Join in forest fire data
+        inner_join(L125.bcoc_tgbkm2_R_forestfire_2000,by=c("GCAM_region_ID","Land_Type")) %>%
+        group_by("GCAM_region_ID","Land_Type","technology","Non.CO2") %>%
+        mutate(em_factor=(value)/(FF_driver)) %>%
+        ungroup() %>%
+        select(GCAM_region_ID,Land_Type,Non.CO2,technology,em_factor) %>%
+        distinct()->BC_OC_Forest
 
-        L125.bcoc_tgbkm2_R_forest_2000_data %>%
-          filter(year==2000) %>%
-          filter(technology=="Deforest") %>%
-          group_by(GCAM_region_ID,Land_Type,year,Non.CO2,technology) %>%
-          mutate(value=sum(value)) %>%
-          ungroup() %>%
-          select(GCAM_region_ID,Land_Type,year,Non.CO2,technology,value) %>%
-          distinct() %>%
-          #Join in de-forest data
-          inner_join(L125.bcoc_tgbkm2_R_defor_2000,by=c("GCAM_region_ID", "Land_Type")) %>%
-          group_by("GCAM_region_ID","Land_Type","technology","Non.CO2") %>%
-          mutate(em_factor=(value)/(D_driver)) %>%
-          ungroup() %>%
-          select(GCAM_region_ID,Land_Type,Non.CO2,technology,em_factor) %>%
-          distinct()->BC_OC_Deforest
+      L125.bcoc_tgbkm2_R_forest_2000_data %>%
+        filter(year==2000) %>%
+        filter(technology=="Deforest") %>%
+        group_by(GCAM_region_ID,Land_Type,year,Non.CO2,technology) %>%
+        mutate(value=sum(value)) %>%
+        ungroup() %>%
+        select(GCAM_region_ID,Land_Type,year,Non.CO2,technology,value) %>%
+        distinct() %>%
+        #Join in de-forest data
+        inner_join(L125.bcoc_tgbkm2_R_defor_2000,by=c("GCAM_region_ID", "Land_Type")) %>%
+        group_by("GCAM_region_ID","Land_Type","technology","Non.CO2") %>%
+        mutate(em_factor=(value)/(D_driver)) %>%
+        ungroup() %>%
+        select(GCAM_region_ID,Land_Type,Non.CO2,technology,em_factor) %>%
+        distinct()->BC_OC_Deforest
 
-        L125.bcoc_tgbkm2_R_forest_2000<-bind_rows(BC_OC_Deforest,BC_OC_Forest) %>%
-          mutate(em_factor=if_else(is.finite(em_factor),em_factor,0))
+      L125.bcoc_tgbkm2_R_forest_2000<-bind_rows(BC_OC_Deforest,BC_OC_Forest) %>%
+        mutate(em_factor=if_else(is.finite(em_factor),em_factor,0))
 
 
-        # Filter out BC OC for its own output
-        L124.deforest_coefs_full %>%
-          filter(Non.CO2 %in% c("BC", "OC")) ->L125.deforest_coefs_bcoc
+      # Filter out BC OC for its own output
+      L124.deforest_coefs_full %>%
+        filter(Non.CO2 %in% c("BC", "OC")) ->L125.deforest_coefs_bcoc
 
       # ==============================
       # Part 8: SCALE TO EPA
@@ -1303,29 +1303,18 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
           select(-EPA_emissions, -tot_emissions) ->
           L131.nonco2_tg_R_prc_S_S_Yh_EPAscaler
 
-        # # 3) adjust scalers for outliers for the final calibration year
-        # # becuase it will heavily determine the future emission trends
-        # # 3.1) leave emscaler = 1 part as it is
-        # L131.nonco2_tg_R_prc_S_S_Yh_EPAscaler %>%
-        #   filter(!(emscaler != 1 & year == MODEL_FINAL_BASE_YEAR)) -> L131.nonco2_tg_R_prc_S_S_Yh_EPAscaler_unchanged
-        #
-        # # 3.2) adjust scalers for outliers based on 1.5 IQR
-        # L131.nonco2_tg_R_prc_S_S_Yh_EPAscaler %>%
-        #   filter(emscaler != 1 & year == MODEL_FINAL_BASE_YEAR) %>%
-        #   group_by(EPA_sector, Non.CO2, year) %>%
-        #   mutate(lower = quantile(emscaler, 0.25) - 3 *   IQR(emscaler),
-        #          upper = quantile(emscaler, 0.75) + 3 *   IQR(emscaler)) %>%
-        #   ungroup() %>%
-        #   group_by(GCAM_region_ID, EPA_sector, Non.CO2, year) %>%
-        #   mutate(emscaler = max(emscaler, lower)) %>%
-        #   mutate(emscaler = min(emscaler, upper)) %>%
-        #   select(-lower, -upper) %>%
-        #   ungroup() ->
-        #   L131.nonco2_tg_R_prc_S_S_Yh_EPAscaler_changed
-        #
-        # # 3.3) combine
-        # L131.nonco2_tg_R_prc_S_S_Yh_EPAscaler <- rbind(L131.nonco2_tg_R_prc_S_S_Yh_EPAscaler_unchanged,
-        #                                                L131.nonco2_tg_R_prc_S_S_Yh_EPAscaler_changed)
+        # 3) specially handling outliers based on manual check
+        # becuase they will heavily determine the future emission trends
+
+        # CH4 in GCAM region 4 (Africa_Southern) from "other industrial process" is too high in EPA data, skip scaling
+        # Africa_Southern CH4 from supplysector "other industrial procss" includes technologies of
+        # "other industrial processes", "solvents", none of them should have high CH4 emissions
+
+        L131.nonco2_tg_R_prc_S_S_Yh_EPAscaler %>%
+          mutate(emscaler = ifelse((GCAM_region_ID == 4 &
+                                      Non.CO2 == "CH4" &
+                                      EPA_sector == "Industrial processes Other"), 1, emscaler)) ->
+          L131.nonco2_tg_R_prc_S_S_Yh_EPAscaler
 
         # 4) do the actual scaling for industrial and urban processes emissions
         L131.nonco2_tg_R_prc_S_S_Yh_change %>%
@@ -1378,32 +1367,7 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
           select(-EPA_emissions, -tot_emissions) ->
           L113.ghg_tg_R_an_C_Sys_Fd_Yh_EPAscaler
 
-        # # 3) adjust scalers for outliers for the final calibration year
-        # # becuase it will heavily determine the future emission trends
-        # # 3.1) leave emscaler = 1 part as it is
-        # L113.ghg_tg_R_an_C_Sys_Fd_Yh_EPAscaler %>%
-        #   filter(!(emscaler != 1 & year == MODEL_FINAL_BASE_YEAR)) -> L113.ghg_tg_R_an_C_Sys_Fd_Yh_EPAscaler_unchanged
-        #
-        # # 3.2) adjust scalers for outliers based on 1.5 IQR
-        # L113.ghg_tg_R_an_C_Sys_Fd_Yh_EPAscaler %>%
-        #   filter(emscaler != 1 & year == MODEL_FINAL_BASE_YEAR) %>%
-        #   group_by(EPA_sector, Non.CO2, year) %>%
-        #   mutate(lower = quantile(emscaler, 0.25) - 3 *   IQR(emscaler),
-        #          upper = quantile(emscaler, 0.75) + 3 *   IQR(emscaler)) %>%
-        #   ungroup() %>%
-        #   group_by(GCAM_region_ID, EPA_sector, Non.CO2, year) %>%
-        #   mutate(emscaler = max(emscaler, lower)) %>%
-        #   mutate(emscaler = min(emscaler, upper)) %>%
-        #   select(-lower, -upper) %>%
-        #   ungroup() ->
-        #   L113.ghg_tg_R_an_C_Sys_Fd_Yh_EPAscaler_changed
-        #
-        # # 3.3) combine
-        # L113.ghg_tg_R_an_C_Sys_Fd_Yh_EPAscaler <- rbind(L113.ghg_tg_R_an_C_Sys_Fd_Yh_EPAscaler_unchanged,
-        #                                                 L113.ghg_tg_R_an_C_Sys_Fd_Yh_EPAscaler_changed)
-
-
-        # 4) do the actual scaling for livestock-related emissions
+        # 3) do the actual scaling for livestock-related emissions
         L113.ghg_tg_R_an_C_Sys_Fd_Yh_change %>%
           mutate(EPA_sector = "Agriculture") %>%
           left_join_error_no_match(L113.ghg_tg_R_an_C_Sys_Fd_Yh_EPAscaler,
@@ -1456,29 +1420,13 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
           select(-EPA_emissions, -tot_emissions) ->
           L121.nonco2_tg_R_awb_C_Y_GLU_EPAscaler
 
-        # # 3) adjust scalers for outliers for the final calibration year
-        # # becuase it will heavily determine the future emission trends
-        # # 3.1) leave emscaler = 1 part as it is
-        # L121.nonco2_tg_R_awb_C_Y_GLU_EPAscaler %>%
-        #   filter(!(emscaler != 1 & year == MODEL_FINAL_BASE_YEAR)) -> L121.nonco2_tg_R_awb_C_Y_GLU_EPAscaler_unchanged
-        #
-        # # 3.2) adjust scalers for outliers based on 1.5 IQR
-        # L121.nonco2_tg_R_awb_C_Y_GLU_EPAscaler %>%
-        #   filter(emscaler != 1 & year == MODEL_FINAL_BASE_YEAR) %>%
-        #   group_by(EPA_sector, Non.CO2, year) %>%
-        #   mutate(lower = quantile(emscaler, 0.25) - 3 *   IQR(emscaler),
-        #          upper = quantile(emscaler, 0.75) + 3 *   IQR(emscaler)) %>%
-        #   ungroup() %>%
-        #   group_by(GCAM_region_ID, EPA_sector, Non.CO2, year) %>%
-        #   mutate(emscaler = max(emscaler, lower)) %>%
-        #   mutate(emscaler = min(emscaler, upper)) %>%
-        #   select(-lower, -upper) %>%
-        #   ungroup() ->
-        #   L121.nonco2_tg_R_awb_C_Y_GLU_EPAscaler_changed
-        #
-        # # 3.3) combine
-        # L121.nonco2_tg_R_awb_C_Y_GLU_EPAscaler <- rbind(L121.nonco2_tg_R_awb_C_Y_GLU_EPAscaler_unchanged,
-        #                                                 L121.nonco2_tg_R_awb_C_Y_GLU_EPAscaler_changed)
+        # 3) specially handling outliers based on manual check
+        # becuase they will heavily determine the future emission trends
+        # N2O_AWB in GCAM region 26 (South America_Southern) is too high in EPA data (otherAg catagory), skip scaling
+
+        L121.nonco2_tg_R_awb_C_Y_GLU_EPAscaler %>%
+          mutate(emscaler = ifelse((GCAM_region_ID == 26 & Non.CO2 == "N2O_AWB"), 1, emscaler)) ->
+          L121.nonco2_tg_R_awb_C_Y_GLU_EPAscaler
 
         # 4) do the actual scaling for agriculture emissions
         L121.nonco2_tg_R_awb_C_Y_GLU_change %>%
@@ -1531,31 +1479,7 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
           select(-EPA_emissions, -tot_emissions) ->
           L122.ghg_tg_R_agr_C_Y_GLU_EPAscaler
 
-        # # 3) adjust scalers for outliers for the final calibration year
-        # # becuase it will heavily determine the future emission trends
-        # # 3.1) leave emscaler = 1 part as it is
-        # L122.ghg_tg_R_agr_C_Y_GLU_EPAscaler %>%
-        #   filter(!(emscaler != 1 & year == MODEL_FINAL_BASE_YEAR)) -> L122.ghg_tg_R_agr_C_Y_GLU_EPAscaler_unchanged
-        #
-        # # 3.2) adjust scalers for outliers based on 1.5 IQR
-        # L122.ghg_tg_R_agr_C_Y_GLU_EPAscaler %>%
-        #   filter(emscaler != 1 & year == MODEL_FINAL_BASE_YEAR) %>%
-        #   group_by(EPA_sector, Non.CO2, year) %>%
-        #   mutate(lower = quantile(emscaler, 0.25) - 3 *   IQR(emscaler),
-        #          upper = quantile(emscaler, 0.75) + 3 *   IQR(emscaler)) %>%
-        #   ungroup() %>%
-        #   group_by(GCAM_region_ID, EPA_sector, Non.CO2, year) %>%
-        #   mutate(emscaler = max(emscaler, lower)) %>%
-        #   mutate(emscaler = min(emscaler, upper)) %>%
-        #   select(-lower, -upper) %>%
-        #   ungroup() ->
-        #   L122.ghg_tg_R_agr_C_Y_GLU_EPAscaler_changed
-        #
-        # # 3.3) combine
-        # L122.ghg_tg_R_agr_C_Y_GLU_EPAscaler <- rbind(L122.ghg_tg_R_agr_C_Y_GLU_EPAscaler_unchanged,
-        #                                              L122.ghg_tg_R_agr_C_Y_GLU_EPAscaler_changed)
-
-        # 4) do the actual scaling for agriculture crop emissions
+        # 3) do the actual scaling for agriculture crop emissions
         L122.ghg_tg_R_agr_C_Y_GLU_change %>%
           mutate(EPA_sector = "Agriculture") %>%
           left_join_error_no_match(L122.ghg_tg_R_agr_C_Y_GLU_EPAscaler,
@@ -1592,29 +1516,13 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
           select(-EPA_emissions, -tot_emissions) ->
           L112.ghg_tg_R_en_S_F_Yh_EPAscaler
 
-        # # 2) adjust scalers for outliers for the final calibration year
-        # # becuase it will heavily determine the future emission trends
-        # # 2.1) leave emscaler = 1 part as it is
-        # L112.ghg_tg_R_en_S_F_Yh_EPAscaler %>%
-        #   filter(!(emscaler != 1 & year == MODEL_FINAL_BASE_YEAR)) -> L112.ghg_tg_R_en_S_F_Yh_EPAscaler_unchanged
-        #
-        # # 2.2) adjust scalers for outliers based on 1.5 IQR
-        # L112.ghg_tg_R_en_S_F_Yh_EPAscaler %>%
-        #   filter(emscaler != 1 & year == MODEL_FINAL_BASE_YEAR) %>%
-        #   group_by(EPA_sector, Non.CO2, year) %>%
-        #   mutate(lower = quantile(emscaler, 0.25) - 3 *   IQR(emscaler),
-        #          upper = quantile(emscaler, 0.75) + 3 *   IQR(emscaler)) %>%
-        #   ungroup() %>%
-        #   group_by(GCAM_region_ID, EPA_sector, Non.CO2, year) %>%
-        #   mutate(emscaler = max(emscaler, lower)) %>%
-        #   mutate(emscaler = min(emscaler, upper)) %>%
-        #   select(-lower, -upper) %>%
-        #   ungroup() ->
-        #   L112.ghg_tg_R_en_S_F_Yh_EPAscaler_changed
-        #
-        # # 2.3) combine
-        # L112.ghg_tg_R_en_S_F_Yh_EPAscaler <- rbind(L112.ghg_tg_R_en_S_F_Yh_EPAscaler_unchanged,
-        #                                            L112.ghg_tg_R_en_S_F_Yh_EPAscaler_changed)
+        # 3) specially handling outliers based on manual check
+        # becuase they will heavily determine the future emission trends
+        # N2O in GCAM region 5 (Africa_Western) is too high in EPA data (energy combustion, non-bio), skip scaling
+
+        L112.ghg_tg_R_en_S_F_Yh_EPAscaler %>%
+          mutate(emscaler = ifelse((GCAM_region_ID == 5 & Non.CO2 == "N2O"), 1, emscaler)) ->
+          L112.ghg_tg_R_en_S_F_Yh_EPAscaler
 
         # 3) do the actual scaling for combustion-related emissions
         L112.ghg_tg_R_en_S_F_Yh %>%
