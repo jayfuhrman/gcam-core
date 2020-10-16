@@ -1312,8 +1312,9 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
 
         L131.nonco2_tg_R_prc_S_S_Yh_EPAscaler %>%
           mutate(emscaler = ifelse((GCAM_region_ID == 4 &
-                                      Non.CO2 == "CH4" &
-                                      EPA_sector == "Industrial processes Other"), 1, emscaler)) ->
+                                    Non.CO2 == "CH4" &
+                                    EPA_sector == "Industrial processes Other") &
+                                    year == 2015, 1, emscaler)) ->
           L131.nonco2_tg_R_prc_S_S_Yh_EPAscaler
 
         # 4) do the actual scaling for industrial and urban processes emissions
@@ -1425,7 +1426,7 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
         # N2O_AWB in GCAM region 26 (South America_Southern) is too high in EPA data (otherAg catagory), skip scaling
 
         L121.nonco2_tg_R_awb_C_Y_GLU_EPAscaler %>%
-          mutate(emscaler = ifelse((GCAM_region_ID == 26 & Non.CO2 == "N2O_AWB"), 1, emscaler)) ->
+          mutate(emscaler = ifelse((GCAM_region_ID == 26 & Non.CO2 == "N2O_AWB" & year == 2015), 1, emscaler)) ->
           L121.nonco2_tg_R_awb_C_Y_GLU_EPAscaler
 
         # 4) do the actual scaling for agriculture emissions
@@ -1522,11 +1523,11 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
         # CH4 in GCAM region 2, 4, 5, 27 are too high in EPA data (energy combustion, non-bio), skip scaling
 
         L112.ghg_tg_R_en_S_F_Yh_EPAscaler %>%
-          mutate(emscaler = ifelse((GCAM_region_ID %in% c(2, 4, 5) & Non.CO2 == "N2O"), 1, emscaler)) ->
+          mutate(emscaler = ifelse((GCAM_region_ID %in% c(2, 4, 5) & Non.CO2 == "N2O" & year == 2015), 1, emscaler)) ->
           L112.ghg_tg_R_en_S_F_Yh_EPAscaler
 
         L112.ghg_tg_R_en_S_F_Yh_EPAscaler %>%
-          mutate(emscaler = ifelse((GCAM_region_ID %in% c(2, 4, 5, 27) & Non.CO2 == "CH4"), 1, emscaler)) ->
+          mutate(emscaler = ifelse((GCAM_region_ID %in% c(2, 4, 5, 27) & Non.CO2 == "CH4" & year == 2015), 1, emscaler)) ->
           L112.ghg_tg_R_en_S_F_Yh_EPAscaler
 
         # 4) do the actual scaling for combustion-related emissions
