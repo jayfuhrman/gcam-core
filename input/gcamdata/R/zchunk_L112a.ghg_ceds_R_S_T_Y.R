@@ -1313,8 +1313,7 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
         L131.nonco2_tg_R_prc_S_S_Yh_EPAscaler %>%
           mutate(emscaler = ifelse((GCAM_region_ID == 4 &
                                     Non.CO2 == "CH4" &
-                                    EPA_sector == "Industrial processes Other") &
-                                    year == 2015, 1, emscaler)) ->
+                                    EPA_sector == "Industrial processes Other"), 1, emscaler)) ->
           L131.nonco2_tg_R_prc_S_S_Yh_EPAscaler
 
         # 4) do the actual scaling for industrial and urban processes emissions
@@ -1517,17 +1516,16 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
           select(-EPA_emissions, -tot_emissions) ->
           L112.ghg_tg_R_en_S_F_Yh_EPAscaler
 
-        # 3) specially handling outliers based on manual check
-        # becuase they will heavily determine the future emission trends
-        # N2O in GCAM region 2, 4, 5 (Africa_Western) is too high in EPA data (energy combustion, non-bio), skip scaling
-        # CH4 in GCAM region 2, 4, 5, 27 are too high in EPA data (energy combustion, non-bio), skip scaling
+        # 3) specially handling outliers
+        # N2O in GCAM region 5 (Africa_Western) is too high in EPA data (energy combustion, non-bio), skip scaling
+        # CH4 in GCAM region 2 (Africa_Eastern) is too high in EPA data (energy combustion, non-bio), skip scaling
 
         L112.ghg_tg_R_en_S_F_Yh_EPAscaler %>%
-          mutate(emscaler = ifelse((GCAM_region_ID %in% c(2, 4, 5) & Non.CO2 == "N2O" & year == 2015), 1, emscaler)) ->
+          mutate(emscaler = ifelse((GCAM_region_ID == 5 & Non.CO2 == "N2O"), 1, emscaler))  ->
           L112.ghg_tg_R_en_S_F_Yh_EPAscaler
 
         L112.ghg_tg_R_en_S_F_Yh_EPAscaler %>%
-          mutate(emscaler = ifelse((GCAM_region_ID %in% c(2, 4, 5, 27) & Non.CO2 == "CH4" & year == 2015), 1, emscaler)) ->
+          mutate(emscaler = ifelse((GCAM_region_ID == 2 & Non.CO2 == "CH4"), 1, emscaler)) %>%
           L112.ghg_tg_R_en_S_F_Yh_EPAscaler
 
         # 4) do the actual scaling for combustion-related emissions
