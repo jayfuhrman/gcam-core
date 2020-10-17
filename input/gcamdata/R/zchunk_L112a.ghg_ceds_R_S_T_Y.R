@@ -1521,11 +1521,11 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
         # CH4 in GCAM region 2 (Africa_Eastern) is too high in EPA data (energy combustion, non-bio), skip scaling
 
         L112.ghg_tg_R_en_S_F_Yh_EPAscaler %>%
-          mutate(emscaler = ifelse((GCAM_region_ID == 5 & Non.CO2 == "N2O"), 1, emscaler))  ->
+          mutate(emscaler = ifelse((GCAM_region_ID == 5 & Non.CO2 == "N2O"), 1, emscaler)) ->
           L112.ghg_tg_R_en_S_F_Yh_EPAscaler
 
         L112.ghg_tg_R_en_S_F_Yh_EPAscaler %>%
-          mutate(emscaler = ifelse((GCAM_region_ID == 2 & Non.CO2 == "CH4"), 1, emscaler)) %>%
+          mutate(emscaler = ifelse((GCAM_region_ID == 2 & Non.CO2 == "CH4"), 1, emscaler)) ->
           L112.ghg_tg_R_en_S_F_Yh_EPAscaler
 
         # 4) do the actual scaling for combustion-related emissions
