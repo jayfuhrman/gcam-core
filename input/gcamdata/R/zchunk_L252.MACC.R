@@ -288,15 +288,8 @@ module_emissions_L252.MACC <- function(command, ...) {
       ungroup() %>%
       repeat_add_columns(tibble(year = seq(2055, 2100, 5)))
 
-
-    # combine together and replace tech.change > 1 (cooling HFCs for some countries) with their post 2050 value
-    L252.MAC_summary_TC <- rbind(L252.MAC_summary_TC_before2050, L252.MAC_summary_TC_post2050) %>%
-      left_join_error_no_match(L252.MAC_summary_TC_post2050 %>% filter(year == 2055) %>% select(-year),
-                               by = c("region", "supplysector", "subsector", "stub.technology",
-                                      "Non.CO2", "mac.control", "key")) %>%
-      mutate(tech.change = ifelse(tech.change.x > 1, tech.change.y, tech.change.x)) %>%
-      select(region, supplysector, subsector, stub.technology, year, Non.CO2, mac.control, tech.change, key)
-
+    # combine together
+    L252.MAC_summary_TC <- rbind(L252.MAC_summary_TC_before2050, L252.MAC_summary_TC_post2050)
 
     # 2) copy and paste average values for all future years, assuming constant tech.change (the average tech.change)
     L252.MAC_summary_TC_post2050_average <- L252.MAC_summary_TC_before2050 %>%
@@ -307,14 +300,8 @@ module_emissions_L252.MACC <- function(command, ...) {
       ungroup() %>%
       repeat_add_columns(tibble(year = seq(2055, 2100, 5)))
 
-    # combine together and replace tech.change > 1 (cooling HFCs for some countries) with their post 2050 value
-    L252.MAC_summary_TC_average <- rbind(L252.MAC_summary_TC_before2050, L252.MAC_summary_TC_post2050_average) %>%
-      left_join_error_no_match(L252.MAC_summary_TC_post2050_average %>% filter(year == 2055) %>% select(-year),
-                               by = c("region", "supplysector", "subsector", "stub.technology",
-                                      "Non.CO2", "mac.control", "key")) %>%
-      mutate(tech.change = ifelse(tech.change.x > 1, tech.change.y, tech.change.x)) %>%
-      select(region, supplysector, subsector, stub.technology, year, Non.CO2, mac.control, tech.change, key)
-
+    # combine together
+    L252.MAC_summary_TC_average <- rbind(L252.MAC_summary_TC_before2050, L252.MAC_summary_TC_post2050_average)
 
     # find the first non-all-zero-MAC year, maybe different by region/sector
     L252.MAC_base_year <- L252.MAC_summary %>%
