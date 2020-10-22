@@ -264,7 +264,15 @@ module_emissions_L252.MACC <- function(command, ...) {
       select(-key, -mac.control) %>%
       filter(mac.reduction > 0) %>%
       rename(mac.reduction.base = mac.reduction) %>%
+      # first tech.change year is the next modeling period of the MAC defined years
+      # here add 5 years so they can be used to match with their corresponding "next period"
       mutate(year = year + 5)
+
+    # for RAC, a couple of regions' mitigation potential increased a lot (tech.change > 1), so use the
+    # second non-all-zero-MAC year has its MAC Tech.change base year
+    L252.MAC_base_TC %>%
+      filter(!(supplysector %in% c("resid cooling", "comm cooling") & year == 2025)) -> L252.MAC_base_TC
+
 
     L252.MAC_summary_TC_before2050 <- L252.MAC_summary %>%
       mutate(key = paste(region, supplysector, subsector, stub.technology, Non.CO2, sep = "-")) %>%
@@ -281,8 +289,6 @@ module_emissions_L252.MACC <- function(command, ...) {
 
     # 1) copy and paste initial values for all future years, assuming constant tech.change (the largest tech.change)
     L252.MAC_summary_TC_post2050 <- L252.MAC_summary_TC_before2050 %>%
-      # some F-gas sectors have tech.change > 1 in 2025, which can weight too much in the post-2050 calculation
-      filter(tech.change < 1) %>%
       group_by(region, supplysector, subsector, stub.technology, Non.CO2, mac.control, key) %>%
       summarise(tech.change = max(tech.change)) %>%
       ungroup() %>%
@@ -293,8 +299,6 @@ module_emissions_L252.MACC <- function(command, ...) {
 
     # 2) copy and paste average values for all future years, assuming constant tech.change (the average tech.change)
     L252.MAC_summary_TC_post2050_average <- L252.MAC_summary_TC_before2050 %>%
-      # some F-gas sectors have tech.change > 1 in 2025, which can weight too much in the post-2050 calculation
-      filter(tech.change < 1) %>%
       group_by(region, supplysector, subsector, stub.technology, Non.CO2, mac.control, key) %>%
       summarise(tech.change = mean(tech.change)) %>%
       ungroup() %>%
@@ -305,6 +309,10 @@ module_emissions_L252.MACC <- function(command, ...) {
 
     # find the first non-all-zero-MAC year, maybe different by region/sector
     L252.MAC_base_year <- L252.MAC_summary %>%
+      # omit first cooling HFC year due to its descrepency between 2020 and 2025
+      # so first cooling HFC year will be 2025 even they already have a very small reduction in 2020
+      # this is the only sector needs special treatment
+      filter(!(supplysector %in% c("resid cooling", "comm cooling") & year == 2020)) %>%
       mutate(key = paste(region, supplysector, subsector, stub.technology, Non.CO2, sep = "-")) %>%
       filter(!(key %in% L252.MAC_remove$key)) %>%
       filter(mac.reduction > 0) %>%
