@@ -57,7 +57,7 @@ driver.DECLARE_INPUTS  <- "DECLARE_INPUTS"
 
 #Set the driver source to EDGAR to switch back to old emissions structure.
 driver.EMISSIONS_SOURCE <- "CEDS"
-# driver.EMISSIONS_SOURCE <- "EDGAR"
+#driver.EMISSIONS_SOURCE <- "EDGAR"
 
 # Data and utility constants ======================================================================
 
@@ -472,6 +472,7 @@ energy.OILFRACT_ELEC            <- 1.0 # Fraction of liquids for feedstocks that
 energy.OILFRACT_FEEDSTOCKS      <- 0.8 # Fraction of liquids for oil electricity that must come from oil
 
 #kbn 2019-10-11 Adding constant for transportation type. Set this to rev.mode to use revised mode classes, rev_size.class to use revised size classes.
+#To use the old modes and size classes, use mode and size.class for the constants. The default for GCAM are the new modes and size classes.
 
 energy.TRAN_UCD_MODE<-'rev.mode'
 energy.TRAN_UCD_SIZE_CLASS<-'rev_size.class'
@@ -604,11 +605,11 @@ emissions.SSP_FUTURE_YEARS        <- MODEL_YEARS[MODEL_YEARS %in% 2015:2100]
 emissions.CONV_C_CO2    <- 44 / 12 # Convert Carbon to CO2
 emissions.F_GAS_UNITS   <- "Gg"
 emissions.TST_TO_TG     <- 0.000907 # Thousand short tons to Tg
-emissions.ZERO_EM_TECH  <- c("electricity", "Electric", "BEV","FCEV","district heat","NG", "LA-BEV")  #These technologies get filtered out and no emissions are generated for them.
+emissions.ZERO_EM_TECH  <- c("electricity", "Electric", "BEV","FCEV","district heat","NG","LA-BEV")  #These technologies get filtered out and no emissions are generated for them. Note that NG emissions for vehicles are added directly from GAINS and not calculated.
 emissions.HIGH_EM_FACTOR_THRESHOLD <- 1000  #All emission factors above this threshold are replaced with the global median of emission factors.
 emissions.GFED_NODATA <- c("ala","bes","blm","ggy","jey","maf","xad","xko","xnc")  #GFED LULC dataset does not contaian data for these isos. These get filtered out so we can use the left_join_error_no_match.
 emissions.UNMGD_LAND_AVG_YRS <- 30 #Years for climatological average for the GFED LULC data.
-`%notin%` = Negate(`%in%`)
+
 
 emissions.COAL_SO2_THRESHOLD <- 0.1   # Tg/EJ (here referring to Tg SO2 per EJ of coal electricity)
 emissions.LOW_PCGDP          <- 2.75  # thousand 1990 USD

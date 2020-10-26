@@ -20,7 +20,6 @@
 #' @importFrom dplyr filter mutate select mutate_all
 #' @importFrom tidyr gather spread
 #' @author CWR Oct. 2018 , YO Mar. 2020, KBN 2020
-
 module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
   if(driver.EMISSIONS_SOURCE == "EDGAR") {
     if(command == driver.DECLARE_INPUTS) {
@@ -100,7 +99,7 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
         total_emiss <- AWB_emiss_share <- total_excess_bio <- burnable <- WaterContent <- HarvestIndex <- Root_Shoot <- ResEnergy_GJt <- ErosCtrl_tHa <-
         emiss_share <- prod_share <- total_prod <- crop_area_share <- prod_share_GLU <- GLU <- Prod_R_C <- crop_area_total <- scalar <- EPA_emissions <-
         CEDS_emissions <- epa_emissions <-  ch4_em_factor <- production <- feed <- GCAM_commodity <- input.emissions <- EPA_agg_fuel_ghg <- EPA_agg_sector <-
-        EDGAR_agg_sector <- globalemfact <- emfact <- value <- em_fact <- . <- FF_driver <- NULL
+        EDGAR_agg_sector <- globalemfact <- emfact <- value <- em_fact <- . <- FF_driver <- natural_gas <- UCD_category <- Non.co2 <- NULL
 
 
       #Get CEDS_GFED data
@@ -110,8 +109,8 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
       if(is.null(L112.CEDS_GCAM)) {
         #Proprietary CEDS emissions data are not available, so used saved outputs
         L112.CEDS_GCAM <- prebuilt_data("L102.ceds_GFED_nonco2_tg_R_S_F")
-      } else {
       }
+
       #In case of tanker loading emissions which are classified as process emissions, transfer them to refined liquids. Same for processs industrial energy emissions
       L112.CEDS_GCAM %>%
         mutate(CEDS_agg_fuel=if_else(CEDS_agg_sector=="trn_intl_ship",if_else(CEDS_agg_fuel=="process","refined liquids",CEDS_agg_fuel),CEDS_agg_fuel)) %>%
@@ -126,7 +125,7 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
         summarise(emissions = sum(emissions)) %>%
         ungroup() %>%
         na.omit() %>%
-        #filter data for final model base year, since we may not have activity data beyond the latest base year.
+        #filter data for final model base year, since we may not have GCAM activity data beyond the latest base year.
         filter(year<= MODEL_FINAL_BASE_YEAR)->L112.CEDS_GCAM
 
       # Load required inputs
@@ -135,22 +134,25 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
 
       #Get GAINS sector and fuel emissions by iso. Also get IEA energy data by iso.
       GAINS_sector <- get_data(all_data,"emissions/CEDS/gains_iso_sector_emissions")
-      GAINS_fuel <- get_data(all_data,"emissions/CEDS/gains_iso_fuel_emissions")
+      #Separate out GAINS em factors for NG
+      GAINS_fuel <- get_data(all_data,"emissions/CEDS/gains_iso_fuel_emissions") %>%  select(-natural_gas)
+      GAINS_fuel_NG <- get_data(all_data,"emissions/CEDS/gains_iso_fuel_emissions") %>%  select(-dieseloil,-lightoil)
       IEA_Ctry_data <- get_data(all_data,"L154.IEA_histfut_data_times_UCD_shares")
 
       #If using revised size classes, use revised data else use old data
-      if (energy.TRAN_UCD_MODE=="rev.mode"){
+      if (energy.TRAN_UCD_MODE == "rev.mode"){
         IEA_Ctry_data %>% rename(mode=rev.mode,size.class=rev_size.class)->IEA_Ctry_data
       }
-      #kbn 2019/11/11 Add code below so that we can use revised sub-sectors from transportation model
-      if (energy.TRAN_UCD_MODE=="rev.mode"){
+      #kbn Add code below so that we can use revised sub-sectors from transportation model
+      if (energy.TRAN_UCD_MODE == "rev.mode"){
         GCAM_sector_tech <- get_data(all_data, "emissions/mappings/CEDS_sector_tech_proc_revised") %>% distinct()
       }else{
         GCAM_sector_tech <- get_data(all_data, "emissions/mappings/CEDS_sector_tech_proc")}
 
-      #kbn 2019/11/11 Add code below so that we can use revised sub-sectors from transportation model
-      if (energy.TRAN_UCD_MODE=="rev.mode"){
+      #kbn Add code below so that we can use revised sub-sectors from transportation model
+      if (energy.TRAN_UCD_MODE == "rev.mode"){
         Trn_subsector <- get_data(all_data, "emissions/mappings/Trn_subsector_revised")}else{
+
 
           Trn_subsector <- get_data(all_data, "emissions/mappings/Trn_subsector")
 
@@ -169,7 +171,7 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
       CEDS_sector_map <- get_data(all_data, "emissions/CEDS/ceds_sector_map")
       CEDS_fuel_map <- get_data(all_data, "emissions/CEDS/ceds_fuel_map")
 
-      #kbn 2019/11/11 Add in transport flexibility below
+      #kbn Add in transport flexibility below
       if (energy.TRAN_UCD_MODE=="rev.mode"){
         CEDS_sector_tech <- get_data(all_data, "emissions/CEDS/CEDS_sector_tech_combustion_revised") %>% distinct()}else{
 
@@ -203,6 +205,21 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
       # Part 1: Distributing road emissions from CEDS into different modes using GAINS data #
       # ===========================
 
+      #Define special modes based on choices by user. With the old size classes, we had 2 modes, LDV_2W & LDV_3W. These,
+      #were consolidated into 1 category with the new modes (LDV_2W_3W). We need the adjustment below so emissions
+      # are calculated appropriately.
+
+      if(energy.TRAN_UCD_MODE=="rev.mode"){
+
+        LDV_2W_3W_modes <- c("LDV_2W_3W")
+
+      }else{
+
+        LDV_2W_3W_modes <- c("LDV_2W","LDV_3W")
+
+      }
+
+
       #Filter out road emissions
       L112.CEDS_Road_emissions <- L112.CEDS_GCAM %>%  filter(CEDS_agg_sector == "trn_road")
       L112.CEDS_GCAM<- L112.CEDS_GCAM %>%  filter(CEDS_agg_sector != "trn_road")
@@ -215,7 +232,8 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
         filter(mode %notin% c("Rail","HSR")) %>%
         select(-UCD_fuel,-fuel,-size.class) %>%
         rename(fuel=UCD_technology) %>%
-        filter(fuel %notin% emissions.ZERO_EM_TECH) %>%
+        #NG is treated separately.
+        filter(fuel %notin% c(emissions.ZERO_EM_TECH,"NG")) %>%
         mutate(fuel =if_else(fuel=="Hybrid Liquids","Liquids",fuel))->Clean_IEA_ctry_data
 
       #Calculate GAINS sector weights which we can use on CEDS data to distribute emissions into Passenger and Freight.
@@ -248,10 +266,9 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
         na.omit() %>%
         #Now calculate mode wights here
         group_by(Non.co2,GCAM_region_ID,year,mode,UCD_sector) %>%
-        #Revisit this. May want to make it compatible with old size classes as well in the future (only if required/requested).
         #For LDV_2W_3W use a weighted average of light and heavy diesel oil. For Trucks use heavy diesel oil and for passenger buses use light oil.
         mutate(mode_weight=if_else(mode=="Bus",sum(dieseloil*value),
-                                   if_else(mode=="LDV_2W_3W",sum(((lightoil+dieseloil)/2)*value),
+                                   if_else(mode %in% c(LDV_2W_3W_modes),sum(((lightoil+dieseloil)/2)*value),
                                            if_else(mode=="Truck",sum(dieseloil*value),sum(lightoil*value))))) %>%
         ungroup() %>%
         select(Non.co2,GCAM_region_ID,year,mode,mode_weight,UCD_sector) %>%
@@ -289,6 +306,46 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
       #Bind new GAINS weighted emissions into CEDS emissions
       L112.CEDS_GCAM %>%  bind_rows(L112.CEDS_GCAM_Road_Emissions_GAINS)->L112.CEDS_GCAM
 
+
+
+      #Adjustment for NG emissions factors
+      #Since the values of NG emissions are low and the energy values for NG technologies are also very low, computing emissions
+      #factors like we do for the other technologies may result in unreasonably high numbers. So, we take the emissions factors from GAINS,
+      # and aggregate up to GCAM regions using IEA data for transportation NG as weights. The dataframe returned by the block below,
+      #contains both energy and emission factors. We use the appropriate columns to blend with base data.
+
+      #First, clean IEA data
+      IEA_Ctry_data %>%
+        #Use only historical years
+        filter(year <= MODEL_FINAL_BASE_YEAR) %>%
+        filter(UCD_category=="trn_road and rail") %>%
+        filter(mode %notin% c("Rail","HSR")) %>%
+        select(-UCD_fuel,-fuel) %>%
+        rename(fuel=UCD_technology) %>%
+        filter(fuel %in% c("NG"))->Clean_IEA_ctry_data_NG
+
+      # Now calculate emissions factors
+      Clean_IEA_ctry_data_NG %>%
+        group_by(iso,mode,size.class,year,UCD_sector,fuel) %>%
+        mutate(value=sum(value)) %>%
+        ungroup() %>%
+        select(iso,mode,year,value,GCAM_region_ID,UCD_sector,fuel,size.class) %>%
+        distinct() %>%
+        repeat_add_columns(tibble(Non.co2 = unique(GAINS_fuel_NG$Non.co2))) %>%
+        left_join(GAINS_fuel_NG , by=c("Non.co2","iso","year")) %>%
+        na.omit() %>%
+        rename(em=natural_gas) %>%
+        #Now calculate mode wights here
+        group_by(Non.co2,GCAM_region_ID,year,mode,UCD_sector,size.class,fuel) %>%
+        mutate(em_factor= sum(em*value)/sum(value), energy= sum(value)) %>%
+        ungroup() %>%
+        select(Non.co2,GCAM_region_ID,year,mode,em_factor,UCD_sector,fuel,size.class, energy) %>%
+        distinct() %>%
+        rename(Non.CO2=Non.co2, stub.technology=fuel,value=em_factor) %>%
+        #Values from GAINS are in kt/ej. Convert to Tg/ej.
+        mutate(value=if_else(is.na(value),0,0.001*value),energy=if_else(is.na(energy),0,energy)) %>%
+        left_join_keep_first_only(UCD_techs %>% select(-fuel) %>% rename(stub.technology=UCD_technology,subsector=tranSubsector),by=c("mode","size.class","UCD_sector","stub.technology")) %>%
+        select(GCAM_region_ID,Non.CO2,supplysector,stub.technology,year,value,subsector,energy)->GAINS_NG_em_factors
 
       # ===========================
       #Part 2:Combustion Energy Emissions#
@@ -380,7 +437,7 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
         L112.in_EJ_R_en_S_F_Yh_calib_enshare
 
       # Attach CEDS emissions to those sector fuel combos
-      #kbn 2019/11/11 changed nomenclature below
+
       L112.in_EJ_R_en_S_F_Yh_calib_enshare %>%
         left_join(L112.CEDS_GCAM_emissions,
                   by = c("GCAM_region_ID", "year", "CEDS_agg_sector", "CEDS_agg_fuel")) ->
@@ -457,9 +514,8 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
         mutate(input.emissions = emissions) %>%  # Calculate emissions
         group_by(GCAM_region_ID, supplysector, subsector, stub.technology, Non.CO2, year) %>%
         summarise(value = sum(input.emissions)) %>% # Calculate total emissions
-        ungroup() %>%
-        replace_na(list(value = 0)) ->
-        L131.nonco2_tg_R_prc_S_S_Yh
+        ungroup()->L131.nonco2_tg_R_prc_S_S_Yh
+
 
       # Note: Final sector outputs
       # "nitric acid" "other industrial processes" "solvents"
@@ -699,7 +755,6 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
       L112.nonco2_tg_R_awb_C_Y_GLU %>%
         filter(Non.CO2 %in% c("BC_AWB", "OC_AWB")) %>%
         rename(awb_emission = value) %>%
-        # NEED TO REEXAMINE THE DRIVER HERE. IT LIKELY ACTUALLY NEEDS TO BE EXCESS BURNABLE DRY BIOMASS, POSSIBLY L112.ag_ExcessDryBiomass_Mt_R_Y
         left_join_error_no_match(L112.ag_ExcessDryBiomass_Mt_R_C_Y_GLU_burn, by = c("GCAM_region_ID", "GCAM_commodity", "GLU", "year")) %>%
         # Calculate emission factor, which is
         mutate(emfact = awb_emission / burnable) %>%
@@ -818,22 +873,29 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
 
       L112.nonco2_tg_R_en_S_F_Yh %>%
         filter(Non.CO2 %in% c("CH4", "N2O")) %>%
-        select(GCAM_region_ID, Non.CO2, supplysector, subsector, stub.technology, year, value = emissions) ->
+        select(GCAM_region_ID, Non.CO2, supplysector, subsector, stub.technology, year, value = emissions) %>%
+        bind_rows(GAINS_NG_em_factors %>% mutate(value=energy*value) %>%
+                    filter(Non.CO2 %in% c("CH4", "N2O")) %>% select(-energy))->
         L112.ghg_tg_R_en_S_F_Yh
 
       L112.nonco2_tg_R_en_S_F_Yh %>%
         filter(!(Non.CO2 %in% c("CH4", "N2O"))) %>%
-        select(GCAM_region_ID, Non.CO2, supplysector, subsector, stub.technology, year, value = emissions) ->
-        L111.nonghg_tg_R_en_S_F_Yh
+        select(GCAM_region_ID, Non.CO2, supplysector, subsector, stub.technology, year, value = emissions) %>%
+        bind_rows(GAINS_NG_em_factors %>% mutate(value=energy*value) %>%
+                    filter(!(Non.CO2 %in% c("CH4", "N2O","CO2"))) %>% select(-energy))->L111.nonghg_tg_R_en_S_F_Yh
+
+
 
       L112.nonco2_tgej_R_en_S_F_Yh %>%
         filter(Non.CO2 %in% c("CH4", "N2O")) %>%
-        select(GCAM_region_ID, Non.CO2, supplysector, subsector, stub.technology, year, value = emfact) ->
-        L112.ghg_tgej_R_en_S_F_Yh
+        select(GCAM_region_ID, Non.CO2, supplysector, subsector, stub.technology, year, value = emfact) %>%
+        bind_rows(GAINS_NG_em_factors %>% filter(Non.CO2 %in% c("CH4", "N2O")) %>% select(-energy))->L112.ghg_tgej_R_en_S_F_Yh
+
 
       L112.nonco2_tgej_R_en_S_F_Yh %>%
-        filter(!(Non.CO2 %in% c("CH4", "N2O"))) %>%
-        select(GCAM_region_ID, Non.CO2, supplysector, subsector, stub.technology, year, value = emfact) ->
+        filter(!(Non.CO2 %in% c("CH4", "N2O", "CO2"))) %>%
+        select(GCAM_region_ID, Non.CO2, supplysector, subsector, stub.technology, year, value = emfact) %>%
+        bind_rows(GAINS_NG_em_factors %>% filter(!(Non.CO2 %in% c("CH4", "N2O"))) %>% select(-energy))->
         L111.nonghg_tgej_R_en_S_F_Yh
 
 
