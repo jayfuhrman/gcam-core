@@ -283,9 +283,13 @@ module_emissions_L252.MACC <- function(command, ...) {
                 by = c("region", "supplysector", "subsector", "stub.technology", "Non.CO2", "year")) %>%
       na.omit() %>%
       mutate(tech.change = (mac.reduction / mac.reduction.base)^(1/5) - 1) %>%
+      # round to 4 digits otherwise it will be > 10 digits and long in xmls
+      mutate(tech.change = round(tech.change, 4)) %>%
       replace_na(list(tech.change = 0)) %>%
       select(region, supplysector, subsector, stub.technology, year, Non.CO2, mac.control, tech.change) %>%
-      mutate(key = paste(supplysector, subsector, Non.CO2, sep = "-"))
+      mutate(key = paste(supplysector, subsector, Non.CO2, sep = "-")) %>%
+      # replace negative tech.change into 0s
+      mutate(tech.change = ifelse(tech.change < 0, 0, tech.change))
 
     # 1) copy and paste initial values for all future years, assuming constant tech.change (the largest tech.change)
     L252.MAC_summary_TC_post2050 <- L252.MAC_summary_TC_before2050 %>%
