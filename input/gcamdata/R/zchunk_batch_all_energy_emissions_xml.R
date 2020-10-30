@@ -30,7 +30,10 @@ module_emissions_batch_all_energy_emissions_xml <- function(command, ...) {
                    "L241.OutputEmissCoeff_elec",
                    "L241.nonco2_max_reduction",
                    "L241.nonco2_steepness",
-                   "L252.ResMAC_fos")
+                   "L252.ResMAC_fos",
+                   "L252.ResMAC_fos_tc",
+                   "L252.ResMAC_fos_phaseInTime",
+                   "L252.ResMAC_fos_tc_average")
   if(driver.EMISSIONS_SOURCE == "EDGAR") {
     # BC/OC emissions are processed sperately in EDGAR
     input_names <- c(input_names, "L201.en_bcoc_emissions")
@@ -100,8 +103,12 @@ module_emissions_batch_all_energy_emissions_xml <- function(command, ...) {
       add_xml_data(L241.OutputEmissCoeff_elec, "OutputEmissCoeff") %>%
       add_xml_data(L241.nonco2_max_reduction, "GDPCtrlMax") %>%
       add_xml_data(L241.nonco2_steepness, "GDPCtrlSteep") %>%
-      add_precursors("L201.en_pol_emissions", "L201.en_ghg_emissions", "L201.OutputEmissions_elec", "L201.OutputEmissCoeff_elec", "L201.nonghg_max_reduction", "L201.nonghg_steepness", "L201.nonghg_max_reduction_res", "L201.nonghg_steepness_res", "L201.nonghg_res", "L201.ghg_res", "L232.nonco2_prc", "L232.nonco2_max_reduction", "L232.nonco2_steepness", "L241.nonco2_tech_coeff", "L241.OutputEmissCoeff_elec", "L241.nonco2_max_reduction", "L241.nonco2_steepness") ->
-      add_xml_data(L252.ResMAC_fos, "ResMAC") ->
+      add_precursors("L201.en_pol_emissions", "L201.en_ghg_emissions",
+                     "L201.OutputEmissions_elec", "L201.OutputEmissCoeff_elec",
+                     "L201.nonghg_max_reduction", "L201.nonghg_steepness", "L201.nonghg_max_reduction_res",
+                     "L201.nonghg_steepness_res", "L201.nonghg_res", "L201.ghg_res", "L232.nonco2_prc",
+                     "L232.nonco2_max_reduction", "L232.nonco2_steepness", "L241.nonco2_tech_coeff",
+                     "L241.OutputEmissCoeff_elec", "L241.nonco2_max_reduction", "L241.nonco2_steepness") ->
       all_energy_emissions.xml
     # need to call add_precursors indirectly to ensure input_names gets "unlisted"
     all_energy_emissions.xml <- do.call("add_precursors", c(list(all_energy_emissions.xml), input_names))
