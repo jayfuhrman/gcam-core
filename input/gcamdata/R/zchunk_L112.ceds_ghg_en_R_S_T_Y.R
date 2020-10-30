@@ -105,12 +105,6 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
       #Get CEDS_GFED data
       L112.CEDS_GCAM <- get_data(all_data, "L102.ceds_GFED_nonco2_tg_R_S_F")
 
-      # Optionally gets pre-built CEDS data
-      if(is.null(L112.CEDS_GCAM)) {
-        #Proprietary CEDS emissions data are not available, so used saved outputs
-        L112.CEDS_GCAM <- prebuilt_data("L102.ceds_GFED_nonco2_tg_R_S_F")
-      }
-
       #In case of tanker loading emissions which are classified as process emissions, transfer them to refined liquids. Same for processs industrial energy emissions
       L112.CEDS_GCAM %>%
         mutate(CEDS_agg_fuel=if_else(CEDS_agg_sector=="trn_intl_ship",if_else(CEDS_agg_fuel=="process","refined liquids",CEDS_agg_fuel),CEDS_agg_fuel)) %>%
@@ -126,7 +120,7 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
         ungroup() %>%
         na.omit() %>%
         #filter data for final model base year, since we may not have GCAM activity data beyond the latest base year.
-        filter(year<= MODEL_FINAL_BASE_YEAR)->L112.CEDS_GCAM
+        filter(year<= max(HISTORICAL_YEARS))->L112.CEDS_GCAM
 
       # Load required inputs
       GCAM_region_names <- get_data(all_data, "common/GCAM_region_names")
@@ -227,7 +221,7 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
       #Clean IEA data, filter to road emissions and  remove zero emission technologies.
       IEA_Ctry_data %>%
         #Use only historical years
-        filter(year <= MODEL_FINAL_BASE_YEAR) %>%
+        filter(year <= max(HISTORICAL_YEARS)) %>%
         filter(UCD_category=="trn_road and rail") %>%
         filter(mode %notin% c("Rail","HSR")) %>%
         select(-UCD_fuel,-fuel,-size.class) %>%
@@ -317,7 +311,7 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
       #First, clean IEA data
       IEA_Ctry_data %>%
         #Use only historical years
-        filter(year <= MODEL_FINAL_BASE_YEAR) %>%
+        filter(year <= max(HISTORICAL_YEARS)) %>%
         filter(UCD_category=="trn_road and rail") %>%
         filter(mode %notin% c("Rail","HSR")) %>%
         select(-UCD_fuel,-fuel) %>%
