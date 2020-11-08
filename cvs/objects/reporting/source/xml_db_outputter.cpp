@@ -1277,20 +1277,20 @@ void XMLDBOutputter::startVisitClimateModel( const IClimateModel* aClimateModel,
          writeItemUsingYear( "C2F6-concentration", "PPT",
                              aClimateModel->getConcentration( "C2F6", year ),
                              year );
-         writeItemUsingYear( "HCFC125-concentration", "PPT",
-                             aClimateModel->getConcentration( "HCFC125", year ),
+         writeItemUsingYear( "HFC125-concentration", "PPT",
+                             aClimateModel->getConcentration( "HFC125", year ),
                              year );
-         writeItemUsingYear( "HCFC134a-concentration", "PPT",
-                             aClimateModel->getConcentration( "HCFC134A", year ),
+         writeItemUsingYear( "HFC134a-concentration", "PPT",
+                             aClimateModel->getConcentration( "HFC134A", year ),
                              year );
-         writeItemUsingYear( "HCFC143A-concentration", "PPT",
-                             aClimateModel->getConcentration( "HCFC143A", year ),
+         writeItemUsingYear( "HFC143A-concentration", "PPT",
+                             aClimateModel->getConcentration( "HFC143A", year ),
                              year );
-         writeItemUsingYear( "HCFC245fa-concentration", "PPT",
-                             aClimateModel->getConcentration( "HCFC245fa", year ),
+         writeItemUsingYear( "HFC245fa-concentration", "PPT",
+                             aClimateModel->getConcentration( "HFC245fa", year ),
                              year );
         writeItemUsingYear( "HFC227ea-concentration", "PPT",
-                             aClimateModel->getConcentration( "HCFC227ea", year ),
+                             aClimateModel->getConcentration( "HFC227ea", year ),
                              year );
          writeItemUsingYear( "SF6-concentration", "PPT",
                              aClimateModel->getConcentration( "SF6", year ),
@@ -1309,11 +1309,11 @@ void XMLDBOutputter::startVisitClimateModel( const IClimateModel* aClimateModel,
                              aClimateModel->getForcing( "CO2", util::round( year ) )
         + aClimateModel->getForcing( "CH4", util::round( year ) )
         + aClimateModel->getForcing( "N2O", util::round( year ) )
-        + aClimateModel->getForcing( "HCFC125", util::round( year ) )
-        + aClimateModel->getForcing( "HCFC134A", util::round( year ) )
-        + aClimateModel->getForcing( "HCFC143A", util::round( year ) )
+        + aClimateModel->getForcing( "HFC125", util::round( year ) )
+        + aClimateModel->getForcing( "HFC134A", util::round( year ) )
+        + aClimateModel->getForcing( "HFC143A", util::round( year ) )
         + aClimateModel->getForcing( "HFC227ea", util::round( year ) )
-        + aClimateModel->getForcing( "HCFC245fa", util::round( year ) )
+        + aClimateModel->getForcing( "HFC245fa", util::round( year ) )
         + aClimateModel->getForcing( "SF6", util::round( year ) )
         + aClimateModel->getForcing( "CF4", util::round( year ) )
         + aClimateModel->getForcing( "C2F6", util::round( year ) )
@@ -1325,11 +1325,11 @@ void XMLDBOutputter::startVisitClimateModel( const IClimateModel* aClimateModel,
                              aClimateModel->getForcing( "CO2", util::round( year ) )
         + aClimateModel->getForcing( "CH4", util::round( year ) )
         + aClimateModel->getForcing( "N2O", util::round( year ) )
-        + aClimateModel->getForcing( "HCFC125", util::round( year ) )
-        + aClimateModel->getForcing( "HCFC134A", util::round( year ) )
-        + aClimateModel->getForcing( "HCFC143A", util::round( year ) )
+        + aClimateModel->getForcing( "HFC125", util::round( year ) )
+        + aClimateModel->getForcing( "HFC134A", util::round( year ) )
+        + aClimateModel->getForcing( "HFC143A", util::round( year ) )
         + aClimateModel->getForcing( "HFC227ea", util::round( year ) )
-        + aClimateModel->getForcing( "HCFC245fa", util::round( year ) )
+        + aClimateModel->getForcing( "HFC245fa", util::round( year ) )
         + aClimateModel->getForcing( "SF6", util::round( year ) )
         + aClimateModel->getForcing( "CF4", util::round( year ) )
         + aClimateModel->getForcing( "C2F6", util::round( year ) )
@@ -1339,11 +1339,11 @@ void XMLDBOutputter::startVisitClimateModel( const IClimateModel* aClimateModel,
 
                 // Long-lived Forcing
         writeItemUsingYear( "forcing-halocarbons", "W/m^2",
-        aClimateModel->getForcing( "HCFC125", util::round( year ) )
-        + aClimateModel->getForcing( "HCFC134A", util::round( year ) )
-        + aClimateModel->getForcing( "HCFC143A", util::round( year ) )
+        aClimateModel->getForcing( "HFC125", util::round( year ) )
+        + aClimateModel->getForcing( "HFC134A", util::round( year ) )
+        + aClimateModel->getForcing( "HFC143A", util::round( year ) )
         + aClimateModel->getForcing( "HFC227ea", util::round( year ) )
-        + aClimateModel->getForcing( "HCFC245fa", util::round( year ) )
+        + aClimateModel->getForcing( "HFC245fa", util::round( year ) )
         + aClimateModel->getForcing( "SF6", util::round( year ) )
         + aClimateModel->getForcing( "CF4", util::round( year ) )
         + aClimateModel->getForcing( "C2F6", util::round( year ) )
