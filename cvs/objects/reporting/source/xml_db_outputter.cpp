@@ -1320,21 +1320,16 @@ void XMLDBOutputter::startVisitClimateModel( const IClimateModel* aClimateModel,
         + aClimateModel->getForcing( "OtherHC", util::round( year ) ),
                              year );
 
-        // Long-lived Forcing
-        writeItemUsingYear( "forcing-longlived", "W/m^2",
+        // HFCs Forcing
+        writeItemUsingYear( "forcing-HFCs", "W/m^2",
                              aClimateModel->getForcing( "CO2", util::round( year ) )
-        + aClimateModel->getForcing( "CH4", util::round( year ) )
-        + aClimateModel->getForcing( "N2O", util::round( year ) )
         + aClimateModel->getForcing( "HFC125", util::round( year ) )
         + aClimateModel->getForcing( "HFC134A", util::round( year ) )
         + aClimateModel->getForcing( "HFC143A", util::round( year ) )
         + aClimateModel->getForcing( "HFC227ea", util::round( year ) )
         + aClimateModel->getForcing( "HFC245fa", util::round( year ) )
-        + aClimateModel->getForcing( "SF6", util::round( year ) )
-        + aClimateModel->getForcing( "CF4", util::round( year ) )
-        + aClimateModel->getForcing( "C2F6", util::round( year ) )
-        + aClimateModel->getForcing( "OtherHC", util::round( year ) )
-        + aClimateModel->getForcing( "Montreal", util::round( year ) ),
+        + aClimateModel->getForcing( "HFC23", util::round( year ) )
+        + aClimateModel->getForcing( "HFC32", util::round( year ) ),
                              year );
 
                 // Long-lived Forcing
@@ -1349,6 +1344,12 @@ void XMLDBOutputter::startVisitClimateModel( const IClimateModel* aClimateModel,
         + aClimateModel->getForcing( "C2F6", util::round( year ) )
         + aClimateModel->getForcing( "OtherHC", util::round( year ) )
         + aClimateModel->getForcing( "Montreal", util::round( year ) ),
+                             year );
+        
+        // PFCs Forcing
+        writeItemUsingYear( "forcing-PFCs", "W/m^2",
+        aClimateModel->getForcing( "CF4", util::round( year ) )
+        + aClimateModel->getForcing( "C2F6", util::round( year ) ),
                              year );
 
         // CO2 Forcing
