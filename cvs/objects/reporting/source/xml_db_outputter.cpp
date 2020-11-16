@@ -1322,8 +1322,7 @@ void XMLDBOutputter::startVisitClimateModel( const IClimateModel* aClimateModel,
 
         // HFCs Forcing
         writeItemUsingYear( "forcing-HFCs", "W/m^2",
-                             aClimateModel->getForcing( "CO2", util::round( year ) )
-        + aClimateModel->getForcing( "HFC125", util::round( year ) )
+                             aClimateModel->getForcing( "HFC125", util::round( year ) )
         + aClimateModel->getForcing( "HFC134A", util::round( year ) )
         + aClimateModel->getForcing( "HFC143A", util::round( year ) )
         + aClimateModel->getForcing( "HFC227ea", util::round( year ) )
