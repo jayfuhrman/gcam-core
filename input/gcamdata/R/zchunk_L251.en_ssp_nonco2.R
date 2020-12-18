@@ -99,6 +99,7 @@ module_emissions_L251.en_ssp_nonco2 <- function(command, ...) {
       mutate(emiss.coeff = round(value, emissions.DIGITS_EMISSIONS)) %>%
       ungroup() %>%
       left_join_error_no_match(EnTechInputNameMap, by = c("supplysector", "subsector", "stub.technology")) %>%
+      mutate(emiss.coeff= if_else(is.na(emiss.coeff),0,emiss.coeff)) %>%
       # Discard columns that are not needed.  Resulting table retains 7 columns.
       # Columns include "region", "supplysector", "subsector", "stub.technology", "year", "Non.CO2", and "emiss.coeff".
       # This applies to the next 2 tables as well.
@@ -111,6 +112,7 @@ module_emissions_L251.en_ssp_nonco2 <- function(command, ...) {
       tidyr::complete(year = emissions.SSP_FUTURE_YEARS,
                       tidyr::nesting(GCAM_region_ID, Non.CO2, supplysector, subsector, stub.technology, agg_sector),
                       fill = list(value = NA)) %>%
+      #There are some sector country combinations especially for BCOC where we don't have data. Output these as 0 so as to avoid NA values in the xml.
       mutate(year = as.integer(year)) %>%
       group_by(GCAM_region_ID, Non.CO2, supplysector, subsector, stub.technology, agg_sector) %>%
       mutate(value = approx_fun(year, value)) %>%
@@ -120,6 +122,7 @@ module_emissions_L251.en_ssp_nonco2 <- function(command, ...) {
       mutate(emiss.coeff = round(value, emissions.DIGITS_EMISSIONS)) %>%
       ungroup() %>%
       left_join_error_no_match(EnTechInputNameMap, by = c("supplysector", "subsector", "stub.technology")) %>%
+      mutate(emiss.coeff= if_else(is.na(emiss.coeff),0,emiss.coeff)) %>%
       # Discard columns that are not needed.
       select(-MAC_region, -bio_N2O_coef, -SO2_name, -GAINS_region, -GCAM_region_ID, -agg_sector, -value) ->
       L251.ssp2_ef
@@ -139,6 +142,7 @@ module_emissions_L251.en_ssp_nonco2 <- function(command, ...) {
       mutate(emiss.coeff = round(value, emissions.DIGITS_EMISSIONS)) %>%
       ungroup() %>%
       left_join_error_no_match(EnTechInputNameMap, by = c("supplysector", "subsector", "stub.technology")) %>%
+      mutate(emiss.coeff= if_else(is.na(emiss.coeff),0,emiss.coeff)) %>%
       # Discard columns that are not needed.
       select(-MAC_region, -bio_N2O_coef, -SO2_name, -GAINS_region, -GCAM_region_ID, -agg_sector, -value) ->
       L251.ssp34_ef
