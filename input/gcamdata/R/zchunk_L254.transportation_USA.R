@@ -127,10 +127,10 @@ module_gcamusa_L254.transportation_USA <- function(command, ...) {
       colnames(UCD_techs)[colnames(UCD_techs)=='rev.mode']<-'mode'
     }
 
-    A54.globaltech_nonmotor <- get_data(all_data, "energy/A54.globaltech_nonmotor")
-    A54.globaltech_passthru <- get_data(all_data, "energy/A54.globaltech_passthru")
-    A54.sector <- get_data(all_data, "energy/A54.sector")
-    states_subregions <- get_data(all_data, "gcam-usa/states_subregions")
+    A54.globaltech_nonmotor <- get_data(all_data, "energy/A54.globaltech_nonmotor", strip_attributes = TRUE)
+    A54.globaltech_passthru <- get_data(all_data, "energy/A54.globaltech_passthru", strip_attributes = TRUE)
+    A54.sector <- get_data(all_data, "energy/A54.sector", strip_attributes = TRUE)
+    states_subregions <- get_data(all_data, "gcam-usa/states_subregions", strip_attributes = TRUE)
     #kbn 2020-02-27 Making changes to select the CORE scenario for transportation in GCAM USA
     L254.Supplysector_trn <- get_data(all_data, "L254.Supplysector_trn") %>% filter(sce %in% c("highEV","CORE"))
     L254.FinalEnergyKeyword_trn <- get_data(all_data, "L254.FinalEnergyKeyword_trn")%>% filter(sce %in% c("highEV","CORE"))
@@ -154,6 +154,7 @@ module_gcamusa_L254.transportation_USA <- function(command, ...) {
     L254.IncomeElasticity_trn <- get_data(all_data, "L254.IncomeElasticity_trn")%>% filter(sce %in% c("highEV","CORE"))
     L154.in_EJ_state_trn_m_sz_tech_F <- get_data(all_data, "L154.in_EJ_state_trn_m_sz_tech_F")
     L154.out_mpkm_state_trn_nonmotor_Yh <- get_data(all_data, "L154.out_mpkm_state_trn_nonmotor_Yh")
+
 
     # Need to delete the transportation sector in the USA region (energy-final-demands and supplysectors)
     # L254.DeleteSupplysector_USAtrn: Delete transportation supplysectors of the USA region

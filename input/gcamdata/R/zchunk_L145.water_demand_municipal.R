@@ -88,14 +88,23 @@ module_water_L145.water_demand_municipal <- function(command, ...) {
       select(iso, year, value)
 
     # Come up with GCAM regional average prices starting with the country level IBNET data.
-    # Note that since the years are all over the place, we will just use the average across years too.
+    # Note that since the years are all over the place, we will convert all to 1975 dollar,
+    # and use the average across years too.
+
+    # Since IBNET_municipal_water_cost_USDm3 is in nominal years we will need a table of deflators
+    # to normalize each to constant 1975$
+    # The pipeline below uses group_by() to apply the gdp_deflator() function to each row
+    tibble(year = unique(IBNET_municipal_water_cost_USDm3$year)) %>%
+      mutate(deflator = gdp_deflator(1975, year)) ->
+      conv_Price_DollarYear
+
     L145.municipal_water_cost_R_75USD_m3 <- IBNET_municipal_water_cost_USDm3 %>%
       left_join(aquastat_ctry[ c("aquastat_ctry", "iso")], by = c("country" = "aquastat_ctry")) %>%
       left_join(iso_GCAM_regID[c("iso", "GCAM_region_ID")], by = "iso") %>%
       mutate(expenditure = cost * consumption) %>%
       group_by(GCAM_region_ID) %>%
       summarise(expenditure = sum(expenditure), consumption = sum(consumption)) %>%
-      mutate(input.cost = expenditure / consumption) %>%
+      mutate(input.cost = round(expenditure / consumption, water.DIGITS_MUNI_WATER)) %>%
       select(GCAM_region_ID, input.cost)
 
     # The IBNET data is incomplete and so it is possible that we have entire GCAM regions in which none
