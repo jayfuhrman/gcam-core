@@ -319,7 +319,8 @@ module_energy_L254.transportation_UCD <- function(command, ...) {
       left_join_error_no_match(GCAM_region_names, by = "GCAM_region_ID") %>%
       left_join_keep_first_only(UCD_techs, by = c("UCD_sector", "mode", "size.class", "UCD_technology", "UCD_fuel")) %>%
       mutate(speed = round(value, energy.DIGITS_SPEED)) %>%
-      select(LEVEL2_DATA_NAMES[["tranSubsectorSpeed"]],sce) ->
+      select(LEVEL2_DATA_NAMES[["tranSubsectorSpeed"]],sce) %>%
+      distinct()->
       L254.tranSubsectorSpeed # OUTPUT
 
     # This does not include the pass-through tranSectors
@@ -374,7 +375,7 @@ module_energy_L254.transportation_UCD <- function(command, ...) {
       write_to_all_regions(c(LEVEL2_DATA_NAMES[["tranSubsector"]], "addTimeValue", "time.value.multiplier","sce"),
                            GCAM_region_names = GCAM_region_names) %>%
       mutate(year.fillout = min(MODEL_YEARS)) %>%
-      #mutate(sce = paste0("CORE")) %>%
+      mutate(sce= if_else(is.na(sce),"CORE",sce)) %>%
       # Subset only the combinations of region, supplysector, and tranSubsector
       semi_join(r_ss_ts_all, by = c("region", "supplysector", "tranSubsector","sce")) %>%
       select(LEVEL2_DATA_NAMES[["tranSubsector"]], year.fillout, addTimeValue, time.value.multiplier,sce) %>%
@@ -496,7 +497,8 @@ module_energy_L254.transportation_UCD <- function(command, ...) {
     L254.StubTranTechCalInput_basetable<- bind_rows(L254.StubTranTechCalInput_basetable %>% mutate(sce= paste0("CORE")),
                                                     L254.StubTranTechCalInput_basetable %>% mutate(sce= paste0("SSP1")),
                                                     L254.StubTranTechCalInput_basetable %>% mutate(sce= paste0("SSP3")),
-                                                    L254.StubTranTechCalInput_basetable %>% mutate(sce= paste0("SSP5")))
+                                                    L254.StubTranTechCalInput_basetable %>% mutate(sce= paste0("SSP5")),
+                                                    L254.StubTranTechCalInput_basetable %>% mutate(sce= paste0("highEV")))
 
     # Aggregate to set subsector share weights according to region, supplysector, tranSubsector, year combination
     # kbn 2020-02-06 Add sce below (See description of changes using search string kbn 2020-06-02 Making changes to generate xmls for SSPs flexibly)
@@ -572,7 +574,9 @@ module_energy_L254.transportation_UCD <- function(command, ...) {
                                                                    "stub.technology", "year", "sce")) %>%
       left_join(L254.StubTranTechCoef, by = c("region", "supplysector", "tranSubsector",
                                                              "stub.technology", "minicam.energy.input", "year","sce")) %>%
+      mutate(loadFactor=if_else(is.na(loadFactor),0,loadFactor),coefficient=if_else(is.na(coefficient),0,coefficient)) %>%
       mutate(output = calibrated.value * loadFactor * CONV_EJ_GJ / (coefficient * CONV_BTU_KJ)) %>%
+      mutate(output = if_else(is.na(output),0,output)) %>%
       select(region, supplysector, tranSubsector, stub.technology, year, minicam.energy.input,
              calibrated.value, loadFactor, coefficient, output,sce) ->
       L254.StubTranTechOutput

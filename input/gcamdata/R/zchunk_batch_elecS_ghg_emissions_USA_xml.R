@@ -27,14 +27,18 @@ module_gcamusa_batch_elecS_ghg_emissions_USA_xml <- function(command, ...) {
 
     # ===================================================
     # Rename columns to meet the LEVEL2_DATA_NAMES header requirements
-    L2236.elecS_ghg_tech_coeff_USA <- L2236.elecS_ghg_tech_coeff_USA %>% rename(`emiss.coef` = `emiss.coeff`,`stub.technology` = `technology`)
+    L2236.elecS_ghg_tech_coeff_USA <- L2236.elecS_ghg_tech_coeff_USA %>%
+      select(-technology) %>%
+      rename(stub.technology = subsector, subsector = subsector0, emiss.coef = emiss.coeff)
+
+    L2236.elecS_ghg_emissions_USA <- L2236.elecS_ghg_emissions_USA %>%
+      select(-stub.technology) %>%
+      rename(stub.technology = subsector, subsector = subsector0)
 
     # Produce outputs
     create_xml("elecS_ghg_emissions_USA.xml") %>%
-      add_xml_data_generate_levels(L2236.elecS_ghg_tech_coeff_USA,
-                               "InputEmissCoeff","subsector","nesting-subsector",1,FALSE) %>%
-      add_xml_data_generate_levels(L2236.elecS_ghg_emissions_USA,
-                                   "InputEmissions","subsector","nesting-subsector",1,FALSE) %>%
+      add_xml_data(L2236.elecS_ghg_tech_coeff_USA, "InputEmissCoeff") %>%
+      add_xml_data(L2236.elecS_ghg_emissions_USA, "InputEmissions") %>%
       add_precursors("L2236.elecS_ghg_tech_coeff_USA",
                      "L2236.elecS_ghg_emissions_USA") ->
       elecS_ghg_emissions_USA.xml

@@ -13,7 +13,7 @@ trn_freight_road,Medium truck,share-weight,final-calibration-year,end-year,,fixe
 trn_freight_road,Heavy truck,share-weight,final-calibration-year,end-year,,fixed
 trn_pass,Cycle,share-weight,final-calibration-year,end-year,,fixed
 trn_pass,Domestic Aviation,share-weight,final-calibration-year,end-year,,fixed
-trn_pass,HSR,share-weight,final-calibration-year,end-year,,linear
+trn_pass,HSR,share-weight,final-calibration-year,end-year,,fixed
 trn_pass,Passenger Rail,share-weight,final-calibration-year,end-year,,fixed
 trn_pass,Walk,share-weight,final-calibration-year,end-year,,fixed
 trn_pass_road,Bus,share-weight,final-calibration-year,end-year,,fixed

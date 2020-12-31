@@ -27,11 +27,15 @@ module_gcamusa_L2236.elecS_ghg_emissions_USA <- function(command, ...) {
              FILE = "energy/A22.globaltech_input_driver",
              FILE = "energy/A23.globaltech_input_driver",
              FILE = "energy/A25.globaltech_input_driver",
+             "L2234.StubTechMarket_elecS_USA",
+             "L2234.StubTechProd_elecS_USA",
              'L2233.StubTechMarket_elecS_cool_USA',
              'L2233.StubTechProd_elecS_cool_USA'))
   } else if(command == driver.DECLARE_OUTPUTS) {
     return(c('L2236.elecS_ghg_tech_coeff_USA',
-             'L2236.elecS_ghg_emissions_USA'))
+             'L2236.elecS_ghg_emissions_USA',
+             'L2236.elecS_cool_ghg_tech_coeff_USA',
+             'L2236.elecS_cool_ghg_emissions_USA'))
   } else if(command == driver.MAKE) {
 
     all_data <- list(...)[[1]]
@@ -44,6 +48,8 @@ module_gcamusa_L2236.elecS_ghg_emissions_USA <- function(command, ...) {
     A23.elecS_tech_mapping <- get_data(all_data, 'gcam-usa/A23.elecS_tech_mapping')
     A23.elecS_tech_availability <- get_data(all_data, 'gcam-usa/A23.elecS_tech_availability')
     A23.elecS_tech_mapping_cool <- get_data(all_data, "gcam-usa/A23.elecS_tech_mapping_cool")
+    L2234.StubTechMarket_elecS_USA <- get_data(all_data, 'L2234.StubTechMarket_elecS_USA')
+    L2234.StubTechProd_elecS_USA <- get_data(all_data, 'L2234.StubTechProd_elecS_USA')
     L2233.StubTechMarket_elecS_cool_USA <- get_data(all_data, 'L2233.StubTechMarket_elecS_cool_USA')
     L2233.StubTechProd_elecS_cool_USA <- get_data(all_data, 'L2233.StubTechProd_elecS_cool_USA')
 
@@ -91,7 +97,10 @@ module_gcamusa_L2236.elecS_ghg_emissions_USA <- function(command, ...) {
       get_data(all_data, "energy/A23.globaltech_input_driver"),
       get_data(all_data, "energy/A25.globaltech_input_driver")
     ) %>%
-      rename(stub.technology = technology) %>%
+      rename(stub.technology = technology) ->
+      EnTechInput
+
+    EnTechInput %>%
       left_join(A23.elecS_tech_mapping_cool,
                 by=c("stub.technology"="technology",
                      "supplysector","subsector")) %>%
@@ -101,6 +110,18 @@ module_gcamusa_L2236.elecS_ghg_emissions_USA <- function(command, ...) {
              subsector0 = subsector,
              subsector = Electric.sector.technology,
              supplysector = Electric.sector)->
+      EnTechInputMapCool
+
+    EnTechInput %>%
+      left_join(A23.elecS_tech_mapping,
+                by=c("stub.technology" = "technology",
+                     "supplysector", "subsector")) %>%
+      na.omit() %>%
+      select(-supplysector, -subsector_1) %>%
+      rename(technology = stub.technology,
+             subsector0 = subsector,
+             subsector = Electric.sector.technology,
+             supplysector = Electric.sector) ->
       EnTechInputMap
 
     L241.OutputEmissCoeff_elec %>%
@@ -116,6 +137,22 @@ module_gcamusa_L2236.elecS_ghg_emissions_USA <- function(command, ...) {
       semi_join(L2233.StubTechMarket_elecS_cool_USA %>%
                   select(region, supplysector, subsector0, subsector, technology, year),
                 by = c("supplysector", "subsector0", "subsector", "technology", "year", "region")) %>%
+      select(region, supplysector, subsector0, subsector, technology, year, Non.CO2, emiss.coeff) %>%
+      left_join_error_no_match(EnTechInputMapCool,
+                               by = c("supplysector", "subsector0", "subsector", "technology")) ->
+      L2236.elecS_cool_ghg_tech_coeff_USA
+
+    L241.OutputEmissCoeff_elec %>%
+      filter(region == gcam.USA_REGION, supplysector == "electricity", Non.CO2 %in% c("N2O","CH4") ) %>%
+      left_join(A23.elecS_tech_mapping %>%
+                  select(-subsector),
+                by = c("supplysector", "subsector" = "subsector_1", "stub.technology" = "technology")) %>%
+      select(supplysector = Electric.sector, subsector0 = subsector, subsector = Electric.sector.technology,
+             technology = stub.technology, year, Non.CO2, emiss.coeff) %>%
+      repeat_add_columns(tibble('region' = gcamusa.STATES)) %>%
+      semi_join(L2234.StubTechMarket_elecS_USA %>%
+                  select(region, supplysector, subsector0 = subsector, subsector = stub.technology, year),
+                by = c("supplysector", "subsector0", "subsector", "year", "region")) %>%
       select(region, supplysector, subsector0, subsector, technology, year, Non.CO2, emiss.coeff) %>%
       left_join_error_no_match(EnTechInputMap,
                                by = c("supplysector", "subsector0", "subsector", "technology")) ->
@@ -162,11 +199,36 @@ module_gcamusa_L2236.elecS_ghg_emissions_USA <- function(command, ...) {
       semi_join(L2233.StubTechMarket_elecS_cool_USA %>% rename("stub.technology"="technology") %>%
                   select(LEVEL2_DATA_NAMES[['StubTechYr']],subsector0),
                 by = c("supplysector", "technology"="stub.technology", "year", "state"  = "region")) ->
+      L2236.elecS_cool_fuel_input_state
+
+    L1231.in_EJ_state_elec_F_tech %>%
+      mutate(sector = "electricity") %>%
+      filter(year %in% L2236.elec_ghg_emissions_USA$year & technology %in% L2236.elec_ghg_emissions_USA$stub.technology) %>%
+      # We do not expect at 1:1 match may use a left_join here.
+      left_join(A23.elecS_tech_mapping %>%
+                  select(-subsector_1),
+                by = c("sector" = "supplysector", "technology")) %>%
+      select(state, supplysector = Electric.sector, subsector0 = subsector, subsector = Electric.sector.technology,
+             year, technology, fuel, tech_fuel_input = value) %>%
+      # We do not expect a 1:1 match so we can use a left_join here
+      left_join(L2234.StubTechProd_elecS_USA %>%
+                  select(LEVEL2_DATA_NAMES[['StubTechYr']], calOutputValue),
+                by = c("state" = "region", "supplysector", "subsector0" = "subsector", "subsector" = "stub.technology", "year")) %>%
+      group_by(state, technology, year) %>%
+      mutate(tech_calOuput = sum(calOutputValue),
+             segment_share = calOutputValue / tech_calOuput,
+             fuel_input = round(tech_fuel_input * segment_share, 6),
+             fuel_input = if_else(is.na(fuel_input), 0, fuel_input)) %>%
+      ungroup() %>%
+      select(state, supplysector, subsector0, subsector, technology, year, fuel, fuel_input) %>%
+      semi_join(L2234.StubTechMarket_elecS_USA %>%
+                  select(LEVEL2_DATA_NAMES[['StubTechYr']]),
+                by = c("supplysector", "subsector0" = "subsector", "subsector" = "stub.technology", "year", "state" = "region")) ->
       L2236.elecS_fuel_input_state
 
     # Compute state shares for each category in the fuel input table
     # Share out CH4 and N2O emissions by state based on the fuel input shares
-    L2236.elecS_fuel_input_state %>%
+    L2236.elecS_cool_fuel_input_state %>%
       # We do not expect a 1:1 match so we can use a left join here.
       left_join(L2236.elec_ghg_emissions_USA %>% select(-supplysector) %>%
                   left_join(A23.elecS_tech_mapping_cool %>% select(technology,Electric.sector.technology,to.technology,Electric.sector),
@@ -187,9 +249,41 @@ module_gcamusa_L2236.elecS_ghg_emissions_USA <- function(command, ...) {
              N2O = fuel_input_share * N2O) %>%
       ungroup() %>%
       select(region = state, supplysector, subsector0, subsector, technology, year, CH4, N2O) ->
+      L2236.elecS_cool_ghg_emissions_state
+
+    L2236.elecS_fuel_input_state %>%
+      # We do not expect a 1:1 match so we can use a left join here.
+      left_join(L2236.elec_ghg_emissions_USA %>% select(-supplysector) %>%
+                  left_join(A23.elecS_tech_mapping %>% select(technology,Electric.sector.technology,Electric.sector),
+                            by=c("stub.technology"="technology")) %>%
+                  rename(technology = stub.technology,
+                         subsector0 = subsector,
+                         subsector = Electric.sector.technology,
+                         supplysector = Electric.sector) %>%
+                  select(-region),
+                by = c("technology", "year", "supplysector","subsector0","subsector")) %>%
+
+
+      group_by(technology, year) %>%
+      mutate(fuel_input_USA = sum(fuel_input),
+             fuel_input_share = signif(fuel_input, 5) / signif(fuel_input_USA, 8),
+             CH4 = fuel_input_share * CH4,
+             N2O = fuel_input_share * N2O) %>%
+      ungroup() %>%
+      select(region = state, supplysector, subsector0, subsector, technology, year, CH4, N2O) ->
       L2236.elecS_ghg_emissions_state
 
     # Format for csv file
+    L2236.elecS_cool_ghg_emissions_state %>%
+      gather(Non.CO2, input.emissions, -region, -supplysector, -subsector0, -subsector, -technology, -year, convert=TRUE) %>%
+      arrange(region, supplysector, subsector0, subsector, technology, Non.CO2, year) %>%
+      rename(stub.technology=technology) %>%
+      select(LEVEL2_DATA_NAMES[['StubTechYr']], subsector0, Non.CO2, input.emissions) %>%
+      mutate(input.emissions = round(input.emissions, emissions.DIGITS_EMISSIONS)) %>%
+      left_join_error_no_match(EnTechInputMapCool,
+                               by = c("supplysector", "subsector0", "subsector", "stub.technology"="technology")) ->
+      L2236.elecS_cool_ghg_emissions_USA
+
     L2236.elecS_ghg_emissions_state %>%
       gather(Non.CO2, input.emissions, -region, -supplysector, -subsector0, -subsector, -technology, -year, convert=TRUE) %>%
       arrange(region, supplysector, subsector0, subsector, technology, Non.CO2, year) %>%
@@ -203,6 +297,8 @@ module_gcamusa_L2236.elecS_ghg_emissions_USA <- function(command, ...) {
     # Check for missing values
     stopifnot(!any(is.na(L2236.elecS_ghg_tech_coeff_USA)))
     stopifnot(!any(is.na(L2236.elecS_ghg_emissions_USA)))
+    stopifnot(!any(is.na(L2236.elecS_cool_ghg_tech_coeff_USA)))
+    stopifnot(!any(is.na(L2236.elecS_cool_ghg_emissions_USA)))
 
     # ===========================================================================================
 
@@ -218,12 +314,11 @@ module_gcamusa_L2236.elecS_ghg_emissions_USA <- function(command, ...) {
                      'L241.OutputEmissCoeff_elec',
                      'gcam-usa/A23.elecS_tech_mapping',
                      'gcam-usa/A23.elecS_tech_availability',
-                     "gcam-usa/A23.elecS_tech_mapping_cool",
                      "energy/A22.globaltech_input_driver",
                      "energy/A23.globaltech_input_driver",
                      "energy/A25.globaltech_input_driver",
-                     'L2233.StubTechMarket_elecS_cool_USA',
-                     'L2233.StubTechProd_elecS_cool_USA') ->
+                     "L2234.StubTechMarket_elecS_USA",
+                     "L2234.StubTechProd_elecS_USA") ->
       L2236.elecS_ghg_tech_coeff_USA
 
     L2236.elecS_ghg_emissions_USA %>%
@@ -240,13 +335,52 @@ module_gcamusa_L2236.elecS_ghg_emissions_USA <- function(command, ...) {
                      "energy/A22.globaltech_input_driver",
                      "energy/A23.globaltech_input_driver",
                      "energy/A25.globaltech_input_driver",
+                     "L2234.StubTechMarket_elecS_USA",
+                     "L2234.StubTechProd_elecS_USA") ->
+      L2236.elecS_ghg_emissions_USA
+
+    L2236.elecS_cool_ghg_tech_coeff_USA %>%
+      add_title("U.S. electricity GHG emission coefficients by technology sector") %>%
+      add_units("NA") %>%
+      add_comments("Write electricity emission coefficients to multiple load segments then") %>%
+      add_comments("compute state shares for each category in the fuel input table") %>%
+      add_legacy_name("L2236.elecS_ghg_tech_coeff_USA") %>%
+      add_precursors('L1231.in_EJ_state_elec_F_tech',
+                     'L201.OutputEmissions_elec',
+                     'L241.OutputEmissCoeff_elec',
+                     'gcam-usa/A23.elecS_tech_mapping',
+                     'gcam-usa/A23.elecS_tech_availability',
+                     "gcam-usa/A23.elecS_tech_mapping_cool",
+                     "energy/A22.globaltech_input_driver",
+                     "energy/A23.globaltech_input_driver",
+                     "energy/A25.globaltech_input_driver",
+                     'L2233.StubTechMarket_elecS_cool_USA',
+                     'L2233.StubTechProd_elecS_cool_USA') ->
+      L2236.elecS_cool_ghg_tech_coeff_USA
+
+    L2236.elecS_cool_ghg_emissions_USA %>%
+      add_title("U.S. electricity non CO2 emission coefficients by technology sector") %>%
+      add_units("NA") %>%
+      add_comments("Write electricity emission coefficients to multiple load segments then") %>%
+      add_comments("compute state shares for each category in the fuel input table") %>%
+      add_legacy_name("L2236.elecS_ghg_emissions_USA") %>%
+      add_precursors('L1231.in_EJ_state_elec_F_tech',
+                     'L201.OutputEmissions_elec',
+                     'L241.OutputEmissCoeff_elec',
+                     'gcam-usa/A23.elecS_tech_mapping',
+                     'gcam-usa/A23.elecS_tech_availability',
+                     "energy/A22.globaltech_input_driver",
+                     "energy/A23.globaltech_input_driver",
+                     "energy/A25.globaltech_input_driver",
                      "gcam-usa/A23.elecS_tech_mapping_cool",
                      'L2233.StubTechMarket_elecS_cool_USA',
                      'L2233.StubTechProd_elecS_cool_USA') ->
-      L2236.elecS_ghg_emissions_USA
+      L2236.elecS_cool_ghg_emissions_USA
 
     return_data(L2236.elecS_ghg_tech_coeff_USA,
-                L2236.elecS_ghg_emissions_USA)
+                L2236.elecS_ghg_emissions_USA,
+                L2236.elecS_cool_ghg_tech_coeff_USA,
+                L2236.elecS_cool_ghg_emissions_USA)
 
   } else {
     stop("Unknown command")

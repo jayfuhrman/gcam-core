@@ -58,15 +58,14 @@ module_gcamusa_LA171.nonco2_trn_USA_S_T_Y.R <- function(command, ...) {
     # ==============================================================================
 
     MOVES_vehicle_age_fractions %>%
-      filter(yearID %in% MODEL_BASE_YEARS) %>%
+      filter(yearID %in% c(2005, 2010)) %>%
       mutate(Vintage = as.integer(yearID - ageID)) %>%
       # Categorize vintages into five-year bins since emissions factor data is provided
       # in 5 year increments
-      mutate(Vintage = if_else(Vintage <= 1990, 1990,
+      mutate(Vintage = if_else(yearID == 2005 & Vintage <= 1990, 1990,
                               if_else(Vintage <= 1995, 1995,
                                      if_else(Vintage <= 2000, 2000,
-                                            if_else(Vintage <= 2005, 2005,
-                                                    if_else(Vintage <= 2010, 2010, 2015)))))) %>%
+                                            if_else(Vintage <= 2005, 2005, 2010))))) %>%
       group_by(sourceTypeID,yearID,Vintage) %>%
       summarise(ageFraction = sum(ageFraction)) ->
       MOVES_trn_age_fractions_Yb
@@ -93,15 +92,6 @@ module_gcamusa_LA171.nonco2_trn_USA_S_T_Y.R <- function(command, ...) {
 
     #Subset the table mapping the regulatory classes to MOVES source IDs
     MOVES_src_type_reg_class_fractions %>%
-      ## For some reason there are multiple observations for some sourcetypeID, modelyearID, and regclassID combinations
-      ## Here, for now, we will combine these
-      group_by(sourceTypeID,modelYearID,regClassID) %>%
-      summarise(stmyFraction=sum(stmyFraction)) %>%
-      ungroup() %>%
-      ### sourceTypeID 51 and regClassID 41 does not have an observation between 1989-1995.
-      ### For now, we will apply the 1988 value for this observation.
-      mutate(modelYearID = as.numeric(modelYearID), sourceTypeID = as.numeric(sourceTypeID), regClassID = as.numeric(regClassID),
-        modelYearID = if_else(sourceTypeID==51&regClassID==41&modelYearID==1988, 1990 ,modelYearID)) %>%
       filter(regClassID %in% MOVES_comm_truck_reg_classes & modelYearID %in% MOVES_trn_age_fractions_Yb$yearID) ->
       MOVES_comm_truck_reg_src_fractions
 
@@ -197,13 +187,13 @@ module_gcamusa_LA171.nonco2_trn_USA_S_T_Y.R <- function(command, ...) {
 
     # Gather a table for use in calculating degradation of EFs for each vintage
     MARKAL_LDV_EFs_gpm.long %>%
-      filter(Vintage >= 2015 & Vintage != 2050 & !is.na(value)) ->
+      filter(Vintage >= 2010 & Vintage != 2050 & !is.na(value)) ->
       L171.LDV_USA_emiss_degrates
 
     # Clean up and subset base year vintages
     MARKAL_LDV_EFs_gpm.long %>%
       filter(year %in% MODEL_BASE_YEARS & Vintage <= year) %>%
-      filter(!(Vintage == 1990 & year ==2015)) %>%
+      filter(!(Vintage == 1990 & year ==2010)) %>%
       ### MISSING VALUES: emission factors pollutants with no data for ELC vehicles, and 2010 EFs for 1990 vintages
       na.omit ->
       MARKAL_LDV_EFs_gpm_Yb
@@ -221,7 +211,7 @@ module_gcamusa_LA171.nonco2_trn_USA_S_T_Y.R <- function(command, ...) {
 
     # Clean up and subset future vintages for emissions coefficients
     MARKAL_LDV_EFs_gpm.long %>%
-      filter(Vintage >= 2020 & Vintage == year & !is.na(value)) ->
+      filter(Vintage >= 2015 & Vintage == year & !is.na(value)) ->
       MARKAL_LDV_EFs_gpm_Yf_NAs
 
     # Add on the base year emission factors
@@ -308,15 +298,15 @@ module_gcamusa_LA171.nonco2_trn_USA_S_T_Y.R <- function(command, ...) {
 
     # Gather a table for use in calculating degradation of EFs for each vintage
     MARKAL_HDV_EFs_gpm.long %>%
-      filter(Vintage >= 2015 & Vintage != 2050 & !is.na(value)) ->
+      filter(Vintage >= 2010 & Vintage != 2050 & !is.na(value)) ->
       L171.HDV_USA_emiss_degrates
 
     # Clean up and subset base year vintages
     MARKAL_HDV_EFs_gpm.long %>%
       #filter(year %in% MODEL_BASE_YEARS & Vintage <= year) %>%
       ## EDIT BY NTG TO ALLOW SCRIPT TO WORK W/O BYU
-      filter(year %in% MODEL_BASE_YEARS & Vintage <= year) %>%
-      filter(!(year == 2015 & Vintage == 1990)) %>%
+      filter(year %in% MODEL_BASE_YEARS & year < max(MODEL_BASE_YEARS) & Vintage <= year) %>%
+      filter(!(year == 2010 & Vintage == 1990)) %>%
       na.omit ->
       MARKAL_HDV_EFs_gpm_Yb
 
@@ -334,7 +324,7 @@ module_gcamusa_LA171.nonco2_trn_USA_S_T_Y.R <- function(command, ...) {
 
     # Clean up and subset future vintages for emissions coefficients
     MARKAL_HDV_EFs_gpm.long %>%
-      filter(Vintage >= 2020 & Vintage == year & !is.na(value)) ->
+      filter(Vintage >= 2015 & Vintage == year & !is.na(value)) ->
       MARKAL_HDV_EFs_gpm_Yf_NAs
 
     # Add on the base year emission factors

@@ -215,8 +215,8 @@ module_energy_LA120.offshore_wind <- function(command, ...) {
 
     # First, calculate capital cost over time for "wind_offshore" technology
     A23.globaltech_capital %>%
-      filter(technology == "wind_offshore") %>%
       fill_exp_decay_extrapolate(c(MODEL_BASE_YEARS, MODEL_FUTURE_YEARS)) %>%
+      filter(technology == "wind_offshore") %>%
       rename(capital.overnight=value, intermittent.technology=technology) -> L120.offshore_wind_cap_cost
 
     # Second, calculate technological change
