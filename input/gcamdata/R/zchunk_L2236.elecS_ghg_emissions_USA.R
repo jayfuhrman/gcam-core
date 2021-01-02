@@ -248,7 +248,8 @@ module_gcamusa_L2236.elecS_ghg_emissions_USA <- function(command, ...) {
              CH4 = fuel_input_share * CH4,
              N2O = fuel_input_share * N2O) %>%
       ungroup() %>%
-      select(region = state, supplysector, subsector0, subsector, technology, year, CH4, N2O) ->
+      select(region = state, supplysector, subsector0, subsector, technology, year, CH4, N2O) %>%
+      replace_na(list(CH4 = 0, N2O = 0)) ->
       L2236.elecS_cool_ghg_emissions_state
 
     L2236.elecS_fuel_input_state %>%
