@@ -575,6 +575,11 @@ water.RENEW.COST.GRADE3 <- 10 #Renewable water grade3 cost
 
 # Emissions constants ======================================================================
 
+# Flag which emissions data to use. Value "EPA" uses EPA data. All other values use CEDS data.
+emissions.Fgas.DATA_SOURCE <- "EPA"
+
+# scaling CH4 and N2O emissions to EPA 2019 mitigation report BAU emission trajectory
+emissions.nonCO2.EPA.scaling <- TRUE
 
 # Time
 emissions.CEDS_YEARS              <- 1971:2019           #Year coverage for CEDS inventory.
@@ -585,6 +590,7 @@ emissions.EDGAR_YEARS             <- 1971:2008
 emissions.EDGAR_YEARS_PLUS        <- 1970:2008
 emissions.EPA_HISTORICAL_YEARS    <- 1971:2002
 emissions.EPA_MACC_YEAR           <- 2030                # Must be either 2020 or 2030
+emissions.EPA_BAU_HIST_YEAR       <- c(1990, 2005, 2010, 2015) # based on 2019 EPA nonCO2 report
 emissions.FINAL_EMISS_YEAR        <- min(max(MODEL_BASE_YEARS), 2005)
 emissions.GAINS_BASE_YEAR         <- 2005
 emissions.GAINS_YEARS             <- c(2010, 2020, 2030)
@@ -619,7 +625,7 @@ emissions.NONGHG_GASES       <- c("SO2", "NOx", "CO", "NMVOC", "NH3")
 emissions.PFCS               <- c("CF4", "C2F6", "SF6")
 emissions.TRN_INTL_SECTORS   <- c("trn_intl_ship", "trn_intl_air")
 
-emissions.USE_GV_MAC           <- 1
+emissions.USE_GV_MAC           <- 0
 emissions.USE_GCAM3_CCOEFS     <- 1 # Select whether to use GCAM3 fuel carbon coefficients
 emissions.USE_GLOBAL_CCOEFS    <- 1 # Select whether to use global average carbon coefficients on fuels, or region-specific carbon coefficients
 emissions.UNMGD_LAND_INPUT_NAME <- "land-input"

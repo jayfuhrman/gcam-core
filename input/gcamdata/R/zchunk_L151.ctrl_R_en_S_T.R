@@ -42,6 +42,10 @@ module_emissions_L151.ctrl_R_en_S_T <- function(command, ...) {
       mutate(year = as.numeric(substr(year, 2, 5))) ->
       L114.bcoc_tgej_R_en_S_F_2000
 
+    # If we are using CEDS remove all rows from this dataset
+    if (driver.EMISSIONS_SOURCE == "CEDS"){
+      L114.bcoc_tgej_R_en_S_F_2000 <- L114.bcoc_tgej_R_en_S_F_2000[0,] }
+
     # First, set up min coeff data frame
     A51.min_coeff %>%
       gather(Non.CO2, value, -supplysector, -subsector, -stub.technology) %>%
@@ -67,6 +71,7 @@ module_emissions_L151.ctrl_R_en_S_T <- function(command, ...) {
 
     # Compute max emissions reduction for non_CO2s
     L111.nonghg_tgej_R_en_S_F_Yh %>%
+      bind_rows(L114.bcoc_tgej_R_en_S_F_2000) %>%
       filter(year == 2005) %>%
       map_and_compute_max_reduction(L151.min_coeff) ->
       L151.nonghg_ctrl_R_en_S_T
