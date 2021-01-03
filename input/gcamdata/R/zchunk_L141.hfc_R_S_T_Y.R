@@ -13,7 +13,7 @@
 #' original data system was \code{L141.hfc_R_S_T_Y.R} (emissions level1).
 #' @details Describe in detail what this chunk does.
 #' @importFrom assertthat assert_that
-#' @importFrom dplyr arrange bind_rows filter funs group_by left_join matches mutate select summarise vars
+#' @importFrom dplyr arrange bind_rows filter funs group_by left_join matches mutate select summarise vars mutate_at
 #' @importFrom tidyr replace_na
 #' @author RMH Aug 2017
 module_emissions_L141.hfc_R_S_T_Y <- function(command, ...) {
@@ -53,6 +53,10 @@ module_emissions_L141.hfc_R_S_T_Y <- function(command, ...) {
   } else if(command == driver.MAKE) {
 
     all_data <- list(...)[[1]]
+
+    #silence packages
+    emiss_share <- supply <- emscalar <- tot_emissions <- MAC_type1 <- gwp <- EPA_emissions <- EPA_sector <- NULL
+
 
     # Load required inputs
     GCAM_region_names <- get_data(all_data, "common/GCAM_region_names")

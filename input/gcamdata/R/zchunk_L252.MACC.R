@@ -83,6 +83,10 @@ module_emissions_L252.MACC <- function(command, ...) {
 
     all_data <- list(...)[[1]]
 
+    #silence packages
+    base.year <- subresource <- technology <- key <- mac.reduction.base <- Sector <- GCAM_region_ID <- EPA_country <- iso <- EPA_sector <- NULL
+
+
     # Load required inputs
     A_regions <- get_data(all_data, "emissions/A_regions")
     GCAM_region_names <- get_data(all_data, "common/GCAM_region_names")

@@ -44,6 +44,8 @@ module_emissions_batch_ind_urb_processing_sectors_xml <- function(command, ...) 
 
     all_data <- list(...)[[1]]
 
+    tech.change <- tech.change.year <- NULL #Silence package check
+
     # Load required inputs
     L231.UnlimitRsrc <- get_data(all_data, "L231.UnlimitRsrc")
     L231.UnlimitRsrcPrice <- get_data(all_data, "L231.UnlimitRsrcPrice")

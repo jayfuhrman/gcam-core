@@ -51,7 +51,7 @@ module_emissions_batch_all_energy_emissions_xml <- function(command, ...) {
 
     all_data <- list(...)[[1]]
 
-    emiss.coeff <- NULL  # silence package check note
+    tech.change <- tech.change.year <- emiss.coeff <- NULL  # silence package check note
 
     # Load required inputs
     L201.en_pol_emissions <- get_data(all_data, "L201.en_pol_emissions")
@@ -75,7 +75,7 @@ module_emissions_batch_all_energy_emissions_xml <- function(command, ...) {
     L252.ResMAC_fos_tc <- get_data(all_data, "L252.ResMAC_fos_tc")
     L252.ResMAC_fos_phaseInTime <- get_data(all_data, "L252.ResMAC_fos_phaseInTime")
     L252.ResMAC_fos_tc_average <- get_data(all_data, "L252.ResMAC_fos_tc_average")
-    
+
     if(driver.EMISSIONS_SOURCE == "EDGAR") {
       L201.en_bcoc_emissions <- get_data(all_data, "L201.en_bcoc_emissions")
       # just include bc/oc with the rest of the GHG emissions now so the

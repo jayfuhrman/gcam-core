@@ -91,7 +91,8 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
       all_data <- list(...)[[1]]
 
       #silence packages
-      fuel <- CEDS_sector <- em <- iso <- unit <- year <- emissions <- sector <- Non.CO2 <- GCAM_region_ID <- CEDS_agg_sector <-
+      lifetime <- emscaler <- ej_vintage <- tg_vintage <- tg_i_total <- tg_i <- ej_i <- value_adj <-
+      tot_emissions <- EPA_sector <- final_year  <- year_operate <- timestep <-  avg.prod.lifetime  <-  resource  <- gas <- country <- fuel <- CEDS_sector <- em <- iso <- unit <- year <- emissions <- sector <- Non.CO2 <- GCAM_region_ID <- CEDS_agg_sector <-
         CEDS_agg_fuel <- GCAM_region <- rev.mode <- rev_size.class <- UCD_fuel <- size.class <- UCD_technology <- UCD_sector <- sector_weight <-
         dieseloil <- lightoil <- mode_weight <- sum_sector_weight <- sum_mode_weight <- secondary.output <- technology <- energy <- supplysector <-
         subsector <- stub.technology <- sector <- service <- tranSubsector <- tranTechnology <- totalenergy <- enshare <- GCAMemissions <- D_driver <-
@@ -489,7 +490,7 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
       # Subset CEDS process emissions and match to GCAM drivers
 
       L112.CEDS_GCAM %>%
-        filter(CEDS_agg_sector %in% c("industry_processes", "chemicals", "landfills", "wastewater", "aerosols",
+        filter(CEDS_agg_sector %in% c("industry_processes", "landfills","waste_incineration" ,"wastewater", "aerosols",
                                       "metals", "foams", "solvents", "semiconductors","chemicals_nitric","chemicals_adipic")) ->
         L112.CEDS_GCAM_Proc
 
@@ -497,7 +498,7 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
       GCAM_sector_tech %>%
         select(supplysector, subsector, stub.technology, EDGAR_agg_sector, EPA_agg_sector, EPA_agg_fuel_ghg) %>%
         filter(EDGAR_agg_sector %in% c("industry_processes" , "chemicals", "landfills", "wastewater",  # Filter for the agg sectors in EDGAR column for all NonCO2s.
-                                       "solvents","chemicals_adipic","chemicals_nitric")) %>%
+                                       "solvents","chemicals_adipic","chemicals_nitric","waste_incineration")) %>%
         repeat_add_columns(tibble(Non.CO2 = unique(L112.CEDS_GCAM_Proc$Non.CO2))) %>%
         repeat_add_columns(tibble(year = emissions.CEDS_YEARS)) %>%
         repeat_add_columns(tibble(GCAM_region_ID = GCAM_region_names$GCAM_region_ID)) %>%
@@ -513,7 +514,7 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
 
       # Note: Final sector outputs
       # "nitric acid" "other industrial processes" "solvents"
-      # "landfills" "wastewater treatment"
+      # "landfills" "wastewater treatment" "waste_incineration"
 
       # ===================================================
       # Part 4: Animal Emissions

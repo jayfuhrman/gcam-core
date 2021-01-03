@@ -34,6 +34,8 @@ module_emissions_batch_all_fgas_emissions_xml <- function(command, ...) {
 
     all_data <- list(...)[[1]]
 
+    tech.change <- tech.change.year <- NULL #Silence package check
+
     # Load required inputs
     L241.hfc_all <- get_data(all_data, "L241.hfc_all")
     L241.pfc_all <- get_data(all_data, "L241.pfc_all")
