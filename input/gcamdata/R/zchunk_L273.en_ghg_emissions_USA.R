@@ -284,7 +284,8 @@ module_gcamusa_L273.en_ghg_emissions_USA <- function(command, ...) {
        mutate(input.emissions = round(input.emissions, emissions.DIGITS_EMISSIONS)) %>%
        ## Thhe stub.techs and supplysectors here do not match. Therefore we join via the subsectors and we want to keep the first
        ## joined value to avoid duplicates
-       left_join_keep_first_only(EnTechInputNameMap %>% select(-stub.technology), by = c("supplysector", "subsector"))->
+       left_join_keep_first_only(EnTechInputNameMap %>% select(-stub.technology), by = c("supplysector", "subsector")) %>%
+       na.omit() ->
        L273.en_ghg_emissions_USA
 
      # 2d. Output emissions
