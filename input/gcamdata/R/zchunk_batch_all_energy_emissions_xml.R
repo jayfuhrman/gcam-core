@@ -75,7 +75,7 @@ module_emissions_batch_all_energy_emissions_xml <- function(command, ...) {
     L252.ResMAC_fos_tc <- get_data(all_data, "L252.ResMAC_fos_tc")
     L252.ResMAC_fos_phaseInTime <- get_data(all_data, "L252.ResMAC_fos_phaseInTime")
     L252.ResMAC_fos_tc_average <- get_data(all_data, "L252.ResMAC_fos_tc_average")
-    
+
     if(driver.EMISSIONS_SOURCE == "EDGAR") {
       L201.en_bcoc_emissions <- get_data(all_data, "L201.en_bcoc_emissions")
       # just include bc/oc with the rest of the GHG emissions now so the
@@ -119,13 +119,15 @@ module_emissions_batch_all_energy_emissions_xml <- function(command, ...) {
       add_precursors("L252.ResMAC_fos") ->
       all_energy_emissions_MAC.xml
 
+    # temporarily create a "highTC" file assuming post-2050 tech.change is the highest value of pre-2050
+    # for validation and sensitivity purpose, will be deleted later
     create_xml("all_energy_emissions_MAC_highTC.xml") %>%
       add_xml_data(L252.ResMAC_fos, "ResMAC") %>%
       add_xml_data(L252.ResMAC_fos_tc, "ResMACTC") %>%
       add_precursors("L252.ResMAC_fos", "L252.ResMAC_fos_tc") ->
       all_energy_emissions_MAC_highTC.xml
 
-    # temporarily create a "noTC" file assuming tech.change = 0 after 2050
+    # temporarily create a "lowTC" file assuming tech.change = 0 after 2050
     # for validation and sensitivity purpose, will be deleted later
     L252.ResMAC_fos_tc_zero2050 <- L252.ResMAC_fos_tc_average %>%
       mutate(tech.change = ifelse(tech.change.year > 2050, 0, tech.change))
