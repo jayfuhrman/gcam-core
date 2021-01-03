@@ -55,7 +55,7 @@ module_emissions_batch_all_aglu_emissions_IRR_MGMT_xml <- function(command, ...)
     L252.AgMAC_tc <- get_data(all_data, "L252.AgMAC_tc")
     L252.AgMAC_tc_average <- get_data(all_data, "L252.AgMAC_tc_average")
 
-    bio_N20_coef <- compVal <- bio_N2O_coef<- NULL # Silence package checks
+    tech.change <- tech.change.year <- bio_N20_coef <- compVal <- bio_N2O_coef<- NULL # Silence package checks
 
     # ===================================================
     # Rename the tibble column names to match the header names.

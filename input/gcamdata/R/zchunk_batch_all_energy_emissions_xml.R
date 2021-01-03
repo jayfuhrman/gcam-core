@@ -51,7 +51,7 @@ module_emissions_batch_all_energy_emissions_xml <- function(command, ...) {
 
     all_data <- list(...)[[1]]
 
-    emiss.coeff <- NULL  # silence package check note
+    tech.change <- tech.change.year <- emiss.coeff <- NULL  # silence package check note
 
     # Load required inputs
     L201.en_pol_emissions <- get_data(all_data, "L201.en_pol_emissions")

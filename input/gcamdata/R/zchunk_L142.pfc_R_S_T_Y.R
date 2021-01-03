@@ -51,6 +51,9 @@ module_emissions_L142.pfc_R_S_T_Y <- function(command, ...) {
 
     all_data <- list(...)[[1]]
 
+    #silence packages
+    gas <- adj_emissions  <- emiss_share <- supply <- emscalar <- tot_emissions <- MAC_type1 <- gwp <- EPA_emissions <- EPA_sector <- NULL
+
     # Load required inputs
 
     GCAM_region_names <- get_data(all_data, "common/GCAM_region_names")
