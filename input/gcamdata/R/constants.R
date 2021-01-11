@@ -34,6 +34,7 @@ MODEL_BASE_YEARS        <- c(1975, 1990, 2005, 2010, 2015)
 MODEL_FUTURE_YEARS      <- seq(2020, 2100, 5)
 MODEL_YEARS             <- c(MODEL_BASE_YEARS, MODEL_FUTURE_YEARS)
 MODEL_FINAL_BASE_YEAR   <- 2015
+X_MODEL_YEARS		    <- paste0( "X", MODEL_YEARS )
 
 # GCAM constants ======================================================================
 
@@ -470,6 +471,16 @@ energy.NEG_EMISS_MARKT_GLOBAL   <- TRUE # If the negative emissions budget is gl
 energy.OIL_CREDITS_MARKETNAME   <- "oil-credits"
 energy.OILFRACT_ELEC            <- 1.0 # Fraction of liquids for feedstocks that must come from oil
 energy.OILFRACT_FEEDSTOCKS      <- 0.8 # Fraction of liquids for oil electricity that must come from oil
+
+# RPS constants
+FIRST_YEAR_OF_SHARE_CONSTRAINT <- 2020
+FINAL_YEAR_OF_SHARE_CONSTRAINT <- 2050
+ELEC_RPS <- "ELEC_RPS"
+CONSTRAINT <- 1
+OUTPUT.RATIO <- 1
+RENEWABLE <- "Renewable"
+RES <- "RES"
+CO2 <- "CO2"
 
 #kbn 2019-10-11 Adding constant for transportation type. Set this to rev.mode to use revised mode classes, rev_size.class to use revised size classes.
 #To use the old modes and size classes, use mode and size.class for the constants. The default for GCAM are the new modes and size classes.

@@ -1,0 +1,18 @@
+# File: A23.include_in_rps.csv
+# Title: Specification of subsectors to be included in RPS
+# Units: NA
+# Source: LBNL
+# Column types: cc
+# ----------
+subsector,type
+biomass,Renewable
+coal,Non-renewable
+gas,Non-renewable
+geothermal,Renewable
+grid_storage,Non-renewable
+hydro,Non-renewable
+refined liquids,Non-renewable
+rooftop_pv,Renewable
+solar,Renewable
+wind,Renewable
+nuclear,Non-renewable

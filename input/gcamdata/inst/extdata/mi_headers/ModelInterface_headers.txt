@@ -562,6 +562,14 @@ PortfolioStdMinPrice,world/+{name}region,region/+{name}policy-portfolio-standard
 
 PortfolioStdMaxPrice,world/+{name}region,region/+{name}policy-portfolio-standard, policy-portfolio-standard/+{year=1975;fillout=1}max-price, scenario,scenario/world
 
+StubTechRESSecondaryOutput, world/+{name}region, region/+{name;nocreate=1}supplysector, supplysector/+{name;nocreate=1}subsector, subsector/+{name;nocreate=1}stub-technology, stub-technology/+{year}period, period/+{name}res-secondary-output, res-secondary-output/+output-ratio, scenario, scenario/world
+
+RESPolicy, world/+{name}region, region/+{name}policy-portfolio-standard, policy-portfolio-standard/+market, policy-portfolio-standard/+policyType, policy-portfolio-standard/+{year;fillout=1}constraint, policy-portfolio-standard/+constraint, scenario, scenario/world
+
+StubTechAdjCoef, world/+{name}region, region/+{name;nocreate=1}supplysector, supplysector/+{name;nocreate=1}subsector, subsector/+{name;nocreate=1}stub-technology, stub-technology/+{year}period, period/+{name}minicam-energy-input, minicam-energy-input/+market-name, minicam-energy-input/+{year}adjusted-coefficient, minicam-energy-input/+adjusted-coefficient, period/+{name}CO2, scenario, scenario/world
+
+
+
 #####, LAND ALLOCATOR
 
 
