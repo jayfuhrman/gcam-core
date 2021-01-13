@@ -33,7 +33,7 @@ module_gcamusa_L2247.elecS_tech_costs_USA <- function(command, ...) {
              FILE = "gcam-usa/A23.elec_OM_adv_USA",
              FILE = "gcam-usa/A23.elecS_tech_mapping",
              FILE = "gcam-usa/A23.elecS_inttech_mapping",
-             FILE = "gcam-usa/A23.elecS_tech_mapping_cool",
+             # FILE = "gcam-usa/A23.elecS_tech_mapping_cool",
              "L2234.GlobalTechCapital_elecS_USA",
              "L2234.GlobalIntTechCapital_elecS_USA",
              "L2234.GlobalTechOMfixed_elecS_USA",
@@ -75,7 +75,7 @@ module_gcamusa_L2247.elecS_tech_costs_USA <- function(command, ...) {
     A23.elec_OM_adv_USA <- get_data(all_data, "gcam-usa/A23.elec_OM_adv_USA", strip_attributes = TRUE)
     A23.elecS_tech_mapping <- get_data(all_data, "gcam-usa/A23.elecS_tech_mapping", strip_attributes = TRUE)
     A23.elecS_inttech_mapping <- get_data(all_data, "gcam-usa/A23.elecS_inttech_mapping", strip_attributes = TRUE)
-    A23.elecS_tech_mapping_cool <- get_data(all_data, "gcam-usa/A23.elecS_tech_mapping_cool", strip_attributes = TRUE)
+    # A23.elecS_tech_mapping_cool <- get_data(all_data, "gcam-usa/A23.elecS_tech_mapping_cool", strip_attributes = TRUE)
     L2234.GlobalTechCapital_elecS_USA <- get_data(all_data, "L2234.GlobalTechCapital_elecS_USA", strip_attributes = TRUE)
     L2234.GlobalIntTechCapital_elecS_USA <- get_data(all_data, "L2234.GlobalIntTechCapital_elecS_USA", strip_attributes = TRUE)
     L2234.GlobalTechOMfixed_elecS_USA <- get_data(all_data, "L2234.GlobalTechOMfixed_elecS_USA", strip_attributes = TRUE)
@@ -339,50 +339,50 @@ module_gcamusa_L2247.elecS_tech_costs_USA <- function(command, ...) {
       select(LEVEL2_DATA_NAMES[["GlobalIntTechOMvar"]]) ->
       L2247.GlobalIntTechOMvar_elecS_adv_USA
 
-    ## To account for new nesting-subsector structure and to add cooling technologies, we must expand certain outputs
-    add_cooling_techs <- function(data){
-      data_new <- data %>%
-        left_join(A23.elecS_tech_mapping_cool,
-                  by=c("technology"="Electric.sector.technology",
-                       "sector.name"="Electric.sector","subsector.name"="subsector")) %>%
-        select(-subsector_1,-technology.y)%>%
-        rename(subsector.name0=subsector.name,
-               subsector.name=technology,
-               technology = to.technology)%>%
-        arrange(sector.name,year) %>%
-        mutate(technology = if_else(subsector.name0=="wind"|subsector.name0=="solar",subsector.name,
-                                    if_else(subsector.name0=="grid_storage",subsector.name0,technology)))
-      return(data_new)
-    }
-
-
-
-    L2247.GlobalTechCapitalOnly_elecS_USA <- add_cooling_techs(L2247.GlobalTechCapitalOnly_elecS_USA)
-    L2247.GlobalTechFCROnly_elecS_itc_USA <- add_cooling_techs(L2247.GlobalTechFCROnly_elecS_itc_USA)
-    L2247.GlobalTechCost_ptc_USA <- add_cooling_techs(L2247.GlobalTechCost_ptc_USA)
-
-    add_cooling_int_techs <- function(data){
-      data_new <- data %>%
-        filter(!grepl("CSP",intermittent.technology)) %>%
-        rename(subsector.name0=subsector.name, subsector.name = intermittent.technology) %>%
-        mutate(intermittent.technology=subsector.name) %>%
-        bind_rows(
-      data %>%
-        filter(grepl("CSP",intermittent.technology)) %>%
-          left_join(A23.elecS_tech_mapping_cool,
-                  by=c("intermittent.technology"="Electric.sector.technology",
-                       "sector.name"="Electric.sector", "subsector.name"="subsector")) %>%
-        select(-technology,-subsector_1, -supplysector, -plant_type, -cooling_system, -water_type)%>%
-        rename(subsector.name0=subsector.name,
-               subsector.name = intermittent.technology,
-               intermittent.technology = to.technology) ) %>%
-        arrange(sector.name,year)
-      return(data_new)
-    }
-
-    L2247.GlobalIntTechCapitalOnly_elecS_USA <- add_cooling_int_techs(L2247.GlobalIntTechCapitalOnly_elecS_USA)
-    L2247.GlobalIntTechFCROnly_elecS_itc_USA <- add_cooling_int_techs(L2247.GlobalIntTechFCROnly_elecS_itc_USA)
-    L2247.GlobalIntTechCost_ptc_USA <- add_cooling_int_techs(L2247.GlobalIntTechCost_ptc_USA)
+    # ## To account for new nesting-subsector structure and to add cooling technologies, we must expand certain outputs
+    # add_cooling_techs <- function(data){
+    #   data_new <- data %>%
+    #     left_join(A23.elecS_tech_mapping_cool,
+    #               by=c("technology"="Electric.sector.technology",
+    #                    "sector.name"="Electric.sector","subsector.name"="subsector")) %>%
+    #     select(-subsector_1,-technology.y)%>%
+    #     rename(subsector.name0=subsector.name,
+    #            subsector.name=technology,
+    #            technology = to.technology)%>%
+    #     arrange(sector.name,year) %>%
+    #     mutate(technology = if_else(subsector.name0=="wind"|subsector.name0=="solar",subsector.name,
+    #                                 if_else(subsector.name0=="grid_storage",subsector.name0,technology)))
+    #   return(data_new)
+    # }
+    #
+    #
+    #
+    # L2247.GlobalTechCapitalOnly_elecS_USA <- add_cooling_techs(L2247.GlobalTechCapitalOnly_elecS_USA)
+    # L2247.GlobalTechFCROnly_elecS_itc_USA <- add_cooling_techs(L2247.GlobalTechFCROnly_elecS_itc_USA)
+    # L2247.GlobalTechCost_ptc_USA <- add_cooling_techs(L2247.GlobalTechCost_ptc_USA)
+    #
+    # add_cooling_int_techs <- function(data){
+    #   data_new <- data %>%
+    #     filter(!grepl("CSP",intermittent.technology)) %>%
+    #     rename(subsector.name0=subsector.name, subsector.name = intermittent.technology) %>%
+    #     mutate(intermittent.technology=subsector.name) %>%
+    #     bind_rows(
+    #   data %>%
+    #     filter(grepl("CSP",intermittent.technology)) %>%
+    #       left_join(A23.elecS_tech_mapping_cool,
+    #               by=c("intermittent.technology"="Electric.sector.technology",
+    #                    "sector.name"="Electric.sector", "subsector.name"="subsector")) %>%
+    #     select(-technology,-subsector_1, -supplysector, -plant_type, -cooling_system, -water_type)%>%
+    #     rename(subsector.name0=subsector.name,
+    #            subsector.name = intermittent.technology,
+    #            intermittent.technology = to.technology) ) %>%
+    #     arrange(sector.name,year)
+    #   return(data_new)
+    # }
+    #
+    # L2247.GlobalIntTechCapitalOnly_elecS_USA <- add_cooling_int_techs(L2247.GlobalIntTechCapitalOnly_elecS_USA)
+    # L2247.GlobalIntTechFCROnly_elecS_itc_USA <- add_cooling_int_techs(L2247.GlobalIntTechFCROnly_elecS_itc_USA)
+    # L2247.GlobalIntTechCost_ptc_USA <- add_cooling_int_techs(L2247.GlobalIntTechCost_ptc_USA)
 
 
 
@@ -398,7 +398,7 @@ module_gcamusa_L2247.elecS_tech_costs_USA <- function(command, ...) {
       add_legacy_name("L2247.GlobalTechCapitalOnly_elecS_USA") %>%
       add_precursors("gcam-usa/A23.elec_overnight_costs_USA",
                      "gcam-usa/A23.elecS_tech_mapping",
-                     "gcam-usa/A23.elecS_tech_mapping_cool",
+                     # "gcam-usa/A23.elecS_tech_mapping_cool",
                      "L2234.GlobalTechCapital_elecS_USA") ->
       L2247.GlobalTechCapitalOnly_elecS_USA
 
@@ -410,7 +410,7 @@ module_gcamusa_L2247.elecS_tech_costs_USA <- function(command, ...) {
       add_legacy_name("L2247.GlobalIntTechCapitalOnly_elecS_USA") %>%
       add_precursors("gcam-usa/A23.elec_overnight_costs_USA",
                      "gcam-usa/A23.elecS_inttech_mapping",
-                     "gcam-usa/A23.elecS_tech_mapping_cool",
+                     # "gcam-usa/A23.elecS_tech_mapping_cool",
                      "L2234.GlobalIntTechCapital_elecS_USA") ->
       L2247.GlobalIntTechCapitalOnly_elecS_USA
 
@@ -487,7 +487,7 @@ module_gcamusa_L2247.elecS_tech_costs_USA <- function(command, ...) {
       add_legacy_name("L2247.GlobalTechFCROnly_elecS_itc_USA") %>%
       add_precursors("gcam-usa/A23.itc_USA",
                      "gcam-usa/A23.elecS_tech_mapping",
-                     "gcam-usa/A23.elecS_tech_mapping_cool",
+                     # "gcam-usa/A23.elecS_tech_mapping_cool",
                      "L2234.GlobalTechCapital_elecS_USA") ->
       L2247.GlobalTechFCROnly_elecS_itc_USA
 
@@ -498,7 +498,7 @@ module_gcamusa_L2247.elecS_tech_costs_USA <- function(command, ...) {
       add_legacy_name("L2247.GlobalIntTechFCROnly_elecS_itc_USA") %>%
       add_precursors("gcam-usa/A23.itc_USA",
                      "gcam-usa/A23.elecS_inttech_mapping",
-                     "gcam-usa/A23.elecS_tech_mapping_cool",
+                     # "gcam-usa/A23.elecS_tech_mapping_cool",
                      "L2234.GlobalIntTechCapital_elecS_USA") ->
       L2247.GlobalIntTechFCROnly_elecS_itc_USA
 
@@ -508,7 +508,7 @@ module_gcamusa_L2247.elecS_tech_costs_USA <- function(command, ...) {
       add_comments("Read in Poduction Tax Credits as cost adder (subtracter)") %>%
       add_legacy_name("L2247.GlobalTechCost_ptc_USA") %>%
       add_precursors("gcam-usa/A23.ptc_USA",
-                     "gcam-usa/A23.elecS_tech_mapping_cool",
+                     # "gcam-usa/A23.elecS_tech_mapping_cool",
                      "gcam-usa/A23.elecS_tech_mapping") ->
       L2247.GlobalTechCost_ptc_USA
 
@@ -518,7 +518,7 @@ module_gcamusa_L2247.elecS_tech_costs_USA <- function(command, ...) {
       add_comments("Read in Poduction Tax Credits as cost adder (subtracter)") %>%
       add_legacy_name("L2247.GlobalIntTechCost_ptc_USA") %>%
       add_precursors("gcam-usa/A23.ptc_inttech_USA",
-                     "gcam-usa/A23.elecS_tech_mapping_cool",
+                     # "gcam-usa/A23.elecS_tech_mapping_cool",
                      "gcam-usa/A23.elecS_inttech_mapping") ->
       L2247.GlobalIntTechCost_ptc_USA
 
