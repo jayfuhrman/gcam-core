@@ -213,8 +213,10 @@ void MACControl::initCalc( const string& aRegionName,
 }
 
 void MACControl::calcEmissionsReduction( const std::string& aRegionName, const int aPeriod, const GDP* aGDP ) {
+    int finalCalibPer = scenario->getModeltime()->getFinalCalibrationPeriod();
     // Check first if MAC curve operation should be turned off
-    if ( mCovertPriceValue < 0 ) { // User flag to turn off MAC curves
+    // we do not apply the MAC curve in calibration model periods
+    if ( aPeriod <= finalCalibPer || mCovertPriceValue < 0 ) { // User flag to turn off MAC curves
         setEmissionsReduction( 0 );
         return;
     }
@@ -246,8 +248,7 @@ void MACControl::calcEmissionsReduction( const std::string& aRegionName, const i
     // code smoothly phases in this abatement so that a sudden change in emissions does not
     // occur. The phase-in period has a default value that can be altered
     // by the user.
-    const int lastCalYear = scenario->getModeltime()->getper_to_yr( 
-                            scenario->getModeltime()->getFinalCalibrationPeriod() );
+    const int lastCalYear = scenario->getModeltime()->getper_to_yr( finalCalibPer );
     int modelYear = scenario->getModeltime()->getper_to_yr( aPeriod );
 
     // Amount of zero-cost reduction
