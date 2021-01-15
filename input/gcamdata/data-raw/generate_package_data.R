@@ -400,6 +400,7 @@ generate_level2_data_names <- function() {
   level2_data_names[["OutputEmissions"]] <- c("region", "supplysector", "subsector", "stub.technology", "year", "Non.CO2", "input.emissions")
   level2_data_names[["StbTechOutputEmissions"]] <- c("region", "supplysector", "subsector", "stub.technology", "year", "Non.CO2", "input.emissions")
   level2_data_names[["ReadInControl"]] <- c("region", "supplysector", "subsector", "stub.technology", "year", "Non.CO2", "future.emiss.coeff.name", "future.emiss.coeff.year", "emiss.coeff")
+  level2_data_names[["ResReadInControl"]] <- c("region", "resource", "subresource", "technology", "year", "Non.CO2", "future.emiss.coeff.name", "future.emiss.coeff.year", "emiss.coef")
   level2_data_names[["GDPCtrlMax"]] <- c("region", "supplysector", "subsector", "stub.technology", "year", "Non.CO2", "ctrl.name", "max.reduction")
   level2_data_names[["GDPCtrlSteep"]] <- c("region", "supplysector", "subsector", "stub.technology", "year", "Non.CO2", "ctrl.name", "steepness")
   level2_data_names[["DelEmCtrl"]] <- c("region", "supplysector", "subsector", "stub.technology", "year", "Non.CO2", "ctrl.name")

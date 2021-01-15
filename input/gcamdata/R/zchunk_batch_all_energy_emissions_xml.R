@@ -23,6 +23,8 @@ module_emissions_batch_all_energy_emissions_xml <- function(command, ...) {
                    "L201.nonghg_steepness_res",
                    "L201.nonghg_res",
                    "L201.ghg_res",
+                   "L201.ResReadInControl_nonghg_res",
+                   "L201.ResReadInControl_ghg_res",
                    "L232.nonco2_prc",
                    "L232.nonco2_max_reduction",
                    "L232.nonco2_steepness",
@@ -64,6 +66,8 @@ module_emissions_batch_all_energy_emissions_xml <- function(command, ...) {
     L201.nonghg_steepness_res <- get_data(all_data, "L201.nonghg_steepness_res")
     L201.nonghg_res <- get_data(all_data, "L201.nonghg_res")
     L201.ghg_res <- get_data(all_data, "L201.ghg_res")
+    L201.ResReadInControl_nonghg_res <- get_data(all_data, "L201.ResReadInControl_nonghg_res")
+    L201.ResReadInControl_ghg_res <- get_data(all_data, "L201.ResReadInControl_ghg_res")
     L232.nonco2_prc <- get_data(all_data, "L232.nonco2_prc")
     L232.nonco2_max_reduction <- get_data(all_data, "L232.nonco2_max_reduction")
     L232.nonco2_steepness <- get_data(all_data, "L232.nonco2_steepness")
@@ -96,6 +100,8 @@ module_emissions_batch_all_energy_emissions_xml <- function(command, ...) {
       add_xml_data(L201.nonghg_steepness_res, "GDPCtrlSteepRes") %>%
       add_xml_data(L201.nonghg_res, "ResEmissCoef") %>%
       add_xml_data(L201.ghg_res, "ResEmissCoef") %>%
+      add_xml_data(L201.ResReadInControl_nonghg_res, "ResReadInControl") %>%
+      add_xml_data(L201.ResReadInControl_ghg_res, "ResReadInControl") %>%
       add_xml_data(L232.nonco2_prc, "StbTechOutputEmissions") %>%
       add_xml_data(L232.nonco2_max_reduction, "GDPCtrlMax") %>%
       add_xml_data(L232.nonco2_steepness, "GDPCtrlSteep") %>%
@@ -106,7 +112,8 @@ module_emissions_batch_all_energy_emissions_xml <- function(command, ...) {
       add_precursors("L201.en_pol_emissions", "L201.en_ghg_emissions",
                      "L201.OutputEmissions_elec", "L201.OutputEmissCoeff_elec",
                      "L201.nonghg_max_reduction", "L201.nonghg_steepness", "L201.nonghg_max_reduction_res",
-                     "L201.nonghg_steepness_res", "L201.nonghg_res", "L201.ghg_res", "L232.nonco2_prc",
+                     "L201.nonghg_steepness_res", "L201.nonghg_res", "L201.ghg_res",
+                     "L201.ResReadInControl_nonghg_res", "L201.ResReadInControl_ghg_res", "L232.nonco2_prc",
                      "L232.nonco2_max_reduction", "L232.nonco2_steepness", "L241.nonco2_tech_coeff",
                      "L241.OutputEmissCoeff_elec", "L241.nonco2_max_reduction", "L241.nonco2_steepness") ->
       all_energy_emissions.xml

@@ -41,7 +41,6 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
                FILE = "emissions/mappings/UCD_techs_emissions_revised",
                FILE = "energy/calibrated_techs",
                FILE = "energy/calibrated_techs_bld_det",
-               FILE = "energy/A10.ResSubresourceProdLifetime",
                FILE = "emissions/mappings/Trn_subsector",
                FILE = "emissions/mappings/Trn_subsector_revised",
                FILE = "emissions/CEDS/CEDS_sector_tech_combustion",
@@ -189,7 +188,6 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
       EPA_CH4N2O_map <- get_data(all_data, "emissions/EPA_CH4N2O_map")
       EPA_country_map <- get_data(all_data, "emissions/EPA_country_map")
       GCAM_EPA_CH4N2O_map <- get_data(all_data, "emissions/GCAM_EPA_CH4N2O_energy_map")
-      A10.ResSubresourceProdLifetime <- get_data(all_data, "energy/A10.ResSubresourceProdLifetime")
       L111.Prod_EJ_R_F_Yh <- get_data(all_data, "L111.Prod_EJ_R_F_Yh",strip_attributes = TRUE)
 
       #kbn adding notin for later calculations
@@ -651,15 +649,6 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
                   emissions = emissions * emiss_share, type = "Soil") ->
         L122.ghgsoil_tg_R_C_Y_GLU
 
-
-
-      # Bind together dataframes & aggregate
-      L122.ghg_tg_R_agr_C_Y_GLU_full <- bind_rows( L122.ghg_tg_R_rice_Y_GLU, L122.ghgsoil_tg_R_C_Y_GLU#, L122.ghgfert_tg_R_C_Y_GLU
-      ) %>%
-        group_by(GCAM_region_ID, GCAM_commodity, year, GLU, Non.CO2) %>%
-        summarise(value = sum(emissions)) %>%
-        ungroup()
-
       # Bind together dataframes & aggregate
       L122.ghg_tg_R_agr_C_Y_GLU_full <- bind_rows( L122.ghg_tg_R_rice_Y_GLU, L122.ghgsoil_tg_R_C_Y_GLU#, L122.ghgfert_tg_R_C_Y_GLU
       ) %>%
@@ -967,10 +956,6 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
         spread(year, value) %>%
         mutate(D_driver = pmax(`2000` - `2005`, 0) / (emissions.DEFOREST_COEF_YEARS[2] - emissions.DEFOREST_COEF_YEARS[1]))
 
-      # Filter out BC OC for its own output
-      L124.deforest_coefs_full %>%
-        filter(Non.CO2 %in% c("BC", "OC")) ->L125.deforest_coefs_bcoc
-
       L125.bcoc_tgbkm2_R_defor_2000 <-  L125.bcoc_tgbkm2_R_GLU_defor_2000 %>%
         group_by(GCAM_region_ID, Land_Type) %>%
         summarise_at(vars(D_driver), sum)
@@ -1037,85 +1022,13 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
 
         # remove Cameroon industrial process N2O emissions
         # because it is a known data error after communicating with EPA
-        EPA_master_Cameroon_IP <- EPA_master %>%
-          filter(country == "Cameroon" & source == "OtherIPPU" & gas == "N2O") %>%
-          mutate(value = 0)
-
-        EPA_master <- rbind(EPA_master_Cameroon_IP,
-                            EPA_master %>% filter(!(country == "Cameroon" & source == "OtherIPPU" & gas == "N2O")))
+        EPA_master %<>%
+          mutate(value = if_else(country == "Cameroon" & source == "OtherIPPU" & gas == "N2O", 0, value))
 
         # Part 1: L112.ghg_tgej_R_en_S_F_Yh (resource production emission factors)
         #---------------------------------------------------------------------------------------------------------------
 
-        # 1) out_resources production is by vintages, so need additional processes to get actual production
-        # by vintage, and then backward calculate the actual EFs for each vintage
 
-        # ------- FOSSIL RESOURCE RESERVE ADDITIONS (this part is copied from zchunk_L210.resource.R)
-        # Kind of a level 1.5 we are going to calculate / update historical energy
-        # but the years we choose as the model base years matter
-
-        GCAM_timesteps <- diff(MODEL_BASE_YEARS)
-        start.year.timestep <- modeltime.PERIOD0_TIMESTEP
-        model_year_timesteps <- tibble(year = MODEL_BASE_YEARS, timestep = c(start.year.timestep, GCAM_timesteps))
-        # a pipelne helper function to help back calculate new additions to reserve
-        # from historical production
-        lag_prod_helper <- function(year, value, year_operate, final_year) {
-          ret <- value
-          for(i in seq_along(year)) {
-            if(i == 1) {
-              # first year assume all production in this vintage
-              ret[i] <- value[i]
-            } else if( year_operate[i] > final_year[i]) {
-              if(year_operate[i -1] >= final_year[i]) {
-                # retired
-                ret[i] <- 0
-              } else {
-                # final timestep that is operating so we must adjust the production
-                # by the number of years into the timestep it should have operated
-                # incase lifetime and timesteps do not neatly overlap
-                ret[i] <- ret[i - 1] * (year_operate[i] - final_year[i]) / (year_operate[i] - year_operate[i-1])
-              }
-            } else if(year_operate[i] > year[i]) {
-              # assume a vintage that as already invested continues at full
-              # capacity
-              ret[i] <- ret[i -1]
-            } else {
-              # to determine new investment we take the difference between
-              # what the total should be and subtract off production from
-              # previous vintages that are still operating
-              ret[i] <- 0
-              ret[i] <- pmax(value[i] - sum(ret[year_operate == year[i]]), 0)
-            }
-          }
-          ret
-        }
-        # Back calculate reserve additions to be exactly enough given our historical production
-        # and assumed production lifetime.  Note production lifetimes may not cover the entire
-        # historical period making the calculation a bit more tricky.  We use the lag_prod_helper
-        # to help project forward production by each historical vintage so we can take this into
-        # account.
-        L111.Prod_EJ_R_F_Yh %>%
-          filter(year %in% MODEL_BASE_YEARS) %>%
-          left_join_error_no_match(select(A10.ResSubresourceProdLifetime, resource, lifetime = avg.prod.lifetime),
-                                   by=c("fuel" = "resource")) %>%
-          left_join_error_no_match(model_year_timesteps, by = c("year")) %>%
-          repeat_add_columns(tibble(year_operate = MODEL_BASE_YEARS)) %>%
-          mutate(final_year = pmin(MODEL_BASE_YEARS[length(MODEL_BASE_YEARS)], (year - timestep + lifetime))) %>%
-          filter(year_operate >= year - timestep + 1) %>%
-          group_by(GCAM_region_ID, sector, fuel) %>%
-          mutate(value = lag_prod_helper(year, value, year_operate, final_year)) %>%
-          mutate(value = as.numeric(value)) %>%
-          ungroup() %>%
-          filter(year <= year_operate) %>%
-          select(GCAM_region_ID, fuel, year, year_operate, value) %>%
-          filter(year_operate != 1975) %>%
-          mutate(fuel = ifelse(fuel == "unconventional oil", "crude oil", fuel)) %>%
-          mutate(year = as.integer(year)) %>%
-          mutate(year = ifelse(year < emissions.EPA_BAU_HIST_YEAR[1], emissions.EPA_BAU_HIST_YEAR[1], year)) %>%
-          group_by(GCAM_region_ID, fuel, year, year_operate) %>%
-          summarise(value = sum(value)) %>%
-          ungroup() ->
-          L111.Prod_EJ_R_F_Yh_vintage
 
         # 2) scaling the emissions used for calculating resource EFs
 
@@ -1158,159 +1071,24 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
           filter(year %in% MODEL_BASE_YEARS) ->
           L112.nonco2_tg_R_en_S_F_Yh_resource
 
-        # 3) backward calculate EFs by vintage in a for loop
+        L112.nonco2_tg_R_en_S_F_Yh_resource %>%
+          left_join_error_no_match(L111.Prod_EJ_R_F_Yh, by = c("GCAM_region_ID", "year", "supplysector" = "sector", "subsector" = "fuel")) %>%
+          # TODO: leave NA?
+          mutate(value_adj = if_else(value == 0.0, 0.0, emissions / value )) %>%
+          select(-emissions, -value) ->
+          L112.ghg_tgej_R_en_S_F_Yh_adj
 
-        for (i in seq_along(emissions.EPA_BAU_HIST_YEAR)){
-          # 1990 EF, just directly calculate since EPA emissions start from 1990
-          if(i == 1){
-            L111.Prod_EJ_R_F_Yh_vintage %>%
-              filter(year_operate == emissions.EPA_BAU_HIST_YEAR[i]) %>%
-              group_by(GCAM_region_ID, fuel) %>%
-              summarise(value = sum(value)) %>%
-              ungroup() ->
-              L111.Prod_EJ_R_F_Yh_vintage_i
-
-            L112.nonco2_tg_R_en_S_F_Yh_resource %>%
-              filter(year == emissions.EPA_BAU_HIST_YEAR[i]) ->
-              L112.nonco2_tg_R_en_S_F_Yh_resource_i
-
-            L112.nonco2_tg_R_en_S_F_Yh_resource_i %>%
-              left_join_error_no_match(L111.Prod_EJ_R_F_Yh_vintage_i,
-                                       by = c("GCAM_region_ID", "subsector" = "fuel")) %>%
-              mutate(emfact = emissions / value) %>%
-              select(-emissions, -value) ->
-              L112.ghg_tgej_R_en_S_F_Yh_i_NA
-
-            L112.ghg_tgej_R_en_S_F_Yh_i_NA %>%
-              filter(!(is.na(emfact) | is.infinite(emfact))) %>%
-              group_by(Non.CO2, stub.technology) %>%
-              summarise(median = median(emfact)) %>%
-              ungroup() ->
-              L112.ghg_tgej_R_en_S_F_Yh_i_median
-
-            L112.ghg_tgej_R_en_S_F_Yh_i_NA %>%
-              left_join(L112.ghg_tgej_R_en_S_F_Yh_i_median,
-                        by = c("Non.CO2", "stub.technology")) %>%
-              mutate(emfact = ifelse(is.na(emfact) | is.infinite(emfact), median, emfact)) %>%
-              select(-median) ->
-              L112.ghg_tgej_R_en_S_F_Yh_i
-
-            L112.ghg_tgej_R_en_S_F_Yh_adj <- L112.ghg_tgej_R_en_S_F_Yh_i
-          } else {
-            # production: year i vintages
-            L111.Prod_EJ_R_F_Yh_vintage %>%
-              filter(year_operate == emissions.EPA_BAU_HIST_YEAR[i]) %>%
-              filter(year == emissions.EPA_BAU_HIST_YEAR[i]) %>%
-              group_by(GCAM_region_ID, fuel) %>%
-              summarise(ej_i = sum(value)) %>%
-              ungroup() ->
-              L111.Prod_EJ_R_F_Yh_vintage_i
-
-            # production: vintages BEFORE year i builts
-            L111.Prod_EJ_R_F_Yh_vintage %>%
-              filter(year_operate == emissions.EPA_BAU_HIST_YEAR[i]) %>%
-              filter(year < emissions.EPA_BAU_HIST_YEAR[i]) %>%
-              group_by(GCAM_region_ID, year, fuel) %>%
-              summarise(ej_vintage = sum(value)) %>%
-              ungroup() ->
-              L111.Prod_EJ_R_F_Yh_vintage_i_vintage
-
-            # emissions in year i BUT produced by vintages prior to year i
-            L112.ghg_tgej_R_en_S_F_Yh_adj %>%
-              # generate NA becuase the previous vintages have all retired in the current year i
-              # replace NA with 0, so no production
-              left_join(L111.Prod_EJ_R_F_Yh_vintage_i_vintage,
-                        by = c("GCAM_region_ID", "subsector" = "fuel", "year")) %>%
-              replace_na(list(ej_vintage = 0)) %>%
-              mutate(tg_vintage = emfact * ej_vintage) %>%
-              group_by(GCAM_region_ID, Non.CO2, supplysector, subsector, stub.technology) %>%
-              summarise(tg_vintage = sum(tg_vintage)) %>%
-              ungroup() ->
-              L112.nonco2_tg_R_en_S_F_Yh_resource_vintage
-
-            # Emission factor in year i and also produced by vintage in year i
-            # the resulted data frame will have NA, Inf, or unrealistic values
-            # then subsequent pipes will replace them with global medians
-            L112.nonco2_tg_R_en_S_F_Yh_resource %>%
-              filter(year == emissions.EPA_BAU_HIST_YEAR[i]) %>%
-              rename(tg_i_total = emissions) %>%
-              left_join_error_no_match(L112.nonco2_tg_R_en_S_F_Yh_resource_vintage,
-                                       by = c("GCAM_region_ID", "Non.CO2", "supplysector", "subsector", "stub.technology")) %>%
-              mutate(tg_i = tg_i_total - tg_vintage) %>%
-              # some tg_i will be negative, adjust them as 0
-              mutate(tg_i = ifelse(tg_i < 0, 0, tg_i)) %>%
-              # in some cases there are emissions from vintage i, but no production from vintage
-              # replace with 0; thus this will result in NA/Inf emission factors, and will be updated with global median later
-              left_join(L111.Prod_EJ_R_F_Yh_vintage_i,
-                        by = c("GCAM_region_ID", "subsector" = "fuel")) %>%
-              replace_na(list(ej_i= 0)) %>%
-              mutate(emfact = tg_i / ej_i) %>%
-              select(-tg_i_total, -tg_vintage, -tg_i, -ej_i) ->
-              L112.ghg_tgej_R_en_S_F_Yh_i_NA
-
-            # calculate global medians to replace extreme values
-            L112.ghg_tgej_R_en_S_F_Yh_i_NA %>%
-              filter(!(is.na(emfact) | is.infinite(emfact))) %>%
-              group_by(Non.CO2, stub.technology) %>%
-              summarise(median = median(emfact)) %>%
-              ungroup() ->
-              L112.ghg_tgej_R_en_S_F_Yh_i_median
-
-            # replacing extremes with median
-            # here need to have special focus on the last calibration year
-
-            if(emissions.EPA_BAU_HIST_YEAR[i] != MODEL_FINAL_BASE_YEAR){
-              L112.ghg_tgej_R_en_S_F_Yh_i_NA %>%
-                left_join(L112.ghg_tgej_R_en_S_F_Yh_i_median,
-                          by = c("Non.CO2", "stub.technology")) %>%
-                mutate(emfact = ifelse(is.na(emfact) | is.infinite(emfact) | emfact > 1000, median, emfact)) %>%
-                select(-median) ->
-                L112.ghg_tgej_R_en_S_F_Yh_i
-            } else {
-              # if i is the final calibration year (currently is 2015)
-              # based on manual check, need to special adjustment to make sure EFs are reasonable
-              # Besides, since this process is backward calculated, the more steps it takes, the higher chance that unrealistic EFs would show up
-              L112.ghg_tgej_R_en_S_F_Yh_i_NA %>%
-                left_join(L112.ghg_tgej_R_en_S_F_Yh_i_median,
-                          by = c("Non.CO2", "stub.technology")) %>%
-                # China's EF in 2015 is too high (higher than all its historical values), so instead using global median
-                mutate(emfact = ifelse(is.na(emfact) | is.infinite(emfact) | emfact > 5 | emfact == 0 | GCAM_region_ID == 11,
-                                       median, emfact)) %>%
-                select(-median) ->
-                L112.ghg_tgej_R_en_S_F_Yh_i}
-
-            L112.ghg_tgej_R_en_S_F_Yh_adj <- rbind(L112.ghg_tgej_R_en_S_F_Yh_adj,
-                                                   L112.ghg_tgej_R_en_S_F_Yh_i)
-          }
-        }
-
-        # if the first EPA BAU year is greater than the first GCAM historical year
-        # copy and paste the first EPA BAU year EFs for those missing GCAM BASE YEARS
-        # This should be consistent with how to handle resource vintage data in
-        # Step (1) obtain production by vintages"
-        GCAM_hist_missing <- setdiff(MODEL_BASE_YEARS, emissions.EPA_BAU_HIST_YEAR)
-
-        if(!is.na(GCAM_hist_missing)){
-          L112.ghg_tgej_R_en_S_F_Yh_adj_HIST<- L112.ghg_tgej_R_en_S_F_Yh_adj %>%
-            filter(year == emissions.EPA_BAU_HIST_YEAR[1]) %>%
-            select(-year) %>%
-            repeat_add_columns(tibble(year = GCAM_hist_missing))
-
-          L112.ghg_tgej_R_en_S_F_Yh_adj <- rbind(L112.ghg_tgej_R_en_S_F_Yh_adj,
-                                                 L112.ghg_tgej_R_en_S_F_Yh_adj_HIST)
-        }
-
-        L112.ghg_tgej_R_en_S_F_Yh_adj <- L112.ghg_tgej_R_en_S_F_Yh_adj %>%
-          rename(value_adj = emfact)
+        # TODO: detect and fix outliers
 
         # 4) update L112.ghg_tgej_R_en_S_F_Yh for resource production
         L112.ghg_tgej_R_en_S_F_Yh %>%
           # produce NA on purpose, so that we can just find those updated values
           left_join(L112.ghg_tgej_R_en_S_F_Yh_adj,
                     by = c("GCAM_region_ID", "Non.CO2", "supplysector", "subsector", "stub.technology", "year")) %>%
-          mutate(value = ifelse(is.na(value_adj), value, value_adj)) %>%
+          mutate(value = if_else(is.na(value_adj), value, value_adj)) %>%
           select(-value_adj) ->
           L112.ghg_tgej_R_en_S_F_Yh_update
+
 
         # assume unconventional oil the same as crude oil
         L112.ghg_tgej_R_en_S_F_Yh_update %>%
@@ -1664,7 +1442,6 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
                        "emissions/EPA/EPA_2019_raw",
                        "emissions/EPA_CH4N2O_map",
                        "L111.Prod_EJ_R_F_Yh",
-                       "energy/A10.ResSubresourceProdLifetime",
                        "emissions/EPA_country_map",
                        "emissions/CEDS/CEDS_sector_tech_combustion_revised",
                        "emissions/mappings/UCD_techs_emissions_revised") ->
