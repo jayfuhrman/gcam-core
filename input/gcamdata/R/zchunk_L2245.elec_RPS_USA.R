@@ -20,12 +20,12 @@ module_gcamusa_L2245.elec_RPS_USA <- function(command, ...) {
              FILE = "gcam-usa/RPS_tech_MASTER",
              FILE = "gcam-usa/states_rps_region",
              # FILE = "gcam-usa/rps_states_existing",
-             FILE = "gcam-usa/rps_states_exst",
+             FILE = "gcam-usa/rps_states_hundred",
              # FILE = "gcam-usa/rps_states_fedb",
              # FILE = "gcam-usa/rps_states_intv",
              # FILE = "gcam-usa/rps_states_pldg",
              FILE = "gcam-usa/gcam_usa_elec_gen",
-             FILE = "gcam-usa/A23.include_in_rps",
+             FILE = "gcam-usa/A23.include_in_rps_CES",
              FILE = "gcam-usa/gcam_usa_elec_cons",
              "L2234.GlobalTechCapture_elecS_USA"))
   } else if(command == driver.DECLARE_OUTPUTS) {
@@ -52,15 +52,15 @@ module_gcamusa_L2245.elec_RPS_USA <- function(command, ...) {
     # rps_states <- get_data(all_data, "gcam-usa/rps_states_existing") %>%
     #   select(-supplysector, -subsector, -units, -rate.notes) %>%
     #   gather_years(value_col = "rps_share")
-    rps_states_exst <- get_data(all_data, "gcam-usa/rps_states_exst")
+    rps_states_exst <- get_data(all_data, "gcam-usa/rps_states_hundred")
     # rps_states_fedb <- get_data(all_data, "gcam-usa/rps_states_fedb")
     # rps_states_intv <- get_data(all_data, "gcam-usa/rps_states_intv")
     # rps_states_pldg <- get_data(all_data, "gcam-usa/rps_states_pldg")
 
     gcam_usa_elec_gen <- get_data(all_data, "gcam-usa/gcam_usa_elec_gen")
-    include_in_rps <- get_data(all_data, "gcam-usa/A23.include_in_rps")
+    include_in_rps <- get_data(all_data, "gcam-usa/A23.include_in_rps_CES")
     gcam_usa_elec_cons <- get_data(all_data, "gcam-usa/gcam_usa_elec_cons")
-    # L2234.GlobalTechCapture_elecS_USA <- get_data(all_data, "L2234.GlobalTechCapture_elecS_USA")
+    L2234.GlobalTechCapture_elecS_USA <- get_data(all_data, "L2234.GlobalTechCapture_elecS_USA")
 
 
     # ===================================================
@@ -101,38 +101,38 @@ module_gcamusa_L2245.elec_RPS_USA <- function(command, ...) {
     # supply credits by state.
 
     # # Creating secondary output table
-    # include_in_rps %>%
-    #   filter(credit_fraction != 0) %>%
-    #   repeat_add_columns(tibble::tibble(year = MODEL_YEARS)) %>%
-    #   # LJENM throws error because of NAs in new data colums
-    #   # intention is to join CCS tech capture rates to reduce credit (secondary output) accordingly
-    #   # table includes other techs besides CCS; NAs will be replaced subsequently; left_join() is used
-    #   left_join(L2234.GlobalTechCapture_elecS_USA %>%
-    #               select(-storage.market) %>%
-    #               rename(credit_adj = remove.fraction),
-    #             by = c("supplysector", "subsector", "stub.technology" = "technology", "year")) %>%
-    #   # NAs are non-CCS technologies, which generate full credits (rather than partial credits for partial capture)
-    #   # assign 1 "remove fraction" so these techs generate a full credit
-    #   replace_na(list(credit_adj = 1)) %>%
-    #   # the exception to reducing CCS tech RPS credits is biomass, which receives a full credit even without CCS
-    #   mutate(credit_adj = if_else(subsector == "biomass", 1, credit_adj)) %>%
-    #   mutate(res.secondary.output = ELEC_RPS) %>%
-    #   mutate(output.ratio = credit_fraction * credit_adj) %>%
-    #   select(-credit_fraction, -credit_adj) -> L2245.RPS_credit_fraction_USA
+    include_in_rps %>%
+      filter(credit_fraction != 0) %>%
+      repeat_add_columns(tibble::tibble(year = MODEL_YEARS)) %>%
+      # LJENM throws error because of NAs in new data colums
+      # intention is to join CCS tech capture rates to reduce credit (secondary output) accordingly
+      # table includes other techs besides CCS; NAs will be replaced subsequently; left_join() is used
+      left_join(L2234.GlobalTechCapture_elecS_USA %>%
+                  select(-storage.market) %>%
+                  rename(credit_adj = remove.fraction),
+                by = c("supplysector", "subsector", "stub.technology" = "technology", "year")) %>%
+      # NAs are non-CCS technologies, which generate full credits (rather than partial credits for partial capture)
+      # assign 1 "remove fraction" so these techs generate a full credit
+      replace_na(list(credit_adj = 1)) %>%
+      # the exception to reducing CCS tech RPS credits is biomass, which receives a full credit even without CCS
+      mutate(credit_adj = if_else(subsector == "biomass", 1, credit_adj)) %>%
+      mutate(res.secondary.output = ELEC_RPS) %>%
+      mutate(output.ratio = credit_fraction * credit_adj) %>%
+      select(-credit_fraction, -credit_adj) -> L2245.RPS_credit_fraction_USA
 
-    state_tech_table %>%
-      semi_join(include_in_rps %>%
-                  filter(type == "Renewable"),
-                by = "subsector") %>%
-      mutate(res.secondary.output = ELEC_RPS,
-             output.ratio = 1) -> L2245.RPS_credit_fraction_USA
+    # state_tech_table %>%
+    #   semi_join(include_in_rps %>%
+    #               filter(type == "Renewable"),
+    #             by = "subsector") %>%
+    #   mutate(res.secondary.output = ELEC_RPS,
+    #          output.ratio = 1) -> L2245.RPS_credit_fraction_USA
 
     L2245.StubTechRESSecondaryOutput_RPS_USA <-
       state_tech_table %>%
       semi_join(L2245.RPS_credit_fraction_USA,
-                by = c("state", "supplysector", "subsector", "stub.technology", "year")) %>%
+                by = c("supplysector", "subsector", "stub.technology", "year")) %>%
       left_join_error_no_match(L2245.RPS_credit_fraction_USA,
-                               by = c("state", "supplysector", "subsector", "stub.technology", "year"))
+                               by = c("supplysector", "subsector", "stub.technology", "year"))
 
     # Create table specifying demand of credits. The demand for credits is set up as minicam-energy-input
     # of ELEC_RPS into all techs in the power sector.
@@ -341,7 +341,7 @@ module_gcamusa_L2245.elec_RPS_USA <- function(command, ...) {
       add_comments("Defines ELEC_RPS for RES Secondary Output with ratio 1") %>%
       add_legacy_name("L2245.StubTechRESSecondaryOutput_RPS_USA") %>%
       add_precursors("gcam-usa/RPS_tech_MASTER",
-                     "gcam-usa/A23.include_in_rps",
+                     "gcam-usa/A23.include_in_rps_CES",
                      "L2234.GlobalTechCapture_elecS_USA") ->
       L2245.StubTechRESSecondaryOutput_RPS_USA
 
@@ -354,13 +354,13 @@ module_gcamusa_L2245.elec_RPS_USA <- function(command, ...) {
                      "gcam-usa/RPS_tech_MASTER",
                      "gcam-usa/states_rps_region",
                      # "gcam-usa/rps_states_existing",
-                     "gcam-usa/rps_states_exst",
+                     "gcam-usa/rps_states_hundred",
                      # "gcam-usa/rps_states_fedb",
                      # "gcam-usa/rps_states_intv",
                      # "gcam-usa/rps_states_pldg",
                      "gcam-usa/gcam_usa_elec_gen",
                      "gcam-usa/gcam_usa_elec_cons",
-                     "gcam-usa/A23.include_in_rps",
+                     "gcam-usa/A23.include_in_rps_CES",
                      "L2234.GlobalTechCapture_elecS_USA") ->
       L2245.StubTechAdjCoef_RPS_USA
 
