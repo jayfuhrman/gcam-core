@@ -55,10 +55,6 @@ driver.MAKE            <- "MAKE"
 driver.DECLARE_OUTPUTS <- "DECLARE_OUTPUTS"
 driver.DECLARE_INPUTS  <- "DECLARE_INPUTS"
 
-#Set the driver source to EDGAR to switch back to old emissions structure.
-driver.EMISSIONS_SOURCE <- "CEDS"
-#driver.EMISSIONS_SOURCE <- "EDGAR"
-
 # Data and utility constants ======================================================================
 
 data.SEPARATOR <- "; "
@@ -585,9 +581,7 @@ emissions.nonCO2.EPA.scaling <- TRUE
 emissions.CEDS_YEARS              <- 1971:2019           #Year coverage for CEDS inventory.
 emissions.CTRL_BASE_YEAR          <- 1975                # Year to read in pollution controls
 emissions.DEFOREST_COEF_YEARS     <- c(2000, 2005)
-emissions.EDGAR_HISTORICAL        <- 1971:2008
 emissions.EDGAR_YEARS             <- 1971:2008
-emissions.EDGAR_YEARS_PLUS        <- 1970:2008
 emissions.EPA_HISTORICAL_YEARS    <- 1971:2002
 emissions.EPA_MACC_YEAR           <- 2030                # Must be either 2020 or 2030
 emissions.EPA_BAU_HIST_YEAR       <- c(1990, 2005, 2010, 2015) # based on 2019 EPA nonCO2 report

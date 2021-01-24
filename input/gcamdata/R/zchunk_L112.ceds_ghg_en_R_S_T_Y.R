@@ -21,17 +21,6 @@
 #' @importFrom tidyr gather spread
 #' @author CWR Oct. 2018 , YO Mar. 2020, KBN 2020
 module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
-  if(driver.EMISSIONS_SOURCE == "EDGAR") {
-    if(command == driver.DECLARE_INPUTS) {
-      return(NULL)
-    } else if(command == driver.DECLARE_OUTPUTS) {
-      return(NULL)
-    } else if(command == driver.MAKE) {
-      return_data()
-    } else {
-      stop("Unknown command")
-    }}
-  else {
     if(command == driver.DECLARE_INPUTS) {
       return(c(FILE = "common/GCAM_region_names",
                FILE = "common/iso_GCAM_regID",
@@ -1591,5 +1580,4 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
     } else {
       stop("Unknown command")
     }
-  }
 }
