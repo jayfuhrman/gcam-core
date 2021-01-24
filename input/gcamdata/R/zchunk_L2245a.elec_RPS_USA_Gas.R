@@ -1,4 +1,4 @@
-#' module_gcamusa_L2245.elec_RPS_USA
+#' module_gcamusa_L2245a.elec_RPS_USA_Gas
 #'
 #' Generates the vintage coefficient-based RPS structure for GCAM-USA created for UMD/CGS Projects.
 #'
@@ -6,15 +6,16 @@
 #' @param ... other optional parameters, depending on command
 #' @return Depends on \code{command}: either a vector of required inputs,
 #' a vector of output names, or (if \code{command} is "MAKE") all
-#' the generated outputs: \code{L2245.StubTechRESSecondaryOutput_RPS_USA}, \code{L2245.StubTechAdjCoef_RPS_USA}, \code{L2245.RESPolicy_RPS_USA}.
+#' the generated outputs: \code{L2245.StubTechRESSecondaryOutput_RPS_USA_Gas},
+#' \code{L2245.StubTechAdjCoef_RPS_USA_Gas}, \code{L2245.RESPolicy_RPS_USA_Gas}.
 #' The corresponding file in the original data system was \code{L2245.RPS_USA.R} (gcam-usa level2).
 #' @details This chunk generates input files to create an electricity generation sector with multiple load segments
 #' for each state and creates the demand for the state-level electricity sectors in the grid regions.
 #' @importFrom assertthat assert_that
 #' @importFrom dplyr filter mutate select
 #' @importFrom tidyr gather spread
-#' @author AJS Oct 2019
-module_gcamusa_L2245.elec_RPS_USA <- function(command, ...) {
+#' @author AJS Oct 2019 / YO Jan 2020
+module_gcamusa_L2245a.elec_RPS_USA_Gas <- function(command, ...) {
   if(command == driver.DECLARE_INPUTS) {
     return(c(FILE = "gcam-usa/states_subregions",
              FILE = "gcam-usa/RPS_tech_MASTER",
@@ -25,13 +26,13 @@ module_gcamusa_L2245.elec_RPS_USA <- function(command, ...) {
              # FILE = "gcam-usa/rps_states_intv",
              # FILE = "gcam-usa/rps_states_pldg",
              FILE = "gcam-usa/gcam_usa_elec_gen",
-             FILE = "gcam-usa/A23.include_in_rps_CES",
+             FILE = "gcam-usa/A23.include_in_rps_CES_Gas",
              FILE = "gcam-usa/gcam_usa_elec_cons",
              "L2234.GlobalTechCapture_elecS_USA"))
   } else if(command == driver.DECLARE_OUTPUTS) {
-    return(c("L2245.StubTechRESSecondaryOutput_RPS_USA",
-             "L2245.StubTechAdjCoef_RPS_USA",
-             "L2245.RESPolicy_RPS_USA"))
+    return(c("L2245.StubTechRESSecondaryOutput_RPS_USA_Gas",
+             "L2245.StubTechAdjCoef_RPS_USA_Gas",
+             "L2245.RESPolicy_RPS_USA_Gas"))
 
   } else if(command == driver.MAKE) {
 
@@ -58,7 +59,7 @@ module_gcamusa_L2245.elec_RPS_USA <- function(command, ...) {
     # rps_states_pldg <- get_data(all_data, "gcam-usa/rps_states_pldg")
 
     gcam_usa_elec_gen <- get_data(all_data, "gcam-usa/gcam_usa_elec_gen")
-    include_in_rps <- get_data(all_data, "gcam-usa/A23.include_in_rps_CES")
+    include_in_rps <- get_data(all_data, "gcam-usa/A23.include_in_rps_CES_Gas")
     gcam_usa_elec_cons <- get_data(all_data, "gcam-usa/gcam_usa_elec_cons")
     L2234.GlobalTechCapture_elecS_USA <- get_data(all_data, "L2234.GlobalTechCapture_elecS_USA")
 
@@ -341,9 +342,9 @@ module_gcamusa_L2245.elec_RPS_USA <- function(command, ...) {
       add_comments("Defines ELEC_RPS for RES Secondary Output with ratio 1") %>%
       add_legacy_name("L2245.StubTechRESSecondaryOutput_RPS_USA") %>%
       add_precursors("gcam-usa/RPS_tech_MASTER",
-                     "gcam-usa/A23.include_in_rps_CES",
+                     "gcam-usa/A23.include_in_rps_CES_Gas",
                      "L2234.GlobalTechCapture_elecS_USA") ->
-      L2245.StubTechRESSecondaryOutput_RPS_USA
+      L2245.StubTechRESSecondaryOutput_RPS_USA_Gas
 
     L2245.StubTechAdjCoef_RPS_USA %>%
       add_title("Adjusted coefficient w.r.t RPS for every state/technology/vintage combination") %>%
@@ -360,9 +361,9 @@ module_gcamusa_L2245.elec_RPS_USA <- function(command, ...) {
                      # "gcam-usa/rps_states_pldg",
                      "gcam-usa/gcam_usa_elec_gen",
                      "gcam-usa/gcam_usa_elec_cons",
-                     "gcam-usa/A23.include_in_rps_CES",
+                     "gcam-usa/A23.include_in_rps_CES_Gas",
                      "L2234.GlobalTechCapture_elecS_USA") ->
-      L2245.StubTechAdjCoef_RPS_USA
+      L2245.StubTechAdjCoef_RPS_USA_Gas
 
     L2245.RESPolicy_RPS_USA %>%
       add_title("Policy start year and portfolio standard defined for all states") %>%
@@ -370,11 +371,11 @@ module_gcamusa_L2245.elec_RPS_USA <- function(command, ...) {
       add_comments("Acts as a link file for RPS policies") %>%
       add_legacy_name("L2245.RESPolicy_RPS_USA") %>%
       add_precursors("gcam-usa/states_rps_region") ->
-      L2245.RESPolicy_RPS_USA
+      L2245.RESPolicy_RPS_USA_Gas
 
-    return_data(L2245.StubTechRESSecondaryOutput_RPS_USA,
-                L2245.StubTechAdjCoef_RPS_USA,
-                L2245.RESPolicy_RPS_USA)
+    return_data(L2245.StubTechRESSecondaryOutput_RPS_USA_Gas,
+                L2245.StubTechAdjCoef_RPS_USA_Gas,
+                L2245.RESPolicy_RPS_USA_Gas)
 
   } else {
     stop("Unknown command")

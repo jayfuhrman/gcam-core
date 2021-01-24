@@ -1,4 +1,4 @@
-# File: A23.include_in_rps_CES.csv
+# File: A23.include_in_rps_CES_Gas.csv
 # Title: Specification of technologies to be included in RPS
 # Units: NA
 # Source: LBNL
@@ -59,16 +59,16 @@ base load generation,coal,coal_base_conv pul_slow_retire 1956-1960,0
 intermediate generation,coal,coal_int_conv pul_slow_retire 1956-1960,0
 base load generation,coal,coal_base_conv pul_slow_retire before 1950,0
 intermediate generation,coal,coal_int_conv pul_slow_retire before 1950,0
-base load generation,gas,gas_base_CC,0
+base load generation,gas,gas_base_CC,1
 base load generation,gas,gas_base_CC_CCS,1
-intermediate generation,gas,gas_int_CC,0
+intermediate generation,gas,gas_int_CC,1
 intermediate generation,gas,gas_int_CC_CCS,1
-peak generation,gas,gas_peak_CC,0
+peak generation,gas,gas_peak_CC,1
 peak generation,gas,gas_peak_CC_CCS,1
-peak generation,gas,gas_peak_steam/CT,0
-subpeak generation,gas,gas_subpeak_CC,0
+peak generation,gas,gas_peak_steam/CT,1
+subpeak generation,gas,gas_subpeak_CC,1
 subpeak generation,gas,gas_subpeak_CC_CCS,1
-subpeak generation,gas,gas_subpeak_steam/CT,0
+subpeak generation,gas,gas_subpeak_steam/CT,1
 base load generation,geothermal,geo_base,1
 base load generation,hydro,hydro_base,1
 intermediate generation,hydro,hydro_int,1
