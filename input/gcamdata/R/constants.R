@@ -578,13 +578,13 @@ emissions.Fgas.DATA_SOURCE <- "EPA"
 emissions.nonCO2.EPA.scaling <- TRUE
 
 # Time
-emissions.CEDS_YEARS              <- 1971:2019           #Year coverage for CEDS inventory.
+emissions.CEDS_YEARS              <- 1971:2019           # Year coverage for CEDS inventory.
 emissions.CTRL_BASE_YEAR          <- 1975                # Year to read in pollution controls
 emissions.DEFOREST_COEF_YEARS     <- c(2000, 2005)
 emissions.EDGAR_YEARS             <- 1971:2008
 emissions.EPA_HISTORICAL_YEARS    <- 1971:2002
-emissions.EPA_MACC_YEAR           <- 2030                # Must be either 2020 or 2030
-emissions.EPA_BAU_HIST_YEAR       <- c(1990, 2005, 2010, 2015) # based on 2019 EPA nonCO2 report
+emissions.EPA_MACC_FUTURE_YEAR    <- seq(2015, 2050, 5)        # based on 2019 EPA nonCO2 report
+emissions.EPA_BAU_HIST_YEAR       <- c(1990, 1995, 2000, 2005, 2010, 2015) # based on 2019 EPA nonCO2 report
 emissions.FINAL_EMISS_YEAR        <- min(max(MODEL_BASE_YEARS), 2005)
 emissions.GAINS_BASE_YEAR         <- 2005
 emissions.GAINS_YEARS             <- c(2010, 2020, 2030)
@@ -610,6 +610,7 @@ emissions.COAL_SO2_THRESHOLD <- 0.1   # Tg/EJ (here referring to Tg SO2 per EJ o
 emissions.LOW_PCGDP          <- 2.75  # thousand 1990 USD
 emissions.MAC_TAXES          <- c(0, 2, 4, 6, 13, 27, 53, 100, 200, 450, 850, 2000, 3000, 5000) # Range of MAC curve costs to keep to read into GCAM; they are in EPA's units (2010USD_tCO2e)
 emissions.MAC_MARKET         <- "CO2" # Default market that MAC curves will look for
+emissions.MAC_highestReduction <- 0.95 # a high MAC reduction used to replace calculated values there are greater than 1
 
 emissions.AGR_SECTORS        <- c("rice", "fertilizer", "soil")
 emissions.AGR_GASES          <- c("CH4_AGR", "N2O_AGR", "NH3_AGR", "NOx_AGR")

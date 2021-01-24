@@ -181,20 +181,23 @@ module_emissions_L142.pfc_R_S_T_Y <- function(command, ...) {
     # =========================================================
     # NEW DATA FLOW - SCALE EDGAR EMISSIONS TO MATCH EPA TOTALS
     # =========================================================
+    # YO MAR 2020
+    # make EDGAR data till 2015 for EPA BAU calibration
+    # remaing_years is the missing base years that EPA has but EDGAR does not
+    # Duplicate EDGAR last-year data and rename as missing years just as placeholders
+    additional_years <-
+      emissions.EPA_BAU_HIST_YEAR[emissions.EPA_BAU_HIST_YEAR > emissions.EDGAR_YEARS[length(emissions.EDGAR_YEARS)]]
 
-    if (emissions.Fgas.DATA_SOURCE == "EPA") {
+    if(length(additional_years) == 0){
+      L142.pfc_R_S_T_Yh_base <- L142.pfc_R_S_T_Yh
+    } else{
+      TEMP <- filter(L142.pfc_R_S_T_Yh, year == emissions.EDGAR_YEARS[length(emissions.EDGAR_YEARS)]) %>%
+        select(-year) %>%
+        repeat_add_columns(tibble(year = additional_years))
 
-      # EDGAR data doesn't have 2010 data, so match EDGAR 2008 data with EPA/GV 2010 data
-      # YO MAR 2020
-      # make EDGAR data till 2015 for EPA BAU calibration
-      # Duplicate EDGAR 2008 data and rename as 2010 and 2015
-      TEMP <- filter(L142.pfc_R_S_T_Yh, year == 2008) %>%
-        mutate(year = 2010)
+      L142.pfc_R_S_T_Yh_base <- bind_rows(L142.pfc_R_S_T_Yh, TEMP)
+    }
 
-      TEMP2 <- filter(L142.pfc_R_S_T_Yh, year == 2008) %>%
-        mutate(year = 2015)
-
-      L142.pfc_R_S_T_Yh_base <- bind_rows(L142.pfc_R_S_T_Yh, TEMP, TEMP2)
 
       # Add EPA sector names to individual EPA files
       EPA_PFC_Al$EPA_sector <- "Aluminum"
@@ -385,8 +388,6 @@ module_emissions_L142.pfc_R_S_T_Y <- function(command, ...) {
       # END OF INFINITE VALUES FIX
 
       # Clean up data to include base years
-      # Set constant (MOVE TO CONSTANTS.R ONCE FIXED)
-      EPA_YEARS <- c(1990, 1995, 2000, 2005, 2010, 2015)
       L142.EPA_EDGAR_PFCmatch_adj %>% #remove columns used in calculation (once testing is completed, integrate with above pipeline)
         select(-EPA_emissions, -tot_emissions, -EPA_emissions, -emscalar, -gas, -emissions) %>%
         rename(value = adj_emissions) %>%
@@ -394,14 +395,11 @@ module_emissions_L142.pfc_R_S_T_Y <- function(command, ...) {
         left_join_error_no_match(EPA_GWPs, by = c("Non.CO2" = "gas")) %>%
         mutate(value = value / gwp / CONV_GG_TG) %>%
         select(-gwp) %>%
-        filter(year %in% EPA_YEARS) ->
+        filter(year %in% emissions.EPA_BAU_HIST_YEAR) ->
         L142.EPA_PFC_R_S_T_Yh
 
       # Replace original output with scaled values
       L142.pfc_R_S_T_Yh <- L142.EPA_PFC_R_S_T_Yh
-
-    }
-    else {}
 
     # Produce outputs
     # ===============
