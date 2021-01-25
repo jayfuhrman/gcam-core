@@ -150,9 +150,14 @@
 		<!-- 			<Value name="rps">../input/gcamdata/xml/RPS_USA_Gas.xml</Value>
 		     <Value name="rps">../input/policy/states_policy_USA_noZero.xml</Value> -->
 		
-		<!-- net-zero-2050 package -->
+		<!-- net-zero-GHG package -->
 		<!-- 			<Value name="net_zero">../input/policy/net_zero_addon/US_netZero_GHG.xml</Value>
 		     <Value name="net_zero">../input/policy/net_zero_addon/US_netZero_GHG_link.xml</Value>
+		     <Value name="net_zero">../input/policy/net_zero_addon/carbon_tax_100_5_ROW.xml</Value> -->
+		
+		<!-- net-zero-CO2 package -->
+		<!-- 			<Value name="net_zero">../input/policy/net_zero_addon/US_netZero_CO2.xml</Value>
+		     <Value name="net_zero">../input/policy/net_zero_addon/US_netZero_CO2_link.xml</Value>
 		     <Value name="net_zero">../input/policy/net_zero_addon/carbon_tax_100_5_ROW.xml</Value> -->
 	</ScenarioComponents>
 	<Strings>
