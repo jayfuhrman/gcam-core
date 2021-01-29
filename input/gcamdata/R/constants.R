@@ -576,6 +576,7 @@ emissions.Fgas.DATA_SOURCE <- "EPA"
 
 # scaling CH4 and N2O emissions to EPA 2019 mitigation report BAU emission trajectory
 emissions.nonCO2.EPA.scaling <- TRUE
+emissions.EPA.scaling.shreshold <- 50 # EPA emissions/ CEDS emission, used to check scaling outliers in L112 chunk
 
 # Time
 emissions.CEDS_YEARS              <- 1971:2019           # Year coverage for CEDS inventory.
@@ -604,7 +605,8 @@ emissions.ZERO_EM_TECH  <- c("electricity", "Electric", "BEV","FCEV","district h
 emissions.HIGH_EM_FACTOR_THRESHOLD <- 1000  #All emission factors above this threshold are replaced with the global median of emission factors.
 emissions.GFED_NODATA <- c("ala","bes","blm","ggy","jey","maf","xad","xko","xnc")  #GFED LULC dataset does not contaian data for these isos. These get filtered out so we can use the left_join_error_no_match.
 emissions.UNMGD_LAND_AVG_YRS <- 30 #Years for climatological average for the GFED LULC data.
-
+emissions.CH4.GWP.AR4 <- 25 # used for EPA non-CO2 scaling, the 2019 EPA non-CO2 report uses AR4 GWPs
+emissions.N2O.GWP.AR4 <- 298 # used for EPA non-CO2 scaling, the 2019 EPA non-CO2 report uses AR4 GWPs
 
 emissions.COAL_SO2_THRESHOLD <- 0.1   # Tg/EJ (here referring to Tg SO2 per EJ of coal electricity)
 emissions.LOW_PCGDP          <- 2.75  # thousand 1990 USD
@@ -620,7 +622,6 @@ emissions.NONGHG_GASES       <- c("SO2", "NOx", "CO", "NMVOC", "NH3")
 emissions.PFCS               <- c("CF4", "C2F6", "SF6")
 emissions.TRN_INTL_SECTORS   <- c("trn_intl_ship", "trn_intl_air")
 
-emissions.USE_GV_MAC           <- 0
 emissions.USE_GCAM3_CCOEFS     <- 1 # Select whether to use GCAM3 fuel carbon coefficients
 emissions.USE_GLOBAL_CCOEFS    <- 1 # Select whether to use global average carbon coefficients on fuels, or region-specific carbon coefficients
 emissions.UNMGD_LAND_INPUT_NAME <- "land-input"
