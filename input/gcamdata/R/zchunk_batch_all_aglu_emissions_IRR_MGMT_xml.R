@@ -9,8 +9,7 @@
 #' @return Depends on \code{command}: either a vector of required inputs,
 #' a vector of output names, or (if \code{command} is "MAKE") all
 #' the generated outputs: \code{all_aglu_emissions_IRR_MGMT.xml}, \code{all_aglu_emissions_IRR_MGMT_MAC.xml},
-#' \code{all_aglu_emissions_IRR_MGMT_MAC_TC.xml}, \code{all_aglu_emissions_IRR_MGMT_MAC_noTC.xml},
-#' \code{all_aglu_emissions_IRR_MGMT_MAC_highTC.xml}, \code{all_aglu_emissions_IRR_MGMT_MAC_PhaseIn.xml}
+#' \code{all_aglu_emissions_IRR_MGMT_MAC_TC.xml}, \code{all_aglu_emissions_IRR_MGMT_MAC_PhaseIn.xml}
 #' The corresponding file in the original data system was
 #' \code{batch_all_aglu_emissions_IRR_MGMT.xml} (emissions XML).
 module_emissions_batch_all_aglu_emissions_IRR_MGMT_xml <- function(command, ...) {
@@ -20,20 +19,16 @@ module_emissions_batch_all_aglu_emissions_IRR_MGMT_xml <- function(command, ...)
               "L211.AnEmissions",
               "L211.AnNH3Emissions",
               "L252.MAC_an",
-              "L252.MAC_an_tc",
               "L252.MAC_an_tc_average",
               "L2112.AGRBio",
               "L2112.AWB_BCOC_EmissCoeff",
               "L2112.nonghg_max_reduction",
               "L2112.nonghg_steepness",
               "L252.AgMAC",
-              "L252.AgMAC_tc",
               "L252.AgMAC_tc_average"))
   } else if(command == driver.DECLARE_OUTPUTS) {
     return(c(XML = "all_aglu_emissions_IRR_MGMT.xml",
              XML = "all_aglu_emissions_IRR_MGMT_MAC.xml",
-             XML = "all_aglu_emissions_IRR_MGMT_MAC_highTC.xml",
-             XML = "all_aglu_emissions_IRR_MGMT_MAC_noTC.xml",
              XML = "all_aglu_emissions_IRR_MGMT_MAC_TC.xml"))
   } else if(command == driver.MAKE) {
 
@@ -45,14 +40,12 @@ module_emissions_batch_all_aglu_emissions_IRR_MGMT_xml <- function(command, ...)
     L211.AnEmissions <- get_data(all_data, "L211.AnEmissions")
     L211.AnNH3Emissions <- get_data(all_data, "L211.AnNH3Emissions")
     L252.MAC_an <- get_data(all_data, "L252.MAC_an")
-    L252.MAC_an_tc <- get_data(all_data, "L252.MAC_an_tc")
     L252.MAC_an_tc_average <- get_data(all_data, "L252.MAC_an_tc_average")
     L2112.AGRBio <- get_data(all_data, "L2112.AGRBio")
     L2112.AWB_BCOC_EmissCoeff <- get_data(all_data, "L2112.AWB_BCOC_EmissCoeff")
     L2112.nonghg_max_reduction <- get_data(all_data, "L2112.nonghg_max_reduction")
     L2112.nonghg_steepness <- get_data(all_data, "L2112.nonghg_steepness")
     L252.AgMAC <- get_data(all_data, "L252.AgMAC")
-    L252.AgMAC_tc <- get_data(all_data, "L252.AgMAC_tc")
     L252.AgMAC_tc_average <- get_data(all_data, "L252.AgMAC_tc_average")
 
     tech.change <- tech.change.year <- bio_N20_coef <- compVal <- bio_N2O_coef<- NULL # Silence package checks
@@ -88,36 +81,6 @@ module_emissions_batch_all_aglu_emissions_IRR_MGMT_xml <- function(command, ...)
                      "L252.AgMAC") ->
       all_aglu_emissions_IRR_MGMT_MAC.xml
 
-    create_xml("all_aglu_emissions_IRR_MGMT_MAC_highTC.xml") %>%
-      add_xml_data(L252.AgMAC, "AgMAC") %>%
-      add_xml_data(L252.MAC_an, "MAC") %>%
-      add_xml_data(L252.AgMAC_tc, "AgMACTC") %>%
-      add_xml_data(L252.MAC_an_tc, "MACTC") %>%
-      add_precursors("L252.MAC_an",
-                     "L252.MAC_an_tc",
-                     "L252.AgMAC",
-                     "L252.AgMAC_tc") ->
-      all_aglu_emissions_IRR_MGMT_MAC_highTC.xml
-
-    # temporarily create a "noTC" file assuming tech.change = 0 after 2050
-    # for validation and sensitivity purpose, will be deleted later
-    L252.AgMAC_tc_zero2050 <- L252.AgMAC_tc_average %>%
-      mutate(tech.change = ifelse(tech.change.year > 2050, 0, tech.change))
-
-    L252.MAC_an_tc_zero2050 <- L252.MAC_an_tc_average %>%
-      mutate(tech.change = ifelse(tech.change.year > 2050, 0, tech.change))
-
-    create_xml("all_aglu_emissions_IRR_MGMT_MAC_noTC.xml") %>%
-      add_xml_data(L252.AgMAC, "AgMAC") %>%
-      add_xml_data(L252.AgMAC_tc_zero2050, "AgMACTC") %>%
-      add_xml_data(L252.MAC_an, "MAC") %>%
-      add_xml_data(L252.MAC_an_tc_zero2050, "MACTC") %>%
-      add_precursors("L252.MAC_an",
-                     "L252.MAC_an_tc_average",
-                     "L252.AgMAC",
-                     "L252.AgMAC_tc_average") ->
-      all_aglu_emissions_IRR_MGMT_MAC_noTC.xml
-
     create_xml("all_aglu_emissions_IRR_MGMT_MAC_TC.xml") %>%
       add_xml_data(L252.AgMAC, "AgMAC") %>%
       add_xml_data(L252.AgMAC_tc_average, "AgMACTC") %>%
@@ -129,11 +92,8 @@ module_emissions_batch_all_aglu_emissions_IRR_MGMT_xml <- function(command, ...)
                      "L252.AgMAC_tc_average") ->
       all_aglu_emissions_IRR_MGMT_MAC_TC.xml
 
-
     return_data(all_aglu_emissions_IRR_MGMT.xml,
                 all_aglu_emissions_IRR_MGMT_MAC.xml,
-                all_aglu_emissions_IRR_MGMT_MAC_highTC.xml,
-                all_aglu_emissions_IRR_MGMT_MAC_noTC.xml,
                 all_aglu_emissions_IRR_MGMT_MAC_TC.xml)
   } else {
     stop("Unknown command")

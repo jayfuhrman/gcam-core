@@ -59,7 +59,7 @@ module_emissions_L152.MACC <- function(command, ...) {
       group_by(GCAM_region_ID, Sector, Process, year) %>%
       summarise(value = sum(value)) %>%
       ungroup() %>%
-      filter(year %in% emissions.EPA_MACC_FUTURE_YEAR) ->
+      filter(year %in% emissions.EPA_MACC_YEAR) ->
       EPA_ag_update
 
     # baseline data
@@ -71,7 +71,7 @@ module_emissions_L152.MACC <- function(command, ...) {
       group_by(GCAM_region_ID, Sector, Process, year) %>%
       summarise(value = sum(value)) %>%
       ungroup() %>%
-      filter(year %in% emissions.EPA_MACC_FUTURE_YEAR) %>%
+      filter(year %in% emissions.EPA_MACC_YEAR) %>%
       filter(Sector != "Agriculture") %>%
       bind_rows(EPA_ag_update) ->
       EPA_MACC_baselines_MtCO2e

@@ -8,9 +8,8 @@
 #' @param ... other optional parameters, depending on command
 #' @return Depends on \code{command}: either a vector of required inputs,
 #' a vector of output names, or (if \code{command} is "MAKE") all
-#' the generated outputs: \code{all_energy_emissions.xml}, \code{all_energy_emissions_MAC.xml} , \code{all_energy_emissions_MAC_TC.xml},
-#' \code{all_energy_emissions_MAC_highTC.xml}, \code{all_energy_emissions_MAC_noTC.xml},
-#' \code{all_energy_emissions_MAC_PhaseIn.xml}
+#' the generated outputs: \code{all_energy_emissions.xml}, \code{all_energy_emissions_MAC.xml} ,
+#' \code{all_energy_emissions_MAC_TC.xml}, \code{all_energy_emissions_MAC_PhaseIn.xml}
 #' The corresponding file in the original data system was \code{batch_all_energy_emissions.xml.R} (emissions XML).
 module_emissions_batch_all_energy_emissions_xml <- function(command, ...) {
   input_names <- c("L201.en_pol_emissions",
@@ -33,7 +32,6 @@ module_emissions_batch_all_energy_emissions_xml <- function(command, ...) {
                    "L241.nonco2_max_reduction",
                    "L241.nonco2_steepness",
                    "L252.ResMAC_fos",
-                   "L252.ResMAC_fos_tc",
                    "L252.ResMAC_fos_phaseInTime",
                    "L252.ResMAC_fos_tc_average")
   if(command == driver.DECLARE_INPUTS) {
@@ -42,9 +40,7 @@ module_emissions_batch_all_energy_emissions_xml <- function(command, ...) {
     return(c(XML = "all_energy_emissions.xml",
              XML = "all_energy_emissions_MAC.xml",
              XML = "all_energy_emissions_MAC_TC.xml",
-             XML = "all_energy_emissions_MAC_PhaseIn.xml",
-             XML = "all_energy_emissions_MAC_highTC.xml",
-             XML = "all_energy_emissions_MAC_noTC.xml"))
+             XML = "all_energy_emissions_MAC_PhaseIn.xml"))
   } else if(command == driver.MAKE) {
 
     all_data <- list(...)[[1]]
@@ -72,7 +68,6 @@ module_emissions_batch_all_energy_emissions_xml <- function(command, ...) {
     L241.nonco2_max_reduction <- get_data(all_data, "L241.nonco2_max_reduction")
     L241.nonco2_steepness <- get_data(all_data, "L241.nonco2_steepness")
     L252.ResMAC_fos <- get_data(all_data, "L252.ResMAC_fos")
-    L252.ResMAC_fos_tc <- get_data(all_data, "L252.ResMAC_fos_tc")
     L252.ResMAC_fos_phaseInTime <- get_data(all_data, "L252.ResMAC_fos_phaseInTime")
     L252.ResMAC_fos_tc_average <- get_data(all_data, "L252.ResMAC_fos_tc_average")
 
@@ -115,25 +110,6 @@ module_emissions_batch_all_energy_emissions_xml <- function(command, ...) {
       add_precursors("L252.ResMAC_fos") ->
       all_energy_emissions_MAC.xml
 
-    # temporarily create a "highTC" file assuming post-2050 tech.change is the highest value of pre-2050
-    # for validation and sensitivity purpose, will be deleted later
-    create_xml("all_energy_emissions_MAC_highTC.xml") %>%
-      add_xml_data(L252.ResMAC_fos, "ResMAC") %>%
-      add_xml_data(L252.ResMAC_fos_tc, "ResMACTC") %>%
-      add_precursors("L252.ResMAC_fos", "L252.ResMAC_fos_tc") ->
-      all_energy_emissions_MAC_highTC.xml
-
-    # temporarily create a "lowTC" file assuming tech.change = 0 after 2050
-    # for validation and sensitivity purpose, will be deleted later
-    L252.ResMAC_fos_tc_zero2050 <- L252.ResMAC_fos_tc_average %>%
-      mutate(tech.change = ifelse(tech.change.year > 2050, 0, tech.change))
-
-    create_xml("all_energy_emissions_MAC_noTC.xml") %>%
-      add_xml_data(L252.ResMAC_fos, "ResMAC") %>%
-      add_xml_data(L252.ResMAC_fos_tc_zero2050, "ResMACTC") %>%
-      add_precursors("L252.ResMAC_fos", "L252.ResMAC_fos_tc_average") ->
-      all_energy_emissions_MAC_noTC.xml
-
     create_xml("all_energy_emissions_MAC_TC.xml") %>%
       add_xml_data(L252.ResMAC_fos, "ResMAC") %>%
       add_xml_data(L252.ResMAC_fos_tc_average, "ResMACTC") %>%
@@ -147,8 +123,6 @@ module_emissions_batch_all_energy_emissions_xml <- function(command, ...) {
 
     return_data(all_energy_emissions.xml,
                 all_energy_emissions_MAC.xml,
-                all_energy_emissions_MAC_highTC.xml,
-                all_energy_emissions_MAC_noTC.xml,
                 all_energy_emissions_MAC_TC.xml,
                 all_energy_emissions_MAC_PhaseIn.xml)
   } else {

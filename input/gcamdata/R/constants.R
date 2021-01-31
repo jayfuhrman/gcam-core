@@ -584,7 +584,9 @@ emissions.CTRL_BASE_YEAR          <- 1975                # Year to read in pollu
 emissions.DEFOREST_COEF_YEARS     <- c(2000, 2005)
 emissions.EDGAR_YEARS             <- 1971:2008
 emissions.EPA_HISTORICAL_YEARS    <- 1971:2002
-emissions.EPA_MACC_FUTURE_YEAR    <- seq(2015, 2050, 5)        # based on 2019 EPA nonCO2 report
+emissions.EPA_MACC_YEAR           <- seq(2015, 2050, 5)        # based on 2019 EPA nonCO2 report
+emissions.EPA_MACC_FUTURE_YEAR    <- seq(2055, 2100, 5)        # EPA report only covers till 2050
+emissions.EPA_TC_TimeStep         <- 5   # currently calculate EPA MAC-based technological change based on every 5 years
 emissions.EPA_BAU_HIST_YEAR       <- c(1990, 1995, 2000, 2005, 2010, 2015) # based on 2019 EPA nonCO2 report
 emissions.FINAL_EMISS_YEAR        <- min(max(MODEL_BASE_YEARS), 2005)
 emissions.GAINS_BASE_YEAR         <- 2005
@@ -631,7 +633,7 @@ emissions.DIGITS_CO2COEF       <- 1
 emissions.DIGITS_EMISS_COEF    <- 7
 emissions.DIGITS_EMISSIONS     <- 10
 emissions.DIGITS_MACC          <- 3
-
+emissions.DIGITS_MACC_TC       <- 4 # tech.change rounding
 
 # GCAM-USA constants ======================================================================
 
