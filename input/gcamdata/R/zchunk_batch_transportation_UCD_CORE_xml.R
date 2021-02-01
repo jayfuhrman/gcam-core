@@ -48,7 +48,8 @@ module_energy_batch_transportation_UCD_CORE_xml <- function(command, ...) {
              "L254.IncomeElasticity_trn",
              "L254.BaseService_trn"))
   } else if(command == driver.DECLARE_OUTPUTS) {
-    xml_files<- c("transportation_UCD_CORE.xml","transportation_UCD_SSP1.xml","transportation_UCD_SSP3.xml","transportation_UCD_SSP5.xml","transportation_UCD_highEV.xml")
+    xml_files<- c("transportation_UCD_CORE.xml","transportation_UCD_SSP1.xml","transportation_UCD_SSP3.xml",
+                  "transportation_UCD_SSP5.xml","transportation_UCD_highEV.xml", "Transportation_highEV_simple.xml")
     names(xml_files) <- rep("XML", length(xml_files))
     return(xml_files)
   } else if(command == driver.MAKE) {
@@ -241,6 +242,14 @@ module_energy_batch_transportation_UCD_CORE_xml <- function(command, ...) {
       ret_data <- c(ret_data, xml_name)
 
     }
+
+    create_xml("Transportation_highEV_simple.xml") %>%
+      add_xml_data(L254.GlobalTranTechShrwt %>% filter(sce == "highEV") %>% select(-sce), "GlobalTranTechShrwt") %>%
+      add_precursors("L254.GlobalTranTechShrwt") ->
+      Transportation_highEV_simple.xml
+
+    ret_data <- c(ret_data, "Transportation_highEV_simple.xml")
+
     #Return all xmls
     ret_data %>%
       paste(collapse = ", ") %>%
