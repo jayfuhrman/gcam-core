@@ -14,7 +14,7 @@ module_gcamusa_batch_RPS_USA_xml(command, ...)
 \value{
 Depends on \code{command}: either a vector of required inputs,
 a vector of output names, or (if \code{command} is "MAKE") all
-the generated outputs: \code{RPS_USA.xml}. The corresponding file in the
+the generated outputs: \code{RPS_USA_Gas.xml}, \code{RPS_USA_noGas.xml}. The corresponding file in the
 original data system was \code{batch_RPS_USA.xml.R} (gcamusa XML batch).
 }
 \description{

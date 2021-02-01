@@ -442,7 +442,8 @@ module_energy_L254.transportation_UCD <- function(command, ...) {
     A54.globaltranTech_shrwt %>%
       gather_years %>%
       # Expand table to include all model years
-      complete(year = c(year, MODEL_YEARS), nesting(supplysector, tranSubsector, tranTechnology)) %>%
+      #yo 2021-01-31 update highEV share weight assumption
+      complete(year = c(year, MODEL_YEARS), nesting(sce, supplysector, tranSubsector, tranTechnology)) %>%
       # Extrapolate to fill out values for all years
       # Rule 2 is used so years that may be outside of min-max range are assigned values from closest data, as opposed to NAs
       group_by(supplysector, tranSubsector, tranTechnology) %>%
@@ -450,9 +451,8 @@ module_energy_L254.transportation_UCD <- function(command, ...) {
              share.weight = round(share.weight, energy.DIGITS_SHRWT)) %>%
       ungroup() %>%
       filter(year %in% MODEL_YEARS) %>%
-      mutate(sce = paste0("CORE")) %>%
       rename(sector.name = supplysector, subsector.name = tranSubsector) %>%
-      select(LEVEL2_DATA_NAMES[["GlobalTranTechShrwt"]]) ->
+      select(sce, LEVEL2_DATA_NAMES[["GlobalTranTechShrwt"]]) ->
       L254.GlobalTranTechShrwt # OUTPUT
 
     # L254.GlobalTranTechSCurve: Retirement of global tranTechnologies

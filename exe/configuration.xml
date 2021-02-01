@@ -140,7 +140,7 @@
 		<!-- 			<Value name="trn_usa">../input/gcamdata/xml/transportation_USA_highEV.xml</Value>
 		     <Value name="aeei_addon">../input/policy/aeei_addon/agg_industry_aeei_p55.xml</Value>
 		     <Value name="aeei_addon">../input/policy/aeei_addon/agg_transport_aeei_p46.xml</Value>
-		     <Value name="aeei_addon">../input/policy/aeei_addon/building_flsp_USA_QER_flat.xml</Value> -->
+		     <Value name="aeei_addon">../input/gcamdata/xml/building_USA_EE.xml</Value> -->
 		
 		<!-- RPS package benchmark 0 -->
 		<!-- 			<Value name="rps">../input/gcamdata/xml/RPS_USA_noGas.xml</Value>

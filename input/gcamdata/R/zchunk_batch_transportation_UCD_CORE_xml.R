@@ -133,7 +133,12 @@ module_energy_batch_transportation_UCD_CORE_xml <- function(command, ...) {
         L254.IncomeElasticity_trn_SSP <- L254.IncomeElasticity_trn %>% filter(sce=="CORE")
       }
 
-
+      #yo 2021-01-31 update highEV share weight assumption
+      if (i=="highEV"){
+        L254.GlobalTranTechShrwt_SSP <- L254.GlobalTranTechShrwt %>% filter(sce == "highEV") %>% select(-sce)
+      } else {
+        L254.GlobalTranTechShrwt_SSP <- L254.GlobalTranTechShrwt %>% filter(sce == "CORE") %>% select(-sce)
+      }
 
       #kbn 2020-02-11 For the SSPs, we want to bring in values such as co-efficients, load factors and costs after the base year. This is because we are
       # feeding the model outputs from the CORE in the base year, so having SSP values for these variables in the base year would lead to a calibration error
@@ -187,7 +192,7 @@ module_energy_batch_transportation_UCD_CORE_xml <- function(command, ...) {
         add_xml_data(L254.GlobalTechCoef_passthru, "GlobalTechCoef") %>%
         add_xml_data(L254.GlobalRenewTech_nonmotor, "GlobalRenewTech") %>%
         add_xml_data(L254.GlobalTranTechInterp, "GlobalTranTechInterp") %>%
-        add_xml_data(L254.GlobalTranTechShrwt, "GlobalTranTechShrwt") %>%
+        add_xml_data(L254.GlobalTranTechShrwt_SSP, "GlobalTranTechShrwt") %>%
         add_xml_data(L254.GlobalTranTechSCurve, "GlobalTranTechSCurve") %>%
         add_xml_data(L254.StubTranTechCalInput_SSP, "StubTranTechCalInput") %>%
         add_xml_data(L254.StubTranTechLoadFactor_SSP, "StubTranTechLoadFactor") %>%
