@@ -1015,6 +1015,9 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
 
         # function (1): isolate EPA emissions for specific sector
         FUN_isolate_EPA_sector <- function(EPA_SECTOR, EPA_SOURCE = NA, use.Source = F){
+          # EPA data has source/subsource levels of information
+          # for resource, energy etc we scale at EPA source level (Coal, Gas, Oil, Combusion)
+          # for agriculture etc we scale at EPA subsource level, e.g. Agricultre-livestocks, Agriculture-rice etc.
           if(use.Source == F){
             EPA_master %>%
               filter(sector %in% EPA_SECTOR & gas %in% c("CH4", "N2O")) %>%
@@ -1038,7 +1041,6 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
         }
 
         # function (2): calculate EPA scalers based on current GCAM data and EPA aggregated emission data
-
         FUN_cal_EPA_scalers <- function(DATA, EPA_DATA){
           DATA %>%
             group_by(GCAM_region_ID, EPA_sector, Non.CO2, year) %>%
@@ -1050,17 +1052,25 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
             left_join(EPA_DATA, by = c("GCAM_region_ID", "EPA_sector", "Non.CO2" = "gas", "year")) %>%
             # safeguard: if GCAM data is missing for some year then directly using EPA data
             mutate(tot_emissions = if_else(is.na(tot_emissions), EPA_emissions, tot_emissions)) %>%
-            # EPA emissions are only from 1990 to 2015
-            mutate(EPA_emissions = if_else(is.na(EPA_emissions), tot_emissions, EPA_emissions)) %>%
+            # EPA emissions are only from 1990 to 2015, and some regions may do not have EPA emissions
+            # e.g. oil production emissions in region 16
+            # so here need to define rules to make sure values from all years and all regions are scaled
+            # 1) for 1990-2015, if EPA emissions are completely missing, then use CEDS values
+            mutate(EPA_emissions = if_else(year >= min(emissions.EPA_BAU_HIST_YEAR) & is.na(EPA_emissions), tot_emissions, EPA_emissions)) %>%
+            # compute scalers (will generate inf and NAs)
             mutate(emscaler = EPA_emissions / tot_emissions) %>%
-            # remove na and inf
-            mutate(emscaler = if_else(is.na(emscaler) | is.infinite(emscaler), 1, emscaler)) %>%
+            # remove na and inf within EPA covered period
+            mutate(emscaler = if_else((is.na(emscaler) | is.infinite(emscaler)) & year >= min(emissions.EPA_BAU_HIST_YEAR), 1, emscaler)) %>%
+            # 2) after properly scaled 1990-2015 values (for each year), extrapolate scalers using rule 2
+            # using rule 1 will still result in NAs
+            # at this step we will not worry about outliers of scalers, which will be properly handled in later processes
+            group_by(GCAM_region_ID, EPA_sector, Non.CO2) %>%
+            mutate(emscaler = if_else(is.na(emscaler), approx_fun(year, emscaler, rule = 2), emscaler)) %>%
+            ungroup() %>%
             select(-EPA_emissions, -tot_emissions)
         }
 
-        # function (3): handle outliers
-
-        # function (4): perform EPA scaling based on the calculated EPA scalers
+        # function (3): perform EPA scaling based on the calculated EPA scalers
         FUN_scale_to_EPA <- function(DATA, EPA_SCALER){
           DATA %>%
             left_join_error_no_match(GCAM_EPA_CH4N2O_map,
