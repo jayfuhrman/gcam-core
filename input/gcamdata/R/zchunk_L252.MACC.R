@@ -469,19 +469,19 @@ module_emissions_L252.MACC <- function(command, ...) {
     # phase-in-fraction should be just applied to the year when MAC read in
     # so it would be convenient to just use the current technology-change data files to replace columns
 
-    L252.ResMAC_fos_tc %>%
+    L252.ResMAC_fos_tc_average %>%
       select(region, resource, subresource, technology, year, Non.CO2, mac.control) %>%
       distinct() %>%
       left_join_error_no_match(EPA_MACC_PhaseInTime, by = c("mac.control")) ->
       L252.ResMAC_fos_phaseInTime
 
-    L252.MAC_higwp_tc %>%
+    L252.MAC_higwp_tc_average %>%
       select(region, supplysector, subsector, stub.technology, year, Non.CO2, mac.control) %>%
       distinct() %>%
       left_join_error_no_match(EPA_MACC_PhaseInTime, by = c("mac.control")) ->
       L252.MAC_higwp_phaseInTime
 
-    L252.MAC_prc_tc %>%
+    L252.MAC_prc_tc_average %>%
       select(region, supplysector, subsector, stub.technology, year, Non.CO2, mac.control) %>%
       distinct() %>%
       left_join_error_no_match(EPA_MACC_PhaseInTime, by = c("mac.control")) ->
