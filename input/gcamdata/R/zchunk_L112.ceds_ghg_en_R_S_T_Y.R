@@ -1334,11 +1334,12 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
 
         # 3) Handling outliers, if any scaler is greater than a threshold, will replace its scaler as 1
         # so just keep using CEDS emission
-        # for combustion, choose scaler as emissions.EPA.scaling.shreshold
+        # for combustion, choose scaler as emissions.EPA.scaling.shreshold.combustion
+        # becuase EPA only has the entire combustion sector as a whole catagory
         # mostly filter out Region 4, 5, 27
 
         L112.ghg_tg_R_en_S_F_Yh_EPAscaler %>%
-          mutate(emscaler = if_else(emscaler >= emissions.EPA.scaling.shreshold, 1, emscaler)) ->
+          mutate(emscaler = if_else(emscaler >= emissions.EPA.scaling.shreshold.combustion, 1, emscaler)) ->
           L112.ghg_tg_R_en_S_F_Yh_EPAscaler
 
         # 4) Do the actual scaling for combustion-related emissions
