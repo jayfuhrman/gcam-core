@@ -571,9 +571,6 @@ water.RENEW.COST.GRADE3 <- 10 #Renewable water grade3 cost
 
 # Emissions constants ======================================================================
 
-# Flag which emissions data to use. Value "EPA" uses EPA data. All other values use CEDS data.
-emissions.Fgas.DATA_SOURCE <- "EPA"
-
 # scaling CH4 and N2O emissions to EPA 2019 mitigation report BAU emission trajectory
 emissions.nonCO2.EPA.scaling <- TRUE
 emissions.EPA.scaling.shreshold <- 50 # EPA emissions/ CEDS emission, used to check scaling outliers in L112 chunk
