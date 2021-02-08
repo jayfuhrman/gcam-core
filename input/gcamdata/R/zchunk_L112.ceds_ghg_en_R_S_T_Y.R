@@ -1137,6 +1137,8 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
         L112.ghg_tgej_R_en_S_F_Yh <- L112.ghg_tgej_R_en_S_F_Yh_update_all
 
         # Part 2: L131.nonco2_tg_R_prc_S_S_Yh (industrial processes and urban processes input emissions)
+        # Industrial process only scales N2O (EPA data contain CH4 in its database but have relatively poor quality)
+        # in EPA's main report summary table (Page 7) also did not mark CH4 emissions in industrial process
         #---------------------------------------------------------------------------------------------------------------
 
         # 1) Isolate EPA emissions for industrial processes and urban processes
@@ -1145,7 +1147,7 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
 
         # 2) Calculate scalers for process-related emissions by EPA_sector by year and region
         L131.nonco2_tg_R_prc_S_S_Yh %>%
-          filter(supplysector %in% c("industrial processes", "urban processes") & Non.CO2 %in% c("CH4", "N2O")) ->
+          filter(supplysector %in% c("industrial processes", "urban processes") & Non.CO2 %in% c("N2O")) ->
           L131.nonco2_tg_R_prc_S_S_Yh_change
 
         L131.nonco2_tg_R_prc_S_S_Yh_change %>%
@@ -1172,7 +1174,7 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
           L131.nonco2_tg_R_prc_S_S_Yh_update
 
         L131.nonco2_tg_R_prc_S_S_Yh %>%
-          filter(!(supplysector %in% c("industrial processes", "urban processes") & Non.CO2 %in% c("CH4", "N2O"))) %>%
+          filter(!(supplysector %in% c("industrial processes", "urban processes") & Non.CO2 %in% c("N2O"))) %>%
           bind_rows(L131.nonco2_tg_R_prc_S_S_Yh_update) ->
           L131.nonco2_tg_R_prc_S_S_Yh_adj
 
@@ -1265,17 +1267,17 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
         L121.nonco2_tg_R_awb_C_Y_GLU <- L121.nonco2_tg_R_awb_C_Y_GLU_adj
 
 
-        # Part 5: L122.ghg_tg_R_agr_C_Y_GLU (agriculture crop - input emissions)
+        # Part 5: L122.ghg_tg_R_agr_C_Y_GLU (agriculture rice - input emissions)
         #---------------------------------------------------------------------------------------------------------------
 
-        # 1) Isolate EPA emissions for agriculture crop emissions
+        # 1) Isolate EPA emissions for agriculture rice emissions
         L131.EPA_CH4N2O_agr <- FUN_isolate_EPA_sector(EPA_SECTOR = c("Agriculture"),
-                                                      EPA_SOURCE = c("Rice", "AgSoils"),
+                                                      EPA_SOURCE = c("Rice"),
                                                       use.Source = T)
 
         # 2) Calculate scalers for agriculture emissions by EPA_sector by year and region
         L122.ghg_tg_R_agr_C_Y_GLU %>%
-          filter(Non.CO2 %in% c("CH4_AGR", "N2O_AGR")) ->
+          filter(Non.CO2 %in% c("CH4_AGR", "N2O_AGR") & GCAM_commodity == "Rice") ->
           L122.ghg_tg_R_agr_C_Y_GLU_change
 
         L122.ghg_tg_R_agr_C_Y_GLU_change %>%
@@ -1296,7 +1298,7 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
           L122.ghg_tg_R_agr_C_Y_GLU_update
 
         L122.ghg_tg_R_agr_C_Y_GLU %>%
-          filter(!(Non.CO2 %in% c("CH4_AGR", "N2O_AGR"))) %>%
+          filter(!(Non.CO2 %in% c("CH4_AGR", "N2O_AGR") & GCAM_commodity == "Rice")) %>%
           bind_rows(L122.ghg_tg_R_agr_C_Y_GLU_update) ->
           L122.ghg_tg_R_agr_C_Y_GLU_adj
 
