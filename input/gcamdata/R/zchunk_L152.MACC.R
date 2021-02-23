@@ -11,7 +11,6 @@
 #' the generated outputs: \code{L152.MAC_pct_R_S_Proc_EPA}. The corresponding file in the
 #' original data system was \code{L152.MACC.R} (emissions level1).
 #' @details Create Marginal abatement cost curves, in percent reduction by 1990 USD costs from EPA cost curves.
-#' Choose between 2020 or 2030 data in constants file - emissions.EPA_MACC_YEAR.
 #' @importFrom assertthat assert_that
 #' @importFrom dplyr filter group_by left_join mutate select vars summarize_at
 #' @importFrom tidyr gather spread
@@ -35,6 +34,9 @@ module_emissions_L152.MACC <- function(command, ...) {
 
     all_data <- list(...)[[1]]
 
+    #silence packages
+    cum_reduction_MtCO2e <- p <- value <- sector <- Sector <- GCAM_region_ID <- EPA_country <- iso <- EPA_sector <- NULL
+
     # Load required inputs
     EPA_master <- get_data(all_data, "emissions/EPA/EPA_2019_raw")
     EPA_ag <- get_data(all_data, "emissions/EPA/EPA_2019_MACC_Ag_updated_baseline")
@@ -57,8 +59,7 @@ module_emissions_L152.MACC <- function(command, ...) {
       group_by(GCAM_region_ID, Sector, Process, year) %>%
       summarise(value = sum(value)) %>%
       ungroup() %>%
-      filter(year %in% seq(2015, 2050, 5)) ->
-      # filter(year %in% seq(2010, 2030, 5)) ->
+      filter(year %in% emissions.EPA_MACC_YEAR) ->
       EPA_ag_update
 
     # baseline data
@@ -70,8 +71,7 @@ module_emissions_L152.MACC <- function(command, ...) {
       group_by(GCAM_region_ID, Sector, Process, year) %>%
       summarise(value = sum(value)) %>%
       ungroup() %>%
-      filter(year %in% seq(2015, 2050, 5)) %>%
-      # filter(year %in% seq(2010, 2030, 5)) %>%
+      filter(year %in% emissions.EPA_MACC_YEAR) %>%
       filter(Sector != "Agriculture") %>%
       bind_rows(EPA_ag_update) ->
       EPA_MACC_baselines_MtCO2e
@@ -112,7 +112,6 @@ module_emissions_L152.MACC <- function(command, ...) {
     # Baseline data
     # Also filter for only EPA MACC year
     EPA_MACC_baselines_MtCO2e %>%
-      # filter(year == emissions.EPA_MACC_YEAR) %>%
       combine_Al_Mg %>%
       group_by(GCAM_region_ID, Sector, Process, year) %>%
       summarise(baseline_MtCO2e = sum(value)) %>%
@@ -123,18 +122,17 @@ module_emissions_L152.MACC <- function(command, ...) {
     # Match in the baseline emissions quantities to abatement tibble then calculate abatement percentages
     # Use left_join - there should be NAs (i.e., there are sectors where the baseline is zero) - then drop those NAs
     # (ie. MAC curves in regions where the sector/process does not exist - the baseline is zero)
+    # emissions.MAC_highestReduction is 0.95, defined in constant.R
 
     L152.EPA_MACC_MtCO2e %>%
       left_join(L152.EPA_MACC_baselines_MtCO2e ,
                 by = c("Sector", "Process", "GCAM_region_ID", "year")) %>%
       mutate(reduction_pct = cum_reduction_MtCO2e / baseline_MtCO2e) %>%
       mutate(reduction_pct = ifelse(is.na(reduction_pct) | is.infinite(reduction_pct), 0, reduction_pct)) %>%
-      mutate(reduction_pct = ifelse(reduction_pct >=1, 0.95, reduction_pct)) %>%
+      mutate(reduction_pct = ifelse(reduction_pct >=1, emissions.MAC_highestReduction, reduction_pct)) %>%
       ungroup() %>%
       select(Sector, Process, GCAM_region_ID, year, cost_1990USD_tCe, reduction_pct) ->
       L152.EPA_MACC_percent_MtCO2e
-
-    # TODO: set proper tax breaks
 
     price_cut <- round(emissions.MAC_TAXES * emissions.CONV_C_CO2 * gdp_deflator(1990, base_year = 2010), 0)
 
@@ -174,7 +172,7 @@ module_emissions_L152.MACC <- function(command, ...) {
       filter(GCAM_region_ID  == 11) %>%
       mutate(GCAM_region_ID = 30) %>%
       bind_rows(L152.MAC_pct_R_S_Proc_EPA_noTW) %>%
-      filter(year >= 2020) ->
+      filter(year %in% MODEL_FUTURE_YEARS) ->
       L152.MAC_pct_R_S_Proc_EPA
 
     # END NEW PROCESS

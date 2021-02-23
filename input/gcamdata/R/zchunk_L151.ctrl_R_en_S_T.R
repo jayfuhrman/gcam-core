@@ -42,9 +42,7 @@ module_emissions_L151.ctrl_R_en_S_T <- function(command, ...) {
       mutate(year = as.numeric(substr(year, 2, 5))) ->
       L114.bcoc_tgej_R_en_S_F_2000
 
-    # If we are using CEDS remove all rows from this dataset
-    if (driver.EMISSIONS_SOURCE == "CEDS"){
-      L114.bcoc_tgej_R_en_S_F_2000 <- L114.bcoc_tgej_R_en_S_F_2000[0,] }
+    L114.bcoc_tgej_R_en_S_F_2000 <- L114.bcoc_tgej_R_en_S_F_2000[0,]
 
     # First, set up min coeff data frame
     A51.min_coeff %>%
