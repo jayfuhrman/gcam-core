@@ -3,7 +3,7 @@
 # Description: assumed global default emissions factors
 # Units: kg C per GJ
 # Source: CDIAC inventory IEA energy balance some manual adjustments
-# Column types: cni 
+# Column types: cni
 # ----------
 PrimaryFuelCO2Coef.name,PrimaryFuelCO2Coef,traded
 biomass,0,0
