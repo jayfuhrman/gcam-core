@@ -14,7 +14,7 @@ module_emissions_batch_ind_urb_processing_sectors_xml(command, ...)
 \value{
 Depends on \code{command}: either a vector of required inputs,
 a vector of output names, or (if \code{command} is "MAKE") all
-the generated outputs: \code{ind_urb_processing_sectors.xml}, \code{ind_urb_processing_sectors_noMAC.xml}.
+the generated outputs: \code{ind_urb_processing_sectors.xml}, \code{ind_urb_processing_sectors_MAC.xml}.
 The corresponding file in the original data system was
 \code{batch_ind_urb_processing_sectors.xml} (emissions XML).
 }

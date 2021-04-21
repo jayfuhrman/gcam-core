@@ -117,14 +117,13 @@ module_emissions_L252.MACC <- function(command, ...) {
     # This is a function to add in the mac.reduction curves to data
     # Function needed because these steps are repeated 5 times
 
-    mac_reduction_adder <- function(df, order, error_no_match = TRUE) {
+    mac_reduction_adder <- function(df, error_no_match = TRUE) {
       df <- df %>%
         # Add tax values
         repeat_add_columns(tibble(tax = MAC_taxes)) %>%
         repeat_add_columns(tibble(year = emissions.EPA_MACC_YEAR)) %>%
         # we don't need MACs for calibration years
-        filter(year %notin% MODEL_BASE_YEARS) %>%
-        dplyr::arrange_("region", order)
+        filter(year %notin% MODEL_BASE_YEARS)
       # Next, add in mac.reduction values
       if(error_no_match) {
         # Usually we use left_join_error_no_match
@@ -154,7 +153,8 @@ module_emissions_L252.MACC <- function(command, ...) {
                                  filter(sector == "out_resources") %>%
                                  select(mac.control = EPA_MACC_Sector, subsector),
                                by = c("resource" = "subsector")) %>%
-      mac_reduction_adder(order = "resource") %>%
+      mac_reduction_adder %>%
+      arrange(region, resource) %>%
       # Add column for market variable
       mutate(market.name = emissions.MAC_MARKET) %>%
       # Remove EPA_Region - useful up to now for diagnostic, but not needed for csv->xml conversion
@@ -173,7 +173,8 @@ module_emissions_L252.MACC <- function(command, ...) {
                                  select(mac.control = EPA_MACC_Sector, supplysector) %>%
                                  distinct, # taking distinct values because there were repeats for AEZs
                                by = c("AgSupplySector" = "supplysector")) %>%
-      mac_reduction_adder(order = "AgProductionTechnology") %>%
+      mac_reduction_adder %>%
+      arrange(region, AgProductionTechnology) %>%
       # Add column for market variable
       mutate(market.name = emissions.MAC_MARKET) %>%
       repeat_add_columns(tibble(Irr_Rfd = paste0(aglu.IRR_DELIMITER, c("IRR", "RFD")))) %>%
@@ -194,7 +195,8 @@ module_emissions_L252.MACC <- function(command, ...) {
                                  select(mac.control = EPA_MACC_Sector, supplysector) %>%
                                  distinct, # taking distinct values because there are repeats for different technologies
                                by = "supplysector") %>%
-      mac_reduction_adder(order = c("supplysector", "subsector", "stub.technology", "Non.CO2")) %>%
+      mac_reduction_adder %>%
+      arrange(region, supplysector, subsector, stub.technology, Non.CO2) %>%
       # Add column for market variable
       mutate(market.name = emissions.MAC_MARKET) %>%
       # Remove EPA_Region - useful up to now for diagnostic, but not needed for csv->xml conversion
@@ -212,10 +214,10 @@ module_emissions_L252.MACC <- function(command, ...) {
       left_join(GCAM_sector_tech %>%
                   select(mac.control = EPA_MACC_Sector, supplysector, subsector, stub.technology),
                 by = c("supplysector", "subsector", "stub.technology")) %>%
-      mac_reduction_adder(order = c("supplysector", "subsector", "stub.technology", "Non.CO2"),
-                          # error_no_match is F, which means we use left_join(L252.MAC_pct_R_S_Proc_EPA)
+      mac_reduction_adder(# error_no_match is F, which means we use left_join(L252.MAC_pct_R_S_Proc_EPA)
                           # because not all mac.controls and regions in L252.MAC_pct_R_S_Proc_EPA
                           error_no_match = FALSE) %>%
+      arrange(region, supplysector, subsector, stub.technology, Non.CO2) %>%
       na.omit() %>%
       # Add column for market variable
       mutate(market.name = emissions.MAC_MARKET) %>%
@@ -233,7 +235,8 @@ module_emissions_L252.MACC <- function(command, ...) {
                   select(mac.control = EPA_MACC_Sector, supplysector, subsector, stub.technology),
                 by = c("supplysector", "subsector", "stub.technology")) %>%
       # use error_no_match = FALSE becuase not all regions/sectors have the same MAC controls
-      mac_reduction_adder(order = c("supplysector", "subsector", "stub.technology", "Non.CO2"), error_no_match = FALSE) %>%
+      mac_reduction_adder(error_no_match = FALSE) %>%
+      arrange(region, supplysector, subsector, stub.technology, Non.CO2) %>%
       # Add column for market variable
       mutate(market.name = emissions.MAC_MARKET) %>%
       # Remove EPA_Region - useful up to now for diagnostic, but not needed for csv->xml conversion

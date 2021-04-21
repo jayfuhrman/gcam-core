@@ -23,6 +23,7 @@ module_emissions_L152.MACC <- function(command, ...) {
              FILE = "emissions/EPA/EPA_2019_MACC_raw",
              FILE = "emissions/EPA_MACC_mapping",
              FILE = "emissions/EPA_MACC_control_mapping",
+             FILE = "emissions/EPA_MAC_missing_region",
              FILE = "emissions/EPA_country_map"))
   } else if(command == driver.DECLARE_OUTPUTS) {
     return(c("L152.MAC_pct_R_S_Proc_EPA"))
@@ -43,16 +44,11 @@ module_emissions_L152.MACC <- function(command, ...) {
     EPA_MACC_master <- get_data(all_data, "emissions/EPA/EPA_2019_MACC_raw")
     EPA_MACC_mapping <- get_data(all_data, "emissions/EPA_MACC_mapping")
     EPA_MACC_control_mapping <- get_data(all_data, "emissions/EPA_MACC_control_mapping")
+    EPA_MAC_missing_region <- get_data(all_data, "emissions/EPA_MAC_missing_region")
     EPA_country_map <- get_data(all_data, "emissions/EPA_country_map")
 
-
-    # New process - update MAC using 2019 EPA
-    # and now produce MAC for every modeling year from 2015 to 2050
-    # YO MAR 2020
-    # -------------------------------------------------------------------------------------------------------
-    # START NEW PROCESS
-
     # updated agriculture data
+    # EPA provides a seperate baseline agriculture data for MAC calculation
     EPA_ag %>%
       left_join_error_no_match(EPA_MACC_control_mapping, by = "source") %>%
       left_join_error_no_match(EPA_country_map %>% select(-iso) %>% rename(country = EPA_country), by = "country") %>%
@@ -158,25 +154,31 @@ module_emissions_L152.MACC <- function(command, ...) {
     # tax levels in emissions.MAC_TAXES are simply a range of costs in $1990 USD so we aren't retaining superfluous detail
     # create a new df with all rows for all costs for each unique Sector-Process-Region,
     # then add reduction percentages at those costs
+    # keep MAC data for MODEL_FUTURE_YEARS
 
     L152.EPA_MACC_percent_MtCO2e_complete %>%
+      filter(year %in% MODEL_FUTURE_YEARS) %>%
       rename(tax = cost_1990USD_tCe) %>%
       rename(mac.reduction = reduction_pct) %>%
       rename(mac.control = Process) ->
-      L152.MAC_pct_R_S_Proc_EPA_noTW
+      L152.MAC_pct_R_S_Proc_EPA_missing
 
-    # add Taiwan becuase EPA 2019 does not have it
+    # fill in missing MAC regions based on a mapping file - EPA_MAC_missing_region
+    # currently just add Taiwan becuase EPA 2019 does not have it
     # assign all measures same as China (region 11) for data completeness
-    # now the current data have year from 2020 to 2050
-    L152.MAC_pct_R_S_Proc_EPA_noTW %>%
-      filter(GCAM_region_ID  == 11) %>%
-      mutate(GCAM_region_ID = 30) %>%
-      bind_rows(L152.MAC_pct_R_S_Proc_EPA_noTW) %>%
-      filter(year %in% MODEL_FUTURE_YEARS) ->
-      L152.MAC_pct_R_S_Proc_EPA
 
-    # END NEW PROCESS
-    # -------------------------------------------------------------------------------------------------------
+    if(!is.na(EPA_MAC_missing_region$GCAM_region_ID_missing)){
+      L152.MAC_pct_R_S_Proc_EPA_missing %>%
+        filter(GCAM_region_ID %in% EPA_MAC_missing_region$GCAM_region_ID_alternative) %>%
+        left_join_error_no_match(EPA_MAC_missing_region, by = c("GCAM_region_ID" = "GCAM_region_ID_alternative")) %>%
+        mutate(GCAM_region_ID = GCAM_region_ID_missing) %>%
+        select(-GCAM_region_ID_missing) %>%
+        bind_rows(L152.MAC_pct_R_S_Proc_EPA_missing) ->
+        L152.MAC_pct_R_S_Proc_EPA
+    } else {
+      L152.MAC_pct_R_S_Proc_EPA_missing ->
+        L152.MAC_pct_R_S_Proc_EPA
+    }
 
     # ===================================================
     # Produce outputs
@@ -190,6 +192,7 @@ module_emissions_L152.MACC <- function(command, ...) {
                      "emissions/EPA/EPA_2019_MACC_raw",
                      "emissions/EPA_MACC_mapping",
                      "emissions/EPA_MACC_control_mapping",
+                     "emissions/EPA_MAC_missing_region",
                      "emissions/EPA_country_map") ->
       L152.MAC_pct_R_S_Proc_EPA
 

@@ -8,8 +8,7 @@
 #' @param ... other optional parameters, depending on command
 #' @return Depends on \code{command}: either a vector of required inputs,
 #' a vector of output names, or (if \code{command} is "MAKE") all
-#' the generated outputs: \code{all_fgas_emissions.xml}, \code{all_fgas_emissions_MAC.xml},
-#' \code{all_fgas_emissions_MAC_TC.xml}, \code{all_fgas_emissions_MAC_PhaseIn.xml},
+#' the generated outputs: \code{all_fgas_emissions.xml}, \code{all_fgas_emissions_MAC.xml}.
 #' The corresponding file in the
 #' original data system was \code{batch_all_fgas_emissions.xml} (emissions XML).
 module_emissions_batch_all_fgas_emissions_xml <- function(command, ...) {
@@ -23,9 +22,7 @@ module_emissions_batch_all_fgas_emissions_xml <- function(command, ...) {
              "L252.MAC_higwp_tc_average"))
   } else if(command == driver.DECLARE_OUTPUTS) {
     return(c(XML = "all_fgas_emissions.xml",
-             XML = "all_fgas_emissions_MAC.xml",
-             XML = "all_fgas_emissions_MAC_TC.xml",
-             XML = "all_fgas_emissions_MAC_PhaseIn.xml"))
+             XML = "all_fgas_emissions_MAC.xml"))
   } else if(command == driver.MAKE) {
 
     all_data <- list(...)[[1]]
@@ -55,24 +52,13 @@ module_emissions_batch_all_fgas_emissions_xml <- function(command, ...) {
 
     create_xml("all_fgas_emissions_MAC.xml") %>%
       add_xml_data(L252.MAC_higwp, "MAC") %>%
-      add_precursors("L252.MAC_higwp") ->
+      add_xml_data(L252.MAC_higwp_tc_average, "MACTC") %>%
+      add_xml_data(L252.MAC_higwp_phaseInTime, "MACPhaseIn") %>%
+      add_precursors("L252.MAC_higwp", "L252.MAC_higwp_tc_average", "L252.MAC_higwp_phaseInTime") ->
       all_fgas_emissions_MAC.xml
 
-    create_xml("all_fgas_emissions_MAC_TC.xml") %>%
-      add_xml_data(L252.MAC_higwp, "MAC") %>%
-      add_xml_data(L252.MAC_higwp_tc_average, "MACTC") %>%
-      add_precursors("L252.MAC_higwp", "L252.MAC_higwp_tc_average") ->
-      all_fgas_emissions_MAC_TC.xml
-
-    create_xml("all_fgas_emissions_MAC_PhaseIn.xml") %>%
-      add_xml_data(L252.MAC_higwp_phaseInTime, "MACPhaseIn") %>%
-      add_precursors("L252.MAC_higwp_phaseInTime") ->
-      all_fgas_emissions_MAC_PhaseIn.xml
-
     return_data(all_fgas_emissions.xml,
-                all_fgas_emissions_MAC.xml,
-                all_fgas_emissions_MAC_TC.xml,
-                all_fgas_emissions_MAC_PhaseIn.xml)
+                all_fgas_emissions_MAC.xml)
   } else {
     stop("Unknown command")
   }

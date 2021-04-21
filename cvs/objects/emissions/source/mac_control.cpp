@@ -153,7 +153,7 @@ bool MACControl::XMLDerivedClassParse( const string& aNodeName, const DOMNode* a
         XMLHelper<double>::insertValueIntoVector( aCurrNode, *mTechChange, modeltime );
     }
     else if ( aNodeName == "full-phase-in-price" ){
-        mFullPhaseInPrice = XMLHelper<int>::getValue( aCurrNode );
+        mFullPhaseInPrice = XMLHelper<double>::getValue( aCurrNode );
     }
     else if ( aNodeName == "zero-cost-phase-in-time" ){
         mZeroCostPhaseInTime = XMLHelper<int>::getValue( aCurrNode );

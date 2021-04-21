@@ -8,8 +8,7 @@
 #' @param ... other optional parameters, depending on command
 #' @return Depends on \code{command}: either a vector of required inputs,
 #' a vector of output names, or (if \code{command} is "MAKE") all
-#' the generated outputs: \code{all_aglu_emissions_IRR_MGMT.xml}, \code{all_aglu_emissions_IRR_MGMT_MAC.xml},
-#' \code{all_aglu_emissions_IRR_MGMT_MAC_TC.xml}, \code{all_aglu_emissions_IRR_MGMT_MAC_PhaseIn.xml}
+#' the generated outputs: \code{all_aglu_emissions_IRR_MGMT.xml}, \code{all_aglu_emissions_IRR_MGMT_MAC.xml}.
 #' The corresponding file in the original data system was
 #' \code{batch_all_aglu_emissions_IRR_MGMT.xml} (emissions XML).
 module_emissions_batch_all_aglu_emissions_IRR_MGMT_xml <- function(command, ...) {
@@ -28,8 +27,7 @@ module_emissions_batch_all_aglu_emissions_IRR_MGMT_xml <- function(command, ...)
               "L252.AgMAC_tc_average"))
   } else if(command == driver.DECLARE_OUTPUTS) {
     return(c(XML = "all_aglu_emissions_IRR_MGMT.xml",
-             XML = "all_aglu_emissions_IRR_MGMT_MAC.xml",
-             XML = "all_aglu_emissions_IRR_MGMT_MAC_TC.xml"))
+             XML = "all_aglu_emissions_IRR_MGMT_MAC.xml"))
   } else if(command == driver.MAKE) {
 
     all_data <- list(...)[[1]]
@@ -76,13 +74,6 @@ module_emissions_batch_all_aglu_emissions_IRR_MGMT_xml <- function(command, ...)
 
     create_xml("all_aglu_emissions_IRR_MGMT_MAC.xml") %>%
       add_xml_data(L252.AgMAC, "AgMAC") %>%
-      add_xml_data(L252.MAC_an, "MAC") %>%
-      add_precursors("L252.MAC_an",
-                     "L252.AgMAC") ->
-      all_aglu_emissions_IRR_MGMT_MAC.xml
-
-    create_xml("all_aglu_emissions_IRR_MGMT_MAC_TC.xml") %>%
-      add_xml_data(L252.AgMAC, "AgMAC") %>%
       add_xml_data(L252.AgMAC_tc_average, "AgMACTC") %>%
       add_xml_data(L252.MAC_an, "MAC") %>%
       add_xml_data(L252.MAC_an_tc_average, "MACTC") %>%
@@ -90,11 +81,10 @@ module_emissions_batch_all_aglu_emissions_IRR_MGMT_xml <- function(command, ...)
                      "L252.MAC_an_tc_average",
                      "L252.AgMAC",
                      "L252.AgMAC_tc_average") ->
-      all_aglu_emissions_IRR_MGMT_MAC_TC.xml
+      all_aglu_emissions_IRR_MGMT_MAC.xml
 
     return_data(all_aglu_emissions_IRR_MGMT.xml,
-                all_aglu_emissions_IRR_MGMT_MAC.xml,
-                all_aglu_emissions_IRR_MGMT_MAC_TC.xml)
+                all_aglu_emissions_IRR_MGMT_MAC.xml)
   } else {
     stop("Unknown command")
   }

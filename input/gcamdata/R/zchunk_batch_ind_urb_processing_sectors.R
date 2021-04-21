@@ -8,7 +8,7 @@
 #' @param ... other optional parameters, depending on command
 #' @return Depends on \code{command}: either a vector of required inputs,
 #' a vector of output names, or (if \code{command} is "MAKE") all
-#' the generated outputs: \code{ind_urb_processing_sectors.xml}, \code{ind_urb_processing_sectors_noMAC.xml}.
+#' the generated outputs: \code{ind_urb_processing_sectors.xml}, \code{ind_urb_processing_sectors_MAC.xml}.
 #' The corresponding file in the original data system was
 #' \code{batch_ind_urb_processing_sectors.xml} (emissions XML).
 module_emissions_batch_ind_urb_processing_sectors_xml <- function(command, ...) {
@@ -34,9 +34,7 @@ module_emissions_batch_ind_urb_processing_sectors_xml <- function(command, ...) 
              "L252.MAC_prc_tc_average"))
   } else if(command == driver.DECLARE_OUTPUTS) {
     return(c(XML = "ind_urb_processing_sectors.xml",
-             XML = "ind_urb_processing_sectors_MAC.xml",
-             XML = "ind_urb_processing_sectors_MAC_TC.xml",
-             XML = "ind_urb_processing_sectors_MAC_PhaseIn.xml"))
+             XML = "ind_urb_processing_sectors_MAC.xml"))
   } else if(command == driver.MAKE) {
 
     all_data <- list(...)[[1]]
@@ -87,20 +85,10 @@ module_emissions_batch_ind_urb_processing_sectors_xml <- function(command, ...) 
 
     create_xml("ind_urb_processing_sectors_MAC.xml") %>%
       add_xml_data(L252.MAC_prc, "MAC") %>%
-      add_precursors("L252.MAC_prc") ->
-      ind_urb_processing_sectors_MAC.xml
-
-    create_xml("ind_urb_processing_sectors_MAC_TC.xml") %>%
-      add_xml_data(L252.MAC_prc, "MAC") %>%
       add_xml_data(L252.MAC_prc_tc_average, "MACTC") %>%
-      add_precursors("L252.MAC_prc", "L252.MAC_prc_tc_average") ->
-      ind_urb_processing_sectors_MAC_TC.xml
-
-    create_xml("ind_urb_processing_sectors_MAC_PhaseIn.xml") %>%
       add_xml_data(L252.MAC_prc_phaseInTime, "MACPhaseIn") %>%
-      add_precursors("L252.MAC_prc_phaseInTime") ->
-      ind_urb_processing_sectors_MAC_PhaseIn.xml
-
+      add_precursors("L252.MAC_prc", "L252.MAC_prc_tc_average", "L252.MAC_prc_phaseInTime") ->
+      ind_urb_processing_sectors_MAC.xml
 
     # Some data inputs may not actually contain data. If so, do not add_xml_data
     if(!is.null(L231.SubsectorShrwt_urb_ind)) {
@@ -121,9 +109,7 @@ module_emissions_batch_ind_urb_processing_sectors_xml <- function(command, ...) 
     }
 
     return_data(ind_urb_processing_sectors.xml,
-                ind_urb_processing_sectors_MAC.xml,
-                ind_urb_processing_sectors_MAC_TC.xml,
-                ind_urb_processing_sectors_MAC_PhaseIn.xml)
+                ind_urb_processing_sectors_MAC.xml)
   } else {
     stop("Unknown command")
   }

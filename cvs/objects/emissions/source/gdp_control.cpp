@@ -164,9 +164,9 @@ void GDPControl::calcEmissionsReduction( const std::string& aRegionName, const i
         reduction = 1 - ( 1.0 / ( 1.0 + ( currGDP - baseGDP ) / mSteepness ));
             
         // Ensure reduction doesn't exceed maximum allowed
-        const double maxRedcutionFraction = mMaxReduction / 100.0;
-        if ( reduction > maxRedcutionFraction ) {
-            reduction = maxRedcutionFraction;
+        const double maxReductionFraction = mMaxReduction / 100.0;
+        if ( reduction > maxReductionFraction ) {
+            reduction = maxReductionFraction;
         }
         
         // Also ensure that reduction is not negative. This can happen if GDP declines significantly

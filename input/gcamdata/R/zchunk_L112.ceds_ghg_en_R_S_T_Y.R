@@ -448,15 +448,20 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
       L112.nonco2_tgej_R_en_S_F_Yh_withNAs %>%
         replace_na(list(emfact = 0)) %>%
         group_by(year, Non.CO2, supplysector, subsector, stub.technology) %>%
-        summarise(emfact = median(emfact)) %>%
+        mutate(emfact = median(emfact), upper = quantile(emfact,0.95)) %>%
         ungroup() %>%
-        rename(globalemfact = emfact) ->
+        rename(globalemfact = emfact) %>%
+        select(year, Non.CO2, supplysector, subsector, stub.technology, globalemfact, upper) %>%
+        distinct()->
         L112.nonco2_tgej_R_en_S_F_Yh_globalmedian
 
-      # Replaces all emissions factors above a given value (currently 1000) or that are NAs with the global median emissions factor for that year, non.CO2, and technology
+      # Replaces all emissions factors above a given value or that are NAs with the global median emissions factor for that year, non.CO2, and technology
       L112.nonco2_tgej_R_en_S_F_Yh_withNAs %>%
         left_join_error_no_match(L112.nonco2_tgej_R_en_S_F_Yh_globalmedian, by = c("year", "Non.CO2", "supplysector", "subsector", "stub.technology")) %>%
-        mutate(emfact = if_else(emfact > emissions.HIGH_EM_FACTOR_THRESHOLD | is.na(emfact), globalemfact, emfact)) %>%
+        #There are two adjustments here. First, we check if the supply sector is related to fossil fuels, in that case, if the emfact is above 95th percentile, we replace with the global median.
+        #If not, we just compare with our threshold of 1000 tg/ej and make the replacements accordingly. These adjustments are structured given that fossil fuel production may increase rapidly in some regions (even though absolute increase may be low).
+        mutate(emfact = if_else(supplysector == "out_resources", if_else(emfact >upper | is.na(emfact) , globalemfact, emfact),
+                                if_else(emfact >  emissions.HIGH_EM_FACTOR_THRESHOLD | is.na(emfact) , globalemfact, emfact))) %>%
         select(GCAM_region_ID, Non.CO2, year, supplysector, subsector, stub.technology, emfact) %>%
         mutate(emfact = if_else(is.infinite(emfact), 1, emfact)) ->
         L112.nonco2_tgej_R_en_S_F_Yh
@@ -1018,25 +1023,15 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
           # EPA data has source/subsource levels of information
           # for resource, energy etc we scale at EPA source level (Coal, Gas, Oil, Combusion)
           # for agriculture etc we scale at EPA subsource level, e.g. Agricultre-livestocks, Agriculture-rice etc.
-          if(use.Source == F){
-            EPA_master %>%
-              filter(sector %in% EPA_SECTOR & gas %in% c("CH4", "N2O")) %>%
-              left_join_error_no_match(EPA_CH4N2O_map, by = c("sector", "source", "subsource")) %>%
-              left_join_error_no_match(EPA_country_map, by = c("country" = "EPA_country")) %>%
-              group_by(GCAM_region_ID, EPA_sector, year, gas) %>%
-              summarise(EPA_emissions = sum(value)) %>%
-              ungroup() ->
-              result
-          } else {
-            EPA_master %>%
-              filter(sector %in% EPA_SECTOR & gas %in% c("CH4", "N2O") & source %in% EPA_SOURCE) %>%
-              left_join_error_no_match(EPA_CH4N2O_map, by = c("sector", "source", "subsource")) %>%
-              left_join_error_no_match(EPA_country_map, by = c("country" = "EPA_country")) %>%
-              group_by(GCAM_region_ID, EPA_sector, year, gas) %>%
-              summarise(EPA_emissions = sum(value)) %>%
-              ungroup() ->
-              result
-          }
+          EPA_master %>%
+            filter(sector %in% EPA_SECTOR & gas %in% c("CH4", "N2O") & (!use.Source | source %in% EPA_SOURCE)) %>%
+            left_join_error_no_match(EPA_CH4N2O_map, by = c("sector", "source", "subsource")) %>%
+            left_join_error_no_match(EPA_country_map, by = c("country" = "EPA_country")) %>%
+            group_by(GCAM_region_ID, EPA_sector, year, gas) %>%
+            summarise(EPA_emissions = sum(value)) %>%
+            ungroup() ->
+            result
+
           return(result)
         }
 
@@ -1124,7 +1119,7 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
           ungroup() %>%
           left_join_error_no_match(L112.ghg_tgej_R_en_S_F_Yh_adj_median,
                                    by = c("Non.CO2", "year", "supplysector", "subsector", "stub.technology")) %>%
-          mutate(value_adj = ifelse(value_adj > upper, upper, value_adj)) %>%
+          mutate(value_adj = if_else(value_adj > upper, upper, value_adj)) %>%
           select(-upper, -value_median) ->
           L112.ghg_tgej_R_en_S_F_Yh_adj_noOutlier
 
@@ -1174,11 +1169,11 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
 
         # 3) Handling outliers, if any scaler is greater than a threshold, will replace its scaler as 1
         # so just keep using CEDS emission
-        # for industry process emisison, choose scaler as emissions.EPA.scaling.shreshold
+        # for industry process emisison, choose scaler as emissions.EPA.scaling.threshold
         # mostly filter out Region 4 - industrial other, and some region 32
 
         L131.nonco2_tg_R_prc_S_S_Yh_EPAscaler %>%
-          mutate(emscaler = if_else(emscaler >= emissions.EPA.scaling.shreshold, 1, emscaler)) ->
+          mutate(emscaler = if_else(emscaler >= emissions.EPA.scaling.threshold, 1, emscaler)) ->
           L131.nonco2_tg_R_prc_S_S_Yh_EPAscaler
 
         # 4) Do the actual scaling for industrial and urban processes emissions
@@ -1257,11 +1252,11 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
 
         # 3) Handling outliers, if any scaler is greater than a threshold, will replace its scaler as 1
         # so just keep using CEDS emission
-        # for agriculture waste burning, choose scaler as emissions.EPA.scaling.shreshold
+        # for agriculture waste burning, choose scaler as emissions.EPA.scaling.threshold
         # just filter out Region 26
 
         L121.nonco2_tg_R_awb_C_Y_GLU_EPAscaler %>%
-          mutate(emscaler = if_else(emscaler >= emissions.EPA.scaling.shreshold, 1, emscaler)) ->
+          mutate(emscaler = if_else(emscaler >= emissions.EPA.scaling.threshold, 1, emscaler)) ->
           L121.nonco2_tg_R_awb_C_Y_GLU_EPAscaler
 
         # 4) do the actual scaling for agriculture emissions
@@ -1334,12 +1329,12 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
 
         # 3) Handling outliers, if any scaler is greater than a threshold, will replace its scaler as 1
         # so just keep using CEDS emission
-        # for combustion, choose scaler as emissions.EPA.scaling.shreshold.combustion
+        # for combustion, choose scaler as emissions.EPA.scaling.threshold.combustion
         # becuase EPA only has the entire combustion sector as a whole catagory
         # mostly filter out Region 4, 5, 27
 
         L112.ghg_tg_R_en_S_F_Yh_EPAscaler %>%
-          mutate(emscaler = if_else(emscaler >= emissions.EPA.scaling.shreshold.combustion, 1, emscaler)) ->
+          mutate(emscaler = if_else(emscaler >= emissions.EPA.scaling.threshold.combustion, 1, emscaler)) ->
           L112.ghg_tg_R_en_S_F_Yh_EPAscaler
 
         # 4) Do the actual scaling for combustion-related emissions

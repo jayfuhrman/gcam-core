@@ -8,8 +8,7 @@
 #' @param ... other optional parameters, depending on command
 #' @return Depends on \code{command}: either a vector of required inputs,
 #' a vector of output names, or (if \code{command} is "MAKE") all
-#' the generated outputs: \code{all_energy_emissions.xml}, \code{all_energy_emissions_MAC.xml} ,
-#' \code{all_energy_emissions_MAC_TC.xml}, \code{all_energy_emissions_MAC_PhaseIn.xml}
+#' the generated outputs: \code{all_energy_emissions.xml}, \code{all_energy_emissions_MAC.xml}.
 #' The corresponding file in the original data system was \code{batch_all_energy_emissions.xml.R} (emissions XML).
 module_emissions_batch_all_energy_emissions_xml <- function(command, ...) {
   input_names <- c("L201.en_pol_emissions",
@@ -38,9 +37,7 @@ module_emissions_batch_all_energy_emissions_xml <- function(command, ...) {
     return(input_names)
   } else if(command == driver.DECLARE_OUTPUTS) {
     return(c(XML = "all_energy_emissions.xml",
-             XML = "all_energy_emissions_MAC.xml",
-             XML = "all_energy_emissions_MAC_TC.xml",
-             XML = "all_energy_emissions_MAC_PhaseIn.xml"))
+             XML = "all_energy_emissions_MAC.xml"))
   } else if(command == driver.MAKE) {
 
     all_data <- list(...)[[1]]
@@ -101,30 +98,16 @@ module_emissions_batch_all_energy_emissions_xml <- function(command, ...) {
                      "L232.nonco2_max_reduction", "L232.nonco2_steepness", "L241.nonco2_tech_coeff",
                      "L241.OutputEmissCoeff_elec", "L241.nonco2_max_reduction", "L241.nonco2_steepness") ->
       all_energy_emissions.xml
-    # need to call add_precursors indirectly to ensure input_names gets "unlisted"
-    all_energy_emissions.xml <- do.call("add_precursors", c(list(all_energy_emissions.xml), input_names))
-
 
     create_xml("all_energy_emissions_MAC.xml") %>%
       add_xml_data(L252.ResMAC_fos, "ResMAC") %>%
-      add_precursors("L252.ResMAC_fos") ->
+      add_xml_data(L252.ResMAC_fos_tc_average, "ResMACTC") %>%
+      add_xml_data(L252.ResMAC_fos_phaseInTime, "ResMACPhaseIn") %>%
+      add_precursors("L252.ResMAC_fos", "L252.ResMAC_fos_tc_average", "L252.ResMAC_fos_phaseInTime") ->
       all_energy_emissions_MAC.xml
 
-    create_xml("all_energy_emissions_MAC_TC.xml") %>%
-      add_xml_data(L252.ResMAC_fos, "ResMAC") %>%
-      add_xml_data(L252.ResMAC_fos_tc_average, "ResMACTC") %>%
-      add_precursors("L252.ResMAC_fos", "L252.ResMAC_fos_tc_average") ->
-      all_energy_emissions_MAC_TC.xml
-
-    create_xml("all_energy_emissions_MAC_PhaseIn.xml") %>%
-      add_xml_data(L252.ResMAC_fos_phaseInTime, "ResMACPhaseIn") %>%
-      add_precursors("L252.ResMAC_fos_phaseInTime") ->
-      all_energy_emissions_MAC_PhaseIn.xml
-
     return_data(all_energy_emissions.xml,
-                all_energy_emissions_MAC.xml,
-                all_energy_emissions_MAC_TC.xml,
-                all_energy_emissions_MAC_PhaseIn.xml)
+                all_energy_emissions_MAC.xml)
   } else {
     stop("Unknown command")
   }
