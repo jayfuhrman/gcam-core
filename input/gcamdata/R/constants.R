@@ -585,8 +585,8 @@ water.RENEW.COST.GRADE3 <- 10 #Renewable water grade3 cost
 
 # scaling CH4 and N2O emissions to EPA 2019 mitigation report BAU emission trajectory
 emissions.nonCO2.EPA.scaling <- TRUE
-emissions.EPA.scaling.shreshold <- 50 # EPA emissions/ CEDS emission, used to check scaling outliers in L112 chunk
-emissions.EPA.scaling.shreshold.combustion <- 20 # check scaling outliers in L112 chunk for combustion sector
+emissions.EPA.scaling.threshold <- 50 # EPA emissions/ CEDS emission, used to check scaling outliers in L112 chunk
+emissions.EPA.scaling.threshold.combustion <- 20 # check scaling outliers in L112 chunk for combustion sector
 
 # Time
 emissions.CEDS_YEARS              <- 1971:2019           # Year coverage for CEDS inventory.
