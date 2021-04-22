@@ -8,7 +8,8 @@
 #' @param ... other optional parameters, depending on command
 #' @return Depends on \code{command}: either a vector of required inputs,
 #' a vector of output names, or (if \code{command} is "MAKE") all
-#' the generated outputs: \code{all_fgas_emissions.xml}, \code{all_fgas_emissions_MAC.xml}.
+#' the generated outputs: \code{all_fgas_emissions.xml}, \code{all_fgas_emissions_MAC.xml},
+#' \code{all_fgas_emissions_MAC_lowTC.xml}.
 #' The corresponding file in the
 #' original data system was \code{batch_all_fgas_emissions.xml} (emissions XML).
 module_emissions_batch_all_fgas_emissions_xml <- function(command, ...) {
@@ -22,6 +23,7 @@ module_emissions_batch_all_fgas_emissions_xml <- function(command, ...) {
              "L252.MAC_higwp_tc_average"))
   } else if(command == driver.DECLARE_OUTPUTS) {
     return(c(XML = "all_fgas_emissions.xml",
+             XML = "all_fgas_emissions_MAC_lowTC.xml",
              XML = "all_fgas_emissions_MAC.xml"))
   } else if(command == driver.MAKE) {
 
@@ -57,7 +59,25 @@ module_emissions_batch_all_fgas_emissions_xml <- function(command, ...) {
       add_precursors("L252.MAC_higwp", "L252.MAC_higwp_tc_average", "L252.MAC_higwp_phaseInTime") ->
       all_fgas_emissions_MAC.xml
 
+    # temporarily creat a version of MAC for reference with low tech.change
+    post_2050_low <- L252.MAC_higwp_tc_average %>%
+      filter(tech.change.year == 2050) %>%
+      select(-tech.change.year) %>%
+      repeat_add_columns(tibble(tech.change.year = seq(2055, 2100, 5)))
+
+    L252.MAC_higwp_tc_low <- L252.MAC_higwp_tc_average %>%
+      filter(tech.change.year <= 2050) %>%
+      bind_rows(post_2050_low)
+
+    create_xml("all_fgas_emissions_MAC_lowTC.xml") %>%
+      add_xml_data(L252.MAC_higwp, "MAC") %>%
+      add_xml_data(L252.MAC_higwp_tc_low, "MACTC") %>%
+      add_xml_data(L252.MAC_higwp_phaseInTime, "MACPhaseIn") %>%
+      add_precursors("L252.MAC_higwp", "L252.MAC_higwp_tc_average", "L252.MAC_higwp_phaseInTime") ->
+      all_fgas_emissions_MAC_lowTC.xml
+
     return_data(all_fgas_emissions.xml,
+                all_fgas_emissions_MAC_lowTC.xml,
                 all_fgas_emissions_MAC.xml)
   } else {
     stop("Unknown command")
