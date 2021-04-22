@@ -262,12 +262,13 @@ const std::string& Region::getXMLNameStatic() {
 void Region::completeInit() {
     for( PolicyIterator policy = mPolicies.begin(); policy != mPolicies.end(); ++policy ){
     (*policy)->completeInit( mName );
+    }
     
     for( GHGPolicyIterator ghgPolicy = mGhgPolicies.begin(); ghgPolicy != mGhgPolicies.end(); ++ghgPolicy ){
         (*ghgPolicy)->completeInit( mName );
     }
     
-    }
+    
     for( ResourceIterator resourceIter = mResources.begin(); resourceIter != mResources.end(); ++resourceIter ) {
         (*resourceIter)->completeInit( mName, mRegionInfo );
     }
