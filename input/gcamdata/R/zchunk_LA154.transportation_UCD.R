@@ -32,6 +32,10 @@ module_energy_LA154.transportation_UCD <- function(command, ...) {
              #kbn 2019-10-09 Added size class divisions file here.
              FILE=  "energy/mappings/UCD_size_class_revisions",
              FILE =  "energy/UCD_trn_data_CORE_highEV",
+             FILE =  "energy/UCD_trn_data_CORE",
+             FILE =  "energy/UCD_trn_data_SSP1",
+             FILE =  "energy/UCD_trn_data_SSP3",
+             FILE = "energy/UCD_trn_data_SSP5",
              # This file is currently using a constant to select the correct SSP database
              # All SSP databases will be included in the input files
              UCD_trn_data_name,"UCD_trn_data_SSP1",
@@ -71,12 +75,12 @@ module_energy_LA154.transportation_UCD <- function(command, ...) {
     enduse_fuel_aggregation <- get_data(all_data, "energy/mappings/enduse_fuel_aggregation")
     UCD_ctry <- get_data(all_data, "energy/mappings/UCD_ctry")
     UCD_techs <- get_data(all_data, "energy/mappings/UCD_techs")
-    UCD_trn_data_CORE <- get_data(all_data, UCD_trn_data_name) %>%
+    UCD_trn_data_CORE <- get_data(all_data, "energy/UCD_trn_data_CORE") %>%
       gather_years %>% mutate(sce=paste0("CORE"))
     # kbn 2020-06-02 get data for all SSPs. No data for SSP2.
-    UCD_trn_data_SSP1 <- get_data(all_data,"UCD_trn_data_SSP1") %>% gather_years %>% mutate(sce=paste0("SSP1"))
-    UCD_trn_data_SSP3 <- get_data(all_data,"UCD_trn_data_SSP3") %>% gather_years %>% mutate(sce=paste0("SSP3"))
-    UCD_trn_data_SSP5 <- get_data(all_data,"UCD_trn_data_SSP5") %>% gather_years %>% mutate(sce=paste0("SSP5"))
+    UCD_trn_data_SSP1 <- get_data(all_data,"energy/UCD_trn_data_SSP1") %>% gather_years %>% mutate(sce=paste0("SSP1"))
+    UCD_trn_data_SSP3 <- get_data(all_data,"energy/UCD_trn_data_SSP3") %>% gather_years %>% mutate(sce=paste0("SSP3"))
+    UCD_trn_data_SSP5 <- get_data(all_data,"energy/UCD_trn_data_SSP5") %>% gather_years %>% mutate(sce=paste0("SSP5"))
     # UCD_trn_data_CORE_highEV is a scenario, but has data for historical years.
     UCD_trn_data_CORE_highEV <- get_data(all_data,"energy/UCD_trn_data_CORE_highEV") %>% gather_years %>% mutate(sce=paste0("highEV")) %>%
                                                         filter(year %in% c(FUTURE_YEARS))
@@ -355,13 +359,12 @@ module_energy_LA154.transportation_UCD <- function(command, ...) {
     # Start interpolation
     UCD_trn_data_fillout <- UCD_trn_data_fillout[, value := if_else(is.na(value), as.numeric(approx_fun(year, value, rule = 2)), as.numeric(value)),by= c("UCD_region", "UCD_sector", "mode", "size.class", "UCD_technology", "UCD_fuel", "variable", "unit")]
 
-
     #kbn 2020 filtering out SSP values that are the same. Basically if a certain combination has the same value for a SSP in a year compared to core,
     #just keep the core value.
-    setorderv(UCD_trn_data_fillout,c("sce","year"))
-    UCD_trn_data_fillout<- unique(UCD_trn_data_fillout, by= c("UCD_region", "UCD_sector", "size.class","rev_size.class", "mode","rev.mode", "UCD_technology", "UCD_fuel", "variable", "unit", "year","value"))
+    #setorderv(UCD_trn_data_fillout,c("sce","year"))
+    #UCD_trn_data_fillout<- unique(UCD_trn_data_fillout, by= c("UCD_region", "UCD_sector", "size.class","rev_size.class", "mode","rev.mode", "UCD_technology", "UCD_fuel", "variable", "unit", "year","value"))
     #Convert back to tibble
-    UCD_trn_data_fillout <- as_tibble(UCD_trn_data_fillout)
+    #UCD_trn_data_fillout <- as_tibble(UCD_trn_data_fillout)
 
     # Aggregate the country-level energy consumption by sector and mode. First need to add in the future years for matching purposes
     IEA_fut_data_times_UCD_shares <- IEA_hist_data_times_UCD_shares %>%
@@ -538,7 +541,7 @@ module_energy_LA154.transportation_UCD <- function(command, ...) {
       #kbn 2020-01-29 Add in sce below. Using only CORE for these.
       repeat_add_columns(tibble(mode = c("Walk", "Cycle"),sce=c("CORE"))) %>%
       inner_join(UCD_ctry %>% select(-country_name), by = "iso") %>%
-      left_join_error_no_match(PKM_percap_nonmotor_UCD_R %>% filter(year == energy.UCD_EN_YEAR),
+      inner_join(PKM_percap_nonmotor_UCD_R %>% filter(year == energy.UCD_EN_YEAR),
                                by = c("UCD_region", "mode")) %>%
       mutate(value = value * 1 / CONV_MIL_THOUS * pkm_percap)
 
