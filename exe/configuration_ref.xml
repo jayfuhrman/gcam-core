@@ -86,7 +86,7 @@
         <Value name = "wind_update">../input/gcamdata/xml/onshore_wind.xml</Value>
 		<Value name = "solver">../input/solution/cal_broyden_config.xml</Value>
 		
-		
+		<Value name = "dac">../input/gcamdata/xml/dac_ssp2.xml</Value>
 		
 
 	</ScenarioComponents>

@@ -102,6 +102,7 @@
 			<Value name="link">../input/policy/2040_target_finder.xml</Value>
 			<Value name="bio_tax">../input/policy/global_uct_spa2.xml</Value>
             <Value name = "bio_neg_emiss_budget">../input/gcamdata/xml/negative_emissions_budget_SSP2.xml</Value>
+			<Value name = "dac">../input/gcamdata/xml/dac_ssp2.xml</Value>
 			
 		</FileSet>
 		<FileSet name="SSP3">
@@ -158,6 +159,10 @@
 			<Value name="weak_policy">../input/policy/spa5_tax.xml</Value>
 			<Value name="link">../input/policy/2040_target_finder.xml</Value>
             <Value name = "bio_neg_emiss_budget">../input/gcamdata/xml/negative_emissions_budget_SSP3.xml</Value>
+
+			<!--DIRECT AIR CAPTURE-->
+			<Value name = "dac">../input/gcamdata/xml/dac_ssp3.xml</Value>
+
 		</FileSet>	
 	</ComponentSet>
 	<runner-set name="policy-target-runner">
