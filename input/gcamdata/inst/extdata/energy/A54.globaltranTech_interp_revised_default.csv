@@ -11,8 +11,11 @@ trn_freight,Freight Rail,Coal,share-weight,final-calibration-year,2020,linear,CO
 trn_freight,Freight Rail,Electric,share-weight,final-calibration-year,end-year,fixed,CORE
 trn_freight,Freight Rail,Liquids,share-weight,final-calibration-year,end-year,fixed,CORE
 trn_freight_road,Light truck,Liquids,share-weight,final-calibration-year,end-year,fixed,CORE
+trn_freight_road,Light truck,NG,share-weight,final-calibration-year,end-year,fixed,CORE
 trn_freight_road,Medium truck,Liquids,share-weight,final-calibration-year,end-year,fixed,CORE
+trn_freight_road,Medium truck,NG,share-weight,final-calibration-year,end-year,fixed,CORE
 trn_freight_road,Heavy truck,Liquids,share-weight,final-calibration-year,end-year,fixed,CORE
+trn_freight_road,Heavy truck,NG,share-weight,final-calibration-year,end-year,fixed,CORE
 trn_pass,Passenger Rail,Electric,share-weight,final-calibration-year,end-year,fixed,CORE
 trn_pass,Passenger Rail,Liquids,share-weight,final-calibration-year,end-year,fixed,CORE
 trn_pass,Passenger Rail,Tech-Adv-Electric,share-weight,final-calibration-year,end-year,fixed,CORE
@@ -41,8 +44,11 @@ trn_freight,Freight Rail,Coal,share-weight,final-calibration-year,2020,linear,hi
 trn_freight,Freight Rail,Electric,share-weight,final-calibration-year,end-year,fixed,highEV
 trn_freight,Freight Rail,Liquids,share-weight,final-calibration-year,end-year,fixed,highEV
 trn_freight_road,Light truck,Liquids,share-weight,final-calibration-year,end-year,fixed,highEV
+trn_freight_road,Light truck,NG,share-weight,final-calibration-year,end-year,fixed,highEV
 trn_freight_road,Medium truck,Liquids,share-weight,final-calibration-year,end-year,fixed,highEV
+trn_freight_road,Medium truck,NG,share-weight,final-calibration-year,end-year,fixed,highEV
 trn_freight_road,Heavy truck,Liquids,share-weight,final-calibration-year,end-year,fixed,highEV
+trn_freight_road,Heavy truck,NG,share-weight,final-calibration-year,end-year,fixed,highEV
 trn_pass,Passenger Rail,Electric,share-weight,final-calibration-year,end-year,fixed,highEV
 trn_pass,Passenger Rail,Liquids,share-weight,final-calibration-year,end-year,fixed,highEV
 trn_pass,Passenger Rail,Tech-Adv-Electric,share-weight,final-calibration-year,end-year,fixed,highEV

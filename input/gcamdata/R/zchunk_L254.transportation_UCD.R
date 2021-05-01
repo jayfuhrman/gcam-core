@@ -444,11 +444,10 @@ module_energy_L254.transportation_UCD <- function(command, ...) {
       select(-sce) %>%
       gather_years %>%
       # Expand table to include all model years
-      #yo 2021-01-31 update highEV share weight assumption
-      complete(year = c(year, MODEL_YEARS), nesting(sce, supplysector, tranSubsector, tranTechnology)) %>%
+      complete(year = c(year, MODEL_YEARS), nesting(supplysector, tranSubsector, tranTechnology)) %>%
       # Extrapolate to fill out values for all years
       # Rule 2 is used so years that may be outside of min-max range are assigned values from closest data, as opposed to NAs
-      group_by(sce, supplysector, tranSubsector, tranTechnology) %>%
+      group_by(supplysector, tranSubsector, tranTechnology) %>%
       mutate(share.weight = approx_fun(year, value, rule = 2),
              share.weight = round(share.weight, energy.DIGITS_SHRWT)) %>%
       ungroup() %>%

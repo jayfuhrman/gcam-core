@@ -83,9 +83,7 @@ module_energy_batch_transportation_UCD_CORE_xml <- function(command, ...) {
     L254.GlobalTechShrwt_nonmotor <- get_data(all_data, "L254.GlobalTechShrwt_nonmotor")
     L254.GlobalTechCoef_passthru <- get_data(all_data, "L254.GlobalTechCoef_passthru")
     L254.GlobalRenewTech_nonmotor <- get_data(all_data, "L254.GlobalRenewTech_nonmotor")
-    L254.GlobalTranTechInterp <- get_data(all_data, "L254.GlobalTranTechInterp") %>%
-      # Keep shrwt interp only for rail
-      filter(sector.name %in% c("trn_freight", "trn_pass"))
+    L254.GlobalTranTechInterp <- get_data(all_data, "L254.GlobalTranTechInterp")
     L254.GlobalTranTechShrwt <- get_data(all_data, "L254.GlobalTranTechShrwt")
     L254.GlobalTranTechSCurve <- get_data(all_data, "L254.GlobalTranTechSCurve")
     L254.StubTranTechCalInput <- get_data(all_data, "L254.StubTranTechCalInput")
