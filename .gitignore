@@ -75,3 +75,8 @@ xcuserdata
 *.moved-aside
 *.xcuserstate
 .Rproj.user
+<<<<<<< HEAD
+libs/
+=======
+input/gcamdata/inst/extdata/emissions/CEDS/desktop.ini
+>>>>>>> 8e66ab6ce3832a47b4cbf22295877ca5d48ea7c4
