@@ -35,7 +35,6 @@ MODEL_FUTURE_YEARS      <- seq(2020, 2100, 5)
 MODEL_YEARS             <- c(MODEL_BASE_YEARS, MODEL_FUTURE_YEARS)
 MODEL_FINAL_BASE_YEAR   <- 2015
 
-
 # GCAM constants ======================================================================
 
 gcam.USA_CODE            <- 1
@@ -380,7 +379,6 @@ energy.SATIATION_YEAR             <- max(MODEL_BASE_YEARS) # Needs to be the las
 energy.UCD_EN_YEAR                <- 2005        # UCD transportation year to use to compute shares for allocation of energy to mode/technology/fuel within category/fuel
 energy.WIND.BASE.COST.YEAR        <- 2005        # Base cost year for wind, used in capacity factor calculations
 
-energy.REG_NG_MARKET <- "regional natural gas" #Name of the regional natural gas market
 
 energy.MIN_WEIGHT_EJ <- 1e-08
 
@@ -420,7 +418,7 @@ energy.MIN_IN_EJ_IND <- 1e-3
 # Sets maximum for electricity IO coefficient used in cement sector
 energy.MAX_IOELEC <- 4
 
-# Solar related constants
+# PV related constants
 energy.HOURS_PER_YEAR          <- 24 * 365
 energy.PV_COMM_INSTALLED_COST  <- 7290     # 2005USD per kw
 energy.PV_COMM_OM              <- 40       # 2005USD per kw per year
@@ -429,7 +427,6 @@ energy.PV_DISCOUNT_RATE        <- 0.1      # year^-1
 energy.PV_LIFETIME             <- 30       # years
 energy.PV_RESID_INSTALLED_COST <- 9500     # 2005USD per kw
 energy.PV_RESID_OM             <- 100      # 2005USD per kw per year
-energy.CSP_STORAGE_CF_DIFF     <- 0.25     # capacity factor difference between CSP_storage (0.5) and CSP (0.25)
 
 # Wind related constants
 energy.WIND_CURVE_MIDPOINT <- 0.5
@@ -470,24 +467,12 @@ energy.OIL_CREDITS_MARKETNAME   <- "oil-credits"
 energy.OILFRACT_ELEC            <- 1.0 # Fraction of liquids for feedstocks that must come from oil
 energy.OILFRACT_FEEDSTOCKS      <- 0.8 # Fraction of liquids for oil electricity that must come from oil
 
-#kbn 2019-10-11 Adding constant for transportation type. Set this to rev.mode to use revised mode classes, rev_size.class to use revised size classes.
-#To use the old modes and size classes, use mode and size.class for the constants. The default for GCAM are the new modes and size classes.
+#kbn 2019-10-11 Adding constant for transportation type. Set this to 'rev.mode' to use revised mode classes, 'rev_size.class' to use revised size classes.
+#To use the old modes and size classes, use 'mode' and 'size.class' for the constants. The default for GCAM are the new modes and size classes.
 
 energy.TRAN_UCD_MODE<-'rev.mode'
 energy.TRAN_UCD_SIZE_CLASS<-'rev_size.class'
 
-# Constants related to ATB power sector technology costs
-energy.ATB_2017_YEARS <- c(2015:2016)
-energy.ATB_BASE_YEAR <- 2015
-energy.ATB_MID_YEAR <- 2035
-energy.ATB_TARGET_YEAR <- 2035
-gcamusa.STORAGE_TECH <- "battery"
-energy.COSTS_MID_CASE <- "central"
-energy.COSTS_ADV_CASE <- "adv tech"
-energy.COSTS_LOW_CASE <- "low tech"
-energy.CAPITAL_INPUT <- "capital"
-energy.OM_FIXED_INPUT <- "OM-fixed"
-energy.OM_VAR_INPUT <- "OM-var"
 
 # Socioeconomics constants ======================================================================
 
