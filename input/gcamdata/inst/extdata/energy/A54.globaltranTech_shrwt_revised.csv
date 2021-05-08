@@ -13,11 +13,11 @@ trn_freight,Freight Rail,Coal,1,1,0,0,0,0,0,0,CORE
 trn_freight,Freight Rail,Electric,1,1,1,1,1,1,1,1,CORE
 trn_freight,Freight Rail,Liquids,1,1,1,1,1,1,1,1,CORE
 trn_freight_road,Light truck,Liquids,1,1,1,1,1,1,1,1,CORE
-trn_freight_road,Light truck,NG,0,0,1,0.02,0.03,0.05,0.1,0.1,CORE
+trn_freight_road,Light truck,NG,0,0,1,1,1,1,1,1,CORE
 trn_freight_road,Medium truck,Liquids,1,1,1,1,1,1,1,1,CORE
-trn_freight_road,Medium truck,NG,0,0,1,0.02,0.03,0.05,0.1,0.1,CORE
+trn_freight_road,Medium truck,NG,0,0,1,1,1,1,1,1,CORE
 trn_freight_road,Heavy truck,Liquids,1,1,1,1,1,1,1,1,CORE
-trn_freight_road,Heavy truck,NG,0,0,1,0.02,0.03,0.05,0.1,0.1,CORE
+trn_freight_road,Heavy truck,NG,0,0,1,1,1,1,1,1,CORE
 trn_pass,Cycle,Cycle,1,1,1,1,1,1,1,1,CORE
 trn_pass,Domestic Aviation,Liquids,1,1,1,1,1,1,1,1,CORE
 trn_pass,HSR,Electric,0,0,1,1,1,1,1,1,CORE
@@ -49,9 +49,9 @@ trn_pass_road_LDV_4W,Mini Car,Liquids,1,1,1,1,1,1,1,1,CORE
 trn_pass_road_LDV_4W,Mini Car,NG,0,0,1,1,1,1,1,1,CORE
 trn_shipping_intl,International Ship,Liquids,1,1,1,1,1,1,1,1,CORE
 trn_pass_road,Bus,BEV,0,0,0,0.25,0.625,1,1,1,CORE
-trn_freight_road,Light truck,BEV,0,0,0,0.25,1.375,2.5,2.5,2.5,CORE
-trn_freight_road,Medium truck,BEV,0,0,0,0.25,1.375,2.5,2.5,2.5,CORE
-trn_freight_road,Heavy truck,BEV,0,0,0,0.25,1.375,2.5,2.5,2.5,CORE
+trn_freight_road,Light truck,BEV,0,0,0,0.1429,0.2857,0.4286,1,1,CORE
+trn_freight_road,Medium truck,BEV,0,0,0,0.1429,0.2857,0.4286,1,1,CORE
+trn_freight_road,Heavy truck,BEV,0,0,0,0.1429,0.2857,0.4286,1,1,CORE
 trn_aviation_intl,International Aviation,Liquids,1,1,1,1,1,1,1,1,highEV
 trn_freight,Domestic Ship,Liquids,1,1,1,1,1,1,1,1,highEV
 trn_freight,Freight Rail,Adv-Electric,0,0,0,0,0,0,1,1,highEV
@@ -60,11 +60,11 @@ trn_freight,Freight Rail,Coal,1,1,0,0,0,0,0,0,highEV
 trn_freight,Freight Rail,Electric,1,1,1,1,1,1,1,1,highEV
 trn_freight,Freight Rail,Liquids,1,1,1,1,1,1,1,1,highEV
 trn_freight_road,Light truck,Liquids,1,1,1,1,1,1,1,1,highEV
-trn_freight_road,Light truck,NG,0,0,1,0.02,0.03,0.05,0.1,0.1,highEV
+trn_freight_road,Light truck,NG,0,0,1,1,1,1,1,1,highEV
 trn_freight_road,Medium truck,Liquids,1,1,1,1,1,1,1,1,highEV
-trn_freight_road,Medium truck,NG,0,0,1,0.02,0.03,0.05,0.1,0.1,highEV
+trn_freight_road,Medium truck,NG,0,0,1,1,1,1,1,1,highEV
 trn_freight_road,Heavy truck,Liquids,1,1,1,1,1,1,1,1,highEV
-trn_freight_road,Heavy truck,NG,0,0,1,0.02,0.03,0.05,0.1,0.1,highEV
+trn_freight_road,Heavy truck,NG,0,0,1,1,1,1,1,1,highEV
 trn_pass,Cycle,Cycle,1,1,1,1,1,1,1,1,highEV
 trn_pass,Domestic Aviation,Liquids,1,1,1,1,1,1,1,1,highEV
 trn_pass,HSR,Electric,0,0,1,1,1,1,1,1,highEV
