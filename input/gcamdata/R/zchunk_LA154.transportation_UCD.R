@@ -313,11 +313,11 @@ module_energy_LA154.transportation_UCD <- function(command, ...) {
     # Creating tibble with all GCAM years to join with. The values will be filled out using the first available year.
     # Remove years in all GCAM years that are already in UCD database
     all_years <- tibble( year = c(HISTORICAL_YEARS, FUTURE_YEARS)) %>%
-      filter(!(year %in% unique(UCD_trn_data_CORE$year)))
+      filter(!(year %in% unique(UCD_trn_data$year)))
 
     UCD_trn_data_sce <- bind_rows(UCD_trn_data_SSP1,UCD_trn_data_SSP3,UCD_trn_data_SSP5,UCD_trn_data_CORE_highEV)
     all_years_SSPs <- tibble( year = c(MODEL_FINAL_BASE_YEAR, MODEL_FUTURE_YEARS)) %>%
-      filter(!(year %in% unique(UCD_trn_data_sce$year)))
+      filter(!(year %in% unique(UCD_trn_data$year)))
     #kbn 2020-01-30 We don't need all years for the SSPs. Only selecting years from 2015 on wards. Splitting years
     #into CORE years and SSP years.
     UCD_trn_data_allyears_CORE <- bind_rows(
@@ -357,7 +357,7 @@ module_energy_LA154.transportation_UCD <- function(command, ...) {
     #Making sure that value is numeric as a check so that we do not get a failure in the if_else
     UCD_trn_data_fillout <-    UCD_trn_data_fillout[, value :=as.numeric(value)]
     # Start interpolation
-    UCD_trn_data_fillout <- UCD_trn_data_fillout[, value := if_else(is.na(value), as.numeric(approx_fun(year, value, rule = 2)), as.numeric(value)),by= c("UCD_region", "UCD_sector", "mode", "size.class", "UCD_technology", "UCD_fuel", "variable", "unit")]
+    UCD_trn_data_fillout <- UCD_trn_data_fillout[, value := if_else(is.na(value), as.numeric(approx_fun(year, value, rule = 2)), as.numeric(value)),by= c("UCD_region", "UCD_sector", "mode", "size.class", "UCD_technology", "UCD_fuel", "variable", "unit", "sce")]
 
     #kbn 2020 filtering out SSP values that are the same. Basically if a certain combination has the same value for a SSP in a year compared to core,
     #just keep the core value.
@@ -567,7 +567,6 @@ module_energy_LA154.transportation_UCD <- function(command, ...) {
                      "energy/mappings/calibrated_techs_trn_agg", "energy/mappings/enduse_fuel_aggregation",
                      "energy/mappings/UCD_ctry", "energy/mappings/UCD_techs",
                      "UCD_trn_data_SSP1","UCD_trn_data_SSP3","UCD_trn_data_SSP5","UCD_trn_data_SSP2","UCD_trn_data_CORE",
-                     "energy/UCD_trn_data_CORE_highEV",
                      "energy/mappings/UCD_size_class_revisions") ->
       L154.in_EJ_R_trn_m_sz_tech_F_Yh
 
@@ -583,7 +582,6 @@ module_energy_LA154.transportation_UCD <- function(command, ...) {
                      "energy/mappings/calibrated_techs_trn_agg", "energy/mappings/enduse_fuel_aggregation",
                      "energy/mappings/UCD_ctry", "energy/mappings/UCD_techs",
                      "UCD_trn_data_SSP1","UCD_trn_data_SSP3","UCD_trn_data_SSP5","UCD_trn_data_SSP2","UCD_trn_data_CORE",
-                     "energy/UCD_trn_data_CORE_highEV",
                      "energy/mappings/UCD_size_class_revisions") ->L154.IEA_histfut_data_times_UCD_shares
 
 
@@ -595,7 +593,6 @@ module_energy_LA154.transportation_UCD <- function(command, ...) {
       add_precursors("common/iso_GCAM_regID", "L101.in_EJ_ctry_trn_Fi_Yh",
                      "UCD_trn_data_CORE","UCD_trn_data_SSP1","UCD_trn_data_SSP3","UCD_trn_data_SSP5",
                      "UCD_trn_data_SSP2","energy/mappings/UCD_size_class_revisions",
-                     "energy/UCD_trn_data_CORE_highEV",
                      "energy/mappings/calibrated_techs_trn_agg",
                      "energy/mappings/UCD_ctry", "energy/mappings/UCD_techs",
                      "L1011.in_EJ_ctry_intlship_TOT_Yh") ->
@@ -607,7 +604,6 @@ module_energy_LA154.transportation_UCD <- function(command, ...) {
       add_comments("UCD transportation database data aggregated to GCAM region") %>%
       add_legacy_name("L154.intensity_MJvkm_R_trn_m_sz_tech_F_Y") %>%
       add_precursors("UCD_trn_data_SSP1","UCD_trn_data_SSP3","UCD_trn_data_SSP5","UCD_trn_data_SSP2","UCD_trn_data_CORE",
-                     "energy/UCD_trn_data_CORE_highEV",
                      "energy/mappings/UCD_size_class_revisions", "energy/mappings/UCD_ctry",
                      "common/iso_GCAM_regID", "energy/mappings/calibrated_techs_trn_agg", "energy/mappings/enduse_fuel_aggregation",
                      "energy/mappings/UCD_techs",
@@ -623,7 +619,6 @@ module_energy_LA154.transportation_UCD <- function(command, ...) {
       add_comments("UCD transportation database data aggregated to GCAM region") %>%
       add_legacy_name("L154.loadfactor_R_trn_m_sz_tech_F_Y") %>%
       add_precursors("UCD_trn_data_CORE","UCD_trn_data_SSP1","UCD_trn_data_SSP3","UCD_trn_data_SSP5","UCD_trn_data_SSP2",
-                     "energy/UCD_trn_data_CORE_highEV",
                      "energy/mappings/UCD_size_class_revisions", "energy/mappings/UCD_ctry",
                      "common/iso_GCAM_regID", "energy/mappings/calibrated_techs_trn_agg", "energy/mappings/enduse_fuel_aggregation",
                      "energy/mappings/UCD_techs",
@@ -639,7 +634,6 @@ module_energy_LA154.transportation_UCD <- function(command, ...) {
       add_comments("UCD transportation database data aggregated to GCAM region") %>%
       add_legacy_name("L154.cost_usdvkm_R_trn_m_sz_tech_F_Y") %>%
       add_precursors("UCD_trn_data_CORE","UCD_trn_data_SSP1","UCD_trn_data_SSP3","UCD_trn_data_SSP5","UCD_trn_data_SSP2",
-                     "energy/UCD_trn_data_CORE_highEV",
                      "energy/mappings/UCD_size_class_revisions", "energy/mappings/UCD_ctry",
                      "common/iso_GCAM_regID", "energy/mappings/calibrated_techs_trn_agg", "energy/mappings/enduse_fuel_aggregation",
                      "energy/mappings/UCD_techs",
@@ -655,7 +649,6 @@ module_energy_LA154.transportation_UCD <- function(command, ...) {
       add_comments("UCD transportation database data aggregated to GCAM region") %>%
       add_legacy_name("L154.speed_kmhr_R_trn_m_sz_tech_F_Y") %>%
       add_precursors("UCD_trn_data_CORE","UCD_trn_data_SSP1","UCD_trn_data_SSP3","UCD_trn_data_SSP5","UCD_trn_data_SSP2",
-                     "energy/UCD_trn_data_CORE_highEV",
                      "energy/mappings/UCD_size_class_revisions", "energy/mappings/UCD_ctry",
                      "common/iso_GCAM_regID", "energy/mappings/calibrated_techs_trn_agg", "energy/mappings/enduse_fuel_aggregation",
                      "energy/mappings/UCD_techs",
@@ -672,7 +665,6 @@ module_energy_LA154.transportation_UCD <- function(command, ...) {
       add_legacy_name("L154.out_mpkm_R_trn_nonmotor_Yh") %>%
       add_precursors("common/iso_GCAM_regID", "energy/mappings/UCD_ctry",
                      "UCD_trn_data_CORE","UCD_trn_data_SSP1","UCD_trn_data_SSP3","UCD_trn_data_SSP5","UCD_trn_data_SSP2",
-                     "energy/UCD_trn_data_CORE_highEV",
                      "energy/mappings/UCD_size_class_revisions", "energy/mappings/UCD_size_class_revisions",
                      "L100.Pop_thous_ctry_Yh") ->
       L154.out_mpkm_R_trn_nonmotor_Yh
