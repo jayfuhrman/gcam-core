@@ -48,8 +48,7 @@ module_energy_batch_transportation_UCD_CORE_xml <- function(command, ...) {
              "L254.IncomeElasticity_trn",
              "L254.BaseService_trn"))
   } else if(command == driver.DECLARE_OUTPUTS) {
-    xml_files<- c("transportation_UCD_CORE.xml","transportation_UCD_SSP1.xml","transportation_UCD_SSP3.xml",
-                  "transportation_UCD_SSP5.xml","transportation_UCD_highEV.xml", "Transportation_highEV_simple.xml")
+    xml_files<- c("transportation_UCD_CORE.xml","transportation_UCD_SSP1.xml","transportation_UCD_SSP3.xml","transportation_UCD_SSP5.xml","transportation_UCD_highEV.xml")
     names(xml_files) <- rep("XML", length(xml_files))
     return(xml_files)
   } else if(command == driver.MAKE) {
@@ -132,12 +131,6 @@ module_energy_batch_transportation_UCD_CORE_xml <- function(command, ...) {
         L254.IncomeElasticity_trn_SSP <- L254.IncomeElasticity_trn %>% filter(sce=="CORE")
       }
 
-      #yo 2021-01-31 update highEV share weight assumption
-      if (i=="highEV"){
-        L254.GlobalTranTechShrwt_SSP <- L254.GlobalTranTechShrwt %>% filter(sce == "highEV") %>% select(-sce)
-      } else {
-        L254.GlobalTranTechShrwt_SSP <- L254.GlobalTranTechShrwt %>% filter(sce == "CORE") %>% select(-sce)
-      }
 
       #kbn 2020-02-11 For the SSPs, we want to bring in values such as co-efficients, load factors and costs after the base year. This is because we are
       # feeding the model outputs from the CORE in the base year, so having SSP values for these variables in the base year would lead to a calibration error
@@ -241,13 +234,6 @@ module_energy_batch_transportation_UCD_CORE_xml <- function(command, ...) {
       ret_data <- c(ret_data, xml_name)
 
     }
-
-    create_xml("Transportation_highEV_simple.xml") %>%
-      add_xml_data(L254.GlobalTranTechShrwt %>% filter(sce == "highEV") %>% select(-sce), "GlobalTranTechShrwt") %>%
-      add_precursors("L254.GlobalTranTechShrwt") ->
-      Transportation_highEV_simple.xml
-
-    ret_data <- c(ret_data, "Transportation_highEV_simple.xml")
 
     #Return all xmls
     ret_data %>%
