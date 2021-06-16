@@ -259,13 +259,16 @@ const std::string& Region::getXMLNameStatic() {
  *       be moved down from RegionMiniCAM 
  * \author Pralit Patel
  */
-void Region::completeInit() {    
+void Region::completeInit() {
+    for( PolicyIterator policy = mPolicies.begin(); policy != mPolicies.end(); ++policy ){
+    (*policy)->completeInit( mName );
+    }
+    
     for( GHGPolicyIterator ghgPolicy = mGhgPolicies.begin(); ghgPolicy != mGhgPolicies.end(); ++ghgPolicy ){
         (*ghgPolicy)->completeInit( mName );
     }
-    for( PolicyIterator policy = mPolicies.begin(); policy != mPolicies.end(); ++policy ){
-        (*policy)->completeInit( mName );
-    }
+    
+    
     for( ResourceIterator resourceIter = mResources.begin(); resourceIter != mResources.end(); ++resourceIter ) {
         (*resourceIter)->completeInit( mName, mRegionInfo );
     }

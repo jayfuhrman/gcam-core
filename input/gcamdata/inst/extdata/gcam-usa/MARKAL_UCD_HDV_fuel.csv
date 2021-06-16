@@ -1,0 +1,10 @@
+# File: MARKAL_UCD_HDV_fuel.csv
+# Title: MARKAL and UC Davis heavy duty vehicle fuel class mapping file
+# Source: NA
+# Units: NA
+# Column types: cc 
+# ----------
+MARKAL_HDV_fuel,UCD_HDV_fuel
+ELC,BEV
+B0,Liquids
+CNG,NG

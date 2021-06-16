@@ -1,0 +1,96 @@
+# File: A23.include_in_rps_CES_Gas.csv
+# Title: Specification of technologies to be included in RPS
+# Units: NA
+# Source: LBNL
+# Column types: cccn
+# ----------
+supplysector,subsector,stub.technology,credit_fraction
+base load generation,biomass,biomass_base_conv,1
+base load generation,biomass,biomass_base_conv_CCS,1
+base load generation,biomass,biomass_base_IGCC,1
+base load generation,biomass,biomass_base_IGCC_CCS,1
+intermediate generation,biomass,biomass_int_conv,1
+intermediate generation,biomass,biomass_int_conv_CCS,1
+intermediate generation,biomass,biomass_int_IGCC,1
+intermediate generation,biomass,biomass_int_IGCC_CCS,1
+base load generation,coal,coal_base_conv pul,0
+base load generation,coal,coal_base_conv pul_CCS,1
+base load generation,coal,coal_base_conv pul_fast_retire,0
+base load generation,coal,coal_base_conv pul_slow_retire,0
+base load generation,coal,coal_base_conv pul_slow_retire 1971-1975,0
+base load generation,coal,coal_base_conv pul_slow_retire 1981-1985,0
+base load generation,coal,coal_base_conv pul_slow_retire 1986-1990,0
+base load generation,coal,coal_base_IGCC,0
+base load generation,coal,coal_base_IGCC_CCS,1
+intermediate generation,coal,coal_int_conv pul,0
+intermediate generation,coal,coal_int_conv pul_CCS,1
+intermediate generation,coal,coal_int_conv pul_fast_retire,0
+intermediate generation,coal,coal_int_conv pul_slow_retire,0
+intermediate generation,coal,coal_int_conv pul_slow_retire 1971-1975,0
+intermediate generation,coal,coal_int_conv pul_slow_retire 1981-1985,0
+intermediate generation,coal,coal_int_conv pul_slow_retire 1986-1990,0
+intermediate generation,coal,coal_int_IGCC,0
+intermediate generation,coal,coal_int_IGCC_CCS,1
+peak generation,coal,coal_peak_conv pul,0
+peak generation,coal,coal_peak_conv pul_fast_retire,0
+peak generation,coal,coal_peak_conv pul_slow_retire,0
+subpeak generation,coal,coal_subpeak_conv pul,0
+subpeak generation,coal,coal_subpeak_conv pul_fast_retire,0
+subpeak generation,coal,coal_subpeak_conv pul_slow_retire,0
+base load generation,coal,coal_base_conv pul_slow_retire 1951-1955,0
+base load generation,coal,coal_base_conv pul_slow_retire 1961-1965,0
+base load generation,coal,coal_base_conv pul_slow_retire 1976-1980,0
+base load generation,coal,coal_base_conv pul_slow_retire 1991-1995,0
+intermediate generation,coal,coal_int_conv pul_slow_retire 1951-1955,0
+intermediate generation,coal,coal_int_conv pul_slow_retire 1961-1965,0
+intermediate generation,coal,coal_int_conv pul_slow_retire 1976-1980,0
+intermediate generation,coal,coal_int_conv pul_slow_retire 1991-1995,0
+base load generation,coal,coal_base_conv pul_slow_retire 2006-2010,0
+base load generation,coal,coal_base_conv pul_slow_retire 2011-2015,0
+intermediate generation,coal,coal_int_conv pul_slow_retire 2006-2010,0
+intermediate generation,coal,coal_int_conv pul_slow_retire 2011-2015,0
+base load generation,coal,coal_base_conv pul_slow_retire 1966-1970,0
+base load generation,coal,coal_base_conv pul_slow_retire 1996-2000,0
+intermediate generation,coal,coal_int_conv pul_slow_retire 1966-1970,0
+intermediate generation,coal,coal_int_conv pul_slow_retire 1996-2000,0
+base load generation,coal,coal_base_conv pul_slow_retire 2001-2005,0
+intermediate generation,coal,coal_int_conv pul_slow_retire 2001-2005,0
+base load generation,coal,coal_base_conv pul_slow_retire 1956-1960,0
+intermediate generation,coal,coal_int_conv pul_slow_retire 1956-1960,0
+base load generation,coal,coal_base_conv pul_slow_retire before 1950,0
+intermediate generation,coal,coal_int_conv pul_slow_retire before 1950,0
+base load generation,gas,gas_base_CC,1
+base load generation,gas,gas_base_CC_CCS,1
+intermediate generation,gas,gas_int_CC,1
+intermediate generation,gas,gas_int_CC_CCS,1
+peak generation,gas,gas_peak_CC,1
+peak generation,gas,gas_peak_CC_CCS,1
+peak generation,gas,gas_peak_steam/CT,1
+subpeak generation,gas,gas_subpeak_CC,1
+subpeak generation,gas,gas_subpeak_CC_CCS,1
+subpeak generation,gas,gas_subpeak_steam/CT,1
+base load generation,geothermal,geo_base,1
+base load generation,hydro,hydro_base,1
+intermediate generation,hydro,hydro_int,1
+peak generation,hydro,hydro_peak,1
+subpeak generation,hydro,hydro_subpeak,1
+base load generation,nuclear,nuc_base_Gen II,1
+base load generation,nuclear,nuc_base_Gen III,1
+base load generation,refined liquids,refined liquids_base_steam/CT,0
+intermediate generation,refined liquids,refined liquids_int_steam/CT,0
+peak generation,refined liquids,refined liquids_peak_steam/CT,0
+subpeak generation,refined liquids,refined liquids_subpeak_steam/CT,0
+elect_td_bld,rooftop_pv,rooftop_pv,1
+base load generation,solar,CSP_base_storage,1
+base load generation,solar,PV_base_storage,1
+intermediate generation,solar,CSP_int,1
+intermediate generation,solar,PV_int,1
+peak generation,solar,CSP_peak,1
+peak generation,solar,PV_peak,1
+subpeak generation,solar,CSP_subpeak,1
+subpeak generation,solar,PV_subpeak,1
+base load generation,wind,wind_base,1
+base load generation,wind,wind_base_offshore,1
+base load generation,wind,wind_base_storage,1
+intermediate generation,wind,wind_int,1
+subpeak generation,wind,wind_subpeak,1

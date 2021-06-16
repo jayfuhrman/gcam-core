@@ -1,0 +1,96 @@
+# File: RPS_tech_MASTER.csv
+# Title: List of all technologies subject to RPS reduction 
+# Units: NA
+# Source: From GCAM
+# Column types: ccc
+# ----------
+supplysector,subsector,stub.technology
+base load generation,biomass,biomass_base_conv
+base load generation,biomass,biomass_base_conv_CCS
+base load generation,biomass,biomass_base_IGCC
+base load generation,biomass,biomass_base_IGCC_CCS
+intermediate generation,biomass,biomass_int_conv
+intermediate generation,biomass,biomass_int_conv_CCS
+intermediate generation,biomass,biomass_int_IGCC
+intermediate generation,biomass,biomass_int_IGCC_CCS
+base load generation,coal,coal_base_conv pul
+base load generation,coal,coal_base_conv pul 1951-1955
+base load generation,coal,coal_base_conv pul 1956-1960
+base load generation,coal,coal_base_conv pul 1961-1965
+base load generation,coal,coal_base_conv pul 1966-1970
+base load generation,coal,coal_base_conv pul 1971-1975
+base load generation,coal,coal_base_conv pul 1976-1980
+base load generation,coal,coal_base_conv pul 1981-1985
+base load generation,coal,coal_base_conv pul 1986-1990
+base load generation,coal,coal_base_conv pul 1991-1995
+base load generation,coal,coal_base_conv pul 1996-2000
+base load generation,coal,coal_base_conv pul 2001-2005
+base load generation,coal,coal_base_conv pul 2006-2010
+base load generation,coal,coal_base_conv pul 2011-2015
+base load generation,coal,coal_base_conv pul before 1950
+base load generation,coal,coal_base_conv pul_CCS
+base load generation,coal,coal_base_conv pul_retire_2020
+base load generation,coal,coal_base_IGCC
+base load generation,coal,coal_base_IGCC_CCS
+intermediate generation,coal,coal_int_conv pul
+intermediate generation,coal,coal_int_conv pul 1951-1955
+intermediate generation,coal,coal_int_conv pul 1956-1960
+intermediate generation,coal,coal_int_conv pul 1961-1965
+intermediate generation,coal,coal_int_conv pul 1966-1970
+intermediate generation,coal,coal_int_conv pul 1971-1975
+intermediate generation,coal,coal_int_conv pul 1976-1980
+intermediate generation,coal,coal_int_conv pul 1981-1985
+intermediate generation,coal,coal_int_conv pul 1986-1990
+intermediate generation,coal,coal_int_conv pul 1991-1995
+intermediate generation,coal,coal_int_conv pul 1996-2000
+intermediate generation,coal,coal_int_conv pul 2001-2005
+intermediate generation,coal,coal_int_conv pul 2006-2010
+intermediate generation,coal,coal_int_conv pul 2011-2015
+intermediate generation,coal,coal_int_conv pul before 1950
+intermediate generation,coal,coal_int_conv pul_CCS
+intermediate generation,coal,coal_int_conv pul_retire_2020
+intermediate generation,coal,coal_int_IGCC
+intermediate generation,coal,coal_int_IGCC_CCS
+peak generation,coal,coal_peak_conv pul
+peak generation,coal,coal_peak_conv pul_retire_2020
+subpeak generation,coal,coal_subpeak_conv pul
+subpeak generation,coal,coal_subpeak_conv pul_retire_2020
+base load generation,gas,gas_base_CC
+base load generation,gas,gas_base_CC_CCS
+intermediate generation,gas,gas_int_CC
+intermediate generation,gas,gas_int_CC_CCS
+peak generation,gas,gas_peak_CC
+peak generation,gas,gas_peak_CC_CCS
+peak generation,gas,gas_peak_steam/CT
+subpeak generation,gas,gas_subpeak_CC
+subpeak generation,gas,gas_subpeak_CC_CCS
+subpeak generation,gas,gas_subpeak_steam/CT
+base load generation,geothermal,geo_base
+base load generation,hydro,hydro_base
+intermediate generation,hydro,hydro_int
+peak generation,hydro,hydro_peak
+subpeak generation,hydro,hydro_subpeak
+base load generation,nuclear,nuc_base_Gen II
+base load generation,nuclear,nuc_base_Gen III
+base load generation,refined liquids,refined liquids_base_steam/CT
+intermediate generation,refined liquids,refined liquids_int_steam/CT
+peak generation,refined liquids,refined liquids_peak_steam/CT
+subpeak generation,refined liquids,refined liquids_subpeak_steam/CT
+elect_td_bld,rooftop_pv,rooftop_pv
+elect_td_bld,rooftop_pv,rooftop_pv2015
+base load generation,solar,CSP_base_storage
+intermediate generation,solar,CSP_int
+peak generation,solar,CSP_peak
+peak generation,solar,CSP_peak2015
+subpeak generation,solar,CSP_subpeak
+base load generation,solar,PV_base_storage
+intermediate generation,solar,PV_int
+peak generation,solar,PV_peak
+peak generation,solar,PV_peak2015
+subpeak generation,solar,PV_subpeak
+base load generation,wind,wind_base
+base load generation,wind,wind_base_offshore
+base load generation,wind,wind_base_storage
+base load generation,wind,wind_base2015
+intermediate generation,wind,wind_int
+subpeak generation,wind,wind_subpeak

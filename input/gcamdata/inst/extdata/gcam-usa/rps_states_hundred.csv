@@ -1,0 +1,58 @@
+# File: rps_states_hundred.csv
+# Title: RPS calculated from LBNL data using existing policies
+# Units: Percentage
+# Source: LBNL July 2019 RPS Projections
+# Column types: cccnnnnnnnnnnnnnnnnnnnnnncc
+# ----------
+region,supplysector,subsector,1975,1990,2005,2010,2015,2020,2025,2030,2035,2040,2045,2050,2055,2060,2065,2070,2075,2080,2085,2090,2095,2100,units,rate.notes
+AK,electricity,All Eligible,,,,,,0.002212722,0.168510602,0.334808481,0.5011,0.667404241,0.83370212,0.99,1,1,1,1,1,1,1,1,1,1,percent of retail electricity sales,Current RPS policies only
+AL,electricity,All Eligible,,,,,,0.012274805,0.176895671,0.341516537,0.5061,0.670758268,0.835379134,0.99,1,1,1,1,1,1,1,1,1,1,percent of retail electricity sales,Current RPS policies only
+AR,electricity,All Eligible,,,,,,0.013206208,0.17767184,0.342137472,0.5066,0.671068736,0.835534368,0.99,1,1,1,1,1,1,1,1,1,1,percent of retail electricity sales,Current RPS policies only
+AZ,electricity,All Eligible,,,,,,0.053911097,0.211592581,0.369274065,0.527,0.684637032,0.842318516,0.99,1,1,1,1,1,1,1,1,1,1,percent of retail electricity sales,Current RPS policies only
+CA,electricity,All Eligible,,,,,,0.243187987,0.369323323,0.495458658,0.6216,0.747729329,0.873864665,0.99,1,1,1,1,1,1,1,1,1,1,percent of retail electricity sales,Current RPS policies only
+CO,electricity,All Eligible,,,,,,0.167537803,0.306281503,0.445025202,0.5838,0.722512601,0.861256301,0.99,1,1,1,1,1,1,1,1,1,1,percent of retail electricity sales,Current RPS policies only
+CT,electricity,All Eligible,,,,,,0.199363501,0.332802918,0.466242334,0.5997,0.733121167,0.866560584,0.99,1,1,1,1,1,1,1,1,1,1,percent of retail electricity sales,Current RPS policies only
+DC,electricity,All Eligible,,,,,,0.187985488,0.32332124,0.458656992,0.594,0.729328496,0.864664248,0.99,1,1,1,1,1,1,1,1,1,1,percent of retail electricity sales,Current RPS policies only
+DE,electricity,All Eligible,,,,,,0.115853551,0.263211293,0.410569034,0.5579,0.705284517,0.852642259,0.99,1,1,1,1,1,1,1,1,1,1,percent of retail electricity sales,Current RPS policies only
+FL,electricity,All Eligible,,,,,,0.008826862,0.174022385,0.339217908,0.5044,0.669608954,0.834804477,0.99,1,1,1,1,1,1,1,1,1,1,percent of retail electricity sales,Current RPS policies only
+GA,electricity,All Eligible,,,,,,0.006097171,0.171747643,0.337398114,0.503,0.668699057,0.834349529,0.99,1,1,1,1,1,1,1,1,1,1,percent of retail electricity sales,Current RPS policies only
+HI,electricity,All Eligible,,,,,,0.232559105,0.360465921,0.488372737,0.6163,0.744186368,0.872093184,0.99,1,1,1,1,1,1,1,1,1,1,percent of retail electricity sales,Current RPS policies only
+IA,electricity,All Eligible,,,,,,0.205670258,0.338058548,0.470446839,0.6028,0.735223419,0.86761171,0.99,1,1,1,1,1,1,1,1,1,1,percent of retail electricity sales,Current RPS policies only
+ID,electricity,All Eligible,,,,,,0.022072563,0.185060469,0.348048375,0.511,0.674024188,0.837012094,0.99,1,1,1,1,1,1,1,1,1,1,percent of retail electricity sales,Current RPS policies only
+IL,electricity,All Eligible,,,,,,0.122922753,0.269102294,0.415281835,0.5615,0.707640918,0.853820459,0.99,1,1,1,1,1,1,1,1,1,1,percent of retail electricity sales,Current RPS policies only
+IN,electricity,All Eligible,,,,,,0.069304649,0.224420541,0.379536433,0.5347,0.689768216,0.844884108,0.99,1,1,1,1,1,1,1,1,1,1,percent of retail electricity sales,Current RPS policies only
+KS,electricity,All Eligible,,,,,,0.16824109,0.306867575,0.44549406,0.5841,0.72274703,0.861373515,0.99,1,1,1,1,1,1,1,1,1,1,percent of retail electricity sales,Current RPS policies only
+KY,electricity,All Eligible,,,,,,0.021088824,0.184240687,0.347392549,0.5105,0.673696275,0.836848137,0.99,1,1,1,1,1,1,1,1,1,1,percent of retail electricity sales,Current RPS policies only
+LA,electricity,All Eligible,,,,,,0.010709186,0.175590988,0.340472791,0.5054,0.670236395,0.835118198,0.99,1,1,1,1,1,1,1,1,1,1,percent of retail electricity sales,Current RPS policies only
+MA,electricity,All Eligible,,,,,,0.140510665,0.283758888,0.42700711,0.5703,0.713503555,0.856751778,0.99,1,1,1,1,1,1,1,1,1,1,percent of retail electricity sales,Current RPS policies only
+MD,electricity,All Eligible,,,,,,0.207111567,0.339259639,0.471407711,0.6036,0.735703856,0.867851928,0.99,1,1,1,1,1,1,1,1,1,1,percent of retail electricity sales,Current RPS policies only
+ME,electricity,All Eligible,,,,,,0.227630982,0.356359152,0.485087321,0.6138,0.742543661,0.87127183,0.99,1,1,1,1,1,1,1,1,1,1,percent of retail electricity sales,Current RPS policies only
+MI,electricity,All Eligible,,,,,,0.091761795,0.243134829,0.394507863,0.5459,0.697253932,0.848626966,0.99,1,1,1,1,1,1,1,1,1,1,percent of retail electricity sales,Current RPS policies only
+MN,electricity,All Eligible,,,,,,0.220955034,0.350795862,0.480636689,0.6105,0.740318345,0.870159172,0.99,1,1,1,1,1,1,1,1,1,1,percent of retail electricity sales,Current RPS policies only
+MO,electricity,All Eligible,,,,,,0.051866145,0.209888454,0.367910763,0.5259,0.683955382,0.841977691,0.99,1,1,1,1,1,1,1,1,1,1,percent of retail electricity sales,Current RPS policies only
+MS,electricity,All Eligible,,,,,,0.006852056,0.172376713,0.337901371,0.5034,0.668950685,0.834475343,0.99,1,1,1,1,1,1,1,1,1,1,percent of retail electricity sales,Current RPS policies only
+MT,electricity,All Eligible,,,,,,0.09845867,0.248715558,0.398972447,0.5492,0.699486223,0.849743112,0.99,1,1,1,1,1,1,1,1,1,1,percent of retail electricity sales,Current RPS policies only
+NC,electricity,All Eligible,,,,,,0.007629088,0.17302424,0.338419392,0.5038,0.669209696,0.834604848,0.99,1,1,1,1,1,1,1,1,1,1,percent of retail electricity sales,Current RPS policies only
+ND,electricity,All Eligible,,,,,,0.300960922,0.417467435,0.533973948,0.6505,0.766986974,0.883493487,0.99,1,1,1,1,1,1,1,1,1,1,percent of retail electricity sales,Current RPS policies only
+NE,electricity,All Eligible,,,,,,0.046488634,0.205407195,0.364325756,0.5232,0.682162878,0.841081439,0.99,1,1,1,1,1,1,1,1,1,1,percent of retail electricity sales,Current RPS policies only
+NH,electricity,All Eligible,,,,,,0.115369609,0.262808008,0.410246406,0.5577,0.705123203,0.852561602,0.99,1,1,1,1,1,1,1,1,1,1,percent of retail electricity sales,Current RPS policies only
+NJ,electricity,All Eligible,,,,,,0.231774769,0.359812308,0.487849846,0.6159,0.743924923,0.871962462,0.99,1,1,1,1,1,1,1,1,1,1,percent of retail electricity sales,Current RPS policies only
+NM,electricity,All Eligible,,,,,,0.147681851,0.289734876,0.431787901,0.5738,0.71589395,0.857946975,0.99,1,1,1,1,1,1,1,1,1,1,percent of retail electricity sales,Current RPS policies only
+NV,electricity,All Eligible,,,,,,0.155856355,0.296546963,0.43723757,0.5779,0.718618785,0.859309393,0.99,1,1,1,1,1,1,1,1,1,1,percent of retail electricity sales,Current RPS policies only
+NY,electricity,All Eligible,,,,,,0.300575826,0.417146522,0.533717217,0.6503,0.766858609,0.883429304,0.99,1,1,1,1,1,1,1,1,1,1,percent of retail electricity sales,Current RPS policies only
+OH,electricity,All Eligible,,,,,,0.031885411,0.193237843,0.354590274,0.5159,0.677295137,0.838647569,0.99,1,1,1,1,1,1,1,1,1,1,percent of retail electricity sales,Current RPS policies only
+OK,electricity,All Eligible,,,,,,0.090690109,0.242241758,0.393793406,0.5453,0.696896703,0.848448352,0.99,1,1,1,1,1,1,1,1,1,1,percent of retail electricity sales,Current RPS policies only
+OR,electricity,All Eligible,,,,,,0.115953451,0.263294543,0.410635634,0.558,0.705317817,0.852658909,0.99,1,1,1,1,1,1,1,1,1,1,percent of retail electricity sales,Current RPS policies only
+PA,electricity,All Eligible,,,,,,0.104109949,0.253424958,0.402739966,0.5521,0.701369983,0.850684992,0.99,1,1,1,1,1,1,1,1,1,1,percent of retail electricity sales,Current RPS policies only
+RI,electricity,All Eligible,,,,,,0.103191205,0.252659338,0.40212747,0.5516,0.701063735,0.850531868,0.99,1,1,1,1,1,1,1,1,1,1,percent of retail electricity sales,Current RPS policies only
+SC,electricity,All Eligible,,,,,,0.00925174,0.17437645,0.33950116,0.5046,0.66975058,0.83487529,0.99,1,1,1,1,1,1,1,1,1,1,percent of retail electricity sales,Current RPS policies only
+SD,electricity,All Eligible,,,,,,0.119574488,0.266312073,0.413049659,0.5598,0.706524829,0.853262415,0.99,1,1,1,1,1,1,1,1,1,1,percent of retail electricity sales,Current RPS policies only
+TN,electricity,All Eligible,,,,,,0.007881928,0.17323494,0.338587952,0.5039,0.669293976,0.834646988,0.99,1,1,1,1,1,1,1,1,1,1,percent of retail electricity sales,Current RPS policies only
+TX,electricity,All Eligible,,,,,,0.103565271,0.252971059,0.402376847,0.5518,0.701188424,0.850594212,0.99,1,1,1,1,1,1,1,1,1,1,percent of retail electricity sales,Current RPS policies only
+UT,electricity,All Eligible,,,,,,0.074452091,0.228710076,0.382968061,0.5372,0.69148403,0.845742015,0.99,1,1,1,1,1,1,1,1,1,1,percent of retail electricity sales,Current RPS policies only
+VA,electricity,All Eligible,,,,,,0.006165978,0.171804982,0.337443985,0.5031,0.668721993,0.834360996,0.99,1,1,1,1,1,1,1,1,1,1,percent of retail electricity sales,Current RPS policies only
+VT,electricity,All Eligible,,,,,,0.217954759,0.348295633,0.478636506,0.609,0.739318253,0.869659127,0.99,1,1,1,1,1,1,1,1,1,1,percent of retail electricity sales,Current RPS policies only
+WA,electricity,All Eligible,,,,,,0.10143307,0.251194225,0.40095538,0.5507,0.70047769,0.850238845,0.99,1,1,1,1,1,1,1,1,1,1,percent of retail electricity sales,Current RPS policies only
+WI,electricity,All Eligible,,,,,,0.090551075,0.242125896,0.393700717,0.5453,0.696850358,0.848425179,0.99,1,1,1,1,1,1,1,1,1,1,percent of retail electricity sales,Current RPS policies only
+WV,electricity,All Eligible,,,,,,0.07816723,0.231806025,0.38544482,0.5391,0.69272241,0.846361205,0.99,1,1,1,1,1,1,1,1,1,1,percent of retail electricity sales,Current RPS policies only
+WY,electricity,All Eligible,,,,,,0.200324884,0.33360407,0.466883256,0.6002,0.733441628,0.866720814,0.99,1,1,1,1,1,1,1,1,1,1,percent of retail electricity sales,Current RPS policies only
