@@ -244,9 +244,9 @@ module_gcamdata_L2999.dac_USA <- function(command, ...) {
 
 
     #change market name for airCO2 to global
-    L2999.StubTechCoef_dac_USA %>%
-      mutate(market.name = if_else(grepl("airCO2", minicam.energy.input), 'global', market.name)) ->
-      L2999.StubTechCoef_dac_USA
+    #L2999.StubTechCoef_dac_USA %>%
+    #  mutate(market.name = if_else(grepl("airCO2", minicam.energy.input), 'global', market.name)) ->
+    #  L2999.StubTechCoef_dac_USA
 
     L2999.StubTechCoef_dac_USA %>%
       rename(stub.technology=technology,
