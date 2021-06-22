@@ -101,11 +101,13 @@ module_gcamdata_L2999.dac_USA <- function(command, ...) {
     # L2999.Supplysector_dac: Supply sector information for ces ("climate engineering services") sector containing dac
 
     L2999.Supplysector_dac %>%
+      filter(supplysector != 'airCO2') %>%
       filter(region == gcam.USA_REGION) %>%
       select(region, supplysector) %>%
       # Mutate to remove attributes.
       mutate(region = region) ->
       L2999.DeleteSupplysector_USAdac
+
 
     L2999.PerCapitaBased_dac %>%
       filter(region == gcam.USA_REGION) %>%
@@ -243,10 +245,10 @@ module_gcamdata_L2999.dac_USA <- function(command, ...) {
       L2999.StubTechCoef_dac_USA
 
 
-    #change market name for airCO2 to global
-    #L2999.StubTechCoef_dac_USA %>%
-    #  mutate(market.name = if_else(grepl("airCO2", minicam.energy.input), 'global', market.name)) ->
-    #  L2999.StubTechCoef_dac_USA
+    #change market name for airCO2 to USA
+    L2999.StubTechCoef_dac_USA %>%
+      mutate(market.name = if_else(grepl("airCO2", minicam.energy.input), 'USA', market.name)) ->
+      L2999.StubTechCoef_dac_USA
 
     L2999.StubTechCoef_dac_USA %>%
       rename(stub.technology=technology,
