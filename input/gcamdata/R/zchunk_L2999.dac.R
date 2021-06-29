@@ -25,7 +25,7 @@ module_energy_L2999.dac <- function(command, ...) {
 
   if(command == driver.DECLARE_INPUTS) {
     return(c(FILE = "common/GCAM_region_names",
-             FILE = "energy/calibrated_techs_ces",
+             FILE = "energy/calibrated_techs_cdr",
 
              FILE = "energy/A999.sector",
              FILE = "energy/A999.subsector_interp",
@@ -101,7 +101,7 @@ module_energy_L2999.dac <- function(command, ...) {
 
     # Load required inputs
     GCAM_region_names <- get_data(all_data, "common/GCAM_region_names")
-    calibrated_techs <- get_data(all_data, "energy/calibrated_techs_ces")
+    calibrated_techs <- get_data(all_data, "energy/calibrated_techs_cdr")
     A999.sector <- get_data(all_data, "energy/A999.sector", strip_attributes = TRUE)
     A999.subsector_interp <- get_data(all_data, "energy/A999.subsector_interp", strip_attributes = TRUE)
     A999.subsector_logit <- get_data(all_data, "energy/A999.subsector_logit", strip_attributes = TRUE)
@@ -147,30 +147,30 @@ module_energy_L2999.dac <- function(command, ...) {
     # ===================================================
     # 1. Perform computations
     # 1a. Supplysector information
-    # L2999.Supplysector_dac: Supply sector information for ces "climate engineering services" sector containing dac subsectors and technologies
+    # L2999.Supplysector_dac: Supply sector information for CO2 removal sector containing dac subsectors and technologies
     A999.sector %>%
       write_to_all_regions(c(LEVEL2_DATA_NAMES[["Supplysector"]], LOGIT_TYPE_COLNAME), GCAM_region_names) ->
       L2999.Supplysector_dac
 
-    # L2999.FinalEnergyKeyword_dac: Supply sector keywords for ces sector
+    # L2999.FinalEnergyKeyword_dac: Supply sector keywords for CO2 removal sector
     A999.sector %>%
       write_to_all_regions(LEVEL2_DATA_NAMES[["FinalEnergyKeyword"]], GCAM_region_names) %>%
       na.omit ->
       L2999.FinalEnergyKeyword_dac
 
     # 1b. Subsector information
-    # L2999.SubsectorLogit_dac: Subsector logit exponents of ces sector
+    # L2999.SubsectorLogit_dac: Subsector logit exponents of CO2 removal sector
     A999.subsector_logit %>%
       write_to_all_regions(c(LEVEL2_DATA_NAMES[["SubsectorLogit"]], LOGIT_TYPE_COLNAME), GCAM_region_names) ->
       L2999.SubsectorLogit_dac
 
-    # and L2999.SubsectorShrwtFllt_dac: Subsector shareweights of ces sector
+    # and L2999.SubsectorShrwtFllt_dac: Subsector shareweights of CO2 removal sector
     A999.subsector_shrwt %>%
       filter(!is.na(year.fillout)) %>%
       write_to_all_regions(LEVEL2_DATA_NAMES[["SubsectorShrwtFllt"]], GCAM_region_names) ->
       L2999.SubsectorShrwtFllt_dac
 
-    # L2999.SubsectorInterp_dac: Subsector shareweight interpolation of ces sector
+    # L2999.SubsectorInterp_dac: Subsector shareweight interpolation of CO2 removal sector
     A999.subsector_interp %>%
       filter(is.na(to.value)) %>%
       write_to_all_regions(LEVEL2_DATA_NAMES[["SubsectorInterp"]], GCAM_region_names) ->
@@ -273,7 +273,7 @@ module_energy_L2999.dac <- function(command, ...) {
 
 
      #Calibration and region-specific data
-    # L2999.StubTechProd_dac: calibrated ces production (arbitrarily high value met entirely by no-capture technology in history)
+    # L2999.StubTechProd_dac: calibrated CO2 removal (cdr) production (arbitrarily high value met entirely by no-capture technology in history)
     calibrated_techs %>%
       filter(calibration == "output") %>% # Only take the tech IDs where the calibration is identified as output
       select(sector, supplysector, subsector, technology) %>%
@@ -406,7 +406,7 @@ module_energy_L2999.dac <- function(command, ...) {
 
 
     L2999.Supplysector_dac %>%
-      add_title("Supply sector information for ces (climate engineering services) sector") %>%
+      add_title("Supply sector information for CO2 removal sector") %>%
       add_units("NA") %>%
       add_comments("For dac sector, the supply sector information (output.unit, input.unit, price.unit, logit.year.fillout, logit.exponent) from A999.sector is expended into all GCAM regions") %>%
       add_legacy_name("L2999.Supplysector_dac") %>%
@@ -504,11 +504,11 @@ module_energy_L2999.dac <- function(command, ...) {
       L2999.PriceElasticity_dac
 
     L2999.StubTechProd_dac %>%
-      add_title("calibrated ces values") %>%
+      add_title("calibrated cdr values") %>%
       add_units("Mt") %>%
       add_comments("Values are calculated using L1999.out_Mt_R_dac_Yh then added GCAM region information and supplysector, subsector, and technology information") %>%
       add_legacy_name("L2999.StubTechProd_dac") %>%
-      add_precursors("energy/calibrated_techs_ces", "L1999.out_Mt_R_dac_Yh", "common/GCAM_region_names") ->
+      add_precursors("energy/calibrated_techs_cdr", "L1999.out_Mt_R_dac_Yh", "common/GCAM_region_names") ->
       L2999.StubTechProd_dac
 
     L2999.BaseService_dac %>%
@@ -516,7 +516,7 @@ module_energy_L2999.dac <- function(command, ...) {
       add_units("Mt") %>%
       add_comments("Transformed from L2999.StubTechProd_dac by adding energy.final.demand from A999.demand") %>%
       add_legacy_name("L2999.BaseService_dac") %>%
-      add_precursors("energy/A999.demand", "energy/calibrated_techs_ces", "L1999.out_Mt_R_dac_Yh", "common/GCAM_region_names") ->
+      add_precursors("energy/A999.demand", "energy/calibrated_techs_cdr", "L1999.out_Mt_R_dac_Yh", "common/GCAM_region_names") ->
       L2999.BaseService_dac
 
     L2999.GlobalTechSCurve_dac %>%
