@@ -117,7 +117,7 @@
             <Value name = "bio_neg_emiss_budget">../input/gcamdata/xml/negative_emissions_budget_SSP4.xml</Value>
 
 			<!--DIRECT AIR CAPTURE-->
-			<Value name = "dac">../input/gcamdata/xml/dac_ssp4.xml</Value>
+			<!--Value name = "dac">../input/gcamdata/xml/dac_ssp4.xml</Value-->
 		</FileSet>
 		
 		<FileSet name="SSP5">
@@ -152,7 +152,7 @@
             <Value name = "bio_neg_emiss_budget">../input/gcamdata/xml/negative_emissions_budget_SSP5.xml</Value>
 
 			<!--DIRECT AIR CAPTURE-->
-			<Value name = "dac">../input/gcamdata/xml/dac_ssp5.xml</Value>
+			<!--Value name = "dac">../input/gcamdata/xml/dac_ssp5.xml</Value-->
 		</FileSet>
 		
 		<FileSet name="SSP1">
@@ -205,7 +205,7 @@
             <Value name = "bio_neg_emiss_budget">../input/gcamdata/xml/negative_emissions_budget_SSP1.xml</Value>
 
 			<!--DIRECT AIR CAPTURE-->
-			<Value name = "dac">../input/gcamdata/xml/dac_ssp1.xml</Value>
+			<!--Value name = "dac">../input/gcamdata/xml/dac_ssp1.xml</Value-->
 		</FileSet>
 		
 		<FileSet name="SSP2">
@@ -238,7 +238,7 @@
             <Value name = "bio_neg_emiss_budget">../input/gcamdata/xml/negative_emissions_budget_SSP2.xml</Value>
 
 			<!--DIRECT AIR CAPTURE-->
-			<Value name = "dac">../input/gcamdata/xml/dac_ssp2.xml</Value>
+			<!--Value name = "dac">../input/gcamdata/xml/dac_ssp2.xml</Value-->
 		</FileSet>
 		
 		<FileSet name="SSP3">
@@ -293,7 +293,7 @@
             <Value name = "bio_neg_emiss_budget">../input/gcamdata/xml/negative_emissions_budget_SSP3.xml</Value>
 
 			<!--DIRECT AIR CAPTURE-->
-			<Value name = "dac">../input/gcamdata/xml/dac_ssp3.xml</Value>
+			<!--Value name = "dac">../input/gcamdata/xml/dac_ssp3.xml</Value-->
 		</FileSet>		
 	</ComponentSet>
 	

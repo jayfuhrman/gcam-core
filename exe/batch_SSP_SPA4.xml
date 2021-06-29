@@ -126,7 +126,7 @@
             <Value name = "bio_neg_emiss_budget">../input/gcamdata/xml/negative_emissions_budget_SSP4.xml</Value>
 
 			<!--DIRECT AIR CAPTURE-->
-			<Value name = "dac">../input/gcamdata/xml/dac_ssp4.xml</Value>
+			<!--Value name = "dac">../input/gcamdata/xml/dac_ssp4.xml</Value-->
 		</FileSet>
 		
 	</ComponentSet>	

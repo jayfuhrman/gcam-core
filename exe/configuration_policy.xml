@@ -86,7 +86,8 @@
 		<Value name = "wind_update">../input/gcamdata/xml/onshore_wind.xml</Value>
 		<Value name = "solver">../input/solution/cal_broyden_config.xml</Value>
 
-		<Value name = "dac">../input/gcamdata/xml/dac_ssp2.xml</Value>
+		<!--DIRECT AIR CAPTURE-->
+		<!--Value name = "dac">../input/gcamdata/xml/dac_ssp2.xml</Value-->
 
         <!-- set up the near-term / long-term policy inputs -->
 		<Value name = "long-term-co2">../input/policy/carbon_tax_0.xml</Value>
