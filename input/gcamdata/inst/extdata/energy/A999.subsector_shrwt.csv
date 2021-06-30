@@ -4,6 +4,6 @@
 # Column types: cccci
 # ----------
 supplysector,subsector,year.fillout,year,share.weight
-ces,dac,start-year,,1
+CO2 removal,dac,start-year,,1
 process heat dac,gas CCS,start-year,,1
 airCO2,airCO2,start-year,,1

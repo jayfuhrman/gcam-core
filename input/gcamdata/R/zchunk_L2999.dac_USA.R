@@ -26,7 +26,7 @@ module_gcamdata_L2999.dac_USA <- function(command, ...) {
   if(command == driver.DECLARE_INPUTS) {
     return(c(FILE = "gcam-usa/states_subregions",
              FILE = "gcam-usa/A999.calibration_state",
-             FILE = "energy/calibrated_techs_ces",
+             FILE = "energy/calibrated_techs_cdr",
              FILE = "energy/A999.demand",
              "L2999.GlobalTechCoef_dac",
              "L2999.Supplysector_dac",
@@ -60,7 +60,7 @@ module_gcamdata_L2999.dac_USA <- function(command, ...) {
 
     # Load required inputs
     states_subregions <- get_data(all_data, "gcam-usa/states_subregions")
-    calibrated_techs <- get_data(all_data, "energy/calibrated_techs_ces")
+    calibrated_techs <- get_data(all_data, "energy/calibrated_techs_cdr")
     A999.calibration_state <- get_data(all_data, "gcam-usa/A999.calibration_state")
     A999.demand <- get_data(all_data, "energy/A999.demand")
 
@@ -98,7 +98,7 @@ module_gcamdata_L2999.dac_USA <- function(command, ...) {
       dac_states
 
     # 1a. Supplysector information
-    # L2999.Supplysector_dac: Supply sector information for ces ("climate engineering services") sector containing dac
+    # L2999.Supplysector_dac: Supply sector information for CO2 removal sector containing dac
 
     L2999.Supplysector_dac %>%
       filter(supplysector != 'airCO2') %>%
@@ -280,7 +280,7 @@ module_gcamdata_L2999.dac_USA <- function(command, ...) {
     # Produce outputs
 
     L2999.DeleteSupplysector_USAdac %>%
-      add_title("Supply sector information for ces (climate engineering services) sector") %>%
+      add_title("Supply sector information for CO2 removal sector") %>%
       add_units("NA") %>%
       add_comments("For dac sector, the supply sector information (output.unit, input.unit, price.unit, logit.year.fillout, logit.exponent) from A999.sector is expended into all GCAM regions") %>%
       add_legacy_name("L2999.Supplysector_dac") %>%
@@ -372,7 +372,7 @@ module_gcamdata_L2999.dac_USA <- function(command, ...) {
       add_units("NA") %>%
       add_comments("Added dac calibration coefficients to all states") %>%
       add_legacy_name("L2999.StubTechProd_dac_USA") %>%
-      add_precursors("gcam-usa/A999.calibration_state","energy/A999.demand","energy/calibrated_techs_ces") ->
+      add_precursors("gcam-usa/A999.calibration_state","energy/A999.demand","energy/calibrated_techs_cdr") ->
       L2999.StubTechProd_dac_USA
 
 

@@ -4,54 +4,54 @@
 # Column types: ccin
 # ----------
 state,sector,year,value
-AK,ces,2015,40
-AL,ces,2015,40
-AR,ces,2015,40
-AZ,ces,2015,40
-CA,ces,2015,40
-CO,ces,2015,40
-CT,ces,2015,40
-DC,ces,2015,40
-DE,ces,2015,40
-FL,ces,2015,40
-GA,ces,2015,40
-HI,ces,2015,40
-IA,ces,2015,40
-ID,ces,2015,40
-IL,ces,2015,40
-IN,ces,2015,40
-KS,ces,2015,40
-KY,ces,2015,40
-LA,ces,2015,40
-MA,ces,2015,40
-MD,ces,2015,40
-ME,ces,2015,40
-MI,ces,2015,40
-MN,ces,2015,40
-MO,ces,2015,40
-MS,ces,2015,40
-MT,ces,2015,40
-NC,ces,2015,40
-ND,ces,2015,40
-NE,ces,2015,40
-NH,ces,2015,40
-NJ,ces,2015,40
-NM,ces,2015,40
-NV,ces,2015,40
-NY,ces,2015,40
-OH,ces,2015,40
-OK,ces,2015,40
-OR,ces,2015,40
-PA,ces,2015,40
-RI,ces,2015,40
-SC,ces,2015,40
-SD,ces,2015,40
-TN,ces,2015,40
-TX,ces,2015,40
-UT,ces,2015,40
-VA,ces,2015,40
-VT,ces,2015,40
-WA,ces,2015,40
-WI,ces,2015,40
-WV,ces,2015,40
-WY,ces,2015,40
+AK,CO2 removal,2015,40
+AL,CO2 removal,2015,40
+AR,CO2 removal,2015,40
+AZ,CO2 removal,2015,40
+CA,CO2 removal,2015,40
+CO,CO2 removal,2015,40
+CT,CO2 removal,2015,40
+DC,CO2 removal,2015,40
+DE,CO2 removal,2015,40
+FL,CO2 removal,2015,40
+GA,CO2 removal,2015,40
+HI,CO2 removal,2015,40
+IA,CO2 removal,2015,40
+ID,CO2 removal,2015,40
+IL,CO2 removal,2015,40
+IN,CO2 removal,2015,40
+KS,CO2 removal,2015,40
+KY,CO2 removal,2015,40
+LA,CO2 removal,2015,40
+MA,CO2 removal,2015,40
+MD,CO2 removal,2015,40
+ME,CO2 removal,2015,40
+MI,CO2 removal,2015,40
+MN,CO2 removal,2015,40
+MO,CO2 removal,2015,40
+MS,CO2 removal,2015,40
+MT,CO2 removal,2015,40
+NC,CO2 removal,2015,40
+ND,CO2 removal,2015,40
+NE,CO2 removal,2015,40
+NH,CO2 removal,2015,40
+NJ,CO2 removal,2015,40
+NM,CO2 removal,2015,40
+NV,CO2 removal,2015,40
+NY,CO2 removal,2015,40
+OH,CO2 removal,2015,40
+OK,CO2 removal,2015,40
+OR,CO2 removal,2015,40
+PA,CO2 removal,2015,40
+RI,CO2 removal,2015,40
+SC,CO2 removal,2015,40
+SD,CO2 removal,2015,40
+TN,CO2 removal,2015,40
+TX,CO2 removal,2015,40
+UT,CO2 removal,2015,40
+VA,CO2 removal,2015,40
+VT,CO2 removal,2015,40
+WA,CO2 removal,2015,40
+WI,CO2 removal,2015,40
+WV,CO2 removal,2015,40
+WY,CO2 removal,2015,40

@@ -48,7 +48,6 @@ module_energy_LA1999.dac <- function(command, ...) {
 
 
     L1999.out_Mt_R_dac_Yh %>%
-      #add_title("Historical ces demand by region and year") %>%
       add_units("Mt C") %>%
       add_comments("Outputs are calculated by simply transposing the calibration matrix, which contains arbitrarily high values for dac+noDAC") %>%
       add_legacy_name("L1999.out_Mt_R_dac_Yh") %>%
