@@ -46,22 +46,22 @@ module_gcamusa_L2245a.elec_RPS_USA_Gas <- function(command, ...) {
       constraint <- NULL # silence package check notes
 
     # Load required inputs
-    states_subregions <- get_data(all_data, "gcam-usa/states_subregions")
-    RPS_tech_MASTER <- get_data(all_data, "gcam-usa/RPS_tech_MASTER")
-    states_rps_region <- get_data(all_data, "gcam-usa/states_rps_region")
+    states_subregions <- get_data(all_data, "gcam-usa/states_subregions", strip_attributes = TRUE)
+    RPS_tech_MASTER <- get_data(all_data, "gcam-usa/RPS_tech_MASTER", strip_attributes = TRUE)
+    states_rps_region <- get_data(all_data, "gcam-usa/states_rps_region", strip_attributes = TRUE)
 
     # rps_states <- get_data(all_data, "gcam-usa/rps_states_existing") %>%
     #   select(-supplysector, -subsector, -units, -rate.notes) %>%
     #   gather_years(value_col = "rps_share")
-    rps_states_exst <- get_data(all_data, "gcam-usa/rps_states_hundred")
+    rps_states_exst <- get_data(all_data, "gcam-usa/rps_states_hundred", strip_attributes = TRUE)
     # rps_states_fedb <- get_data(all_data, "gcam-usa/rps_states_fedb")
     # rps_states_intv <- get_data(all_data, "gcam-usa/rps_states_intv")
     # rps_states_pldg <- get_data(all_data, "gcam-usa/rps_states_pldg")
 
-    gcam_usa_elec_gen <- get_data(all_data, "gcam-usa/gcam_usa_elec_gen")
-    include_in_rps <- get_data(all_data, "gcam-usa/A23.include_in_rps_CES_Gas")
-    gcam_usa_elec_cons <- get_data(all_data, "gcam-usa/gcam_usa_elec_cons")
-    L2234.GlobalTechCapture_elecS_USA <- get_data(all_data, "L2234.GlobalTechCapture_elecS_USA")
+    gcam_usa_elec_gen <- get_data(all_data, "gcam-usa/gcam_usa_elec_gen", strip_attributes = TRUE)
+    include_in_rps <- get_data(all_data, "gcam-usa/A23.include_in_rps_CES_Gas", strip_attributes = TRUE)
+    gcam_usa_elec_cons <- get_data(all_data, "gcam-usa/gcam_usa_elec_cons", strip_attributes = TRUE)
+    L2234.GlobalTechCapture_elecS_USA <- get_data(all_data, "L2234.GlobalTechCapture_elecS_USA", strip_attributes = TRUE)
 
 
     # ===================================================

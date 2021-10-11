@@ -42,16 +42,16 @@ module_gcamusa_L2236.elecS_ghg_emissions_USA <- function(command, ...) {
 
     # Load required inputs
 
-    L1231.in_EJ_state_elec_F_tech <- get_data(all_data, 'L1231.in_EJ_state_elec_F_tech')
-    L201.OutputEmissions_elec <- get_data(all_data, 'L201.OutputEmissions_elec')
-    L241.OutputEmissCoeff_elec <- get_data(all_data, 'L241.OutputEmissCoeff_elec')
-    A23.elecS_tech_mapping <- get_data(all_data, 'gcam-usa/A23.elecS_tech_mapping')
-    A23.elecS_tech_availability <- get_data(all_data, 'gcam-usa/A23.elecS_tech_availability')
-    A23.elecS_tech_mapping_cool <- get_data(all_data, "gcam-usa/A23.elecS_tech_mapping_cool")
-    L2234.StubTechMarket_elecS_USA <- get_data(all_data, 'L2234.StubTechMarket_elecS_USA')
-    L2234.StubTechProd_elecS_USA <- get_data(all_data, 'L2234.StubTechProd_elecS_USA')
-    L2233.StubTechMarket_elecS_cool_USA <- get_data(all_data, 'L2233.StubTechMarket_elecS_cool_USA')
-    L2233.StubTechProd_elecS_cool_USA <- get_data(all_data, 'L2233.StubTechProd_elecS_cool_USA')
+    L1231.in_EJ_state_elec_F_tech <- get_data(all_data, 'L1231.in_EJ_state_elec_F_tech', strip_attributes = TRUE)
+    L201.OutputEmissions_elec <- get_data(all_data, 'L201.OutputEmissions_elec', strip_attributes = TRUE)
+    L241.OutputEmissCoeff_elec <- get_data(all_data, 'L241.OutputEmissCoeff_elec', strip_attributes = TRUE)
+    A23.elecS_tech_mapping <- get_data(all_data, 'gcam-usa/A23.elecS_tech_mapping', strip_attributes = TRUE)
+    A23.elecS_tech_availability <- get_data(all_data, 'gcam-usa/A23.elecS_tech_availability', strip_attributes = TRUE)
+    A23.elecS_tech_mapping_cool <- get_data(all_data, "gcam-usa/A23.elecS_tech_mapping_cool", strip_attributes = TRUE)
+    L2234.StubTechMarket_elecS_USA <- get_data(all_data, 'L2234.StubTechMarket_elecS_USA', strip_attributes = TRUE)
+    L2234.StubTechProd_elecS_USA <- get_data(all_data, 'L2234.StubTechProd_elecS_USA', strip_attributes = TRUE)
+    L2233.StubTechMarket_elecS_cool_USA <- get_data(all_data, 'L2233.StubTechMarket_elecS_cool_USA', strip_attributes = TRUE)
+    L2233.StubTechProd_elecS_cool_USA <- get_data(all_data, 'L2233.StubTechProd_elecS_cool_USA', strip_attributes = TRUE)
 
     # Silence package checks
     CH4 <- Electric.sector <- Electric.sector.technology <- N2O <- Non.CO2 <-
@@ -93,9 +93,9 @@ module_gcamusa_L2236.elecS_ghg_emissions_USA <- function(command, ...) {
     # make a complete mapping to be able to look up with sector + subsector + tech the
     # input name to use for an input-driver
     bind_rows(
-      get_data(all_data, "energy/A22.globaltech_input_driver"),
-      get_data(all_data, "energy/A23.globaltech_input_driver"),
-      get_data(all_data, "energy/A25.globaltech_input_driver")
+      get_data(all_data, "energy/A22.globaltech_input_driver", strip_attributes = TRUE),
+      get_data(all_data, "energy/A23.globaltech_input_driver", strip_attributes = TRUE),
+      get_data(all_data, "energy/A25.globaltech_input_driver", strip_attributes = TRUE)
     ) %>%
       rename(stub.technology = technology) ->
       EnTechInput

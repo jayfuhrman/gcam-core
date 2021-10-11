@@ -34,11 +34,11 @@ module_gcamusa_L2231.nonewcoal_USA <- function(command, ...) {
       Electric.sector.technology <- Electric.sector <- NULL  # silence package check notes
 
     # Load required inputs
-    L222.StubTechMarket_en_USA <- get_data(all_data, "L222.StubTechMarket_en_USA")
-    L222.StubTech_en <- get_data(all_data, "L222.StubTech_en")
-    L225.StubTech_h2 <- get_data(all_data, "L225.StubTech_h2")
-    A23.elecS_tech_mapping <- get_data(all_data, "gcam-usa/A23.elecS_tech_mapping")
-    A23.elecS_tech_availability <- get_data(all_data, "gcam-usa/A23.elecS_tech_availability")
+    L222.StubTechMarket_en_USA <- get_data(all_data, "L222.StubTechMarket_en_USA", strip_attributes = TRUE)
+    L222.StubTech_en <- get_data(all_data, "L222.StubTech_en", strip_attributes = TRUE)
+    L225.StubTech_h2 <- get_data(all_data, "L225.StubTech_h2", strip_attributes = TRUE)
+    A23.elecS_tech_mapping <- get_data(all_data, "gcam-usa/A23.elecS_tech_mapping", strip_attributes = TRUE)
+    A23.elecS_tech_availability <- get_data(all_data, "gcam-usa/A23.elecS_tech_availability", strip_attributes = TRUE)
 
     # ===================================================
     # Perform computations

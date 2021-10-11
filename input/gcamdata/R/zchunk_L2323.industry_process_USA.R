@@ -24,9 +24,9 @@ module_gcamusa_L2323.industry_process_USA <- function(command, ...) {
     all_data <- list(...)[[1]]
 
     # Load required inputs
-    L231.IndCoef_USA <- get_data(all_data, "L231.IndCoef") %>%
+    L231.IndCoef_USA <- get_data(all_data, "L231.IndCoef", strip_attributes = TRUE) %>%
       filter(region == gcam.USA_REGION)
-    L232.StubTechCoef_industry_USA <- get_data(all_data, "L232.StubTechCoef_industry_USA")
+    L232.StubTechCoef_industry_USA <- get_data(all_data, "L232.StubTechCoef_industry_USA", strip_attributes = TRUE)
 
     # Silence package checks
     palette <- region <- supplysector <- subsector <- stub.technology <-
