@@ -1,7 +1,8 @@
-This repository contains configuration and additional input files to replicate 
+This branch of the GCAM model contains configuration and additional input files to replicate 
 
 Fuhrman J, Clarens A, Calvin K V, Doney S C, Edmonds J A, O’Rourke P, Patel P, Pradhan S, Shobe W M and McJeon H C 2021 The Role of Direct Air Capture and Negative Emissions Technologies in the Shared Socioeconomic Pathways towards +1.5˚C and +2˚C Futures Environ. Res. Lett.
 https://iopscience.iop.org/article/10.1088/1748-9326/ac2db0
+
 
 # Global Change Analysis Model (GCAM)
 
