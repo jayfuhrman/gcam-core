@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<policy-target-runner name="old">
+	<target-value>2.6</target-value>
+	<target-tolerance>0.05</target-tolerance>
+	<!--reduced path discount rate to 1 percent from default of 5 percent-->
+	<path-discount-rate>0.03</path-discount-rate>
+	<target-type>forcing</target-type>
+    <first-tax-year>2025</first-tax-year>
+    <!-- Note, the value chosen here is the solved price from the last GCAM release. -->
+    <initial-tax-guess>32.5</initial-tax-guess>
+	<tax-name>CO2_LTG</tax-name>
+	<max-tax>8000</max-tax>
+	<overshoot/>
+</policy-target-runner>
