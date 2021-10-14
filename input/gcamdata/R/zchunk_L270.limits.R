@@ -142,14 +142,14 @@ module_energy_L270.limits <- function(command, ...) {
       mutate(coefficient = approx_fun(year, value = coef, rule = 1)) %>%
       ungroup() %>%
       filter(year %in% MODEL_YEARS) %>%
-      select(sector.name = supplysector, subsector.name = subsector, technology, year, coefficient) -> L2999.GlobalTechCoef_cdr
+      select(sector.name = supplysector, subsector.name = subsector, technology, year, coefficient) -> L270.GlobalTechCoef_cdr
 
-    L2999.GlobalTechCoef_cdr %>%
+    L270.GlobalTechCoef_cdr %>%
       mutate(ctax.input = energy.NEG_EMISS_POLICY_NAME)  %>%
-      rename(fuel.C.coef = coefficient)-> L2999.GlobalTechCoef_cdr
+      rename(fuel.C.coef = coefficient)-> L270.GlobalTechCoef_cdr
 
     L270.CTaxInput %>%
-      bind_rows(L2999.GlobalTechCoef_cdr) -> L270.CTaxInput
+      bind_rows(L270.GlobalTechCoef_cdr) -> L270.CTaxInput
 
 
     # L270.LandRootNegEmissMkt: set the negative emissions policy name into the LandAllocator root
