@@ -94,13 +94,13 @@ module_energy_LA113.atb_cost <- function(command, ...) {
                 NREL_ATB_OMvar %>%
                   filter(case == energy.COSTS_MID_CASE)) %>%
       # clean up cost case part of technology names, since mapping file doesn't include this detail
-      mutate(tech_detail = gsub(" - Mid", "", tech_detail),
-             tech_detail = gsub(" - Low", "", tech_detail),
-             tech_detail = gsub(" - Constant", "", tech_detail),
+      mutate(tech_detail = gsub(" - Moderate", "", tech_detail),
+             tech_detail = gsub(" - Advanced", "", tech_detail),
+             tech_detail = gsub(" - Conservative", "", tech_detail),
              tech_detail = gsub(" - High", "", tech_detail), # only natural gas technologies in ATB
-             tech_detail = gsub("-Mid", "", tech_detail),
-             tech_detail = gsub("-Low", "", tech_detail),
-             tech_detail = gsub("-Constant", "", tech_detail)) -> NREL_ATB_cost_assumptions
+             tech_detail = gsub("-Moderate", "", tech_detail),
+             tech_detail = gsub("-Advanced", "", tech_detail),
+             tech_detail = gsub("-Conservative", "", tech_detail)) -> NREL_ATB_cost_assumptions
 
     # Pre-process legacy (Muratori et al.) cost data so capital & OM costs can be processed together
     Muratori_globaltech_capital %>%
@@ -164,6 +164,8 @@ module_energy_LA113.atb_cost <- function(command, ...) {
       left_join_error_no_match(atb_gcam_mapping_ratios, by = "technology") %>%
       left_join_error_no_match(L113.cost_shadow, by = c("shadow_tech", "year", "input", "case")) %>%
       mutate(cost_ratio = value / shadow_tech_cost) %>%
+      # technologies with cost = 0 for tech & shadow tech (e.g. CSP OM-var) return NAN... reset to cost_ratio = 1
+      mutate(cost_ratio = if_else(is.nan(cost_ratio), 1, cost_ratio)) %>%
       select(technology, year, cost_ratio, input, case) %>%
       # fill out for all ATB years
       complete(nesting(technology, input, case), year = c(ATB_years)) %>%
@@ -174,8 +176,11 @@ module_energy_LA113.atb_cost <- function(command, ...) {
     NREL_ATB_cost_assumptions %>%
       # isolate technologies which map to GCAM technologies
       semi_join(atb_gcam_mapping, by = c("tech_type", "tech_detail")) %>%
-      # Convert to 1975$.  2015-2016 costs are in 2015$; 2017-2050 costs are in 2017$.
-      mutate(value = if_else(year %in% energy.ATB_2017_YEARS, value * gdp_deflator(1975, 2015), value * gdp_deflator(1975, 2017))) %>%
+      # Convert to 1975$.  2015-2016 costs are in 2015$; 2017-2018 costs are in 2017$; 2019-2050 costs are in 2019$.
+      mutate(value = if_else(year %in% energy.ATB_2017_YEARS, value * gdp_deflator(1975, 2015), value * gdp_deflator(1975, 2019)),
+             # Deal with the two years from ATB 2019. Revert conversion from 2019$ to 1975$, then convert back to back to 1975$
+             # (for 2017-2018 only).
+             value = if_else(year %in% energy.ATB_2019_YEARS, value * gdp_deflator(2019, 1975) * gdp_deflator(1975, 2017), value)) %>%
       # some techs, like battery, don't have costs back to 2015
       # use approx_fun rule 2 to carry nearest year values backwards
       group_by(tech_type, tech_detail, input, case) %>%
@@ -196,6 +201,7 @@ module_energy_LA113.atb_cost <- function(command, ...) {
     # Calculate the improvement rate from 2015 to 2035 and from 2035 to 2050
     L113.costs_ATB %>%
       group_by(technology, input, case) %>%
+      mutate(value = round(value, energy.DIGITS_OM)) %>%
       # calculate simple near term and mid term annual improvement rates as % reduction / # years
       mutate(initial_ATB_cost = value[year==energy.ATB_BASE_YEAR],
              mid_ATB_cost = value[year==energy.ATB_MID_YEAR],
@@ -244,6 +250,7 @@ module_energy_LA113.atb_cost <- function(command, ...) {
     # Loop the function for all technologies / input costs (component) / cases (level),
     # using uniroot to ensure that the correct improvement rate is found and entered in the main table
     for (rn in rownames(L113.costs_ATB_params)) {
+      # print(rn)
       L113.costs_ATB_params %>%
         filter(row_number() == rn) -> L113.TEMP
 
