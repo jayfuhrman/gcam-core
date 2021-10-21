@@ -23,8 +23,8 @@
 		<Value name = "resources">../input/gcamdata/xml/resources.xml</Value>
 		<Value name = "energy_supply">../input/gcamdata/xml/en_supply.xml</Value>
 		<Value name = "energy_transformation">../input/gcamdata/xml/en_transformation.xml</Value>
-		<!--Value name = "electricity">../input/gcamdata/xml/electricity.xml</Value-->
-		<Value name = "elec_water_base">../input/gcamdata/xml/electricity_water.xml</Value>
+		<Value name = "electricity">../input/gcamdata/xml/electricity.xml</Value>
+		<!--Value name = "elec_water_base">../input/gcamdata/xml/electricity_water.xml</Value-->
 		<Value name = "heat">../input/gcamdata/xml/heat.xml</Value>
 		<Value name = "hydrogen">../input/gcamdata/xml/hydrogen.xml</Value>
 		<Value name = "energy_distribution">../input/gcamdata/xml/en_distribution.xml</Value>
@@ -103,12 +103,18 @@
 		
 		<Value name = "dac">../input/gcamdata/xml/dac_ssp2.xml</Value>
 
+		<!--Coal retire-->
+		<Value name="coal_retire_2020">../input/gcamdata/xml/coal_retire_USAagg.xml</Value>
+
+		<!--CCS Retrofit-->
+		<Value name = "ccs_retrofit">../input/gcamdata/xml/CCS_retrofit.xml</Value>
+
 		<!--EMF37 add ons... not in repo... ask Binsted for working files-->
 		<Value name = "us_current_policy">../input/addon/US_adjustment_v4.xml</Value>
 		<Value name = "eu_current_policy">../input/addon/EU_adjustment_v4.xml</Value>
 		<Value name = "no_new_nuclear_japan_SK">../input/addon/nuclear_shrwt_v0.xml</Value>
 		<Value name = "no_coal_refining">../input/addon/no_new_coal_refining_2100update.xml</Value>
-
+	
 	</ScenarioComponents>
 	<Strings>
 		<Value name="scenarioName">Reference</Value>
