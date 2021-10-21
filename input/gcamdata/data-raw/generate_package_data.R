@@ -4,7 +4,7 @@ library(devtools)
 # We could potentially use drake to speed up the process of updating the package
 # data which otherwise requires multiple runs of driver.  However, given drake
 # is optional we default to not use it.
-USE_DRIVER_DRAKE <- FALSE
+USE_DRIVER_DRAKE <- TRUE
 
 # Note: the methods below explicitly name XML tags as expected by GCAM and/or
 # the model interface headers thus will need to be maintained to be consistent.
@@ -151,6 +151,7 @@ generate_level2_data_names <- function() {
 
   # Global technologies
   level2_data_names[["GlobalTech"]] <- c("sector.name", "subsector.name", "technology")
+  level2_data_names[["GlobalTechAvail"]] <- c(level2_data_names[["GlobalTech"]], "initial.available.year", "final.available.year")
   level2_data_names[["GlobalTechInterp"]] <- c("sector.name", "subsector.name", "technology", "apply.to", "from.year", "to.year", "interpolation.function")
   level2_data_names[["GlobalTechInterpTo"]] <- c("sector.name", "subsector.name", "technology", "apply.to", "from.year", "to.year", "to.value", "interpolation.function")
   level2_data_names[["GlobalTechShrwt"]] <- c("sector.name", "subsector.name", "technology", "year", "share.weight")
@@ -210,6 +211,7 @@ generate_level2_data_names <- function() {
 
   # Stub technologies
   level2_data_names[["StubTech"]] <- c("region", "supplysector", "subsector", "stub.technology")
+  level2_data_names[["StubTechAvail"]] <- c(level2_data_names[["StubTech"]], "initial.available.year", "final.available.year")
   level2_data_names[["StubTechYr"]] <- c(level2_data_names[["StubTech"]], "year")
   level2_data_names[["StubTechInterp"]] <- c(level2_data_names[["StubTech"]], "apply.to", "from.year", "to.year", "interpolation.function")
   level2_data_names[["StubTechShrwt"]] <- c("region", "supplysector", "subsector", "stub.technology", "year", "share.weight")
