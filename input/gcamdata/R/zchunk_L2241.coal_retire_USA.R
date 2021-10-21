@@ -1,3 +1,5 @@
+# Copyright 2019 Battelle Memorial Institute; see the LICENSE file.
+
 #' module_gcamusa_L2241.coal_retire_USA
 #'
 #' Generates GCAM-USA model input for removing coal capacity retired between 2011 and 2015, 2016 and 2020, and vintaging capacity which continues to operate beyond 2020.
@@ -84,8 +86,10 @@ module_gcamusa_L2241.coal_retire_USA <- function(command, ...) {
 
     # Load required inputs
     states_subregions <- get_data(all_data, "gcam-usa/states_subregions")
-    A23.elec_tech_mapping_coal_retire <- get_data(all_data, "gcam-usa/A23.elec_tech_mapping_coal_retire", strip_attributes = TRUE)
+    A23.elec_tech_mapping_coal_retire <- get_data(all_data, "gcam-usa/A23.elec_tech_mapping_coal_retire", strip_attributes = TRUE) %>%
+      filter(grepl("generation", Electric.sector))
     A23.elec_tech_coal_retire_SCurve <- get_data(all_data, "gcam-usa/A23.elec_tech_coal_retire_SCurve", strip_attributes = TRUE) %>%
+      filter(grepl("generation", Electric.sector)) %>%
       select(-Electric.sector)
     EIA_coal_generation_2018 <- get_data(all_data, "gcam-usa/EIA_coal_generation_2018", strip_attributes = TRUE)
     L2234.StubTechProd_elecS_USA <- get_data(all_data, "L2234.StubTechProd_elecS_USA", strip_attributes = TRUE)
