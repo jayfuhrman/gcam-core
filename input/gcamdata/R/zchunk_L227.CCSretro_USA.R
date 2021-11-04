@@ -7,6 +7,7 @@
 #' @return Depends on \code{command}: either a vector of required inputs,
 #' a vector of output names, or (if \code{command} is "MAKE") all
 #' the generated outputs: \code{eor.xml}.
+#' #' @importFrom tidyr expand
 module_energy_L227.CCSretro_USA <- function(command, ...) {
   if(command == driver.DECLARE_INPUTS) {
     return(c(FILE = "common/GCAM_region_names",
@@ -390,7 +391,7 @@ module_energy_L227.CCSretro_USA <- function(command, ...) {
       mutate(subsector = "coal CCS retrofit") %>%
       mutate(stub.technology = "existing coal") %>%
       select(-year) %>%
-      expand(., ., year=MODEL_YEARS) %>%
+      tidyr::expand(., ., year=MODEL_YEARS) %>%
       select(!!!LEVEL2_DATA_NAMES[["StubTechEff"]]) %>%
       bind_rows(L227.StubTechEff_CCSretro) ->
       L227.StubTechEff_CCSretro
