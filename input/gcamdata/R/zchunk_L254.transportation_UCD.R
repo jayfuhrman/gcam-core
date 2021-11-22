@@ -85,6 +85,7 @@ module_energy_L254.transportation_UCD <- function(command, ...) {
              "L254.GlobalTranTechInterp",
              "L254.GlobalTranTechShrwt",
              "L254.GlobalTranTechSCurve",
+             "L254.GlobalTranTechProfitShutdown",
              "L254.StubTranTechCalInput",
              "L254.StubTranTechLoadFactor",
              "L254.StubTranTechCost",
@@ -374,8 +375,8 @@ module_energy_L254.transportation_UCD <- function(command, ...) {
       filter(addTimeValue == 1) %>%
       write_to_all_regions(c(LEVEL2_DATA_NAMES[["tranSubsector"]], "addTimeValue", "time.value.multiplier","sce"),
                            GCAM_region_names = GCAM_region_names) %>%
-      mutate(year.fillout = min(MODEL_YEARS)) %>%
-      mutate(sce= if_else(is.na(sce),"CORE",sce)) %>%
+      mutate(year.fillout = min(MODEL_YEARS),
+             sce= if_else(is.na(sce),"CORE",sce)) %>%
       # Subset only the combinations of region, supplysector, and tranSubsector
       semi_join(r_ss_ts_all, by = c("region", "supplysector", "tranSubsector","sce")) %>%
       select(LEVEL2_DATA_NAMES[["tranSubsector"]], year.fillout, addTimeValue, time.value.multiplier,sce) %>%
@@ -478,7 +479,7 @@ module_energy_L254.transportation_UCD <- function(command, ...) {
 
     L254.GlobalTranTechShrwt <- bind_rows(L254.GlobalTranTechShrwt_highEV,L254.GlobalTranTechShrwt_CORE)
 
-    # L254.GlobalTranTechSCurve: Retirement of global tranTechnologies
+    # L254.GlobalTranTechSCurve and L254.GlobalTranTechProfitShutdown: Retirement of global tranTechnologies
     # A54.globaltranTech_retire reports transportation technology retirement parameters. Only applies to vintaged technologies
     A54.globaltranTech_retire %>%
       set_years() %>%
@@ -496,9 +497,18 @@ module_energy_L254.transportation_UCD <- function(command, ...) {
       repeat_add_columns(tibble(year = MODEL_YEARS)) %>%
       filter(year > L254.GlobalTranTechSCurve_MAX_YEAR) %>%
       bind_rows(L254.GlobalTranTechSCurve_1) %>%
-      rename(sector.name = supplysector, subsector.name = tranSubsector) %>%
+      rename(sector.name = supplysector, subsector.name = tranSubsector) ->
+      A54.globaltranTech_retire
+
+    A54.globaltranTech_retire %>%
       select(LEVEL2_DATA_NAMES[["GlobalTranTechSCurve"]]) ->
       L254.GlobalTranTechSCurve # OUTPUT
+
+    A54.globaltranTech_retire %>%
+      select(-steepness) %>%
+      rename(steepness = profit.shutdown.steepness) %>%
+      select(LEVEL2_DATA_NAMES[["GlobalTranTechProfitShutdown"]]) ->
+      L254.GlobalTranTechProfitShutdown
 
 
     # PART E: CALIBRATION AND REGION-SPECIFIC DATA
@@ -596,9 +606,10 @@ module_energy_L254.transportation_UCD <- function(command, ...) {
                                                                    "stub.technology", "year", "sce")) %>%
       left_join(L254.StubTranTechCoef, by = c("region", "supplysector", "tranSubsector",
                                                              "stub.technology", "minicam.energy.input", "year","sce")) %>%
-      mutate(loadFactor=if_else(is.na(loadFactor),0,loadFactor),coefficient=if_else(is.na(coefficient),0,coefficient)) %>%
-      mutate(output = calibrated.value * loadFactor * CONV_EJ_GJ / (coefficient * CONV_BTU_KJ)) %>%
-      mutate(output = if_else(is.na(output),0,output)) %>%
+      mutate(loadFactor=if_else(is.na(loadFactor),0,loadFactor),
+             coefficient=if_else(is.na(coefficient),0,coefficient),
+             output = calibrated.value * loadFactor * CONV_EJ_GJ / (coefficient * CONV_BTU_KJ),
+             output = if_else(is.na(output),0,output)) %>%
       select(region, supplysector, tranSubsector, stub.technology, year, minicam.energy.input,
              calibrated.value, loadFactor, coefficient, output,sce) ->
       L254.StubTranTechOutput
@@ -641,8 +652,8 @@ module_energy_L254.transportation_UCD <- function(command, ...) {
 
     L254.StubTechCalInput_passthru_cum %>%
       mutate(calibrated.value = if_else(minicam.energy.input %in% LIST_supplysector,
-                                        output_cum, output_agg)) %>%
-      mutate(share.weight.year = year,
+                                        output_cum, output_agg),
+             share.weight.year = year,
              subs.share.weight = if_else(calibrated.value > 0, 1, 0),
              tech.share.weight = subs.share.weight) %>%
       select(region, supplysector, tranSubsector, stub.technology, year,
@@ -937,6 +948,13 @@ module_energy_L254.transportation_UCD <- function(command, ...) {
       add_precursors("energy/A54.globaltranTech_retire", "energy/A54.globaltranTech_retire_revised") ->
       L254.GlobalTranTechSCurve
 
+    L254.GlobalTranTechProfitShutdown %>%
+      add_title("Profit shutdown parameters of global tranTechnologies") %>%
+      add_units("unitless function parameters") %>%
+      add_comments("Profit shutdown parameters in the final year of the base data were carried forward to all future time periods") %>%
+      same_precursors_as(L254.GlobalTranTechSCurve) ->
+      L254.GlobalTranTechProfitShutdown
+
     L254.StubTranTechCalInput %>%
       add_title("Calibrated input of tranTechnologies") %>%
       add_units("Unitless") %>%
@@ -1030,7 +1048,7 @@ module_energy_L254.transportation_UCD <- function(command, ...) {
                 L254.tranSubsectorFuelPref, L254.StubTranTech, L254.StubTech_passthru, L254.StubTech_nonmotor,
                 L254.GlobalTechShrwt_passthru, L254.GlobalTechShrwt_nonmotor, L254.GlobalTechCoef_passthru,
                 L254.GlobalRenewTech_nonmotor, L254.GlobalTranTechInterp, L254.GlobalTranTechShrwt,
-                L254.GlobalTranTechSCurve, L254.StubTranTechCalInput, L254.StubTranTechLoadFactor,
+                L254.GlobalTranTechSCurve, L254.GlobalTranTechProfitShutdown, L254.StubTranTechCalInput, L254.StubTranTechLoadFactor,
                 L254.StubTranTechCost, L254.StubTranTechCoef, L254.StubTechCalInput_passthru,
                 L254.StubTechProd_nonmotor, L254.PerCapitaBased_trn, L254.PriceElasticity_trn,
                 L254.IncomeElasticity_trn, L254.BaseService_trn)
