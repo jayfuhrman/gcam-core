@@ -108,6 +108,9 @@
 		<!--CCS Retrofit-->
 		<Value name = "ccs_retrofit">../input/gcamdata/xml/CCS_retrofit.xml</Value>
 
+		<!--USA detailed buildings-->
+		<Value name = "USA_bld">../input/gcamdata/xml/building_USA_detailed.xml</Value>
+
 		<!--EMF37 add ons... not in repo... ask Binsted for working files-->
 		<Value name = "us_current_policy">../input/addon/US_adjustment_v4.xml</Value>
 		<Value name = "eu_current_policy">../input/addon/EU_adjustment_v4.xml</Value>
