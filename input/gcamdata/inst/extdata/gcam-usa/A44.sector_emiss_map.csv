@@ -1,0 +1,32 @@
+# File: A44.sector_emiss_map.csv
+# Title: Detailed USA buildings sector mapping to default building sector
+# Units: NA (mapping)
+# Comments: Mapping between detailed USA buildings sector to default building sector for use in emissions data processing
+# Source: NA (mapping)
+# Column types: cc 
+# ----------
+supplysector,emiss_sector
+comm cooking,comm others
+comm cooling,comm cooling
+comm heating,comm heating
+comm hot water,comm others
+comm lighting,comm others
+comm non-building,comm others
+comm office,comm others
+comm other,comm others
+comm refrigeration,comm others
+comm ventilation,comm others
+resid clothes dryers,comm others
+resid clothes washers,comm others
+resid computers,resid others
+resid cooking,resid others
+resid cooling,resid cooling
+resid dishwashers,resid others
+resid freezers,resid others
+resid furnace fans,resid others
+resid heating,resid heating
+resid hot water,resid others
+resid lighting,resid others
+resid other,resid others
+resid refrigerators,resid others
+resid televisions,resid others
