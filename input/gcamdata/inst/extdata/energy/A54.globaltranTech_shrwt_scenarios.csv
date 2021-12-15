@@ -1,0 +1,71 @@
+# File: A54.globaltranTech_shrwt_scenarios.csv
+# Title: Share-weight multipliers by scenario
+# Source: none; developed for EMF37 transportation scenarios
+# Units: Unitless
+# Column types: cccnn
+# ----------
+supplysector,tranSubsector,tranTechnology,reftech,advtech
+trn_aviation_intl,International Aviation,Liquids,1,1
+trn_freight,Domestic Ship,Liquids,1,1
+trn_freight,Freight Rail,Coal,1,1
+trn_freight,Freight Rail,Electric,1,1
+trn_freight,Freight Rail,Liquids,1,1
+trn_freight_road,Light truck,Liquids,1,1
+trn_freight_road,Light truck,NG,1,1
+trn_freight_road,Medium truck,Liquids,1,1
+trn_freight_road,Medium truck,NG,1,1
+trn_freight_road,Heavy truck,Liquids,1,1
+trn_freight_road,Heavy truck,NG,1,1
+trn_pass,Cycle,Cycle,1,1
+trn_pass,Domestic Aviation,Liquids,1,1
+trn_pass,HSR,Electric,1,1
+trn_pass,Passenger Rail,Electric,1,1
+trn_pass,Passenger Rail,Liquids,1,1
+trn_pass,Walk,Walk,1,1
+trn_pass_road,Bus,Liquids,1,1
+trn_pass_road,Bus,NG,1,1
+trn_pass_road_LDV,2W and 3W,Liquids,1,1
+trn_pass_road_LDV,2W and 3W,NG,1,1
+trn_pass_road_LDV,2W and 3W,BEV,1,1.5
+trn_pass_road_LDV,2W and 3W,LA-BEV,1,1
+trn_pass_road_LDV_4W,Car,BEV,1,1.5
+trn_pass_road_LDV_4W,Car,FCEV,1,1.5
+trn_pass_road_LDV_4W,Car,Hybrid Liquids,1,1
+trn_pass_road_LDV_4W,Car,Liquids,1,1
+trn_pass_road_LDV_4W,Car,NG,1,1
+trn_pass_road_LDV_4W,Large Car and Truck,BEV,1,1.5
+trn_pass_road_LDV_4W,Large Car and Truck,FCEV,1,1.5
+trn_pass_road_LDV_4W,Large Car and Truck,Hybrid Liquids,1,1
+trn_pass_road_LDV_4W,Large Car and Truck,Liquids,1,1
+trn_pass_road_LDV_4W,Large Car and Truck,NG,1,1
+trn_pass_road_LDV_4W,Mini Car,BEV,1,1.5
+trn_pass_road_LDV_4W,Mini Car,FCEV,1,1.5
+trn_pass_road_LDV_4W,Mini Car,Hybrid Liquids,1,1
+trn_pass_road_LDV_4W,Mini Car,Liquids,1,1
+trn_pass_road_LDV_4W,Mini Car,NG,1,1
+trn_shipping_intl,International Ship,Liquids,1,1
+trn_pass_road,Bus,BEV,1,1.5
+trn_freight_road,Light truck,BEV,1,1.5
+trn_freight_road,Medium truck,BEV,1,1.5
+trn_freight_road,Heavy truck,BEV,1,1.5
+trn_aviation_intl,International Aviation,BEV,0,1
+trn_aviation_intl,International Aviation,Hydrogen,0,1
+trn_freight,Domestic Ship,BEV,0,1
+trn_freight,Domestic Ship,FCEV,0,1
+trn_freight,Domestic Ship,Hybrid Liquids,1,1
+trn_freight,Freight Rail,BEV,0,1
+trn_freight,Freight Rail,FCEV,0,1
+trn_freight,Freight Rail,Hybrid Liquids,1,1
+trn_freight_road,Light truck,FCEV,0,1
+trn_freight_road,Light truck,Hybrid Liquids,1,1
+trn_freight_road,Medium truck,FCEV,0,1
+trn_freight_road,Medium truck,Hybrid Liquids,1,1
+trn_freight_road,Heavy truck,FCEV,0,1
+trn_freight_road,Heavy truck,Hybrid Liquids,1,1
+trn_pass,Domestic Aviation,BEV,0,1
+trn_pass,Domestic Aviation,Hydrogen,0,1
+trn_pass_road,Bus,FCEV,0,1
+trn_pass_road,Bus,Hybrid Liquids,1,1
+trn_shipping_intl,International Ship,BEV,0,1
+trn_shipping_intl,International Ship,FCEV,0,1
+trn_shipping_intl,International Ship,Hybrid Liquids,1,1
