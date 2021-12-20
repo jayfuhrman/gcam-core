@@ -420,6 +420,9 @@ module_gcamusa_L244.building_det_USA <- function(command, ...) {
       group_by(region, emiss_sector, subsector, minicam.energy.input, year) %>%
       mutate(subs_share = calibrated.value / sum(calibrated.value)) %>%
       ungroup() %>%
+      # there is some coal in earlier historical periods which is gone by 2010
+      # this results in NaN subs_share values (divide by zero) - remove these
+      filter(!is.nan(subs_share)) %>%
       group_by(region, emiss_sector, year) %>%
       mutate(sector_share = calibrated.value / sum(calibrated.value)) %>%
       ungroup() -> L244.emiss_share
