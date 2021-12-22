@@ -367,11 +367,21 @@ module_gcamdata_L2999.dac_USA <- function(command, ...) {
       L2999.Supplysector_dac_USA
 
     L2999.StubTechProd_dac_USA %>%
+      #add_title("Stub tech production coefficients") %>%
       add_units("NA") %>%
       add_comments("Added dac calibration coefficients to all states") %>%
       add_legacy_name("L2999.StubTechProd_dac_USA") %>%
       add_precursors("gcam-usa/A999.calibration_state","energy/A999.demand","energy/calibrated_techs_ces") ->
       L2999.StubTechProd_dac_USA
+
+    L2999.BaseService_dac_USA %>%
+      #add_title("base service values for DAC") %>%
+      add_units("MtC") %>%
+      add_comments("Base service values for DAC") %>%
+      add_legacy_name("L2999.BaseService_dac_USA") %>%
+      add_precursors("L2999.StubTechProd_dac_USA") -> L2999.BaseService_dac_USA
+
+
 
 
     return_data(L2999.DeleteSupplysector_USAdac,
