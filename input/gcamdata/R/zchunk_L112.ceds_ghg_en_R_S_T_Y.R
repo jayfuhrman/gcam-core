@@ -1473,7 +1473,7 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
                        "emissions/mappings/Trn_subsector","emissions/CEDS/CEDS_sector_tech_combustion","emissions/mappings/calibrated_outresources",
                        "L101.in_EJ_R_en_Si_F_Yh", "L1326.in_EJ_R_indenergy_F_Yh", "L1323.in_EJ_R_iron_steel_F_Y", "L1324.in_EJ_R_Off_road_F_Y",
                        "L1325.in_EJ_R_chemical_F_Y", "L1326.in_EJ_R_aluminum_Yh","emissions/mappings/Trn_subsector_revised",
-                       "L101.in_EJ_R_en_Si_F_Yh", "emissions/mappings/Trn_subsector_revised", "emissions/EPA/EPA_2019_raw", "emissions/EPA_CH4N2O_map",
+                       "L101.in_EJ_R_en_Si_F_Yh", "emissions/mappings/Trn_subsector_revised", "emissions/EPA/EPA_2019_raw", "emissions/EPA_CH4N2O_map", "emissions/EPA_country_map",
                        "emissions/CEDS/CEDS_sector_tech_combustion_revised","emissions/mappings/UCD_techs_emissions_revised","L154.IEA_histfut_data_times_UCD_shares",
                        "emissions/CEDS/gains_iso_sector_emissions","emissions/CEDS/gains_iso_fuel_emissions") ->
         L112.ghg_tg_R_en_S_F_Yh
@@ -1488,7 +1488,7 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
                        "common/iso_GCAM_regID","energy/mappings/UCD_techs","energy/calibrated_techs","energy/calibrated_techs_bld_det",
                        "emissions/mappings/Trn_subsector","emissions/CEDS/CEDS_sector_tech_combustion","emissions/mappings/calibrated_outresources","emissions/mappings/Trn_subsector_revised",
                        "L101.in_EJ_R_en_Si_F_Yh", "L1326.in_EJ_R_indenergy_F_Yh", "L1323.in_EJ_R_iron_steel_F_Y", "L1324.in_EJ_R_Off_road_F_Y", "L1325.in_EJ_R_chemical_F_Y",
-                       "L1326.in_EJ_R_aluminum_Yh", "L101.in_EJ_R_en_Si_F_Yh", "emissions/EPA/EPA_2019_raw", "emissions/EPA_CH4N2O_map",
+                       "L1326.in_EJ_R_aluminum_Yh", "L101.in_EJ_R_en_Si_F_Yh", "emissions/EPA/EPA_2019_raw", "emissions/EPA_CH4N2O_map", "emissions/EPA_country_map",
                        "L111.Prod_EJ_R_F_Yh","emissions/CEDS/CEDS_sector_tech_combustion_revised","emissions/mappings/UCD_techs_emissions_revised") ->
 
         L112.ghg_tgej_R_en_S_F_Yh
@@ -1626,7 +1626,7 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
         add_legacy_name("L131.nonco2_tg_R_prc_S_S_Yh") %>%
         add_precursors("emissions/CEDS/ceds_sector_map","emissions/CEDS/ceds_fuel_map", "common/GCAM_region_names",
                        "common/iso_GCAM_regID","emissions/CEDS/CEDS_sector_tech_combustion","emissions/CEDS/CEDS_sector_tech_combustion_revised",
-                       "emissions/EPA_FCCC_IndProc_2005", "emissions/EPA/EPA_2019_raw", "emissions/EPA_CH4N2O_map",
+                       "emissions/EPA_FCCC_IndProc_2005", "emissions/EPA/EPA_2019_raw", "emissions/EPA_CH4N2O_map", "emissions/EPA_country_map",
                        "emissions/GCAM_EPA_CH4N2O_energy_map"
         ) ->
         L131.nonco2_tg_R_prc_S_S_Yh
