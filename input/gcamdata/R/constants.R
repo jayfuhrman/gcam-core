@@ -147,6 +147,8 @@ CONV_KBTU_EJ <- 1.0551e-12 # KiloBTU to EJ
 CONV_TBTU_EJ <- 0.0010551 # TeraBTU to EJ
 CONV_MJ_BTU <- 947.777
 CONV_BTU_KJ <- 1.0551
+CONV_MMBTU_KGH2 <- 0.113939965425114 # MMBTU/kg H2 - LHV Source: H2 CCTP Workbook.xls (Used for older GCAM assumptions)
+CONV_GJ_KGH2 <- 0.12021 #GJ/kg H2 - LHV
 
 # Distance
 CONV_MILE_KM <- 1.60934 # Mile to km
@@ -460,6 +462,11 @@ energy.DIGITS_SATIATION_ADDER  <- 9
 energy.DIGITS_SHRWT            <- 4
 energy.DIGITS_SPEED            <- 1
 energy.DIGITS_TECHCHANGE       <- 4
+
+#jf 2021-10-21
+#defines fraction of liquid fuel consumption used for off-road vehicles in agriculture, mining, and construction energy use.
+#the remainder is allocated to stationary equipment (e.g., generators)
+energy.LIQUID_FUEL_MOBILE_FRAC <- 0.8
 
 # Policy assumptions for module_energy_L270.limits
 energy.NEG_EMISS_POLICY_NAME    <- "negative_emiss_budget"

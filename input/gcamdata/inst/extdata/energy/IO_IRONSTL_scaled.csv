@@ -26,7 +26,7 @@ Africa_Eastern,2,iron and steel,EAF with DRI,EAF with DRI CCS,2010,delivered coa
 Africa_Eastern,2,iron and steel,EAF with DRI,EAF with DRI CCS,2010,refined liquids industrial,0
 Africa_Eastern,2,iron and steel,EAF with DRI,EAF with DRI CCS,2010,elect_td_ind,0.00347849
 Africa_Eastern,2,iron and steel,EAF with DRI,EAF with DRI CCS,2010,wholesale gas,0
-Africa_Eastern,2,iron and steel,EAF with DRI,Hydrogen-based DRI,2010,H2 enduse,0
+Africa_Eastern,2,iron and steel,EAF with DRI,Hydrogen-based DRI,2010,H2 industrial,0
 Africa_Eastern,2,iron and steel,EAF with DRI,Hydrogen-based DRI,2010,elect_td_ind,0.00347849
 Africa_Eastern,2,iron and steel,EAF with scrap,EAF with scrap,2010,refined liquids industrial,0
 Africa_Eastern,2,iron and steel,EAF with scrap,EAF with scrap,2010,elect_td_ind,0.002550893
@@ -54,7 +54,7 @@ Africa_Northern,3,iron and steel,EAF with DRI,EAF with DRI CCS,2010,delivered co
 Africa_Northern,3,iron and steel,EAF with DRI,EAF with DRI CCS,2010,refined liquids industrial,0
 Africa_Northern,3,iron and steel,EAF with DRI,EAF with DRI CCS,2010,elect_td_ind,0.001004389
 Africa_Northern,3,iron and steel,EAF with DRI,EAF with DRI CCS,2010,wholesale gas,0.002374832
-Africa_Northern,3,iron and steel,EAF with DRI,Hydrogen-based DRI,2010,H2 enduse,0
+Africa_Northern,3,iron and steel,EAF with DRI,Hydrogen-based DRI,2010,H2 industrial,0
 Africa_Northern,3,iron and steel,EAF with DRI,Hydrogen-based DRI,2010,elect_td_ind,0.001004389
 Africa_Northern,3,iron and steel,EAF with scrap,EAF with scrap,2010,refined liquids industrial,0
 Africa_Northern,3,iron and steel,EAF with scrap,EAF with scrap,2010,elect_td_ind,0.000736552
@@ -82,7 +82,7 @@ Africa_Western,5,iron and steel,EAF with DRI,EAF with DRI CCS,2010,delivered coa
 Africa_Western,5,iron and steel,EAF with DRI,EAF with DRI CCS,2010,refined liquids industrial,0
 Africa_Western,5,iron and steel,EAF with DRI,EAF with DRI CCS,2010,elect_td_ind,0.00347849
 Africa_Western,5,iron and steel,EAF with DRI,EAF with DRI CCS,2010,wholesale gas,0.027368451
-Africa_Western,5,iron and steel,EAF with DRI,Hydrogen-based DRI,2010,H2 enduse,0
+Africa_Western,5,iron and steel,EAF with DRI,Hydrogen-based DRI,2010,H2 industrial,0
 Africa_Western,5,iron and steel,EAF with DRI,Hydrogen-based DRI,2010,elect_td_ind,0.00347849
 Africa_Western,5,iron and steel,EAF with scrap,EAF with scrap,2010,refined liquids industrial,0
 Africa_Western,5,iron and steel,EAF with scrap,EAF with scrap,2010,elect_td_ind,0.002550893
@@ -110,7 +110,7 @@ Argentina,31,iron and steel,EAF with DRI,EAF with DRI CCS,2010,delivered coal,1.
 Argentina,31,iron and steel,EAF with DRI,EAF with DRI CCS,2010,refined liquids industrial,0.002987488
 Argentina,31,iron and steel,EAF with DRI,EAF with DRI CCS,2010,elect_td_ind,0
 Argentina,31,iron and steel,EAF with DRI,EAF with DRI CCS,2010,wholesale gas,0.01935488
-Argentina,31,iron and steel,EAF with DRI,Hydrogen-based DRI,2010,H2 enduse,0
+Argentina,31,iron and steel,EAF with DRI,Hydrogen-based DRI,2010,H2 industrial,0
 Argentina,31,iron and steel,EAF with DRI,Hydrogen-based DRI,2010,elect_td_ind,0
 Argentina,31,iron and steel,EAF with scrap,EAF with scrap,2010,refined liquids industrial,0.001991659
 Argentina,31,iron and steel,EAF with scrap,EAF with scrap,2010,elect_td_ind,0
@@ -138,7 +138,7 @@ Australia_NZ,6,iron and steel,EAF with DRI,EAF with DRI CCS,2010,delivered coal,
 Australia_NZ,6,iron and steel,EAF with DRI,EAF with DRI CCS,2010,refined liquids industrial,5.78E-05
 Australia_NZ,6,iron and steel,EAF with DRI,EAF with DRI CCS,2010,elect_td_ind,0.005227442
 Australia_NZ,6,iron and steel,EAF with DRI,EAF with DRI CCS,2010,wholesale gas,0.00828249
-Australia_NZ,6,iron and steel,EAF with DRI,Hydrogen-based DRI,2010,H2 enduse,0
+Australia_NZ,6,iron and steel,EAF with DRI,Hydrogen-based DRI,2010,H2 industrial,0
 Australia_NZ,6,iron and steel,EAF with DRI,Hydrogen-based DRI,2010,elect_td_ind,0.005227442
 Australia_NZ,6,iron and steel,EAF with scrap,EAF with scrap,2010,refined liquids industrial,3.85E-05
 Australia_NZ,6,iron and steel,EAF with scrap,EAF with scrap,2010,elect_td_ind,0.003833457
@@ -166,7 +166,7 @@ Brazil,7,iron and steel,EAF with DRI,EAF with DRI CCS,2010,delivered coal,0.0008
 Brazil,7,iron and steel,EAF with DRI,EAF with DRI CCS,2010,refined liquids industrial,0.000699011
 Brazil,7,iron and steel,EAF with DRI,EAF with DRI CCS,2010,elect_td_ind,0.00631292
 Brazil,7,iron and steel,EAF with DRI,EAF with DRI CCS,2010,wholesale gas,0.00336927
-Brazil,7,iron and steel,EAF with DRI,Hydrogen-based DRI,2010,H2 enduse,0
+Brazil,7,iron and steel,EAF with DRI,Hydrogen-based DRI,2010,H2 industrial,0
 Brazil,7,iron and steel,EAF with DRI,Hydrogen-based DRI,2010,elect_td_ind,0.00631292
 Brazil,7,iron and steel,EAF with scrap,EAF with scrap,2010,refined liquids industrial,0.000466008
 Brazil,7,iron and steel,EAF with scrap,EAF with scrap,2010,elect_td_ind,0.004629474
@@ -194,7 +194,7 @@ Canada,8,iron and steel,EAF with DRI,EAF with DRI CCS,2010,delivered coal,0.0008
 Canada,8,iron and steel,EAF with DRI,EAF with DRI CCS,2010,refined liquids industrial,0
 Canada,8,iron and steel,EAF with DRI,EAF with DRI CCS,2010,elect_td_ind,0.004652544
 Canada,8,iron and steel,EAF with DRI,EAF with DRI CCS,2010,wholesale gas,0.023627789
-Canada,8,iron and steel,EAF with DRI,Hydrogen-based DRI,2010,H2 enduse,0
+Canada,8,iron and steel,EAF with DRI,Hydrogen-based DRI,2010,H2 industrial,0
 Canada,8,iron and steel,EAF with DRI,Hydrogen-based DRI,2010,elect_td_ind,0.004652544
 Canada,8,iron and steel,EAF with scrap,EAF with scrap,2010,refined liquids industrial,0
 Canada,8,iron and steel,EAF with scrap,EAF with scrap,2010,elect_td_ind,0.003411866
@@ -222,7 +222,7 @@ Central America and Caribbean,9,iron and steel,EAF with DRI,EAF with DRI CCS,201
 Central America and Caribbean,9,iron and steel,EAF with DRI,EAF with DRI CCS,2010,refined liquids industrial,0
 Central America and Caribbean,9,iron and steel,EAF with DRI,EAF with DRI CCS,2010,elect_td_ind,0
 Central America and Caribbean,9,iron and steel,EAF with DRI,EAF with DRI CCS,2010,wholesale gas,0.041717268
-Central America and Caribbean,9,iron and steel,EAF with DRI,Hydrogen-based DRI,2010,H2 enduse,0
+Central America and Caribbean,9,iron and steel,EAF with DRI,Hydrogen-based DRI,2010,H2 industrial,0
 Central America and Caribbean,9,iron and steel,EAF with DRI,Hydrogen-based DRI,2010,elect_td_ind,0
 Central America and Caribbean,9,iron and steel,EAF with scrap,EAF with scrap,2010,refined liquids industrial,0
 Central America and Caribbean,9,iron and steel,EAF with scrap,EAF with scrap,2010,elect_td_ind,0
@@ -250,7 +250,7 @@ Central Asia,10,iron and steel,EAF with DRI,EAF with DRI CCS,2010,delivered coal
 Central Asia,10,iron and steel,EAF with DRI,EAF with DRI CCS,2010,refined liquids industrial,0.003461371
 Central Asia,10,iron and steel,EAF with DRI,EAF with DRI CCS,2010,elect_td_ind,0.036440501
 Central Asia,10,iron and steel,EAF with DRI,EAF with DRI CCS,2010,wholesale gas,0.007595098
-Central Asia,10,iron and steel,EAF with DRI,Hydrogen-based DRI,2010,H2 enduse,0
+Central Asia,10,iron and steel,EAF with DRI,Hydrogen-based DRI,2010,H2 industrial,0
 Central Asia,10,iron and steel,EAF with DRI,Hydrogen-based DRI,2010,elect_td_ind,0.036440501
 Central Asia,10,iron and steel,EAF with scrap,EAF with scrap,2010,refined liquids industrial,0.00230758
 Central Asia,10,iron and steel,EAF with scrap,EAF with scrap,2010,elect_td_ind,0.026723034
@@ -278,7 +278,7 @@ China,11,iron and steel,EAF with DRI,EAF with DRI CCS,2010,delivered coal,0.0012
 China,11,iron and steel,EAF with DRI,EAF with DRI CCS,2010,refined liquids industrial,5.24E-05
 China,11,iron and steel,EAF with DRI,EAF with DRI CCS,2010,elect_td_ind,0.007020795
 China,11,iron and steel,EAF with DRI,EAF with DRI CCS,2010,wholesale gas,6.84E-04
-China,11,iron and steel,EAF with DRI,Hydrogen-based DRI,2010,H2 enduse,0
+China,11,iron and steel,EAF with DRI,Hydrogen-based DRI,2010,H2 industrial,0
 China,11,iron and steel,EAF with DRI,Hydrogen-based DRI,2010,elect_td_ind,0.007020795
 China,11,iron and steel,EAF with scrap,EAF with scrap,2010,refined liquids industrial,3.49E-05
 China,11,iron and steel,EAF with scrap,EAF with scrap,2010,elect_td_ind,0.005148583
@@ -306,7 +306,7 @@ Colombia,32,iron and steel,EAF with DRI,EAF with DRI CCS,2010,delivered coal,0.0
 Colombia,32,iron and steel,EAF with DRI,EAF with DRI CCS,2010,refined liquids industrial,0.00127765
 Colombia,32,iron and steel,EAF with DRI,EAF with DRI CCS,2010,elect_td_ind,0.010371651
 Colombia,32,iron and steel,EAF with DRI,EAF with DRI CCS,2010,wholesale gas,0.003119702
-Colombia,32,iron and steel,EAF with DRI,Hydrogen-based DRI,2010,H2 enduse,0
+Colombia,32,iron and steel,EAF with DRI,Hydrogen-based DRI,2010,H2 industrial,0
 Colombia,32,iron and steel,EAF with DRI,Hydrogen-based DRI,2010,elect_td_ind,0.010371651
 Colombia,32,iron and steel,EAF with scrap,EAF with scrap,2010,refined liquids industrial,0.000851766
 Colombia,32,iron and steel,EAF with scrap,EAF with scrap,2010,elect_td_ind,0.007605877
@@ -334,7 +334,7 @@ EU-12,12,iron and steel,EAF with DRI,EAF with DRI CCS,2010,delivered coal,0.0010
 EU-12,12,iron and steel,EAF with DRI,EAF with DRI CCS,2010,refined liquids industrial,5.06E-05
 EU-12,12,iron and steel,EAF with DRI,EAF with DRI CCS,2010,elect_td_ind,0.006177753
 EU-12,12,iron and steel,EAF with DRI,EAF with DRI CCS,2010,wholesale gas,0.010365427
-EU-12,12,iron and steel,EAF with DRI,Hydrogen-based DRI,2010,H2 enduse,0
+EU-12,12,iron and steel,EAF with DRI,Hydrogen-based DRI,2010,H2 industrial,0
 EU-12,12,iron and steel,EAF with DRI,Hydrogen-based DRI,2010,elect_td_ind,0.006177753
 EU-12,12,iron and steel,EAF with scrap,EAF with scrap,2010,refined liquids industrial,3.37E-05
 EU-12,12,iron and steel,EAF with scrap,EAF with scrap,2010,elect_td_ind,0.004530352
@@ -362,7 +362,7 @@ EU-15,13,iron and steel,EAF with DRI,EAF with DRI CCS,2010,delivered coal,0.0007
 EU-15,13,iron and steel,EAF with DRI,EAF with DRI CCS,2010,refined liquids industrial,0.000442915
 EU-15,13,iron and steel,EAF with DRI,EAF with DRI CCS,2010,elect_td_ind,0.00442423
 EU-15,13,iron and steel,EAF with DRI,EAF with DRI CCS,2010,wholesale gas,0.006719096
-EU-15,13,iron and steel,EAF with DRI,Hydrogen-based DRI,2010,H2 enduse,0
+EU-15,13,iron and steel,EAF with DRI,Hydrogen-based DRI,2010,H2 industrial,0
 EU-15,13,iron and steel,EAF with DRI,Hydrogen-based DRI,2010,elect_td_ind,0.00442423
 EU-15,13,iron and steel,EAF with scrap,EAF with scrap,2010,refined liquids industrial,0.000295276
 EU-15,13,iron and steel,EAF with scrap,EAF with scrap,2010,elect_td_ind,0.003244435
@@ -390,7 +390,7 @@ Europe_Eastern,14,iron and steel,EAF with DRI,EAF with DRI CCS,2010,delivered co
 Europe_Eastern,14,iron and steel,EAF with DRI,EAF with DRI CCS,2010,refined liquids industrial,0.000137466
 Europe_Eastern,14,iron and steel,EAF with DRI,EAF with DRI CCS,2010,elect_td_ind,0.007149875
 Europe_Eastern,14,iron and steel,EAF with DRI,EAF with DRI CCS,2010,wholesale gas,0.020380426
-Europe_Eastern,14,iron and steel,EAF with DRI,Hydrogen-based DRI,2010,H2 enduse,0
+Europe_Eastern,14,iron and steel,EAF with DRI,Hydrogen-based DRI,2010,H2 industrial,0
 Europe_Eastern,14,iron and steel,EAF with DRI,Hydrogen-based DRI,2010,elect_td_ind,0.007149875
 Europe_Eastern,14,iron and steel,EAF with scrap,EAF with scrap,2010,refined liquids industrial,9.16E-05
 Europe_Eastern,14,iron and steel,EAF with scrap,EAF with scrap,2010,elect_td_ind,0.005243242
@@ -418,7 +418,7 @@ Europe_Non_EU,15,iron and steel,EAF with DRI,EAF with DRI CCS,2010,delivered coa
 Europe_Non_EU,15,iron and steel,EAF with DRI,EAF with DRI CCS,2010,refined liquids industrial,1.85E-04
 Europe_Non_EU,15,iron and steel,EAF with DRI,EAF with DRI CCS,2010,elect_td_ind,0.002988107
 Europe_Non_EU,15,iron and steel,EAF with DRI,EAF with DRI CCS,2010,wholesale gas,0.001884276
-Europe_Non_EU,15,iron and steel,EAF with DRI,Hydrogen-based DRI,2010,H2 enduse,0
+Europe_Non_EU,15,iron and steel,EAF with DRI,Hydrogen-based DRI,2010,H2 industrial,0
 Europe_Non_EU,15,iron and steel,EAF with DRI,Hydrogen-based DRI,2010,elect_td_ind,0.002988107
 Europe_Non_EU,15,iron and steel,EAF with scrap,EAF with scrap,2010,refined liquids industrial,1.24E-04
 Europe_Non_EU,15,iron and steel,EAF with scrap,EAF with scrap,2010,elect_td_ind,0.002191278
@@ -446,7 +446,7 @@ European Free Trade Association,16,iron and steel,EAF with DRI,EAF with DRI CCS,
 European Free Trade Association,16,iron and steel,EAF with DRI,EAF with DRI CCS,2010,refined liquids industrial,0.000564856
 European Free Trade Association,16,iron and steel,EAF with DRI,EAF with DRI CCS,2010,elect_td_ind,0.01613814
 European Free Trade Association,16,iron and steel,EAF with DRI,EAF with DRI CCS,2010,wholesale gas,0.003785608
-European Free Trade Association,16,iron and steel,EAF with DRI,Hydrogen-based DRI,2010,H2 enduse,0
+European Free Trade Association,16,iron and steel,EAF with DRI,Hydrogen-based DRI,2010,H2 industrial,0
 European Free Trade Association,16,iron and steel,EAF with DRI,Hydrogen-based DRI,2010,elect_td_ind,0.01613814
 European Free Trade Association,16,iron and steel,EAF with scrap,EAF with scrap,2010,refined liquids industrial,3.77E-04
 European Free Trade Association,16,iron and steel,EAF with scrap,EAF with scrap,2010,elect_td_ind,0.011834636
@@ -474,7 +474,7 @@ India,17,iron and steel,EAF with DRI,EAF with DRI CCS,2010,delivered coal,0.0035
 India,17,iron and steel,EAF with DRI,EAF with DRI CCS,2010,refined liquids industrial,0.000405209
 India,17,iron and steel,EAF with DRI,EAF with DRI CCS,2010,elect_td_ind,0.004046031
 India,17,iron and steel,EAF with DRI,EAF with DRI CCS,2010,wholesale gas,1.87E-05
-India,17,iron and steel,EAF with DRI,Hydrogen-based DRI,2010,H2 enduse,0
+India,17,iron and steel,EAF with DRI,Hydrogen-based DRI,2010,H2 industrial,0
 India,17,iron and steel,EAF with DRI,Hydrogen-based DRI,2010,elect_td_ind,0.004046031
 India,17,iron and steel,EAF with scrap,EAF with scrap,2010,refined liquids industrial,0.00027014
 India,17,iron and steel,EAF with scrap,EAF with scrap,2010,elect_td_ind,0.00296709
@@ -502,7 +502,7 @@ Indonesia,18,iron and steel,EAF with DRI,EAF with DRI CCS,2010,delivered coal,0.
 Indonesia,18,iron and steel,EAF with DRI,EAF with DRI CCS,2010,refined liquids industrial,0.008881896
 Indonesia,18,iron and steel,EAF with DRI,EAF with DRI CCS,2010,elect_td_ind,0
 Indonesia,18,iron and steel,EAF with DRI,EAF with DRI CCS,2010,wholesale gas,0.007419939
-Indonesia,18,iron and steel,EAF with DRI,Hydrogen-based DRI,2010,H2 enduse,0
+Indonesia,18,iron and steel,EAF with DRI,Hydrogen-based DRI,2010,H2 industrial,0
 Indonesia,18,iron and steel,EAF with DRI,Hydrogen-based DRI,2010,elect_td_ind,0
 Indonesia,18,iron and steel,EAF with scrap,EAF with scrap,2010,refined liquids industrial,0.005921264
 Indonesia,18,iron and steel,EAF with scrap,EAF with scrap,2010,elect_td_ind,0
@@ -530,7 +530,7 @@ Japan,19,iron and steel,EAF with DRI,EAF with DRI CCS,2010,delivered coal,0.0009
 Japan,19,iron and steel,EAF with DRI,EAF with DRI CCS,2010,refined liquids industrial,0.0004414
 Japan,19,iron and steel,EAF with DRI,EAF with DRI CCS,2010,elect_td_ind,0.00493731
 Japan,19,iron and steel,EAF with DRI,EAF with DRI CCS,2010,wholesale gas,0.002819374
-Japan,19,iron and steel,EAF with DRI,Hydrogen-based DRI,2010,H2 enduse,0
+Japan,19,iron and steel,EAF with DRI,Hydrogen-based DRI,2010,H2 industrial,0
 Japan,19,iron and steel,EAF with DRI,Hydrogen-based DRI,2010,elect_td_ind,0.00493731
 Japan,19,iron and steel,EAF with scrap,EAF with scrap,2010,refined liquids industrial,0.000294267
 Japan,19,iron and steel,EAF with scrap,EAF with scrap,2010,elect_td_ind,0.003620694
@@ -558,7 +558,7 @@ Mexico,20,iron and steel,EAF with DRI,EAF with DRI CCS,2010,delivered coal,0.000
 Mexico,20,iron and steel,EAF with DRI,EAF with DRI CCS,2010,refined liquids industrial,0.000388644
 Mexico,20,iron and steel,EAF with DRI,EAF with DRI CCS,2010,elect_td_ind,0.00172646
 Mexico,20,iron and steel,EAF with DRI,EAF with DRI CCS,2010,wholesale gas,0.010751482
-Mexico,20,iron and steel,EAF with DRI,Hydrogen-based DRI,2010,H2 enduse,0
+Mexico,20,iron and steel,EAF with DRI,Hydrogen-based DRI,2010,H2 industrial,0
 Mexico,20,iron and steel,EAF with DRI,Hydrogen-based DRI,2010,elect_td_ind,0.00172646
 Mexico,20,iron and steel,EAF with scrap,EAF with scrap,2010,refined liquids industrial,0.000259096
 Mexico,20,iron and steel,EAF with scrap,EAF with scrap,2010,elect_td_ind,0.001266071
@@ -586,7 +586,7 @@ Middle East,21,iron and steel,EAF with DRI,EAF with DRI CCS,2010,delivered coal,
 Middle East,21,iron and steel,EAF with DRI,EAF with DRI CCS,2010,refined liquids industrial,0
 Middle East,21,iron and steel,EAF with DRI,EAF with DRI CCS,2010,elect_td_ind,0.001329633
 Middle East,21,iron and steel,EAF with DRI,EAF with DRI CCS,2010,wholesale gas,0.001811814
-Middle East,21,iron and steel,EAF with DRI,Hydrogen-based DRI,2010,H2 enduse,0
+Middle East,21,iron and steel,EAF with DRI,Hydrogen-based DRI,2010,H2 industrial,0
 Middle East,21,iron and steel,EAF with DRI,Hydrogen-based DRI,2010,elect_td_ind,0.001329633
 Middle East,21,iron and steel,EAF with scrap,EAF with scrap,2010,refined liquids industrial,0
 Middle East,21,iron and steel,EAF with scrap,EAF with scrap,2010,elect_td_ind,0.000975064
@@ -614,7 +614,7 @@ Pakistan,22,iron and steel,EAF with DRI,EAF with DRI CCS,2010,delivered coal,0.0
 Pakistan,22,iron and steel,EAF with DRI,EAF with DRI CCS,2010,refined liquids industrial,0
 Pakistan,22,iron and steel,EAF with DRI,EAF with DRI CCS,2010,elect_td_ind,0
 Pakistan,22,iron and steel,EAF with DRI,EAF with DRI CCS,2010,wholesale gas,0.013340627
-Pakistan,22,iron and steel,EAF with DRI,Hydrogen-based DRI,2010,H2 enduse,0
+Pakistan,22,iron and steel,EAF with DRI,Hydrogen-based DRI,2010,H2 industrial,0
 Pakistan,22,iron and steel,EAF with DRI,Hydrogen-based DRI,2010,elect_td_ind,0
 Pakistan,22,iron and steel,EAF with scrap,EAF with scrap,2010,refined liquids industrial,0
 Pakistan,22,iron and steel,EAF with scrap,EAF with scrap,2010,elect_td_ind,0
@@ -642,7 +642,7 @@ Russia,23,iron and steel,EAF with DRI,EAF with DRI CCS,2010,delivered coal,0.001
 Russia,23,iron and steel,EAF with DRI,EAF with DRI CCS,2010,refined liquids industrial,0.000158692
 Russia,23,iron and steel,EAF with DRI,EAF with DRI CCS,2010,elect_td_ind,0.006177215
 Russia,23,iron and steel,EAF with DRI,EAF with DRI CCS,2010,wholesale gas,0.025981327
-Russia,23,iron and steel,EAF with DRI,Hydrogen-based DRI,2010,H2 enduse,0
+Russia,23,iron and steel,EAF with DRI,Hydrogen-based DRI,2010,H2 industrial,0
 Russia,23,iron and steel,EAF with DRI,Hydrogen-based DRI,2010,elect_td_ind,0.006177215
 Russia,23,iron and steel,EAF with scrap,EAF with scrap,2010,refined liquids industrial,1.06E-04
 Russia,23,iron and steel,EAF with scrap,EAF with scrap,2010,elect_td_ind,0.004529958
@@ -670,7 +670,7 @@ South Africa,24,iron and steel,EAF with DRI,EAF with DRI CCS,2010,delivered coal
 South Africa,24,iron and steel,EAF with DRI,EAF with DRI CCS,2010,refined liquids industrial,0
 South Africa,24,iron and steel,EAF with DRI,EAF with DRI CCS,2010,elect_td_ind,0.003175315
 South Africa,24,iron and steel,EAF with DRI,EAF with DRI CCS,2010,wholesale gas,0.00816404
-South Africa,24,iron and steel,EAF with DRI,Hydrogen-based DRI,2010,H2 enduse,0
+South Africa,24,iron and steel,EAF with DRI,Hydrogen-based DRI,2010,H2 industrial,0
 South Africa,24,iron and steel,EAF with DRI,Hydrogen-based DRI,2010,elect_td_ind,0.003175315
 South Africa,24,iron and steel,EAF with scrap,EAF with scrap,2010,refined liquids industrial,0
 South Africa,24,iron and steel,EAF with scrap,EAF with scrap,2010,elect_td_ind,0.002328564
@@ -698,7 +698,7 @@ South America_Northern,25,iron and steel,EAF with DRI,EAF with DRI CCS,2010,deli
 South America_Northern,25,iron and steel,EAF with DRI,EAF with DRI CCS,2010,refined liquids industrial,0
 South America_Northern,25,iron and steel,EAF with DRI,EAF with DRI CCS,2010,elect_td_ind,0
 South America_Northern,25,iron and steel,EAF with DRI,EAF with DRI CCS,2010,wholesale gas,0
-South America_Northern,25,iron and steel,EAF with DRI,Hydrogen-based DRI,2010,H2 enduse,0
+South America_Northern,25,iron and steel,EAF with DRI,Hydrogen-based DRI,2010,H2 industrial,0
 South America_Northern,25,iron and steel,EAF with DRI,Hydrogen-based DRI,2010,elect_td_ind,0
 South America_Northern,25,iron and steel,EAF with scrap,EAF with scrap,2010,refined liquids industrial,0
 South America_Northern,25,iron and steel,EAF with scrap,EAF with scrap,2010,elect_td_ind,0
@@ -726,7 +726,7 @@ South America_Southern,26,iron and steel,EAF with DRI,EAF with DRI CCS,2010,deli
 South America_Southern,26,iron and steel,EAF with DRI,EAF with DRI CCS,2010,refined liquids industrial,0.005779613
 South America_Southern,26,iron and steel,EAF with DRI,EAF with DRI CCS,2010,elect_td_ind,0.017100345
 South America_Southern,26,iron and steel,EAF with DRI,EAF with DRI CCS,2010,wholesale gas,0.002643689
-South America_Southern,26,iron and steel,EAF with DRI,Hydrogen-based DRI,2010,H2 enduse,0
+South America_Southern,26,iron and steel,EAF with DRI,Hydrogen-based DRI,2010,H2 industrial,0
 South America_Southern,26,iron and steel,EAF with DRI,Hydrogen-based DRI,2010,elect_td_ind,0.017100345
 South America_Southern,26,iron and steel,EAF with scrap,EAF with scrap,2010,refined liquids industrial,0.003853076
 South America_Southern,26,iron and steel,EAF with scrap,EAF with scrap,2010,elect_td_ind,0.012540253
@@ -754,7 +754,7 @@ South Asia,27,iron and steel,EAF with DRI,EAF with DRI CCS,2010,delivered coal,0
 South Asia,27,iron and steel,EAF with DRI,EAF with DRI CCS,2010,refined liquids industrial,0
 South Asia,27,iron and steel,EAF with DRI,EAF with DRI CCS,2010,elect_td_ind,0
 South Asia,27,iron and steel,EAF with DRI,EAF with DRI CCS,2010,wholesale gas,0
-South Asia,27,iron and steel,EAF with DRI,Hydrogen-based DRI,2010,H2 enduse,0
+South Asia,27,iron and steel,EAF with DRI,Hydrogen-based DRI,2010,H2 industrial,0
 South Asia,27,iron and steel,EAF with DRI,Hydrogen-based DRI,2010,elect_td_ind,0
 South Asia,27,iron and steel,EAF with scrap,EAF with scrap,2010,refined liquids industrial,0
 South Asia,27,iron and steel,EAF with scrap,EAF with scrap,2010,elect_td_ind,0
@@ -782,7 +782,7 @@ South Korea,28,iron and steel,EAF with DRI,EAF with DRI CCS,2010,delivered coal,
 South Korea,28,iron and steel,EAF with DRI,EAF with DRI CCS,2010,refined liquids industrial,1.18E-04
 South Korea,28,iron and steel,EAF with DRI,EAF with DRI CCS,2010,elect_td_ind,0.005435642
 South Korea,28,iron and steel,EAF with DRI,EAF with DRI CCS,2010,wholesale gas,0.003584593
-South Korea,28,iron and steel,EAF with DRI,Hydrogen-based DRI,2010,H2 enduse,0
+South Korea,28,iron and steel,EAF with DRI,Hydrogen-based DRI,2010,H2 industrial,0
 South Korea,28,iron and steel,EAF with DRI,Hydrogen-based DRI,2010,elect_td_ind,0.005435642
 South Korea,28,iron and steel,EAF with scrap,EAF with scrap,2010,refined liquids industrial,7.84E-05
 South Korea,28,iron and steel,EAF with scrap,EAF with scrap,2010,elect_td_ind,0.003986137
@@ -810,7 +810,7 @@ Southeast Asia,29,iron and steel,EAF with DRI,EAF with DRI CCS,2010,delivered co
 Southeast Asia,29,iron and steel,EAF with DRI,EAF with DRI CCS,2010,refined liquids industrial,0.00142491
 Southeast Asia,29,iron and steel,EAF with DRI,EAF with DRI CCS,2010,elect_td_ind,0.00347559
 Southeast Asia,29,iron and steel,EAF with DRI,EAF with DRI CCS,2010,wholesale gas,0.000849326
-Southeast Asia,29,iron and steel,EAF with DRI,Hydrogen-based DRI,2010,H2 enduse,0
+Southeast Asia,29,iron and steel,EAF with DRI,Hydrogen-based DRI,2010,H2 industrial,0
 Southeast Asia,29,iron and steel,EAF with DRI,Hydrogen-based DRI,2010,elect_td_ind,0.00347559
 Southeast Asia,29,iron and steel,EAF with scrap,EAF with scrap,2010,refined liquids industrial,0.00094994
 Southeast Asia,29,iron and steel,EAF with scrap,EAF with scrap,2010,elect_td_ind,0.002548766
@@ -838,7 +838,7 @@ Taiwan,30,iron and steel,EAF with DRI,EAF with DRI CCS,2010,delivered coal,0.000
 Taiwan,30,iron and steel,EAF with DRI,EAF with DRI CCS,2010,refined liquids industrial,0.000516264
 Taiwan,30,iron and steel,EAF with DRI,EAF with DRI CCS,2010,elect_td_ind,0.004413288
 Taiwan,30,iron and steel,EAF with DRI,EAF with DRI CCS,2010,wholesale gas,0.000960978
-Taiwan,30,iron and steel,EAF with DRI,Hydrogen-based DRI,2010,H2 enduse,0
+Taiwan,30,iron and steel,EAF with DRI,Hydrogen-based DRI,2010,H2 industrial,0
 Taiwan,30,iron and steel,EAF with DRI,Hydrogen-based DRI,2010,elect_td_ind,0.004413288
 Taiwan,30,iron and steel,EAF with scrap,EAF with scrap,2010,refined liquids industrial,0.000344176
 Taiwan,30,iron and steel,EAF with scrap,EAF with scrap,2010,elect_td_ind,0.003236412
@@ -866,7 +866,7 @@ USA,1,iron and steel,EAF with DRI,EAF with DRI CCS,2010,delivered coal,0.0009062
 USA,1,iron and steel,EAF with DRI,EAF with DRI CCS,2010,refined liquids industrial,0.000342605
 USA,1,iron and steel,EAF with DRI,EAF with DRI CCS,2010,elect_td_ind,0.00347849
 USA,1,iron and steel,EAF with DRI,EAF with DRI CCS,2010,wholesale gas,0.020170548
-USA,1,iron and steel,EAF with DRI,Hydrogen-based DRI,2010,H2 enduse,0
+USA,1,iron and steel,EAF with DRI,Hydrogen-based DRI,2010,H2 industrial,0
 USA,1,iron and steel,EAF with DRI,Hydrogen-based DRI,2010,elect_td_ind,0.00347849
 USA,1,iron and steel,EAF with scrap,EAF with scrap,2010,refined liquids industrial,0.000228404
 USA,1,iron and steel,EAF with scrap,EAF with scrap,2010,elect_td_ind,0.002550893
@@ -894,7 +894,7 @@ Africa_Southern,4,iron and steel,EAF with DRI,EAF with DRI CCS,2010,delivered co
 Africa_Southern,4,iron and steel,EAF with DRI,EAF with DRI CCS,2010,refined liquids industrial,0
 Africa_Southern,4,iron and steel,EAF with DRI,EAF with DRI CCS,2010,elect_td_ind,0.001004389
 Africa_Southern,4,iron and steel,EAF with DRI,EAF with DRI CCS,2010,wholesale gas,0.002374832
-Africa_Southern,4,iron and steel,EAF with DRI,Hydrogen-based DRI,2010,H2 enduse,0
+Africa_Southern,4,iron and steel,EAF with DRI,Hydrogen-based DRI,2010,H2 industrial,0
 Africa_Southern,4,iron and steel,EAF with DRI,Hydrogen-based DRI,2010,elect_td_ind,0.001004389
 Africa_Southern,4,iron and steel,EAF with scrap,EAF with scrap,2010,refined liquids industrial,0
 Africa_Southern,4,iron and steel,EAF with scrap,EAF with scrap,2010,elect_td_ind,0.000736552
