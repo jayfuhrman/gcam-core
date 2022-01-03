@@ -23,10 +23,12 @@ module_energy_batch_hydrogen_dist_scenarios_xml <- function(command, ...) {
     # Load required inputs
     L225.SubsectorShrwtFllt_h2 <- get_data(all_data, "L225.SubsectorShrwtFllt_h2")
 
-    L225.SubsectorShrwtFllt_h2pipe <- subset(L225.SubsectorShrwtFllt_h2, supplysector == "H2 liquid truck") %>%
+    L225.SubsectorShrwtFllt_h2pipe <- subset(L225.SubsectorShrwtFllt_h2,
+                                             supplysector == "H2 liquid truck"  | subsector == "H2 liquid truck") %>%
       mutate(share.weight = 0)
 
-    L225.SubsectorShrwtFllt_h2truck <- subset(L225.SubsectorShrwtFllt_h2, supplysector == "H2 pipeline") %>%
+    L225.SubsectorShrwtFllt_h2truck <- subset(L225.SubsectorShrwtFllt_h2,
+                                              supplysector == "H2 pipeline" | subsector == "H2 pipeline") %>%
       mutate(share.weight = 0)
 
     # ===================================================
