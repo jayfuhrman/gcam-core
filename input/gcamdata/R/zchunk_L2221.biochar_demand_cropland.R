@@ -22,7 +22,7 @@
 #' \code{L2221.CarbonCoef}, \code{L2221.AgCoef_IrrBphysWater_ag_mgmt}, \code{L2221.AgCoef_BphysWater_bio_mgmt},
 #' \code{L2221.AgCoef_IrrWaterWdraw_ag_mgmt}, \code{L2221.AgCoef_IrrWaterWdraw_bio_mgmt},
 #' \code{L2221.AgCoef_IrrWaterCons_ag_mgmt}, \code{L2221.AgCoef_IrrWaterCons_bio_mgmt},
-#' \code{L2221.AgCoef_RfdBphysWater_ag_mgmt}, \code{L2221.AgNonEnergyCost_IrrWaterWdraw}.
+#' \code{L2221.AgCoef_RfdBphysWater_ag_mgmt},
 #' @details This chunk sets up the biochar demand in agreiculture. We assume an applicaiton rate of 20 tons of
 #' biochar per hectare. We follow similar approach to fertilizer to calculate IO coefficients.
 #' Applies only to future years
@@ -71,7 +71,6 @@ module_energy_L2221.biochar_demand_cropland <- function(command, ...) {
       "L2072.AgCoef_IrrWaterWdraw_ag_mgmt",
       "L2072.AgCoef_IrrWaterCons_ag_mgmt",
       "L2072.AgCoef_RfdBphysWater_ag_mgmt",
-      "L2072.AgNonEnergyCost_IrrWaterWdraw",
       "L2072.AgCoef_BphysWater_bio_mgmt",
       "L2072.AgCoef_IrrWaterWdraw_bio_mgmt",
       "L2072.AgCoef_IrrWaterCons_bio_mgmt"))
@@ -117,8 +116,7 @@ module_energy_L2221.biochar_demand_cropland <- function(command, ...) {
       "L2221.AgCoef_IrrWaterWdraw_bio_mgmt",
       "L2221.AgCoef_IrrWaterCons_ag_mgmt",
       "L2221.AgCoef_IrrWaterCons_bio_mgmt",
-      "L2221.AgCoef_RfdBphysWater_ag_mgmt",
-      "L2221.AgNonEnergyCost_IrrWaterWdraw"))
+      "L2221.AgCoef_RfdBphysWater_ag_mgmt"))
   } else if(command == driver.MAKE) {
 
     all_data <- list(...)[[1]]
@@ -182,7 +180,6 @@ module_energy_L2221.biochar_demand_cropland <- function(command, ...) {
     L2072.AgCoef_BphysWater_bio_mgmt <- get_data(all_data, "L2072.AgCoef_BphysWater_bio_mgmt")
     L2072.AgCoef_IrrWaterWdraw_bio_mgmt <- get_data(all_data, "L2072.AgCoef_IrrWaterWdraw_bio_mgmt")
     L2072.AgCoef_IrrWaterCons_bio_mgmt <- get_data(all_data, "L2072.AgCoef_IrrWaterCons_bio_mgmt")
-    L2072.AgNonEnergyCost_IrrWaterWdraw <- get_data(all_data, "L2072.AgNonEnergyCost_IrrWaterWdraw")
 
 
     # ===================================================
@@ -765,14 +762,6 @@ module_energy_L2221.biochar_demand_cropland <- function(command, ...) {
       mutate(suffix = "biochar") %>%
       unite("AgProductionTechnology", c("AgProductionTechnology", "suffix"), sep="_") -> L2221.AgCoef_RfdBphysWater_ag_mgmt # OUTPUT
 
-    ## L2221.AgNonEnergyCost_IrrWaterWdraw
-    L2072.AgNonEnergyCost_IrrWaterWdraw %>%
-      filter(region %in% test.region,
-             grepl("_hi", AgProductionTechnology)) %>%
-      # Here we create the biochar suffix to add to the technologies
-      mutate(suffix = "biochar") %>%
-      unite("AgProductionTechnology", c("AgProductionTechnology", "suffix"), sep="_") -> L2221.AgNonEnergyCost_IrrWaterWdraw # OUTPUT
-
     # ====================================================================================================================================
 
     # Produce outputs
@@ -1075,15 +1064,6 @@ module_energy_L2221.biochar_demand_cropland <- function(command, ...) {
       add_precursors("L2072.AgCoef_RfdBphysWater_ag_mgmt") ->
       L2221.AgCoef_RfdBphysWater_ag_mgmt
 
-    L2221.AgNonEnergyCost_IrrWaterWdraw %>%
-      add_title("Irrigation water subsidies by region / crop / year / GLU / management level for new biochar techs") %>%
-      add_units("1975$/kg") %>%
-      add_comments("Water subsidies are calculated to keep profit rates of irrigated technologies above a minimum level") %>%
-      add_comments("While implemented using <input-cost>, all values are negative so these reduce net costs") %>%
-      add_comments("We carry values from previous original table for new biochar technologies") %>%
-      add_legacy_name("L2221.AgNonEnergyCost_IrrWaterWdraw") %>%
-      add_precursors("L2072.AgNonEnergyCost_IrrWaterWdraw") ->
-      L2221.AgNonEnergyCost_IrrWaterWdraw
 
     return_data(#1. biochar_land_input_5_IRR_MGMT.xml
       L2221.LN5_HistMgdAllocation_crop_biochar, L2221.LN5_HistMgdAllocation_bio_biochar,
@@ -1110,7 +1090,7 @@ module_energy_L2221.biochar_demand_cropland <- function(command, ...) {
       L2221.AgCoef_IrrBphysWater_ag_mgmt, L2221.AgCoef_BphysWater_bio_mgmt,
       L2221.AgCoef_IrrWaterWdraw_ag_mgmt, L2221.AgCoef_IrrWaterWdraw_bio_mgmt,
       L2221.AgCoef_IrrWaterCons_ag_mgmt, L2221.AgCoef_IrrWaterCons_bio_mgmt,
-      L2221.AgCoef_RfdBphysWater_ag_mgmt, L2221.AgNonEnergyCost_IrrWaterWdraw)
+      L2221.AgCoef_RfdBphysWater_ag_mgmt)
   } else {
     stop("Unknown command")
   }

@@ -20,8 +20,7 @@ module_aglu_batch_ag_water_input_IRR_MGMT_biochar_xml <- function(command, ...) 
              "L2221.AgCoef_IrrWaterCons_bio_mgmt",
 
 
-             "L2221.AgCoef_RfdBphysWater_ag_mgmt",
-             "L2221.AgNonEnergyCost_IrrWaterWdraw"))
+             "L2221.AgCoef_RfdBphysWater_ag_mgmt"))
   } else if(command == driver.DECLARE_OUTPUTS) {
     return(c(XML = "biochar_ag_water_input_IRR_MGMT.xml"))
   } else if(command == driver.MAKE) {
@@ -37,7 +36,6 @@ module_aglu_batch_ag_water_input_IRR_MGMT_biochar_xml <- function(command, ...) 
     L2221.AgCoef_IrrWaterCons_bio_mgmt <- get_data(all_data, "L2221.AgCoef_IrrWaterCons_bio_mgmt")
 
     L2221.AgCoef_RfdBphysWater_ag_mgmt <- get_data(all_data, "L2221.AgCoef_RfdBphysWater_ag_mgmt")
-    L2221.AgNonEnergyCost_IrrWaterWdraw <- get_data(all_data, "L2221.AgNonEnergyCost_IrrWaterWdraw")
     # ===================================================
 
     # Produce outputs
@@ -49,15 +47,13 @@ module_aglu_batch_ag_water_input_IRR_MGMT_biochar_xml <- function(command, ...) 
       add_xml_data(L2221.AgCoef_IrrWaterCons_ag_mgmt, "AgCoef") %>%
       add_xml_data(L2221.AgCoef_IrrWaterCons_bio_mgmt, "AgCoef") %>%
       add_xml_data(L2221.AgCoef_RfdBphysWater_ag_mgmt, "AgCoef") %>%
-      add_xml_data(L2221.AgNonEnergyCost_IrrWaterWdraw, "AgNonEnergyCost") %>%
       add_precursors("L2221.AgCoef_IrrBphysWater_ag_mgmt",
                      "L2221.AgCoef_BphysWater_bio_mgmt",
                      "L2221.AgCoef_IrrWaterWdraw_ag_mgmt",
                      "L2221.AgCoef_IrrWaterWdraw_bio_mgmt",
                      "L2221.AgCoef_IrrWaterCons_ag_mgmt",
                      "L2221.AgCoef_IrrWaterCons_bio_mgmt",
-                     "L2221.AgCoef_RfdBphysWater_ag_mgmt",
-                     "L2221.AgNonEnergyCost_IrrWaterWdraw") ->
+                     "L2221.AgCoef_RfdBphysWater_ag_mgmt") ->
       biochar_ag_water_input_IRR_MGMT.xml
 
     return_data(biochar_ag_water_input_IRR_MGMT.xml)

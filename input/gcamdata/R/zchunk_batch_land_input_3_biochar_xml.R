@@ -22,7 +22,7 @@ module_aglu_batch_land_input_3_IRR_xml <- function(command, ...) {
              "L2231.LN3_UnmgdCarbon",
              "L2231.LN3_MgdCarbon_noncrop"))
   } else if(command == driver.DECLARE_OUTPUTS) {
-    return(c(XML = "land_input_3_IRR.xml"))
+    return(c(XML = "land_input_3_IRR_biochar.xml"))
   } else if(command == driver.MAKE) {
 
     all_data <- list(...)[[1]]
@@ -41,7 +41,7 @@ module_aglu_batch_land_input_3_IRR_xml <- function(command, ...) {
     # ===================================================
 
     # Produce outputs
-    create_xml("land_input_3_IRR.xml") %>%
+    create_xml("land_input_3_IRR_biochar.xml") %>%
       add_logit_tables_xml(L2231.LN3_Logit, "LN3_Logit") %>%
       add_xml_data(L2231.LN3_HistUnmgdAllocation, "LN3_HistUnmgdAllocation") %>%
       add_xml_data(L2231.LN3_UnmgdAllocation, "LN3_UnmgdAllocation") %>%
@@ -63,9 +63,9 @@ module_aglu_batch_land_input_3_IRR_xml <- function(command, ...) {
                      "L2231.LN3_MgdAllocation_noncrop",
                      "L2231.LN3_UnmgdCarbon",
                      "L2231.LN3_MgdCarbon_noncrop") ->
-      land_input_3_IRR.xml
+      land_input_3_IRR_biochar.xml
 
-    return_data(land_input_3_IRR.xml)
+    return_data(land_input_3_IRR_biochar.xml)
   } else {
     stop("Unknown command")
   }
