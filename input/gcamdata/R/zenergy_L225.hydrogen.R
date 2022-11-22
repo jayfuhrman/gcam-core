@@ -40,7 +40,9 @@ module_energy_L225.hydrogen <- function(command, ...) {
     return(c("L225.Supplysector_h2",
              "L225.SectorUseTrialMarket_h2",
              "L225.SubsectorLogit_h2",
+             "L225.SubsectorShrwt_h2",
              "L225.SubsectorShrwtFllt_h2",
+             "L225.SubsectorInterp_h2",
              "L225.StubTech_h2",
              "L225.GlobalTechCoef_h2",
              "L225.GlobalTechCost_h2",
@@ -57,7 +59,8 @@ module_energy_L225.hydrogen <- function(command, ...) {
              "L225.StubTechCost_h2_brkt",
              "L225.OutputEmissCoeff_h2",
              "L225.RenewElec_cost",
-             "L225.RenewElec_eff"))
+             "L225.RenewElec_eff",
+             "L225.SubsectorInterpTo_h2"))
   } else if(command == driver.MAKE) {
 
     # Silencing package checks
@@ -464,6 +467,21 @@ module_energy_L225.hydrogen <- function(command, ...) {
       add_precursors("common/GCAM_region_names", "energy/A25.subsector_logit") ->
       L225.SubsectorLogit_h2
 
+    if(exists("L225.SubsectorShrwt_h2")) {
+      L225.SubsectorShrwt_h2 %>%
+        add_title("Subsector shareweights of hydrogen sectors") %>%
+        add_units("Unitless") %>%
+        add_comments("Expand Subsector shareweights for all GCAM regions") %>%
+        add_legacy_name("L225.SubsectorShrwt_h2") %>%
+        add_precursors("common/GCAM_region_names", "energy/A25.subsector_shrwt") ->
+        L225.SubsectorShrwt_h2
+    } else {
+      missing_data() %>%
+        add_legacy_name("L225.SubsectorShrwt_h2") ->
+        L225.SubsectorShrwt_h2
+    }
+
+
 
     L225.SubsectorShrwtFllt_h2 %>%
       add_title("Subsector shareweights of hydrogen sectors") %>%
@@ -472,6 +490,20 @@ module_energy_L225.hydrogen <- function(command, ...) {
       add_legacy_name("L225.SubsectorShrwtFllt_h2") %>%
       add_precursors("common/GCAM_region_names", "energy/A25.subsector_shrwt") ->
       L225.SubsectorShrwtFllt_h2
+
+    if(exists("L225.SubsectorInterpTo_h2")) {
+      L225.SubsectorInterp_h2 %>%
+        add_title("Subsector shareweight interpolation of hydrogen sectors") %>%
+        add_units("unitless") %>%
+        add_comments("Expand Subsector shareweight interpolation for all GCAM regions") %>%
+        add_legacy_name("L225.SubsectorInterp_h2") %>%
+        add_precursors("common/GCAM_region_names") ->
+        L225.SubsectorInterp_h2
+    } else {
+      missing_data() %>%
+        add_legacy_name("L225.SubsectorInterp_h2") ->
+        L225.SubsectorInterp_h2
+    }
 
     L225.StubTech_h2 %>%
       add_title("Identification of stub technologies of hydrogen") %>%
@@ -607,15 +639,31 @@ module_energy_L225.hydrogen <- function(command, ...) {
       add_precursors("energy/A25.globaltech_coef") ->
       L225.RenewElec_eff
 
+    if(exists("L225.SubsectorInterpTo_h2")) {
+      L225.SubsectorInterpTo_h2 %>%
+        add_title("Subsector shareweight interpolation of hydrogen sectors") %>%
+        add_units("unitless") %>%
+        add_comments("Expand Subsector shareweight interpolation for all GCAM regions") %>%
+        add_legacy_name("L225.SubsectorInterpTo_h2") %>%
+        add_precursors("common/GCAM_region_names") ->
+        L225.SubsectorInterpTo_h2
+    } else {
+      missing_data() %>%
+        add_legacy_name("L225.SubsectorInterpTo_h2") ->
+        L225.SubsectorInterpTo_h2
+    }
+
     return_data(L225.Supplysector_h2, L225.SectorUseTrialMarket_h2, L225.SubsectorLogit_h2, L225.StubTech_h2,
                 L225.GlobalTechCoef_h2, L225.GlobalTechCost_h2, L225.GlobalTechTrackCapital_h2, L225.GlobalTechShrwt_h2,
                 L225.PrimaryRenewKeyword_h2, L225.AvgFossilEffKeyword_h2,
-                L225.GlobalTechCapture_h2, L225.SubsectorShrwtFllt_h2,
+                L225.GlobalTechCapture_h2, L225.SubsectorShrwtFllt_h2,L225.SubsectorInterp_h2,
+                L225.SubsectorShrwt_h2,
                 L225.GlobalTechInputPMult_h2,
                 L225.GlobalTechSCurve_h2, L225.GlobalTechProfitShutdown_h2, L225.StubTechCost_h2,
                 L225.StubTechCost_h2_high, L225.StubTechCost_h2_brkt,
                 L225.OutputEmissCoeff_h2,
-                L225.RenewElec_cost,L225.RenewElec_eff)
+                L225.RenewElec_cost,L225.RenewElec_eff,
+                L225.SubsectorInterpTo_h2)
   } else {
     stop("Unknown command")
   }
