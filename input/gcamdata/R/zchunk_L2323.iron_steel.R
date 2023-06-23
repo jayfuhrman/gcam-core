@@ -68,7 +68,7 @@ module_energy_L2323.iron_steel <- function(command, ...) {
 			       "L2323.PriceElasticity_iron_steel",
 			       "L2323.GlobalTechCoef_iron_steel_cwf",
 			       "L2323.StubTechCoef_iron_steel_cwf",
-			       "L2323.GlobalTechShrwt_iron_steel_cwf"))
+			       "L2323.GlobalTechShrwt_iron_steel_cwf_H2_scenarios"))
   } else if(command == driver.MAKE) {
 
     all_data <- list(...)[[1]]
@@ -394,7 +394,7 @@ module_energy_L2323.iron_steel <- function(command, ...) {
       select(LEVEL2_DATA_NAMES[["StubTechCoef"]]) ->
       L2323.StubTechCoef_iron_steel_cwf
 
-    # TECHNOLOGY SHARE WEIGHTS: L2323.GlobalTechShrwt_iron_steel_cwf
+    # TECHNOLOGY SHARE WEIGHTS: L2323.GlobalTechShrwt_iron_steel_cwf_H2_scenarios
     A323.globaltech_shrwt_cwf_H2_scenarios %>%
       gather_years %>%
       complete(nesting(supplysector, subsector, technology, scenario), year = c(year, MODEL_BASE_YEARS, MODEL_FUTURE_YEARS)) %>%
@@ -406,7 +406,7 @@ module_energy_L2323.iron_steel <- function(command, ...) {
       rename(sector.name = supplysector,
              subsector.name = subsector) %>%
       select(LEVEL2_DATA_NAMES[["GlobalTechYr"]], "share.weight", "scenario") ->
-      L2323.GlobalTechShrwt_iron_steel_cwf
+      L2323.GlobalTechShrwt_iron_steel_cwf_H2_scenarios
 
     # ===================================================
     # Produce outputs
@@ -603,13 +603,13 @@ module_energy_L2323.iron_steel <- function(command, ...) {
       add_precursors("energy/calibrated_techs", "L1323.IO_GJkg_R_iron_steel_F_Yh", "common/GCAM_region_names") ->
       L2323.StubTechCoef_iron_steel_cwf
 
-    L2323.GlobalTechShrwt_iron_steel_cwf %>%
+    L2323.GlobalTechShrwt_iron_steel_cwf_H2_scenarios %>%
       add_title("Shareweights of global iron and steel technologies") %>%
       add_units("Unitless") %>%
       add_comments("For iron and steel sector, the share weights from A323.globaltech_shrwt_cwf_H2_scenarios are interpolated into all base years and future years") %>%
       add_legacy_name("L2323.GlobalTechShrwt_iron_steel") %>%
       add_precursors("energy/A323.globaltech_shrwt_cwf_H2_scenarios") ->
-      L2323.GlobalTechShrwt_iron_steel_cwf
+      L2323.GlobalTechShrwt_iron_steel_cwf_H2_scenarios
 
       return_data(L2323.Supplysector_iron_steel, L2323.FinalEnergyKeyword_iron_steel, L2323.SubsectorLogit_iron_steel,
                   L2323.SubsectorShrwtFllt_iron_steel, L2323.SubsectorInterp_iron_steel,
@@ -620,7 +620,7 @@ module_energy_L2323.iron_steel <- function(command, ...) {
                   L2323.PerCapitaBased_iron_steel, L2323.BaseService_iron_steel,
                   L2323.PriceElasticity_iron_steel,
                   L2323.GlobalTechCoef_iron_steel_cwf, L2323.StubTechCoef_iron_steel_cwf,
-                  L2323.GlobalTechShrwt_iron_steel_cwf)
+                  L2323.GlobalTechShrwt_iron_steel_cwf_H2_scenarios)
   } else {
     stop("Unknown command")
   }

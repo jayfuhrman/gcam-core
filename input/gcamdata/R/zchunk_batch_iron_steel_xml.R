@@ -31,7 +31,7 @@ module_energy_batch_iron_steel_xml <- function(command, ...) {
              "L2323.PriceElasticity_iron_steel",
              "L2323.GlobalTechCoef_iron_steel_cwf",
              "L2323.StubTechCoef_iron_steel_cwf",
-             "L2323.GlobalTechShrwt_iron_steel_cwf"))
+             "L2323.GlobalTechShrwt_iron_steel_cwf_H2_scenarios"))
   } else if(command == driver.DECLARE_OUTPUTS) {
     return(c(XML = "iron_steel.xml",
              XML = "iron_steel_cwf.xml",
@@ -62,7 +62,7 @@ module_energy_batch_iron_steel_xml <- function(command, ...) {
     L2323.PriceElasticity_iron_steel <- get_data(all_data, "L2323.PriceElasticity_iron_steel")
     L2323.GlobalTechCoef_iron_steel_cwf <- get_data(all_data, "L2323.GlobalTechCoef_iron_steel_cwf")
     L2323.StubTechCoef_iron_steel_cwf <- get_data(all_data, "L2323.StubTechCoef_iron_steel_cwf")
-    L2323.GlobalTechShrwt_iron_steel_cwf <- get_data(all_data, "L2323.GlobalTechShrwt_iron_steel_cwf")
+    L2323.GlobalTechShrwt_iron_steel_cwf_H2_scenarios <- get_data(all_data, "L2323.GlobalTechShrwt_iron_steel_cwf_H2_scenarios")
     # ===================================================
     iron_steel_cwf_low_H2.xml <- iron_steel_cwf_med_H2.xml <- iron_steel_cwf_high_H2.xml <- NULL # silence package check notes
 
@@ -129,7 +129,7 @@ module_energy_batch_iron_steel_xml <- function(command, ...) {
 
     # create the CWF high/medium/low hydrogen XMLs
     for (i in c("cwf_low_H2", "cwf_med_H2", "cwf_high_H2")) {
-      L2323.GlobalTechShrwt_iron_steel_cwf_sel <- L2323.GlobalTechShrwt_iron_steel_cwf %>%
+      L2323.GlobalTechShrwt_iron_steel_cwf_H2_scenarios_sel <- L2323.GlobalTechShrwt_iron_steel_cwf_H2_scenarios %>%
         filter(scenario == i) %>%
         select(-scenario)
 
@@ -142,7 +142,7 @@ module_energy_batch_iron_steel_xml <- function(command, ...) {
         add_xml_data(L2323.SubsectorShrwtFllt_iron_steel, "SubsectorShrwtFllt") %>%
         add_xml_data(L2323.SubsectorInterp_iron_steel, "SubsectorInterp") %>%
         add_xml_data(L2323.StubTech_iron_steel, "StubTech") %>%
-        add_xml_data(L2323.GlobalTechShrwt_iron_steel_cwf_sel, "GlobalTechShrwt") %>% # CWF version for this scenario
+        add_xml_data(L2323.GlobalTechShrwt_iron_steel_cwf_H2_scenarios_sel, "GlobalTechShrwt") %>% # CWF version for this scenario
         add_xml_data(L2323.GlobalTechCoef_iron_steel_cwf, "GlobalTechCoef") %>% # CWF version
         add_xml_data(L2323.GlobalTechCost_iron_steel, "GlobalTechCost") %>%
         add_xml_data(L2323.GlobalTechCapture_iron_steel, "GlobalTechCapture") %>%
@@ -157,7 +157,7 @@ module_energy_batch_iron_steel_xml <- function(command, ...) {
                        "L2323.SubsectorShrwtFllt_iron_steel",
                        "L2323.SubsectorInterp_iron_steel",
                        "L2323.StubTech_iron_steel",
-                       "L2323.GlobalTechShrwt_iron_steel_cwf", "L2323.GlobalTechCoef_iron_steel_cwf", "L2323.GlobalTechCost_iron_steel",
+                       "L2323.GlobalTechShrwt_iron_steel_cwf_H2_scenarios", "L2323.GlobalTechCoef_iron_steel_cwf", "L2323.GlobalTechCost_iron_steel",
                        "L2323.GlobalTechCapture_iron_steel", "L2323.GlobalTechSCurve_en",
                        "L2323.GlobalTechProfitShutdown_en", "L2323.StubTechProd_iron_steel",
                        "L2323.StubTechCoef_iron_steel_cwf", "L2323.PerCapitaBased_iron_steel", "L2323.BaseService_iron_steel",
