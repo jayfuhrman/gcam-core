@@ -8,7 +8,7 @@
 #' @param ... other optional parameters, depending on command
 #' @return Depends on \code{command}: either a vector of required inputs,
 #' a vector of output names, or (if \code{command} is "MAKE") all
-#' the generated outputs: \code{iron_steel.xml} and \code{iron_steel_cwf.xml}. The corresponding file in the
+#' the generated outputs: \code{iron_steel.xml}, \code{iron_steel_cwf.xml}, \code{iron_steel_cwf_low_H2.xml}, \code{iron_steel_cwf_med_H2.xml}, \code{iron_steel_cwf_high_H2.xml}. The corresponding file in the
 #' original data system was \code{batch_iron_steel_xml.R} (energy XML).
 module_energy_batch_iron_steel_xml <- function(command, ...) {
   if(command == driver.DECLARE_INPUTS) {

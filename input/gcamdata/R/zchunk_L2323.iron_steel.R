@@ -13,7 +13,7 @@
 #' \code{L2323.SubsectorInterp_iron_steel}, \code{L2323.StubTech_iron_steel}, \code{L2323.GlobalTechShrwt_iron_steel}, \code{L2323.GlobalTechCoef_iron_steel},
 #' \code{L2323.GlobalTechCost_iron_steel}, \code{L2323.GlobalTechCapture_iron_steel}, \code{L2323.StubTechProd_iron_steel}, \code{L2323.StubTechCalInput_iron_steel},
 #' \code{L2323.StubTechCoef_iron_steel}, \code{L2323.PerCapitaBased_iron_steel}, \code{L2323.BaseService_iron_steel}, \code{L2323.PriceElasticity_iron_steel},
-#' \code{object}. The corresponding file in the
+#' \code{L2323.GlobalTechCoef_iron_steel_cwf}, \code{L2323.StubTechCoef_iron_steel_cwf}, \code{L2323.GlobalTechShrwt_iron_steel_cwf_H2_scenarios}, \code{object}. The corresponding file in the
 #' original data system was \code{L2323.iron_steel.R} (energy level2).
 #' @details The chunk provides final energy keyword, supplysector/subsector information, supplysector/subsector interpolation information, global technology share weight, global technology efficiency, global technology coefficients, global technology cost, price elasticity, stub technology information, stub technology interpolation information, stub technology calibrated inputs, and etc for iron and steel sector.
 #' @importFrom assertthat assert_that
