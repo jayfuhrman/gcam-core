@@ -16,7 +16,8 @@
 #' \code{L2321.IncomeElasticity_cement_gcam3}, \code{L2321.IncomeElasticity_cement_gssp1}, \code{L2321.IncomeElasticity_cement_gssp2},
 #' \code{L2321.IncomeElasticity_cement_gssp3}, \code{L2321.IncomeElasticity_cement_gssp4}, \code{L2321.IncomeElasticity_cement_gssp5},
 #' \code{L2321.IncomeElasticity_cement_ssp1}, \code{L2321.IncomeElasticity_cement_ssp2}, \code{L2321.IncomeElasticity_cement_ssp3},
-#' \code{L2321.IncomeElasticity_cement_ssp4}, \code{L2321.IncomeElasticity_cement_ssp5}, \code{L2321.IncomeElasticity_cement_cwf}, \code{object}. The corresponding file in the
+#' \code{L2321.IncomeElasticity_cement_ssp4}, \code{L2321.IncomeElasticity_cement_ssp5}, \code{L2321.IncomeElasticity_cement_cwf},
+#' \code{L2321.SubsectorShrwtFllt_cement_cwf_H2_scenarios},  \code{L2321.SubsectorInterp_cement_cwf_H2_scenarios}, \code{object}. The corresponding file in the
 #' original data system was \code{L2321.cement.R} (energy level2).
 #' @details The chunk provides final energy keyword, supplysector/subsector information, supplysector/subsector interpolation information, global technology share weight, global technology efficiency, global technology coefficients, global technology cost, price elasticity, stub technology information, stub technology interpolation information, stub technology calibrated inputs, and etc for cement sector.
 #' @importFrom assertthat assert_that
@@ -52,7 +53,9 @@ module_energy_L2321.cement <- function(command, ...) {
              "L102.pcgdp_thous90USD_GCAM3_R_Y",
              "L102.pcgdp_thous90USD_Scen_R_Y",
 			 FILE = "energy/A321.globaltech_coef_cwf_adj",
-			 FILE = "energy/A321.incelas_cwf"))
+			 FILE = "energy/A321.incelas_cwf",
+			 FILE = "energy/A321.subsector_interp_cwf_H2_scenarios",
+			 FILE = "energy/A321.subsector_shrwt_cwf_H2_scenarios"))
   } else if(command == driver.DECLARE_OUTPUTS) {
     return(c("L2321.Supplysector_cement",
              "L2321.FinalEnergyKeyword_cement",
@@ -77,7 +80,9 @@ module_energy_L2321.cement <- function(command, ...) {
              paste("L2321.IncomeElasticity_cement", tolower(INCOME_ELASTICITY_OUTPUTS), sep = "_"),
 			 "L2321.GlobalTechCoef_cement_cwf",
 			 "L2321.StubTechCoef_cement_cwf",
-			 "L2321.IncomeElasticity_cement_cwf"))
+			 "L2321.IncomeElasticity_cement_cwf",
+			 "L2321.SubsectorShrwtFllt_cement_cwf_H2_scenarios",
+			 "L2321.SubsectorInterp_cement_cwf_H2_scenarios"))
   } else if(command == driver.MAKE) {
 
     all_data <- list(...)[[1]]
@@ -105,6 +110,8 @@ module_energy_L2321.cement <- function(command, ...) {
     L102.pcgdp_thous90USD_Scen_R_Y <- get_data(all_data, "L102.pcgdp_thous90USD_Scen_R_Y")
     A321.globaltech_coef_cwf_adj <- get_data(all_data, "energy/A321.globaltech_coef_cwf_adj")
     A321.incelas_cwf <- get_data(all_data, "energy/A321.incelas_cwf")
+    A321.subsector_interp_cwf_H2_scenarios <- get_data(all_data, "energy/A321.subsector_interp_cwf_H2_scenarios", strip_attributes = TRUE)
+    A321.subsector_shrwt_cwf_H2_scenarios <- get_data(all_data, "energy/A321.subsector_shrwt_cwf_H2_scenarios", strip_attributes = TRUE)
 
     # ===================================================
     # 0. Give binding for variable names used in pipeline
@@ -492,6 +499,19 @@ module_energy_L2321.cement <- function(command, ...) {
       select(LEVEL2_DATA_NAMES[["IncomeElasticity"]]) ->
       L2321.IncomeElasticity_cement_cwf
 
+    # HYDROGEN SCENARIOS, SUBSECTOR SHARE WEIGHTS AND INTERPOLATION
+    # L2321.SubsectorShrwtFllt_cement_cwf_H2_scenarios
+    A321.subsector_shrwt_cwf_H2_scenarios %>%
+      filter(!is.na(year.fillout)) %>%
+      write_to_all_regions(c(LEVEL2_DATA_NAMES[["SubsectorShrwtFllt"]], "scenario"), GCAM_region_names) ->
+      L2321.SubsectorShrwtFllt_cement_cwf_H2_scenarios
+
+    # L2321.SubsectorInterp_cement_cwf_H2_scenarios
+    A321.subsector_interp_cwf_H2_scenarios %>%
+      filter(is.na(to.value)) %>%
+      write_to_all_regions(c(LEVEL2_DATA_NAMES[["SubsectorInterp"]], "scenario"), GCAM_region_names) ->
+      L2321.SubsectorInterp_cement_cwf_H2_scenarios
+
     # ===================================================
     # Produce outputs
 
@@ -719,6 +739,22 @@ module_energy_L2321.cement <- function(command, ...) {
       add_precursors("energy/A321.incelas_cwf") ->
       L2321.IncomeElasticity_cement_cwf
 
+    L2321.SubsectorShrwtFllt_cement_cwf_H2_scenarios %>%
+      add_title("Subsector shareweights of cement sector") %>%
+      add_units("unitless") %>%
+      add_comments("For cement sector, the subsector shareweights from A321.subsector_shrwt_cwf_H2_scenarios are expanded into all GCAM regions") %>%
+      add_legacy_name("L2321.SubsectorShrwtFllt_cement") %>%
+      add_precursors("energy/A321.subsector_shrwt_cwf_H2_scenarios", "common/GCAM_region_names") ->
+      L2321.SubsectorShrwtFllt_cement_cwf_H2_scenarios
+
+    L2321.SubsectorInterp_cement_cwf_H2_scenarios %>%
+      add_title("Subsector shareweight interpolation of cement sector") %>%
+      add_units("NA") %>%
+      add_comments("For cement sector, the subsector shareweight interpolation function infromation from A321.subsector_interp_cwf_H2_scenarios is expanded into all GCAM regions") %>%
+      add_legacy_name("L2321.SubsectorInterp_cement") %>%
+      add_precursors("energy/A321.subsector_interp_cwf_H2_scenarios", "common/GCAM_region_names") ->
+      L2321.SubsectorInterp_cement_cwf_H2_scenarios
+
     return_data(L2321.Supplysector_cement, L2321.FinalEnergyKeyword_cement, L2321.SubsectorLogit_cement,
                 L2321.SubsectorShrwtFllt_cement, L2321.SubsectorInterp_cement,
                 L2321.StubTech_cement, L2321.GlobalTechShrwt_cement,
@@ -732,7 +768,8 @@ module_energy_L2321.cement <- function(command, ...) {
                 L2321.IncomeElasticity_cement_gssp5, L2321.IncomeElasticity_cement_ssp1,
                 L2321.IncomeElasticity_cement_ssp2, L2321.IncomeElasticity_cement_ssp3,
                 L2321.IncomeElasticity_cement_ssp4, L2321.IncomeElasticity_cement_ssp5,
-                L2321.GlobalTechCoef_cement_cwf, L2321.StubTechCoef_cement_cwf, L2321.IncomeElasticity_cement_cwf)
+                L2321.GlobalTechCoef_cement_cwf, L2321.StubTechCoef_cement_cwf, L2321.IncomeElasticity_cement_cwf,
+                L2321.SubsectorShrwtFllt_cement_cwf_H2_scenarios, L2321.SubsectorInterp_cement_cwf_H2_scenarios)
   } else {
     stop("Unknown command")
   }
