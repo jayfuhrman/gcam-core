@@ -157,7 +157,7 @@ module_energy_batch_iron_steel_xml <- function(command, ...) {
                        "L2323.SubsectorShrwtFllt_iron_steel",
                        "L2323.SubsectorInterp_iron_steel",
                        "L2323.StubTech_iron_steel",
-                       "L2323.GlobalTechShrwt_iron_steel", "L2323.GlobalTechCoef_iron_steel_cwf", "L2323.GlobalTechCost_iron_steel",
+                       "L2323.GlobalTechShrwt_iron_steel_cwf", "L2323.GlobalTechCoef_iron_steel_cwf", "L2323.GlobalTechCost_iron_steel",
                        "L2323.GlobalTechCapture_iron_steel", "L2323.GlobalTechSCurve_en",
                        "L2323.GlobalTechProfitShutdown_en", "L2323.StubTechProd_iron_steel",
                        "L2323.StubTechCoef_iron_steel_cwf", "L2323.PerCapitaBased_iron_steel", "L2323.BaseService_iron_steel",
