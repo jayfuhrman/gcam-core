@@ -1,0 +1,30 @@
+# File: A322.subsector_interp_cwf_H2_scenarios.csv
+# Title: Fertilizer CWF adjustments to subsector shareweight interpolation for the hydrogen scenarios
+# Units: NA
+# Column types: cccccccc
+# ----------
+supplysector,subsector,apply.to,from.year,to.year,to.value,interpolation.function,scenario
+N fertilizer,coal,share-weight,final-calibration-year,2050,,linear,cwf_med_H2
+N fertilizer,gas,share-weight,final-calibration-year,2050,,linear,cwf_med_H2
+N fertilizer,refined liquids,share-weight,final-calibration-year,2035,,linear,cwf_med_H2
+N fertilizer,refined liquids,share-weight,2035,end-year,,fixed,cwf_med_H2
+N fertilizer,hydrogen,share-weight,start-year,2020,,fixed,cwf_med_H2
+N fertilizer,hydrogen,share-weight,2020,2050,,linear,cwf_med_H2
+N fertilizer,hydrogen,share-weight,2050,end-year,,fixed,cwf_med_H2
+Exports_fertilizer,N fertilizer,share-weight,final-calibration-year,end-year,,fixed,cwf_med_H2
+N fertilizer,coal,share-weight,final-calibration-year,2050,,linear,cwf_low_H2
+N fertilizer,gas,share-weight,final-calibration-year,2050,,linear,cwf_low_H2
+N fertilizer,refined liquids,share-weight,final-calibration-year,2035,,linear,cwf_low_H2
+N fertilizer,refined liquids,share-weight,2035,end-year,,fixed,cwf_low_H2
+N fertilizer,hydrogen,share-weight,start-year,2020,,fixed,cwf_low_H2
+N fertilizer,hydrogen,share-weight,2020,2050,,linear,cwf_low_H2
+N fertilizer,hydrogen,share-weight,2050,end-year,,linear,cwf_low_H2
+Exports_fertilizer,N fertilizer,share-weight,final-calibration-year,end-year,,fixed,cwf_low_H2
+N fertilizer,coal,share-weight,final-calibration-year,2050,,linear,cwf_high_H2
+N fertilizer,gas,share-weight,final-calibration-year,2050,,linear,cwf_high_H2
+N fertilizer,refined liquids,share-weight,final-calibration-year,2035,,linear,cwf_high_H2
+N fertilizer,refined liquids,share-weight,2035,end-year,,fixed,cwf_high_H2
+N fertilizer,hydrogen,share-weight,start-year,2020,,fixed,cwf_high_H2
+N fertilizer,hydrogen,share-weight,2020,2050,,linear,cwf_high_H2
+N fertilizer,hydrogen,share-weight,2050,end-year,,fixed,cwf_high_H2
+Exports_fertilizer,N fertilizer,share-weight,final-calibration-year,end-year,,fixed,cwf_high_H2

@@ -35,7 +35,9 @@ module_energy_L2322.Fert <- function(command, ...) {
              "L1322.Fert_NEcost_75USDkgN_F",
              "L142.ag_Fert_NetExp_MtN_R_Y",
              FILE = "energy/A322.subsector_interp_cwf_adj",
-             FILE = "energy/A322.subsector_shrwt_cwf_adj"))
+             FILE = "energy/A322.subsector_shrwt_cwf_adj",
+             FILE = "energy/A322.subsector_interp_cwf_H2_scenarios",
+             FILE = "energy/A322.subsector_shrwt_cwf_H2_scenarios"))
   } else if(command == driver.DECLARE_OUTPUTS) {
     return(c("L2322.Supplysector_Fert",
              "L2322.FinalEnergyKeyword_Fert",
@@ -56,7 +58,9 @@ module_energy_L2322.Fert <- function(command, ...) {
              "L2322.PerCapitaBased_Fert",
              "L2322.BaseService_Fert",
              "L2322.SubsectorShrwtFllt_Fert_cwf",
-             "L2322.SubsectorInterp_Fert_cwf"))
+             "L2322.SubsectorInterp_Fert_cwf",
+             "L2322.SubsectorShrwtFllt_Fert_cwf_H2_scenarios",
+             "L2322.SubsectorInterp_Fert_cwf_H2_scenarios"))
   } else if(command == driver.MAKE) {
 
     all_data <- list(...)[[1]]
@@ -79,6 +83,8 @@ module_energy_L2322.Fert <- function(command, ...) {
     L142.ag_Fert_NetExp_MtN_R_Y <- get_data(all_data, "L142.ag_Fert_NetExp_MtN_R_Y", strip_attributes = TRUE)
     A322.subsector_interp_cwf_adj <- get_data(all_data, "energy/A322.subsector_interp_cwf_adj", strip_attributes = TRUE)
     A322.subsector_shrwt_cwf_adj <- get_data(all_data, "energy/A322.subsector_shrwt_cwf_adj", strip_attributes = TRUE)
+    A322.subsector_interp_cwf_H2_scenarios <- get_data(all_data, "energy/A322.subsector_interp_cwf_H2_scenarios", strip_attributes = TRUE)
+    A322.subsector_shrwt_cwf_H2_scenarios <- get_data(all_data, "energy/A322.subsector_shrwt_cwf_H2_scenarios", strip_attributes = TRUE)
 
     # ===================================================
     # 0. Give binding for variable names used in pipeline
@@ -320,6 +326,17 @@ module_energy_L2322.Fert <- function(command, ...) {
                   write_to_all_regions(LEVEL2_DATA_NAMES[["SubsectorInterp"]],
                                        GCAM_region_names))
 
+    # L2322.SubsectorShrwtFllt_Fert_cwf_H2_scenarios
+    L2322.SubsectorShrwtFllt_Fert_cwf_H2_scenarios <- A322.subsector_shrwt_cwf_H2_scenarios %>%
+      filter(!is.na(year.fillout)) %>%
+      write_to_all_regions(c(LEVEL2_DATA_NAMES[["SubsectorShrwtFllt"]], "scenario"), GCAM_region_names)
+
+    # L2322.SubsectorInterp_Fert_cwf_H2_scenarios
+    L2322.SubsectorInterp_Fert_cwf_H2_scenarios <- A322.subsector_interp_cwf_H2_scenarios %>%
+      filter(is.na(to.value)) %>%
+      write_to_all_regions(c(LEVEL2_DATA_NAMES[["SubsectorInterp"]], "scenario"), GCAM_region_names)
+
+
     # ===================================================
     # Produce outputs
 
@@ -483,6 +500,22 @@ module_energy_L2322.Fert <- function(command, ...) {
       add_precursors("energy/A322.subsector_interp", "energy/A322.subsector_interp_cwf_adj", "common/GCAM_region_names") ->
       L2322.SubsectorInterp_Fert_cwf
 
+    L2322.SubsectorShrwtFllt_Fert_cwf_H2_scenarios %>%
+      add_title("Subsector shareweights of fertilizer") %>%
+      add_units("Unitless") %>%
+      add_comments("For fertilizer sector, the subsector shareweights from A322.subsector_shrwt_cwf_H2_scenarios are expanded into all GCAM regions") %>%
+      add_legacy_name("L2322.SubsectorShrwtFllt_Fert") %>%
+      add_precursors("energy/A322.subsector_shrwt_cwf_H2_scenarios", "common/GCAM_region_names") ->
+      L2322.SubsectorShrwtFllt_Fert_cwf_H2_scenarios
+
+    L2322.SubsectorInterp_Fert_cwf_H2_scenarios %>%
+      add_title("Subsector shareweight interpolation of fertilizer sector") %>%
+      add_units("NA") %>%
+      add_comments("For fertilizer sector, the subsector shareweight interpolation function infromation from A322.subsector_interp_cwf_H2_scenarios is expanded into all GCAM regions") %>%
+      add_legacy_name("L2322.SubsectorInterp_Fert") %>%
+      add_precursors("energy/A322.subsector_interp_cwf_H2_scenarios", "common/GCAM_region_names") ->
+      L2322.SubsectorInterp_Fert_cwf_H2_scenarios
+
     return_data(L2322.Supplysector_Fert, L2322.FinalEnergyKeyword_Fert, L2322.SubsectorLogit_Fert,
                 L2322.SubsectorShrwtFllt_Fert, L2322.SubsectorInterp_Fert,
                 L2322.StubTech_Fert, L2322.GlobalTechShrwt_Fert,
@@ -490,7 +523,8 @@ module_energy_L2322.Fert <- function(command, ...) {
                 L2322.GlobalTechSCurve_Fert,
                 L2322.GlobalTechProfitShutdown_Fert, L2322.StubTechProd_Fert, L2322.StubTechCoef_Fert,
                 L2322.StubTechFixOut_Fert_imp, L2322.StubTechFixOut_Fert_exp, L2322.PerCapitaBased_Fert,
-                L2322.BaseService_Fert, L2322.SubsectorShrwtFllt_Fert_cwf, L2322.SubsectorInterp_Fert_cwf)
+                L2322.BaseService_Fert, L2322.SubsectorShrwtFllt_Fert_cwf, L2322.SubsectorInterp_Fert_cwf,
+                L2322.SubsectorShrwtFllt_Fert_cwf_H2_scenarios, L2322.SubsectorInterp_Fert_cwf_H2_scenarios)
   } else {
     stop("Unknown command")
   }
