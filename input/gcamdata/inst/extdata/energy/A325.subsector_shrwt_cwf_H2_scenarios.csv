@@ -1,0 +1,39 @@
+# File: A325.subsector_shrwt_cwf_H2_scenarios.csv
+# Title: chemical CWF subsector shareweights for the hydrogen scenarios
+# Units: Unitless
+# Column types: ccccnc
+# ----------
+supplysector,subsector,year.fillout,year,share.weight,scenario
+chemical,chemical,start-year,,1,cwf_med_H2
+chemical energy use,refined liquids,start-year,,1,cwf_med_H2
+chemical energy use,gas,start-year,,1,cwf_med_H2
+chemical energy use,biomass,start-year,,1,cwf_med_H2
+chemical energy use,electricity,start-year,,1,cwf_med_H2
+chemical energy use,hydrogen,start-year,,0.5,cwf_med_H2
+chemical energy use,coal,start-year,,1,cwf_med_H2
+chemical energy use,heat,start-year,,1,cwf_med_H2
+chemical feedstocks,refined liquids,start-year,,1,cwf_med_H2
+chemical feedstocks,gas,start-year,,1,cwf_med_H2
+chemical feedstocks,coal,start-year,,1,cwf_med_H2
+chemical,chemical,start-year,,1,cwf_low_H2
+chemical energy use,refined liquids,start-year,,1,cwf_low_H2
+chemical energy use,gas,start-year,,1,cwf_low_H2
+chemical energy use,biomass,start-year,,1,cwf_low_H2
+chemical energy use,electricity,start-year,,1,cwf_low_H2
+chemical energy use,hydrogen,start-year,,0.25,cwf_low_H2
+chemical energy use,coal,start-year,,1,cwf_low_H2
+chemical energy use,heat,start-year,,1,cwf_low_H2
+chemical feedstocks,refined liquids,start-year,,1,cwf_low_H2
+chemical feedstocks,gas,start-year,,1,cwf_low_H2
+chemical feedstocks,coal,start-year,,1,cwf_low_H2
+chemical,chemical,start-year,,1,cwf_high_H2
+chemical energy use,refined liquids,start-year,,1,cwf_high_H2
+chemical energy use,gas,start-year,,1,cwf_high_H2
+chemical energy use,biomass,start-year,,1,cwf_high_H2
+chemical energy use,electricity,start-year,,1,cwf_high_H2
+chemical energy use,hydrogen,start-year,,1,cwf_high_H2
+chemical energy use,coal,start-year,,1,cwf_high_H2
+chemical energy use,heat,start-year,,1,cwf_high_H2
+chemical feedstocks,refined liquids,start-year,,1,cwf_high_H2
+chemical feedstocks,gas,start-year,,1,cwf_high_H2
+chemical feedstocks,coal,start-year,,1,cwf_high_H2
