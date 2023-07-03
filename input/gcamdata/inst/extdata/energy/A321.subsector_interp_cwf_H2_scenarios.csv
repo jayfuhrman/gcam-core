@@ -1,7 +1,7 @@
 # File: A321.subsector_interp_cwf_H2_scenarios.csv
 # Title: Cement CWF adjustments to subsector shareweight interpolation for the hydrogen scenarios
 # Units: NA
-# Column types: ccccccc
+# Column types: cccccccc
 # ----------
 supplysector,subsector,apply.to,from.year,to.year,to.value,interpolation.function,scenario
 cement,cement,share-weight,final-calibration-year,end-year,,fixed,cwf_med_H2

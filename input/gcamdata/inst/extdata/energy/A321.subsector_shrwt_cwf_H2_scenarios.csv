@@ -1,7 +1,7 @@
 # File: A321.subsector_shrwt_cwf_H2_scenarios.csv
 # Title: Cement CWF adjustments to subsector shareweights for the hydrogen scenarios
 # Units: Unitless
-# Column types: ccccn
+# Column types: ccccnc
 # ----------
 supplysector,subsector,year.fillout,year,share.weight,scenario
 cement,cement,start-year,,1,cwf_med_H2
