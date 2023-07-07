@@ -43,11 +43,11 @@ process heat cement,gas,start-year,,1,cwf_high_H2
 process heat cement,refined liquids,start-year,,1,cwf_high_H2
 process heat cement,hydrogen,start-year,,0,cwf_high_H2
 process heat cement,hydrogen,2020,,0,cwf_high_H2
-process heat cement,hydrogen,2050,,2,cwf_high_H2
+process heat cement,hydrogen,2050,,5,cwf_high_H2
 process heat cement CCS,biomass,start-year,,1,cwf_high_H2
 process heat cement CCS,coal,start-year,,1,cwf_high_H2
 process heat cement CCS,gas,start-year,,1,cwf_high_H2
 process heat cement CCS,refined liquids,start-year,,1,cwf_high_H2
 process heat cement CCS,hydrogen,start-year,,0,cwf_high_H2
 process heat cement CCS,hydrogen,2020,,0,cwf_high_H2
-process heat cement CCS,hydrogen,2050,,2,cwf_high_H2
+process heat cement CCS,hydrogen,2050,,5,cwf_high_H2
