@@ -1,0 +1,84 @@
+# File: A324.globaltech_interp_cwf_H2_scenarios.csv
+# Title: Industry technology share-weight interpolation
+# Units: Unitless
+# Column types: cccccccc
+# ----------
+supplysector,subsector,technology,apply.to,from.year,to.year,interpolation.function,scenario
+agricultural energy use,stationary,refined liquids,share-weight,final-calibration-year,end-year,fixed,cwf_med_H2
+agricultural energy use,stationary,gas,share-weight,final-calibration-year,end-year,fixed,cwf_med_H2
+agricultural energy use,stationary,biomass,share-weight,final-calibration-year,end-year,fixed,cwf_med_H2
+agricultural energy use,stationary,electricity ,share-weight,final-calibration-year,end-year,fixed,cwf_med_H2
+agricultural energy use,stationary,hydrogen,share-weight,final-calibration-year,2020,fixed,cwf_med_H2
+agricultural energy use,stationary,hydrogen,share-weight,2020,2050,linear,cwf_med_H2
+agricultural energy use,stationary,hydrogen,share-weight,2050,end-year,fixed,cwf_med_H2
+agricultural energy use,stationary,coal,share-weight,final-calibration-year,end-year,fixed,cwf_med_H2
+agricultural energy use,stationary,heat,share-weight,final-calibration-year,end-year,fixed,cwf_med_H2
+mining energy use,stationary,refined liquids,share-weight,final-calibration-year,end-year,fixed,cwf_med_H2
+mining energy use,stationary,gas,share-weight,final-calibration-year,end-year,fixed,cwf_med_H2
+mining energy use,stationary,biomass,share-weight,final-calibration-year,end-year,fixed,cwf_med_H2
+mining energy use,stationary,electricity ,share-weight,final-calibration-year,end-year,fixed,cwf_med_H2
+mining energy use,stationary,hydrogen,share-weight,final-calibration-year,2020,fixed,cwf_med_H2
+mining energy use,stationary,hydrogen,share-weight,2020,2050,linear,cwf_med_H2
+mining energy use,stationary,hydrogen,share-weight,2050,end-year,fixed,cwf_med_H2
+mining energy use,stationary,coal,share-weight,final-calibration-year,end-year,fixed,cwf_med_H2
+mining energy use,stationary,heat,share-weight,final-calibration-year,end-year,fixed,cwf_med_H2
+construction energy use,stationary,refined liquids,share-weight,final-calibration-year,end-year,fixed,cwf_med_H2
+construction energy use,stationary,gas,share-weight,final-calibration-year,end-year,fixed,cwf_med_H2
+construction energy use,stationary,biomass,share-weight,final-calibration-year,end-year,fixed,cwf_med_H2
+construction energy use,stationary,electricity ,share-weight,final-calibration-year,end-year,fixed,cwf_med_H2
+construction energy use,stationary,hydrogen,share-weight,final-calibration-year,2020,fixed,cwf_med_H2
+construction energy use,stationary,hydrogen,share-weight,2020,2050,linear,cwf_med_H2
+construction energy use,stationary,hydrogen,share-weight,2050,end-year,fixed,cwf_med_H2
+construction energy use,stationary,coal,share-weight,final-calibration-year,end-year,fixed,cwf_med_H2
+construction energy use,stationary,heat,share-weight,final-calibration-year,end-year,fixed,cwf_med_H2
+agricultural energy use,stationary,refined liquids,share-weight,final-calibration-year,end-year,fixed,cwf_low_H2
+agricultural energy use,stationary,gas,share-weight,final-calibration-year,end-year,fixed,cwf_low_H2
+agricultural energy use,stationary,biomass,share-weight,final-calibration-year,end-year,fixed,cwf_low_H2
+agricultural energy use,stationary,electricity ,share-weight,final-calibration-year,end-year,fixed,cwf_low_H2
+agricultural energy use,stationary,hydrogen,share-weight,final-calibration-year,2020,fixed,cwf_low_H2
+agricultural energy use,stationary,hydrogen,share-weight,2020,end-year,linear,cwf_low_H2
+agricultural energy use,stationary,coal,share-weight,final-calibration-year,end-year,fixed,cwf_low_H2
+agricultural energy use,stationary,heat,share-weight,final-calibration-year,end-year,fixed,cwf_low_H2
+mining energy use,stationary,refined liquids,share-weight,final-calibration-year,end-year,fixed,cwf_low_H2
+mining energy use,stationary,gas,share-weight,final-calibration-year,end-year,fixed,cwf_low_H2
+mining energy use,stationary,biomass,share-weight,final-calibration-year,end-year,fixed,cwf_low_H2
+mining energy use,stationary,electricity ,share-weight,final-calibration-year,end-year,fixed,cwf_low_H2
+mining energy use,stationary,hydrogen,share-weight,final-calibration-year,2020,fixed,cwf_low_H2
+mining energy use,stationary,hydrogen,share-weight,2020,end-year,linear,cwf_low_H2
+mining energy use,stationary,coal,share-weight,final-calibration-year,end-year,fixed,cwf_low_H2
+mining energy use,stationary,heat,share-weight,final-calibration-year,end-year,fixed,cwf_low_H2
+construction energy use,stationary,refined liquids,share-weight,final-calibration-year,end-year,fixed,cwf_low_H2
+construction energy use,stationary,gas,share-weight,final-calibration-year,end-year,fixed,cwf_low_H2
+construction energy use,stationary,biomass,share-weight,final-calibration-year,end-year,fixed,cwf_low_H2
+construction energy use,stationary,electricity ,share-weight,final-calibration-year,end-year,fixed,cwf_low_H2
+construction energy use,stationary,hydrogen,share-weight,final-calibration-year,2020,fixed,cwf_low_H2
+construction energy use,stationary,hydrogen,share-weight,2020,end-year,linear,cwf_low_H2
+construction energy use,stationary,coal,share-weight,final-calibration-year,end-year,fixed,cwf_low_H2
+construction energy use,stationary,heat,share-weight,final-calibration-year,end-year,fixed,cwf_low_H2
+agricultural energy use,stationary,refined liquids,share-weight,final-calibration-year,end-year,fixed,cwf_high_H2
+agricultural energy use,stationary,gas,share-weight,final-calibration-year,end-year,fixed,cwf_high_H2
+agricultural energy use,stationary,biomass,share-weight,final-calibration-year,end-year,fixed,cwf_high_H2
+agricultural energy use,stationary,electricity ,share-weight,final-calibration-year,end-year,fixed,cwf_high_H2
+agricultural energy use,stationary,hydrogen,share-weight,final-calibration-year,2020,fixed,cwf_high_H2
+agricultural energy use,stationary,hydrogen,share-weight,2020,2050,linear,cwf_high_H2
+agricultural energy use,stationary,hydrogen,share-weight,2050,end-year,fixed,cwf_high_H2
+agricultural energy use,stationary,coal,share-weight,final-calibration-year,end-year,fixed,cwf_high_H2
+agricultural energy use,stationary,heat,share-weight,final-calibration-year,end-year,fixed,cwf_high_H2
+mining energy use,stationary,refined liquids,share-weight,final-calibration-year,end-year,fixed,cwf_high_H2
+mining energy use,stationary,gas,share-weight,final-calibration-year,end-year,fixed,cwf_high_H2
+mining energy use,stationary,biomass,share-weight,final-calibration-year,end-year,fixed,cwf_high_H2
+mining energy use,stationary,electricity ,share-weight,final-calibration-year,end-year,fixed,cwf_high_H2
+mining energy use,stationary,hydrogen,share-weight,final-calibration-year,2020,fixed,cwf_high_H2
+mining energy use,stationary,hydrogen,share-weight,2020,2050,linear,cwf_high_H2
+mining energy use,stationary,hydrogen,share-weight,2050,end-year,fixed,cwf_high_H2
+mining energy use,stationary,coal,share-weight,final-calibration-year,end-year,fixed,cwf_high_H2
+mining energy use,stationary,heat,share-weight,final-calibration-year,end-year,fixed,cwf_high_H2
+construction energy use,stationary,refined liquids,share-weight,final-calibration-year,end-year,fixed,cwf_high_H2
+construction energy use,stationary,gas,share-weight,final-calibration-year,end-year,fixed,cwf_high_H2
+construction energy use,stationary,biomass,share-weight,final-calibration-year,end-year,fixed,cwf_high_H2
+construction energy use,stationary,electricity ,share-weight,final-calibration-year,end-year,fixed,cwf_high_H2
+construction energy use,stationary,hydrogen,share-weight,final-calibration-year,2020,fixed,cwf_high_H2
+construction energy use,stationary,hydrogen,share-weight,2020,2050,linear,cwf_high_H2
+construction energy use,stationary,hydrogen,share-weight,2050,end-year,fixed,cwf_high_H2
+construction energy use,stationary,coal,share-weight,final-calibration-year,end-year,fixed,cwf_high_H2
+construction energy use,stationary,heat,share-weight,final-calibration-year,end-year,fixed,cwf_high_H2

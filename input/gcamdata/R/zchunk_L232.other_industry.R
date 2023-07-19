@@ -27,6 +27,7 @@
 #' \code{L232.IncomeElasticity_ind_ssp1}, \code{L232.IncomeElasticity_ind_ssp2},
 #' \code{L232.IncomeElasticity_ind_ssp3}, \code{L232.IncomeElasticity_ind_ssp4},
 #' \code{L232.IncomeElasticity_ind_ssp5},\code{L232.IncomeElasticity_ind_cwf},
+#' \code{L232.SubsectorShrwtFllt_ind_cwf_H2_scenarios}, \code{L232.SubsectorInterp_ind_cwf_H2_scenarios},
 #' \code{object}. The corresponding file in the
 #' original data system was \code{L232.industry.R} (energy level2).
 #' @details The chunk provides final energy keyword, supplysector/subsector information, supplysector/subsector interpolation information, supplysector/subsector share weights, global technology share weight, global technology efficiency, global technology coefficients, global technology cost, price elasticity, stub technology information, stub technology interpolation information, stub technology calibrated inputs, and etc.
@@ -68,7 +69,9 @@ module_energy_L232.other_industry <- function(command, ...) {
              "L101.Pop_thous_GCAM3_R_Y",
              "L102.pcgdp_thous90USD_GCAM3_R_Y",
              "L102.pcgdp_thous90USD_Scen_R_Y",
-             FILE = "energy/A32.incelas_cwf"))
+             FILE = "energy/A32.incelas_cwf",
+             FILE = "energy/A32.subsector_interp_cwf_H2_scenarios",
+             FILE = "energy/A32.subsector_shrwt_cwf_H2_scenarios"))
   } else if(command == driver.DECLARE_OUTPUTS) {
     return(c("L232.Supplysector_ind",
              "L232.SubsectorLogit_ind",
@@ -99,7 +102,9 @@ module_energy_L232.other_industry <- function(command, ...) {
              "L232.PriceElasticity_ind",
              "L232.BaseService_ind",
              paste("L232.IncomeElasticity_ind", tolower(INCOME_ELASTICITY_OUTPUTS), sep = "_"),
-             "L232.IncomeElasticity_ind_cwf"))
+             "L232.IncomeElasticity_ind_cwf",
+             "L232.SubsectorShrwtFllt_ind_cwf_H2_scenarios",
+             "L232.SubsectorInterp_ind_cwf_H2_scenarios"))
   } else if(command == driver.MAKE) {
 
     all_data <- list(...)[[1]]
@@ -133,6 +138,8 @@ module_energy_L232.other_industry <- function(command, ...) {
     L102.pcgdp_thous90USD_GCAM3_R_Y <- get_data(all_data, "L102.pcgdp_thous90USD_GCAM3_R_Y")
     L102.pcgdp_thous90USD_Scen_R_Y <- get_data(all_data, "L102.pcgdp_thous90USD_Scen_R_Y")
     A32.incelas_cwf <- get_data(all_data, "energy/A32.incelas_cwf")
+    A32.subsector_interp_cwf_H2_scenarios <- get_data(all_data, "energy/A32.subsector_interp_cwf_H2_scenarios", strip_attributes = TRUE)
+    A32.subsector_shrwt_cwf_H2_scenarios <- get_data(all_data, "energy/A32.subsector_shrwt_cwf_H2_scenarios", strip_attributes = TRUE)
 
     # ===================================================
     # 0. Give binding for variable names used in pipeline
@@ -670,6 +677,22 @@ module_energy_L232.other_industry <- function(command, ...) {
       select(LEVEL2_DATA_NAMES[["IncomeElasticity"]]) ->
     L232.IncomeElasticity_ind_cwf
 
+    # HYDROGEN SCENARIOS, SUBSECTOR SHARE WEIGHTS AND INTERPOLATION
+    # L232.SubsectorShrwtFllt_ind_cwf_H2_scenarios: Subsector shareweights of industry sector for CWF hydrogen scenarios
+    A32.subsector_shrwt_cwf_H2_scenarios %>%
+      filter(!is.na(year.fillout)) %>%
+      write_to_all_regions(c(LEVEL2_DATA_NAMES[["SubsectorShrwtFllt"]], "scenario"), GCAM_region_names) %>%
+      anti_join(L232.rm_heat_techs_R, by = c("region", "subsector")) -> # Remove non-existent heat technologies from each region
+      L232.SubsectorShrwtFllt_ind_cwf_H2_scenarios
+
+    # L232.SubsectorInterp_ind_cwf_H2_scenarios: Subsector shareweight interpolation of industry sector for CWF hydrogen scenarios
+    A32.subsector_interp_cwf_H2_scenarios %>%
+      filter(is.na(to.value)) %>%
+      write_to_all_regions(c(LEVEL2_DATA_NAMES[["SubsectorInterp"]], "scenario"), GCAM_region_names) %>%
+      anti_join(L232.rm_heat_techs_R, by = c("region", "subsector")) -> # Remove non-existent heat technologies from each region
+      L232.SubsectorInterp_ind_cwf_H2_scenarios
+
+
     # ===================================================
     # Produce outputs
 
@@ -944,6 +967,22 @@ module_energy_L232.other_industry <- function(command, ...) {
       add_precursors("L1326.in_EJ_R_indenergy_F_Yh", "L123.in_EJ_R_indchp_F_Yh", "common/GCAM_region_names", "energy/calibrated_techs", "L1324.in_EJ_R_indfeed_F_Yh", "energy/A32.globaltech_eff", "energy/A32.globaltech_shrwt", "energy/A32.demand") ->
       L232.BaseService_ind
 
+    L232.SubsectorShrwtFllt_ind_cwf_H2_scenarios %>%
+      add_title("Subsector shareweights of industry sector") %>%
+      add_units("Unitless") %>%
+      add_comments("For industry sector, the subsector shareweights from A32.subsector_shrwt_cwf_H2_scenarios are expanded into all GCAM regions with non-existent heat technologies") %>%
+      add_legacy_name("L232.SubsectorShrwtFllt_ind") %>%
+      add_precursors("energy/A32.subsector_shrwt_cwf_H2_scenarios", "common/GCAM_region_names", "energy/A_regions", "energy/calibrated_techs") ->
+      L232.SubsectorShrwtFllt_ind_cwf_H2_scenarios
+
+    L232.SubsectorInterp_ind_cwf_H2_scenarios %>%
+      add_title("Subsector shareweight interpolation of industry sector") %>%
+      add_units("NA") %>%
+      add_comments("For industry sector, the subsector shareweight interpolation function infromation from A32.subsector_interp_cwf_H2_scenarios is expanded into all GCAM regions with non-existent heat technologies removed") %>%
+      add_legacy_name("L232.SubsectorInterp_ind") %>%
+      add_precursors("energy/A32.subsector_interp_cwf_H2_scenarios", "common/GCAM_region_names", "energy/A_regions", "energy/calibrated_techs") ->
+      L232.SubsectorInterp_ind_cwf_H2_scenarios
+
     return_data(L232.Supplysector_ind, L232.SubsectorLogit_ind, L232.FinalEnergyKeyword_ind,
                 L232.SubsectorShrwtFllt_ind, L232.SubsectorInterp_ind,
                 L232.SubsectorInterp_ind_low_fossil, L232.SubsectorShrwtFllt_ind_low_fossil,
@@ -961,7 +1000,8 @@ module_energy_L232.other_industry <- function(command, ...) {
                 L232.IncomeElasticity_ind_gssp4, L232.IncomeElasticity_ind_gssp5,
                 L232.IncomeElasticity_ind_ssp1, L232.IncomeElasticity_ind_ssp2,
                 L232.IncomeElasticity_ind_ssp3, L232.IncomeElasticity_ind_ssp4,
-                L232.IncomeElasticity_ind_ssp5, L232.IncomeElasticity_ind_cwf)
+                L232.IncomeElasticity_ind_ssp5, L232.IncomeElasticity_ind_cwf,
+                L232.SubsectorShrwtFllt_ind_cwf_H2_scenarios, L232.SubsectorInterp_ind_cwf_H2_scenarios)
   } else {
     stop("Unknown command")
   }

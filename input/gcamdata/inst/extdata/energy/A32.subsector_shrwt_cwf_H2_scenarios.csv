@@ -1,0 +1,42 @@
+# File: A32.subsector_shrwt_cwf_H2_scenarios.csv
+# Title: Industry default subsector shareweights
+# Units: Unitless
+# Column types: ccccnc
+# ----------
+supplysector,subsector,year.fillout,year,share.weight,scenario
+other industrial energy use,biomass,start-year,,1,cwf_med_H2
+other industrial energy use,coal,start-year,,1,cwf_med_H2
+other industrial energy use,district heat,start-year,,1,cwf_med_H2
+other industrial energy use,electricity,start-year,,1,cwf_med_H2
+other industrial energy use,hydrogen,start-year,,0,cwf_med_H2
+other industrial energy use,hydrogen,2020,,0.5,cwf_med_H2
+other industrial energy use,gas,start-year,,1,cwf_med_H2
+other industrial energy use,refined liquids,start-year,,1,cwf_med_H2
+other industrial feedstocks,coal,start-year,,1,cwf_med_H2
+other industrial feedstocks,gas,start-year,,1,cwf_med_H2
+other industrial feedstocks,refined liquids,start-year,,1,cwf_med_H2
+other industry,other industry,start-year,,1,cwf_med_H2
+other industrial energy use,biomass,start-year,,1,cwf_low_H2
+other industrial energy use,coal,start-year,,1,cwf_low_H2
+other industrial energy use,district heat,start-year,,1,cwf_low_H2
+other industrial energy use,electricity,start-year,,1,cwf_low_H2
+other industrial energy use,hydrogen,start-year,,0,cwf_low_H2
+other industrial energy use,hydrogen,2020,,0.25,cwf_low_H2
+other industrial energy use,gas,start-year,,1,cwf_low_H2
+other industrial energy use,refined liquids,start-year,,1,cwf_low_H2
+other industrial feedstocks,coal,start-year,,1,cwf_low_H2
+other industrial feedstocks,gas,start-year,,1,cwf_low_H2
+other industrial feedstocks,refined liquids,start-year,,1,cwf_low_H2
+other industry,other industry,start-year,,1,cwf_low_H2
+other industrial energy use,biomass,start-year,,1,cwf_high_H2
+other industrial energy use,coal,start-year,,1,cwf_high_H2
+other industrial energy use,district heat,start-year,,1,cwf_high_H2
+other industrial energy use,electricity,start-year,,1,cwf_high_H2
+other industrial energy use,hydrogen,start-year,,0,cwf_high_H2
+other industrial energy use,hydrogen,2020,,1,cwf_high_H2
+other industrial energy use,gas,start-year,,1,cwf_high_H2
+other industrial energy use,refined liquids,start-year,,1,cwf_high_H2
+other industrial feedstocks,coal,start-year,,1,cwf_high_H2
+other industrial feedstocks,gas,start-year,,1,cwf_high_H2
+other industrial feedstocks,refined liquids,start-year,,1,cwf_high_H2
+other industry,other industry,start-year,,1,cwf_high_H2
