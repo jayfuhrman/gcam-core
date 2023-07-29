@@ -1,0 +1,47 @@
+# File: A26.subsector_interp_cwf_H2_scenarios.csv
+# Title: Final energy delivery subsector shareweight interpolation
+# Units: NA
+# Description: form of interpolation function to calculate shareweights for future years for final energy delivery subsectors
+# Source: NA
+# Column types: cccccccc
+# ----------
+supplysector,subsector,apply.to,from.year,to.year,to.value,interpolation.function,scenario
+delivered biomass,delivered biomass,share-weight,final-calibration-year,end-year,,linear,cwf_med_H2
+delivered coal,delivered coal,share-weight,final-calibration-year,end-year,,linear,cwf_med_H2
+electricity_net_ownuse,electricity_net_ownuse,share-weight,final-calibration-year,end-year,,linear,cwf_med_H2
+elect_td_bld,elect_td_bld,share-weight,final-calibration-year,end-year,,linear,cwf_med_H2
+elect_td_ind,elect_td_ind,share-weight,final-calibration-year,end-year,,linear,cwf_med_H2
+elect_td_trn,elect_td_trn,share-weight,final-calibration-year,end-year,,linear,cwf_med_H2
+gas pipeline,gas pipeline,share-weight,final-calibration-year,end-year,,linear,cwf_med_H2
+wholesale gas,wholesale gas,share-weight,final-calibration-year,end-year,,linear,cwf_med_H2
+delivered gas,delivered gas,share-weight,final-calibration-year,end-year,,linear,cwf_med_H2
+refined liquids enduse,refined liquids enduse,share-weight,final-calibration-year,end-year,,linear,cwf_med_H2
+refined liquids industrial,refined liquids industrial,share-weight,final-calibration-year,end-year,,linear,cwf_med_H2
+backup_electricity,hydrogen,share-weight,final-calibration-year,initial-future-year,,fixed,cwf_med_H2
+backup_electricity,hydrogen,share-weight,initial-future-year,end-year,,linear,cwf_med_H2
+delivered biomass,delivered biomass,share-weight,final-calibration-year,end-year,,linear,cwf_low_H2
+delivered coal,delivered coal,share-weight,final-calibration-year,end-year,,linear,cwf_low_H2
+electricity_net_ownuse,electricity_net_ownuse,share-weight,final-calibration-year,end-year,,linear,cwf_low_H2
+elect_td_bld,elect_td_bld,share-weight,final-calibration-year,end-year,,linear,cwf_low_H2
+elect_td_ind,elect_td_ind,share-weight,final-calibration-year,end-year,,linear,cwf_low_H2
+elect_td_trn,elect_td_trn,share-weight,final-calibration-year,end-year,,linear,cwf_low_H2
+gas pipeline,gas pipeline,share-weight,final-calibration-year,end-year,,linear,cwf_low_H2
+wholesale gas,wholesale gas,share-weight,final-calibration-year,end-year,,linear,cwf_low_H2
+delivered gas,delivered gas,share-weight,final-calibration-year,end-year,,linear,cwf_low_H2
+refined liquids enduse,refined liquids enduse,share-weight,final-calibration-year,end-year,,linear,cwf_low_H2
+refined liquids industrial,refined liquids industrial,share-weight,final-calibration-year,end-year,,linear,cwf_low_H2
+backup_electricity,hydrogen,share-weight,final-calibration-year,initial-future-year,,fixed,cwf_low_H2
+backup_electricity,hydrogen,share-weight,initial-future-year,end-year,,linear,cwf_low_H2
+delivered biomass,delivered biomass,share-weight,final-calibration-year,end-year,,linear,cwf_high_H2
+delivered coal,delivered coal,share-weight,final-calibration-year,end-year,,linear,cwf_high_H2
+electricity_net_ownuse,electricity_net_ownuse,share-weight,final-calibration-year,end-year,,linear,cwf_high_H2
+elect_td_bld,elect_td_bld,share-weight,final-calibration-year,end-year,,linear,cwf_high_H2
+elect_td_ind,elect_td_ind,share-weight,final-calibration-year,end-year,,linear,cwf_high_H2
+elect_td_trn,elect_td_trn,share-weight,final-calibration-year,end-year,,linear,cwf_high_H2
+gas pipeline,gas pipeline,share-weight,final-calibration-year,end-year,,linear,cwf_high_H2
+wholesale gas,wholesale gas,share-weight,final-calibration-year,end-year,,linear,cwf_high_H2
+delivered gas,delivered gas,share-weight,final-calibration-year,end-year,,linear,cwf_high_H2
+refined liquids enduse,refined liquids enduse,share-weight,final-calibration-year,end-year,,linear,cwf_high_H2
+refined liquids industrial,refined liquids industrial,share-weight,final-calibration-year,end-year,,linear,cwf_high_H2
+backup_electricity,hydrogen,share-weight,final-calibration-year,initial-future-year,,fixed,cwf_high_H2
+backup_electricity,hydrogen,share-weight,initial-future-year,end-year,,linear,cwf_high_H2

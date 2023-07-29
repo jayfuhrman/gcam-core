@@ -9,7 +9,7 @@
 #' @param ... other optional parameters, depending on command
 #' @return Depends on \code{command}: either a vector of required inputs,
 #' a vector of output names, or (if \code{command} is "MAKE") all
-#' the generated outputs: \code{L226.SectorLogitTables[[ curr_table ]]$data}, \code{L226.Supplysector_en}, \code{L226.SubsectorLogitTables[[ curr_table ]]$data}, \code{L226.SubsectorLogit_en}, \code{L226.SubsectorShrwt_en}, \code{L226.SubsectorShrwtFllt_en}, \code{L226.SubsectorInterp_en}, \code{L226.SubsectorInterpTo_en}, \code{L226.StubTech_en}, \code{L226.GlobalTechEff_en}, \code{L226.GlobalTechCost_en}, \code{L226.GlobalTechShrwt_en}, \code{L226.StubTechCoef_elecownuse}, \code{L226.StubTechCoef_electd}, \code{L226.StubTechCoef_gaspipe}. The corresponding file in the
+#' the generated outputs: \code{L226.SectorLogitTables[[ curr_table ]]$data}, \code{L226.Supplysector_en}, \code{L226.SubsectorLogitTables[[ curr_table ]]$data}, \code{L226.SubsectorLogit_en}, \code{L226.SubsectorShrwt_en}, \code{L226.SubsectorShrwtFllt_en}, \code{L226.SubsectorInterp_en}, \code{L226.SubsectorInterpTo_en}, \code{L226.StubTech_en}, \code{L226.GlobalTechEff_en}, \code{L226.GlobalTechCost_en}, \code{L226.GlobalTechShrwt_en}, \code{L226.StubTechCoef_elecownuse}, \code{L226.StubTechCoef_electd}, \code{L226.StubTechCoef_gaspipe}, \code{L226.SubsectorShrwtFllt_en_cwf_H2_scenarios}, \code{L226.SubsectorInterp_en_cwf_H2_scenarios}. The corresponding file in the
 #' original data system was \code{L226.en_distribution.R} (energy level2).
 #' @details Prepares Level 2 data on energy distribution sector for the generation of en_distribution.xml.
 #' Creates global technology database info--cost, shareweight, logit, efficiencies, and interpolations--and regional values where applicable for electricity net ownuse, gas pipelines, and transmission and distribution.
@@ -31,7 +31,9 @@ module_energy_L226.en_distribution <- function(command, ...) {
              FILE = "energy/A26.globaltech_shrwt",
              "L126.IO_R_elecownuse_F_Yh",
              "L126.IO_R_electd_F_Yh",
-             "L126.IO_R_gaspipe_F_Yh"))
+             "L126.IO_R_gaspipe_F_Yh",
+             FILE = "energy/A26.subsector_shrwt_cwf_H2_scenarios",
+             FILE = "energy/A26.subsector_interp_cwf_H2_scenarios"))
   } else if(command == driver.DECLARE_OUTPUTS) {
     return(c("L226.Supplysector_en",
              "L226.SubsectorLogit_en",
@@ -45,7 +47,9 @@ module_energy_L226.en_distribution <- function(command, ...) {
              "L226.GlobalTechShrwt_en",
              "L226.StubTechCoef_elecownuse",
              "L226.StubTechCoef_electd",
-             "L226.StubTechCoef_gaspipe"))
+             "L226.StubTechCoef_gaspipe",
+             "L226.SubsectorShrwtFllt_en_cwf_H2_scenarios",
+             "L226.SubsectorInterp_en_cwf_H2_scenarios"))
   } else if(command == driver.MAKE) {
 
     # Silence global variable package check
@@ -70,6 +74,8 @@ module_energy_L226.en_distribution <- function(command, ...) {
     L126.IO_R_elecownuse_F_Yh <- get_data(all_data, "L126.IO_R_elecownuse_F_Yh", strip_attributes = TRUE)
     L126.IO_R_electd_F_Yh <- get_data(all_data, "L126.IO_R_electd_F_Yh")
     L126.IO_R_gaspipe_F_Yh <- get_data(all_data, "L126.IO_R_gaspipe_F_Yh")
+    A26.subsector_shrwt_cwf_H2_scenarios <- get_data(all_data, "energy/A26.subsector_shrwt_cwf_H2_scenarios", strip_attributes = TRUE)
+    A26.subsector_interp_cwf_H2_scenarios <- get_data(all_data, "energy/A26.subsector_interp_cwf_H2_scenarios", strip_attributes = TRUE)
 
     # ===================================================
 
@@ -273,6 +279,19 @@ module_energy_L226.en_distribution <- function(command, ...) {
       L226.StubTechCoef_gaspipe
 
     # ===================================================
+    # Make CWF adjustments
+    A26.subsector_shrwt_cwf_H2_scenarios %>%
+      filter(!is.na(year.fillout)) %>%
+      write_to_all_regions(c(NAMES_SUBSECTORSHRWTFLLT, "scenario"), GCAM_region_names) ->
+      L226.SubsectorShrwtFllt_en_cwf_H2_scenarios
+
+    A26.subsector_interp_cwf_H2_scenarios %>%
+      filter(is.na(to.value)) %>%
+      write_to_all_regions(c(NAMES_SUBSECTORINTERP, "scenario"), GCAM_region_names) ->
+      L226.SubsectorInterp_en_cwf_H2_scenarios
+
+
+    # ===================================================
 
     # Produce outputs
     # Temporary code below sends back empty data frames marked "don't test"
@@ -414,10 +433,25 @@ module_energy_L226.en_distribution <- function(command, ...) {
       add_precursors("L126.IO_R_gaspipe_F_Yh") ->
       L226.StubTechCoef_gaspipe
 
+    L226.SubsectorShrwtFllt_en_cwf_H2_scenarios %>%
+      add_title("regional energy distribution subsector shareweights for CWF hydrogen scenarios") %>%
+      add_units("unitless") %>%
+      add_legacy_name("L226.SubsectorShrwtFllt_en_cwf_H2_scenarios") %>%
+      add_precursors("energy/A26.subsector_shrwt_cwf_H2_scenarios", "common/GCAM_region_names") ->
+      L226.SubsectorShrwtFllt_en_cwf_H2_scenarios
+
+    L226.SubsectorInterp_en_cwf_H2_scenarios %>%
+      add_title("interpolation functions for subsector shareweights for CWF hydrogen scenarios") %>%
+      add_units("unitless") %>%
+      add_legacy_name("L226.SubsectorInterp_en_cwf_H2_scenarios") %>%
+      add_precursors("energy/A26.subsector_interp_cwf_H2_scenarios", "common/GCAM_region_names") ->
+      L226.SubsectorInterp_en_cwf_H2_scenarios
+
     return_data(L226.Supplysector_en, L226.SubsectorLogit_en, L226.SubsectorShrwt_en,
                 L226.SubsectorShrwtFllt_en, L226.SubsectorInterp_en, L226.SubsectorInterpTo_en,
                 L226.StubTech_en, L226.GlobalTechEff_en, L226.GlobalTechCost_en, L226.GlobalTechShrwt_en,
-                L226.StubTechCoef_elecownuse, L226.StubTechCoef_electd, L226.StubTechCoef_gaspipe)
+                L226.StubTechCoef_elecownuse, L226.StubTechCoef_electd, L226.StubTechCoef_gaspipe,
+                L226.SubsectorShrwtFllt_en_cwf_H2_scenarios, L226.SubsectorInterp_en_cwf_H2_scenarios)
   } else {
     stop("Unknown command")
   }
