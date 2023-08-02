@@ -21,7 +21,7 @@
 #' \code{L244.SatiationAdder_SSP5}, \code{L244.GenericServiceSatiation_SSP5}, \code{L244.FuelPrefElast_bld_SSP15}, \code{L244.DeleteThermalService},
 #' \code{L244.HDDCDD_A2_CCSM3x}, \code{L244.HDDCDD_A2_HadCM3}, \code{L244.HDDCDD_B1_CCSM3x}, \code{L244.HDDCDD_B1_HadCM3},
 #' \code{L244.HDDCDD_constdd_no_GCM} and \code{L244.GompFnParam}, \code{L244.StubTechIntGainOutputRatio_cwf}, \code{L244.ShellConductance_bld_cwf},
-#' \code{L244.StubTechEff_bld_cwf}, \code{L244.Satiation_flsp_cwf}, \code{L244.SatiationAdder_cwf}, \code{L244.GompFnParam_cwf}.
+#' \code{L244.StubTechEff_bld_cwf}, \code{L244.Satiation_flsp_cwf}, \code{L244.SatiationAdder_cwf}, \code{L244.GompFnParam_cwf}, \code{L244.GlobalTechShrwt_bld_cwf_H2_scenarios}.
 #' The corresponding file in the original data system was \code{L244.building_det.R} (energy level2).
 #' @details Creates level2 data for the building sector.
 #' @importFrom assertthat assert_that
@@ -70,7 +70,8 @@ module_energy_L244.building_det <- function(command, ...) {
              'L144.shell_eff_R_Y_cwf',
              'L144.internal_gains_cwf',
              "L144.flsp_param_cwf",
-             FILE = "energy/A44.satiation_flsp_cwf_adj"))
+             FILE = "energy/A44.satiation_flsp_cwf_adj",
+             FILE = "energy/A44.globaltech_shrwt_cwf_H2_scenarios"))
   } else if(command == driver.DECLARE_OUTPUTS) {
     return(c("L244.SubregionalShares",
              "L244.PriceExp_IntGains",
@@ -134,7 +135,8 @@ module_energy_L244.building_det <- function(command, ...) {
              "L244.StubTechIntGainOutputRatio_cwf",
              "L244.Satiation_flsp_cwf",
              "L244.SatiationAdder_cwf",
-             "L244.GompFnParam_cwf"))
+             "L244.GompFnParam_cwf",
+             "L244.GlobalTechShrwt_bld_cwf_H2_scenarios"))
   } else if(command == driver.MAKE) {
 
     # Silence package checks
@@ -198,6 +200,8 @@ module_energy_L244.building_det <- function(command, ...) {
     L144.internal_gains_cwf <- get_data(all_data, "L144.internal_gains_cwf", strip_attributes = TRUE)
     L144.flsp_param_cwf <- get_data(all_data, "L144.flsp_param_cwf", strip_attributes = TRUE)
     A44.satiation_flsp_cwf_adj <- get_data(all_data, "energy/A44.satiation_flsp_cwf_adj", strip_attributes = TRUE)
+    A44.globaltech_shrwt_cwf_H2_scenarios <- get_data(all_data, "energy/A44.globaltech_shrwt_cwf_H2_scenarios") %>%
+      gather_years
 
     # ===================================================
     # Subregional population and income shares: need to be read in because these default to 0
@@ -942,6 +946,19 @@ module_energy_L244.building_det <- function(command, ...) {
              base.pcFlsp=base_flsp) %>%
       select(LEVEL2_DATA_NAMES[["GompFnParam"]])
 
+    # L244.GlobalTechShrwt_bld_cwf_H2_scenarios: Default shareweights for global building technologies for CWF hydrogen scenarios
+    L244.GlobalTechShrwt_bld_cwf_H2_scenarios <- A44.globaltech_shrwt_cwf_H2_scenarios %>%
+      # Repeat for all model years
+      complete(nesting(scenario, supplysector, subsector, technology), year = c(year, MODEL_YEARS)) %>%
+      # Interpolate
+      group_by(scenario, supplysector, subsector, technology) %>%
+      mutate(share.weight = approx_fun(year, value, rule = 2)) %>%
+      ungroup() %>%
+      filter(year %in% MODEL_YEARS) %>%
+      rename(sector.name = supplysector,
+             subsector.name = subsector) %>%
+      select(LEVEL2_DATA_NAMES[["GlobalTechYr"]], scenario, share.weight)
+
     # ===================================================
     # Produce outputs
     L244.SubregionalShares %>%
@@ -1365,6 +1382,14 @@ module_energy_L244.building_det <- function(command, ...) {
                      "L144.flsp_bm2_R_res_Yh","L144.hab_land_flsp_fin") ->
       L244.GompFnParam_cwf
 
+    L244.GlobalTechShrwt_bld_cwf_H2_scenarios %>%
+      add_title("Default shareweights for global building technologies for CWF hydrogen scenarios") %>%
+      add_units("Unitless") %>%
+      add_comments("Values interpolated from A44.globaltech_shrwt_cwf_H2_scenarios") %>%
+      add_legacy_name("L244.GlobalTechShrwt_bld_cwf_H2_scenarios") %>%
+      add_precursors("energy/A44.globaltech_shrwt_cwf_H2_scenarios") ->
+      L244.GlobalTechShrwt_bld_cwf_H2_scenarios
+
     return_data(L244.SubregionalShares, L244.PriceExp_IntGains, L244.Floorspace, L244.DemandFunction_serv, L244.DemandFunction_flsp,
                 L244.Satiation_flsp, L244.SatiationAdder, L244.ThermalBaseService, L244.GenericBaseService, L244.ThermalServiceSatiation,
                 L244.GenericServiceSatiation, L244.Intgains_scalar, L244.ShellConductance_bld,
@@ -1380,7 +1405,7 @@ module_energy_L244.building_det <- function(command, ...) {
                 L244.DeleteThermalService, L244.SubsectorLogit_bld, L244.StubTechIntGainOutputRatio,
                 L244.HDDCDD_A2_CCSM3x, L244.HDDCDD_A2_HadCM3, L244.HDDCDD_B1_CCSM3x, L244.HDDCDD_B1_HadCM3, L244.HDDCDD_constdd_no_GCM,
                 L244.GompFnParam, L244.ShellConductance_bld_cwf, L244.StubTechEff_bld_cwf, L244.StubTechIntGainOutputRatio_cwf,
-                L244.Satiation_flsp_cwf, L244.SatiationAdder_cwf, L244.GompFnParam_cwf)
+                L244.Satiation_flsp_cwf, L244.SatiationAdder_cwf, L244.GompFnParam_cwf, L244.GlobalTechShrwt_bld_cwf_H2_scenarios)
   } else {
     stop("Unknown command")
   }

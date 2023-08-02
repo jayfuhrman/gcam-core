@@ -1,0 +1,108 @@
+# File: A44.globaltech_shrwt_cwf_H2_scenarios.csv
+# Title: Building default technology shareweights
+# Units: Unitless
+# Column types: cccnnnnnc
+# ----------
+supplysector,subsector,technology,1971,2010,2020,2050,2100,scenario
+resid heating,biomass,biomass,1,1,1,1,1,cwf_med_H2
+resid heating,coal,coal,1,1,1,1,1,cwf_med_H2
+resid heating,electricity,electricity,1,1,1,1,1,cwf_med_H2
+resid heating,gas,gas,1,1,1,1,1,cwf_med_H2
+resid heating,refined liquids,refined liquids,1,1,1,1,1,cwf_med_H2
+resid heating,traditional biomass,traditional biomass,1,1,1,1,1,cwf_med_H2
+resid heating,district heat,district heat,1,1,1,1,1,cwf_med_H2
+resid cooling,electricity,electricity,1,1,1,1,1,cwf_med_H2
+resid cooling,gas,gas,1,1,1,1,1,cwf_med_H2
+resid others,biomass,biomass,1,1,1,1,1,cwf_med_H2
+resid others,coal,coal,1,1,1,1,1,cwf_med_H2
+resid others,electricity,electricity,1,1,1,1,1,cwf_med_H2
+resid others,gas,gas,1,1,1,1,1,cwf_med_H2
+resid others,refined liquids,refined liquids,1,1,1,1,1,cwf_med_H2
+resid others,traditional biomass,traditional biomass,1,1,1,1,1,cwf_med_H2
+resid others,district heat,district heat,1,1,1,1,1,cwf_med_H2
+comm heating,biomass,biomass,1,1,1,1,1,cwf_med_H2
+comm heating,coal,coal,1,1,1,1,1,cwf_med_H2
+comm heating,electricity,electricity,1,1,1,1,1,cwf_med_H2
+comm heating,gas,gas,1,1,1,1,1,cwf_med_H2
+comm heating,refined liquids,refined liquids,1,1,1,1,1,cwf_med_H2
+comm heating,district heat,district heat,1,1,1,1,1,cwf_med_H2
+comm cooling,electricity,electricity,1,1,1,1,1,cwf_med_H2
+comm cooling,gas,gas,1,1,1,1,1,cwf_med_H2
+comm others,biomass,biomass,1,1,1,1,1,cwf_med_H2
+comm others,coal,coal,1,1,1,1,1,cwf_med_H2
+comm others,electricity,electricity,1,1,1,1,1,cwf_med_H2
+comm others,gas,gas,1,1,1,1,1,cwf_med_H2
+comm others,refined liquids,refined liquids,1,1,1,1,1,cwf_med_H2
+comm others,district heat,district heat,1,1,1,1,1,cwf_med_H2
+resid heating,gas,hydrogen,0,0,0,1,1,cwf_med_H2
+resid others,gas,hydrogen,0,0,0,1,1,cwf_med_H2
+comm heating,gas,hydrogen,0,0,0,1,1,cwf_med_H2
+comm others,gas,hydrogen,0,0,0,1,1,cwf_med_H2
+resid heating,biomass,biomass,1,1,1,1,1,cwf_low_H2
+resid heating,coal,coal,1,1,1,1,1,cwf_low_H2
+resid heating,electricity,electricity,1,1,1,1,1,cwf_low_H2
+resid heating,gas,gas,1,1,1,1,1,cwf_low_H2
+resid heating,refined liquids,refined liquids,1,1,1,1,1,cwf_low_H2
+resid heating,traditional biomass,traditional biomass,1,1,1,1,1,cwf_low_H2
+resid heating,district heat,district heat,1,1,1,1,1,cwf_low_H2
+resid cooling,electricity,electricity,1,1,1,1,1,cwf_low_H2
+resid cooling,gas,gas,1,1,1,1,1,cwf_low_H2
+resid others,biomass,biomass,1,1,1,1,1,cwf_low_H2
+resid others,coal,coal,1,1,1,1,1,cwf_low_H2
+resid others,electricity,electricity,1,1,1,1,1,cwf_low_H2
+resid others,gas,gas,1,1,1,1,1,cwf_low_H2
+resid others,refined liquids,refined liquids,1,1,1,1,1,cwf_low_H2
+resid others,traditional biomass,traditional biomass,1,1,1,1,1,cwf_low_H2
+resid others,district heat,district heat,1,1,1,1,1,cwf_low_H2
+comm heating,biomass,biomass,1,1,1,1,1,cwf_low_H2
+comm heating,coal,coal,1,1,1,1,1,cwf_low_H2
+comm heating,electricity,electricity,1,1,1,1,1,cwf_low_H2
+comm heating,gas,gas,1,1,1,1,1,cwf_low_H2
+comm heating,refined liquids,refined liquids,1,1,1,1,1,cwf_low_H2
+comm heating,district heat,district heat,1,1,1,1,1,cwf_low_H2
+comm cooling,electricity,electricity,1,1,1,1,1,cwf_low_H2
+comm cooling,gas,gas,1,1,1,1,1,cwf_low_H2
+comm others,biomass,biomass,1,1,1,1,1,cwf_low_H2
+comm others,coal,coal,1,1,1,1,1,cwf_low_H2
+comm others,electricity,electricity,1,1,1,1,1,cwf_low_H2
+comm others,gas,gas,1,1,1,1,1,cwf_low_H2
+comm others,refined liquids,refined liquids,1,1,1,1,1,cwf_low_H2
+comm others,district heat,district heat,1,1,1,1,1,cwf_low_H2
+resid heating,gas,hydrogen,0,0,0,0.5,0.5,cwf_low_H2
+resid others,gas,hydrogen,0,0,0,0.5,0.5,cwf_low_H2
+comm heating,gas,hydrogen,0,0,0,0.5,0.5,cwf_low_H2
+comm others,gas,hydrogen,0,0,0,0.5,0.5,cwf_low_H2
+resid heating,biomass,biomass,1,1,1,1,1,cwf_high_H2
+resid heating,coal,coal,1,1,1,1,1,cwf_high_H2
+resid heating,electricity,electricity,1,1,1,1,1,cwf_high_H2
+resid heating,gas,gas,1,1,1,1,1,cwf_high_H2
+resid heating,refined liquids,refined liquids,1,1,1,1,1,cwf_high_H2
+resid heating,traditional biomass,traditional biomass,1,1,1,1,1,cwf_high_H2
+resid heating,district heat,district heat,1,1,1,1,1,cwf_high_H2
+resid cooling,electricity,electricity,1,1,1,1,1,cwf_high_H2
+resid cooling,gas,gas,1,1,1,1,1,cwf_high_H2
+resid others,biomass,biomass,1,1,1,1,1,cwf_high_H2
+resid others,coal,coal,1,1,1,1,1,cwf_high_H2
+resid others,electricity,electricity,1,1,1,1,1,cwf_high_H2
+resid others,gas,gas,1,1,1,1,1,cwf_high_H2
+resid others,refined liquids,refined liquids,1,1,1,1,1,cwf_high_H2
+resid others,traditional biomass,traditional biomass,1,1,1,1,1,cwf_high_H2
+resid others,district heat,district heat,1,1,1,1,1,cwf_high_H2
+comm heating,biomass,biomass,1,1,1,1,1,cwf_high_H2
+comm heating,coal,coal,1,1,1,1,1,cwf_high_H2
+comm heating,electricity,electricity,1,1,1,1,1,cwf_high_H2
+comm heating,gas,gas,1,1,1,1,1,cwf_high_H2
+comm heating,refined liquids,refined liquids,1,1,1,1,1,cwf_high_H2
+comm heating,district heat,district heat,1,1,1,1,1,cwf_high_H2
+comm cooling,electricity,electricity,1,1,1,1,1,cwf_high_H2
+comm cooling,gas,gas,1,1,1,1,1,cwf_high_H2
+comm others,biomass,biomass,1,1,1,1,1,cwf_high_H2
+comm others,coal,coal,1,1,1,1,1,cwf_high_H2
+comm others,electricity,electricity,1,1,1,1,1,cwf_high_H2
+comm others,gas,gas,1,1,1,1,1,cwf_high_H2
+comm others,refined liquids,refined liquids,1,1,1,1,1,cwf_high_H2
+comm others,district heat,district heat,1,1,1,1,1,cwf_high_H2
+resid heating,gas,hydrogen,0,0,0,2,2,cwf_high_H2
+resid others,gas,hydrogen,0,0,0,2,2,cwf_high_H2
+comm heating,gas,hydrogen,0,0,0,2,2,cwf_high_H2
+comm others,gas,hydrogen,0,0,0,2,2,cwf_high_H2
