@@ -33,7 +33,7 @@ wholesale gas,wholesale gas,start-year,,1,cwf_low_H2
 delivered gas,delivered gas,start-year,,1,cwf_low_H2
 refined liquids enduse,refined liquids enduse,start-year,,1,cwf_low_H2
 refined liquids industrial,refined liquids industrial,start-year,,1,cwf_low_H2
-backup_electricity,hydrogen,start-year,,0.5,cwf_low_H2
+backup_electricity,hydrogen,start-year,,0.1,cwf_low_H2
 backup_electricity,gas,start-year,,1,cwf_high_H2
 csp_backup,gas,start-year,,1,cwf_high_H2
 delivered biomass,delivered biomass,start-year,,1,cwf_high_H2
@@ -47,4 +47,4 @@ wholesale gas,wholesale gas,start-year,,1,cwf_high_H2
 delivered gas,delivered gas,start-year,,1,cwf_high_H2
 refined liquids enduse,refined liquids enduse,start-year,,1,cwf_high_H2
 refined liquids industrial,refined liquids industrial,start-year,,1,cwf_high_H2
-backup_electricity,hydrogen,start-year,,2,cwf_high_H2
+backup_electricity,hydrogen,start-year,,2.5,cwf_high_H2
