@@ -109,7 +109,7 @@
 
 			<Value name = "heat">../input/gcamdata/xml/heat.xml</Value>
 			<Value name = "hydrogen">../input/gcamdata/xml/hydrogen.xml</Value>
-			<Value name = "energy_distribution">../input/gcamdata/xml/en_distribution_H2_peaker.xml</Value>
+			<Value name = "energy_distribution">../input/gcamdata/xml/en_distribution_H2_peaker_cwf_med_H2.xml</Value>
 
 			<Value name = "other_industry">../input/gcamdata/xml/other_industry_cwf_med_H2.xml</Value>
 			<Value name = "industry_income_elas">../input/gcamdata/xml/other_industry_incelas_cwf.xml</Value>
@@ -127,7 +127,7 @@
 
 			<Value name = "hddcdd">../input/gcamdata/xml/HDDCDD_constdd_no_GCM.xml</Value>
 
-			<Value name = "building">../input/gcamdata/xml/building_det_cwf.xml</Value>
+			<Value name = "building">../input/gcamdata/xml/building_det_cwf_med_H2.xml</Value>
 			<Value name = "transportation">../input/gcamdata/xml/transportation_UCD_CWF_med.xml</Value>
 
 			<Value name = "carbon_content">../input/gcamdata/xml/Ccoef.xml</Value>
@@ -243,7 +243,7 @@
 
 			<Value name = "heat">../input/gcamdata/xml/heat.xml</Value>
 			<Value name = "hydrogen">../input/gcamdata/xml/hydrogen.xml</Value>
-			<Value name = "energy_distribution">../input/gcamdata/xml/en_distribution_H2_peaker.xml</Value>
+			<Value name = "energy_distribution">../input/gcamdata/xml/en_distribution_H2_peaker_cwf_low_H2.xml</Value>
 
 			<Value name = "other_industry">../input/gcamdata/xml/other_industry_cwf_low_H2.xml</Value>
 			<Value name = "industry_income_elas">../input/gcamdata/xml/other_industry_incelas_cwf.xml</Value>
@@ -261,7 +261,7 @@
 
 			<Value name = "hddcdd">../input/gcamdata/xml/HDDCDD_constdd_no_GCM.xml</Value>
 
-			<Value name = "building">../input/gcamdata/xml/building_det_cwf.xml</Value>
+			<Value name = "building">../input/gcamdata/xml/building_det_cwf_low_H2.xml</Value>
 			<Value name = "transportation">../input/gcamdata/xml/transportation_UCD_CWF_low.xml</Value>
 
 			<Value name = "carbon_content">../input/gcamdata/xml/Ccoef.xml</Value>
@@ -374,7 +374,7 @@
 
 			<Value name = "heat">../input/gcamdata/xml/heat.xml</Value>
 			<Value name = "hydrogen">../input/gcamdata/xml/hydrogen.xml</Value>
-			<Value name = "energy_distribution">../input/gcamdata/xml/en_distribution_H2_peaker.xml</Value>
+			<Value name = "energy_distribution">../input/gcamdata/xml/en_distribution_H2_peaker_cwf_high_H2.xml</Value>
 
 			<Value name = "other_industry">../input/gcamdata/xml/other_industry_cwf_high_H2.xml</Value>
 			<Value name = "industry_income_elas">../input/gcamdata/xml/other_industry_incelas_cwf.xml</Value>
@@ -392,7 +392,7 @@
 
 			<Value name = "hddcdd">../input/gcamdata/xml/HDDCDD_constdd_no_GCM.xml</Value>
 
-			<Value name = "building">../input/gcamdata/xml/building_det_cwf.xml</Value>
+			<Value name = "building">../input/gcamdata/xml/building_det_cwf_high_H2.xml</Value>
 			<Value name = "transportation">../input/gcamdata/xml/transportation_UCD_CWF_high.xml</Value>
 
 			<Value name = "carbon_content">../input/gcamdata/xml/Ccoef.xml</Value>
