@@ -34,10 +34,10 @@ comm others,electricity,electricity,1,1,1,1,1,cwf_med_H2
 comm others,gas,gas,1,1,1,1,1,cwf_med_H2
 comm others,refined liquids,refined liquids,1,1,1,1,1,cwf_med_H2
 comm others,district heat,district heat,1,1,1,1,1,cwf_med_H2
-resid heating,gas,hydrogen,0,0,0,1,1,cwf_med_H2
-resid others,gas,hydrogen,0,0,0,1,1,cwf_med_H2
-comm heating,gas,hydrogen,0,0,0,1,1,cwf_med_H2
-comm others,gas,hydrogen,0,0,0,1,1,cwf_med_H2
+resid heating,gas,hydrogen,0,0,0,0.75,1.5,cwf_med_H2
+resid others,gas,hydrogen,0,0,0,0.75,1.5,cwf_med_H2
+comm heating,gas,hydrogen,0,0,0,0.75,1.5,cwf_med_H2
+comm others,gas,hydrogen,0,0,0,0.75,1.5,cwf_med_H2
 resid heating,biomass,biomass,1,1,1,1,1,cwf_low_H2
 resid heating,coal,coal,1,1,1,1,1,cwf_low_H2
 resid heating,electricity,electricity,1,1,1,1,1,cwf_low_H2
@@ -68,10 +68,10 @@ comm others,electricity,electricity,1,1,1,1,1,cwf_low_H2
 comm others,gas,gas,1,1,1,1,1,cwf_low_H2
 comm others,refined liquids,refined liquids,1,1,1,1,1,cwf_low_H2
 comm others,district heat,district heat,1,1,1,1,1,cwf_low_H2
-resid heating,gas,hydrogen,0,0,0,0.5,0.5,cwf_low_H2
-resid others,gas,hydrogen,0,0,0,0.5,0.5,cwf_low_H2
-comm heating,gas,hydrogen,0,0,0,0.5,0.5,cwf_low_H2
-comm others,gas,hydrogen,0,0,0,0.5,0.5,cwf_low_H2
+resid heating,gas,hydrogen,0,0,0,0.1,0.1,cwf_low_H2
+resid others,gas,hydrogen,0,0,0,0.1,0.1,cwf_low_H2
+comm heating,gas,hydrogen,0,0,0,0.1,0.1,cwf_low_H2
+comm others,gas,hydrogen,0,0,0,0.1,0.1,cwf_low_H2
 resid heating,biomass,biomass,1,1,1,1,1,cwf_high_H2
 resid heating,coal,coal,1,1,1,1,1,cwf_high_H2
 resid heating,electricity,electricity,1,1,1,1,1,cwf_high_H2
@@ -102,7 +102,7 @@ comm others,electricity,electricity,1,1,1,1,1,cwf_high_H2
 comm others,gas,gas,1,1,1,1,1,cwf_high_H2
 comm others,refined liquids,refined liquids,1,1,1,1,1,cwf_high_H2
 comm others,district heat,district heat,1,1,1,1,1,cwf_high_H2
-resid heating,gas,hydrogen,0,0,0,2,2,cwf_high_H2
-resid others,gas,hydrogen,0,0,0,2,2,cwf_high_H2
-comm heating,gas,hydrogen,0,0,0,2,2,cwf_high_H2
-comm others,gas,hydrogen,0,0,0,2,2,cwf_high_H2
+resid heating,gas,hydrogen,0,0,0,4,4,cwf_high_H2
+resid others,gas,hydrogen,0,0,0,4,4,cwf_high_H2
+comm heating,gas,hydrogen,0,0,0,4,4,cwf_high_H2
+comm others,gas,hydrogen,0,0,0,4,4,cwf_high_H2
