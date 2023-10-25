@@ -1,7 +1,7 @@
 # File: A62.globaltech_shrwt_EMF.csv
 # Title: dac default shareweights
 # Units: Unitless
-# Column types: ccciiinnnnnnn
+# Column types: cccnnnnnnn
 # ----------
 supplysector,subsector,technology,1971,2019,2020,2025,2030,2050,2100
 CO2 removal,dac,hightemp DAC NG,0,0,0,0,1,1,1
