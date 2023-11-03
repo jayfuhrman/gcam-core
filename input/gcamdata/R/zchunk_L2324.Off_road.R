@@ -41,7 +41,9 @@ module_energy_L2324.Off_road <- function(command, ...) {
              FILE = "energy/A324.globaltech_cost",
              FILE = "energy/A324.globaltech_retirement",
              FILE = "energy/A324.globaltech_shrwt",
+             FILE = "energy/A324.globaltech_shrwt_cwf",
              FILE = "energy/A324.globaltech_interp",
+             FILE = "energy/A324.globaltech_interp_cwf",
              FILE = "energy/A324.demand",
              "L1324.in_EJ_R_Off_road_F_Y",
              FILE = "energy/A324.globaltech_eff_cwf_adj",
@@ -55,7 +57,9 @@ module_energy_L2324.Off_road <- function(command, ...) {
              "L2324.SubsectorInterp_Off_road",
              "L2324.StubTech_Off_road",
              "L2324.GlobalTechShrwt_Off_road",
+             "L2324.GlobalTechShrwt_Off_road_cwf",
              "L2324.GlobalTechInterp_Off_road",
+             "L2324.GlobalTechInterp_Off_road_cwf",
              "L2324.GlobalTechCoef_Off_road",
              "L2324.GlobalTechEff_Off_road",
              "L2324.GlobalTechCost_Off_road",
@@ -92,7 +96,9 @@ module_energy_L2324.Off_road <- function(command, ...) {
 	  A324.globaltech_retirement <- get_data(all_data, "energy/A324.globaltech_retirement", strip_attributes = TRUE)
 	  A324.nonenergy_Cseq <- get_data(all_data, "energy/A324.nonenergy_Cseq", strip_attributes = TRUE)
     A324.globaltech_shrwt <- get_data(all_data, "energy/A324.globaltech_shrwt", strip_attributes = TRUE)
+    A324.globaltech_shrwt_cwf <- get_data(all_data, "energy/A324.globaltech_shrwt_cwf", strip_attributes = TRUE)
     A324.globaltech_interp <- get_data(all_data, "energy/A324.globaltech_interp", strip_attributes = TRUE)
+    A324.globaltech_interp_cwf <- get_data(all_data, "energy/A324.globaltech_interp_cwf", strip_attributes = TRUE)
     A324.demand <- get_data(all_data, "energy/A324.demand", strip_attributes = TRUE)
     L1324.in_EJ_R_Off_road_F_Y <- get_data(all_data, "L1324.in_EJ_R_Off_road_F_Y")
     A324.globaltech_eff_cwf_adj <- get_data(all_data, "energy/A324.globaltech_eff_cwf_adj", strip_attributes = TRUE)
@@ -231,6 +237,19 @@ module_energy_L2324.Off_road <- function(command, ...) {
              subsector.name = subsector) %>%
       select(LEVEL2_DATA_NAMES[["GlobalTechYr"]], "share.weight") ->
       L2324.GlobalTechShrwt_Off_road
+
+    A324.globaltech_shrwt_cwf %>%
+      gather_years %>%
+      complete(nesting(supplysector, subsector, technology), year = c(year, MODEL_BASE_YEARS, MODEL_FUTURE_YEARS)) %>%
+      arrange(supplysector, subsector, technology, year) %>%
+      group_by(supplysector, subsector, technology) %>%
+      mutate(share.weight = approx_fun(year, value, rule = 1)) %>%
+      ungroup %>%
+      filter(year %in% c(MODEL_BASE_YEARS, MODEL_FUTURE_YEARS)) %>%
+      rename(sector.name = supplysector,
+             subsector.name = subsector) %>%
+      select(LEVEL2_DATA_NAMES[["GlobalTechYr"]], "share.weight") ->
+      L2324.GlobalTechShrwt_Off_road_cwf
 
 
     # L2324.GlobalTechCost_Off_road: Non-energy costs of global Off_road manufacturing technologies
@@ -473,6 +492,10 @@ module_energy_L2324.Off_road <- function(command, ...) {
       set_years() %>%
       rename(sector.name = supplysector, subsector.name = subsector)
 
+    L2324.GlobalTechInterp_Off_road_cwf <- A324.globaltech_interp_cwf %>%
+      set_years() %>%
+      rename(sector.name = supplysector, subsector.name = subsector)
+
 
     # L2324.PriceElasticity_Off_road: price elasticity
     A324.demand %>%
@@ -576,6 +599,13 @@ module_energy_L2324.Off_road <- function(command, ...) {
       add_precursors("energy/A324.globaltech_interp") ->
       L2324.GlobalTechInterp_Off_road
 
+    L2324.GlobalTechInterp_Off_road_cwf %>%
+      add_title("Technology shareweight interpolation of Off_road sector") %>%
+      add_units("NA") %>%
+      add_comments("Rules from global technology database are applied to all regions") %>%
+      add_precursors("energy/A324.globaltech_interp_cwf") ->
+      L2324.GlobalTechInterp_Off_road_cwf
+
 
     L2324.StubTech_Off_road %>%
       add_title("Identification of stub technologies of Off_road") %>%
@@ -592,6 +622,14 @@ module_energy_L2324.Off_road <- function(command, ...) {
       add_legacy_name("L2324.GlobalTechShrwt_Off_road") %>%
       add_precursors("energy/A324.globaltech_shrwt") ->
       L2324.GlobalTechShrwt_Off_road
+
+    L2324.GlobalTechShrwt_Off_road_cwf %>%
+      add_title("Shareweights of global Off_road technologies") %>%
+      add_units("Unitless") %>%
+      add_comments("For Off_road sector, the share weights from A324.globaltech_shrwt_cwf are interpolated into all base years and future years") %>%
+      add_legacy_name("L2324.GlobalTechShrwt_Off_road_cwf") %>%
+      add_precursors("energy/A324.globaltech_shrwt_cwf") ->
+      L2324.GlobalTechShrwt_Off_road_cwf
 
     L2324.GlobalTechCoef_Off_road %>%
       add_title("Energy inputs and coefficients of Off_road technologies") %>%
@@ -756,6 +794,7 @@ module_energy_L2324.Off_road <- function(command, ...) {
 
       return_data(L2324.Supplysector_Off_road, L2324.FinalEnergyKeyword_Off_road, L2324.SubsectorLogit_Off_road,
                   L2324.SubsectorShrwtFllt_Off_road, L2324.SubsectorInterp_Off_road, L2324.GlobalTechInterp_Off_road,
+                  L2324.GlobalTechInterp_Off_road_cwf,
                   L2324.StubTech_Off_road, L2324.GlobalTechShrwt_Off_road,L2324.GlobalTechShutdown_Off_road,
                   L2324.GlobalTechSCurve_Off_road, L2324.GlobalTechLifetime_Off_road, L2324.GlobalTechProfitShutdown_Off_road,
                   L2324.GlobalTechCoef_Off_road, L2324.GlobalTechEff_Off_road,L2324.GlobalTechCost_Off_road,
@@ -763,7 +802,8 @@ module_energy_L2324.Off_road <- function(command, ...) {
                   L2324.StubTechProd_Off_road,L2324.GlobalTechCSeq_ind,
                   L2324.PerCapitaBased_Off_road, L2324.BaseService_Off_road,
                   L2324.PriceElasticity_Off_road, L2324.GlobalTechEff_Off_road_cwf,
-                  L2324.GlobalTechShrwt_Off_road_cwf_H2_scenarios, L2324.GlobalTechInterp_Off_road_cwf_H2_scenarios)
+                  L2324.GlobalTechShrwt_Off_road_cwf_H2_scenarios, L2324.GlobalTechInterp_Off_road_cwf_H2_scenarios,
+                  L2324.GlobalTechShrwt_Off_road_cwf)
 
 
   } else {

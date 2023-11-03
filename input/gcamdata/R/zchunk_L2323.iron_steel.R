@@ -36,6 +36,7 @@ module_energy_L2323.iron_steel <- function(command, ...) {
              FILE = "energy/A323.globaltech_coef",
              FILE = "energy/A323.globaltech_cost",
              FILE = "energy/A323.globaltech_shrwt",
+             FILE = "energy/A323.globaltech_shrwt_cwf",
              FILE = "energy/A323.globaltech_co2capture",
              FILE = "energy/A323.globaltech_retirement",
              FILE = "energy/A323.demand",
@@ -68,7 +69,8 @@ module_energy_L2323.iron_steel <- function(command, ...) {
 			       "L2323.PriceElasticity_iron_steel",
 			       "L2323.GlobalTechCoef_iron_steel_cwf",
 			       "L2323.StubTechCoef_iron_steel_cwf",
-			       "L2323.GlobalTechShrwt_iron_steel_cwf_H2_scenarios"))
+			       "L2323.GlobalTechShrwt_iron_steel_cwf_H2_scenarios",
+			       "L2323.GlobalTechShrwt_iron_steel_cwf"))
   } else if(command == driver.MAKE) {
 
     all_data <- list(...)[[1]]
@@ -83,6 +85,7 @@ module_energy_L2323.iron_steel <- function(command, ...) {
     A323.globaltech_coef <- get_data(all_data, "energy/A323.globaltech_coef", strip_attributes = TRUE)
     A323.globaltech_cost <- get_data(all_data, "energy/A323.globaltech_cost", strip_attributes = TRUE)
     A323.globaltech_shrwt <- get_data(all_data, "energy/A323.globaltech_shrwt", strip_attributes = TRUE)
+    A323.globaltech_shrwt_cwf <- get_data(all_data, "energy/A323.globaltech_shrwt_cwf", strip_attributes = TRUE)
     A323.globaltech_co2capture <- get_data(all_data, "energy/A323.globaltech_co2capture", strip_attributes = TRUE)
     A323.globaltech_retirement <- get_data(all_data, "energy/A323.globaltech_retirement", strip_attributes = TRUE)
     A323.demand <- get_data(all_data, "energy/A323.demand", strip_attributes = TRUE)
@@ -154,6 +157,19 @@ module_energy_L2323.iron_steel <- function(command, ...) {
              subsector.name = subsector) %>%
       select(LEVEL2_DATA_NAMES[["GlobalTechYr"]], "share.weight") ->
       L2323.GlobalTechShrwt_iron_steel
+
+    A323.globaltech_shrwt_cwf %>%
+      gather_years %>%
+      complete(nesting(supplysector, subsector, technology), year = c(year, MODEL_BASE_YEARS, MODEL_FUTURE_YEARS)) %>%
+      arrange(supplysector, subsector, technology, year) %>%
+      group_by(supplysector, subsector, technology) %>%
+      mutate(share.weight = approx_fun(year, value, rule = 1)) %>%
+      ungroup %>%
+      filter(year %in% c(MODEL_BASE_YEARS, MODEL_FUTURE_YEARS)) %>%
+      rename(sector.name = supplysector,
+             subsector.name = subsector) %>%
+      select(LEVEL2_DATA_NAMES[["GlobalTechYr"]], "share.weight") ->
+      L2323.GlobalTechShrwt_iron_steel_cwf
 
     # L2323.GlobalTechCoef_iron_steel: Energy inputs and coefficients of iron_steel technologies
     A323.globaltech_coef %>%
@@ -466,6 +482,14 @@ module_energy_L2323.iron_steel <- function(command, ...) {
       add_precursors("energy/A323.globaltech_shrwt") ->
       L2323.GlobalTechShrwt_iron_steel
 
+    L2323.GlobalTechShrwt_iron_steel_cwf %>%
+      add_title("Shareweights of global iron and steel technologies") %>%
+      add_units("Unitless") %>%
+      add_comments("Phase out new blast furnace and EAF without CCS by 2050") %>%
+      add_legacy_name("L2323.GlobalTechShrwt_iron_steel") %>%
+      add_precursors("energy/A323.globaltech_shrwt_cwf") ->
+      L2323.GlobalTechShrwt_iron_steel_cwf
+
     L2323.GlobalTechCoef_iron_steel %>%
       add_title("Energy inputs and coefficients of iron and steel technologies") %>%
       add_units("scrap input is unitless (Mt scrap per Mt steel); all others are GJ per kg (EJ of energy per Mt of steel)") %>%
@@ -613,7 +637,7 @@ module_energy_L2323.iron_steel <- function(command, ...) {
 
       return_data(L2323.Supplysector_iron_steel, L2323.FinalEnergyKeyword_iron_steel, L2323.SubsectorLogit_iron_steel,
                   L2323.SubsectorShrwtFllt_iron_steel, L2323.SubsectorInterp_iron_steel,
-                  L2323.StubTech_iron_steel, L2323.GlobalTechShrwt_iron_steel,
+                  L2323.StubTech_iron_steel, L2323.GlobalTechShrwt_iron_steel,L2323.GlobalTechShrwt_iron_steel_cwf,
                   L2323.GlobalTechCoef_iron_steel, L2323.GlobalTechCost_iron_steel, L2323.GlobalTechCapture_iron_steel, L2323.GlobalTechShutdown_en,
                   L2323.GlobalTechSCurve_en, L2323.GlobalTechLifetime_en, L2323.GlobalTechProfitShutdown_en,
                   L2323.StubTechProd_iron_steel, L2323.StubTechCoef_iron_steel,

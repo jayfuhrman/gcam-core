@@ -20,7 +20,9 @@ module_energy_batch_Off_road_xml <- function(command, ...) {
              "L2324.SubsectorInterp_Off_road",
              "L2324.StubTech_Off_road",
              "L2324.GlobalTechInterp_Off_road",
+             "L2324.GlobalTechInterp_Off_road_cwf",
              "L2324.GlobalTechShrwt_Off_road",
+             "L2324.GlobalTechShrwt_Off_road_cwf",
              "L2324.GlobalTechCoef_Off_road",
              "L2324.GlobalTechEff_Off_road",
              "L2324.GlobalTechCost_Off_road",
@@ -54,7 +56,9 @@ module_energy_batch_Off_road_xml <- function(command, ...) {
     L2324.SubsectorInterp_Off_road <- get_data(all_data, "L2324.SubsectorInterp_Off_road")
     L2324.StubTech_Off_road <- get_data(all_data, "L2324.StubTech_Off_road")
     L2324.GlobalTechInterp_Off_road <- get_data(all_data, "L2324.GlobalTechInterp_Off_road")
+    L2324.GlobalTechInterp_Off_road_cwf <- get_data(all_data, "L2324.GlobalTechInterp_Off_road_cwf")
     L2324.GlobalTechShrwt_Off_road <- get_data(all_data, "L2324.GlobalTechShrwt_Off_road")
+    L2324.GlobalTechShrwt_Off_road_cwf <- get_data(all_data, "L2324.GlobalTechShrwt_Off_road_cwf")
     L2324.GlobalTechCoef_Off_road <- get_data(all_data, "L2324.GlobalTechCoef_Off_road")
     L2324.GlobalTechEff_Off_road <- get_data(all_data, "L2324.GlobalTechEff_Off_road")
     L2324.GlobalTechCost_Off_road <- get_data(all_data, "L2324.GlobalTechCost_Off_road")
@@ -116,8 +120,8 @@ module_energy_batch_Off_road_xml <- function(command, ...) {
       add_xml_data(L2324.SubsectorShrwtFllt_Off_road, "SubsectorShrwtFllt") %>%
       add_xml_data(L2324.SubsectorInterp_Off_road, "SubsectorInterp") %>%
       add_xml_data(L2324.StubTech_Off_road, "StubTech") %>%
-      add_xml_data(L2324.GlobalTechInterp_Off_road, "GlobalTechInterp") %>%
-      add_xml_data(L2324.GlobalTechShrwt_Off_road, "GlobalTechShrwt") %>%
+      add_xml_data(L2324.GlobalTechInterp_Off_road_cwf, "GlobalTechInterp") %>%
+      add_xml_data(L2324.GlobalTechShrwt_Off_road_cwf, "GlobalTechShrwt") %>%
       add_xml_data(L2324.GlobalTechCoef_Off_road, "GlobalTechCoef") %>%
       add_xml_data(L2324.GlobalTechEff_Off_road_cwf, "GlobalTechEff") %>% # CWF version
       add_xml_data(L2324.GlobalTechCost_Off_road, "GlobalTechCost") %>%
@@ -132,10 +136,10 @@ module_energy_batch_Off_road_xml <- function(command, ...) {
       add_xml_data(L2324.GlobalTechCSeq_ind, "GlobalTechCSeq") %>%
       add_precursors("L2324.Supplysector_Off_road", "L2324.FinalEnergyKeyword_Off_road", "L2324.SubsectorLogit_Off_road",
                      "L2324.SubsectorShrwtFllt_Off_road",
-                     "L2324.SubsectorInterp_Off_road", "L2324.GlobalTechInterp_Off_road",
+                     "L2324.SubsectorInterp_Off_road", "L2324.GlobalTechInterp_Off_road_cwf",
                      "L2324.StubTech_Off_road","L2324.StubTechCoef_Off_road","L2324.GlobalTechCSeq_ind",
                      "L2324.GlobalTechProfitShutdown_Off_road", "L2324.GlobalTechSCurve_Off_road",
-                     "L2324.GlobalTechShrwt_Off_road", "L2324.GlobalTechCoef_Off_road", "L2324.GlobalTechCost_Off_road",
+                     "L2324.GlobalTechShrwt_Off_road_cwf", "L2324.GlobalTechCoef_Off_road", "L2324.GlobalTechCost_Off_road",
                      "L2324.StubTechCalInput_Off_road","L2324.StubTechProd_Off_road","L2324.GlobalTechEff_Off_road_cwf",
                      "L2324.PerCapitaBased_Off_road", "L2324.BaseService_Off_road",
                      "L2324.PriceElasticity_Off_road") ->
