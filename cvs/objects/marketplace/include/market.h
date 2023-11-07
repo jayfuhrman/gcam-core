@@ -56,7 +56,7 @@
 #include "util/base/include/data_definition_util.h"
 
 #if GCAM_PARALLEL_ENABLED
-#include "tbb/spin_rw_mutex.h"
+#include "tbb/spin_mutex.h"
 #endif
 
 class IInfo;
@@ -227,7 +227,7 @@ protected:
     )
     
 #if GCAM_PARALLEL_ENABLED
-    typedef tbb::speculative_spin_rw_mutex Mutex;
+    typedef tbb::spin_mutex Mutex;
     //! A fast lock to protect conccurent adds to demand.
     mutable Mutex mDemandMutex;
     
@@ -236,7 +236,7 @@ protected:
 #endif
     
     //! Object containing information related to the market.
-    std::auto_ptr<IInfo> mMarketInfo;
+    std::unique_ptr<IInfo> mMarketInfo;
     
     //! Weak pointer to the container that hold this market.  The container will
     //! keep shared market data such as name and contained regions so we hold a
