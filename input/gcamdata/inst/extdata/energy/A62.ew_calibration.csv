@@ -1,0 +1,38 @@
+# File: A62.ew_calibration.csv
+# Title: Calibration values for the CO2 removal sector. For DACCS we scale linearly from 2000 MtC/yr in USA based on each region's cumulative carbon storage capacity
+# Units: MtC
+# Column types: icinn
+# ----------
+GCAM_region_ID,sector,year,weathering
+1,CO2 removal,2015,186.4744001
+2,CO2 removal,2015,16.53117485
+3,CO2 removal,2015,1.615431064
+4,CO2 removal,2015,16.04743315
+5,CO2 removal,2015,32.02940352
+6,CO2 removal,2015,8.944872576
+7,CO2 removal,2015,72.17108891
+8,CO2 removal,2015,23.99672373
+9,CO2 removal,2015,5.426127481
+10,CO2 removal,2015,0.840024153
+11,CO2 removal,2015,253.1398484
+12,CO2 removal,2015,10.60271291
+13,CO2 removal,2015,76.10982136
+14,CO2 removal,2015,17.12356928
+15,CO2 removal,2015,3.0370104
+16,CO2 removal,2015,0.129234485
+17,CO2 removal,2015,194.807931
+18,CO2 removal,2015,29.46622827
+19,CO2 removal,2015,5.630931137
+20,CO2 removal,2015,21.25312664
+21,CO2 removal,2015,1.283113816
+22,CO2 removal,2015,2.621613841
+23,CO2 removal,2015,29.33622812
+24,CO2 removal,2015,0.415396559
+25,CO2 removal,2015,9.09459574
+26,CO2 removal,2015,28.03068111
+27,CO2 removal,2015,47.74073946
+28,CO2 removal,2015,0.129234485
+29,CO2 removal,2015,146.5263848
+30,CO2 removal,2015,0.792453829
+31,CO2 removal,2015,21.12986959
+32,CO2 removal,2015,7.582313582
