@@ -64,6 +64,9 @@ module_energy_L262.dac <- function(command, ...) {
              FILE = "energy/A62.demand",
              FILE = "energy/A62.globaltech_retirement",
              FILE = "energy/A62.globaltech_retirement_EMF",
+
+             FILE = "energy/A62.ew_calibration",
+
              "L162.out_Mt_R_dac_Yh",
              "L225.GlobalTechCost_h2",
              "L225.GlobalTechCoef_h2",
@@ -162,6 +165,7 @@ module_energy_L262.dac <- function(command, ...) {
     A62.globaltech_shrwt <- get_data(all_data, "energy/A62.globaltech_shrwt")%>% gather_years
     A62.globaltech_shrwt_EMF <- get_data(all_data, "energy/A62.globaltech_shrwt_EMF")%>% gather_years
 
+    A62.ew_calibration <- get_data(all_data, "energy/A62.ew_calibration")%>% gather_years
 
 
     # ===================================================
@@ -406,6 +410,8 @@ module_energy_L262.dac <- function(command, ...) {
       calibrated_techs_export # temporary tibble
 
     L162.out_Mt_R_dac_Yh %>%
+      left_join(A62.ew_calibration, by = c("GCAM_region_ID", "sector", "year")) %>%
+      rename(daccs = value) %>%
       filter(year %in% MODEL_BASE_YEARS) %>%
       mutate(value = daccs+weathering) %>% #set scale based on weathering + daccs potential in each region
       mutate(calOutputValue = round(value, energy.DIGITS_CALOUTPUT)) %>%

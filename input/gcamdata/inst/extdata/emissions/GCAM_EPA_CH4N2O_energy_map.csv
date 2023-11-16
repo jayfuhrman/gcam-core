@@ -175,6 +175,7 @@ mining energy use,stationary,refined liquids,Combustion_general
 mining energy use,mobile,refined liquids,Combustion_general
 iron and steel,coal,BLASTFUR,Combustion_general
 iron and steel,gas,EAF with DRI,Combustion_general
+iron and steel,gas,EAF with scrap,Combustion_general
 iron and steel,refined liquids,EAF with scrap,Combustion_general
 iron and steel,coal,EAF with DRI,Combustion_general
 iron and steel,gas,BLASTFUR,Combustion_general

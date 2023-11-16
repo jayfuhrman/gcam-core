@@ -1,16 +1,14 @@
-
 # Copyright 2019 Battelle Memorial Institute; see the LICENSE file.
 
-#' module_energy_batch_Cstorage.xml
+#' module_energy_batch_Weathering_xml
 #'
-#' Construct XML data structure for \code{Cstorage.xml}.
+#' Construct XML data structure for \code{Weathering.xml}.
 #'
 #' @param command API command to execute
 #' @param ... other optional parameters, depending on command
 #' @return Depends on \code{command}: either a vector of required inputs,
 #' a vector of output names, or (if \code{command} is "MAKE") all
-#' the generated outputs: \code{Cstorage.xml}. The corresponding file in the
-#' original data system was \code{batch_Cstorage.xml.R} (energy XML).
+#' the generated outputs: \code{Weathering.xml}.
 module_energy_batch_Weathering_xml <- function(command, ...) {
   if(command == driver.DECLARE_INPUTS) {
     return(c("L263.Rsrc",
