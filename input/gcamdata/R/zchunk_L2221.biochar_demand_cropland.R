@@ -642,7 +642,7 @@ module_energy_L2221.biochar_demand_cropland <- function(command, ...) {
              biochar.year_MT = max.bicohar_MT / assumed.biochar.years,
              # Get application in kg
              biochar.year_kg = biochar.year_MT * 10^9) %>%
-      left_join_error_no_match(L2252.LN5_MgdAllocation_bio_head,
+      left_join(L2252.LN5_MgdAllocation_bio_head,
                                by = c("region", "LandLeaf2" = "LandLeaf"))-> L2252.LN5_MgdAllocation_bio_biochar
 
     # Now prepare the table with the agricultural production L2012.AgProduction_ag_irr_mgmt
