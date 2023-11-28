@@ -641,9 +641,25 @@ module_energy_L2221.biochar_demand_cropland <- function(command, ...) {
              max.bicohar_MT = (allocation_ha * biochar.rate) / 10^6,
              biochar.year_MT = max.bicohar_MT / assumed.biochar.years,
              # Get application in kg
-             biochar.year_kg = biochar.year_MT * 10^9) %>%
-      left_join(L2252.LN5_MgdAllocation_bio_head,
-                               by = c("region", "LandLeaf2" = "LandLeaf"))-> L2252.LN5_MgdAllocation_bio_biochar
+             biochar.year_kg = biochar.year_MT * 10^9) -> A221.bio_tech_land_alloc
+
+    # to make biochar more robust to GCAM version changes, anti_join to get all region/LandLeaf combos that are in
+    # A221.bio_tech_land_alloc (based on GCAM 5.3 outputs), but not in L2252.LN5_MgdAllocation_bio_head, then bind to L2252.LN5_MgdAllocation_bio_head before joining.
+    # This will prevent region / basin combos that aren't in the first table because they have zero or numerical zero biomass land allocation from causing the left_join_error_no_match to crash
+    unmatched_basins_regions <- anti_join(A221.bio_tech_land_alloc,L2252.LN5_MgdAllocation_bio_head,
+                      by = c("region", "LandLeaf2" = "LandLeaf")) %>%
+      separate(LandLeaf, sep = "_",into = c('crop','basin','water','fert')) %>%
+      mutate(LandAllocatorRoot = 'root',
+             LandNode1 = paste0('AgroForestLand_',basin),
+             LandNode2 = paste0('AgroForest_NonPasture_',basin),
+             LandNode3 = paste0('CropLand_',basin),
+             LandNode4 = paste0(crop,'_',basin),
+             LandNode5 = paste0(crop,'_',basin,'_',fert)) %>%
+      select(region,LandAllocatorRoot,LandNode1,LandNode2,LandNode3,LandNode4,LandNode5,LandLeaf=LandLeaf2)
+
+    A221.bio_tech_land_alloc %>%
+      left_join_error_no_match(L2252.LN5_MgdAllocation_bio_head %>% bind_rows(unmatched_basins_regions),
+                               by = c("region", "LandLeaf2" = "LandLeaf")) -> L2252.LN5_MgdAllocation_bio_biochar
 
     # Now prepare the table with the agricultural production L2012.AgProduction_ag_irr_mgmt
     A221.bio_tech_prod %>%
