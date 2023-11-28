@@ -252,7 +252,7 @@ module_energy_other_industry_xml <- function(command, ...) {
         add_xml_data(L232.PriceElasticity_ind, "PriceElasticity") %>%
         add_xml_data(L232.BaseService_ind, "BaseService") %>%
         add_precursors("L232.SubsectorLogit_ind", "L232.FinalEnergyKeyword_ind", #"L232.SubsectorShrwt_ind",
-                       "L232.SubsectorInterp_ind_cwf_H2_scenarios_sel", #"L232.SubsectorInterpTo_ind",
+                       "L232.SubsectorInterp_ind_cwf_H2_scenarios", #"L232.SubsectorInterpTo_ind",
                        "L232.StubTech_ind",
                        "L232.GlobalTechShrwt_ind", "L232.StubTechInterp_ind", "L232.GlobalTechEff_ind_cwf",
                        "L232.GlobalTechCoef_ind", "L232.GlobalTechCost_ind", "L232.GlobalTechSecOut_ind",
