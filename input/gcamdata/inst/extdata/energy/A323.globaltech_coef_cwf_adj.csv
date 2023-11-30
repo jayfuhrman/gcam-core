@@ -29,6 +29,7 @@ iron and steel,EAF with DRI,Hydrogen-based DRI,elect_td_ind,1,0.9,0.8
 iron and steel,EAF with scrap,EAF with scrap,refined liquids industrial,1,0.9,0.8
 iron and steel,EAF with scrap,EAF with scrap,elect_td_ind,1,0.9,0.8
 iron and steel,EAF with scrap,EAF with scrap,scrap,1,1,1
+iron and steel,EAF with scrap,EAF with scrap,wholesale gas,1,1,1
 iron and steel,BLASTFUR,BLASTFUR with hydrogen,delivered coal,1,0.9,0.8
 iron and steel,BLASTFUR,BLASTFUR with hydrogen,refined liquids industrial,1,0.9,0.8
 iron and steel,BLASTFUR,BLASTFUR with hydrogen,elect_td_ind,1,0.9,0.8

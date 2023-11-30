@@ -22,11 +22,11 @@ module_energy_Cstorage_xml <- function(command, ...) {
               "L261.StubTech_C",
               "L261.GlobalTechCoef_C",
               "L261.GlobalTechCost_C",
-              "L261.GlobalTechShrwt_C",
-              "L261.ResSubresourceProdLifetime",
-              "L261.ResReserveTechLifetime",
-              "L261.ResReserveTechDeclinePhase",
-              "L261.ResReserveTechProfitShutdown"))
+              "L261.GlobalTechShrwt_C"))
+              #"L261.ResSubresourceProdLifetime",
+              #"L261.ResReserveTechLifetime",
+              #"L261.ResReserveTechDeclinePhase",
+              #"L261.ResReserveTechProfitShutdown"))
   } else if(command == driver.DECLARE_OUTPUTS) {
     return(c(XML = "Cstorage.xml"))
   } else if(command == driver.MAKE) {
@@ -45,22 +45,22 @@ module_energy_Cstorage_xml <- function(command, ...) {
     L261.GlobalTechCoef_C <- get_data(all_data, "L261.GlobalTechCoef_C")
     L261.GlobalTechCost_C <- get_data(all_data, "L261.GlobalTechCost_C")
     L261.GlobalTechShrwt_C <- get_data(all_data, "L261.GlobalTechShrwt_C")
-    L261.ResSubresourceProdLifetime <- get_data(all_data, "L261.ResSubresourceProdLifetime")
-    L261.ResReserveTechLifetime <- get_data(all_data, "L261.ResReserveTechLifetime")
-    L261.ResReserveTechDeclinePhase <- get_data(all_data, "L261.ResReserveTechDeclinePhase")
-    L261.ResReserveTechProfitShutdown <- get_data(all_data, "L261.ResReserveTechProfitShutdown")
+    #L261.ResSubresourceProdLifetime <- get_data(all_data, "L261.ResSubresourceProdLifetime")
+    #L261.ResReserveTechLifetime <- get_data(all_data, "L261.ResReserveTechLifetime")
+    #L261.ResReserveTechDeclinePhase <- get_data(all_data, "L261.ResReserveTechDeclinePhase")
+    #L261.ResReserveTechProfitShutdown <- get_data(all_data, "L261.ResReserveTechProfitShutdown")
     # ===================================================
 
     # Produce outputs
     create_xml("Cstorage.xml") %>%
       add_xml_data(L261.Rsrc, "Rsrc") %>%
       add_xml_data(L261.UnlimitRsrc, "UnlimitRsrc") %>%
-      add_node_equiv_xml("subresource") %>%
-      add_node_equiv_xml("technology") %>%
-      add_xml_data(L261.ResSubresourceProdLifetime, "ResSubresourceProdLifetime") %>%
-      add_xml_data(L261.ResReserveTechDeclinePhase, "ResReserveTechDeclinePhase") %>%
-      add_xml_data(L261.ResReserveTechProfitShutdown, "ResReserveTechProfitShutdown") %>%
-      add_xml_data(L261.ResReserveTechLifetime, "ResReserveTechLifetime") %>%
+      #add_node_equiv_xml("subresource") %>%
+      #add_node_equiv_xml("technology") %>%
+      #add_xml_data(L261.ResSubresourceProdLifetime, "ResSubresourceProdLifetime") %>%
+      #add_xml_data(L261.ResReserveTechDeclinePhase, "ResReserveTechDeclinePhase") %>%
+      #add_xml_data(L261.ResReserveTechProfitShutdown, "ResReserveTechProfitShutdown") %>%
+      #add_xml_data(L261.ResReserveTechLifetime, "ResReserveTechLifetime") %>%
       add_xml_data(L261.RsrcCurves_C, "RsrcCurves") %>%
       add_xml_data(L261.ResTechShrwt_C, "ResTechShrwt") %>%
       add_logit_tables_xml(L261.Supplysector_C, "Supplysector") %>%
