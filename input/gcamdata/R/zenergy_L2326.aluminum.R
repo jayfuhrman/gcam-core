@@ -44,7 +44,7 @@ module_energy_L2326.aluminum <- function(command, ...) {
              "L1326.in_EJ_R_aluminum_Yh",
              "L1326.out_Mt_R_aluminum_Yh",
              "L1326.IO_GJkg_R_aluminum_F_Yh",
-			 FILE = "energy/A326.globaltech_coef_cwf_adj"))
+			 FILE = "cwf/A326.globaltech_coef_cwf_adj"))
   } else if(command == driver.DECLARE_OUTPUTS) {
     return(c("L2326.Supplysector_aluminum",
              "L2326.FinalEnergyKeyword_aluminum",
@@ -92,7 +92,7 @@ module_energy_L2326.aluminum <- function(command, ...) {
     L1326.in_EJ_R_aluminum_Yh <- get_data(all_data, "L1326.in_EJ_R_aluminum_Yh")
     L1326.out_Mt_R_aluminum_Yh <- get_data(all_data, "L1326.out_Mt_R_aluminum_Yh")
     L1326.IO_GJkg_R_aluminum_F_Yh<- get_data(all_data, "L1326.IO_GJkg_R_aluminum_F_Yh")
-    A326.globaltech_coef_cwf_adj <- get_data(all_data, "energy/A326.globaltech_coef_cwf_adj", strip_attributes = TRUE)
+    A326.globaltech_coef_cwf_adj <- get_data(all_data, "cwf/A326.globaltech_coef_cwf_adj", strip_attributes = TRUE)
     # ===================================================
     # 0. Give binding for variable names used in pipeline
     has_district_heat <- year <- value <- GCAM_region_ID <- sector <- fuel <- year.fillout <- to.value <-
@@ -760,7 +760,7 @@ module_energy_L2326.aluminum <- function(command, ...) {
       add_units("unitless") %>%
       add_comments("Coefficients from literature wirh CWF adjustments") %>%
       add_legacy_name("L2326.StubTechCoef_aluminum") %>%
-      add_precursors("energy/calibrated_techs", "common/GCAM_region_names","energy/A326.globaltech_coef", "energy/A326.globaltech_coef_cwf_adj", "L1326.out_Mt_R_aluminum_Yh", "L1326.IO_GJkg_R_aluminum_F_Yh") ->
+      add_precursors("energy/calibrated_techs", "common/GCAM_region_names","energy/A326.globaltech_coef", "cwf/A326.globaltech_coef_cwf_adj", "L1326.out_Mt_R_aluminum_Yh", "L1326.IO_GJkg_R_aluminum_F_Yh") ->
       L2326.StubTechCoef_aluminum_cwf
 
       return_data(L2326.Supplysector_aluminum, L2326.FinalEnergyKeyword_aluminum, L2326.SubsectorLogit_aluminum,

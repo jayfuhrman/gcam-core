@@ -35,7 +35,7 @@ module_energy_L2323.iron_steel <- function(command, ...) {
              FILE = "energy/A323.globaltech_coef",
              FILE = "energy/A323.globaltech_cost",
              FILE = "energy/A323.globaltech_shrwt",
-             FILE = "energy/A323.globaltech_shrwt_cwf",
+             FILE = "cwf/A323.globaltech_shrwt_cwf",
              FILE = "energy/A323.globaltech_co2capture",
              FILE = "energy/A323.globaltech_retirement",
              FILE = "energy/A323.demand",
@@ -48,8 +48,8 @@ module_energy_L2323.iron_steel <- function(command, ...) {
              "L1323.IO_GJkg_R_iron_steel_F_Yh",
 			       "L1323.SubsectorInterp_iron_steel",
 			       "LB1092.Tradebalance_iron_steel_Mt_R_Y",
-			       FILE = "energy/A323.globaltech_coef_cwf_adj",
-			       FILE = "energy/A323.globaltech_shrwt_cwf_H2_scenarios"
+			       FILE = "cwf/A323.globaltech_coef_cwf_adj",
+			       FILE = "cwf/A323.globaltech_shrwt_cwf_H2_scenarios"
              #"L1323.in_EJ_R_iron_steel_F_Y"
 			       ))
   } else if(command == driver.DECLARE_OUTPUTS) {
@@ -92,7 +92,7 @@ module_energy_L2323.iron_steel <- function(command, ...) {
     A323.globaltech_coef <- get_data(all_data, "energy/A323.globaltech_coef", strip_attributes = TRUE)
     A323.globaltech_cost <- get_data(all_data, "energy/A323.globaltech_cost", strip_attributes = TRUE)
     A323.globaltech_shrwt <- get_data(all_data, "energy/A323.globaltech_shrwt", strip_attributes = TRUE)
-    A323.globaltech_shrwt_cwf <- get_data(all_data, "energy/A323.globaltech_shrwt_cwf", strip_attributes = TRUE)
+    A323.globaltech_shrwt_cwf <- get_data(all_data, "cwf/A323.globaltech_shrwt_cwf", strip_attributes = TRUE)
     A323.globaltech_co2capture <- get_data(all_data, "energy/A323.globaltech_co2capture", strip_attributes = TRUE)
     A323.globaltech_retirement <- get_data(all_data, "energy/A323.globaltech_retirement", strip_attributes = TRUE)
     A323.demand <- get_data(all_data, "energy/A323.demand", strip_attributes = TRUE)
@@ -105,8 +105,8 @@ module_energy_L2323.iron_steel <- function(command, ...) {
     TZ_steel_production_costs <- get_data(all_data, "energy/TZ_steel_production_costs", strip_attributes = TRUE)
     TZ_steel_cost_gcam_mapping <- get_data(all_data, "energy/mappings/TZ_steel_cost_gcam_mapping", strip_attributes = TRUE)
     TZ_steel_cost_oecd_mapping <- get_data(all_data, "energy/mappings/TZ_steel_cost_oecd_mapping", strip_attributes = TRUE)
-    A323.globaltech_coef_cwf_adj <- get_data(all_data, "energy/A323.globaltech_coef_cwf_adj", strip_attributes = TRUE)
-    A323.globaltech_shrwt_cwf_H2_scenarios <- get_data(all_data, "energy/A323.globaltech_shrwt_cwf_H2_scenarios", strip_attributes = TRUE)
+    A323.globaltech_coef_cwf_adj <- get_data(all_data, "cwf/A323.globaltech_coef_cwf_adj", strip_attributes = TRUE)
+    A323.globaltech_shrwt_cwf_H2_scenarios <- get_data(all_data, "cwf/A323.globaltech_shrwt_cwf_H2_scenarios", strip_attributes = TRUE)
 
     # ===================================================
     # Give binding for variable names used in pipeline
@@ -598,7 +598,7 @@ module_energy_L2323.iron_steel <- function(command, ...) {
       add_units("Unitless") %>%
       add_comments("Phase out new blast furnace and EAF without CCS by 2050") %>%
       add_legacy_name("L2323.GlobalTechShrwt_iron_steel") %>%
-      add_precursors("energy/A323.globaltech_shrwt_cwf") ->
+      add_precursors("cwf/A323.globaltech_shrwt_cwf") ->
       L2323.GlobalTechShrwt_iron_steel_cwf
 
     L2323.GlobalTechCoef_iron_steel %>%
@@ -743,7 +743,7 @@ module_energy_L2323.iron_steel <- function(command, ...) {
       add_units("scrap input is unitless (Mt scrap per Mt steel); all others are GJ per kg (EJ of energy per Mt of steel)") %>%
       add_comments("For iron and steel sector, the energy use coefficients from A323.globaltech_coef are interpolated into all model years, with CWF adjustments") %>%
       add_legacy_name("L2323.GlobalTechCoef_iron_steel") %>%
-      add_precursors("energy/A323.globaltech_coef", "energy/A323.globaltech_coef_cwf_adj") ->
+      add_precursors("energy/A323.globaltech_coef", "cwf/A323.globaltech_coef_cwf_adj") ->
       L2323.GlobalTechCoef_iron_steel_cwf
 
     L2323.StubTechCoef_iron_steel_cwf %>%
@@ -759,7 +759,7 @@ module_energy_L2323.iron_steel <- function(command, ...) {
       add_units("Unitless") %>%
       add_comments("For iron and steel sector, the share weights from A323.globaltech_shrwt_cwf_H2_scenarios are interpolated into all base years and future years") %>%
       add_legacy_name("L2323.GlobalTechShrwt_iron_steel") %>%
-      add_precursors("energy/A323.globaltech_shrwt_cwf_H2_scenarios") ->
+      add_precursors("cwf/A323.globaltech_shrwt_cwf_H2_scenarios") ->
       L2323.GlobalTechShrwt_iron_steel_cwf_H2_scenarios
 
       return_data(L2323.Supplysector_iron_steel, L2323.FinalEnergyKeyword_iron_steel, L2323.SubsectorLogit_iron_steel,

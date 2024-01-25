@@ -40,7 +40,7 @@ module_energy_L154.transportation_UCD <- function(command, ...) {
              "L1011.in_EJ_ctry_intlship_TOT_Yh",
              "L131.in_EJ_R_Senduse_F_Yh",
              "L100.Pop_thous_ctry_Yh",
-             FILE =  "energy/UCD_trn_data_CORE_cwf_adj"))
+             FILE =  "cwf/UCD_trn_data_CORE_cwf_adj"))
   } else if(command == driver.DECLARE_OUTPUTS) {
     return(c("L154.in_EJ_R_trn_m_sz_tech_F_Yh",
              "L154.in_EJ_ctry_trn_m_sz_tech_F",
@@ -90,7 +90,7 @@ module_energy_L154.transportation_UCD <- function(command, ...) {
     #kbn 2019-10-07: Read new size class assignments
     Size_class_New<- get_data(all_data, "energy/mappings/UCD_size_class_revisions")
 
-    UCD_trn_data_CORE_cwf_adj <- get_data(all_data, "energy/UCD_trn_data_CORE_cwf_adj")
+    UCD_trn_data_CORE_cwf_adj <- get_data(all_data, "cwf/UCD_trn_data_CORE_cwf_adj")
 
     # ===================================================
     # add CWF adjustments as a separate scenario

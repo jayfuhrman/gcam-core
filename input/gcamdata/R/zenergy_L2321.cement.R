@@ -52,10 +52,10 @@ module_energy_L2321.cement <- function(command, ...) {
              "L101.Pop_thous_GCAM3_R_Y",
              "L102.pcgdp_thous90USD_GCAM3_R_Y",
              "L102.pcgdp_thous90USD_Scen_R_Y",
-			 FILE = "energy/A321.globaltech_coef_cwf_adj",
-			 FILE = "energy/A321.incelas_cwf",
-			 FILE = "energy/A321.subsector_interp_cwf_H2_scenarios",
-			 FILE = "energy/A321.subsector_shrwt_cwf_H2_scenarios"))
+			 FILE = "cwf/A321.globaltech_coef_cwf_adj",
+			 FILE = "cwf/A321.incelas_cwf",
+			 FILE = "cwf/A321.subsector_interp_cwf_H2_scenarios",
+			 FILE = "cwf/A321.subsector_shrwt_cwf_H2_scenarios"))
   } else if(command == driver.DECLARE_OUTPUTS) {
     return(c("L2321.Supplysector_cement",
              "L2321.FinalEnergyKeyword_cement",
@@ -109,10 +109,10 @@ module_energy_L2321.cement <- function(command, ...) {
     L101.Pop_thous_GCAM3_R_Y <- get_data(all_data, "L101.Pop_thous_GCAM3_R_Y")
     L102.pcgdp_thous90USD_GCAM3_R_Y <- get_data(all_data, "L102.pcgdp_thous90USD_GCAM3_R_Y")
     L102.pcgdp_thous90USD_Scen_R_Y <- get_data(all_data, "L102.pcgdp_thous90USD_Scen_R_Y")
-    A321.globaltech_coef_cwf_adj <- get_data(all_data, "energy/A321.globaltech_coef_cwf_adj")
-    A321.incelas_cwf <- get_data(all_data, "energy/A321.incelas_cwf")
-    A321.subsector_interp_cwf_H2_scenarios <- get_data(all_data, "energy/A321.subsector_interp_cwf_H2_scenarios", strip_attributes = TRUE)
-    A321.subsector_shrwt_cwf_H2_scenarios <- get_data(all_data, "energy/A321.subsector_shrwt_cwf_H2_scenarios", strip_attributes = TRUE)
+    A321.globaltech_coef_cwf_adj <- get_data(all_data, "cwf/A321.globaltech_coef_cwf_adj")
+    A321.incelas_cwf <- get_data(all_data, "cwf/A321.incelas_cwf")
+    A321.subsector_interp_cwf_H2_scenarios <- get_data(all_data, "cwf/A321.subsector_interp_cwf_H2_scenarios", strip_attributes = TRUE)
+    A321.subsector_shrwt_cwf_H2_scenarios <- get_data(all_data, "cwf/A321.subsector_shrwt_cwf_H2_scenarios", strip_attributes = TRUE)
 
     # ===================================================
     # 0. Give binding for variable names used in pipeline
@@ -741,7 +741,7 @@ module_energy_L2321.cement <- function(command, ...) {
       add_units("limestone input is unitless (Mt limestone per Mt cement); all others are GJ per kg (EJ of energy per Mt of cement)") %>%
       add_comments("For cement sector, the energy use coefficients from A321.globaltech_coef are interpolated into all model years, with CWF adjustments") %>%
       add_legacy_name("L2321.GlobalTechCoef_cement") %>%
-      add_precursors("energy/A321.globaltech_coef", "energy/A321.globaltech_coef_cwf_adj") ->
+      add_precursors("energy/A321.globaltech_coef", "cwf/A321.globaltech_coef_cwf_adj") ->
       L2321.GlobalTechCoef_cement_cwf
 
     L2321.StubTechCoef_cement_cwf %>%
@@ -756,7 +756,7 @@ module_energy_L2321.cement <- function(command, ...) {
       add_title(paste("Income elasticity of cement -", "cwf")) %>%
       add_units("Unitless") %>%
       add_comments("Read in as assumptions") %>%
-      add_precursors("energy/A321.incelas_cwf") ->
+      add_precursors("cwf/A321.incelas_cwf") ->
       L2321.IncomeElasticity_cement_cwf
 
     L2321.SubsectorShrwtFllt_cement_cwf_H2_scenarios %>%
@@ -764,7 +764,7 @@ module_energy_L2321.cement <- function(command, ...) {
       add_units("unitless") %>%
       add_comments("For cement sector, the subsector shareweights from A321.subsector_shrwt_cwf_H2_scenarios are expanded into all GCAM regions") %>%
       add_legacy_name("L2321.SubsectorShrwtFllt_cement") %>%
-      add_precursors("energy/A321.subsector_shrwt_cwf_H2_scenarios", "common/GCAM_region_names") ->
+      add_precursors("cwf/A321.subsector_shrwt_cwf_H2_scenarios", "common/GCAM_region_names") ->
       L2321.SubsectorShrwtFllt_cement_cwf_H2_scenarios
 
     L2321.SubsectorInterp_cement_cwf_H2_scenarios %>%
@@ -772,7 +772,7 @@ module_energy_L2321.cement <- function(command, ...) {
       add_units("NA") %>%
       add_comments("For cement sector, the subsector shareweight interpolation function infromation from A321.subsector_interp_cwf_H2_scenarios is expanded into all GCAM regions") %>%
       add_legacy_name("L2321.SubsectorInterp_cement") %>%
-      add_precursors("energy/A321.subsector_interp_cwf_H2_scenarios", "common/GCAM_region_names") ->
+      add_precursors("cwf/A321.subsector_interp_cwf_H2_scenarios", "common/GCAM_region_names") ->
       L2321.SubsectorInterp_cement_cwf_H2_scenarios
 
     return_data(L2321.Supplysector_cement, L2321.FinalEnergyKeyword_cement, L2321.SubsectorLogit_cement,

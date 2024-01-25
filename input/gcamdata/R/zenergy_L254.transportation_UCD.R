@@ -62,9 +62,9 @@ module_energy_L254.transportation_UCD <- function(command, ...) {
              "L154.loadfactor_R_trn_m_sz_tech_F_Y",
              "L154.speed_kmhr_R_trn_m_sz_tech_F_Y",
              "L154.out_mpkm_R_trn_nonmotor_Yh",
-             FILE = "energy/A54.demand_ssp1_cwf_adj",
-             FILE = "energy/A54.globaltranTech_shrwt_revised_cwf",
-             FILE=  "energy/A54.globaltranTech_interp_revised_cwf"))
+             FILE = "cwf/A54.demand_ssp1_cwf_adj",
+             FILE = "cwf/A54.globaltranTech_shrwt_revised_cwf",
+             FILE=  "cwf/A54.globaltranTech_interp_revised_cwf"))
   } else if(command == driver.DECLARE_OUTPUTS) {
     return(c("L254.Supplysector_trn",
              "L254.FinalEnergyKeyword_trn",
@@ -185,9 +185,9 @@ module_energy_L254.transportation_UCD <- function(command, ...) {
     L154.speed_kmhr_R_trn_m_sz_tech_F_Y <- get_data(all_data, "L154.speed_kmhr_R_trn_m_sz_tech_F_Y",strip_attributes = TRUE)
     L154.out_mpkm_R_trn_nonmotor_Yh <- get_data(all_data, "L154.out_mpkm_R_trn_nonmotor_Yh",strip_attributes = TRUE)
 
-    A54.demand_SSP1_cwf_adj <- get_data(all_data, "energy/A54.demand_ssp1_cwf_adj",strip_attributes = TRUE)
-    A54.globaltranTech_shrwt_cwf <- get_data(all_data, "energy/A54.globaltranTech_shrwt_revised_cwf",strip_attributes = TRUE)
-    A54.globaltranTech_interp_cwf <- get_data(all_data, "energy/A54.globaltranTech_interp_revised_cwf",strip_attributes = TRUE)
+    A54.demand_SSP1_cwf_adj <- get_data(all_data, "cwf/A54.demand_ssp1_cwf_adj",strip_attributes = TRUE)
+    A54.globaltranTech_shrwt_cwf <- get_data(all_data, "cwf/A54.globaltranTech_shrwt_revised_cwf",strip_attributes = TRUE)
+    A54.globaltranTech_interp_cwf <- get_data(all_data, "cwf/A54.globaltranTech_interp_revised_cwf",strip_attributes = TRUE)
 
     # ===================================================
 
@@ -1140,7 +1140,7 @@ module_energy_L254.transportation_UCD <- function(command, ...) {
       add_units("NA") %>%
       add_comments("Populated placeholders for final calibration year and end year") %>%
       add_legacy_name("L254.GlobalTranTechInterp") %>%
-      add_precursors("energy/A54.globaltranTech_interp_revised_cwf") ->
+      add_precursors("cwf/A54.globaltranTech_interp_revised_cwf") ->
       L254.GlobalTranTechInterp_cwf
 
     L254.GlobalTranTechShrwt_cwf %>%
@@ -1148,7 +1148,7 @@ module_energy_L254.transportation_UCD <- function(command, ...) {
       add_units("Unitless") %>%
       add_comments("Data was subsetted for model years") %>%
       add_legacy_name("L254.GlobalTranTechShrwt") %>%
-      add_precursors("energy/A54.globaltranTech_shrwt_revised_cwf") ->
+      add_precursors("cwf/A54.globaltranTech_shrwt_revised_cwf") ->
       L254.GlobalTranTechShrwt_cwf
 
     L254.tranSubsectorVOTT_cwf %>%

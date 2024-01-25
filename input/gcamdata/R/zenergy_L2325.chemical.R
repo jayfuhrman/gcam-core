@@ -45,10 +45,10 @@ module_energy_L2325.chemical <- function(command, ...) {
              FILE = "energy/A325.globaltech_shrwt",
              FILE = "energy/A325.demand",
              "L1325.in_EJ_R_chemical_F_Y",
-             FILE = "energy/A325.globaltech_eff_cwf_adj",
-             FILE = "energy/A325.subsector_interp_cwf_H2_scenarios",
-             FILE = "energy/A325.subsector_shrwt_cwf_H2_scenarios",
-             FILE = "energy/A325.globaltech_shrwt_cwf_H2_scenarios"))
+             FILE = "cwf/A325.globaltech_eff_cwf_adj",
+             FILE = "cwf/A325.subsector_interp_cwf_H2_scenarios",
+             FILE = "cwf/A325.subsector_shrwt_cwf_H2_scenarios",
+             FILE = "cwf/A325.globaltech_shrwt_cwf_H2_scenarios"))
   } else if(command == driver.DECLARE_OUTPUTS) {
     return(c("L2325.Supplysector_chemical",
              "L2325.FinalEnergyKeyword_chemical",
@@ -100,10 +100,10 @@ module_energy_L2325.chemical <- function(command, ...) {
     A325.demand <- get_data(all_data, "energy/A325.demand", strip_attributes = TRUE)
     A23.chp_elecratio  <- get_data(all_data, "energy/A23.chp_elecratio", strip_attributes = TRUE)
     L1325.in_EJ_R_chemical_F_Y <- get_data(all_data, "L1325.in_EJ_R_chemical_F_Y")
-    A325.globaltech_eff_cwf_adj <- get_data(all_data, "energy/A325.globaltech_eff_cwf_adj", strip_attributes = TRUE)
-    A325.subsector_interp_cwf_H2_scenarios <- get_data(all_data, "energy/A325.subsector_interp_cwf_H2_scenarios", strip_attributes = TRUE)
-    A325.subsector_shrwt_cwf_H2_scenarios <- get_data(all_data, "energy/A325.subsector_shrwt_cwf_H2_scenarios", strip_attributes = TRUE)
-    A325.globaltech_shrwt_cwf_H2_scenarios <- get_data(all_data, "energy/A325.globaltech_shrwt_cwf_H2_scenarios", strip_attributes = TRUE)
+    A325.globaltech_eff_cwf_adj <- get_data(all_data, "cwf/A325.globaltech_eff_cwf_adj", strip_attributes = TRUE)
+    A325.subsector_interp_cwf_H2_scenarios <- get_data(all_data, "cwf/A325.subsector_interp_cwf_H2_scenarios", strip_attributes = TRUE)
+    A325.subsector_shrwt_cwf_H2_scenarios <- get_data(all_data, "cwf/A325.subsector_shrwt_cwf_H2_scenarios", strip_attributes = TRUE)
+    A325.globaltech_shrwt_cwf_H2_scenarios <- get_data(all_data, "cwf/A325.globaltech_shrwt_cwf_H2_scenarios", strip_attributes = TRUE)
 
     # ===================================================
     # 0. Give binding for variable names used in pipeline
@@ -794,7 +794,7 @@ module_energy_L2325.chemical <- function(command, ...) {
       add_units("Unitless") %>%
       add_comments("For chemical sector, the efficiency values from A325.globaltech_eff are interpolated into all base years and future years, with CWF adjustments") %>%
       add_legacy_name("L2325.GlobalTechEff_chemical") %>%
-      add_precursors("energy/A325.globaltech_eff", "energy/A325.globaltech_eff_cwf_adj") ->
+      add_precursors("energy/A325.globaltech_eff", "cwf/A325.globaltech_eff_cwf_adj") ->
       L2325.GlobalTechEff_chemical_cwf
 
     L2325.SubsectorShrwtFllt_chemical_cwf_H2_scenarios %>%
@@ -802,7 +802,7 @@ module_energy_L2325.chemical <- function(command, ...) {
       add_units("unitless") %>%
       add_comments("For chemical sector, the subsector shareweights from A325.subsector_shrwt_cwf_H2_scenarios are expanded into all GCAM regions") %>%
       add_legacy_name("L2325.SubsectorShrwtFllt_chemical") %>%
-      add_precursors("energy/A325.subsector_shrwt_cwf_H2_scenarios", "energy/A_regions","common/GCAM_region_names") ->
+      add_precursors("cwf/A325.subsector_shrwt_cwf_H2_scenarios", "energy/A_regions","common/GCAM_region_names") ->
       L2325.SubsectorShrwtFllt_chemical_cwf_H2_scenarios
 
     L2325.SubsectorInterp_chemical_cwf_H2_scenarios %>%
@@ -810,7 +810,7 @@ module_energy_L2325.chemical <- function(command, ...) {
       add_units("NA") %>%
       add_comments("For chemical sector, the subsector shareweight interpolation function infromation from A325.subsector_interp_cwf_H2_scenarios is expanded into all GCAM regions") %>%
       add_legacy_name("L2325.SubsectorInterp_chemical") %>%
-      add_precursors("energy/A325.subsector_interp_cwf_H2_scenarios", "energy/A_regions", "common/GCAM_region_names") ->
+      add_precursors("cwf/A325.subsector_interp_cwf_H2_scenarios", "energy/A_regions", "common/GCAM_region_names") ->
       L2325.SubsectorInterp_chemical_cwf_H2_scenarios
 
     L2325.GlobalTechShrwt_chemical_cwf_H2_scenarios %>%
@@ -818,7 +818,7 @@ module_energy_L2325.chemical <- function(command, ...) {
       add_units("Unitless") %>%
       add_comments("For chemical sector, the share weights from A325.globaltech_shrwt_cwf_H2_scenarios are interpolated into all base years and future years") %>%
       add_legacy_name("L2325.GlobalTechShrwt_chemical") %>%
-      add_precursors("energy/A325.globaltech_shrwt_cwf_H2_scenarios") ->
+      add_precursors("cwf/A325.globaltech_shrwt_cwf_H2_scenarios") ->
       L2325.GlobalTechShrwt_chemical_cwf_H2_scenarios
 
       return_data(L2325.Supplysector_chemical, L2325.FinalEnergyKeyword_chemical, L2325.SubsectorLogit_chemical,

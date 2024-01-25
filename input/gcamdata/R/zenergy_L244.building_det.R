@@ -70,8 +70,8 @@ module_energy_L244.building_det <- function(command, ...) {
              'L144.shell_eff_R_Y_cwf',
              'L144.internal_gains_cwf',
              "L144.flsp_param_cwf",
-             FILE = "energy/A44.satiation_flsp_cwf_adj",
-             FILE = "energy/A44.globaltech_shrwt_cwf_H2_scenarios"))
+             FILE = "cwf/A44.satiation_flsp_cwf_adj",
+             FILE = "cwf/A44.globaltech_shrwt_cwf_H2_scenarios"))
   } else if(command == driver.DECLARE_OUTPUTS) {
     return(c("L244.SubregionalShares",
              "L244.PriceExp_IntGains",
@@ -200,8 +200,8 @@ module_energy_L244.building_det <- function(command, ...) {
     L144.shell_eff_R_Y_cwf <- get_data(all_data, "L144.shell_eff_R_Y_cwf", strip_attributes = TRUE)
     L144.internal_gains_cwf <- get_data(all_data, "L144.internal_gains_cwf", strip_attributes = TRUE)
     L144.flsp_param_cwf <- get_data(all_data, "L144.flsp_param_cwf", strip_attributes = TRUE)
-    A44.satiation_flsp_cwf_adj <- get_data(all_data, "energy/A44.satiation_flsp_cwf_adj", strip_attributes = TRUE)
-    A44.globaltech_shrwt_cwf_H2_scenarios <- get_data(all_data, "energy/A44.globaltech_shrwt_cwf_H2_scenarios") %>%
+    A44.satiation_flsp_cwf_adj <- get_data(all_data, "cwf/A44.satiation_flsp_cwf_adj", strip_attributes = TRUE)
+    A44.globaltech_shrwt_cwf_H2_scenarios <- get_data(all_data, "cwf/A44.globaltech_shrwt_cwf_H2_scenarios") %>%
       gather_years
 
     # ===================================================
@@ -1377,7 +1377,7 @@ module_energy_L244.building_det <- function(command, ...) {
       add_units("Million squared meters per capita") %>%
       add_comments("Values from A44.satiation_flsp added to A44.gcam_consumer written to all regions, with CWF adjustments") %>%
       add_legacy_name("L244.Satiation_flsp") %>%
-      add_precursors("energy/A44.satiation_flsp", "energy/A44.satiation_flsp_cwf_adj", "energy/A44.gcam_consumer", "common/GCAM_region_names", "energy/A_regions") ->
+      add_precursors("energy/A44.satiation_flsp", "cwf/A44.satiation_flsp_cwf_adj", "energy/A44.gcam_consumer", "common/GCAM_region_names", "energy/A_regions") ->
       L244.Satiation_flsp_cwf
 
     L244.SatiationAdder_cwf %>%
@@ -1385,7 +1385,7 @@ module_energy_L244.building_det <- function(command, ...) {
       add_units("Unitless") %>%
       add_comments("Satiation adder compute using satiation level, per-capita GDP and per-capita floorsapce, with CWF adjustments") %>%
       add_legacy_name("L244.SatiationAdder") %>%
-      add_precursors("energy/A44.satiation_flsp", "energy/A44.satiation_flsp_cwf_adj", "energy/A44.gcam_consumer", "common/GCAM_region_names", "energy/A_regions",
+      add_precursors("energy/A44.satiation_flsp", "cwf/A44.satiation_flsp_cwf_adj", "energy/A44.gcam_consumer", "common/GCAM_region_names", "energy/A_regions",
                      "L102.pcgdp_thous90USD_Scen_R_Y", "L101.Pop_thous_R_Yh",
                      "L144.flsp_bm2_R_res_Yh", "L144.flsp_bm2_R_comm_Yh") ->
       L244.SatiationAdder_cwf
@@ -1406,7 +1406,7 @@ module_energy_L244.building_det <- function(command, ...) {
       add_units("Unitless") %>%
       add_comments("Values interpolated from A44.globaltech_shrwt_cwf_H2_scenarios") %>%
       add_legacy_name("L244.GlobalTechShrwt_bld_cwf_H2_scenarios") %>%
-      add_precursors("energy/A44.globaltech_shrwt_cwf_H2_scenarios") ->
+      add_precursors("cwf/A44.globaltech_shrwt_cwf_H2_scenarios") ->
       L244.GlobalTechShrwt_bld_cwf_H2_scenarios
 
     return_data(L244.SubregionalShares, L244.PriceExp_IntGains, L244.Floorspace, L244.DemandFunction_serv, L244.DemandFunction_flsp,

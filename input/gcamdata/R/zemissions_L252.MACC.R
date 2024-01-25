@@ -38,7 +38,7 @@ module_emissions_L252.MACC <- function(command, ...) {
              "L232.nonco2_prc",
              "L241.hfc_all",
              "L241.pfc_all",
-             FILE = "emissions/A_MACC_TechChange_AgAn_cwf"))
+             FILE = "cwf/A_MACC_TechChange_AgAn_cwf"))
   } else if(command == driver.DECLARE_OUTPUTS) {
     return(c("L252.ResMAC_fos",
              "L252.AgMAC",
@@ -106,7 +106,7 @@ module_emissions_L252.MACC <- function(command, ...) {
     L241.hfc_all <- get_data(all_data, "L241.hfc_all", strip_attributes = TRUE)
     L241.pfc_all <- get_data(all_data, "L241.pfc_all", strip_attributes = TRUE)
     EPA_MACC_PhaseInTime <- get_data(all_data, "emissions/EPA_MACC_PhaseInTime")
-    A_MACC_TechChange_AgAn_cwf <- get_data(all_data, "emissions/A_MACC_TechChange_AgAn_cwf")
+    A_MACC_TechChange_AgAn_cwf <- get_data(all_data, "cwf/A_MACC_TechChange_AgAn_cwf")
 
     # update MAC using 2019 EPA
     # Prepare the table with all MAC curves for matching

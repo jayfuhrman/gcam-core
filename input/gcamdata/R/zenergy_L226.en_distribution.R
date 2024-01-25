@@ -32,8 +32,8 @@ module_energy_L226.en_distribution <- function(command, ...) {
              "L126.IO_R_elecownuse_F_Yh",
              "L126.IO_R_electd_F_Yh",
              "L126.IO_R_gaspipe_F_Yh",
-             FILE = "energy/A26.subsector_shrwt_cwf_H2_scenarios",
-             FILE = "energy/A26.subsector_interp_cwf_H2_scenarios"))
+             FILE = "cwf/A26.subsector_shrwt_cwf_H2_scenarios",
+             FILE = "cwf/A26.subsector_interp_cwf_H2_scenarios"))
   } else if(command == driver.DECLARE_OUTPUTS) {
     return(c("L226.Supplysector_en",
              "L226.SubsectorLogit_en",
@@ -75,8 +75,8 @@ module_energy_L226.en_distribution <- function(command, ...) {
     L126.IO_R_elecownuse_F_Yh <- get_data(all_data, "L126.IO_R_elecownuse_F_Yh", strip_attributes = TRUE)
     L126.IO_R_electd_F_Yh <- get_data(all_data, "L126.IO_R_electd_F_Yh")
     L126.IO_R_gaspipe_F_Yh <- get_data(all_data, "L126.IO_R_gaspipe_F_Yh")
-    A26.subsector_shrwt_cwf_H2_scenarios <- get_data(all_data, "energy/A26.subsector_shrwt_cwf_H2_scenarios", strip_attributes = TRUE)
-    A26.subsector_interp_cwf_H2_scenarios <- get_data(all_data, "energy/A26.subsector_interp_cwf_H2_scenarios", strip_attributes = TRUE)
+    A26.subsector_shrwt_cwf_H2_scenarios <- get_data(all_data, "cwf/A26.subsector_shrwt_cwf_H2_scenarios", strip_attributes = TRUE)
+    A26.subsector_interp_cwf_H2_scenarios <- get_data(all_data, "cwf/A26.subsector_interp_cwf_H2_scenarios", strip_attributes = TRUE)
 
     # ===================================================
 
@@ -457,14 +457,14 @@ module_energy_L226.en_distribution <- function(command, ...) {
       add_title("regional energy distribution subsector shareweights for CWF hydrogen scenarios") %>%
       add_units("unitless") %>%
       add_legacy_name("L226.SubsectorShrwtFllt_en_cwf_H2_scenarios") %>%
-      add_precursors("energy/A26.subsector_shrwt_cwf_H2_scenarios", "common/GCAM_region_names") ->
+      add_precursors("cwf/A26.subsector_shrwt_cwf_H2_scenarios", "common/GCAM_region_names") ->
       L226.SubsectorShrwtFllt_en_cwf_H2_scenarios
 
     L226.SubsectorInterp_en_cwf_H2_scenarios %>%
       add_title("interpolation functions for subsector shareweights for CWF hydrogen scenarios") %>%
       add_units("unitless") %>%
       add_legacy_name("L226.SubsectorInterp_en_cwf_H2_scenarios") %>%
-      add_precursors("energy/A26.subsector_interp_cwf_H2_scenarios", "common/GCAM_region_names") ->
+      add_precursors("cwf/A26.subsector_interp_cwf_H2_scenarios", "common/GCAM_region_names") ->
       L226.SubsectorInterp_en_cwf_H2_scenarios
 
     return_data(L226.Supplysector_en, L226.SubsectorLogit_en, L226.SubsectorShrwt_en,

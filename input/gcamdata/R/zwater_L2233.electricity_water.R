@@ -52,7 +52,7 @@ module_water_L2233.electricity_water <- function(command, ...) {
              FILE = "energy/calibrated_techs",
              FILE = "energy/A23.globalinttech",
              FILE = "energy/A23.globaltech_shrwt",
-             FILE = "energy/A23.globaltech_shrwt_no_new_unabated_fossil",
+             FILE = "cwf/A23.globaltech_shrwt_no_new_unabated_fossil",
              FILE = "energy/A23.sector",
              FILE = "water/elec_tech_water_map",
              FILE = "water/water_td_sectors",
@@ -136,7 +136,7 @@ module_water_L2233.electricity_water <- function(command, ...) {
     calibrated_techs <- get_data(all_data, "energy/calibrated_techs")
     A23.globalinttech <- get_data(all_data, "energy/A23.globalinttech")
     A23.globaltech_shrwt <- get_data(all_data, "energy/A23.globaltech_shrwt")
-    A23.globaltech_shrwt_no_new_unabated_fossil <- get_data(all_data, "energy/A23.globaltech_shrwt_no_new_unabated_fossil")
+    A23.globaltech_shrwt_no_new_unabated_fossil <- get_data(all_data, "cwf/A23.globaltech_shrwt_no_new_unabated_fossil")
     A23.sector <- get_data(all_data, "energy/A23.sector")
     elec_tech_water_map <- get_data(all_data, "water/elec_tech_water_map",strip_attributes = TRUE)
     water_td_sectors <- get_data(all_data, "water/water_td_sectors", strip_attributes = TRUE)
@@ -862,7 +862,7 @@ module_water_L2233.electricity_water <- function(command, ...) {
       add_units("units") %>%
       add_comments("Composed directly from input data") %>%
       add_legacy_name("L2233.GlobalTechShrwt_elecPassthru_no_new_unabated_fossil") %>%
-      add_precursors("energy/A23.globaltech_shrwt_no_new_unabated_fossil", "water/elec_tech_water_map") ->
+      add_precursors("cwf/A23.globaltech_shrwt_no_new_unabated_fossil", "water/elec_tech_water_map") ->
       L2233.GlobalTechShrwt_elecPassthru_no_new_unabated_fossil
 
     L2233.StubTechProd_elecPassthru %>%

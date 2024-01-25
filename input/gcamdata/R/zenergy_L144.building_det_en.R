@@ -31,7 +31,7 @@ module_energy_L144.building_det_en <- function(command, ...) {
              "L142.in_EJ_R_bld_F_Yh",
              "L143.HDDCDD_scen_RG3_Y",
              "L143.HDDCDD_scen_ctry_Y",
-             FILE = "energy/A44.USA_TechChange_cwf_adj"))
+             FILE = "cwf/A44.USA_TechChange_cwf_adj"))
   } else if(command == driver.DECLARE_OUTPUTS) {
     return(c("L144.end_use_eff",
              "L144.shell_eff_R_Y",
@@ -61,7 +61,7 @@ module_energy_L144.building_det_en <- function(command, ...) {
     L142.in_EJ_R_bld_F_Yh <- get_data(all_data, "L142.in_EJ_R_bld_F_Yh")
     L143.HDDCDD_scen_RG3_Y <- get_data(all_data, "L143.HDDCDD_scen_RG3_Y")
     L143.HDDCDD_scen_ctry_Y <- get_data(all_data, "L143.HDDCDD_scen_ctry_Y")
-    A44.USA_TechChange_cwf_adj <- get_data(all_data, "energy/A44.USA_TechChange_cwf_adj")
+    A44.USA_TechChange_cwf_adj <- get_data(all_data, "cwf/A44.USA_TechChange_cwf_adj")
 
     # ===================================================
 
@@ -716,7 +716,7 @@ module_energy_L144.building_det_en <- function(command, ...) {
       add_units("Unitless efficiency") %>%
       add_comments("End-use tech efficiency is the product of region-specific adjustment factors, tech-specific improvement rates, and tech-specific efficiency levels; with CWF adjustments") %>%
       add_legacy_name("L144.end_use_eff") %>%
-      add_precursors("energy/A44.USA_TechChange", "energy/A44.USA_TechChange_cwf_adj", "energy/calibrated_techs_bld_det", "common/iso_GCAM_regID", "energy/A44.tech_eff_mult_RG3",
+      add_precursors("energy/A44.USA_TechChange", "cwf/A44.USA_TechChange_cwf_adj", "energy/calibrated_techs_bld_det", "common/iso_GCAM_regID", "energy/A44.tech_eff_mult_RG3",
                      "energy/A_regions", "energy/A44.cost_efficiency", "common/GCAM_region_names") ->
       L144.end_use_eff_cwf
 
@@ -725,7 +725,7 @@ module_energy_L144.building_det_en <- function(command, ...) {
       add_units("Unitless efficiency") %>%
       add_comments("Shell efficiency is the product of region-specific adjustment factors and tech-specific improvement rates; with CWF adjustments") %>%
       add_legacy_name("L144.shell_eff_R_Y") %>%
-      add_precursors("energy/A44.USA_TechChange", "energy/A44.USA_TechChange_cwf_adj", "energy/calibrated_techs_bld_det", "common/iso_GCAM_regID", "energy/A44.shell_eff_mult_RG3",
+      add_precursors("energy/A44.USA_TechChange", "cwf/A44.USA_TechChange_cwf_adj", "energy/calibrated_techs_bld_det", "common/iso_GCAM_regID", "energy/A44.shell_eff_mult_RG3",
                      "common/GCAM_region_names") ->
       L144.shell_eff_R_Y_cwf
 
@@ -736,7 +736,7 @@ module_energy_L144.building_det_en <- function(command, ...) {
       add_comments("Start with table of efficiencies. Subset only the supplysector / subsector / technologies that are in the internal gains assumptions table.") %>%
       add_comments("Then divide the intgains assumptions by the efficiency, matching on supplysector / subsector / technology; with CWF adjustments") %>%
       add_legacy_name("L144.internal_gains") %>%
-      add_precursors("energy/A44.USA_TechChange", "energy/A44.USA_TechChange_cwf_adj", "energy/calibrated_techs_bld_det", "common/iso_GCAM_regID", "energy/A44.tech_eff_mult_RG3",
+      add_precursors("energy/A44.USA_TechChange", "cwf/A44.USA_TechChange_cwf_adj", "energy/calibrated_techs_bld_det", "common/iso_GCAM_regID", "energy/A44.tech_eff_mult_RG3",
                      "energy/A_regions", "energy/A44.cost_efficiency", "energy/A44.internal_gains", "common/GCAM_region_names") ->
       L144.internal_gains_cwf
 

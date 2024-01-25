@@ -40,8 +40,8 @@ module_aglu_L203.ag_an_demand_input <- function(command, ...) {
       "L109.ag_ALL_Mt_R_C_Y",
       "L109.an_ALL_Mt_R_C_Y",
       "L110.For_ALL_bm3_R_Y",
-      FILE = "aglu/A_demand_food_nonstaples_cwf_adj",
-      FILE = "aglu/A_fuelprefElasticity_cwf")
+      FILE = "cwf/A_demand_food_nonstaples_cwf_adj",
+      FILE = "cwf/A_fuelprefElasticity_cwf")
   if(command == driver.DECLARE_INPUTS) {
     return(MODULE_INPUTS)
 
@@ -679,7 +679,7 @@ module_aglu_L203.ag_an_demand_input <- function(command, ...) {
       add_title("Food demand function parameters for non-staples") %>%
       add_units("Unitless") %>%
       add_comments("Values copied from assumptions to all regions, with CWF adjustments") %>%
-      add_precursors("aglu/A_demand_food_nonstaples", "aglu/A_demand_food_nonstaples_cwf_adj") ->
+      add_precursors("aglu/A_demand_food_nonstaples", "cwf/A_demand_food_nonstaples_cwf_adj") ->
       L203.DemandNonStapleParams_cwf
 
     L203.FuelPrefElast_cwf %>%
@@ -688,7 +688,7 @@ module_aglu_L203.ag_an_demand_input <- function(command, ...) {
       add_comments("Specify the minimum base year value") %>%
       add_comments("Remove any regions for which agriculture and land use are not modeled") %>%
       add_legacy_name("L203.FuelPrefElast_ssp1") %>%
-      add_precursors("aglu/A_fuelprefElasticity_cwf") ->
+      add_precursors("cwf/A_fuelprefElasticity_cwf") ->
       L203.FuelPrefElast_cwf
 
     return_data(L203.Supplysector_demand, L203.NestingSubsectorAll_demand_food, L203.SubsectorAll_demand_food,

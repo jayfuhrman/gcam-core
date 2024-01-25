@@ -34,10 +34,10 @@ module_energy_L2322.Fert <- function(command, ...) {
              "L1322.IO_R_Fert_F_Yh",
              "L1322.Fert_NEcost_75USDkgN_F",
              "L142.ag_Fert_NetExp_MtN_R_Y",
-             FILE = "energy/A322.subsector_interp_cwf_adj",
-             FILE = "energy/A322.subsector_shrwt_cwf_adj",
-             FILE = "energy/A322.subsector_interp_cwf_H2_scenarios",
-             FILE = "energy/A322.subsector_shrwt_cwf_H2_scenarios"))
+             FILE = "cwf/A322.subsector_interp_cwf_adj",
+             FILE = "cwf/A322.subsector_shrwt_cwf_adj",
+             FILE = "cwf/A322.subsector_interp_cwf_H2_scenarios",
+             FILE = "cwf/A322.subsector_shrwt_cwf_H2_scenarios"))
   } else if(command == driver.DECLARE_OUTPUTS) {
     return(c("L2322.Supplysector_Fert",
              "L2322.FinalEnergyKeyword_Fert",
@@ -81,10 +81,10 @@ module_energy_L2322.Fert <- function(command, ...) {
     L1322.IO_R_Fert_F_Yh <- get_data(all_data, "L1322.IO_R_Fert_F_Yh", strip_attributes = TRUE)
     L1322.Fert_NEcost_75USDkgN_F <- get_data(all_data, "L1322.Fert_NEcost_75USDkgN_F")
     L142.ag_Fert_NetExp_MtN_R_Y <- get_data(all_data, "L142.ag_Fert_NetExp_MtN_R_Y", strip_attributes = TRUE)
-    A322.subsector_interp_cwf_adj <- get_data(all_data, "energy/A322.subsector_interp_cwf_adj", strip_attributes = TRUE)
-    A322.subsector_shrwt_cwf_adj <- get_data(all_data, "energy/A322.subsector_shrwt_cwf_adj", strip_attributes = TRUE)
-    A322.subsector_interp_cwf_H2_scenarios <- get_data(all_data, "energy/A322.subsector_interp_cwf_H2_scenarios", strip_attributes = TRUE)
-    A322.subsector_shrwt_cwf_H2_scenarios <- get_data(all_data, "energy/A322.subsector_shrwt_cwf_H2_scenarios", strip_attributes = TRUE)
+    A322.subsector_interp_cwf_adj <- get_data(all_data, "cwf/A322.subsector_interp_cwf_adj", strip_attributes = TRUE)
+    A322.subsector_shrwt_cwf_adj <- get_data(all_data, "cwf/A322.subsector_shrwt_cwf_adj", strip_attributes = TRUE)
+    A322.subsector_interp_cwf_H2_scenarios <- get_data(all_data, "cwf/A322.subsector_interp_cwf_H2_scenarios", strip_attributes = TRUE)
+    A322.subsector_shrwt_cwf_H2_scenarios <- get_data(all_data, "cwf/A322.subsector_shrwt_cwf_H2_scenarios", strip_attributes = TRUE)
 
     # ===================================================
     # 0. Give binding for variable names used in pipeline
@@ -489,7 +489,7 @@ module_energy_L2322.Fert <- function(command, ...) {
       add_units("Unitless") %>%
       add_comments("For fertilizer sector, the subsector shareweights from A322.subsector_shrwt are expanded into all GCAM regions, with CWF adjustments") %>%
       add_legacy_name("L2322.SubsectorShrwtFllt_Fert") %>%
-      add_precursors("energy/A322.subsector_shrwt", "energy/A322.subsector_shrwt_cwf_adj", "common/GCAM_region_names") ->
+      add_precursors("energy/A322.subsector_shrwt", "cwf/A322.subsector_shrwt_cwf_adj", "common/GCAM_region_names") ->
       L2322.SubsectorShrwtFllt_Fert_cwf
 
     L2322.SubsectorInterp_Fert_cwf %>%
@@ -497,7 +497,7 @@ module_energy_L2322.Fert <- function(command, ...) {
       add_units("NA") %>%
       add_comments("For fertilizer sector, the subsector shareweight interpolation function infromation from A322.subsector_interp is expanded into all GCAM regions, with CWF adjustments") %>%
       add_legacy_name("L2322.SubsectorInterp_Fert") %>%
-      add_precursors("energy/A322.subsector_interp", "energy/A322.subsector_interp_cwf_adj", "common/GCAM_region_names") ->
+      add_precursors("energy/A322.subsector_interp", "cwf/A322.subsector_interp_cwf_adj", "common/GCAM_region_names") ->
       L2322.SubsectorInterp_Fert_cwf
 
     L2322.SubsectorShrwtFllt_Fert_cwf_H2_scenarios %>%
@@ -505,7 +505,7 @@ module_energy_L2322.Fert <- function(command, ...) {
       add_units("Unitless") %>%
       add_comments("For fertilizer sector, the subsector shareweights from A322.subsector_shrwt_cwf_H2_scenarios are expanded into all GCAM regions") %>%
       add_legacy_name("L2322.SubsectorShrwtFllt_Fert") %>%
-      add_precursors("energy/A322.subsector_shrwt_cwf_H2_scenarios", "common/GCAM_region_names") ->
+      add_precursors("cwf/A322.subsector_shrwt_cwf_H2_scenarios", "common/GCAM_region_names") ->
       L2322.SubsectorShrwtFllt_Fert_cwf_H2_scenarios
 
     L2322.SubsectorInterp_Fert_cwf_H2_scenarios %>%
@@ -513,7 +513,7 @@ module_energy_L2322.Fert <- function(command, ...) {
       add_units("NA") %>%
       add_comments("For fertilizer sector, the subsector shareweight interpolation function infromation from A322.subsector_interp_cwf_H2_scenarios is expanded into all GCAM regions") %>%
       add_legacy_name("L2322.SubsectorInterp_Fert") %>%
-      add_precursors("energy/A322.subsector_interp_cwf_H2_scenarios", "common/GCAM_region_names") ->
+      add_precursors("cwf/A322.subsector_interp_cwf_H2_scenarios", "common/GCAM_region_names") ->
       L2322.SubsectorInterp_Fert_cwf_H2_scenarios
 
     return_data(L2322.Supplysector_Fert, L2322.FinalEnergyKeyword_Fert, L2322.SubsectorLogit_Fert,

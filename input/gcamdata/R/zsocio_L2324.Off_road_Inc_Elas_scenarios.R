@@ -24,7 +24,7 @@ module_socio_L2324.Off_road_Inc_Elas_scenarios <- function(command, ...) {
              "L102.pcgdp_thous90USD_Scen_R_Y",
              "L101.Pop_thous_GCAM3_R_Y",
              "L102.gdp_mil90usd_GCAM3_R_Y",
-             FILE = "energy/A324.incelas_cwf"))
+             FILE = "cwf/A324.incelas_cwf"))
   } else if(command == driver.DECLARE_OUTPUTS) {
     return(c("L2324.Off_road_incelas_gssp1",
              "L2324.Off_road_incelas_gssp2",
@@ -55,7 +55,7 @@ module_socio_L2324.Off_road_Inc_Elas_scenarios <- function(command, ...) {
       mutate(year = as.integer(year))
     L101.Pop_thous_GCAM3_R_Y <- get_data(all_data, "L101.Pop_thous_GCAM3_R_Y", strip_attributes = TRUE)
     L102.gdp_mil90usd_GCAM3_R_Y <- get_data(all_data, "L102.gdp_mil90usd_GCAM3_R_Y", strip_attributes = TRUE)
-    A324.incelas_cwf <- get_data(all_data, "energy/A324.incelas_cwf", strip_attributes = TRUE)
+    A324.incelas_cwf <- get_data(all_data, "cwf/A324.incelas_cwf", strip_attributes = TRUE)
 
     # ===================================================
     # Linearly interpolate income elasticity for each level of per-capita GDP,
@@ -241,7 +241,7 @@ module_socio_L2324.Off_road_Inc_Elas_scenarios <- function(command, ...) {
     L2324.Off_road_incelas_cwf %>%
       add_title("Off_road Income Elasticity: cwf") %>%
       add_units("Unitless (% change in service demand / % change in income)") %>%
-      add_precursors("energy/A324.incelas_cwf") ->
+      add_precursors("cwf/A324.incelas_cwf") ->
       L2324.Off_road_incelas_cwf
 
     return_data(L2324.Off_road_incelas_gssp1,

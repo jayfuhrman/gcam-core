@@ -35,7 +35,7 @@ module_energy_L144.building_det_flsp <- function(command, ...) {
              "L102.gdp_mil90usd_GCAM3_R_Y",
              "L221.LN0_Land",
              "L221.LN1_UnmgdAllocation",
-             FILE = "energy/A44.res_unadj_sat_cwf_adj"))
+             FILE = "cwf/A44.res_unadj_sat_cwf_adj"))
   } else if(command == driver.DECLARE_OUTPUTS) {
     return(c("L144.flsp_bm2_R_res_Yh",
              "L144.flsp_bm2_R_comm_Yh",
@@ -62,7 +62,7 @@ module_energy_L144.building_det_flsp <- function(command, ...) {
     L102.gdp_mil90usd_GCAM3_R_Y <- get_data(all_data, "L102.gdp_mil90usd_GCAM3_R_Y")
     L221.LN0_Land<-get_data(all_data, "L221.LN0_Land", strip_attributes = TRUE)
     L221.LN1_UnmgdAllocation<-get_data(all_data, "L221.LN1_UnmgdAllocation", strip_attributes = TRUE)
-    A44.res_unadj_sat_cwf_adj <- get_data(all_data, "energy/A44.res_unadj_sat_cwf_adj", strip_attributes = TRUE)
+    A44.res_unadj_sat_cwf_adj <- get_data(all_data, "cwf/A44.res_unadj_sat_cwf_adj", strip_attributes = TRUE)
     # ===================================================
 
     # Silence package notes
@@ -624,7 +624,7 @@ module_energy_L144.building_det_flsp <- function(command, ...) {
       add_precursors("common/iso_GCAM_regID","common/GCAM_region_names", "energy/A44.pcflsp_default",
                      "energy/A44.HouseholdSize", "energy/CEDB_ResFloorspace_chn", "energy/Other_pcflsp_m2_ctry_Yh",
                      "energy/IEA_PCResFloorspace", "energy/Odyssee_ResFloorspacePerHouse",
-                     "L100.Pop_thous_ctry_Yh", "energy/RECS_ResFloorspace_usa", "energy/A44.res_unadj_sat_cwf_adj") ->
+                     "L100.Pop_thous_ctry_Yh", "energy/RECS_ResFloorspace_usa", "cwf/A44.res_unadj_sat_cwf_adj") ->
       L144.flsp_param_cwf
 
     return_data(L144.flsp_bm2_R_res_Yh, L144.flsp_bm2_R_comm_Yh, L144.flspPrice_90USDm2_R_bld_Yh,L144.hab_land_flsp_fin, L144.flsp_param, L144.flsp_param_cwf)
