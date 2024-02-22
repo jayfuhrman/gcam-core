@@ -145,8 +145,8 @@
 			<!--Value name = "bio_neg_emiss_budget">../input/gcamdata/xml/negative_emissions_budget_SSP1.xml</Value-->
 
 			<!--transport alt fuels-->
-			<Value name = "high_ship">../input/extra/developments_working/transport/GCAM_6p0_addons/high_ship_alt_fuel_frac_FT-bio-efuel-credits_2.xml</Value>
-			<Value name = "high_aviation">../input/extra/developments_working/transport/GCAM_6p0_addons/high_aviation_alt_fuel_frac_FT-bio-efuel-credits_2.xml</Value>
+			<Value name = "high_ship">../input/extra/developments_working/transport/GCAM_6p0_addons/revised_high_ship_alt_fuel_frac_FT-bio-efuel-credits_2.xml</Value>
+			<Value name = "high_aviation">../input/extra/developments_working/transport/GCAM_6p0_addons/revised_high_aviation_alt_fuel_frac_FT-bio-efuel-credits_2.xml</Value>
 
 			<!-- MIN VIABLE CDR ADJUSTMENTS (electricity, buildings + industry are adjusted above)-->
 
