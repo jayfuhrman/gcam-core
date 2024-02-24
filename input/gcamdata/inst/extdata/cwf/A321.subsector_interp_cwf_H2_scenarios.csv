@@ -9,43 +9,43 @@ process heat cement,biomass,share-weight,final-calibration-year,end-year,,fixed,
 process heat cement,coal,share-weight,final-calibration-year,end-year,,fixed,cwf_med_H2
 process heat cement,gas,share-weight,final-calibration-year,end-year,,fixed,cwf_med_H2
 process heat cement,refined liquids,share-weight,final-calibration-year,end-year,,fixed,cwf_med_H2
-process heat cement,hydrogen,share-weight,start-year,2020,,fixed,cwf_med_H2
-process heat cement,hydrogen,share-weight,2020,2050,,linear,cwf_med_H2
+process heat cement,hydrogen,share-weight,start-year,2025,,fixed,cwf_med_H2
+process heat cement,hydrogen,share-weight,2025,2050,,linear,cwf_med_H2
 process heat cement,hydrogen,share-weight,2050,end-year,,fixed,cwf_med_H2
 process heat cement CCS,biomass,share-weight,start-year,end-year,1,fixed,cwf_med_H2
 process heat cement CCS,coal,share-weight,start-year,end-year,1,fixed,cwf_med_H2
 process heat cement CCS,gas,share-weight,start-year,end-year,1,fixed,cwf_med_H2
 process heat cement CCS,refined liquids,share-weight,start-year,end-year,1,fixed,cwf_med_H2
-process heat cement CCS,hydrogen,share-weight,start-year,2020,,fixed,cwf_med_H2
-process heat cement CCS,hydrogen,share-weight,2020,2050,,linear,cwf_med_H2
+process heat cement CCS,hydrogen,share-weight,start-year,2025,,fixed,cwf_med_H2
+process heat cement CCS,hydrogen,share-weight,2025,2050,,linear,cwf_med_H2
 process heat cement CCS,hydrogen,share-weight,2050,end-year,,fixed,cwf_med_H2
 cement,cement,share-weight,final-calibration-year,end-year,,fixed,cwf_low_H2
 process heat cement,biomass,share-weight,final-calibration-year,end-year,,fixed,cwf_low_H2
 process heat cement,coal,share-weight,final-calibration-year,end-year,,fixed,cwf_low_H2
 process heat cement,gas,share-weight,final-calibration-year,end-year,,fixed,cwf_low_H2
 process heat cement,refined liquids,share-weight,final-calibration-year,end-year,,fixed,cwf_low_H2
-process heat cement,hydrogen,share-weight,start-year,2020,,fixed,cwf_low_H2
-process heat cement,hydrogen,share-weight,2020,2050,,linear,cwf_low_H2
+process heat cement,hydrogen,share-weight,start-year,2025,,fixed,cwf_low_H2
+process heat cement,hydrogen,share-weight,2025,2050,,linear,cwf_low_H2
 process heat cement,hydrogen,share-weight,2050,end-year,,linear,cwf_low_H2
 process heat cement CCS,biomass,share-weight,start-year,end-year,1,fixed,cwf_low_H2
 process heat cement CCS,coal,share-weight,start-year,end-year,1,fixed,cwf_low_H2
 process heat cement CCS,gas,share-weight,start-year,end-year,1,fixed,cwf_low_H2
 process heat cement CCS,refined liquids,share-weight,start-year,end-year,1,fixed,cwf_low_H2
-process heat cement CCS,hydrogen,share-weight,start-year,2020,,fixed,cwf_low_H2
-process heat cement CCS,hydrogen,share-weight,2020,2050,,linear,cwf_low_H2
+process heat cement CCS,hydrogen,share-weight,start-year,2025,,fixed,cwf_low_H2
+process heat cement CCS,hydrogen,share-weight,2025,2050,,linear,cwf_low_H2
 process heat cement CCS,hydrogen,share-weight,2050,end-year,,linear,cwf_low_H2
 cement,cement,share-weight,final-calibration-year,end-year,,fixed,cwf_high_H2
 process heat cement,biomass,share-weight,final-calibration-year,end-year,,fixed,cwf_high_H2
 process heat cement,coal,share-weight,final-calibration-year,end-year,,fixed,cwf_high_H2
 process heat cement,gas,share-weight,final-calibration-year,end-year,,fixed,cwf_high_H2
 process heat cement,refined liquids,share-weight,final-calibration-year,end-year,,fixed,cwf_high_H2
-process heat cement,hydrogen,share-weight,start-year,2020,,fixed,cwf_high_H2
-process heat cement,hydrogen,share-weight,2020,2050,,linear,cwf_high_H2
+process heat cement,hydrogen,share-weight,start-year,2025,,fixed,cwf_high_H2
+process heat cement,hydrogen,share-weight,2025,2050,,linear,cwf_high_H2
 process heat cement,hydrogen,share-weight,2050,end-year,,fixed,cwf_high_H2
 process heat cement CCS,biomass,share-weight,start-year,end-year,1,fixed,cwf_high_H2
 process heat cement CCS,coal,share-weight,start-year,end-year,1,fixed,cwf_high_H2
 process heat cement CCS,gas,share-weight,start-year,end-year,1,fixed,cwf_high_H2
 process heat cement CCS,refined liquids,share-weight,start-year,end-year,1,fixed,cwf_high_H2
-process heat cement CCS,hydrogen,share-weight,start-year,2020,,fixed,cwf_high_H2
-process heat cement CCS,hydrogen,share-weight,2020,2050,,linear,cwf_high_H2
+process heat cement CCS,hydrogen,share-weight,start-year,2025,,fixed,cwf_high_H2
+process heat cement CCS,hydrogen,share-weight,2025,2050,,linear,cwf_high_H2
 process heat cement CCS,hydrogen,share-weight,2050,end-year,,fixed,cwf_high_H2
