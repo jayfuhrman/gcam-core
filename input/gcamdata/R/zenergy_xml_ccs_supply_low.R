@@ -12,11 +12,7 @@
 #' original data system was \code{batch_ccs_supply_low.xml.R} (energy XML).
 module_energy_ccs_supply_low_xml <- function(command, ...) {
   if(command == driver.DECLARE_INPUTS) {
-    return(c("L261.RsrcCurves_C_low",
-             "L261.ResSubresourceProdLifetime",
-             "L261.ResReserveTechLifetime",
-             "L261.ResReserveTechDeclinePhase",
-             "L261.ResReserveTechProfitShutdown"))
+    return(c("L261.RsrcCurves_C_low"))
   } else if(command == driver.DECLARE_OUTPUTS) {
     return(c(XML = "ccs_supply_low.xml"))
   } else if(command == driver.MAKE) {
@@ -25,27 +21,13 @@ module_energy_ccs_supply_low_xml <- function(command, ...) {
 
     # Load required inputs
     L261.RsrcCurves_C_low <- get_data(all_data, "L261.RsrcCurves_C_low")
-    L261.ResSubresourceProdLifetime <- get_data(all_data, "L261.ResSubresourceProdLifetime")
-    L261.ResReserveTechLifetime <- get_data(all_data, "L261.ResReserveTechLifetime")
-    L261.ResReserveTechDeclinePhase <- get_data(all_data, "L261.ResReserveTechDeclinePhase")
-    L261.ResReserveTechProfitShutdown <- get_data(all_data, "L261.ResReserveTechProfitShutdown")
 
     # ===================================================
 
     # Produce outputs
     create_xml("ccs_supply_low.xml") %>%
-      add_node_equiv_xml("subresource") %>%
-      add_node_equiv_xml("technology") %>%
-      add_xml_data(L261.ResSubresourceProdLifetime, "ResSubresourceProdLifetime") %>%
-      add_xml_data(L261.ResReserveTechDeclinePhase, "ResReserveTechDeclinePhase") %>%
-      add_xml_data(L261.ResReserveTechProfitShutdown, "ResReserveTechProfitShutdown") %>%
-      add_xml_data(L261.ResReserveTechLifetime, "ResReserveTechLifetime") %>%
       add_xml_data(L261.RsrcCurves_C_low, "RsrcCurves") %>%
-      add_precursors("L261.RsrcCurves_C_low",
-                     "L261.ResSubresourceProdLifetime",
-                     "L261.ResReserveTechLifetime",
-                     "L261.ResReserveTechDeclinePhase",
-                     "L261.ResReserveTechProfitShutdown") ->
+      add_precursors("L261.RsrcCurves_C_low") ->
       ccs_supply_low.xml
 
     return_data(ccs_supply_low.xml)

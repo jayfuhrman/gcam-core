@@ -42,10 +42,6 @@ module_energy_L261.Cstorage <- function(command, ...) {
              FILE = "energy/A61.globaltech_coef",
              FILE = "energy/A61.globaltech_cost",
              FILE = "energy/A61.globaltech_shrwt",
-             FILE = "energy/A61.ResSubresourceProdLifetime",
-             FILE = "energy/A61.ResReserveTechLifetime",
-             FILE = "energy/A61.ResReserveTechDeclinePhase",
-             FILE = "energy/A61.ResReserveTechProfitShutdown",
              "L161.RsrcCurves_MtC_R"))
   } else if(command == driver.DECLARE_OUTPUTS) {
     return(c("L261.Rsrc",
@@ -63,11 +59,7 @@ module_energy_L261.Cstorage <- function(command, ...) {
              "L261.GlobalTechShrwt_C_nooffshore",
              "L261.RsrcCurves_C_high",
              "L261.RsrcCurves_C_low",
-             "L261.RsrcCurves_C_lowest",
-             "L261.ResSubresourceProdLifetime",
-             "L261.ResReserveTechLifetime",
-             "L261.ResReserveTechDeclinePhase",
-             "L261.ResReserveTechProfitShutdown"))
+             "L261.RsrcCurves_C_lowest"))
   } else if(command == driver.MAKE) {
 
     all_data <- list(...)[[1]]
@@ -83,12 +75,6 @@ module_energy_L261.Cstorage <- function(command, ...) {
     A61.globaltech_shrwt <- get_data(all_data, "energy/A61.globaltech_shrwt", strip_attributes = TRUE)
     L161.RsrcCurves_MtC_R <- get_data(all_data, "L161.RsrcCurves_MtC_R", strip_attributes = TRUE)
 
-    A61.ResSubresourceProdLifetime <- get_data(all_data, "energy/A61.ResSubresourceProdLifetime", strip_attributes = TRUE)
-    A61.ResReserveTechLifetime <- get_data(all_data, "energy/A61.ResReserveTechLifetime", strip_attributes = TRUE)
-    A61.ResReserveTechDeclinePhase <- get_data(all_data, "energy/A61.ResReserveTechDeclinePhase", strip_attributes = TRUE)
-    A61.ResReserveTechProfitShutdown <- get_data(all_data, "energy/A61.ResReserveTechProfitShutdown", strip_attributes = TRUE)
-
-
     # ===================================================
 
     # Silence package notes
@@ -98,31 +84,6 @@ module_energy_L261.Cstorage <- function(command, ...) {
       subresource <- subsector <- subsector.name <- supplysector <- technology <-
       value <- year <- region <- resource <- output.unit <- price.unit <-
       market <- logit.exponent <- coefficient <- input.cost <- NULL
-
-    # Resource-reserve assumptions which just need to get copied to all regions and years
-    A61.ResSubresourceProdLifetime %>%
-      repeat_add_columns(GCAM_region_names) %>%
-      select(LEVEL2_DATA_NAMES[["ResSubresourceProdLifetime"]]) ->
-      L261.ResSubresourceProdLifetime
-
-    A61.ResReserveTechLifetime %>%
-      repeat_add_columns(GCAM_region_names) %>%
-      repeat_add_columns(tibble(year = MODEL_YEARS)) %>%
-      select(LEVEL2_DATA_NAMES[["ResReserveTechLifetime"]]) ->
-      L261.ResReserveTechLifetime
-
-    A61.ResReserveTechDeclinePhase %>%
-      repeat_add_columns(GCAM_region_names) %>%
-      repeat_add_columns(tibble(year = MODEL_YEARS)) %>%
-      select(LEVEL2_DATA_NAMES[["ResReserveTechDeclinePhase"]]) ->
-      L261.ResReserveTechDeclinePhase
-
-    A61.ResReserveTechProfitShutdown %>%
-      repeat_add_columns(GCAM_region_names) %>%
-      repeat_add_columns(tibble(year = MODEL_YEARS)) %>%
-      select(LEVEL2_DATA_NAMES[["ResReserveTechProfitShutdown"]]) ->
-      L261.ResReserveTechProfitShutdown
-
 
     # A
     # Create tables for carbon storage resource information
@@ -425,39 +386,8 @@ module_energy_L261.Cstorage <- function(command, ...) {
       add_precursors("energy/A61.globaltech_shrwt") ->
       L261.GlobalTechShrwt_C_nooffshore
 
-    L261.ResSubresourceProdLifetime %>%
-      add_title("Average production lifetime for reserve subresource") %>%
-      add_units("Years") %>%
-      add_comments("Used to annualize production of the cumulative resource reserve") %>%
-      add_precursors("common/GCAM_region_names", "energy/A61.ResSubresourceProdLifetime") ->
-      L261.ResSubresourceProdLifetime
 
-    L261.ResReserveTechLifetime %>%
-      add_title("Resource reserve technology lifetime") %>%
-      add_units("Years") %>%
-      add_comments("Resource well / mine lifetime over which the reserve will be produced / depleted") %>%
-      add_precursors("common/GCAM_region_names", "energy/A61.ResReserveTechLifetime") ->
-      L261.ResReserveTechLifetime
-
-    L261.ResReserveTechDeclinePhase %>%
-      add_title("Resource reserve technology decline phase percent") %>%
-      add_units("fraction") %>%
-      add_comments("When the total reserve has been depleted to this percent the production") %>%
-      add_comments("will move into a linear decline phase.") %>%
-      add_precursors("common/GCAM_region_names", "energy/A61.ResReserveTechDeclinePhase") ->
-      L261.ResReserveTechDeclinePhase
-
-    L261.ResReserveTechProfitShutdown %>%
-      add_title("Resource reserve technology profit shutdown decider") %>%
-      add_units("NA") %>%
-      add_comments("Resource profit shutdown to characterize a well / mine's ability scale back") %>%
-      add_comments("production under unprofitable conditions") %>%
-      add_precursors("common/GCAM_region_names", "energy/A61.ResReserveTechProfitShutdown") ->
-      L261.ResReserveTechProfitShutdown
-
-
-    return_data(L261.Rsrc, L261.UnlimitRsrc, L261.RsrcCurves_C, L261.ResTechShrwt_C, L261.Supplysector_C, L261.SubsectorLogit_C, L261.SubsectorShrwtFllt_C, L261.StubTech_C, L261.GlobalTechCoef_C, L261.GlobalTechCost_C, L261.GlobalTechShrwt_C, L261.GlobalTechCost_C_High, L261.GlobalTechShrwt_C_nooffshore, L261.RsrcCurves_C_high, L261.RsrcCurves_C_low, L261.RsrcCurves_C_lowest,
-                L261.ResSubresourceProdLifetime, L261.ResReserveTechLifetime, L261.ResReserveTechDeclinePhase, L261.ResReserveTechProfitShutdown)
+    return_data(L261.Rsrc, L261.UnlimitRsrc, L261.RsrcCurves_C, L261.ResTechShrwt_C, L261.Supplysector_C, L261.SubsectorLogit_C, L261.SubsectorShrwtFllt_C, L261.StubTech_C, L261.GlobalTechCoef_C, L261.GlobalTechCost_C, L261.GlobalTechShrwt_C, L261.GlobalTechCost_C_High, L261.GlobalTechShrwt_C_nooffshore, L261.RsrcCurves_C_high, L261.RsrcCurves_C_low, L261.RsrcCurves_C_lowest)
   } else {
     stop("Unknown command")
   }
