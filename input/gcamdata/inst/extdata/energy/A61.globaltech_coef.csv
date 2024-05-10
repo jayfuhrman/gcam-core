@@ -1,8 +1,10 @@
 # File: A61.globaltech_coef.csv
 # Title: Carbon storage global technology coefficient
 # Units: Unitless
-# Column types: ccccii 
+# Column types: ccccnnnnnnnnnnnnnnnnnn 
 # ----------
-supplysector,subsector,technology,minicam.energy.input,1971,2100
-carbon-storage,onshore carbon-storage,onshore carbon-storage,onshore carbon-storage,1,1
-carbon-storage,offshore carbon-storage,offshore carbon-storage,offshore carbon-storage,1,1
+supplysector,subsector,technology,minicam.energy.input,1971,2020,2025,2030,2035,2040,2045,2050,2055,2060,2065,2070,2075,2080,2085,2090,2095,2100
+carbon-storage,onshore carbon-storage,onshore carbon-storage,onshore carbon-storage,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+carbon-storage,offshore carbon-storage,offshore carbon-storage,offshore carbon-storage,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+carbon-storage,onshore carbon-storage,onshore carbon-storage,ccs dynamic-capacity,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+carbon-storage,offshore carbon-storage,offshore carbon-storage,ccs dynamic-capacity,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1

@@ -155,6 +155,11 @@ CONV_MJ_BTU <- 947.777
 CONV_BTU_KJ <- 1.0551
 CONV_MMBTU_KGH2 <- 0.113939965425114 # MMBTU/kg H2 - LHV Source: H2 CCTP Workbook.xls (Used for older GCAM assumptions)
 CONV_GJ_KGH2 <- 0.12021 #GJ/kg H2 - LHV
+CONV_MT_EJ_CRUDE_OIL <- 0.0418 #GJ per kg oil = EJ per MT oil
+CONV_MT_EJ_GAS <- 0.0522 #GJ per kg gas = EJ per MT gas
+CONV_KG_M3_CRUDE_OIL <- 800 #kg per m^3 crude oil (subsurface conditions)
+CONV_KG_M3_GAS <- 150 #kg per m^3 gas (subsurface conditions)
+CONV_KG_M3_CO2 <- 700 #kg per m^3 CO2 (subsurface conditions)
 
 # Distance
 CONV_MILE_KM <- 1.60934 # Mile to km
