@@ -41,7 +41,7 @@ module_energy_L261.Cstorage <- function(command, ...) {
              FILE = "energy/A61.subsector_logit",
              FILE = "energy/A61.subsector_shrwt",
              FILE = "energy/A61.globaltech_coef",
-             FILE = "energy/A61.globaltech_eff",
+             #FILE = "energy/A61.globaltech_eff",
              FILE = "energy/A61.globaltech_cost",
              FILE = "energy/A61.globaltech_shrwt",
              FILE = "energy/A61.ResSubresourceProdLifetime",
@@ -49,7 +49,7 @@ module_energy_L261.Cstorage <- function(command, ...) {
              FILE = "energy/A61.ResReserveTechDeclinePhase",
              FILE = "energy/A61.ResReserveTechProfitShutdown",
              FILE = "energy/A61.Cstorage_curves_dynamic",
-             FILE = "energy/A61.globaltech_secout",
+             #FILE = "energy/A61.globaltech_secout",
              FILE = "energy/IEA_CCUS_Projects_Database_2023",
              "L111.Prod_EJ_R_F_Yh",
              "L161.RsrcCurves_MtC_R"))
@@ -110,7 +110,7 @@ module_energy_L261.Cstorage <- function(command, ...) {
     A61.subsector_logit <- get_data(all_data, "energy/A61.subsector_logit", strip_attributes = TRUE)
     A61.subsector_shrwt <- get_data(all_data, "energy/A61.subsector_shrwt", strip_attributes = TRUE)
     A61.globaltech_coef <- get_data(all_data, "energy/A61.globaltech_coef")
-    A61.globaltech_eff <- get_data(all_data, "energy/A61.globaltech_eff")
+    #A61.globaltech_eff <- get_data(all_data, "energy/A61.globaltech_eff")
     A61.globaltech_cost <- get_data(all_data, "energy/A61.globaltech_cost")
     A61.globaltech_shrwt <- get_data(all_data, "energy/A61.globaltech_shrwt", strip_attributes = TRUE)
     L161.RsrcCurves_MtC_R <- get_data(all_data, "L161.RsrcCurves_MtC_R", strip_attributes = TRUE)
@@ -124,7 +124,7 @@ module_energy_L261.Cstorage <- function(command, ...) {
 
     IEA_CCUS_Projects_Database_2023 <- get_data(all_data, "energy/IEA_CCUS_Projects_Database_2023")
 
-    A61.globaltech_secout <- get_data(all_data, "energy/A61.globaltech_secout", strip_attributes = TRUE)
+    #A61.globaltech_secout <- get_data(all_data, "energy/A61.globaltech_secout", strip_attributes = TRUE)
     #L203.TechShrwt_watertd <- get_data(all_data, "L203.TechShrwt_watertd", strip_attributes = TRUE)
 
     brine_seawater_MEC_ratio <- 4
@@ -300,19 +300,19 @@ module_energy_L261.Cstorage <- function(command, ...) {
     L261.CStorageCurvesDynamic <- bind_rows(CStorageCurvesDynamic_slow_growth,
                                             CStorageCurvesDynamic_rapid_growth)
 
-    A61.globaltech_eff %>%
-      gather_years %>%
-      # Expand table to include all model base and future years
-      complete(year = c(year, MODEL_YEARS), nesting(supplysector, subsector, technology, minicam.energy.input,scenario)) %>%
-      # Extrapolate to fill out values for all years
-      # Rule 2 is used so years outside of min-max range are assigned values from closest data, as opposed to NAs
-      group_by(supplysector, subsector, technology, minicam.energy.input,scenario) %>%
-      mutate(efficiency = approx_fun(year, value, rule = 2)) %>%
-      ungroup() %>%
-      filter(year %in% MODEL_YEARS) %>% # This will drop 1971
-      # Assign the columns "sector.name" and "subsector.name", consistent with the location info of a global technology
-      select(sector.name = supplysector, subsector.name = subsector, technology, year, minicam.energy.input, efficiency, scenario) ->
-      L261.GlobalTechEff_C
+    # A61.globaltech_eff %>%
+    #   gather_years %>%
+    #   # Expand table to include all model base and future years
+    #   complete(year = c(year, MODEL_YEARS), nesting(supplysector, subsector, technology, minicam.energy.input,scenario)) %>%
+    #   # Extrapolate to fill out values for all years
+    #   # Rule 2 is used so years outside of min-max range are assigned values from closest data, as opposed to NAs
+    #   group_by(supplysector, subsector, technology, minicam.energy.input,scenario) %>%
+    #   mutate(efficiency = approx_fun(year, value, rule = 2)) %>%
+    #   ungroup() %>%
+    #   filter(year %in% MODEL_YEARS) %>% # This will drop 1971
+    #   # Assign the columns "sector.name" and "subsector.name", consistent with the location info of a global technology
+    #   select(sector.name = supplysector, subsector.name = subsector, technology, year, minicam.energy.input, efficiency, scenario) ->
+    #   L261.GlobalTechEff_C
 
     ## Calculate an efficiency parameter equal to how much of each region's implied storage capacity is expected to be consumed by planned + operational projects by 2030
     calibrated_eff_2030 <- IEA_data %>%
@@ -658,7 +658,7 @@ module_energy_L261.Cstorage <- function(command, ...) {
       add_units("Output, input, and price units are as listed; exponent is unitless") %>%
       add_comments("Carbon storage sector information was expanded to include GCAM region names") %>%
       add_legacy_name("L261.Supplysector_C") %>%
-      add_precursors("common/GCAM_region_names", "energy/A61.sector","L271.Supplysector_desal") ->
+      add_precursors("common/GCAM_region_names", "energy/A61.sector") ->
       L261.Supplysector_C
 
     L261.SubsectorLogit_C %>%
@@ -666,7 +666,7 @@ module_energy_L261.Cstorage <- function(command, ...) {
       add_units("Unitless") %>%
       add_comments("Table on subsector logit exponents was expanded to include GCAM region names") %>%
       add_legacy_name("L261.SubsectorLogit_C") %>%
-      add_precursors("common/GCAM_region_names", "energy/A61.subsector_logit","L271.SubsectorLogit_desal") ->
+      add_precursors("common/GCAM_region_names", "energy/A61.subsector_logit") ->
       L261.SubsectorLogit_C
 
     L261.SubsectorShrwtFllt_C %>%
@@ -674,7 +674,7 @@ module_energy_L261.Cstorage <- function(command, ...) {
       add_units("Unitless") %>%
       add_comments("Table on subsector shareweights was expanded to include GCAM region names") %>%
       add_legacy_name("L261.SubsectorShrwtFllt_C") %>%
-      add_precursors("common/GCAM_region_names", "energy/A61.subsector_shrwt","L271.SubsectorShrwtFllt_desal") ->
+      add_precursors("common/GCAM_region_names", "energy/A61.subsector_shrwt") ->
       L261.SubsectorShrwtFllt_C
 
     L261.StubTech_C %>%
@@ -682,7 +682,7 @@ module_energy_L261.Cstorage <- function(command, ...) {
       add_units("Not Applicable") %>%
       add_comments("Technology list in the global shareweight table for carbon storage was expanded to include GCAM regions") %>%
       add_legacy_name("L261.StubTech_C") %>%
-      add_precursors("common/GCAM_region_names", "energy/A61.globaltech_shrwt","L271.StubTech_desal") ->
+      add_precursors("common/GCAM_region_names", "energy/A61.globaltech_shrwt") ->
       L261.StubTech_C
 
     L261.GlobalTechCoef_C %>%
@@ -690,23 +690,23 @@ module_energy_L261.Cstorage <- function(command, ...) {
       add_units("Unitless") %>%
       add_comments("Global technology coefficients were interpolated across all base model years") %>%
       add_legacy_name("L261.GlobalTechCoef_C") %>%
-      add_precursors("energy/A61.globaltech_coef","L271.GlobalTechCoef_desal") ->
+      add_precursors("energy/A61.globaltech_coef") ->
       L261.GlobalTechCoef_C
 
-    L261.GlobalTechEff_C %>%
-      add_title("Carbon storage global technology coefficients across base model years") %>%
-      add_units("Unitless") %>%
-      add_comments("Growth rate constraints are defined as a proportion of region's oil and gas industry") %>%
-      add_legacy_name("L261.GlobalTechCoef_C") %>%
-      add_precursors("energy/A61.globaltech_eff") ->
-      L261.GlobalTechEff_C
+    # L261.GlobalTechEff_C %>%
+    #   add_title("Carbon storage global technology coefficients across base model years") %>%
+    #   add_units("Unitless") %>%
+    #   add_comments("Growth rate constraints are defined as a proportion of region's oil and gas industry") %>%
+    #   add_legacy_name("L261.GlobalTechCoef_C") %>%
+    #   add_precursors("energy/A61.globaltech_eff") ->
+    #   L261.GlobalTechEff_C
 
     L261.GlobalTechCost_C %>%
       add_title("Carbon storage global technology costs across base model years") %>%
       add_units("1975$/tCO2") %>%
       add_comments("Global technology coefficients were interpolated across all base model years") %>%
       add_legacy_name("L261.GlobalTechCost_C") %>%
-      add_precursors("energy/A61.globaltech_cost","L271.GlobalTechCost_desal") ->
+      add_precursors("energy/A61.globaltech_cost") ->
       L261.GlobalTechCost_C
 
     L261.GlobalTechCost_C_High %>%
@@ -722,7 +722,7 @@ module_energy_L261.Cstorage <- function(command, ...) {
       add_units("Unitless") %>%
       add_comments("Shareweights of global technologies for energy transformation were interpolated across all base model years") %>%
       add_legacy_name("L261.GlobalTechShrwt_C") %>%
-      add_precursors("energy/A61.globaltech_shrwt","L271.GlobalTechShrwt_desal") ->
+      add_precursors("energy/A61.globaltech_shrwt") ->
       L261.GlobalTechShrwt_C
 
     L261.GlobalTechShrwt_C_nooffshore %>%
@@ -828,13 +828,14 @@ module_energy_L261.Cstorage <- function(command, ...) {
     L261.StubTechEff %>%
       add_title("CCS efficiencies calibrated to near-term") %>%
       add_units("Unitless") %>%
+      add_comments("Regionally calibrated scaling limits for CCS relative to maximum regional injection rate") %>%
       add_precursors("energy/IEA_CCUS_Projects_Database_2023","common/GCAM_region_names","common/iso_GCAM_regID") ->
       L261.StubTechEff
 
 
     return_data(L261.Rsrc, L261.UnlimitRsrc, L261.RsrcCurves_C, L261.ResTechShrwt_C, L261.Supplysector_C, L261.SubsectorLogit_C, L261.SubsectorShrwtFllt_C, L261.StubTech_C, L261.GlobalTechCoef_C, L261.GlobalTechCost_C, L261.GlobalTechShrwt_C, L261.GlobalTechCost_C_High, L261.GlobalTechShrwt_C_nooffshore, L261.RsrcCurves_C_high, L261.RsrcCurves_C_low, L261.RsrcCurves_C_lowest,
                 L261.ResSubresourceProdLifetime, L261.ResReserveTechLifetime, L261.ResReserveTechDeclinePhase, L261.ResReserveTechProfitShutdown,
-                L261.CStorageCurvesDynamic,L261.DynamicCstorageRsrcMax,L261.DynamicRsrc,L261.DynamicResTechShrwt_C,L261.RsrcPrice,L261.GlobalTechEff_C,
+                L261.CStorageCurvesDynamic,L261.DynamicCstorageRsrcMax,L261.DynamicRsrc,L261.DynamicResTechShrwt_C,L261.RsrcPrice,
                 #L271.SubsectorInterp_desal_CCS,L271.FinalEnergyKeyword_desal_CCS,L271.SubsectorInterpTo_desal_CCS,
                 #L271.StubTechSecOut_desal_CCS,
                 L261.StubTechEff)

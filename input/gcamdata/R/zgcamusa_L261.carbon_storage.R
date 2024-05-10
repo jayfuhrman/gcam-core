@@ -152,6 +152,10 @@ module_gcamusa_L261.carbon_storage <- function(command, ...) {
       select(one_of(c(LEVEL2_DATA_NAMES[["StubTech"]])))->
       L261.StubTech_C_USA
 
+    #filter out rate based supply curves for now so that we can run gcam-usa unchanged.
+    L261.GlobalTechCoef_C <- L261.GlobalTechCoef_C %>%
+      filter(minicam.energy.input != 'ccs dynamic-capacity')
+
     # L261.StubTechMarket_C_USA: stub technology market information for the states
     L261.StubTech_C_USA %>%
       repeat_add_columns(tibble(year = MODEL_YEARS)) %>%
