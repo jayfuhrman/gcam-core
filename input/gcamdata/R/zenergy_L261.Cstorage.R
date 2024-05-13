@@ -87,6 +87,7 @@ module_energy_L261.Cstorage <- function(command, ...) {
              "L261.ResReserveTechLifetime",
              "L261.ResReserveTechDeclinePhase",
              "L261.ResReserveTechProfitShutdown",
+             "L261.ResReserveTechInvestmentInput",
              "L261.CStorageCurvesDynamic",
              "L261.DynamicCstorageRsrcMax",
              "L261.DynamicRsrc",
@@ -238,6 +239,13 @@ module_energy_L261.Cstorage <- function(command, ...) {
       repeat_add_columns(tibble(year = MODEL_YEARS)) %>%
       select(LEVEL2_DATA_NAMES[["ResReserveTechProfitShutdown"]]) ->
       L261.ResReserveTechProfitShutdown
+
+    #placeholder
+    L261.ResReserveTechInvestmentInput <- L261.ResReserveTechDeclinePhase %>%
+      mutate(minicam.non.energy.input = 'investment-cost',
+             capital.coef = 1,
+             tracking.market = 'capital') %>%
+      select(LEVEL2_DATA_NAMES[["ResReserveTechInvestmentInput"]])
 
     OG_fluid_extraction_volume <- L111.Prod_EJ_R_F_Yh %>%
       filter(fuel %in% c('crude oil','natural gas'),
@@ -843,9 +851,16 @@ module_energy_L261.Cstorage <- function(command, ...) {
       same_precursors_as(L261.StubTechEff) ->
       L261.TechPmult
 
+    L261.ResReserveTechInvestmentInput %>%
+      add_title("Placeholder values for capital tracking") %>%
+      add_units("NA") %>%
+      add_comments("NA") %>%
+      same_precursors_as("L261.ResReserveTechDeclinePhase")
+      L261.ResReserveTechInvestmentInput
 
     return_data(L261.Rsrc, L261.UnlimitRsrc, L261.RsrcCurves_C, L261.ResTechShrwt_C, L261.Supplysector_C, L261.SubsectorLogit_C, L261.SubsectorShrwtFllt_C, L261.StubTech_C, L261.GlobalTechCoef_C, L261.GlobalTechCost_C, L261.GlobalTechShrwt_C, L261.GlobalTechCost_C_High, L261.GlobalTechShrwt_C_nooffshore, L261.RsrcCurves_C_high, L261.RsrcCurves_C_low, L261.RsrcCurves_C_lowest,
                 L261.ResSubresourceProdLifetime, L261.ResReserveTechLifetime, L261.ResReserveTechDeclinePhase, L261.ResReserveTechProfitShutdown,
+                L261.ResReserveTechInvestmentInput,
                 L261.CStorageCurvesDynamic,L261.DynamicCstorageRsrcMax,L261.DynamicRsrc,L261.DynamicResTechShrwt_C,L261.RsrcPrice,
                 #L271.SubsectorInterp_desal_CCS,L271.FinalEnergyKeyword_desal_CCS,L271.SubsectorInterpTo_desal_CCS,
                 #L271.StubTechSecOut_desal_CCS,

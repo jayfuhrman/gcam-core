@@ -27,6 +27,7 @@ module_energy_Cstorage_xml <- function(command, ...) {
               "L261.ResReserveTechLifetime",
               "L261.ResReserveTechDeclinePhase",
               "L261.ResReserveTechProfitShutdown",
+              "L261.ResReserveTechInvestmentInput",
               "L261.CStorageCurvesDynamic",
               "L261.DynamicCstorageRsrcMax",
               "L261.DynamicRsrc",
@@ -62,6 +63,7 @@ module_energy_Cstorage_xml <- function(command, ...) {
     L261.ResReserveTechLifetime <- get_data(all_data, "L261.ResReserveTechLifetime")
     L261.ResReserveTechDeclinePhase <- get_data(all_data, "L261.ResReserveTechDeclinePhase")
     L261.ResReserveTechProfitShutdown <- get_data(all_data, "L261.ResReserveTechProfitShutdown")
+    L261.ResReserveTechInvestmentInput <- get_data(all_data, "L261.ResReserveTechInvestmentInput")
     L261.CStorageCurvesDynamic <- get_data(all_data, "L261.CStorageCurvesDynamic")
     L261.DynamicCstorageRsrcMax <- get_data(all_data,"L261.DynamicCstorageRsrcMax")
     L261.DynamicRsrc <- get_data(all_data,"L261.DynamicRsrc")
@@ -90,6 +92,7 @@ module_energy_Cstorage_xml <- function(command, ...) {
       add_xml_data(L261.ResReserveTechDeclinePhase, "ResReserveTechDeclinePhase") %>%
       add_xml_data(L261.ResReserveTechProfitShutdown, "ResReserveTechProfitShutdown") %>%
       add_xml_data(L261.ResReserveTechLifetime, "ResReserveTechLifetime") %>%
+      add_xml_data(L261.ResReserveTechInvestmentInput, "ResReserveTechInvestmentInput") %>%
       add_xml_data(L261.RsrcCurves_C, "RsrcCurves") %>%
       add_xml_data(L261.ResTechShrwt_C, "ResTechShrwt") %>%
       add_xml_data(L261.DynamicResTechShrwt_C, "ResTechShrwt") %>%
@@ -111,6 +114,7 @@ module_energy_Cstorage_xml <- function(command, ...) {
       #add_xml_data(L271.StubTechSecOut_desal_CCS, "StubTechSecOut") %>%
       add_precursors("L261.Rsrc", "L261.UnlimitRsrc", "L261.RsrcCurves_C", "L261.ResTechShrwt_C", "L261.Supplysector_C", "L261.SubsectorLogit_C", "L261.SubsectorShrwtFllt_C", "L261.StubTech_C", "L261.GlobalTechCoef_C", "L261.GlobalTechCost_C", "L261.GlobalTechShrwt_C",
                      "L261.ResSubresourceProdLifetime","L261.ResReserveTechLifetime","L261.ResReserveTechDeclinePhase","L261.ResReserveTechProfitShutdown",
+                     "L261.ResReserveTechInvestmentInput",
                      "L261.CStorageCurvesDynamic","L261.DynamicCstorageRsrcMax","L261.DynamicRsrc","L261.DynamicResTechShrwt_C","L261.RsrcPrice",
                      #"L271.SubsectorInterp_desal_CCS","L271.SubsectorInterpTo_desal_CCS","L271.FinalEnergyKeyword_desal_CCS","L271.StubTechSecOut_desal_CCS",
                      "L261.StubTechEff","L261.TechPmult") ->
@@ -130,6 +134,7 @@ module_energy_Cstorage_xml <- function(command, ...) {
       add_xml_data(L261.ResReserveTechDeclinePhase, "ResReserveTechDeclinePhase") %>%
       add_xml_data(L261.ResReserveTechProfitShutdown, "ResReserveTechProfitShutdown") %>%
       add_xml_data(L261.ResReserveTechLifetime, "ResReserveTechLifetime") %>%
+      add_xml_data(L261.ResReserveTechInvestmentInput, "ResReserveTechInvestmentInput") %>%
       add_xml_data(L261.RsrcCurves_C, "RsrcCurves") %>%
       add_xml_data(L261.ResTechShrwt_C, "ResTechShrwt") %>%
       add_xml_data(L261.DynamicResTechShrwt_C, "ResTechShrwt") %>%
@@ -151,6 +156,7 @@ module_energy_Cstorage_xml <- function(command, ...) {
       #add_xml_data(L271.StubTechSecOut_desal_CCS, "StubTechSecOut") %>%
       add_precursors("L261.Rsrc", "L261.UnlimitRsrc", "L261.RsrcCurves_C", "L261.ResTechShrwt_C", "L261.Supplysector_C", "L261.SubsectorLogit_C", "L261.SubsectorShrwtFllt_C", "L261.StubTech_C", "L261.GlobalTechCoef_C", "L261.GlobalTechCost_C", "L261.GlobalTechShrwt_C",
                      "L261.ResSubresourceProdLifetime","L261.ResReserveTechLifetime","L261.ResReserveTechDeclinePhase","L261.ResReserveTechProfitShutdown",
+                     "L261.ResReserveTechInvestmentInput",
                      "L261.CStorageCurvesDynamic","L261.DynamicCstorageRsrcMax","L261.DynamicRsrc","L261.DynamicResTechShrwt_C","L261.RsrcPrice",
                      #"L271.SubsectorInterp_desal_CCS","L271.SubsectorInterpTo_desal_CCS","L271.FinalEnergyKeyword_desal_CCS",
                      #"L271.StubTechSecOut_desal_CCS",
