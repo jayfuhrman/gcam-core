@@ -37,7 +37,8 @@ module_energy_Cstorage_xml <- function(command, ...) {
               #"L271.SubsectorInterpTo_desal_CCS",
               #"L261.GlobalTechEff_C",
               #"L271.StubTechSecOut_desal_CCS",
-              "L261.StubTechEff"))
+              "L261.StubTechEff",
+              "L261.TechPmult"))
   } else if(command == driver.DECLARE_OUTPUTS) {
     return(c(XML = "Cstorage_slow.xml",
              XML = "Cstorage_rapid.xml"))
@@ -72,6 +73,7 @@ module_energy_Cstorage_xml <- function(command, ...) {
     # L271.SubsectorInterpTo_desal_CCS <- get_data(all_data,"L271.SubsectorInterpTo_desal_CCS")
     # L271.StubTechSecOut_desal_CCS <- get_data(all_data,"L271.StubTechSecOut_desal_CCS")
     L261.StubTechEff <- get_data(all_data,"L261.StubTechEff")
+    L261.TechPmult <- get_data(all_data,"L261.TechPmult")
     # ===================================================
 
     # Produce outputs
@@ -104,12 +106,14 @@ module_energy_Cstorage_xml <- function(command, ...) {
       # add_xml_data(L271.FinalEnergyKeyword_desal_CCS, "FinalEnergyKeyword") %>%
       add_xml_data(L261.StubTechEff %>%
                      filter(scenario == 'slow growth rate'), "StubTechEff") %>%
+      add_xml_data(L261.TechPmult %>%
+                     filter(scenario == 'slow growth rate'), "TechPmult") %>%
       #add_xml_data(L271.StubTechSecOut_desal_CCS, "StubTechSecOut") %>%
       add_precursors("L261.Rsrc", "L261.UnlimitRsrc", "L261.RsrcCurves_C", "L261.ResTechShrwt_C", "L261.Supplysector_C", "L261.SubsectorLogit_C", "L261.SubsectorShrwtFllt_C", "L261.StubTech_C", "L261.GlobalTechCoef_C", "L261.GlobalTechCost_C", "L261.GlobalTechShrwt_C",
                      "L261.ResSubresourceProdLifetime","L261.ResReserveTechLifetime","L261.ResReserveTechDeclinePhase","L261.ResReserveTechProfitShutdown",
                      "L261.CStorageCurvesDynamic","L261.DynamicCstorageRsrcMax","L261.DynamicRsrc","L261.DynamicResTechShrwt_C","L261.RsrcPrice",
                      #"L271.SubsectorInterp_desal_CCS","L271.SubsectorInterpTo_desal_CCS","L271.FinalEnergyKeyword_desal_CCS","L271.StubTechSecOut_desal_CCS",
-                     "L261.StubTechEff") ->
+                     "L261.StubTechEff","L261.TechPmult") ->
       Cstorage_slow.xml
 
 
@@ -142,13 +146,15 @@ module_energy_Cstorage_xml <- function(command, ...) {
       # add_xml_data(L271.FinalEnergyKeyword_desal_CCS, "FinalEnergyKeyword") %>%
       add_xml_data(L261.StubTechEff %>%
                      filter(scenario == 'rapid growth rate'), "StubTechEff") %>%
+      add_xml_data(L261.TechPmult %>%
+                     filter(scenario == 'rapid growth rate'), "TechPmult") %>%
       #add_xml_data(L271.StubTechSecOut_desal_CCS, "StubTechSecOut") %>%
       add_precursors("L261.Rsrc", "L261.UnlimitRsrc", "L261.RsrcCurves_C", "L261.ResTechShrwt_C", "L261.Supplysector_C", "L261.SubsectorLogit_C", "L261.SubsectorShrwtFllt_C", "L261.StubTech_C", "L261.GlobalTechCoef_C", "L261.GlobalTechCost_C", "L261.GlobalTechShrwt_C",
                      "L261.ResSubresourceProdLifetime","L261.ResReserveTechLifetime","L261.ResReserveTechDeclinePhase","L261.ResReserveTechProfitShutdown",
                      "L261.CStorageCurvesDynamic","L261.DynamicCstorageRsrcMax","L261.DynamicRsrc","L261.DynamicResTechShrwt_C","L261.RsrcPrice",
                      #"L271.SubsectorInterp_desal_CCS","L271.SubsectorInterpTo_desal_CCS","L271.FinalEnergyKeyword_desal_CCS",
                      #"L271.StubTechSecOut_desal_CCS",
-                     "L261.StubTechEff") ->
+                     "L261.StubTechEff","L261.TechPmult") ->
       Cstorage_rapid.xml
 
     return_data(Cstorage_slow.xml,

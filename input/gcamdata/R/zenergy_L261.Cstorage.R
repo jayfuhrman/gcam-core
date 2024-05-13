@@ -97,7 +97,8 @@ module_energy_L261.Cstorage <- function(command, ...) {
              #"L271.SubsectorInterpTo_desal_CCS",
              #"L261.GlobalTechEff_C",
              #"L271.StubTechSecOut_desal_CCS",
-             "L261.StubTechEff"))
+             "L261.StubTechEff",
+             "L261.TechPmult"))
   } else if(command == driver.MAKE) {
 
     all_data <- list(...)[[1]]
@@ -353,7 +354,10 @@ module_energy_L261.Cstorage <- function(command, ...) {
       mutate(efficiency = if_else(efficiency == 0, 0.001,efficiency)) %>%
       select(c('scenario',LEVEL2_DATA_NAMES[['StubTechEff']]))
 
-
+    L261.TechPmult <- L261.StubTechEff %>%
+      rename(technology = stub.technology,
+             pMult = efficiency) %>%
+      select(c('scenario',LEVEL2_DATA_NAMES[['TechPmult']]))
 
     #desal_regions <- L203.TechShrwt_watertd %>%
     #  filter(technology == 'desalinated water') %>%
@@ -832,13 +836,21 @@ module_energy_L261.Cstorage <- function(command, ...) {
       add_precursors("energy/IEA_CCUS_Projects_Database_2023","common/GCAM_region_names","common/iso_GCAM_regID") ->
       L261.StubTechEff
 
+    L261.TechPmult %>%
+      add_title("Scale down cost by factor of efficiency parameter") %>%
+      add_units("Unitless") %>%
+      add_comments("Make supply curves have same slope as original") %>%
+      same_precursors_as(L261.StubTechEff) ->
+      L261.TechPmult
+
 
     return_data(L261.Rsrc, L261.UnlimitRsrc, L261.RsrcCurves_C, L261.ResTechShrwt_C, L261.Supplysector_C, L261.SubsectorLogit_C, L261.SubsectorShrwtFllt_C, L261.StubTech_C, L261.GlobalTechCoef_C, L261.GlobalTechCost_C, L261.GlobalTechShrwt_C, L261.GlobalTechCost_C_High, L261.GlobalTechShrwt_C_nooffshore, L261.RsrcCurves_C_high, L261.RsrcCurves_C_low, L261.RsrcCurves_C_lowest,
                 L261.ResSubresourceProdLifetime, L261.ResReserveTechLifetime, L261.ResReserveTechDeclinePhase, L261.ResReserveTechProfitShutdown,
                 L261.CStorageCurvesDynamic,L261.DynamicCstorageRsrcMax,L261.DynamicRsrc,L261.DynamicResTechShrwt_C,L261.RsrcPrice,
                 #L271.SubsectorInterp_desal_CCS,L271.FinalEnergyKeyword_desal_CCS,L271.SubsectorInterpTo_desal_CCS,
                 #L271.StubTechSecOut_desal_CCS,
-                L261.StubTechEff)
+                L261.StubTechEff,
+                L261.TechPmult)
   } else {
     stop("Unknown command")
   }
