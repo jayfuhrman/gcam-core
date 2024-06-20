@@ -15,10 +15,7 @@ module_energy_hydrogen_xml <- function(command, ...) {
     return(c("L225.Supplysector_h2",
              "L225.SectorUseTrialMarket_h2",
               "L225.SubsectorLogit_h2",
-              "L225.SubsectorShrwt_h2",
               "L225.SubsectorShrwtFllt_h2",
-              "L225.SubsectorInterp_h2",
-              "L225.SubsectorInterpTo_h2",
               "L225.StubTech_h2",
               "L225.StubTechCost_h2",
               "L225.GlobalTechCoef_h2",
@@ -30,10 +27,14 @@ module_energy_hydrogen_xml <- function(command, ...) {
               "L225.GlobalTechCapture_h2",
               "L225.GlobalTechInputPMult_h2",
               "L225.GlobalTechProfitShutdown_h2",
-              "L225.GlobalTechSCurve_h2"))
+              "L225.GlobalTechSCurve_h2",
+              "L225.OutputEmissCoeff_h2",
+              "L225.StubTechCost_h2_high",
+              "L225.StubTechCost_h2_brkt"))
   } else if(command == driver.DECLARE_OUTPUTS) {
     return(c(XML = "hydrogen.xml",
-             XML = "hydrogen_no_gas_forecourt.xml"))
+             XML = "hydrogen_electrolysis_hitech.xml",
+             XML = "hydrogen_electrolysis_breakthru.xml"))
   } else if(command == driver.MAKE) {
 
     all_data <- list(...)[[1]]
@@ -42,10 +43,7 @@ module_energy_hydrogen_xml <- function(command, ...) {
     L225.Supplysector_h2 <- get_data(all_data, "L225.Supplysector_h2")
     L225.SectorUseTrialMarket_h2 <- get_data(all_data, "L225.SectorUseTrialMarket_h2")
     L225.SubsectorLogit_h2 <- get_data(all_data, "L225.SubsectorLogit_h2")
-    L225.SubsectorShrwt_h2 <- get_data(all_data, "L225.SubsectorShrwt_h2")
     L225.SubsectorShrwtFllt_h2 <- get_data(all_data, "L225.SubsectorShrwtFllt_h2")
-    L225.SubsectorInterp_h2 <- get_data(all_data, "L225.SubsectorInterp_h2")
-    L225.SubsectorInterpTo_h2 <- get_data(all_data, "L225.SubsectorInterpTo_h2")
     L225.StubTech_h2 <- get_data(all_data, "L225.StubTech_h2")
     L225.GlobalTechCoef_h2 <- get_data(all_data, "L225.GlobalTechCoef_h2")
     L225.GlobalTechCost_h2 <- get_data(all_data, "L225.GlobalTechCost_h2")
@@ -58,6 +56,9 @@ module_energy_hydrogen_xml <- function(command, ...) {
     L225.GlobalTechProfitShutdown_h2 <- get_data(all_data, "L225.GlobalTechProfitShutdown_h2")
     L225.GlobalTechSCurve_h2 <- get_data(all_data, "L225.GlobalTechSCurve_h2")
     L225.StubTechCost_h2 <- get_data(all_data, "L225.StubTechCost_h2")
+    L225.OutputEmissCoeff_h2 <- get_data(all_data, "L225.OutputEmissCoeff_h2")
+    L225.StubTechCost_h2_high <- get_data(all_data, "L225.StubTechCost_h2_high")
+    L225.StubTechCost_h2_brkt <- get_data(all_data, "L225.StubTechCost_h2_brkt")
     # ===================================================
 
     # Produce outputs
@@ -66,28 +67,8 @@ module_energy_hydrogen_xml <- function(command, ...) {
       add_xml_data(L225.SectorUseTrialMarket_h2, "SectorUseTrialMarket") %>%
       add_logit_tables_xml(L225.SubsectorLogit_h2, "SubsectorLogit") -> hydrogen.xml
 
-    if(!is.null(L225.SubsectorShrwt_h2)) {
-      hydrogen.xml %>%
-        add_xml_data(L225.SubsectorShrwt_h2, "SubsectorShrwt") ->
-        hydrogen.xml
-    }
-    if(!is.null(L225.SubsectorShrwtFllt_h2)) {
-      hydrogen.xml %>%
-        add_xml_data(L225.SubsectorShrwtFllt_h2, "SubsectorShrwtFllt") ->
-        hydrogen.xml
-    }
-    if(!is.null(L225.SubsectorInterp_h2)) {
-      hydrogen.xml %>%
-        add_xml_data(L225.SubsectorInterp_h2, "SubsectorInterp") ->
-        hydrogen.xml
-    }
-    if(!is.null(L225.SubsectorInterpTo_h2)) {
-      hydrogen.xml %>%
-        add_xml_data(L225.SubsectorInterpTo_h2, "SubsectorInterpTo") ->
-        hydrogen.xml
-    }
-
     hydrogen.xml <- hydrogen.xml %>%
+      add_xml_data(L225.SubsectorShrwtFllt_h2, "SubsectorShrwtFllt") %>%
       add_xml_data(L225.StubTech_h2, "StubTech") %>%
       add_xml_data(L225.StubTechCost_h2, "StubTechCost") %>%
       add_xml_data(L225.GlobalTechCoef_h2, "GlobalTechCoef") %>%
@@ -102,13 +83,11 @@ module_energy_hydrogen_xml <- function(command, ...) {
       add_xml_data(L225.GlobalTechInputPMult_h2, "GlobalTechInputPMult") %>%
       add_xml_data(L225.GlobalTechSCurve_h2, "GlobalTechSCurve") %>%
       add_xml_data(L225.GlobalTechProfitShutdown_h2, "GlobalTechProfitShutdown") %>%
+      add_xml_data(L225.OutputEmissCoeff_h2, "OutputEmissCoeff") %>%
       add_precursors("L225.Supplysector_h2",
                      "L225.SectorUseTrialMarket_h2",
                      "L225.SubsectorLogit_h2",
-                     "L225.SubsectorShrwt_h2",
                      "L225.SubsectorShrwtFllt_h2",
-                     "L225.SubsectorInterp_h2",
-                     "L225.SubsectorInterpTo_h2",
                      "L225.StubTech_h2",
                      "L225.StubTechCost_h2",
                      "L225.GlobalTechCoef_h2",
@@ -120,72 +99,25 @@ module_energy_hydrogen_xml <- function(command, ...) {
                      "L225.GlobalTechCapture_h2",
                      "L225.GlobalTechInputPMult_h2",
                      "L225.GlobalTechSCurve_h2",
-                     "L225.GlobalTechProfitShutdown_h2") ->
+                     "L225.GlobalTechProfitShutdown_h2",
+                     "L225.OutputEmissCoeff_h2") ->
       hydrogen.xml
 
-    # Produce outputs
-    create_xml("hydrogen_no_gas_forecourt.xml") %>%
-      add_logit_tables_xml(L225.Supplysector_h2, "Supplysector") %>%
-      add_xml_data(L225.SectorUseTrialMarket_h2, "SectorUseTrialMarket") %>%
-      add_logit_tables_xml(L225.SubsectorLogit_h2, "SubsectorLogit") -> hydrogen_no_gas_forecourt.xml
+    #add-on with high-technology (i.e. low-cost) renewable electrolysis
+    create_xml("hydrogen_electrolysis_hitech.xml") %>%
+      add_xml_data(L225.StubTechCost_h2_high, "StubTechCost") %>%
+      add_precursors("L225.StubTechCost_h2_high") ->
+      hydrogen_electrolysis_hitech.xml
 
-    if(!is.null(L225.SubsectorShrwt_h2)) {
-      hydrogen_no_gas_forecourt.xml %>%
-        add_xml_data(L225.SubsectorShrwt_h2, "SubsectorShrwt") ->
-        hydrogen_no_gas_forecourt.xml
-    }
-    if(!is.null(L225.SubsectorShrwtFllt_h2)) {
-      hydrogen_no_gas_forecourt.xml %>%
-        add_xml_data(L225.SubsectorShrwtFllt_h2, "SubsectorShrwtFllt") ->
-        hydrogen_no_gas_forecourt.xml
-    }
-    if(!is.null(L225.SubsectorInterp_h2)) {
-      hydrogen_no_gas_forecourt.xml %>%
-        add_xml_data(L225.SubsectorInterp_h2, "SubsectorInterp") ->
-        hydrogen_no_gas_forecourt.xml
-    }
-    if(!is.null(L225.SubsectorInterpTo_h2)) {
-      hydrogen_no_gas_forecourt.xml %>%
-        add_xml_data(L225.SubsectorInterpTo_h2, "SubsectorInterpTo") ->
-        hydrogen_no_gas_forecourt.xml
-    }
-
-
-    hydrogen_no_gas_forecourt.xml %>%
-      add_xml_data(L225.StubTech_h2, "StubTech") %>%
-      add_xml_data(L225.StubTechCost_h2, "StubTechCost") %>%
-      add_xml_data(L225.GlobalTechCoef_h2, "GlobalTechCoef") %>%
-      add_xml_data(L225.GlobalTechCost_h2, "GlobalTechCost") %>%
-      add_xml_data(L225.GlobalTechShrwt_h2 %>%
-                     mutate(share.weight = if_else(subsector.name == 'forecourt production' & technology == 'natural gas steam reforming',0,share.weight)), "GlobalTechShrwt") %>%
-      add_xml_data(L225.PrimaryRenewKeyword_h2, "PrimaryRenewKeyword") %>%
-      add_xml_data(L225.AvgFossilEffKeyword_h2, "AvgFossilEffKeyword") %>%
-      add_xml_data(L225.GlobalTechCapture_h2, "GlobalTechCapture") %>%
-      add_xml_data(L225.GlobalTechInputPMult_h2, "GlobalTechInputPMult") %>%
-      add_xml_data(L225.GlobalTechSCurve_h2, "GlobalTechSCurve") %>%
-      add_xml_data(L225.GlobalTechProfitShutdown_h2, "GlobalTechProfitShutdown") %>%
-      add_precursors("L225.Supplysector_h2",
-                     "L225.SectorUseTrialMarket_h2",
-                     "L225.SubsectorLogit_h2",
-                     "L225.SubsectorShrwt_h2",
-                     "L225.SubsectorShrwtFllt_h2",
-                     "L225.SubsectorInterp_h2",
-                     "L225.SubsectorInterpTo_h2",
-                     "L225.StubTech_h2",
-                     "L225.StubTechCost_h2",
-                     "L225.GlobalTechCoef_h2",
-                     "L225.GlobalTechCost_h2",
-                     "L225.GlobalTechShrwt_h2",
-                     "L225.PrimaryRenewKeyword_h2",
-                     "L225.AvgFossilEffKeyword_h2",
-                     "L225.GlobalTechCapture_h2",
-                     "L225.GlobalTechInputPMult_h2",
-                     "L225.GlobalTechSCurve_h2",
-                     "L225.GlobalTechProfitShutdown_h2") ->
-      hydrogen_no_gas_forecourt.xml
+    #HFTO program goals met for renewable electrolysis
+    create_xml("hydrogen_electrolysis_breakthru.xml") %>%
+      add_xml_data(L225.StubTechCost_h2_brkt, "StubTechCost") %>%
+      add_precursors("L225.StubTechCost_h2_brkt") ->
+      hydrogen_electrolysis_breakthru.xml
 
     return_data(hydrogen.xml,
-                hydrogen_no_gas_forecourt.xml)
+                hydrogen_electrolysis_hitech.xml,
+                hydrogen_electrolysis_breakthru.xml)
   } else {
     stop("Unknown command")
   }

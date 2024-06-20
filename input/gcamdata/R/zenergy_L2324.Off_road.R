@@ -231,7 +231,7 @@ module_energy_L2324.Off_road <- function(command, ...) {
       complete(nesting(supplysector, subsector, technology), year = c(year, MODEL_BASE_YEARS, MODEL_FUTURE_YEARS)) %>%
       arrange(supplysector, subsector, technology, year) %>%
       group_by(supplysector, subsector, technology) %>%
-      mutate(share.weight = approx_fun(year, value, rule = 1)) %>%
+      mutate(share.weight = round(approx_fun(year, value, rule = 1), energy.DIGITS_SHRWT)) %>%
       ungroup %>%
       filter(year %in% c(MODEL_BASE_YEARS, MODEL_FUTURE_YEARS)) %>%
       rename(sector.name = supplysector,
@@ -538,7 +538,7 @@ module_energy_L2324.Off_road <- function(command, ...) {
 
     # apply to the original global tech efficiencies
     L2324.GlobalTechEff_Off_road %>%
-      left_join_error_no_match(L2324.globaltech_eff_cwf_adj) %>%
+      left_join_error_no_match(L2324.globaltech_eff_cwf_adj, by = c('sector.name','subsector.name','technology','minicam.energy.input','year')) %>%
       mutate(efficiency = round(efficiency * efficiency_adj, energy.DIGITS_EFFICIENCY)) %>%
       select(LEVEL2_DATA_NAMES[["GlobalTechEff"]]) ->
       L2324.GlobalTechEff_Off_road_cwf
