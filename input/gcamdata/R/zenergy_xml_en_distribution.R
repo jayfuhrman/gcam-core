@@ -134,7 +134,9 @@ module_energy_en_distribution_xml <- function(command, ...) {
     if(!is.null(L226.SubsectorShrwtFllt_en)) {
       en_distribution_H2_peaker.xml %>%
         add_xml_data(L226.SubsectorShrwtFllt_en %>%
-                       mutate(share.weight = if_else(supplysector == "backup_electricity" & subsector == "hydrogen",1,share.weight)), "SubsectorShrwtFllt") ->
+                       # adding one line here to make sure the share weight column is numeric value instead of integer, which causes error.
+                       mutate(share.weight = as.numeric(share.weight),
+                              share.weight = if_else(supplysector == "backup_electricity" & subsector == "hydrogen", 1 , share.weight)), "SubsectorShrwtFllt") ->
         en_distribution_H2_peaker.xml
     }
 

@@ -641,7 +641,7 @@ module_energy_L2324.Off_road <- function(command, ...) {
       add_units("Unitless") %>%
       add_comments("For Off_road sector, the share weights from A324.globaltech_shrwt_cwf are interpolated into all base years and future years") %>%
       add_legacy_name("L2324.GlobalTechShrwt_Off_road_cwf") %>%
-      add_precursors("energy/A324.globaltech_shrwt_cwf") ->
+      add_precursors("cwf/A324.globaltech_shrwt_cwf") ->
       L2324.GlobalTechShrwt_Off_road_cwf
 
     L2324.GlobalTechCoef_Off_road %>%
