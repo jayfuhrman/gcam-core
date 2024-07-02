@@ -19,7 +19,6 @@ module_energy_iron_steel_xml <- function(command, ...) {
              "L2323.SubsectorInterp_iron_steel",
              "L2323.StubTech_iron_steel",
              "L2323.GlobalTechShrwt_iron_steel",
-             "L2323.GlobalTechShrwt_iron_steel_cwf",
              "L2323.GlobalTechCoef_iron_steel",
              "L2323.GlobalTechCost_iron_steel",
              "L2323.GlobalTechTrackCapital_iron_steel",
@@ -31,16 +30,9 @@ module_energy_iron_steel_xml <- function(command, ...) {
              "L2323.StubTechCoef_iron_steel",
              "L2323.PerCapitaBased_iron_steel",
              "L2323.BaseService_iron_steel",
-             "L2323.PriceElasticity_iron_steel",
-             "L2323.GlobalTechCoef_iron_steel_cwf",
-             "L2323.StubTechCoef_iron_steel_cwf",
-             "L2323.GlobalTechShrwt_iron_steel_cwf_H2_scenarios"))
+             "L2323.PriceElasticity_iron_steel"))
   } else if(command == driver.DECLARE_OUTPUTS) {
-    return(c(XML = "iron_steel.xml",
-             XML = "iron_steel_cwf.xml",
-             XML = "iron_steel_cwf_low_H2.xml",
-             XML = "iron_steel_cwf_med_H2.xml",
-             XML = "iron_steel_cwf_high_H2.xml"))
+    return(c(XML = "iron_steel.xml"))
   } else if(command == driver.MAKE) {
 
     all_data <- list(...)[[1]]
@@ -53,7 +45,6 @@ module_energy_iron_steel_xml <- function(command, ...) {
     L2323.SubsectorInterp_iron_steel <- get_data(all_data, "L2323.SubsectorInterp_iron_steel")
     L2323.StubTech_iron_steel <- get_data(all_data, "L2323.StubTech_iron_steel")
     L2323.GlobalTechShrwt_iron_steel <- get_data(all_data, "L2323.GlobalTechShrwt_iron_steel")
-    L2323.GlobalTechShrwt_iron_steel_cwf <- get_data(all_data, "L2323.GlobalTechShrwt_iron_steel_cwf")
     L2323.GlobalTechCoef_iron_steel <- get_data(all_data, "L2323.GlobalTechCoef_iron_steel")
     L2323.GlobalTechCost_iron_steel <- get_data(all_data, "L2323.GlobalTechCost_iron_steel")
     L2323.GlobalTechTrackCapital_iron_steel <- get_data(all_data, "L2323.GlobalTechTrackCapital_iron_steel")
@@ -66,9 +57,6 @@ module_energy_iron_steel_xml <- function(command, ...) {
     L2323.PerCapitaBased_iron_steel <- get_data(all_data, "L2323.PerCapitaBased_iron_steel")
     L2323.BaseService_iron_steel <- get_data(all_data, "L2323.BaseService_iron_steel")
     L2323.PriceElasticity_iron_steel <- get_data(all_data, "L2323.PriceElasticity_iron_steel")
-    L2323.GlobalTechCoef_iron_steel_cwf <- get_data(all_data, "L2323.GlobalTechCoef_iron_steel_cwf")
-    L2323.StubTechCoef_iron_steel_cwf <- get_data(all_data, "L2323.StubTechCoef_iron_steel_cwf")
-    L2323.GlobalTechShrwt_iron_steel_cwf_H2_scenarios <- get_data(all_data, "L2323.GlobalTechShrwt_iron_steel_cwf_H2_scenarios")
     # ===================================================
     iron_steel_cwf_low_H2.xml <- iron_steel_cwf_med_H2.xml <- iron_steel_cwf_high_H2.xml <- NULL # silence package check notes
 
@@ -108,74 +96,7 @@ module_energy_iron_steel_xml <- function(command, ...) {
                      "L2323.GlobalTechTrackCapital_iron_steel") ->
       iron_steel.xml
 
-    create_xml("iron_steel_cwf.xml") %>%
-      add_logit_tables_xml(L2323.Supplysector_iron_steel, "Supplysector") %>%
-      add_xml_data(L2323.FinalEnergyKeyword_iron_steel, "FinalEnergyKeyword") %>%
-      add_logit_tables_xml(L2323.SubsectorLogit_iron_steel, "SubsectorLogit") %>%
-      add_xml_data(L2323.SubsectorShrwtFllt_iron_steel, "SubsectorShrwtFllt") %>%
-      add_xml_data(L2323.SubsectorInterp_iron_steel, "SubsectorInterp") %>%
-      add_xml_data(L2323.StubTech_iron_steel, "StubTech") %>%
-      add_xml_data(L2323.GlobalTechShrwt_iron_steel_cwf, "GlobalTechShrwt") %>%
-      add_xml_data(L2323.GlobalTechCoef_iron_steel_cwf, "GlobalTechCoef") %>% # CWF version
-      add_xml_data(L2323.GlobalTechCost_iron_steel, "GlobalTechCost") %>%
-      add_xml_data(L2323.GlobalTechCapture_iron_steel, "GlobalTechCapture") %>%
-      add_xml_data(L2323.GlobalTechSCurve_en, "GlobalTechSCurve") %>%
-      add_xml_data(L2323.GlobalTechProfitShutdown_en, "GlobalTechProfitShutdown") %>%
-      add_xml_data(L2323.StubTechProd_iron_steel, "StubTechProd") %>%
-      add_xml_data(L2323.StubTechCoef_iron_steel_cwf, "StubTechCoef") %>% # CWF version
-      add_xml_data(L2323.PerCapitaBased_iron_steel, "PerCapitaBased") %>%
-      add_xml_data(L2323.BaseService_iron_steel, "BaseService") %>%
-      add_xml_data(L2323.PriceElasticity_iron_steel, "PriceElasticity") %>%
-      add_precursors("L2323.Supplysector_iron_steel", "L2323.FinalEnergyKeyword_iron_steel", "L2323.SubsectorLogit_iron_steel",
-                     "L2323.SubsectorShrwtFllt_iron_steel",
-                     "L2323.SubsectorInterp_iron_steel",
-                     "L2323.StubTech_iron_steel",
-                     "L2323.GlobalTechShrwt_iron_steel_cwf", "L2323.GlobalTechCoef_iron_steel_cwf", "L2323.GlobalTechCost_iron_steel",
-                     "L2323.GlobalTechCapture_iron_steel", "L2323.GlobalTechSCurve_en",
-                     "L2323.GlobalTechProfitShutdown_en", "L2323.StubTechProd_iron_steel",
-                     "L2323.StubTechCoef_iron_steel_cwf", "L2323.PerCapitaBased_iron_steel", "L2323.BaseService_iron_steel",
-                     "L2323.PriceElasticity_iron_steel") ->
-      iron_steel_cwf.xml
-
-    # create the CWF high/medium/low hydrogen XMLs
-    for (i in c("cwf_low_H2", "cwf_med_H2", "cwf_high_H2")) {
-      L2323.GlobalTechShrwt_iron_steel_cwf_H2_scenarios_sel <- L2323.GlobalTechShrwt_iron_steel_cwf_H2_scenarios %>%
-        filter(scenario == i) %>%
-        select(-scenario)
-
-      xml_name <- paste0("iron_steel_", i, ".xml")
-
-      create_xml(xml_name) %>%
-        add_logit_tables_xml(L2323.Supplysector_iron_steel, "Supplysector") %>%
-        add_xml_data(L2323.FinalEnergyKeyword_iron_steel, "FinalEnergyKeyword") %>%
-        add_logit_tables_xml(L2323.SubsectorLogit_iron_steel, "SubsectorLogit") %>%
-        add_xml_data(L2323.SubsectorShrwtFllt_iron_steel, "SubsectorShrwtFllt") %>%
-        add_xml_data(L2323.SubsectorInterp_iron_steel, "SubsectorInterp") %>%
-        add_xml_data(L2323.StubTech_iron_steel, "StubTech") %>%
-        add_xml_data(L2323.GlobalTechShrwt_iron_steel_cwf_H2_scenarios_sel, "GlobalTechShrwt") %>% # CWF version for this scenario
-        add_xml_data(L2323.GlobalTechCoef_iron_steel_cwf, "GlobalTechCoef") %>% # CWF version
-        add_xml_data(L2323.GlobalTechCost_iron_steel, "GlobalTechCost") %>%
-        add_xml_data(L2323.GlobalTechCapture_iron_steel, "GlobalTechCapture") %>%
-        add_xml_data(L2323.GlobalTechSCurve_en, "GlobalTechSCurve") %>%
-        add_xml_data(L2323.GlobalTechProfitShutdown_en, "GlobalTechProfitShutdown") %>%
-        add_xml_data(L2323.StubTechProd_iron_steel, "StubTechProd") %>%
-        add_xml_data(L2323.StubTechCoef_iron_steel_cwf, "StubTechCoef") %>% # CWF version
-        add_xml_data(L2323.PerCapitaBased_iron_steel, "PerCapitaBased") %>%
-        add_xml_data(L2323.BaseService_iron_steel, "BaseService") %>%
-        add_xml_data(L2323.PriceElasticity_iron_steel, "PriceElasticity") %>%
-        add_precursors("L2323.Supplysector_iron_steel", "L2323.FinalEnergyKeyword_iron_steel", "L2323.SubsectorLogit_iron_steel",
-                       "L2323.SubsectorShrwtFllt_iron_steel",
-                       "L2323.SubsectorInterp_iron_steel",
-                       "L2323.StubTech_iron_steel",
-                       "L2323.GlobalTechShrwt_iron_steel_cwf_H2_scenarios", "L2323.GlobalTechCoef_iron_steel_cwf", "L2323.GlobalTechCost_iron_steel",
-                       "L2323.GlobalTechCapture_iron_steel", "L2323.GlobalTechSCurve_en",
-                       "L2323.GlobalTechProfitShutdown_en", "L2323.StubTechProd_iron_steel",
-                       "L2323.StubTechCoef_iron_steel_cwf", "L2323.PerCapitaBased_iron_steel", "L2323.BaseService_iron_steel",
-                       "L2323.PriceElasticity_iron_steel")  %>%
-        assign(xml_name, ., envir = curr_env)
-    }
-
-    return_data(iron_steel.xml, iron_steel_cwf.xml, iron_steel_cwf_low_H2.xml, iron_steel_cwf_med_H2.xml, iron_steel_cwf_high_H2.xml)
+    return_data(iron_steel.xml)
   } else {
     stop("Unknown command")
   }
