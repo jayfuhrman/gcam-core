@@ -41,14 +41,9 @@ module_energy_L2324.Off_road <- function(command, ...) {
              FILE = "energy/A324.globaltech_cost",
              FILE = "energy/A324.globaltech_retirement",
              FILE = "energy/A324.globaltech_shrwt",
-             FILE = "cwf/A324.globaltech_shrwt_cwf",
              FILE = "energy/A324.globaltech_interp",
-             FILE = "cwf/A324.globaltech_interp_cwf",
              FILE = "energy/A324.demand",
-             "L1324.in_EJ_R_Off_road_F_Y",
-             FILE = "cwf/A324.globaltech_eff_cwf_adj",
-             FILE = "cwf/A324.globaltech_shrwt_cwf_H2_scenarios",
-             FILE = "cwf/A324.globaltech_interp_cwf_H2_scenarios"))
+             "L1324.in_EJ_R_Off_road_F_Y"))
   } else if(command == driver.DECLARE_OUTPUTS) {
     return(c("L2324.Supplysector_Off_road",
              "L2324.FinalEnergyKeyword_Off_road",
@@ -57,9 +52,7 @@ module_energy_L2324.Off_road <- function(command, ...) {
              "L2324.SubsectorInterp_Off_road",
              "L2324.StubTech_Off_road",
              "L2324.GlobalTechShrwt_Off_road",
-             "L2324.GlobalTechShrwt_Off_road_cwf",
              "L2324.GlobalTechInterp_Off_road",
-             "L2324.GlobalTechInterp_Off_road_cwf",
              "L2324.GlobalTechCoef_Off_road",
              "L2324.GlobalTechEff_Off_road",
              "L2324.GlobalTechCost_Off_road",
@@ -74,10 +67,7 @@ module_energy_L2324.Off_road <- function(command, ...) {
              "L2324.StubTechProd_Off_road",
              "L2324.PerCapitaBased_Off_road",
              "L2324.BaseService_Off_road",
-			       "L2324.PriceElasticity_Off_road",
-			 "L2324.GlobalTechEff_Off_road_cwf",
-			 "L2324.GlobalTechShrwt_Off_road_cwf_H2_scenarios",
-			 "L2324.GlobalTechInterp_Off_road_cwf_H2_scenarios"))
+			       "L2324.PriceElasticity_Off_road"))
   } else if(command == driver.MAKE) {
 
 
@@ -97,14 +87,9 @@ module_energy_L2324.Off_road <- function(command, ...) {
 	  A324.globaltech_retirement <- get_data(all_data, "energy/A324.globaltech_retirement", strip_attributes = TRUE)
 	  A324.nonenergy_Cseq <- get_data(all_data, "energy/A324.nonenergy_Cseq", strip_attributes = TRUE)
     A324.globaltech_shrwt <- get_data(all_data, "energy/A324.globaltech_shrwt", strip_attributes = TRUE)
-    A324.globaltech_shrwt_cwf <- get_data(all_data, "cwf/A324.globaltech_shrwt_cwf", strip_attributes = TRUE)
     A324.globaltech_interp <- get_data(all_data, "energy/A324.globaltech_interp", strip_attributes = TRUE)
-    A324.globaltech_interp_cwf <- get_data(all_data, "cwf/A324.globaltech_interp_cwf", strip_attributes = TRUE)
     A324.demand <- get_data(all_data, "energy/A324.demand", strip_attributes = TRUE)
     L1324.in_EJ_R_Off_road_F_Y <- get_data(all_data, "L1324.in_EJ_R_Off_road_F_Y")
-    A324.globaltech_eff_cwf_adj <- get_data(all_data, "cwf/A324.globaltech_eff_cwf_adj", strip_attributes = TRUE)
-    A324.globaltech_shrwt_cwf_H2_scenarios <- get_data(all_data, "cwf/A324.globaltech_shrwt_cwf_H2_scenarios", strip_attributes = TRUE)
-    A324.globaltech_interp_cwf_H2_scenarios <- get_data(all_data, "cwf/A324.globaltech_interp_cwf_H2_scenarios", strip_attributes = TRUE)
     # ===================================================
     # 0. Give binding for variable names used in pipeline
     has_district_heat <- year <- value <- GCAM_region_ID <- sector <- fuel <- year.fillout <- to.value <-
@@ -238,20 +223,6 @@ module_energy_L2324.Off_road <- function(command, ...) {
              subsector.name = subsector) %>%
       select(LEVEL2_DATA_NAMES[["GlobalTechYr"]], "share.weight") ->
       L2324.GlobalTechShrwt_Off_road
-
-    A324.globaltech_shrwt_cwf %>%
-      gather_years %>%
-      complete(nesting(supplysector, subsector, technology), year = c(year, MODEL_BASE_YEARS, MODEL_FUTURE_YEARS)) %>%
-      arrange(supplysector, subsector, technology, year) %>%
-      group_by(supplysector, subsector, technology) %>%
-      mutate(share.weight = approx_fun(year, value, rule = 1)) %>%
-      ungroup %>%
-      filter(year %in% c(MODEL_BASE_YEARS, MODEL_FUTURE_YEARS)) %>%
-      rename(sector.name = supplysector,
-             subsector.name = subsector) %>%
-      select(LEVEL2_DATA_NAMES[["GlobalTechYr"]], "share.weight") ->
-      L2324.GlobalTechShrwt_Off_road_cwf
-
 
     # L2324.GlobalTechCost_Off_road: Non-energy costs of global Off_road manufacturing technologies
     A324.globaltech_cost %>%
@@ -505,10 +476,6 @@ module_energy_L2324.Off_road <- function(command, ...) {
       set_years() %>%
       rename(sector.name = supplysector, subsector.name = subsector)
 
-    L2324.GlobalTechInterp_Off_road_cwf <- A324.globaltech_interp_cwf %>%
-      set_years() %>%
-      rename(sector.name = supplysector, subsector.name = subsector)
-
 
     # L2324.PriceElasticity_Off_road: price elasticity
     A324.demand %>%
@@ -516,51 +483,6 @@ module_energy_L2324.Off_road <- function(command, ...) {
       repeat_add_columns(tibble(year = MODEL_FUTURE_YEARS)) %>%
       select(LEVEL2_DATA_NAMES[["PriceElasticity"]]) ->
       L2324.PriceElasticity_Off_road
-
-    # ===================================================
-    # Make CWF adjustments
-
-    # GLOBAL TECH EFFICIENCY: L2324.GlobalTechEff_Off_road_cwf
-    # get efficiency adjustments
-    A324.globaltech_eff_cwf_adj %>%
-      gather_years(value_col = "efficiency_adj") %>%
-      complete(nesting(supplysector, subsector, technology, minicam.energy.input),
-               year = c(year, MODEL_BASE_YEARS, MODEL_FUTURE_YEARS)) %>%
-      arrange(supplysector, subsector, technology, minicam.energy.input,  year) %>%
-      group_by(supplysector, subsector, technology, minicam.energy.input) %>%
-      mutate(efficiency_adj = approx_fun(year, efficiency_adj, rule = 2)) %>%
-      ungroup %>%
-      filter(year %in% c(MODEL_BASE_YEARS, MODEL_FUTURE_YEARS)) %>%
-      # Assign the columns "sector.name" and "subsector.name", consistent with the location info of a global technology
-      rename(sector.name = supplysector,
-             subsector.name = subsector) ->
-      L2324.globaltech_eff_cwf_adj # intermediate tibble
-
-    # apply to the original global tech efficiencies
-    L2324.GlobalTechEff_Off_road %>%
-      left_join_error_no_match(L2324.globaltech_eff_cwf_adj, by = c('sector.name','subsector.name','technology','minicam.energy.input','year')) %>%
-      mutate(efficiency = round(efficiency * efficiency_adj, energy.DIGITS_EFFICIENCY)) %>%
-      select(LEVEL2_DATA_NAMES[["GlobalTechEff"]]) ->
-      L2324.GlobalTechEff_Off_road_cwf
-
-    # HYDROGEN SCENARIOS, global tech share weights and interpolation rules
-    # L2324.GlobalTechShrwt_Off_road: Shareweights of global Off_road technologies for CWF hydrogen scenarios
-    A324.globaltech_shrwt_cwf_H2_scenarios %>%
-      gather_years %>%
-      complete(nesting(supplysector, subsector, technology, scenario), year = c(year, MODEL_BASE_YEARS, MODEL_FUTURE_YEARS)) %>%
-      arrange(scenario, supplysector, subsector, technology, year) %>%
-      group_by(scenario, supplysector, subsector, technology) %>%
-      mutate(share.weight = approx_fun(year, value, rule = 1)) %>%
-      ungroup %>%
-      filter(year %in% c(MODEL_BASE_YEARS, MODEL_FUTURE_YEARS)) %>%
-      rename(sector.name = supplysector,
-             subsector.name = subsector) %>%
-      select(LEVEL2_DATA_NAMES[["GlobalTechYr"]], "share.weight", "scenario") ->
-      L2324.GlobalTechShrwt_Off_road_cwf_H2_scenarios
-
-    L2324.GlobalTechInterp_Off_road_cwf_H2_scenarios <- A324.globaltech_interp_cwf_H2_scenarios %>%
-      set_years() %>%
-      rename(sector.name = supplysector, subsector.name = subsector)
 
 
     # ===================================================
@@ -612,14 +534,6 @@ module_energy_L2324.Off_road <- function(command, ...) {
       add_precursors("energy/A324.globaltech_interp") ->
       L2324.GlobalTechInterp_Off_road
 
-    L2324.GlobalTechInterp_Off_road_cwf %>%
-      add_title("Technology shareweight interpolation of Off_road sector") %>%
-      add_units("NA") %>%
-      add_comments("Rules from global technology database are applied to all regions") %>%
-      add_precursors("cwf/A324.globaltech_interp_cwf") ->
-      L2324.GlobalTechInterp_Off_road_cwf
-
-
     L2324.StubTech_Off_road %>%
       add_title("Identification of stub technologies of Off_road") %>%
       add_units("NA") %>%
@@ -635,14 +549,6 @@ module_energy_L2324.Off_road <- function(command, ...) {
       add_legacy_name("L2324.GlobalTechShrwt_Off_road") %>%
       add_precursors("energy/A324.globaltech_shrwt") ->
       L2324.GlobalTechShrwt_Off_road
-
-    L2324.GlobalTechShrwt_Off_road_cwf %>%
-      add_title("Shareweights of global Off_road technologies") %>%
-      add_units("Unitless") %>%
-      add_comments("For Off_road sector, the share weights from A324.globaltech_shrwt_cwf are interpolated into all base years and future years") %>%
-      add_legacy_name("L2324.GlobalTechShrwt_Off_road_cwf") %>%
-      add_precursors("cwf/A324.globaltech_shrwt_cwf") ->
-      L2324.GlobalTechShrwt_Off_road_cwf
 
     L2324.GlobalTechCoef_Off_road %>%
       add_title("Energy inputs and coefficients of Off_road technologies") %>%
@@ -789,32 +695,8 @@ module_energy_L2324.Off_road <- function(command, ...) {
       add_precursors("energy/A324.demand", "common/GCAM_region_names") ->
       L2324.PriceElasticity_Off_road
 
-    L2324.GlobalTechEff_Off_road_cwf %>%
-      add_title("Energy inputs and efficiency of global Off_road energy use and feedstocks technologies") %>%
-      add_units("Unitless") %>%
-      add_comments("For Off_road sector, the efficiency values from A324.globaltech_eff are interpolated into all base years and future years, with CWF adjustments") %>%
-      add_legacy_name("L2324.GlobalTechEff_Off_road") %>%
-      add_precursors("energy/A324.globaltech_eff", "cwf/A324.globaltech_eff_cwf_adj") ->
-      L2324.GlobalTechEff_Off_road_cwf
-
-    L2324.GlobalTechShrwt_Off_road_cwf_H2_scenarios %>%
-      add_title("Shareweights of global Off_road technologies") %>%
-      add_units("Unitless") %>%
-      add_comments("For Off_road sector, the share weights from A324.globaltech_shrwt_cwf_H2_scenarios are interpolated into all base years and future years") %>%
-      add_legacy_name("L2324.GlobalTechShrwt_Off_road") %>%
-      add_precursors("cwf/A324.globaltech_shrwt_cwf_H2_scenarios") ->
-      L2324.GlobalTechShrwt_Off_road_cwf_H2_scenarios
-
-    L2324.GlobalTechInterp_Off_road_cwf_H2_scenarios %>%
-      add_title("Technology shareweight interpolation of Off_road sector") %>%
-      add_units("NA") %>%
-      add_comments("Rules from global technology database are applied to all regions") %>%
-      add_precursors("cwf/A324.globaltech_interp_cwf_H2_scenarios") ->
-      L2324.GlobalTechInterp_Off_road_cwf_H2_scenarios
-
       return_data(L2324.Supplysector_Off_road, L2324.FinalEnergyKeyword_Off_road, L2324.SubsectorLogit_Off_road,
                   L2324.SubsectorShrwtFllt_Off_road, L2324.SubsectorInterp_Off_road, L2324.GlobalTechInterp_Off_road,
-                  L2324.GlobalTechInterp_Off_road_cwf,
                   L2324.StubTech_Off_road, L2324.GlobalTechShrwt_Off_road,L2324.GlobalTechShutdown_Off_road,
                   L2324.GlobalTechSCurve_Off_road, L2324.GlobalTechLifetime_Off_road, L2324.GlobalTechProfitShutdown_Off_road,
                   L2324.GlobalTechCoef_Off_road, L2324.GlobalTechEff_Off_road,L2324.GlobalTechCost_Off_road,
@@ -822,9 +704,7 @@ module_energy_L2324.Off_road <- function(command, ...) {
                   L2324.StubTechProd_Off_road,L2324.GlobalTechCSeq_ind,
                   L2324.PerCapitaBased_Off_road, L2324.BaseService_Off_road,
                   L2324.GlobalTechTrackCapital_Off_road,
-                  L2324.PriceElasticity_Off_road, L2324.GlobalTechEff_Off_road_cwf,
-                  L2324.GlobalTechShrwt_Off_road_cwf_H2_scenarios, L2324.GlobalTechInterp_Off_road_cwf_H2_scenarios,
-                  L2324.GlobalTechShrwt_Off_road_cwf)
+                  L2324.PriceElasticity_Off_road)
 
   } else {
     stop("Unknown command")
