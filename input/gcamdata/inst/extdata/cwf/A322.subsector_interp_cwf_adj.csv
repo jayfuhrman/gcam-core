@@ -4,5 +4,5 @@
 # Column types: ccccncc 
 # ----------
 supplysector,subsector,apply.to,from.year,to.year,to.value,interpolation.function
-N fertilizer,coal,share-weight,final-calibration-year,2050,,linear
-N fertilizer,gas,share-weight,final-calibration-year,2050,,linear
+ammonia,coal,share-weight,final-calibration-year,2050,,linear
+ammonia,gas,share-weight,final-calibration-year,2050,,linear

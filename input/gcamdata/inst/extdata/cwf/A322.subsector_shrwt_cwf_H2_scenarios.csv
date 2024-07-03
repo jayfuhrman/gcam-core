@@ -4,28 +4,9 @@
 # Column types: ccccnc
 # ----------
 supplysector,subsector,year.fillout,year,share.weight,scenario
-N fertilizer,coal,start-year,,0,cwf_med_H2
-N fertilizer,gas,start-year,,0.5,cwf_med_H2
-N fertilizer,refined liquids,start-year,,1,cwf_med_H2
-N fertilizer,refined liquids,2035,,0,cwf_med_H2
-N fertilizer,hydrogen,start-year,,0,cwf_med_H2
-N fertilizer,hydrogen,2050,,1,cwf_med_H2
-N fertilizer,Imports,start-year,,0,cwf_med_H2
-Exports_fertilizer,N fertilizer,start-year,,0,cwf_med_H2
-N fertilizer,coal,start-year,,0,cwf_low_H2
-N fertilizer,gas,start-year,,0.5,cwf_low_H2
-N fertilizer,refined liquids,start-year,,1,cwf_low_H2
-N fertilizer,refined liquids,2035,,0,cwf_low_H2
-N fertilizer,hydrogen,start-year,,0,cwf_low_H2
-N fertilizer,hydrogen,2050,,0.2,cwf_low_H2
-N fertilizer,hydrogen,2100,,0.5,cwf_low_H2
-N fertilizer,Imports,start-year,,0,cwf_low_H2
-Exports_fertilizer,N fertilizer,start-year,,0,cwf_low_H2
-N fertilizer,coal,start-year,,0,cwf_high_H2
-N fertilizer,gas,start-year,,0.5,cwf_high_H2
-N fertilizer,refined liquids,start-year,,1,cwf_high_H2
-N fertilizer,refined liquids,2035,,0,cwf_high_H2
-N fertilizer,hydrogen,start-year,,0,cwf_high_H2
-N fertilizer,hydrogen,2050,,2,cwf_high_H2
-N fertilizer,Imports,start-year,,0,cwf_high_H2
-Exports_fertilizer,N fertilizer,start-year,,0,cwf_high_H2
+ammonia,hydrogen,start-year,,0,cwf_med_H2
+ammonia,hydrogen,2050,,1,cwf_med_H2
+ammonia,hydrogen,start-year,,0,cwf_low_H2
+ammonia,hydrogen,end-year,,1,cwf_low_H2
+ammonia,hydrogen,start-year,,0,cwf_high_H2
+ammonia,hydrogen,2030,,1,cwf_high_H2

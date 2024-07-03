@@ -4,5 +4,5 @@
 # Column types: ccccn 
 # ----------
 supplysector,subsector,year.fillout,year,share.weight
-N fertilizer,coal,start-year,,0
-N fertilizer,gas,start-year,,0.5
+ammonia,coal,start-year,,0
+ammonia,gas,start-year,,0.5

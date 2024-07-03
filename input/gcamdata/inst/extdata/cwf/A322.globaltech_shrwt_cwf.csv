@@ -1,0 +1,12 @@
+# File: A322.globaltech_shrwt_cwf.csv
+# Title: Fertilizer default shareweights
+# Units: Unitless
+# Column types: ccciiiiiii
+# ----------
+supplysector,subsector,technology,traded,1971,2010,2015,2019,2020,2030,2100
+ammonia,coal,coal,0,1,1,1,1,1,0,0
+ammonia,coal,coal CCS,0,0,0,0,0,0,1,1
+ammonia,gas,gas,0,1,1,1,1,1,0,0
+ammonia,gas,gas CCS,0,0,0,0,0,0,1,1
+ammonia,refined liquids,refined liquids,0,1,1,1,1,1,0,0
+ammonia,hydrogen,hydrogen,0,0,0,0,0,0,1,1
