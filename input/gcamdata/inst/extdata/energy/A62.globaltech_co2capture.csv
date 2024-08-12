@@ -8,5 +8,6 @@ process heat dac,gas CCS,gas CCS,0.95,0.95
 CO2 removal,dac,hightemp DAC NG,1,1
 CO2 removal,dac,hightemp DAC elec,1,1
 CO2 removal,dac,lowtemp DAC heatpump,1,1
+CO2 removal,dac,lowtemp DAC geothermal,1,1
 CO2 removal,dac,direct ocean capture (stand-alone),1,1
 desalinated water,direct ocean capture,direct ocean capture (co-located with desal),1,1
