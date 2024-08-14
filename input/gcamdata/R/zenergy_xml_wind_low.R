@@ -13,6 +13,7 @@
 module_energy_wind_low_xml <- function(command, ...) {
   if(command == driver.DECLARE_INPUTS) {
     return(c("L223.GlobalTechCapital_wind_low",
+             "L225.StubTechCost_h2_renewables_low",
               "L223.GlobalIntTechCapital_wind_low"))
   } else if(command == driver.DECLARE_OUTPUTS) {
     return(c(XML = "wind_low.xml"))
@@ -23,6 +24,11 @@ module_energy_wind_low_xml <- function(command, ...) {
     # Load required inputs
     L223.GlobalTechCapital_wind_low <- get_data(all_data, "L223.GlobalTechCapital_wind_low")
     L223.GlobalIntTechCapital_wind_low <- get_data(all_data, "L223.GlobalIntTechCapital_wind_low")
+    L225.StubTechCost_h2_renewables_low <- get_data(all_data, "L225.StubTechCost_h2_renewables_low")
+
+    L225.StubTechCost_h2_renewables_low %>%
+      filter(subsector == "wind") ->
+      L225.StubTechCost_h2_renewables_wind_low
 
     # ===================================================
 
@@ -30,7 +36,9 @@ module_energy_wind_low_xml <- function(command, ...) {
     create_xml("wind_low.xml") %>%
       add_xml_data(L223.GlobalTechCapital_wind_low, "GlobalTechCapital") %>%
       add_xml_data(L223.GlobalIntTechCapital_wind_low, "GlobalIntTechCapital") %>%
-      add_precursors("L223.GlobalTechCapital_wind_low", "L223.GlobalIntTechCapital_wind_low") ->
+      add_xml_data(L225.StubTechCost_h2_renewables_wind_low, "StubTechCost") %>%
+      add_precursors("L223.GlobalTechCapital_wind_low", "L223.GlobalIntTechCapital_wind_low",
+                     "L225.StubTechCost_h2_renewables_wind_low") ->
       wind_low.xml
 
     return_data(wind_low.xml)

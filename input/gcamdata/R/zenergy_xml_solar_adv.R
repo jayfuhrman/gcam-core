@@ -13,7 +13,8 @@
 module_energy_solar_adv_xml <- function(command, ...) {
   if(command == driver.DECLARE_INPUTS) {
     return(c("L223.GlobalTechCapital_sol_adv",
-              "L223.GlobalIntTechCapital_sol_adv",
+             "L223.GlobalIntTechCapital_sol_adv",
+             "L225.StubTechCost_h2_renewables_adv",
              # for adjusting rooftop_pv for capital tracking purposes
              "L223.StubTechCapFactor_elec"))
   } else if(command == driver.DECLARE_OUTPUTS) {
@@ -25,6 +26,7 @@ module_energy_solar_adv_xml <- function(command, ...) {
     # Load required inputs
     L223.GlobalTechCapital_sol_adv <- get_data(all_data, "L223.GlobalTechCapital_sol_adv")
     L223.GlobalIntTechCapital_sol_adv <- get_data(all_data, "L223.GlobalIntTechCapital_sol_adv")
+    L225.StubTechCost_h2_renewables_adv <- get_data(all_data, "L225.StubTechCost_h2_renewables_adv")
     L223.StubTechCapFactor_elec <- get_data(all_data, "L223.StubTechCapFactor_elec")
 
     # need to convert to standard non energy input for rooftop_pv for capital tracking purposes
@@ -38,9 +40,14 @@ module_energy_solar_adv_xml <- function(command, ...) {
       select(-capacity.factor, -capital.overnight, -fixed.charge.rate) %>%
       rename(minicam.non.energy.input = input.capital) ->
       rooftop_pv_adv
+
     L223.GlobalIntTechCapital_sol_adv %>%
       filter(subsector.name != "rooftop_pv") ->
       L223.GlobalIntTechCapital_sol_adv
+
+    L225.StubTechCost_h2_renewables_adv %>%
+      filter(subsector == "solar") ->
+      L225.StubTechCost_h2_renewables_sol_adv
 
     # ===================================================
 
@@ -49,8 +56,9 @@ module_energy_solar_adv_xml <- function(command, ...) {
       add_xml_data(L223.GlobalTechCapital_sol_adv, "GlobalTechCapital") %>%
       add_xml_data(L223.GlobalIntTechCapital_sol_adv, "GlobalIntTechCapital") %>%
       add_xml_data(rooftop_pv_adv, "StubTechCost") %>%
+      add_xml_data(L225.StubTechCost_h2_renewables_sol_adv, "StubTechCost") %>%
       add_precursors("L223.GlobalTechCapital_sol_adv", "L223.GlobalIntTechCapital_sol_adv",
-                     "L223.StubTechCapFactor_elec") ->
+                     "L223.StubTechCapFactor_elec", "L225.StubTechCost_h2_renewables_sol_adv") ->
       solar_adv.xml
 
     return_data(solar_adv.xml)
