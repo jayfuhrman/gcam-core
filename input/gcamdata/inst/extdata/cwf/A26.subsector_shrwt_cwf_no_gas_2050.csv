@@ -1,0 +1,13 @@
+# File: A26.subsector_shrwt_cwf_no_gas_2050.csv
+# Title: Final energy delivery subsector shareweights for CWF hydrogen scenarios -- no gas peak plant after 2050 for high H2 scenario
+# Units: N/A
+# Description: Shareweights of the distribution of final energy delivery to energy distribution subsectors
+# Source: N/A
+# Column types: ccccnc
+# ----------
+supplysector,subsector,year.fillout,year,share.weight
+backup_electricity,gas,start-year,,1
+backup_electricity,gas,final-calibration-year,,1
+backup_electricity,gas,initial-future-year,,1
+backup_electricity,gas,2050,,1
+backup_electricity,gas,2055,,0

@@ -1,0 +1,11 @@
+# File: A26.subsector_interp_cwf_no_gas_2050.csv
+# Title: Final energy delivery subsector shareweight interpolation -- no gas peak plant after 2050 for high H2 scenario
+# Units: NA
+# Description: form of interpolation function to calculate shareweights for future years for final energy delivery subsectors
+# Source: NA
+# Column types: cccccccc
+# ----------
+supplysector,subsector,apply.to,from.year,to.year,to.value,interpolation.function
+backup_electricity,gas,share-weight,final-calibration-year,initial-future-year,,fixed
+backup_electricity,gas,share-weight,initial-future-year,2050,,linear
+backup_electricity,gas,share-weight,2055,end-year,,fixed

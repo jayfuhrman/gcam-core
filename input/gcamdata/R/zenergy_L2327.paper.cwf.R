@@ -111,7 +111,7 @@ module_energy_L2327.paper.cwf <- function(command, ...) {
       add_units("Unitless") %>%
       add_comments("Secondary output ratios are calculated as electricity ratio (Assumed CHP electricity output per unit fuel input) over efficiency") %>%
       add_legacy_name("L2327.GlobalTechSecOut_paper") %>%
-      add_precursors("energy/A23.chp_elecratio", "energy/A327.globaltech_coef_cwf") ->
+      add_precursors("energy/A23.chp_elecratio", "cwf/A327.globaltech_coef_cwf") ->
       L2327.GlobalTechSecOut_paper_cwf
 
     return_data(L2327.GlobalTechCoef_paper_cwf,L2327.GlobalTechSecOut_paper_cwf)

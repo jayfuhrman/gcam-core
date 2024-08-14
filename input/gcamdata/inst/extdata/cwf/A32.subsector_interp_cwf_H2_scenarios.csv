@@ -1,36 +1,12 @@
 # File: A32.subsector_interp_cwf_H2_scenarios.csv
-# Title: Industry default subsector shareweight interpolation
+# Title: Industry default subsector shareweight interpolation -- for H2 scenarios
 # Units: NA
 # Column types: cccccncc
 # ----------
 supplysector,subsector,apply.to,from.year,to.year,to.value,interpolation.function,scenario
-other industrial energy use,biomass,share-weight,final-calibration-year,end-year,,fixed,cwf_med_H2
-other industrial energy use,coal,share-weight,final-calibration-year,end-year,,fixed,cwf_med_H2
-other industrial energy use,district heat,share-weight,final-calibration-year,end-year,,fixed,cwf_med_H2
-other industrial energy use,electricity,share-weight,final-calibration-year,end-year,,fixed,cwf_med_H2
-other industrial energy use,gas,share-weight,final-calibration-year,end-year,,fixed,cwf_med_H2
-other industrial energy use,hydrogen,share-weight,final-calibration-year,2100,,linear,cwf_med_H2
-other industrial energy use,refined liquids,share-weight,final-calibration-year,end-year,,fixed,cwf_med_H2
-other industrial feedstocks,coal,share-weight,final-calibration-year,end-year,,fixed,cwf_med_H2
-other industrial feedstocks,gas,share-weight,final-calibration-year,end-year,,fixed,cwf_med_H2
-other industrial feedstocks,refined liquids,share-weight,final-calibration-year,end-year,,fixed,cwf_med_H2
-other industrial energy use,biomass,share-weight,final-calibration-year,end-year,,fixed,cwf_low_H2
-other industrial energy use,coal,share-weight,final-calibration-year,end-year,,fixed,cwf_low_H2
-other industrial energy use,district heat,share-weight,final-calibration-year,end-year,,fixed,cwf_low_H2
-other industrial energy use,electricity,share-weight,final-calibration-year,end-year,,fixed,cwf_low_H2
-other industrial energy use,gas,share-weight,final-calibration-year,end-year,,fixed,cwf_low_H2
-other industrial energy use,hydrogen,share-weight,final-calibration-year,2100,,linear,cwf_low_H2
-other industrial energy use,refined liquids,share-weight,final-calibration-year,end-year,,fixed,cwf_low_H2
-other industrial feedstocks,coal,share-weight,final-calibration-year,end-year,,fixed,cwf_low_H2
-other industrial feedstocks,gas,share-weight,final-calibration-year,end-year,,fixed,cwf_low_H2
-other industrial feedstocks,refined liquids,share-weight,final-calibration-year,end-year,,fixed,cwf_low_H2
-other industrial energy use,biomass,share-weight,final-calibration-year,end-year,,fixed,cwf_high_H2
-other industrial energy use,coal,share-weight,final-calibration-year,end-year,,fixed,cwf_high_H2
-other industrial energy use,district heat,share-weight,final-calibration-year,end-year,,fixed,cwf_high_H2
-other industrial energy use,electricity,share-weight,final-calibration-year,end-year,,fixed,cwf_high_H2
-other industrial energy use,gas,share-weight,final-calibration-year,end-year,,fixed,cwf_high_H2
-other industrial energy use,hydrogen,share-weight,final-calibration-year,2100,,linear,cwf_high_H2
-other industrial energy use,refined liquids,share-weight,final-calibration-year,end-year,,fixed,cwf_high_H2
-other industrial feedstocks,coal,share-weight,final-calibration-year,end-year,,fixed,cwf_high_H2
-other industrial feedstocks,gas,share-weight,final-calibration-year,end-year,,fixed,cwf_high_H2
-other industrial feedstocks,refined liquids,share-weight,final-calibration-year,end-year,,fixed,cwf_high_H2
+other industrial energy use,hydrogen,share-weight,start-year,final-calibration-year,,fixed,cwf_low_H2
+other industrial energy use,hydrogen,share-weight,final-calibration-year,2020,,linear,cwf_low_H2
+other industrial energy use,hydrogen,share-weight,2020,2100,,fixed,cwf_low_H2
+other industrial energy use,hydrogen,share-weight,start-year,final-calibration-year,,fixed,cwf_high_H2
+other industrial energy use,hydrogen,share-weight,final-calibration-year,2020,,linear,cwf_high_H2
+other industrial energy use,hydrogen,share-weight,2020,2100,,fixed,cwf_high_H2

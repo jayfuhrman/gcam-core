@@ -20,7 +20,7 @@ module_energy_en_Fert_cwf_xml <- function(command, ...) {
   } else if(command == driver.DECLARE_OUTPUTS) {
     return(c(XML = "en_Fert_cwf.xml",
              XML = "en_Fert_cwf_low_H2.xml",
-             XML = "en_Fert_cwf_med_H2.xml",
+             # XML = "en_Fert_cwf_med_H2.xml",
              XML = "en_Fert_cwf_high_H2.xml"))
   } else if(command == driver.MAKE) {
 
@@ -48,7 +48,9 @@ module_energy_en_Fert_cwf_xml <- function(command, ...) {
       en_Fert_cwf.xml
 
     # create the CWF high/medium/low hydrogen XMLs
-    for (i in c("cwf_low_H2", "cwf_med_H2", "cwf_high_H2")) {
+    for (i in c("cwf_low_H2",
+                # "cwf_med_H2",
+                "cwf_high_H2")) {
       L2322.SubsectorShrwtFllt_Fert_cwf_H2_scenarios_sel <- L2322.SubsectorShrwtFllt_Fert_cwf_H2_scenarios %>%
         filter(scenario == i) %>%
         select(-scenario)
@@ -67,7 +69,10 @@ module_energy_en_Fert_cwf_xml <- function(command, ...) {
         assign(xml_name, ., envir = curr_env)
     }
 
-    return_data(en_Fert_cwf.xml, en_Fert_cwf_low_H2.xml, en_Fert_cwf_med_H2.xml, en_Fert_cwf_high_H2.xml)
+    return_data(en_Fert_cwf.xml,
+                en_Fert_cwf_low_H2.xml,
+                # en_Fert_cwf_med_H2.xml,
+                en_Fert_cwf_high_H2.xml)
   } else {
     stop("Unknown command")
   }

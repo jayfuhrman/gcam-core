@@ -1,6 +1,6 @@
 # Copyright 2019 Battelle Memorial Institute; see the LICENSE file.
 
-#' module_energy_L2325.chemical
+#' module_energy_L2325.chemical_cwf
 #'
 #' Compute a variety of final energy keyword, sector, share weight, and technology information for chemical-related GCAM inputs.
 #'
@@ -33,16 +33,24 @@ module_energy_L2325.chemical_cwf <- function(command, ...) {
              FILE = "energy/A_regions",
              FILE = "energy/A325.globaltech_eff",
              FILE = "cwf/A325.globaltech_eff_cwf_adj",
+             FILE = "cwf/A325.subsector_interp_cwf",
+             FILE = "cwf/A325.subsector_shrwt_cwf",
+             FILE = "cwf/A325.globaltech_shrwt_cwf",
              FILE = "cwf/A325.subsector_interp_cwf_H2_scenarios",
              FILE = "cwf/A325.subsector_shrwt_cwf_H2_scenarios",
              FILE = "cwf/A325.globaltech_shrwt_cwf_H2_scenarios",
              "L1325.in_EJ_R_chemical_F_Y",
              "L2325.GlobalTechEff_chemical"))
   } else if(command == driver.DECLARE_OUTPUTS) {
-    return(c("L2325.GlobalTechEff_chemical_cwf",
-			       "L2325.SubsectorShrwtFllt_chemical_cwf_H2_scenarios",
-			       "L2325.SubsectorInterp_chemical_cwf_H2_scenarios",
-			       "L2325.GlobalTechShrwt_chemical_cwf_H2_scenarios"))
+    return(c(
+      "L2325.GlobalTechEff_chemical_cwf",
+      "L2325.SubsectorShrwtFllt_chemical_cwf",
+      "L2325.SubsectorInterp_chemical_cwf",
+      "L2325.GlobalTechShrwt_chemical_cwf",
+      "L2325.SubsectorShrwtFllt_chemical_cwf_H2_scenarios",
+      "L2325.SubsectorInterp_chemical_cwf_H2_scenarios",
+      "L2325.GlobalTechShrwt_chemical_cwf_H2_scenarios"
+			       ))
   } else if(command == driver.MAKE) {
 
     all_data <- list(...)[[1]]
@@ -53,6 +61,9 @@ module_energy_L2325.chemical_cwf <- function(command, ...) {
     A_regions <- get_data(all_data, "energy/A_regions")
     A325.globaltech_eff <- get_data(all_data, "energy/A325.globaltech_eff", strip_attributes = TRUE)
     A325.globaltech_eff_cwf_adj <- get_data(all_data, "cwf/A325.globaltech_eff_cwf_adj", strip_attributes = TRUE)
+    A325.subsector_interp_cwf <- get_data(all_data, "cwf/A325.subsector_interp_cwf", strip_attributes = TRUE)
+    A325.subsector_shrwt_cwf <- get_data(all_data, "cwf/A325.subsector_shrwt_cwf", strip_attributes = TRUE)
+    A325.globaltech_shrwt_cwf <- get_data(all_data, "cwf/A325.globaltech_shrwt_cwf", strip_attributes = TRUE)
     A325.subsector_interp_cwf_H2_scenarios <- get_data(all_data, "cwf/A325.subsector_interp_cwf_H2_scenarios", strip_attributes = TRUE)
     A325.subsector_shrwt_cwf_H2_scenarios <- get_data(all_data, "cwf/A325.subsector_shrwt_cwf_H2_scenarios", strip_attributes = TRUE)
     A325.globaltech_shrwt_cwf_H2_scenarios <- get_data(all_data, "cwf/A325.globaltech_shrwt_cwf_H2_scenarios", strip_attributes = TRUE)
@@ -152,6 +163,44 @@ module_energy_L2325.chemical_cwf <- function(command, ...) {
       select(LEVEL2_DATA_NAMES[["GlobalTechEff"]]) ->
       L2325.GlobalTechEff_chemical_cwf
 
+    A325.subsector_shrwt_cwf %>%
+      filter(!is.na(year.fillout)) %>%
+      write_to_all_regions(c(LEVEL2_DATA_NAMES[["SubsectorShrwtFllt"]]), GCAM_region_names) %>%
+      anti_join(L2325.rm_heat_techs_R, by = c("region", "subsector")) -> # Remove non-existent heat subsectors from each region
+      L2325.SubsectorShrwtFllt_chemical_cwf
+
+    #For regions with 0 in base year, modify Subsector shareweight and interpolation (for non-hydrogen subsectors)
+    L2325.SubsectorShrwtFllt_chemical_cwf %>%
+      left_join(nobaseyear, by = c("region", "supplysector")) %>%
+      # only adjust for non-hydrogen subsectors
+      mutate(value = replace_na(value,1),share.weight = if_else(value ==0 & subsector != "hydrogen",0.5,share.weight),year = NULL,value = NULL) ->
+      L2325.SubsectorShrwtFllt_chemical_cwf
+
+    A325.subsector_interp_cwf %>%
+      filter(is.na(to.value)) %>%
+      write_to_all_regions(c(LEVEL2_DATA_NAMES[["SubsectorInterp"]]), GCAM_region_names) %>%
+      anti_join(L2325.rm_heat_techs_R, by = c("region", "subsector")) -> # Remove non-existent heat subsectors from each region
+      L2325.SubsectorInterp_chemical_cwf
+
+    L2325.SubsectorInterp_chemical_cwf %>%
+      left_join(nobaseyear, by = c("region", "supplysector")) %>%
+      # only adjust for non-hydrogen subsectors
+      mutate(value = replace_na(value,1),interpolation.function = if_else(value ==0 & subsector != "hydrogen","linear",interpolation.function),year = NULL,value = NULL) ->
+      L2325.SubsectorInterp_chemical_cwf
+
+    A325.globaltech_shrwt_cwf %>%
+      gather_years %>%
+      complete(nesting(supplysector, subsector, technology), year = c(year, MODEL_BASE_YEARS, MODEL_FUTURE_YEARS)) %>%
+      arrange(supplysector, subsector, technology, year) %>%
+      group_by(supplysector, subsector, technology) %>%
+      mutate(share.weight = approx_fun(year, value, rule = 1)) %>%
+      ungroup %>%
+      filter(year %in% c(MODEL_BASE_YEARS, MODEL_FUTURE_YEARS)) %>%
+      rename(sector.name = supplysector,
+             subsector.name = subsector) %>%
+      select(LEVEL2_DATA_NAMES[["GlobalTechYr"]], "share.weight") ->
+      L2325.GlobalTechShrwt_chemical_cwf
+
     # HYDROGEN SCENARIOS, SUBSECTOR SHARE WEIGHTS AND INTERPOLATION, GLOBAL TECH SHARE WEIGHTS
     # L2325.SubsectorShrwtFllt_chemical_cwf_H2_scenarios: Subsector shareweights of chemical sector
     A325.subsector_shrwt_cwf_H2_scenarios %>%
@@ -160,19 +209,19 @@ module_energy_L2325.chemical_cwf <- function(command, ...) {
       anti_join(L2325.rm_heat_techs_R, by = c("region", "subsector")) -> # Remove non-existent heat subsectors from each region
       L2325.SubsectorShrwtFllt_chemical_cwf_H2_scenarios
 
-    # L2325.SubsectorInterp_chemical_cwf_H2_scenarios: Subsector shareweight interpolation of chemical sector
-    A325.subsector_interp_cwf_H2_scenarios %>%
-      filter(is.na(to.value)) %>%
-      write_to_all_regions(c(LEVEL2_DATA_NAMES[["SubsectorInterp"]], "scenario"), GCAM_region_names) %>%
-      anti_join(L2325.rm_heat_techs_R, by = c("region", "subsector")) -> # Remove non-existent heat subsectors from each region
-      L2325.SubsectorInterp_chemical_cwf_H2_scenarios
-
     #For regions with 0 in base year, modify Subsector shareweight and interpolation (for non-hydrogen subsectors)
     L2325.SubsectorShrwtFllt_chemical_cwf_H2_scenarios %>%
       left_join(nobaseyear, by = c("region", "supplysector")) %>%
       # only adjust for non-hydrogen subsectors
       mutate(value = replace_na(value,1),share.weight = if_else(value ==0 & subsector != "hydrogen",0.5,share.weight),year = NULL,value = NULL) ->
       L2325.SubsectorShrwtFllt_chemical_cwf_H2_scenarios
+
+    # L2325.SubsectorInterp_chemical_cwf_H2_scenarios: Subsector shareweight interpolation of chemical sector
+    A325.subsector_interp_cwf_H2_scenarios %>%
+      filter(is.na(to.value)) %>%
+      write_to_all_regions(c(LEVEL2_DATA_NAMES[["SubsectorInterp"]], "scenario"), GCAM_region_names) %>%
+      anti_join(L2325.rm_heat_techs_R, by = c("region", "subsector")) -> # Remove non-existent heat subsectors from each region
+      L2325.SubsectorInterp_chemical_cwf_H2_scenarios
 
     L2325.SubsectorInterp_chemical_cwf_H2_scenarios %>%
       left_join(nobaseyear, by = c("region", "supplysector")) %>%
@@ -206,6 +255,30 @@ module_energy_L2325.chemical_cwf <- function(command, ...) {
       add_precursors("energy/A325.globaltech_eff", "cwf/A325.globaltech_eff_cwf_adj") ->
       L2325.GlobalTechEff_chemical_cwf
 
+    L2325.SubsectorShrwtFllt_chemical_cwf %>%
+      add_title("Subsector shareweights of chemical sector") %>%
+      add_units("unitless") %>%
+      add_comments("For chemical sector, the subsector shareweights from A325.subsector_shrwt_cwf_H2_scenarios are expanded into all GCAM regions") %>%
+      add_legacy_name("L2325.SubsectorShrwtFllt_chemical_cwf") %>%
+      add_precursors("cwf/A325.subsector_shrwt_cwf", "energy/A_regions","common/GCAM_region_names") ->
+      L2325.SubsectorShrwtFllt_chemical_cwf
+
+    L2325.SubsectorInterp_chemical_cwf %>%
+      add_title("Subsector shareweight interpolation of chemical sector") %>%
+      add_units("NA") %>%
+      add_comments("For chemical sector, the subsector shareweight interpolation function infromation from A325.subsector_interp_cwf_H2_scenarios is expanded into all GCAM regions") %>%
+      add_legacy_name("L2325.SubsectorInterp_chemical_cwf") %>%
+      add_precursors("cwf/A325.subsector_interp_cwf", "energy/A_regions", "common/GCAM_region_names") ->
+      L2325.SubsectorInterp_chemical_cwf
+
+    L2325.GlobalTechShrwt_chemical_cwf %>%
+      add_title("Shareweights of global chemical technologies") %>%
+      add_units("Unitless") %>%
+      add_comments("For chemical sector, the share weights from A325.globaltech_shrwt_cwf are interpolated into all base years and future years") %>%
+      add_legacy_name("L2325.GlobalTechShrwt_chemical_cwf") %>%
+      add_precursors("cwf/A325.globaltech_shrwt_cwf") ->
+      L2325.GlobalTechShrwt_chemical_cwf
+
     L2325.SubsectorShrwtFllt_chemical_cwf_H2_scenarios %>%
       add_title("Subsector shareweights of chemical sector") %>%
       add_units("unitless") %>%
@@ -230,8 +303,14 @@ module_energy_L2325.chemical_cwf <- function(command, ...) {
       add_precursors("cwf/A325.globaltech_shrwt_cwf_H2_scenarios") ->
       L2325.GlobalTechShrwt_chemical_cwf_H2_scenarios
 
-      return_data(L2325.GlobalTechEff_chemical_cwf, L2325.SubsectorShrwtFllt_chemical_cwf_H2_scenarios,
-                  L2325.SubsectorInterp_chemical_cwf_H2_scenarios, L2325.GlobalTechShrwt_chemical_cwf_H2_scenarios)
+      return_data(L2325.GlobalTechEff_chemical_cwf,
+                  L2325.SubsectorShrwtFllt_chemical_cwf,
+                  L2325.SubsectorInterp_chemical_cwf,
+                  L2325.GlobalTechShrwt_chemical_cwf,
+                  L2325.SubsectorShrwtFllt_chemical_cwf_H2_scenarios,
+                  L2325.SubsectorInterp_chemical_cwf_H2_scenarios,
+                  L2325.GlobalTechShrwt_chemical_cwf_H2_scenarios
+                  )
 
   } else {
     stop("Unknown command")

@@ -1,6 +1,6 @@
 # Copyright 2019 Battelle Memorial Institute; see the LICENSE file.
 
-#' module_energy_L2322.Fert
+#' module_energy_L2322.Fert_cwf
 #'
 #' Provide supply sector information/keywords, subsector shareweights, global technology lifetime,
 #' energy inputs and coefficients, global fertilizer manufacturing technologies, etc. for the fertilizer sector.
@@ -107,32 +107,32 @@ module_energy_L2322.Fert_cwf <- function(command, ...) {
       add_title("Subsector shareweights of fertilizer") %>%
       add_units("Unitless") %>%
       add_comments("For fertilizer sector, the subsector shareweights from A322.subsector_shrwt are expanded into all GCAM regions") %>%
-      add_legacy_name("L2322.SubsectorShrwtFllt_Fert") %>%
-      add_precursors("energy/A322.subsector_shrwt", "common/GCAM_region_names") ->
+      add_legacy_name("L2322.SubsectorShrwtFllt_Fert_cwf") %>%
+      add_precursors("cwf/A322.subsector_shrwt_cwf_adj", "L2322.SubsectorShrwtFllt_Fert", "common/GCAM_region_names") ->
       L2322.SubsectorShrwtFllt_Fert_cwf
 
     L2322.SubsectorShrwtFllt_Fert_cwf_H2_scenarios %>%
       add_title("Subsector shareweights of fertilizer") %>%
       add_units("Unitless") %>%
       add_comments("For fertilizer sector, the subsector shareweights from A322.subsector_shrwt are expanded into all GCAM regions") %>%
-      add_legacy_name("L2322.SubsectorShrwtFllt_Fert") %>%
-      add_precursors("energy/A322.subsector_shrwt", "common/GCAM_region_names") ->
+      add_legacy_name("L2322.SubsectorShrwtFllt_Fert_cwf_H2_scenarios") %>%
+      add_precursors("cwf/A322.subsector_shrwt_cwf_H2_scenarios", "common/GCAM_region_names") ->
       L2322.SubsectorShrwtFllt_Fert_cwf_H2_scenarios
 
     L2322.SubsectorInterp_Fert_cwf %>%
       add_title("Subsector shareweight interpolation of fertilizer sector") %>%
       add_units("NA") %>%
       add_comments("For fertilizer sector, the subsector shareweight interpolation function infromation from A322.subsector_interp is expanded into all GCAM regions") %>%
-      add_legacy_name("L2322.SubsectorInterp_Fert") %>%
-      add_precursors("energy/A322.subsector_interp", "common/GCAM_region_names") ->
+      add_legacy_name("L2322.SubsectorInterp_Fert_cwf") %>%
+      add_precursors("cwf/A322.subsector_interp_cwf_adj", "L2322.SubsectorInterp_Fert", "common/GCAM_region_names") ->
       L2322.SubsectorInterp_Fert_cwf
 
     L2322.SubsectorInterp_Fert_cwf_H2_scenarios %>%
       add_title("Subsector shareweight interpolation of fertilizer sector") %>%
       add_units("NA") %>%
       add_comments("For fertilizer sector, the subsector shareweight interpolation function infromation from A322.subsector_interp is expanded into all GCAM regions") %>%
-      add_legacy_name("L2322.SubsectorInterp_Fert") %>%
-      add_precursors("energy/A322.subsector_interp", "common/GCAM_region_names") ->
+      add_legacy_name("L2322.SubsectorInterp_Fert_cwf_H2_scenarios") %>%
+      add_precursors("cwf/A322.subsector_interp_cwf_H2_scenarios", "common/GCAM_region_names") ->
       L2322.SubsectorInterp_Fert_cwf_H2_scenarios
 
 

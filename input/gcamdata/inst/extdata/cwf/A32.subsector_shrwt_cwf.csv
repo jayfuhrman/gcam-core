@@ -1,7 +1,7 @@
-# File: A32.subsector_shrwt_low_fossil.csv
-# Title: Industry default subsector shareweights
+# File: A32.subsector_shrwt_cwf.csv
+# Title: Industry default subsector shareweights -- this is the low fossil scenario
 # Units: Unitless
-# Column types: ccccn 
+# Column types: ccccn
 # ----------
 supplysector,subsector,year.fillout,year,share.weight
 other industrial energy use,biomass,start-year,,1
@@ -11,7 +11,7 @@ other industrial energy use,coal,2050,,0
 other industrial energy use,district heat,start-year,,1
 other industrial energy use,electricity,start-year,,1
 other industrial energy use,hydrogen,start-year,,0
-other industrial energy use,hydrogen,2020,,0.25
+other industrial energy use,hydrogen,2020,,0.5
 other industrial energy use,gas,start-year,,1
 other industrial energy use,gas,2025,,1
 other industrial energy use,gas,2050,,0

@@ -4,9 +4,6 @@
 # Column types: cccccccc
 # ----------
 supplysector,subsector,apply.to,from.year,to.year,to.value,interpolation.function,scenario
-ammonia,hydrogen,share-weight,start-year,2025,,fixed,cwf_med_H2
-ammonia,hydrogen,share-weight,2025,2050,,linear,cwf_med_H2
-ammonia,hydrogen,share-weight,2050,end-year,,fixed,cwf_med_H2
 ammonia,hydrogen,share-weight,start-year,2025,,fixed,cwf_low_H2
 ammonia,hydrogen,share-weight,2025,end-year,,linear,cwf_low_H2
 ammonia,hydrogen,share-weight,start-year,2020,,fixed,cwf_high_H2

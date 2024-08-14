@@ -1,8 +1,11 @@
 # File: A322.subsector_interp_cwf_adj.csv
 # Title: Fertilizer CWF adjustments to subsector shareweight interpolation
 # Units: NA
-# Column types: ccccncc 
+# Column types: ccccccc
 # ----------
 supplysector,subsector,apply.to,from.year,to.year,to.value,interpolation.function
 ammonia,coal,share-weight,final-calibration-year,2050,,linear
 ammonia,gas,share-weight,final-calibration-year,2050,,linear
+ammonia,hydrogen,share-weight,start-year,2025,,fixed
+ammonia,hydrogen,share-weight,2025,2050,,linear
+ammonia,hydrogen,share-weight,2050,end-year,,fixed

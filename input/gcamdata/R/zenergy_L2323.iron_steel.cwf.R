@@ -173,7 +173,7 @@ module_energy_L2323.iron_steel_cwf <- function(command, ...) {
       add_units("scrap input is unitless (Mt scrap per Mt steel); all others are GJ per kg (EJ of energy per Mt of steel)") %>%
       add_comments("For iron and steel sector, the energy use coefficients from A323.globaltech_coef are interpolated into all model years, with CWF adjustments") %>%
       add_legacy_name("L2323.GlobalTechCoef_iron_steel") %>%
-      add_precursors("energy/A323.globaltech_coef", "cwf/A323.globaltech_coef_cwf_adj") ->
+      add_precursors("L2323.GlobalTechCoef_iron_steel", "cwf/A323.globaltech_coef_cwf_adj") ->
       L2323.GlobalTechCoef_iron_steel_cwf
 
     L2323.StubTechCoef_iron_steel_cwf %>%

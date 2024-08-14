@@ -14,25 +14,26 @@
 #' original data system was \code{batch_industry_xml.R} (energy XML).
 module_energy_other_industry_cwf_xml <- function(command, ...) {
   if(command == driver.DECLARE_INPUTS) {
-    return(c("L232.SubsectorInterp_ind_low_fossil",
-             "L232.SubsectorShrwtFllt_ind_low_fossil",
+    return(c("L232.SubsectorInterp_ind_cwf",
+             "L232.SubsectorShrwtFllt_ind_cwf",
              "L232.GlobalTechEff_ind_cwf",
              "L232.SubsectorShrwtFllt_ind_cwf_H2_scenarios",
              "L232.SubsectorInterp_ind_cwf_H2_scenarios"))
   } else if(command == driver.DECLARE_OUTPUTS) {
     return(c(XML = "other_industry_cwf.xml",
-             XML = "other_industry_cwf_low_fossil.xml",
+             # XML = "other_industry_cwf_low_fossil.xml",
              XML = "other_industry_cwf_low_H2.xml",
-             XML = "other_industry_cwf_med_H2.xml",
+             # XML = "other_industry_cwf_med_H2.xml",
              XML = "other_industry_cwf_high_H2.xml"))
   } else if(command == driver.MAKE) {
 
     all_data <- list(...)[[1]]
 
     # Load required inputs
-    L232.SubsectorInterp_ind_low_fossil <- get_data(all_data, "L232.SubsectorInterp_ind_low_fossil")
-    L232.SubsectorShrwtFllt_ind_low_fossil <- get_data(all_data, "L232.SubsectorShrwtFllt_ind_low_fossil")
+
     L232.GlobalTechEff_ind_cwf <- get_data(all_data, "L232.GlobalTechEff_ind_cwf")
+    L232.SubsectorShrwtFllt_ind_cwf <- get_data(all_data, "L232.SubsectorShrwtFllt_ind_cwf")
+    L232.SubsectorInterp_ind_cwf <- get_data(all_data, "L232.SubsectorInterp_ind_cwf")
     L232.SubsectorShrwtFllt_ind_cwf_H2_scenarios <- get_data(all_data, "L232.SubsectorShrwtFllt_ind_cwf_H2_scenarios")
     L232.SubsectorInterp_ind_cwf_H2_scenarios <- get_data(all_data, "L232.SubsectorInterp_ind_cwf_H2_scenarios")
 
@@ -42,21 +43,28 @@ module_energy_other_industry_cwf_xml <- function(command, ...) {
     curr_env <- environment()
 
     # Produce outputs
+    # combine the previous cwf (which only update GlobalTechEff) and low_fossil scenario (which updates shrwts)
 
     create_xml("other_industry_cwf.xml") %>%
       add_xml_data(L232.GlobalTechEff_ind_cwf, "GlobalTechEff") %>% # CWF version
-      add_precursors("L232.GlobalTechEff_ind_cwf") ->
+      add_xml_data(L232.SubsectorShrwtFllt_ind_cwf, "SubsectorShrwtFllt") %>% # CWF version
+      add_xml_data(L232.SubsectorInterp_ind_cwf, "SubsectorInterp") %>% # CWF version
+      add_precursors("L232.GlobalTechEff_ind_cwf",
+                     "L232.SubsectorInterp_ind_cwf",
+                     "L232.SubsectorShrwtFllt_ind_cwf") ->
       other_industry_cwf.xml
 
-    create_xml("other_industry_cwf_low_fossil.xml") %>%
-      add_xml_data(L232.SubsectorShrwtFllt_ind_low_fossil, "SubsectorShrwtFllt") %>%
-      add_xml_data(L232.SubsectorInterp_ind_low_fossil, "SubsectorInterp") %>%
-      add_precursors("L232.SubsectorInterp_ind_low_fossil",
-                     "L232.SubsectorShrwtFllt_ind_low_fossil") ->
-      other_industry_cwf_low_fossil.xml
+    # create_xml("other_industry_cwf_low_fossil.xml") %>%
+    #   add_xml_data(L232.SubsectorShrwtFllt_ind_low_fossil, "SubsectorShrwtFllt") %>%
+    #   add_xml_data(L232.SubsectorInterp_ind_low_fossil, "SubsectorInterp") %>%
+    #   add_precursors("L232.SubsectorInterp_ind_low_fossil",
+    #                  "L232.SubsectorShrwtFllt_ind_low_fossil") ->
+    #   other_industry_cwf_low_fossil.xml
 
     # create the CWF high/medium/low hydrogen XMLs
-    for (i in c("cwf_low_H2", "cwf_med_H2", "cwf_high_H2")) {
+    for (i in c("cwf_low_H2",
+                # "cwf_med_H2",
+                "cwf_high_H2")) {
       L232.SubsectorShrwtFllt_ind_cwf_H2_scenarios_sel <- L232.SubsectorShrwtFllt_ind_cwf_H2_scenarios %>%
         filter(scenario == i) %>%
         select(-scenario)
@@ -75,8 +83,11 @@ module_energy_other_industry_cwf_xml <- function(command, ...) {
         assign(xml_name, ., envir = curr_env)
     }
 
-    return_data(other_industry_cwf.xml, other_industry_cwf_low_fossil.xml,
-                other_industry_cwf_low_H2.xml, other_industry_cwf_med_H2.xml, other_industry_cwf_high_H2.xml)
+    return_data(other_industry_cwf.xml,
+                # other_industry_cwf_low_fossil.xml,
+                other_industry_cwf_low_H2.xml,
+                # other_industry_cwf_med_H2.xml,
+                other_industry_cwf_high_H2.xml)
   } else {
     stop("Unknown command")
   }

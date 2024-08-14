@@ -4,8 +4,6 @@
 # Column types: ccccnc
 # ----------
 supplysector,subsector,year.fillout,year,share.weight,scenario
-ammonia,hydrogen,start-year,,0,cwf_med_H2
-ammonia,hydrogen,2050,,1,cwf_med_H2
 ammonia,hydrogen,start-year,,0,cwf_low_H2
 ammonia,hydrogen,end-year,,1,cwf_low_H2
 ammonia,hydrogen,start-year,,0,cwf_high_H2

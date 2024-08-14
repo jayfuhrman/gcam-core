@@ -1,0 +1,10 @@
+# File: A44.globaltech_shrwt_cwf_no_H2_building.csv
+# Title: prevent the use of H2 in building sector by setting shareweights to be 0
+# Units: Unitless
+# Column types: cccnnnnnc
+# ----------
+supplysector,subsector,technology,1971,2010,2020,2050,2100
+resid heating,gas,hydrogen,0,0,0,0,0
+resid others,gas,hydrogen,0,0,0,0,0
+comm heating,gas,hydrogen,0,0,0,0,0
+comm others,gas,hydrogen,0,0,0,0,0

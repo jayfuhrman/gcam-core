@@ -1,6 +1,6 @@
 # Copyright 2019 Battelle Memorial Institute; see the LICENSE file.
 
-#' module_energy_L2324.Off_road
+#' module_energy_L2324.Off_road_cwf
 #'
 #' Compute a variety of final energy keyword, sector, share weight, and technology information for Off_road-related GCAM inputs.
 #'
@@ -40,9 +40,9 @@ module_energy_L2324.Off_road_cwf <- function(command, ...) {
   } else if(command == driver.DECLARE_OUTPUTS) {
     return(c("L2324.GlobalTechShrwt_Off_road_cwf",
              "L2324.GlobalTechInterp_Off_road_cwf",
-			 "L2324.GlobalTechEff_Off_road_cwf",
-			 "L2324.GlobalTechShrwt_Off_road_cwf_H2_scenarios",
-			 "L2324.GlobalTechInterp_Off_road_cwf_H2_scenarios"))
+             "L2324.GlobalTechEff_Off_road_cwf",
+             "L2324.GlobalTechShrwt_Off_road_cwf_H2_scenarios",
+             "L2324.GlobalTechInterp_Off_road_cwf_H2_scenarios"))
   } else if(command == driver.MAKE) {
 
 
@@ -148,7 +148,7 @@ module_energy_L2324.Off_road_cwf <- function(command, ...) {
       add_units("Unitless") %>%
       add_comments("For Off_road sector, the share weights from A324.globaltech_shrwt_cwf are interpolated into all base years and future years") %>%
       add_legacy_name("L2324.GlobalTechShrwt_Off_road_cwf") %>%
-      add_precursors("energy/A324.globaltech_shrwt_cwf") ->
+      add_precursors("cwf/A324.globaltech_shrwt_cwf") ->
       L2324.GlobalTechShrwt_Off_road_cwf
 
 
@@ -157,7 +157,7 @@ module_energy_L2324.Off_road_cwf <- function(command, ...) {
       add_units("Unitless") %>%
       add_comments("For Off_road sector, the efficiency values from A324.globaltech_eff are interpolated into all base years and future years, with CWF adjustments") %>%
       add_legacy_name("L2324.GlobalTechEff_Off_road") %>%
-      add_precursors("energy/A324.globaltech_eff", "cwf/A324.globaltech_eff_cwf_adj") ->
+      add_precursors("L2324.GlobalTechEff_Off_road", "cwf/A324.globaltech_eff_cwf_adj") ->
       L2324.GlobalTechEff_Off_road_cwf
 
     L2324.GlobalTechShrwt_Off_road_cwf_H2_scenarios %>%

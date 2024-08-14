@@ -1,6 +1,6 @@
 # Copyright 2019 Battelle Memorial Institute; see the LICENSE file.
 
-#' module_energy_Off_road_xml
+#' module_energy_Off_road_cwf_xml
 #'
 #' Construct XML data structure for \code{Off_road.xml}.
 #'
@@ -21,7 +21,7 @@ module_energy_Off_road_cwf_xml <- function(command, ...) {
   } else if(command == driver.DECLARE_OUTPUTS) {
     return(c(XML = "Off_road_cwf.xml",
              XML = "Off_road_cwf_low_H2.xml",
-             XML = "Off_road_cwf_med_H2.xml",
+             # XML = "Off_road_cwf_med_H2.xml",
              XML = "Off_road_cwf_high_H2.xml"))
   } else if(command == driver.MAKE) {
 

@@ -1,6 +1,6 @@
 # Copyright 2019 Battelle Memorial Institute; see the LICENSE file.
 
-#' module_energy_iron_steel_xml
+#' module_energy_iron_steel_cwf_xml
 #'
 #' Construct XML data structure for \code{iron_steel.xml}.
 #'
@@ -19,7 +19,7 @@ module_energy_iron_steel_cwf_xml <- function(command, ...) {
   } else if(command == driver.DECLARE_OUTPUTS) {
     return(c(XML = "iron_steel_cwf.xml",
              XML = "iron_steel_cwf_low_H2.xml",
-             XML = "iron_steel_cwf_med_H2.xml",
+             # XML = "iron_steel_cwf_med_H2.xml",
              XML = "iron_steel_cwf_high_H2.xml"))
   } else if(command == driver.MAKE) {
 
@@ -47,7 +47,9 @@ module_energy_iron_steel_cwf_xml <- function(command, ...) {
       iron_steel_cwf.xml
 
     # create the CWF high/medium/low hydrogen XMLs
-    for (i in c("cwf_low_H2", "cwf_med_H2", "cwf_high_H2")) {
+    for (i in c("cwf_low_H2",
+                # "cwf_med_H2",
+                "cwf_high_H2")) {
       L2323.GlobalTechShrwt_iron_steel_cwf_H2_scenarios_sel <- L2323.GlobalTechShrwt_iron_steel_cwf_H2_scenarios %>%
         filter(scenario == i) %>%
         select(-scenario)
@@ -60,7 +62,10 @@ module_energy_iron_steel_cwf_xml <- function(command, ...) {
         assign(xml_name, ., envir = curr_env)
     }
 
-    return_data(iron_steel_cwf.xml, iron_steel_cwf_low_H2.xml, iron_steel_cwf_med_H2.xml, iron_steel_cwf_high_H2.xml)
+    return_data(iron_steel_cwf.xml,
+                iron_steel_cwf_low_H2.xml,
+                # iron_steel_cwf_med_H2.xml,
+                iron_steel_cwf_high_H2.xml)
   } else {
     stop("Unknown command")
   }

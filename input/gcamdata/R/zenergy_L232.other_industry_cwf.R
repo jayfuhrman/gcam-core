@@ -1,6 +1,6 @@
 # Copyright 2019 Battelle Memorial Institute; see the LICENSE file.
 
-#' module_energy_L232.other_industry
+#' module_energy_L232.other_industry_cwf
 #'
 #' Compute a variety of final energy keyword, sector, share weight, and technology information for industry-related GCAM inputs.
 #'
@@ -45,16 +45,16 @@ module_energy_L232.other_industry_cwf <- function(command, ...) {
     return(c(FILE = "common/GCAM_region_names",
              FILE = "energy/calibrated_techs",
              FILE = "energy/A_regions",
-             FILE = "energy/A32.subsector_interp_low_fossil",
-             FILE = "energy/A32.subsector_shrwt_low_fossil",
              FILE = "cwf/A32.globaltech_eff_cwf_adj",
              FILE = "cwf/A32.incelas_cwf",
+             FILE = "cwf/A32.subsector_interp_cwf",
+             FILE = "cwf/A32.subsector_shrwt_cwf",
              FILE = "cwf/A32.subsector_interp_cwf_H2_scenarios",
              FILE = "cwf/A32.subsector_shrwt_cwf_H2_scenarios",
              "L232.GlobalTechEff_ind"))
   } else if(command == driver.DECLARE_OUTPUTS) {
-    return(c("L232.SubsectorShrwtFllt_ind_low_fossil",
-             "L232.SubsectorInterp_ind_low_fossil",
+    return(c("L232.SubsectorShrwtFllt_ind_cwf",
+             "L232.SubsectorInterp_ind_cwf",
              "L232.GlobalTechEff_ind_cwf",
              "L232.IncomeElasticity_ind_cwf",
              "L232.SubsectorShrwtFllt_ind_cwf_H2_scenarios",
@@ -67,8 +67,8 @@ module_energy_L232.other_industry_cwf <- function(command, ...) {
     GCAM_region_names <- get_data(all_data, "common/GCAM_region_names")
     calibrated_techs <- get_data(all_data, "energy/calibrated_techs", strip_attributes = TRUE)
     A_regions <- get_data(all_data, "energy/A_regions")
-    A32.subsector_interp_low_fossil <- get_data(all_data, "energy/A32.subsector_interp_low_fossil", strip_attributes = TRUE)
-    A32.subsector_shrwt_low_fossil <- get_data(all_data, "energy/A32.subsector_shrwt_low_fossil", strip_attributes = TRUE)
+    A32.subsector_interp_cwf <- get_data(all_data, "cwf/A32.subsector_interp_cwf", strip_attributes = TRUE)
+    A32.subsector_shrwt_cwf <- get_data(all_data, "cwf/A32.subsector_shrwt_cwf", strip_attributes = TRUE)
     A32.globaltech_eff_cwf_adj <- get_data(all_data, "cwf/A32.globaltech_eff_cwf_adj")
     A32.incelas_cwf <- get_data(all_data, "cwf/A32.incelas_cwf")
     A32.subsector_interp_cwf_H2_scenarios <- get_data(all_data, "cwf/A32.subsector_interp_cwf_H2_scenarios", strip_attributes = TRUE)
@@ -106,17 +106,17 @@ module_energy_L232.other_industry_cwf <- function(command, ...) {
       left_join_error_no_match(GCAM_region_names, by = "GCAM_region_ID") ->
       L232.rm_heat_techs_R # intermediate tibble
 
-    A32.subsector_shrwt_low_fossil %>%
+    A32.subsector_shrwt_cwf %>%
       filter(!is.na(year.fillout)) %>%
       write_to_all_regions(LEVEL2_DATA_NAMES[["SubsectorShrwtFllt"]], GCAM_region_names) %>%
       anti_join(L232.rm_heat_techs_R, by = c("region", "subsector")) -> # Remove non-existent heat technologies from each region
-      L232.SubsectorShrwtFllt_ind_low_fossil
+      L232.SubsectorShrwtFllt_ind_cwf
 
-    A32.subsector_interp_low_fossil %>%
+    A32.subsector_interp_cwf %>%
       filter(is.na(to.value)) %>%
       write_to_all_regions(LEVEL2_DATA_NAMES[["SubsectorInterp"]], GCAM_region_names) %>%
       anti_join(L232.rm_heat_techs_R, by = c("region", "subsector")) -> # Remove non-existent heat technologies from each region
-      L232.SubsectorInterp_ind_low_fossil
+      L232.SubsectorInterp_ind_cwf
 
 
     # ===================================================
@@ -185,27 +185,27 @@ module_energy_L232.other_industry_cwf <- function(command, ...) {
       add_precursors("cwf/A32.incelas_cwf") ->
       L232.IncomeElasticity_ind_cwf
 
-    L232.SubsectorShrwtFllt_ind_low_fossil %>%
+    L232.SubsectorShrwtFllt_ind_cwf %>%
       add_title("Subsector shareweights of industry sector") %>%
       add_units("Unitless") %>%
       add_comments("For industry sector, the subsector shareweights from A32.subsector_shrwt are expanded into all GCAM regions with non-existent heat technologies") %>%
-      add_legacy_name("L232.SubsectorShrwtFllt_ind") %>%
-      add_precursors("energy/A32.subsector_shrwt", "common/GCAM_region_names", "energy/A_regions", "energy/calibrated_techs") ->
-      L232.SubsectorShrwtFllt_ind_low_fossil
+      add_legacy_name("L232.SubsectorShrwtFllt_ind_cwf") %>%
+      add_precursors("cwf/A32.subsector_shrwt_cwf", "common/GCAM_region_names", "energy/A_regions", "energy/calibrated_techs") ->
+      L232.SubsectorShrwtFllt_ind_cwf
 
-    L232.SubsectorInterp_ind_low_fossil %>%
+    L232.SubsectorInterp_ind_cwf %>%
       add_title("Subsector shareweight interpolation of industry sector") %>%
       add_units("NA") %>%
       add_comments("For industry sector, the subsector shareweight interpolation function infromation from A32.subsector_interp is expanded into all GCAM regions with non-existent heat technologies removed") %>%
-      add_legacy_name("L232.SubsectorInterp_ind") %>%
-      add_precursors("energy/A32.subsector_interp_low_fossil", "common/GCAM_region_names", "energy/A_regions", "energy/calibrated_techs") ->
-      L232.SubsectorInterp_ind_low_fossil
+      add_legacy_name("L232.SubsectorInterp_ind_cwf") %>%
+      add_precursors("cwf/A32.subsector_interp_cwf", "common/GCAM_region_names", "energy/A_regions", "energy/calibrated_techs") ->
+      L232.SubsectorInterp_ind_cwf
 
     L232.GlobalTechEff_ind_cwf %>%
       add_title("Energy inputs and efficiency of global industrial energy use and feedstocks technologies") %>%
       add_units("Unitless") %>%
       add_comments("For industry sector, the efficiency values from A32.globaltech_eff are interpolated into all base years and future years") %>%
-      add_precursors("energy/A32.globaltech_eff", "cwf/A32.globaltech_eff_cwf_adj") ->
+      add_precursors("L232.GlobalTechEff_ind", "cwf/A32.globaltech_eff_cwf_adj") ->
       L232.GlobalTechEff_ind_cwf
 
 
@@ -225,9 +225,11 @@ module_energy_L232.other_industry_cwf <- function(command, ...) {
       add_precursors("cwf/A32.subsector_interp_cwf_H2_scenarios", "common/GCAM_region_names", "energy/A_regions", "energy/calibrated_techs") ->
       L232.SubsectorInterp_ind_cwf_H2_scenarios
 
-    return_data(L232.SubsectorInterp_ind_low_fossil, L232.SubsectorShrwtFllt_ind_low_fossil,
+    return_data(L232.SubsectorInterp_ind_cwf,
+                L232.SubsectorShrwtFllt_ind_cwf,
                 L232.GlobalTechEff_ind_cwf,
-                L232.IncomeElasticity_ind_cwf, L232.SubsectorShrwtFllt_ind_cwf_H2_scenarios,
+                L232.IncomeElasticity_ind_cwf,
+                L232.SubsectorShrwtFllt_ind_cwf_H2_scenarios,
                 L232.SubsectorInterp_ind_cwf_H2_scenarios)
   } else {
     stop("Unknown command")

@@ -1,0 +1,21 @@
+# File: A321.subsector_interp_cwf.csv
+# Title: Cement CWF adjustments to subsector shareweight interpolation
+# Units: NA
+# Column types: cccccccc
+# ----------
+supplysector,subsector,apply.to,from.year,to.year,to.value,interpolation.function
+cement,cement,share-weight,final-calibration-year,end-year,,fixed
+process heat cement,biomass,share-weight,final-calibration-year,end-year,,fixed
+process heat cement,coal,share-weight,final-calibration-year,end-year,,fixed
+process heat cement,gas,share-weight,final-calibration-year,end-year,,fixed
+process heat cement,refined liquids,share-weight,final-calibration-year,end-year,,fixed
+process heat cement,hydrogen,share-weight,start-year,2025,,fixed
+process heat cement,hydrogen,share-weight,2025,2060,,linear
+process heat cement,hydrogen,share-weight,2060,end-year,,fixed
+process heat cement CCS,biomass,share-weight,start-year,end-year,1,fixed
+process heat cement CCS,coal,share-weight,start-year,end-year,1,fixed
+process heat cement CCS,gas,share-weight,start-year,end-year,1,fixed
+process heat cement CCS,refined liquids,share-weight,start-year,end-year,1,fixed
+process heat cement CCS,hydrogen,share-weight,start-year,2025,,fixed
+process heat cement CCS,hydrogen,share-weight,2025,2060,,linear
+process heat cement CCS,hydrogen,share-weight,2060,end-year,,fixed

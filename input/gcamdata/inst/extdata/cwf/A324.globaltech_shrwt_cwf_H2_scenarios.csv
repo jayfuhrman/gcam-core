@@ -1,102 +1,18 @@
 # File: A324.globaltech_shrwt_cwf_H2_scenarios.csv
-# Title: agriculture, construction, mining default shareweights
+# Title: agriculture, construction, mining default shareweights -- for H2 scenarios
 # Units: Unitless
 # Column types: cccnnnnc
 # ----------
 supplysector,subsector,technology,1971,2020,2050,2100,scenario
-agricultural energy use,mobile,refined liquids,1,1,1,1,cwf_med_H2
-agricultural energy use,mobile,electricity,0,0,1,1,cwf_med_H2
-agricultural energy use,mobile,hydrogen,0,0,0.375,1,cwf_med_H2
-mining energy use,mobile,refined liquids,1,1,1,1,cwf_med_H2
-mining energy use,mobile,electricity,0,0,1,1,cwf_med_H2
-mining energy use,mobile,hydrogen,0,0,0.375,1,cwf_med_H2
-construction,construction,construction,1,1,1,1,cwf_med_H2
-construction energy use,mobile,refined liquids,1,1,1,1,cwf_med_H2
-construction energy use,mobile,electricity,0,0,1,1,cwf_med_H2
-construction energy use,mobile,hydrogen,0,0,0.375,1,cwf_med_H2
-construction feedstocks,refined liquids,refined liquids,1,1,1,1,cwf_med_H2
-agricultural energy use,stationary,refined liquids,1,1,1,1,cwf_med_H2
-agricultural energy use,stationary,gas,1,1,1,1,cwf_med_H2
-agricultural energy use,stationary,biomass,1,1,1,1,cwf_med_H2
-agricultural energy use,stationary,electricity,1,1,1,1,cwf_med_H2
-agricultural energy use,stationary,hydrogen,0,0,0.375,1,cwf_med_H2
-agricultural energy use,stationary,coal,1,1,1,1,cwf_med_H2
-agricultural energy use,stationary,heat,1,1,1,1,cwf_med_H2
-mining energy use,stationary,refined liquids,1,1,1,1,cwf_med_H2
-mining energy use,stationary,gas,1,1,1,1,cwf_med_H2
-mining energy use,stationary,biomass,1,1,1,1,cwf_med_H2
-mining energy use,stationary,electricity,1,1,1,1,cwf_med_H2
-mining energy use,stationary,hydrogen,0,0,0.375,1,cwf_med_H2
-mining energy use,stationary,coal,1,1,1,1,cwf_med_H2
-mining energy use,stationary,heat,1,1,1,1,cwf_med_H2
-construction energy use,stationary,refined liquids,1,1,1,1,cwf_med_H2
-construction energy use,stationary,gas,1,1,1,1,cwf_med_H2
-construction energy use,stationary,biomass,1,1,1,1,cwf_med_H2
-construction energy use,stationary,electricity,1,1,1,1,cwf_med_H2
-construction energy use,stationary,hydrogen,0,0,0.0375,0.1,cwf_med_H2
-construction energy use,stationary,coal,1,1,1,1,cwf_med_H2
-construction energy use,stationary,heat,1,1,1,1,cwf_med_H2
-agricultural energy use,mobile,refined liquids,1,1,1,1,cwf_low_H2
-agricultural energy use,mobile,electricity,0,0,1,1,cwf_low_H2
 agricultural energy use,mobile,hydrogen,0,0,0.1875,0.5,cwf_low_H2
-mining energy use,mobile,refined liquids,1,1,1,1,cwf_low_H2
-mining energy use,mobile,electricity,0,0,1,1,cwf_low_H2
 mining energy use,mobile,hydrogen,0,0,0.1875,0.5,cwf_low_H2
-construction,construction,construction,1,1,1,1,cwf_low_H2
-construction energy use,mobile,refined liquids,1,1,1,1,cwf_low_H2
-construction energy use,mobile,electricity,0,0,1,1,cwf_low_H2
 construction energy use,mobile,hydrogen,0,0,0.1875,0.5,cwf_low_H2
-construction feedstocks,refined liquids,refined liquids,1,1,1,1,cwf_low_H2
-agricultural energy use,stationary,refined liquids,1,1,1,1,cwf_low_H2
-agricultural energy use,stationary,gas,1,1,1,1,cwf_low_H2
-agricultural energy use,stationary,biomass,1,1,1,1,cwf_low_H2
-agricultural energy use,stationary,electricity,1,1,1,1,cwf_low_H2
 agricultural energy use,stationary,hydrogen,0,0,0.1875,0.5,cwf_low_H2
-agricultural energy use,stationary,coal,1,1,1,1,cwf_low_H2
-agricultural energy use,stationary,heat,1,1,1,1,cwf_low_H2
-mining energy use,stationary,refined liquids,1,1,1,1,cwf_low_H2
-mining energy use,stationary,gas,1,1,1,1,cwf_low_H2
-mining energy use,stationary,biomass,1,1,1,1,cwf_low_H2
-mining energy use,stationary,electricity,1,1,1,1,cwf_low_H2
 mining energy use,stationary,hydrogen,0,0,0.1875,0.5,cwf_low_H2
-mining energy use,stationary,coal,1,1,1,1,cwf_low_H2
-mining energy use,stationary,heat,1,1,1,1,cwf_low_H2
-construction energy use,stationary,refined liquids,1,1,1,1,cwf_low_H2
-construction energy use,stationary,gas,1,1,1,1,cwf_low_H2
-construction energy use,stationary,biomass,1,1,1,1,cwf_low_H2
-construction energy use,stationary,electricity,1,1,1,1,cwf_low_H2
 construction energy use,stationary,hydrogen,0,0,0.01875,0.05,cwf_low_H2
-construction energy use,stationary,coal,1,1,1,1,cwf_low_H2
-construction energy use,stationary,heat,1,1,1,1,cwf_low_H2
-agricultural energy use,mobile,refined liquids,1,1,1,1,cwf_high_H2
-agricultural energy use,mobile,electricity,0,0,1,1,cwf_high_H2
-agricultural energy use,mobile,hydrogen,0,0,0.75,2,cwf_high_H2
-mining energy use,mobile,refined liquids,1,1,1,1,cwf_high_H2
-mining energy use,mobile,electricity,0,0,1,1,cwf_high_H2
-mining energy use,mobile,hydrogen,0,0,0.75,2,cwf_high_H2
-construction,construction,construction,1,1,1,1,cwf_high_H2
-construction energy use,mobile,refined liquids,1,1,1,1,cwf_high_H2
-construction energy use,mobile,electricity,0,0,1,1,cwf_high_H2
-construction energy use,mobile,hydrogen,0,0,0.75,2,cwf_high_H2
-construction feedstocks,refined liquids,refined liquids,1,1,1,1,cwf_high_H2
-agricultural energy use,stationary,refined liquids,1,1,1,1,cwf_high_H2
-agricultural energy use,stationary,gas,1,1,1,1,cwf_high_H2
-agricultural energy use,stationary,biomass,1,1,1,1,cwf_high_H2
-agricultural energy use,stationary,electricity,1,1,1,1,cwf_high_H2
-agricultural energy use,stationary,hydrogen,0,0,0.75,2,cwf_high_H2
-agricultural energy use,stationary,coal,1,1,1,1,cwf_high_H2
-agricultural energy use,stationary,heat,1,1,1,1,cwf_high_H2
-mining energy use,stationary,refined liquids,1,1,1,1,cwf_high_H2
-mining energy use,stationary,gas,1,1,1,1,cwf_high_H2
-mining energy use,stationary,biomass,1,1,1,1,cwf_high_H2
-mining energy use,stationary,electricity,1,1,1,1,cwf_high_H2
-mining energy use,stationary,hydrogen,0,0,0.75,2,cwf_high_H2
-mining energy use,stationary,coal,1,1,1,1,cwf_high_H2
-mining energy use,stationary,heat,1,1,1,1,cwf_high_H2
-construction energy use,stationary,refined liquids,1,1,1,1,cwf_high_H2
-construction energy use,stationary,gas,1,1,1,1,cwf_high_H2
-construction energy use,stationary,biomass,1,1,1,1,cwf_high_H2
-construction energy use,stationary,electricity,1,1,1,1,cwf_high_H2
-construction energy use,stationary,hydrogen,0,0,0.075,0.2,cwf_high_H2
-construction energy use,stationary,coal,1,1,1,1,cwf_high_H2
-construction energy use,stationary,heat,1,1,1,1,cwf_high_H2
+agricultural energy use,mobile,hydrogen,0,0,0.75,1,cwf_high_H2
+mining energy use,mobile,hydrogen,0,0,0.75,1,cwf_high_H2
+construction energy use,mobile,hydrogen,0,0,0.75,1,cwf_high_H2
+agricultural energy use,stationary,hydrogen,0,0,0.75,1,cwf_high_H2
+mining energy use,stationary,hydrogen,0,0,0.75,1,cwf_high_H2
+construction energy use,stationary,hydrogen,0,0,0.075,0.1,cwf_high_H2

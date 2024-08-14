@@ -1161,11 +1161,11 @@ module_energy_L223.electricity <- function(command, ...) {
 
     if(exists("L223.SubsectorShrwt_elec")) {
       L223.SubsectorShrwt_elec %>%
-        add_title("Subsector shareweights of energy transformation sectors") %>%
+        # add_title("Subsector shareweights of energy transformation sectors") %>%
         add_units("Unitless") %>%
         add_comments("Conditionally created from the subset of A23.subsector_shrwt with values in column 'year'.") %>%
         add_comments("Does not exist by default") %>%
-        add_legacy_name("L223.SubsectorShrwt_elec") %>%
+        # add_legacy_name("L223.SubsectorShrwt_elec") %>%
         add_precursors("energy/A23.subsector_shrwt", "common/GCAM_region_names") ->
         L223.SubsectorShrwt_elec
     } else {
@@ -1176,7 +1176,7 @@ module_energy_L223.electricity <- function(command, ...) {
 
     if(exists("L223.SubsectorShrwtFllt_elec")) {
       L223.SubsectorShrwtFllt_elec %>%
-        add_title("Subsector shareweights of energy transformation sectors") %>%
+        # add_title("Subsector shareweights fillout of energy transformation sectors") %>%
         add_units("Unitless") %>%
         add_comments("Conditionally created from the subset of A23.subsector_shrwt with values in column 'year.fillout'.") %>%
         add_legacy_name("L223.SubsectorShrwtFllt_elec") %>%
@@ -1417,10 +1417,10 @@ module_energy_L223.electricity <- function(command, ...) {
 
     if(exists("L223.GlobalTechShutdown_elec")) {
       L223.GlobalTechShutdown_elec %>%
-        add_title("Global tech lifetime for techs with shutdown rate") %>%
+        # add_title("Global tech lifetime for techs with shutdown rate") %>%
         add_units("Lifetime in years") %>%
         add_comments("Filters for any technology that uses a phased retirement function") %>%
-        add_legacy_name("L223.GlobalTechShutdown_elec") %>%
+        # add_legacy_name("L223.GlobalTechShutdown_elec") %>%
         add_precursors("energy/A23.globaltech_retirement") ->
         L223.GlobalTechShutdown_elec
     } else {
@@ -1431,10 +1431,10 @@ module_energy_L223.electricity <- function(command, ...) {
 
     if(exists("L223.GlobalIntTechShutdown_elec")) {
       L223.GlobalIntTechShutdown_elec %>%
-        add_title("Global tech lifetime for intermittent techs with shutdown rate") %>%
+        # add_title("Global tech lifetime for intermittent techs with shutdown rate") %>%
         add_units("Lifetime in years") %>%
         add_comments("Filters for any technology that uses a phased retirement function") %>%
-        add_legacy_name("L223.GlobalIntTechShutdown_elec") %>%
+        # add_legacy_name("L223.GlobalIntTechShutdown_elec") %>%
         add_precursors("energy/A23.globaltech_retirement") ->
         L223.GlobalIntTechShutdown_elec
     } else {
@@ -1445,10 +1445,10 @@ module_energy_L223.electricity <- function(command, ...) {
 
     if(exists("L223.GlobalTechSCurve_elec")) {
       L223.GlobalTechSCurve_elec %>%
-        add_title("Global tech lifetime for techs with s-curve retirement function") %>%
+        # add_title("Global tech lifetime for techs with s-curve retirement function") %>%
         add_units("Lifetime in years, half-life in years") %>%
         add_comments("Filters for any technology that uses an S-curve retirement function") %>%
-        add_legacy_name("L223.GlobalTechSCurve_elec") %>%
+        # add_legacy_name("L223.GlobalTechSCurve_elec") %>%
         add_precursors("energy/A23.globaltech_retirement") ->
         L223.GlobalTechSCurve_elec
     } else {
@@ -1459,10 +1459,10 @@ module_energy_L223.electricity <- function(command, ...) {
 
     if(exists("L223.GlobalIntTechSCurve_elec")) {
       L223.GlobalIntTechSCurve_elec %>%
-        add_title("Global tech lifetime for intermittent techs with s-curve retirement function") %>%
+        # add_title("Global tech lifetime for intermittent techs with s-curve retirement function") %>%
         add_units("Lifetime in years, half-life in years") %>%
         add_comments("Filters for any technology that uses an S-curve retirement function") %>%
-        add_legacy_name("L223.GlobalIntTechSCurve_elec") %>%
+        # add_legacy_name("L223.GlobalIntTechSCurve_elec") %>%
         add_precursors("energy/A23.globaltech_retirement") ->
         L223.GlobalIntTechSCurve_elec
     } else {
@@ -1473,10 +1473,10 @@ module_energy_L223.electricity <- function(command, ...) {
 
     if(exists("L223.GlobalTechLifetime_elec")) {
       L223.GlobalTechLifetime_elec %>%
-        add_title("Global tech lifetime for any technology with no retirement function") %>%
+        # add_title("Global tech lifetime for any technology with no retirement function") %>%
         add_units("Lifetime in years") %>%
         add_comments("Filters for any technology that has no phased or S-curve retirement function.") %>%
-        add_legacy_name("L222.GlobalTechLifetime_elec") %>%
+        # add_legacy_name("L222.GlobalTechLifetime_elec") %>%
         add_precursors("energy/A23.globaltech_retirement") ->
         L223.GlobalTechLifetime_elec
     } else {
@@ -1487,10 +1487,10 @@ module_energy_L223.electricity <- function(command, ...) {
 
     if(exists("L223.GlobalTechLifetime_elec")) {
       L223.GlobalIntTechLifetime_elec %>%
-        add_title("Global tech lifetime for any intermittent technology with no retirement function") %>%
+        # add_title("Global tech lifetime for any intermittent technology with no retirement function") %>%
         add_units("Lifetime in years") %>%
         add_comments("Filters for any technology that has no phased or S-curve retirement function.") %>%
-        add_legacy_name("L223.GlobalIntTechLifetime_elec") %>%
+        # add_legacy_name("L223.GlobalIntTechLifetime_elec") %>%
         add_precursors("energy/A23.globaltech_retirement") ->
         L223.GlobalIntTechLifetime_elec
     } else {
@@ -1501,10 +1501,10 @@ module_energy_L223.electricity <- function(command, ...) {
 
     if(exists("L223.GlobalTechProfitShutdown_elec")) {
       L223.GlobalTechProfitShutdown_elec %>%
-        add_title("Global tech profit shutdown decider and parameters") %>%
+        # add_title("Global tech profit shutdown decider and parameters") %>%
         add_units("Unitless, used to determine shape of the function defining the relationship between shutdown rate and profitability") %>%
         add_comments("Filters for any technologies that use a profit-based shutdown parameter") %>%
-        add_legacy_name("L223.GlobalTechProfitShutdown_elec") %>%
+        # add_legacy_name("L223.GlobalTechProfitShutdown_elec") %>%
         add_precursors("energy/A23.globaltech_retirement") ->
         L223.GlobalTechProfitShutdown_elec
     } else {
@@ -1515,10 +1515,10 @@ module_energy_L223.electricity <- function(command, ...) {
 
     if(exists("L223.GlobalIntTechProfitShutdown_elec")) {
       L223.GlobalIntTechProfitShutdown_elec %>%
-        add_title("Global tech profit shutdown decider and parameters for intermittent technologies") %>%
+        # add_title("Global tech profit shutdown decider and parameters for intermittent technologies") %>%
         add_units("Unitless, used to determine shape of the function defining the relationship between shutdown rate and profitability") %>%
         add_comments("Filters for any technologies that use a profit-based shutdown parameter") %>%
-        add_legacy_name("L223.GlobalIntTechProfitShutdown_elec") %>%
+        # add_legacy_name("L223.GlobalIntTechProfitShutdown_elec") %>%
         add_precursors("energy/A23.globaltech_retirement") ->
         L223.GlobalIntTechProfitShutdown_elec
     } else {
