@@ -38,7 +38,7 @@ module_energy_wind_adv_xml <- function(command, ...) {
       add_xml_data(L223.GlobalIntTechCapital_wind_adv, "GlobalIntTechCapital") %>%
       add_xml_data(L225.StubTechCost_h2_renewables_wind_adv, "StubTechCost") %>%
       add_precursors("L223.GlobalTechCapital_wind_adv", "L223.GlobalIntTechCapital_wind_adv",
-                     "L225.StubTechCost_h2_renewables_wind_adv") ->
+                     "L225.StubTechCost_h2_renewables_adv") ->
       wind_adv.xml
 
     return_data(wind_adv.xml)

@@ -58,7 +58,7 @@ module_energy_solar_adv_xml <- function(command, ...) {
       add_xml_data(rooftop_pv_adv, "StubTechCost") %>%
       add_xml_data(L225.StubTechCost_h2_renewables_sol_adv, "StubTechCost") %>%
       add_precursors("L223.GlobalTechCapital_sol_adv", "L223.GlobalIntTechCapital_sol_adv",
-                     "L223.StubTechCapFactor_elec", "L225.StubTechCost_h2_renewables_sol_adv") ->
+                     "L223.StubTechCapFactor_elec", "L225.StubTechCost_h2_renewables_adv") ->
       solar_adv.xml
 
     return_data(solar_adv.xml)

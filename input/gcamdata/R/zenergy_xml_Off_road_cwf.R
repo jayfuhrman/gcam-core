@@ -21,7 +21,7 @@ module_energy_Off_road_cwf_xml <- function(command, ...) {
   } else if(command == driver.DECLARE_OUTPUTS) {
     return(c(XML = "Off_road_cwf.xml",
              XML = "Off_road_cwf_low_H2.xml",
-             # XML = "Off_road_cwf_med_H2.xml",
+             XML = "Off_road_cwf_med_H2.xml",
              XML = "Off_road_cwf_high_H2.xml"))
   } else if(command == driver.MAKE) {
 
@@ -65,8 +65,8 @@ module_energy_Off_road_cwf_xml <- function(command, ...) {
       create_xml(xml_name) %>%
         add_xml_data(L2324.GlobalTechInterp_Off_road_cwf_H2_scenarios_sel, "GlobalTechInterp") %>% # CWF version for this case
         add_xml_data(L2324.GlobalTechShrwt_Off_road_cwf_H2_scenarios_sel, "GlobalTechShrwt") %>% # CWF version for this case
-        add_precursors("L2324.GlobalTechShrwt_Off_road_cwf_H2_scenarios_sel",
-                       "L2324.GlobalTechInterp_Off_road_cwf_H2_scenarios_sel") %>%
+        add_precursors("L2324.GlobalTechShrwt_Off_road_cwf_H2_scenarios",
+                       "L2324.GlobalTechInterp_Off_road_cwf_H2_scenarios") %>%
         assign(xml_name, ., envir = curr_env)
     }
 

@@ -28,10 +28,7 @@ module_energy_L2324.Off_road_cwf <- function(command, ...) {
                                  paste0("SSP", 1:5))
 
   if(command == driver.DECLARE_INPUTS) {
-    return(c(FILE = "common/GCAM_region_names",
-             FILE = "energy/calibrated_techs",
-             FILE = "energy/A_regions",
-             FILE = "cwf/A324.globaltech_shrwt_cwf",
+    return(c(FILE = "cwf/A324.globaltech_shrwt_cwf",
              FILE = "cwf/A324.globaltech_interp_cwf",
              FILE = "cwf/A324.globaltech_eff_cwf_adj",
              FILE = "cwf/A324.globaltech_shrwt_cwf_H2_scenarios",
@@ -49,9 +46,6 @@ module_energy_L2324.Off_road_cwf <- function(command, ...) {
     all_data <- list(...)[[1]]
 
     # Load required inputs
-    GCAM_region_names <- get_data(all_data, "common/GCAM_region_names")
-    calibrated_techs <- get_data(all_data, "energy/calibrated_techs")
-    A_regions <- get_data(all_data, "energy/A_regions")
     A324.globaltech_shrwt_cwf <- get_data(all_data, "cwf/A324.globaltech_shrwt_cwf", strip_attributes = TRUE)
     A324.globaltech_interp_cwf <- get_data(all_data, "cwf/A324.globaltech_interp_cwf", strip_attributes = TRUE)
     A324.globaltech_eff_cwf_adj <- get_data(all_data, "cwf/A324.globaltech_eff_cwf_adj", strip_attributes = TRUE)
