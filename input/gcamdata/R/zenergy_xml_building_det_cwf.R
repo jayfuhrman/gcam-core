@@ -60,7 +60,8 @@ module_energy_building_det_cwf_xml <- function(command, ...) {
       "L244.globaltech_shrwt_cwf_no_H2_building"
       ))
   } else if(command == driver.DECLARE_OUTPUTS) {
-    return(c(XML = "building_det_cwf.xml"))
+    return(c(XML = "building_det_cwf.xml",
+             XML = "building_det_cwf_high_en.xml"))
   } else if(command == driver.MAKE) {
 
     all_data <- list(...)[[1]]
@@ -164,7 +165,54 @@ module_energy_building_det_cwf_xml <- function(command, ...) {
         building_det_cwf.xml
     }
 
-    return_data(building_det_cwf.xml)
+    # create another add-on to be used en lieu of building_det_cwf with CWF efficiency + technology improvements, but not floorspace satiation changes
+    create_xml("building_det_cwf_high_en.xml") %>%
+      add_xml_data(L244.FinalEnergyKeyword_bld, "FinalEnergyKeyword") %>%
+      add_logit_tables_xml(L244.Supplysector_bld, "Supplysector") %>%
+      add_logit_tables_xml(L244.SubsectorLogit_bld, "SubsectorLogit") %>%
+      add_xml_data(L244.ShellConductance_bld_cwf, "ShellConductance") %>% # CWF version
+      add_xml_data(L244.StubTechEff_bld_cwf, "StubTechEff") %>% # CWF version
+      add_xml_data(L244.StubTechIntGainOutputRatio_cwf, "StubTechIntGainOutputRatio") %>% # CWF version
+      add_xml_data(L244.globaltech_shrwt_cwf_no_H2_building, "GlobalTechShrwt") %>% # CWF version
+      add_precursors("L244.FinalEnergyKeyword_bld", "L244.Supplysector_bld", "L244.SubsectorLogit_bld",
+                     "L244.ShellConductance_bld_cwf",
+                     "L244.StubTechEff_bld_cwf", "L244.StubTechIntGainOutputRatio_cwf",
+                     "L244.globaltech_shrwt_cwf_no_H2_building"
+      ) ->
+      building_det_cwf_high_en.xml
+
+
+    # Some data inputs may not actually contain data. If so, do not add_xml_data.
+    if(!is.null(L244.SubsectorShrwt_bld_low_fossil)) {
+      building_det_cwf_high_en.xml %>%
+        add_xml_data(L244.SubsectorShrwt_bld_low_fossil, "SubsectorShrwt") %>%
+        add_precursors("L244.SubsectorShrwt_bld_low_fossil") ->
+        building_det_cwf_high_en.xml
+    }
+
+    if(!is.null(L244.SubsectorShrwtFllt_bld_low_fossil)) {
+      building_det_cwf_high_en.xml %>%
+        add_xml_data(L244.SubsectorShrwtFllt_bld_low_fossil, "SubsectorShrwtFllt") %>%
+        add_precursors("L244.SubsectorShrwtFllt_bld_low_fossil") ->
+        building_det_cwf_high_en.xml
+    }
+
+    if(!is.null(L244.SubsectorInterp_bld_low_fossil)) {
+      building_det_cwf_high_en.xml %>%
+        add_xml_data(L244.SubsectorInterp_bld_low_fossil, "SubsectorInterp") %>%
+        add_precursors("L244.SubsectorInterp_bld_low_fossil") ->
+        building_det_cwf_high_en.xml
+    }
+
+    if(!is.null(L244.SubsectorInterpTo_bld_low_fossil)) {
+      building_det_cwf_high_en.xml %>%
+        add_xml_data(L244.SubsectorInterpTo_bld_low_fossil, "SubsectorInterp") %>%
+        add_precursors("L244.SubsectorInterpTo_bld_low_fossil") ->
+        building_det_cwf_high_en.xml
+    }
+
+    return_data(building_det_cwf.xml,
+                building_det_cwf_high_en.xml)
   } else {
     stop("Unknown command")
   }

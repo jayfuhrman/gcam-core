@@ -17,11 +17,14 @@ module_energy_transportation_UCD_CORE_cwf_xml <- function(command, ...) {
 
   if(command == driver.DECLARE_INPUTS) {
     return(c("L254.GlobalTranTechInterp_cwf_low_h2",
-             "L254.GlobalTranTechShrwt_cwf_low_h2"))
+             "L254.GlobalTranTechShrwt_cwf_low_h2",
+             "L254.GlobalTranTechInterp_cwf",
+             "L254.GlobalTranTechShrwt_cwf"))
   } else if(command == driver.DECLARE_OUTPUTS) {
     #xml_files<- c("transportation_UCD_CORE.xml","transportation_UCD_SSP1.xml","transportation_UCD_SSP3.xml","transportation_UCD_SSP5.xml","transportation_UCD_highEV.xml")
 
-    return(c(XML = "transportation_UCD_cwf_low_H2.xml"))
+    return(c(XML = "transportation_UCD_cwf_low_H2.xml",
+             XML = "transportation_cwf_high_en_demand.xml"))
   } else if(command == driver.MAKE) {
 
     ## silence package check.
@@ -33,6 +36,8 @@ module_energy_transportation_UCD_CORE_cwf_xml <- function(command, ...) {
 
     L254.GlobalTranTechInterp_cwf_low_h2 <- get_data(all_data, "L254.GlobalTranTechInterp_cwf_low_h2")
     L254.GlobalTranTechShrwt_cwf_low_h2 <- get_data(all_data, "L254.GlobalTranTechShrwt_cwf_low_h2")
+    L254.GlobalTranTechInterp_cwf <- get_data(all_data, "L254.GlobalTranTechInterp_cwf") %>% filter(sce == 'CWF_high')
+    L254.GlobalTranTechShrwt_cwf <- get_data(all_data, "L254.GlobalTranTechShrwt_cwf") %>% filter(sce == 'CWF_high')
 
     # ===================================================
     curr_env <- environment()
@@ -47,7 +52,16 @@ module_energy_transportation_UCD_CORE_cwf_xml <- function(command, ...) {
                      "L254.GlobalTranTechShrwt_cwf_low_h2") ->
       transportation_UCD_cwf_low_H2.xml
 
-    return_data(transportation_UCD_cwf_low_H2.xml)
+    # has all technology assumptions re: ZEV uptake + fossil phaseout but no demand reduction
+    create_xml("transportation_cwf_high_en_demand.xml") %>%
+      add_xml_data(L254.GlobalTranTechInterp_cwf, "GlobalTranTechInterp") %>%
+      add_xml_data(L254.GlobalTranTechShrwt_cwf, "GlobalTranTechShrwt") %>%
+      add_precursors("L254.GlobalTranTechInterp_cwf",
+                     "L254.GlobalTranTechShrwt_cwf") ->
+      transportation_cwf_high_en_demand.xml
+
+    return_data(transportation_UCD_cwf_low_H2.xml,
+                transportation_cwf_high_en_demand.xml)
 
   } else {
     stop("Unknown command")
