@@ -1,0 +1,59 @@
+# File: A54.transport_ICE_phaseout_cwf.csv
+# Title: Fossil Fuel Phase-out for rail and road transportation
+# Source: Speizer et al (2024) https://doi.org/10.1038/s41467-024-48424-9
+# Units: Unitless
+# Column types: ccccccncc
+# ----------
+supplysector,tranSubsector,stub.technology,apply.to,from.year,to.year,to.value,interpolation.function,sce
+trn_pass_road_LDV,2W and 3W,Liquids,share-weight,2025,end-year,0,s-curve,CWF_med
+trn_pass_road_LDV,2W and 3W,NG,share-weight,2025,end-year,0,s-curve,CWF_med
+trn_pass_road,Bus,Liquids,share-weight,2025,end-year,0,s-curve,CWF_med
+trn_pass_road,Bus,NG,share-weight,2025,end-year,0,s-curve,CWF_med
+trn_pass_road,Bus,Hybrid Liquids,share-weight,2025,end-year,0,s-curve,CWF_med
+trn_pass_road_LDV_4W,Car,Hybrid Liquids,share-weight,2025,end-year,0,s-curve,CWF_med
+trn_pass_road_LDV_4W,Car,Liquids,share-weight,2025,end-year,0,s-curve,CWF_med
+trn_pass_road_LDV_4W,Car,NG,share-weight,2025,end-year,0,s-curve,CWF_med
+trn_freight,Freight Rail,Liquids,share-weight,2025,end-year,0,s-curve,CWF_med
+trn_freight,Freight Rail,Hybrid Liquids,share-weight,2025,end-year,0,s-curve,CWF_med
+trn_freight_road,Heavy truck,Liquids,share-weight,2025,end-year,0,s-curve,CWF_med
+trn_freight_road,Heavy truck,NG,share-weight,2025,end-year,0,s-curve,CWF_med
+trn_freight_road,Heavy truck,Hybrid Liquids,share-weight,2025,end-year,0,s-curve,CWF_med
+trn_pass_road_LDV_4W,Large Car and Truck,Hybrid Liquids,share-weight,2025,end-year,0,s-curve,CWF_med
+trn_pass_road_LDV_4W,Large Car and Truck,Liquids,share-weight,2025,end-year,0,s-curve,CWF_med
+trn_pass_road_LDV_4W,Large Car and Truck,NG,share-weight,2025,end-year,0,s-curve,CWF_med
+trn_freight_road,Light truck,Liquids,share-weight,2025,end-year,0,s-curve,CWF_med
+trn_freight_road,Light truck,NG,share-weight,2025,end-year,0,s-curve,CWF_med
+trn_freight_road,Light truck,Hybrid Liquids,share-weight,2025,end-year,0,s-curve,CWF_med
+trn_freight_road,Medium truck,Liquids,share-weight,2025,end-year,0,s-curve,CWF_med
+trn_freight_road,Medium truck,NG,share-weight,2025,end-year,0,s-curve,CWF_med
+trn_freight_road,Medium truck,Hybrid Liquids,share-weight,2025,end-year,0,s-curve,CWF_med
+trn_pass_road_LDV_4W,Mini Car,Hybrid Liquids,share-weight,2025,end-year,0,s-curve,CWF_med
+trn_pass_road_LDV_4W,Mini Car,Liquids,share-weight,2025,end-year,0,s-curve,CWF_med
+trn_pass_road_LDV_4W,Mini Car,NG,share-weight,2025,end-year,0,s-curve,CWF_med
+trn_pass,Passenger Rail,Liquids,share-weight,2025,end-year,0,s-curve,CWF_med
+trn_pass_road_LDV,2W and 3W,Liquids,share-weight,2025,2050,0,s-curve,CWF_high
+trn_pass_road_LDV,2W and 3W,NG,share-weight,2025,2050,0,s-curve,CWF_high
+trn_pass_road,Bus,Liquids,share-weight,2025,2050,0,s-curve,CWF_high
+trn_pass_road,Bus,NG,share-weight,2025,2050,0,s-curve,CWF_high
+trn_pass_road,Bus,Hybrid Liquids,share-weight,2025,2050,0,s-curve,CWF_high
+trn_pass_road_LDV_4W,Car,Hybrid Liquids,share-weight,2025,2050,0,s-curve,CWF_high
+trn_pass_road_LDV_4W,Car,Liquids,share-weight,2025,2050,0,s-curve,CWF_high
+trn_pass_road_LDV_4W,Car,NG,share-weight,2025,2050,0,s-curve,CWF_high
+trn_freight,Freight Rail,Liquids,share-weight,2025,2050,0,s-curve,CWF_high
+trn_freight,Freight Rail,Hybrid Liquids,share-weight,2025,2050,0,s-curve,CWF_high
+trn_freight_road,Heavy truck,Liquids,share-weight,2025,2050,0,s-curve,CWF_high
+trn_freight_road,Heavy truck,NG,share-weight,2025,2050,0,s-curve,CWF_high
+trn_freight_road,Heavy truck,Hybrid Liquids,share-weight,2025,2050,0,s-curve,CWF_high
+trn_pass_road_LDV_4W,Large Car and Truck,Hybrid Liquids,share-weight,2025,2050,0,s-curve,CWF_high
+trn_pass_road_LDV_4W,Large Car and Truck,Liquids,share-weight,2025,2050,0,s-curve,CWF_high
+trn_pass_road_LDV_4W,Large Car and Truck,NG,share-weight,2025,2050,0,s-curve,CWF_high
+trn_freight_road,Light truck,Liquids,share-weight,2025,2050,0,s-curve,CWF_high
+trn_freight_road,Light truck,NG,share-weight,2025,2050,0,s-curve,CWF_high
+trn_freight_road,Light truck,Hybrid Liquids,share-weight,2025,2050,0,s-curve,CWF_high
+trn_freight_road,Medium truck,Liquids,share-weight,2025,2050,0,s-curve,CWF_high
+trn_freight_road,Medium truck,NG,share-weight,2025,2050,0,s-curve,CWF_high
+trn_freight_road,Medium truck,Hybrid Liquids,share-weight,2025,2050,0,s-curve,CWF_high
+trn_pass_road_LDV_4W,Mini Car,Hybrid Liquids,share-weight,2025,2050,0,s-curve,CWF_high
+trn_pass_road_LDV_4W,Mini Car,Liquids,share-weight,2025,2050,0,s-curve,CWF_high
+trn_pass_road_LDV_4W,Mini Car,NG,share-weight,2025,2050,0,s-curve,CWF_high
+trn_pass,Passenger Rail,Liquids,share-weight,2025,2050,0,s-curve,CWF_high

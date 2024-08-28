@@ -256,6 +256,7 @@ generate_level2_data_names <- function() {
   level2_data_names[["StubTechSecMarket"]] <- c(level2_data_names[["StubTechYr"]], "secondary.output", "market.name")
   level2_data_names[["StubTechSecPmult"]] <- c(level2_data_names[["StubTechYr"]], "secondary.output", "pMultiplier")
   level2_data_names[["StubTranTech"]] <- c("region", "supplysector", "tranSubsector", "stub.technology")
+  level2_data_names[["StubTranTechInterpTo"]] <- c("region", "supplysector", "tranSubsector", "stub.technology", "apply.to", "from.year", "to.year", "to.value", "interpolation.function")
   level2_data_names[["StubTranTechCalInput"]] <- c("region", "supplysector", "tranSubsector", "stub.technology", "year", "minicam.energy.input", "calibrated.value", "share.weight.year", "subs.share.weight", "tech.share.weight")
   level2_data_names[["StubTranTechCoef"]] <- c("region", "supplysector", "tranSubsector", "stub.technology", "year", "minicam.energy.input", "coefficient", "market.name")
   level2_data_names[["StubTranTechCost"]] <- c("region", "supplysector", "tranSubsector", "stub.technology", "year", "minicam.non.energy.input", "input.cost")
