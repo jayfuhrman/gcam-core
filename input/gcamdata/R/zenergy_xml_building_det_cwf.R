@@ -160,7 +160,7 @@ module_energy_building_det_cwf_xml <- function(command, ...) {
 
     if(!is.null(L244.SubsectorInterpTo_bld_low_fossil)) {
       building_det_cwf.xml %>%
-        add_xml_data(L244.SubsectorInterpTo_bld_low_fossil, "SubsectorInterp") %>%
+        add_xml_data(L244.SubsectorInterpTo_bld_low_fossil, "SubsectorInterpTo") %>%
         add_precursors("L244.SubsectorInterpTo_bld_low_fossil") ->
         building_det_cwf.xml
     }
@@ -206,7 +206,7 @@ module_energy_building_det_cwf_xml <- function(command, ...) {
 
     if(!is.null(L244.SubsectorInterpTo_bld_low_fossil)) {
       building_det_cwf_high_en.xml %>%
-        add_xml_data(L244.SubsectorInterpTo_bld_low_fossil, "SubsectorInterp") %>%
+        add_xml_data(L244.SubsectorInterpTo_bld_low_fossil, "SubsectorInterpTo") %>%
         add_precursors("L244.SubsectorInterpTo_bld_low_fossil") ->
         building_det_cwf_high_en.xml
     }
