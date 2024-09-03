@@ -108,6 +108,7 @@ generate_level2_data_names <- function() {
   level2_data_names[["SubsectorShrwtFllt"]] <- c(level2_data_names[["Subsector"]], "year.fillout", "share.weight")
   level2_data_names[["SubsectorInterp"]] <- c(level2_data_names[["Subsector"]], "apply.to", "from.year", "to.year", "interpolation.function")
   level2_data_names[["SubsectorInterpTo"]] <- c(level2_data_names[["Subsector"]], "apply.to", "from.year", "to.year", "to.value", "interpolation.function")
+  level2_data_names[["DeleteSubsectorInterp"]] <- level2_data_names[["SubsectorInterp"]]
   level2_data_names[["FuelPrefElast"]] <- c(level2_data_names[["Subsector"]], "year.fillout", "fuelprefElasticity")
   level2_data_names[["tranSubsectorFuelPref"]] <- c("region", "supplysector", "tranSubsector", "year.fillout", "fuelprefElasticity")
   level2_data_names[["tranSubsectorInterp"]] <- c("region", "supplysector", "tranSubsector", "apply.to", "from.year", "to.year", "interpolation.function")
@@ -221,6 +222,7 @@ generate_level2_data_names <- function() {
                                                        "value.factor.intercept", "value.factor.slope")
   level2_data_names[["GlobalTranTechShrwt"]] <- c("sector.name", "subsector.name", "tranTechnology", "year", "share.weight")
   level2_data_names[["GlobalTranTechInterp"]] <- c("sector.name", "subsector.name", "tranTechnology", "apply.to", "from.year", "to.year", "interpolation.function")
+  level2_data_names[["DeleteGlobalTranTechInterp"]] <- c("sector.name", "subsector.name", "tranTechnology", "apply.to", "from.year", "to.year", "interpolation.function")
   level2_data_names[["GlobalTranTechSCurve"]] <- c("sector.name", "subsector.name", "tranTechnology", "year", "lifetime", "steepness", "half.life")
   level2_data_names[["GlobalTranTechProfitShutdown"]] <- c("sector.name", "subsector.name", "tranTechnology", "year", "median.shutdown.point", "steepness")
   level2_data_names[["GlobalPassThroughTech"]] <- c("sector.name", "subsector.name", "technology")
@@ -268,6 +270,8 @@ generate_level2_data_names <- function() {
   level2_data_names[["StubTechSecMarket"]] <- c(level2_data_names[["StubTechYr"]], "secondary.output", "market.name")
   level2_data_names[["StubTechSecPmult"]] <- c(level2_data_names[["StubTechYr"]], "secondary.output", "pMultiplier")
   level2_data_names[["StubTranTech"]] <- c("region", "supplysector", "tranSubsector", "stub.technology")
+  level2_data_names[["StubTranTechInterpTo"]] <- c("region", "supplysector", "tranSubsector", "stub.technology", "apply.to", "from.year", "to.year", "to.value", "interpolation.function")
+  level2_data_names[["DeleteStubTranTechInterp"]] <- level2_data_names[["StubTranTech"]]
   level2_data_names[["StubTranTechCalInput"]] <- c("region", "supplysector", "tranSubsector", "stub.technology", "year", "minicam.energy.input", "calibrated.value", "share.weight.year", "subs.share.weight", "tech.share.weight")
   level2_data_names[["StubTranTechCoef"]] <- c("region", "supplysector", "tranSubsector", "stub.technology", "year", "minicam.energy.input", "coefficient", "market.name")
   level2_data_names[["StubTranTechCost"]] <- c("region", "supplysector", "tranSubsector", "stub.technology", "year", "minicam.non.energy.input", "input.cost")
