@@ -152,8 +152,20 @@ module_energy_building_det_cwf_xml <- function(command, ...) {
     }
 
     if(!is.null(L244.SubsectorInterp_bld_low_fossil)) {
+
+      L244.SubsectorInterp_bld_low_fossil %>%
+        group_by(region, supplysector, subsector) %>%
+        mutate(is_first = row_number()==1) %>%
+        ungroup() ->
+        L244.SubsectorInterp_bld_low_fossil
+      # For interpolation rules the delete doesn't apply to the tag that it is on, but rather prior ones.
+      # And the one that it is attached to is parsed and set like the delete wasn't there
+
+
       building_det_cwf.xml %>%
-        add_xml_data(L244.SubsectorInterp_bld_low_fossil, "SubsectorInterp") %>%
+        # delete existing subsector interp rule so that it doesn't interfere with the fossil fuel phaseout we want
+        add_xml_data(L244.SubsectorInterp_bld_low_fossil %>% filter(is_first),"DeleteSubsectorInterp") %>%
+        add_xml_data(L244.SubsectorInterp_bld_low_fossil %>% filter(!is_first), "SubsectorInterp") %>%
         add_precursors("L244.SubsectorInterp_bld_low_fossil") ->
         building_det_cwf.xml
     }
@@ -198,9 +210,23 @@ module_energy_building_det_cwf_xml <- function(command, ...) {
     }
 
     if(!is.null(L244.SubsectorInterp_bld_low_fossil)) {
+
+      L244.SubsectorInterp_bld_low_fossil %>%
+        group_by(region, supplysector, subsector) %>%
+        mutate(is_first = row_number()==1) %>%
+        ungroup() ->
+        L244.SubsectorInterp_bld_low_fossil
+      # For interpolation rules the delete doesn't apply to the tag that it is on, but rather prior ones.
+      # And the one that it is attached to is parsed and set like the delete wasn't there
+
+
       building_det_cwf_high_en.xml %>%
-        add_xml_data(L244.SubsectorInterp_bld_low_fossil, "SubsectorInterp") %>%
-        add_precursors("L244.SubsectorInterp_bld_low_fossil") ->
+        # delete existing subsector interp rule so that it doesn't interfere with the fossil fuel phaseout we want
+        add_xml_data(L244.SubsectorInterp_bld_low_fossil %>% filter(is_first),"DeleteSubsectorInterp") %>%
+        add_xml_data(L244.SubsectorInterp_bld_low_fossil %>% filter(!is_first), "SubsectorInterp") %>%
+        add_xml_data(L244.SubsectorInterpTo_bld_low_fossil, "SubsectorInterpTo") %>%
+        add_precursors("L244.SubsectorInterp_bld_low_fossil",
+                       "L244.SubsectorInterpTo_bld_low_fossil") ->
         building_det_cwf_high_en.xml
     }
 

@@ -193,7 +193,7 @@ module_energy_L254.transportation_UCD_cwf <- function(command, ...) {
       add_title("Shareweight interpolation of global tranTechnologies") %>%
       add_units("NA") %>%
       add_comments("Populated placeholders for final calibration year and end year") %>%
-      add_legacy_name("L254.GlobalTranTechInterp") %>%
+      #add_legacy_name("L254.GlobalTranTechInterp") %>%
       add_precursors("cwf/A54.globaltranTech_interp_revised_cwf") ->
       L254.GlobalTranTechInterp_cwf
 

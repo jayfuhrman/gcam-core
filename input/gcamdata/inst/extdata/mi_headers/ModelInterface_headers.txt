@@ -191,6 +191,8 @@ SubsectorShrwtFllt, world/+{name}region, region/+{name}supplysector, supplysecto
 
 SubsectorInterp, world/+{name}region, region/+{name}supplysector, supplysector/+{name}subsector, subsector/+{apply-to}interpolation-rule, subsector/+{from-year}interpolation-rule, subsector/+{to-year}interpolation-rule, interpolation-rule/+{name}interpolation-function, scenario/world, scenario
 
+DeleteSubsectorInterp, world/+{name}region, region/+{name}supplysector, supplysector/+{name}subsector, subsector/+{apply-to;delete=1}interpolation-rule, subsector/+{from-year}interpolation-rule, subsector/+{to-year}interpolation-rule, interpolation-rule/+{name}interpolation-function, scenario/world, scenario
+
 SubsectorInterpTo, world/+{name}region, region/+{name}supplysector, supplysector/+{name}subsector, subsector/+{apply-to}interpolation-rule, subsector/+{from-year}interpolation-rule, subsector/+{to-year}interpolation-rule, interpolation-rule/+to-value, interpolation-rule/+{name}interpolation-function, scenario/world, scenario
 
 FuelPrefElast, world/+{name}region, region/+{name}supplysector, supplysector/+{name}subsector, subsector/+{year;fillout=1}fuelprefElasticity, subsector/+fuelprefElasticity, scenario/world, scenario
@@ -392,6 +394,8 @@ GlobalTranTechShrwt, global-technology-database/+{sector-name}location-info, glo
 
 GlobalTranTechInterp, global-technology-database/+{sector-name}location-info, global-technology-database/+{subsector-name}location-info, location-info/+{name}tranTechnology, tranTechnology/+{apply-to}interpolation-rule, tranTechnology/+{from-year}interpolation-rule, tranTechnology/+{to-year}interpolation-rule, interpolation-rule/+{name}interpolation-function, scenario, scenario/world, world/global-technology-database
 
+DeleteGlobalTranTechInterp, global-technology-database/+{sector-name}location-info, global-technology-database/+{subsector-name}location-info, location-info/+{name}tranTechnology, tranTechnology/+{apply-to;delete=1}interpolation-rule, tranTechnology/+{from-year}interpolation-rule, tranTechnology/+{to-year}interpolation-rule, interpolation-rule/+{name}interpolation-function, scenario, scenario/world, world/global-technology-database
+
 GlobalTranTechSCurve, global-technology-database/+{sector-name}location-info, global-technology-database/+{subsector-name}location-info, location-info/+{name}tranTechnology, tranTechnology/+{year}period, period/+lifetime, s-curve-shutdown-decider/+steepness, s-curve-shutdown-decider/+half-life, scenario, scenario/world, world/global-technology-database, period/{name=s-curve}s-curve-shutdown-decider
 
 GlobalTranTechProfitShutdown, global-technology-database/+{sector-name}location-info, global-technology-database/+{subsector-name}location-info, location-info/+{name}tranTechnology, tranTechnology/+{year}period, profit-shutdown-decider/+median-shutdown-point, profit-shutdown-decider/+steepness, scenario, scenario/world, world/global-technology-database, period/{name=profit}profit-shutdown-decider
@@ -477,6 +481,8 @@ StubTranTechLoadFactor, world/+{name}region, region/+{name}supplysector, supplys
 StubTranTechCost, world/+{name}region, region/+{name}supplysector, supplysector/+{name}tranSubsector, tranSubsector/+{name}stub-technology, stub-technology/+{year}period, period/+{name}minicam-non-energy-input, minicam-non-energy-input/+input-cost, scenario, scenario/world
 
 StubTranTechInterpTo, world/+{name}region, region/+{name}supplysector, supplysector/+{name}tranSubsector, tranSubsector/+{name}stub-technology, stub-technology/+{apply-to}interpolation-rule, stub-technology/+{from-year}interpolation-rule, stub-technology/+{to-year}interpolation-rule, interpolation-rule/+to-value, interpolation-rule/+{name}interpolation-function, scenario, scenario/world
+
+DeleteStubTranTechInterp, world/+{name}region, region/+{name}supplysector, supplysector/+{name}tranSubsector, tranSubsector/+{name}stub-technology, stub-technology/+{name; delete=1}interpolation-rule, scenario, scenario/world 
 
 StubTranTechProd, world/+{name}region, region/+{name}supplysector, supplysector/+{name}tranSubsector, tranSubsector/+{name}stub-technology, stub-technology/+{year}period, CalDataOutput/+calOutputValue, period/CalDataOutput, scenario, scenario/world
 
