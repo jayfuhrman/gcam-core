@@ -46,6 +46,7 @@ module_energy_L254.transportation_UCD_cwf <- function(command, ...) {
              "L254.GlobalTranTechInterp_cwf",
              "L254.GlobalTranTechShrwt_cwf",
              "L254.tranSubsectorVOTT_cwf",
+             "L254.tranSubsectorFuelPref_cwf",
              "L254.IncomeElasticity_trn_cwf",
              "L254.StubTranTechInterpTo_ICEPhaseout"))
   } else if(command == driver.MAKE) {
@@ -228,7 +229,7 @@ module_energy_L254.transportation_UCD_cwf <- function(command, ...) {
       add_units("Unitless") %>%
       add_comments("Income elasticity information written for all GCAM regions and model future years") %>%
       add_legacy_name("L254.IncomeElasticity_trn_cwf") %>%
-      add_precursors("L254.IncomeElasticity_trn") ->
+      add_precursors("L254.IncomeElasticity_trn", "cwf/A54.demand_ssp1_cwf_adj") ->
       L254.IncomeElasticity_trn_cwf
 
     L254.StubTranTechInterpTo_ICEPhaseout %>%
@@ -236,13 +237,13 @@ module_energy_L254.transportation_UCD_cwf <- function(command, ...) {
       add_units("Unitless") %>%
       add_comments("Note there are no shareweight adjustments for the CWF_low scenario") %>%
       add_legacy_name("L254.StubTranTechInterpTo_ICEPhaseout") %>%
-      add_precursors("cwf/A54.transport_ICE_phaseout_cwf","L254.StubTranTech") ->
+      add_precursors("common/GCAM_region_names", "cwf/A54.transport_ICE_phaseout_cwf","L254.StubTranTech") ->
       L254.StubTranTechInterpTo_ICEPhaseout
 
     return_data(
       L254.GlobalTranTechInterp_cwf_low_h2, L254.GlobalTranTechShrwt_cwf_low_h2,
       L254.GlobalTranTechInterp_cwf, L254.GlobalTranTechShrwt_cwf,
-      L254.tranSubsectorVOTT_cwf,L254.tranSubsectorFuelPref_cwf,L254.IncomeElasticity_trn_cwf,
+      L254.tranSubsectorVOTT_cwf,L254.tranSubsectorFuelPref_cwf, L254.IncomeElasticity_trn_cwf,
       L254.StubTranTechInterpTo_ICEPhaseout)
   } else {
     stop("Unknown command")

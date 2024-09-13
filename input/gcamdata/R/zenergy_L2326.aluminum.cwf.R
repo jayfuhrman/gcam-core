@@ -31,7 +31,7 @@ module_energy_L2326.aluminum_cwf <- function(command, ...) {
              FILE = "energy/calibrated_techs",
              FILE = "energy/A_regions",
              "L2326.GlobalTechCoef_aluminum",
-             "L1326.in_EJ_R_aluminum_Yh",
+             # "L1326.in_EJ_R_aluminum_Yh",
              "L1326.out_Mt_R_aluminum_Yh",
              "L1326.IO_GJkg_R_aluminum_F_Yh",
 			 FILE = "cwf/A326.globaltech_coef_cwf_adj"))
@@ -46,7 +46,7 @@ module_energy_L2326.aluminum_cwf <- function(command, ...) {
     GCAM_region_names <- get_data(all_data, "common/GCAM_region_names")
     calibrated_techs <- get_data(all_data, "energy/calibrated_techs")
     A_regions <- get_data(all_data, "energy/A_regions")
-    L1326.in_EJ_R_aluminum_Yh <- get_data(all_data, "L1326.in_EJ_R_aluminum_Yh")
+    # L1326.in_EJ_R_aluminum_Yh <- get_data(all_data, "L1326.in_EJ_R_aluminum_Yh")
     L1326.out_Mt_R_aluminum_Yh <- get_data(all_data, "L1326.out_Mt_R_aluminum_Yh")
     L1326.IO_GJkg_R_aluminum_F_Yh<- get_data(all_data, "L1326.IO_GJkg_R_aluminum_F_Yh")
     A326.globaltech_coef_cwf_adj <- get_data(all_data, "cwf/A326.globaltech_coef_cwf_adj", strip_attributes = TRUE)
@@ -90,32 +90,32 @@ module_energy_L2326.aluminum_cwf <- function(command, ...) {
        distinct ->
        calibrated_techs_export # temporary tibble
 
-    L1326.in_EJ_R_aluminum_Yh %>%
-      filter(year %in% MODEL_BASE_YEARS) %>%
-      complete(nesting(fuel,year,sector),GCAM_region_ID = GCAM_region_names$GCAM_region_ID) %>%
-      filter(fuel != 'heat' | (fuel == 'heat' & value>0) ) %>%
-      filter(fuel != 'electricity') %>%
-      mutate(value = replace_na(value,0)) %>%
-      left_join(GCAM_region_names,by = c("GCAM_region_ID")) %>%
-      mutate(calibrated.value = round(value, energy.DIGITS_CALOUTPUT)) %>%
-      left_join(calibrated_techs_export, by = c("fuel", "sector")) %>%
-      mutate(stub.technology = technology,
-      technology = NULL)   ->
-      L2326.StubTechCalInput_aluminum_tmp
+    # L1326.in_EJ_R_aluminum_Yh %>%
+    #   filter(year %in% MODEL_BASE_YEARS) %>%
+    #   complete(nesting(fuel,year,sector),GCAM_region_ID = GCAM_region_names$GCAM_region_ID) %>%
+    #   filter(fuel != 'heat' | (fuel == 'heat' & value>0) ) %>%
+    #   filter(fuel != 'electricity') %>%
+    #   mutate(value = replace_na(value,0)) %>%
+    #   left_join(GCAM_region_names,by = c("GCAM_region_ID")) %>%
+    #   mutate(calibrated.value = round(value, energy.DIGITS_CALOUTPUT)) %>%
+    #   left_join(calibrated_techs_export, by = c("fuel", "sector")) %>%
+    #   mutate(stub.technology = technology,
+    #   technology = NULL)   ->
+    #   L2326.StubTechCalInput_aluminum_tmp
 
-    L2326.aluminum_tmp %>%
-      filter(supplysector != "aluminum") %>%
-      left_join(L2326.StubTechCalInput_aluminum_tmp,
-                by = c("region", "supplysector", "subsector", "stub.technology", "year", "minicam.energy.input")) %>%
-      mutate(fuel = NULL,sector = NULL, value = NULL,GCAM_region_ID  = NULL,calibrated.value = replace_na(calibrated.value,0),
-             share.weight.year = year) %>%
-      rename(calOutputValue = calibrated.value) %>%  # temporary column name change to accommodate function set_subsector_shrwt
-      set_subsector_shrwt %>%
-      rename(calibrated.value = calOutputValue) %>% # temporary column name changeto accommodate function set_subsector_shrwt
-      mutate(tech.share.weight = if_else(calibrated.value>0 , 1, 0)) %>%
-      anti_join(L2326.rm_heat_techs_R, by = c("region", "subsector")) %>% # Remove non-existent heat subsectors from each region
-      select(LEVEL2_DATA_NAMES[["StubTechCalInput"]]) ->
-      L2326.StubTechCalInput_aluminum
+    # L2326.aluminum_tmp %>%
+    #   filter(supplysector != "aluminum") %>%
+    #   left_join(L2326.StubTechCalInput_aluminum_tmp,
+    #             by = c("region", "supplysector", "subsector", "stub.technology", "year", "minicam.energy.input")) %>%
+    #   mutate(fuel = NULL,sector = NULL, value = NULL,GCAM_region_ID  = NULL,calibrated.value = replace_na(calibrated.value,0),
+    #          share.weight.year = year) %>%
+    #   rename(calOutputValue = calibrated.value) %>%  # temporary column name change to accommodate function set_subsector_shrwt
+    #   set_subsector_shrwt %>%
+    #   rename(calibrated.value = calOutputValue) %>% # temporary column name changeto accommodate function set_subsector_shrwt
+    #   mutate(tech.share.weight = if_else(calibrated.value>0 , 1, 0)) %>%
+    #   anti_join(L2326.rm_heat_techs_R, by = c("region", "subsector")) %>% # Remove non-existent heat subsectors from each region
+    #   select(LEVEL2_DATA_NAMES[["StubTechCalInput"]]) ->
+    #   L2326.StubTechCalInput_aluminum
 
     # L2326.StubTechCoef_aluminum
     calibrated_techs %>%
@@ -226,7 +226,7 @@ module_energy_L2326.aluminum_cwf <- function(command, ...) {
       add_units("unitless") %>%
       add_comments("Coefficients from literature wirh CWF adjustments") %>%
       add_legacy_name("L2326.StubTechCoef_aluminum") %>%
-      add_precursors("energy/calibrated_techs", "common/GCAM_region_names",
+      add_precursors("energy/calibrated_techs", "energy/A_regions", "common/GCAM_region_names",
                       "cwf/A326.globaltech_coef_cwf_adj", "L2326.GlobalTechCoef_aluminum",
                      "L1326.out_Mt_R_aluminum_Yh", "L1326.IO_GJkg_R_aluminum_F_Yh") ->
       L2326.StubTechCoef_aluminum_cwf

@@ -32,7 +32,7 @@ module_energy_L2321.cement_cwf <- function(command, ...) {
 
   if(command == driver.DECLARE_INPUTS) {
     return(c(FILE = "common/GCAM_region_names",
-             FILE = "energy/calibrated_techs",
+             # FILE = "energy/calibrated_techs",
              "L2321.GlobalTechCoef_cement",
              "L2321.StubTechCoef_cement",
 			 FILE = "cwf/A321.globaltech_coef_cwf_adj",
@@ -55,7 +55,7 @@ module_energy_L2321.cement_cwf <- function(command, ...) {
 
     # Load required inputs
     GCAM_region_names <- get_data(all_data, "common/GCAM_region_names")
-    calibrated_techs <- get_data(all_data, "energy/calibrated_techs")
+    # calibrated_techs <- get_data(all_data, "energy/calibrated_techs")
     A321.globaltech_coef_cwf_adj <- get_data(all_data, "cwf/A321.globaltech_coef_cwf_adj")
     A321.incelas_cwf <- get_data(all_data, "cwf/A321.incelas_cwf")
 

@@ -135,6 +135,14 @@ module_energy_L2322.Fert_cwf <- function(command, ...) {
       add_precursors("cwf/A322.subsector_interp_cwf_H2_scenarios", "common/GCAM_region_names") ->
       L2322.SubsectorInterp_Fert_cwf_H2_scenarios
 
+    L2322.GlobalTechShrwt_Fert_cwf %>%
+      add_title("Tech shareweight of fertilizer tech") %>%
+      add_units("NA") %>%
+      add_comments("Tech shareweight of fertilizer tech") %>%
+      add_legacy_name("L2322.GlobalTechShrwt_Fert_cwf") %>%
+      add_precursors("cwf/A322.globaltech_shrwt_cwf") ->
+      L2322.GlobalTechShrwt_Fert_cwf
+
 
     return_data(L2322.SubsectorShrwtFllt_Fert_cwf,
                 L2322.SubsectorInterp_Fert_cwf,

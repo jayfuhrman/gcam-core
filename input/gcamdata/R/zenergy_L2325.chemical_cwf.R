@@ -252,7 +252,7 @@ module_energy_L2325.chemical_cwf <- function(command, ...) {
       add_units("Unitless") %>%
       add_comments("For chemical sector, the efficiency values from A325.globaltech_eff are interpolated into all base years and future years, with CWF adjustments") %>%
       add_legacy_name("L2325.GlobalTechEff_chemical") %>%
-      add_precursors("energy/A325.globaltech_eff", "cwf/A325.globaltech_eff_cwf_adj") ->
+      add_precursors("energy/A325.globaltech_eff", "cwf/A325.globaltech_eff_cwf_adj", "L2325.GlobalTechEff_chemical") ->
       L2325.GlobalTechEff_chemical_cwf
 
     L2325.SubsectorShrwtFllt_chemical_cwf %>%
@@ -260,7 +260,8 @@ module_energy_L2325.chemical_cwf <- function(command, ...) {
       add_units("unitless") %>%
       add_comments("For chemical sector, the subsector shareweights from A325.subsector_shrwt_cwf_H2_scenarios are expanded into all GCAM regions") %>%
       add_legacy_name("L2325.SubsectorShrwtFllt_chemical_cwf") %>%
-      add_precursors("cwf/A325.subsector_shrwt_cwf", "energy/A_regions","common/GCAM_region_names") ->
+      add_precursors("cwf/A325.subsector_shrwt_cwf", "energy/A_regions",
+                     "energy/calibrated_techs", "common/GCAM_region_names") ->
       L2325.SubsectorShrwtFllt_chemical_cwf
 
     L2325.SubsectorInterp_chemical_cwf %>%
@@ -268,7 +269,8 @@ module_energy_L2325.chemical_cwf <- function(command, ...) {
       add_units("NA") %>%
       add_comments("For chemical sector, the subsector shareweight interpolation function infromation from A325.subsector_interp_cwf_H2_scenarios is expanded into all GCAM regions") %>%
       add_legacy_name("L2325.SubsectorInterp_chemical_cwf") %>%
-      add_precursors("cwf/A325.subsector_interp_cwf", "energy/A_regions", "common/GCAM_region_names") ->
+      add_precursors("cwf/A325.subsector_interp_cwf", "energy/A_regions", "energy/calibrated_techs",
+                     "common/GCAM_region_names", "L1325.in_EJ_R_chemical_F_Y") ->
       L2325.SubsectorInterp_chemical_cwf
 
     L2325.GlobalTechShrwt_chemical_cwf %>%
@@ -284,7 +286,8 @@ module_energy_L2325.chemical_cwf <- function(command, ...) {
       add_units("unitless") %>%
       add_comments("For chemical sector, the subsector shareweights from A325.subsector_shrwt_cwf_H2_scenarios are expanded into all GCAM regions") %>%
       add_legacy_name("L2325.SubsectorShrwtFllt_chemical") %>%
-      add_precursors("cwf/A325.subsector_shrwt_cwf_H2_scenarios", "energy/A_regions","common/GCAM_region_names") ->
+      add_precursors("cwf/A325.subsector_shrwt_cwf_H2_scenarios", "energy/calibrated_techs",
+                     "energy/A_regions", "common/GCAM_region_names") ->
       L2325.SubsectorShrwtFllt_chemical_cwf_H2_scenarios
 
     L2325.SubsectorInterp_chemical_cwf_H2_scenarios %>%
@@ -292,7 +295,8 @@ module_energy_L2325.chemical_cwf <- function(command, ...) {
       add_units("NA") %>%
       add_comments("For chemical sector, the subsector shareweight interpolation function infromation from A325.subsector_interp_cwf_H2_scenarios is expanded into all GCAM regions") %>%
       add_legacy_name("L2325.SubsectorInterp_chemical") %>%
-      add_precursors("cwf/A325.subsector_interp_cwf_H2_scenarios", "energy/A_regions", "common/GCAM_region_names") ->
+      add_precursors("cwf/A325.subsector_interp_cwf_H2_scenarios", "energy/A_regions", "energy/calibrated_techs",
+                     "common/GCAM_region_names", "L1325.in_EJ_R_chemical_F_Y") ->
       L2325.SubsectorInterp_chemical_cwf_H2_scenarios
 
     L2325.GlobalTechShrwt_chemical_cwf_H2_scenarios %>%
