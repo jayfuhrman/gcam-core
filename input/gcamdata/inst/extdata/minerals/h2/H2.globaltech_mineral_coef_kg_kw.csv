@@ -1,0 +1,21 @@
+# File: H2.globaltech_mineral_coef_kg_kw.csv,,,,,,,,,,,,,,,
+# Title: Hydrogen sector technology mineral use intensity,,,,,,,,,,,,,,,
+# Units: kg/kW for different technologies,,,,,,,,,,,,,,,
+# Description: this dataset defines the mineral use intensity for different hydrogen production technologies,,,,,,,,,,,,,,,
+# Comment:,,,,,,,,,,,,,,,
+# Column types: cccnnnnnnnn,,,,,,,,,,,,,,,
+# ----------,,,,,,,,,,,,,,,
+supplysector,subsector,technology,steel,aluminium,silicon,copper,graphite,lithium,cobalt,nickel,manganese,neodymium,tellurium,vanadium,platinum
+H2 central production,biomass,biomass to H2,33.4,0.0729,,0.76,,,0.067,0.00022,0.145,,,,
+H2 central production,biomass,biomass to H2 CCS,43.1,0.0729,,1.45,,,0.075,0.00022,0.145,,,,
+H2 central production,coal,coal chemical,84.6,0.0729,,1.15,,,0.115,0.00022,0.145,,,,
+H2 central production,coal,coal chemical CCS,109.2,0.0729,,1.63,,,0.12,0.00022,0.145,,,,
+H2 central production,electricity,electrolysis,0.098942,0.045,,0.014205,,,,,,,,,0.0003
+H2 central production,solar,electrolysis,78.098942,19.045,2.93,4.914205,,,,0.001,,,,,0.0003
+H2 central production,wind,electrolysis,131.098942,1.445,,2.714205,,,,0.43,0.78,0.012,,,0.0003
+H2 central production,gas,natural gas steam reforming,29,0.0729,,1.05,,,0.02,0.0342,0.145,,,,
+H2 central production,gas,gas ATR CCS,44.37,0.0729,,1.26,,,0.03,0.0342,0.145,,,,
+H2 central production,nuclear,electrolysis,43.098942,0.125,,0.774205,,,0.00012,0.4,0.343,,,,0.0003
+H2 industrial,onsite production,electrolysis,0.098942,0.045,,0.014205,,,,,,,,,0.0003
+H2 wholesale dispensing,forecourt production,electrolysis,0.098942,0.045,,0.014205,,,,,,,,,0.0003
+H2 wholesale dispensing,forecourt production,natural gas steam reforming,29,0.0729,,1.05,,,0.02,0.0342,0.145,,,,

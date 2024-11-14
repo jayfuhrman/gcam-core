@@ -361,6 +361,7 @@ GlobalTechInputPMult, global-technology-database/+{sector-name}location-info, gl
 
 DeleteGlobalTech, global-technology-database/+{sector-name}location-info, global-technology-database/+{subsector-name}location-info, location-info/+{name;delete=1}technology, scenario, scenario/world, world/global-technology-database
 
+GlobalTechMineralCurCoef, global-technology-database/+{sector-name}location-info, global-technology-database/+{subsector-name}location-info, location-info/+{name}technology, technology/+{year}period, period/+{name}minicam-energy-input, minicam-energy-input/+coefficient, minicam-energy-input/+{year}current-coef, minicam-energy-input/+current-coef, scenario, scenario/world, world/global-technology-database
 
 #####, GLOBAL INTERMITTENT TECHNOLOGY
 
@@ -368,6 +369,8 @@ DeleteGlobalTech, global-technology-database/+{sector-name}location-info, global
 GlobalIntTechCoef, global-technology-database/+{sector-name}location-info, global-technology-database/+{subsector-name}location-info, location-info/+{name}intermittent-technology, intermittent-technology/+{year}period, period/+{name}minicam-energy-input, minicam-energy-input/+coefficient, scenario, scenario/world, world/global-technology-database, period/{name=CO2}CO2
 
 GlobalIntTechEff, global-technology-database/+{sector-name}location-info, global-technology-database/+{subsector-name}location-info, location-info/+{name}intermittent-technology, intermittent-technology/+{year}period, period/+{name}minicam-energy-input, minicam-energy-input/+efficiency, minicam-energy-input/+flag, scenario, scenario/world, world/global-technology-database, period/{name=CO2}CO2
+
+GlobalIntTechEffNoFlag, global-technology-database/+{sector-name}location-info, global-technology-database/+{subsector-name}location-info, location-info/+{name}intermittent-technology, intermittent-technology/+{year}period, period/+{name}minicam-energy-input, minicam-energy-input/+efficiency, scenario, scenario/world, world/global-technology-database, period/{name=CO2}CO2
 
 GlobalIntTechShrwt, global-technology-database/+{sector-name}location-info, global-technology-database/+{subsector-name}location-info, location-info/+{name}intermittent-technology, intermittent-technology/+{year}period, period/+share-weight, scenario, scenario/world, world/global-technology-database, period/{name=CO2}CO2
 
@@ -428,7 +431,11 @@ StubTechInterp, world/+{name}region, region/+{name}supplysector, supplysector/+{
 
 StubTechInterp_NC, world/+{name}region, region/+{name;nocreate=1}supplysector, supplysector/+{name}subsector, subsector/+{name}stub-technology, stub-technology/+{apply-to}interpolation-rule, stub-technology/+{from-year}interpolation-rule, stub-technology/+{to-year}interpolation-rule, interpolation-rule/+{name}interpolation-function, scenario, scenario/world
 
+StubTechInterpTo, world/+{name}region, region/+{name}supplysector, supplysector/+{name}subsector, subsector/+{name}stub-technology, stub-technology/+{apply-to}interpolation-rule, stub-technology/+{from-year}interpolation-rule, stub-technology/+{to-year}interpolation-rule, interpolation-rule/+to-value, interpolation-rule/+{name}interpolation-function, scenario, scenario/world
+
 StubTechProd, world/+{name}region, region/+{name}supplysector, supplysector/+{name}subsector, subsector/+{name}stub-technology, stub-technology/+{year}period, CalDataOutput/+calOutputValue, subsector/+{year}share-weight, subsector/+share-weight, period/+share-weight, period/CalDataOutput, scenario, scenario/world
+
+StubTechCal, world/+{name}region, region/+{name}supplysector, supplysector/+{name}subsector, subsector/+{name}stub-technology, stub-technology/+{year}period, CalDataOutput/+calOutputValue, period/CalDataOutput, scenario, scenario/world
 
 StubTechCalInput, world/+{name}region, region/+{name}supplysector, supplysector/+{name}subsector, subsector/+{name}stub-technology, stub-technology/+{year}period, period/+{name}minicam-energy-input, minicam-energy-input/+calibrated-value, subsector/+{year}share-weight, subsector/+share-weight, period/+share-weight, scenario, scenario/world
 
@@ -479,6 +486,8 @@ StubTechSCurve, world/+{name}region, region/+{name}supplysector, supplysector/+{
 StubTechLifetime, world/+{name}region, region/+{name}supplysector, supplysector/+{name}subsector, subsector/+{name}stub-technology, stub-technology/+{year}period, period/+lifetime, scenario, scenario/world
 
 StubTechProfitShutdown, world/+{name}region, region/+{name}supplysector, supplysector/+{name}subsector, subsector/+{name}stub-technology, stub-technology/+{year}period, profit-shutdown-decider/+median-shutdown-point, profit-shutdown-decider/+steepness, scenario, scenario/world, period/{name=profit}profit-shutdown-decider
+
+RegionalTechMineralCurCoef, world/+{name}region, region/+{name}supplysector, supplysector/+{name}subsector, subsector/+{name}stub-technology, stub-technology/+{year}period, period/+{name}minicam-energy-input, minicam-energy-input/+coefficient, minicam-energy-input/+{year}current-coef, minicam-energy-input/+current-coef, scenario, scenario/world
 
 #####, STUB TRANSPORTATION TECHNOLOGY
 

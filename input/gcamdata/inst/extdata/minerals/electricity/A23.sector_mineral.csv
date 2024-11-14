@@ -1,0 +1,15 @@
+# File: A23.sector_mineral.csv
+# Title: Electricity sector - mineral supplysector characteristics
+# Units: Unitless
+# Source: GCAM assumptions
+# Electricity reserve margin: required excess capacity for purposes of grid reliability
+# Average grid capacity factor: exogenous assumption allowing conversion between explicitly modeled generation and capacity
+# Column types: ccccinnc
+# ----------
+supplysector,output.unit,input.unit,price.unit,logit.exponent,electricity.reserve.margin,average.grid.capacity.factor,logit.type
+pv_mineral,EJ,EJ,1975$/GJ,-3,0.15,0.6,
+pv_storage_mineral,EJ,EJ,1975$/GJ,-3,0.15,0.6,
+rooftop_pv_mineral,EJ,EJ,1975$/GJ,-3,0.15,0.6,
+wind_mineral,EJ,EJ,1975$/GJ,-3,0.15,0.6,
+wind_offshore_mineral,EJ,EJ,1975$/GJ,-3,0.15,0.6,
+wind_storage_mineral,EJ,EJ,1975$/GJ,-3,0.15,0.6,

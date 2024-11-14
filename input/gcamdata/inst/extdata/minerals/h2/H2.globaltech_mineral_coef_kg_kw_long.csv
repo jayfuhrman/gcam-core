@@ -1,0 +1,91 @@
+# File: H2.globaltech_mineral_coef_kg_kw_long.csv
+# Title: Hydrogen sector technology mineral use intensity
+# Units: kg/kW for different technologies
+# Description: this dataset defines the mineral use intensity for different hydrogen production technologies
+# Comment:
+# Column types: cccccnnnn
+# ----------
+supplysector,subsector,technology,minicam.non.energy.input,minicam.energy.input,1975,2015,2050,2100
+H2 central production,biomass,biomass to H2,non-energy,steel,33.4,33.4,33.4,33.4
+H2 central production,biomass,biomass to H2 CCS,non-energy,steel,43.1,43.1,43.1,43.1
+H2 central production,coal,coal chemical,non-energy,steel,84.6,84.6,84.6,84.6
+H2 central production,coal,coal chemical CCS,non-energy,steel,109.2,109.2,109.2,109.2
+H2 central production,electricity,electrolysis,non-energy,steel,0.098942,0.098942,0.098942,0.098942
+H2 central production,solar,electrolysis,electrolyzer,steel,0.098942,0.098942,0.098942,0.098942
+H2 central production,solar,electrolysis,solar panels,steel,78,78,78,78
+H2 central production,wind,electrolysis,electrolyzer,steel,0.098942,0.098942,0.098942,0.098942
+H2 central production,wind,electrolysis,wind turbines,steel,131,131,131,131
+H2 central production,gas,natural gas steam reforming,non-energy,steel,29,29,29,29
+H2 central production,gas,gas ATR CCS,non-energy,steel,44.37,44.37,44.37,44.37
+H2 central production,nuclear,electrolysis,electrolyzer,steel,0.098942,0.098942,0.098942,0.098942
+H2 central production,nuclear,electrolysis,nuclear electricity generation,steel,43,43,43,43
+H2 industrial,onsite production,electrolysis,non-energy,steel,0.098942,0.098942,0.098942,0.098942
+H2 wholesale dispensing,forecourt production,electrolysis,production,steel,0.098942,0.098942,0.098942,0.098942
+H2 wholesale dispensing,forecourt production,natural gas steam reforming,production,steel,29,29,29,29
+H2 central production,biomass,biomass to H2,non-energy,aluminium,0.0729,0.0729,0.0729,0.0729
+H2 central production,biomass,biomass to H2 CCS,non-energy,aluminium,0.0729,0.0729,0.0729,0.0729
+H2 central production,coal,coal chemical,non-energy,aluminium,0.0729,0.0729,0.0729,0.0729
+H2 central production,coal,coal chemical CCS,non-energy,aluminium,0.0729,0.0729,0.0729,0.0729
+H2 central production,electricity,electrolysis,non-energy,aluminium,0.045,0.045,0.045,0.045
+H2 central production,solar,electrolysis,electrolyzer,aluminium,0.045,0.045,0.045,0.045
+H2 central production,solar,electrolysis,solar panels,aluminium,19,19,19,19
+H2 central production,wind,electrolysis,electrolyzer,aluminium,0.045,0.045,0.045,0.045
+H2 central production,wind,electrolysis,wind turbines,aluminium,1.4,1.4,1.4,1.4
+H2 central production,gas,natural gas steam reforming,non-energy,aluminium,0.0729,0.0729,0.0729,0.0729
+H2 central production,gas,gas ATR CCS,non-energy,aluminium,0.0729,0.0729,0.0729,0.0729
+H2 central production,nuclear,electrolysis,electrolyzer,aluminium,0.045,0.045,0.045,0.045
+H2 central production,nuclear,electrolysis,nuclear electricity generation,aluminium,0.08,0.08,0.08,0.08
+H2 industrial,onsite production,electrolysis,non-energy,aluminium,0.045,0.045,0.045,0.045
+H2 wholesale dispensing,forecourt production,electrolysis,production,aluminium,0.045,0.045,0.045,0.045
+H2 wholesale dispensing,forecourt production,natural gas steam reforming,production,aluminium,0.0729,0.0729,0.0729,0.0729
+H2 central production,solar,electrolysis,solar panels,silicon,2.93,2.93,2.93,2.93
+H2 central production,biomass,biomass to H2,non-energy,copper,0.76,0.76,0.76,0.76
+H2 central production,biomass,biomass to H2 CCS,non-energy,copper,1.45,1.45,1.45,1.45
+H2 central production,coal,coal chemical,non-energy,copper,1.15,1.15,1.15,1.15
+H2 central production,coal,coal chemical CCS,non-energy,copper,1.63,1.63,1.63,1.63
+H2 central production,electricity,electrolysis,non-energy,copper,0.014205,0.014205,0.014205,0.014205
+H2 central production,solar,electrolysis,electrolyzer,copper,0.014205,0.014205,0.014205,0.014205
+H2 central production,solar,electrolysis,solar panels,copper,4.9,4.9,4.9,4.9
+H2 central production,wind,electrolysis,electrolyzer,copper,0.014205,0.014205,0.014205,0.014205
+H2 central production,wind,electrolysis,wind turbines,copper,2.7,2.7,2.7,2.7
+H2 central production,gas,natural gas steam reforming,non-energy,copper,1.05,1.05,1.05,1.05
+H2 central production,gas,gas ATR CCS,non-energy,copper,1.26,1.26,1.26,1.26
+H2 central production,nuclear,electrolysis,electrolyzer,copper,0.014205,0.014205,0.014205,0.014205
+H2 central production,nuclear,electrolysis,nuclear electricity generation,copper,0.76,0.76,0.76,0.76
+H2 industrial,onsite production,electrolysis,non-energy,copper,0.014205,0.014205,0.014205,0.014205
+H2 wholesale dispensing,forecourt production,electrolysis,production,copper,0.014205,0.014205,0.014205,0.014205
+H2 wholesale dispensing,forecourt production,natural gas steam reforming,production,copper,1.05,1.05,1.05,1.05
+H2 central production,biomass,biomass to H2,non-energy,cobalt,0.067,0.067,0.067,0.067
+H2 central production,biomass,biomass to H2 CCS,non-energy,cobalt,0.075,0.075,0.075,0.075
+H2 central production,coal,coal chemical,non-energy,cobalt,0.115,0.115,0.115,0.115
+H2 central production,coal,coal chemical CCS,non-energy,cobalt,0.12,0.12,0.12,0.12
+H2 central production,gas,natural gas steam reforming,non-energy,cobalt,0.02,0.02,0.02,0.02
+H2 central production,gas,gas ATR CCS,non-energy,cobalt,0.03,0.03,0.03,0.03
+H2 central production,nuclear,electrolysis,nuclear electricity generation,cobalt,0.00012,0.00012,0.00012,0.00012
+H2 wholesale dispensing,forecourt production,natural gas steam reforming,production,cobalt,0.02,0.02,0.02,0.02
+H2 central production,biomass,biomass to H2,non-energy,nickel,0.00022,0.00022,0.00022,0.00022
+H2 central production,biomass,biomass to H2 CCS,non-energy,nickel,0.00022,0.00022,0.00022,0.00022
+H2 central production,coal,coal chemical,non-energy,nickel,0.00022,0.00022,0.00022,0.00022
+H2 central production,coal,coal chemical CCS,non-energy,nickel,0.00022,0.00022,0.00022,0.00022
+H2 central production,solar,electrolysis,solar panels,nickel,0.001,0.001,0.001,0.001
+H2 central production,wind,electrolysis,wind turbines,nickel,0.43,0.43,0.43,0.43
+H2 central production,gas,natural gas steam reforming,non-energy,nickel,0.0342,0.0342,0.0342,0.0342
+H2 central production,gas,gas ATR CCS,non-energy,nickel,0.0342,0.0342,0.0342,0.0342
+H2 central production,nuclear,electrolysis,electrolyzer,nickel,0.2,0.2,0.2,0.2
+H2 central production,nuclear,electrolysis,nuclear electricity generation,nickel,0.2,0.2,0.2,0.2
+H2 wholesale dispensing,forecourt production,natural gas steam reforming,production,nickel,0.0342,0.0342,0.0342,0.0342
+H2 central production,biomass,biomass to H2,non-energy,manganese,0.145,0.145,0.145,0.145
+H2 central production,biomass,biomass to H2 CCS,non-energy,manganese,0.145,0.145,0.145,0.145
+H2 central production,coal,coal chemical,non-energy,manganese,0.145,0.145,0.145,0.145
+H2 central production,coal,coal chemical CCS,non-energy,manganese,0.145,0.145,0.145,0.145
+H2 central production,wind,electrolysis,wind turbines,manganese,0.78,0.78,0.78,0.78
+H2 central production,gas,natural gas steam reforming,non-energy,manganese,0.145,0.145,0.145,0.145
+H2 central production,gas,gas ATR CCS,non-energy,manganese,0.145,0.145,0.145,0.145
+H2 central production,nuclear,electrolysis,nuclear electricity generation,manganese,0.343,0.343,0.343,0.343
+H2 wholesale dispensing,forecourt production,natural gas steam reforming,production,manganese,0.145,0.145,0.145,0.145
+H2 central production,wind,electrolysis,wind turbines,neodymium,0.012,0.012,0.012,0.012
+H2 central production,electricity,electrolysis,non-energy,platinum,0.0003,0.0003,0.0003,0.0003
+H2 central production,solar,electrolysis,electrolyzer,platinum,0.0003,0.0003,0.0003,0.0003
+H2 central production,wind,electrolysis,electrolyzer,platinum,0.0003,0.0003,0.0003,0.0003
+H2 central production,nuclear,electrolysis,electrolyzer,platinum,0.0003,0.0003,0.0003,0.0003
+H2 industrial,onsite production,electrolysis,non-energy,platinum,0.0003,0.0003,0.0003,0.0003

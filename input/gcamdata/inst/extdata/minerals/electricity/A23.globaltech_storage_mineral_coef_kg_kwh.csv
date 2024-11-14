@@ -1,0 +1,40 @@
+# File: A23.globaltech_storage_mineral_coef_kg_kwh.csv
+# Title: Electricity sector technology with storage mineral use intensity
+# Units: kg/kWh storage capacity for different technologies
+# Description: this dataset defines the mineral use intensity for different different battery storage technologies
+# Comment:
+# Column types: cccnnnnnnnn
+# ----------
+supplysector,subsector,technology,steel,aluminium,silicon,copper,graphite,lithium,cobalt,nickel,manganese,neodymium,tellurium,vanadium
+pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (c-Si) (LFP),1.180,0.420,,0.420,1.090,0.100,,,,,,
+pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (CdTe) (LFP),1.180,0.420,,0.420,1.090,0.100,,,,,,
+pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (CIGS) (LFP),1.180,0.420,,0.420,1.090,0.100,,,,,,
+pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (a-Si) (LFP),1.180,0.420,,0.420,1.090,0.100,,,,,,
+pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (c-Si) (NMC532),1.160,0.200,,0.540,0.990,0.140,0.200,0.510,0.280,,,
+pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (CdTe) (NMC532),1.160,0.200,,0.540,0.990,0.140,0.200,0.510,0.280,,,
+pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (CIGS) (NMC532),1.160,0.200,,0.540,0.990,0.140,0.200,0.510,0.280,,,
+pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (a-Si) (NMC532),1.160,0.200,,0.540,0.990,0.140,0.200,0.510,0.280,,,
+pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (c-Si) (NMC811),1.160,0.200,,0.540,0.970,0.120,0.100,0.780,0.090,,,
+pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (CdTe) (NMC811),1.160,0.200,,0.540,0.970,0.120,0.100,0.780,0.090,,,
+pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (CIGS) (NMC811),1.160,0.200,,0.540,0.970,0.120,0.100,0.780,0.090,,,
+pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (a-Si) (NMC811),1.160,0.200,,0.540,0.970,0.120,0.100,0.780,0.090,,,
+pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (c-Si) (VRFB),3.310,1.180,,0.250,,,,,,,,3.140
+pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (CdTe) (VRFB),3.310,1.180,,0.250,,,,,,,,3.140
+pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (CIGS) (VRFB),3.310,1.180,,0.250,,,,,,,,3.140
+pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (a-Si) (VRFB),3.310,1.180,,0.250,,,,,,,,3.140
+wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (DD-EESG) (LFP),1.180,0.420,,0.420,1.090,0.100,,,,,,
+wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (DD-PMSG) (LFP),1.180,0.420,,0.420,1.090,0.100,,,,,,
+wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (GB-PMSG) (LFP),1.180,0.420,,0.420,1.090,0.100,,,,,,
+wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (GB-DFIG) (LFP),1.180,0.420,,0.420,1.090,0.100,,,,,,
+wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (DD-EESG) (NMC532),1.160,0.200,,0.540,0.990,0.140,0.200,0.510,0.280,,,
+wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (DD-PMSG) (NMC532),1.160,0.200,,0.540,0.990,0.140,0.200,0.510,0.280,,,
+wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (GB-PMSG) (NMC532),1.160,0.200,,0.540,0.990,0.140,0.200,0.510,0.280,,,
+wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (GB-DFIG) (NMC532),1.160,0.200,,0.540,0.990,0.140,0.200,0.510,0.280,,,
+wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (DD-EESG) (NMC811),1.160,0.200,,0.540,0.970,0.120,0.100,0.780,0.090,,,
+wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (DD-PMSG) (NMC811),1.160,0.200,,0.540,0.970,0.120,0.100,0.780,0.090,,,
+wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (GB-PMSG) (NMC811),1.160,0.200,,0.540,0.970,0.120,0.100,0.780,0.090,,,
+wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (GB-DFIG) (NMC811),1.160,0.200,,0.540,0.970,0.120,0.100,0.780,0.090,,,
+wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (DD-EESG) (VRFB),3.310,1.180,,0.250,,,,,,,,3.140
+wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (DD-PMSG) (VRFB),3.310,1.180,,0.250,,,,,,,,3.140
+wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (GB-PMSG) (VRFB),3.310,1.180,,0.250,,,,,,,,3.140
+wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (GB-DFIG) (VRFB),3.310,1.180,,0.250,,,,,,,,3.140

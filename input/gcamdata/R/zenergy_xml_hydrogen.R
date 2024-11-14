@@ -28,7 +28,11 @@ module_energy_hydrogen_xml <- function(command, ...) {
               "L225.GlobalTechInputPMult_h2",
               "L225.GlobalTechProfitShutdown_h2",
               "L225.GlobalTechSCurve_h2",
-              "L225.OutputEmissCoeff_h2"))
+              "L225.OutputEmissCoeff_h2",
+              "L2251.StubTechMineralCoef",
+              "L2251.GlobalTechMineralCoef",
+              "L2251.GlobalTechCost_h2",
+              "L2251.StubTechCost_h2"))
   } else if(command == driver.DECLARE_OUTPUTS) {
     return(c(XML = "hydrogen.xml"))
   } else if(command == driver.MAKE) {
@@ -53,6 +57,11 @@ module_energy_hydrogen_xml <- function(command, ...) {
     L225.GlobalTechSCurve_h2 <- get_data(all_data, "L225.GlobalTechSCurve_h2")
     L225.StubTechCost_h2 <- get_data(all_data, "L225.StubTechCost_h2")
     L225.OutputEmissCoeff_h2 <- get_data(all_data, "L225.OutputEmissCoeff_h2")
+
+    L2251.StubTechMineralCoef <- get_data(all_data, "L2251.StubTechMineralCoef")
+    L2251.GlobalTechMineralCoef <- get_data(all_data, "L2251.GlobalTechMineralCoef")
+    L2251.GlobalTechCost_h2 <- get_data(all_data, "L2251.GlobalTechCost_h2")
+    L2251.StubTechCost_h2 <- get_data(all_data, "L2251.StubTechCost_h2")
     # ===================================================
 
     # Produce outputs
@@ -64,12 +73,14 @@ module_energy_hydrogen_xml <- function(command, ...) {
     hydrogen.xml <- hydrogen.xml %>%
       add_xml_data(L225.SubsectorShrwtFllt_h2, "SubsectorShrwtFllt") %>%
       add_xml_data(L225.StubTech_h2, "StubTech") %>%
-      add_xml_data(L225.StubTechCost_h2, "StubTechCost") %>%
+      #add_xml_data(L225.StubTechCost_h2, "StubTechCost") %>%
+      add_xml_data(L2251.StubTechCost_h2, "StubTechCost") %>%
       add_xml_data(L225.GlobalTechCoef_h2, "GlobalTechCoef") %>%
       # set non-energy inputs to be read as tracking
       add_node_equiv_xml("input") %>%
       add_xml_data(L225.GlobalTechTrackCapital_h2, "GlobalTechTrackCapital") %>%
-      add_xml_data(L225.GlobalTechCost_h2, "GlobalTechCost") %>%
+      #add_xml_data(L225.GlobalTechCost_h2, "GlobalTechCost") %>%
+      add_xml_data(L2251.GlobalTechCost_h2, "GlobalTechCost") %>%
       add_xml_data(L225.GlobalTechShrwt_h2, "GlobalTechShrwt") %>%
       add_xml_data(L225.PrimaryRenewKeyword_h2, "PrimaryRenewKeyword") %>%
       add_xml_data(L225.AvgFossilEffKeyword_h2, "AvgFossilEffKeyword") %>%
@@ -78,6 +89,8 @@ module_energy_hydrogen_xml <- function(command, ...) {
       add_xml_data(L225.GlobalTechSCurve_h2, "GlobalTechSCurve") %>%
       add_xml_data(L225.GlobalTechProfitShutdown_h2, "GlobalTechProfitShutdown") %>%
       add_xml_data(L225.OutputEmissCoeff_h2, "OutputEmissCoeff") %>%
+      add_xml_data(L2251.StubTechMineralCoef, "RegionalTechMineralCurCoef") %>%
+      add_xml_data(L2251.GlobalTechMineralCoef, "GlobalTechMineralCurCoef") %>%
       add_precursors("L225.Supplysector_h2",
                      "L225.SectorUseTrialMarket_h2",
                      "L225.SubsectorLogit_h2",
@@ -94,7 +107,11 @@ module_energy_hydrogen_xml <- function(command, ...) {
                      "L225.GlobalTechInputPMult_h2",
                      "L225.GlobalTechSCurve_h2",
                      "L225.GlobalTechProfitShutdown_h2",
-                     "L225.OutputEmissCoeff_h2") ->
+                     "L225.OutputEmissCoeff_h2",
+                     "L2251.StubTechMineralCoef",
+                     "L2251.GlobalTechMineralCoef",
+                     "L2251.GlobalTechCost_h2",
+                     "L2251.StubTechCost_h2") ->
       hydrogen.xml
 
     return_data(hydrogen.xml)
