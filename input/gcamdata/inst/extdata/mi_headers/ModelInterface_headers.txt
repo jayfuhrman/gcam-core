@@ -363,6 +363,8 @@ DeleteGlobalTech, global-technology-database/+{sector-name}location-info, global
 
 GlobalTechMineralCurCoef, global-technology-database/+{sector-name}location-info, global-technology-database/+{subsector-name}location-info, location-info/+{name}technology, technology/+{year}period, period/+{name}minicam-energy-input, minicam-energy-input/+coefficient, minicam-energy-input/+{year}current-coef, minicam-energy-input/+current-coef, scenario, scenario/world, world/global-technology-database
 
+GlobalTechMineralCurCoefPower, global-technology-database/+{sector-name}location-info, global-technology-database/+{subsector-name}location-info, location-info/+{name}technology, technology/+{year}period, period/+{name}minicam-energy-input, minicam-energy-input/+{year}current-coef, minicam-energy-input/+current-coef, scenario, scenario/world, world/global-technology-database
+
 #####, GLOBAL INTERMITTENT TECHNOLOGY
 
 
@@ -488,6 +490,8 @@ StubTechLifetime, world/+{name}region, region/+{name}supplysector, supplysector/
 StubTechProfitShutdown, world/+{name}region, region/+{name}supplysector, supplysector/+{name}subsector, subsector/+{name}stub-technology, stub-technology/+{year}period, profit-shutdown-decider/+median-shutdown-point, profit-shutdown-decider/+steepness, scenario, scenario/world, period/{name=profit}profit-shutdown-decider
 
 RegionalTechMineralCurCoef, world/+{name}region, region/+{name}supplysector, supplysector/+{name}subsector, subsector/+{name}stub-technology, stub-technology/+{year}period, period/+{name}minicam-energy-input, minicam-energy-input/+coefficient, minicam-energy-input/+{year}current-coef, minicam-energy-input/+current-coef, scenario, scenario/world
+
+RegionalTechMineralCurCoefPower, world/+{name}region, region/+{name}supplysector, supplysector/+{name}subsector, subsector/+{name}stub-technology, stub-technology/+{year}period, period/+{name}minicam-energy-input, minicam-energy-input/+{year}current-coef, minicam-energy-input/+current-coef, scenario, scenario/world
 
 #####, STUB TRANSPORTATION TECHNOLOGY
 

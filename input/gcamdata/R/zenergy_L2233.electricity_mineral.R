@@ -605,57 +605,78 @@ module_energy_L2233.electricity_mineral <- function(command, ...) {
                 value_reduction = sum(value_reduction, na.rm = TRUE)) %>%
       ungroup
 
+    #curr-coef being written for all years
     L2233.Regionaltech_mineral_coef_final <-
-      L2233.Regionaltech_mineral_coef_Mt_EJ_combine
-
-      # unique() %>%
-      # repeat_add_columns(tibble(model.year = MODEL_YEARS)) %>%
-      # left_join(L2233.Regionaltech_mineral_coef_Mt_EJ_combine,
-      #           by = c("region", "supplysector", "subsector", "technology", "minicam.energy.input", "year", "model.year")) %>%
-      # mutate(value_constance = if_else(is.na(value_constance), 0, value_constance),
-      #        value_reduction = if_else(is.na(value_reduction), 0, value_reduction))
+      L2233.Regionaltech_mineral_coef_Mt_EJ_combine %>%
+      select(region, supplysector, subsector, technology, minicam.energy.input, year) %>%
+      unique() %>%
+      repeat_add_columns(tibble(model.year = MODEL_YEARS)) %>%
+      left_join(L2233.Regionaltech_mineral_coef_Mt_EJ_combine,
+                by = c("region", "supplysector", "subsector", "technology", "minicam.energy.input", "year", "model.year")) %>%
+      mutate(value_constance = if_else(is.na(value_constance), 0, value_constance),
+             value_reduction = if_else(is.na(value_reduction), 0, value_reduction))
 
     L2233.Regionaltech_mineral_coef_constance_final <-
       L2233.Regionaltech_mineral_coef_final %>%
       select(region, supplysector, subsector, stub.technology = technology, year, minicam.energy.input, model.year, current.coef = value_constance) %>%
-      unique() %>%
-      # coefficient = 0 sets current.coef to 0 in all years except the model year.
-      mutate(coefficient = 0) %>%
-      select(LEVEL2_DATA_NAMES[["RegionalTechMineralCurCoef"]])# --OUTPUT-- unit based on Mt/EJ
+      unique() %>% # --OUTPUT-- unit based on Mt/EJ
+      select(LEVEL2_DATA_NAMES[["RegionalTechMineralCurCoefPower"]])# --OUTPUT-- unit based on Mt/EJ
 
     L2233.Regionaltech_mineral_coef_reduction_final <-
       L2233.Regionaltech_mineral_coef_final %>%
       select(region, supplysector, subsector, stub.technology = technology, year, minicam.energy.input, model.year, current.coef = value_reduction) %>%
       unique() %>%
-      # coefficient = 0 sets current.coef to 0 in all years except the model year.
-      mutate(coefficient = 0) %>%
-      select(LEVEL2_DATA_NAMES[["RegionalTechMineralCurCoef"]])# --OUTPUT-- unit based on Mt/EJ
+      select(LEVEL2_DATA_NAMES[["RegionalTechMineralCurCoefPower"]])# --OUTPUT-- unit based on Mt/EJ
 
+
+    #curr-coef being written for all years
     ## Mineral intensity data of technologies being included in the global database
     L2233.Globaltech_mineral_coef_final <-
-      L2233.globaltech_mineral_coef_Mt_EJ
-      # unique() %>%
-      # repeat_add_columns(tibble(model.year = MODEL_YEARS)) %>%
-      # left_join(L2233.globaltech_mineral_coef_Mt_EJ, by = c("supplysector", "subsector", "technology", "minicam.energy.input", "year", "model.year")) %>%
-      # mutate(value_constance = if_else(is.na(value_constance), 0, value_constance),
-      #        value_reduction = if_else(is.na(value_reduction), 0, value_reduction))
+      L2233.globaltech_mineral_coef_Mt_EJ %>%
+      select(supplysector, subsector, technology, minicam.energy.input, year) %>%
+      unique() %>%
+      repeat_add_columns(tibble(model.year = MODEL_YEARS)) %>%
+      left_join(L2233.globaltech_mineral_coef_Mt_EJ, by = c("supplysector", "subsector", "technology", "minicam.energy.input", "year", "model.year")) %>%
+      mutate(value_constance = if_else(is.na(value_constance), 0, value_constance),
+             value_reduction = if_else(is.na(value_reduction), 0, value_reduction))
 
     L2233.Globaltech_mineral_coef_constance_final <-
       L2233.Globaltech_mineral_coef_final %>%
       select(sector.name = supplysector, subsector.name = subsector, technology, year, minicam.energy.input, model.year, current.coef = value_constance) %>%
       unique() %>%
-      # coefficient = 0 sets current.coef to 0 in all years except the model year.
-      mutate(coefficient = 0) %>%
-      select(LEVEL2_DATA_NAMES[["GlobalTechMineralCurCoef"]])
+      select(LEVEL2_DATA_NAMES[["GlobalTechMineralCurCoefPower"]])
     # --OUTPUT-- unit based on Mt/EJ
 
     L2233.Globaltech_mineral_coef_reduction_final <-
       L2233.Globaltech_mineral_coef_final %>%
       select(sector.name = supplysector, subsector.name = subsector, technology, year, minicam.energy.input, model.year, current.coef = value_reduction) %>%
       unique() %>%
-      # coefficient = 0 sets current.coef to 0 in all years except the model year.
-      mutate(coefficient = 0) %>%
-      select(LEVEL2_DATA_NAMES[["GlobalTechMineralCurCoef"]])# --OUTPUT-- unit based on Mt/EJ
+      select(LEVEL2_DATA_NAMES[["GlobalTechMineralCurCoefPower"]])# --OUTPUT-- unit based on Mt/EJ
+
+
+
+    # #BY 11-14-2024: coefficient = 0 still having issues.
+    # ## Mineral intensity data of technologies being included in the global database
+    # L2233.Globaltech_mineral_coef_final <-
+    #   L2233.globaltech_mineral_coef_Mt_EJ
+    #
+    #
+    # L2233.Globaltech_mineral_coef_constance_final <-
+    #   L2233.Globaltech_mineral_coef_final %>%
+    #   select(sector.name = supplysector, subsector.name = subsector, technology, year, minicam.energy.input, model.year, current.coef = value_constance) %>%
+    #   unique() %>%
+    #   # coefficient = 0 sets current.coef to 0 in all years except the model year.
+    #   mutate(coefficient = 0) %>%
+    #   select(LEVEL2_DATA_NAMES[["GlobalTechMineralCurCoef"]])
+    # # --OUTPUT-- unit based on Mt/EJ
+    #
+    # L2233.Globaltech_mineral_coef_reduction_final <-
+    #   L2233.Globaltech_mineral_coef_final %>%
+    #   select(sector.name = supplysector, subsector.name = subsector, technology, year, minicam.energy.input, model.year, current.coef = value_reduction) %>%
+    #   unique() %>%
+    #   # coefficient = 0 sets current.coef to 0 in all years except the model year.
+    #   mutate(coefficient = 0) %>%
+    #   select(LEVEL2_DATA_NAMES[["GlobalTechMineralCurCoef"]])# --OUTPUT-- unit based on Mt/EJ
 
     # End of mineral intensity data processing
     #------------------------------------------------------------------------------------------------------------------
