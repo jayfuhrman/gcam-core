@@ -272,8 +272,8 @@ module_energy_L261.Cstorage <- function(command, ...) {
 
     Cstorage_curves_dynamic <- A61.Cstorage_curves_dynamic %>%
       repeat_add_columns(GCAM_region_names) %>%
-      rename(extractioncost = cost_2018USDtCO2) %>%
-      mutate(extractioncost = extractioncost * gdp_deflator(1990,2018) * emissions.CONV_C_CO2) %>%
+      rename(extractioncost = cost_2008USDtCO2) %>%
+      mutate(extractioncost = extractioncost * gdp_deflator(1990,2008) * emissions.CONV_C_CO2) %>%
       left_join_error_no_match(OG_fluid_extraction_volume,by = c('region'))
 
     USA_max_CCS_rate_NETL <- Cstorage_curves_dynamic %>%
