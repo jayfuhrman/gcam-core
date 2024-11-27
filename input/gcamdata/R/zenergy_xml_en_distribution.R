@@ -231,7 +231,7 @@ module_energy_en_distribution_xml <- function(command, ...) {
       add_xml_data(L2261.GlobalTechShrwt_elect_td, "GlobalTechShrwt") %>%
       add_xml_data(L226.StubTechCoef_electd, "StubTechCoef") %>%
       add_xml_data(L2261.StubTechCost_elect_td, "StubTechCost") %>%
-      add_xml_data(L2261.StubTechCoef_elect_td_mineral, "RegionalTechMineralCurCoef") %>%
+      add_xml_data(L2261.StubTechCoef_elect_td_mineral, "RegionalStubTechMineralCurCoef") %>%
       add_xml_data(L2261.StubTechLifetime_elect_td, "StubTechLifetime") %>%
       add_xml_data(L2261.StubTechSCurve_elect_td, "StubTechSCurve") %>%
       add_xml_data(L2261.StubTechProfitShutdown_elect_td, "StubTechProfitShutdown") %>%

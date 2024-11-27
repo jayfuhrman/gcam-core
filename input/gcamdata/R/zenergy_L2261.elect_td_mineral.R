@@ -83,7 +83,7 @@ module_energy_L2261.elect_td_mineral <- function(command, ...) {
       mutate(model.year = year,
              coefficient = 0,
              market.name = region) %>%
-      select(LEVEL2_DATA_NAMES[["RegionalTechMineralCurCoef"]])
+      select(LEVEL2_DATA_NAMES[["RegionalStubTechMineralCurCoef"]])
 
     #Vintage the T&D technologies
     L2261.StubTech_elect_td_vintage <- L2261.StubTechCost_elect_td %>%

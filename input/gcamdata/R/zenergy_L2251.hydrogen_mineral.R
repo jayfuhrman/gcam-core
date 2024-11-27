@@ -133,7 +133,7 @@ module_energy_L2251.hydrogen_mineral <- function(command, ...) {
       ungroup() %>%
       # coefficient = 0 sets current.coef to 0 in all years except the model year.
       mutate(coefficient = 0) %>%
-      select(LEVEL2_DATA_NAMES[["RegionalTechMineralCurCoef"]])
+      select(LEVEL2_DATA_NAMES[["RegionalStubTechMineralCurCoef"]])
 
     # Group 4: All other technologies including coal, gas, biomass, nuclear,
     # This group will be processed based on average capacity factor, and the output will be added to global database

@@ -162,6 +162,7 @@ generate_level2_data_names <- function() {
   level2_data_names[["ResReserveTechCoef"]] <- c("region", "resource", "reserve.subresource", "resource.reserve.technology", "year", "minicam.energy.input", "coefficient")
   level2_data_names[["ResTechAccountOutput"]] <- c("region", "resource", "subresource", "technology", "year", "output.accounting", "output.ratio")
   level2_data_names[["ResReserveTechInvestmentInput"]] <- c("region", "resource", "reserve.subresource", "resource.reserve.technology", "year", "minicam.non.energy.input", "capital.coef", "tracking.market")
+  level2_data_names[["RegionalTechMineralCurCoef"]] <- c(level2_data_names[["TechYr"]], "minicam.energy.input", "coefficient", "model.year", "current.coef")
 
   # Food Storage Techs
   level2_data_names[["FoodStorageTech"]] <- c("region", "supplysector", "subsector", "food.storage.technology")
@@ -286,8 +287,8 @@ generate_level2_data_names <- function() {
   level2_data_names[["StubTechProfitShutdown"]] <- c("region", "supplysector", "subsector", "stub.technology", "year", "median.shutdown.point", "profit.shutdown.steepness")
   level2_data_names[["DeleteStubTechMinicamEnergyInput"]] <- c(level2_data_names[["StubTechYr"]], "minicam.energy.input")
   level2_data_names[["StubTechEffFlag"]] <- c(level2_data_names[["StubTechYr"]], "minicam.energy.input", "efficiency", "market.name", "flag")
-  level2_data_names[["RegionalTechMineralCurCoef"]] <- c(level2_data_names[["StubTechYr"]], "minicam.energy.input", "coefficient", "model.year", "current.coef")
-  level2_data_names[["RegionalTechMineralCurCoefPower"]] <- c(level2_data_names[["StubTechYr"]], "minicam.energy.input", "model.year", "current.coef")
+  level2_data_names[["RegionalStubTechMineralCurCoef"]] <- c(level2_data_names[["StubTechYr"]], "minicam.energy.input", "coefficient", "model.year", "current.coef")
+  level2_data_names[["RegionalStubTechMineralCurCoefPower"]] <- c(level2_data_names[["StubTechYr"]], "minicam.energy.input", "model.year", "current.coef")
 
 
   # Agricultural sectors, subsectors, and technologies

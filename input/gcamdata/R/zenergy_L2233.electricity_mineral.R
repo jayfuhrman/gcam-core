@@ -620,13 +620,13 @@ module_energy_L2233.electricity_mineral <- function(command, ...) {
       L2233.Regionaltech_mineral_coef_final %>%
       select(region, supplysector, subsector, stub.technology = technology, year, minicam.energy.input, model.year, current.coef = value_constance) %>%
       unique() %>% # --OUTPUT-- unit based on Mt/EJ
-      select(LEVEL2_DATA_NAMES[["RegionalTechMineralCurCoefPower"]])# --OUTPUT-- unit based on Mt/EJ
+      select(LEVEL2_DATA_NAMES[["RegionalStubTechMineralCurCoefPower"]])# --OUTPUT-- unit based on Mt/EJ
 
     L2233.Regionaltech_mineral_coef_reduction_final <-
       L2233.Regionaltech_mineral_coef_final %>%
       select(region, supplysector, subsector, stub.technology = technology, year, minicam.energy.input, model.year, current.coef = value_reduction) %>%
       unique() %>%
-      select(LEVEL2_DATA_NAMES[["RegionalTechMineralCurCoefPower"]])# --OUTPUT-- unit based on Mt/EJ
+      select(LEVEL2_DATA_NAMES[["RegionalStubTechMineralCurCoefPower"]])# --OUTPUT-- unit based on Mt/EJ
 
 
     #curr-coef being written for all years
