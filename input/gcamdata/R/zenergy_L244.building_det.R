@@ -31,7 +31,10 @@
 #' \code{L244.GenericServiceCoef_SSP3}, \code{L244.GenericServiceCoef_SSP4}, \code{L244.GenericServiceCoef_SSP5},
 #'  \code{L244.ThermalCoalCoef}, \code{L244.GenericCoalCoef},\code{L244.ThermalTradBioCoef}, \code{L244.GenericTradBioCoef},
 #' \code{L244.GenericShares}, \code{L244.ThermalShares},\code{L244.GenericServicePrice}, \code{L244.ThermalServicePrice},
-#' \code{L244.GenericBaseDens}, \code{L244.ThermalBaseDens},
+#' \code{L244.GenericBaseDens}, \code{L244.ThermalBaseDens}, \code{L244.GenericBaseServiceFloorspace}, \code{L244.SupplysectorFloorspace},
+#' \code{L244.SubsectorLogitFloorspace}, \code{L244.SubsectorShrwtFloorspace}, \code{L244.SubsectorShrwtFlltFloorspace},
+#' \code{L244.SubsectorInterpFloorspace}, \code{L244.SubsectorInterpToFloorspace}, \code{L244.TechCalOutput_Floorspace},
+#' \code{L244.TechMaterialCoef_Floorspace}, \code{L244.TechLifetime_Floorspace}, \code{L244.TechSCurve_Floorspace}, \code{L244.TechProfitShutdown_Floorspace}
 #' The corresponding file in the original data system was \code{L244.building_det.R} (energy level2).
 #' @details Creates level2 data for the building sector.
 #' @importFrom assertthat assert_that
@@ -58,6 +61,13 @@ module_energy_L244.building_det <- function(command, ...) {
              FILE = "energy/A44.satiation_flsp_SSPs",
              FILE = "energy/A44.demand_satiation_mult",
              FILE = "energy/A44.demand_satiation_mult_SSPs",
+             FILE = "minerals/buildings/A44.bld_floorspace_shares_reg",
+             FILE = "minerals/buildings/A44.bld_floorspace_material_intensity_reg",
+             FILE = "minerals/buildings/A44.bld_mean_lifetime_vintage_reg",
+             FILE = "minerals/buildings/A44.floorspace_sector",
+             FILE = "minerals/buildings/A44.floorspace_subsector_interp",
+             FILE = "minerals/buildings/A44.floorspace_subsector_logit",
+             FILE = "minerals/buildings/A44.floorspace_subsector_shrwt",
              "L144.flsp_bm2_R_res_Yh",
              "L144.flsp_bm2_R_comm_Yh",
              "L144.base_service_EJ_serv",
@@ -167,7 +177,19 @@ module_energy_L244.building_det <- function(command, ...) {
              "L244.GenericServicePrice",
              "L244.ThermalServicePrice",
              "L244.GenericBaseDens",
-             "L244.ThermalBaseDens"))
+             "L244.ThermalBaseDens",
+             "L244.GenericBaseServiceFloorspace",
+             "L244.SupplysectorFloorspace",
+             "L244.SubsectorLogitFloorspace",
+             "L244.SubsectorShrwtFloorspace",
+             "L244.SubsectorShrwtFlltFloorspace",
+             "L244.SubsectorInterpFloorspace",
+             "L244.SubsectorInterpToFloorspace",
+             "L244.TechCalOutput_Floorspace",
+             "L244.TechMaterialCoef_Floorspace",
+             "L244.TechLifetime_Floorspace",
+             "L244.TechSCurve_Floorspace",
+             "L244.TechProfitShutdown_Floorspace"))
   } else if(command == driver.MAKE) {
 
     # Silence package checks
@@ -230,6 +252,15 @@ module_energy_L244.building_det <- function(command, ...) {
     income_shares<-get_data(all_data, "socioeconomics/income_shares")
     n_groups<-nrow(unique(get_data(all_data, "socioeconomics/income_shares") %>%
                             select(category)))
+
+    #minerals inputs
+    A44.bld_floorspace_shares_reg <- get_data(all_data, "minerals/buildings/A44.bld_floorspace_shares_reg")
+    A44.bld_floorspace_material_intensity_reg <- get_data(all_data, "minerals/buildings/A44.bld_floorspace_material_intensity_reg")
+    A44.bld_mean_lifetime_vintage_reg <- get_data(all_data, "minerals/buildings/A44.bld_mean_lifetime_vintage_reg")
+    A44.floorspace_sector <- get_data(all_data, "minerals/buildings/A44.floorspace_sector")
+    A44.floorspace_subsector_interp <- get_data(all_data, "minerals/buildings/A44.floorspace_subsector_interp")
+    A44.floorspace_subsector_logit <- get_data(all_data, "minerals/buildings/A44.floorspace_subsector_logit")
+    A44.floorspace_subsector_shrwt <- get_data(all_data, "minerals/buildings/A44.floorspace_subsector_shrwt")
 
     # Add a deflator for harmonizing GDPpc with prices
     def9075<-gdp_deflator(1990, 1975)
@@ -2644,6 +2675,7 @@ module_energy_L244.building_det <- function(command, ...) {
                   left_join_error_no_match(A44.gcam_consumer_comm %>% select(gcam.consumer,nodeInput,building.node.input), by = "gcam.consumer")) %>%
       select(LEVEL2_DATA_NAMES[["ThermalServicePrice"]])
 
+
     #------------------------------------------------------
     # Finally, calculate the base year service density
     # This density will be used in case it gets negative when adding the bias adder coefficient
@@ -2661,6 +2693,138 @@ module_energy_L244.building_det <- function(command, ...) {
       replace_na(list(base.density = 0)) %>%
       select(LEVEL2_DATA_NAMES[["ThermalBaseDens"]])
 
+    #------------------------------------------------------
+    # BY 11/26/2024
+    # FLOORSPACE SERVICE: for tracking material inputs -------------
+
+    # 1. GCAM-CONSUMER: adding a base-service
+    # base service will just be 1 (1 floorspace service per unit of floorspace)
+    L244.GenericBaseServiceFloorspace_resid <- L244.Floorspace %>%
+      filter(nodeInput == "resid") %>%
+      mutate(decile = gsub("resid_", "", gcam.consumer)) %>%
+      mutate(building.service.input = paste0(nodeInput, " floorspace_", decile),
+             base.service = 1) %>%
+      select(-decile)
+
+    L244.GenericBaseServiceFloorspace_comm <- L244.Floorspace %>%
+      filter(nodeInput == "comm") %>%
+      mutate(building.service.input = paste0(nodeInput, " floorspace"),
+             base.service = 1)
+
+    L244.GenericBaseServiceFloorspace <- bind_rows(L244.GenericBaseServiceFloorspace_resid,
+                                                   L244.GenericBaseServiceFloorspace_comm) %>%
+      select(-base.building.size)
+
+    #2.1: TECHNOLOGY information
+
+    # We need to calculate the floorspace for each building sub-type, and set it as a calOutputValue for each floorspace supplysector
+    # total floorspace by gcam.consumer (10 deciles in residential + 1 commercial) is set in L244.Floorspace
+    # multiply total floorspace by sub-type floorspace shares from A44.bld_floorspace_shares_reg
+    # Note we assume the same sub-type floorspace shares in each decile for now
+
+    L244.TechCalOutput_Floorspace <- A44.bld_floorspace_shares_reg %>%
+      rename(supplysector = sector) %>%
+      add.cg() %>%
+      mutate(technology = subsector) %>%
+      left_join_error_no_match(L244.GenericBaseServiceFloorspace, by = c("region", "year", "supplysector" = "building.service.input")) %>%
+      full_join(L244.Floorspace, by = c("region", "gcam.consumer", "nodeInput", "building.node.input", "year")) %>%
+      mutate(calOutputValue = round(base.building.size * flsp_share, energy.DIGITS_CALOUTPUT),
+           share.weight.year = year,
+           subs.share.weight = if_else(calOutputValue > 0, 1, 0),
+           tech.share.weight = subs.share.weight) %>%
+      select(LEVEL2_DATA_NAMES[["Production"]]) %>%
+      # remove technologies that are 0
+      filter(calOutputValue != 0)
+
+
+    # Set the material intensity for each technology
+    L244.TechMaterialCoef_Floorspace <- L244.TechCalOutput_Floorspace %>%
+      select(region, supplysector, subsector, technology, year) %>%
+      full_join(A44.bld_floorspace_material_intensity_reg, by = c("region", "subsector", "year")) %>%
+      select(-sector, -Units) %>%
+      # Note that the building material intensity units were specified in kg/m2 which is the same as Mt/bm2.
+      # Showing the conversion here for transparency.
+      mutate(value = value * CONV_KG_T * CONV_T_MT * CONV_BM2_M2,
+             model.year = year,
+             coefficient = 0) %>%
+      rename(minicam.energy.input = material,
+             current.coef = value) %>%
+      select(LEVEL2_DATA_NAMES[["RegionalTechMineralCurCoef"]])
+
+
+
+    # Set vintage assumptions
+    L244.TechLifetime_Floorspace <- A44.bld_mean_lifetime_vintage_reg %>%
+      rename(supplysector = sector) %>%
+      add.cg() %>%
+      right_join(L244.TechCalOutput_Floorspace %>% select(region, supplysector, subsector, technology, year), by = c("region", "supplysector")) %>%
+      select(LEVEL2_DATA_NAMES[["TechLifetime"]])
+
+    L244.TechSCurve_Floorspace <- A44.bld_mean_lifetime_vintage_reg %>%
+      rename(supplysector = sector) %>%
+      add.cg() %>%
+      right_join(L244.TechCalOutput_Floorspace %>% select(region, supplysector, subsector, technology, year), by = c("region", "supplysector")) %>%
+      select(LEVEL2_DATA_NAMES[["TechSCurve"]])
+
+    L244.TechProfitShutdown_Floorspace <- A44.bld_mean_lifetime_vintage_reg %>%
+      rename(supplysector = sector) %>%
+      add.cg() %>%
+      right_join(L244.TechCalOutput_Floorspace %>% select(region, supplysector, subsector, technology, year), by = c("region", "supplysector")) %>%
+      select(LEVEL2_DATA_NAMES[["TechProfitShutdown"]])
+
+    #2.2. SUPPLYSECTOR: adding new floorspace supplysectors/subsectors/technologies
+
+    #add consumer groups to input assumption files
+    A44.floorspace_sector <- add.cg(A44.floorspace_sector)
+    A44.floorspace_subsector_interp <- add.cg(A44.floorspace_subsector_interp)
+    A44.floorspace_subsector_logit <- add.cg(A44.floorspace_subsector_logit)
+    A44.floorspace_subsector_shrwt <- add.cg(A44.floorspace_subsector_shrwt)
+
+
+    # L244.SupplysectorFloorspace: Supplysector info for floorspace
+    L244.SupplysectorFloorspace <- write_to_all_regions(A44.floorspace_sector, c(LEVEL2_DATA_NAMES[["Supplysector"]], LOGIT_TYPE_COLNAME),
+                                                        GCAM_region_names = GCAM_region_names)
+
+    #2.3 SUBSECTOR information
+
+    # L244.SubsectorLogitFloorspace: Subsector logit exponents of floorspace
+    L244.SubsectorLogitFloorspace <- write_to_all_regions(A44.floorspace_subsector_logit, c(LEVEL2_DATA_NAMES[["SubsectorLogit"]], LOGIT_TYPE_COLNAME),
+                                                          GCAM_region_names = GCAM_region_names) %>%
+      # only keep the info for the subsectors that exist in TechCalOutput
+      semi_join(L244.TechCalOutput_Floorspace, by = c("region", "supplysector", "subsector"))
+
+
+    # L244.SubsectorShrwtFloorspace and L244.SubsectorShrwtFlltFloorspace: Subsector shareweights of floorspace
+    if(any(!is.na(A44.floorspace_subsector_shrwt$year))) {
+      L244.SubsectorShrwtFloorspace <- A44.floorspace_subsector_shrwt %>%
+        filter(!is.na(year)) %>%
+        write_to_all_regions(LEVEL2_DATA_NAMES[["SubsectorShrwt"]], GCAM_region_names = GCAM_region_names) %>%
+        # only keep the info for the subsectors that exist in TechCalOutput
+        semi_join(L244.TechCalOutput_Floorspace, by = c("region", "supplysector", "subsector"))
+    }
+    if(any(!is.na(A44.floorspace_subsector_shrwt$year.fillout))) {
+      L244.SubsectorShrwtFlltFloorspace <- A44.floorspace_subsector_shrwt %>%
+        filter(!is.na(year.fillout)) %>%
+        write_to_all_regions(LEVEL2_DATA_NAMES[["SubsectorShrwtFllt"]], GCAM_region_names = GCAM_region_names) %>%
+        # only keep the info for the subsectors that exist in TechCalOutput
+        semi_join(L244.TechCalOutput_Floorspace, by = c("region", "supplysector", "subsector"))
+    }
+
+    # L244.SubsectorInterpFloorspace and L244.SubsectorInterpToFloorspace: Subsector shareweight interpolation of floorspace
+    if(any(is.na(A44.floorspace_subsector_interp$to.value))) {
+      L244.SubsectorInterpFloorspace <- A44.floorspace_subsector_interp %>%
+        filter(is.na(to.value)) %>%
+        write_to_all_regions(LEVEL2_DATA_NAMES[["SubsectorInterp"]], GCAM_region_names = GCAM_region_names) %>%
+        # only keep the info for the subsectors that exist in TechCalOutput
+        semi_join(L244.TechCalOutput_Floorspace, by = c("region", "supplysector", "subsector"))
+    }
+    if(any(!is.na(A44.floorspace_subsector_interp$to.value))) {
+      L244.SubsectorInterpToFloorspace <- A44.floorspace_subsector_interp %>%
+        filter(!is.na(to.value)) %>%
+        write_to_all_regions(LEVEL2_DATA_NAMES[["SubsectorInterpTo"]], GCAM_region_names = GCAM_region_names) %>%
+        # only keep the info for the subsectors that exist in TechCalOutput
+        semi_join(L244.TechCalOutput_Floorspace, by = c("region", "supplysector", "subsector"))
+    }
 
     #===================================================
     # Produce outputs
@@ -3114,6 +3278,114 @@ module_energy_L244.building_det <- function(command, ...) {
       add_precursors("common/GCAM_region_names","L144.in_EJ_R_bld_serv_F_Yh","L144.flsp_bm2_R_res_Yh") ->
       L244.ThermalBaseDens
 
+    L244.GenericBaseServiceFloorspace %>%
+      add_title("Base service for floorspace service") %>%
+      add_units("none") %>%
+      add_comments("Base service of 1 (floorspace per unit floorspace)") %>%
+      same_precursors_as(L244.Floorspace) ->
+      L244.GenericBaseServiceFloorspace
+
+    L244.SupplysectorFloorspace %>%
+      add_title("Floorspace supplysector") %>%
+      add_units("none") %>%
+      add_comments("Floorspace supplysector for tracking material use") %>%
+      add_precursors("minerals/buildings/A44.floorspace_sector") ->
+      L244.SupplysectorFloorspace
+
+    L244.SubsectorLogitFloorspace %>%
+      add_title("Floorspace subsector logit") %>%
+      add_units("none") %>%
+      add_comments("Floorspace subsector for tracking material use") %>%
+      add_precursors("minerals/buildings/A44.floorspace_subsector_logit", "common/GCAM_region_names") ->
+      L244.SubsectorLogitFloorspace
+
+    if(exists("L244.SubsectorShrwtFloorspace")) {
+      L244.SubsectorShrwtFloorspace %>%
+        add_title("Subsector shareweights for floorspace") %>%
+        add_units("Unitless") %>%
+        add_comments("A44.floorspace_subsector_shrwt written to all regions") %>%
+        add_precursors("minerals/buildings/A44.floorspace_subsector_shrwt", "common/GCAM_region_names")  ->
+        L244.SubsectorShrwtFloorspace
+    } else {
+      missing_data()  ->
+        L244.SubsectorShrwtFloorspace
+    }
+
+    if(exists("L244.SubsectorShrwtFlltFloorspace")) {
+      L244.SubsectorShrwtFlltFloorspace %>%
+        add_title("Subsector shareweights for floorspace") %>%
+        add_units("Unitless") %>%
+        add_comments("A44.floorspace_subsector_shrwt written to all regions") %>%
+        add_precursors("minerals/buildings/A44.floorspace_subsector_shrwt", "common/GCAM_region_names")  ->
+        L244.SubsectorShrwtFlltFloorspace
+    } else {
+      missing_data() ->
+        L244.SubsectorShrwtFlltFloorspace
+    }
+
+    if(exists("L244.SubsectorInterpFloorspace")) {
+      L244.SubsectorInterpFloorspace %>%
+        add_title("Subsector shareweight interpolation for floorspace") %>%
+        add_units("NA") %>%
+        add_comments("A44.floorspace_subsector_interp written to all regions") %>%
+        add_precursors("minerals/buildings/A44.floorspace_subsector_interp", "common/GCAM_region_names")  ->
+        L244.SubsectorInterpFloorspace
+    } else {
+      missing_data() ->
+        L244.SubsectorInterpFloorspace
+    }
+
+    if(exists("L244.SubsectorInterpToFloorspace")) {
+      L244.SubsectorInterpToFloorspace %>%
+        add_title("Subsector shareweight interpolation for floorspace") %>%
+        add_units("NA") %>%
+        add_comments("A44.floorspace_subsector_interp written to all regions") %>%
+        add_precursors("minerals/buildings/A44.floorspace_subsector_interp", "common/GCAM_region_names")  ->
+        L244.SubsectorInterpToFloorspace
+    } else {
+      missing_data() ->
+        L244.SubsectorInterpToFloorspace
+    }
+
+    L244.TechCalOutput_Floorspace %>%
+      add_title("Floorspace technologies calibrated output") %>%
+      add_units("none") %>%
+      add_comments("Floorspace calibrated output (by building sub-type)") %>%
+      same_precursors_as(L244.Floorspace) %>%
+      add_precursors("minerals/buildings/A44.bld_floorspace_shares_reg") ->
+      L244.TechCalOutput_Floorspace
+
+    L244.TechMaterialCoef_Floorspace %>%
+      add_title("Floorspace technologies material coefficients") %>%
+      add_units("none") %>%
+      add_comments("Floorspace material coefficients (by building sub-type)") %>%
+      same_precursors_as(L244.TechCalOutput_Floorspace) %>%
+      add_precursors("minerals/buildings/A44.bld_floorspace_material_intensity_reg") ->
+      L244.TechMaterialCoef_Floorspace
+
+    L244.TechLifetime_Floorspace %>%
+      add_title("Floorspace technologies lifetime") %>%
+      add_units("none") %>%
+      add_comments("Floorspace technologies lifetime") %>%
+      same_precursors_as(L244.TechCalOutput_Floorspace) %>%
+      add_precursors("minerals/buildings/A44.bld_mean_lifetime_vintage_reg") ->
+      L244.TechLifetime_Floorspace
+
+    L244.TechSCurve_Floorspace %>%
+      add_title("Floorspace technologies s-curve parameters") %>%
+      add_units("none") %>%
+      add_comments("Floorspace technologies s-curve parameters") %>%
+      same_precursors_as(L244.TechCalOutput_Floorspace) %>%
+      add_precursors("minerals/buildings/A44.bld_mean_lifetime_vintage_reg") ->
+      L244.TechSCurve_Floorspace
+
+    L244.TechProfitShutdown_Floorspace %>%
+      add_title("Floorspace technologies profit shutdown parameters") %>%
+      add_units("none") %>%
+      add_comments("Floorspace technologies profit shutdown parameters") %>%
+      same_precursors_as(L244.TechCalOutput_Floorspace) %>%
+      add_precursors("minerals/buildings/A44.bld_mean_lifetime_vintage_reg") ->
+      L244.TechProfitShutdown_Floorspace
 
     return_data(L244.SubregionalShares, L244.SubregionalShares_SSP1,L244.SubregionalShares_SSP2,L244.SubregionalShares_SSP3,
                 L244.SubregionalShares_SSP4,L244.SubregionalShares_SSP5,
@@ -3143,7 +3415,11 @@ module_energy_L244.building_det <- function(command, ...) {
                 L244.GenericServiceCoef_SSP4,L244.GenericServiceCoef_SSP5,L244.ThermalServiceCoef,
                 L244.GenericCoalCoef,L244.ThermalCoalCoef,L244.GenericTradBioCoef,L244.ThermalTradBioCoef,
                 L244.GenericShares,L244.ThermalShares,L244.GenericServicePrice,L244.ThermalServicePrice,L244.GenericBaseDens,L244.ThermalBaseDens,
-    L244.GlobalTechTrackCapital_bld)
+    L244.GlobalTechTrackCapital_bld, L244.GenericBaseServiceFloorspace, L244.SupplysectorFloorspace,
+    L244.SubsectorLogitFloorspace, L244.SubsectorShrwtFloorspace, L244.SubsectorShrwtFlltFloorspace,
+    L244.SubsectorInterpFloorspace, L244.SubsectorInterpToFloorspace, L244.TechCalOutput_Floorspace,
+    L244.TechMaterialCoef_Floorspace, L244.TechLifetime_Floorspace, L244.TechSCurve_Floorspace, L244.TechProfitShutdown_Floorspace
+    )
 
   } else {
     stop("Unknown command")

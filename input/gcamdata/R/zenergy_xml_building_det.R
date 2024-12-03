@@ -57,7 +57,19 @@ module_energy_building_det_xml <- function(command, ...) {
              "L244.ThermalServicePrice",
              "L244.GenericBaseDens",
              "L244.ThermalBaseDens",
-             "L244.DeleteGenericService"))
+             "L244.DeleteGenericService",
+             "L244.GenericBaseServiceFloorspace",
+             "L244.SupplysectorFloorspace",
+             "L244.SubsectorLogitFloorspace",
+             "L244.SubsectorShrwtFloorspace",
+             "L244.SubsectorShrwtFlltFloorspace",
+             "L244.SubsectorInterpFloorspace",
+             "L244.SubsectorInterpToFloorspace",
+             "L244.TechCalOutput_Floorspace",
+             "L244.TechMaterialCoef_Floorspace",
+             "L244.TechLifetime_Floorspace",
+             "L244.TechSCurve_Floorspace",
+             "L244.TechProfitShutdown_Floorspace"))
   } else if(command == driver.DECLARE_OUTPUTS) {
     return(c(XML = "building_det.xml"))
   } else if(command == driver.MAKE) {
@@ -112,6 +124,19 @@ module_energy_building_det_xml <- function(command, ...) {
     L244.GenericBaseDens <- get_data(all_data, "L244.GenericBaseDens")
     L244.ThermalBaseDens <- get_data(all_data, "L244.ThermalBaseDens")
 
+    L244.GenericBaseServiceFloorspace <- get_data(all_data,"L244.GenericBaseServiceFloorspace")
+    L244.SupplysectorFloorspace <- get_data(all_data, "L244.SupplysectorFloorspace")
+    L244.SubsectorLogitFloorspace <- get_data(all_data, "L244.SubsectorLogitFloorspace")
+    L244.SubsectorShrwtFloorspace <- get_data(all_data, "L244.SubsectorShrwtFloorspace")
+    L244.SubsectorShrwtFlltFloorspace <- get_data(all_data, "L244.SubsectorShrwtFlltFloorspace")
+    L244.SubsectorInterpFloorspace <- get_data(all_data, "L244.SubsectorInterpFloorspace")
+    L244.SubsectorInterpToFloorspace <- get_data(all_data, "L244.SubsectorInterpToFloorspace")
+    L244.TechCalOutput_Floorspace <- get_data(all_data, "L244.TechCalOutput_Floorspace")
+    L244.TechMaterialCoef_Floorspace <- get_data(all_data, "L244.TechMaterialCoef_Floorspace")
+    L244.TechLifetime_Floorspace <- get_data(all_data, "L244.TechLifetime_Floorspace")
+    L244.TechSCurve_Floorspace <- get_data(all_data, "L244.TechSCurve_Floorspace")
+    L244.TechProfitShutdown_Floorspace <- get_data(all_data, "L244.TechProfitShutdown_Floorspace")
+
     # ===================================================
 
     # Produce outputs
@@ -157,6 +182,14 @@ module_energy_building_det_xml <- function(command, ...) {
       add_node_equiv_xml("input") %>%
       add_xml_data(L244.GlobalTechTrackCapital_bld, "GlobalTechTrackCapital") %>%
       add_xml_data(L244.GlobalTechCost_bld, "GlobalTechCost") %>%
+      add_xml_data(L244.GenericBaseServiceFloorspace, "GenericBaseService") %>%
+      add_logit_tables_xml(L244.SupplysectorFloorspace, "Supplysector") %>%
+      add_logit_tables_xml(L244.SubsectorLogitFloorspace, "SubsectorLogit") %>%
+      add_xml_data(L244.TechCalOutput_Floorspace, "Production") %>%
+      add_xml_data(L244.TechMaterialCoef_Floorspace, "RegionalTechMineralCurCoef") %>%
+      add_xml_data(L244.TechLifetime_Floorspace, "TechLifetime") %>%
+      add_xml_data(L244.TechSCurve_Floorspace, "TechSCurve") %>%
+      add_xml_data(L244.TechProfitShutdown_Floorspace, "TechProfitShutdown") %>%
       add_precursors("L244.SubsectorInterpTo_bld", "L244.SubsectorInterp_bld" , "L244.SubsectorShrwtFllt_bld",
                      "L244.SubsectorShrwt_bld", "L244.FinalEnergyKeyword_bld", "L244.Supplysector_bld",
                      "L244.ShellConductance_bld", "L244.Intgains_scalar", "L244.GenericServiceSatiation",
@@ -176,7 +209,19 @@ module_energy_building_det_xml <- function(command, ...) {
                      "L244.GenericServicePrice","L244.ThermalServicePrice",
                      "L244.GenericBaseDens", "L244.ThermalBaseDens",
                      "L244.GenericServiceCoef","L244.ThermalServiceCoef",
-                     "L244.GlobalTechTrackCapital_bld") ->   building_det.xml
+                     "L244.GlobalTechTrackCapital_bld",
+                     "L244.GenericBaseServiceFloorspace",
+                     "L244.SupplysectorFloorspace",
+                     "L244.SubsectorLogitFloorspace",
+                     "L244.SubsectorShrwtFloorspace",
+                     "L244.SubsectorShrwtFlltFloorspace",
+                     "L244.SubsectorInterpFloorspace",
+                     "L244.SubsectorInterpToFloorspace",
+                     "L244.TechCalOutput_Floorspace",
+                     "L244.TechMaterialCoef_Floorspace",
+                     "L244.TechLifetime_Floorspace",
+                     "L244.TechSCurve_Floorspace",
+                     "L244.TechProfitShutdown_Floorspace") ->   building_det.xml
 
     # Some data inputs may not actually contain data. If so, do not add_xml_data.
     if(nrow(L244.DeleteThermalService) > 0) {
@@ -208,6 +253,26 @@ module_energy_building_det_xml <- function(command, ...) {
     if(!is.null(L244.SubsectorInterpTo_bld)) {
       building_det.xml %>%
         add_xml_data(L244.SubsectorInterpTo_bld, "SubsectorInterp") ->
+        building_det.xml
+    }
+    if(!is.null(L244.SubsectorShrwtFloorspace)) {
+      building_det.xml %>%
+        add_xml_data(L244.SubsectorShrwtFloorspace, "SubsectorShrwt") ->
+        building_det.xml
+    }
+    if(!is.null(L244.SubsectorShrwtFlltFloorspace)) {
+      building_det.xml %>%
+        add_xml_data(L244.SubsectorShrwtFlltFloorspace, "SubsectorShrwtFllt") ->
+        building_det.xml
+    }
+    if(!is.null(L244.SubsectorInterpFloorspace)) {
+      building_det.xml %>%
+        add_xml_data(L244.SubsectorInterpFloorspace, "SubsectorInterp") ->
+        building_det.xml
+    }
+    if(!is.null(L244.SubsectorInterpToFloorspace)) {
+      building_det.xml %>%
+        add_xml_data(L244.SubsectorInterpToFloorspace, "SubsectorInterp") ->
         building_det.xml
     }
 

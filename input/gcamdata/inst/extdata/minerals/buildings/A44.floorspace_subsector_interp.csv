@@ -1,0 +1,18 @@
+# File: A44.floorspace_subsector_interp.csv
+# Title: Building sector default floorspace subsector information (shareweight and logit exponent)
+# Units: none
+# Column types: cccccic
+# ----------
+supplysector,subsector,apply.to,from.year,to.year,to.value,interpolation.function
+resid floorspace,apartments rural,share-weight,final-calibration-year,end-year,,fixed
+resid floorspace,apartments urban,share-weight,final-calibration-year,end-year,,fixed
+resid floorspace,detached rural,share-weight,final-calibration-year,end-year,,fixed
+resid floorspace,detached urban,share-weight,final-calibration-year,end-year,,fixed
+resid floorspace,high-rise rural,share-weight,final-calibration-year,end-year,,fixed
+resid floorspace,high-rise urban,share-weight,final-calibration-year,end-year,,fixed
+resid floorspace,semi-detached rural,share-weight,final-calibration-year,end-year,,fixed
+resid floorspace,semi-detached urban,share-weight,final-calibration-year,end-year,,fixed
+comm floorspace,govern commercial,share-weight,final-calibration-year,end-year,,fixed
+comm floorspace,hotels commercial,share-weight,final-calibration-year,end-year,,fixed
+comm floorspace,office commercial,share-weight,final-calibration-year,end-year,,fixed
+comm floorspace,retail commercial,share-weight,final-calibration-year,end-year,,fixed
