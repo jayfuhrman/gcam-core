@@ -30,7 +30,8 @@ module_energy_hydrogen_xml <- function(command, ...) {
               "L225.GlobalTechCapture_h2",
               "L225.GlobalTechInputPMult_h2",
               "L225.GlobalTechProfitShutdown_h2",
-              "L225.GlobalTechSCurve_h2"))
+              "L225.GlobalTechSCurve_h2",
+              "L225.OutputEmissCoeff_h2"))
   } else if(command == driver.DECLARE_OUTPUTS) {
     return(c(XML = "hydrogen.xml",
              XML = "hydrogen_no_gas_forecourt.xml"))
@@ -58,6 +59,7 @@ module_energy_hydrogen_xml <- function(command, ...) {
     L225.GlobalTechProfitShutdown_h2 <- get_data(all_data, "L225.GlobalTechProfitShutdown_h2")
     L225.GlobalTechSCurve_h2 <- get_data(all_data, "L225.GlobalTechSCurve_h2")
     L225.StubTechCost_h2 <- get_data(all_data, "L225.StubTechCost_h2")
+    L225.OutputEmissCoeff_h2 <- get_data(all_data, "L225.OutputEmissCoeff_h2")
     # ===================================================
 
     # Produce outputs
@@ -102,6 +104,7 @@ module_energy_hydrogen_xml <- function(command, ...) {
       add_xml_data(L225.GlobalTechInputPMult_h2, "GlobalTechInputPMult") %>%
       add_xml_data(L225.GlobalTechSCurve_h2, "GlobalTechSCurve") %>%
       add_xml_data(L225.GlobalTechProfitShutdown_h2, "GlobalTechProfitShutdown") %>%
+      add_xml_data(L225.OutputEmissCoeff_h2, "OutputEmissCoeff") %>%
       add_precursors("L225.Supplysector_h2",
                      "L225.SectorUseTrialMarket_h2",
                      "L225.SubsectorLogit_h2",
@@ -120,7 +123,8 @@ module_energy_hydrogen_xml <- function(command, ...) {
                      "L225.GlobalTechCapture_h2",
                      "L225.GlobalTechInputPMult_h2",
                      "L225.GlobalTechSCurve_h2",
-                     "L225.GlobalTechProfitShutdown_h2") ->
+                     "L225.GlobalTechProfitShutdown_h2",
+                     "L225.OutputEmissCoeff_h2") ->
       hydrogen.xml
 
     # Produce outputs

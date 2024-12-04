@@ -18,9 +18,9 @@ other industrial energy use,biomass,biomass,Combustion_Bio
 other industrial energy use,coal,coal,Combustion_general
 other industrial energy use,gas,gas,Combustion_general
 other industrial energy use,refined liquids,refined liquids,Combustion_general
-N fertilizer,coal,coal,Combustion_general
-N fertilizer,gas,gas,Combustion_general
-N fertilizer,refined liquids,refined liquids,Combustion_general
+ammonia,coal,coal,Combustion_general
+ammonia,gas,gas,Combustion_general
+ammonia,refined liquids,refined liquids,Combustion_general
 out_resources,coal,coal,Fugitive_coal
 out_resources,crude oil,crude oil,Fugitive_oil
 out_resources,natural gas,natural gas,Fugitive_gas
@@ -181,3 +181,8 @@ iron and steel,coal,EAF with DRI,Combustion_general
 iron and steel,gas,BLASTFUR,Combustion_general
 iron and steel,refined liquids,BLASTFUR,Combustion_general
 iron and steel,refined liquids,EAF with DRI,Combustion_general
+process heat paper,coal,coal,Combustion_general
+process heat paper,gas,gas,Combustion_general
+process heat paper,refined liquids,refined liquids,Combustion_general
+waste biomass for paper,biomass,biomass,Combustion_Bio
+waste biomass for paper,biomass,biomass cogen,Combustion_Bio
