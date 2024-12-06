@@ -1,0 +1,18 @@
+# File: A44.bld_materials_subsector_logit.csv
+# Title: Building materials sector default subsector information
+# Units: none
+# Column types: ccic
+# ----------
+supplysector,subsector,logit.exponent,logit.type
+resid materials,apartments rural,-6,
+resid materials,apartments urban,-6,
+resid materials,detached rural,-6,
+resid materials,detached urban,-6,
+resid materials,high-rise rural,-6,
+resid materials,high-rise urban,-6,
+resid materials,semi-detached rural,-6,
+resid materials,semi-detached urban,-6,
+comm materials,govern commercial,-6,
+comm materials,hotels commercial,-6,
+comm materials,office commercial,-6,
+comm materials,retail commercial,-6,

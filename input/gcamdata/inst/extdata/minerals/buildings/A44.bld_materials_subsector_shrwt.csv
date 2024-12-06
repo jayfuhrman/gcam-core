@@ -1,0 +1,18 @@
+# File: A44.bld_materials_subsector_shrwt.csv
+# Title: Building materials sector default subsector information
+# Units: none
+# Column types: cccin
+# ----------
+supplysector,subsector,year.fillout,year,share.weight
+resid materials,apartments rural,start-year,,1
+resid materials,apartments urban,start-year,,1
+resid materials,detached rural,start-year,,1
+resid materials,detached urban,start-year,,1
+resid materials,high-rise rural,start-year,,1
+resid materials,high-rise urban,start-year,,1
+resid materials,semi-detached rural,start-year,,1
+resid materials,semi-detached urban,start-year,,1
+comm materials,govern commercial,start-year,,1
+comm materials,hotels commercial,start-year,,1
+comm materials,office commercial,start-year,,1
+comm materials,retail commercial,start-year,,1

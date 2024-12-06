@@ -1,0 +1,18 @@
+# File: A44.bld_materials_subsector_interp.csv
+# Title: Building materials sector default subsector information (shareweight and logit exponent)
+# Units: none
+# Column types: cccccic
+# ----------
+supplysector,subsector,apply.to,from.year,to.year,to.value,interpolation.function
+resid materials,apartments rural,share-weight,final-calibration-year,end-year,,fixed
+resid materials,apartments urban,share-weight,final-calibration-year,end-year,,fixed
+resid materials,detached rural,share-weight,final-calibration-year,end-year,,fixed
+resid materials,detached urban,share-weight,final-calibration-year,end-year,,fixed
+resid materials,high-rise rural,share-weight,final-calibration-year,end-year,,fixed
+resid materials,high-rise urban,share-weight,final-calibration-year,end-year,,fixed
+resid materials,semi-detached rural,share-weight,final-calibration-year,end-year,,fixed
+resid materials,semi-detached urban,share-weight,final-calibration-year,end-year,,fixed
+comm materials,govern commercial,share-weight,final-calibration-year,end-year,,fixed
+comm materials,hotels commercial,share-weight,final-calibration-year,end-year,,fixed
+comm materials,office commercial,share-weight,final-calibration-year,end-year,,fixed
+comm materials,retail commercial,share-weight,final-calibration-year,end-year,,fixed
