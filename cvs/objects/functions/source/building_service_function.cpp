@@ -69,6 +69,7 @@ double BuildingServiceFunction::calcDemand( InputSet& input, double consumption,
 {
     const regex coalPattern("coal", regex::nosubs | regex::optimize | regex::egrep);
     const regex TradBioPattern("TradBio", regex::nosubs | regex::optimize | regex::egrep);
+    const regex materialsPattern("materials", regex::nosubs | regex::optimize | regex::egrep);
     
     const double CVRT90 = 2.212; // 1975 $ to 1990 $
     const BuildingNodeInput* buildingParentInput = static_cast<const BuildingNodeInput*>( aParentInput );
@@ -103,6 +104,10 @@ double BuildingServiceFunction::calcDemand( InputSet& input, double consumption,
                 demand = calcServiceTradBio(buildingServiceInput, income, basePrice, regionName, period);
 
 
+            }
+            else if (regex_search(buildingServiceInput->getName(), materialsPattern)){
+
+                demand = floorSpace;
             }
             else {
                 
@@ -268,4 +273,3 @@ double BuildingServiceFunction::calcServiceTradBio(BuildingServiceInput* aBuildi
     return demand;
 
 }
-
