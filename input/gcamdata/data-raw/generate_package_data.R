@@ -239,7 +239,7 @@ generate_level2_data_names <- function() {
   level2_data_names[["GlobalIntTechCost"]] <- c("sector.name", "subsector.name", "intermittent.technology", "year", "minicam.non.energy.input", "input.cost")
   level2_data_names[["DeleteGlobalTech"]] <- level2_data_names[["GlobalTech"]]
   level2_data_names[["GlobalTechMineralCurCoef"]] <- c(level2_data_names[["GlobalTechYr"]], "minicam.energy.input", "coefficient", "model.year", "current.coef")
-  level2_data_names[["GlobalTechMineralCurCoefPower"]] <- c(level2_data_names[["GlobalTechYr"]], "minicam.energy.input", "model.year", "current.coef")
+  level2_data_names[["GlobalTechMineralCurCoefAllYr"]] <- c(level2_data_names[["GlobalTechYr"]], "minicam.energy.input", "model.year", "current.coef")
 
 
   # Stub technologies
@@ -288,7 +288,7 @@ generate_level2_data_names <- function() {
   level2_data_names[["DeleteStubTechMinicamEnergyInput"]] <- c(level2_data_names[["StubTechYr"]], "minicam.energy.input")
   level2_data_names[["StubTechEffFlag"]] <- c(level2_data_names[["StubTechYr"]], "minicam.energy.input", "efficiency", "market.name", "flag")
   level2_data_names[["RegionalStubTechMineralCurCoef"]] <- c(level2_data_names[["StubTechYr"]], "minicam.energy.input", "coefficient", "model.year", "current.coef")
-  level2_data_names[["RegionalStubTechMineralCurCoefPower"]] <- c(level2_data_names[["StubTechYr"]], "minicam.energy.input", "model.year", "current.coef")
+  level2_data_names[["RegionalStubTechMineralCurCoefAllYr"]] <- c(level2_data_names[["StubTechYr"]], "minicam.energy.input", "model.year", "current.coef")
 
 
   # Agricultural sectors, subsectors, and technologies

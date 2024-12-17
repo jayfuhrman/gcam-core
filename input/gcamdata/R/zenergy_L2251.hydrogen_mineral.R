@@ -176,13 +176,22 @@ module_energy_L2251.hydrogen_mineral <- function(command, ...) {
 
     # --OUTPUT--
     # combined mineral coef (e.g. nuclear generation and electrolyzer mineral coefs combined for nuclear electrolysis technology)
-    L2251.GlobalTechMineralCoef <- L2251.Globaltech_mineral_coef_Mt_EJ %>%
+    L2251.GlobalTechMineralCoef_model_year <- L2251.Globaltech_mineral_coef_Mt_EJ %>%
       group_by(sector.name, subsector.name, technology, year, minicam.energy.input, model.year) %>%
       dplyr::summarise(current.coef = sum(current.coef)) %>%
       ungroup() %>%
-      # coefficient = 0 sets current.coef to 0 in all years except the model year.
-      mutate(coefficient = 0) %>%
-      select(LEVEL2_DATA_NAMES[["GlobalTechMineralCurCoef"]])
+      # BY 12-16-2024: coefficient = 0 is not working, revert to setting current-coef in all years for now.
+      # # coefficient = 0 sets current.coef to 0 in all years except the model year.
+      # mutate(coefficient = 0) %>%
+      select(LEVEL2_DATA_NAMES[["GlobalTechMineralCurCoefAllYr"]])
+
+    L2251.GlobalTechMineralCoef <- L2251.GlobalTechMineralCoef_model_year %>%
+      select(sector.name, subsector.name, technology, minicam.energy.input, year) %>%
+      unique() %>%
+      repeat_add_columns(tibble(model.year = MODEL_YEARS)) %>%
+      left_join(L2251.GlobalTechMineralCoef_model_year, by = c("sector.name", "subsector.name", "technology", "minicam.energy.input", "year", "model.year")) %>%
+      mutate(current.coef = if_else(is.na(current.coef), 0, current.coef)) %>%
+      select(LEVEL2_DATA_NAMES[["GlobalTechMineralCurCoefAllYr"]])
 
 
     #------------------------------------------------------------------------------------------------------------------

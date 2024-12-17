@@ -90,7 +90,7 @@ module_energy_hydrogen_xml <- function(command, ...) {
       add_xml_data(L225.GlobalTechProfitShutdown_h2, "GlobalTechProfitShutdown") %>%
       add_xml_data(L225.OutputEmissCoeff_h2, "OutputEmissCoeff") %>%
       add_xml_data(L2251.StubTechMineralCoef, "RegionalStubTechMineralCurCoef") %>%
-      add_xml_data(L2251.GlobalTechMineralCoef, "GlobalTechMineralCurCoef") %>%
+      add_xml_data(L2251.GlobalTechMineralCoef, "GlobalTechMineralCurCoefAllYr") %>%
       add_precursors("L225.Supplysector_h2",
                      "L225.SectorUseTrialMarket_h2",
                      "L225.SubsectorLogit_h2",

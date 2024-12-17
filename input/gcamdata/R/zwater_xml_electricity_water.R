@@ -227,8 +227,8 @@ module_water_electricity_water_xml <- function(command, ...) {
       add_xml_data(L2233.StubTechShrwt_mineral_pv_wind_future, "StubTechShrwt") %>%
       add_xml_data(L2233.StubTechInterpTo_mineral_pv_wind_tech, "StubTechInterpTo") %>%
       add_xml_data(L2233.StubTechCapFac_mineral_pv_wind, "StubTechCapFactor") %>%
-      add_xml_data(L2233.Regionaltech_mineral_coef_constance_final, "RegionalStubTechMineralCurCoefPower") %>%
-      add_xml_data(L2233.Globaltech_mineral_coef_constance_final, "GlobalTechMineralCurCoefPower") %>%
+      add_xml_data(L2233.Regionaltech_mineral_coef_constance_final, "RegionalStubTechMineralCurCoefAllYr") %>%
+      add_xml_data(L2233.Globaltech_mineral_coef_constance_final, "GlobalTechMineralCurCoefAllYr") %>%
       add_xml_data(L2233.GlobalTechCapital_elec_subtype, "GlobalTechCapital") %>%
       add_xml_data(L2233.GlobalIntTechMineral_elecSupplySector, "GlobalIntTechEffNoFlag") %>%
       add_xml_data(L2233.GlobalTechMineral_elecSupplySector, "GlobalTechEff") %>%
@@ -417,8 +417,8 @@ module_water_electricity_water_xml <- function(command, ...) {
       add_xml_data(L2233.StubTechShrwt_mineral_pv_wind_future, "StubTechShrwt") %>%
       add_xml_data(L2233.StubTechInterpTo_mineral_pv_wind_tech, "StubTechInterpTo") %>%
       add_xml_data(L2233.StubTechCapFac_mineral_pv_wind, "StubTechCapFactor") %>%
-      add_xml_data(L2233.Regionaltech_mineral_coef_reduction_final, "RegionalStubTechMineralCurCoefPower") %>%
-      add_xml_data(L2233.Globaltech_mineral_coef_reduction_final, "GlobalTechMineralCurCoefPower") %>%
+      add_xml_data(L2233.Regionaltech_mineral_coef_reduction_final, "RegionalStubTechMineralCurCoefAllYr") %>%
+      add_xml_data(L2233.Globaltech_mineral_coef_reduction_final, "GlobalTechMineralCurCoefAllYr") %>%
       add_xml_data(L2233.GlobalTechCapital_elec_subtype, "GlobalTechCapital") %>%
       add_xml_data(L2233.GlobalIntTechMineral_elecSupplySector, "GlobalIntTechEffNoFlag") %>%
       add_xml_data(L2233.GlobalTechMineral_elecSupplySector, "GlobalTechEff") %>%
