@@ -31,10 +31,7 @@
 #' \code{L244.GenericServiceCoef_SSP3}, \code{L244.GenericServiceCoef_SSP4}, \code{L244.GenericServiceCoef_SSP5},
 #'  \code{L244.ThermalCoalCoef}, \code{L244.GenericCoalCoef},\code{L244.ThermalTradBioCoef}, \code{L244.GenericTradBioCoef},
 #' \code{L244.GenericShares}, \code{L244.ThermalShares},\code{L244.GenericServicePrice}, \code{L244.ThermalServicePrice},
-#' \code{L244.GenericBaseDens}, \code{L244.ThermalBaseDens}, \code{L244.GenericBaseServiceMaterials}, \code{L244.SupplysectorMaterials},
-#' \code{L244.SubsectorLogitMaterials}, \code{L244.SubsectorShrwtMaterials}, \code{L244.SubsectorShrwtFlltMaterials},
-#' \code{L244.SubsectorInterpMaterials}, \code{L244.SubsectorInterpToMaterials}, \code{L244.TechCalOutputMaterials},
-#' \code{L244.TechCoefMaterials}, \code{L244.TechLifetimeMaterials}, \code{L244.TechSCurveMaterials}, \code{L244.TechProfitShutdownMaterials}
+#' \code{L244.GenericBaseDens}, \code{L244.ThermalBaseDens},\code{L244.gcam_consumer}
 #' The corresponding file in the original data system was \code{L244.building_det.R} (energy level2).
 #' @details Creates level2 data for the building sector.
 #' @importFrom assertthat assert_that
@@ -61,13 +58,6 @@ module_energy_L244.building_det <- function(command, ...) {
              FILE = "energy/A44.satiation_flsp_SSPs",
              FILE = "energy/A44.demand_satiation_mult",
              FILE = "energy/A44.demand_satiation_mult_SSPs",
-             FILE = "minerals/buildings/A44.bld_materials_subsector_shares_reg",
-             FILE = "minerals/buildings/A44.bld_materials_intensity_reg",
-             FILE = "minerals/buildings/A44.bld_materials_mean_lifetime_vintage_reg",
-             FILE = "minerals/buildings/A44.bld_materials_sector",
-             FILE = "minerals/buildings/A44.bld_materials_subsector_interp",
-             FILE = "minerals/buildings/A44.bld_materials_subsector_logit",
-             FILE = "minerals/buildings/A44.bld_materials_subsector_shrwt",
              "L144.flsp_bm2_R_res_Yh",
              "L144.flsp_bm2_R_comm_Yh",
              "L144.base_service_EJ_serv",
@@ -178,18 +168,7 @@ module_energy_L244.building_det <- function(command, ...) {
              "L244.ThermalServicePrice",
              "L244.GenericBaseDens",
              "L244.ThermalBaseDens",
-             "L244.GenericBaseServiceMaterials",
-             "L244.SupplysectorMaterials",
-             "L244.SubsectorLogitMaterials",
-             "L244.SubsectorShrwtMaterials",
-             "L244.SubsectorShrwtFlltMaterials",
-             "L244.SubsectorInterpMaterials",
-             "L244.SubsectorInterpToMaterials",
-             "L244.TechCalOutputMaterials",
-             "L244.TechCoefMaterials",
-             "L244.TechLifetimeMaterials",
-             "L244.TechSCurveMaterials",
-             "L244.TechProfitShutdownMaterials"))
+             "L244.gcam_consumer"))
   } else if(command == driver.MAKE) {
 
     # Silence package checks
@@ -253,17 +232,6 @@ module_energy_L244.building_det <- function(command, ...) {
     n_groups<-nrow(unique(get_data(all_data, "socioeconomics/income_shares") %>%
                             select(category)))
 
-
-
-    #materials inputs
-    A44.bld_materials_subsector_shares_reg <- get_data(all_data, "minerals/buildings/A44.bld_materials_subsector_shares_reg")
-    A44.bld_materials_intensity_reg <- get_data(all_data, "minerals/buildings/A44.bld_materials_intensity_reg")
-    A44.bld_materials_mean_lifetime_vintage_reg <- get_data(all_data, "minerals/buildings/A44.bld_materials_mean_lifetime_vintage_reg")
-    A44.bld_materials_sector <- get_data(all_data, "minerals/buildings/A44.bld_materials_sector")
-    A44.bld_materials_subsector_interp <- get_data(all_data, "minerals/buildings/A44.bld_materials_subsector_interp")
-    A44.bld_materials_subsector_logit <- get_data(all_data, "minerals/buildings/A44.bld_materials_subsector_logit")
-    A44.bld_materials_subsector_shrwt <- get_data(all_data, "minerals/buildings/A44.bld_materials_subsector_shrwt")
-
     # Add a deflator for harmonizing GDPpc with prices
     def9075<-gdp_deflator(1990, 1975)
 
@@ -289,7 +257,7 @@ module_energy_L244.building_det <- function(command, ...) {
 
 
     # Adjust gcam.consumer file to add the multiple consumers combining the raw file with multiple consumer information
-    A44.gcam_consumer<-A44.gcam_consumer %>%
+    L244.gcam_consumer<-A44.gcam_consumer %>%
       filter(gcam.consumer == "resid") %>%
       repeat_add_columns(tibble(group=unique(L144.income_shares$group))) %>%
       unite(gcam.consumer, c(gcam.consumer,group),sep="_") %>%
@@ -297,7 +265,7 @@ module_energy_L244.building_det <- function(command, ...) {
 
 
     # Create the final dataset with subregional population and income shares
-    L244.SubregionalShares <- write_to_all_regions(A44.gcam_consumer, LEVEL2_DATA_NAMES[["DeleteConsumer"]],
+    L244.SubregionalShares <- write_to_all_regions(L244.gcam_consumer, LEVEL2_DATA_NAMES[["DeleteConsumer"]],
                                                    GCAM_region_names = GCAM_region_names) %>%
       # filter residential sector to implement multiple consumers
       filter(grepl("resid",gcam.consumer)) %>%
@@ -314,7 +282,7 @@ module_energy_L244.building_det <- function(command, ...) {
       rename(subregional.income.share = share) %>%
       select(-scen,-GCAM_region_ID) %>%
       # bind commercial subregional population and income shares (currently not used, set to 1)
-      bind_rows(write_to_all_regions(A44.gcam_consumer, LEVEL2_DATA_NAMES[["DeleteConsumer"]],
+      bind_rows(write_to_all_regions(L244.gcam_consumer, LEVEL2_DATA_NAMES[["DeleteConsumer"]],
                                      GCAM_region_names = GCAM_region_names) %>%
                   filter(gcam.consumer == "comm") %>%
                   repeat_add_columns(tibble(pop.year.fillout=MODEL_YEARS)) %>%
@@ -324,7 +292,7 @@ module_energy_L244.building_det <- function(command, ...) {
 
    # Create a similar dataframe with all historical years
    # Used to create the historical subregional GDPpc dataframe
-    L244.SubregionalShares_allhist<-write_to_all_regions(A44.gcam_consumer, LEVEL2_DATA_NAMES[["DeleteConsumer"]],
+    L244.SubregionalShares_allhist<-write_to_all_regions(L244.gcam_consumer, LEVEL2_DATA_NAMES[["DeleteConsumer"]],
                                                          GCAM_region_names = GCAM_region_names) %>%
       filter(grepl("resid",gcam.consumer)) %>%
       separate(gcam.consumer,c("gcam.consumer","group"),sep = "_") %>%
@@ -339,7 +307,7 @@ module_energy_L244.building_det <- function(command, ...) {
       unite(gcam.consumer,c("gcam.consumer","group"),sep = "_") %>%
       rename(subregional.income.share=share) %>%
       select(-scen,-GCAM_region_ID) %>%
-      bind_rows(write_to_all_regions(A44.gcam_consumer, LEVEL2_DATA_NAMES[["DeleteConsumer"]],
+      bind_rows(write_to_all_regions(L244.gcam_consumer, LEVEL2_DATA_NAMES[["DeleteConsumer"]],
                                      GCAM_region_names = GCAM_region_names) %>%
                   filter(gcam.consumer=="comm") %>%
                   repeat_add_columns(tibble(pop.year.fillout=HISTORICAL_YEARS)) %>%
@@ -348,7 +316,7 @@ module_energy_L244.building_det <- function(command, ...) {
                          subregional.income.share = 1))
 
     # Generate subregional shares for diferent SSP scenarios
-    L244.SubregionalShares_SSP <- write_to_all_regions(A44.gcam_consumer, LEVEL2_DATA_NAMES[["DeleteConsumer"]],
+    L244.SubregionalShares_SSP <- write_to_all_regions(L244.gcam_consumer, LEVEL2_DATA_NAMES[["DeleteConsumer"]],
                                                    GCAM_region_names = GCAM_region_names) %>%
       # filter residential sector to implement multiple consumers
       filter(grepl("resid",gcam.consumer)) %>%
@@ -446,7 +414,7 @@ module_energy_L244.building_det <- function(command, ...) {
 
 
     # Also need a price exponent on floorspace and naming of internal gains trial markets
-    L244.PriceExp_IntGains <- write_to_all_regions(A44.gcam_consumer, LEVEL2_DATA_NAMES[["PriceExp_IntGains"]],
+    L244.PriceExp_IntGains <- write_to_all_regions(L244.gcam_consumer, LEVEL2_DATA_NAMES[["PriceExp_IntGains"]],
                                                    GCAM_region_names = GCAM_region_names)
 
     # ===================================================
@@ -456,7 +424,7 @@ module_energy_L244.building_det <- function(command, ...) {
     # 1- Residential floorspace
 
     # Filter residential gcam.consumer table
-    A44.gcam_consumer_resid <- A44.gcam_consumer %>%
+    L244.gcam_consumer_resid <- L244.gcam_consumer %>%
       filter(grepl("resid", gcam.consumer))
 
 
@@ -532,17 +500,17 @@ module_energy_L244.building_det <- function(command, ...) {
     # 2- Commercial floorspace
 
     # Filter commercial gcam.consumer table
-    A44.gcam_consumer_comm <- A44.gcam_consumer %>%
-      filter(grepl("comm", A44.gcam_consumer$gcam.consumer))
+    L244.gcam_consumer_comm <- L244.gcam_consumer %>%
+      filter(grepl("comm", L244.gcam_consumer$gcam.consumer))
 
     # Format L144.flsp_bm2_R_comm_Yh (commercial floorspace)
     L244.Floorspace_comm <- L144.flsp_bm2_R_comm_Yh %>%
       mutate(base.building.size = round(value, energy.DIGITS_FLOORSPACE)) %>%
       select(-value) %>%
       left_join_error_no_match(GCAM_region_names, by = "GCAM_region_ID") %>%
-      mutate(gcam.consumer = A44.gcam_consumer_comm$gcam.consumer,
-             nodeInput = A44.gcam_consumer_comm$nodeInput,
-             building.node.input = A44.gcam_consumer_comm$building.node.input) %>%
+      mutate(gcam.consumer = L244.gcam_consumer_comm$gcam.consumer,
+             nodeInput = L244.gcam_consumer_comm$nodeInput,
+             building.node.input = L244.gcam_consumer_comm$building.node.input) %>%
       select(region, gcam.consumer, nodeInput, building.node.input, year, base.building.size)
 
     #-------------
@@ -562,7 +530,7 @@ module_energy_L244.building_det <- function(command, ...) {
       select(-value)
 
     # Based on these classes, write the satiation level for all GCAM regions
-    L244.Satiation_flsp <- write_to_all_regions(A44.gcam_consumer_comm, c("region", "gcam.consumer", "nodeInput", "building.node.input"), # replace with LEVEL2_DATA_NAMES[["BldNodes]]
+    L244.Satiation_flsp <- write_to_all_regions(L244.gcam_consumer_comm, c("region", "gcam.consumer", "nodeInput", "building.node.input"), # replace with LEVEL2_DATA_NAMES[["BldNodes]]
                                                 GCAM_region_names = GCAM_region_names) %>%
       # Match in the region class, and use this to then match in the satiation floorspace
       left_join_error_no_match(A_regions %>% select(region, region.class),
@@ -577,7 +545,7 @@ module_energy_L244.building_det <- function(command, ...) {
       mutate(satiation.level = value * CONV_THOUS_BIL)
 
 
-    L244.Satiation_flsp_SSPs <- write_to_all_regions(A44.gcam_consumer_comm, c("region", "gcam.consumer", "nodeInput", "building.node.input"), # replace with LEVEL2_DATA_NAMES[["BldNodes]]
+    L244.Satiation_flsp_SSPs <- write_to_all_regions(L244.gcam_consumer_comm, c("region", "gcam.consumer", "nodeInput", "building.node.input"), # replace with LEVEL2_DATA_NAMES[["BldNodes]]
                                                      GCAM_region_names = GCAM_region_names) %>%
       repeat_add_columns(tibble(SSP = c("SSP1", "SSP2", "SSP3", "SSP4", "SSP5"))) %>%
       # Match in the region class, and use this to then match in the satiation floorspace
@@ -835,8 +803,8 @@ module_energy_L244.building_det <- function(command, ...) {
     # This makes that the fuel-technology mix for each service can vary across groups.
     # We create the "add.cg" ("add consumer groups") function to make this process automatic for the different files
 
-    cons.groups<-unique(A44.gcam_consumer_resid$gcam.consumer)
-    n.cons.groups<-as.numeric(length(unique(A44.gcam_consumer_resid$gcam.consumer)))
+    cons.groups<-unique(L244.gcam_consumer_resid$gcam.consumer)
+    n.cons.groups<-as.numeric(length(unique(L244.gcam_consumer_resid$gcam.consumer)))
 
     add.cg<-function(df){
       df.res<-df %>% filter(grepl("resid",supplysector))
@@ -1161,7 +1129,7 @@ module_energy_L244.building_det <- function(command, ...) {
       filter(year %in% MODEL_YEARS) %>%
       mutate(shell.conductance = round(shell.conductance, digits = energy.DIGITS_EFFICIENCY)) %>%
       left_join_error_no_match(GCAM_region_names, by = "GCAM_region_ID") %>%
-      left_join_error_no_match(A44.gcam_consumer %>%
+      left_join_error_no_match(L244.gcam_consumer %>%
                                  select(-gcam.consumer) %>%
                                  #mutate(internal.gains.market.name=paste0(nodeInput,"-internal-gains-trial-market")) %>%
                                  distinct() %>%
@@ -1338,7 +1306,7 @@ module_energy_L244.building_det <- function(command, ...) {
                                  select(supplysector, building.node.input) %>%
                                  distinct(), by = "supplysector") %>%
       # Add internal.gains.market.name
-      left_join_error_no_match(A44.gcam_consumer %>%
+      left_join_error_no_match(L244.gcam_consumer %>%
                                  select(-gcam.consumer) %>%
                                  #mutate(internal.gains.market.name=paste0(nodeInput,"-internal-gains-trial-market")) %>%
                                  distinct() %>%
@@ -2643,8 +2611,8 @@ module_energy_L244.building_det <- function(command, ...) {
       filter(year == MODEL_FINAL_BASE_YEAR) %>%
       rename(building.service.input = market) %>%
       filter(grepl("resid",building.service.input)) %>%
-      repeat_add_columns(tibble(gcam.consumer = unique(A44.gcam_consumer_resid$gcam.consumer))) %>%
-      left_join_error_no_match(A44.gcam_consumer_resid %>% select(gcam.consumer,nodeInput,building.node.input), by = "gcam.consumer") %>%
+      repeat_add_columns(tibble(gcam.consumer = unique(L244.gcam_consumer_resid$gcam.consumer))) %>%
+      left_join_error_no_match(L244.gcam_consumer_resid %>% select(gcam.consumer,nodeInput,building.node.input), by = "gcam.consumer") %>%
       separate(gcam.consumer,c("adj","group"), sep = "_",remove = F) %>%
       mutate(building.service.input = paste0(building.service.input,"_",group)) %>%
       select(-adj,-group) %>%
@@ -2653,8 +2621,8 @@ module_energy_L244.building_det <- function(command, ...) {
                   filter(year == MODEL_FINAL_BASE_YEAR) %>%
                   rename(building.service.input = market) %>%
                   filter(grepl("comm",building.service.input)) %>%
-                  repeat_add_columns(tibble(gcam.consumer = unique(A44.gcam_consumer_comm$gcam.consumer))) %>%
-                  left_join_error_no_match(A44.gcam_consumer_comm %>% select(gcam.consumer,nodeInput,building.node.input), by = "gcam.consumer")) %>%
+                  repeat_add_columns(tibble(gcam.consumer = unique(L244.gcam_consumer_comm$gcam.consumer))) %>%
+                  left_join_error_no_match(L244.gcam_consumer_comm %>% select(gcam.consumer,nodeInput,building.node.input), by = "gcam.consumer")) %>%
       select(LEVEL2_DATA_NAMES[["GenericServicePrice"]])
 
 
@@ -2663,8 +2631,8 @@ module_energy_L244.building_det <- function(command, ...) {
       filter(year == MODEL_FINAL_BASE_YEAR) %>%
       rename(thermal.building.service.input = market) %>%
       filter(grepl("resid",thermal.building.service.input)) %>%
-      repeat_add_columns(tibble(gcam.consumer = unique(A44.gcam_consumer_resid$gcam.consumer))) %>%
-      left_join_error_no_match(A44.gcam_consumer_resid %>% select(gcam.consumer,nodeInput,building.node.input), by = "gcam.consumer") %>%
+      repeat_add_columns(tibble(gcam.consumer = unique(L244.gcam_consumer_resid$gcam.consumer))) %>%
+      left_join_error_no_match(L244.gcam_consumer_resid %>% select(gcam.consumer,nodeInput,building.node.input), by = "gcam.consumer") %>%
       separate(gcam.consumer,c("adj","group"), sep = "_",remove = F) %>%
       mutate(thermal.building.service.input = paste0(thermal.building.service.input,"_",group)) %>%
       select(-adj,-group) %>%
@@ -2673,10 +2641,9 @@ module_energy_L244.building_det <- function(command, ...) {
                   filter(year == MODEL_FINAL_BASE_YEAR) %>%
                   rename(thermal.building.service.input = market) %>%
                   filter(grepl("comm",thermal.building.service.input)) %>%
-                  repeat_add_columns(tibble(gcam.consumer = unique(A44.gcam_consumer_comm$gcam.consumer))) %>%
-                  left_join_error_no_match(A44.gcam_consumer_comm %>% select(gcam.consumer,nodeInput,building.node.input), by = "gcam.consumer")) %>%
+                  repeat_add_columns(tibble(gcam.consumer = unique(L244.gcam_consumer_comm$gcam.consumer))) %>%
+                  left_join_error_no_match(L244.gcam_consumer_comm %>% select(gcam.consumer,nodeInput,building.node.input), by = "gcam.consumer")) %>%
       select(LEVEL2_DATA_NAMES[["ThermalServicePrice"]])
-
 
     #------------------------------------------------------
     # Finally, calculate the base year service density
@@ -2695,138 +2662,6 @@ module_energy_L244.building_det <- function(command, ...) {
       replace_na(list(base.density = 0)) %>%
       select(LEVEL2_DATA_NAMES[["ThermalBaseDens"]])
 
-    #------------------------------------------------------
-    # BY 11/26/2024
-    # MATERIALS SERVICE: for tracking material inputs -------------
-
-    # 1. GCAM-CONSUMER: adding a base-service
-    # base service will just be 1 (1 materials floorspace service per unit of floorspace)
-    L244.GenericBaseServiceMaterials_resid <- L244.Floorspace %>%
-      filter(nodeInput == "resid") %>%
-      mutate(decile = gsub("resid_", "", gcam.consumer)) %>%
-      mutate(building.service.input = paste0(nodeInput, " materials_", decile),
-             base.service = 1) %>%
-      select(-decile)
-
-    L244.GenericBaseServiceMaterials_comm <- L244.Floorspace %>%
-      filter(nodeInput == "comm") %>%
-      mutate(building.service.input = paste0(nodeInput, " materials"),
-             base.service = 1)
-
-    L244.GenericBaseServiceMaterials <- bind_rows(L244.GenericBaseServiceMaterials_resid,
-                                                   L244.GenericBaseServiceMaterials_comm) %>%
-      select(-base.building.size)
-
-    #2.1: TECHNOLOGY information
-
-    # We need to calculate the floorspace for each building sub-type, and set it as a calOutputValue for each materials supplysector
-    # total floorspace by gcam.consumer (10 deciles in residential + 1 commercial) is set in L244.Floorspace
-    # multiply total floorspace by sub-type shares from A44.bld_materials_subsector_shares_reg
-    # Note we assume the same sub-type floorspace shares in each decile for now
-
-    L244.TechCalOutputMaterials <- A44.bld_materials_subsector_shares_reg %>%
-      rename(supplysector = sector) %>%
-      add.cg() %>%
-      mutate(technology = subsector) %>%
-      left_join_error_no_match(L244.GenericBaseServiceMaterials, by = c("region", "year", "supplysector" = "building.service.input")) %>%
-      full_join(L244.Floorspace, by = c("region", "gcam.consumer", "nodeInput", "building.node.input", "year")) %>%
-      mutate(calOutputValue = round(base.building.size * flsp_share, energy.DIGITS_CALOUTPUT),
-           share.weight.year = year,
-           subs.share.weight = if_else(calOutputValue > 0, 1, 0),
-           tech.share.weight = subs.share.weight) %>%
-      select(LEVEL2_DATA_NAMES[["Production"]]) %>%
-      # remove technologies that are 0
-      filter(calOutputValue != 0)
-
-
-    # Set the material intensity for each technology
-    L244.TechCoefMaterials <- L244.TechCalOutputMaterials %>%
-      select(region, supplysector, subsector, technology, year) %>%
-      full_join(A44.bld_materials_intensity_reg, by = c("region", "subsector", "year")) %>%
-      select(-sector, -Units) %>%
-      # Note that the building material intensity units were specified in kg/m2 which is the same as Mt/bm2.
-      # Showing the conversion here for transparency.
-      mutate(value = value * CONV_KG_T * CONV_T_MT * CONV_BM2_M2,
-             model.year = year,
-             coefficient = 0) %>%
-      rename(minicam.energy.input = material,
-             current.coef = value) %>%
-      select(LEVEL2_DATA_NAMES[["RegionalTechMineralCurCoef"]])
-
-
-
-    # Set vintage assumptions
-    L244.TechLifetimeMaterials <- A44.bld_materials_mean_lifetime_vintage_reg %>%
-      rename(supplysector = sector) %>%
-      add.cg() %>%
-      right_join(L244.TechCalOutputMaterials %>% select(region, supplysector, subsector, technology, year), by = c("region", "supplysector")) %>%
-      select(LEVEL2_DATA_NAMES[["TechLifetime"]])
-
-    L244.TechSCurveMaterials <- A44.bld_materials_mean_lifetime_vintage_reg %>%
-      rename(supplysector = sector) %>%
-      add.cg() %>%
-      right_join(L244.TechCalOutputMaterials %>% select(region, supplysector, subsector, technology, year), by = c("region", "supplysector")) %>%
-      select(LEVEL2_DATA_NAMES[["TechSCurve"]])
-
-    L244.TechProfitShutdownMaterials <- A44.bld_materials_mean_lifetime_vintage_reg %>%
-      rename(supplysector = sector) %>%
-      add.cg() %>%
-      right_join(L244.TechCalOutputMaterials %>% select(region, supplysector, subsector, technology, year), by = c("region", "supplysector")) %>%
-      select(LEVEL2_DATA_NAMES[["TechProfitShutdown"]])
-
-    #2.2. SUPPLYSECTOR: adding new materials supplysectors/subsectors/technologies
-
-    #add consumer groups to input assumption files
-    A44.bld_materials_sector <- add.cg(A44.bld_materials_sector)
-    A44.bld_materials_subsector_interp <- add.cg(A44.bld_materials_subsector_interp)
-    A44.bld_materials_subsector_logit <- add.cg(A44.bld_materials_subsector_logit)
-    A44.bld_materials_subsector_shrwt <- add.cg(A44.bld_materials_subsector_shrwt)
-
-
-    # L244.SupplysectorMaterials: Supplysector info for materials
-    L244.SupplysectorMaterials <- write_to_all_regions(A44.bld_materials_sector, c(LEVEL2_DATA_NAMES[["Supplysector"]], LOGIT_TYPE_COLNAME),
-                                                        GCAM_region_names = GCAM_region_names)
-
-    #2.3 SUBSECTOR information
-
-    # L244.SubsectorLogitMaterials: Subsector logit exponents of materials
-    L244.SubsectorLogitMaterials <- write_to_all_regions(A44.bld_materials_subsector_logit, c(LEVEL2_DATA_NAMES[["SubsectorLogit"]], LOGIT_TYPE_COLNAME),
-                                                          GCAM_region_names = GCAM_region_names) %>%
-      # only keep the info for the subsectors that exist in TechCalOutput
-      semi_join(L244.TechCalOutputMaterials, by = c("region", "supplysector", "subsector"))
-
-
-    # L244.SubsectorShrwtMaterials and L244.SubsectorShrwtFlltMaterials: Subsector shareweights of materials
-    if(any(!is.na(A44.bld_materials_subsector_shrwt$year))) {
-      L244.SubsectorShrwtMaterials <- A44.bld_materials_subsector_shrwt %>%
-        filter(!is.na(year)) %>%
-        write_to_all_regions(LEVEL2_DATA_NAMES[["SubsectorShrwt"]], GCAM_region_names = GCAM_region_names) %>%
-        # only keep the info for the subsectors that exist in TechCalOutput
-        semi_join(L244.TechCalOutputMaterials, by = c("region", "supplysector", "subsector"))
-    }
-    if(any(!is.na(A44.bld_materials_subsector_shrwt$year.fillout))) {
-      L244.SubsectorShrwtFlltMaterials <- A44.bld_materials_subsector_shrwt %>%
-        filter(!is.na(year.fillout)) %>%
-        write_to_all_regions(LEVEL2_DATA_NAMES[["SubsectorShrwtFllt"]], GCAM_region_names = GCAM_region_names) %>%
-        # only keep the info for the subsectors that exist in TechCalOutput
-        semi_join(L244.TechCalOutputMaterials, by = c("region", "supplysector", "subsector"))
-    }
-
-    # L244.SubsectorInterpMaterials and L244.SubsectorInterpToMaterials: Subsector shareweight interpolation of materials
-    if(any(is.na(A44.bld_materials_subsector_interp$to.value))) {
-      L244.SubsectorInterpMaterials <- A44.bld_materials_subsector_interp %>%
-        filter(is.na(to.value)) %>%
-        write_to_all_regions(LEVEL2_DATA_NAMES[["SubsectorInterp"]], GCAM_region_names = GCAM_region_names) %>%
-        # only keep the info for the subsectors that exist in TechCalOutput
-        semi_join(L244.TechCalOutputMaterials, by = c("region", "supplysector", "subsector"))
-    }
-    if(any(!is.na(A44.bld_materials_subsector_interp$to.value))) {
-      L244.SubsectorInterpToMaterials <- A44.bld_materials_subsector_interp %>%
-        filter(!is.na(to.value)) %>%
-        write_to_all_regions(LEVEL2_DATA_NAMES[["SubsectorInterpTo"]], GCAM_region_names = GCAM_region_names) %>%
-        # only keep the info for the subsectors that exist in TechCalOutput
-        semi_join(L244.TechCalOutputMaterials, by = c("region", "supplysector", "subsector"))
-    }
 
     #===================================================
     # Produce outputs
@@ -3280,114 +3115,13 @@ module_energy_L244.building_det <- function(command, ...) {
       add_precursors("common/GCAM_region_names","L144.in_EJ_R_bld_serv_F_Yh","L144.flsp_bm2_R_res_Yh") ->
       L244.ThermalBaseDens
 
-    L244.GenericBaseServiceMaterials %>%
-      add_title("Base service for materials service") %>%
-      add_units("none") %>%
-      add_comments("Base service of 1 (materials service per unit floorspace) since it scales directly with floorspace") %>%
-      same_precursors_as(L244.Floorspace) ->
-      L244.GenericBaseServiceFloorspace
+    L244.gcam_consumer %>%
+      add_title("gcam.consumer file with multiple consumers") %>%
+      add_units("NA") %>%
+      add_comments("Adjusts the A44.gcam_consumer file by adding multiple consumers") %>%
+      add_precursors("socioeconomics/income_shares", "energy/A44.gcam_consumer") ->
+      L244.gcam_consumer
 
-    L244.SupplysectorMaterials %>%
-      add_title("Materials supplysector") %>%
-      add_units("none") %>%
-      add_comments("Materials supplysector for tracking material use") %>%
-      add_precursors("minerals/buildings/A44.bld_materials_sector") ->
-      L244.SupplysectorFloorspace
-
-    L244.SubsectorLogitMaterials %>%
-      add_title("Materials subsector logit") %>%
-      add_units("none") %>%
-      add_comments("Materials subsector for tracking material use") %>%
-      add_precursors("minerals/buildings/A44.bld_materials_subsector_logit", "common/GCAM_region_names") ->
-      L244.SubsectorLogitMaterials
-
-    if(exists("L244.SubsectorShrwtMaterials")) {
-      L244.SubsectorShrwtMaterials %>%
-        add_title("Subsector shareweights for materials") %>%
-        add_units("Unitless") %>%
-        add_comments("A44.bld_materials_subsector_shrwt written to all regions") %>%
-        add_precursors("minerals/buildings/A44.bld_materials_subsector_shrwt", "common/GCAM_region_names")  ->
-        L244.SubsectorShrwtMaterials
-    } else {
-      missing_data()  ->
-        L244.SubsectorShrwtMaterials
-    }
-
-    if(exists("L244.SubsectorShrwtFlltMaterials")) {
-      L244.SubsectorShrwtFlltMaterials %>%
-        add_title("Subsector shareweights for materials") %>%
-        add_units("Unitless") %>%
-        add_comments("A44.bld_materials_subsector_shrwt written to all regions") %>%
-        add_precursors("minerals/buildings/A44.bld_materials_subsector_shrwt", "common/GCAM_region_names")  ->
-        L244.SubsectorShrwtFlltMaterials
-    } else {
-      missing_data() ->
-        L244.SubsectorShrwtFlltMaterials
-    }
-
-    if(exists("L244.SubsectorInterpMaterials")) {
-      L244.SubsectorInterpMaterials %>%
-        add_title("Subsector shareweight interpolation for materials") %>%
-        add_units("NA") %>%
-        add_comments("A44.bld_materials_subsector_interp written to all regions") %>%
-        add_precursors("minerals/buildings/A44.bld_materials_subsector_interp", "common/GCAM_region_names")  ->
-        L244.SubsectorInterpMaterials
-    } else {
-      missing_data() ->
-        L244.SubsectorInterpMaterials
-    }
-
-    if(exists("L244.SubsectorInterpToMaterials")) {
-      L244.SubsectorInterpToMaterials %>%
-        add_title("Subsector shareweight interpolation for materials") %>%
-        add_units("NA") %>%
-        add_comments("A44.bld_materials_subsector_interp written to all regions") %>%
-        add_precursors("minerals/buildings/A44.bld_materials_subsector_interp", "common/GCAM_region_names")  ->
-        L244.SubsectorInterpToMaterials
-    } else {
-      missing_data() ->
-        L244.SubsectorInterpToMaterials
-    }
-
-    L244.TechCalOutputMaterials %>%
-      add_title("Materials technologies calibrated output") %>%
-      add_units("none") %>%
-      add_comments("Materials calibrated output (by building sub-type subsectors)") %>%
-      same_precursors_as(L244.Floorspace) %>%
-      add_precursors("minerals/buildings/A44.bld_materials_subsector_shares_reg") ->
-      L244.TechCalOutputMaterials
-
-    L244.TechCoefMaterials %>%
-      add_title("Materials technologies material coefficients") %>%
-      add_units("none") %>%
-      add_comments("Material coefficients (by building sub-type)") %>%
-      same_precursors_as(L244.TechCalOutputMaterials) %>%
-      add_precursors("minerals/buildings/A44.bld_materials_intensity_reg") ->
-      L244.TechCoefMaterials
-
-    L244.TechLifetimeMaterials %>%
-      add_title("Materials technologies lifetime") %>%
-      add_units("none") %>%
-      add_comments("Materials technologies lifetime") %>%
-      same_precursors_as(L244.TechCalOutputMaterials) %>%
-      add_precursors("minerals/buildings/A44.bld_materials_mean_lifetime_vintage_reg") ->
-      L244.TechLifetimeMaterials
-
-    L244.TechSCurveMaterials %>%
-      add_title("Materialstechnologies s-curve parameters") %>%
-      add_units("none") %>%
-      add_comments("Materials technologies s-curve parameters") %>%
-      same_precursors_as(L244.TechCalOutputMaterials) %>%
-      add_precursors("minerals/buildings/A44.bld_materials_mean_lifetime_vintage_reg") ->
-      L244.TechSCurveMaterials
-
-    L244.TechProfitShutdownMaterials %>%
-      add_title("Materials technologies profit shutdown parameters") %>%
-      add_units("none") %>%
-      add_comments("Materials technologies profit shutdown parameters") %>%
-      same_precursors_as(L244.TechCalOutputMaterials) %>%
-      add_precursors("minerals/buildings/A44.bld_materials_mean_lifetime_vintage_reg") ->
-      L244.TechProfitShutdownMaterials
 
     return_data(L244.SubregionalShares, L244.SubregionalShares_SSP1,L244.SubregionalShares_SSP2,L244.SubregionalShares_SSP3,
                 L244.SubregionalShares_SSP4,L244.SubregionalShares_SSP5,
@@ -3417,11 +3151,7 @@ module_energy_L244.building_det <- function(command, ...) {
                 L244.GenericServiceCoef_SSP4,L244.GenericServiceCoef_SSP5,L244.ThermalServiceCoef,
                 L244.GenericCoalCoef,L244.ThermalCoalCoef,L244.GenericTradBioCoef,L244.ThermalTradBioCoef,
                 L244.GenericShares,L244.ThermalShares,L244.GenericServicePrice,L244.ThermalServicePrice,L244.GenericBaseDens,L244.ThermalBaseDens,
-    L244.GlobalTechTrackCapital_bld, L244.GenericBaseServiceMaterials, L244.SupplysectorMaterials,
-    L244.SubsectorLogitMaterials, L244.SubsectorShrwtMaterials, L244.SubsectorShrwtFlltMaterials,
-    L244.SubsectorInterpMaterials, L244.SubsectorInterpToMaterials, L244.TechCalOutputMaterials,
-    L244.TechCoefMaterials, L244.TechLifetimeMaterials, L244.TechSCurveMaterials, L244.TechProfitShutdownMaterials
-    )
+    L244.GlobalTechTrackCapital_bld, L244.gcam_consumer)
 
   } else {
     stop("Unknown command")
