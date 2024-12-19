@@ -40,6 +40,7 @@ module_energy_L263.Weathering <- function(command, ...) {
              FILE = "energy/A63.subsector_logit",
              FILE = "energy/A63.subsector_shrwt",
              FILE = "energy/A63.globaltech_coef",
+             FILE = "energy/A63.globaltech_eff",
              FILE = "energy/A63.globaltech_cost",
              FILE = "energy/A63.globaltech_shrwt",
              FILE = "energy/A63.nonenergy_Cseq",
@@ -55,6 +56,7 @@ module_energy_L263.Weathering <- function(command, ...) {
              "L263.SubsectorShrwtFllt_C",
              "L263.StubTech_C",
              "L263.GlobalTechCoef_C",
+             "L263.StubTechEff",
              "L263.GlobalTechCost_C",
              "L263.GlobalTechShrwt_C",
              "L263.RsrcCurves_C_high",
@@ -66,7 +68,8 @@ module_energy_L263.Weathering <- function(command, ...) {
              "L263.SubsectorInterp",
              "L263.GlobalTechInputPMult",
              "L263.GlobalTechSCurve",
-             "L263.GlobalTechProfitShutdown"))
+             "L263.GlobalTechProfitShutdown",
+             "L263.TechPmult"))
   } else if(command == driver.MAKE) {
 
     all_data <- list(...)[[1]]
@@ -78,6 +81,7 @@ module_energy_L263.Weathering <- function(command, ...) {
     A63.subsector_logit <- get_data(all_data, "energy/A63.subsector_logit", strip_attributes = TRUE)
     A63.subsector_shrwt <- get_data(all_data, "energy/A63.subsector_shrwt", strip_attributes = TRUE)
     A63.globaltech_coef <- get_data(all_data, "energy/A63.globaltech_coef",strip_attributes = TRUE)
+    A63.globaltech_eff <- get_data(all_data, "energy/A63.globaltech_eff",strip_attributes = TRUE)
     A63.globaltech_cost <- get_data(all_data, "energy/A63.globaltech_cost",strip_attributes = TRUE)
     A63.globaltech_shrwt <- get_data(all_data, "energy/A63.globaltech_shrwt", strip_attributes = TRUE)
     A63.nonenergy_Cseq <- get_data(all_data, "energy/A63.nonenergy_Cseq", strip_attributes = TRUE)
@@ -268,6 +272,33 @@ module_energy_L263.Weathering <- function(command, ...) {
       select(sector.name = supplysector, subsector.name = subsector, technology, year, minicam.energy.input, coefficient) ->
       L263.GlobalTechCoef_C # This is a final output table.
 
+    # Energy inputs and coefficients of global technologies for carbon storage
+    # A63.globaltech_coef reports carbon storage global technology coefficients
+    A63.globaltech_eff %>%
+      gather_years %>%
+      # Expand table to include all model base and future years
+      complete(year = c(year, MODEL_YEARS), nesting(supplysector, subsector, technology, minicam.energy.input)) %>%
+      # Extrapolate to fill out values for all years
+      # Rule 2 is used so years outside of min-max range are assigned values from closest data, as opposed to NAs
+      group_by(supplysector, subsector, technology, minicam.energy.input) %>%
+      mutate(value = approx_fun(year, value, rule = 1)) %>%
+      ungroup() %>%
+      filter(year %in% MODEL_YEARS) %>% # This will drop 1971
+      # Assign the columns "sector.name" and "subsector.name", consistent with the location info of a global technology
+      write_to_all_regions(c('region','supplysector','subsector','technology','value','year','minicam.energy.input'),
+                                                   GCAM_region_names=GCAM_region_names) %>%
+      mutate(market.name = region) %>%
+      rename(stub.technology = technology,
+             efficiency = value) %>%
+      select(LEVEL2_DATA_NAMES[["StubTechEff"]]) ->
+      L263.StubTechEff
+
+    L263.StubTechEff %>%
+      select(region,supplysector,subsector,technology = stub.technology,year,pMult = efficiency) ->
+      L263.TechPmult
+
+
+
     A63.globaltech_coef %>%
       filter(!is.na(price.unit.conversion)) %>%
       gather_years %>%
@@ -412,6 +443,15 @@ module_energy_L263.Weathering <- function(command, ...) {
       add_precursors("energy/A63.globaltech_coef") ->
       L263.GlobalTechCoef_C
 
+    L263.StubTechEff %>%
+      add_title("Carbon storage global technology coefficients across base model years") %>%
+      add_units("Unitless") %>%
+      add_comments("Global technology coefficients were interpolated across all base model years") %>%
+      add_legacy_name("L263.GlobalTechEff") %>%
+      add_precursors("energy/A63.globaltech_eff") ->
+      L263.StubTechEff
+
+
     L263.GlobalTechCost_C %>%
       add_title("Carbon storage global technology costs across base model years") %>%
       add_units("1975$/kg") %>%
@@ -480,11 +520,19 @@ module_energy_L263.Weathering <- function(command, ...) {
       add_precursors("energy/A63.globaltech_retirement") ->
       L263.GlobalTechProfitShutdown
 
+    L263.TechPmult %>%
+      add_title("Scale down cost by factor of efficiency parameter") %>%
+      add_units("Unitless") %>%
+      add_comments("Make supply curves have same slope as original") %>%
+      same_precursors_as(L263.StubTechEff) ->
+      L263.TechPmult
+
 
 
     return_data(L263.Rsrc, L263.RsrcCurves_C, L263.ResTechShrwt_C, L263.Supplysector_C, L263.SubsectorLogit_C, L263.SubsectorShrwtFllt_C, L263.StubTech_C, L263.GlobalTechCoef_C, L263.GlobalTechCost_C, L263.GlobalTechShrwt_C, L263.RsrcCurves_C_high, L263.RsrcCurves_C_low, L263.RsrcCurves_C_lowest,L263.RsrcPrice,L263.WeatheringRsrcMax,L263.GlobalTechCSeq,L263.SubsectorInterp,
                 L263.GlobalTechInputPMult,
-                L263.GlobalTechSCurve,L263.GlobalTechProfitShutdown)
+                L263.GlobalTechSCurve,L263.GlobalTechProfitShutdown,
+                L263.StubTechEff,L263.TechPmult)
   } else {
     stop("Unknown command")
   }

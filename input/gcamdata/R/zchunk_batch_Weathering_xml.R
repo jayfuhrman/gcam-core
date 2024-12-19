@@ -27,7 +27,9 @@ module_energy_batch_Weathering_xml <- function(command, ...) {
               "L263.SubsectorInterp",
               "L263.GlobalTechInputPMult",
              "L263.GlobalTechSCurve",
-             "L263.GlobalTechProfitShutdown"))
+             "L263.GlobalTechProfitShutdown",
+             "L263.StubTechEff",
+             "L263.TechPmult"))
   } else if(command == driver.DECLARE_OUTPUTS) {
     return(c(XML = "Weathering.xml"))
   } else if(command == driver.MAKE) {
@@ -52,6 +54,8 @@ module_energy_batch_Weathering_xml <- function(command, ...) {
     L263.GlobalTechInputPMult <- get_data(all_data, "L263.GlobalTechInputPMult")
     L263.GlobalTechSCurve <- get_data(all_data, "L263.GlobalTechSCurve")
     L263.GlobalTechProfitShutdown <- get_data(all_data, "L263.GlobalTechProfitShutdown")
+    L263.StubTechEff <- get_data(all_data, "L263.StubTechEff")
+    L263.TechPmult <- get_data(all_data,"L263.TechPmult")
     # ===================================================
 
     # Produce outputs
@@ -76,8 +80,11 @@ module_energy_batch_Weathering_xml <- function(command, ...) {
       add_xml_data(L263.GlobalTechInputPMult, "GlobalTechInputPMult") %>%
       add_xml_data(L263.GlobalTechSCurve, "GlobalTechSCurve") %>%
       add_xml_data(L263.GlobalTechProfitShutdown, "GlobalTechProfitShutdown") %>%
+      add_xml_data(L263.StubTechEff,"StubTechEff") %>%
+      add_xml_data(L263.TechPmult,"TechPmult") %>%
       add_precursors("L263.Rsrc", "L263.RsrcCurves_C", "L263.ResTechShrwt_C", "L263.Supplysector_C", "L263.SubsectorLogit_C", "L263.SubsectorShrwtFllt_C", "L263.StubTech_C", "L263.GlobalTechCoef_C","L263.GlobalTechCost_C", "L263.GlobalTechShrwt_C","L263.RsrcPrice","L263.WeatheringRsrcMax","L263.GlobalTechCSeq","L263.SubsectorInterp",
-                     "L263.GlobalTechInputPMult","L263.GlobalTechProfitShutdown","L263.GlobalTechSCurve") ->
+                     "L263.GlobalTechInputPMult","L263.GlobalTechProfitShutdown","L263.GlobalTechSCurve",
+                     "L263.StubTechEff","L263.TechPmult") ->
       Weathering.xml
 
     return_data(Weathering.xml)

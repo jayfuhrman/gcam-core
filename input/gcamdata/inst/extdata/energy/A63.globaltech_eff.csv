@@ -1,0 +1,7 @@
+# File: A63.globaltech_eff.csv
+# Title: Carbon storage global technology coefficient
+# Units: Unitless
+# Column types: ccccnnnnnn 
+# ----------
+supplysector,subsector,technology,minicam.energy.input,price.unit.conversion,1971,2015,2020,2050,2100
+surface carbon-storage,inorganic-surface-storage,inorganic-surface-storage,inorganic-surface-storage,,1,1,1,1,1
