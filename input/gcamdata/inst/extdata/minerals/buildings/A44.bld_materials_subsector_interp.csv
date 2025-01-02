@@ -12,7 +12,7 @@ resid materials,high-rise rural,share-weight,final-calibration-year,end-year,,fi
 resid materials,high-rise urban,share-weight,final-calibration-year,end-year,,fixed
 resid materials,semi-detached rural,share-weight,final-calibration-year,end-year,,fixed
 resid materials,semi-detached urban,share-weight,final-calibration-year,end-year,,fixed
-comm materials,govern commercial,share-weight,final-calibration-year,end-year,,fixed
+comm materials,others commercial,share-weight,final-calibration-year,end-year,,fixed
 comm materials,hotels commercial,share-weight,final-calibration-year,end-year,,fixed
 comm materials,office commercial,share-weight,final-calibration-year,end-year,,fixed
 comm materials,retail commercial,share-weight,final-calibration-year,end-year,,fixed
