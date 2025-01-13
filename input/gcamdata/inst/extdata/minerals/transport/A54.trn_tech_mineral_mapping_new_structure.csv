@@ -1,0 +1,69 @@
+# File: A54.trn_tech_mineral_mapping_new_structure.csv
+# Title: transport sector ev subtype technology master mapping
+# Units: None
+# Column types: cccccc
+# ----------
+supplysector,tranSubsector,stub.technology,supplysector_L2,tranSubsector_L2,stub.technology_L2
+trn_aviation_intl,International Aviation,BEV,trn_aviation_intl_pass,International Aviation,BEV
+trn_aviation_intl,International Aviation,Hydrogen,trn_aviation_intl_pass,International Aviation,Hydrogen
+trn_aviation_intl,International Aviation,Liquids,trn_aviation_intl_pass,International Aviation,Liquids
+trn_freight,Domestic Ship,BEV,trn_dom_ship_pass,Domestic Ship,BEV
+trn_freight,Domestic Ship,FCEV,trn_dom_ship_pass,Domestic Ship,FCEV
+trn_freight,Domestic Ship,Hybrid Liquids,trn_dom_ship_pass,Domestic Ship,Hybrid Liquids
+trn_freight,Domestic Ship,Liquids,trn_dom_ship_pass,Domestic Ship,Liquids
+trn_freight,Freight Rail,BEV,trn_fret_rail_pass,Freight Rail,BEV
+trn_freight,Freight Rail,Coal,trn_fret_rail_pass,Freight Rail,Coal
+trn_freight,Freight Rail,Electric,trn_fret_rail_pass,Freight Rail,Electric
+trn_freight,Freight Rail,FCEV,trn_fret_rail_pass,Freight Rail,FCEV
+trn_freight,Freight Rail,Hybrid Liquids,trn_fret_rail_pass,Freight Rail,Hybrid Liquids
+trn_freight,Freight Rail,Liquids,trn_fret_rail_pass,Freight Rail,Liquids
+trn_freight_road,Heavy truck,BEV,trn_fret_road_pass,Heavy truck,BEV
+trn_freight_road,Heavy truck,FCEV,trn_fret_road_pass,Heavy truck,FCEV
+trn_freight_road,Heavy truck,Hybrid Liquids,trn_fret_road_pass,Heavy truck,Hybrid Liquids
+trn_freight_road,Heavy truck,Liquids,trn_fret_road_pass,Heavy truck,Liquids
+trn_freight_road,Heavy truck,NG,trn_fret_road_pass,Heavy truck,NG
+trn_freight_road,Light truck,BEV,trn_fret_road_pass,Light truck,BEV
+trn_freight_road,Light truck,FCEV,trn_fret_road_pass,Light truck,FCEV
+trn_freight_road,Light truck,Hybrid Liquids,trn_fret_road_pass,Light truck,Hybrid Liquids
+trn_freight_road,Light truck,Liquids,trn_fret_road_pass,Light truck,Liquids
+trn_freight_road,Light truck,NG,trn_fret_road_pass,Light truck,NG
+trn_freight_road,Medium truck,BEV,trn_fret_road_pass,Medium truck,BEV
+trn_freight_road,Medium truck,FCEV,trn_fret_road_pass,Medium truck,FCEV
+trn_freight_road,Medium truck,Hybrid Liquids,trn_fret_road_pass,Medium truck,Hybrid Liquids
+trn_freight_road,Medium truck,Liquids,trn_fret_road_pass,Medium truck,Liquids
+trn_freight_road,Medium truck,NG,trn_fret_road_pass,Medium truck,NG
+trn_pass,Cycle,Cycle,trn_pasg_cycle_pass,Cycle,Cycle
+trn_pass,Domestic Aviation,BEV,trn_pasg_aviation_dom_pass,Domestic Aviation,BEV
+trn_pass,Domestic Aviation,Hydrogen,trn_pasg_aviation_dom_pass,Domestic Aviation,Hydrogen
+trn_pass,Domestic Aviation,Liquids,trn_pasg_aviation_dom_pass,Domestic Aviation,Liquids
+trn_pass,HSR,Electric,trn_pasg_hsr_pass,HSR,Electric
+trn_pass,Passenger Rail,Electric,trn_pasg_rail_pass,Passenger Rail,Electric
+trn_pass,Passenger Rail,Liquids,trn_pasg_rail_pass,Passenger Rail,Liquids
+trn_pass_road,Bus,BEV,trn_pasg_road_bus_pass,Bus,BEV
+trn_pass_road,Bus,FCEV,trn_pasg_road_bus_pass,Bus,FCEV
+trn_pass_road,Bus,Hybrid Liquids,trn_pasg_road_bus_pass,Bus,Hybrid Liquids
+trn_pass_road,Bus,Liquids,trn_pasg_road_bus_pass,Bus,Liquids
+trn_pass_road,Bus,NG,trn_pasg_road_bus_pass,Bus,NG
+trn_pass_road_LDV,2W and 3W,BEV,trn_pasg_road_ldv_2_3W_pass,2W and 3W,BEV
+trn_pass_road_LDV,2W and 3W,LA-BEV,trn_pasg_road_ldv_2_3W_pass,2W and 3W,LA-BEV
+trn_pass_road_LDV,2W and 3W,Liquids,trn_pasg_road_ldv_2_3W_pass,2W and 3W,Liquids
+trn_pass_road_LDV,2W and 3W,NG,trn_pasg_road_ldv_2_3W_pass,2W and 3W,NG
+trn_pass_road_LDV_4W,Car,BEV,trn_pasg_road_ldv_4w_pass,Car,BEV
+trn_pass_road_LDV_4W,Car,FCEV,trn_pasg_road_ldv_4w_pass,Car,FCEV
+trn_pass_road_LDV_4W,Car,Hybrid Liquids,trn_pasg_road_ldv_4w_pass,Car,Hybrid Liquids
+trn_pass_road_LDV_4W,Car,Liquids,trn_pasg_road_ldv_4w_pass,Car,Liquids
+trn_pass_road_LDV_4W,Car,NG,trn_pasg_road_ldv_4w_pass,Car,NG
+trn_pass_road_LDV_4W,Large Car and Truck,BEV,trn_pasg_road_ldv_4w_pass,Large Car and Truck,BEV
+trn_pass_road_LDV_4W,Large Car and Truck,FCEV,trn_pasg_road_ldv_4w_pass,Large Car and Truck,FCEV
+trn_pass_road_LDV_4W,Large Car and Truck,Hybrid Liquids,trn_pasg_road_ldv_4w_pass,Large Car and Truck,Hybrid Liquids
+trn_pass_road_LDV_4W,Large Car and Truck,Liquids,trn_pasg_road_ldv_4w_pass,Large Car and Truck,Liquids
+trn_pass_road_LDV_4W,Large Car and Truck,NG,trn_pasg_road_ldv_4w_pass,Large Car and Truck,NG
+trn_pass_road_LDV_4W,Mini Car,BEV,trn_pasg_road_ldv_4w_pass,Mini Car,BEV
+trn_pass_road_LDV_4W,Mini Car,FCEV,trn_pasg_road_ldv_4w_pass,Mini Car,FCEV
+trn_pass_road_LDV_4W,Mini Car,Hybrid Liquids,trn_pasg_road_ldv_4w_pass,Mini Car,Hybrid Liquids
+trn_pass_road_LDV_4W,Mini Car,Liquids,trn_pasg_road_ldv_4w_pass,Mini Car,Liquids
+trn_pass_road_LDV_4W,Mini Car,NG,trn_pasg_road_ldv_4w_pass,Mini Car,NG
+trn_shipping_intl,International Ship,BEV,trn_ship_intl_pass,International Ship,BEV
+trn_shipping_intl,International Ship,FCEV,trn_ship_intl_pass,International Ship,FCEV
+trn_shipping_intl,International Ship,Hybrid Liquids,trn_ship_intl_pass,International Ship,Hybrid Liquids
+trn_shipping_intl,International Ship,Liquids,trn_ship_intl_pass,International Ship,Liquids

@@ -42,6 +42,8 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
              FILE="emissions/CEDS/gains_iso_sector_emissions",
              FILE="emissions/CEDS/gains_iso_fuel_emissions",
              FILE="emissions/IPCC_unconventional_oil_fug_emfacts",
+             FILE = "minerals/transport/A54.trn_tech_mineral_mapping_new_structure",
+             FILE = "minerals/transport/A54.trn_tech_mineral_bev_mapping",
              "L102.ceds_GFED_nonco2_tg_R_S_F",
              "L102.ceds_int_shipping_nonco2_tg_S_F",
              "L122.LC_bm2_R_HarvCropLand_C_Yh_GLU",
@@ -235,6 +237,8 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
     }
 
     calibrated_outresources <- get_data(all_data, "emissions/mappings/calibrated_outresources")
+    A54.trn_tech_mineral_mapping_new_structure <- get_data(all_data, "minerals/transport/A54.trn_tech_mineral_mapping_new_structure",strip_attributes = TRUE)
+    A54.trn_tech_mineral_bev_mapping <- get_data(all_data, "minerals/transport/A54.trn_tech_mineral_bev_mapping",strip_attributes = TRUE)
 
     L124.LC_bm2_R_Grass_Yh_GLU_adj <- get_data(all_data, "L124.LC_bm2_R_Grass_Yh_GLU_adj",strip_attributes = TRUE)
     L124.LC_bm2_R_UnMgdFor_Yh_GLU_adj <- get_data(all_data, "L124.LC_bm2_R_UnMgdFor_Yh_GLU_adj",strip_attributes = TRUE)
@@ -261,6 +265,17 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
     #were consolidated into 1 category with the new modes (LDV_2W_3W). We need the adjustment below so emissions
     # are calculated appropriately.
 
+    A54.trn_tech_mineral_mapping_new_structure %>%
+      filter(supplysector_L2 %in% c("trn_fret_road_pass", "trn_pasg_road_bus_pass", "trn_pasg_road_ldv_4w_pass"),
+             stub.technology_L2 == "BEV") %>%
+      left_join(A54.trn_tech_mineral_bev_mapping,
+                by = c("supplysector_L2" = "from.supplysector", "tranSubsector_L2" = "from.subsector", "stub.technology_L2" = "from.technology")) %>%
+      select(supplysector, tranSubsector, stub.technology, supplysector_L2 = to.supplysector, tranSubsector_L2 = to.subsector, stub.technology_L2 = to.technology) %>%
+      rbind(A54.trn_tech_mineral_mapping_new_structure %>%
+              anti_join(A54.trn_tech_mineral_mapping_new_structure %>%
+                          filter(supplysector_L2 %in% c("trn_fret_road_pass", "trn_pasg_road_bus_pass", "trn_pasg_road_ldv_4w_pass"),
+                                 stub.technology_L2 == "BEV"))) ->
+      A54.trn_tech_mineral_mapping_new_structure_all
     if(energy.TRAN_UCD_MODE=="rev.mode"){
 
       LDV_2W_3W_modes <- c("LDV_2W_3W")
@@ -396,8 +411,14 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
       rename(Non.CO2=Non.co2, stub.technology=fuel,value=em_factor) %>%
       #Values from GAINS are in kt/ej. Convert to Tg/ej.
       mutate(value=if_else(is.na(value),0,0.001*value),energy=if_else(is.na(energy),0,energy)) %>%
-      left_join_keep_first_only(UCD_techs %>% select(-fuel) %>% rename(stub.technology=UCD_technology,subsector=tranSubsector),by=c("mode","size.class","UCD_sector","stub.technology")) %>%
-      select(GCAM_region_ID,Non.CO2,supplysector,stub.technology,year,value,subsector,energy)->GAINS_NG_em_factors
+      left_join_keep_first_only(UCD_techs %>% select(-fuel) %>% rename(stub.technology=UCD_technology,subsector=tranSubsector),
+                                by=c("mode","size.class","UCD_sector","stub.technology")) %>%
+
+      left_join(A54.trn_tech_mineral_mapping_new_structure_all,
+                by = c("supplysector", "subsector" = "tranSubsector", "tranTechnology" = "stub.technology")) %>%
+      select(GCAM_region_ID, Non.CO2, supplysector = supplysector_L2, stub.technology = stub.technology_L2,
+             year,value, subsector = tranSubsector_L2, energy) ->
+      GAINS_NG_em_factors
 
     # ===========================
     #Part 2:Combustion Energy Emissions#
@@ -600,7 +621,10 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
       left_join_keep_first_only(UCD_techs %>% select(UCD_sector, mode, size.class, fuel, supplysector, tranSubsector, tranTechnology) %>% rename(technology = fuel, subsector = tranSubsector, stub.technology = tranTechnology),
                                 by = c("sector" = "UCD_sector", "mode", "size.class", "technology")) %>%
       na.omit() %>%
-      select(GCAM_region_ID, year, energy, supplysector, subsector, stub.technology) ->
+      left_join(A54.trn_tech_mineral_mapping_new_structure_all,
+                by = c("supplysector", "subsector" = "tranSubsector", "stub.technology")) %>%
+      select(GCAM_region_ID, year, energy, supplysector = supplysector_L2,
+             subsector = tranSubsector_L2, stub.technology = stub.technology_L2) ->
       L112.in_EJ_R_en_S_F_Yh_calib_trn
 
     # Rebind separate sectors into master list
@@ -679,12 +703,27 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
                          CEDS_agg_fuel = if_else(CEDS_agg_fuel == "traditional biomass","biomass",stub.technology)))
 
     # Append CEDS sector/fuel combinations to GCAM energy
+    # update the CEDS_sector_tech_adj with updated trn sector tech
+    CEDS_sector_tech_adj %>%
+      filter(grepl("trn_", supplysector)) %>%
+      left_join(A54.trn_tech_mineral_mapping_new_structure_all,
+                by = c("supplysector", "subsector" = "tranSubsector", "stub.technology")) %>%
+      na.omit() %>%
+      select(supplysector = supplysector_L2, subsector = tranSubsector_L2,
+             stub.technology = stub.technology_L2, CEDS_agg_sector, CEDS_agg_fuel) %>%
+      rbind(CEDS_sector_tech_adj %>%
+              filter(!grepl("trn_", supplysector))) ->
+      CEDS_sector_tech_adj
 
+    bev_subsector <- A54.trn_tech_mineral_mapping_new_structure_all %>%
+      filter(grepl("bev", tranSubsector_L2)) %>%
+      pull(tranSubsector_L2) %>%
+      unique()
     L112.in_EJ_R_en_S_F_Yh_calib_all %>%
       #We will drop all electricity sectors here
 
       filter(!stub.technology %in% c(emissions.ZERO_EM_TECH),
-             !subsector %in% c(emissions.ZERO_EM_TECH, "heat")) %>%
+             !subsector %in% c(emissions.ZERO_EM_TECH, bev_subsector, "heat")) %>%
       left_join_error_no_match(CEDS_sector_tech_adj, by = c("supplysector", "subsector", "stub.technology"))  ->
       L112.in_EJ_R_en_S_F_Yh_calib_all_baseenergy
 
@@ -1867,7 +1906,8 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
       add_legacy_name("L111.nonghg_tg_R_en_S_F_Yh") %>%
       add_precursors("L102.ceds_GFED_nonco2_tg_R_S_F", "L102.ceds_int_shipping_nonco2_tg_S_F", "emissions/CEDS/ceds_sector_map","emissions/CEDS/ceds_fuel_map", "common/GCAM_region_names",
                      "common/iso_GCAM_regID","energy/mappings/UCD_techs","energy/calibrated_techs","energy/calibrated_techs_bld_det",
-                     "emissions/mappings/Trn_subsector","emissions/CEDS/CEDS_sector_tech_combustion","emissions/mappings/Trn_subsector_revised",
+                     "emissions/mappings/Trn_subsector","emissions/CEDS/CEDS_sector_tech_combustion", "minerals/transport/A54.trn_tech_mineral_mapping_new_structure",
+                     "emissions/mappings/Trn_subsector_revised", "minerals/transport/A54.trn_tech_mineral_bev_mapping",
                      "emissions/mappings/CEDS_sector_tech_proc","emissions/mappings/calibrated_outresources","emissions/mappings/CEDS_sector_tech_proc_revised",
                      "L101.in_EJ_R_en_Si_F_Yh", "L1328.in_EJ_R_indenergy_F_Yh", "L1323.in_EJ_R_iron_steel_F_Y", "L1324.in_EJ_R_Off_road_F_Y",
                      "L1325.in_EJ_R_chemical_F_Y", "L1326.in_EJ_R_aluminum_Yh", "L1327.in_EJ_R_paper_F_Yh", "L1328.in_EJ_R_food_F_Yh", "L1328.in_EJ_R_indenergy_infilled_for_food_F_Yh", "emissions/CEDS/CEDS_sector_tech_combustion_revised",
@@ -1896,7 +1936,9 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
                      "L101.in_EJ_R_en_Si_F_Yh", "L1328.in_EJ_R_indenergy_F_Yh", "L1323.in_EJ_R_iron_steel_F_Y", "L1324.in_EJ_R_Off_road_F_Y",
                      "L1325.in_EJ_R_chemical_F_Y", "L1326.in_EJ_R_aluminum_Yh", "L1327.in_EJ_R_paper_F_Yh", "L1328.in_EJ_R_food_F_Yh", "L1328.in_EJ_R_indenergy_infilled_for_food_F_Yh", "emissions/mappings/Trn_subsector_revised",
                      "L101.in_EJ_R_en_Si_F_Yh", "emissions/mappings/Trn_subsector_revised", "emissions/EPA/EPA_2019_raw", "emissions/EPA_CH4N2O_map",
-                     "emissions/CEDS/CEDS_sector_tech_combustion_revised","emissions/mappings/UCD_techs_emissions_revised","L154.IEA_histfut_data_times_UCD_shares",
+                     "emissions/CEDS/CEDS_sector_tech_combustion_revised", "minerals/transport/A54.trn_tech_mineral_mapping_new_structure",
+                     "minerals/transport/A54.trn_tech_mineral_bev_mapping",
+                     "emissions/mappings/UCD_techs_emissions_revised","L154.IEA_histfut_data_times_UCD_shares",
                      "emissions/CEDS/gains_iso_sector_emissions","emissions/CEDS/gains_iso_fuel_emissions",
                      "L270.nonghg_tg_state_refinery_F_Yb", "gcam-usa/emissions/BC_OC_assumptions", "gcam-usa/emissions/BCOC_PM25_ratios") ->
       L112.ghg_tg_R_en_S_F_Yh
@@ -1935,6 +1977,8 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
                      "emissions/EPA_country_map",
                      "emissions/CEDS/CEDS_sector_tech_combustion_revised",
                      "emissions/mappings/UCD_techs_emissions_revised",
+                     "minerals/transport/A54.trn_tech_mineral_mapping_new_structure",
+                     "minerals/transport/A54.trn_tech_mineral_bev_mapping",
                      "L270.nonghg_tg_state_refinery_F_Yb",
                      "gcam-usa/emissions/BC_OC_assumptions",
                      "gcam-usa/emissions/BCOC_PM25_ratios",
@@ -1951,7 +1995,9 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
                      "energy/calibrated_techs_bld_det",
                      "emissions/mappings/Trn_subsector",
                      "emissions/CEDS/CEDS_sector_tech_combustion",
-                     "emissions/CEDS/CEDS_sector_tech_combustion_revised") ->
+                     "emissions/CEDS/CEDS_sector_tech_combustion_revised",
+                     "minerals/transport/A54.trn_tech_mineral_bev_mapping",
+                     "minerals/transport/A54.trn_tech_mineral_mapping_new_structure") ->
       L112.in_EJ_R_en_S_F_Yh_calib_all_baseenergy
 
     L113.ghg_tg_R_an_C_Sys_Fd_Yh %>%
@@ -1965,6 +2011,7 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
       add_legacy_name("L113.ghg_tg_R_an_C_Sys_Fd_Yh") %>%
       add_precursors("L102.ceds_GFED_nonco2_tg_R_S_F","L102.ceds_int_shipping_nonco2_tg_S_F","emissions/CEDS/ceds_sector_map","emissions/CEDS/ceds_fuel_map", "common/GCAM_region_names",
                      "common/iso_GCAM_regID","emissions/CEDS/CEDS_sector_tech_combustion", "emissions/CEDS/CEDS_sector_tech_combustion_revised",
+                     "minerals/transport/A54.trn_tech_mineral_mapping_new_structure",
                      "emissions/mappings/CEDS_sector_tech_proc", "L107.an_Prod_Mt_R_C_Sys_Fd_Y","emissions/mappings/CEDS_sector_tech_proc_revised",
                      "L103.ghg_tgmt_USA_an_Sepa_F_2005") ->
       L113.ghg_tg_R_an_C_Sys_Fd_Yh
@@ -1977,6 +2024,7 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
       add_legacy_name("L115.nh3_tg_R_an_C_Sys_Fd_Yh") %>%
       add_precursors("L102.ceds_GFED_nonco2_tg_R_S_F","L102.ceds_int_shipping_nonco2_tg_S_F","emissions/CEDS/ceds_sector_map","emissions/CEDS/ceds_fuel_map", "common/GCAM_region_names",
                      "common/iso_GCAM_regID","emissions/CEDS/CEDS_sector_tech_combustion","emissions/CEDS/CEDS_sector_tech_combustion_revised",
+                     "minerals/transport/A54.trn_tech_mineral_mapping_new_structure","minerals/transport/A54.trn_tech_mineral_bev_mapping",
                      "L107.an_Prod_Mt_R_C_Sys_Fd_Y","L107.an_Prod_Mt_R_C_Sys_Fd_Y") ->
       L115.nh3_tg_R_an_C_Sys_Fd_Yh
 
@@ -1988,6 +2036,7 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
       add_legacy_name("L121.AWBshare_R_C_Y_GLU") %>%
       add_precursors("L102.ceds_GFED_nonco2_tg_R_S_F","emissions/CEDS/ceds_sector_map","emissions/CEDS/ceds_fuel_map", "common/GCAM_region_names",
                      "common/iso_GCAM_regID","emissions/CEDS/CEDS_sector_tech_combustion","emissions/CEDS/CEDS_sector_tech_combustion_revised",
+                     "minerals/transport/A54.trn_tech_mineral_mapping_new_structure","minerals/transport/A54.trn_tech_mineral_bev_mapping",
                      "L101.ag_Prod_Mt_R_C_Y_GLU", "L111.ag_resbio_R_C") ->
       L121.AWBshare_R_C_Y_GLU
 
@@ -2007,6 +2056,7 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
       add_legacy_name("L122.EmissShare_R_C_Y_GLU") %>%
       add_precursors("L102.ceds_GFED_nonco2_tg_R_S_F","emissions/CEDS/ceds_sector_map","emissions/CEDS/ceds_fuel_map", "common/GCAM_region_names",
                      "common/iso_GCAM_regID","emissions/CEDS/CEDS_sector_tech_combustion","emissions/CEDS/CEDS_sector_tech_combustion_revised",
+                     "minerals/transport/A54.trn_tech_mineral_mapping_new_structure","minerals/transport/A54.trn_tech_mineral_bev_mapping",
                      "L101.ag_Prod_Mt_R_C_Y_GLU","L111.ag_resbio_R_C","L122.LC_bm2_R_HarvCropLand_C_Yh_GLU") ->
       L122.EmissShare_R_C_Y_GLU
 
@@ -2015,9 +2065,10 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
       add_units("Tg") %>%
       add_comments("CEDS emissions shared out by crop production") %>%
       add_legacy_name("L122.ghg_tg_R_agr_C_Y_GLU") %>%
-      add_precursors("L102.ceds_GFED_nonco2_tg_R_S_F","emissions/CEDS/ceds_sector_map","emissions/CEDS/ceds_fuel_map", "common/GCAM_region_names",
-                     "common/iso_GCAM_regID","emissions/CEDS/CEDS_sector_tech_combustion","emissions/CEDS/CEDS_sector_tech_combustion_revised",
-                     "L124.LC_bm2_R_Grass_Yh_GLU_adj","L124.LC_bm2_R_UnMgdFor_Yh_GLU_adj") ->
+      add_precursors("L102.ceds_GFED_nonco2_tg_R_S_F", "emissions/CEDS/ceds_sector_map", "emissions/CEDS/ceds_fuel_map", "common/GCAM_region_names",
+                     "common/iso_GCAM_regID", "emissions/CEDS/CEDS_sector_tech_combustion", "emissions/CEDS/CEDS_sector_tech_combustion_revised",
+                     "minerals/transport/A54.trn_tech_mineral_mapping_new_structure", "minerals/transport/A54.trn_tech_mineral_bev_mapping",
+                     "L124.LC_bm2_R_Grass_Yh_GLU_adj", "L124.LC_bm2_R_UnMgdFor_Yh_GLU_adj") ->
       L122.ghg_tg_R_agr_C_Y_GLU
 
 
@@ -2028,6 +2079,8 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
       add_legacy_name("L124.nonco2_tg_R_grass_Y_GLU") %>%
       add_precursors("L102.ceds_GFED_nonco2_tg_R_S_F","emissions/CEDS/ceds_sector_map","emissions/CEDS/ceds_fuel_map", "common/GCAM_region_names",
                      "common/iso_GCAM_regID","emissions/CEDS/CEDS_sector_tech_combustion",
+                     "minerals/transport/A54.trn_tech_mineral_mapping_new_structure",
+                     "minerals/transport/A54.trn_tech_mineral_bev_mapping",
                      "L124.LC_bm2_R_Grass_Yh_GLU_adj") ->
       L124.nonco2_tg_R_grass_Y_GLU
 
@@ -2038,7 +2091,9 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
       add_legacy_name("L124.nonco2_tg_R_grass_Y_GLU") %>%
       add_precursors("L102.ceds_GFED_nonco2_tg_R_S_F","emissions/CEDS/ceds_sector_map","emissions/CEDS/ceds_fuel_map", "common/GCAM_region_names",
                      "common/iso_GCAM_regID","emissions/CEDS/CEDS_sector_tech_combustion",
-                     "L124.LC_bm2_R_Grass_Yh_GLU_adj")->L125.bcoc_tgbkm2_R_grass_2000
+                     "minerals/transport/A54.trn_tech_mineral_mapping_new_structure",
+                     "minerals/transport/A54.trn_tech_mineral_bev_mapping",
+                     "L124.LC_bm2_R_Grass_Yh_GLU_adj")-> L125.bcoc_tgbkm2_R_grass_2000
 
     L125.bcoc_tgbkm2_R_forest_2000 %>%
       add_title("Forest fire emissions for BCOC by GCAM region, gas, and historical year") %>%
@@ -2047,7 +2102,9 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
       add_legacy_name("L124.nonco2_tg_R_grass_Y_GLU") %>%
       add_precursors("L102.ceds_GFED_nonco2_tg_R_S_F","emissions/CEDS/ceds_sector_map","emissions/CEDS/ceds_fuel_map", "common/GCAM_region_names",
                      "common/iso_GCAM_regID","emissions/CEDS/CEDS_sector_tech_combustion","emissions/CEDS/CEDS_sector_tech_combustion_revised",
-                     "L124.LC_bm2_R_Grass_Yh_GLU_adj")->L125.bcoc_tgbkm2_R_forest_2000
+                     "minerals/transport/A54.trn_tech_mineral_mapping_new_structure",
+                     "minerals/transport/A54.trn_tech_mineral_bev_mapping",
+                     "L124.LC_bm2_R_Grass_Yh_GLU_adj")-> L125.bcoc_tgbkm2_R_forest_2000
 
     L125.deforest_coefs_bcoc %>%
       add_title("Forest fire emissions for BCOC by GCAM region, gas, and historical year") %>%
@@ -2056,6 +2113,8 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
       add_legacy_name("L124.nonco2_tg_R_grass_Y_GLU") %>%
       add_precursors("L102.ceds_GFED_nonco2_tg_R_S_F","emissions/CEDS/ceds_sector_map","emissions/CEDS/ceds_fuel_map", "common/GCAM_region_names",
                      "common/iso_GCAM_regID","emissions/CEDS/CEDS_sector_tech_combustion","emissions/CEDS/CEDS_sector_tech_combustion_revised",
+                     "minerals/transport/A54.trn_tech_mineral_mapping_new_structure",
+                     "minerals/transport/A54.trn_tech_mineral_bev_mapping",
                      "L124.LC_bm2_R_Grass_Yh_GLU_adj")->L125.deforest_coefs_bcoc
 
     L124.nonco2_tg_R_forest_Y_GLU %>%
@@ -2066,6 +2125,8 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
       add_legacy_name("L124.nonco2_tg_R_forest_Y_GLU") %>%
       add_precursors("L102.ceds_GFED_nonco2_tg_R_S_F","emissions/CEDS/ceds_sector_map","emissions/CEDS/ceds_fuel_map", "common/GCAM_region_names",
                      "common/iso_GCAM_regID","emissions/CEDS/CEDS_sector_tech_combustion","emissions/CEDS/CEDS_sector_tech_combustion_revised",
+                     "minerals/transport/A54.trn_tech_mineral_mapping_new_structure",
+                     "minerals/transport/A54.trn_tech_mineral_bev_mapping",
                      "L124.LC_bm2_R_UnMgdFor_Yh_GLU_adj") ->
       L124.nonco2_tg_R_forest_Y_GLU
 
@@ -2087,6 +2148,7 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
       add_legacy_name("L131.nonco2_tg_R_prc_S_S_Yh") %>%
       add_precursors("emissions/CEDS/ceds_sector_map","emissions/CEDS/ceds_fuel_map", "common/GCAM_region_names",
                      "common/iso_GCAM_regID","emissions/CEDS/CEDS_sector_tech_combustion","emissions/CEDS/CEDS_sector_tech_combustion_revised",
+                     "minerals/transport/A54.trn_tech_mineral_mapping_new_structure",
                      "emissions/EPA_FCCC_IndProc_2005", "emissions/EPA/EPA_2019_raw", "emissions/EPA_CH4N2O_map",
                      "emissions/GCAM_EPA_CH4N2O_energy_map"
       ) ->

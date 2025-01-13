@@ -48,6 +48,7 @@ module_energy_L154.transportation_UCD <- function(command, ...) {
              "L154.cost_usdvkm_R_trn_m_sz_tech_F_Y",
              "L154.capcoef_usdvkm_R_trn_m_sz_tech_F_Y",
              "L154.speed_kmhr_R_trn_m_sz_tech_F_Y",
+             "L154.travel_kmvyr_R_trn_m_sz_tech_F_Y",
              "L154.out_mpkm_R_trn_nonmotor_Yh",
              "L154.IEA_histfut_data_times_UCD_shares",
              "UCD_trn_data"))
@@ -327,6 +328,7 @@ module_energy_L154.transportation_UCD <- function(command, ...) {
                 cap_ann_vkt = sum(cap_ann_vkt)) %>%
       ungroup() %>%
       mutate(variable = "non-fuel costs")
+
     UCD_trn_cost_data %>%
       mutate(value = cap_ann_vkt,
              variable = "annual-capital costs",
@@ -337,10 +339,12 @@ module_energy_L154.transportation_UCD <- function(command, ...) {
 
 
     #kbn 2019-10-18. We drop some columns in the above calculation with the summarise. To fix the same, we are adding back the original UCD_trn_data below.
-    UCD_trn_data_for_join<-UCD_trn_data %>%
+    UCD_trn_data_for_join <-
+      UCD_trn_data %>%
       select(-variable,-unit,-value)
 
-    UCD_trn_cost_data<-UCD_trn_cost_data %>%
+    UCD_trn_cost_data <-
+      UCD_trn_cost_data %>%
       #kbn 2020-01-29 Updating with sce below. Changes described in detail in comment with search string,kbn 2020-03-26.
       inner_join(UCD_trn_data_for_join,by=c("mode","size.class","UCD_region","UCD_sector", "UCD_technology", "UCD_fuel","year","sce"))
 
@@ -525,6 +529,7 @@ module_energy_L154.transportation_UCD <- function(command, ...) {
 
 
     size_class <- (paste(energy.TRAN_UCD_SIZE_CLASS,".x",sep=""))
+    # note that the unit of weight_EJ is EJ, while unit of intensity is MJ/vkm, the unit of calculated Tvkm should be 10^12 km
     ALL_region_var <- ALL_ctry_var %>%
       mutate(Tvkm = weight_EJ / intensity,
              Tpkm = Tvkm * `load factor`,
@@ -548,8 +553,8 @@ module_energy_L154.transportation_UCD <- function(command, ...) {
              ann_capvkm = Tann_cap / Tvkm,
              speed_kmhr = Tvkm / Thr) %>%
       # Dropping unnecessary columns
-      select(-Tvkm, -Tpkm, -Tusd, -Tann_cap, -Thr, -weight_EJ) %>%
-      gather(variable, value, intensity_MJvkm, loadfactor, cost_usdvkm, ann_capvkm, speed_kmhr) %>%
+      select(-Tpkm, -Tusd, -Tann_cap, -Thr, -weight_EJ) %>%
+      gather(variable, value, Tvkm, intensity_MJvkm, loadfactor, cost_usdvkm, ann_capvkm, speed_kmhr) %>%
       # Reordering columns
       #kbn 2019-10-09 use user defined mode and size classes below. Changes described in detail in comment with search string,kbn 2020-03-26.
       #kbn 2020-01-29 Adding sce below. Changes described in detail in comment with search string,kbn 2020-03-26.
@@ -714,6 +719,20 @@ module_energy_L154.transportation_UCD <- function(command, ...) {
                      "L131.in_EJ_R_Senduse_F_Yh") ->
       L154.speed_kmhr_R_trn_m_sz_tech_F_Y
 
+    out_var_df[["Tvkm"]] %>%
+      add_title("Transportation vehicle annual travel") %>%
+      add_units("km/yr") %>%
+      add_comments("UCD transportation database data aggregated to GCAM region") %>%
+      add_legacy_name("L154.speed_kmhr_R_trn_m_sz_tech_F_Y") %>%
+      add_precursors("energy/UCD_trn_data_CORE","energy/UCD_trn_data_SSP1","energy/UCD_trn_data_SSP3","energy/UCD_trn_data_SSP5",
+                     "energy/mappings/UCD_size_class_revisions", "energy/mappings/UCD_ctry",
+                     "common/iso_GCAM_regID", "energy/mappings/calibrated_techs_trn_agg", "energy/mappings/enduse_fuel_aggregation",
+                     "energy/mappings/UCD_techs",
+                     "L131.in_EJ_R_Senduse_F_Yh", "common/iso_GCAM_regID", "energy/mappings/calibrated_techs_trn_agg",
+                     "energy/mappings/enduse_fuel_aggregation", "energy/mappings/UCD_techs",
+                     "L101.in_EJ_ctry_trn_Fi_Yh", "L1011.in_EJ_ctry_intlship_TOT_Yh",
+                     "L131.in_EJ_R_Senduse_F_Yh") ->
+      L154.travel_kmvyr_R_trn_m_sz_tech_F_Y
     PKM_nonmotor_GCAM_R %>%
       add_title("Non-motor transportation service output") %>%
       add_units("Million passenger kilometers") %>%
@@ -738,6 +757,7 @@ module_energy_L154.transportation_UCD <- function(command, ...) {
     return_data(L154.in_EJ_R_trn_m_sz_tech_F_Yh, L154.in_EJ_ctry_trn_m_sz_tech_F,
                 L154.intensity_MJvkm_R_trn_m_sz_tech_F_Y, L154.loadfactor_R_trn_m_sz_tech_F_Y,
                 L154.cost_usdvkm_R_trn_m_sz_tech_F_Y, L154.speed_kmhr_R_trn_m_sz_tech_F_Y,
+                L154.travel_kmvyr_R_trn_m_sz_tech_F_Y,
                 L154.out_mpkm_R_trn_nonmotor_Yh,L154.IEA_histfut_data_times_UCD_shares,
                 UCD_trn_data, L154.capcoef_usdvkm_R_trn_m_sz_tech_F_Y)
   } else {

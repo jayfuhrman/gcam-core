@@ -128,7 +128,7 @@ make_run_xml_conversion <- function() {
       close(tmp_conn)
       args <- c(
         "-cp", shQuote(java_cp),
-        "-Xmx2g", # TODO: memory limits?
+        "-Xmx8g", # TODO: memory limits?
         "ModelInterface.ModelGUI2.csvconv.CSVToXMLMain",
         tmpfn, # Read from the temporary file
         shQuote(dot$mi_header),

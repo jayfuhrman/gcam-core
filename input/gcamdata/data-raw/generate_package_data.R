@@ -93,6 +93,10 @@ generate_level2_data_names <- function() {
   level2_data_names[["Supplysector_absolute-cost-logit"]] <- c("region", "supplysector")
   level2_data_names[["Supplysector_relative-cost-logit"]] <- c("region", "supplysector")
   level2_data_names[["PassThroughSector"]] <- c("region", "pass.through.sector", "marginal.revenue.sector", "marginal.revenue.market")
+  level2_data_names[["PassThroughSectorData"]] <- c("region", "pass.through.sector", "output.unit", "input.unit", "price.unit", "logit.year.fillout", "logit.exponent", "logit.type")
+  level2_data_names[["PassThroughSectorData_absolute-cost-logit"]] <- c("region", "pass.through.sector")
+  level2_data_names[["PassThroughSectorData_relative-cost-logit"]] <- c("region", "pass.through.sector")
+  level2_data_names[["PassThruFinalEnergyKeyword"]] <- c("region", "pass.through.sector", "final.energy")
   level2_data_names[["ElecReserve"]] <- c("region", "supplysector", "electricity.reserve.margin", "average.grid.capacity.factor")
   level2_data_names[["SectorUseTrialMarket"]] <- c("region", "supplysector", "use.trial.market")
   level2_data_names[["DeleteSupplysector"]] <- c("region", "supplysector")
@@ -113,12 +117,20 @@ generate_level2_data_names <- function() {
   level2_data_names[["tranSubsectorInterp"]] <- c("region", "supplysector", "tranSubsector", "apply.to", "from.year", "to.year", "interpolation.function")
   level2_data_names[["tranSubsectorInterpTo"]] <- c("region", "supplysector", "tranSubsector", "apply.to", "from.year", "to.year", "to.value", "interpolation.function")
   level2_data_names[["tranSubsectorLogit"]] <- c("region", "supplysector", "tranSubsector", "logit.year.fillout", "logit.exponent")
+  level2_data_names[["PassThrutranSubsectorLogit"]] <- c("region", "pass.through.sector", "tranSubsector", "logit.year.fillout", "logit.exponent", "logit.type")
   level2_data_names[["tranSubsectorShrwt"]] <- c("region", "supplysector", "tranSubsector", "year", "share.weight")
   level2_data_names[["tranSubsectorShrwtFllt"]] <- c("region", "supplysector", "tranSubsector", "year.fillout", "share.weight")
   level2_data_names[["tranSubsectorSpeed"]] <- c("region", "supplysector", "tranSubsector", "year", "speed")
   level2_data_names[["tranSubsectorVOTT"]] <- c("region", "supplysector", "tranSubsector", "addTimeValue", "year.fillout", "time.value.multiplier")
-  level2_data_names[["tranSubsector_absolute-cost-logit"]] <- c("region", "supplysector", "tranSubsector")
-  level2_data_names[["tranSubsector_relative-cost-logit"]] <- c("region", "supplysector", "tranSubsector")
+  level2_data_names[["tranSubsectorLogit_absolute-cost-logit"]] <- c("region", "supplysector", "tranSubsector")
+  level2_data_names[["tranSubsectorLogit_relative-cost-logit"]] <- c("region", "supplysector", "tranSubsector")
+  level2_data_names[["PassThrutranSubsectorLogit_absolute-cost-logit"]] <- c("region", "pass.through.sector", "tranSubsector")
+  level2_data_names[["PassThrutranSubsectorLogit_relative-cost-logit"]] <- c("region", "pass.through.sector", "tranSubsector")
+  level2_data_names[["PassThrutranSubsectorInterp"]] <- c("region", "pass.through.sector", "tranSubsector", "apply.to", "from.year", "to.year", "interpolation.function")
+  level2_data_names[["PassThrutranSubsectorShrwtFllt"]] <- c("region", "pass.through.sector", "tranSubsector", "year.fillout", "share.weight")
+  level2_data_names[["PassThrutranSubsectorSpeed"]] <- c("region", "pass.through.sector", "tranSubsector", "year", "speed")
+  level2_data_names[["PassThrutranSubsectorFuelPref"]] <- c("region", "pass.through.sector", "tranSubsector", "year.fillout", "fuelprefElasticity")
+  level2_data_names[["PassThrutranSubsectorVOTT"]] <- c("region", "pass.through.sector", "tranSubsector", "addTimeValue", "year.fillout", "time.value.multiplier")
   level2_data_names[["DeleteSubsector"]] <- level2_data_names[["Subsector"]]
   level2_data_names[["DeleteNestingSubsector1"]] <- c("region", "supplysector", "nesting-subsector")
 
@@ -227,6 +239,8 @@ generate_level2_data_names <- function() {
   level2_data_names[["GlobalTranTechSCurve"]] <- c("sector.name", "subsector.name", "tranTechnology", "year", "lifetime", "steepness", "half.life")
   level2_data_names[["GlobalTranTechProfitShutdown"]] <- c("sector.name", "subsector.name", "tranTechnology", "year", "median.shutdown.point", "steepness")
   level2_data_names[["GlobalPassThroughTech"]] <- c("sector.name", "subsector.name", "technology")
+  level2_data_names[["GlobalPassThroughTechCapFac"]] <- c("sector.name", "subsector.name", "pass.through.technology", "year", "capacity.factor")
+  level2_data_names[["GlobalIntPassThroughTechBackup"]] <- c("sector.name", "subsector.name", "pass.through.technology", "year", "electric.sector.name", "trial.market.name", "backup.capital.cost", "backup.capacity.factor", "capacity.limit", "minicam.energy.input", "minicam.non.energy.input", "flag")
   level2_data_names[["GlobalResBio"]] <- c("sector.name", "subsector.name", "technology", "year", "residue.biomass.production", "mass.conversion", "harvest.index", "eros.ctrl", "mass.to.energy", "water.content")
   level2_data_names[["GlobalTechIntGainOutputRatio"]] <- c(level2_data_names[["GlobalTechYr"]], "internal.gains.output.ratio", "internal.gains.market.name")
   level2_data_names[["AvgFossilEffKeyword"]] <- c(level2_data_names[["GlobalTechYr"]], "average.fossil.efficiency")
@@ -239,7 +253,15 @@ generate_level2_data_names <- function() {
   level2_data_names[["GlobalIntTechCost"]] <- c("sector.name", "subsector.name", "intermittent.technology", "year", "minicam.non.energy.input", "input.cost")
   level2_data_names[["DeleteGlobalTech"]] <- level2_data_names[["GlobalTech"]]
   level2_data_names[["GlobalTechMineralCurCoef"]] <- c(level2_data_names[["GlobalTechYr"]], "minicam.energy.input", "coefficient", "model.year", "current.coef")
+  level2_data_names[["GlobalPassThruTechShrwt"]] <- c("sector.name", "subsector.name", "pass.through.technology", "year", "share.weight")
   level2_data_names[["GlobalTechMineralCurCoefAllYr"]] <- c(level2_data_names[["GlobalTechYr"]], "minicam.energy.input", "model.year", "current.coef")
+  level2_data_names[["GlobalIntPassThruTechBackup"]] <- c("sector.name", "subsector.name", "pass.through.technology", "year", "electric.sector.name", "trial.market.name", "backup.capital.cost", "backup.capacity.factor", "capacity.limit", "minicam.energy.input", "minicam.non.energy.input", "flag")
+  level2_data_names[["GlobalIntPassThruTechEff"]] <- c("sector.name", "subsector.name", "pass.through.technology", "year", "minicam.energy.input", "efficiency", "type")
+  level2_data_names[["GlobalIntPassThruTechShrwt"]] <- c("sector.name", "subsector.name", "pass.through.technology", "year", "share.weight")
+  level2_data_names[["GlobalPassThruTechCapFac"]] <- c("sector.name", "subsector.name", "pass.through.technology", "year", "capacity.factor")
+  level2_data_names[["GlobalPassThruTechEff"]] <- c("sector.name", "subsector.name", "pass.through.technology", "year", "minicam.energy.input", "efficiency")
+  level2_data_names[["GlobalPassThruTechCoef"]] <- c("sector.name", "subsector.name", "pass.through.technology", "year", "minicam.energy.input", "coefficient")
+  level2_data_names[["GlobalPassThruTechInterp"]] <- c("sector.name", "subsector.name", "pass.through.technology", "apply.to", "from.year", "to.year", "interpolation.function")
 
 
   # Stub technologies
@@ -281,6 +303,8 @@ generate_level2_data_names <- function() {
   level2_data_names[["StubTranTechCost"]] <- c("region", "supplysector", "tranSubsector", "stub.technology", "year", "minicam.non.energy.input", "input.cost")
   level2_data_names[["StubTranTechLoadFactor"]] <- c("region", "supplysector", "tranSubsector", "stub.technology", "year", "loadFactor")
   level2_data_names[["StubTranTechProd"]] <- c("region", "supplysector", "tranSubsector", "stub.technology", "year", "calOutputValue")
+  level2_data_names[["PassThruStubTranTechMineralCoef"]] <- c("region", "pass.through.sector", "tranSubsector", "stub.technology", "year", "minicam.energy.input", "coefficient")
+  level2_data_names[["PassThruStubTranTechMineralCurCoef"]] <- c("region", "pass.through.sector", "tranSubsector", "stub.technology", "year", "minicam.energy.input", "model.year", "current.coef")
   level2_data_names[["DeleteStubTech"]] <- level2_data_names[["StubTech"]]
   level2_data_names[["StubTechSCurve"]] <- c("region", "supplysector", "subsector", "stub.technology", "year", "lifetime", "steepness", "half.life")
   level2_data_names[["StubTechLifetime"]] <- c("region", "supplysector", "subsector", "stub.technology", "year", "lifetime")
@@ -289,6 +313,12 @@ generate_level2_data_names <- function() {
   level2_data_names[["StubTechEffFlag"]] <- c(level2_data_names[["StubTechYr"]], "minicam.energy.input", "efficiency", "market.name", "flag")
   level2_data_names[["RegionalStubTechMineralCurCoef"]] <- c(level2_data_names[["StubTechYr"]], "minicam.energy.input", "coefficient", "model.year", "current.coef")
   level2_data_names[["RegionalStubTechMineralCurCoefAllYr"]] <- c(level2_data_names[["StubTechYr"]], "minicam.energy.input", "model.year", "current.coef")
+  level2_data_names[["PassThruStubTranTechCalInput"]] <- c("region", "pass.through.sector", "tranSubsector", "stub.technology", "year", "minicam.energy.input", "calibrated.value", "share.weight.year", "subs.share.weight", "tech.share.weight")
+  level2_data_names[["PassThruStubTranTechLoadFactor"]] <- c("region", "pass.through.sector", "tranSubsector", "stub.technology", "year", "loadFactor")
+  level2_data_names[["PassThruStubTranTechTrackCapital"]] <- c("region", "pass.through.sector", "tranSubsector", "stub.technology", "year", "minicam.non.energy.input", "capital.coef", "tracking.market", "depreciation.rate")
+  level2_data_names[["PassThruStubTranTechCost"]] <- c("region", "pass.through.sector", "tranSubsector", "stub.technology", "year", "minicam.non.energy.input", "input.cost")
+  level2_data_names[["PassThruStubTranTechCoef"]] <- c("region", "pass.through.sector", "tranSubsector", "stub.technology", "year", "minicam.energy.input", "coefficient", "market.name")
+  level2_data_names[["PassThruStubTranTechProd"]] <- c("region", "pass.through.sector", "tranSubsector", "stub.technology", "year", "calOutputValue")
 
 
   # Agricultural sectors, subsectors, and technologies

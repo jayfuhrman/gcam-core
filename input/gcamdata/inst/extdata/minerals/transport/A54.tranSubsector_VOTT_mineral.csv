@@ -1,0 +1,27 @@
+# File: A54.tranSubsector_VOTT_mineral.csv
+# Title: Transportation default subsector value of time in transit multipliers (VOTT = wage rate * this factor)
+# Source: Documented in JIRA issue https://jira.pnnl.gov/jira/browse/JGCRI-358?src=confmacro.
+# Units: Unitless
+# Column types: ccnnnnicn
+# ----------
+supplysector,tranSubsector,in.vehicle.VOTT,wait.walk.vott,wait.walk.share,time.value.multiplier,addTimeValue,speed.source,fuelprefElasticity
+trn_aviation_intl_pass,International Aviation,1.45,1.066,0.415,1.291,1,,0
+trn_pasg_cycle_pass,Cycle,1.066,1.066,0,1.066,1,,0
+trn_pasg_aviation_dom_pass,Domestic Aviation,1.45,1.066,0.537,1.244,1,,0
+trn_pasg_hsr_pass,HSR,0.77,1.066,0.102,0.8,1,,0
+trn_pasg_rail_pass,Passenger Rail,0.77,1.066,0.102,0.8,1,,0
+trn_passenger,Walk,1.066,1.066,0,1.066,1,,0
+trn_pasg_road_bus_pass,Bus,0.77,1.066,0.128,0.808,1,,0
+trn_pasg_road_ldv_2_3W_pass,2W and 3W,0.82,1.066,0,0.82,1,,0
+trn_pasg_road_ldv_4w_pass,Car,0.82,1.066,0,0.82,0,,0
+trn_pasg_road_ldv_4w_pass,Large Car and Truck,0.82,1.066,0,0.82,0,,0.1
+trn_pasg_road_ldv_4w_pass,Large Car and Truck,0.82,1.066,0,0.82,0,,0.2
+trn_pasg_road_ldv_4w_pass,Mini Car,0.82,1.066,0,0.82,0,,-0.2
+trn_pasg_road_ldv_4w_pass,Car,0.82,1.066,0,0.82,0,,-0.1
+trn_pasg_road_ldv_4w_pass,Large Car and Truck,0.82,1.066,0,0.82,0,,0
+# Pass-through tranSubsectors
+trn_passenger,pasg_road,,,,1,0,,0
+trn_pasg_road_pass,pasg_road_ldv,,,,1,0,,0
+trn_pasg_road_pass,pasg_road_bus,0.77,1.066,0.128,0.808,0,,0
+trn_pasg_road_ldv_pass,pasg_road_ldv_4w,0.82,1.066,0,0.82,1,trn_pasg_road_ldv_4w_pass,0
+trn_pasg_road_ldv_pass,pasg_road_ldv_2_3W,,,,1,0,,0

@@ -1,0 +1,47 @@
+# File: A54.trn_globaltech_subtype_shrwt.csv
+# Title: subtype transport sector ev share weight
+# Units: Unitless
+# Source: add later
+# Comments: add later
+# Column types: cccnnn
+# ----------
+supplysector,subsector,stub.technology,2020,2040,2100
+trn_fret_road_ht_bev_pass,fret_road_ht_bev,h_truck_bev (LMO),1,1,1
+trn_fret_road_ht_bev_pass,fret_road_ht_bev,h_truck_bev (NMC111),1,1,1
+trn_fret_road_ht_bev_pass,fret_road_ht_bev,h_truck_bev (NMC622),1,1,1
+trn_fret_road_ht_bev_pass,fret_road_ht_bev,h_truck_bev (NMC811),1,1,1
+trn_fret_road_ht_bev_pass,fret_road_ht_bev,h_truck_bev (NCA),1,1,1
+trn_fret_road_ht_bev_pass,fret_road_ht_bev,h_truck_bev (LFP),1,1,1
+trn_fret_road_mt_bev_pass,fret_road_mt_bev,m_truck_bev (LMO),1,1,1
+trn_fret_road_mt_bev_pass,fret_road_mt_bev,m_truck_bev (NMC111),1,1,1
+trn_fret_road_mt_bev_pass,fret_road_mt_bev,m_truck_bev (NMC622),1,1,1
+trn_fret_road_mt_bev_pass,fret_road_mt_bev,m_truck_bev (NMC811),1,1,1
+trn_fret_road_mt_bev_pass,fret_road_mt_bev,m_truck_bev (NCA),1,1,1
+trn_fret_road_mt_bev_pass,fret_road_mt_bev,m_truck_bev (LFP),1,1,1
+trn_fret_road_lt_bev_pass,fret_road_lt_bev,l_truck_bev (LMO),1,1,1
+trn_fret_road_lt_bev_pass,fret_road_lt_bev,l_truck_bev (NMC111),1,1,1
+trn_fret_road_lt_bev_pass,fret_road_lt_bev,l_truck_bev (NMC622),1,1,1
+trn_fret_road_lt_bev_pass,fret_road_lt_bev,l_truck_bev (NMC811),1,1,1
+trn_fret_road_lt_bev_pass,fret_road_lt_bev,l_truck_bev (NCA),1,1,1
+trn_fret_road_lt_bev_pass,fret_road_lt_bev,l_truck_bev (LFP),1,1,1
+trn_bus_bev_pass,bus_bev,bus_bev (LMO),1,1,1
+trn_bus_bev_pass,bus_bev,bus_bev (NMC111),1,1,1
+trn_bus_bev_pass,bus_bev,bus_bev (LFP),1,1,1
+trn_pasg_road_ldv_4W_lc_bev_pass,minicar_bev,minicar_bev (LMO),1,1,1
+trn_pasg_road_ldv_4W_lc_bev_pass,minicar_bev,minicar_bev (NMC111),1,1,1
+trn_pasg_road_ldv_4W_lc_bev_pass,minicar_bev,minicar_bev (NMC622),1,1,1
+trn_pasg_road_ldv_4W_lc_bev_pass,minicar_bev,minicar_bev (NMC811),1,1,1
+trn_pasg_road_ldv_4W_lc_bev_pass,minicar_bev,minicar_bev (NCA),1,1,1
+trn_pasg_road_ldv_4W_lc_bev_pass,minicar_bev,minicar_bev (LFP),1,1,1
+trn_pasg_road_ldv_4W_mc_bev_pass,car_bev,car_bev (LMO),1,1,1
+trn_pasg_road_ldv_4W_mc_bev_pass,car_bev,car_bev (NMC111),1,1,1
+trn_pasg_road_ldv_4W_mc_bev_pass,car_bev,car_bev (NMC622),1,1,1
+trn_pasg_road_ldv_4W_mc_bev_pass,car_bev,car_bev (NMC811),1,1,1
+trn_pasg_road_ldv_4W_mc_bev_pass,car_bev,car_bev (NCA),1,1,1
+trn_pasg_road_ldv_4W_mc_bev_pass,car_bev,car_bev (LFP),1,1,1
+trn_pasg_road_ldv_4W_hc_bev_pass,largecar_bev,largecar_bev (LMO),1,1,1
+trn_pasg_road_ldv_4W_hc_bev_pass,largecar_bev,largecar_bev (NMC111),1,1,1
+trn_pasg_road_ldv_4W_hc_bev_pass,largecar_bev,largecar_bev (NMC622),1,1,1
+trn_pasg_road_ldv_4W_hc_bev_pass,largecar_bev,largecar_bev (NMC811),1,1,1
+trn_pasg_road_ldv_4W_hc_bev_pass,largecar_bev,largecar_bev (NCA),1,1,1
+trn_pasg_road_ldv_4W_hc_bev_pass,largecar_bev,largecar_bev (LFP),1,1,1

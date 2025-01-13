@@ -25,8 +25,6 @@
 <!--Electricity generation minerals demand-->
 		<Value name = "elec_water_base">../input/gcamdata/xml/electricity_water.xml</Value>
 		<Value name = "heat">../input/gcamdata/xml/heat.xml</Value>
-<!--Hydrogen minerals demand-->
-		<Value name = "hydrogen">../input/gcamdata/xml/hydrogen.xml</Value>
 		<Value name = "energy_distribution">../input/gcamdata/xml/en_distribution.xml</Value>
 <!--Electricity T&D minerals demand-->
 		<Value name = "elec_td_mineral">../input/gcamdata/xml/elect_td_mineral.xml</Value>
@@ -50,6 +48,10 @@
 		<Value name = "hddcdd">../input/gcamdata/xml/HDDCDD_constdd_no_GCM.xml</Value>
 		<Value name = "building">../input/gcamdata/xml/building_det.xml</Value>
 		<Value name = "transportation">../input/gcamdata/xml/transportation_UCD_CORE.xml</Value>
+<!--Transport minerals demand-->
+		<Value name = "transportation_mineral">../input/gcamdata/xml/transportation_UCD_CORE_mineral.xml</Value>
+<!--Hydrogen minerals demand-->
+		<Value name = "hydrogen">../input/gcamdata/xml/hydrogen.xml</Value>
 		<Value name = "carbon_content">../input/gcamdata/xml/Ccoef.xml</Value>
 		<Value name = "carbon_storage">../input/gcamdata/xml/Cstorage.xml</Value>
         <Value name = "wind_update">../input/gcamdata/xml/onshore_wind.xml</Value>

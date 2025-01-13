@@ -722,14 +722,32 @@ socioeconomics.FINAL_DEMAND_SECTORS <- c("other industrial energy use",
                                          "comm cooling",
                                          "comm heating",
                                          "comm others",
-                                         "trn_freight",
-                                         "trn_freight_road",
-                                         "trn_shipping_intl",
-                                         "trn_aviation_intl",
-                                         "trn_pass",
-                                         "trn_pass_road",
-                                         "trn_pass_road_LDV",
-                                         "trn_pass_road_LDV_4W")
+                                         # "trn_freight",
+                                         # "trn_freight_road",
+                                         # "trn_shipping_intl",
+                                         # "trn_aviation_intl",
+                                         # "trn_passenger",
+                                         # "trn_pass_road",
+                                         # "trn_pass_road_LDV",
+                                         # "trn_pass_road_LDV_4W"
+                                         "trn_fret_road_pass",
+                                         "trn_fret_road_ht_bev_pass",
+                                         "trn_fret_road_lt_bev_pass",
+                                         "trn_fret_road_mt_bev_pass",
+                                         "trn_pasg_road_bus_pass",
+                                         "trn_bus_bev_pass",
+                                         "trn_pasg_road_ldv_4w_pass",
+                                         "trn_pasg_road_ldv_4W_mc_bev_pass",
+                                         "trn_pasg_road_ldv_4W_hc_bev_pass",
+                                         "trn_pasg_road_ldv_4W_lc_bev_pass",
+                                         "trn_fret_rail_pass",
+                                         "trn_dom_ship_pass",
+                                         "trn_ship_intl_pass",
+                                         "trn_pasg_aviation_dom_pass",
+                                         "trn_aviation_intl_pass",
+                                         "trn_pasg_road_ldv_2_3W_pass",
+                                         "trn_pasg_hsr_pass",
+                                         "trn_pasg_rail_pass")
 
 # for filling missing socioeconomic data
 socioeconomics.TAIWAN_REGION_ID <- 30
@@ -1103,9 +1121,11 @@ gcamusa.MARKAL_LDV_FILTER_OUT_FUELS <- c("B20","PH10G","PH10E")
 gcamusa.MARKAL_MINICAR_FILTER_OUT_FUELS <- c("DSL", "E10", "E15")
 
 # GCAM-USA Transportation sectors
-gcamusa.TRANSPORT_SECTORS <- c("trn_freight", "trn_pass","trn_shipping_intl", "trn_aviation_intl")
-gcamusa.LDV_SUPPLYSECTORS <- c("trn_pass_road_LDV_4W", "trn_pass_road_LDV")
-gcamusa.HDV_SUPPLYSECTORS <- c("trn_pass_road","trn_freight_road")
+gcamusa.TRANSPORT_SECTORS <- c("trn_freight", "trn_passenger","trn_shipping_intl", "trn_aviation_intl")
+gcamusa.LDV_SUPPLYSECTORS <- c("trn_pasg_road_ldv_4w_pass", "trn_pasg_road_ldv_4W_mc_bev_pass",
+                               "trn_pasg_road_ldv_4W_hc_bev_pass", "trn_pasg_road_ldv_2_3W_pass")
+gcamusa.HDV_SUPPLYSECTORS <- c("trn_pasg_road_bus_pass", "trn_bus_bev_pass","trn_fret_road_pass",
+                               "trn_fret_road_lt_bev_pass", "trn_fret_road_mt_bev_pass", "trn_fret_road_ht_bev_pass")
 gcamusa.GCAM_TRANSPORT_SECTORS <- c("Road")
 
 # GCAM-USA transportation EFs to change to be based on NEI emissions/own service demand for that vehicle class directly

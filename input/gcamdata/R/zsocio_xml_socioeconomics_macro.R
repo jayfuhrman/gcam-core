@@ -1,6 +1,6 @@
 # Copyright 2019 Battelle Memorial Institute; see the LICENSE file.
 
-#' module_socio_macro_xml
+#' module_socioeconomics_macro_xml
 #'
 #' Construct XML data structure for \code{socioeconomics_macro.xml}.
 #'

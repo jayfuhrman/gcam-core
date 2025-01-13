@@ -28,8 +28,9 @@ module_emissions_L114.bcoc_en_R_S_T_Y <- function(command, ...) {
              "L104.bcoc_tgej_USA_en_T_1990",
              FILE = "emissions/RCP_BC_2000",
              FILE = "emissions/RCP_OC_2000",
-             FILE = "socioeconomics/income_shares"
-             ))
+             FILE = "socioeconomics/income_shares",
+             FILE = "minerals/transport/A54.trn_tech_mineral_mapping_new_structure",
+             FILE = "minerals/transport/A54.trn_tech_mineral_bev_mapping"))
   } else if(command == driver.DECLARE_OUTPUTS) {
     return(c("L114.bcoc_tgej_R_en_S_F_2000"))
   } else if(command == driver.MAKE) {
@@ -51,6 +52,8 @@ module_emissions_L114.bcoc_en_R_S_T_Y <- function(command, ...) {
 
     }
 
+    A54.trn_tech_mineral_mapping_new_structure <- get_data(all_data, "minerals/transport/A54.trn_tech_mineral_mapping_new_structure",strip_attributes = TRUE)
+    A54.trn_tech_mineral_bev_mapping <- get_data(all_data, "minerals/transport/A54.trn_tech_mineral_bev_mapping",strip_attributes = TRUE)
 
     L101.in_EJ_R_en_Si_F_Yh <- get_data(all_data, "L101.in_EJ_R_en_Si_F_Yh")
     L104.bcoc_tgej_USA_en_T_1990 <- get_data(all_data, "L104.bcoc_tgej_USA_en_T_1990")
@@ -58,6 +61,18 @@ module_emissions_L114.bcoc_en_R_S_T_Y <- function(command, ...) {
     RCP_OC_2000 <- get_data(all_data, "emissions/RCP_OC_2000")
     income_shares<-get_data(all_data, "socioeconomics/income_shares")
     groups<-income_shares %>% select(category) %>% distinct()
+
+    A54.trn_tech_mineral_mapping_new_structure %>%
+      filter(supplysector_L2 %in% c("trn_fret_road_pass", "trn_pasg_road_bus_pass", "trn_pasg_road_ldv_4w_pass"),
+             stub.technology_L2 == "BEV") %>%
+      left_join(A54.trn_tech_mineral_bev_mapping,
+                by = c("supplysector_L2" = "from.supplysector", "tranSubsector_L2" = "from.subsector", "stub.technology_L2" = "from.technology")) %>%
+      select(supplysector, tranSubsector, stub.technology, supplysector_L2 = to.supplysector, tranSubsector_L2 = to.subsector, stub.technology_L2 = to.technology) %>%
+      rbind(A54.trn_tech_mineral_mapping_new_structure %>%
+              anti_join(A54.trn_tech_mineral_mapping_new_structure %>%
+                          filter(supplysector_L2 %in% c("trn_fret_road_pass", "trn_pasg_road_bus_pass", "trn_pasg_road_ldv_4w_pass"),
+                                 stub.technology_L2 == "BEV"))) ->
+      A54.trn_tech_mineral_mapping_new_structure_all
 
     # Compile the driver data (energy consumption by sector and fuel, around the year 2000)
     BCOC_drivers <- L101.in_EJ_R_en_Si_F_Yh %>%
@@ -126,6 +141,18 @@ module_emissions_L114.bcoc_en_R_S_T_Y <- function(command, ...) {
       summarise(input.emissions = sum(input.emissions)) %>%
       ungroup()
 
+    # update the trn sector-tech names
+    BCOC_scaled_emissions %>%
+      filter(grepl("trn_", supplysector)) %>%
+      left_join(A54.trn_tech_mineral_mapping_new_structure_all,
+                by = c("supplysector", "subsector" = "tranSubsector", "stub.technology")) %>%
+      na.omit() %>%
+      select(GCAM_region_ID, Non.CO2, supplysector = supplysector_L2, subsector = tranSubsector_L2,
+             stub.technology = stub.technology_L2, input.emissions) %>%
+      rbind(BCOC_scaled_emissions %>%
+              filter(!grepl("trn_", supplysector))) ->
+      BCOC_scaled_emissions
+
     # Compile energy consumption by the corresponding technologies in order to compute emissions coefficients
     BCOC_drivers_GCAMtech <- BCOC_drivers %>%
       filter(Non.CO2 == "BC") %>% # we only need one of the two
@@ -134,6 +161,18 @@ module_emissions_L114.bcoc_en_R_S_T_Y <- function(command, ...) {
       group_by(GCAM_region_ID, supplysector, subsector, stub.technology) %>%
       summarise(energy = sum(energy)) %>%
       ungroup()
+
+    # update the trn sector-tech names
+    BCOC_drivers_GCAMtech %>%
+      filter(grepl("trn_", supplysector)) %>%
+      left_join(A54.trn_tech_mineral_mapping_new_structure_all,
+                by = c("supplysector", "subsector" = "tranSubsector", "stub.technology")) %>%
+      na.omit() %>%
+      select(GCAM_region_ID, supplysector = supplysector_L2, subsector = tranSubsector_L2,
+             stub.technology = stub.technology_L2, energy) %>%
+      rbind(BCOC_drivers_GCAMtech %>%
+              filter(!grepl("trn_", supplysector))) ->
+      BCOC_drivers_GCAMtech
 
     # Compute the emissions coefficients for the year 2000
     L114.bcoc_tgej_R_en_S_F_2000 <- BCOC_scaled_emissions %>%
@@ -169,6 +208,8 @@ module_emissions_L114.bcoc_en_R_S_T_Y <- function(command, ...) {
                      "L104.bcoc_tgej_USA_en_T_1990",
                      "emissions/RCP_BC_2000",
                      "emissions/RCP_OC_2000",
+                     "minerals/transport/A54.trn_tech_mineral_mapping_new_structure",
+                     "minerals/transport/A54.trn_tech_mineral_bev_mapping",
                      "socioeconomics/income_shares") ->
       L114.bcoc_tgej_R_en_S_F_2000
 

@@ -99,8 +99,14 @@ module_energy_L225.hydrogen <- function(command, ...) {
       L225.Supplysector_h2
 
     # H2 liquid truck has a simultaneity that may benefit from using a trial market here
+    A25.globaltech_coef %>%
+      filter(supplysector == "H2 liquid truck",
+             grepl("trn_", minicam.energy.input)) %>%
+      pull(minicam.energy.input) %>%
+      unique() ->
+      supplysector_use
     L225.SectorUseTrialMarket_h2 <- filter(L225.Supplysector_h2, supplysector == "H2 liquid truck") %>%
-      mutate(supplysector = "trn_freight_road") %>%
+      mutate(supplysector = supplysector_use) %>%
       select(region, supplysector) %>%
       mutate(use.trial.market = 1)
 
@@ -204,7 +210,7 @@ module_energy_L225.hydrogen <- function(command, ...) {
       mutate(price.unit.conversion = approx_fun(year, price.unit.conversion, rule = 2)) %>%
       rename(sector.name = supplysector, subsector.name = subsector) %>%
       select(LEVEL2_DATA_NAMES[["GlobalTechInputPMult"]]) %>%
-      filter(year %in% c(MODEL_BASE_YEARS, MODEL_FUTURE_YEARS)) -> L225.GlobalTechInputPMult
+      filter(year %in% c(MODEL_BASE_YEARS, MODEL_FUTURE_YEARS)) -> L225.GlobalTechInputPMult_h2
 
     A25.globaltech_cost %>%
       gather_years %>%
@@ -406,7 +412,7 @@ module_energy_L225.hydrogen <- function(command, ...) {
       add_title("Supply sector trial markets") %>%
       add_units("Boolean") %>%
       add_comments("Read in to help solver deal with simultaneities") %>%
-      add_precursors("common/GCAM_region_names", "energy/A25.sector") ->
+      add_precursors("common/GCAM_region_names", "energy/A25.sector", 'energy/A25.globaltech_coef') ->
       L225.SectorUseTrialMarket_h2
 
     L225.SubsectorLogit_h2 %>%
@@ -489,10 +495,12 @@ module_energy_L225.hydrogen <- function(command, ...) {
       add_precursors("energy/A25.globaltech_co2capture")->
       L225.GlobalTechCapture_h2
 
-    L225.GlobalTechInputPMult %>%
+    L225.GlobalTechInputPMult_h2 %>%
       add_title("Price conversion from transportation technologies") %>%
       add_comments("converts from $1990/tkm to $1975$/EJ") %>%
-      add_units("Unitless") ->
+      add_units("Unitless") %>%
+      add_legacy_name("L225.GlobalTechInputPMult_h2") %>%
+      add_precursors("energy/A25.globaltech_coef") ->
       L225.GlobalTechInputPMult_h2
 
     L225.GlobalTechSCurve_h2 %>%
