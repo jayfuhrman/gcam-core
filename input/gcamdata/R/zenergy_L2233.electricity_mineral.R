@@ -62,6 +62,7 @@ module_energy_L2233.electricity_mineral <- function(command, ...) {
              ))
   } else if(command == driver.DECLARE_OUTPUTS) {
     return(c("L2233.Sector_elec_mineral",
+             "L2233.PassThruSector_elec_mineral",
              "L2233.SubsectorLogit_elec_mineral",
              "L2233.SubsectorShrwtFllt_elec_mineral",
              "L2233.SubsectorInterp_elec_mineral",
@@ -81,7 +82,9 @@ module_energy_L2233.electricity_mineral <- function(command, ...) {
              "L2233.Regionaltech_mineral_coef_reduction_final",
              "L2233.Globaltech_mineral_coef_constance_final",
              "L2233.Globaltech_mineral_coef_reduction_final",
-             "L2233.GlobalTechCapital_elec_subtype",
+             # "L2233.GlobalTechCapital_elec_subtype",
+             "L2233.GlobalTechCapital_elec_subtype_pv_wind",
+             "L2233.GlobalTechCapital_elec_subtype_pv_wind_storage",
              "L2233.GlobalTechCapital_elecPassthru_no_pv_wind",
              "L2233.GlobalIntTechMineral_elecSupplySector",
              "L2233.GlobalTechMineral_elecSupplySector",
@@ -154,7 +157,14 @@ module_energy_L2233.electricity_mineral <- function(command, ...) {
       write_to_all_regions(A23.sector_mineral, c(LEVEL2_DATA_NAMES[["Supplysector"]], LOGIT_TYPE_COLNAME), GCAM_region_names)
     # --OUTPUT--
 
-
+    #   use passthrough sector for solar and wind sectors
+    L2233.PassThruSector_elec_mineral <-
+      L2233.Sector_elec_mineral %>%
+      select (region, pass.through.sector = supplysector) %>%
+      mutate(marginal.revenue.sector = "electricity",
+             marginal.revenue.market = region) %>%
+      select(LEVEL2_DATA_NAMES[["PassThroughSector"]])
+    # --OUTPUT--
     #   2.1.2. Regional database - subsector (of new supply sector) ----
     #----------------------------------------------------------------------------
     #   Compile information about logit.year.fillout, logit.exponent, and logit.type at the subsector level,
@@ -557,7 +567,9 @@ module_energy_L2233.electricity_mineral <- function(command, ...) {
 
     L2233.GlobalTechCapFac_elec_cool_all <-
       L2233.GlobalTechCapFac_elec_cool %>%
-      filter(!technology %in% c("wind_storage", "PV_storage", "CSP_storage (recirculating)", "CSP_storage (dry_hybrid)")) %>%
+      # get rid of all the RE with storage, these technologies will be considered in the regional database
+      filter(!grepl("storage", technology)) %>%
+      # filter(!technology %in% c("wind_storage", "PV_storage", "CSP_storage (recirculating)", "CSP_storage (dry_hybrid)")) %>%
       rbind(L2233.GlobalTechCapFac_elec_cool%>%
               filter(technology == "coal (conv pul) (once through)") %>%
               mutate(sector.name = "electricity",
@@ -738,7 +750,8 @@ module_energy_L2233.electricity_mineral <- function(command, ...) {
     L2233.GlobalTechCapital_elec_subtype <-
       A23.globaltech_subtype_capital %>%
       gather_years() %>%
-      rename(sector.name = supplysector, subsector.name = subsector, capital.overnight.all = value, input.capital = `input-capital`) %>%
+      rename(sector.name = supplysector, subsector.name = subsector,
+             capital.overnight.all = value, input.capital = `input-capital`) %>%
       left_join(L2233.globaltech_mineral_cost_combine %>%
                   filter(year %in% c(1975, 1990, 2005, 2010, 2015)) %>%
                   mutate(year = if_else(year == 1975, 1971, year)),
@@ -751,8 +764,19 @@ module_energy_L2233.electricity_mineral <- function(command, ...) {
       spread(key = "year", value = "capital.overnight") %>%
       fill_exp_decay_extrapolate(MODEL_YEARS) %>%
       rename(capital.overnight = value) %>%
-      mutate(capital.overnight = round(capital.overnight, energy.DIGITS_CAPITAL)) %>%
+      mutate(capital.overnight = round(capital.overnight, energy.DIGITS_CAPITAL))
+
+    L2233.GlobalTechCapital_elec_subtype_pv_wind_storage <-
+      L2233.GlobalTechCapital_elec_subtype %>%
+      filter(subsector.name %in% c("pv_storage_mineral", "wind_storage_mineral")) %>%
       select(LEVEL2_DATA_NAMES[["GlobalTechCapital"]])
+    #--OUTPUT--
+
+    L2233.GlobalTechCapital_elec_subtype_pv_wind <-
+      L2233.GlobalTechCapital_elec_subtype%>%
+      filter(!subsector.name %in% c("pv_storage_mineral", "wind_storage_mineral")) %>%
+      rename(intermittent.technology = technology) %>%
+      select(LEVEL2_DATA_NAMES[["GlobalIntTechCapital"]])
     #--OUTPUT--
 
 
@@ -899,6 +923,13 @@ module_energy_L2233.electricity_mineral <- function(command, ...) {
       add_precursors("minerals/electricity/A23.sector_mineral") ->
       L2233.Sector_elec_mineral
 
+    L2233.PassThruSector_elec_mineral %>%
+      add_title("new pass through supply sector for mineral") %>%
+      add_units("unitless") %>%
+      add_comments("new pass through supply sector for mineral") %>%
+      add_legacy_name("L2233.PassThruSector_elec_mineral") %>%
+      add_precursors("minerals/electricity/A23.sector_mineral") ->
+      L2233.PassThruSector_elec_mineral
     # subsector
     L2233.SubsectorLogit_elec_mineral %>%
       add_title("subsector (new supply sector for mineral) logit value") %>%
@@ -1068,16 +1099,28 @@ module_energy_L2233.electricity_mineral <- function(command, ...) {
       L2233.Globaltech_mineral_coef_reduction_final
 
     # Mon-mineral capital cost -- pv and wind subtypes
-    L2233.GlobalTechCapital_elec_subtype %>%
+    L2233.GlobalTechCapital_elec_subtype_pv_wind %>%
       add_title("Non-mineral capital cost for electricity generation technology (solar pv and wind with and without storage at subtype level)") %>%
       add_units("$/kW") %>%
       add_comments("Non-mineral capital cost for electricity generation technology (solar pv and wind with and without storage at subtype level)") %>%
-      add_legacy_name("L2233.GlobalTechCapital_elec_subtype") %>%
+      add_legacy_name("L2233.GlobalTechCapital_elec_subtype_pv_wind") %>%
       add_precursors("minerals/supply/A10.mineral_rsrc_info",
                      "minerals/electricity/A23.globaltech_mineral_coef_kg_kw", "minerals/electricity/A23.globaltech_mineral_coef_ratio_constance",
                      "minerals/electricity/A23.globaltech_storage_mineral_coef_kg_kwh", "minerals/electricity/A23.globaltech_storage_mineral_coef_ratio_constance",
                      "minerals/electricity/A23.globaltech_subtype_capital") ->
-      L2233.GlobalTechCapital_elec_subtype
+      L2233.GlobalTechCapital_elec_subtype_pv_wind
+
+    # Mon-mineral capital cost -- pv and wind subtypes with storage
+    L2233.GlobalTechCapital_elec_subtype_pv_wind_storage %>%
+      add_title("Non-mineral capital cost for electricity generation technology (solar pv and wind with and without storage at subtype level)") %>%
+      add_units("$/kW") %>%
+      add_comments("Non-mineral capital cost for electricity generation technology (solar pv and wind with and without storage at subtype level)") %>%
+      add_legacy_name("L2233.GlobalTechCapital_elec_subtype_pv_wind_storage") %>%
+      add_precursors("minerals/supply/A10.mineral_rsrc_info",
+                     "minerals/electricity/A23.globaltech_mineral_coef_kg_kw", "minerals/electricity/A23.globaltech_mineral_coef_ratio_constance",
+                     "minerals/electricity/A23.globaltech_storage_mineral_coef_kg_kwh", "minerals/electricity/A23.globaltech_storage_mineral_coef_ratio_constance",
+                     "minerals/electricity/A23.globaltech_subtype_capital") ->
+      L2233.GlobalTechCapital_elec_subtype_pv_wind_storage
 
     #write.csv(L2233.GlobalTechCapital_elec_subtype, "L2233.GlobalTechCapital_elec_subtype.csv")
 
@@ -1146,6 +1189,7 @@ module_energy_L2233.electricity_mineral <- function(command, ...) {
 
 
     return_data(L2233.Sector_elec_mineral,
+                L2233.PassThruSector_elec_mineral,
                 L2233.SubsectorLogit_elec_mineral,
                 L2233.SubsectorShrwtFllt_elec_mineral,
                 L2233.SubsectorInterp_elec_mineral,
@@ -1164,7 +1208,9 @@ module_energy_L2233.electricity_mineral <- function(command, ...) {
                 L2233.Regionaltech_mineral_coef_reduction_final,
                 L2233.Globaltech_mineral_coef_constance_final,
                 L2233.Globaltech_mineral_coef_reduction_final,
-                L2233.GlobalTechCapital_elec_subtype,
+                # L2233.GlobalTechCapital_elec_subtype,
+                L2233.GlobalTechCapital_elec_subtype_pv_wind,
+                L2233.GlobalTechCapital_elec_subtype_pv_wind_storage,
                 L2233.GlobalTechCapital_elecPassthru_no_pv_wind,
                 L2233.GlobalIntTechMineral_elecSupplySector,
                 L2233.GlobalTechMineral_elecSupplySector,

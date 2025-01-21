@@ -166,6 +166,8 @@ SectorUseTrialMarket, world/+{name}region, region/+{name}supplysector, supplysec
 
 ElecReserve,world/+{name}region,region/+{name}supplysector,{name=electricity-reserve-margin}object-meta-info/+value,{name=average-grid-capacity-factor}object-meta-info/+value,@supplysector/object-meta-info,scenario,scenario/world
 
+PassThruSectorElecReserve,world/+{name}region,region/+{name}pass-through-sector,{name=electricity-reserve-margin}object-meta-info/+value,{name=average-grid-capacity-factor}object-meta-info/+value,@pass-through-sector/object-meta-info,scenario,scenario/world
+
 PassThroughSector, world/+{name}region, region/+{name}pass-through-sector, pass-through-sector/+marginal-revenue-sector, pass-through-sector/+marginal-revenue-market, scenario, scenario/world
 
 PassThroughSectorData, world/+{name}region, region/+{name}pass-through-sector, pass-through-sector/+output-unit, pass-through-sector/+input-unit, pass-through-sector/+price-unit, dummy-logit-tag/+{year;fillout=1}logit-exponent, dummy-logit-tag/+logit-exponent, pass-through-sector/dummy-logit-tag, scenario, scenario/world

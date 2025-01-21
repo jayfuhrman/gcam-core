@@ -54,6 +54,7 @@ module_water_L2233.electricity_water <- function(command, ...) {
              FILE = "energy/A23.globaltech_shrwt",
              FILE = "energy/A23.sector",
              FILE = "water/elec_tech_water_map",
+             FILE = "minerals/electricity/elec_tech_mineral_map",
              FILE = "water/water_td_sectors",
              FILE = "water/A23.CoolingSystemCosts",
              FILE = "water/Macknick_elec_water_m3MWh",
@@ -101,17 +102,24 @@ module_water_L2233.electricity_water <- function(command, ...) {
              "L2233.AvgFossilEffKeyword_elec_cool",
              "L2233.GlobalIntTechBackup_elec_cool",
              "L2233.GlobalIntTechEff_elec_cool",
-             "L2233.GlobalIntTechLifetime_elec_cool",
+             "L2233.GlobalReSubtypeTechBackup_elec_cool",
+             "L2233.GlobalIntTechBackup_elec_cool_CSP",
+             "L2233.GlobalReSubtypeTechEff_elec_cool",
+             "L2233.GlobalIntTechEff_elec_cool_CSP",             "L2233.GlobalIntTechLifetime_elec_cool",
              "L2233.GlobalIntTechShrwt_elec_cool",
-             "L2233.GlobalIntTechCapFac_elec_cool",
+             "L2233.GlobalIntPassThruTechShrwt_elec_cool",
+             "L2233.GlobalIntTechShrwt_elec_cool_CSP",             "L2233.GlobalReSubtypeTechCapFac_elec_cool",
              "L2233.GlobalTechCapFac_elec_cool",
-             "L2233.GlobalTechCapture_elec_cool",
+             "L2233.GlobalPassThruTechCapFac_elec_cool",
+             "L2233.GlobalTechCapFac_elec_cool_non_RE",             "L2233.GlobalTechCapture_elec_cool",
              "L2233.GlobalTechEff_elec_cool",
-             "L2233.GlobalTechLifetime_elec_cool",
+             "L2233.GlobalPassThruTechEff_elec_cool",
+             "L2233.GlobalTechEff_elec_cool_non_RE",             "L2233.GlobalTechLifetime_elec_cool",
              "L2233.GlobalTechProfitShutdown_elec_cool",
              "L2233.GlobalTechSCurve_elec_cool",
              "L2233.GlobalTechShrwt_elec_cool",
-             "L2233.PrimaryRenewKeyword_elec_cool",
+             "L2233.GlobalPassThruTechShrwt_elec_cool",
+             "L2233.GlobalTechShrwt_elec_cool_non_RE",             "L2233.PrimaryRenewKeyword_elec_cool",
              "L2233.PrimaryRenewKeywordInt_elec_cool",
              "L2233.DeleteCreditInput_elec",
              "L2233.CreditInput_elec"))
@@ -136,6 +144,7 @@ module_water_L2233.electricity_water <- function(command, ...) {
     A23.globaltech_shrwt <- get_data(all_data, "energy/A23.globaltech_shrwt")
     A23.sector <- get_data(all_data, "energy/A23.sector")
     elec_tech_water_map <- get_data(all_data, "water/elec_tech_water_map",strip_attributes = TRUE)
+    elec_tech_mineral_map <- get_data(all_data, "minerals/electricity/elec_tech_mineral_map",strip_attributes = TRUE)
     water_td_sectors <- get_data(all_data, "water/water_td_sectors", strip_attributes = TRUE)
     A23.CoolingSystemCosts <- get_data(all_data, "water/A23.CoolingSystemCosts",strip_attributes = TRUE)
     Macknick_elec_water_m3MWh <- get_data(all_data, "water/Macknick_elec_water_m3MWh",strip_attributes = TRUE)
@@ -275,6 +284,15 @@ module_water_L2233.electricity_water <- function(command, ...) {
              average.grid.capacity.factor = unique(A23.sector$average.grid.capacity.factor)) %>%
       # ^^ Margin and capacity factor assumed to be same as for electricity and elect_td_bld
       select(LEVEL2_DATA_NAMES[["ElecReserve"]]) ->
+      L2233.ElecReserve_elec_CSP
+
+    # use the same elec reserve margin and average grid capacity factor information for PV, wind intermittent techs
+    L2233.ElecReserve_elec_CSP %>%
+      rbind(L2233.ElecReserve_elec_CSP %>% mutate(supplysector = "pv_mineral")) %>%
+      rbind(L2233.ElecReserve_elec_CSP %>% mutate(supplysector = "rooftop_pv_mineral")) %>%
+      rbind(L2233.ElecReserve_elec_CSP %>% mutate(supplysector = "wind_mineral")) %>%
+      rbind(L2233.ElecReserve_elec_CSP %>% mutate(supplysector = "wind_offshore_mineral")) %>%
+      rename(pass.through.sector = supplysector) ->
       L2233.ElecReserve_elec_cool # --OUTPUT--
 
     elec_tech_water_map %>%
@@ -568,14 +586,39 @@ module_water_L2233.electricity_water <- function(command, ...) {
                  from.subsector %in% A23.globalinttech$subsector &
                  from.technology %in% A23.globalinttech$technology)) %>%
       select(LEVEL2_DATA_NAMES[["GlobalTechCoef"]]) ->
-      L2233.GlobalTechCoef_elec_cool # --OUTPUT--
+      L2233.GlobalTechCoef_elec_cool_raw
+
+    L2233.GlobalTechCoef_elec_cool_raw
+
+    L2233.GlobalTechCoef_elec_cool_raw %>%
+      filter(technology == "PV_storage") %>%
+      left_join(elec_tech_mineral_map,
+                by = c("sector.name" = "from.supplysector", "subsector.name" = "from.subsector", "technology" = "from.technology")) %>%
+      select(sector.name = to.supplysector, subsector.name = to.subsector, technology = to.technology, year, minicam.energy.input, coefficient) %>%
+      distinct() %>%
+      rbind(L2233.GlobalTechCoef_elec_cool_raw %>%
+              filter(technology != "PV_storage")) ->
+      L2233.GlobalTechCoef_elec_cool
+    # --OUTPUT--
 
     L2233.GlobalTechCoef_elec_cool_all %>%
       filter(from.supplysector %in% A23.globalinttech$supplysector &
                from.subsector %in% A23.globalinttech$subsector &
                from.technology %in% A23.globalinttech$technology) %>%
       select(LEVEL2_DATA_NAMES[["GlobalTechCoef"]]) ->
+      L2233.GlobalIntTechCoef_elec_cool_raw
+
+    L2233.GlobalIntTechCoef_elec_cool_raw %>%
+      filter(technology == "PV") %>%
+      left_join(elec_tech_mineral_map,
+                by = c("sector.name" = "from.supplysector", "subsector.name" = "from.subsector", "technology" = "from.technology")) %>%
+      select(sector.name = to.supplysector, subsector.name = to.subsector, technology = to.technology, year, minicam.energy.input, coefficient) %>%
+      distinct() %>%
+      rbind(L2233.GlobalIntTechCoef_elec_cool_raw %>%
+              filter(technology != "PV")) ->
       L2233.GlobalIntTechCoef_elec_cool # --OUTPUT--
+
+    # elec_tech_mineral_map
 
     # Upstream electricity sector that includes pass-thru technologies for calling pass-thru sectors
     L223.StubTech_elec %>% mutate(region = region) -> L2233.StubTech_elecPassthru
@@ -735,10 +778,42 @@ module_water_L2233.electricity_water <- function(command, ...) {
       add_units("1975 USD/kW/yr") ->
       L2233.GlobalIntTechBackup_elec_cool
 
+    L2233.Elec_tables_globaltech_nocost_$GlobalIntTechBackup_elec %>%
+      filter(technology %in% c("wind", "wind_offshore", "PV", "rooftop_pv")) %>%
+      left_join(elec_tech_mineral_map,
+                by = c("sector.name" = "from.supplysector", "subsector.name" = "from.subsector", "technology" = "from.technology")) %>%
+      select(sector.name = to.supplysector, subsector.name = to.subsector, intermittent.technology = to.technology, year, electric.sector.name,
+             trial.market.name, backup.capital.cost, backup.capacity.factor, capacity.limit, minicam.energy.input, minicam.non.energy.input, flag) %>%
+      add_title("Capital costs of backup technologies for wind and solar subtype techs") %>%
+      add_units("1975 USD/kW/yr") ->
+      L2233.GlobalReSubtypeTechBackup_elec_cool
+
+    L2233.Elec_tables_globaltech_nocost_$GlobalIntTechBackup_elec %>%
+      filter(!technology %in% c("wind", "wind_offshore", "PV", "rooftop_pv")) %>%
+      add_title("Capital costs of backup technologies for intermittent techs -- CSP tech, remain as intermittent techs") %>%
+      add_units("1975 USD/kW/yr") ->
+      L2233.GlobalIntTechBackup_elec_cool_CSP
+
     L2233.Elec_tables_globaltech_nocost_$GlobalIntTechEff_elec %>%
       add_title("Cooling efficiencies of intermittent electricity generating technologies") %>%
       add_units("Unitless") ->
       L2233.GlobalIntTechEff_elec_cool
+
+    L2233.Elec_tables_globaltech_nocost_$GlobalIntTechEff_elec %>%
+      filter(technology %in% c("wind", "wind_offshore", "PV", "rooftop_pv")) %>%
+      left_join(elec_tech_mineral_map,
+                by = c("sector.name" = "from.supplysector", "subsector.name" = "from.subsector", "technology" = "from.technology")) %>%
+      select(sector.name = to.supplysector, subsector.name = to.subsector, intermittent.technology = to.technology, year, minicam.energy.input,
+             efficiency, type) %>%
+      add_title("Cooling efficiencies of technologies for wind and solar subtype techs") %>%
+      add_units("Unitless") ->
+      L2233.GlobalReSubtypeTechEff_elec_cool
+
+    L2233.Elec_tables_globaltech_nocost_$GlobalIntTechEff_elec %>%
+      filter(!technology %in% c("wind", "wind_offshore", "PV", "rooftop_pv")) %>%
+      add_title("Cooling efficiencies of intermittent electricity generating technologies -- CSP tech, remain as intermittent techs") %>%
+      add_units("Unitless") ->
+      L2233.GlobalIntTechEff_elec_cool_CSP
 
     L2233.Elec_tables_globaltech_nocost_$GlobalIntTechLifetime_elec %>%
       add_title("Lifetimes of intermittent electricity generating technologies") %>%
@@ -750,6 +825,18 @@ module_water_L2233.electricity_water <- function(command, ...) {
       add_units("Unitless") ->
       L2233.GlobalIntTechShrwt_elec_cool
 
+    L2233.Elec_tables_globaltech_nocost_$GlobalIntTechShrwt_elec %>%
+      filter(technology %in% c("wind", "wind_offshore", "PV", "rooftop_pv")) %>%
+      add_title("Shareweights of intermittent electricity generating technologies -- wind and solar PV, update to passthrough techs") %>%
+      add_units("Unitless") ->
+      L2233.GlobalIntPassThruTechShrwt_elec_cool
+
+    L2233.Elec_tables_globaltech_nocost_$GlobalIntTechShrwt_elec %>%
+      filter(!technology %in% c("wind", "wind_offshore", "PV", "rooftop_pv")) %>%
+      add_title("Shareweights of intermittent electricity generating technologies -- CSP tech, remain as intermittent techs") %>%
+      add_units("Unitless") ->
+      L2233.GlobalIntTechShrwt_elec_cool_CSP
+
     L2233.Elec_tables_globaltech_nocost_$GlobalTechCapture_elec %>%
       add_title("Storage markets and remove fractions for CCS tech by cooling type") %>%
       add_units("Unitless") ->
@@ -760,6 +847,20 @@ module_water_L2233.electricity_water <- function(command, ...) {
       add_units("Unitless") ->
       L2233.GlobalTechEff_elec_cool
 
+    L2233.Elec_tables_globaltech_nocost_$GlobalTechEff_elec %>%
+      filter(technology %in% c("wind_storage", "PV_storage")) %>%
+      left_join(elec_tech_mineral_map,
+                by = c("sector.name" = "from.supplysector", "subsector.name" = "from.subsector", "technology" = "from.technology")) %>%
+      select(sector.name = to.supplysector, subsector.name = to.subsector, technology = to.technology, year, minicam.energy.input, efficiency) %>%
+      add_title("Cooling efficiencies for electricity generating technologies -- wind_storage and PV_storage, update to passthrough techs") %>%
+      add_units("Unitless") ->
+      L2233.GlobalPassThruTechEff_elec_cool
+
+    L2233.Elec_tables_globaltech_nocost_$GlobalTechEff_elec %>%
+      filter(!technology %in% c("wind_storage", "PV_storage")) %>%
+      add_title("Cooling efficiencies for electricity generating technologies -- other non pv and non wind remain unchanged") %>%
+      add_units("Unitless") ->
+      L2233.GlobalTechEff_elec_cool_non_RE
     L2233.Elec_tables_globaltech_nocost_$GlobalTechLifetime_elec %>%
       add_title("Lifetimes for standard electricity generating technologies") %>%
       add_units("Years") ->
@@ -780,28 +881,83 @@ module_water_L2233.electricity_water <- function(command, ...) {
       add_units("Unitless") ->
       L2233.GlobalTechShrwt_elec_cool
 
+    L2233.Elec_tables_globaltech_nocost_$GlobalTechShrwt_elec %>%
+      filter(technology %in% c("wind_storage", "PV_storage")) %>%
+      add_title("Global shareweights for non-intermittent technologies for the electricity sector -- wind_storage and PV_storage, update to passthrough techs") %>%
+      add_units("Unitless") ->
+      L2233.GlobalPassThruTechShrwt_elec_cool
+
+    L2233.Elec_tables_globaltech_nocost_$GlobalTechShrwt_elec %>%
+      filter(!technology %in% c("wind_storage", "PV_storage")) %>%
+      add_title("Global shareweights for non-intermittent technologies for the electricity sector -- other non pv and non wind remain unchanged") %>%
+      add_units("Unitless") ->
+      L2233.GlobalTechShrwt_elec_cool_non_RE
+
     L2233.Elec_tables_globaltech_nocost_$PrimaryRenewKeyword_elec %>%
+      filter(technology %in% c("wind_storage", "PV_storage")) %>%
+      left_join(elec_tech_mineral_map,
+                by = c("sector.name" = "from.supplysector", "subsector.name" = "from.subsector", "technology" = "from.technology")) %>%
+      select(sector.name = to.supplysector, subsector.name = to.subsector, technology = to.technology, year, primary.renewable) %>%
+      rbind(L2233.Elec_tables_globaltech_nocost_$PrimaryRenewKeyword_elec %>%
+              filter(!technology %in% c("wind_storage", "PV_storage")) %>%
+              select(sector.name, subsector.name, technology = technology, year, primary.renewable)) %>%
       add_title("keywords for non-intermittent renewable technologies for the electricity sector") %>%
       add_units("NA") ->
       L2233.PrimaryRenewKeyword_elec_cool
 
     L2233.Elec_tables_globaltech_nocost_$PrimaryRenewKeywordInt_elec %>%
+      filter(sector.name != "elec_CSP") %>%
+      left_join(elec_tech_mineral_map,
+                by = c("sector.name" = "from.supplysector", "subsector.name" = "from.subsector", "technology" = "from.technology")) %>%
+      select(sector.name = to.supplysector, subsector.name = to.subsector, intermittent.technology = to.technology, year, primary.renewable) %>%
+      rbind(L2233.Elec_tables_globaltech_nocost_$PrimaryRenewKeywordInt_elec %>%
+              filter(sector.name == "elec_CSP") %>%
+              select(sector.name, subsector.name, intermittent.technology = technology, year, primary.renewable)) %>%
       add_title("keywords for intermittent renewable technologies") %>%
       add_units("NA") ->
       L2233.PrimaryRenewKeywordInt_elec_cool
 
     L2233.Elec_tables_globaltech_nocost_$GlobalIntTechCapFac_elec %>%
+      filter(sector.name != "elec_CSP") %>%
+      left_join(elec_tech_mineral_map,
+                by = c("sector.name" = "from.supplysector", "subsector.name" = "from.subsector", "technology" = "from.technology")) %>%
+      select(sector.name = to.supplysector, subsector.name = to.subsector, intermittent.technology = to.technology, year, capacity.factor) %>%
+      rbind(L2233.Elec_tables_globaltech_nocost_$GlobalIntTechCapFac_elec %>%
+               filter(sector.name == "elec_CSP") %>%
+              select(sector.name, subsector.name, intermittent.technology = technology, year, capacity.factor)) %>%
       add_title("Interpolated intermittent technologies") %>%
       add_units("NA") %>%
       add_precursors("L223.GlobalIntTechCapFac_elec") ->
-      L2233.GlobalIntTechCapFac_elec_cool
+      L2233.GlobalReSubtypeTechCapFac_elec_cool
 
     L2233.Elec_tables_globaltech_nocost_$GlobalTechCapFac_elec %>%
+      filter(technology %in% c("PV_storage", "wind_storage")) %>%
+      left_join(elec_tech_mineral_map,
+                by = c("sector.name" = "from.supplysector", "subsector.name" = "from.subsector", "technology" = "from.technology")) %>%
+      select(sector.name = to.supplysector, subsector.name = to.subsector, technology = to.technology, year, capacity.factor) %>%
+      rbind(L2233.Elec_tables_globaltech_nocost_$GlobalTechCapFac_elec %>%
+              filter(!technology %in% c("PV_storage", "wind_storage"))) %>%
       add_title("Interpolated non-intermittent technologies") %>%
       add_units("NA") %>%
       add_precursors("L223.GlobalTechCapFac_elec") ->
       L2233.GlobalTechCapFac_elec_cool
 
+    L2233.Elec_tables_globaltech_nocost_$GlobalTechCapFac_elec %>%
+      filter(technology %in% c("wind_storage", "PV_storage")) %>%
+      left_join(elec_tech_mineral_map,
+                by = c("sector.name" = "from.supplysector", "subsector.name" = "from.subsector", "technology" = "from.technology")) %>%
+      select(sector.name = to.supplysector, subsector.name = to.subsector, technology = to.technology, year, capacity.factor) %>%
+      add_title("Interpolated non-intermittent technologies -- wind_storage and PV_storage, update to passthrough techs") %>%
+      add_units("NA") %>%
+      add_precursors("L223.GlobalTechCapFac_elec") ->
+      L2233.GlobalPassThruTechCapFac_elec_cool
+
+    L2233.Elec_tables_globaltech_nocost_$GlobalTechCapFac_elec %>%
+      filter(!technology %in% c("wind_storage", "PV_storage")) %>%
+      add_title("Interpolated non-intermittent technologies -- other non pv and non wind remain unchanged") %>%
+      add_units("NA") %>%
+      add_precursors("L223.GlobalTechCapFac_elec") ->
+      L2233.GlobalTechCapFac_elec_cool_non_RE
     # ===================================================
 
     L2233.GlobalPassThroughTech %>%
@@ -1074,7 +1230,8 @@ module_water_L2233.electricity_water <- function(command, ...) {
       add_legacy_name("L2233.GlobalTechCoef_elec_cool") %>%
       add_precursors("water/elec_tech_water_map",
                      "water/Macknick_elec_water_m3MWh",
-                     "water/water_td_sectors") ->
+                     "water/water_td_sectors",
+                     "minerals/electricity/elec_tech_mineral_map") ->
       L2233.GlobalTechCoef_elec_cool
 
     L2233.GlobalIntTechCoef_elec_cool %>%
@@ -1085,7 +1242,8 @@ module_water_L2233.electricity_water <- function(command, ...) {
       add_legacy_name("L2233.GlobalTechCoef_elec_cool") %>%
       add_precursors("water/elec_tech_water_map",
                      "water/Macknick_elec_water_m3MWh",
-                     "water/water_td_sectors") ->
+                     "water/water_td_sectors",
+                     "minerals/electricity/elec_tech_mineral_map") ->
       L2233.GlobalIntTechCoef_elec_cool
 
 
@@ -1138,17 +1296,25 @@ module_water_L2233.electricity_water <- function(command, ...) {
                 L2233.AvgFossilEffKeyword_elec_cool,
                 L2233.GlobalIntTechBackup_elec_cool,
                 L2233.GlobalIntTechEff_elec_cool,
-                L2233.GlobalIntTechLifetime_elec_cool,
+                L2233.GlobalReSubtypeTechBackup_elec_cool,
+                L2233.GlobalIntTechBackup_elec_cool_CSP,
+                L2233.GlobalReSubtypeTechEff_elec_cool,
+                L2233.GlobalIntTechEff_elec_cool_CSP,                L2233.GlobalIntTechLifetime_elec_cool,
                 L2233.GlobalIntTechShrwt_elec_cool,
-                L2233.GlobalIntTechCapFac_elec_cool,
+                L2233.GlobalIntPassThruTechShrwt_elec_cool,
+                L2233.GlobalIntTechShrwt_elec_cool_CSP,
+                L2233.GlobalReSubtypeTechCapFac_elec_cool,
                 L2233.GlobalTechCapFac_elec_cool,
-                L2233.GlobalTechCapture_elec_cool,
+                L2233.GlobalPassThruTechCapFac_elec_cool,
+                L2233.GlobalTechCapFac_elec_cool_non_RE,                L2233.GlobalTechCapture_elec_cool,
                 L2233.GlobalTechEff_elec_cool,
-                L2233.GlobalTechLifetime_elec_cool,
+                L2233.GlobalPassThruTechEff_elec_cool,
+                L2233.GlobalTechEff_elec_cool_non_RE,                L2233.GlobalTechLifetime_elec_cool,
                 L2233.GlobalTechProfitShutdown_elec_cool,
                 L2233.GlobalTechSCurve_elec_cool,
                 L2233.GlobalTechShrwt_elec_cool,
-                L2233.PrimaryRenewKeyword_elec_cool,
+                L2233.GlobalPassThruTechShrwt_elec_cool,
+                L2233.GlobalTechShrwt_elec_cool_non_RE,                L2233.PrimaryRenewKeyword_elec_cool,
                 L2233.PrimaryRenewKeywordInt_elec_cool,
                 L2233.DeleteCreditInput_elec,
                 L2233.CreditInput_elec)

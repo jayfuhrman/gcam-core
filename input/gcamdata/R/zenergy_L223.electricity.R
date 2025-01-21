@@ -655,10 +655,10 @@ module_energy_L223.electricity <- function(command, ...) {
     # Copy assumed parameters to all model years
     A23.globalinttech %>%
       repeat_add_columns(tibble(year = MODEL_YEARS)) %>%
-      rename(sector.name = supplysector, subsector.name = subsector) ->
+      rename(sector.name = supplysector, subsector.name = subsector, intermittent.technology = technology) ->
       L223.GlobalIntTechBackup_elec
     # reorders columns to match expected model interface input
-    L223.GlobalIntTechBackup_elec <- L223.GlobalIntTechBackup_elec[c(LEVEL2_DATA_NAMES[["GlobalTechBackup"]])]
+    L223.GlobalIntTechBackup_elec <- L223.GlobalIntTechBackup_elec[c(LEVEL2_DATA_NAMES[["GlobalIntTechBackup"]])]
 
     # Set global technology retirement information for all electricity sector technologies
     # ------------------------------------------------------------------------------------

@@ -516,7 +516,7 @@ module_gcamusa_L2234.elec_segments <- function(command, ...) {
     # Additional characteristics for intermittent technologies
     A23.elecS_inttech_mapping %>%
       # join is intended to duplicate rows; left_join_error_no_match throws error, so left_join used
-      left_join(L223.GlobalIntTechBackup_elec, by= c("subsector"= "subsector.name", "intermittent.technology" = "technology")) %>%
+      left_join(L223.GlobalIntTechBackup_elec, by= c("subsector"= "subsector.name", "intermittent.technology")) %>%
       filter(!is.na(capacity.limit)) %>%
       select(-supplysector, -subsector_1, -intermittent.technology, -sector.name) %>%
       rename(supplysector = Electric.sector, intermittent.technology = Electric.sector.intermittent.technology) ->
