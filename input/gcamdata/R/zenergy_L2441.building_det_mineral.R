@@ -256,7 +256,7 @@ module_energy_L2441.building_det_mineral <- function(command, ...) {
       add_title("Base service for materials service") %>%
       add_units("none") %>%
       add_comments("Base service scales directly with floorspace") %>%
-      add_precursors(L244.Floorspace) ->
+      add_precursors("L244.Floorspace") ->
       L2441.GenericBaseServiceMaterials
 
     L2441.SupplysectorMaterials %>%
@@ -325,7 +325,7 @@ module_energy_L2441.building_det_mineral <- function(command, ...) {
       add_title("Materials technologies calibrated output") %>%
       add_units("none") %>%
       add_comments("Materials calibrated output (by building sub-type subsectors)") %>%
-      add_precursors(L244.Floorspace, "minerals/buildings/A44.bld_materials_subsector_shares_reg") ->
+      add_precursors("L244.Floorspace", "minerals/buildings/A44.bld_materials_subsector_shares_reg") ->
       L2441.TechCalOutputMaterials
 
     L2441.TechShrwtMaterials %>%
