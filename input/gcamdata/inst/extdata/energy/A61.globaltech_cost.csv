@@ -1,9 +1,12 @@
 # File: A61.globaltech_cost.csv
 # Title: Carbon storage offshore storage cost
-# Units: 1975$/tCO2
-# Source: Decarre 2010; CO2 maritime transportation; https://doi.org/10.1016/j.ijggc.2010.05.005
-# Comments: $32/tCO2. Converted to 1975$ and multiplied by 3 to be conservative and then by 0.8 to scale back
-# Column types: ccccii 
+# Units: 19990$/tC
+# Source: TO BE UPDATED
+# Comments: Non-energy costs only.  Transportation + electricity input cost is calculated endogenously
+# Column types: ccccnn 
 # ----------
 supplysector,subsector,technology,minicam.non.energy.input,1971,2100
-carbon-storage,offshore carbon-storage,offshore carbon-storage,non-energy,211,211
+onshore CO2 transport,onshore CO2 transport,truck,non-energy,12,12
+onshore CO2 transport,onshore CO2 transport,pipeline,non-energy,4.073708246,4.073708246
+offshore CO2 transport,offshore CO2 transport,ship,non-energy,28.86,28.86
+offshore CO2 transport,offshore CO2 transport,pipeline,non-energy,8.147416492,8.147416492

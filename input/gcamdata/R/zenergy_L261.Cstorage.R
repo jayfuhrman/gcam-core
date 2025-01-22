@@ -41,7 +41,6 @@ module_energy_L261.Cstorage <- function(command, ...) {
              FILE = "energy/A61.subsector_logit",
              FILE = "energy/A61.subsector_shrwt",
              FILE = "energy/A61.globaltech_coef",
-             #FILE = "energy/A61.globaltech_eff",
              FILE = "energy/A61.globaltech_cost",
              FILE = "energy/A61.globaltech_shrwt",
              FILE = "energy/A61.ResSubresourceProdLifetime",
@@ -49,23 +48,11 @@ module_energy_L261.Cstorage <- function(command, ...) {
              FILE = "energy/A61.ResReserveTechDeclinePhase",
              FILE = "energy/A61.ResReserveTechProfitShutdown",
              FILE = "energy/A61.Cstorage_curves_dynamic",
-             #FILE = "energy/A61.globaltech_secout",
+             FILE = "energy/A61.globaltech_losses",
              FILE = "energy/IEA_CCUS_Projects_Database_2023",
              "L111.Prod_EJ_R_F_Yh",
              "L161.RsrcCurves_MtC_R"))
 
-    #,
-             #"L271.Supplysector_desal",
-             #"L271.FinalEnergyKeyword_desal",
-             #"L271.SubsectorLogit_desal",
-             #"L271.SubsectorShrwtFllt_desal",
-             #"L271.SubsectorInterp_desal",
-             #"L271.SubsectorInterpTo_desal",
-             #"L271.StubTech_desal",
-             #"L271.GlobalTechCoef_desal",
-             #"L271.GlobalTechShrwt_desal",
-             #"L271.GlobalTechCost_desal",
-             #"L203.TechShrwt_watertd"))
   } else if(command == driver.DECLARE_OUTPUTS) {
     return(c("L261.Rsrc",
              "L261.UnlimitRsrc",
@@ -93,13 +80,10 @@ module_energy_L261.Cstorage <- function(command, ...) {
              "L261.DynamicRsrc",
              "L261.DynamicResTechShrwt_C",
              "L261.RsrcPrice",
-             #"L271.SubsectorInterp_desal_CCS",
-             #"L271.FinalEnergyKeyword_desal_CCS",
-             #"L271.SubsectorInterpTo_desal_CCS",
-             #"L261.GlobalTechEff_C",
-             #"L271.StubTechSecOut_desal_CCS",
              "L261.StubTechEff",
-             "L261.TechPmult"))
+             "L261.TechPmult",
+             "L261.OutputEmissCoeff_C",
+             "L261.DeleteNonCO2"))
   } else if(command == driver.MAKE) {
 
     all_data <- list(...)[[1]]
@@ -112,7 +96,7 @@ module_energy_L261.Cstorage <- function(command, ...) {
     A61.subsector_logit <- get_data(all_data, "energy/A61.subsector_logit", strip_attributes = TRUE)
     A61.subsector_shrwt <- get_data(all_data, "energy/A61.subsector_shrwt", strip_attributes = TRUE)
     A61.globaltech_coef <- get_data(all_data, "energy/A61.globaltech_coef")
-    #A61.globaltech_eff <- get_data(all_data, "energy/A61.globaltech_eff")
+    A61.globaltech_losses <- get_data(all_data,"energy/A61.globaltech_losses")
     A61.globaltech_cost <- get_data(all_data, "energy/A61.globaltech_cost")
     A61.globaltech_shrwt <- get_data(all_data, "energy/A61.globaltech_shrwt", strip_attributes = TRUE)
     L161.RsrcCurves_MtC_R <- get_data(all_data, "L161.RsrcCurves_MtC_R", strip_attributes = TRUE)
@@ -125,13 +109,6 @@ module_energy_L261.Cstorage <- function(command, ...) {
     A61.Cstorage_curves_dynamic <- get_data(all_data, "energy/A61.Cstorage_curves_dynamic", strip_attributes = TRUE)
 
     IEA_CCUS_Projects_Database_2023 <- get_data(all_data, "energy/IEA_CCUS_Projects_Database_2023")
-
-    #A61.globaltech_secout <- get_data(all_data, "energy/A61.globaltech_secout", strip_attributes = TRUE)
-    #L203.TechShrwt_watertd <- get_data(all_data, "L203.TechShrwt_watertd", strip_attributes = TRUE)
-
-    brine_seawater_MEC_ratio <- 4
-    #Source: Panagopoulos (2020) https://doi.org/10.1016/j.energy.2020.118733
-    #Figure 2.  Assume 125 g/L brine, 50% recovery rate, desal to 50 mg/L
 
     IEA_data <- IEA_CCUS_Projects_Database_2023 %>%
       filter(`Project type` %in% c('Full chain','T&S','Storage'),
@@ -174,38 +151,6 @@ module_energy_L261.Cstorage <- function(command, ...) {
       complete(GCAM_region_ID = c(1:32),nesting(year)) %>%
       left_join(GCAM_region_names, by = c('GCAM_region_ID'))
 
-
-    #Use desalination parametrization and structure for CCS desalination treatment.
-    # L271.Supplysector_desal <- get_data(all_data, "L271.Supplysector_desal") %>%
-    #   mutate(supplysector = paste0(supplysector,' CCS'))
-    # L271.SubsectorLogit_desal <- get_data(all_data, "L271.SubsectorLogit_desal") %>%
-    #   mutate(supplysector = paste0(supplysector,' CCS'))
-    # L271.SubsectorShrwtFllt_desal <- get_data(all_data, "L271.SubsectorShrwtFllt_desal") %>%
-    #   mutate(supplysector = paste0(supplysector,' CCS'))
-    # L271.StubTech_desal <- get_data(all_data, "L271.StubTech_desal") %>%
-    #   mutate(supplysector = paste0(supplysector,' CCS'))
-    #
-    # L271.GlobalTechCoef_desal <- get_data(all_data, "L271.GlobalTechCoef_desal") %>%
-    #   mutate(sector.name = paste0(sector.name,' CCS'),
-    #          coefficient = coefficient * brine_seawater_MEC_ratio) %>%
-    #   #Scale energy inputs to account for high salinity formation brine relative to seawater
-    #   filter(minicam.energy.input != 'seawater')
-    #
-    # L271.GlobalTechShrwt_desal <- get_data(all_data, "L271.GlobalTechShrwt_desal") %>%
-    #   mutate(sector.name = paste0(sector.name,' CCS'))
-    # L271.GlobalTechCost_desal <- get_data(all_data, "L271.GlobalTechCost_desal") %>%
-    #   mutate(sector.name = paste0(sector.name,' CCS'))
-    #
-    # #These desal datatables have no Cstorage datatables to bind to, so we write them as separate output tables
-    # L271.SubsectorInterp_desal_CCS <- get_data(all_data, "L271.SubsectorInterp_desal",strip_attributes = TRUE) %>%
-    #   mutate(supplysector = paste0(supplysector,' CCS'))
-    # L271.FinalEnergyKeyword_desal_CCS <- get_data(all_data, "L271.FinalEnergyKeyword_desal",strip_attributes = TRUE) %>%
-    #   mutate(supplysector = paste0(supplysector,' CCS'))
-    # L271.SubsectorInterpTo_desal_CCS <- get_data(all_data, "L271.SubsectorInterpTo_desal",strip_attributes = TRUE)
-    # if (!is.null(L271.SubsectorInterpTo_desal_CCS)){
-    #   L271.SubsectorInterpTo_desal_CCS <- L271.SubsectorInterpTo_desal_CCS %>%
-    #     mutate(supplysector = paste0(supplysector,' CCS'))
-    # }
     # ===================================================
 
     # Silence package notes
@@ -308,20 +253,6 @@ module_energy_L261.Cstorage <- function(command, ...) {
 
     L261.CStorageCurvesDynamic <- bind_rows(CStorageCurvesDynamic_slow_growth,
                                             CStorageCurvesDynamic_rapid_growth)
-
-    # A61.globaltech_eff %>%
-    #   gather_years %>%
-    #   # Expand table to include all model base and future years
-    #   complete(year = c(year, MODEL_YEARS), nesting(supplysector, subsector, technology, minicam.energy.input,scenario)) %>%
-    #   # Extrapolate to fill out values for all years
-    #   # Rule 2 is used so years outside of min-max range are assigned values from closest data, as opposed to NAs
-    #   group_by(supplysector, subsector, technology, minicam.energy.input,scenario) %>%
-    #   mutate(efficiency = approx_fun(year, value, rule = 2)) %>%
-    #   ungroup() %>%
-    #   filter(year %in% MODEL_YEARS) %>% # This will drop 1971
-    #   # Assign the columns "sector.name" and "subsector.name", consistent with the location info of a global technology
-    #   select(sector.name = supplysector, subsector.name = subsector, technology, year, minicam.energy.input, efficiency, scenario) ->
-    #   L261.GlobalTechEff_C
 
     ## Calculate an efficiency parameter equal to how much of each region's implied storage capacity is expected to be consumed by planned + operational projects by 2030
     calibrated_eff_2030 <- IEA_data %>%
@@ -536,8 +467,36 @@ module_energy_L261.Cstorage <- function(command, ...) {
       filter(year %in% MODEL_YEARS) %>% # This will drop 1971
       # Assign the columns "sector.name" and "subsector.name", consistent with the location info of a global technology
       select(sector.name = supplysector, subsector.name = subsector, technology, year, minicam.energy.input, coefficient) ->
-      L261.GlobalTechCoef_C # This is a final output table.
-    #bind_rows(L271.GlobalTechCoef_desal) ->
+      L261.GlobalTechCoef_C
+
+    # Adjustment to coefficients for losses
+    L261.globaltech_losses <- gather_years(A61.globaltech_losses) %>%
+      complete(nesting(supplysector, subsector, technology, minicam.energy.input, Non.CO2), year = MODEL_YEARS) %>%
+      group_by(supplysector, subsector, technology, minicam.energy.input, Non.CO2) %>%
+      mutate(multiplier = approx_fun(year, value, rule = 2)) %>%
+      ungroup() %>%
+      select(-value)
+
+    L261.GlobalTechCoef_C <- left_join_error_no_match(L261.GlobalTechCoef_C, L261.globaltech_losses,
+                                                    by = c(sector.name = "supplysector", subsector.name = "subsector", "technology", "minicam.energy.input", "year"),
+                                                    ignore_columns = c("Non.CO2", "multiplier")) %>%
+      mutate(coefficient = if_else(is.na(multiplier),
+                                   coefficient,
+                                   round(coefficient * (1 - multiplier), energy.DIGITS_COEFFICIENT))) %>%
+      select(LEVEL2_DATA_NAMES[["GlobalTechCoef"]])
+    # This is a final output table.
+
+    # Emissions coefficients
+    # Emissions coefficients are read as region-specific data, so the default coefs need to be repeated by all regions
+    L261.OutputEmissCoeff_C <- L261.globaltech_losses %>%
+      mutate(emiss.coeff = round((multiplier), emissions.DIGITS_EMISS_COEF)) %>%
+      rename(stub.technology = technology) %>%
+      repeat_add_columns(tibble(GCAM_region_names["region"])) %>%
+      select(LEVEL2_DATA_NAMES[["OutputEmissCoeff"]])
+
+    L261.DeleteNonCO2 <- L261.OutputEmissCoeff_C %>%
+      rename(period = year) %>%
+      select(LEVEL2_DATA_NAMES[["DeleteNonCO2"]])
 
     # Costs of global technologies
     # A61.globaltech_cost reports carbon storage offshore storage cost (1975$/tCO2)
@@ -705,14 +664,6 @@ module_energy_L261.Cstorage <- function(command, ...) {
       add_precursors("energy/A61.globaltech_coef") ->
       L261.GlobalTechCoef_C
 
-    # L261.GlobalTechEff_C %>%
-    #   add_title("Carbon storage global technology coefficients across base model years") %>%
-    #   add_units("Unitless") %>%
-    #   add_comments("Growth rate constraints are defined as a proportion of region's oil and gas industry") %>%
-    #   add_legacy_name("L261.GlobalTechCoef_C") %>%
-    #   add_precursors("energy/A61.globaltech_eff") ->
-    #   L261.GlobalTechEff_C
-
     L261.GlobalTechCost_C %>%
       add_title("Carbon storage global technology costs across base model years") %>%
       add_units("1975$/tCO2") %>%
@@ -798,44 +749,20 @@ module_energy_L261.Cstorage <- function(command, ...) {
       same_precursors_as(L261.rsrc_info) ->
       L261.RsrcPrice
 
-    # if(exists("L271.SubsectorInterp_desal_CCS")) {
-    #   L271.SubsectorInterp_desal_CCS %>%
-    #     add_title("Subsector (fuel) shareweight interpolation of desalination sectors") %>%
-    #     add_units("Unitless") %>%
-    #     add_comments("Subsector interpolation without a to-value specified") %>%
-    #     add_precursors("L271.SubsectorInterp_desal") ->
-    #     L271.SubsectorInterp_desal_CCS
-    # } else {
-    #   missing_data() %>%
-    #     add_precursors("L271.SubsectorInterp_desal") ->
-    #     L271.SubsectorInterp_desal_CCS
-    # }
-    #
-    # L271.FinalEnergyKeyword_desal_CCS %>%
-    #   add_title("Final energy keywords for desalinated water") %>%
-    #   add_units("None") %>%
-    #   add_comments("Desalinated water sector keywords") %>%
-    #   add_precursors("L271.FinalEnergyKeyword_desal") ->
-    #   L271.FinalEnergyKeyword_desal_CCS
-    #
-    # if(!is.null(L271.SubsectorInterpTo_desal_CCS)) {
-    #   L271.SubsectorInterpTo_desal_CCS %>%
-    #     add_units("Unitless") %>%
-    #     add_comments("Subsector interpolation with a to-value specified") %>%
-    #     add_precursors("L271.SubsectorInterpTo_desal") ->
-    #     L271.SubsectorInterpTo_desal_CCS
-    # } else {
-    #   missing_data() %>%
-    #     add_precursors("L271.SubsectorInterpTo_desal") ->
-    #     L271.SubsectorInterpTo_desal_CCS
-    # }
-    #
-    # L271.StubTechSecOut_desal_CCS %>%
-    #   add_title("Desalinated water as coproduct of produced CCS brines") %>%
-    #   add_comments("Desalinated produced brines") %>%
-    #   add_units("Unitless") %>%
-    #   add_precursors("energy/A61.globaltech_secout","L203.TechShrwt_watertd") ->
-    #   L271.StubTechSecOut_desal_CCS
+    L261.OutputEmissCoeff_C %>%
+      add_title("CO2 leakage coefficients") %>%
+      add_units("kg of CO2 per kg CO2 input") %>%
+      add_comments("calculated from the assumed losses") %>%
+      same_precursors_as(L261.GlobalTechCoef_C) %>%
+      add_precursors("energy/A61.globaltech_losses") ->
+      L261.OutputEmissCoeff_C
+
+    L261.DeleteNonCO2 %>%
+      add_title("Delete nonCO2") %>%
+      add_units("NA") %>%
+      add_comments("need to do this so added nonCO2 coefs will work") %>%
+      same_precursors_as(L261.OutputEmissCoeff_C) ->
+      L261.DeleteNonCO2
 
     L261.StubTechEff %>%
       add_title("CCS efficiencies calibrated to near-term") %>%
@@ -858,14 +785,14 @@ module_energy_L261.Cstorage <- function(command, ...) {
       same_precursors_as("L261.ResReserveTechDeclinePhase")
       L261.ResReserveTechInvestmentInput
 
+
     return_data(L261.Rsrc, L261.UnlimitRsrc, L261.RsrcCurves_C, L261.ResTechShrwt_C, L261.Supplysector_C, L261.SubsectorLogit_C, L261.SubsectorShrwtFllt_C, L261.StubTech_C, L261.GlobalTechCoef_C, L261.GlobalTechCost_C, L261.GlobalTechShrwt_C, L261.GlobalTechCost_C_High, L261.GlobalTechShrwt_C_nooffshore, L261.RsrcCurves_C_high, L261.RsrcCurves_C_low, L261.RsrcCurves_C_lowest,
                 L261.ResSubresourceProdLifetime, L261.ResReserveTechLifetime, L261.ResReserveTechDeclinePhase, L261.ResReserveTechProfitShutdown,
                 L261.ResReserveTechInvestmentInput,
                 L261.CStorageCurvesDynamic,L261.DynamicCstorageRsrcMax,L261.DynamicRsrc,L261.DynamicResTechShrwt_C,L261.RsrcPrice,
-                #L271.SubsectorInterp_desal_CCS,L271.FinalEnergyKeyword_desal_CCS,L271.SubsectorInterpTo_desal_CCS,
-                #L271.StubTechSecOut_desal_CCS,
                 L261.StubTechEff,
-                L261.TechPmult)
+                L261.TechPmult,
+                L261.OutputEmissCoeff_C,L261.DeleteNonCO2)
   } else {
     stop("Unknown command")
   }
