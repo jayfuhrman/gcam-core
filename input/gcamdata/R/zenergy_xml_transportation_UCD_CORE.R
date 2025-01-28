@@ -47,14 +47,10 @@ module_energy_transportation_UCD_CORE_xml <- function(command, ...) {
              "L254.PerCapitaBased_trn",
              "L254.PriceElasticity_trn",
              "L254.IncomeElasticity_trn",
-             "L254.BaseService_trn",
-             "L254.GlobalTranTechInterp_cwf",
-             "L254.GlobalTranTechShrwt_cwf",
-             "L254.tranSubsectorVOTT_cwf"))
+             "L254.BaseService_trn"))
   } else if(command == driver.DECLARE_OUTPUTS) {
     #xml_files<- c("transportation_UCD_CORE.xml","transportation_UCD_SSP1.xml","transportation_UCD_SSP3.xml","transportation_UCD_SSP5.xml","transportation_UCD_highEV.xml")
-    xml_files<- c("transportation_UCD_CORE.xml","transportation_UCD_SSP1.xml","transportation_UCD_SSP3.xml","transportation_UCD_SSP5.xml",
-                  "transportation_UCD_CWF_med.xml", "transportation_UCD_CWF_high.xml", "transportation_UCD_CWF_low.xml", "transportation_UCD_CWF_ref_shrwts.xml")
+    xml_files<- c("transportation_UCD_CORE.xml","transportation_UCD_SSP1.xml","transportation_UCD_SSP3.xml","transportation_UCD_SSP5.xml")
     names(xml_files) <- rep("XML", length(xml_files))
     return(xml_files)
   } else if(command == driver.MAKE) {
@@ -103,10 +99,6 @@ module_energy_transportation_UCD_CORE_xml <- function(command, ...) {
     L254.IncomeElasticity_trn <- get_data(all_data, "L254.IncomeElasticity_trn")
     L254.BaseService_trn <- get_data(all_data, "L254.BaseService_trn")
 
-    L254.GlobalTranTechInterp_cwf <- get_data(all_data, "L254.GlobalTranTechInterp_cwf")
-    L254.GlobalTranTechShrwt_cwf <- get_data(all_data, "L254.GlobalTranTechShrwt_cwf")
-    L254.tranSubsectorVOTT_cwf <- get_data(all_data, "L254.tranSubsectorVOTT_cwf")
-
     # ===================================================
 
     # Produce outputs
@@ -115,14 +107,13 @@ module_energy_transportation_UCD_CORE_xml <- function(command, ...) {
     # transportation_UCD_CORE.xml <- transportation_UCD_SSP1.xml <- transportation_UCD_SSP2.xml <-
     #   transportation_UCD_SSP3.xml <- transportation_UCD_SSP5.xml <- transportation_UCD_CORE_highEV.xml <- NULL  # silence package check notes
     transportation_UCD_CORE.xml <- transportation_UCD_SSP1.xml <- transportation_UCD_SSP2.xml <-
-      transportation_UCD_SSP3.xml <- transportation_UCD_SSP5.xml <- transportation_UCD_CWF.xml <-
-      transportation_UCD_CWF_high.xml <- transportation_UCD_CWF_low.xml <- NULL  # silence package check notes
+      transportation_UCD_SSP3.xml <- transportation_UCD_SSP5.xml <- NULL  # silence package check notes
 
     ret_data <- c()
     curr_env <- environment()
 
     #for (i in c("CORE","SSP1","SSP3","SSP5", "highEV")){
-    for (i in c("CORE","SSP1","SSP3","SSP5", "CWF_med", "CWF_low", "CWF_high", "CWF_ref_shrwts")){
+    for (i in c("CORE","SSP1","SSP3","SSP5")){
       xml_name <- paste0("transportation_UCD_", i, ".xml")
       #Read SSP specific data
       L254.tranSubsectorSpeed_SSP <- L254.tranSubsectorSpeed %>% filter(sce== i)
@@ -181,69 +172,6 @@ module_energy_transportation_UCD_CORE_xml <- function(command, ...) {
       if (i != "CORE"){L254.StubTranTechCalInput_SSP<-L254.StubTranTechCalInput %>%  filter(sce== i) %>% filter(year>MODEL_FINAL_BASE_YEAR)}
 
       L254.BaseService_trn_SSP <- L254.BaseService_trn %>% filter(sce =="CORE")
-
-      # for CWF scenarios, pull in CORE (or SSP1) values for some of these variables and also pull in base year data as needed
-      if (grepl("CWF", i)) {
-
-        L254.tranSubsectorSpeed_SSP <- L254.tranSubsectorSpeed %>% filter(sce== "CORE")
-        L254.StubTranTech_SSP <- L254.StubTranTech %>% filter(sce== "CORE")
-        L254.tranSubsectorSpeed_passthru_SSP <- L254.tranSubsectorSpeed_passthru %>% filter(sce=="CORE")
-
-        L254.tranSubsectorVOTT_SSP<- L254.tranSubsectorVOTT_cwf # CWF version (for all high/med/low)
-        L254.tranSubsectorFuelPref_SSP <- L254.tranSubsectorFuelPref %>% filter(sce=="SSP1") # SSP1
-        L254.PerCapitaBased_trn_SSP<- L254.PerCapitaBased_trn %>% filter(sce=="SSP1") # SSP1
-        L254.PriceElasticity_trn_SSP <- L254.PriceElasticity_trn %>%  filter(sce=="SSP1") # SSP1
-        L254.IncomeElasticity_trn_SSP <- L254.IncomeElasticity_trn %>% filter(sce== "CWF") # CWF version (for all high/med/low)
-
-        L254.StubTech_passthru_SSP <- L254.StubTech_passthru %>% filter(sce=="CORE")
-        L254.StubTech_nonmotor_SSP <- L254.StubTech_nonmotor %>% filter(sce=="CORE")
-        L254.Supplysector_trn_SSP  <- L254.Supplysector_trn %>% filter(sce=="CORE")
-        L254.FinalEnergyKeyword_trn_SSP <- L254.FinalEnergyKeyword_trn %>% filter(sce=="CORE")
-        L254.tranSubsectorLogit_SSP <- L254.tranSubsectorLogit %>% filter(sce=="CORE")
-        L254.tranSubsectorShrwtFllt_SSP <- L254.tranSubsectorShrwtFllt %>%  filter(sce =="CORE")
-        L254.tranSubsectorInterp_SSP <- L254.tranSubsectorInterp %>%  filter(sce =="CORE")
-        L254.StubTranTechCalInput_SSP <-  L254.StubTranTechCalInput %>% filter(sce =="CORE")
-
-        # CWF versions for share weights for the respective scenarios
-        L254.GlobalTranTechInterp_SSP <- L254.GlobalTranTechInterp_cwf %>% filter(sce==i)
-        L254.GlobalTranTechShrwt_SSP <- L254.GlobalTranTechShrwt_cwf %>%  filter(sce==i)
-
-        # CWF versions that need base years added
-        L254.StubTranTechLoadFactor_SSP <- L254.StubTranTechLoadFactor %>%  filter(sce== "CWF") %>% filter(year>MODEL_FINAL_BASE_YEAR)
-        L254.StubTranTechLoadFactor_SSP <- rbind(L254.StubTranTechLoadFactor_SSP,
-                                                 L254.StubTranTechLoadFactor %>%
-                                                   filter(sce == "CORE") %>%
-                                                   left_join(L254.StubTranTechLoadFactor_SSP %>% dplyr::select(-sce),
-                                                             by = c("region", "supplysector", "tranSubsector", "stub.technology", "year")) %>%
-                                                   filter(is.na(loadFactor.y)) %>%
-                                                   dplyr::select(-loadFactor.y) %>%
-                                                   rename(loadFactor = loadFactor.x))
-        L254.StubTranTechCost_SSP <- L254.StubTranTechCost %>%  filter(sce== "CWF") %>% filter(year>MODEL_FINAL_BASE_YEAR)
-        L254.StubTranTechCost_SSP <- rbind(L254.StubTranTechCost_SSP,
-                                           L254.StubTranTechCost %>%
-                                             filter(sce == "CORE") %>%
-                                             left_join(L254.StubTranTechCost_SSP %>% dplyr::select(-sce),
-                                                       by = c("region", "supplysector", "tranSubsector", "stub.technology", "year", "minicam.non.energy.input")) %>%
-                                             filter(is.na(input.cost.y)) %>%
-                                             dplyr::select(-input.cost.y) %>%
-                                             rename(input.cost = input.cost.x))
-        L254.StubTranTechCoef_SSP <- L254.StubTranTechCoef %>%  filter(sce== "CWF") %>% filter(year>MODEL_FINAL_BASE_YEAR)
-        L254.StubTranTechCoef_SSP <- rbind(L254.StubTranTechCoef_SSP,
-                                           L254.StubTranTechCoef %>%
-                                             filter(sce == "CORE") %>%
-                                             left_join(L254.StubTranTechCoef_SSP %>% dplyr::select(-sce),
-                                                       by = c("region", "supplysector", "tranSubsector", "stub.technology", "year", "minicam.energy.input", "market.name")) %>%
-                                             filter(is.na(coefficient.y)) %>%
-                                             dplyr::select(-coefficient.y) %>%
-                                             rename(coefficient = coefficient.x))
-
-        # if it's the CWF scenario with reference share weights, use the default share weights, but keep all other CWF values
-        if(i == "CWF_ref_shrwts") {
-          L254.GlobalTranTechInterp_SSP <- L254.GlobalTranTechInterp %>% filter(sce=="CORE")
-          L254.GlobalTranTechShrwt_SSP <- L254.GlobalTranTechShrwt %>%  filter(sce=="CORE")
-        }
-      }
-
 
       #Create xmls
       create_xml(xml_name) %>%

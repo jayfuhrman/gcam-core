@@ -71,7 +71,7 @@ module_energy_L244.building_det <- function(command, ...) {
              'L144.internal_gains_cwf',
              "L144.flsp_param_cwf",
              FILE = "cwf/A44.satiation_flsp_cwf_adj",
-             FILE = "cwf/A44.globaltech_shrwt_cwf_H2_scenarios"))
+             FILE = "cwf/A44.globaltech_shrwt_cwf_no_H2_building"))
   } else if(command == driver.DECLARE_OUTPUTS) {
     return(c("L244.SubregionalShares",
              "L244.PriceExp_IntGains",
@@ -137,7 +137,7 @@ module_energy_L244.building_det <- function(command, ...) {
              "L244.Satiation_flsp_cwf",
              "L244.SatiationAdder_cwf",
              "L244.GompFnParam_cwf",
-             "L244.GlobalTechShrwt_bld_cwf_H2_scenarios"))
+             "L244.globaltech_shrwt_cwf_no_H2_building"))
   } else if(command == driver.MAKE) {
 
     # Silence package checks
@@ -201,7 +201,7 @@ module_energy_L244.building_det <- function(command, ...) {
     L144.internal_gains_cwf <- get_data(all_data, "L144.internal_gains_cwf", strip_attributes = TRUE)
     L144.flsp_param_cwf <- get_data(all_data, "L144.flsp_param_cwf", strip_attributes = TRUE)
     A44.satiation_flsp_cwf_adj <- get_data(all_data, "cwf/A44.satiation_flsp_cwf_adj", strip_attributes = TRUE)
-    A44.globaltech_shrwt_cwf_H2_scenarios <- get_data(all_data, "cwf/A44.globaltech_shrwt_cwf_H2_scenarios") %>%
+    A44.globaltech_shrwt_cwf_no_H2_building <- get_data(all_data, "cwf/A44.globaltech_shrwt_cwf_no_H2_building") %>%
       gather_years
 
     # ===================================================
@@ -958,18 +958,17 @@ module_energy_L244.building_det <- function(command, ...) {
              base.pcFlsp=base_flsp) %>%
       select(LEVEL2_DATA_NAMES[["GompFnParam"]])
 
-    # L244.GlobalTechShrwt_bld_cwf_H2_scenarios: Default shareweights for global building technologies for CWF hydrogen scenarios
-    L244.GlobalTechShrwt_bld_cwf_H2_scenarios <- A44.globaltech_shrwt_cwf_H2_scenarios %>%
-      # Repeat for all model years
-      complete(nesting(scenario, supplysector, subsector, technology), year = c(year, MODEL_YEARS)) %>%
+    L244.globaltech_shrwt_cwf_no_H2_building <-
+      A44.globaltech_shrwt_cwf_no_H2_building %>%
+      complete(nesting(supplysector, subsector, technology), year = c(year, MODEL_YEARS)) %>%
       # Interpolate
-      group_by(scenario, supplysector, subsector, technology) %>%
+      group_by(supplysector, subsector, technology) %>%
       mutate(share.weight = approx_fun(year, value, rule = 2)) %>%
       ungroup() %>%
       filter(year %in% MODEL_YEARS) %>%
       rename(sector.name = supplysector,
              subsector.name = subsector) %>%
-      select(LEVEL2_DATA_NAMES[["GlobalTechYr"]], scenario, share.weight)
+      select(LEVEL2_DATA_NAMES[["GlobalTechYr"]], share.weight)
 
     # ===================================================
     # Produce outputs
@@ -1401,13 +1400,14 @@ module_energy_L244.building_det <- function(command, ...) {
                      "L144.flsp_bm2_R_res_Yh","L144.hab_land_flsp_fin") ->
       L244.GompFnParam_cwf
 
-    L244.GlobalTechShrwt_bld_cwf_H2_scenarios %>%
-      add_title("Default shareweights for global building technologies for CWF hydrogen scenarios") %>%
+    L244.globaltech_shrwt_cwf_no_H2_building %>%
+      add_title("prevent the use of H2 in building sector by setting shareweights to be 0") %>%
       add_units("Unitless") %>%
-      add_comments("Values interpolated from A44.globaltech_shrwt_cwf_H2_scenarios") %>%
-      add_legacy_name("L244.GlobalTechShrwt_bld_cwf_H2_scenarios") %>%
-      add_precursors("cwf/A44.globaltech_shrwt_cwf_H2_scenarios") ->
-      L244.GlobalTechShrwt_bld_cwf_H2_scenarios
+      add_comments("Values interpolated from A44.globaltech_shrwt_cwf_no_H2_building") %>%
+      add_legacy_name("L244.globaltech_shrwt_cwf_no_H2_building") %>%
+      add_precursors("cwf/A44.globaltech_shrwt_cwf_no_H2_building") ->
+      L244.globaltech_shrwt_cwf_no_H2_building
+
 
     return_data(L244.SubregionalShares, L244.PriceExp_IntGains, L244.Floorspace, L244.DemandFunction_serv, L244.DemandFunction_flsp,
                 L244.Satiation_flsp, L244.SatiationAdder, L244.ThermalBaseService, L244.GenericBaseService, L244.ThermalServiceSatiation,
@@ -1425,7 +1425,7 @@ module_energy_L244.building_det <- function(command, ...) {
                 L244.HDDCDD_A2_CCSM3x, L244.HDDCDD_A2_HadCM3, L244.HDDCDD_B1_CCSM3x, L244.HDDCDD_B1_HadCM3, L244.HDDCDD_constdd_no_GCM,
                 L244.GompFnParam, L244.GlobalTechTrackCapital_bld,
                 L244.ShellConductance_bld_cwf, L244.StubTechEff_bld_cwf, L244.StubTechIntGainOutputRatio_cwf,
-                L244.Satiation_flsp_cwf, L244.SatiationAdder_cwf, L244.GompFnParam_cwf, L244.GlobalTechShrwt_bld_cwf_H2_scenarios)
+                L244.Satiation_flsp_cwf, L244.SatiationAdder_cwf, L244.GompFnParam_cwf, L244.globaltech_shrwt_cwf_no_H2_building)
   } else {
     stop("Unknown command")
   }

@@ -18,7 +18,7 @@
 #' \code{L254.GlobalTranTechSCurve}, \code{L254.StubTranTechCalInput}, \code{L254.StubTranTechLoadFactor},
 #' \code{L254.StubTranTechCost}, \code{L254.StubTranTechCoef}, \code{L254.StubTechCalInput_passthru},
 #' \code{L254.StubTechProd_nonmotor}, \code{L254.PerCapitaBased_trn}, \code{L254.PriceElasticity_trn},
-#' \code{L254.IncomeElasticity_trn}, \code{L254.BaseService_trn}, \code{L254.GlobalTranTechInterp_cwf}, \code{L254.GlobalTranTechShrwt_cwf}, \code{L254.tranSubsectorVOTT_cwf}. The corresponding file in the
+#' \code{L254.IncomeElasticity_trn}, \code{L254.BaseService_trn} The corresponding file in the
 #' original data system was \code{L254.transportation_UCD.R} (energy level2).
 #' @details Due to the asymmetrical nature of the transportation sectors in the various regions, we can't simply write
 #' generic information to all regions. Instead, technology information is read from the global UCD transportation
@@ -61,10 +61,7 @@ module_energy_L254.transportation_UCD <- function(command, ...) {
              "L154.intensity_MJvkm_R_trn_m_sz_tech_F_Y",
              "L154.loadfactor_R_trn_m_sz_tech_F_Y",
              "L154.speed_kmhr_R_trn_m_sz_tech_F_Y",
-             "L154.out_mpkm_R_trn_nonmotor_Yh",
-             FILE = "cwf/A54.demand_ssp1_cwf_adj",
-             FILE = "cwf/A54.globaltranTech_shrwt_revised_cwf",
-             FILE=  "cwf/A54.globaltranTech_interp_revised_cwf"))
+             "L154.out_mpkm_R_trn_nonmotor_Yh"))
   } else if(command == driver.DECLARE_OUTPUTS) {
     return(c("L254.Supplysector_trn",
              "L254.FinalEnergyKeyword_trn",
@@ -100,10 +97,7 @@ module_energy_L254.transportation_UCD <- function(command, ...) {
              "L254.PerCapitaBased_trn",
              "L254.PriceElasticity_trn",
              "L254.IncomeElasticity_trn",
-             "L254.BaseService_trn",
-             "L254.GlobalTranTechInterp_cwf",
-             "L254.GlobalTranTechShrwt_cwf",
-             "L254.tranSubsectorVOTT_cwf"))
+             "L254.BaseService_trn"))
   } else if(command == driver.MAKE) {
 
     all_data <- list(...)[[1]]
@@ -184,10 +178,6 @@ module_energy_L254.transportation_UCD <- function(command, ...) {
     L154.loadfactor_R_trn_m_sz_tech_F_Y <- get_data(all_data, "L154.loadfactor_R_trn_m_sz_tech_F_Y",strip_attributes = TRUE)
     L154.speed_kmhr_R_trn_m_sz_tech_F_Y <- get_data(all_data, "L154.speed_kmhr_R_trn_m_sz_tech_F_Y",strip_attributes = TRUE)
     L154.out_mpkm_R_trn_nonmotor_Yh <- get_data(all_data, "L154.out_mpkm_R_trn_nonmotor_Yh",strip_attributes = TRUE)
-
-    A54.demand_SSP1_cwf_adj <- get_data(all_data, "cwf/A54.demand_ssp1_cwf_adj",strip_attributes = TRUE)
-    A54.globaltranTech_shrwt_cwf <- get_data(all_data, "cwf/A54.globaltranTech_shrwt_revised_cwf",strip_attributes = TRUE)
-    A54.globaltranTech_interp_cwf <- get_data(all_data, "cwf/A54.globaltranTech_interp_revised_cwf",strip_attributes = TRUE)
 
     # ===================================================
 
@@ -752,56 +742,6 @@ module_energy_L254.transportation_UCD <- function(command, ...) {
       L254.BaseService_trn # OUTPUT
 
 
-    # CWF adjustments to income elasticity, adding to L254.IncomeElasticity_trn for CWF scenario
-    L254.IncomeElasticity_trn <- L254.IncomeElasticity_trn %>%
-      bind_rows(L254.IncomeElasticity_trn %>%
-                  filter(sce == "SSP1") %>%
-                  left_join(A54.demand_SSP1_cwf_adj) %>%
-                  mutate(income.elasticity = income.elasticity * income.elasticity_adj,
-                         sce = "CWF") %>%
-                  dplyr::select(-income.elasticity_adj))
-
-    # L254.tranSubsectorVOTT_cwf: Value of time in transit parameterization, using SSP1 values but without subsetting
-    # NOTE: These are currently considered time- and region-independent characteristics
-    A54.tranSubsector_VOTT %>%
-      filter(addTimeValue == 1) %>%
-      write_to_all_regions(c(LEVEL2_DATA_NAMES[["tranSubsector"]], "addTimeValue", "time.value.multiplier","sce"),
-                           GCAM_region_names = GCAM_region_names) %>%
-      mutate(year.fillout = min(MODEL_YEARS),
-             sce= if_else(is.na(sce),"CORE",sce)) %>%
-      # Subset only the combinations of region, supplysector, and tranSubsector
-      filter(sce == "SSP1") %>%
-      select(LEVEL2_DATA_NAMES[["tranSubsector"]], year.fillout, addTimeValue, time.value.multiplier,sce) %>%
-      na.omit()->
-      L254.tranSubsectorVOTT_cwf
-
-    # CWF adjustments to share weights and interpolation rules
-    # L254.GlobalTranTechInterp_cwf
-    A54.globaltranTech_interp_cwf %>%
-      mutate(supplysector = supplysector) %>%  # create new tibble, stripping attributes
-      set_years() %>%
-      rename(sector.name = supplysector, subsector.name = tranSubsector) %>%
-      select(LEVEL2_DATA_NAMES[["GlobalTranTechInterp"]],"sce") ->
-      L254.GlobalTranTechInterp_cwf
-
-    # L254.GlobalTranTechShrwt_cwf: Shareweights of global tranTechnologies
-    A54.globaltranTech_shrwt_cwf %>%
-      gather_years %>%
-      # Expand table to include all model years
-      complete(year = c(year, MODEL_YEARS), nesting(supplysector, tranSubsector, tranTechnology, sce)) %>%
-      arrange(supplysector, tranSubsector, tranTechnology, sce, year) %>%
-      # Extrapolate to fill out values for all years
-      # Rule 2 is used so years that may be outside of min-max range are assigned values from closest data, as opposed to NAs
-      group_by(supplysector, tranSubsector, tranTechnology, sce) %>%
-      mutate(share.weight = approx_fun(year, value, rule = 2),
-             share.weight = round(share.weight, energy.DIGITS_SHRWT)) %>%
-      ungroup() %>%
-      filter(year %in% MODEL_YEARS) %>%
-      rename(sector.name = supplysector, subsector.name = tranSubsector) %>%
-      select(LEVEL2_DATA_NAMES[["GlobalTranTechShrwt"]],sce) ->
-      L254.GlobalTranTechShrwt_cwf # OUTPUT
-
-
     # ===================================================
 
     L254.Supplysector_trn %>%
@@ -1135,33 +1075,6 @@ module_energy_L254.transportation_UCD <- function(command, ...) {
                      "L154.loadfactor_R_trn_m_sz_tech_F_Y", "L154.in_EJ_R_trn_m_sz_tech_F_Yh") ->
       L254.BaseService_trn
 
-    L254.GlobalTranTechInterp_cwf %>%
-      add_title("Shareweight interpolation of global tranTechnologies") %>%
-      add_units("NA") %>%
-      add_comments("Populated placeholders for final calibration year and end year") %>%
-      add_legacy_name("L254.GlobalTranTechInterp") %>%
-      add_precursors("cwf/A54.globaltranTech_interp_revised_cwf") ->
-      L254.GlobalTranTechInterp_cwf
-
-    L254.GlobalTranTechShrwt_cwf %>%
-      add_title("Shareweights of global tranTechnologies") %>%
-      add_units("Unitless") %>%
-      add_comments("Data was subsetted for model years") %>%
-      add_legacy_name("L254.GlobalTranTechShrwt") %>%
-      add_precursors("cwf/A54.globaltranTech_shrwt_revised_cwf") ->
-      L254.GlobalTranTechShrwt_cwf
-
-    L254.tranSubsectorVOTT_cwf %>%
-      add_title("Value of time in transit parameterization") %>%
-      add_units("Unitless") %>%
-      add_comments("Data was written for all regions") %>%
-      add_comments("Year.fillout was populated with minimum model year") %>%
-      add_legacy_name("L254.tranSubsectorVOTT") %>%
-      add_precursors("common/GCAM_region_names", "energy/A54.tranSubsector_VOTT", "energy/A54.tranSubsector_VOTT_revised",
-                     "energy/mappings/UCD_techs", "energy/mappings/UCD_techs_revised", "energy/mappings/UCD_size_class_revisions", "L154.intensity_MJvkm_R_trn_m_sz_tech_F_Y",
-                     "energy/A54.globaltech_passthru", "energy/A54.globaltech_passthru_revised", "energy/A54.globaltech_nonmotor") ->
-      L254.tranSubsectorVOTT_cwf
-
     return_data(L254.Supplysector_trn, L254.FinalEnergyKeyword_trn, L254.tranSubsectorLogit,
                 L254.tranSubsectorShrwt, L254.tranSubsectorShrwtFllt, L254.tranSubsectorInterp,
                 L254.tranSubsectorInterpTo, L254.tranSubsectorSpeed, L254.tranSubsectorSpeed_passthru,
@@ -1172,8 +1085,7 @@ module_energy_L254.transportation_UCD <- function(command, ...) {
                 L254.GlobalTranTechSCurve, L254.GlobalTranTechProfitShutdown, L254.StubTranTechCalInput, L254.StubTranTechLoadFactor,
                 L254.StubTranTechCost, L254.StubTranTechCoef, L254.StubTechCalInput_passthru,
                 L254.StubTechProd_nonmotor, L254.PerCapitaBased_trn, L254.PriceElasticity_trn,
-                L254.IncomeElasticity_trn, L254.BaseService_trn, L254.StubTechTrackCapital,
-                L254.GlobalTranTechInterp_cwf, L254.GlobalTranTechShrwt_cwf, L254.tranSubsectorVOTT_cwf)
+                L254.IncomeElasticity_trn, L254.BaseService_trn, L254.StubTechTrackCapital)
   } else {
     stop("Unknown command")
   }

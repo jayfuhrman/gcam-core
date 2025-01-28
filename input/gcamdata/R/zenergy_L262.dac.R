@@ -70,7 +70,10 @@ module_energy_L262.dac <- function(command, ...) {
              "L162.out_Mt_R_dac_Yh",
              "L225.GlobalTechCost_h2",
              "L225.GlobalTechCoef_h2",
-             "L225.StubTechCost_h2",
+             # "L225.StubTechCost_h2",
+             "L225.StubTechCost_h2_electrolyzer_ref",
+             "L225.StubTechCost_h2_renewables",
+
              "L223.StubTechCapFactor_elec"))
   } else if(command == driver.DECLARE_OUTPUTS) {
     return(c("L262.CarbonCoef_dac",
@@ -142,7 +145,11 @@ module_energy_L262.dac <- function(command, ...) {
 
     L225.GlobalTechCoef_h2 <- get_data(all_data, "L225.GlobalTechCoef_h2", strip_attributes = TRUE)
     L225.GlobalTechCost_h2 <- get_data(all_data, "L225.GlobalTechCost_h2", strip_attributes = TRUE)
-    L225.StubTechCost_h2 <- get_data(all_data, "L225.StubTechCost_h2", strip_attributes = TRUE)
+
+    L225.StubTechCost_h2_electrolyzer_ref <- get_data(all_data, "L225.StubTechCost_h2_electrolyzer_ref", strip_attributes = TRUE)
+    L225.StubTechCost_h2_renewables <- get_data(all_data, "L225.StubTechCost_h2_renewables", strip_attributes = TRUE)
+    L225.StubTechCost_h2 <- L225.StubTechCost_h2_electrolyzer_ref %>% rbind(L225.StubTechCost_h2_renewables)
+
     L223.StubTechCapFactor_elec <- get_data(all_data, "L223.StubTechCapFactor_elec", strip_attributes = TRUE)
 
     #load ssp parametrizations
@@ -590,7 +597,8 @@ module_energy_L262.dac <- function(command, ...) {
       add_title("Regional hydrogen production costs for efuels") %>%
       add_units("$1975/GJ") %>%
       add_comments("LCOH for the electrolyzer and renewables providing electricity for hydrogen production is multiplied by the H2 input coefficient for efuels") %>%
-      add_precursors("L225.StubTechCost_h2","L223.StubTechCapFactor_elec") -> L262.StubTechCost_dac
+      add_precursors("L225.StubTechCost_h2_electrolyzer_ref",
+                     "L225.StubTechCost_h2_renewables","L223.StubTechCapFactor_elec") -> L262.StubTechCost_dac
 
 
 

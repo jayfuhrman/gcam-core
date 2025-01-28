@@ -1,0 +1,19 @@
+# File: A327.globaltech_coef_cwf.csv
+# Title: Paper and paperboard production for cwf scenario. Improving efficiency coefficients by 10% (linear increase from 2020 to 2050) and by 20% by 2100 relative to default coefficients.
+# Units: GJ per kg (EJ of energy per Mt of paper and paperboard) for paper and paperboard; unitless (EJ energy per EJ heat) for process heat.  
+# Column types: cccccnnnn
+# ----------
+supplysector,subsector,technology,minicam.energy.input,secondary.output,1975,2020,2050,2100
+waste biomass for paper,biomass,biomass,regional woodpulp for energy,,1.43,1.43,1.3585,1.287
+waste biomass for paper,biomass,biomass cogen,regional woodpulp for energy,electricity,1.82,1.82,1.729,1.638
+waste biomass for paper,biomass,biomass CCS,regional woodpulp for energy,,1.93,1.93,1.8335,1.737
+process heat paper,gas,gas,wholesale gas,,1.25,1.25,1.1875,1.125
+process heat paper,gas,gas cogen,wholesale gas,electricity,1.67,1.67,1.5865,1.503
+process heat paper,refined liquids,refined liquids,refined liquids industrial,,1.25,1.25,1.1875,1.125
+process heat paper,refined liquids,refined liquids cogen,refined liquids industrial,electricity,1.67,1.67,1.5865,1.503
+process heat paper,heat,heat,district heat,,1,1,0.95,0.9
+process heat paper,coal,coal,delivered coal,,1.25,1.25,1.1875,1.125
+process heat paper,coal,coal cogen,delivered coal,electricity,1.67,1.67,1.5865,1.503
+process heat paper,electricity,electric boiler,elect_td_ind,,1,1,1,1
+process heat paper,electricity,electric heat pump,elect_td_ind,,0.45,0.45,0.4275,0.405
+process heat paper,hydrogen,hydrogen,H2 industrial,,1.18,1.18,1.121,1.062
