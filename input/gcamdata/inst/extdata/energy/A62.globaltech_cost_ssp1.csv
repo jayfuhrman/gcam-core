@@ -7,7 +7,7 @@ supplysector,subsector,technology,minicam.non.energy.input,1971,2020,2050,2100
 CO2 removal,dac,hightemp DAC NG,non-energy,0.297615642,0.297615642,0.178569385,0.178569385
 CO2 removal,dac,hightemp DAC elec,non-energy,0.381047227,0.381047227,0.184176464,0.184176464
 CO2 removal,dac,lowtemp DAC heatpump,non-energy,0.423419501,0.423419501,0.203535766,0.203535766
-CO2 removal,dac,lowtemp DAC geothermal,non-energy,0.336995614,0.336995614,0.105077585,0.105077585
+CO2 removal,dac,lowtemp DAC geothermal,non-energy,0.336995614,0.336995614,0.194111404,0.194111404
 CO2 removal,no CDR,no CDR,non-energy,0.001,0.001,0.001,0.001
 process heat dac,gas CCS,gas CCS,non-energy,0,0,0,0
 CO2 removal,dac,direct ocean capture (stand-alone),non-energy,1.635004398,1.635004398,1.635004398,1.635004398
