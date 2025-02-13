@@ -255,14 +255,14 @@ public:
      */
     template<typename ContainerType>
     typename boost::disable_if<
-        boost::is_base_of<AParsable, ContainerType>,
+        std::is_base_of<AParsable, ContainerType>,
     void>::type setContainer(ContainerType* aContainer) {
         // not a subclass of AParsable, ignore
     }
     
     template<typename ContainerType>
     typename boost::enable_if<
-        boost::is_base_of<AParsable, ContainerType>,
+        std::is_base_of<AParsable, ContainerType>,
     void>::type setContainer(ContainerType* aContainer) {
         mContainer = aContainer;
     }
