@@ -50,7 +50,8 @@ module_energy_batch_Weathering_xml <- function(command, ...) {
     L263.RsrcPrice <- get_data(all_data, "L263.RsrcPrice")
     L263.WeatheringRsrcMax <- get_data(all_data, "L263.WeatheringRsrcMax")
     L263.GlobalTechCSeq <- get_data(all_data, "L263.GlobalTechCSeq")
-    L263.SubsectorInterp <- get_data(all_data, "L263.SubsectorInterp")
+    L263.SubsectorInterp <- get_data(all_data, "L263.SubsectorInterp") %>%
+      mutate(interpolation.function = if_else(subsector == 'biomass burial' & from.year == 2025,'s-curve',interpolation.function))
     L263.GlobalTechInputPMult <- get_data(all_data, "L263.GlobalTechInputPMult")
     L263.GlobalTechSCurve <- get_data(all_data, "L263.GlobalTechSCurve")
     L263.GlobalTechProfitShutdown <- get_data(all_data, "L263.GlobalTechProfitShutdown")
