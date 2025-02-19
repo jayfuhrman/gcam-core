@@ -490,7 +490,7 @@ LEVEL2_DATA_NAMES <- generate_level2_data_names()
 # Save these objects for use as internal package data
 usethis::use_data(LEVEL2_DATA_NAMES, overwrite = TRUE, internal = TRUE)
 rm(list = c("LEVEL2_DATA_NAMES"))
-stop('Test')
+
 # It is frequently the case that we need to refresh the LEVEL2_DATA_NAMES in order to have
 # a successful driver() run which is required to update the following so we will re-load
 # the package now so the updated LEVEL2_DATA_NAMES can take effect.
