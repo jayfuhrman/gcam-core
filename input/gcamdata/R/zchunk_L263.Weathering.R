@@ -29,12 +29,13 @@
 #'  \item{Shareweights of offshore carbon storage technologies}
 #' }
 #' @importFrom assertthat assert_that
-#' @importFrom dplyr bind_rows distinct filter mutate select
-#' @importFrom tidyr complete nesting
+#' @importFrom dplyr bind_rows distinct filter mutate select reframe
+#' @importFrom tidyr complete nesting separate_longer_delim
 #' @author AJS August 2017
 module_energy_L263.Weathering <- function(command, ...) {
   if(command == driver.DECLARE_INPUTS) {
     return(c(FILE = "common/GCAM_region_names",
+             FILE = "common/iso_GCAM_regID",
              FILE = "energy/A63.rsrc_info",
              FILE = "energy/A63.sector",
              FILE = "energy/A63.subsector_logit",
@@ -46,6 +47,7 @@ module_energy_L263.Weathering <- function(command, ...) {
              FILE = "energy/A63.nonenergy_Cseq",
              FILE = "energy/A63.subsector_interp",
              FILE = "energy/A63.globaltech_retirement",
+             FILE = "energy/ERW_project_data",
              "L163.RsrcCurves_Mt"))
   } else if(command == driver.DECLARE_OUTPUTS) {
     return(c("L263.Rsrc",
@@ -76,6 +78,7 @@ module_energy_L263.Weathering <- function(command, ...) {
 
     # Load required inputs
     GCAM_region_names <- get_data(all_data, "common/GCAM_region_names")
+    iso_GCAM_regID <- get_data(all_data, "common/iso_GCAM_regID")
     A63.rsrc_info <- get_data(all_data, "energy/A63.rsrc_info", strip_attributes = TRUE)
     A63.sector <- get_data(all_data, "energy/A63.sector", strip_attributes = TRUE)
     A63.subsector_logit <- get_data(all_data, "energy/A63.subsector_logit", strip_attributes = TRUE)
@@ -87,6 +90,7 @@ module_energy_L263.Weathering <- function(command, ...) {
     A63.nonenergy_Cseq <- get_data(all_data, "energy/A63.nonenergy_Cseq", strip_attributes = TRUE)
     A63.subsector_interp <- get_data(all_data, "energy/A63.subsector_interp", strip_attributes = TRUE)
     A63.globaltech_retirement <- get_data(all_data, "energy/A63.globaltech_retirement", strip_attributes = TRUE)
+    ERW_project_data <- get_data(all_data, "energy/ERW_project_data", strip_attributes = TRUE)
     L163.RsrcCurves_Mt <- get_data(all_data, "L163.RsrcCurves_Mt", strip_attributes = TRUE)
 
     # ===================================================
@@ -293,11 +297,89 @@ module_energy_L263.Weathering <- function(command, ...) {
       select(LEVEL2_DATA_NAMES[["StubTechEff"]]) ->
       L263.StubTechEff
 
+
+    # Technology coefficients based on real data from Carbon Direct
+    # Separate multinational projects and dis-aggregate project capacity
+    ERW_project_data %>%
+      filter(country %in% grep("/", ERW_project_data$country, value = TRUE)) %>%
+      mutate(id = 1:n()) %>%
+      separate_longer_delim(country, "/") %>%
+      group_by(id) %>%
+      mutate(country_name = country, `2030` = `2030`/sum(`2030`)) %>%
+      ungroup() %>%
+      select(country_name, `2030`) %>%
+      # Combine with single-nation projects
+      rbind(ERW_project_data %>%
+              filter(!(country %in% grep("/", ERW_project_data$country, value = TRUE))) %>%
+              rename(country_name = country)) %>%
+      # Fix country mapping issue
+      mutate(country_name = case_when(country_name == 'Tanzania' ~ 'Tanzania, United Republic of',
+                                      country_name == 'United States' ~ 'United States of America',
+                                      country_name == 'Pacific Islands' ~ 'Pacific Islands Trust Territory',
+                                      TRUE ~ country_name)) %>%
+      # Map to GCAM regions
+      left_join(iso_GCAM_regID, by = join_by(country_name)) %>%
+      group_by(country_name, GCAM_region_ID) %>%
+      # Get country project totals
+      summarize(`2030` = sum(`2030`)) %>%
+      ungroup() %>%
+      group_by(GCAM_region_ID) %>%
+      # Get regional project totals
+      summarize(project_total = sum(`2030`)) %>%
+      ungroup() -> ERW_region_totals
+
+    # Define growth parameter k (this will be a csv input at some point)
+    k_slow = 0.05
+    k_med = 0.10
+    k_fast = 0.15
+
+    # Join with tech efficiency curves
+    # Calculate the utilization ratio for each region based on resource curve peaks
+    L163.RsrcCurves_Mt %>%
+      group_by(GCAM_region_ID) %>%
+      summarize(region_total = max(available)) %>%
+      ungroup() %>%
+      right_join(ERW_region_totals) %>%
+    # Calculate the project share of the regional available resource
+      mutate(ratio = project_total/region_total, year = 2030) %>%
+      left_join(GCAM_region_names) %>%
+      select(region, ratio, year) %>%
+      right_join(L263.StubTechEff) %>%
+      mutate(ratio = ifelse(ratio >1, 1, ratio)) %>%
+      mutate(efficiency = case_when(year < 2030 ~ 0.001,
+                                    year == 2030 & !is.na(ratio) ~ ratio,
+                                    year == 2030 & is.na(ratio) ~ 0.001,
+                                    TRUE ~ ratio)) %>%
+      group_by(region) %>%
+      arrange(year) %>%
+      fill(efficiency) %>%
+      ungroup() %>%
+      select(-ratio) %>%
+      mutate(slow_growth_rate = k_slow, medium_growth_rate = k_med, rapid_growth_rate = k_fast) %>%
+      gather(scenario, k, -region, -year, -supplysector, -subsector, -stub.technology, -minicam.energy.input, -efficiency, -market.name) %>%
+      group_by(region, scenario) %>%
+    # Define logistic parameters
+      mutate(C_2030 = efficiency[year == 2030],
+             a = (1-C_2030)/C_2030,
+             b = -log(a)/k,
+             x0 = 2030 - b) %>%
+      ungroup() -> ERW_eff_post_2030
+
+    ERW_eff_post_2030 %>%
+      group_by(scenario) %>%
+      mutate(efficiency = case_when(year > 2030 ~ (1/(1+exp(-k*(year - x0)))),
+                                    TRUE~efficiency),
+             supplysector = 'erw dynamic-capacity',
+             subsector = 'erw dynamic-capacity',
+             stub.technology = 'erw dynamic-capacity',
+             minicam.energy.input = 'enhanced rock weathering dynamic',
+             market.name = region) %>%
+      mutate(efficiency = if_else(efficiency == 0, 0.001,efficiency)) %>%
+      select(c('scenario', LEVEL2_DATA_NAMES[['StubTechEff']])) -> L263.StubTechEff
+
     L263.StubTechEff %>%
       select(region,supplysector,subsector,technology = stub.technology,year,pMult = efficiency) ->
       L263.TechPmult
-
-
 
     A63.globaltech_coef %>%
       filter(!is.na(price.unit.conversion)) %>%
