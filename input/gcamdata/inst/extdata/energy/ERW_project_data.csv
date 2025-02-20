@@ -4,14 +4,16 @@
 # Units: MtCO2 per year
 # Column types: cn
 # ----------
-country,2030
+country_name,2030
 India,5
 Australia,1
-United States,1000
+United States of America,1000
 Kenya,5
 Brazil,0.5
-India/Zambia/Tanzania,1
+India,0.33
+"Tanzania, United Republic of",0.33
+Zambia,0.33
 United Kingdom,0.5
 Colombia,1
 United Kingdom,1
-Pacific Islands,1
+Pacific Islands Trust Territory,1

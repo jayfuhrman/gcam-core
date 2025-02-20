@@ -301,24 +301,8 @@ module_energy_L263.Weathering <- function(command, ...) {
     # Technology coefficients based on real data from Carbon Direct
     # Separate multinational projects and dis-aggregate project capacity
     ERW_project_data %>%
-      filter(country %in% grep("/", ERW_project_data$country, value = TRUE)) %>%
-      mutate(id = 1:n()) %>%
-      separate_longer_delim(country, "/") %>%
-      group_by(id) %>%
-      mutate(country_name = country, `2030` = `2030`/sum(`2030`)) %>%
-      ungroup() %>%
-      select(country_name, `2030`) %>%
-      # Combine with single-nation projects
-      rbind(ERW_project_data %>%
-              filter(!(country %in% grep("/", ERW_project_data$country, value = TRUE))) %>%
-              rename(country_name = country)) %>%
-      # Fix country mapping issue
-      mutate(country_name = case_when(country_name == 'Tanzania' ~ 'Tanzania, United Republic of',
-                                      country_name == 'United States' ~ 'United States of America',
-                                      country_name == 'Pacific Islands' ~ 'Pacific Islands Trust Territory',
-                                      TRUE ~ country_name)) %>%
       # Map to GCAM regions
-      left_join(iso_GCAM_regID, by = join_by(country_name)) %>%
+      left_join(iso_GCAM_regID, by = c("country_name")) %>%
       group_by(country_name, GCAM_region_ID) %>%
       # Get country project totals
       summarize(`2030` = sum(`2030`)) %>%
@@ -339,16 +323,16 @@ module_energy_L263.Weathering <- function(command, ...) {
       group_by(GCAM_region_ID) %>%
       summarize(region_total = max(available)) %>%
       ungroup() %>%
-      right_join(ERW_region_totals) %>%
+      right_join(ERW_region_totals, by = c("GCAM_region_ID")) %>%
     # Calculate the project share of the regional available resource
       mutate(ratio = project_total/region_total, year = 2030) %>%
-      left_join(GCAM_region_names) %>%
+      left_join(GCAM_region_names, by = c("GCAM_region_ID")) %>%
       select(region, ratio, year) %>%
-      right_join(L263.StubTechEff) %>%
+      right_join(L263.StubTechEff, by = c("region","year")) %>%
       mutate(ratio = ifelse(ratio >1, 1, ratio)) %>%
-      mutate(efficiency = case_when(year < 2030 ~ 0.001,
+      mutate(efficiency = case_when(year < 2030 ~ 0.01,
                                     year == 2030 & !is.na(ratio) ~ ratio,
-                                    year == 2030 & is.na(ratio) ~ 0.001,
+                                    year == 2030 & is.na(ratio) ~ 0.01,
                                     TRUE ~ ratio)) %>%
       group_by(region) %>%
       arrange(year) %>%
@@ -369,13 +353,15 @@ module_energy_L263.Weathering <- function(command, ...) {
       group_by(scenario) %>%
       mutate(efficiency = case_when(year > 2030 ~ (1/(1+exp(-k*(year - x0)))),
                                     TRUE~efficiency),
-             supplysector = 'erw dynamic-capacity',
-             subsector = 'erw dynamic-capacity',
-             stub.technology = 'erw dynamic-capacity',
-             minicam.energy.input = 'enhanced rock weathering dynamic',
+             supplysector = 'surface carbon-storage',
+             subsector = 'inorganic-surface-storage',
+             stub.technology = 'inorganic-surface-storage',
+             minicam.energy.input = 'inorganic-surface-storage',
              market.name = region) %>%
-      mutate(efficiency = if_else(efficiency == 0, 0.001,efficiency)) %>%
-      select(c('scenario', LEVEL2_DATA_NAMES[['StubTechEff']])) -> L263.StubTechEff
+      mutate(efficiency = if_else(efficiency == 0, 0.01,efficiency)) %>%
+      filter(scenario == 'medium_growth_rate') %>%
+      select(c(LEVEL2_DATA_NAMES[['StubTechEff']])) %>%
+      ungroup() -> L263.StubTechEff
 
     L263.StubTechEff %>%
       select(region,supplysector,subsector,technology = stub.technology,year,pMult = efficiency) ->
@@ -406,7 +392,7 @@ module_energy_L263.Weathering <- function(command, ...) {
       ungroup() %>%
       select(sector.name = supplysector, subsector.name = subsector, technology, year, minicam.non.energy.input, input.cost) ->
       L263.GlobalTechCost_C # This is a final output table.
-.
+
 
     # Shareweights of global technologies for energy transformation
     A63.globaltech_shrwt %>%
