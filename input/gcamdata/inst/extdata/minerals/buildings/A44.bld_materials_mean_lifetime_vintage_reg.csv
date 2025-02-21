@@ -6,67 +6,67 @@
 # Column types: nccncnnnn
 # ----------
 GCAM_region_ID,region,sector,lifetime,Deetman_reg,half.life,steepness,median.shutdown.point,profit.shutdown.steepness
-1,USA,resid materials,80,USA,40,0.2,-0.5,6
-2,Africa_Eastern,resid materials,60,Global,30,0.2,-0.5,6
-3,Africa_Northern,resid materials,60,Global,30,0.2,-0.5,6
-4,Africa_Southern,resid materials,60,Global,30,0.2,-0.5,6
-5,Africa_Western,resid materials,60,Global,30,0.2,-0.5,6
-6,Australia_NZ,resid materials,80,Oceania,40,0.2,-0.5,6
-7,Brazil,resid materials,100,Brazil,50,0.2,-0.5,6
-8,Canada,resid materials,50,Canada,25,0.2,-0.5,6
-9,Central America and Caribbean,resid materials,60,Rest of South America,30,0.2,-0.5,6
-10,Central Asia,resid materials,60,Global,30,0.2,-0.5,6
-11,China,resid materials,40,China,20,0.2,-0.5,6
-12,EU-12,resid materials,80,Eastern Europe,40,0.2,-0.5,6
-13,EU-15,resid materials,65,Western Europe,32.5,0.2,-0.5,6
-14,Europe_Eastern,resid materials,80,Eastern Europe,40,0.2,-0.5,6
-15,Europe_Non_EU,resid materials,80,Eastern Europe,40,0.2,-0.5,6
-16,European Free Trade Association,resid materials,65,Western Europe,32.5,0.2,-0.5,6
-17,India,resid materials,60,Global,30,0.2,-0.5,6
-18,Indonesia,resid materials,50,South Eastern Asia,25,0.2,-0.5,6
-19,Japan,resid materials,35,Japan,17.5,0.2,-0.5,6
-20,Mexico,resid materials,55,Mexico,27.5,0.2,-0.5,6
-21,Middle East,resid materials,60,Global,30,0.2,-0.5,6
-22,Pakistan,resid materials,60,Global,30,0.2,-0.5,6
-23,Russia,resid materials,60,Global,30,0.2,-0.5,6
-24,South Africa,resid materials,60,Global,30,0.2,-0.5,6
-25,South America_Northern,resid materials,60,Rest of South America,30,0.2,-0.5,6
-26,South America_Southern,resid materials,60,Rest of South America,30,0.2,-0.5,6
-27,South Asia,resid materials,60,Global,30,0.2,-0.5,6
-28,South Korea,resid materials,35,Japan,17.5,0.2,-0.5,6
-29,Southeast Asia,resid materials,50,South Eastern Asia,25,0.2,-0.5,6
-30,Taiwan,resid materials,40,China,20,0.2,-0.5,6
-31,Argentina,resid materials,60,Rest of South America,30,0.2,-0.5,6
-32,Colombia,resid materials,60,Rest of South America,30,0.2,-0.5,6
-1,USA,comm materials,45,Global,22.5,0.2,-0.5,6
-2,Africa_Eastern,comm materials,45,Global,22.5,0.2,-0.5,6
-3,Africa_Northern,comm materials,45,Global,22.5,0.2,-0.5,6
-4,Africa_Southern,comm materials,45,Global,22.5,0.2,-0.5,6
-5,Africa_Western,comm materials,45,Global,22.5,0.2,-0.5,6
-6,Australia_NZ,comm materials,45,Global,22.5,0.2,-0.5,6
-7,Brazil,comm materials,45,Global,22.5,0.2,-0.5,6
-8,Canada,comm materials,45,Global,22.5,0.2,-0.5,6
-9,Central America and Caribbean,comm materials,45,Global,22.5,0.2,-0.5,6
-10,Central Asia,comm materials,45,Global,22.5,0.2,-0.5,6
-11,China,comm materials,45,Global,22.5,0.2,-0.5,6
-12,EU-12,comm materials,45,Global,22.5,0.2,-0.5,6
-13,EU-15,comm materials,45,Global,22.5,0.2,-0.5,6
-14,Europe_Eastern,comm materials,45,Global,22.5,0.2,-0.5,6
-15,Europe_Non_EU,comm materials,45,Global,22.5,0.2,-0.5,6
-16,European Free Trade Association,comm materials,45,Global,22.5,0.2,-0.5,6
-17,India,comm materials,45,Global,22.5,0.2,-0.5,6
-18,Indonesia,comm materials,45,Global,22.5,0.2,-0.5,6
-19,Japan,comm materials,45,Global,22.5,0.2,-0.5,6
-20,Mexico,comm materials,45,Global,22.5,0.2,-0.5,6
-21,Middle East,comm materials,45,Global,22.5,0.2,-0.5,6
-22,Pakistan,comm materials,45,Global,22.5,0.2,-0.5,6
-23,Russia,comm materials,45,Global,22.5,0.2,-0.5,6
-24,South Africa,comm materials,45,Global,22.5,0.2,-0.5,6
-25,South America_Northern,comm materials,45,Global,22.5,0.2,-0.5,6
-26,South America_Southern,comm materials,45,Global,22.5,0.2,-0.5,6
-27,South Asia,comm materials,45,Global,22.5,0.2,-0.5,6
-28,South Korea,comm materials,45,Global,22.5,0.2,-0.5,6
-29,Southeast Asia,comm materials,45,Global,22.5,0.2,-0.5,6
-30,Taiwan,comm materials,45,Global,22.5,0.2,-0.5,6
-31,Argentina,comm materials,45,Global,22.5,0.2,-0.5,6
-32,Colombia,comm materials,45,Global,22.5,0.2,-0.5,6
+1,USA,resid materials,120,USA,60,0.05,-0.5,6
+2,Africa_Eastern,resid materials,120,Global,60,0.05,-0.5,6
+3,Africa_Northern,resid materials,120,Global,60,0.05,-0.5,6
+4,Africa_Southern,resid materials,120,Global,60,0.05,-0.5,6
+5,Africa_Western,resid materials,120,Global,60,0.05,-0.5,6
+6,Australia_NZ,resid materials,120,Oceania,60,0.05,-0.5,6
+7,Brazil,resid materials,120,Brazil,60,0.05,-0.5,6
+8,Canada,resid materials,120,Canada,60,0.05,-0.5,6
+9,Central America and Caribbean,resid materials,120,Rest of South America,60,0.05,-0.5,6
+10,Central Asia,resid materials,120,Global,60,0.05,-0.5,6
+11,China,resid materials,120,China,60,0.05,-0.5,6
+12,EU-12,resid materials,120,Eastern Europe,60,0.05,-0.5,6
+13,EU-15,resid materials,120,Western Europe,60,0.05,-0.5,6
+14,Europe_Eastern,resid materials,120,Eastern Europe,60,0.05,-0.5,6
+15,Europe_Non_EU,resid materials,120,Eastern Europe,60,0.05,-0.5,6
+16,European Free Trade Association,resid materials,120,Western Europe,60,0.05,-0.5,6
+17,India,resid materials,120,Global,60,0.05,-0.5,6
+18,Indonesia,resid materials,120,South Eastern Asia,60,0.05,-0.5,6
+19,Japan,resid materials,120,Japan,60,0.05,-0.5,6
+20,Mexico,resid materials,120,Mexico,60,0.05,-0.5,6
+21,Middle East,resid materials,120,Global,60,0.05,-0.5,6
+22,Pakistan,resid materials,120,Global,60,0.05,-0.5,6
+23,Russia,resid materials,120,Global,60,0.05,-0.5,6
+24,South Africa,resid materials,120,Global,60,0.05,-0.5,6
+25,South America_Northern,resid materials,120,Rest of South America,60,0.05,-0.5,6
+26,South America_Southern,resid materials,120,Rest of South America,60,0.05,-0.5,6
+27,South Asia,resid materials,120,Global,60,0.05,-0.5,6
+28,South Korea,resid materials,120,Japan,60,0.05,-0.5,6
+29,Southeast Asia,resid materials,120,South Eastern Asia,60,0.05,-0.5,6
+30,Taiwan,resid materials,120,China,60,0.05,-0.5,6
+31,Argentina,resid materials,120,Rest of South America,60,0.05,-0.5,6
+32,Colombia,resid materials,120,Rest of South America,60,0.05,-0.5,6
+1,USA,comm materials,90,Global,45,0.05,-0.5,6
+2,Africa_Eastern,comm materials,90,Global,45,0.05,-0.5,6
+3,Africa_Northern,comm materials,90,Global,45,0.05,-0.5,6
+4,Africa_Southern,comm materials,90,Global,45,0.05,-0.5,6
+5,Africa_Western,comm materials,90,Global,45,0.05,-0.5,6
+6,Australia_NZ,comm materials,90,Global,45,0.05,-0.5,6
+7,Brazil,comm materials,90,Global,45,0.05,-0.5,6
+8,Canada,comm materials,90,Global,45,0.05,-0.5,6
+9,Central America and Caribbean,comm materials,90,Global,45,0.05,-0.5,6
+10,Central Asia,comm materials,90,Global,45,0.05,-0.5,6
+11,China,comm materials,90,Global,45,0.05,-0.5,6
+12,EU-12,comm materials,90,Global,45,0.05,-0.5,6
+13,EU-15,comm materials,90,Global,45,0.05,-0.5,6
+14,Europe_Eastern,comm materials,90,Global,45,0.05,-0.5,6
+15,Europe_Non_EU,comm materials,90,Global,45,0.05,-0.5,6
+16,European Free Trade Association,comm materials,90,Global,45,0.05,-0.5,6
+17,India,comm materials,90,Global,45,0.05,-0.5,6
+18,Indonesia,comm materials,90,Global,45,0.05,-0.5,6
+19,Japan,comm materials,90,Global,45,0.05,-0.5,6
+20,Mexico,comm materials,90,Global,45,0.05,-0.5,6
+21,Middle East,comm materials,90,Global,45,0.05,-0.5,6
+22,Pakistan,comm materials,90,Global,45,0.05,-0.5,6
+23,Russia,comm materials,90,Global,45,0.05,-0.5,6
+24,South Africa,comm materials,90,Global,45,0.05,-0.5,6
+25,South America_Northern,comm materials,90,Global,45,0.05,-0.5,6
+26,South America_Southern,comm materials,90,Global,45,0.05,-0.5,6
+27,South Asia,comm materials,90,Global,45,0.05,-0.5,6
+28,South Korea,comm materials,90,Global,45,0.05,-0.5,6
+29,Southeast Asia,comm materials,90,Global,45,0.05,-0.5,6
+30,Taiwan,comm materials,90,Global,45,0.05,-0.5,6
+31,Argentina,comm materials,90,Global,45,0.05,-0.5,6
+32,Colombia,comm materials,90,Global,45,0.05,-0.5,6

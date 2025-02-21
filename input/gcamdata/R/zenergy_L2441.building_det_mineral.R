@@ -185,7 +185,9 @@ module_energy_L2441.building_det_mineral <- function(command, ...) {
       distinct() %>%
       repeat_add_columns(tibble(year = MODEL_YEARS)) %>%
       filter(year >= max(MODEL_BASE_YEARS)) %>%
-      select(LEVEL2_DATA_NAMES[["TechSCurve"]])
+      select(LEVEL2_DATA_NAMES[["TechSCurve"]]) %>%
+      #BY 1-24-2025: for 2015 vintages, halve the half life
+      mutate(half.life = if_else(year == 2015, half.life/2, half.life))
 
     L2441.TechProfitShutdownMaterials <- A44.bld_materials_mean_lifetime_vintage_reg %>%
       rename(supplysector = sector) %>%
