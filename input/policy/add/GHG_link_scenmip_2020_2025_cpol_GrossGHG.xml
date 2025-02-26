@@ -26,7 +26,7 @@
                 <output-unit>TgCH4</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4_AGR">
-                <price-adjust  year="2020">0</price-adjust> <price-adjust  year="2025">0</price-adjust>
+                <price-adjust  year="2020">0</price-adjust> <price-adjust  year="2025">5.727272727</price-adjust>
                 <demand-adjust year="2020">25</demand-adjust><demand-adjust year="2025">25</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
@@ -196,7 +196,7 @@
                 <output-unit>TgCH4</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4_AGR">
-                <price-adjust  year="2020">0</price-adjust> <price-adjust  year="2025">0</price-adjust>
+                <price-adjust  year="2020">0</price-adjust> <price-adjust  year="2025">5.727272727</price-adjust>
                 <demand-adjust year="2020">25</demand-adjust><demand-adjust year="2025">25</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
@@ -366,7 +366,7 @@
                 <output-unit>TgCH4</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4_AGR">
-                <price-adjust  year="2020">0</price-adjust> <price-adjust  year="2025">0</price-adjust>
+                <price-adjust  year="2020">0</price-adjust> <price-adjust  year="2025">5.727272727</price-adjust>
                 <demand-adjust year="2020">25</demand-adjust><demand-adjust year="2025">25</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
@@ -536,7 +536,7 @@
                 <output-unit>TgCH4</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4_AGR">
-                <price-adjust  year="2020">0</price-adjust> <price-adjust  year="2025">0</price-adjust>
+                <price-adjust  year="2020">0</price-adjust> <price-adjust  year="2025">5.727272727</price-adjust>
                 <demand-adjust year="2020">25</demand-adjust><demand-adjust year="2025">25</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
@@ -706,7 +706,7 @@
                 <output-unit>TgCH4</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4_AGR">
-                <price-adjust  year="2020">0</price-adjust> <price-adjust  year="2025">0</price-adjust>
+                <price-adjust  year="2020">0</price-adjust> <price-adjust  year="2025">5.727272727</price-adjust>
                 <demand-adjust year="2020">25</demand-adjust><demand-adjust year="2025">25</demand-adjust>
                 <market>Argentina</market>
                 <linked-policy>GHG</linked-policy>
@@ -876,7 +876,7 @@
                 <output-unit>TgCH4</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4_AGR">
-                <price-adjust  year="2020">0</price-adjust> <price-adjust  year="2025">0</price-adjust>
+                <price-adjust  year="2020">0</price-adjust> <price-adjust  year="2025">5.727272727</price-adjust>
                 <demand-adjust year="2020">25</demand-adjust><demand-adjust year="2025">25</demand-adjust>
                 <market>Australia_NZ</market>
                 <linked-policy>GHG</linked-policy>
@@ -1046,7 +1046,7 @@
                 <output-unit>TgCH4</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4_AGR">
-                <price-adjust  year="2020">0</price-adjust> <price-adjust  year="2025">0</price-adjust>
+                <price-adjust  year="2020">0</price-adjust> <price-adjust  year="2025">5.727272727</price-adjust>
                 <demand-adjust year="2020">25</demand-adjust><demand-adjust year="2025">25</demand-adjust>
                 <market>Brazil</market>
                 <linked-policy>GHG</linked-policy>
@@ -1216,7 +1216,7 @@
                 <output-unit>TgCH4</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4_AGR">
-                <price-adjust  year="2020">0</price-adjust> <price-adjust  year="2025">0</price-adjust>
+                <price-adjust  year="2020">0</price-adjust> <price-adjust  year="2025">5.727272727</price-adjust>
                 <demand-adjust year="2020">25</demand-adjust><demand-adjust year="2025">25</demand-adjust>
                 <market>Canada</market>
                 <linked-policy>GHG</linked-policy>
@@ -1386,7 +1386,7 @@
                 <output-unit>TgCH4</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4_AGR">
-                <price-adjust  year="2020">0</price-adjust> <price-adjust  year="2025">0</price-adjust>
+                <price-adjust  year="2020">0</price-adjust> <price-adjust  year="2025">5.727272727</price-adjust>
                 <demand-adjust year="2020">25</demand-adjust><demand-adjust year="2025">25</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
@@ -1556,7 +1556,7 @@
                 <output-unit>TgCH4</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4_AGR">
-                <price-adjust  year="2020">0</price-adjust> <price-adjust  year="2025">0</price-adjust>
+                <price-adjust  year="2020">0</price-adjust> <price-adjust  year="2025">5.727272727</price-adjust>
                 <demand-adjust year="2020">25</demand-adjust><demand-adjust year="2025">25</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
@@ -1726,7 +1726,7 @@
                 <output-unit>TgCH4</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4_AGR">
-                <price-adjust  year="2020">0</price-adjust> <price-adjust  year="2025">0</price-adjust>
+                <price-adjust  year="2020">0</price-adjust> <price-adjust  year="2025">5.727272727</price-adjust>
                 <demand-adjust year="2020">25</demand-adjust><demand-adjust year="2025">25</demand-adjust>
                 <market>China</market>
                 <linked-policy>GHG</linked-policy>
@@ -1896,7 +1896,7 @@
                 <output-unit>TgCH4</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4_AGR">
-                <price-adjust  year="2020">0</price-adjust> <price-adjust  year="2025">0</price-adjust>
+                <price-adjust  year="2020">0</price-adjust> <price-adjust  year="2025">5.727272727</price-adjust>
                 <demand-adjust year="2020">25</demand-adjust><demand-adjust year="2025">25</demand-adjust>
                 <market>Colombia</market>
                 <linked-policy>GHG</linked-policy>
@@ -2066,7 +2066,7 @@
                 <output-unit>TgCH4</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4_AGR">
-                <price-adjust  year="2020">0</price-adjust> <price-adjust  year="2025">0</price-adjust>
+                <price-adjust  year="2020">0</price-adjust> <price-adjust  year="2025">5.727272727</price-adjust>
                 <demand-adjust year="2020">25</demand-adjust><demand-adjust year="2025">25</demand-adjust>
                 <market>EU</market>
                 <linked-policy>GHG</linked-policy>
@@ -2236,7 +2236,7 @@
                 <output-unit>TgCH4</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4_AGR">
-                <price-adjust  year="2020">0</price-adjust> <price-adjust  year="2025">0</price-adjust>
+                <price-adjust  year="2020">0</price-adjust> <price-adjust  year="2025">5.727272727</price-adjust>
                 <demand-adjust year="2020">25</demand-adjust><demand-adjust year="2025">25</demand-adjust>
                 <market>EU</market>
                 <linked-policy>GHG</linked-policy>
@@ -2406,7 +2406,7 @@
                 <output-unit>TgCH4</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4_AGR">
-                <price-adjust  year="2020">0</price-adjust> <price-adjust  year="2025">0</price-adjust>
+                <price-adjust  year="2020">0</price-adjust> <price-adjust  year="2025">5.727272727</price-adjust>
                 <demand-adjust year="2020">25</demand-adjust><demand-adjust year="2025">25</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
@@ -2576,7 +2576,7 @@
                 <output-unit>TgCH4</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4_AGR">
-                <price-adjust  year="2020">0</price-adjust> <price-adjust  year="2025">0</price-adjust>
+                <price-adjust  year="2020">0</price-adjust> <price-adjust  year="2025">5.727272727</price-adjust>
                 <demand-adjust year="2020">25</demand-adjust><demand-adjust year="2025">25</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
@@ -2746,7 +2746,7 @@
                 <output-unit>TgCH4</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4_AGR">
-                <price-adjust  year="2020">0</price-adjust> <price-adjust  year="2025">0</price-adjust>
+                <price-adjust  year="2020">0</price-adjust> <price-adjust  year="2025">5.727272727</price-adjust>
                 <demand-adjust year="2020">25</demand-adjust><demand-adjust year="2025">25</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
@@ -2916,7 +2916,7 @@
                 <output-unit>TgCH4</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4_AGR">
-                <price-adjust  year="2020">0</price-adjust> <price-adjust  year="2025">0</price-adjust>
+                <price-adjust  year="2020">0</price-adjust> <price-adjust  year="2025">5.727272727</price-adjust>
                 <demand-adjust year="2020">25</demand-adjust><demand-adjust year="2025">25</demand-adjust>
                 <market>India</market>
                 <linked-policy>GHG</linked-policy>
@@ -3086,7 +3086,7 @@
                 <output-unit>TgCH4</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4_AGR">
-                <price-adjust  year="2020">0</price-adjust> <price-adjust  year="2025">0</price-adjust>
+                <price-adjust  year="2020">0</price-adjust> <price-adjust  year="2025">5.727272727</price-adjust>
                 <demand-adjust year="2020">25</demand-adjust><demand-adjust year="2025">25</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
@@ -3256,7 +3256,7 @@
                 <output-unit>TgCH4</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4_AGR">
-                <price-adjust  year="2020">0</price-adjust> <price-adjust  year="2025">0</price-adjust>
+                <price-adjust  year="2020">0</price-adjust> <price-adjust  year="2025">5.727272727</price-adjust>
                 <demand-adjust year="2020">25</demand-adjust><demand-adjust year="2025">25</demand-adjust>
                 <market>Japan</market>
                 <linked-policy>GHG</linked-policy>
@@ -3426,7 +3426,7 @@
                 <output-unit>TgCH4</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4_AGR">
-                <price-adjust  year="2020">0</price-adjust> <price-adjust  year="2025">0</price-adjust>
+                <price-adjust  year="2020">0</price-adjust> <price-adjust  year="2025">5.727272727</price-adjust>
                 <demand-adjust year="2020">25</demand-adjust><demand-adjust year="2025">25</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
@@ -3596,7 +3596,7 @@
                 <output-unit>TgCH4</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4_AGR">
-                <price-adjust  year="2020">0</price-adjust> <price-adjust  year="2025">0</price-adjust>
+                <price-adjust  year="2020">0</price-adjust> <price-adjust  year="2025">5.727272727</price-adjust>
                 <demand-adjust year="2020">25</demand-adjust><demand-adjust year="2025">25</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
@@ -3766,7 +3766,7 @@
                 <output-unit>TgCH4</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4_AGR">
-                <price-adjust  year="2020">0</price-adjust> <price-adjust  year="2025">0</price-adjust>
+                <price-adjust  year="2020">0</price-adjust> <price-adjust  year="2025">5.727272727</price-adjust>
                 <demand-adjust year="2020">25</demand-adjust><demand-adjust year="2025">25</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
@@ -3936,7 +3936,7 @@
                 <output-unit>TgCH4</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4_AGR">
-                <price-adjust  year="2020">0</price-adjust> <price-adjust  year="2025">0</price-adjust>
+                <price-adjust  year="2020">0</price-adjust> <price-adjust  year="2025">5.727272727</price-adjust>
                 <demand-adjust year="2020">25</demand-adjust><demand-adjust year="2025">25</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
@@ -4106,7 +4106,7 @@
                 <output-unit>TgCH4</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4_AGR">
-                <price-adjust  year="2020">0</price-adjust> <price-adjust  year="2025">0</price-adjust>
+                <price-adjust  year="2020">0</price-adjust> <price-adjust  year="2025">5.727272727</price-adjust>
                 <demand-adjust year="2020">25</demand-adjust><demand-adjust year="2025">25</demand-adjust>
                 <market>South Africa</market>
                 <linked-policy>GHG</linked-policy>
@@ -4276,7 +4276,7 @@
                 <output-unit>TgCH4</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4_AGR">
-                <price-adjust  year="2020">0</price-adjust> <price-adjust  year="2025">0</price-adjust>
+                <price-adjust  year="2020">0</price-adjust> <price-adjust  year="2025">5.727272727</price-adjust>
                 <demand-adjust year="2020">25</demand-adjust><demand-adjust year="2025">25</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
@@ -4446,7 +4446,7 @@
                 <output-unit>TgCH4</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4_AGR">
-                <price-adjust  year="2020">0</price-adjust> <price-adjust  year="2025">0</price-adjust>
+                <price-adjust  year="2020">0</price-adjust> <price-adjust  year="2025">5.727272727</price-adjust>
                 <demand-adjust year="2020">25</demand-adjust><demand-adjust year="2025">25</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
@@ -4616,7 +4616,7 @@
                 <output-unit>TgCH4</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4_AGR">
-                <price-adjust  year="2020">0</price-adjust> <price-adjust  year="2025">0</price-adjust>
+                <price-adjust  year="2020">0</price-adjust> <price-adjust  year="2025">5.727272727</price-adjust>
                 <demand-adjust year="2020">25</demand-adjust><demand-adjust year="2025">25</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
@@ -4786,7 +4786,7 @@
                 <output-unit>TgCH4</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4_AGR">
-                <price-adjust  year="2020">0</price-adjust> <price-adjust  year="2025">0</price-adjust>
+                <price-adjust  year="2020">0</price-adjust> <price-adjust  year="2025">5.727272727</price-adjust>
                 <demand-adjust year="2020">25</demand-adjust><demand-adjust year="2025">25</demand-adjust>
                 <market>South Korea</market>
                 <linked-policy>GHG</linked-policy>
@@ -4956,7 +4956,7 @@
                 <output-unit>TgCH4</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4_AGR">
-                <price-adjust  year="2020">0</price-adjust> <price-adjust  year="2025">0</price-adjust>
+                <price-adjust  year="2020">0</price-adjust> <price-adjust  year="2025">5.727272727</price-adjust>
                 <demand-adjust year="2020">25</demand-adjust><demand-adjust year="2025">25</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
@@ -5126,7 +5126,7 @@
                 <output-unit>TgCH4</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4_AGR">
-                <price-adjust  year="2020">0</price-adjust> <price-adjust  year="2025">0</price-adjust>
+                <price-adjust  year="2020">0</price-adjust> <price-adjust  year="2025">5.727272727</price-adjust>
                 <demand-adjust year="2020">25</demand-adjust><demand-adjust year="2025">25</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
@@ -5296,7 +5296,7 @@
                 <output-unit>TgCH4</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4_AGR">
-                <price-adjust  year="2020">0</price-adjust> <price-adjust  year="2025">0</price-adjust>
+                <price-adjust  year="2020">0</price-adjust> <price-adjust  year="2025">5.727272727</price-adjust>
                 <demand-adjust year="2020">25</demand-adjust><demand-adjust year="2025">25</demand-adjust>
                 <market>USA</market>
                 <linked-policy>GHG</linked-policy>
