@@ -39,7 +39,8 @@ module_energy_dac_xml <- function(command, ...) {
              "L262.GlobalTechProfitShutdown_dac_EMF",
              "L262.GlobalTechCapture_dac_EMF",
              "L262.StubTech_dac_EMF",
-             "L262.StubTechCost_dac"))
+             "L262.StubTechCost_dac",
+             "L262.GlobalTechNonEnCost_dac"))
   } else if(command == driver.DECLARE_OUTPUTS) {
     return(c(XML = "dac_ssp1.xml",
              XML = "dac_ssp2.xml",
@@ -47,11 +48,12 @@ module_energy_dac_xml <- function(command, ...) {
              XML = "dac_ssp4.xml",
              XML = "dac_ssp5.xml",
              XML = "dac_EMF_ref.xml",
-             XML = "dac_EMF_adv.xml"))
+             XML = "dac_EMF_adv.xml",
+             XML = "dac_ssp2_newcosts.xml"))
   } else if(command == driver.MAKE) {
 
     # Silence package check notes
-    dac_ssp1.xml <- dac_ssp2.xml <- dac_ssp3.xml <- dac_ssp4.xml <- dac_ssp5.xml <- NULL
+    dac_ssp1.xml <- dac_ssp2.xml <- dac_ssp3.xml <- dac_ssp4.xml <- dac_ssp5.xml <-  dac_ssp2_newcosts <- NULL
 
     all_data <- list(...)[[1]]
 
@@ -80,7 +82,7 @@ module_energy_dac_xml <- function(command, ...) {
     L262.PriceElasticity_dac <- get_data(all_data, "L262.PriceElasticity_dac")
     L262.GlobalTechSCurve_dac <- get_data(all_data, "L262.GlobalTechSCurve_dac")
     L262.GlobalTechProfitShutdown_dac <- get_data(all_data, "L262.GlobalTechProfitShutdown_dac")
-
+    L262.GlobalTechNonEnCost_dac <- get_data(all_data, "L262.GlobalTechNonEnCost_dac")
     if(grepl("EMF",sce, fixed=TRUE)) {
         L262.GlobalTechSCurve_dac <- get_data(all_data, "L262.GlobalTechSCurve_dac_EMF")
         L262.GlobalTechProfitShutdown_dac <- get_data(all_data, "L262.GlobalTechProfitShutdown_dac_EMF")
@@ -98,9 +100,6 @@ module_energy_dac_xml <- function(command, ...) {
 
         L262.SubsectorInterp_dac <- L262.SubsectorInterp_dac %>%
           filter(supplysector %in% dac_sectors)
-
-
-
         }
     #} else if (!grepl("EMF",sce, fixed=TRUE)){
     #  L262.GlobalTechSCurve_dac <- get_data(all_data, "L262.GlobalTechSCurve_dac")
@@ -162,15 +161,57 @@ module_energy_dac_xml <- function(command, ...) {
 
     assign(xmlfn, xmlobj)
 
+    if(sce == "ssp2"){
+      create_xml("dac_ssp2_newcosts.xml") %>%
+        add_xml_data(L262.CarbonCoef_dac, "CarbonCoef") %>%
+        add_logit_tables_xml(L262.Supplysector_dac, "Supplysector") %>%
+        add_xml_data(L262.FinalEnergyKeyword_dac, "FinalEnergyKeyword") %>%
+        add_logit_tables_xml(L262.SubsectorLogit_dac, "SubsectorLogit") %>%
+        add_xml_data(L262.SubsectorShrwtFllt_dac, "SubsectorShrwtFllt") %>%
+        add_xml_data(L262.SubsectorInterp_dac, "SubsectorInterp") %>%
+        add_xml_data(L262.StubTech_dac, "StubTech") %>%
+        add_xml_data(L262.GlobalTechShrwt_dac, "GlobalTechShrwt") %>%
+        add_xml_data(L262.GlobalTechCoef_dac, "GlobalTechCoef") %>%
+        add_xml_data(L262.GlobalTechNonEnCost_dac, "GlobalTechCost") %>%
+        add_xml_data(L262.GlobalTechCapture_dac, "GlobalTechCapture") %>%
+        add_xml_data(L262.StubTechProd_dac, "StubTechProd") %>%
+        add_xml_data(L262.PerCapitaBased_dac, "PerCapitaBased") %>%
+        add_xml_data(L262.BaseService_dac, "BaseService") %>%
+        add_xml_data(L262.PriceElasticity_dac, "PriceElasticity") %>%
+        add_xml_data(L262.GlobalTechSCurve_dac, "GlobalTechSCurve") %>%
+        add_xml_data(L262.GlobalTechProfitShutdown_dac, "GlobalTechProfitShutdown") %>%
+        add_precursors("L262.CarbonCoef_dac",
+                       "L262.Supplysector_dac",
+                       "L262.FinalEnergyKeyword_dac",
+                       "L262.SubsectorLogit_dac",
+                       "L262.SubsectorShrwtFllt_dac",
+                       "L262.SubsectorInterp_dac",
+                       "L262.StubTechProd_dac",
+                       "L262.StubTech_dac",
+                       "L262.GlobalTechShrwt_dac",
+                       paste0("L262.GlobalTechShrwt_dac_",tolower(sce)),
+                       paste0("L262.GlobalTechCoef_dac_",tolower(sce)),
+                       paste0("L262.GlobalTechCost_dac_",tolower(sce)),
+                       "L262.GlobalTechCapture_dac",
+                       "L262.GlobalTechNonEnCost_dac",
+                       "L262.PerCapitaBased_dac",
+                       "L262.BaseService_dac",
+                       "L262.PriceElasticity_dac",
+                       "L262.GlobalTechSCurve_dac",
+                       "L262.GlobalTechProfitShutdown_dac") ->
+        dac_ssp2_newcosts.xml
+      }
 
-  }
+    }
+
   return_data(dac_ssp1.xml,
               dac_ssp2.xml,
               dac_ssp3.xml,
               dac_ssp4.xml,
               dac_ssp5.xml,
               dac_EMF_ref.xml,
-              dac_EMF_adv.xml)}
+              dac_EMF_adv.xml,
+              dac_ssp2_newcosts.xml)}
   else {
     stop("Unknown command")
   }
