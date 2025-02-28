@@ -16,7 +16,7 @@ CO2 removal,dac,hightemp DAC elec,water_td_ind_C,0.017233333,0.017233333,0.01723
 CO2 removal,dac,hightemp DAC elec,water_td_ind_W,0.017233333,0.017233333,0.017233333,0.017233333
 CO2 removal,dac,lowtemp DAC heatpump,elect_td_ind,0.0200684,0.0200684,0.009320178,0.009320178
 CO2 removal,dac,lowtemp DAC heatpump,airCO2,1,1,1,1
-CO2 removal,dac,lowtemp DAC geothermal,elec_geothermal,0.0066,0.0066,0.0066,0.0066
+CO2 removal,dac,lowtemp DAC geothermal,elect_td_ind,0.0066,0.0066,0.0066,0.0066
 CO2 removal,dac,lowtemp DAC geothermal,geothermal,0.019799998,0.019799998,0.019799998,0.019799998
 CO2 removal,dac,lowtemp DAC geothermal,airCO2,1,1,1,1
 CO2 removal,dac,direct ocean capture (stand-alone),airCO2,1,1,1,1
