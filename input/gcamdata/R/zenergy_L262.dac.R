@@ -559,22 +559,6 @@ module_energy_L262.dac <- function(command, ...) {
              minicam.non.energy.input = 'direct air capture') -> L262.GlobalTechCost_dac_renewable_efuels
 
     # Calculate Non-energy Costs
-    # Extrapolate non energy cost assumptions to all model years
-    A62_globaltech_cost_ssp2_new %>%
-      filter(supplysector == "CO2 removal",
-             subsector == 'dac',
-             technology %in% c('hightemp DAC NG', 'hightemp DAC elec', 'lowtemp DAC heatpump')) %>%
-      gather_years() %>%
-      complete(nesting(supplysector, subsector, technology, minicam.non.energy.input), year = c(year, MODEL_BASE_YEARS, MODEL_FUTURE_YEARS)) %>%
-      arrange(supplysector, year) %>%
-      group_by(supplysector, subsector, technology, minicam.non.energy.input) %>%
-      mutate(value = approx_fun(year, value, rule = 1)) %>%
-      ungroup() %>%
-      filter(year %in% MODEL_YEARS) %>%
-      rename(sector.name = supplysector, subsector.name = subsector) %>%
-      spread(minicam.non.energy.input, value) ->
-      L262.GlobalTech_dac
-
     L262.StubTechCost_dac %>%
       right_join(L262.GlobalTechCost_dac_renewable_efuels %>% distinct(scenario),by = character()) %>%#repeat for all scenarios
       bind_rows(L262.GlobalTechCost_dac_renewable_efuels %>% select(-capacity.factor)) -> L262.StubTechCost_dac
@@ -597,6 +581,25 @@ module_energy_L262.dac <- function(command, ...) {
       rename(sector.name = supplysector, subsector.name = subsector) ->
       L262.GlobalTechCapFac_dac
 
+########## Create a for loop for this section
+    # Loop over the ssps
+
+    # Extrapolate non energy cost assumptions to all model years
+    A62.globaltech_cost_ssp2 %>%
+      filter(supplysector == "CO2 removal",
+             subsector == 'dac',
+             technology %in% c('hightemp DAC NG', 'hightemp DAC elec', 'lowtemp DAC heatpump')) %>%
+      gather_years() %>%
+      complete(nesting(supplysector, subsector, technology, minicam.non.energy.input), year = c(year, MODEL_BASE_YEARS, MODEL_FUTURE_YEARS)) %>%
+      arrange(supplysector, year) %>%
+      group_by(supplysector, subsector, technology, minicam.non.energy.input) %>%
+      mutate(value = approx_fun(year, value, rule = 1)) %>%
+      ungroup() %>%
+      filter(year %in% MODEL_YEARS) %>%
+      rename(sector.name = supplysector, subsector.name = subsector) %>%
+      spread(minicam.non.energy.input, value) ->
+      L262.GlobalTech_dac
+
     # Join non-energy cost variables together
     L262.GlobalTechNonEnCost_dac_inter <- L262.GlobalTech_dac %>%
       left_join_error_no_match(L262.GlobalTechCapFac_dac,
@@ -614,6 +617,7 @@ module_energy_L262.dac <- function(command, ...) {
       bind_rows(L262.GlobalTechNonEnCost_dac_inter) ->
     L262.GlobalTechNonEnCost_dac
 
+##########
     # ===================================================
     # Produce outputs
 
