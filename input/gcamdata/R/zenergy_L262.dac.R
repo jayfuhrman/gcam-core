@@ -560,10 +560,20 @@ module_energy_L262.dac <- function(command, ...) {
 
     # Calculate Non-energy Costs
     # Extrapolate non energy cost assumptions to all model years
-    A62.globaltech_OMfixed %>%
-      fill_exp_decay_extrapolate(MODEL_YEARS)%>%
-      rename(sector.name = supplysector, subsector.name = subsector, OM.fixed = value) ->
-      L262.GlobalTechOMfixed_dac
+    A62_globaltech_cost_ssp2_new %>%
+      filter(supplysector == "CO2 removal",
+             subsector == 'dac',
+             technology %in% c('hightemp DAC NG', 'hightemp DAC elec', 'lowtemp DAC heatpump')) %>%
+      gather_years() %>%
+      complete(nesting(supplysector, subsector, technology, minicam.non.energy.input), year = c(year, MODEL_BASE_YEARS, MODEL_FUTURE_YEARS)) %>%
+      arrange(supplysector, year) %>%
+      group_by(supplysector, subsector, technology, minicam.non.energy.input) %>%
+      mutate(value = approx_fun(year, value, rule = 1)) %>%
+      ungroup() %>%
+      filter(year %in% MODEL_YEARS) %>%
+      rename(sector.name = supplysector, subsector.name = subsector) %>%
+      spread(minicam.non.energy.input, value) ->
+      L262.GlobalTech_dac
 
     L262.StubTechCost_dac %>%
       right_join(L262.GlobalTechCost_dac_renewable_efuels %>% distinct(scenario),by = character()) %>%#repeat for all scenarios
@@ -573,16 +583,7 @@ module_energy_L262.dac <- function(command, ...) {
       filter(!(technology %in% c('on-site electrolysis (solar)','on-site electrolysis (wind)'))) %>%
       mutate(minicam.non.energy.input = if_else(sector.name == 'refining','direct air capture',minicam.non.energy.input))
 
-    # Calculate Non-energy Costs
-    A62.globaltech_OMvar %>%
-      fill_exp_decay_extrapolate(MODEL_YEARS) %>%
-      rename(sector.name = supplysector, subsector.name = subsector, OM.var = value) ->
-      L262.GlobalTechOMvar_dac
-
-    A62.globaltech_capital %>%
-      fill_exp_decay_extrapolate(MODEL_YEARS) %>%
-      rename(sector.name = supplysector, subsector.name = subsector, capital.overnight = value) ->
-      L262.GlobalTechCapital_dac
+    # Calculate Non-Energy Costs
 
     # Capacity factors
     A62.globaltech_capacity_factor %>%
@@ -597,12 +598,9 @@ module_energy_L262.dac <- function(command, ...) {
       L262.GlobalTechCapFac_dac
 
     # Join non-energy cost variables together
-    L262.GlobalOM <- left_join_error_no_match(L262.GlobalTechOMfixed_dac, L262.GlobalTechOMvar_dac,
-                                                     by = c("sector.name", "subsector.name", "technology", "year"))
-    L262.GlobalCapacity_Capital <- left_join_error_no_match(L262.GlobalTechCapital_dac, L262.GlobalTechCapFac_dac,
-                                                     by = c("sector.name", "subsector.name", "technology", "year"))
-    L262.GlobalTechNonEnCost_dac_inter <- left_join_error_no_match(L262.GlobalOM, L262.GlobalCapacity_Capital,
-                                               by = c("sector.name", "subsector.name", "technology", "year")) %>%
+    L262.GlobalTechNonEnCost_dac_inter <- L262.GlobalTech_dac %>%
+      left_join_error_no_match(L262.GlobalTechCapFac_dac,
+                               by = c("sector.name", "subsector.name", "technology", "year"))%>%
       mutate(non_energy_cost = (capital.overnight * fixed.charge.rate + OM.fixed)/capacity.factor + OM.var,
              non_energy_cost_kgC = non_energy_cost * emissions.CONV_C_CO2 * CONV_KG_T * gdp_deflator(1975,2015),
              minicam.non.energy.input = "non-energy") %>%
