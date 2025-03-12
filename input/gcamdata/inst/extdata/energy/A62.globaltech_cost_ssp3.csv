@@ -1,8 +1,8 @@
-# File: A62.globaltech_cost_ssp3.csv,,,,,,,
-# Title: dac default costs. dac to liquids reflect carbon capture costs only, with H2 production costs included in H2 input coefs or added downstream for wind and solar,,,,,,
-# Units: 1975$/kgC for dac, 1975$/GJ for process heat dac,,,,,,
-# Column types: ccccnnnn,,,,,,,
-# ----------,,,,,,,
+# File: A62.globaltech_cost_ssp3.csv
+# Title: dac default costs. dac to liquids reflect carbon capture costs only, with H2 production costs included in H2 input coefs or added downstream for wind and solar
+# Units: 1975$/kgC for dac, 1975$/GJ for process heat dac
+# Column types: ccccnnnn
+# ----------
 supplysector,subsector,technology,minicam.non.energy.input,1971,2020,2050,2100
 CO2 removal,dac,hightemp DAC NG,capital.overnight,1763,1763,1763,1763
 CO2 removal,dac,hightemp DAC NG,OM.fixed,76,76,76,76
