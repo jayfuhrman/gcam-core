@@ -1,6 +1,6 @@
 # Copyright 2019 Battelle Memorial Institute; see the LICENSE file.
 
-#' module_energy_L1111.rsrc_minerals_supply
+#' module_minerals_L1111.rsrc_minerals_supply
 #'
 #' Calculate mineral resource historical production, supply curves and annual production constraints.
 #'
@@ -15,7 +15,7 @@
 #' @importFrom tidyr complete replace_na pivot_longer pivot_wider expand_grid
 #' @author BY February 2025
 #'
-module_energy_L1111.rsrc_minerals_supply <- function(command, ...) {
+module_minerals_L1111.rsrc_minerals_supply <- function(command, ...) {
 if(command == driver.DECLARE_INPUTS) {
   return(c(FILE = "common/iso_GCAM_regID",
            FILE = "common/GCAM_region_names",
@@ -36,7 +36,7 @@ if(command == driver.DECLARE_INPUTS) {
   iso_GCAM_regID <- get_data(all_data, "common/iso_GCAM_regID")
   GCAM_region_names <-get_data(all_data, "common/GCAM_region_names")
   Mineral_supply_curve_data <- get_data(all_data, "minerals/supply/Mineral_supply_curve_data")
-       historical_copper_production <- get_data(all_data, "minerals/supply/historical_copper_production") %>%
+  historical_copper_production <- get_data(all_data, "minerals/supply/historical_copper_production") %>%
     mutate(Mineral = "Cu")
   historical_lithium_production <- get_data(all_data, "minerals/supply/historical_lithium_production") %>%
     mutate(Mineral = "Li")
@@ -322,9 +322,10 @@ if(command == driver.DECLARE_INPUTS) {
 
    AnnProdLimit_adj <- AnnProdLimit_check2020 %>%
      left_join(AnnProdLimit_GrowthRate, by = c("Mineral", "region")) %>%
+     group_by(Mineral, region, Year) %>%
      mutate(Capacity_adj = if_else(Reset_Capacity == 1, R*Prod2020, Capacity),
-            Capacity_adj = if_else(is.nan(Capacity_adj), Prod2020, Capacity_adj),
-            Capacity_adj = if_else(is.infinite(Capacity_adj), Prod2020, Capacity_adj)) %>%
+            Capacity_adj = if_else(is.nan(Capacity_adj), max(Prod2020, Capacity), Capacity_adj),
+            Capacity_adj = if_else(is.infinite(Capacity_adj),  max(Prod2020, Capacity), Capacity_adj)) %>%
      select(Mineral, region, Year, Capacity_adj)
 
    # Filter to model years

@@ -26,7 +26,6 @@ module_energy_L210.resources <- function(command, ...) {
     return(c(FILE = "common/GCAM_region_names",
              FILE = "energy/A_regions",
              FILE = "energy/A10.rsrc_info",
-             FILE = "minerals/supply/A10.mineral_rsrc_info",
              FILE = "energy/A10.subrsrc_info",
              FILE = "energy/A10.TechChange",
              FILE = "energy/A10.TechChange_SSPs",
@@ -116,8 +115,7 @@ module_energy_L210.resources <- function(command, ...) {
     A_regions <- get_data(all_data, "energy/A_regions")
     A10.rsrc_info <- get_data(all_data, "energy/A10.rsrc_info", strip_attributes = TRUE) %>%
       gather_years
-    A10.mineral_rsrc_info <- get_data(all_data, "minerals/supply/A10.mineral_rsrc_info", strip_attributes = TRUE) %>%
-      gather_years
+
     A10.subrsrc_info <- get_data(all_data, "energy/A10.subrsrc_info", strip_attributes = TRUE)
     A10.TechChange <- get_data(all_data, "energy/A10.TechChange") %>%
       gather_years
@@ -157,6 +155,7 @@ module_energy_L210.resources <- function(command, ...) {
     if(!(MODEL_FINAL_BASE_YEAR %in% c(unique(A10.rsrc_info$year)))){
       stop("No calibrated prices for resources in final historical year")
     }
+
 
     # ===================================================
     # ------- FOSSIL RESOURCE RESERVE ADDITIONS
@@ -204,7 +203,7 @@ module_energy_L210.resources <- function(command, ...) {
     # historical period making the calculation a bit more tricky.  We use the lag_prod_helper
     # to help project forward production by each historical vintage so we can take this into
     # account.
-    L111.Prod_EJ_R_F_Yh %>%
+    test <- L111.Prod_EJ_R_F_Yh %>%
       filter(year %in% MODEL_BASE_YEARS) %>%
       left_join_error_no_match(select(A10.ResSubresourceProdLifetime, resource, lifetime = avg.prod.lifetime, reserve.subresource) %>% distinct(),
                                by=c("fuel" = "resource", "technology" = "reserve.subresource")) %>%
@@ -262,8 +261,6 @@ module_energy_L210.resources <- function(command, ...) {
 
     # A. Output unit, price unit, market
     L210.rsrc_info <- A10.rsrc_info %>%
-      # rbind with the mineral resource information
-      rbind(A10.mineral_rsrc_info) %>%
       # Repeat and add region to resource assumptions table
       repeat_add_columns(select(GCAM_region_names, region)) %>%
       # Remove traditional biomass from regions where it is not currently used
@@ -307,15 +304,7 @@ module_energy_L210.resources <- function(command, ...) {
              year %in% MODEL_BASE_YEARS) %>%
       select(region, unlimited.resource = resource, year, price = value)
 
-    # update the mineral price by multiplying the fixed-charge-rate (assumed to be 0.13). The mineral cost is considered part of the capital cost,
-    # so the mineral prices are multiplied by the fixed-charge-rate to get the annuity, which will later be used for calculating technology levelized
-    # cost.
-    L210.UnlimitRsrcPrice <-
-      L210.UnlimitRsrcPrice %>%
-      filter(!unlimited.resource %in% energy.RSRC_MINERAL) %>%
-      rbind(L210.UnlimitRsrcPrice %>%
-              filter(unlimited.resource %in% energy.RSRC_MINERAL) %>%
-              mutate(price = price * 0.13))
+
 
 
     # B. Tech change
@@ -665,7 +654,7 @@ module_energy_L210.resources <- function(command, ...) {
       add_units("NA") %>%
       add_comments("A10.rsrc_info written to all regions") %>%
       add_legacy_name("L210.Rsrc") %>%
-      add_precursors("energy/A_regions", "common/GCAM_region_names", "energy/A10.rsrc_info", "minerals/supply/A10.mineral_rsrc_info") ->
+      add_precursors("energy/A_regions", "common/GCAM_region_names", "energy/A10.rsrc_info") ->
       L210.Rsrc
 
     L210.RenewRsrc %>%
@@ -673,7 +662,7 @@ module_energy_L210.resources <- function(command, ...) {
       add_units("NA") %>%
       add_comments("A10.rsrc_info written to all regions") %>%
       add_legacy_name("L210.RenewRsrc") %>%
-      add_precursors("energy/A_regions", "common/GCAM_region_names", "energy/A10.rsrc_info", "minerals/supply/A10.mineral_rsrc_info") ->
+      add_precursors("energy/A_regions", "common/GCAM_region_names", "energy/A10.rsrc_info") ->
       L210.RenewRsrc
 
     L210.UnlimitRsrc %>%
@@ -681,7 +670,7 @@ module_energy_L210.resources <- function(command, ...) {
       add_units("NA") %>%
       add_comments("A10.rsrc_info written to all regions") %>%
       add_legacy_name("L210.UnlimitRsrc") %>%
-      add_precursors("energy/A_regions", "common/GCAM_region_names", "energy/A10.rsrc_info", "minerals/supply/A10.mineral_rsrc_info") ->
+      add_precursors("energy/A_regions", "common/GCAM_region_names", "energy/A10.rsrc_info") ->
       L210.UnlimitRsrc
 
     L210.RsrcPrice %>%
