@@ -835,7 +835,7 @@ module_energy_L262.dac <- function(command, ...) {
       add_units("Mt") %>%
       add_comments("Values are calculated using L162.out_Mt_R_dac_Yh then added GCAM region information and supplysector, subsector, and technology information") %>%
       add_legacy_name("L262.StubTechProd_dac") %>%
-      add_precursors("energy/calibrated_techs_cdr", "L162.out_Mt_R_dac_Yh", "common/GCAM_region_names") ->
+      add_precursors("energy/calibrated_techs_cdr", "L162.out_Mt_R_dac_Yh", "common/GCAM_region_names", "energy/A62.ew_calibration") ->
       L262.StubTechProd_dac
 
     L262.BaseService_dac %>%
@@ -882,7 +882,7 @@ module_energy_L262.dac <- function(command, ...) {
       add_title("Title") %>%
       add_units("Units") %>%
       add_comments("Comments") %>%
-      add_precursors("energy/A62.globaltech_OMfixed") ->
+      add_precursors("energy/A62.globaltech_OMfixed", "energy/A62.globaltech_OMvar", "energy/A62.globaltech_capacity_factor", "energy/A62.globaltech_capital") ->
       L262.GlobalTechNonEnCost_dac
 
     return_data(L262.CarbonCoef_dac,
