@@ -126,7 +126,14 @@ module_energy_L262.dac <- function(command, ...) {
              "L262.GlobalTechSCurve_dac_EMF",
              "L262.GlobalTechProfitShutdown_dac_EMF",
              "L262.StubTechCost_dac",
-             "L262.GlobalTechNonEnCost_dac"))
+
+             "L262.GlobalTechNonEnCost_dac_ssp1",
+             "L262.GlobalTechNonEnCost_dac_ssp2",
+             "L262.GlobalTechNonEnCost_dac_ssp3",
+             "L262.GlobalTechNonEnCost_dac_ssp4",
+             "L262.GlobalTechNonEnCost_dac_ssp5",
+             "L262.GlobalTechNonEnCost_dac_EMF_ref",
+             "L262.GlobalTechNonEnCost_dac_EMF_adv"))
 
   } else if(command == driver.MAKE) {
 
@@ -618,39 +625,6 @@ module_energy_L262.dac <- function(command, ...) {
       bind_rows(L262.GlobalTechNonEnCost_dac_inter, L262.GlobalTechNonEnCost_dac) -> L262.GlobalTechNonEnCost_dac
     }
 
-    # # Extrapolate non energy cost assumptions to all model years
-    # A62.globaltech_cost_ssp2 %>%
-    #   filter(supplysector == "CO2 removal",
-    #          subsector == 'dac',
-    #          technology %in% c('hightemp DAC NG', 'hightemp DAC elec', 'lowtemp DAC heatpump')) %>%
-    #   gather_years() %>%
-    #   complete(nesting(supplysector, subsector, technology, minicam.non.energy.input), year = c(year, MODEL_BASE_YEARS, MODEL_FUTURE_YEARS)) %>%
-    #   arrange(supplysector, year) %>%
-    #   group_by(supplysector, subsector, technology, minicam.non.energy.input) %>%
-    #   mutate(value = approx_fun(year, value, rule = 1)) %>%
-    #   ungroup() %>%
-    #   filter(year %in% MODEL_YEARS) %>%
-    #   rename(sector.name = supplysector, subsector.name = subsector) %>%
-    #   spread(minicam.non.energy.input, value) ->
-    #   L262.GlobalTech_dac
-    #
-    # # Join non-energy cost variables together
-    # L262.GlobalTechNonEnCost_dac_inter <- L262.GlobalTech_dac %>%
-    #   left_join_error_no_match(L262.GlobalTechCapFac_dac,
-    #                            by = c("sector.name", "subsector.name", "technology", "year"))%>%
-    #   mutate(non_energy_cost = (capital.overnight * fixed.charge.rate + OM.fixed)/capacity.factor + OM.var,
-    #          non_energy_cost_kgC = non_energy_cost * emissions.CONV_C_CO2 * CONV_KG_T * gdp_deflator(1975,2015),
-    #          minicam.non.energy.input = "non-energy") %>%
-    #   rename(input.cost = non_energy_cost_kgC) %>%
-    #   select(sector.name, subsector.name, technology, year, minicam.non.energy.input, input.cost)
-    #
-    # L262.GlobalTechCost_dac %>%
-    #   filter(scenario == "ssp2",
-    #          !technology %in% c("hightemp DAC elec", "hightemp DAC NG", "lowtemp DAC heatpump")) %>%
-    #   select(-scenario) %>%
-    #   bind_rows(L262.GlobalTechNonEnCost_dac_inter) ->
-    # L262.GlobalTechNonEnCost_dac
-
     # ===================================================
     # Produce outputs
 
@@ -878,12 +852,19 @@ module_energy_L262.dac <- function(command, ...) {
       add_precursors("energy/A62.globaltech_retirement_EMF") ->
       L262.GlobalTechProfitShutdown_dac_EMF
 
-    L262.GlobalTechNonEnCost_dac %>%
-      add_title("Title") %>%
-      add_units("Units") %>%
-      add_comments("Comments") %>%
-      add_precursors("energy/A62.globaltech_OMfixed", "energy/A62.globaltech_OMvar", "energy/A62.globaltech_capacity_factor", "energy/A62.globaltech_capital") ->
-      L262.GlobalTechNonEnCost_dac
+    for(sce in TECH_PARAMETRIZATION_OUTPUTS) {
+      L262.GlobalTechNonEnCost_dac %>%
+        filter(scenario == sce) %>%
+        select(-c(scenario))%>%
+        add_title(paste("Cost coefficients of dac -", sce)) %>%
+        add_units("1975$/kg for supplysector dac; 1975$/GJ for supplysector process heat dac") %>%
+        add_comments(sce) %>%
+        add_comments("Includes non-energy related capture costs only per kgC captured from the atmosphere. Storage costs will be computed endogenously through the carbon storage markets. Additional non-energy cost of process heat dac assumed zero.") %>%
+        add_legacy_name(paste0("L262.GlobalTechNonEnCost_dac_", sce)) %>%
+        add_precursors(paste0("energy/A62.globaltech_cost_", sce),"L225.GlobalTechCost_h2", "energy/A62.globaltech_OMfixed", "energy/A62.globaltech_OMvar", "energy/A62.globaltech_capacity_factor", "energy/A62.globaltech_capital") ->
+        x
+      assign(paste0("L262.GlobalTechNonEnCost_dac_", sce), x)
+    }
 
     return_data(L262.CarbonCoef_dac,
                 L262.Supplysector_dac, L262.FinalEnergyKeyword_dac, L262.SubsectorLogit_dac,
@@ -904,7 +885,8 @@ module_energy_L262.dac <- function(command, ...) {
                 L262.GlobalTechSCurve_dac_EMF,
                 L262.GlobalTechProfitShutdown_dac_EMF,
                 L262.StubTechCost_dac,
-                L262.GlobalTechNonEnCost_dac)
+                L262.GlobalTechNonEnCost_dac_ssp1,L262.GlobalTechNonEnCost_dac_ssp2,L262.GlobalTechNonEnCost_dac_ssp3,L262.GlobalTechNonEnCost_dac_ssp4,L262.GlobalTechNonEnCost_dac_ssp5,
+                L262.GlobalTechNonEnCost_dac_EMF_ref,L262.GlobalTechNonEnCost_dac_EMF_adv)
   } else {
     stop("Unknown command")
   }
