@@ -591,7 +591,7 @@ module_energy_L262.dac <- function(command, ...) {
     # Loop over the ssps
     L262.GlobalTechCost_dac %>%
       filter(scenario %in% c('ssp1', 'ssp2', 'ssp3', 'ssp4', 'ssp5'),
-             !technology %in% c("hightemp DAC elec", "hightemp DAC NG", "lowtemp DAC heatpump")) ->
+             !technology %in% c("hightemp DAC elec", "hightemp DAC NG", "lowtemp DAC heatpump", "lowtemp DAC geothermal")) ->
       #select(-scenario) %>%
       #bind_rows(L262.GlobalTechNonEnCost_dac_inter) ->
       L262.GlobalTechNonEnCost_dac
@@ -601,7 +601,7 @@ module_energy_L262.dac <- function(command, ...) {
         filter(scenario == ssp,
                sector.name == "CO2 removal",
                subsector.name == 'dac',
-               technology %in% c('hightemp DAC NG', 'hightemp DAC elec', 'lowtemp DAC heatpump')) %>%
+               technology %in% c('hightemp DAC NG', 'hightemp DAC elec', 'lowtemp DAC heatpump', 'lowtemp DAC geothermal')) %>%
         #gather_years() %>%
         #complete(nesting(supplysector, subsector, technology, minicam.non.energy.input), year = c(year, MODEL_BASE_YEARS, MODEL_FUTURE_YEARS)) %>%
         #arrange(supplysector, year) %>%

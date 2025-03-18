@@ -16,6 +16,10 @@ CO2 removal,dac,lowtemp DAC heatpump,capital.overnight,800,800,800,800
 CO2 removal,dac,lowtemp DAC heatpump,OM.fixed,260,260,260,260
 CO2 removal,dac,lowtemp DAC heatpump,OM.var,0,0,0,0
 CO2 removal,dac,lowtemp DAC heatpump,fixed.charge.rate,0.13,0.13,0.13,0.13
+CO2 removal,dac,lowtemp DAC geothermal,capital.overnight,297,297,297,297
+CO2 removal,dac,lowtemp DAC geothermal,OM.fixed,237,237,237,237
+CO2 removal,dac,lowtemp DAC geothermal,OM.var,0,0,0,0
+CO2 removal,dac,lowtemp DAC geothermal,fixed.charge.rate,0.13,0.13,0.13,0.13
 CO2 removal,no CDR,no CDR,non-energy,0.001,0.001,0.001,0.001
 process heat dac,gas CCS,gas CCS,non-energy,0,0,0,0
 refining,dac to liquids,industrial hydrogen,non-energy,7.468525649,7.468525649,7.468525649,7.468525649

@@ -49,16 +49,10 @@ module_energy_dac_xml <- function(command, ...) {
              XML = "dac_ssp5.xml",
              XML = "dac_EMF_ref.xml",
              XML = "dac_EMF_adv.xml"))
-             # XML = "dac_ssp1_newcosts.xml",
-             # XML = "dac_ssp2_newcosts.xml",
-             # XML = "dac_ssp3_newcosts.xml",
-             # XML = "dac_ssp4_newcosts.xml",
-             # XML = "dac_ssp5_newcosts.xml"))
   } else if(command == driver.MAKE) {
 
     # Silence package check notes
     dac_ssp1.xml <- dac_ssp2.xml <- dac_ssp3.xml <- dac_ssp4.xml <- dac_ssp5.xml <- NULL
-      # dac_ssp1_newcosts.xml <- dac_ssp2_newcosts.xml <- dac_ssp3_newcosts.xml <- dac_ssp4_newcosts.xml <- dac_ssp5_newcosts.xml <- NULL
 
     all_data <- list(...)[[1]]
 
