@@ -70,11 +70,11 @@ inorganic-surface-storage,inorganic-surface-storage,Grade 2,Indonesia,8.32469863
 inorganic-surface-storage,inorganic-surface-storage,Grade 3,Indonesia,11.59029764,0.04043273
 inorganic-surface-storage,inorganic-surface-storage,Grade 4,Indonesia,14.67931855,0.041348371
 inorganic-surface-storage,inorganic-surface-storage,Grade 5,Indonesia,17.55296864,0.042103418
-inorganic-surface-storage,inorganic-surface-storage,Grade 6,Indonesia,20.25539618,0.042110789
-inorganic-surface-storage,inorganic-surface-storage,Grade 7,Indonesia,22.85487927,0.042120767
-inorganic-surface-storage,inorganic-surface-storage,Grade 8,Indonesia,25.29002591,0.042302156
+inorganic-surface-storage,inorganic-surface-storage,Grade 6,Indonesia,20.25539618,0.042210789
+inorganic-surface-storage,inorganic-surface-storage,Grade 7,Indonesia,22.85487927,0.042250767
+inorganic-surface-storage,inorganic-surface-storage,Grade 8,Indonesia,25.29002591,0.042402156
 inorganic-surface-storage,inorganic-surface-storage,Grade 9,Indonesia,27.47560445,0.04255686
-inorganic-surface-storage,inorganic-surface-storage,Grade 10,Indonesia,29.46622827,0.042558702
+inorganic-surface-storage,inorganic-surface-storage,Grade 10,Indonesia,29.46622827,0.042658702
 inorganic-surface-storage,inorganic-surface-storage,Grade 1,Mexico,0,0.078692214
 inorganic-surface-storage,inorganic-surface-storage,Grade 2,Mexico,6.760547182,0.08321989
 inorganic-surface-storage,inorganic-surface-storage,Grade 3,Mexico,9.645603818,0.086403401
@@ -173,12 +173,12 @@ inorganic-surface-storage,inorganic-surface-storage,Grade 5,Europe_Non_EU,2.9185
 inorganic-surface-storage,inorganic-surface-storage,Grade 6,Europe_Non_EU,3.002068143,0.194227826
 inorganic-surface-storage,inorganic-surface-storage,Grade 7,Europe_Non_EU,3.0370104,0.389528757
 inorganic-surface-storage,inorganic-surface-storage,Grade 1,European Free Trade Association,0,0.038564679
-inorganic-surface-storage,inorganic-surface-storage,Grade 2,European Free Trade Association,0.001239414,0.039497979
+inorganic-surface-storage,inorganic-surface-storage,Grade 2,European Free Trade Association,0.01,0.039497979
 inorganic-surface-storage,inorganic-surface-storage,Grade 3,European Free Trade Association,0.060229667,0.097411453
 inorganic-surface-storage,inorganic-surface-storage,Grade 4,European Free Trade Association,0.115743447,0.155640516
-inorganic-surface-storage,inorganic-surface-storage,Grade 5,European Free Trade Association,0.124194366,0.176236105
-inorganic-surface-storage,inorganic-surface-storage,Grade 6,European Free Trade Association,0.127747581,0.194227826
-inorganic-surface-storage,inorganic-surface-storage,Grade 7,European Free Trade Association,0.129234485,0.389528757
+inorganic-surface-storage,inorganic-surface-storage,Grade 5,European Free Trade Association,0.125194366,0.176236105
+inorganic-surface-storage,inorganic-surface-storage,Grade 6,European Free Trade Association,0.137747581,0.194227826
+inorganic-surface-storage,inorganic-surface-storage,Grade 7,European Free Trade Association,0.15,0.389528757
 inorganic-surface-storage,inorganic-surface-storage,Grade 1,Japan,0,0.038564679
 inorganic-surface-storage,inorganic-surface-storage,Grade 2,Japan,0.054003022,0.039497979
 inorganic-surface-storage,inorganic-surface-storage,Grade 3,Japan,2.624292638,0.097411453
@@ -208,7 +208,7 @@ inorganic-surface-storage,inorganic-surface-storage,Grade 5,Russia,28.19212107,0
 inorganic-surface-storage,inorganic-surface-storage,Grade 6,Russia,28.99870079,0.194227826
 inorganic-surface-storage,inorganic-surface-storage,Grade 7,Russia,29.33622812,0.389528757
 inorganic-surface-storage,inorganic-surface-storage,Grade 1,South Africa,0,0.038564679
-inorganic-surface-storage,inorganic-surface-storage,Grade 2,South Africa,0.003983829,0.039497979
+inorganic-surface-storage,inorganic-surface-storage,Grade 2,South Africa,0.01,0.039497979
 inorganic-surface-storage,inorganic-surface-storage,Grade 3,South Africa,0.193595359,0.097411453
 inorganic-surface-storage,inorganic-surface-storage,Grade 4,South Africa,0.372032508,0.155640516
 inorganic-surface-storage,inorganic-surface-storage,Grade 5,South Africa,0.399196176,0.176236105
@@ -236,12 +236,12 @@ inorganic-surface-storage,inorganic-surface-storage,Grade 5,South Asia,45.878860
 inorganic-surface-storage,inorganic-surface-storage,Grade 6,South Asia,47.19145942,0.194227826
 inorganic-surface-storage,inorganic-surface-storage,Grade 7,South Asia,47.74073946,0.389528757
 inorganic-surface-storage,inorganic-surface-storage,Grade 1,South Korea,0,0.038564679
-inorganic-surface-storage,inorganic-surface-storage,Grade 2,South Korea,0.001239414,0.039497979
+inorganic-surface-storage,inorganic-surface-storage,Grade 2,South Korea,0.01,0.039497979
 inorganic-surface-storage,inorganic-surface-storage,Grade 3,South Korea,0.060229667,0.097411453
 inorganic-surface-storage,inorganic-surface-storage,Grade 4,South Korea,0.115743447,0.155640516
-inorganic-surface-storage,inorganic-surface-storage,Grade 5,South Korea,0.124194366,0.176236105
-inorganic-surface-storage,inorganic-surface-storage,Grade 6,South Korea,0.127747581,0.194227826
-inorganic-surface-storage,inorganic-surface-storage,Grade 7,South Korea,0.129234485,0.389528757
+inorganic-surface-storage,inorganic-surface-storage,Grade 5,South Korea,0.13,0.176236105
+inorganic-surface-storage,inorganic-surface-storage,Grade 6,South Korea,0.14,0.194227826
+inorganic-surface-storage,inorganic-surface-storage,Grade 7,South Korea,0.15,0.389528757
 inorganic-surface-storage,inorganic-surface-storage,Grade 1,Southeast Asia,0,0.038564679
 inorganic-surface-storage,inorganic-surface-storage,Grade 2,Southeast Asia,1.405250284,0.039497979
 inorganic-surface-storage,inorganic-surface-storage,Grade 3,Southeast Asia,68.28854829,0.097411453

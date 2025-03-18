@@ -175,7 +175,8 @@ module_energy_L263.Weathering <- function(command, ...) {
     L163.RsrcCurves_Mt %>%
       # Match in GCAM region names using region ID
       left_join_error_no_match(GCAM_region_names, by = "GCAM_region_ID") %>%
-      #mutate(available = round(available, DIGITS_COST)) %>%
+      mutate(available = round(available, energy.DIGITS_RESOURCE),
+             extractioncost = round(extractioncost,energy.DIGITS_COST)) %>%
       select(region, renewresource = resource, sub.renewable.resource = subresource, grade, available, extractioncost) ->
       L263.RsrcCurves_C # This is a final output table.
 
@@ -315,7 +316,7 @@ module_energy_L263.Weathering <- function(command, ...) {
     # Define growth parameter k (this will be a csv input at some point)
     k_slow = 0.05
     k_med = 0.10
-    k_fast = 0.15
+    k_fast = 0.2
 
     # Join with tech efficiency curves
     # Calculate the utilization ratio for each region based on resource curve peaks
@@ -358,8 +359,9 @@ module_energy_L263.Weathering <- function(command, ...) {
              stub.technology = 'inorganic-surface-storage',
              minicam.energy.input = 'inorganic-surface-storage',
              market.name = region) %>%
-      mutate(efficiency = if_else(efficiency == 0, 0.01,efficiency)) %>%
-      filter(scenario == 'medium_growth_rate') %>%
+      mutate(efficiency = if_else(efficiency == 0, 0.01,efficiency),
+             efficiency = round(efficiency,energy.DIGITS_EFFICIENCY)) %>%
+      filter(scenario == 'rapid_growth_rate') %>%
       select(c(LEVEL2_DATA_NAMES[['StubTechEff']])) %>%
       ungroup() -> L263.StubTechEff
 
