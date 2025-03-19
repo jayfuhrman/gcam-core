@@ -171,16 +171,16 @@ module_energy_transportation_cwf_xml <- function(command, ...) {
         add_xml_data(L254.PerCapitaBased_trn_SSP, "PerCapitaBased") %>%
         add_xml_data(L254.PriceElasticity_trn_SSP, "PriceElasticity") %>%
         add_xml_data(L254.IncomeElasticity_trn_SSP, "IncomeElasticity") %>%
-        add_precursors("L254.tranSubsectorVOTT_SSP",
-                       "L254.tranSubsectorFuelPref_SSP",
-                       "L254.GlobalTranTechInterp_SSP",
-                       "L254.GlobalTranTechShrwt_SSP",
-                       "L254.StubTranTechLoadFactor_SSP",
-                       "L254.StubTranTechCost_SSP",
-                       "L254.StubTranTechCoef_SSP",
-                       "L254.PerCapitaBased_trn_SSP",
-                       "L254.PriceElasticity_trn_SSP",
-                       "L254.IncomeElasticity_trn_SSP",
+        add_precursors("L254.tranSubsectorVOTT_cwf",
+                       "L254.tranSubsectorFuelPref",
+                       "L254.GlobalTranTechInterp_cwf",
+                       "L254.GlobalTranTechShrwt_cwf",
+                       "L254.StubTranTechLoadFactor",
+                       "L254.StubTranTechCost",
+                       "L254.StubTranTechCoef",
+                       "L254.PerCapitaBased_trn",
+                       "L254.PriceElasticity_trn",
+                       "L254.IncomeElasticity_trn",
                        "L254.StubTranTechInterpTo_ICEPhaseout")  %>%
         assign(xml_name, ., envir = curr_env)
 
@@ -222,8 +222,8 @@ module_energy_transportation_cwf_xml <- function(command, ...) {
       add_xml_data(L254.DeleteGlobalTranTechInterp_SSP,"DeleteGlobalTranTechInterp") %>%
       add_xml_data(L254.GlobalTranTechInterp_SSP, "GlobalTranTechInterp") %>%
       add_xml_data(L254.GlobalTranTechShrwt_SSP, "GlobalTranTechShrwt") %>%
-      add_precursors("L254.GlobalTranTechInterp_SSP",
-                     "L254.GlobalTranTechShrwt_SSP") ->
+      add_precursors("L254.GlobalTranTechInterp_cwf",
+                     "L254.GlobalTranTechShrwt_cwf") ->
       transportation_cwf_high_en_demand.xml
 
     return_data(transportation_UCD_cwf_low_H2.xml,
