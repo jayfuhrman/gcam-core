@@ -1,0 +1,1155 @@
+<?xml version="1.0" encoding="UTF-8"?><scenario>
+    <world>
+        <region name="Africa_Eastern">
+            <policy-portfolio-standard name="GHG">
+                <market>ROW</market>
+                <policyType>tax</policyType>
+                <constraint year="2020">16406.3</constraint>
+                <constraint year="2025">16182.342</constraint>
+                <constraint year="2030">16078.2</constraint>
+                <constraint year="2035">14470.88</constraint>
+                <constraint year="2040">12863.56</constraint>
+                <constraint year="2045">11256.24</constraint>
+                <constraint year="2050">9648.92</constraint>
+                <constraint year="2055">8041.6</constraint>
+               
+
+                <min-price fillout="1" year="2020">-10000</min-price>
+                <min-price fillout="1" year="2025">0</min-price>
+            </policy-portfolio-standard>
+        </region>
+<region name="Africa_Eastern">
+            <policy-portfolio-standard name="GHG">
+                <market>ROW</market>
+                <policyType>tax</policyType>
+                
+               <fixedTax year="2060">1837</fixedTax>
+
+                <fixedTax year="2065">2131</fixedTax>
+                <fixedTax year="2070">2472</fixedTax>
+                <fixedTax year="2075">2868</fixedTax>
+                <fixedTax year="2080">3326</fixedTax>
+                <fixedTax year="2085">3859</fixedTax>
+                <fixedTax year="2090">4476</fixedTax>
+                <fixedTax year="2095">5193</fixedTax>
+                <fixedTax year="2100">6024</fixedTax>
+            </policy-portfolio-standard>
+        </region>
+
+        <region name="Africa_Northern">
+            <policy-portfolio-standard name="GHG">
+                <market>ROW</market>
+                <policyType>tax</policyType>
+                <constraint year="2020">16406.3</constraint>
+                <constraint year="2025">16182.342</constraint>
+                <constraint year="2030">16078.2</constraint>
+                <constraint year="2035">14470.88</constraint>
+                <constraint year="2040">12863.56</constraint>
+                <constraint year="2045">11256.24</constraint>
+                <constraint year="2050">9648.92</constraint>
+                <constraint year="2055">8041.6</constraint>
+               
+
+                <min-price fillout="1" year="2020">-10000</min-price>
+                <min-price fillout="1" year="2025">0</min-price>
+            </policy-portfolio-standard>
+        </region>
+<region name="Africa_Northern">
+            <policy-portfolio-standard name="GHG">
+                <market>ROW</market>
+                <policyType>tax</policyType>
+                
+               <fixedTax year="2060">1837</fixedTax>
+
+                <fixedTax year="2065">2131</fixedTax>
+                <fixedTax year="2070">2472</fixedTax>
+                <fixedTax year="2075">2868</fixedTax>
+                <fixedTax year="2080">3326</fixedTax>
+                <fixedTax year="2085">3859</fixedTax>
+                <fixedTax year="2090">4476</fixedTax>
+                <fixedTax year="2095">5193</fixedTax>
+                <fixedTax year="2100">6024</fixedTax>
+            </policy-portfolio-standard>
+        </region>
+
+        <region name="Africa_Southern">
+            <policy-portfolio-standard name="GHG">
+                <market>ROW</market>
+                <policyType>tax</policyType>
+                <constraint year="2020">16406.3</constraint>
+                <constraint year="2025">16182.342</constraint>
+                <constraint year="2030">16078.2</constraint>
+                <constraint year="2035">14470.88</constraint>
+                <constraint year="2040">12863.56</constraint>
+                <constraint year="2045">11256.24</constraint>
+                <constraint year="2050">9648.92</constraint>
+                <constraint year="2055">8041.6</constraint>
+               
+             
+
+                <min-price fillout="1" year="2020">-10000</min-price>
+                <min-price fillout="1" year="2025">0</min-price>
+            </policy-portfolio-standard>
+        </region>
+<region name="Africa_Southern">
+            <policy-portfolio-standard name="GHG">
+                <market>ROW</market>
+                <policyType>tax</policyType>
+                
+               <fixedTax year="2060">1837</fixedTax>
+
+                <fixedTax year="2065">2131</fixedTax>
+                <fixedTax year="2070">2472</fixedTax>
+                <fixedTax year="2075">2868</fixedTax>
+                <fixedTax year="2080">3326</fixedTax>
+                <fixedTax year="2085">3859</fixedTax>
+                <fixedTax year="2090">4476</fixedTax>
+                <fixedTax year="2095">5193</fixedTax>
+                <fixedTax year="2100">6024</fixedTax>
+            </policy-portfolio-standard>
+        </region>
+
+        <region name="Africa_Western">
+            <policy-portfolio-standard name="GHG">
+                <market>ROW</market>
+                <policyType>tax</policyType>
+                <constraint year="2020">16406.3</constraint>
+                <constraint year="2025">16182.342</constraint>
+                <constraint year="2030">16078.2</constraint>
+                <constraint year="2035">14470.88</constraint>
+                <constraint year="2040">12863.56</constraint>
+                <constraint year="2045">11256.24</constraint>
+                <constraint year="2050">9648.92</constraint>
+                <constraint year="2055">8041.6</constraint>
+              
+
+                <min-price fillout="1" year="2020">-10000</min-price>
+                <min-price fillout="1" year="2025">0</min-price>
+            </policy-portfolio-standard>
+        </region>
+<region name="Africa_Western">
+            <policy-portfolio-standard name="GHG">
+                <market>ROW</market>
+                <policyType>tax</policyType>
+                
+               <fixedTax year="2060">1837</fixedTax>
+
+                <fixedTax year="2065">2131</fixedTax>
+                <fixedTax year="2070">2472</fixedTax>
+                <fixedTax year="2075">2868</fixedTax>
+                <fixedTax year="2080">3326</fixedTax>
+                <fixedTax year="2085">3859</fixedTax>
+                <fixedTax year="2090">4476</fixedTax>
+                <fixedTax year="2095">5193</fixedTax>
+                <fixedTax year="2100">6024</fixedTax>
+            </policy-portfolio-standard>
+        </region>
+
+        <region name="Argentina">
+            <policy-portfolio-standard name="GHG">
+                <market>Argentina</market>
+                <policyType>tax</policyType>
+                <constraint year="2020">385.8</constraint>
+                <constraint year="2025">387.189</constraint>
+                <constraint year="2030">363.4</constraint>
+                <constraint year="2035">273.8</constraint>
+                <constraint year="2040">184.2</constraint>
+                <constraint year="2045">94.6</constraint>
+                <constraint year="2050">5</constraint>
+                <constraint year="2055">5</constraint>
+                <constraint year="2060">5</constraint>
+
+                <min-price fillout="1" year="2020">-10000</min-price>
+                <min-price fillout="1" year="2025">0</min-price>
+            </policy-portfolio-standard>
+        </region>
+<region name="Argentina">
+            <policy-portfolio-standard name="GHG">
+                <market>Argentina</market>
+                <policyType>tax</policyType>
+                
+               
+                <fixedTax year="2065">1492.11</fixedTax>
+                <fixedTax year="2070">2987</fixedTax>
+                <fixedTax year="2075">2987</fixedTax>
+                <fixedTax year="2080">2987</fixedTax>
+                <fixedTax year="2085">2987</fixedTax>
+                <fixedTax year="2090">2987</fixedTax>
+                <fixedTax year="2095">2987</fixedTax>
+                <fixedTax year="2100">2987</fixedTax>
+            </policy-portfolio-standard>
+        </region>
+
+        <region name="Australia_NZ">
+            <policy-portfolio-standard name="GHG">
+                <market>Australia_NZ</market>
+                <policyType>tax</policyType>
+                <constraint year="2020">657.1</constraint>
+                <constraint year="2025">603.8505</constraint>
+                <constraint year="2030">400</constraint>
+                <constraint year="2035">301.25</constraint>
+                <constraint year="2040">202.5</constraint>
+                <constraint year="2045">103.75</constraint>
+                <constraint year="2050">5</constraint>
+              <constraint year="2055">5</constraint>
+               <constraint year="2060">5</constraint>
+
+              
+                <min-price fillout="1" year="2020">-10000</min-price>
+                <min-price fillout="1" year="2025">0</min-price>
+            </policy-portfolio-standard>
+        </region>
+<region name="Australia_NZ">
+            <policy-portfolio-standard name="GHG">
+                <market>Australia_NZ</market>
+                <policyType>tax</policyType>
+                
+               
+                <!--fixedTax year="2060">2398</fixedTax-->
+                <fixedTax year="2065">2398</fixedTax>
+                <fixedTax year="2070">2398</fixedTax>
+                <fixedTax year="2075">2398</fixedTax>
+                <fixedTax year="2080">2398</fixedTax>
+                <fixedTax year="2085">2398</fixedTax>
+                <fixedTax year="2090">2398</fixedTax>
+                <fixedTax year="2095">2398</fixedTax>
+                <fixedTax year="2100">2398</fixedTax>
+            </policy-portfolio-standard>
+        </region>
+
+        <region name="Brazil">
+            <policy-portfolio-standard name="GHG">
+                <market>Brazil</market>
+                <policyType>tax</policyType>
+                <constraint year="2020">1151.8</constraint>
+                <constraint year="2025">1157.1615</constraint>
+                <constraint year="2030">900</constraint>
+                <constraint year="2035">676.25</constraint>
+                <constraint year="2040">452.5</constraint>
+                <constraint year="2045">228.75</constraint>
+                <constraint year="2050">5</constraint>
+				<constraint year="2055">5</constraint>
+				<constraint year="2060">5</constraint>
+               
+                <min-price fillout="1" year="2020">-10000</min-price>
+                <min-price fillout="1" year="2025">0</min-price>
+            </policy-portfolio-standard>
+        </region>
+<region name="Brazil">
+            <policy-portfolio-standard name="GHG">
+                <market>Brazil</market>
+                <policyType>tax</policyType>
+                
+                <!--fixedTax year="2055">2150</fixedTax>
+                <fixedTax year="2060">2150</fixedTax-->
+                <fixedTax year="2065">2150</fixedTax>
+                <fixedTax year="2070">2150</fixedTax>
+                <fixedTax year="2075">2150</fixedTax>
+                <fixedTax year="2080">2150</fixedTax>
+                <fixedTax year="2085">2150</fixedTax>
+                <fixedTax year="2090">2150</fixedTax>
+                <fixedTax year="2095">2150</fixedTax>
+                <fixedTax year="2100">2150</fixedTax>
+            </policy-portfolio-standard>
+        </region>
+
+        <region name="Canada">
+            <policy-portfolio-standard name="GHG">
+                <market>Canada</market>
+                <policyType>tax</policyType>
+                <constraint year="2020">742.1</constraint>
+                <constraint year="2025">704.7315</constraint>
+                <constraint year="2030">450</constraint>
+                <constraint year="2035">338.75</constraint>
+                <constraint year="2040">227.5</constraint>
+                <constraint year="2045">116.25</constraint>
+                <constraint year="2050">5</constraint>
+                <constraint year="2055">5</constraint>
+				<constraint year="2060">5</constraint>
+                <min-price fillout="1" year="2020">-10000</min-price>
+                <min-price fillout="1" year="2025">0</min-price>
+            </policy-portfolio-standard>
+        </region>
+<region name="Canada">
+            <policy-portfolio-standard name="GHG">
+                <market>Canada</market>
+                <policyType>tax</policyType>
+                
+              
+                <!--fixedTax year="2060">2089</fixedTax-->
+                <fixedTax year="2065">2089</fixedTax>
+                <fixedTax year="2070">2089</fixedTax>
+                <fixedTax year="2075">2089</fixedTax>
+                <fixedTax year="2080">2089</fixedTax>
+                <fixedTax year="2085">2089</fixedTax>
+                <fixedTax year="2090">2089</fixedTax>
+                <fixedTax year="2095">2089</fixedTax>
+                <fixedTax year="2100">2089</fixedTax>
+            </policy-portfolio-standard>
+        </region>
+
+        <region name="Central America and Caribbean">
+            <policy-portfolio-standard name="GHG">
+                <market>ROW</market>
+                <policyType>tax</policyType>
+                <constraint year="2020">16406.3</constraint>
+                <constraint year="2025">16182.342</constraint>
+                <constraint year="2030">16078.2</constraint>
+                <constraint year="2035">14470.88</constraint>
+                <constraint year="2040">12863.56</constraint>
+                <constraint year="2045">11256.24</constraint>
+                <constraint year="2050">9648.92</constraint>
+                <constraint year="2055">8041.6</constraint>
+               
+
+                <min-price fillout="1" year="2020">-10000</min-price>
+                <min-price fillout="1" year="2025">0</min-price>
+            </policy-portfolio-standard>
+        </region>
+<region name="Central America and Caribbean">
+            <policy-portfolio-standard name="GHG">
+                <market>ROW</market>
+                <policyType>tax</policyType>
+                
+               <fixedTax year="2060">1837</fixedTax>
+
+                <fixedTax year="2065">2131</fixedTax>
+                <fixedTax year="2070">2472</fixedTax>
+                <fixedTax year="2075">2868</fixedTax>
+                <fixedTax year="2080">3326</fixedTax>
+                <fixedTax year="2085">3859</fixedTax>
+                <fixedTax year="2090">4476</fixedTax>
+                <fixedTax year="2095">5193</fixedTax>
+                <fixedTax year="2100">6024</fixedTax>
+            </policy-portfolio-standard>
+        </region>
+
+        <region name="Central Asia">
+            <policy-portfolio-standard name="GHG">
+                <market>ROW</market>
+                <policyType>tax</policyType>
+                <constraint year="2020">16406.3</constraint>
+                <constraint year="2025">16182.342</constraint>
+                <constraint year="2030">16078.2</constraint>
+                <constraint year="2035">14470.88</constraint>
+                <constraint year="2040">12863.56</constraint>
+                <constraint year="2045">11256.24</constraint>
+                <constraint year="2050">9648.92</constraint>
+                <constraint year="2055">8041.6</constraint>
+              
+
+                <min-price fillout="1" year="2020">-10000</min-price>
+                <min-price fillout="1" year="2025">0</min-price>
+            </policy-portfolio-standard>
+        </region>
+<region name="Central Asia">
+            <policy-portfolio-standard name="GHG">
+                <market>ROW</market>
+                <policyType>tax</policyType>
+                
+               <fixedTax year="2060">1837</fixedTax>
+
+                <fixedTax year="2065">2131</fixedTax>
+                <fixedTax year="2070">2472</fixedTax>
+                <fixedTax year="2075">2868</fixedTax>
+                <fixedTax year="2080">3326</fixedTax>
+                <fixedTax year="2085">3859</fixedTax>
+                <fixedTax year="2090">4476</fixedTax>
+                <fixedTax year="2095">5193</fixedTax>
+                <fixedTax year="2100">6024</fixedTax>
+            </policy-portfolio-standard>
+        </region>
+
+        <region name="China">
+            <policy-portfolio-standard name="GHG">
+                <market>China</market>
+                <policyType>tax</policyType>
+                <constraint year="2020">14368.7</constraint>
+                <constraint year="2025">15062.355</constraint>
+                <constraint year="2030">16119.7</constraint>
+                <constraint year="2035">13433.91667</constraint>
+                <constraint year="2040">10748.13333</constraint>
+                <constraint year="2045">8062.35</constraint>
+                <constraint year="2050">5376.566667</constraint>
+                <constraint year="2055">2690.783333</constraint>
+                <constraint year="2060">5</constraint>
+               
+                <min-price fillout="1" year="2020">-10000</min-price>
+                <min-price fillout="1" year="2025">0</min-price>
+            </policy-portfolio-standard>
+        </region>
+<region name="China">
+            <policy-portfolio-standard name="GHG">
+                <market>China</market>
+                <policyType>tax</policyType>
+                
+               
+                <fixedTax year="2065">3252</fixedTax>
+                <fixedTax year="2070">3252</fixedTax>
+                <fixedTax year="2075">3252</fixedTax>
+                <fixedTax year="2080">3252</fixedTax>
+                <fixedTax year="2085">3252</fixedTax>
+                <fixedTax year="2090">3252</fixedTax>
+                <fixedTax year="2095">3252</fixedTax>
+                <fixedTax year="2100">3252</fixedTax>
+            </policy-portfolio-standard>
+        </region>
+
+        <region name="Colombia">
+            <policy-portfolio-standard name="GHG">
+                <market>Colombia</market>
+                <policyType>tax</policyType>
+                <constraint year="2020">218.1</constraint>
+                <constraint year="2025">221.8095</constraint>
+                <constraint year="2030">167.3</constraint>
+                <constraint year="2035">126.725</constraint>
+                <constraint year="2040">86.15</constraint>
+                <constraint year="2045">45.575</constraint>
+                <constraint year="2050">5</constraint>
+				<constraint year="2055">5</constraint>
+				<constraint year="2060">5</constraint>
+               
+               
+                <min-price fillout="1" year="2020">-10000</min-price>
+                <min-price fillout="1" year="2025">0</min-price>
+            </policy-portfolio-standard>
+        </region>
+<region name="Colombia">
+            <policy-portfolio-standard name="GHG">
+                <market>Colombia</market>
+                <policyType>tax</policyType>
+                
+                <!--fixedTax year="2055">3031.3</fixedTax>
+                <fixedTax year="2060">3031.3</fixedTax-->
+                <fixedTax year="2065">3031.3</fixedTax>
+                <fixedTax year="2070">3031.3</fixedTax>
+                <fixedTax year="2075">3031.3</fixedTax>
+                <fixedTax year="2080">3031.3</fixedTax>
+                <fixedTax year="2085">3031.3</fixedTax>
+                <fixedTax year="2090">3031.3</fixedTax>
+                <fixedTax year="2095">3031.3</fixedTax>
+                <fixedTax year="2100">3031.3</fixedTax>
+            </policy-portfolio-standard>
+        </region>
+
+        <region name="EU-12">
+            <policy-portfolio-standard name="GHG">
+                <market>EU</market>
+                <policyType>tax</policyType>
+                <constraint year="2020">4075.6</constraint>
+                <constraint year="2025">3606.0255</constraint>
+                <constraint year="2030">2695.2</constraint>
+                <constraint year="2035">2022.65</constraint>
+                <constraint year="2040">1350.1</constraint>
+                <constraint year="2045">677.55</constraint>
+                <constraint year="2050">5</constraint>
+                <constraint year="2055">5</constraint>
+				<constraint year="2060">5</constraint>
+
+              
+                <min-price fillout="1" year="2020">-10000</min-price>
+                <min-price fillout="1" year="2025">0</min-price>
+            </policy-portfolio-standard>
+        </region>
+        <region name="EU-15">
+            <policy-portfolio-standard name="GHG">
+                <market>EU</market>
+                <policyType>tax</policyType>
+                <constraint year="2020">4075.6</constraint>
+                <constraint year="2025">3606.0255</constraint>
+                <constraint year="2030">2695.2</constraint>
+                <constraint year="2035">2022.65</constraint>
+                <constraint year="2040">1350.1</constraint>
+                <constraint year="2045">677.55</constraint>
+                <constraint year="2050">5</constraint>
+               <constraint year="2055">5</constraint>
+			    <constraint year="2060">5</constraint>
+
+              
+                <min-price fillout="1" year="2020">-10000</min-price>
+                <min-price fillout="1" year="2025">0</min-price>
+            </policy-portfolio-standard>
+        </region>
+<region name="EU-12">
+            <policy-portfolio-standard name="GHG">
+                <market>EU</market>
+                <policyType>tax</policyType>
+                
+               
+                <!--fixedTax year="2060">1902</fixedTax-->
+                <fixedTax year="2065">1902</fixedTax>
+                <fixedTax year="2070">1902</fixedTax>
+                <fixedTax year="2075">1902</fixedTax>
+                <fixedTax year="2080">1902</fixedTax>
+                <fixedTax year="2085">1902</fixedTax>
+                <fixedTax year="2090">1902</fixedTax>
+                <fixedTax year="2095">1902</fixedTax>
+                <fixedTax year="2100">1902</fixedTax>
+            </policy-portfolio-standard>
+        </region>
+<region name="EU-15">
+            <policy-portfolio-standard name="GHG">
+                <market>EU</market>
+                <policyType>tax</policyType>
+                
+               
+                <!--fixedTax year="2060">1902</fixedTax-->
+                <fixedTax year="2065">1902</fixedTax>
+                <fixedTax year="2070">1902</fixedTax>
+                <fixedTax year="2075">1902</fixedTax>
+                <fixedTax year="2080">1902</fixedTax>
+                <fixedTax year="2085">1902</fixedTax>
+                <fixedTax year="2090">1902</fixedTax>
+                <fixedTax year="2095">1902</fixedTax>
+                <fixedTax year="2100">1902</fixedTax>
+            </policy-portfolio-standard>
+        </region>
+
+        <region name="Europe_Eastern">
+            <policy-portfolio-standard name="GHG">
+                <market>ROW</market>
+                <policyType>tax</policyType>
+                <constraint year="2020">16406.3</constraint>
+                <constraint year="2025">16182.342</constraint>
+                <constraint year="2030">16078.2</constraint>
+                <constraint year="2035">14470.88</constraint>
+                <constraint year="2040">12863.56</constraint>
+                <constraint year="2045">11256.24</constraint>
+                <constraint year="2050">9648.92</constraint>
+                <constraint year="2055">8041.6</constraint>
+              
+
+                <min-price fillout="1" year="2020">-10000</min-price>
+                <min-price fillout="1" year="2025">0</min-price>
+            </policy-portfolio-standard>
+        </region>
+<region name="Europe_Eastern">
+            <policy-portfolio-standard name="GHG">
+                <market>ROW</market>
+                <policyType>tax</policyType>
+                
+               <fixedTax year="2060">1837</fixedTax>
+
+                <fixedTax year="2065">2131</fixedTax>
+                <fixedTax year="2070">2472</fixedTax>
+                <fixedTax year="2075">2868</fixedTax>
+                <fixedTax year="2080">3326</fixedTax>
+                <fixedTax year="2085">3859</fixedTax>
+                <fixedTax year="2090">4476</fixedTax>
+                <fixedTax year="2095">5193</fixedTax>
+                <fixedTax year="2100">6024</fixedTax>
+            </policy-portfolio-standard>
+        </region>
+
+        <region name="Europe_Non_EU">
+            <policy-portfolio-standard name="GHG">
+                <market>ROW</market>
+                <policyType>tax</policyType>
+                <constraint year="2020">16406.3</constraint>
+                <constraint year="2025">16182.342</constraint>
+                <constraint year="2030">16078.2</constraint>
+                <constraint year="2035">14470.88</constraint>
+                <constraint year="2040">12863.56</constraint>
+                <constraint year="2045">11256.24</constraint>
+                <constraint year="2050">9648.92</constraint>
+                <constraint year="2055">8041.6</constraint>
+               
+
+                <min-price fillout="1" year="2020">-10000</min-price>
+                <min-price fillout="1" year="2025">0</min-price>
+            </policy-portfolio-standard>
+        </region>
+<region name="Europe_Non_EU">
+            <policy-portfolio-standard name="GHG">
+                <market>ROW</market>
+                <policyType>tax</policyType>
+                
+               <fixedTax year="2060">1837</fixedTax>
+
+                <fixedTax year="2065">2131</fixedTax>
+                <fixedTax year="2070">2472</fixedTax>
+                <fixedTax year="2075">2868</fixedTax>
+                <fixedTax year="2080">3326</fixedTax>
+                <fixedTax year="2085">3859</fixedTax>
+                <fixedTax year="2090">4476</fixedTax>
+                <fixedTax year="2095">5193</fixedTax>
+                <fixedTax year="2100">6024</fixedTax>
+            </policy-portfolio-standard>
+        </region>
+
+        <region name="European Free Trade Association">
+            <policy-portfolio-standard name="GHG">
+                <market>ROW</market>
+                <policyType>tax</policyType>
+                <constraint year="2020">16406.3</constraint>
+                <constraint year="2025">16182.342</constraint>
+                <constraint year="2030">16078.2</constraint>
+                <constraint year="2035">14470.88</constraint>
+                <constraint year="2040">12863.56</constraint>
+                <constraint year="2045">11256.24</constraint>
+                <constraint year="2050">9648.92</constraint>
+                <constraint year="2055">8041.6</constraint>
+             
+
+                <min-price fillout="1" year="2020">-10000</min-price>
+                <min-price fillout="1" year="2025">0</min-price>
+            </policy-portfolio-standard>
+        </region>
+<region name="European Free Trade Association">
+            <policy-portfolio-standard name="GHG">
+                <market>ROW</market>
+                <policyType>tax</policyType>
+                
+               <fixedTax year="2060">1837</fixedTax>
+
+                <fixedTax year="2065">2131</fixedTax>
+                <fixedTax year="2070">2472</fixedTax>
+                <fixedTax year="2075">2868</fixedTax>
+                <fixedTax year="2080">3326</fixedTax>
+                <fixedTax year="2085">3859</fixedTax>
+                <fixedTax year="2090">4476</fixedTax>
+                <fixedTax year="2095">5193</fixedTax>
+                <fixedTax year="2100">6024</fixedTax>
+            </policy-portfolio-standard>
+        </region>
+
+        <region name="India">
+            <policy-portfolio-standard name="GHG">
+                <market>India</market>
+                <policyType>tax</policyType>
+                <constraint year="2020">3828.7</constraint>
+                <constraint year="2025">4244.0805</constraint>
+                <constraint year="2030">4684.3</constraint>
+                <constraint year="2035">4099.3875</constraint>
+                <constraint year="2040">3514.475</constraint>
+                <constraint year="2045">2929.5625</constraint>
+                <constraint year="2050">2344.65</constraint>
+                <constraint year="2055">1759.7375</constraint>
+                <constraint year="2060">1174.825</constraint>
+                <constraint year="2065">589.9125</constraint>
+                <constraint year="2070">5</constraint>
+              
+                <min-price fillout="1" year="2020">-10000</min-price>
+                <min-price fillout="1" year="2025">0</min-price>
+            </policy-portfolio-standard>
+        </region>
+<region name="India">
+            <policy-portfolio-standard name="GHG">
+                <market>India</market>
+                <policyType>tax</policyType>
+                
+                
+                <fixedTax year="2075">2498</fixedTax>
+                <fixedTax year="2080">2498</fixedTax>
+                <fixedTax year="2085">2498</fixedTax>
+                <fixedTax year="2090">2498</fixedTax>
+                <fixedTax year="2095">2498</fixedTax>
+                <fixedTax year="2100">2498</fixedTax>
+            </policy-portfolio-standard>
+        </region>
+
+        <region name="Indonesia">
+            <policy-portfolio-standard name="GHG">
+                <market>ROW</market>
+                <policyType>tax</policyType>
+                <constraint year="2020">16406.3</constraint>
+                <constraint year="2025">16182.342</constraint>
+                <constraint year="2030">16078.2</constraint>
+                <constraint year="2035">14470.88</constraint>
+                <constraint year="2040">12863.56</constraint>
+                <constraint year="2045">11256.24</constraint>
+                <constraint year="2050">9648.92</constraint>
+                <constraint year="2055">8041.6</constraint>
+               
+
+                <min-price fillout="1" year="2020">-10000</min-price>
+                <min-price fillout="1" year="2025">0</min-price>
+            </policy-portfolio-standard>
+        </region>
+<region name="Indonesia">
+            <policy-portfolio-standard name="GHG">
+                <market>ROW</market>
+                <policyType>tax</policyType>
+                
+               <fixedTax year="2060">1837</fixedTax>
+
+                <fixedTax year="2065">2131</fixedTax>
+                <fixedTax year="2070">2472</fixedTax>
+                <fixedTax year="2075">2868</fixedTax>
+                <fixedTax year="2080">3326</fixedTax>
+                <fixedTax year="2085">3859</fixedTax>
+                <fixedTax year="2090">4476</fixedTax>
+                <fixedTax year="2095">5193</fixedTax>
+                <fixedTax year="2100">6024</fixedTax>
+            </policy-portfolio-standard>
+        </region>
+
+        <region name="Japan">
+            <policy-portfolio-standard name="GHG">
+                <market>Japan</market>
+                <policyType>tax</policyType>
+                <constraint year="2020">1170.1</constraint>
+                <constraint year="2025">1056.627</constraint>
+                <constraint year="2030">768</constraint>
+                <constraint year="2035">577.25</constraint>
+                <constraint year="2040">386.5</constraint>
+                <constraint year="2045">195.75</constraint>
+                <constraint year="2050">5</constraint>
+                <constraint year="2055">5</constraint>
+				<constraint year="2060">5</constraint>
+              
+                <min-price fillout="1" year="2020">-10000</min-price>
+                <min-price fillout="1" year="2025">0</min-price>
+            </policy-portfolio-standard>
+        </region>
+<region name="Japan">
+            <policy-portfolio-standard name="GHG">
+                <market>Japan</market>
+                <policyType>tax</policyType>
+                
+               
+                <!--fixedTax year="2060">2017</fixedTax-->
+                <fixedTax year="2065">2017</fixedTax>
+                <fixedTax year="2070">2017</fixedTax>
+                <fixedTax year="2075">2017</fixedTax>
+                <fixedTax year="2080">2017</fixedTax>
+                <fixedTax year="2085">2017</fixedTax>
+                <fixedTax year="2090">2017</fixedTax>
+                <fixedTax year="2095">2017</fixedTax>
+                <fixedTax year="2100">2017</fixedTax>
+            </policy-portfolio-standard>
+        </region>
+
+        <region name="Mexico">
+            <policy-portfolio-standard name="GHG">
+                <market>ROW</market>
+                <policyType>tax</policyType>
+                <constraint year="2020">16406.3</constraint>
+                <constraint year="2025">16182.342</constraint>
+                <constraint year="2030">16078.2</constraint>
+                <constraint year="2035">14470.88</constraint>
+                <constraint year="2040">12863.56</constraint>
+                <constraint year="2045">11256.24</constraint>
+                <constraint year="2050">9648.92</constraint>
+                <constraint year="2055">8041.6</constraint>
+               
+                <min-price fillout="1" year="2020">-10000</min-price>
+                <min-price fillout="1" year="2025">0</min-price>
+            </policy-portfolio-standard>
+        </region>
+<region name="Mexico">
+            <policy-portfolio-standard name="GHG">
+                <market>ROW</market>
+                <policyType>tax</policyType>
+                
+               <fixedTax year="2060">1837</fixedTax>
+
+                <fixedTax year="2065">2131</fixedTax>
+                <fixedTax year="2070">2472</fixedTax>
+                <fixedTax year="2075">2868</fixedTax>
+                <fixedTax year="2080">3326</fixedTax>
+                <fixedTax year="2085">3859</fixedTax>
+                <fixedTax year="2090">4476</fixedTax>
+                <fixedTax year="2095">5193</fixedTax>
+                <fixedTax year="2100">6024</fixedTax>
+            </policy-portfolio-standard>
+        </region>
+
+        <region name="Middle East">
+            <policy-portfolio-standard name="GHG">
+                <market>ROW</market>
+                <policyType>tax</policyType>
+                <constraint year="2020">16406.3</constraint>
+                <constraint year="2025">16182.342</constraint>
+                <constraint year="2030">16078.2</constraint>
+                <constraint year="2035">14470.88</constraint>
+                <constraint year="2040">12863.56</constraint>
+                <constraint year="2045">11256.24</constraint>
+                <constraint year="2050">9648.92</constraint>
+                <constraint year="2055">8041.6</constraint>
+               
+
+                <min-price fillout="1" year="2020">-10000</min-price>
+                <min-price fillout="1" year="2025">0</min-price>
+            </policy-portfolio-standard>
+        </region>
+<region name="Middle East">
+            <policy-portfolio-standard name="GHG">
+                <market>ROW</market>
+                <policyType>tax</policyType>
+                
+               <fixedTax year="2060">1837</fixedTax>
+
+                <fixedTax year="2065">2131</fixedTax>
+                <fixedTax year="2070">2472</fixedTax>
+                <fixedTax year="2075">2868</fixedTax>
+                <fixedTax year="2080">3326</fixedTax>
+                <fixedTax year="2085">3859</fixedTax>
+                <fixedTax year="2090">4476</fixedTax>
+                <fixedTax year="2095">5193</fixedTax>
+                <fixedTax year="2100">6024</fixedTax>
+            </policy-portfolio-standard>
+        </region>
+
+        <region name="Pakistan">
+            <policy-portfolio-standard name="GHG">
+                <market>ROW</market>
+                <policyType>tax</policyType>
+                <constraint year="2020">16406.3</constraint>
+                <constraint year="2025">16182.342</constraint>
+                <constraint year="2030">16078.2</constraint>
+                <constraint year="2035">14470.88</constraint>
+                <constraint year="2040">12863.56</constraint>
+                <constraint year="2045">11256.24</constraint>
+                <constraint year="2050">9648.92</constraint>
+                <constraint year="2055">8041.6</constraint>
+              
+
+                <min-price fillout="1" year="2020">-10000</min-price>
+                <min-price fillout="1" year="2025">0</min-price>
+            </policy-portfolio-standard>
+        </region>
+<region name="Pakistan">
+            <policy-portfolio-standard name="GHG">
+                <market>ROW</market>
+                <policyType>tax</policyType>
+                
+               <fixedTax year="2060">1837</fixedTax>
+
+                <fixedTax year="2065">2131</fixedTax>
+                <fixedTax year="2070">2472</fixedTax>
+                <fixedTax year="2075">2868</fixedTax>
+                <fixedTax year="2080">3326</fixedTax>
+                <fixedTax year="2085">3859</fixedTax>
+                <fixedTax year="2090">4476</fixedTax>
+                <fixedTax year="2095">5193</fixedTax>
+                <fixedTax year="2100">6024</fixedTax>
+            </policy-portfolio-standard>
+        </region>
+
+        <region name="Russia">
+            <policy-portfolio-standard name="GHG">
+                <market>ROW</market>
+                <policyType>tax</policyType>
+                <constraint year="2020">16406.3</constraint>
+                <constraint year="2025">16182.342</constraint>
+                <constraint year="2030">16078.2</constraint>
+                <constraint year="2035">14470.88</constraint>
+                <constraint year="2040">12863.56</constraint>
+                <constraint year="2045">11256.24</constraint>
+                <constraint year="2050">9648.92</constraint>
+                <constraint year="2055">8041.6</constraint>
+               
+
+                <min-price fillout="1" year="2020">-10000</min-price>
+                <min-price fillout="1" year="2025">0</min-price>
+            </policy-portfolio-standard>
+        </region>
+<region name="Russia">
+            <policy-portfolio-standard name="GHG">
+                <market>ROW</market>
+                <policyType>tax</policyType>
+                
+               <fixedTax year="2060">1837</fixedTax>
+
+                <fixedTax year="2065">2131</fixedTax>
+                <fixedTax year="2070">2472</fixedTax>
+                <fixedTax year="2075">2868</fixedTax>
+                <fixedTax year="2080">3326</fixedTax>
+                <fixedTax year="2085">3859</fixedTax>
+                <fixedTax year="2090">4476</fixedTax>
+                <fixedTax year="2095">5193</fixedTax>
+                <fixedTax year="2100">6024</fixedTax>
+            </policy-portfolio-standard>
+        </region>
+
+        <region name="South Africa">
+            <policy-portfolio-standard name="GHG">
+                <market>South Africa</market>
+                <policyType>tax</policyType>
+                <constraint year="2020">598.1</constraint>
+                <constraint year="2025">527.571</constraint>
+                <constraint year="2030">465.9</constraint>
+                <constraint year="2035">350.675</constraint>
+                <constraint year="2040">235.45</constraint>
+                <constraint year="2045">120.225</constraint>
+                <constraint year="2050">5</constraint>
+              <constraint year="2055">5</constraint>
+				<constraint year="2060">5</constraint>
+
+             
+                <min-price fillout="1" year="2020">-10000</min-price>
+                <min-price fillout="1" year="2025">0</min-price>
+            </policy-portfolio-standard>
+        </region>
+<region name="South Africa">
+            <policy-portfolio-standard name="GHG">
+                <market>South Africa</market>
+                <policyType>tax</policyType>
+                
+               
+                <!--fixedTax year="2060">2768</fixedTax-->
+                <fixedTax year="2065">2768</fixedTax>
+                <fixedTax year="2070">2768</fixedTax>
+                <fixedTax year="2075">2768</fixedTax>
+                <fixedTax year="2080">2768</fixedTax>
+                <fixedTax year="2085">2768</fixedTax>
+                <fixedTax year="2090">2768</fixedTax>
+                <fixedTax year="2095">2768</fixedTax>
+                <fixedTax year="2100">2768</fixedTax>
+            </policy-portfolio-standard>
+        </region>
+
+        <region name="South America_Northern">
+            <policy-portfolio-standard name="GHG">
+                <market>ROW</market>
+                <policyType>tax</policyType>
+                <constraint year="2020">16406.3</constraint>
+                <constraint year="2025">16182.342</constraint>
+                <constraint year="2030">16078.2</constraint>
+                <constraint year="2035">14470.88</constraint>
+                <constraint year="2040">12863.56</constraint>
+                <constraint year="2045">11256.24</constraint>
+                <constraint year="2050">9648.92</constraint>
+                <constraint year="2055">8041.6</constraint>
+               
+
+                <min-price fillout="1" year="2020">-10000</min-price>
+                <min-price fillout="1" year="2025">0</min-price>
+            </policy-portfolio-standard>
+        </region>
+<region name="South America_Northern">
+            <policy-portfolio-standard name="GHG">
+                <market>ROW</market>
+                <policyType>tax</policyType>
+                
+               <fixedTax year="2060">1837</fixedTax>
+
+                <fixedTax year="2065">2131</fixedTax>
+                <fixedTax year="2070">2472</fixedTax>
+                <fixedTax year="2075">2868</fixedTax>
+                <fixedTax year="2080">3326</fixedTax>
+                <fixedTax year="2085">3859</fixedTax>
+                <fixedTax year="2090">4476</fixedTax>
+                <fixedTax year="2095">5193</fixedTax>
+                <fixedTax year="2100">6024</fixedTax>
+            </policy-portfolio-standard>
+        </region>
+
+        <region name="South America_Southern">
+            <policy-portfolio-standard name="GHG">
+                <market>ROW</market>
+                <policyType>tax</policyType>
+                <constraint year="2020">16406.3</constraint>
+                <constraint year="2025">16182.342</constraint>
+                <constraint year="2030">16078.2</constraint>
+                <constraint year="2035">14470.88</constraint>
+                <constraint year="2040">12863.56</constraint>
+                <constraint year="2045">11256.24</constraint>
+                <constraint year="2050">9648.92</constraint>
+                <constraint year="2055">8041.6</constraint>
+               
+
+                <min-price fillout="1" year="2020">-10000</min-price>
+                <min-price fillout="1" year="2025">0</min-price>
+            </policy-portfolio-standard>
+        </region>
+<region name="South America_Southern">
+            <policy-portfolio-standard name="GHG">
+                <market>ROW</market>
+                <policyType>tax</policyType>
+                
+               <fixedTax year="2060">1837</fixedTax>
+
+                <fixedTax year="2065">2131</fixedTax>
+                <fixedTax year="2070">2472</fixedTax>
+                <fixedTax year="2075">2868</fixedTax>
+                <fixedTax year="2080">3326</fixedTax>
+                <fixedTax year="2085">3859</fixedTax>
+                <fixedTax year="2090">4476</fixedTax>
+                <fixedTax year="2095">5193</fixedTax>
+                <fixedTax year="2100">6024</fixedTax>
+            </policy-portfolio-standard>
+        </region>
+
+        <region name="South Asia">
+            <policy-portfolio-standard name="GHG">
+                <market>ROW</market>
+                <policyType>tax</policyType>
+                <constraint year="2020">16406.3</constraint>
+                <constraint year="2025">16182.342</constraint>
+                <constraint year="2030">16078.2</constraint>
+                <constraint year="2035">14470.88</constraint>
+                <constraint year="2040">12863.56</constraint>
+                <constraint year="2045">11256.24</constraint>
+                <constraint year="2050">9648.92</constraint>
+                <constraint year="2055">8041.6</constraint>
+              
+
+                <min-price fillout="1" year="2020">-10000</min-price>
+                <min-price fillout="1" year="2025">0</min-price>
+            </policy-portfolio-standard>
+        </region>
+<region name="South Asia">
+            <policy-portfolio-standard name="GHG">
+                <market>ROW</market>
+                <policyType>tax</policyType>
+                
+               <fixedTax year="2060">1837</fixedTax>
+
+                <fixedTax year="2065">2131</fixedTax>
+                <fixedTax year="2070">2472</fixedTax>
+                <fixedTax year="2075">2868</fixedTax>
+                <fixedTax year="2080">3326</fixedTax>
+                <fixedTax year="2085">3859</fixedTax>
+                <fixedTax year="2090">4476</fixedTax>
+                <fixedTax year="2095">5193</fixedTax>
+                <fixedTax year="2100">6024</fixedTax>
+            </policy-portfolio-standard>
+        </region>
+
+        <region name="South Korea">
+            <policy-portfolio-standard name="GHG">
+                <market>South Korea</market>
+                <policyType>tax</policyType>
+                <constraint year="2020">737.2</constraint>
+                <constraint year="2025">738.342</constraint>
+                <constraint year="2030">500</constraint>
+                <constraint year="2035">376.25</constraint>
+                <constraint year="2040">252.5</constraint>
+                <constraint year="2045">128.75</constraint>
+                <constraint year="2050">5</constraint>
+               <constraint year="2055">5</constraint>
+				<constraint year="2060">5</constraint>
+             
+                <min-price fillout="1" year="2020">-10000</min-price>
+                <min-price fillout="1" year="2025">0</min-price>
+            </policy-portfolio-standard>
+        </region>
+<region name="South Korea">
+            <policy-portfolio-standard name="GHG">
+                <market>South Korea</market>
+                <policyType>tax</policyType>
+                
+               
+                <!--fixedTax year="2060">2750</fixedTax-->
+                <fixedTax year="2065">2750</fixedTax>
+                <fixedTax year="2070">2750</fixedTax>
+                <fixedTax year="2075">2750</fixedTax>
+                <fixedTax year="2080">2750</fixedTax>
+                <fixedTax year="2085">2750</fixedTax>
+                <fixedTax year="2090">2750</fixedTax>
+                <fixedTax year="2095">2750</fixedTax>
+                <fixedTax year="2100">2750</fixedTax>
+            </policy-portfolio-standard>
+        </region>
+
+        <region name="Southeast Asia">
+            <policy-portfolio-standard name="GHG">
+                <market>ROW</market>
+                <policyType>tax</policyType>
+                <constraint year="2020">16406.3</constraint>
+                <constraint year="2025">16182.342</constraint>
+                <constraint year="2030">16078.2</constraint>
+                <constraint year="2035">14470.88</constraint>
+                <constraint year="2040">12863.56</constraint>
+                <constraint year="2045">11256.24</constraint>
+                <constraint year="2050">9648.92</constraint>
+                <constraint year="2055">8041.6</constraint>
+             
+
+                <min-price fillout="1" year="2020">-10000</min-price>
+                <min-price fillout="1" year="2025">0</min-price>
+            </policy-portfolio-standard>
+        </region>
+<region name="Southeast Asia">
+            <policy-portfolio-standard name="GHG">
+                <market>ROW</market>
+                <policyType>tax</policyType>
+                
+               <fixedTax year="2060">1837</fixedTax>
+
+                <fixedTax year="2065">2131</fixedTax>
+                <fixedTax year="2070">2472</fixedTax>
+                <fixedTax year="2075">2868</fixedTax>
+                <fixedTax year="2080">3326</fixedTax>
+                <fixedTax year="2085">3859</fixedTax>
+                <fixedTax year="2090">4476</fixedTax>
+                <fixedTax year="2095">5193</fixedTax>
+                <fixedTax year="2100">6024</fixedTax>
+            </policy-portfolio-standard>
+        </region>
+
+        <region name="Taiwan">
+            <policy-portfolio-standard name="GHG">
+                <market>ROW</market>
+                <policyType>tax</policyType>
+                <constraint year="2020">16406.3</constraint>
+                <constraint year="2025">16182.342</constraint>
+                <constraint year="2030">16078.2</constraint>
+                <constraint year="2035">14470.88</constraint>
+                <constraint year="2040">12863.56</constraint>
+                <constraint year="2045">11256.24</constraint>
+                <constraint year="2050">9648.92</constraint>
+                <constraint year="2055">8041.6</constraint>
+              
+                <min-price fillout="1" year="2020">-10000</min-price>
+                <min-price fillout="1" year="2025">0</min-price>
+            </policy-portfolio-standard>
+        </region>
+<region name="Taiwan">
+            <policy-portfolio-standard name="GHG">
+                <market>ROW</market>
+                <policyType>tax</policyType>
+                
+               <fixedTax year="2060">1837</fixedTax>
+
+                <fixedTax year="2065">2131</fixedTax>
+                <fixedTax year="2070">2472</fixedTax>
+                <fixedTax year="2075">2868</fixedTax>
+                <fixedTax year="2080">3326</fixedTax>
+                <fixedTax year="2085">3859</fixedTax>
+                <fixedTax year="2090">4476</fixedTax>
+                <fixedTax year="2095">5193</fixedTax>
+                <fixedTax year="2100">6024</fixedTax>
+            </policy-portfolio-standard>
+        </region>
+
+        <region name="USA">
+            <policy-portfolio-standard name="GHG">
+                <market>USA</market>
+                <policyType>tax</policyType>
+                <constraint year="2020">6150.6</constraint>
+                <constraint year="2025">5378.769</constraint>
+                <constraint year="2030">3765</constraint>
+                <constraint year="2035">2825</constraint>
+                <constraint year="2040">1885</constraint>
+                <constraint year="2045">945</constraint>
+                <constraint year="2050">5</constraint>
+                <constraint year="2055">5</constraint>
+				<constraint year="2060">5</constraint>
+              
+                <min-price fillout="1" year="2020">-10000</min-price>
+                <min-price fillout="1" year="2025">0</min-price>
+            </policy-portfolio-standard>
+        </region>
+<region name="USA">
+            <policy-portfolio-standard name="GHG">
+                <market>USA</market>
+                <policyType>tax</policyType>
+                
+               
+                <!--fixedTax year="2060">2093</fixedTax-->
+                <fixedTax year="2065">2093</fixedTax>
+                <fixedTax year="2070">2093</fixedTax>
+                <fixedTax year="2075">2093</fixedTax>
+                <fixedTax year="2080">2093</fixedTax>
+                <fixedTax year="2085">2093</fixedTax>
+                <fixedTax year="2090">2093</fixedTax>
+                <fixedTax year="2095">2093</fixedTax>
+                <fixedTax year="2100">2093</fixedTax>
+            </policy-portfolio-standard>
+        </region>
+
+    </world>
+</scenario>

@@ -18,8 +18,8 @@
                 <output-unit>GgCF4</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
-                <demand-adjust fillout="1" year="2025">25</demand-adjust>
+                <price-adjust fillout="1" year="2025">5.727272727</price-adjust>
+                <demand-adjust fillout="1" year="2025">21</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
                 <price-unit>1990$/tCH4</price-unit>
@@ -27,15 +27,15 @@
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4_AGR">
                 <price-adjust fillout="1" year="2025">5.727272727</price-adjust>
-                <demand-adjust fillout="1" year="2025">25</demand-adjust>
+                <demand-adjust fillout="1" year="2025">21</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
                 <price-unit>1990$/tCH4</price-unit>
                 <output-unit>TgCH4</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4_AWB">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
-                <demand-adjust fillout="1" year="2025">25</demand-adjust>
+                <price-adjust fillout="1" year="2025">5.727272727</price-adjust>
+                <demand-adjust fillout="1" year="2025">21</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
                 <price-unit>1990$/tCH4</price-unit>
@@ -50,7 +50,12 @@
                 <output-unit>MTC</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CO2_LUC">
-                <price-adjust fillout="1" year="2025">0.1</price-adjust>
+                <price-adjust year="2025" fillout="1">0.1</price-adjust>
+                <price-adjust year="2030" fillout="1">0.1</price-adjust>
+                <price-adjust year="2035" fillout="1">0.1</price-adjust>
+                <price-adjust year="2040" fillout="1">0.1</price-adjust>
+                <price-adjust year="2045" fillout="1">0.1</price-adjust>
+                <price-adjust year="2050" fillout="1">0.1</price-adjust>
                 <demand-adjust fillout="1" year="2025">0</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
@@ -138,7 +143,7 @@
                 <output-unit>GgHFC365mfc</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="N2O">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
+                <price-adjust fillout="1" year="2025">84.54545454</price-adjust>
                 <demand-adjust fillout="1" year="2025">298</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
@@ -146,7 +151,7 @@
                 <output-unit>TgN2O</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="N2O_AGR">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
+                <price-adjust fillout="1" year="2025">84.54545454</price-adjust>
                 <demand-adjust fillout="1" year="2025">298</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
@@ -154,7 +159,7 @@
                 <output-unit>TgN2O</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="N2O_AWB">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
+                <price-adjust fillout="1" year="2025">84.54545454</price-adjust>
                 <demand-adjust fillout="1" year="2025">298</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
@@ -188,8 +193,8 @@
                 <output-unit>GgCF4</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
-                <demand-adjust fillout="1" year="2025">25</demand-adjust>
+                <price-adjust fillout="1" year="2025">5.727272727</price-adjust>
+                <demand-adjust fillout="1" year="2025">21</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
                 <price-unit>1990$/tCH4</price-unit>
@@ -197,15 +202,15 @@
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4_AGR">
                 <price-adjust fillout="1" year="2025">5.727272727</price-adjust>
-                <demand-adjust fillout="1" year="2025">25</demand-adjust>
+                <demand-adjust fillout="1" year="2025">21</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
                 <price-unit>1990$/tCH4</price-unit>
                 <output-unit>TgCH4</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4_AWB">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
-                <demand-adjust fillout="1" year="2025">25</demand-adjust>
+                <price-adjust fillout="1" year="2025">5.727272727</price-adjust>
+                <demand-adjust fillout="1" year="2025">21</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
                 <price-unit>1990$/tCH4</price-unit>
@@ -220,7 +225,12 @@
                 <output-unit>MTC</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CO2_LUC">
-                <price-adjust fillout="1" year="2025">0.1</price-adjust>
+                                <price-adjust year="2025" fillout="1">0.1</price-adjust>
+                <price-adjust year="2030" fillout="1">0.1</price-adjust>
+                <price-adjust year="2035" fillout="1">0.1</price-adjust>
+                <price-adjust year="2040" fillout="1">0.1</price-adjust>
+                <price-adjust year="2045" fillout="1">0.1</price-adjust>
+                <price-adjust year="2050" fillout="1">0.1</price-adjust>
                 <demand-adjust fillout="1" year="2025">0</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
@@ -308,7 +318,7 @@
                 <output-unit>GgHFC365mfc</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="N2O">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
+                <price-adjust fillout="1" year="2025">84.54545454</price-adjust>
                 <demand-adjust fillout="1" year="2025">298</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
@@ -316,7 +326,7 @@
                 <output-unit>TgN2O</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="N2O_AGR">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
+                <price-adjust fillout="1" year="2025">84.54545454</price-adjust>
                 <demand-adjust fillout="1" year="2025">298</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
@@ -324,7 +334,7 @@
                 <output-unit>TgN2O</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="N2O_AWB">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
+                <price-adjust fillout="1" year="2025">84.54545454</price-adjust>
                 <demand-adjust fillout="1" year="2025">298</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
@@ -358,8 +368,8 @@
                 <output-unit>GgCF4</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
-                <demand-adjust fillout="1" year="2025">25</demand-adjust>
+                <price-adjust fillout="1" year="2025">5.727272727</price-adjust>
+                <demand-adjust fillout="1" year="2025">21</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
                 <price-unit>1990$/tCH4</price-unit>
@@ -367,15 +377,15 @@
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4_AGR">
                 <price-adjust fillout="1" year="2025">5.727272727</price-adjust>
-                <demand-adjust fillout="1" year="2025">25</demand-adjust>
+                <demand-adjust fillout="1" year="2025">21</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
                 <price-unit>1990$/tCH4</price-unit>
                 <output-unit>TgCH4</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4_AWB">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
-                <demand-adjust fillout="1" year="2025">25</demand-adjust>
+                <price-adjust fillout="1" year="2025">5.727272727</price-adjust>
+                <demand-adjust fillout="1" year="2025">21</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
                 <price-unit>1990$/tCH4</price-unit>
@@ -390,7 +400,12 @@
                 <output-unit>MTC</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CO2_LUC">
-                <price-adjust fillout="1" year="2025">0.1</price-adjust>
+                                <price-adjust year="2025" fillout="1">0.1</price-adjust>
+                <price-adjust year="2030" fillout="1">0.1</price-adjust>
+                <price-adjust year="2035" fillout="1">0.1</price-adjust>
+                <price-adjust year="2040" fillout="1">0.1</price-adjust>
+                <price-adjust year="2045" fillout="1">0.1</price-adjust>
+                <price-adjust year="2050" fillout="1">0.1</price-adjust>
                 <demand-adjust fillout="1" year="2025">0</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
@@ -478,7 +493,7 @@
                 <output-unit>GgHFC365mfc</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="N2O">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
+                <price-adjust fillout="1" year="2025">84.54545454</price-adjust>
                 <demand-adjust fillout="1" year="2025">298</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
@@ -486,7 +501,7 @@
                 <output-unit>TgN2O</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="N2O_AGR">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
+                <price-adjust fillout="1" year="2025">84.54545454</price-adjust>
                 <demand-adjust fillout="1" year="2025">298</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
@@ -494,7 +509,7 @@
                 <output-unit>TgN2O</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="N2O_AWB">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
+                <price-adjust fillout="1" year="2025">84.54545454</price-adjust>
                 <demand-adjust fillout="1" year="2025">298</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
@@ -528,8 +543,8 @@
                 <output-unit>GgCF4</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
-                <demand-adjust fillout="1" year="2025">25</demand-adjust>
+                <price-adjust fillout="1" year="2025">5.727272727</price-adjust>
+                <demand-adjust fillout="1" year="2025">21</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
                 <price-unit>1990$/tCH4</price-unit>
@@ -537,15 +552,15 @@
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4_AGR">
                 <price-adjust fillout="1" year="2025">5.727272727</price-adjust>
-                <demand-adjust fillout="1" year="2025">25</demand-adjust>
+                <demand-adjust fillout="1" year="2025">21</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
                 <price-unit>1990$/tCH4</price-unit>
                 <output-unit>TgCH4</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4_AWB">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
-                <demand-adjust fillout="1" year="2025">25</demand-adjust>
+                <price-adjust fillout="1" year="2025">5.727272727</price-adjust>
+                <demand-adjust fillout="1" year="2025">21</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
                 <price-unit>1990$/tCH4</price-unit>
@@ -560,7 +575,12 @@
                 <output-unit>MTC</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CO2_LUC">
-                <price-adjust fillout="1" year="2025">0.1</price-adjust>
+                                <price-adjust year="2025" fillout="1">0.1</price-adjust>
+                <price-adjust year="2030" fillout="1">0.1</price-adjust>
+                <price-adjust year="2035" fillout="1">0.1</price-adjust>
+                <price-adjust year="2040" fillout="1">0.1</price-adjust>
+                <price-adjust year="2045" fillout="1">0.1</price-adjust>
+                <price-adjust year="2050" fillout="1">0.1</price-adjust>
                 <demand-adjust fillout="1" year="2025">0</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
@@ -648,7 +668,7 @@
                 <output-unit>GgHFC365mfc</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="N2O">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
+                <price-adjust fillout="1" year="2025">84.54545454</price-adjust>
                 <demand-adjust fillout="1" year="2025">298</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
@@ -656,7 +676,7 @@
                 <output-unit>TgN2O</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="N2O_AGR">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
+                <price-adjust fillout="1" year="2025">84.54545454</price-adjust>
                 <demand-adjust fillout="1" year="2025">298</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
@@ -664,7 +684,7 @@
                 <output-unit>TgN2O</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="N2O_AWB">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
+                <price-adjust fillout="1" year="2025">84.54545454</price-adjust>
                 <demand-adjust fillout="1" year="2025">298</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
@@ -698,8 +718,8 @@
                 <output-unit>GgCF4</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
-                <demand-adjust fillout="1" year="2025">25</demand-adjust>
+                <price-adjust fillout="1" year="2025">5.727272727</price-adjust>
+                <demand-adjust fillout="1" year="2025">21</demand-adjust>
                 <market>Argentina</market>
                 <linked-policy>GHG</linked-policy>
                 <price-unit>1990$/tCH4</price-unit>
@@ -707,15 +727,15 @@
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4_AGR">
                 <price-adjust fillout="1" year="2025">5.727272727</price-adjust>
-                <demand-adjust fillout="1" year="2025">25</demand-adjust>
+                <demand-adjust fillout="1" year="2025">21</demand-adjust>
                 <market>Argentina</market>
                 <linked-policy>GHG</linked-policy>
                 <price-unit>1990$/tCH4</price-unit>
                 <output-unit>TgCH4</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4_AWB">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
-                <demand-adjust fillout="1" year="2025">25</demand-adjust>
+                <price-adjust fillout="1" year="2025">5.727272727</price-adjust>
+                <demand-adjust fillout="1" year="2025">21</demand-adjust>
                 <market>Argentina</market>
                 <linked-policy>GHG</linked-policy>
                 <price-unit>1990$/tCH4</price-unit>
@@ -730,7 +750,13 @@
                 <output-unit>MTC</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CO2_LUC">
-                <price-adjust fillout="1" year="2025">0.1</price-adjust>
+                  <price-adjust year="2025" fillout="1">0.1</price-adjust>
+                <price-adjust year="2030" fillout="1">0.1</price-adjust>
+                <price-adjust year="2035" fillout="1">0.1</price-adjust>
+                <price-adjust year="2040" fillout="1">0.1</price-adjust>
+                <price-adjust year="2045" fillout="1">0.1</price-adjust>
+                <price-adjust year="2050" fillout="1">0.1</price-adjust>
+				<price-adjust year="2055" fillout="1">0.5</price-adjust>
                 <demand-adjust fillout="1" year="2025">0</demand-adjust>
                 <market>Argentina</market>
                 <linked-policy>GHG</linked-policy>
@@ -818,7 +844,7 @@
                 <output-unit>GgHFC365mfc</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="N2O">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
+                <price-adjust fillout="1" year="2025">84.54545454</price-adjust>
                 <demand-adjust fillout="1" year="2025">298</demand-adjust>
                 <market>Argentina</market>
                 <linked-policy>GHG</linked-policy>
@@ -826,7 +852,7 @@
                 <output-unit>TgN2O</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="N2O_AGR">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
+                <price-adjust fillout="1" year="2025">84.54545454</price-adjust>
                 <demand-adjust fillout="1" year="2025">298</demand-adjust>
                 <market>Argentina</market>
                 <linked-policy>GHG</linked-policy>
@@ -834,7 +860,7 @@
                 <output-unit>TgN2O</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="N2O_AWB">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
+                <price-adjust fillout="1" year="2025">84.54545454</price-adjust>
                 <demand-adjust fillout="1" year="2025">298</demand-adjust>
                 <market>Argentina</market>
                 <linked-policy>GHG</linked-policy>
@@ -868,8 +894,8 @@
                 <output-unit>GgCF4</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
-                <demand-adjust fillout="1" year="2025">25</demand-adjust>
+                <price-adjust fillout="1" year="2025">5.727272727</price-adjust>
+                <demand-adjust fillout="1" year="2025">21</demand-adjust>
                 <market>Australia_NZ</market>
                 <linked-policy>GHG</linked-policy>
                 <price-unit>1990$/tCH4</price-unit>
@@ -877,15 +903,15 @@
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4_AGR">
                 <price-adjust fillout="1" year="2025">5.727272727</price-adjust>
-                <demand-adjust fillout="1" year="2025">25</demand-adjust>
+                <demand-adjust fillout="1" year="2025">21</demand-adjust>
                 <market>Australia_NZ</market>
                 <linked-policy>GHG</linked-policy>
                 <price-unit>1990$/tCH4</price-unit>
                 <output-unit>TgCH4</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4_AWB">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
-                <demand-adjust fillout="1" year="2025">25</demand-adjust>
+                <price-adjust fillout="1" year="2025">5.727272727</price-adjust>
+                <demand-adjust fillout="1" year="2025">21</demand-adjust>
                 <market>Australia_NZ</market>
                 <linked-policy>GHG</linked-policy>
                 <price-unit>1990$/tCH4</price-unit>
@@ -900,7 +926,13 @@
                 <output-unit>MTC</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CO2_LUC">
-                <price-adjust fillout="1" year="2025">0.1</price-adjust>
+                                
+                <price-adjust year="2025" fillout="1">0.1</price-adjust>
+                <price-adjust year="2030" fillout="1">0.1</price-adjust>
+                <price-adjust year="2035" fillout="1">0.1</price-adjust>
+                <price-adjust year="2040" fillout="1">0.1</price-adjust>
+                <price-adjust year="2045" fillout="1">0.1</price-adjust>
+                <price-adjust year="2050" fillout="1">0.1</price-adjust>
                 <demand-adjust fillout="1" year="2025">0</demand-adjust>
                 <market>Australia_NZ</market>
                 <linked-policy>GHG</linked-policy>
@@ -988,7 +1020,7 @@
                 <output-unit>GgHFC365mfc</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="N2O">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
+                <price-adjust fillout="1" year="2025">84.54545454</price-adjust>
                 <demand-adjust fillout="1" year="2025">298</demand-adjust>
                 <market>Australia_NZ</market>
                 <linked-policy>GHG</linked-policy>
@@ -996,7 +1028,7 @@
                 <output-unit>TgN2O</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="N2O_AGR">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
+                <price-adjust fillout="1" year="2025">84.54545454</price-adjust>
                 <demand-adjust fillout="1" year="2025">298</demand-adjust>
                 <market>Australia_NZ</market>
                 <linked-policy>GHG</linked-policy>
@@ -1004,7 +1036,7 @@
                 <output-unit>TgN2O</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="N2O_AWB">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
+                <price-adjust fillout="1" year="2025">84.54545454</price-adjust>
                 <demand-adjust fillout="1" year="2025">298</demand-adjust>
                 <market>Australia_NZ</market>
                 <linked-policy>GHG</linked-policy>
@@ -1038,8 +1070,8 @@
                 <output-unit>GgCF4</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
-                <demand-adjust fillout="1" year="2025">25</demand-adjust>
+                <price-adjust fillout="1" year="2025">5.727272727</price-adjust>
+                <demand-adjust fillout="1" year="2025">21</demand-adjust>
                 <market>Brazil</market>
                 <linked-policy>GHG</linked-policy>
                 <price-unit>1990$/tCH4</price-unit>
@@ -1047,15 +1079,15 @@
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4_AGR">
                 <price-adjust fillout="1" year="2025">5.727272727</price-adjust>
-                <demand-adjust fillout="1" year="2025">25</demand-adjust>
+                <demand-adjust fillout="1" year="2025">21</demand-adjust>
                 <market>Brazil</market>
                 <linked-policy>GHG</linked-policy>
                 <price-unit>1990$/tCH4</price-unit>
                 <output-unit>TgCH4</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4_AWB">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
-                <demand-adjust fillout="1" year="2025">25</demand-adjust>
+                <price-adjust fillout="1" year="2025">5.727272727</price-adjust>
+                <demand-adjust fillout="1" year="2025">21</demand-adjust>
                 <market>Brazil</market>
                 <linked-policy>GHG</linked-policy>
                 <price-unit>1990$/tCH4</price-unit>
@@ -1070,8 +1102,12 @@
                 <output-unit>MTC</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CO2_LUC">
-                <price-adjust fillout="1" year="2025">0.1</price-adjust>
-                <demand-adjust fillout="1" year="2025">0</demand-adjust>
+                <price-adjust year="2025" fillout="1">0.1</price-adjust>
+                <price-adjust year="2030" fillout="1">0.1</price-adjust>
+                <price-adjust year="2035" fillout="1">0.1</price-adjust>
+                <price-adjust year="2040" fillout="1">0.1</price-adjust>
+                <price-adjust year="2045" fillout="1">0.1</price-adjust>
+                <price-adjust year="2050" fillout="1">0.1</price-adjust>
                 <market>Brazil</market>
                 <linked-policy>GHG</linked-policy>
                 <price-unit>1990$/tC</price-unit>
@@ -1158,7 +1194,7 @@
                 <output-unit>GgHFC365mfc</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="N2O">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
+                <price-adjust fillout="1" year="2025">84.54545454</price-adjust>
                 <demand-adjust fillout="1" year="2025">298</demand-adjust>
                 <market>Brazil</market>
                 <linked-policy>GHG</linked-policy>
@@ -1166,7 +1202,7 @@
                 <output-unit>TgN2O</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="N2O_AGR">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
+                <price-adjust fillout="1" year="2025">84.54545454</price-adjust>
                 <demand-adjust fillout="1" year="2025">298</demand-adjust>
                 <market>Brazil</market>
                 <linked-policy>GHG</linked-policy>
@@ -1174,7 +1210,7 @@
                 <output-unit>TgN2O</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="N2O_AWB">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
+                <price-adjust fillout="1" year="2025">84.54545454</price-adjust>
                 <demand-adjust fillout="1" year="2025">298</demand-adjust>
                 <market>Brazil</market>
                 <linked-policy>GHG</linked-policy>
@@ -1208,8 +1244,8 @@
                 <output-unit>GgCF4</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
-                <demand-adjust fillout="1" year="2025">25</demand-adjust>
+                <price-adjust fillout="1" year="2025">5.727272727</price-adjust>
+                <demand-adjust fillout="1" year="2025">21</demand-adjust>
                 <market>Canada</market>
                 <linked-policy>GHG</linked-policy>
                 <price-unit>1990$/tCH4</price-unit>
@@ -1217,15 +1253,15 @@
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4_AGR">
                 <price-adjust fillout="1" year="2025">5.727272727</price-adjust>
-                <demand-adjust fillout="1" year="2025">25</demand-adjust>
+                <demand-adjust fillout="1" year="2025">21</demand-adjust>
                 <market>Canada</market>
                 <linked-policy>GHG</linked-policy>
                 <price-unit>1990$/tCH4</price-unit>
                 <output-unit>TgCH4</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4_AWB">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
-                <demand-adjust fillout="1" year="2025">25</demand-adjust>
+                <price-adjust fillout="1" year="2025">5.727272727</price-adjust>
+                <demand-adjust fillout="1" year="2025">21</demand-adjust>
                 <market>Canada</market>
                 <linked-policy>GHG</linked-policy>
                 <price-unit>1990$/tCH4</price-unit>
@@ -1240,7 +1276,15 @@
                 <output-unit>MTC</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CO2_LUC">
-                <price-adjust fillout="1" year="2025">0.1</price-adjust>
+                                
+                <price-adjust year="2025" fillout="1">0.1</price-adjust>
+                <price-adjust year="2030" fillout="1">0.1</price-adjust>
+                <price-adjust year="2035" fillout="1">0.1</price-adjust>
+                <price-adjust year="2040" fillout="1">0.1</price-adjust>
+                <price-adjust year="2045" fillout="1">0.1</price-adjust>
+                <price-adjust year="2050" fillout="1">0.1</price-adjust>
+				<price-adjust year="2055" fillout="1">0.75</price-adjust>
+				<price-adjust year="2060" fillout="1">1</price-adjust>
                 <demand-adjust fillout="1" year="2025">0</demand-adjust>
                 <market>Canada</market>
                 <linked-policy>GHG</linked-policy>
@@ -1328,7 +1372,7 @@
                 <output-unit>GgHFC365mfc</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="N2O">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
+                <price-adjust fillout="1" year="2025">84.54545454</price-adjust>
                 <demand-adjust fillout="1" year="2025">298</demand-adjust>
                 <market>Canada</market>
                 <linked-policy>GHG</linked-policy>
@@ -1336,7 +1380,7 @@
                 <output-unit>TgN2O</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="N2O_AGR">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
+                <price-adjust fillout="1" year="2025">84.54545454</price-adjust>
                 <demand-adjust fillout="1" year="2025">298</demand-adjust>
                 <market>Canada</market>
                 <linked-policy>GHG</linked-policy>
@@ -1344,7 +1388,7 @@
                 <output-unit>TgN2O</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="N2O_AWB">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
+                <price-adjust fillout="1" year="2025">84.54545454</price-adjust>
                 <demand-adjust fillout="1" year="2025">298</demand-adjust>
                 <market>Canada</market>
                 <linked-policy>GHG</linked-policy>
@@ -1378,8 +1422,8 @@
                 <output-unit>GgCF4</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
-                <demand-adjust fillout="1" year="2025">25</demand-adjust>
+                <price-adjust fillout="1" year="2025">5.727272727</price-adjust>
+                <demand-adjust fillout="1" year="2025">21</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
                 <price-unit>1990$/tCH4</price-unit>
@@ -1387,15 +1431,15 @@
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4_AGR">
                 <price-adjust fillout="1" year="2025">5.727272727</price-adjust>
-                <demand-adjust fillout="1" year="2025">25</demand-adjust>
+                <demand-adjust fillout="1" year="2025">21</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
                 <price-unit>1990$/tCH4</price-unit>
                 <output-unit>TgCH4</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4_AWB">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
-                <demand-adjust fillout="1" year="2025">25</demand-adjust>
+                <price-adjust fillout="1" year="2025">5.727272727</price-adjust>
+                <demand-adjust fillout="1" year="2025">21</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
                 <price-unit>1990$/tCH4</price-unit>
@@ -1410,7 +1454,12 @@
                 <output-unit>MTC</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CO2_LUC">
-                <price-adjust fillout="1" year="2025">0.1</price-adjust>
+                                <price-adjust year="2025" fillout="1">0.1</price-adjust>
+                <price-adjust year="2030" fillout="1">0.1</price-adjust>
+                <price-adjust year="2035" fillout="1">0.1</price-adjust>
+                <price-adjust year="2040" fillout="1">0.1</price-adjust>
+                <price-adjust year="2045" fillout="1">0.1</price-adjust>
+                <price-adjust year="2050" fillout="1">0.1</price-adjust>
                 <demand-adjust fillout="1" year="2025">0</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
@@ -1498,7 +1547,7 @@
                 <output-unit>GgHFC365mfc</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="N2O">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
+                <price-adjust fillout="1" year="2025">84.54545454</price-adjust>
                 <demand-adjust fillout="1" year="2025">298</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
@@ -1506,7 +1555,7 @@
                 <output-unit>TgN2O</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="N2O_AGR">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
+                <price-adjust fillout="1" year="2025">84.54545454</price-adjust>
                 <demand-adjust fillout="1" year="2025">298</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
@@ -1514,7 +1563,7 @@
                 <output-unit>TgN2O</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="N2O_AWB">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
+                <price-adjust fillout="1" year="2025">84.54545454</price-adjust>
                 <demand-adjust fillout="1" year="2025">298</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
@@ -1548,8 +1597,8 @@
                 <output-unit>GgCF4</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
-                <demand-adjust fillout="1" year="2025">25</demand-adjust>
+                <price-adjust fillout="1" year="2025">5.727272727</price-adjust>
+                <demand-adjust fillout="1" year="2025">21</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
                 <price-unit>1990$/tCH4</price-unit>
@@ -1557,15 +1606,15 @@
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4_AGR">
                 <price-adjust fillout="1" year="2025">5.727272727</price-adjust>
-                <demand-adjust fillout="1" year="2025">25</demand-adjust>
+                <demand-adjust fillout="1" year="2025">21</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
                 <price-unit>1990$/tCH4</price-unit>
                 <output-unit>TgCH4</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4_AWB">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
-                <demand-adjust fillout="1" year="2025">25</demand-adjust>
+                <price-adjust fillout="1" year="2025">5.727272727</price-adjust>
+                <demand-adjust fillout="1" year="2025">21</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
                 <price-unit>1990$/tCH4</price-unit>
@@ -1580,7 +1629,12 @@
                 <output-unit>MTC</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CO2_LUC">
-                <price-adjust fillout="1" year="2025">0.1</price-adjust>
+                                <price-adjust year="2025" fillout="1">0.1</price-adjust>
+                <price-adjust year="2030" fillout="1">0.1</price-adjust>
+                <price-adjust year="2035" fillout="1">0.1</price-adjust>
+                <price-adjust year="2040" fillout="1">0.1</price-adjust>
+                <price-adjust year="2045" fillout="1">0.1</price-adjust>
+                <price-adjust year="2050" fillout="1">0.1</price-adjust>
                 <demand-adjust fillout="1" year="2025">0</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
@@ -1668,7 +1722,7 @@
                 <output-unit>GgHFC365mfc</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="N2O">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
+                <price-adjust fillout="1" year="2025">84.54545454</price-adjust>
                 <demand-adjust fillout="1" year="2025">298</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
@@ -1676,7 +1730,7 @@
                 <output-unit>TgN2O</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="N2O_AGR">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
+                <price-adjust fillout="1" year="2025">84.54545454</price-adjust>
                 <demand-adjust fillout="1" year="2025">298</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
@@ -1684,7 +1738,7 @@
                 <output-unit>TgN2O</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="N2O_AWB">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
+                <price-adjust fillout="1" year="2025">84.54545454</price-adjust>
                 <demand-adjust fillout="1" year="2025">298</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
@@ -1718,8 +1772,8 @@
                 <output-unit>GgCF4</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
-                <demand-adjust fillout="1" year="2025">25</demand-adjust>
+                <price-adjust fillout="1" year="2025">5.727272727</price-adjust>
+                <demand-adjust fillout="1" year="2025">21</demand-adjust>
                 <market>China</market>
                 <linked-policy>GHG</linked-policy>
                 <price-unit>1990$/tCH4</price-unit>
@@ -1727,15 +1781,15 @@
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4_AGR">
                 <price-adjust fillout="1" year="2025">5.727272727</price-adjust>
-                <demand-adjust fillout="1" year="2025">25</demand-adjust>
+                <demand-adjust fillout="1" year="2025">21</demand-adjust>
                 <market>China</market>
                 <linked-policy>GHG</linked-policy>
                 <price-unit>1990$/tCH4</price-unit>
                 <output-unit>TgCH4</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4_AWB">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
-                <demand-adjust fillout="1" year="2025">25</demand-adjust>
+                <price-adjust fillout="1" year="2025">5.727272727</price-adjust>
+                <demand-adjust fillout="1" year="2025">21</demand-adjust>
                 <market>China</market>
                 <linked-policy>GHG</linked-policy>
                 <price-unit>1990$/tCH4</price-unit>
@@ -1750,7 +1804,13 @@
                 <output-unit>MTC</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CO2_LUC">
-                <price-adjust fillout="1" year="2025">0.1</price-adjust>
+                                
+                <price-adjust year="2025" fillout="1">0.1</price-adjust>
+                <price-adjust year="2030" fillout="1">0.1</price-adjust>
+                <price-adjust year="2035" fillout="1">0.1</price-adjust>
+                <price-adjust year="2040" fillout="1">0.1</price-adjust>
+                <price-adjust year="2045" fillout="1">0.1</price-adjust>
+                <price-adjust year="2050" fillout="1">0.1</price-adjust>
                 <demand-adjust fillout="1" year="2025">0</demand-adjust>
                 <market>China</market>
                 <linked-policy>GHG</linked-policy>
@@ -1838,7 +1898,7 @@
                 <output-unit>GgHFC365mfc</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="N2O">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
+                <price-adjust fillout="1" year="2025">84.54545454</price-adjust>
                 <demand-adjust fillout="1" year="2025">298</demand-adjust>
                 <market>China</market>
                 <linked-policy>GHG</linked-policy>
@@ -1846,7 +1906,7 @@
                 <output-unit>TgN2O</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="N2O_AGR">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
+                <price-adjust fillout="1" year="2025">84.54545454</price-adjust>
                 <demand-adjust fillout="1" year="2025">298</demand-adjust>
                 <market>China</market>
                 <linked-policy>GHG</linked-policy>
@@ -1854,7 +1914,7 @@
                 <output-unit>TgN2O</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="N2O_AWB">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
+                <price-adjust fillout="1" year="2025">84.54545454</price-adjust>
                 <demand-adjust fillout="1" year="2025">298</demand-adjust>
                 <market>China</market>
                 <linked-policy>GHG</linked-policy>
@@ -1888,8 +1948,8 @@
                 <output-unit>GgCF4</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
-                <demand-adjust fillout="1" year="2025">25</demand-adjust>
+                <price-adjust fillout="1" year="2025">5.727272727</price-adjust>
+                <demand-adjust fillout="1" year="2025">21</demand-adjust>
                 <market>Colombia</market>
                 <linked-policy>GHG</linked-policy>
                 <price-unit>1990$/tCH4</price-unit>
@@ -1897,15 +1957,15 @@
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4_AGR">
                 <price-adjust fillout="1" year="2025">5.727272727</price-adjust>
-                <demand-adjust fillout="1" year="2025">25</demand-adjust>
+                <demand-adjust fillout="1" year="2025">21</demand-adjust>
                 <market>Colombia</market>
                 <linked-policy>GHG</linked-policy>
                 <price-unit>1990$/tCH4</price-unit>
                 <output-unit>TgCH4</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4_AWB">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
-                <demand-adjust fillout="1" year="2025">25</demand-adjust>
+                <price-adjust fillout="1" year="2025">5.727272727</price-adjust>
+                <demand-adjust fillout="1" year="2025">21</demand-adjust>
                 <market>Colombia</market>
                 <linked-policy>GHG</linked-policy>
                 <price-unit>1990$/tCH4</price-unit>
@@ -1920,7 +1980,13 @@
                 <output-unit>MTC</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CO2_LUC">
-                <price-adjust fillout="1" year="2025">0.1</price-adjust>
+                                <price-adjust year="2025" fillout="1">0.1</price-adjust>
+                <price-adjust year="2030" fillout="1">0.1</price-adjust>
+                <price-adjust year="2035" fillout="1">0.1</price-adjust>
+                <price-adjust year="2040" fillout="1">0.1</price-adjust>
+                <price-adjust year="2045" fillout="1">0.1</price-adjust>
+                <price-adjust year="2050" fillout="1">0.1</price-adjust>
+				<price-adjust year="2055" fillout="1">0.5</price-adjust>
                 <demand-adjust fillout="1" year="2025">0</demand-adjust>
                 <market>Colombia</market>
                 <linked-policy>GHG</linked-policy>
@@ -2008,7 +2074,7 @@
                 <output-unit>GgHFC365mfc</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="N2O">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
+                <price-adjust fillout="1" year="2025">84.54545454</price-adjust>
                 <demand-adjust fillout="1" year="2025">298</demand-adjust>
                 <market>Colombia</market>
                 <linked-policy>GHG</linked-policy>
@@ -2016,7 +2082,7 @@
                 <output-unit>TgN2O</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="N2O_AGR">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
+                <price-adjust fillout="1" year="2025">84.54545454</price-adjust>
                 <demand-adjust fillout="1" year="2025">298</demand-adjust>
                 <market>Colombia</market>
                 <linked-policy>GHG</linked-policy>
@@ -2024,7 +2090,7 @@
                 <output-unit>TgN2O</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="N2O_AWB">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
+                <price-adjust fillout="1" year="2025">84.54545454</price-adjust>
                 <demand-adjust fillout="1" year="2025">298</demand-adjust>
                 <market>Colombia</market>
                 <linked-policy>GHG</linked-policy>
@@ -2058,8 +2124,8 @@
                 <output-unit>GgCF4</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
-                <demand-adjust fillout="1" year="2025">25</demand-adjust>
+                <price-adjust fillout="1" year="2025">5.727272727</price-adjust>
+                <demand-adjust fillout="1" year="2025">21</demand-adjust>
                 <market>EU</market>
                 <linked-policy>GHG</linked-policy>
                 <price-unit>1990$/tCH4</price-unit>
@@ -2067,15 +2133,15 @@
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4_AGR">
                 <price-adjust fillout="1" year="2025">5.727272727</price-adjust>
-                <demand-adjust fillout="1" year="2025">25</demand-adjust>
+                <demand-adjust fillout="1" year="2025">21</demand-adjust>
                 <market>EU</market>
                 <linked-policy>GHG</linked-policy>
                 <price-unit>1990$/tCH4</price-unit>
                 <output-unit>TgCH4</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4_AWB">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
-                <demand-adjust fillout="1" year="2025">25</demand-adjust>
+                <price-adjust fillout="1" year="2025">5.727272727</price-adjust>
+                <demand-adjust fillout="1" year="2025">21</demand-adjust>
                 <market>EU</market>
                 <linked-policy>GHG</linked-policy>
                 <price-unit>1990$/tCH4</price-unit>
@@ -2090,7 +2156,14 @@
                 <output-unit>MTC</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CO2_LUC">
-                <price-adjust fillout="1" year="2025">0.1</price-adjust>
+                                
+                <price-adjust year="2025" fillout="1">0.1</price-adjust>
+                <price-adjust year="2030" fillout="1">0.1</price-adjust>
+                <price-adjust year="2035" fillout="1">0.1</price-adjust>
+                <price-adjust year="2040" fillout="1">0.1</price-adjust>
+                <price-adjust year="2045" fillout="1">0.1</price-adjust>
+                <price-adjust year="2050" fillout="1">0.1</price-adjust>
+				<price-adjust year="2055" fillout="1">0.75</price-adjust>
                 <demand-adjust fillout="1" year="2025">0</demand-adjust>
                 <market>EU</market>
                 <linked-policy>GHG</linked-policy>
@@ -2178,7 +2251,7 @@
                 <output-unit>GgHFC365mfc</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="N2O">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
+                <price-adjust fillout="1" year="2025">84.54545454</price-adjust>
                 <demand-adjust fillout="1" year="2025">298</demand-adjust>
                 <market>EU</market>
                 <linked-policy>GHG</linked-policy>
@@ -2186,7 +2259,7 @@
                 <output-unit>TgN2O</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="N2O_AGR">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
+                <price-adjust fillout="1" year="2025">84.54545454</price-adjust>
                 <demand-adjust fillout="1" year="2025">298</demand-adjust>
                 <market>EU</market>
                 <linked-policy>GHG</linked-policy>
@@ -2194,7 +2267,7 @@
                 <output-unit>TgN2O</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="N2O_AWB">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
+                <price-adjust fillout="1" year="2025">84.54545454</price-adjust>
                 <demand-adjust fillout="1" year="2025">298</demand-adjust>
                 <market>EU</market>
                 <linked-policy>GHG</linked-policy>
@@ -2228,8 +2301,8 @@
                 <output-unit>GgCF4</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
-                <demand-adjust fillout="1" year="2025">25</demand-adjust>
+                <price-adjust fillout="1" year="2025">5.727272727</price-adjust>
+                <demand-adjust fillout="1" year="2025">21</demand-adjust>
                 <market>EU</market>
                 <linked-policy>GHG</linked-policy>
                 <price-unit>1990$/tCH4</price-unit>
@@ -2237,15 +2310,15 @@
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4_AGR">
                 <price-adjust fillout="1" year="2025">5.727272727</price-adjust>
-                <demand-adjust fillout="1" year="2025">25</demand-adjust>
+                <demand-adjust fillout="1" year="2025">21</demand-adjust>
                 <market>EU</market>
                 <linked-policy>GHG</linked-policy>
                 <price-unit>1990$/tCH4</price-unit>
                 <output-unit>TgCH4</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4_AWB">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
-                <demand-adjust fillout="1" year="2025">25</demand-adjust>
+                <price-adjust fillout="1" year="2025">5.727272727</price-adjust>
+                <demand-adjust fillout="1" year="2025">21</demand-adjust>
                 <market>EU</market>
                 <linked-policy>GHG</linked-policy>
                 <price-unit>1990$/tCH4</price-unit>
@@ -2260,7 +2333,14 @@
                 <output-unit>MTC</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CO2_LUC">
-                <price-adjust fillout="1" year="2025">0.1</price-adjust>
+                                
+                <price-adjust year="2025" fillout="1">0.1</price-adjust>
+                <price-adjust year="2030" fillout="1">0.1</price-adjust>
+                <price-adjust year="2035" fillout="1">0.1</price-adjust>
+                <price-adjust year="2040" fillout="1">0.1</price-adjust>
+                <price-adjust year="2045" fillout="1">0.1</price-adjust>
+                <price-adjust year="2050" fillout="1">0.1</price-adjust>
+<price-adjust year="2055" fillout="1">0.75</price-adjust>
                 <demand-adjust fillout="1" year="2025">0</demand-adjust>
                 <market>EU</market>
                 <linked-policy>GHG</linked-policy>
@@ -2348,7 +2428,7 @@
                 <output-unit>GgHFC365mfc</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="N2O">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
+                <price-adjust fillout="1" year="2025">84.54545454</price-adjust>
                 <demand-adjust fillout="1" year="2025">298</demand-adjust>
                 <market>EU</market>
                 <linked-policy>GHG</linked-policy>
@@ -2356,7 +2436,7 @@
                 <output-unit>TgN2O</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="N2O_AGR">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
+                <price-adjust fillout="1" year="2025">84.54545454</price-adjust>
                 <demand-adjust fillout="1" year="2025">298</demand-adjust>
                 <market>EU</market>
                 <linked-policy>GHG</linked-policy>
@@ -2364,7 +2444,7 @@
                 <output-unit>TgN2O</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="N2O_AWB">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
+                <price-adjust fillout="1" year="2025">84.54545454</price-adjust>
                 <demand-adjust fillout="1" year="2025">298</demand-adjust>
                 <market>EU</market>
                 <linked-policy>GHG</linked-policy>
@@ -2398,8 +2478,8 @@
                 <output-unit>GgCF4</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
-                <demand-adjust fillout="1" year="2025">25</demand-adjust>
+                <price-adjust fillout="1" year="2025">5.727272727</price-adjust>
+                <demand-adjust fillout="1" year="2025">21</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
                 <price-unit>1990$/tCH4</price-unit>
@@ -2407,15 +2487,15 @@
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4_AGR">
                 <price-adjust fillout="1" year="2025">5.727272727</price-adjust>
-                <demand-adjust fillout="1" year="2025">25</demand-adjust>
+                <demand-adjust fillout="1" year="2025">21</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
                 <price-unit>1990$/tCH4</price-unit>
                 <output-unit>TgCH4</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4_AWB">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
-                <demand-adjust fillout="1" year="2025">25</demand-adjust>
+                <price-adjust fillout="1" year="2025">5.727272727</price-adjust>
+                <demand-adjust fillout="1" year="2025">21</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
                 <price-unit>1990$/tCH4</price-unit>
@@ -2430,7 +2510,12 @@
                 <output-unit>MTC</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CO2_LUC">
-                <price-adjust fillout="1" year="2025">0.1</price-adjust>
+                                <price-adjust year="2025" fillout="1">0.1</price-adjust>
+                <price-adjust year="2030" fillout="1">0.1</price-adjust>
+                <price-adjust year="2035" fillout="1">0.1</price-adjust>
+                <price-adjust year="2040" fillout="1">0.1</price-adjust>
+                <price-adjust year="2045" fillout="1">0.1</price-adjust>
+                <price-adjust year="2050" fillout="1">0.1</price-adjust>
                 <demand-adjust fillout="1" year="2025">0</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
@@ -2518,7 +2603,7 @@
                 <output-unit>GgHFC365mfc</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="N2O">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
+                <price-adjust fillout="1" year="2025">84.54545454</price-adjust>
                 <demand-adjust fillout="1" year="2025">298</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
@@ -2526,7 +2611,7 @@
                 <output-unit>TgN2O</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="N2O_AGR">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
+                <price-adjust fillout="1" year="2025">84.54545454</price-adjust>
                 <demand-adjust fillout="1" year="2025">298</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
@@ -2534,7 +2619,7 @@
                 <output-unit>TgN2O</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="N2O_AWB">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
+                <price-adjust fillout="1" year="2025">84.54545454</price-adjust>
                 <demand-adjust fillout="1" year="2025">298</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
@@ -2568,8 +2653,8 @@
                 <output-unit>GgCF4</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
-                <demand-adjust fillout="1" year="2025">25</demand-adjust>
+                <price-adjust fillout="1" year="2025">5.727272727</price-adjust>
+                <demand-adjust fillout="1" year="2025">21</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
                 <price-unit>1990$/tCH4</price-unit>
@@ -2577,15 +2662,15 @@
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4_AGR">
                 <price-adjust fillout="1" year="2025">5.727272727</price-adjust>
-                <demand-adjust fillout="1" year="2025">25</demand-adjust>
+                <demand-adjust fillout="1" year="2025">21</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
                 <price-unit>1990$/tCH4</price-unit>
                 <output-unit>TgCH4</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4_AWB">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
-                <demand-adjust fillout="1" year="2025">25</demand-adjust>
+                <price-adjust fillout="1" year="2025">5.727272727</price-adjust>
+                <demand-adjust fillout="1" year="2025">21</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
                 <price-unit>1990$/tCH4</price-unit>
@@ -2600,7 +2685,12 @@
                 <output-unit>MTC</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CO2_LUC">
-                <price-adjust fillout="1" year="2025">0.1</price-adjust>
+                                <price-adjust year="2025" fillout="1">0.1</price-adjust>
+                <price-adjust year="2030" fillout="1">0.1</price-adjust>
+                <price-adjust year="2035" fillout="1">0.1</price-adjust>
+                <price-adjust year="2040" fillout="1">0.1</price-adjust>
+                <price-adjust year="2045" fillout="1">0.1</price-adjust>
+                <price-adjust year="2050" fillout="1">0.1</price-adjust>
                 <demand-adjust fillout="1" year="2025">0</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
@@ -2688,7 +2778,7 @@
                 <output-unit>GgHFC365mfc</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="N2O">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
+                <price-adjust fillout="1" year="2025">84.54545454</price-adjust>
                 <demand-adjust fillout="1" year="2025">298</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
@@ -2696,7 +2786,7 @@
                 <output-unit>TgN2O</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="N2O_AGR">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
+                <price-adjust fillout="1" year="2025">84.54545454</price-adjust>
                 <demand-adjust fillout="1" year="2025">298</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
@@ -2704,7 +2794,7 @@
                 <output-unit>TgN2O</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="N2O_AWB">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
+                <price-adjust fillout="1" year="2025">84.54545454</price-adjust>
                 <demand-adjust fillout="1" year="2025">298</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
@@ -2738,8 +2828,8 @@
                 <output-unit>GgCF4</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
-                <demand-adjust fillout="1" year="2025">25</demand-adjust>
+                <price-adjust fillout="1" year="2025">5.727272727</price-adjust>
+                <demand-adjust fillout="1" year="2025">21</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
                 <price-unit>1990$/tCH4</price-unit>
@@ -2747,15 +2837,15 @@
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4_AGR">
                 <price-adjust fillout="1" year="2025">5.727272727</price-adjust>
-                <demand-adjust fillout="1" year="2025">25</demand-adjust>
+                <demand-adjust fillout="1" year="2025">21</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
                 <price-unit>1990$/tCH4</price-unit>
                 <output-unit>TgCH4</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4_AWB">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
-                <demand-adjust fillout="1" year="2025">25</demand-adjust>
+                <price-adjust fillout="1" year="2025">5.727272727</price-adjust>
+                <demand-adjust fillout="1" year="2025">21</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
                 <price-unit>1990$/tCH4</price-unit>
@@ -2770,7 +2860,12 @@
                 <output-unit>MTC</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CO2_LUC">
-                <price-adjust fillout="1" year="2025">0.1</price-adjust>
+                <price-adjust year="2025" fillout="1">0.1</price-adjust>
+                <price-adjust year="2030" fillout="1">0.15</price-adjust>
+                <price-adjust year="2035" fillout="1">0.2</price-adjust>
+                <price-adjust year="2040" fillout="1">0.25</price-adjust>
+                <price-adjust year="2045" fillout="1">0.3</price-adjust>
+                <price-adjust year="2050" fillout="1">0.35</price-adjust>
                 <demand-adjust fillout="1" year="2025">0</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
@@ -2858,7 +2953,7 @@
                 <output-unit>GgHFC365mfc</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="N2O">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
+                <price-adjust fillout="1" year="2025">84.54545454</price-adjust>
                 <demand-adjust fillout="1" year="2025">298</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
@@ -2866,7 +2961,7 @@
                 <output-unit>TgN2O</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="N2O_AGR">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
+                <price-adjust fillout="1" year="2025">84.54545454</price-adjust>
                 <demand-adjust fillout="1" year="2025">298</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
@@ -2874,7 +2969,7 @@
                 <output-unit>TgN2O</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="N2O_AWB">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
+                <price-adjust fillout="1" year="2025">84.54545454</price-adjust>
                 <demand-adjust fillout="1" year="2025">298</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
@@ -2908,8 +3003,8 @@
                 <output-unit>GgCF4</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
-                <demand-adjust fillout="1" year="2025">25</demand-adjust>
+                <price-adjust fillout="1" year="2025">5.727272727</price-adjust>
+                <demand-adjust fillout="1" year="2025">21</demand-adjust>
                 <market>India</market>
                 <linked-policy>GHG</linked-policy>
                 <price-unit>1990$/tCH4</price-unit>
@@ -2917,15 +3012,15 @@
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4_AGR">
                 <price-adjust fillout="1" year="2025">5.727272727</price-adjust>
-                <demand-adjust fillout="1" year="2025">25</demand-adjust>
+                <demand-adjust fillout="1" year="2025">21</demand-adjust>
                 <market>India</market>
                 <linked-policy>GHG</linked-policy>
                 <price-unit>1990$/tCH4</price-unit>
                 <output-unit>TgCH4</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4_AWB">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
-                <demand-adjust fillout="1" year="2025">25</demand-adjust>
+                <price-adjust fillout="1" year="2025">5.727272727</price-adjust>
+                <demand-adjust fillout="1" year="2025">21</demand-adjust>
                 <market>India</market>
                 <linked-policy>GHG</linked-policy>
                 <price-unit>1990$/tCH4</price-unit>
@@ -2940,7 +3035,12 @@
                 <output-unit>MTC</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CO2_LUC">
-                <price-adjust fillout="1" year="2025">0.1</price-adjust>
+                                <price-adjust year="2025" fillout="1">0.1</price-adjust>
+                <price-adjust year="2030" fillout="1">0.1</price-adjust>
+                <price-adjust year="2035" fillout="1">0.1</price-adjust>
+                <price-adjust year="2040" fillout="1">0.1</price-adjust>
+                <price-adjust year="2045" fillout="1">0.1</price-adjust>
+                <price-adjust year="2050" fillout="1">0.1</price-adjust>
                 <demand-adjust fillout="1" year="2025">0</demand-adjust>
                 <market>India</market>
                 <linked-policy>GHG</linked-policy>
@@ -3028,7 +3128,7 @@
                 <output-unit>GgHFC365mfc</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="N2O">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
+                <price-adjust fillout="1" year="2025">84.54545454</price-adjust>
                 <demand-adjust fillout="1" year="2025">298</demand-adjust>
                 <market>India</market>
                 <linked-policy>GHG</linked-policy>
@@ -3036,7 +3136,7 @@
                 <output-unit>TgN2O</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="N2O_AGR">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
+                <price-adjust fillout="1" year="2025">84.54545454</price-adjust>
                 <demand-adjust fillout="1" year="2025">298</demand-adjust>
                 <market>India</market>
                 <linked-policy>GHG</linked-policy>
@@ -3044,7 +3144,7 @@
                 <output-unit>TgN2O</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="N2O_AWB">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
+                <price-adjust fillout="1" year="2025">84.54545454</price-adjust>
                 <demand-adjust fillout="1" year="2025">298</demand-adjust>
                 <market>India</market>
                 <linked-policy>GHG</linked-policy>
@@ -3078,8 +3178,8 @@
                 <output-unit>GgCF4</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
-                <demand-adjust fillout="1" year="2025">25</demand-adjust>
+                <price-adjust fillout="1" year="2025">5.727272727</price-adjust>
+                <demand-adjust fillout="1" year="2025">21</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
                 <price-unit>1990$/tCH4</price-unit>
@@ -3087,15 +3187,15 @@
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4_AGR">
                 <price-adjust fillout="1" year="2025">5.727272727</price-adjust>
-                <demand-adjust fillout="1" year="2025">25</demand-adjust>
+                <demand-adjust fillout="1" year="2025">21</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
                 <price-unit>1990$/tCH4</price-unit>
                 <output-unit>TgCH4</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4_AWB">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
-                <demand-adjust fillout="1" year="2025">25</demand-adjust>
+                <price-adjust fillout="1" year="2025">5.727272727</price-adjust>
+                <demand-adjust fillout="1" year="2025">21</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
                 <price-unit>1990$/tCH4</price-unit>
@@ -3110,7 +3210,12 @@
                 <output-unit>MTC</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CO2_LUC">
-                <price-adjust fillout="1" year="2025">0.1</price-adjust>
+                                <price-adjust year="2025" fillout="1">0.1</price-adjust>
+                <price-adjust year="2030" fillout="1">0.1</price-adjust>
+                <price-adjust year="2035" fillout="1">0.1</price-adjust>
+                <price-adjust year="2040" fillout="1">0.1</price-adjust>
+                <price-adjust year="2045" fillout="1">0.1</price-adjust>
+                <price-adjust year="2050" fillout="1">0.1</price-adjust>
                 <demand-adjust fillout="1" year="2025">0</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
@@ -3198,7 +3303,7 @@
                 <output-unit>GgHFC365mfc</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="N2O">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
+                <price-adjust fillout="1" year="2025">84.54545454</price-adjust>
                 <demand-adjust fillout="1" year="2025">298</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
@@ -3206,7 +3311,7 @@
                 <output-unit>TgN2O</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="N2O_AGR">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
+                <price-adjust fillout="1" year="2025">84.54545454</price-adjust>
                 <demand-adjust fillout="1" year="2025">298</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
@@ -3214,7 +3319,7 @@
                 <output-unit>TgN2O</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="N2O_AWB">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
+                <price-adjust fillout="1" year="2025">84.54545454</price-adjust>
                 <demand-adjust fillout="1" year="2025">298</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
@@ -3248,8 +3353,8 @@
                 <output-unit>GgCF4</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
-                <demand-adjust fillout="1" year="2025">25</demand-adjust>
+                <price-adjust fillout="1" year="2025">5.727272727</price-adjust>
+                <demand-adjust fillout="1" year="2025">21</demand-adjust>
                 <market>Japan</market>
                 <linked-policy>GHG</linked-policy>
                 <price-unit>1990$/tCH4</price-unit>
@@ -3257,15 +3362,15 @@
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4_AGR">
                 <price-adjust fillout="1" year="2025">5.727272727</price-adjust>
-                <demand-adjust fillout="1" year="2025">25</demand-adjust>
+                <demand-adjust fillout="1" year="2025">21</demand-adjust>
                 <market>Japan</market>
                 <linked-policy>GHG</linked-policy>
                 <price-unit>1990$/tCH4</price-unit>
                 <output-unit>TgCH4</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4_AWB">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
-                <demand-adjust fillout="1" year="2025">25</demand-adjust>
+                <price-adjust fillout="1" year="2025">5.727272727</price-adjust>
+                <demand-adjust fillout="1" year="2025">21</demand-adjust>
                 <market>Japan</market>
                 <linked-policy>GHG</linked-policy>
                 <price-unit>1990$/tCH4</price-unit>
@@ -3280,7 +3385,12 @@
                 <output-unit>MTC</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CO2_LUC">
-                <price-adjust fillout="1" year="2025">0.1</price-adjust>
+                <price-adjust year="2025" fillout="1">0.1</price-adjust>
+                <price-adjust year="2030" fillout="1">0.1</price-adjust>
+                <price-adjust year="2035" fillout="1">0.1</price-adjust>
+                <price-adjust year="2040" fillout="1">0.1</price-adjust>
+                <price-adjust year="2045" fillout="1">0.1</price-adjust>
+                <price-adjust year="2050" fillout="1">0.1</price-adjust>
                 <demand-adjust fillout="1" year="2025">0</demand-adjust>
                 <market>Japan</market>
                 <linked-policy>GHG</linked-policy>
@@ -3368,7 +3478,7 @@
                 <output-unit>GgHFC365mfc</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="N2O">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
+                <price-adjust fillout="1" year="2025">84.54545454</price-adjust>
                 <demand-adjust fillout="1" year="2025">298</demand-adjust>
                 <market>Japan</market>
                 <linked-policy>GHG</linked-policy>
@@ -3376,7 +3486,7 @@
                 <output-unit>TgN2O</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="N2O_AGR">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
+                <price-adjust fillout="1" year="2025">84.54545454</price-adjust>
                 <demand-adjust fillout="1" year="2025">298</demand-adjust>
                 <market>Japan</market>
                 <linked-policy>GHG</linked-policy>
@@ -3384,7 +3494,7 @@
                 <output-unit>TgN2O</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="N2O_AWB">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
+                <price-adjust fillout="1" year="2025">84.54545454</price-adjust>
                 <demand-adjust fillout="1" year="2025">298</demand-adjust>
                 <market>Japan</market>
                 <linked-policy>GHG</linked-policy>
@@ -3418,8 +3528,8 @@
                 <output-unit>GgCF4</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
-                <demand-adjust fillout="1" year="2025">25</demand-adjust>
+                <price-adjust fillout="1" year="2025">5.727272727</price-adjust>
+                <demand-adjust fillout="1" year="2025">21</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
                 <price-unit>1990$/tCH4</price-unit>
@@ -3427,15 +3537,15 @@
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4_AGR">
                 <price-adjust fillout="1" year="2025">5.727272727</price-adjust>
-                <demand-adjust fillout="1" year="2025">25</demand-adjust>
+                <demand-adjust fillout="1" year="2025">21</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
                 <price-unit>1990$/tCH4</price-unit>
                 <output-unit>TgCH4</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4_AWB">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
-                <demand-adjust fillout="1" year="2025">25</demand-adjust>
+                <price-adjust fillout="1" year="2025">5.727272727</price-adjust>
+                <demand-adjust fillout="1" year="2025">21</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
                 <price-unit>1990$/tCH4</price-unit>
@@ -3450,7 +3560,12 @@
                 <output-unit>MTC</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CO2_LUC">
-                <price-adjust fillout="1" year="2025">0.1</price-adjust>
+                <price-adjust year="2025" fillout="1">0.1</price-adjust>
+                <price-adjust year="2030" fillout="1">0.1</price-adjust>
+                <price-adjust year="2035" fillout="1">0.1</price-adjust>
+                <price-adjust year="2040" fillout="1">0.1</price-adjust>
+                <price-adjust year="2045" fillout="1">0.1</price-adjust>
+                <price-adjust year="2050" fillout="1">0.1</price-adjust>
                 <demand-adjust fillout="1" year="2025">0</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
@@ -3538,7 +3653,7 @@
                 <output-unit>GgHFC365mfc</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="N2O">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
+                <price-adjust fillout="1" year="2025">84.54545454</price-adjust>
                 <demand-adjust fillout="1" year="2025">298</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
@@ -3546,7 +3661,7 @@
                 <output-unit>TgN2O</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="N2O_AGR">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
+                <price-adjust fillout="1" year="2025">84.54545454</price-adjust>
                 <demand-adjust fillout="1" year="2025">298</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
@@ -3554,7 +3669,7 @@
                 <output-unit>TgN2O</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="N2O_AWB">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
+                <price-adjust fillout="1" year="2025">84.54545454</price-adjust>
                 <demand-adjust fillout="1" year="2025">298</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
@@ -3588,8 +3703,8 @@
                 <output-unit>GgCF4</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
-                <demand-adjust fillout="1" year="2025">25</demand-adjust>
+                <price-adjust fillout="1" year="2025">5.727272727</price-adjust>
+                <demand-adjust fillout="1" year="2025">21</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
                 <price-unit>1990$/tCH4</price-unit>
@@ -3597,15 +3712,15 @@
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4_AGR">
                 <price-adjust fillout="1" year="2025">5.727272727</price-adjust>
-                <demand-adjust fillout="1" year="2025">25</demand-adjust>
+                <demand-adjust fillout="1" year="2025">21</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
                 <price-unit>1990$/tCH4</price-unit>
                 <output-unit>TgCH4</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4_AWB">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
-                <demand-adjust fillout="1" year="2025">25</demand-adjust>
+                <price-adjust fillout="1" year="2025">5.727272727</price-adjust>
+                <demand-adjust fillout="1" year="2025">21</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
                 <price-unit>1990$/tCH4</price-unit>
@@ -3620,7 +3735,12 @@
                 <output-unit>MTC</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CO2_LUC">
-                <price-adjust fillout="1" year="2025">0.1</price-adjust>
+                                <price-adjust year="2025" fillout="1">0.1</price-adjust>
+                <price-adjust year="2030" fillout="1">0.1</price-adjust>
+                <price-adjust year="2035" fillout="1">0.1</price-adjust>
+                <price-adjust year="2040" fillout="1">0.1</price-adjust>
+                <price-adjust year="2045" fillout="1">0.1</price-adjust>
+                <price-adjust year="2050" fillout="1">0.1</price-adjust>
                 <demand-adjust fillout="1" year="2025">0</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
@@ -3708,7 +3828,7 @@
                 <output-unit>GgHFC365mfc</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="N2O">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
+                <price-adjust fillout="1" year="2025">84.54545454</price-adjust>
                 <demand-adjust fillout="1" year="2025">298</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
@@ -3716,7 +3836,7 @@
                 <output-unit>TgN2O</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="N2O_AGR">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
+                <price-adjust fillout="1" year="2025">84.54545454</price-adjust>
                 <demand-adjust fillout="1" year="2025">298</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
@@ -3724,7 +3844,7 @@
                 <output-unit>TgN2O</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="N2O_AWB">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
+                <price-adjust fillout="1" year="2025">84.54545454</price-adjust>
                 <demand-adjust fillout="1" year="2025">298</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
@@ -3758,8 +3878,8 @@
                 <output-unit>GgCF4</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
-                <demand-adjust fillout="1" year="2025">25</demand-adjust>
+                <price-adjust fillout="1" year="2025">5.727272727</price-adjust>
+                <demand-adjust fillout="1" year="2025">21</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
                 <price-unit>1990$/tCH4</price-unit>
@@ -3767,15 +3887,15 @@
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4_AGR">
                 <price-adjust fillout="1" year="2025">5.727272727</price-adjust>
-                <demand-adjust fillout="1" year="2025">25</demand-adjust>
+                <demand-adjust fillout="1" year="2025">21</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
                 <price-unit>1990$/tCH4</price-unit>
                 <output-unit>TgCH4</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4_AWB">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
-                <demand-adjust fillout="1" year="2025">25</demand-adjust>
+                <price-adjust fillout="1" year="2025">5.727272727</price-adjust>
+                <demand-adjust fillout="1" year="2025">21</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
                 <price-unit>1990$/tCH4</price-unit>
@@ -3790,7 +3910,12 @@
                 <output-unit>MTC</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CO2_LUC">
-                <price-adjust fillout="1" year="2025">0.1</price-adjust>
+                                <price-adjust year="2025" fillout="1">0.1</price-adjust>
+                <price-adjust year="2030" fillout="1">0.1</price-adjust>
+                <price-adjust year="2035" fillout="1">0.1</price-adjust>
+                <price-adjust year="2040" fillout="1">0.1</price-adjust>
+                <price-adjust year="2045" fillout="1">0.1</price-adjust>
+                <price-adjust year="2050" fillout="1">0.1</price-adjust>
                 <demand-adjust fillout="1" year="2025">0</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
@@ -3878,7 +4003,7 @@
                 <output-unit>GgHFC365mfc</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="N2O">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
+                <price-adjust fillout="1" year="2025">84.54545454</price-adjust>
                 <demand-adjust fillout="1" year="2025">298</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
@@ -3886,7 +4011,7 @@
                 <output-unit>TgN2O</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="N2O_AGR">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
+                <price-adjust fillout="1" year="2025">84.54545454</price-adjust>
                 <demand-adjust fillout="1" year="2025">298</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
@@ -3894,7 +4019,7 @@
                 <output-unit>TgN2O</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="N2O_AWB">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
+                <price-adjust fillout="1" year="2025">84.54545454</price-adjust>
                 <demand-adjust fillout="1" year="2025">298</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
@@ -3928,8 +4053,8 @@
                 <output-unit>GgCF4</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
-                <demand-adjust fillout="1" year="2025">25</demand-adjust>
+                <price-adjust fillout="1" year="2025">5.727272727</price-adjust>
+                <demand-adjust fillout="1" year="2025">21</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
                 <price-unit>1990$/tCH4</price-unit>
@@ -3937,15 +4062,15 @@
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4_AGR">
                 <price-adjust fillout="1" year="2025">5.727272727</price-adjust>
-                <demand-adjust fillout="1" year="2025">25</demand-adjust>
+                <demand-adjust fillout="1" year="2025">21</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
                 <price-unit>1990$/tCH4</price-unit>
                 <output-unit>TgCH4</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4_AWB">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
-                <demand-adjust fillout="1" year="2025">25</demand-adjust>
+                <price-adjust fillout="1" year="2025">5.727272727</price-adjust>
+                <demand-adjust fillout="1" year="2025">21</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
                 <price-unit>1990$/tCH4</price-unit>
@@ -3960,7 +4085,12 @@
                 <output-unit>MTC</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CO2_LUC">
-                <price-adjust fillout="1" year="2025">0.1</price-adjust>
+                <price-adjust year="2025" fillout="1">0.1</price-adjust>
+                <price-adjust year="2030" fillout="1">0.1</price-adjust>
+                <price-adjust year="2035" fillout="1">0.1</price-adjust>
+                <price-adjust year="2040" fillout="1">0.1</price-adjust>
+                <price-adjust year="2045" fillout="1">0.1</price-adjust>
+                <price-adjust year="2050" fillout="1">0.1</price-adjust>
                 <demand-adjust fillout="1" year="2025">0</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
@@ -4048,7 +4178,7 @@
                 <output-unit>GgHFC365mfc</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="N2O">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
+                <price-adjust fillout="1" year="2025">84.54545454</price-adjust>
                 <demand-adjust fillout="1" year="2025">298</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
@@ -4056,7 +4186,7 @@
                 <output-unit>TgN2O</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="N2O_AGR">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
+                <price-adjust fillout="1" year="2025">84.54545454</price-adjust>
                 <demand-adjust fillout="1" year="2025">298</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
@@ -4064,7 +4194,7 @@
                 <output-unit>TgN2O</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="N2O_AWB">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
+                <price-adjust fillout="1" year="2025">84.54545454</price-adjust>
                 <demand-adjust fillout="1" year="2025">298</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
@@ -4098,8 +4228,8 @@
                 <output-unit>GgCF4</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
-                <demand-adjust fillout="1" year="2025">25</demand-adjust>
+                <price-adjust fillout="1" year="2025">5.727272727</price-adjust>
+                <demand-adjust fillout="1" year="2025">21</demand-adjust>
                 <market>South Africa</market>
                 <linked-policy>GHG</linked-policy>
                 <price-unit>1990$/tCH4</price-unit>
@@ -4107,15 +4237,15 @@
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4_AGR">
                 <price-adjust fillout="1" year="2025">5.727272727</price-adjust>
-                <demand-adjust fillout="1" year="2025">25</demand-adjust>
+                <demand-adjust fillout="1" year="2025">21</demand-adjust>
                 <market>South Africa</market>
                 <linked-policy>GHG</linked-policy>
                 <price-unit>1990$/tCH4</price-unit>
                 <output-unit>TgCH4</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4_AWB">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
-                <demand-adjust fillout="1" year="2025">25</demand-adjust>
+                <price-adjust fillout="1" year="2025">5.727272727</price-adjust>
+                <demand-adjust fillout="1" year="2025">21</demand-adjust>
                 <market>South Africa</market>
                 <linked-policy>GHG</linked-policy>
                 <price-unit>1990$/tCH4</price-unit>
@@ -4130,7 +4260,12 @@
                 <output-unit>MTC</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CO2_LUC">
-                <price-adjust fillout="1" year="2025">0.1</price-adjust>
+                                <price-adjust year="2025" fillout="1">0.1</price-adjust>
+                <price-adjust year="2030" fillout="1">0.1</price-adjust>
+                <price-adjust year="2035" fillout="1">0.1</price-adjust>
+                <price-adjust year="2040" fillout="1">0.1</price-adjust>
+                <price-adjust year="2045" fillout="1">0.1</price-adjust>
+                <price-adjust year="2050" fillout="1">0.1</price-adjust>
                 <demand-adjust fillout="1" year="2025">0</demand-adjust>
                 <market>South Africa</market>
                 <linked-policy>GHG</linked-policy>
@@ -4218,7 +4353,7 @@
                 <output-unit>GgHFC365mfc</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="N2O">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
+                <price-adjust fillout="1" year="2025">84.54545454</price-adjust>
                 <demand-adjust fillout="1" year="2025">298</demand-adjust>
                 <market>South Africa</market>
                 <linked-policy>GHG</linked-policy>
@@ -4226,7 +4361,7 @@
                 <output-unit>TgN2O</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="N2O_AGR">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
+                <price-adjust fillout="1" year="2025">84.54545454</price-adjust>
                 <demand-adjust fillout="1" year="2025">298</demand-adjust>
                 <market>South Africa</market>
                 <linked-policy>GHG</linked-policy>
@@ -4234,7 +4369,7 @@
                 <output-unit>TgN2O</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="N2O_AWB">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
+                <price-adjust fillout="1" year="2025">84.54545454</price-adjust>
                 <demand-adjust fillout="1" year="2025">298</demand-adjust>
                 <market>South Africa</market>
                 <linked-policy>GHG</linked-policy>
@@ -4268,8 +4403,8 @@
                 <output-unit>GgCF4</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
-                <demand-adjust fillout="1" year="2025">25</demand-adjust>
+                <price-adjust fillout="1" year="2025">5.727272727</price-adjust>
+                <demand-adjust fillout="1" year="2025">21</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
                 <price-unit>1990$/tCH4</price-unit>
@@ -4277,15 +4412,15 @@
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4_AGR">
                 <price-adjust fillout="1" year="2025">5.727272727</price-adjust>
-                <demand-adjust fillout="1" year="2025">25</demand-adjust>
+                <demand-adjust fillout="1" year="2025">21</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
                 <price-unit>1990$/tCH4</price-unit>
                 <output-unit>TgCH4</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4_AWB">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
-                <demand-adjust fillout="1" year="2025">25</demand-adjust>
+                <price-adjust fillout="1" year="2025">5.727272727</price-adjust>
+                <demand-adjust fillout="1" year="2025">21</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
                 <price-unit>1990$/tCH4</price-unit>
@@ -4300,7 +4435,12 @@
                 <output-unit>MTC</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CO2_LUC">
-                <price-adjust fillout="1" year="2025">0.1</price-adjust>
+                                <price-adjust year="2025" fillout="1">0.1</price-adjust>
+                <price-adjust year="2030" fillout="1">0.1</price-adjust>
+                <price-adjust year="2035" fillout="1">0.1</price-adjust>
+                <price-adjust year="2040" fillout="1">0.1</price-adjust>
+                <price-adjust year="2045" fillout="1">0.1</price-adjust>
+                <price-adjust year="2050" fillout="1">0.1</price-adjust>
                 <demand-adjust fillout="1" year="2025">0</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
@@ -4388,7 +4528,7 @@
                 <output-unit>GgHFC365mfc</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="N2O">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
+                <price-adjust fillout="1" year="2025">84.54545454</price-adjust>
                 <demand-adjust fillout="1" year="2025">298</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
@@ -4396,7 +4536,7 @@
                 <output-unit>TgN2O</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="N2O_AGR">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
+                <price-adjust fillout="1" year="2025">84.54545454</price-adjust>
                 <demand-adjust fillout="1" year="2025">298</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
@@ -4404,7 +4544,7 @@
                 <output-unit>TgN2O</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="N2O_AWB">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
+                <price-adjust fillout="1" year="2025">84.54545454</price-adjust>
                 <demand-adjust fillout="1" year="2025">298</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
@@ -4438,8 +4578,8 @@
                 <output-unit>GgCF4</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
-                <demand-adjust fillout="1" year="2025">25</demand-adjust>
+                <price-adjust fillout="1" year="2025">5.727272727</price-adjust>
+                <demand-adjust fillout="1" year="2025">21</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
                 <price-unit>1990$/tCH4</price-unit>
@@ -4447,15 +4587,15 @@
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4_AGR">
                 <price-adjust fillout="1" year="2025">5.727272727</price-adjust>
-                <demand-adjust fillout="1" year="2025">25</demand-adjust>
+                <demand-adjust fillout="1" year="2025">21</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
                 <price-unit>1990$/tCH4</price-unit>
                 <output-unit>TgCH4</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4_AWB">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
-                <demand-adjust fillout="1" year="2025">25</demand-adjust>
+                <price-adjust fillout="1" year="2025">5.727272727</price-adjust>
+                <demand-adjust fillout="1" year="2025">21</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
                 <price-unit>1990$/tCH4</price-unit>
@@ -4470,7 +4610,12 @@
                 <output-unit>MTC</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CO2_LUC">
-                <price-adjust fillout="1" year="2025">0.1</price-adjust>
+                                <price-adjust year="2025" fillout="1">0.1</price-adjust>
+                <price-adjust year="2030" fillout="1">0.1</price-adjust>
+                <price-adjust year="2035" fillout="1">0.1</price-adjust>
+                <price-adjust year="2040" fillout="1">0.1</price-adjust>
+                <price-adjust year="2045" fillout="1">0.1</price-adjust>
+                <price-adjust year="2050" fillout="1">0.1</price-adjust>
                 <demand-adjust fillout="1" year="2025">0</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
@@ -4558,7 +4703,7 @@
                 <output-unit>GgHFC365mfc</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="N2O">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
+                <price-adjust fillout="1" year="2025">84.54545454</price-adjust>
                 <demand-adjust fillout="1" year="2025">298</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
@@ -4566,7 +4711,7 @@
                 <output-unit>TgN2O</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="N2O_AGR">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
+                <price-adjust fillout="1" year="2025">84.54545454</price-adjust>
                 <demand-adjust fillout="1" year="2025">298</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
@@ -4574,7 +4719,7 @@
                 <output-unit>TgN2O</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="N2O_AWB">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
+                <price-adjust fillout="1" year="2025">84.54545454</price-adjust>
                 <demand-adjust fillout="1" year="2025">298</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
@@ -4608,8 +4753,8 @@
                 <output-unit>GgCF4</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
-                <demand-adjust fillout="1" year="2025">25</demand-adjust>
+                <price-adjust fillout="1" year="2025">5.727272727</price-adjust>
+                <demand-adjust fillout="1" year="2025">21</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
                 <price-unit>1990$/tCH4</price-unit>
@@ -4617,15 +4762,15 @@
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4_AGR">
                 <price-adjust fillout="1" year="2025">5.727272727</price-adjust>
-                <demand-adjust fillout="1" year="2025">25</demand-adjust>
+                <demand-adjust fillout="1" year="2025">21</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
                 <price-unit>1990$/tCH4</price-unit>
                 <output-unit>TgCH4</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4_AWB">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
-                <demand-adjust fillout="1" year="2025">25</demand-adjust>
+                <price-adjust fillout="1" year="2025">5.727272727</price-adjust>
+                <demand-adjust fillout="1" year="2025">21</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
                 <price-unit>1990$/tCH4</price-unit>
@@ -4640,7 +4785,12 @@
                 <output-unit>MTC</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CO2_LUC">
-                <price-adjust fillout="1" year="2025">0.1</price-adjust>
+                                <price-adjust year="2025" fillout="1">0.1</price-adjust>
+                <price-adjust year="2030" fillout="1">0.1</price-adjust>
+                <price-adjust year="2035" fillout="1">0.1</price-adjust>
+                <price-adjust year="2040" fillout="1">0.1</price-adjust>
+                <price-adjust year="2045" fillout="1">0.1</price-adjust>
+                <price-adjust year="2050" fillout="1">0.1</price-adjust>
                 <demand-adjust fillout="1" year="2025">0</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
@@ -4728,7 +4878,7 @@
                 <output-unit>GgHFC365mfc</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="N2O">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
+                <price-adjust fillout="1" year="2025">84.54545454</price-adjust>
                 <demand-adjust fillout="1" year="2025">298</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
@@ -4736,7 +4886,7 @@
                 <output-unit>TgN2O</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="N2O_AGR">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
+                <price-adjust fillout="1" year="2025">84.54545454</price-adjust>
                 <demand-adjust fillout="1" year="2025">298</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
@@ -4744,7 +4894,7 @@
                 <output-unit>TgN2O</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="N2O_AWB">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
+                <price-adjust fillout="1" year="2025">84.54545454</price-adjust>
                 <demand-adjust fillout="1" year="2025">298</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
@@ -4778,8 +4928,8 @@
                 <output-unit>GgCF4</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
-                <demand-adjust fillout="1" year="2025">25</demand-adjust>
+                <price-adjust fillout="1" year="2025">5.727272727</price-adjust>
+                <demand-adjust fillout="1" year="2025">21</demand-adjust>
                 <market>South Korea</market>
                 <linked-policy>GHG</linked-policy>
                 <price-unit>1990$/tCH4</price-unit>
@@ -4787,15 +4937,15 @@
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4_AGR">
                 <price-adjust fillout="1" year="2025">5.727272727</price-adjust>
-                <demand-adjust fillout="1" year="2025">25</demand-adjust>
+                <demand-adjust fillout="1" year="2025">21</demand-adjust>
                 <market>South Korea</market>
                 <linked-policy>GHG</linked-policy>
                 <price-unit>1990$/tCH4</price-unit>
                 <output-unit>TgCH4</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4_AWB">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
-                <demand-adjust fillout="1" year="2025">25</demand-adjust>
+                <price-adjust fillout="1" year="2025">5.727272727</price-adjust>
+                <demand-adjust fillout="1" year="2025">21</demand-adjust>
                 <market>South Korea</market>
                 <linked-policy>GHG</linked-policy>
                 <price-unit>1990$/tCH4</price-unit>
@@ -4810,7 +4960,12 @@
                 <output-unit>MTC</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CO2_LUC">
-                <price-adjust fillout="1" year="2025">0.1</price-adjust>
+                                <price-adjust year="2025" fillout="1">0.1</price-adjust>
+                <price-adjust year="2030" fillout="1">0.1</price-adjust>
+                <price-adjust year="2035" fillout="1">0.1</price-adjust>
+                <price-adjust year="2040" fillout="1">0.1</price-adjust>
+                <price-adjust year="2045" fillout="1">0.1</price-adjust>
+                <price-adjust year="2050" fillout="1">0.1</price-adjust>
                 <demand-adjust fillout="1" year="2025">0</demand-adjust>
                 <market>South Korea</market>
                 <linked-policy>GHG</linked-policy>
@@ -4898,7 +5053,7 @@
                 <output-unit>GgHFC365mfc</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="N2O">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
+                <price-adjust fillout="1" year="2025">84.54545454</price-adjust>
                 <demand-adjust fillout="1" year="2025">298</demand-adjust>
                 <market>South Korea</market>
                 <linked-policy>GHG</linked-policy>
@@ -4906,7 +5061,7 @@
                 <output-unit>TgN2O</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="N2O_AGR">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
+                <price-adjust fillout="1" year="2025">84.54545454</price-adjust>
                 <demand-adjust fillout="1" year="2025">298</demand-adjust>
                 <market>South Korea</market>
                 <linked-policy>GHG</linked-policy>
@@ -4914,7 +5069,7 @@
                 <output-unit>TgN2O</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="N2O_AWB">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
+                <price-adjust fillout="1" year="2025">84.54545454</price-adjust>
                 <demand-adjust fillout="1" year="2025">298</demand-adjust>
                 <market>South Korea</market>
                 <linked-policy>GHG</linked-policy>
@@ -4948,8 +5103,8 @@
                 <output-unit>GgCF4</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
-                <demand-adjust fillout="1" year="2025">25</demand-adjust>
+                <price-adjust fillout="1" year="2025">5.727272727</price-adjust>
+                <demand-adjust fillout="1" year="2025">21</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
                 <price-unit>1990$/tCH4</price-unit>
@@ -4957,15 +5112,15 @@
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4_AGR">
                 <price-adjust fillout="1" year="2025">5.727272727</price-adjust>
-                <demand-adjust fillout="1" year="2025">25</demand-adjust>
+                <demand-adjust fillout="1" year="2025">21</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
                 <price-unit>1990$/tCH4</price-unit>
                 <output-unit>TgCH4</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4_AWB">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
-                <demand-adjust fillout="1" year="2025">25</demand-adjust>
+                <price-adjust fillout="1" year="2025">5.727272727</price-adjust>
+                <demand-adjust fillout="1" year="2025">21</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
                 <price-unit>1990$/tCH4</price-unit>
@@ -4980,7 +5135,12 @@
                 <output-unit>MTC</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CO2_LUC">
-                <price-adjust fillout="1" year="2025">0.1</price-adjust>
+                                <price-adjust year="2025" fillout="1">0.1</price-adjust>
+                <price-adjust year="2030" fillout="1">0.1</price-adjust>
+                <price-adjust year="2035" fillout="1">0.1</price-adjust>
+                <price-adjust year="2040" fillout="1">0.1</price-adjust>
+                <price-adjust year="2045" fillout="1">0.1</price-adjust>
+                <price-adjust year="2050" fillout="1">0.1</price-adjust>
                 <demand-adjust fillout="1" year="2025">0</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
@@ -5068,7 +5228,7 @@
                 <output-unit>GgHFC365mfc</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="N2O">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
+                <price-adjust fillout="1" year="2025">84.54545454</price-adjust>
                 <demand-adjust fillout="1" year="2025">298</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
@@ -5076,7 +5236,7 @@
                 <output-unit>TgN2O</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="N2O_AGR">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
+                <price-adjust fillout="1" year="2025">84.54545454</price-adjust>
                 <demand-adjust fillout="1" year="2025">298</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
@@ -5084,7 +5244,7 @@
                 <output-unit>TgN2O</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="N2O_AWB">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
+                <price-adjust fillout="1" year="2025">84.54545454</price-adjust>
                 <demand-adjust fillout="1" year="2025">298</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
@@ -5118,8 +5278,8 @@
                 <output-unit>GgCF4</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
-                <demand-adjust fillout="1" year="2025">25</demand-adjust>
+                <price-adjust fillout="1" year="2025">5.727272727</price-adjust>
+                <demand-adjust fillout="1" year="2025">21</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
                 <price-unit>1990$/tCH4</price-unit>
@@ -5127,15 +5287,15 @@
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4_AGR">
                 <price-adjust fillout="1" year="2025">5.727272727</price-adjust>
-                <demand-adjust fillout="1" year="2025">25</demand-adjust>
+                <demand-adjust fillout="1" year="2025">21</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
                 <price-unit>1990$/tCH4</price-unit>
                 <output-unit>TgCH4</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4_AWB">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
-                <demand-adjust fillout="1" year="2025">25</demand-adjust>
+                <price-adjust fillout="1" year="2025">5.727272727</price-adjust>
+                <demand-adjust fillout="1" year="2025">21</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
                 <price-unit>1990$/tCH4</price-unit>
@@ -5150,7 +5310,12 @@
                 <output-unit>MTC</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CO2_LUC">
-                <price-adjust fillout="1" year="2025">0.1</price-adjust>
+                 <price-adjust year="2025" fillout="1">0.1</price-adjust>
+                <price-adjust year="2030" fillout="1">0.1</price-adjust>
+                <price-adjust year="2035" fillout="1">0.1</price-adjust>
+                <price-adjust year="2040" fillout="1">0.1</price-adjust>
+                <price-adjust year="2045" fillout="1">0.1</price-adjust>
+                <price-adjust year="2050" fillout="1">0.1</price-adjust>
                 <demand-adjust fillout="1" year="2025">0</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
@@ -5238,7 +5403,7 @@
                 <output-unit>GgHFC365mfc</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="N2O">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
+                <price-adjust fillout="1" year="2025">84.54545454</price-adjust>
                 <demand-adjust fillout="1" year="2025">298</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
@@ -5246,7 +5411,7 @@
                 <output-unit>TgN2O</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="N2O_AGR">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
+                <price-adjust fillout="1" year="2025">84.54545454</price-adjust>
                 <demand-adjust fillout="1" year="2025">298</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
@@ -5254,7 +5419,7 @@
                 <output-unit>TgN2O</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="N2O_AWB">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
+                <price-adjust fillout="1" year="2025">84.54545454</price-adjust>
                 <demand-adjust fillout="1" year="2025">298</demand-adjust>
                 <market>ROW</market>
                 <linked-policy>GHG</linked-policy>
@@ -5288,8 +5453,8 @@
                 <output-unit>GgCF4</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
-                <demand-adjust fillout="1" year="2025">25</demand-adjust>
+                <price-adjust fillout="1" year="2025">5.727272727</price-adjust>
+                <demand-adjust fillout="1" year="2025">21</demand-adjust>
                 <market>USA</market>
                 <linked-policy>GHG</linked-policy>
                 <price-unit>1990$/tCH4</price-unit>
@@ -5297,15 +5462,15 @@
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4_AGR">
                 <price-adjust fillout="1" year="2025">5.727272727</price-adjust>
-                <demand-adjust fillout="1" year="2025">25</demand-adjust>
+                <demand-adjust fillout="1" year="2025">21</demand-adjust>
                 <market>USA</market>
                 <linked-policy>GHG</linked-policy>
                 <price-unit>1990$/tCH4</price-unit>
                 <output-unit>TgCH4</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CH4_AWB">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
-                <demand-adjust fillout="1" year="2025">25</demand-adjust>
+                <price-adjust fillout="1" year="2025">5.727272727</price-adjust>
+                <demand-adjust fillout="1" year="2025">21</demand-adjust>
                 <market>USA</market>
                 <linked-policy>GHG</linked-policy>
                 <price-unit>1990$/tCH4</price-unit>
@@ -5320,7 +5485,13 @@
                 <output-unit>MTC</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="CO2_LUC">
-                <price-adjust fillout="1" year="2025">0.1</price-adjust>
+                                
+                <price-adjust year="2025" fillout="1">0.1</price-adjust>
+                <price-adjust year="2030" fillout="1">0.1</price-adjust>
+                <price-adjust year="2035" fillout="1">0.1</price-adjust>
+                <price-adjust year="2040" fillout="1">0.1</price-adjust>
+                <price-adjust year="2045" fillout="1">0.1</price-adjust>
+                <price-adjust year="2050" fillout="1">0.1</price-adjust>
                 <demand-adjust fillout="1" year="2025">0</demand-adjust>
                 <market>USA</market>
                 <linked-policy>GHG</linked-policy>
@@ -5408,7 +5579,7 @@
                 <output-unit>GgHFC365mfc</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="N2O">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
+                <price-adjust fillout="1" year="2025">84.54545454</price-adjust>
                 <demand-adjust fillout="1" year="2025">298</demand-adjust>
                 <market>USA</market>
                 <linked-policy>GHG</linked-policy>
@@ -5416,7 +5587,7 @@
                 <output-unit>TgN2O</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="N2O_AGR">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
+                <price-adjust fillout="1" year="2025">84.54545454</price-adjust>
                 <demand-adjust fillout="1" year="2025">298</demand-adjust>
                 <market>USA</market>
                 <linked-policy>GHG</linked-policy>
@@ -5424,7 +5595,7 @@
                 <output-unit>TgN2O</output-unit>
             </linked-ghg-policy>
             <linked-ghg-policy name="N2O_AWB">
-                <price-adjust fillout="1" year="2025">0</price-adjust>
+                <price-adjust fillout="1" year="2025">84.54545454</price-adjust>
                 <demand-adjust fillout="1" year="2025">298</demand-adjust>
                 <market>USA</market>
                 <linked-policy>GHG</linked-policy>
