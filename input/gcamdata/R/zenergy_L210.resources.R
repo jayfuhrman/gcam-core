@@ -203,7 +203,7 @@ module_energy_L210.resources <- function(command, ...) {
     # historical period making the calculation a bit more tricky.  We use the lag_prod_helper
     # to help project forward production by each historical vintage so we can take this into
     # account.
-    test <- L111.Prod_EJ_R_F_Yh %>%
+    L111.Prod_EJ_R_F_Yh %>%
       filter(year %in% MODEL_BASE_YEARS) %>%
       left_join_error_no_match(select(A10.ResSubresourceProdLifetime, resource, lifetime = avg.prod.lifetime, reserve.subresource) %>% distinct(),
                                by=c("fuel" = "resource", "technology" = "reserve.subresource")) %>%
@@ -218,6 +218,7 @@ module_energy_L210.resources <- function(command, ...) {
       mutate(value = value * lifetime) %>%
       select(-lifetime, -timestep, -year_operate) ->
       L210.Reserve_EJ_R_F_Yh
+
 
     # Given the mismatch between data sets for historical production / regional supply curves / and
     # assumption for production lifetimes it may be the case that for some region + resource there

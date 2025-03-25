@@ -1,0 +1,10 @@
+# File: A10.mineral_ResReserveTechLifetime.csv
+# Title: Total lifetime a Technology has to produce a reserve which is different than the average-production-lifetime in that this value allows for extra years to produce in case it was producing at less than capacity due to economic shutdown
+# Units: Years
+# Source: Assumed to be so long that all reserve gets produced
+# Column types: ccci
+# ----------
+resource,reserve.subresource,resource.reserve.technology,lifetime
+copper,copper,copper,100
+lithium,lithium,lithium,100
+nickel,nickel,nickel,100

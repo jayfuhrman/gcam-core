@@ -326,7 +326,8 @@ if(command == driver.DECLARE_INPUTS) {
      mutate(Capacity_adj = if_else(Reset_Capacity == 1, R*Prod2020, Capacity),
             Capacity_adj = if_else(is.nan(Capacity_adj), max(Prod2020, Capacity), Capacity_adj),
             Capacity_adj = if_else(is.infinite(Capacity_adj),  max(Prod2020, Capacity), Capacity_adj)) %>%
-     select(Mineral, region, Year, Capacity_adj)
+     select(Mineral, region, Year, Capacity_adj) %>%
+     ungroup()
 
    # Filter to model years
    L1111.mineral_AnnProdLimit_R_Y <- AnnProdLimit_adj %>%
@@ -454,7 +455,8 @@ if(command == driver.DECLARE_INPUTS) {
      # extrapolate final base year
      complete(Mineral, region, Units, Year = c(MODEL_YEARS)) %>%
      group_by(Mineral, region, Units) %>%
-     mutate(cum_value = approx_fun(Year, cum_value, rule = 2))
+     mutate(cum_value = approx_fun(Year, cum_value, rule = 2)) %>%
+     ungroup()
 
    # Add cumulative historical production to the total Resource limit
    L1111.mineral_AnnResourceLimit_R_Y <- L1111.mineral_AnnResourceLimit_R_Y_fut %>%
@@ -490,7 +492,8 @@ if(command == driver.DECLARE_INPUTS) {
      mutate(P100 = P90*3) %>%
      mutate(P50 = ifelse(P50 > P90, NA, P50)) %>%  # Set P_50 to NA if P_50 > P_90
      tidyr::pivot_longer(cols = c(`P10`, `P50`, `P90`, `P100`), names_to = "percentile", values_to = "P", values_drop_na = TRUE) %>%
-     mutate(percentile = gsub("P", "", percentile))
+     mutate(percentile = gsub("P", "", percentile)) %>%
+     ungroup()
 
 
    # Put together the price-quantity pairs that comprise the resource supply curves
@@ -531,7 +534,8 @@ if(command == driver.DECLARE_INPUTS) {
   Lifetime_sumStage_stats <- Lifetime_sumStage %>%
     group_by(Mineral) %>%
     dplyr::summarise(average = mean(Lifetime),
-                      median = median(Lifetime))
+                      median = median(Lifetime)) %>%
+    ungroup()
 
   # For regions with lifetimes above the median, just set it to the median lifetime
   L1111.mineral_AvgProdLifetime <- Lifetime_sumStage %>%

@@ -8,11 +8,11 @@ resource,resource_type,market,output-unit,price-unit,1971,1975,1990,2005,2010,20
 steel,unlimited-resource,regional,Mt,1975$/kg,0.1,0.1,0.1,0.1,0.1,0.1
 aluminium,unlimited-resource,regional,Mt,1975$/kg,0.49,0.49,0.49,0.49,0.49,0.49
 silicon,unlimited-resource,regional,Mt,1975$/kg,3.7,3.7,3.7,3.7,3.7,3.7
-copper,unlimited-resource,regional,Mt,1975$/kg,1.45,1.45,1.45,1.45,1.45,1.45
+copper,resource,regional,Mt,1975$/kg,1.45,1.45,1.45,1.45,1.45,1.45
 graphite,unlimited-resource,regional,Mt,1975$/kg,1.7,1.7,1.7,1.7,1.7,1.7
-lithium,unlimited-resource,regional,Mt,1975$/kg,14.44,14.44,14.44,14.44,14.44,14.44
+lithium,resource,regional,Mt,1975$/kg,14.44,14.44,14.44,14.44,14.44,14.44
 cobalt,unlimited-resource,regional,Mt,1975$/kg,9.5,9.5,9.5,9.5,9.5,9.5
-nickel,unlimited-resource,regional,Mt,1975$/kg,3.11,3.11,3.11,3.11,3.11,3.11
+nickel,resource,regional,Mt,1975$/kg,3.11,3.11,3.11,3.11,3.11,3.11
 manganese,unlimited-resource,regional,Mt,1975$/kg,0.002,0.002,0.002,0.002,0.002,0.002
 neodymium,unlimited-resource,regional,Mt,1975$/kg,14.37,14.37,14.37,14.37,14.37,14.37
 tellurium,unlimited-resource,regional,Mt,1975$/kg,15.33,15.33,15.33,15.33,15.33,15.33
