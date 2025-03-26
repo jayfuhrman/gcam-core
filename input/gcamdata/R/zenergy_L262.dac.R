@@ -617,7 +617,7 @@ module_energy_L262.dac <- function(command, ...) {
         left_join_error_no_match(L262.GlobalTechCapFac_dac,
                                  by = c("sector.name", "subsector.name", "technology", "year"))%>%
         mutate(non_energy_cost = (capital.overnight * fixed.charge.rate + OM.fixed)/capacity.factor + OM.var,
-               non_energy_cost_kgC = non_energy_cost * emissions.CONV_C_CO2 * CONV_KG_T * gdp_deflator(1975,2015),
+               non_energy_cost_kgC = non_energy_cost * emissions.CONV_C_CO2 * CONV_KG_T * gdp_deflator(1975,cost.year),
                minicam.non.energy.input = "non-energy") %>%
         rename(input.cost = non_energy_cost_kgC) %>%
         select(sector.name, subsector.name, technology, year, minicam.non.energy.input, input.cost, scenario)

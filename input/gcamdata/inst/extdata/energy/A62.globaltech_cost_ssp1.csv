@@ -8,18 +8,22 @@ CO2 removal,dac,hightemp DAC NG,capital.overnight,1763,1763,1146,1146
 CO2 removal,dac,hightemp DAC NG,OM.fixed,76,76,42,42
 CO2 removal,dac,hightemp DAC NG,OM.var,0,0,0,0
 CO2 removal,dac,hightemp DAC NG,fixed.charge.rate,0.13,0.13,0.13,0.13
+CO2 removal,dac,hightemp DAC NG,cost.year,2015,2015,2015,2015
 CO2 removal,dac,hightemp DAC elec,capital.overnight,2300,2300,1146,1146
 CO2 removal,dac,hightemp DAC elec,OM.fixed,85,85,42,42
 CO2 removal,dac,hightemp DAC elec,OM.var,0,0,0,0
 CO2 removal,dac,hightemp DAC elec,fixed.charge.rate,0.13,0.13,0.13,0.13
+CO2 removal,dac,hightemp DAC elec,cost.year,2015,2015,2015,2015
 CO2 removal,dac,lowtemp DAC heatpump,capital.overnight,800,800,600,600
 CO2 removal,dac,lowtemp DAC heatpump,OM.fixed,260,260,150,150
 CO2 removal,dac,lowtemp DAC heatpump,OM.var,0,0,0,0
 CO2 removal,dac,lowtemp DAC heatpump,fixed.charge.rate,0.13,0.13,0.13,0.13
+CO2 removal,dac,lowtemp DAC heatpump,cost.year,2015,2015,2015,2015
 CO2 removal,dac,lowtemp DAC geothermal,capital.overnight,297,297,268,268
 CO2 removal,dac,lowtemp DAC geothermal,OM.fixed,237,237,137,137
 CO2 removal,dac,lowtemp DAC geothermal,OM.var,0,0,0,0
 CO2 removal,dac,lowtemp DAC geothermal,fixed.charge.rate,0.13,0.13,0.13,0.13
+CO2 removal,dac,lowtemp DAC geothermal,cost.year,2015,2015,2015,2015
 CO2 removal,no CDR,no CDR,non-energy,0.001,0.001,0.001,0.001
 process heat dac,gas CCS,gas CCS,non-energy,0,0,0,0
 CO2 removal,dac,direct ocean capture (stand-alone),non-energy,1.635004398,1.635004398,1.635004398,1.635004398
