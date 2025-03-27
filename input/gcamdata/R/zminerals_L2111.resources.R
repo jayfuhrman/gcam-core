@@ -8,12 +8,13 @@
 #' @param ... other optional parameters, depending on command
 #' @return Depends on \code{command}: either a vector of required inputs,
 #' a vector of output names, or (if \code{command} is "MAKE") all
-#' the generated outputs: \code{L2111.Rsrc}, \code{L2111.RsrcPrice}, \code{L2111.SubresourcePriceAdder},
+#' the generated outputs: \code{L2111.Rsrc}, \code{L2111.UnlimitRsrc}, \code{L2111.RsrcPrice}, \code{L2111.UnlimitRsrcPrice}, \code{L2111.SubresourcePriceAdder},
 #' \code{L2111.RsrcCalProd}, \code{L2111.ReserveCalReserve}, \code{L2111.RsrcCurves_minerals},
 #' \code{L2111.ResSubresourceProdLifetime}, \code{L2111.ResReserveTechLifetime}, \code{L2111.ResReserveTechDeclinePhase},
 #' \code{L2111.ResReserveTechProfitShutdown}, \code{L2111.ResReserveTechInvestmentInput}, \code{L2111.ResTechShrwt},
 #' \code{L2111.Supplysector_dyn}, \code{L2111.SubsectorLogit_dyn}, \code{L2111.SubsectorShrwtFllt_dyn},
-#' \code{L2111.StubTech_dyn}, \code{L2111.GlobalTechCoef_dyn}, \code{L2111.GlobalTechShrwt_dyn}, \code{L2111.StubTechEfficiency_dyn}
+#' \code{L2111.StubTech_dyn}, \code{L2111.GlobalTechCoef_dyn}, \code{L2111.GlobalTechShrwt_dyn},
+#' \code{L2111.StubTechEfficiency_dyn}, \code{L2111.TechPMult_dyn}
 #' @details Set up data tables for mineral supply curves
 #' @importFrom assertthat assert_that
 #' @importFrom dplyr arrange bind_rows filter if_else group_by left_join mutate select summarise
@@ -39,7 +40,9 @@ if(command == driver.DECLARE_INPUTS) {
            "L1111.mineral_AvgProdLifetime"))
 } else if(command == driver.DECLARE_OUTPUTS) {
   return(c("L2111.Rsrc",
+           "L2111.UnlimitRsrc",
            "L2111.RsrcPrice",
+           "L2111.UnlimitRsrcPrice",
            "L2111.SubresourcePriceAdder",
            "L2111.RsrcCalProd",
            "L2111.ReserveCalReserve",
@@ -56,7 +59,8 @@ if(command == driver.DECLARE_INPUTS) {
            "L2111.StubTech_dyn",
            "L2111.GlobalTechCoef_dyn",
            "L2111.GlobalTechShrwt_dyn",
-           "L2111.StubTechEfficiency_dyn"))
+           "L2111.StubTechEfficiency_dyn",
+           "L2111.TechPMult_dyn"))
 } else if(command == driver.MAKE) {
 
   all_data <- list(...)[[1]]
@@ -186,11 +190,19 @@ if(command == driver.DECLARE_INPUTS) {
     mutate(market = if_else(market == "regional", region, market))
     # TO-DO: filter to only the regions that have supply curves for that particular mineral.
 
-  # All mineral resources will be treated as depletable resources.
+  # Currently, copper, lithium and nickel will be treated as depletable resources.
+  # All other minerals are still unlimited resources (FOR NOW)
+
   # L2111.Rsrc: output unit, price unit, and market for depletable resources
   L2111.Rsrc <- L2111.mineral_rsrc_info %>%
     filter(resource_type == "resource") %>%
     select(region, resource = resource, output.unit = `output-unit`, price.unit = `price-unit`, market) %>%
+    distinct()
+
+  # L2111.UnlimitRsrc: output unit, price unit, and market for unlimited resources
+  L2111.UnlimitRsrc <- L2111.mineral_rsrc_info %>%
+    filter(resource_type == "unlimited-resource") %>%
+    select(region, unlimited.resource = resource, output.unit = `output-unit`, price.unit = `price-unit`, market) %>%
     distinct()
 
   # L2111.RsrcPrice: historical prices for depletable resources
@@ -199,6 +211,17 @@ if(command == driver.DECLARE_INPUTS) {
     filter(resource_type == "resource",
            year %in% MODEL_BASE_YEARS) %>%
     select(region, resource = resource, year, price = value)
+
+  # L2111.UnlimitRsrcPrice: prices for unlimited resources
+  # update the mineral price by multiplying the fixed-charge-rate (assumed to be 0.13). The mineral cost is considered part of the capital cost,
+  # so the mineral prices are multiplied by the fixed-charge-rate to get the annuity, which will later be used for calculating technology levelized
+  # cost.
+  L2111.UnlimitRsrcPrice <- L2111.mineral_rsrc_info %>%
+    filter(resource_type == "unlimited-resource", resource %in% energy.RSRC_MINERAL,
+           year %in% MODEL_BASE_YEARS) %>%
+    mutate(price = value * 0.13) %>%
+    select(region, unlimited.resource = resource, year, price)
+
 
   # B. Tech change
   # NO TECH CHANGE FOR NOW, REVISIT LATER
@@ -368,14 +391,30 @@ if(command == driver.DECLARE_INPUTS) {
            minicam.energy.input = resource,
            year = Year,
            market.name = region,
+           efficiency = round(efficiency, digits = 10)) %>%
+    select(c(LEVEL2_DATA_NAMES[['StubTechEff']])) %>%
+    distinct()
+
+  # L2111.TechPMult_dyn
+  L2111.TechPMult_dyn <- L2111.RsrcCurves_minerals_Efficiency_calc %>%
+    mutate(supplysector = paste(resource, "dynamic-capacity"),
+           subsector = paste(resource, "dynamic-capacity"),
+           technology = paste(resource, "dynamic-capacity"),
+           minicam.energy.input = resource,
+           year = Year,
+           market.name = region,
            # pMultiplier is set to the same value as the efficiency
-           pMult = efficiency) %>%
-    distinct() %>%
-    select(c(LEVEL2_DATA_NAMES[['StubTechEff']]), pMult)
+           efficiency = round(efficiency, digits = 10),
+           pMult = round(efficiency, digits = 10)) %>%
+    select(c(LEVEL2_DATA_NAMES[['TechPmult']])) %>%
+    distinct()
+
 
 
   # TBD - do we need maxSubResource?
 
+  # ===================================================
+  # Set up annual production limit constraint as a policy portfolio standard (this will be in a separate XML)
 
   # ===================================================
 
@@ -384,7 +423,7 @@ if(command == driver.DECLARE_INPUTS) {
     add_title("Market information for depletable mineral resources") %>%
     add_units("NA") %>%
     add_comments("A10.mineral_rsrc_info written to all regions") %>%
-    add_precursors("common/GCAM_region_names", "minerals/supply/A10.minerals_rsrc_info") ->
+    add_precursors("common/GCAM_region_names", "minerals/supply/A10.mineral_rsrc_info") ->
     L2111.Rsrc
 
   L2111.RsrcPrice %>%
@@ -469,7 +508,7 @@ if(command == driver.DECLARE_INPUTS) {
     add_units("NA") %>%
     add_comments("Share weights won't matter for resource technologies as there") %>%
     add_comments("is no competetion between technologies.") %>%
-    add_precursors("common/GCAM_region_names", "minerals/supply/A10.subrsrc_info") ->
+    add_precursors("common/GCAM_region_names", "minerals/supply/A10.mineral_subrsrc_info") ->
     L2111.ResTechShrwt
 
   L2111.Supplysector_dyn %>%
@@ -511,18 +550,27 @@ if(command == driver.DECLARE_INPUTS) {
     add_title("Shareweights of carbon storage technologies across base model years") %>%
     add_units("Unitless") %>%
     add_comments("Shareweights of global technologies were interpolated across all base model years") %>%
-    add_precursors("energy/A10.tech_shrwt_mineral_supply_dynamic") ->
+    add_precursors("minerals/supply/A10.tech_shrwt_mineral_supply_dynamic") ->
     L2111.GlobalTechShrwt_dyn
 
   L2111.StubTechEfficiency_dyn %>%
-    add_title("Dynamic minerals supply efficiencies and pMultiplier") %>%
+    add_title("Dynamic minerals supply efficiencies") %>%
     add_units("Unitless") %>%
     add_comments("Regionally calibrated scaling limits for minerals relative to maximum regional resources") %>%
-    add_comments("pMultiplier scales down costs by the same factor as the efficiency parameter in order to make supply curves have same slope as original.") ->
+    add_precursors("L1111.mineral_ResSupplyCurves_R_Y", "common/GCAM_region_names") ->
     L2111.StubTechEfficiency_dyn
 
+  L2111.TechPMult_dyn %>%
+    add_title("Dynamic minerals supply price multiplier") %>%
+    add_units("Unitless") %>%
+    add_comments("pMultiplier scales down costs by the same factor as the efficiency parameter in order to make supply curves have same slope as original.") %>%
+    same_precursors_as(L2111.StubTechEfficiency_dyn)->
+    L2111.TechPMult_dyn
+
   return_data(L2111.Rsrc,
+              L2111.UnlimitRsrc,
               L2111.RsrcPrice,
+              L2111.UnlimitRsrcPrice,
               L2111.SubresourcePriceAdder,
               L2111.RsrcCalProd,
               L2111.ReserveCalReserve,
@@ -539,7 +587,8 @@ if(command == driver.DECLARE_INPUTS) {
               L2111.StubTech_dyn,
               L2111.GlobalTechCoef_dyn,
               L2111.GlobalTechShrwt_dyn,
-              L2111.StubTechEfficiency_dyn)
+              L2111.StubTechEfficiency_dyn,
+              L2111.TechPMult_dyn)
 } else {
   stop("Unknown command")
 }
