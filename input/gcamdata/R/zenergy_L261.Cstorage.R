@@ -252,13 +252,7 @@ module_energy_L261.Cstorage <- function(command, ...) {
 
 
     L261.CStorageCurvesDynamic <- bind_rows(CStorageCurvesDynamic_slow_growth,
-                                            CStorageCurvesDynamic_rapid_growth) %>%
-      group_by(region,renewresource,sub.renewable.resource,scenario) %>%
-      arrange(available) %>%
-      # Avoid invalid grade errors that occur when higher cost grade has equal resource as immediately next lowest cost grade due to rounding.
-      mutate(available = if_else(available == lag(available,default = first(available)),available + 0.01,available),
-             available = if_else(extractioncost == 0,0,available)) %>%
-      ungroup()
+                                            CStorageCurvesDynamic_rapid_growth)
 
     ## Calculate an efficiency parameter equal to how much of each region's implied storage capacity is expected to be consumed by planned + operational projects by 2030
     calibrated_eff_2030 <- IEA_data %>%
@@ -296,8 +290,7 @@ module_energy_L261.Cstorage <- function(command, ...) {
              stub.technology = 'ccs dynamic-capacity',
              minicam.energy.input = 'carbon-storage dynamic',
              market.name = region) %>%
-      mutate(efficiency = if_else(efficiency == 0, 0.001,efficiency),
-             efficiency = round(efficiency,energy.DIGITS_EFFICIENCY)) %>%
+      mutate(efficiency = if_else(efficiency == 0, 0.001,efficiency)) %>%
       select(c('scenario',LEVEL2_DATA_NAMES[['StubTechEff']]))
 
     L261.TechPmult <- L261.StubTechEff %>%
