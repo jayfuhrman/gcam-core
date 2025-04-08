@@ -38,7 +38,7 @@ module_minerals_resources_xml <- function(command, ...) {
     )
 
   MODULE_OUTPUTS <-
-    c(XML = "resources_mineral.xml")
+    c(XML = "minerals_resources.xml")
 
   if(command == driver.DECLARE_INPUTS) {
     return(MODULE_INPUTS)

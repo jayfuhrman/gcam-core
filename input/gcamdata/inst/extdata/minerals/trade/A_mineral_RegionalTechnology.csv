@@ -1,0 +1,11 @@
+# File: A_mineral_RegionalTechnology.csv
+# Title: Technology-level assumptions of regional mineral markets
+# Units: Various
+# Comments: There is no technology competition.
+# Source: NA
+# Column types: ccccnnnc
+# ----------
+supplysector,subsector,technology,minicam.energy.input,coefficient,input.cost,share.weight,market.name
+regional copper,imported copper,imported copper,traded copper,1,0,1,USA
+regional lithium,imported lithium,imported lithium,traded lithium,1,0,1,USA
+regional nickel,imported nickel,imported nickel,traded nickel,1,0,1,USA
