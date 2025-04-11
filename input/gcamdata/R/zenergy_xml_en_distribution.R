@@ -117,8 +117,9 @@ module_energy_en_distribution_xml <- function(command, ...) {
     L226.GlobalTechEff_en <- L226.GlobalTechEff_en %>%
       filter(!grepl("elect_td", sector.name))
 
-    L2261.GlobalTechCost_elect_td <- L226.GlobalTechCost_en %>%
-      filter(grepl("elect_td", sector.name))
+   # We have stub tech costs now for T&D, need to remove global tech costs
+   # L2261.GlobalTechCost_elect_td <- L226.GlobalTechCost_en %>%
+   #    filter(grepl("elect_td", sector.name))
     L226.GlobalTechCost_en <- L226.GlobalTechCost_en %>%
       filter(!grepl("elect_td", sector.name))
 
@@ -227,7 +228,7 @@ module_energy_en_distribution_xml <- function(command, ...) {
       add_xml_data(L2261.GlobalTechEff_elect_td, "GlobalTechEff") %>%
       add_node_equiv_xml("input") %>%
       add_xml_data(L2261.GlobalTechTrackCapital_elect_td, "GlobalTechTrackCapital") %>%
-      add_xml_data(L2261.GlobalTechCost_elect_td, "GlobalTechCost") %>%
+     # add_xml_data(L2261.GlobalTechCost_elect_td, "GlobalTechCost") %>%
       add_xml_data(L2261.GlobalTechShrwt_elect_td, "GlobalTechShrwt") %>%
       add_xml_data(L226.StubTechCoef_electd, "StubTechCoef") %>%
       add_xml_data(L2261.StubTechCost_elect_td, "StubTechCost") %>%
@@ -235,18 +236,18 @@ module_energy_en_distribution_xml <- function(command, ...) {
       add_xml_data(L2261.StubTechLifetime_elect_td, "StubTechLifetime") %>%
       add_xml_data(L2261.StubTechSCurve_elect_td, "StubTechSCurve") %>%
       add_xml_data(L2261.StubTechProfitShutdown_elect_td, "StubTechProfitShutdown") %>%
-      add_precursors("L226.Supplysector_en",
-                     "L226.SubsectorLogit_en",
-                     "L226.SubsectorShrwt_en",
-                     "L226.SubsectorShrwtFllt_en",
-                     "L226.SubsectorInterp_en",
-                     "L226.SubsectorInterpTo_en",
-                     "L226.StubTech_en",
-                     "L226.GlobalTechEff_en",
-                     "L226.GlobalTechCost_en",
-                     "L226.GlobalTechTrackCapital_en",
-                     "L226.GlobalTechShrwt_en",
-                     "L226.StubTechCoef_electd",
+      add_precursors("L2261.Supplysector_elect_td",
+                     "L2261.SubsectorLogit_elect_td",
+                     "L2261.SubsectorShrwt_elect_td",
+                     "L2261.SubsectorShrwtFllt_elect_td",
+                     "L2261.SubsectorInterp_elect_td",
+                     "L2261.SubsectorInterpTo_elect_td",
+                     "L2261.StubTech_elect_td",
+                     "L2261.GlobalTechEff_elect_td",
+                    # "L2261.GlobalTechCost_elect_td",
+                     "L2261.GlobalTechTrackCapital_elect_td",
+                     "L2261.GlobalTechShrwt_elect_td",
+                     "L2261.StubTechCoef_elect_td",
                      "L2261.StubTechCost_elect_td",
                      "L2261.StubTechCoef_elect_td_mineral",
                      "L2261.StubTechLifetime_elect_td",
