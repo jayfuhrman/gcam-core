@@ -2,102 +2,130 @@
 # Title: Transportation technology default shareweights
 # Source: Documented in JIRA issue https://jira.pnnl.gov/jira/browse/JGCRI-358?src=confmacro
 # Units: Unitless
-# Column types: cccnnnnnnnnnc
+# Column types: cccnnnnnnnnnnnc
 # ----------
-supplysector,tranSubsector,tranTechnology,1971,2010,2015,2020,2025,2030,2050,2075,2100,sce
-trn_aviation_intl_pass,International Aviation,Liquids,1,1,1,1,1,1,1,1,1,CORE
-trn_aviation_intl_pass,International Aviation,BEV,0,0,0,0,0,0,0,0,0.1,CORE
-trn_aviation_intl_pass,International Aviation,Hydrogen,0,0,0,0,0,0,0,0,1,CORE
-trn_dom_ship_pass,Domestic Ship,Liquids,1,1,1,1,1,1,1,1,1,CORE
-trn_dom_ship_pass,Domestic Ship,BEV,0,0,0,0,0,0,0,1,1,CORE
-trn_dom_ship_pass,Domestic Ship,FCEV,0,0,0,0,0,0,0,1,1,CORE
-trn_dom_ship_pass,Domestic Ship,Hybrid Liquids,0,0,0,0,0,0,1,1,1,CORE
-trn_fret_rail_pass,Freight Rail,Coal,1,1,0,0,0,0,0,0,0,CORE
-trn_fret_rail_pass,Freight Rail,Electric,1,1,1,1,1,1,1,1,1,CORE
-trn_fret_rail_pass,Freight Rail,Liquids,1,1,1,1,1,1,1,1,1,CORE
-trn_fret_rail_pass,Freight Rail,BEV,0,0,0,0,0,0,1,1,1,CORE
-trn_fret_rail_pass,Freight Rail,FCEV,0,0,0,0,0,0,1,1,1,CORE
-trn_fret_rail_pass,Freight Rail,Hybrid Liquids,0,0,0,0,0,0,1,1,1,CORE
-trn_fret_road_pass,Heavy truck,Liquids,1,1,1,1,1,1,1,1,1,CORE
-trn_fret_road_pass,Heavy truck,NG,0,0,1,1,1,1,1,1,1,CORE
-trn_fret_road_pass,Heavy truck,FCEV,0,0,0,0,0,0,1,1,1,CORE
-trn_fret_road_pass,Heavy truck,Hybrid Liquids,0,0,0,0,0,1,1,1,1,CORE
-trn_fret_road_pass,Light truck,Liquids,1,1,1,1,1,1,1,1,1,CORE
-trn_fret_road_pass,Light truck,NG,0,0,1,1,1,1,1,1,1,CORE
-trn_fret_road_pass,Light truck,FCEV,0,0,0,0,0,0,1,1,1,CORE
-trn_fret_road_pass,Light truck,Hybrid Liquids,0,0,0,0,0,1,1,1,1,CORE
-trn_fret_road_pass,Medium truck,Liquids,1,1,1,1,1,1,1,1,1,CORE
-trn_fret_road_pass,Medium truck,NG,0,0,1,1,1,1,1,1,1,CORE
-trn_fret_road_pass,Medium truck,FCEV,0,0,0,0,0,0,1,1,1,CORE
-trn_fret_road_pass,Medium truck,Hybrid Liquids,0,0,0,0,0,1,1,1,1,CORE
-trn_pasg_cycle_pass,Cycle,Cycle,1,1,1,1,1,1,1,1,1,CORE
-trn_pasg_aviation_dom_pass,Domestic Aviation,Liquids,1,1,1,1,1,1,1,1,1,CORE
-trn_pasg_aviation_dom_pass,Domestic Aviation,BEV,0,0,0,0,0,0,0,0,1,CORE
-trn_pasg_aviation_dom_pass,Domestic Aviation,Hydrogen,0,0,0,0,0,0,0,0,1,CORE
-trn_pasg_hsr_pass,HSR,Electric,0,0,1,1,1,1,1,1,1,CORE
-trn_pasg_rail_pass,Passenger Rail,Electric,1,1,1,1,1,1,1,1,1,CORE
-trn_pasg_rail_pass,Passenger Rail,Liquids,1,1,1,1,1,1,1,1,1,CORE
-trn_passenger,Walk,Walk,1,1,1,1,1,1,1,1,1,CORE
-trn_pasg_road_bus_pass,Bus,Liquids,1,1,1,1,1,1,1,1,1,CORE
-trn_pasg_road_bus_pass,Bus,NG,0,0,1,1,1,1,1,1,1,CORE
-trn_pasg_road_bus_pass,Bus,FCEV,0,0,0,0,0,0,1,1,1,CORE
-trn_pasg_road_bus_pass,Bus,Hybrid Liquids,0,0,0,0,0,1,1,1,1,CORE
-trn_pasg_road_ldv_2_3W_pass,2W and 3W,Liquids,1,1,1,1,1,1,1,1,1,CORE
-trn_pasg_road_ldv_2_3W_pass,2W and 3W,NG,0,0,1,1,1,1,1,1,1,CORE
-trn_pasg_road_ldv_2_3W_pass,2W and 3W,BEV,0,0,0,0,0,1,1,1,1,CORE
-trn_pasg_road_ldv_2_3W_pass,2W and 3W,LA-BEV,0,0,0,0,0,0,0,0,0,CORE
-trn_pasg_road_ldv_4w_pass,Car,FCEV,0,0,0,0,0,1,1,1,1,CORE
-trn_pasg_road_ldv_4w_pass,Car,Hybrid Liquids,0,0,1,1,1,1,1,1,1,CORE
-trn_pasg_road_ldv_4w_pass,Car,Liquids,1,1,1,1,1,1,1,1,1,CORE
-trn_pasg_road_ldv_4w_pass,Car,NG,0,0,1,1,1,1,1,1,1,CORE
-trn_pasg_road_ldv_4w_pass,Large Car and Truck,FCEV,0,0,0,0,0,1,1,1,1,CORE
-trn_pasg_road_ldv_4w_pass,Large Car and Truck,Hybrid Liquids,0,0,1,1,1,1,1,1,1,CORE
-trn_pasg_road_ldv_4w_pass,Large Car and Truck,Liquids,1,1,1,1,1,1,1,1,1,CORE
-trn_pasg_road_ldv_4w_pass,Large Car and Truck,NG,0,0,1,1,1,1,1,1,1,CORE
-trn_pasg_road_ldv_4w_pass,Mini Car,FCEV,0,0,0,0,0,1,1,1,1,CORE
-trn_pasg_road_ldv_4w_pass,Mini Car,Hybrid Liquids,0,0,1,1,1,1,1,1,1,CORE
-trn_pasg_road_ldv_4w_pass,Mini Car,Liquids,1,1,1,1,1,1,1,1,1,CORE
-trn_pasg_road_ldv_4w_pass,Mini Car,NG,0,0,1,1,1,1,1,1,1,CORE
-trn_ship_intl_pass,International Ship,Liquids,1,1,1,1,1,1,1,1,1,CORE
-trn_ship_intl_pass,International Ship,BEV,0,0,0,0,0,0,0,1,1,CORE
-trn_ship_intl_pass,International Ship,FCEV,0,0,0,0,0,0,0,1,1,CORE
-trn_ship_intl_pass,International Ship,Hybrid Liquids,0,0,0,0,0,0,1,1,1,CORE
-trn_bus_bev_pass,bus_bev,bus_bev (LMO),0,0,0,1,1,1,1,1,1,CORE
-trn_bus_bev_pass,bus_bev,bus_bev (NMC111),0,0,0,1,1,1,1,1,1,CORE
-trn_bus_bev_pass,bus_bev,bus_bev (LFP),0,0,0,1,1,1,1,1,1,CORE
-trn_pasg_road_ldv_4W_lc_bev_pass,minicar_bev,minicar_bev (LMO),0,0,0,1,1,1,1,1,1,CORE
-trn_pasg_road_ldv_4W_lc_bev_pass,minicar_bev,minicar_bev (NMC111),0,0,0,1,1,1,1,1,1,CORE
-trn_pasg_road_ldv_4W_lc_bev_pass,minicar_bev,minicar_bev (NMC622),0,0,0,1,1,1,1,1,1,CORE
-trn_pasg_road_ldv_4W_lc_bev_pass,minicar_bev,minicar_bev (NMC811),0,0,0,1,1,1,1,1,1,CORE
-trn_pasg_road_ldv_4W_lc_bev_pass,minicar_bev,minicar_bev (NCA),0,0,0,1,1,1,1,1,1,CORE
-trn_pasg_road_ldv_4W_lc_bev_pass,minicar_bev,minicar_bev (LFP),0,0,0,1,1,1,1,1,1,CORE
-trn_pasg_road_ldv_4W_mc_bev_pass,car_bev,car_bev (LMO),0,0,0,1,1,1,1,1,1,CORE
-trn_pasg_road_ldv_4W_mc_bev_pass,car_bev,car_bev (NMC111),0,0,0,1,1,1,1,1,1,CORE
-trn_pasg_road_ldv_4W_mc_bev_pass,car_bev,car_bev (NMC622),0,0,0,1,1,1,1,1,1,CORE
-trn_pasg_road_ldv_4W_mc_bev_pass,car_bev,car_bev (NMC811),0,0,0,1,1,1,1,1,1,CORE
-trn_pasg_road_ldv_4W_mc_bev_pass,car_bev,car_bev (NCA),0,0,0,1,1,1,1,1,1,CORE
-trn_pasg_road_ldv_4W_mc_bev_pass,car_bev,car_bev (LFP),0,0,0,1,1,1,1,1,1,CORE
-trn_pasg_road_ldv_4W_hc_bev_pass,largecar_bev,largecar_bev (LMO),0,0,0,1,1,1,1,1,1,CORE
-trn_pasg_road_ldv_4W_hc_bev_pass,largecar_bev,largecar_bev (NMC111),0,0,0,1,1,1,1,1,1,CORE
-trn_pasg_road_ldv_4W_hc_bev_pass,largecar_bev,largecar_bev (NMC622),0,0,0,1,1,1,1,1,1,CORE
-trn_pasg_road_ldv_4W_hc_bev_pass,largecar_bev,largecar_bev (NMC811),0,0,0,1,1,1,1,1,1,CORE
-trn_pasg_road_ldv_4W_hc_bev_pass,largecar_bev,largecar_bev (NCA),0,0,0,1,1,1,1,1,1,CORE
-trn_pasg_road_ldv_4W_hc_bev_pass,largecar_bev,largecar_bev (LFP),0,0,0,1,1,1,1,1,1,CORE
-trn_fret_road_ht_bev_pass,fret_road_ht_bev,h_truck_bev (LMO),0,0,0,1,1,1,1,1,1,CORE
-trn_fret_road_ht_bev_pass,fret_road_ht_bev,h_truck_bev (NMC111),0,0,0,1,1,1,1,1,1,CORE
-trn_fret_road_ht_bev_pass,fret_road_ht_bev,h_truck_bev (NMC622),0,0,0,1,1,1,1,1,1,CORE
-trn_fret_road_ht_bev_pass,fret_road_ht_bev,h_truck_bev (NMC811),0,0,0,1,1,1,1,1,1,CORE
-trn_fret_road_ht_bev_pass,fret_road_ht_bev,h_truck_bev (NCA),0,0,0,1,1,1,1,1,1,CORE
-trn_fret_road_ht_bev_pass,fret_road_ht_bev,h_truck_bev (LFP),0,0,0,1,1,1,1,1,1,CORE
-trn_fret_road_mt_bev_pass,fret_road_mt_bev,m_truck_bev (LMO),0,0,0,1,1,1,1,1,1,CORE
-trn_fret_road_mt_bev_pass,fret_road_mt_bev,m_truck_bev (NMC111),0,0,0,1,1,1,1,1,1,CORE
-trn_fret_road_mt_bev_pass,fret_road_mt_bev,m_truck_bev (NMC622),0,0,0,1,1,1,1,1,1,CORE
-trn_fret_road_mt_bev_pass,fret_road_mt_bev,m_truck_bev (NMC811),0,0,0,1,1,1,1,1,1,CORE
-trn_fret_road_mt_bev_pass,fret_road_mt_bev,m_truck_bev (NCA),0,0,0,1,1,1,1,1,1,CORE
-trn_fret_road_mt_bev_pass,fret_road_mt_bev,m_truck_bev (LFP),0,0,0,1,1,1,1,1,1,CORE
-trn_fret_road_lt_bev_pass,fret_road_lt_bev,l_truck_bev (LMO),0,0,0,1,1,1,1,1,1,CORE
-trn_fret_road_lt_bev_pass,fret_road_lt_bev,l_truck_bev (NMC111),0,0,0,1,1,1,1,1,1,CORE
-trn_fret_road_lt_bev_pass,fret_road_lt_bev,l_truck_bev (NMC622),0,0,0,1,1,1,1,1,1,CORE
-trn_fret_road_lt_bev_pass,fret_road_lt_bev,l_truck_bev (NMC811),0,0,0,1,1,1,1,1,1,CORE
-trn_fret_road_lt_bev_pass,fret_road_lt_bev,l_truck_bev (NCA),0,0,0,1,1,1,1,1,1,CORE
-trn_fret_road_lt_bev_pass,fret_road_lt_bev,l_truck_bev (LFP),0,0,0,1,1,1,1,1,1,CORE
+supplysector,tranSubsector,tranTechnology,1971,2010,2015,2020,2025,2030,2035,2040,2050,2075,2100,sce
+trn_aviation_intl_pass,International Aviation,Liquids,1,1,1,1,1,1,1,1,1,1,1,CORE
+trn_aviation_intl_pass,International Aviation,BEV,0,0,0,0,0,0,0,0,0,0,0.1,CORE
+trn_aviation_intl_pass,International Aviation,Hydrogen,0,0,0,0,0,0,0,0,0,0,1,CORE
+trn_dom_ship_pass,Domestic Ship,Liquids,1,1,1,1,1,1,1,1,1,1,1,CORE
+trn_dom_ship_pass,Domestic Ship,BEV,0,0,0,0,0,0,0,0,0,1,1,CORE
+trn_dom_ship_pass,Domestic Ship,FCEV,0,0,0,0,0,0,0,0,0,1,1,CORE
+trn_dom_ship_pass,Domestic Ship,Hybrid Liquids,0,0,0,0,0,0,0,0,1,1,1,CORE
+trn_fret_rail_pass,Freight Rail,Coal,1,1,0,0,0,0,0,0,0,0,0,CORE
+trn_fret_rail_pass,Freight Rail,Electric,1,1,1,1,1,1,1,1,1,1,1,CORE
+trn_fret_rail_pass,Freight Rail,Liquids,1,1,1,1,1,1,1,1,1,1,1,CORE
+trn_fret_rail_pass,Freight Rail,BEV,0,0,0,0,0,0,0,0,1,1,1,CORE
+trn_fret_rail_pass,Freight Rail,FCEV,0,0,0,0,0,0,0,0,1,1,1,CORE
+trn_fret_rail_pass,Freight Rail,Hybrid Liquids,0,0,0,0,0,0,0,0,1,1,1,CORE
+trn_fret_road_pass,Heavy truck,Liquids,1,1,1,1,1,1,1,1,1,1,1,CORE
+trn_fret_road_pass,Heavy truck,NG,0,0,1,1,1,1,1,1,1,1,1,CORE
+trn_fret_road_pass,Heavy truck,FCEV,0,0,0,0,0,0,0,0,1,1,1,CORE
+trn_fret_road_pass,Heavy truck,Hybrid Liquids,0,0,0,0,0,1,1,1,1,1,1,CORE
+trn_fret_road_pass,Light truck,Liquids,1,1,1,1,1,1,1,1,1,1,1,CORE
+trn_fret_road_pass,Light truck,NG,0,0,1,1,1,1,1,1,1,1,1,CORE
+trn_fret_road_pass,Light truck,FCEV,0,0,0,0,0,0,0,0,1,1,1,CORE
+trn_fret_road_pass,Light truck,Hybrid Liquids,0,0,0,0,0,1,1,1,1,1,1,CORE
+trn_fret_road_pass,Medium truck,Liquids,1,1,1,1,1,1,1,1,1,1,1,CORE
+trn_fret_road_pass,Medium truck,NG,0,0,1,1,1,1,1,1,1,1,1,CORE
+trn_fret_road_pass,Medium truck,FCEV,0,0,0,0,0,0,0,0,1,1,1,CORE
+trn_fret_road_pass,Medium truck,Hybrid Liquids,0,0,0,0,0,1,1,1,1,1,1,CORE
+trn_pasg_cycle_pass,Cycle,Cycle,1,1,1,1,1,1,1,1,1,1,1,CORE
+trn_pasg_aviation_dom_pass,Domestic Aviation,Liquids,1,1,1,1,1,1,1,1,1,1,1,CORE
+trn_pasg_aviation_dom_pass,Domestic Aviation,BEV,0,0,0,0,0,0,0,0,0,0,1,CORE
+trn_pasg_aviation_dom_pass,Domestic Aviation,Hydrogen,0,0,0,0,0,0,0,0,0,0,1,CORE
+trn_pasg_hsr_pass,HSR,Electric,0,0,1,1,1,1,1,1,1,1,1,CORE
+trn_pasg_rail_pass,Passenger Rail,Electric,1,1,1,1,1,1,1,1,1,1,1,CORE
+trn_pasg_rail_pass,Passenger Rail,Liquids,1,1,1,1,1,1,1,1,1,1,1,CORE
+trn_passenger,Walk,Walk,1,1,1,1,1,1,1,1,1,1,1,CORE
+trn_pasg_road_bus_pass,Bus,Liquids,1,1,1,1,1,1,1,1,1,1,1,CORE
+trn_pasg_road_bus_pass,Bus,NG,0,0,1,1,1,1,1,1,1,1,1,CORE
+trn_pasg_road_bus_pass,Bus,FCEV,0,0,0,0,0,0,0,0,1,1,1,CORE
+trn_pasg_road_bus_pass,Bus,Hybrid Liquids,0,0,0,0,0,1,1,1,1,1,1,CORE
+trn_pasg_road_ldv_2_3W_pass,2W and 3W,Liquids,1,1,1,1,1,1,1,1,1,1,1,CORE
+trn_pasg_road_ldv_2_3W_pass,2W and 3W,NG,0,0,1,1,1,1,1,1,1,1,1,CORE
+trn_pasg_road_ldv_2_3W_pass,2W and 3W,BEV,0,0,0,0,0,1,1,1,1,1,1,CORE
+trn_pasg_road_ldv_2_3W_pass,2W and 3W,LA-BEV,0,0,0,0,0,0,0,0,0,0,0,CORE
+trn_pasg_road_ldv_4w_pass,Car,FCEV,0,0,0,0,0,1,1,1,1,1,1,CORE
+trn_pasg_road_ldv_4w_pass,Car,Hybrid Liquids,0,0,1,1,1,1,1,1,1,1,1,CORE
+trn_pasg_road_ldv_4w_pass,Car,Liquids,1,1,1,1,1,1,1,1,1,1,1,CORE
+trn_pasg_road_ldv_4w_pass,Car,NG,0,0,1,1,1,1,1,1,1,1,1,CORE
+trn_pasg_road_ldv_4w_pass,Large Car and Truck,FCEV,0,0,0,0,0,1,1,1,1,1,1,CORE
+trn_pasg_road_ldv_4w_pass,Large Car and Truck,Hybrid Liquids,0,0,1,1,1,1,1,1,1,1,1,CORE
+trn_pasg_road_ldv_4w_pass,Large Car and Truck,Liquids,1,1,1,1,1,1,1,1,1,1,1,CORE
+trn_pasg_road_ldv_4w_pass,Large Car and Truck,NG,0,0,1,1,1,1,1,1,1,1,1,CORE
+trn_pasg_road_ldv_4w_pass,Mini Car,FCEV,0,0,0,0,0,1,1,1,1,1,1,CORE
+trn_pasg_road_ldv_4w_pass,Mini Car,Hybrid Liquids,0,0,1,1,1,1,1,1,1,1,1,CORE
+trn_pasg_road_ldv_4w_pass,Mini Car,Liquids,1,1,1,1,1,1,1,1,1,1,1,CORE
+trn_pasg_road_ldv_4w_pass,Mini Car,NG,0,0,1,1,1,1,1,1,1,1,1,CORE
+trn_ship_intl_pass,International Ship,Liquids,1,1,1,1,1,1,1,1,1,1,1,CORE
+trn_ship_intl_pass,International Ship,BEV,0,0,0,0,0,0,0,0,0,1,1,CORE
+trn_ship_intl_pass,International Ship,FCEV,0,0,0,0,0,0,0,0,0,1,1,CORE
+trn_ship_intl_pass,International Ship,Hybrid Liquids,0,0,0,0,0,0,0,0,1,1,1,CORE
+trn_fret_road_ht_bev_pass,fret_road_ht_bev,h_truck_bev (NMC111),0,0,0,1,1,1,1,1,1,1,1,CORE
+trn_fret_road_ht_bev_pass,fret_road_ht_bev,h_truck_bev (NMC622),0,0,0,1,1,1,1,1,1,1,1,CORE
+trn_fret_road_ht_bev_pass,fret_road_ht_bev,h_truck_bev (NMC811),0,0,0,1,1,1,1,1,1,1,1,CORE
+trn_fret_road_ht_bev_pass,fret_road_ht_bev,h_truck_bev (NCA),0,0,0,1,1,1,1,1,1,1,1,CORE
+trn_fret_road_ht_bev_pass,fret_road_ht_bev,h_truck_bev (LFP),0,0,0,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,CORE
+trn_fret_road_ht_bev_pass,fret_road_ht_bev,h_truck_bev (Na_ion),0,0,0,0.1,0.1,0.1,0.2,0.2,0.2,0.2,0.2,CORE
+trn_fret_road_ht_bev_pass,fret_road_ht_bev,h_truck_bev (LFP_si),0,0,0,0.1,0.1,0.1,0.5,0.5,0.5,0.5,0.5,CORE
+trn_fret_road_ht_bev_pass,fret_road_ht_bev,h_truck_bev (NMC811_si),0,0,0,0.1,0.1,0.1,1,1,1,1,1,CORE
+trn_fret_road_ht_bev_pass,fret_road_ht_bev,h_truck_bev (LFP_ssb),0,0,0,0,0,0.1,0.1,0.5,0.5,0.5,0.5,CORE
+trn_fret_road_ht_bev_pass,fret_road_ht_bev,h_truck_bev (NMC811_ssb),0,0,0,0,0,0.1,0.1,1,1,1,1,CORE
+trn_fret_road_mt_bev_pass,fret_road_mt_bev,m_truck_bev (NMC111),0,0,0,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,CORE
+trn_fret_road_mt_bev_pass,fret_road_mt_bev,m_truck_bev (NMC622),0,0,0,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,CORE
+trn_fret_road_mt_bev_pass,fret_road_mt_bev,m_truck_bev (NMC811),0,0,0,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,CORE
+trn_fret_road_mt_bev_pass,fret_road_mt_bev,m_truck_bev (NCA),0,0,0,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,CORE
+trn_fret_road_mt_bev_pass,fret_road_mt_bev,m_truck_bev (LFP),0,0,0,1,1,1,1,1,1,1,1,CORE
+trn_fret_road_mt_bev_pass,fret_road_mt_bev,m_truck_bev (Na_ion),0,0,0,0.1,0.1,0.1,0.5,0.5,0.5,0.5,0.5,CORE
+trn_fret_road_mt_bev_pass,fret_road_mt_bev,m_truck_bev (LFP_si),0,0,0,0.1,0.1,0.1,1,1,1,1,1,CORE
+trn_fret_road_mt_bev_pass,fret_road_mt_bev,m_truck_bev (NMC811_si),0,0,0,0.1,0.1,0.1,1,1,1,1,1,CORE
+trn_fret_road_mt_bev_pass,fret_road_mt_bev,m_truck_bev (LFP_ssb),0,0,0,0,0,0.1,0.1,1,1,1,1,CORE
+trn_fret_road_mt_bev_pass,fret_road_mt_bev,m_truck_bev (NMC811_ssb),0,0,0,0,0,0.1,0.1,1,1,1,1,CORE
+trn_fret_road_lt_bev_pass,fret_road_lt_bev,l_truck_bev (NMC111),0,0,0,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,CORE
+trn_fret_road_lt_bev_pass,fret_road_lt_bev,l_truck_bev (NMC622),0,0,0,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,CORE
+trn_fret_road_lt_bev_pass,fret_road_lt_bev,l_truck_bev (NMC811),0,0,0,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,CORE
+trn_fret_road_lt_bev_pass,fret_road_lt_bev,l_truck_bev (NCA),0,0,0,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,CORE
+trn_fret_road_lt_bev_pass,fret_road_lt_bev,l_truck_bev (LFP),0,0,0,1,1,1,1,1,1,1,1,CORE
+trn_fret_road_lt_bev_pass,fret_road_lt_bev,l_truck_bev (Na_ion),0,0,0,0.1,0.1,0.1,0.5,0.5,0.5,0.5,0.5,CORE
+trn_fret_road_lt_bev_pass,fret_road_lt_bev,l_truck_bev (LFP_si),0,0,0,0.1,0.1,0.1,1,1,1,1,1,CORE
+trn_fret_road_lt_bev_pass,fret_road_lt_bev,l_truck_bev (NMC811_si),0,0,0,0.1,0.1,0.1,1,1,1,1,1,CORE
+trn_fret_road_lt_bev_pass,fret_road_lt_bev,l_truck_bev (LFP_ssb),0,0,0,0,0,0.1,0.1,1,1,1,1,CORE
+trn_fret_road_lt_bev_pass,fret_road_lt_bev,l_truck_bev (NMC811_ssb),0,0,0,0,0,0.1,0.1,1,1,1,1,CORE
+trn_bus_bev_pass,bus_bev,bus_bev (NMC111),0,0,0,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3,CORE
+trn_bus_bev_pass,bus_bev,bus_bev (LFP),0,0,0,1,1,1,1,1,1,1,1,CORE
+trn_bus_bev_pass,bus_bev,bus_bev (Na_ion),0,0,0,0.1,0.1,0.1,1,1,1,1,1,CORE
+trn_bus_bev_pass,bus_bev,bus_bev (LFP_si),0,0,0,0.1,0.1,0.1,1,1,1,1,1,CORE
+trn_bus_bev_pass,bus_bev,bus_bev (NMC811_si),0,0,0,0.1,0.1,0.1,1,1,1,1,1,CORE
+trn_bus_bev_pass,bus_bev,bus_bev (LFP_ssb),0,0,0,0,0,0.1,0.1,1,1,1,1,CORE
+trn_bus_bev_pass,bus_bev,bus_bev (NMC811_ssb),0,0,0,0,0,0.1,0.1,1,1,1,1,CORE
+trn_pasg_road_ldv_4W_lc_bev_pass,minicar_bev,minicar_bev (NMC111),0,0,0,1,1,1,1,1,0.1,0.1,0.1,CORE
+trn_pasg_road_ldv_4W_lc_bev_pass,minicar_bev,minicar_bev (NMC622),0,0,0,1,1,1,1,1,0.2,0.2,0.2,CORE
+trn_pasg_road_ldv_4W_lc_bev_pass,minicar_bev,minicar_bev (NMC811),0,0,0,1,1,1,1,1,0.5,0.5,0.5,CORE
+trn_pasg_road_ldv_4W_lc_bev_pass,minicar_bev,minicar_bev (NCA),0,0,0,1,1,1,1,1,0.1,0.1,0.1,CORE
+trn_pasg_road_ldv_4W_lc_bev_pass,minicar_bev,minicar_bev (LFP),0,0,0,1,1,1,1,1,1,1,1,CORE
+trn_pasg_road_ldv_4W_lc_bev_pass,minicar_bev,minicar_bev (Na_ion),0,0,0,0.1,0.1,0.1,1,1,1,1,1,CORE
+trn_pasg_road_ldv_4W_lc_bev_pass,minicar_bev,minicar_bev (LFP_si),0,0,0,0.1,0.1,0.1,1,1,1,1,1,CORE
+trn_pasg_road_ldv_4W_lc_bev_pass,minicar_bev,minicar_bev (NMC811_si),0,0,0,0.1,0.1,0.1,1,1,1,1,1,CORE
+trn_pasg_road_ldv_4W_lc_bev_pass,minicar_bev,minicar_bev (LFP_ssb),0,0,0,0,0,0.1,0.1,1,1,1,1,CORE
+trn_pasg_road_ldv_4W_lc_bev_pass,minicar_bev,minicar_bev (NMC811_ssb),0,0,0,0,0,0.1,0.1,1,1,1,1,CORE
+trn_pasg_road_ldv_4W_mc_bev_pass,car_bev,car_bev (NMC111),0,0,0,1,1,1,1,1,0.1,0.1,0.1,CORE
+trn_pasg_road_ldv_4W_mc_bev_pass,car_bev,car_bev (NMC622),0,0,0,1,1,1,1,1,0.2,0.2,0.2,CORE
+trn_pasg_road_ldv_4W_mc_bev_pass,car_bev,car_bev (NMC811),0,0,0,1,1,1,1,1,0.5,0.5,0.5,CORE
+trn_pasg_road_ldv_4W_mc_bev_pass,car_bev,car_bev (NCA),0,0,0,1,1,1,1,1,0.1,0.1,0.1,CORE
+trn_pasg_road_ldv_4W_mc_bev_pass,car_bev,car_bev (LFP),0,0,0,1,1,1,1,1,1,1,1,CORE
+trn_pasg_road_ldv_4W_mc_bev_pass,car_bev,car_bev (Na_ion),0,0,0,0.1,0.1,0.1,0.5,0.5,0.5,0.5,0.5,CORE
+trn_pasg_road_ldv_4W_mc_bev_pass,car_bev,car_bev (LFP_si),0,0,0,0.1,0.1,0.1,1,1,1,1,1,CORE
+trn_pasg_road_ldv_4W_mc_bev_pass,car_bev,car_bev (NMC811_si),0,0,0,0.1,0.1,0.1,1,1,1,1,1,CORE
+trn_pasg_road_ldv_4W_mc_bev_pass,car_bev,car_bev (LFP_ssb),0,0,0,0,0,0.1,0.1,1,1,1,1,CORE
+trn_pasg_road_ldv_4W_mc_bev_pass,car_bev,car_bev (NMC811_ssb),0,0,0,0,0,0.1,0.1,1,1,1,1,CORE
+trn_pasg_road_ldv_4W_hc_bev_pass,largecar_bev,largecar_bev (NMC111),0,0,0,1,1,1,1,1,0.1,0.1,0.1,CORE
+trn_pasg_road_ldv_4W_hc_bev_pass,largecar_bev,largecar_bev (NMC622),0,0,0,1,1,1,1,1,0.2,0.2,0.2,CORE
+trn_pasg_road_ldv_4W_hc_bev_pass,largecar_bev,largecar_bev (NMC811),0,0,0,1,1,1,1,1,0.5,0.5,0.5,CORE
+trn_pasg_road_ldv_4W_hc_bev_pass,largecar_bev,largecar_bev (NCA),0,0,0,1,1,1,1,1,0.1,0.1,0.1,CORE
+trn_pasg_road_ldv_4W_hc_bev_pass,largecar_bev,largecar_bev (LFP),0,0,0,1,1,1,1,1,1,1,1,CORE
+trn_pasg_road_ldv_4W_hc_bev_pass,largecar_bev,largecar_bev (Na_ion),0,0,0,0.1,0.1,0.1,0.5,0.5,0.5,0.5,0.5,CORE
+trn_pasg_road_ldv_4W_hc_bev_pass,largecar_bev,largecar_bev (LFP_si),0,0,0,0.1,0.1,0.1,1,1,1,1,1,CORE
+trn_pasg_road_ldv_4W_hc_bev_pass,largecar_bev,largecar_bev (NMC811_si),0,0,0,0.1,0.1,0.1,1,1,1,1,1,CORE
+trn_pasg_road_ldv_4W_hc_bev_pass,largecar_bev,largecar_bev (LFP_ssb),0,0,0,0,0,0.1,0.1,1,1,1,1,CORE
+trn_pasg_road_ldv_4W_hc_bev_pass,largecar_bev,largecar_bev (NMC811_ssb),0,0,0,0,0,0.1,0.1,1,1,1,1,CORE
