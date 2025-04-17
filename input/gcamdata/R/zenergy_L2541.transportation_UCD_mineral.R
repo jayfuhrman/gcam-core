@@ -91,7 +91,12 @@ module_energy_L2541.transportation_UCD_mineral <- function(command, ...) {
       semi_join(L254.StubTranTechCost %>%
           ungroup() %>%
           select(-minicam.non.energy.input, -input.cost, -sce) %>%
-          unique(), by = c("region", "supplysector", "tranSubsector", "stub.technology", "year"))
+          unique(), by = c("region", "supplysector", "tranSubsector", "stub.technology", "year")) %>%
+      ## add back the cycle material intensity (cycle does not have cost information)
+      rbind(A2541.trn_globaltech_mineral_coef_kg_per_travel_part2 %>%
+              filter(stub.technology == "Cycle") %>%
+              mutate(model.year = year))
+
 
     # 1.2 Convert the mineral coefficient to current-coefficient--only apply input to the new vintage.
 
@@ -154,6 +159,8 @@ module_energy_L2541.transportation_UCD_mineral <- function(command, ...) {
 
     A2541.trn_globaltech_mineral_cost <-
       A2541.trn_globaltech_mineral_coef_kg_vtk %>%
+      # get rid of cycle for calculating the mineral cost, because cycle does not have cost input
+      filter(stub.technology != "Cycle") %>%
       mutate(value = value * (1e12/1055) * 1e-3) %>%
       left_join(A10.mineral_price, by = c("minicam.energy.input" = "resource", "year")) %>%
       # convert mineral price to 1990 USD$ to be consistent with tech non-energy cost

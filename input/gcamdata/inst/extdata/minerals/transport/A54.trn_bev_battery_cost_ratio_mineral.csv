@@ -1,0 +1,73 @@
+# File: A54.trn_bev_battery_cost_ratio_mineral.csv
+# Title: transport sector ev battery technology cost ratio
+# Units: None
+# Column types: ccccccn
+# ----------
+from.supplysector,from.subsector,from.technology,to.supplysector,to.subsector,to.technology,ratio
+trn_fret_road_pass,Light truck,BEV,trn_fret_road_lt_bev_pass,fret_road_lt_bev,l_truck_bev (NMC111),1.154
+trn_fret_road_pass,Light truck,BEV,trn_fret_road_lt_bev_pass,fret_road_lt_bev,l_truck_bev (NMC622),0.997
+trn_fret_road_pass,Light truck,BEV,trn_fret_road_lt_bev_pass,fret_road_lt_bev,l_truck_bev (NMC811),0.963
+trn_fret_road_pass,Light truck,BEV,trn_fret_road_lt_bev_pass,fret_road_lt_bev,l_truck_bev (NCA),0.982
+trn_fret_road_pass,Light truck,BEV,trn_fret_road_lt_bev_pass,fret_road_lt_bev,l_truck_bev (LFP),0.934
+trn_fret_road_pass,Light truck,BEV,trn_fret_road_lt_bev_pass,fret_road_lt_bev,l_truck_bev (Na_ion),0.849
+trn_fret_road_pass,Light truck,BEV,trn_fret_road_lt_bev_pass,fret_road_lt_bev,l_truck_bev (LFP_si),0.895
+trn_fret_road_pass,Light truck,BEV,trn_fret_road_lt_bev_pass,fret_road_lt_bev,l_truck_bev (NMC811_si),0.92
+trn_fret_road_pass,Light truck,BEV,trn_fret_road_lt_bev_pass,fret_road_lt_bev,l_truck_bev (LFP_ssb),1.042
+trn_fret_road_pass,Light truck,BEV,trn_fret_road_lt_bev_pass,fret_road_lt_bev,l_truck_bev (NMC811_ssb),1.006
+trn_fret_road_pass,Medium truck,BEV,trn_fret_road_mt_bev_pass,fret_road_mt_bev,m_truck_bev (NMC111),1.154
+trn_fret_road_pass,Medium truck,BEV,trn_fret_road_mt_bev_pass,fret_road_mt_bev,m_truck_bev (NMC622),0.997
+trn_fret_road_pass,Medium truck,BEV,trn_fret_road_mt_bev_pass,fret_road_mt_bev,m_truck_bev (NMC811),0.963
+trn_fret_road_pass,Medium truck,BEV,trn_fret_road_mt_bev_pass,fret_road_mt_bev,m_truck_bev (NCA),0.982
+trn_fret_road_pass,Medium truck,BEV,trn_fret_road_mt_bev_pass,fret_road_mt_bev,m_truck_bev (LFP),0.934
+trn_fret_road_pass,Medium truck,BEV,trn_fret_road_mt_bev_pass,fret_road_mt_bev,m_truck_bev (Na_ion),0.849
+trn_fret_road_pass,Medium truck,BEV,trn_fret_road_mt_bev_pass,fret_road_mt_bev,m_truck_bev (LFP_si),0.895
+trn_fret_road_pass,Medium truck,BEV,trn_fret_road_mt_bev_pass,fret_road_mt_bev,m_truck_bev (NMC811_si),0.92
+trn_fret_road_pass,Medium truck,BEV,trn_fret_road_mt_bev_pass,fret_road_mt_bev,m_truck_bev (LFP_ssb),1.042
+trn_fret_road_pass,Medium truck,BEV,trn_fret_road_mt_bev_pass,fret_road_mt_bev,m_truck_bev (NMC811_ssb),1.006
+trn_fret_road_pass,Heavy truck,BEV,trn_fret_road_ht_bev_pass,fret_road_ht_bev,h_truck_bev (NMC111),1.154
+trn_fret_road_pass,Heavy truck,BEV,trn_fret_road_ht_bev_pass,fret_road_ht_bev,h_truck_bev (NMC622),0.997
+trn_fret_road_pass,Heavy truck,BEV,trn_fret_road_ht_bev_pass,fret_road_ht_bev,h_truck_bev (NMC811),0.963
+trn_fret_road_pass,Heavy truck,BEV,trn_fret_road_ht_bev_pass,fret_road_ht_bev,h_truck_bev (NCA),0.982
+trn_fret_road_pass,Heavy truck,BEV,trn_fret_road_ht_bev_pass,fret_road_ht_bev,h_truck_bev (LFP),0.934
+trn_fret_road_pass,Heavy truck,BEV,trn_fret_road_ht_bev_pass,fret_road_ht_bev,h_truck_bev (Na_ion),0.849
+trn_fret_road_pass,Heavy truck,BEV,trn_fret_road_ht_bev_pass,fret_road_ht_bev,h_truck_bev (LFP_si),0.895
+trn_fret_road_pass,Heavy truck,BEV,trn_fret_road_ht_bev_pass,fret_road_ht_bev,h_truck_bev (NMC811_si),0.92
+trn_fret_road_pass,Heavy truck,BEV,trn_fret_road_ht_bev_pass,fret_road_ht_bev,h_truck_bev (LFP_ssb),1.042
+trn_fret_road_pass,Heavy truck,BEV,trn_fret_road_ht_bev_pass,fret_road_ht_bev,h_truck_bev (NMC811_ssb),1.006
+trn_pasg_road_bus_pass,Bus,BEV,trn_bus_bev_pass,bus_bev,bus_bev (NMC111),1.154
+trn_pasg_road_bus_pass,Bus,BEV,trn_bus_bev_pass,bus_bev,bus_bev (LFP),0.934
+trn_pasg_road_bus_pass,Bus,BEV,trn_bus_bev_pass,bus_bev,bus_bev (Na_ion),0.849
+trn_pasg_road_bus_pass,Bus,BEV,trn_bus_bev_pass,bus_bev,bus_bev (LFP_si),0.895
+trn_pasg_road_bus_pass,Bus,BEV,trn_bus_bev_pass,bus_bev,bus_bev (NMC811_si),0.92
+trn_pasg_road_bus_pass,Bus,BEV,trn_bus_bev_pass,bus_bev,bus_bev (LFP_ssb),1.042
+trn_pasg_road_bus_pass,Bus,BEV,trn_bus_bev_pass,bus_bev,bus_bev (NMC811_ssb),1.006
+trn_pasg_road_ldv_4w_pass,Car,BEV,trn_pasg_road_ldv_4W_mc_bev_pass,car_bev,car_bev (NMC111),1.154
+trn_pasg_road_ldv_4w_pass,Car,BEV,trn_pasg_road_ldv_4W_mc_bev_pass,car_bev,car_bev (NMC622),0.997
+trn_pasg_road_ldv_4w_pass,Car,BEV,trn_pasg_road_ldv_4W_mc_bev_pass,car_bev,car_bev (NMC811),0.963
+trn_pasg_road_ldv_4w_pass,Car,BEV,trn_pasg_road_ldv_4W_mc_bev_pass,car_bev,car_bev (NCA),0.982
+trn_pasg_road_ldv_4w_pass,Car,BEV,trn_pasg_road_ldv_4W_mc_bev_pass,car_bev,car_bev (LFP),0.934
+trn_pasg_road_ldv_4w_pass,Car,BEV,trn_pasg_road_ldv_4W_mc_bev_pass,car_bev,car_bev (Na_ion),0.849
+trn_pasg_road_ldv_4w_pass,Car,BEV,trn_pasg_road_ldv_4W_mc_bev_pass,car_bev,car_bev (LFP_si),0.895
+trn_pasg_road_ldv_4w_pass,Car,BEV,trn_pasg_road_ldv_4W_mc_bev_pass,car_bev,car_bev (NMC811_si),0.92
+trn_pasg_road_ldv_4w_pass,Car,BEV,trn_pasg_road_ldv_4W_mc_bev_pass,car_bev,car_bev (LFP_ssb),1.042
+trn_pasg_road_ldv_4w_pass,Car,BEV,trn_pasg_road_ldv_4W_mc_bev_pass,car_bev,car_bev (NMC811_ssb),1.006
+trn_pasg_road_ldv_4w_pass,Large Car and Truck,BEV,trn_pasg_road_ldv_4W_hc_bev_pass,largecar_bev,largecar_bev (NMC111),1.154
+trn_pasg_road_ldv_4w_pass,Large Car and Truck,BEV,trn_pasg_road_ldv_4W_hc_bev_pass,largecar_bev,largecar_bev (NMC622),0.997
+trn_pasg_road_ldv_4w_pass,Large Car and Truck,BEV,trn_pasg_road_ldv_4W_hc_bev_pass,largecar_bev,largecar_bev (NMC811),0.963
+trn_pasg_road_ldv_4w_pass,Large Car and Truck,BEV,trn_pasg_road_ldv_4W_hc_bev_pass,largecar_bev,largecar_bev (NCA),0.982
+trn_pasg_road_ldv_4w_pass,Large Car and Truck,BEV,trn_pasg_road_ldv_4W_hc_bev_pass,largecar_bev,largecar_bev (LFP),0.934
+trn_pasg_road_ldv_4w_pass,Large Car and Truck,BEV,trn_pasg_road_ldv_4W_hc_bev_pass,largecar_bev,largecar_bev (Na_ion),0.849
+trn_pasg_road_ldv_4w_pass,Large Car and Truck,BEV,trn_pasg_road_ldv_4W_hc_bev_pass,largecar_bev,largecar_bev (LFP_si),0.895
+trn_pasg_road_ldv_4w_pass,Large Car and Truck,BEV,trn_pasg_road_ldv_4W_hc_bev_pass,largecar_bev,largecar_bev (NMC811_si),0.92
+trn_pasg_road_ldv_4w_pass,Large Car and Truck,BEV,trn_pasg_road_ldv_4W_hc_bev_pass,largecar_bev,largecar_bev (LFP_ssb),1.042
+trn_pasg_road_ldv_4w_pass,Large Car and Truck,BEV,trn_pasg_road_ldv_4W_hc_bev_pass,largecar_bev,largecar_bev (NMC811_ssb),1.006
+trn_pasg_road_ldv_4w_pass,Mini Car,BEV,trn_pasg_road_ldv_4W_lc_bev_pass,minicar_bev,minicar_bev (NMC111),1.154
+trn_pasg_road_ldv_4w_pass,Mini Car,BEV,trn_pasg_road_ldv_4W_lc_bev_pass,minicar_bev,minicar_bev (NMC622),0.997
+trn_pasg_road_ldv_4w_pass,Mini Car,BEV,trn_pasg_road_ldv_4W_lc_bev_pass,minicar_bev,minicar_bev (NMC811),0.963
+trn_pasg_road_ldv_4w_pass,Mini Car,BEV,trn_pasg_road_ldv_4W_lc_bev_pass,minicar_bev,minicar_bev (NCA),0.982
+trn_pasg_road_ldv_4w_pass,Mini Car,BEV,trn_pasg_road_ldv_4W_lc_bev_pass,minicar_bev,minicar_bev (LFP),0.934
+trn_pasg_road_ldv_4w_pass,Mini Car,BEV,trn_pasg_road_ldv_4W_lc_bev_pass,minicar_bev,minicar_bev (Na_ion),0.849
+trn_pasg_road_ldv_4w_pass,Mini Car,BEV,trn_pasg_road_ldv_4W_lc_bev_pass,minicar_bev,minicar_bev (LFP_si),0.895
+trn_pasg_road_ldv_4w_pass,Mini Car,BEV,trn_pasg_road_ldv_4W_lc_bev_pass,minicar_bev,minicar_bev (NMC811_si),0.92
+trn_pasg_road_ldv_4w_pass,Mini Car,BEV,trn_pasg_road_ldv_4W_lc_bev_pass,minicar_bev,minicar_bev (LFP_ssb),1.042
+trn_pasg_road_ldv_4w_pass,Mini Car,BEV,trn_pasg_road_ldv_4W_lc_bev_pass,minicar_bev,minicar_bev (NMC811_ssb),1.006

@@ -61,6 +61,7 @@ module_energy_L254.transportation_UCD <- function(command, ...) {
              FILE=  "minerals/transport/A54.trn_globaltranTech_interp_mineral",
 
              FILE = "minerals/transport/A54.trn_tech_mineral_bev_mapping",
+             FILE = "minerals/transport/A54.trn_bev_battery_cost_ratio_mineral",
              # FILE = "minerals/transport/A54.trn_tech_mineral_mapping_master",
              FILE = "minerals/transport/A54.trn_tech_mineral_mapping_new_structure",
 
@@ -212,6 +213,7 @@ module_energy_L254.transportation_UCD <- function(command, ...) {
 
     # new input data for mineral modeling
     A54.trn_tech_mineral_bev_mapping <- get_data(all_data, "minerals/transport/A54.trn_tech_mineral_bev_mapping",strip_attributes = TRUE)
+    A54.trn_bev_battery_cost_ratio_mineral <- get_data(all_data, "minerals/transport/A54.trn_bev_battery_cost_ratio_mineral", strip_attributes = TRUE)
     # A54.trn_tech_mineral_mapping_master <- get_data(all_data, "minerals/transport/A54.trn_tech_mineral_mapping_master",strip_attributes = TRUE)
     A54.trn_tech_mineral_mapping_new_structure <- get_data(all_data, "minerals/transport/A54.trn_tech_mineral_mapping_new_structure",strip_attributes = TRUE)
 
@@ -931,9 +933,10 @@ module_energy_L254.transportation_UCD <- function(command, ...) {
       L254.StubTranTechCost_need_subtype
 
     L254.StubTranTechCost_need_subtype %>%
-      left_join(A54.trn_tech_mineral_bev_mapping, by = c("supplysector" = "from.supplysector",
+      left_join(A54.trn_bev_battery_cost_ratio_mineral, by = c("supplysector" = "from.supplysector",
                                                      "tranSubsector" = "from.subsector",
                                                      "stub.technology" = "from.technology")) %>%
+      mutate(input.cost = input.cost * ratio) %>%
       select(region, supplysector = to.supplysector, tranSubsector = to.subsector,
              stub.technology = to.technology, year, minicam.non.energy.input,
              input.cost, sce) %>%
@@ -1744,7 +1747,8 @@ module_energy_L254.transportation_UCD <- function(command, ...) {
       add_units("Unitless") %>%
       add_comments("Share weights were calculate by aggregating energy consumption to the region, supplysector, tranSubsector, year level") %>%
       add_legacy_name("L254.StubTranTechCalInput") %>%
-      add_precursors("common/GCAM_region_names", "energy/mappings/UCD_techs", "energy/mappings/UCD_techs_revised", "energy/mappings/UCD_size_class_revisions", "L154.in_EJ_R_trn_m_sz_tech_F_Yh") ->
+      add_precursors("common/GCAM_region_names", "energy/mappings/UCD_techs", "energy/mappings/UCD_techs_revised",
+                     "energy/mappings/UCD_size_class_revisions", "L154.in_EJ_R_trn_m_sz_tech_F_Yh") ->
       L254.StubTranTechCalInput
 
     L254.StubTranTechLoadFactor %>%
@@ -1752,7 +1756,9 @@ module_energy_L254.transportation_UCD <- function(command, ...) {
       add_units("person/vehicle and tonnes/vehicle") %>%
       add_comments("Data was subsetted to model years and mapped from UCD technology to GCAM technology") %>%
       add_legacy_name("L254.StubTranTechLoadFactor") %>%
-      add_precursors("common/GCAM_region_names", "energy/mappings/UCD_techs", "energy/mappings/UCD_techs_revised", "energy/mappings/UCD_size_class_revisions", "L154.loadfactor_R_trn_m_sz_tech_F_Y") ->
+      add_precursors("common/GCAM_region_names", "energy/mappings/UCD_techs", "energy/mappings/UCD_techs_revised",
+                     "energy/mappings/UCD_size_class_revisions", "L154.loadfactor_R_trn_m_sz_tech_F_Y",
+                     "minerals/transport/A54.trn_tech_mineral_bev_mapping") ->
       L254.StubTranTechLoadFactor
 
 
@@ -1761,7 +1767,9 @@ module_energy_L254.transportation_UCD <- function(command, ...) {
       add_units("km/vehicle-yr") %>%
       add_comments("Data was subsetted to model years and mapped from UCD technology to GCAM technology") %>%
       add_legacy_name("L254.StubTranTechTravel") %>%
-      add_precursors("common/GCAM_region_names", "energy/mappings/UCD_techs", "energy/mappings/UCD_techs_revised", "energy/mappings/UCD_size_class_revisions", "L154.travel_kmvyr_R_trn_m_sz_tech_F_Y") ->
+      add_precursors("common/GCAM_region_names", "energy/mappings/UCD_techs", "energy/mappings/UCD_techs_revised", "
+                     energy/mappings/UCD_size_class_revisions", "L154.travel_kmvyr_R_trn_m_sz_tech_F_Y",
+                     "minerals/transport/A54.trn_tech_mineral_bev_mapping") ->
       L254.StubTranTechTravel
 
     L254.StubTranTechCost %>%
@@ -1770,14 +1778,18 @@ module_energy_L254.transportation_UCD <- function(command, ...) {
       add_comments("Non-fuel cost was adjusted to 1990") %>%
       add_comments("Transportation cost table was mapped from UCD technology to GCAM technology") %>%
       add_legacy_name("L254.StubTranTechCost") %>%
-      add_precursors("common/GCAM_region_names", "energy/mappings/UCD_techs", "energy/mappings/UCD_techs_revised", "energy/mappings/UCD_size_class_revisions", "L154.cost_usdvkm_R_trn_m_sz_tech_F_Y") ->
+      add_precursors("common/GCAM_region_names", "energy/mappings/UCD_techs", "energy/mappings/UCD_techs_revised",
+                     "energy/mappings/UCD_size_class_revisions", "L154.cost_usdvkm_R_trn_m_sz_tech_F_Y",
+                     "minerals/transport/A54.trn_bev_battery_cost_ratio_mineral") ->
       L254.StubTranTechCost
 
     L254.StubTechTrackCapital %>%
       add_title("Convert non-energy inputs to track the annual capital investments.") %>%
       add_units(("Coefficients")) %>%
       add_comments("Track capital investments for purposes of macro economic calculations") %>%
-      add_precursors("common/GCAM_region_names", "energy/mappings/UCD_techs", "energy/mappings/UCD_techs_revised", "energy/mappings/UCD_size_class_revisions", "L154.capcoef_usdvkm_R_trn_m_sz_tech_F_Y") ->
+      add_precursors("common/GCAM_region_names", "energy/mappings/UCD_techs", "energy/mappings/UCD_techs_revised",
+                     "energy/mappings/UCD_size_class_revisions", "L154.capcoef_usdvkm_R_trn_m_sz_tech_F_Y",
+                     "minerals/transport/A54.trn_tech_mineral_bev_mapping") ->
       L254.StubTechTrackCapital
 
     L254.StubTranTechCoef %>%
@@ -1786,7 +1798,9 @@ module_energy_L254.transportation_UCD <- function(command, ...) {
       add_comments("MJ was converted to BTU") %>%
       add_comments("Vehicle energy intensity information was mapped from UCD technology to GCAM technology") %>%
       add_legacy_name("L254.StubTranTechCoef") %>%
-      add_precursors("common/GCAM_region_names", "energy/mappings/UCD_techs", "energy/mappings/UCD_techs_revised", "energy/mappings/UCD_size_class_revisions", "L154.intensity_MJvkm_R_trn_m_sz_tech_F_Y") ->
+      add_precursors("common/GCAM_region_names", "energy/mappings/UCD_techs", "energy/mappings/UCD_techs_revised",
+                     "energy/mappings/UCD_size_class_revisions", "L154.intensity_MJvkm_R_trn_m_sz_tech_F_Y",
+                     "minerals/transport/A54.trn_tech_mineral_bev_mapping") ->
       L254.StubTranTechCoef
 
     L254.StubTechCalInput_passthru_all %>%
