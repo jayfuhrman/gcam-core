@@ -1,0 +1,38 @@
+# File: ghg_link.csv
+# Title: linked markets for constraints
+# Units: N/A
+# Column types: ccc
+# ----------
+region,market,policy.portfolio.standard
+USA,USA,GHG
+Africa_Eastern,ROW,GHG
+Africa_Northern,ROW,GHG
+Africa_Southern,ROW,GHG
+Africa_Western,ROW,GHG
+Australia_NZ,Australia_NZ,GHG
+Brazil,Brazil,GHG
+Canada,Canada,GHG
+Central America and Caribbean,ROW,GHG
+Central Asia,ROW,GHG
+China,China,GHG
+EU-12,EU,GHG
+EU-15,EU,GHG
+Europe_Eastern,ROW,GHG
+Europe_Non_EU,ROW,GHG
+European Free Trade Association,ROW,GHG
+India,India,GHG
+Indonesia,ROW,GHG
+Japan,Japan,GHG
+Mexico,ROW,GHG
+Middle East,ROW,GHG
+Pakistan,ROW,GHG
+Russia,ROW,GHG
+South Africa,ROW,GHG
+South America_Northern,ROW,GHG
+South America_Southern,ROW,GHG
+South Asia,ROW,GHG
+South Korea,ROW,GHG
+Southeast Asia,ROW,GHG
+Taiwan,ROW,GHG
+Argentina,ROW,GHG
+Colombia,ROW,GHG
