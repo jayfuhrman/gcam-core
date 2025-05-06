@@ -315,7 +315,7 @@ module_energy_L263.Weathering <- function(command, ...) {
     # Define growth parameter k (this will be a csv input at some point)
     k_slow = 0.05
     k_med = 0.10
-    k_fast = 0.2
+    k_fast = 0.22
 
     # Join with tech efficiency curves
     # Calculate the utilization ratio for each region based on resource curve peaks
