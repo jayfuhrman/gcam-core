@@ -67,6 +67,7 @@ class Tabs;
 // Need to forward declare the subclasses as well.
 class Technology;
 class DefaultTechnology;
+class BackupIntermittentTechnology;
 class IntermittentTechnology;
 class WindTechnology;
 class SolarTechnology;
@@ -74,6 +75,7 @@ class NukeFuelTechnology;
 class TranTechnology;
 class AgProductionTechnology;
 class PassThroughTechnology;
+class AgStorageTechnology;
 class UnmanagedLandTechnology;
 class ResourceReserveTechnology;
 class EmptyTechnology;
@@ -230,10 +232,10 @@ public:
         /* Declare all subclasses of ITechnology to allow automatic traversal of the
          * hierarchy under introspection.
          */
-        DEFINE_SUBCLASS_FAMILY( ITechnology, Technology, DefaultTechnology, IntermittentTechnology,
+        DEFINE_SUBCLASS_FAMILY( ITechnology, Technology, DefaultTechnology, BackupIntermittentTechnology, IntermittentTechnology,
                                 WindTechnology, SolarTechnology, NukeFuelTechnology, TranTechnology,
-                                AgProductionTechnology, PassThroughTechnology, UnmanagedLandTechnology,
-                                ResourceReserveTechnology, EmptyTechnology )
+                                AgProductionTechnology, PassThroughTechnology, AgStorageTechnology, 
+                                UnmanagedLandTechnology, ResourceReserveTechnology, EmptyTechnology )
     )
 };
 

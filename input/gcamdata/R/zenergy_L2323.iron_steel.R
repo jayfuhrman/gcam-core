@@ -22,10 +22,6 @@
 #' @author Yang Liu Sep 2019, Siddarth Durga April 2023
 module_energy_L2323.iron_steel <- function(command, ...) {
 
-  INCOME_ELASTICITY_OUTPUTS <- c("GCAM3",
-                                 paste0("gSSP", 1:5),
-                                 paste0("SSP", 1:5))
-
   if(command == driver.DECLARE_INPUTS) {
     return(c(FILE = "common/GCAM_region_names",
              FILE = "energy/calibrated_techs",
@@ -136,7 +132,7 @@ module_energy_L2323.iron_steel <- function(command, ...) {
         # calculate mean costs by country for EAF and BF-BOF
         group_by({{agg_region}},subsector,year)%>%
         summarize(value=mean(value)) %>%
-        mutate(subsector=ifelse(subsector=="EAF","EAF with scrap","BLASTFUR")) -> all_steel_production_costs
+        mutate(subsector=if_else(subsector=="EAF","EAF with scrap","BLASTFUR")) -> all_steel_production_costs
 
       return(all_steel_production_costs)
     }
@@ -147,7 +143,7 @@ module_energy_L2323.iron_steel <- function(command, ...) {
 
     # Calculate average steel production costs by sub sector for countries in transition zero database and combine
     # with OECD average data
-    all_steel_production_costs <- rbind(aggregate_steel_production_costs(data=TZ_steel_production_costs,agg_region=Country),
+    all_steel_production_costs <- bind_rows(aggregate_steel_production_costs(data=TZ_steel_production_costs,agg_region=Country),
                                             oecd_steel_production_costs)
 
     #add capital costs and CCS costs to estimate total production costs
@@ -295,7 +291,7 @@ module_energy_L2323.iron_steel <- function(command, ...) {
     # filters base years from original and then appends future years
     L2323.globaltech_retirement_base %>%
       mutate(year = as.integer(year)) %>%
-      filter(year == max(MODEL_BASE_YEARS)) %>%
+      filter(year == MODEL_FINAL_BASE_YEAR) %>%
       bind_rows(L2323.globaltech_retirement_future) ->
       L2323.globaltech_retirement
 

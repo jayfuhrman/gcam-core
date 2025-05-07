@@ -3,7 +3,7 @@
 #' module_emissions_L102.nonco2_ceds_R_S_Y
 #'
 #' Calculates emissions using CEDS and CMIP emissions data for all sectors and fuels and aggregates to GCAM regions. Note that the outputs of this chunk are a part of the prebuilt data.
-#' To change the ouputs of this chunk, add CEDS data to the CEDS folder under emissions and rebuild prebuilt data.
+#' To change the outputs of this chunk, add CEDS data to the CEDS folder under emissions and rebuild prebuilt data.
 #' @param command API command to execute
 #' @param ... other optional parameters, depending on command
 #' @return Depends on \code{command}: either a vector of required inputs,
@@ -150,7 +150,6 @@ module_emissions_L102.nonco2_ceds_R_S_Y <- function(command, ...) {
           left_join(CEDS_sector_map, by = c("sector" = "CEDS_sector")) %>%
           left_join(CEDS_fuel_map, by = c("fuel" = "CEDS_fuel")) %>%
           filter(CEDS_agg_sector=="trn_intl_ship",CEDS_agg_fuel =="refined liquids") %>%
-          gather_years %>%
           filter(year %in% emissions.CEDS_YEARS) %>%
           filter(year <= max(HISTORICAL_YEARS), emissions > 0)->CEDS_int_shipping
 

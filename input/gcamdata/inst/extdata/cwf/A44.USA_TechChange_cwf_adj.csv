@@ -5,22 +5,16 @@
 # ----------
 supplysector,technology,1971,1990,2020,2025,2100
 resid,resid shell,1,1,1,1,1
-resid heating,biomass,1,1,1,2,2
-resid heating,coal,1,1,1,2,2
-resid heating,electricity,1,1,1,2,2
-resid heating,gas,1,1,1,2,2
-resid heating,refined liquids,1,1,1,2,2
-resid heating,traditional biomass,1,1,1,2,2
-resid heating,district heat,1,1,1,1,1
-resid cooling,electricity,1,1,1,2,2
-resid cooling,gas,1,1,1,2,2
-resid others,biomass,1,1,1,2,2
-resid others,coal,1,1,1,2,2
-resid others,electricity,1,1,1,2,2
-resid others,gas,1,1,1,2,2
-resid others,refined liquids,1,1,1,2,2
-resid others,traditional biomass,1,1,1,2,2
-resid others,district heat,1,1,1,1,1
+resid_d1,resid shell,1,1,1,1,1
+resid_d10,resid shell,1,1,1,1,1
+resid_d2,resid shell,1,1,1,1,1
+resid_d3,resid shell,1,1,1,1,1
+resid_d4,resid shell,1,1,1,1,1
+resid_d5,resid shell,1,1,1,1,1
+resid_d6,resid shell,1,1,1,1,1
+resid_d7,resid shell,1,1,1,1,1
+resid_d8,resid shell,1,1,1,1,1
+resid_d9,resid shell,1,1,1,1,1
 comm,comm shell,1,1,1,1,1
 comm heating,biomass,1,1,1,2,2
 comm heating,coal,1,1,1,2,2
@@ -36,7 +30,23 @@ comm others,electricity,1,1,1,2,2
 comm others,gas,1,1,1,2,2
 comm others,refined liquids,1,1,1,2,2
 comm others,district heat,1,1,1,1,1
-resid heating,hydrogen,1,1,1,1,1
-resid others,hydrogen,1,1,1,1,1
 comm heating,hydrogen,1,1,1,1,1
 comm others,hydrogen,1,1,1,1,1
+resid cooling modern,electricity,1,1,1,2,2
+resid cooling modern,gas,1,1,1,2,2
+resid heating TradBio,traditional biomass,1,1,1,2,2
+resid heating coal,coal,1,1,1,2,2
+resid heating modern,biomass,1,1,1,2,2
+resid heating modern,district heat,1,1,1,1,1
+resid heating modern,electricity,1,1,1,2,2
+resid heating modern,gas,1,1,1,2,2
+resid heating modern,hydrogen,1,1,1,1,1
+resid heating modern,refined liquids,1,1,1,2,2
+resid others TradBio,traditional biomass,1,1,1,2,2
+resid others coal,coal,1,1,1,2,2
+resid others modern,biomass,1,1,1,2,2
+resid others modern,district heat,1,1,1,1,1
+resid others modern,electricity,1,1,1,2,2
+resid others modern,gas,1,1,1,2,2
+resid others modern,hydrogen,1,1,1,1,1
+resid others modern,refined liquids,1,1,1,2,2

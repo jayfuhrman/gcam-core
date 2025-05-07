@@ -14,8 +14,8 @@
 #' \code{L252.MAC_Ag_TC_SSP1}, \code{L252.MAC_An_TC_SSP1}, \code{L252.MAC_prc_TC_SSP1}, \code{L252.MAC_higwp_TC_SSP1},
 #' \code{L252.MAC_res_TC_SSP1}, \code{L252.MAC_Ag_TC_SSP2}, \code{L252.MAC_An_TC_SSP2}, \code{L252.MAC_prc_TC_SSP2},
 #' \code{L252.MAC_res_TC_SSP2}, \code{L252.MAC_higwp_TC_SSP2}, \code{L252.MAC_Ag_TC_SSP5}, \code{L252.MAC_An_TC_SSP5},
-#' \code{L252.MAC_prc_TC_SSP5}, \code{L252.MAC_res_TC_SSP5}, \code{L252.MAC_higwp_TC_SSP5}, \code{L252.MAC_Ag_TC_SSP1_cwf}, \code{L252.MAC_An_TC_SSP1_cwf}.
-#' The corresponding file in the original data system was \code{L252.MACC.R} (emissions level2).
+#' \code{L252.MAC_prc_TC_SSP5}, \code{L252.MAC_res_TC_SSP5}, \code{L252.MAC_higwp_TC_SSP5}. The corresponding file in the
+#' original data system was \code{L252.MACC.R} (emissions level2).
 #' @details Creates marginal abatement cost curves "MACC", for fossil resources, agriculture, animals, and processing.
 #' @importFrom assertthat assert_that
 #' @importFrom dplyr arrange bind_rows distinct filter left_join matches mutate select slice
@@ -38,7 +38,8 @@ module_emissions_L252.MACC <- function(command, ...) {
              "L232.nonco2_prc",
              "L241.hfc_all",
              "L241.pfc_all",
-             FILE = "cwf/A_MACC_TechChange_AgAn_cwf"))
+             FILE = "cwf/A_MACC_TechChange_AgAn_cwf",
+             FILE = "socioeconomics/income_shares"))
   } else if(command == driver.DECLARE_OUTPUTS) {
     return(c("L252.ResMAC_fos",
              "L252.AgMAC",
@@ -67,9 +68,9 @@ module_emissions_L252.MACC <- function(command, ...) {
              "L252.MAC_An_TC_SSP5",
              "L252.MAC_prc_TC_SSP5",
              "L252.MAC_res_TC_SSP5",
-             "L252.MAC_higwp_TC_SSP5",
              "L252.MAC_Ag_TC_SSP1_cwf",
-             "L252.MAC_An_TC_SSP1_cwf"))
+             "L252.MAC_An_TC_SSP1_cwf",
+             "L252.MAC_higwp_TC_SSP5"))
   } else if(command == driver.MAKE) {
 
     # Silence package checks
@@ -106,7 +107,21 @@ module_emissions_L252.MACC <- function(command, ...) {
     L241.hfc_all <- get_data(all_data, "L241.hfc_all", strip_attributes = TRUE)
     L241.pfc_all <- get_data(all_data, "L241.pfc_all", strip_attributes = TRUE)
     EPA_MACC_PhaseInTime <- get_data(all_data, "emissions/EPA_MACC_PhaseInTime")
+    income_shares<-get_data(all_data, "socioeconomics/income_shares")
     A_MACC_TechChange_AgAn_cwf <- get_data(all_data, "cwf/A_MACC_TechChange_AgAn_cwf")
+    groups<-income_shares %>% select(category) %>% distinct()
+
+
+    # First, adjust GCAM_sector_tech to include consumer-group data
+    GCAM_sector_tech_resid<- GCAM_sector_tech %>%
+      filter(grepl("resid",sector)) %>%
+      repeat_add_columns(tibble(group = unique(income_shares$category))) %>%
+      unite(sector,c("sector","group"),sep = "_", remove = F) %>%
+      unite(supplysector,c("supplysector","group"),sep = "_", remove = T)
+
+    GCAM_sector_tech<- GCAM_sector_tech %>%
+      filter(!grepl("resid",sector)) %>%
+      bind_rows(GCAM_sector_tech_resid)
 
     # update MAC using 2019 EPA
     # Prepare the table with all MAC curves for matching
@@ -696,7 +711,7 @@ module_emissions_L252.MACC <- function(command, ...) {
       add_comments("Category data from L241.hfc_all and L241.pfc_all given tax and mac.reduction data from L152.MAC_pct_R_S_Proc_EPA") %>%
       add_legacy_name("L252.MAC_higwp") %>%
       add_precursors("emissions/A_regions", "emissions/mappings/CEDS_sector_tech_proc", "emissions/mappings/CEDS_sector_tech_proc_revised",
-                     "L152.MAC_pct_R_S_Proc_EPA", "L241.hfc_all", "L241.pfc_all", "common/GCAM_region_names",
+                     "L152.MAC_pct_R_S_Proc_EPA", "L241.hfc_all", "L241.pfc_all", "common/GCAM_region_names","socioeconomics/income_shares",
                      "emissions/A_MACC_TechChange_omit") ->
       L252.MAC_higwp
 
@@ -792,7 +807,7 @@ module_emissions_L252.MACC <- function(command, ...) {
                 L252.MAC_Ag_TC_SSP1, L252.MAC_An_TC_SSP1, L252.MAC_prc_TC_SSP1, L252.MAC_res_TC_SSP1, L252.MAC_higwp_TC_SSP1,
                 L252.MAC_Ag_TC_SSP2, L252.MAC_An_TC_SSP2, L252.MAC_prc_TC_SSP2, L252.MAC_res_TC_SSP2, L252.MAC_higwp_TC_SSP2,
                 L252.MAC_Ag_TC_SSP5, L252.MAC_An_TC_SSP5, L252.MAC_prc_TC_SSP5, L252.MAC_res_TC_SSP5, L252.MAC_higwp_TC_SSP5,
-                L252.MAC_Ag_TC_SSP1_cwf, L252.MAC_An_TC_SSP1_cwf)
+                L252.MAC_An_TC_SSP1_cwf,L252.MAC_Ag_TC_SSP1_cwf)
   } else {
     stop("Unknown command")
   }

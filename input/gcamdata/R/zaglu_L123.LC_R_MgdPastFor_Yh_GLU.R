@@ -96,7 +96,7 @@ module_aglu_L123.LC_R_MgdPastFor_Yh_GLU <- function(command, ...) {
       L123.ag_Prod_Mt_R_Past_Y_GLU
 
     # Calculate managed pasture land required using actual production and yields,
-    # and make adjustements: where managed pasture land is greater than
+    # and make adjustments: where managed pasture land is greater than
     # assumed threshold percentage of total pasture land, reduce managed pasture land area.
     L123.ag_Prod_Mt_R_Past_Y_GLU %>%
       rename(Land_Type = GCAM_commodity) %>%
@@ -198,7 +198,7 @@ module_aglu_L123.LC_R_MgdPastFor_Yh_GLU <- function(command, ...) {
       right_join(L123.For_potentialProd_bm3_R_Y_GLU, by = c("GCAM_region_ID", "year")) %>%
       # Calculate the GLU to regional fraction of forest biomass production
       mutate(frac = value / total) %>%
-      repeat_add_columns(tibble(GCAM_commodity = as.character(aglu.FOREST_supply_sector))) %>%
+      repeat_add_columns(tibble(GCAM_commodity = as.character(aglu.FOREST_SUPPLY_SECTOR))) %>%
       # Match in regional wood production
       left_join_error_no_match(L110.For_ALL_bm3_R_Y, by = c("GCAM_region_ID",  "year","GCAM_commodity")) %>%
       # Calculate logging production as the regional total times the GLU-wise forest biomass production fractions

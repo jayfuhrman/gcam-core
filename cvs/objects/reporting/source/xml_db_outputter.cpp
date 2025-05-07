@@ -104,6 +104,7 @@
 #include "functions/include/building_service_input.h"
 #include "functions/include/satiation_demand_function.h"
 #include "functions/include/food_demand_input.h"
+#include "technologies/include/ag_storage_technology.h"
 #include "functions/include/nested_ces_production_function_macro.h"
 #include <typeinfo>
 
@@ -834,6 +835,29 @@ void XMLDBOutputter::startVisitTechnology( const Technology* aTechnology, const 
             }
         }
     }
+    const AgStorageTechnology* agStorageTech = dynamic_cast <const AgStorageTechnology*> (mCurrentTechnology);
+    if (agStorageTech) {
+        writeItemToBuffer(agStorageTech->mStoredValue, "closing-stock",
+            *childBuffer, mTabs.get(), 0, mCurrentOutputUnit);
+
+        const Modeltime* modeltime = scenario->getModeltime();
+        int techYear = agStorageTech->getYear(); 
+        int techPeriod = modeltime->getyr_to_per(techYear);
+        double openStock = techPeriod <= modeltime->getFinalCalibrationPeriod() ? 
+            agStorageTech->mOpeningStock : 
+            agStorageTech->mStoredValue * agStorageTech->mLossCoefficient;
+        
+        writeItemToBuffer(openStock, "opening-stock",
+            *childBuffer, mTabs.get(), 0, mCurrentOutputUnit);
+
+        writeItemToBuffer(agStorageTech->mStorageCost, "storage-cost",
+            *childBuffer, mTabs.get(), 0, mCurrentOutputUnit);
+
+        writeItemToBuffer(agStorageTech->mAdjExpectedPrice, "adj-exp-price",
+            *childBuffer, mTabs.get(), 0, mCurrentOutputUnit);
+
+
+    }
 }
 
 void XMLDBOutputter::endVisitTechnology( const Technology* aTechnology,
@@ -1318,69 +1342,57 @@ void XMLDBOutputter::startVisitClimateModel( const IClimateModel* aClimateModel,
                              year );
     }
 
-    // Write radiative forcing components
+    // Write total radiative forcing
     for( int year = scenario->getModeltime()->getStartYear();
          year <= endingYear; year += outputInterval )
     {
-    
-        // Save some aggregate variables here so consistently only define once
-        
+        // Kyoto Forcing
+        writeItemUsingYear( "forcing-Kyoto", "W/m^2",
+                             aClimateModel->getForcing( "CO2", util::round( year ) )
+        + aClimateModel->getForcing( "CH4", util::round( year ) )
+        + aClimateModel->getForcing( "N2O", util::round( year ) )
+        + aClimateModel->getForcing( "HFC125", util::round( year ) )
+        + aClimateModel->getForcing( "HFC134A", util::round( year ) )
+        + aClimateModel->getForcing( "HFC143A", util::round( year ) )
+        + aClimateModel->getForcing( "HFC227ea", util::round( year ) )
+        + aClimateModel->getForcing( "HFC245fa", util::round( year ) )
+        + aClimateModel->getForcing( "SF6", util::round( year ) )
+        + aClimateModel->getForcing( "CF4", util::round( year ) )
+        + aClimateModel->getForcing( "C2F6", util::round( year ) )
+        + aClimateModel->getForcing( "OtherHC", util::round( year ) ),
+                             year );
+
         // HFCs Forcing
-        double forcingHFCs = 
-          aClimateModel->getForcing( "HFC125", util::round( year ) )
+        writeItemUsingYear( "forcing-HFCs", "W/m^2",
+                             aClimateModel->getForcing( "HFC125", util::round( year ) )
         + aClimateModel->getForcing( "HFC134A", util::round( year ) )
         + aClimateModel->getForcing( "HFC143A", util::round( year ) )
         + aClimateModel->getForcing( "HFC227ea", util::round( year ) )
         + aClimateModel->getForcing( "HFC245fa", util::round( year ) )
         + aClimateModel->getForcing( "HFC23", util::round( year ) )
-        + aClimateModel->getForcing( "HFC32", util::round( year ) )
-        + aClimateModel->getForcing( "HFC4310", util::round( year ) )
-        + aClimateModel->getForcing( "OtherHC", util::round( year ) ); // not in Hector, but is in MAGICC. So works for both.
-        
-        // Get Montreal gas forcing from individual gases
-        double forcingMontreal = 
-          aClimateModel->getForcing( "CFC11", util::round( year ) )
-        + aClimateModel->getForcing( "CFC12", util::round( year ) )
-        + aClimateModel->getForcing( "CFC113", util::round( year ) )
-        + aClimateModel->getForcing( "CFC114", util::round( year ) )
-        + aClimateModel->getForcing( "CFC115", util::round( year ) )
-        + aClimateModel->getForcing( "CCl4", util::round( year ) )
-        + aClimateModel->getForcing( "CH3CCl3", util::round( year ) )
-        + aClimateModel->getForcing( "HCF22", util::round( year ) )
-        + aClimateModel->getForcing( "HCF141b", util::round( year ) )
-        + aClimateModel->getForcing( "HCF142b", util::round( year ) )
-        + aClimateModel->getForcing( "halon1211", util::round( year ) )
-        + aClimateModel->getForcing( "halon1301", util::round( year ) )
-        + aClimateModel->getForcing( "halon2402", util::round( year ) )
-        + aClimateModel->getForcing( "CH3Br", util::round( year ) )
-        + aClimateModel->getForcing( "CH3Cl", util::round( year ) )
-        + aClimateModel->getForcing( "Montreal", util::round( year ) ); // not in Hector, but is in MAGICC. So works for both.
-              
-        // Kyoto Forcing
-        writeItemUsingYear( "forcing-Kyoto", "W/m^2",
-        + aClimateModel->getForcing( "CO2", util::round( year ) )
-        + aClimateModel->getForcing( "CH4", util::round( year ) )
-        + aClimateModel->getForcing( "N2O", util::round( year ) )
-        + forcingHFCs
-        + aClimateModel->getForcing( "SF6", util::round( year ) )
-        + aClimateModel->getForcing( "CF4", util::round( year ) )
-        + aClimateModel->getForcing( "C2F6", util::round( year ) ),
+        + aClimateModel->getForcing( "HFC32", util::round( year ) ),
                              year );
 
-		// Montreal gas Forcing
-        writeItemUsingYear( "forcing-Montreal", "W/m^2",
-						   forcingMontreal,
-						   year );
-		
-        // HFCs Forcing
-        writeItemUsingYear( "forcing-HFCs", "W/m^2", forcingHFCs, year );
+                // Long-lived Forcing
+        writeItemUsingYear( "forcing-halocarbons", "W/m^2",
+        aClimateModel->getForcing( "HFC125", util::round( year ) )
+        + aClimateModel->getForcing( "HFC134A", util::round( year ) )
+        + aClimateModel->getForcing( "HFC143A", util::round( year ) )
+        + aClimateModel->getForcing( "HFC227ea", util::round( year ) )
+        + aClimateModel->getForcing( "HFC245fa", util::round( year ) )
+        + aClimateModel->getForcing( "SF6", util::round( year ) )
+        + aClimateModel->getForcing( "CF4", util::round( year ) )
+        + aClimateModel->getForcing( "C2F6", util::round( year ) )
+        + aClimateModel->getForcing( "OtherHC", util::round( year ) )
+        + aClimateModel->getForcing( "Montreal", util::round( year ) ),
+                             year );
         
         // PFCs Forcing
         writeItemUsingYear( "forcing-PFCs", "W/m^2",
         aClimateModel->getForcing( "CF4", util::round( year ) )
         + aClimateModel->getForcing( "C2F6", util::round( year ) ),
                              year );
-        
+
         // CO2 Forcing
         writeItemUsingYear( "forcing-CO2", "W/m^2",
                              aClimateModel->getForcing( "CO2", util::round( year ) ),
@@ -1390,36 +1402,43 @@ void XMLDBOutputter::startVisitClimateModel( const IClimateModel* aClimateModel,
         writeItemUsingYear( "forcing-CH4", "W/m^2",
                            aClimateModel->getForcing( "CH4", util::round( year ) ),
                            year );
-
+        
         // N2O Forcing
         writeItemUsingYear( "forcing-N2O", "W/m^2",
                            aClimateModel->getForcing( "N2O", util::round( year ) ),
                            year );
-		// SO2 Forcing
+
+        // SO2 Forcing
         writeItemUsingYear( "forcing-SO2", "W/m^2",
-						   aClimateModel->getForcing( "SO2", util::round( year ) ),
-						   year );
-		
-		// DirSO2 Forcing
-        writeItemUsingYear( "forcing-DirSO2", "W/m^2",
-						   aClimateModel->getForcing( "DirSO2", util::round( year ) ),
-						   year );
-		
-		// TropO3 Forcing
+                           aClimateModel->getForcing( "SO2", util::round( year ) ),
+                           year );
+        
+        // NH3 Forcing
+        writeItemUsingYear( "forcing-NH3", "W/m^2",
+                           aClimateModel->getForcing( "NH3", util::round( year ) ),
+                           year );
+        
+        // aci Forcing
+        writeItemUsingYear( "forcing-aci", "W/m^2",
+                           aClimateModel->getForcing( "aci", util::round( year ) ),
+                           year );
+        
+        
+        // TropO3 Forcing
         writeItemUsingYear( "forcing-TropO3", "W/m^2",
-						   aClimateModel->getForcing( "TropO3", util::round( year ) ),
-						   year );
-		
-		// BC Forcing
+                           aClimateModel->getForcing( "TropO3", util::round( year ) ),
+                           year );
+        
+        // BC Forcing
         writeItemUsingYear( "forcing-BC", "W/m^2",
-						   aClimateModel->getForcing( "BC", util::round( year ) ),
-						   year );
-		
-		// OC Forcing
+                           aClimateModel->getForcing( "BC", util::round( year ) ),
+                           year );
+        
+        // OC Forcing
         writeItemUsingYear( "forcing-OC", "W/m^2",
-						   aClimateModel->getForcing( "OC", util::round( year ) ),
-						   year );
-		
+                           aClimateModel->getForcing( "OC", util::round( year ) ),
+                           year );
+        
         // StratH2O Forcing
         writeItemUsingYear( "forcing-StratH2O", "W/m^2",
                            aClimateModel->getForcing( "StratH2O", util::round( year ) ),
@@ -1440,7 +1459,7 @@ void XMLDBOutputter::startVisitClimateModel( const IClimateModel* aClimateModel,
         writeItemUsingYear( "forcing-CF4", "W/m^2",
                            aClimateModel->getForcing( "CF4", util::round( year ) ),
                            year );
-                           
+              
         // HFC125 Forcing
         writeItemUsingYear( "forcing-HFC125", "W/m^2",
                            aClimateModel->getForcing( "HFC125", util::round( year ) ),
@@ -1471,15 +1490,23 @@ void XMLDBOutputter::startVisitClimateModel( const IClimateModel* aClimateModel,
                            aClimateModel->getForcing( "HFC32", util::round( year ) ),
                            year );
         
+        // long-lived F-gas Forcing
+        writeItemUsingYear( "forcing-longlivedFgas", "W/m^2",
+                           aClimateModel->getForcing( "SF6", util::round( year ) )
+                           + aClimateModel->getForcing( "CF4", util::round( year ) )
+                           + aClimateModel->getForcing( "C2F6", util::round( year ) ),
+                           year );
+        
+        // Montreal gas Forcing
+        writeItemUsingYear( "forcing-Montreal", "W/m^2",
+                           aClimateModel->getForcing( "Montreal", util::round( year ) ),
+                           year );
+        
         // Total Forcing
         writeItemUsingYear( "forcing-total", "W/m^2",
                             aClimateModel->getTotalForcing( year ),
                              year );
-        
-        // RCP Forcing
-        writeItemUsingYear( "forcing-RCP", "W/m^2",
-                           aClimateModel->getForcing( "RCP", year ),
-                           year );
+ 
      }
 
     // Write net terrestrial uptake
@@ -1764,14 +1791,6 @@ void XMLDBOutputter::startVisitNationalAccount( const NationalAccount* aNational
     attrs[ "name" ] = aNationalAccount->enumToXMLName(NationalAccount::CONSUMER_DURABLE_INV);
     XMLWriteElementWithAttributes( currValue, "account", mBuffer, mTabs.get(), attrs );
 
-    currValue = aNationalAccount->getAccountValue( NationalAccount::GDP_PER_CAPITA );
-    attrs[ "name" ] = aNationalAccount->enumToXMLName(NationalAccount::GDP_PER_CAPITA);
-    XMLWriteElementWithAttributes( currValue, "account", mBuffer, mTabs.get(), attrs );
-    
-    currValue = aNationalAccount->getAccountValue( NationalAccount::GDP_PER_CAPITA_PPP );
-    attrs[ "name" ] = aNationalAccount->enumToXMLName(NationalAccount::GDP_PER_CAPITA_PPP);
-    XMLWriteElementWithAttributes( currValue, "account", mBuffer, mTabs.get(), attrs );
-
     currValue = aNationalAccount->getAccountValue( NationalAccount::VALUE_ADDED );
     attrs[ "name" ] = aNationalAccount->enumToXMLName(NationalAccount::VALUE_ADDED);
     XMLWriteElementWithAttributes( currValue, "account", mBuffer, mTabs.get(), attrs );
@@ -1817,7 +1836,17 @@ void XMLDBOutputter::startVisitNationalAccount( const NationalAccount* aNational
     attrs[ "name" ] = aNationalAccount->enumToXMLName(NationalAccount::LABOR_WAGES);
     XMLWriteElementWithAttributes( currValue, "account", mBuffer, mTabs.get(), attrs );
     
-    attrs[ "unit" ] = "mil pers";
+    // per cap values have different units
+    attrs[ "unit" ] = "thous 1990$ percap";
+    currValue = aNationalAccount->getAccountValue( NationalAccount::GDP_PER_CAPITA );
+    attrs[ "name" ] = aNationalAccount->enumToXMLName(NationalAccount::GDP_PER_CAPITA);
+    XMLWriteElementWithAttributes( currValue, "account", mBuffer, mTabs.get(), attrs );
+    
+    currValue = aNationalAccount->getAccountValue( NationalAccount::GDP_PER_CAPITA_PPP );
+    attrs[ "name" ] = aNationalAccount->enumToXMLName(NationalAccount::GDP_PER_CAPITA_PPP);
+    XMLWriteElementWithAttributes( currValue, "account", mBuffer, mTabs.get(), attrs );
+
+    attrs[ "unit" ] = "thous pers";
     // labor force in persons
     currValue = aNationalAccount->getAccountValue( NationalAccount::LABOR_FORCE );
     attrs[ "name" ] = aNationalAccount->enumToXMLName(NationalAccount::LABOR_FORCE);
@@ -1938,11 +1967,17 @@ void XMLDBOutputter::startVisitBuildingNodeInput(const BuildingNodeInput* aBuild
     mBufferStack.push(childBuffer);
 
     if (aBuildingNodeInput->getSatiationDemandFunction() ) {
-        writeItemToBuffer(aBuildingNodeInput->getSatiationDemandFunction()->mSatiationImpedance,
+        writeItemToBuffer(aBuildingNodeInput->getSatiationDemandFunction()->mParsedSatiationImpedance,
             "satiation-impedance", *childBuffer, mTabs.get(), 1, "unitless");
-        writeItemToBuffer(aBuildingNodeInput->getSatiationDemandFunction()->mSatiationLevel,
-            "satiation-level", *childBuffer, mTabs.get(), 1, "GJ/m^2");
+        writeItemToBuffer(aBuildingNodeInput->getSatiationDemandFunction()->mParsedSatiationLevel,
+            "satiation-level", *childBuffer, mTabs.get(), 1, "m^2/pers");
+    }  else  {
+
+    writeItemToBuffer(aBuildingNodeInput->mBiasAdjustParam,
+        "bias-adder", *childBuffer, mTabs.get(), 1, "m^2/pers");
+
     }
+
     const Modeltime* modeltime = scenario->getModeltime();
     for( int per = 0; per < modeltime->getmaxper(); ++per ) {
         double price = aBuildingNodeInput->getPricePaid( mCurrentRegion, per );
@@ -1955,6 +1990,8 @@ void XMLDBOutputter::startVisitBuildingNodeInput(const BuildingNodeInput* aBuild
             writeItemToBuffer( floorspace, "floorspace",
                 *childBuffer, mTabs.get(), per, "billion m^2" );
         }
+
+
     }
 }
 
@@ -1982,16 +2019,25 @@ void XMLDBOutputter::endVisitBuildingNodeInput( const BuildingNodeInput* aBuildi
 void XMLDBOutputter::startVisitBuildingServiceInput( const BuildingServiceInput* aBuildingServiceInput, const int aPeriod ) {
     startVisitInput( aBuildingServiceInput, aPeriod );
 
-    writeItemToBuffer( aBuildingServiceInput->getSatiationDemandFunction()->mSatiationImpedance,
+    if (aBuildingServiceInput->getSatiationDemandFunction()) {
+    writeItemToBuffer( aBuildingServiceInput->getSatiationDemandFunction()->mParsedSatiationImpedance,
                        "satiation-impedance", *mBufferStack.top(), mTabs.get(), 1, "unitless" );
-    writeItemToBuffer( aBuildingServiceInput->getSatiationDemandFunction()->mSatiationLevel,
+    writeItemToBuffer( aBuildingServiceInput->getSatiationDemandFunction()->mParsedSatiationLevel,
                        "satiation-level", *mBufferStack.top(), mTabs.get(), 1, "GJ/m^2" );
+    }
+
     const Modeltime* modeltime = scenario->getModeltime();
     for( int per = 0; per < modeltime->getmaxper(); ++per ) {
         double serviceDensity = aBuildingServiceInput->mServiceDensity[ per ];
         if( !objects::isEqual<double>( serviceDensity, 0.0 ) ) {
             writeItemToBuffer( serviceDensity, "service-density",
                 *mBufferStack.top(), mTabs.get(), per, "GJ/m^2" );
+        }
+
+        double BiasAdderEn = aBuildingServiceInput->getBiasAdder( per );
+        if (!objects::isEqual<double>(BiasAdderEn, 0.0)) {
+            writeItemToBuffer(BiasAdderEn, "bias-adder",
+                *mBufferStack.top(), mTabs.get(), per, "GJ/m^2");
         }
     }
 }

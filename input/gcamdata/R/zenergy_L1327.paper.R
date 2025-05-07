@@ -17,7 +17,7 @@
 #' @author MMC July 2022
 module_energy_L1327.paper <- function(command, ...) {
   if(command == driver.DECLARE_INPUTS) {
-    return(c("L1011.en_bal_EJ_R_Si_Fi_Yh",
+    return(c("L1012.en_bal_EJ_R_Si_Fi_Yh",
              FILE = "energy/A_regions",
              FILE = "energy/mappings/enduse_fuel_aggregation",
              "L1326.in_EJ_R_indenergy_F_Yh",
@@ -50,7 +50,7 @@ module_energy_L1327.paper <- function(command, ...) {
     all_data <- list(...)[[1]]
 
     # Load required inputs
-    L1011.en_bal_EJ_R_Si_Fi_Yh <- get_data(all_data, "L1011.en_bal_EJ_R_Si_Fi_Yh", strip_attributes = TRUE)
+    L1012.en_bal_EJ_R_Si_Fi_Yh <- get_data(all_data, "L1012.en_bal_EJ_R_Si_Fi_Yh", strip_attributes = TRUE)
     A_regions <- get_data(all_data, "energy/A_regions",strip_attributes = TRUE)
     enduse_fuel_aggregation <- get_data(all_data, "energy/mappings/enduse_fuel_aggregation", strip_attributes = TRUE)
     L1326.in_EJ_R_indenergy_F_Yh <- get_data(all_data, "L1326.in_EJ_R_indenergy_F_Yh", strip_attributes = TRUE)
@@ -63,7 +63,6 @@ module_energy_L1327.paper <- function(command, ...) {
     paper_food_TFE <- get_data(all_data, "energy/paper_food_TFE", strip_attributes = TRUE)
     china_biomass <- get_data(all_data, "energy/A327.china_biomass", strip_attributes = TRUE)
     L110.For_ALL_bm3_R_Y <- get_data(all_data, "L110.For_ALL_bm3_R_Y", strip_attributes = TRUE)
-
 
     # ===================================================
     # 2. Perform computations
@@ -86,7 +85,7 @@ module_energy_L1327.paper <- function(command, ...) {
 
 
     # Get pulp and paper energy use from IEA energy balances
-    L1011.en_bal_EJ_R_Si_Fi_Yh %>%
+    L1012.en_bal_EJ_R_Si_Fi_Yh %>%
       filter(grepl("paper", sector)) ->
       L1327.in_EJ_R_paper_F_Yh
 
@@ -201,11 +200,11 @@ module_energy_L1327.paper <- function(command, ...) {
                   ungroup(), by = c("GCAM_region_ID", "year")) %>%
 
       left_join(L1327.out_Mt_R_paper_Yh %>% rename(paper_prod=value) %>% select(-sector), by = c("GCAM_region_ID","year")) %>%
-      mutate(paper_prod=ifelse(is.na(paper_prod),0,paper_prod)) %>%
+      mutate(paper_prod=if_else(is.na(paper_prod),0,paper_prod),
       ## Manual adjustment for Africa_Northern - fix extremely high coefficient by setting biomass to zero (will be replaced with default value)
-      mutate(biomass_EJ = if_else(GCAM_region_ID == 3, 0, biomass_EJ)) %>%
+             biomass_EJ = if_else(GCAM_region_ID == 3, 0, biomass_EJ),
 
-      mutate(coefficient = woodpulp_tons / biomass_EJ)
+             coefficient = woodpulp_tons / biomass_EJ)
 
     # Where reported biomass is 0, replace Inf coefficient with global median,
     # scaled by share of woodpulp produced domestically (to estimate black liquor availability).
@@ -415,7 +414,7 @@ module_energy_L1327.paper <- function(command, ...) {
       add_units("EJ") %>%
       add_comments("PAPERPRO sector from IEA energy balances aggregated to GCAM regions") %>%
       add_legacy_name("L1327.in_EJ_R_paper_F_Yh") %>%
-      add_precursors("L1011.en_bal_EJ_R_Si_Fi_Yh", "energy/A_regions",
+      add_precursors("L1012.en_bal_EJ_R_Si_Fi_Yh", "energy/A_regions",
                      "common/iso_GCAM_regID", "energy/mappings/enduse_fuel_aggregation",
                      "L123.in_EJ_R_indchp_F_Yh", "energy/paper_food_TFE", "energy/A327.china_biomass") ->
       L1327.in_EJ_R_paper_F_Yh
@@ -433,7 +432,7 @@ module_energy_L1327.paper <- function(command, ...) {
       add_units("GJ/kg paper") %>%
       add_legacy_name("L1327.IO_GJkg_R_paper_F_Yh") %>%
       add_comments("IO coefficients for heat energy and electricity are calculated from IEA energy consumption and FAO paper production data") %>%
-      add_precursors("L1011.en_bal_EJ_R_Si_Fi_Yh", "aglu/FAO/FAO_Paper_Prod_t_FORESTAT", "aglu/AGLU_ctry", "energy/A_regions",
+      add_precursors("L1012.en_bal_EJ_R_Si_Fi_Yh", "aglu/FAO/FAO_Paper_Prod_t_FORESTAT", "aglu/AGLU_ctry", "energy/A_regions",
                      "common/iso_GCAM_regID","energy/mappings/enduse_fuel_aggregation", "L123.in_EJ_R_indchp_F_Yh",
                      "energy/paper_food_TFE", "energy/A327.globaltech_coef", "energy/A327.china_biomass") ->
       L1327.IO_GJkg_R_paper_F_Yh
@@ -444,7 +443,7 @@ module_energy_L1327.paper <- function(command, ...) {
       add_comments("Subtracted pulp and paper energy use from industrial energy use values in L1326.in_EJ_R_indenergy_F_Yh") %>%
       add_comments("To determine adjusted input energy for industrial energy use") %>%
       add_legacy_name("L1327.in_EJ_R_indenergy_F_Yh") %>%
-      add_precursors("L1011.en_bal_EJ_R_Si_Fi_Yh", "L1326.in_EJ_R_indenergy_F_Yh", "aglu/FAO/FAO_Paper_Prod_t_FORESTAT",
+      add_precursors("L1012.en_bal_EJ_R_Si_Fi_Yh", "L1326.in_EJ_R_indenergy_F_Yh", "aglu/FAO/FAO_Paper_Prod_t_FORESTAT",
                      "aglu/AGLU_ctry", "energy/A_regions", "common/iso_GCAM_regID","energy/mappings/enduse_fuel_aggregation") ->
       L1327.in_EJ_R_indenergy_F_Yh
 
@@ -453,7 +452,7 @@ module_energy_L1327.paper <- function(command, ...) {
       add_units("None") %>%
       add_comments("Subsector share weights for process heat technologies will be reset from 0 to 1 for these regions") %>%
       add_legacy_name("L1327.elec_noheat_adj_shwt_R") %>%
-      add_precursors("L1011.en_bal_EJ_R_Si_Fi_Yh", "energy/A_regions",
+      add_precursors("L1012.en_bal_EJ_R_Si_Fi_Yh", "energy/A_regions",
                      "common/iso_GCAM_regID","energy/mappings/enduse_fuel_aggregation") ->
       L1327.elec_noheat_adj_shwt_R
 
@@ -471,7 +470,7 @@ module_energy_L1327.paper <- function(command, ...) {
       add_units("GJ/kg") %>%
       add_comments("Woodpulp in Mt divided by paper sector biomass energy in EJ") %>%
       add_legacy_name("L1327.IO_woodpulp_energy") %>%
-      add_precursors("L1011.en_bal_EJ_R_Si_Fi_Yh", "energy/A_regions", "common/GCAM_region_names",
+      add_precursors("L1012.en_bal_EJ_R_Si_Fi_Yh", "energy/A_regions", "common/GCAM_region_names",
                      "common/iso_GCAM_regID", "energy/mappings/enduse_fuel_aggregation",
                      "L123.in_EJ_R_indchp_F_Yh", "energy/paper_food_TFE", "energy/A327.china_biomass",
                      "L110.For_ALL_bm3_R_Y") ->
