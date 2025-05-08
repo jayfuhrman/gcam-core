@@ -1,0 +1,76 @@
+# File: A44.subsector_interp_low_fossil.csv
+# Title: Building default subsector shareweight interpolation
+# Units: NA
+# Column types: ccccccc 
+# ----------
+supplysector,subsector,apply.to,from.year,to.year,to.value,interpolation.function
+resid heating,biomass,share-weight,final-calibration-year,end-year,,fixed
+resid heating,coal,share-weight,final-calibration-year,2025,,fixed
+resid heating,coal,share-weight,2025,2050,0,linear
+resid heating,coal,share-weight,2050,end-year,,fixed
+resid heating,electricity,share-weight,final-calibration-year,2025,,fixed
+resid heating,electricity,share-weight,2025,2050,1,linear
+resid heating,electricity,share-weight,2050,end-year,,fixed
+resid heating,gas,share-weight,final-calibration-year,2025,,fixed
+resid heating,gas,share-weight,2025,2050,0,linear
+resid heating,gas,share-weight,2050,end-year,,fixed
+resid heating,refined liquids,share-weight,final-calibration-year,2025,,fixed
+resid heating,refined liquids,share-weight,2025,2050,0,linear
+resid heating,refined liquids,share-weight,2050,end-year,,fixed
+resid heating,traditional biomass,share-weight,final-calibration-year,end-year,,fixed
+resid heating,district heat,share-weight,final-calibration-year,end-year,,fixed
+resid cooling,electricity,share-weight,final-calibration-year,2025,,fixed
+resid cooling,electricity,share-weight,2025,2050,1,linear
+resid cooling,electricity,share-weight,2050,end-year,,fixed
+resid cooling,gas,share-weight,final-calibration-year,2025,,fixed
+resid cooling,gas,share-weight,2025,2050,0,linear
+resid cooling,gas,share-weight,2050,end-year,,fixed
+resid others,biomass,share-weight,final-calibration-year,end-year,,fixed
+resid others,coal,share-weight,final-calibration-year,2025,,fixed
+resid others,coal,share-weight,2025,2050,0,linear
+resid others,coal,share-weight,2050,end-year,,fixed
+resid others,electricity,share-weight,final-calibration-year,2025,,fixed
+resid others,electricity,share-weight,2025,2050,1,linear
+resid others,electricity,share-weight,2050,end-year,,fixed
+resid others,gas,share-weight,final-calibration-year,2025,,fixed
+resid others,gas,share-weight,2025,2050,0,linear
+resid others,gas,share-weight,2050,end-year,,fixed
+resid others,refined liquids,share-weight,final-calibration-year,2025,,fixed
+resid others,refined liquids,share-weight,2025,2050,0,linear
+resid others,refined liquids,share-weight,2050,end-year,,fixed
+resid others,traditional biomass,share-weight,final-calibration-year,end-year,,fixed
+resid others,district heat,share-weight,final-calibration-year,end-year,,fixed
+comm heating,biomass,share-weight,final-calibration-year,end-year,,fixed
+comm heating,coal,share-weight,final-calibration-year,2025,,fixed
+comm heating,coal,share-weight,2025,2050,0,linear
+comm heating,coal,share-weight,2050,end-year,,fixed
+comm heating,electricity,share-weight,final-calibration-year,2025,,fixed
+comm heating,electricity,share-weight,2025,2050,1,linear
+comm heating,electricity,share-weight,2050,end-year,,fixed
+comm heating,gas,share-weight,final-calibration-year,2025,,fixed
+comm heating,gas,share-weight,2025,2050,0,linear
+comm heating,gas,share-weight,2050,end-year,,fixed
+comm heating,refined liquids,share-weight,final-calibration-year,2025,,fixed
+comm heating,refined liquids,share-weight,2025,2050,0,linear
+comm heating,refined liquids,share-weight,2050,end-year,,fixed
+comm heating,district heat,share-weight,final-calibration-year,end-year,,fixed
+comm cooling,electricity,share-weight,final-calibration-year,2025,,fixed
+comm cooling,electricity,share-weight,2025,2050,1,linear
+comm cooling,electricity,share-weight,2050,end-year,,fixed
+comm cooling,gas,share-weight,final-calibration-year,2025,,fixed
+comm cooling,gas,share-weight,2025,2050,0,linear
+comm cooling,gas,share-weight,2050,end-year,,fixed
+comm others,biomass,share-weight,final-calibration-year,end-year,,fixed
+comm others,coal,share-weight,final-calibration-year,2025,,fixed
+comm others,coal,share-weight,2025,2050,0,linear
+comm others,coal,share-weight,2050,end-year,,fixed
+comm others,electricity,share-weight,final-calibration-year,2025,,fixed
+comm others,electricity,share-weight,2025,2050,1,linear
+comm others,electricity,share-weight,2050,end-year,,fixed
+comm others,gas,share-weight,final-calibration-year,2025,,fixed
+comm others,gas,share-weight,2025,2050,0,linear
+comm others,gas,share-weight,2050,end-year,,fixed
+comm others,refined liquids,share-weight,final-calibration-year,2025,,fixed
+comm others,refined liquids,share-weight,2025,2050,0,linear
+comm others,refined liquids,share-weight,2050,end-year,,fixed
+comm others,district heat,share-weight,final-calibration-year,end-year,,fixed
