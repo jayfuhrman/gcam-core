@@ -1,22 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Configuration>
-	<Files>
-		<Value name="xmlInputFileName">../input/gcamdata/xml/modeltime.xml</Value>
-		<Value name="BatchFileName">batch_ag.xml</Value>
-		<Value name="policy-target-file">../input/policy/forcing_target_4p5.xml</Value>
-		<Value name="GHGInputFileName">../input/magicc/inputs/input_gases.emk</Value>
-		<Value write-output="1" append-scenario-name="0" name="xmldb-location">../output/cwf_central</Value>
-		<Value write-output="1" append-scenario-name="0" name="restart">./restart/restart</Value>
-		<Value write-output="1" append-scenario-name="1" name="xmlDebugFileName">debug.xml</Value>
-		<Value write-output="1" append-scenario-name="0" name="climatFileName">gas.emk</Value>
-		<Value write-output="1" append-scenario-name="1" name="costCurvesOutputFileName">cost_curves.xml</Value>
-		<Value write-output="1" append-scenario-name="0" name="batchCSVOutputFile">batch-csv-out.csv</Value>
-		<Value write-output="0" append-scenario-name="0" name="supplyDemandOutputFileName">SDCurves.csv</Value>
-		<Value write-output="0" append-scenario-name="0" name="flow-graph">gcam-flow-graph.dot</Value>
-		<Value write-output="0" append-scenario-name="0" name="dependencyGraphName">DependencyGraph.dot</Value>
-		<Value write-output="0" append-scenario-name="0" name="landAllocatorGraphName">LandAllocatorGraph.dot</Value>
-	</Files>
-	<ScenarioComponents>
+<BatchRunner xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="batch_runner.xsd">
+
+	<ComponentSet name="base">
+
+	<FileSet name="cwf">
+       
 			<Value name = "climate">../input/gcamdata/xml/hector.xml</Value>
 			<Value name = "socioeconomics">../input/gcamdata/xml/socioeconomics_gSSP1.xml</Value>
 			<Value name = "resources">../input/gcamdata/xml/resources.xml</Value>
@@ -133,7 +121,6 @@
 			<Value name = "co_products_biochar">../input/gcamdata/xml/biochar_co_products.xml</Value>
 
 			<Value name = "dac">../input/gcamdata/xml/dac_ssp1.xml</Value>
-			<Value name = "weathering">../input/gcamdata/xml/Weathering.xml</Value>
 			<Value name = "solver">../input/solution/cal_broyden_config.xml</Value>
 
 		<!--additional CWF files-->
@@ -149,7 +136,6 @@
 			<Value name="nuclear">../input/gcamdata/xml/nuclear_low.xml</Value>
 
 			<Value name="ccs">../input/gcamdata/xml/ccs_supply_lowest.xml</Value>
-			<Value name="ccs">../input/gcamdata/xml/no_offshore_ccs.xml</Value>
 
 			<!--use some SSP1 values-->
 			<Value name="resource_extraction">../input/gcamdata/xml/resources_SSP1.xml</Value>
@@ -181,7 +167,7 @@
 			<!--Enhanced Weathering Constraint -->
 			<!--Value name = "ew_constraint">../input/extra/cdr_constraint/cwf_mid_ew_constraint.xml</Value>
  	 		<Value name = "ew_mkt">../input/extra/cdr_constraint/EW_constraint_mkt.xml</Value-->
-			<!--Superceded by ERW growth limits structure-->
+			<!--Superceded by regional explicit rate + growth limits on ERW-->
 
 
 			<!--no gas H2 forecourt-->
@@ -194,47 +180,23 @@
 			<Value name = "cement CCS">../input/gcamdata/xml/cement_all_CCS_post2030.xml</Value>
 
 			<Value name = "gas_trade">../input/gcamdata/xml/gas_trade.xml</Value>
-			<!--Policy-->
-			<Value name = "constraint">../input/extra/developments_working/extra_CO2_constraint_tests/constraint_CO2_test_20_yq.xml</Value>
-			<Value name="region_nz_adjust">../input/extra/proportional_tax_rate_cwf.xml</Value>
-			<Value name="luc_price">../input/extra/nature_cdr/global_uct_cwf.xml</Value>
 
-		
-	</ScenarioComponents>
-	<Strings>
-		<Value name="scenarioName">cwf_central</Value>
-		<Value name="debug-region">USA</Value>
-		<Value name="MAGICC-input-dir">../input/magicc/inputs</Value>
-		<Value name="MAGICC-output-dir">../output</Value>
-		<Value name="AbatedGasForCostCurves">CO2</Value>
-	</Strings>
-	<Bools>
-		<Value name="CalibrationActive">1</Value>
-		<!-- Fixed GDP will calibrate to exogenous path -->
-		<Value name="FixedGDP-Path">1</Value>
-		<Value name="BatchMode">0</Value>
-		<Value name="find-path">0</Value>
-		<Value name="createCostCurve">0</Value>
-		<Value name="debugChecking">0</Value>
-		<Value name="simulActive">1</Value>
-		<Value name="PrintValuesOnGraphs">1</Value>
-		<Value name="ShowNullPaths">0</Value>
-		<Value name="PrintPrices">1</Value>
-		<Value name="QuitFirstFailure">0</Value>
-	</Bools>
-	<Ints>
-		<Value name="numMarketsToFindSD">10</Value>
-		<Value name="numPointsForSD">21</Value>
-		<Value name="numPointsForCO2CostCurve">5</Value>
-		<Value name="carbon-output-start-year">1705</Value>
-		<Value name="climateOutputInterval">5</Value>
-		<Value name="parallel-grain-size">50</Value>
-		<Value name="stop-period">-1</Value>
-		<Value name="stop-year">-1</Value>
-		<Value name="restart-period">-1</Value>
-		<Value name="restart-year">-1</Value>
-		<Value name="max-parallelism">-1</Value>
-	</Ints>
-	<Doubles>
-	</Doubles>
-</Configuration>
+
+</FileSet>
+</ComponentSet>
+
+
+
+
+
+
+<ComponentSet name="policy">
+	
+	<FileSet name="_ref">
+	</FileSet>
+
+</ComponentSet>
+
+</BatchRunner>
+
+
