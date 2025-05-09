@@ -22,7 +22,6 @@
 			<Value name = "resources">../input/gcamdata/xml/resources.xml</Value>
 			<Value name = "energy_supply">../input/gcamdata/xml/en_supply.xml</Value>
 			<Value name = "energy_transformation">../input/gcamdata/xml/en_transformation.xml</Value>
-			<!--Value name = "electricity">../input/gcamdata/xml/electricity.xml</Value-->
             <Value name = "elec_water_base">../input/gcamdata/xml/electricity_water.xml</Value>
             <Value name = "elec_water_base_cwf">../input/gcamdata/xml/electricity_water_cwf.xml</Value>
 			<Value name = "elec_water_base_no_new_unabated_fossil">../input/gcamdata/xml/electricity_water_cwf_no_new_unabated_fossil.xml</Value>
@@ -82,6 +81,7 @@
 
 			<Value name = "bio_trade">../input/gcamdata/xml/bio_trade.xml</Value>
 			<Value name = "ag_trade">../input/gcamdata/xml/ag_trade.xml</Value>
+		<Value name = "ag_storage">../input/gcamdata/xml/ag_storage.xml</Value>
 
 			<Value name = "unlim_supply_water">../input/gcamdata/xml/unlimited_water_supply.xml</Value>
 			<Value name = "water_supply">../input/gcamdata/xml/water_supply_constrained.xml</Value>
@@ -105,6 +105,7 @@
 			<Value name = "nonco2_aglu">../input/gcamdata/xml/all_aglu_emissions_IRR_MGMT.xml</Value>
 			<Value name = "nonco2_aglu_prot">../input/gcamdata/xml/all_protected_unmgd_emissions.xml</Value>
 			<Value name = "nonco2_em_controls">../input/gcamdata/xml/emission_factor_controls.xml</Value>
+		<Value name = "nonco2_TradBio">../input/gcamdata/xml/ssp2_emissions_factors_tradBio.xml</Value> 
 		    
             <!-- Global nonCO2 GHG MAC files -->
             <Value name = "nonco2_energy">../input/gcamdata/xml/all_energy_emissions_MAC.xml</Value>
@@ -118,6 +119,7 @@
 			<Value name = "bio_elec_w_feed_limit">../input/gcamdata/xml/water_elec_liquids_limits.xml</Value>
 			<Value name = "bio_neg_emiss_budget">../input/gcamdata/xml/negative_emissions_budget.xml</Value>
 			<Value name = "bio_externality">../input/gcamdata/xml/bio_externality.xml</Value>
+        <Value name = "gas_trade">../input/gcamdata/xml/gas_trade.xml</Value>
 
 	        <!--Value name = "prune_ag">../input/gcamdata/xml/prune_empty_ag.xml</Value-->
 			<!-- Biochar-->
