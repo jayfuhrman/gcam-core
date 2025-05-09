@@ -1,0 +1,3462 @@
+<?xml version="1.0" encoding="UTF-8"?><scenario>
+    <world>
+        <region name="USA">
+            <LandAllocatorRoot name="root">
+                <LandNode name="AgroForestLand_PacArctic">
+                    <LandNode name="AgroForest_NonPasture_PacArctic">
+                        <LandNode name="AllForestLand_PacArctic">
+                            <UnmanagedLandLeaf name="UnmanagedForest_PacArctic">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_NelsonR">
+                    <LandNode name="AgroForest_NonPasture_NelsonR">
+                        <LandNode name="AllForestLand_NelsonR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_NelsonR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_FraserR">
+                    <LandNode name="AgroForest_NonPasture_FraserR">
+                        <LandNode name="AllForestLand_FraserR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_FraserR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_MexCstNW">
+                    <LandNode name="AgroForest_NonPasture_MexCstNW">
+                        <LandNode name="AllForestLand_MexCstNW">
+                            <UnmanagedLandLeaf name="UnmanagedForest_MexCstNW">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_Caribbean">
+                    <LandNode name="AgroForest_NonPasture_Caribbean">
+                        <LandNode name="AllForestLand_Caribbean">
+                            <UnmanagedLandLeaf name="UnmanagedForest_Caribbean">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_California">
+                    <LandNode name="AgroForest_NonPasture_California">
+                        <LandNode name="AllForestLand_California">
+                            <UnmanagedLandLeaf name="UnmanagedForest_California">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_MissppRN">
+                    <LandNode name="AgroForest_NonPasture_MissppRN">
+                        <LandNode name="AllForestLand_MissppRN">
+                            <UnmanagedLandLeaf name="UnmanagedForest_MissppRN">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_MissppRS">
+                    <LandNode name="AgroForest_NonPasture_MissppRS">
+                        <LandNode name="AllForestLand_MissppRS">
+                            <UnmanagedLandLeaf name="UnmanagedForest_MissppRS">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_UsaColoRN">
+                    <LandNode name="AgroForest_NonPasture_UsaColoRN">
+                        <LandNode name="AllForestLand_UsaColoRN">
+                            <UnmanagedLandLeaf name="UnmanagedForest_UsaColoRN">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_UsaColoRS">
+                    <LandNode name="AgroForest_NonPasture_UsaColoRS">
+                        <LandNode name="AllForestLand_UsaColoRS">
+                            <UnmanagedLandLeaf name="UnmanagedForest_UsaColoRS">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_GreatBasin">
+                    <LandNode name="AgroForest_NonPasture_GreatBasin">
+                        <LandNode name="AllForestLand_GreatBasin">
+                            <UnmanagedLandLeaf name="UnmanagedForest_GreatBasin">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_MissouriR">
+                    <LandNode name="AgroForest_NonPasture_MissouriR">
+                        <LandNode name="AllForestLand_MissouriR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_MissouriR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_ArkWhtRedR">
+                    <LandNode name="AgroForest_NonPasture_ArkWhtRedR">
+                        <LandNode name="AllForestLand_ArkWhtRedR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_ArkWhtRedR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_TexasCst">
+                    <LandNode name="AgroForest_NonPasture_TexasCst">
+                        <LandNode name="AllForestLand_TexasCst">
+                            <UnmanagedLandLeaf name="UnmanagedForest_TexasCst">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_UsaCstSE">
+                    <LandNode name="AgroForest_NonPasture_UsaCstSE">
+                        <LandNode name="AllForestLand_UsaCstSE">
+                            <UnmanagedLandLeaf name="UnmanagedForest_UsaCstSE">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_GreatLakes">
+                    <LandNode name="AgroForest_NonPasture_GreatLakes">
+                        <LandNode name="AllForestLand_GreatLakes">
+                            <UnmanagedLandLeaf name="UnmanagedForest_GreatLakes">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_OhioR">
+                    <LandNode name="AgroForest_NonPasture_OhioR">
+                        <LandNode name="AllForestLand_OhioR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_OhioR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_UsaPacNW">
+                    <LandNode name="AgroForest_NonPasture_UsaPacNW">
+                        <LandNode name="AllForestLand_UsaPacNW">
+                            <UnmanagedLandLeaf name="UnmanagedForest_UsaPacNW">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_TennR">
+                    <LandNode name="AgroForest_NonPasture_TennR">
+                        <LandNode name="AllForestLand_TennR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_TennR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_RioGrande">
+                    <LandNode name="AgroForest_NonPasture_RioGrande">
+                        <LandNode name="AllForestLand_RioGrande">
+                            <UnmanagedLandLeaf name="UnmanagedForest_RioGrande">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_UsaCstNE">
+                    <LandNode name="AgroForest_NonPasture_UsaCstNE">
+                        <LandNode name="AllForestLand_UsaCstNE">
+                            <UnmanagedLandLeaf name="UnmanagedForest_UsaCstNE">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_UsaCstE">
+                    <LandNode name="AgroForest_NonPasture_UsaCstE">
+                        <LandNode name="AllForestLand_UsaCstE">
+                            <UnmanagedLandLeaf name="UnmanagedForest_UsaCstE">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+            </LandAllocatorRoot>
+            <policy-portfolio-standard name="const_unmgd_forest">
+                <market>global</market>
+                <policyType>subsidy</policyType>
+                <constraint year="2030">22538.1</constraint>
+                <constraint year="2035">22538.1</constraint>
+                <constraint year="2040">22538.1</constraint>
+                <constraint year="2045">22538.1</constraint>
+                <constraint year="2050">22538.1</constraint>
+            </policy-portfolio-standard>
+        </region>
+        <region name="Africa_Eastern">
+            <LandAllocatorRoot name="root">
+                <LandNode name="AgroForestLand_NileR">
+                    <LandNode name="AgroForest_NonPasture_NileR">
+                        <LandNode name="AllForestLand_NileR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_NileR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_AfrCstNE">
+                    <LandNode name="AgroForest_NonPasture_AfrCstNE">
+                        <LandNode name="AllForestLand_AfrCstNE">
+                            <UnmanagedLandLeaf name="UnmanagedForest_AfrCstNE">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_ShebJubR">
+                    <LandNode name="AgroForest_NonPasture_ShebJubR">
+                        <LandNode name="AllForestLand_ShebJubR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_ShebJubR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_AfrCstE">
+                    <LandNode name="AgroForest_NonPasture_AfrCstE">
+                        <LandNode name="AllForestLand_AfrCstE">
+                            <UnmanagedLandLeaf name="UnmanagedForest_AfrCstE">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_Madagascar">
+                    <LandNode name="AgroForest_NonPasture_Madagascar">
+                        <LandNode name="AllForestLand_Madagascar">
+                            <UnmanagedLandLeaf name="UnmanagedForest_Madagascar">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_RiftValley">
+                    <LandNode name="AgroForest_NonPasture_RiftValley">
+                        <LandNode name="AllForestLand_RiftValley">
+                            <UnmanagedLandLeaf name="UnmanagedForest_RiftValley">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_CongoR">
+                    <LandNode name="AgroForest_NonPasture_CongoR">
+                        <LandNode name="AllForestLand_CongoR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_CongoR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+            </LandAllocatorRoot>
+            <policy-portfolio-standard name="const_unmgd_forest">
+                <market>global</market>
+                <policyType>subsidy</policyType>
+                <constraint year="2030">22538.1</constraint>
+                <constraint year="2035">22538.1</constraint>
+                <constraint year="2040">22538.1</constraint>
+                <constraint year="2045">22538.1</constraint>
+                <constraint year="2050">22538.1</constraint>
+            </policy-portfolio-standard>
+        </region>
+        <region name="Africa_Northern">
+            <LandAllocatorRoot name="root">
+                <LandNode name="AgroForestLand_MeditS">
+                    <LandNode name="AgroForest_NonPasture_MeditS">
+                        <LandNode name="AllForestLand_MeditS">
+                            <UnmanagedLandLeaf name="UnmanagedForest_MeditS">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_AfrCstNW">
+                    <LandNode name="AgroForest_NonPasture_AfrCstNW">
+                        <LandNode name="AllForestLand_AfrCstNW">
+                            <UnmanagedLandLeaf name="UnmanagedForest_AfrCstNW">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_NileR">
+                    <LandNode name="AgroForest_NonPasture_NileR">
+                        <LandNode name="AllForestLand_NileR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_NileR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_AfrIntN">
+                    <LandNode name="AgroForest_NonPasture_AfrIntN">
+                        <LandNode name="AllForestLand_AfrIntN">
+                            <UnmanagedLandLeaf name="UnmanagedForest_AfrIntN">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+            </LandAllocatorRoot>
+            <policy-portfolio-standard name="const_unmgd_forest">
+                <market>global</market>
+                <policyType>subsidy</policyType>
+                <constraint year="2030">22538.1</constraint>
+                <constraint year="2035">22538.1</constraint>
+                <constraint year="2040">22538.1</constraint>
+                <constraint year="2045">22538.1</constraint>
+                <constraint year="2050">22538.1</constraint>
+            </policy-portfolio-standard>
+        </region>
+        <region name="Africa_Southern">
+            <LandAllocatorRoot name="root">
+                <LandNode name="AgroForestLand_NileR">
+                    <LandNode name="AgroForest_NonPasture_NileR">
+                        <LandNode name="AllForestLand_NileR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_NileR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_GuineaGulf">
+                    <LandNode name="AgroForest_NonPasture_GuineaGulf">
+                        <LandNode name="AllForestLand_GuineaGulf">
+                            <UnmanagedLandLeaf name="UnmanagedForest_GuineaGulf">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_AfrCstE">
+                    <LandNode name="AgroForest_NonPasture_AfrCstE">
+                        <LandNode name="AllForestLand_AfrCstE">
+                            <UnmanagedLandLeaf name="UnmanagedForest_AfrCstE">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_RiftValley">
+                    <LandNode name="AgroForest_NonPasture_RiftValley">
+                        <LandNode name="AllForestLand_RiftValley">
+                            <UnmanagedLandLeaf name="UnmanagedForest_RiftValley">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_AngolaCst">
+                    <LandNode name="AgroForest_NonPasture_AngolaCst">
+                        <LandNode name="AllForestLand_AngolaCst">
+                            <UnmanagedLandLeaf name="UnmanagedForest_AngolaCst">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_CongoR">
+                    <LandNode name="AgroForest_NonPasture_CongoR">
+                        <LandNode name="AllForestLand_CongoR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_CongoR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_ZambeziR">
+                    <LandNode name="AgroForest_NonPasture_ZambeziR">
+                        <LandNode name="AllForestLand_ZambeziR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_ZambeziR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_AfrCstSE">
+                    <LandNode name="AgroForest_NonPasture_AfrCstSE">
+                        <LandNode name="AllForestLand_AfrCstSE">
+                            <UnmanagedLandLeaf name="UnmanagedForest_AfrCstSE">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_AfrIntS">
+                    <LandNode name="AgroForest_NonPasture_AfrIntS">
+                        <LandNode name="AllForestLand_AfrIntS">
+                            <UnmanagedLandLeaf name="UnmanagedForest_AfrIntS">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_AfrCstS">
+                    <LandNode name="AgroForest_NonPasture_AfrCstS">
+                        <LandNode name="AllForestLand_AfrCstS">
+                            <UnmanagedLandLeaf name="UnmanagedForest_AfrCstS">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_LimpopoR">
+                    <LandNode name="AgroForest_NonPasture_LimpopoR">
+                        <LandNode name="AllForestLand_LimpopoR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_LimpopoR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+            </LandAllocatorRoot>
+            <policy-portfolio-standard name="const_unmgd_forest">
+                <market>global</market>
+                <policyType>subsidy</policyType>
+                <constraint year="2030">22538.1</constraint>
+                <constraint year="2035">22538.1</constraint>
+                <constraint year="2040">22538.1</constraint>
+                <constraint year="2045">22538.1</constraint>
+                <constraint year="2050">22538.1</constraint>
+            </policy-portfolio-standard>
+        </region>
+        <region name="Africa_Western">
+            <LandAllocatorRoot name="root">
+                <LandNode name="AgroForestLand_NileR">
+                    <LandNode name="AgroForest_NonPasture_NileR">
+                        <LandNode name="AllForestLand_NileR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_NileR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_AfrCstW">
+                    <LandNode name="AgroForest_NonPasture_AfrCstW">
+                        <LandNode name="AllForestLand_AfrCstW">
+                            <UnmanagedLandLeaf name="UnmanagedForest_AfrCstW">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_NigerR">
+                    <LandNode name="AgroForest_NonPasture_NigerR">
+                        <LandNode name="AllForestLand_NigerR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_NigerR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_LChad">
+                    <LandNode name="AgroForest_NonPasture_LChad">
+                        <LandNode name="AllForestLand_LChad">
+                            <UnmanagedLandLeaf name="UnmanagedForest_LChad">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_SenegalR">
+                    <LandNode name="AgroForest_NonPasture_SenegalR">
+                        <LandNode name="AllForestLand_SenegalR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_SenegalR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_VoltaR">
+                    <LandNode name="AgroForest_NonPasture_VoltaR">
+                        <LandNode name="AllForestLand_VoltaR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_VoltaR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_GuineaGulf">
+                    <LandNode name="AgroForest_NonPasture_GuineaGulf">
+                        <LandNode name="AllForestLand_GuineaGulf">
+                            <UnmanagedLandLeaf name="UnmanagedForest_GuineaGulf">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_CongoR">
+                    <LandNode name="AgroForest_NonPasture_CongoR">
+                        <LandNode name="AllForestLand_CongoR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_CongoR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_ZambeziR">
+                    <LandNode name="AgroForest_NonPasture_ZambeziR">
+                        <LandNode name="AllForestLand_ZambeziR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_ZambeziR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+            </LandAllocatorRoot>
+            <policy-portfolio-standard name="const_unmgd_forest">
+                <market>global</market>
+                <policyType>subsidy</policyType>
+                <constraint year="2030">22538.1</constraint>
+                <constraint year="2035">22538.1</constraint>
+                <constraint year="2040">22538.1</constraint>
+                <constraint year="2045">22538.1</constraint>
+                <constraint year="2050">22538.1</constraint>
+            </policy-portfolio-standard>
+        </region>
+        <region name="Australia_NZ">
+            <LandAllocatorRoot name="root">
+                <LandNode name="AgroForestLand_AusCstN">
+                    <LandNode name="AgroForest_NonPasture_AusCstN">
+                        <LandNode name="AllForestLand_AusCstN">
+                            <UnmanagedLandLeaf name="UnmanagedForest_AusCstN">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_AusCstE">
+                    <LandNode name="AgroForest_NonPasture_AusCstE">
+                        <LandNode name="AllForestLand_AusCstE">
+                            <UnmanagedLandLeaf name="UnmanagedForest_AusCstE">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_AusCstW">
+                    <LandNode name="AgroForest_NonPasture_AusCstW">
+                        <LandNode name="AllForestLand_AusCstW">
+                            <UnmanagedLandLeaf name="UnmanagedForest_AusCstW">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_AusInt">
+                    <LandNode name="AgroForest_NonPasture_AusInt">
+                        <LandNode name="AllForestLand_AusInt">
+                            <UnmanagedLandLeaf name="UnmanagedForest_AusInt">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_NewZealand">
+                    <LandNode name="AgroForest_NonPasture_NewZealand">
+                        <LandNode name="AllForestLand_NewZealand">
+                            <UnmanagedLandLeaf name="UnmanagedForest_NewZealand">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_AusCstS">
+                    <LandNode name="AgroForest_NonPasture_AusCstS">
+                        <LandNode name="AllForestLand_AusCstS">
+                            <UnmanagedLandLeaf name="UnmanagedForest_AusCstS">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_MurrayDrlg">
+                    <LandNode name="AgroForest_NonPasture_MurrayDrlg">
+                        <LandNode name="AllForestLand_MurrayDrlg">
+                            <UnmanagedLandLeaf name="UnmanagedForest_MurrayDrlg">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_Tasmania">
+                    <LandNode name="AgroForest_NonPasture_Tasmania">
+                        <LandNode name="AllForestLand_Tasmania">
+                            <UnmanagedLandLeaf name="UnmanagedForest_Tasmania">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+            </LandAllocatorRoot>
+            <policy-portfolio-standard name="const_unmgd_forest">
+                <market>global</market>
+                <policyType>subsidy</policyType>
+                <constraint year="2030">22538.1</constraint>
+                <constraint year="2035">22538.1</constraint>
+                <constraint year="2040">22538.1</constraint>
+                <constraint year="2045">22538.1</constraint>
+                <constraint year="2050">22538.1</constraint>
+            </policy-portfolio-standard>
+        </region>
+        <region name="Brazil">
+            <LandAllocatorRoot name="root">
+                <LandNode name="AgroForestLand_OrinocoR">
+                    <LandNode name="AgroForest_NonPasture_OrinocoR">
+                        <LandNode name="AllForestLand_OrinocoR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_OrinocoR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_SAmerCstNE">
+                    <LandNode name="AgroForest_NonPasture_SAmerCstNE">
+                        <LandNode name="AllForestLand_SAmerCstNE">
+                            <UnmanagedLandLeaf name="UnmanagedForest_SAmerCstNE">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_AmazonR">
+                    <LandNode name="AgroForest_NonPasture_AmazonR">
+                        <LandNode name="AllForestLand_AmazonR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_AmazonR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_BrzCstN">
+                    <LandNode name="AgroForest_NonPasture_BrzCstN">
+                        <LandNode name="AllForestLand_BrzCstN">
+                            <UnmanagedLandLeaf name="UnmanagedForest_BrzCstN">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_TocantinsR">
+                    <LandNode name="AgroForest_NonPasture_TocantinsR">
+                        <LandNode name="AllForestLand_TocantinsR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_TocantinsR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_BrzCstE">
+                    <LandNode name="AgroForest_NonPasture_BrzCstE">
+                        <LandNode name="AllForestLand_BrzCstE">
+                            <UnmanagedLandLeaf name="UnmanagedForest_BrzCstE">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_ParnaibaR">
+                    <LandNode name="AgroForest_NonPasture_ParnaibaR">
+                        <LandNode name="AllForestLand_ParnaibaR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_ParnaibaR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_SaoFrancR">
+                    <LandNode name="AgroForest_NonPasture_SaoFrancR">
+                        <LandNode name="AllForestLand_SaoFrancR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_SaoFrancR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_BrzCstS">
+                    <LandNode name="AgroForest_NonPasture_BrzCstS">
+                        <LandNode name="AllForestLand_BrzCstS">
+                            <UnmanagedLandLeaf name="UnmanagedForest_BrzCstS">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_RioLaPlata">
+                    <LandNode name="AgroForest_NonPasture_RioLaPlata">
+                        <LandNode name="AllForestLand_RioLaPlata">
+                            <UnmanagedLandLeaf name="UnmanagedForest_RioLaPlata">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+            </LandAllocatorRoot>
+            <policy-portfolio-standard name="const_unmgd_forest">
+                <market>global</market>
+                <policyType>subsidy</policyType>
+                <constraint year="2030">22538.1</constraint>
+                <constraint year="2035">22538.1</constraint>
+                <constraint year="2040">22538.1</constraint>
+                <constraint year="2045">22538.1</constraint>
+                <constraint year="2050">22538.1</constraint>
+            </policy-portfolio-standard>
+        </region>
+        <region name="Canada">
+            <LandAllocatorRoot name="root">
+                <LandNode name="AgroForestLand_NWTerr">
+                    <LandNode name="AgroForest_NonPasture_NWTerr">
+                        <LandNode name="AllForestLand_NWTerr">
+                            <UnmanagedLandLeaf name="UnmanagedForest_NWTerr">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_PacArctic">
+                    <LandNode name="AgroForest_NonPasture_PacArctic">
+                        <LandNode name="AllForestLand_PacArctic">
+                            <UnmanagedLandLeaf name="UnmanagedForest_PacArctic">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_Mackenzie">
+                    <LandNode name="AgroForest_NonPasture_Mackenzie">
+                        <LandNode name="AllForestLand_Mackenzie">
+                            <UnmanagedLandLeaf name="UnmanagedForest_Mackenzie">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_HudsonBay">
+                    <LandNode name="AgroForest_NonPasture_HudsonBay">
+                        <LandNode name="AllForestLand_HudsonBay">
+                            <UnmanagedLandLeaf name="UnmanagedForest_HudsonBay">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_CanAtl">
+                    <LandNode name="AgroForest_NonPasture_CanAtl">
+                        <LandNode name="AllForestLand_CanAtl">
+                            <UnmanagedLandLeaf name="UnmanagedForest_CanAtl">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_NelsonR">
+                    <LandNode name="AgroForest_NonPasture_NelsonR">
+                        <LandNode name="AllForestLand_NelsonR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_NelsonR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_FraserR">
+                    <LandNode name="AgroForest_NonPasture_FraserR">
+                        <LandNode name="AllForestLand_FraserR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_FraserR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_ChurchillR">
+                    <LandNode name="AgroForest_NonPasture_ChurchillR">
+                        <LandNode name="AllForestLand_ChurchillR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_ChurchillR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_StLwrncR">
+                    <LandNode name="AgroForest_NonPasture_StLwrncR">
+                        <LandNode name="AllForestLand_StLwrncR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_StLwrncR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_MissouriR">
+                    <LandNode name="AgroForest_NonPasture_MissouriR">
+                        <LandNode name="AllForestLand_MissouriR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_MissouriR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_GreatLakes">
+                    <LandNode name="AgroForest_NonPasture_GreatLakes">
+                        <LandNode name="AllForestLand_GreatLakes">
+                            <UnmanagedLandLeaf name="UnmanagedForest_GreatLakes">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_UsaPacNW">
+                    <LandNode name="AgroForest_NonPasture_UsaPacNW">
+                        <LandNode name="AllForestLand_UsaPacNW">
+                            <UnmanagedLandLeaf name="UnmanagedForest_UsaPacNW">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_UsaCstNE">
+                    <LandNode name="AgroForest_NonPasture_UsaCstNE">
+                        <LandNode name="AllForestLand_UsaCstNE">
+                            <UnmanagedLandLeaf name="UnmanagedForest_UsaCstNE">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+            </LandAllocatorRoot>
+            <policy-portfolio-standard name="const_unmgd_forest">
+                <market>global</market>
+                <policyType>subsidy</policyType>
+                <constraint year="2030">22538.1</constraint>
+                <constraint year="2035">22538.1</constraint>
+                <constraint year="2040">22538.1</constraint>
+                <constraint year="2045">22538.1</constraint>
+                <constraint year="2050">22538.1</constraint>
+            </policy-portfolio-standard>
+        </region>
+        <region name="Central America and Caribbean">
+            <LandAllocatorRoot name="root">
+                <LandNode name="AgroForestLand_Caribbean">
+                    <LandNode name="AgroForest_NonPasture_Caribbean">
+                        <LandNode name="AllForestLand_Caribbean">
+                            <UnmanagedLandLeaf name="UnmanagedForest_Caribbean">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_YucatanP">
+                    <LandNode name="AgroForest_NonPasture_YucatanP">
+                        <LandNode name="AllForestLand_YucatanP">
+                            <UnmanagedLandLeaf name="UnmanagedForest_YucatanP">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_GrijUsuR">
+                    <LandNode name="AgroForest_NonPasture_GrijUsuR">
+                        <LandNode name="AllForestLand_GrijUsuR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_GrijUsuR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_CntAmer">
+                    <LandNode name="AgroForest_NonPasture_CntAmer">
+                        <LandNode name="AllForestLand_CntAmer">
+                            <UnmanagedLandLeaf name="UnmanagedForest_CntAmer">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_SAmerCstN">
+                    <LandNode name="AgroForest_NonPasture_SAmerCstN">
+                        <LandNode name="AllForestLand_SAmerCstN">
+                            <UnmanagedLandLeaf name="UnmanagedForest_SAmerCstN">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_ColEcuaCst">
+                    <LandNode name="AgroForest_NonPasture_ColEcuaCst">
+                        <LandNode name="AllForestLand_ColEcuaCst">
+                            <UnmanagedLandLeaf name="UnmanagedForest_ColEcuaCst">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+            </LandAllocatorRoot>
+            <policy-portfolio-standard name="const_unmgd_forest">
+                <market>global</market>
+                <policyType>subsidy</policyType>
+                <constraint year="2030">22538.1</constraint>
+                <constraint year="2035">22538.1</constraint>
+                <constraint year="2040">22538.1</constraint>
+                <constraint year="2045">22538.1</constraint>
+                <constraint year="2050">22538.1</constraint>
+            </policy-portfolio-standard>
+        </region>
+        <region name="Central Asia">
+            <LandAllocatorRoot name="root">
+                <LandNode name="AgroForestLand_VolgaR">
+                    <LandNode name="AgroForest_NonPasture_VolgaR">
+                        <LandNode name="AllForestLand_VolgaR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_VolgaR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_Gobi">
+                    <LandNode name="AgroForest_NonPasture_Gobi">
+                        <LandNode name="AllForestLand_Gobi">
+                            <UnmanagedLandLeaf name="UnmanagedForest_Gobi">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_AmurR">
+                    <LandNode name="AgroForest_NonPasture_AmurR">
+                        <LandNode name="AllForestLand_AmurR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_AmurR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_CaspianNE">
+                    <LandNode name="AgroForest_NonPasture_CaspianNE">
+                        <LandNode name="AllForestLand_CaspianNE">
+                            <UnmanagedLandLeaf name="UnmanagedForest_CaspianNE">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_BlackSeaN">
+                    <LandNode name="AgroForest_NonPasture_BlackSeaN">
+                        <LandNode name="AllForestLand_BlackSeaN">
+                            <UnmanagedLandLeaf name="UnmanagedForest_BlackSeaN">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_YeniseiR">
+                    <LandNode name="AgroForest_NonPasture_YeniseiR">
+                        <LandNode name="AllForestLand_YeniseiR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_YeniseiR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_ObR">
+                    <LandNode name="AgroForest_NonPasture_ObR">
+                        <LandNode name="AllForestLand_ObR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_ObR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_AmuDaryaR">
+                    <LandNode name="AgroForest_NonPasture_AmuDaryaR">
+                        <LandNode name="AllForestLand_AmuDaryaR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_AmuDaryaR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_LBalkash">
+                    <LandNode name="AgroForest_NonPasture_LBalkash">
+                        <LandNode name="AllForestLand_LBalkash">
+                            <UnmanagedLandLeaf name="UnmanagedForest_LBalkash">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_BlackSeaS">
+                    <LandNode name="AgroForest_NonPasture_BlackSeaS">
+                        <LandNode name="AllForestLand_BlackSeaS">
+                            <UnmanagedLandLeaf name="UnmanagedForest_BlackSeaS">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_CaspianSW">
+                    <LandNode name="AgroForest_NonPasture_CaspianSW">
+                        <LandNode name="AllForestLand_CaspianSW">
+                            <UnmanagedLandLeaf name="UnmanagedForest_CaspianSW">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_SyrDaryaR">
+                    <LandNode name="AgroForest_NonPasture_SyrDaryaR">
+                        <LandNode name="AllForestLand_SyrDaryaR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_SyrDaryaR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+            </LandAllocatorRoot>
+            <policy-portfolio-standard name="const_unmgd_forest">
+                <market>global</market>
+                <policyType>subsidy</policyType>
+                <constraint year="2030">22538.1</constraint>
+                <constraint year="2035">22538.1</constraint>
+                <constraint year="2040">22538.1</constraint>
+                <constraint year="2045">22538.1</constraint>
+                <constraint year="2050">22538.1</constraint>
+            </policy-portfolio-standard>
+        </region>
+        <region name="China">
+            <LandAllocatorRoot name="root">
+                <LandNode name="AgroForestLand_RusCstSE">
+                    <LandNode name="AgroForest_NonPasture_RusCstSE">
+                        <LandNode name="AllForestLand_RusCstSE">
+                            <UnmanagedLandLeaf name="UnmanagedForest_RusCstSE">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_Gobi">
+                    <LandNode name="AgroForest_NonPasture_Gobi">
+                        <LandNode name="AllForestLand_Gobi">
+                            <UnmanagedLandLeaf name="UnmanagedForest_Gobi">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_AmurR">
+                    <LandNode name="AgroForest_NonPasture_AmurR">
+                        <LandNode name="AllForestLand_AmurR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_AmurR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_ObR">
+                    <LandNode name="AgroForest_NonPasture_ObR">
+                        <LandNode name="AllForestLand_ObR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_ObR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_BoHai">
+                    <LandNode name="AgroForest_NonPasture_BoHai">
+                        <LandNode name="AllForestLand_BoHai">
+                            <UnmanagedLandLeaf name="UnmanagedForest_BoHai">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_LBalkash">
+                    <LandNode name="AgroForest_NonPasture_LBalkash">
+                        <LandNode name="AllForestLand_LBalkash">
+                            <UnmanagedLandLeaf name="UnmanagedForest_LBalkash">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_ZiyaHe">
+                    <LandNode name="AgroForest_NonPasture_ZiyaHe">
+                        <LandNode name="AllForestLand_ZiyaHe">
+                            <UnmanagedLandLeaf name="UnmanagedForest_ZiyaHe">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_ChinaCst">
+                    <LandNode name="AgroForest_NonPasture_ChinaCst">
+                        <LandNode name="AllForestLand_ChinaCst">
+                            <UnmanagedLandLeaf name="UnmanagedForest_ChinaCst">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_HuangHeR">
+                    <LandNode name="AgroForest_NonPasture_HuangHeR">
+                        <LandNode name="AllForestLand_HuangHeR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_HuangHeR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_Tarim">
+                    <LandNode name="AgroForest_NonPasture_Tarim">
+                        <LandNode name="AllForestLand_Tarim">
+                            <UnmanagedLandLeaf name="UnmanagedForest_Tarim">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_Yangtze">
+                    <LandNode name="AgroForest_NonPasture_Yangtze">
+                        <LandNode name="AllForestLand_Yangtze">
+                            <UnmanagedLandLeaf name="UnmanagedForest_Yangtze">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_XunJiang">
+                    <LandNode name="AgroForest_NonPasture_XunJiang">
+                        <LandNode name="AllForestLand_XunJiang">
+                            <UnmanagedLandLeaf name="UnmanagedForest_XunJiang">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_Hong">
+                    <LandNode name="AgroForest_NonPasture_Hong">
+                        <LandNode name="AllForestLand_Hong">
+                            <UnmanagedLandLeaf name="UnmanagedForest_Hong">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_GangesR">
+                    <LandNode name="AgroForest_NonPasture_GangesR">
+                        <LandNode name="AllForestLand_GangesR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_GangesR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_SChinaSea">
+                    <LandNode name="AgroForest_NonPasture_SChinaSea">
+                        <LandNode name="AllForestLand_SChinaSea">
+                            <UnmanagedLandLeaf name="UnmanagedForest_SChinaSea">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_Hainan">
+                    <LandNode name="AgroForest_NonPasture_Hainan">
+                        <LandNode name="AllForestLand_Hainan">
+                            <UnmanagedLandLeaf name="UnmanagedForest_Hainan">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_Mekong">
+                    <LandNode name="AgroForest_NonPasture_Mekong">
+                        <LandNode name="AllForestLand_Mekong">
+                            <UnmanagedLandLeaf name="UnmanagedForest_Mekong">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_Salween">
+                    <LandNode name="AgroForest_NonPasture_Salween">
+                        <LandNode name="AllForestLand_Salween">
+                            <UnmanagedLandLeaf name="UnmanagedForest_Salween">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_IrrawaddyR">
+                    <LandNode name="AgroForest_NonPasture_IrrawaddyR">
+                        <LandNode name="AllForestLand_IrrawaddyR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_IrrawaddyR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+            </LandAllocatorRoot>
+            <policy-portfolio-standard name="const_unmgd_forest">
+                <market>global</market>
+                <policyType>subsidy</policyType>
+                <constraint year="2030">22538.1</constraint>
+                <constraint year="2035">22538.1</constraint>
+                <constraint year="2040">22538.1</constraint>
+                <constraint year="2045">22538.1</constraint>
+                <constraint year="2050">22538.1</constraint>
+            </policy-portfolio-standard>
+        </region>
+        <region name="EU-12">
+            <LandAllocatorRoot name="root">
+                <LandNode name="AgroForestLand_BalticSea">
+                    <LandNode name="AgroForest_NonPasture_BalticSea">
+                        <LandNode name="AllForestLand_BalticSea">
+                            <UnmanagedLandLeaf name="UnmanagedForest_BalticSea">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_DnkGrmCst">
+                    <LandNode name="AgroForest_NonPasture_DnkGrmCst">
+                        <LandNode name="AllForestLand_DnkGrmCst">
+                            <UnmanagedLandLeaf name="UnmanagedForest_DnkGrmCst">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_NarvaR">
+                    <LandNode name="AgroForest_NonPasture_NarvaR">
+                        <LandNode name="AllForestLand_NarvaR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_NarvaR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_DaugavaR">
+                    <LandNode name="AgroForest_NonPasture_DaugavaR">
+                        <LandNode name="AllForestLand_DaugavaR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_DaugavaR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_OderR">
+                    <LandNode name="AgroForest_NonPasture_OderR">
+                        <LandNode name="AllForestLand_OderR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_OderR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_WislaR">
+                    <LandNode name="AgroForest_NonPasture_WislaR">
+                        <LandNode name="AllForestLand_WislaR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_WislaR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_ElbeR">
+                    <LandNode name="AgroForest_NonPasture_ElbeR">
+                        <LandNode name="AllForestLand_ElbeR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_ElbeR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_PolandCst">
+                    <LandNode name="AgroForest_NonPasture_PolandCst">
+                        <LandNode name="AllForestLand_PolandCst">
+                            <UnmanagedLandLeaf name="UnmanagedForest_PolandCst">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_NemanR">
+                    <LandNode name="AgroForest_NonPasture_NemanR">
+                        <LandNode name="AllForestLand_NemanR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_NemanR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_DniesterR">
+                    <LandNode name="AgroForest_NonPasture_DniesterR">
+                        <LandNode name="AllForestLand_DniesterR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_DniesterR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_DanubeR">
+                    <LandNode name="AgroForest_NonPasture_DanubeR">
+                        <LandNode name="AllForestLand_DanubeR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_DanubeR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_AdrBlkSea">
+                    <LandNode name="AgroForest_NonPasture_AdrBlkSea">
+                        <LandNode name="AllForestLand_AdrBlkSea">
+                            <UnmanagedLandLeaf name="UnmanagedForest_AdrBlkSea">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_MeditE">
+                    <LandNode name="AgroForest_NonPasture_MeditE">
+                        <LandNode name="AllForestLand_MeditE">
+                            <UnmanagedLandLeaf name="UnmanagedForest_MeditE">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+            </LandAllocatorRoot>
+            <policy-portfolio-standard name="const_unmgd_forest">
+                <market>global</market>
+                <policyType>subsidy</policyType>
+                <constraint year="2030">22538.1</constraint>
+                <constraint year="2035">22538.1</constraint>
+                <constraint year="2040">22538.1</constraint>
+                <constraint year="2045">22538.1</constraint>
+                <constraint year="2050">22538.1</constraint>
+            </policy-portfolio-standard>
+        </region>
+        <region name="EU-15">
+            <LandAllocatorRoot name="root">
+                <LandNode name="AgroForestLand_ScndnvN">
+                    <LandNode name="AgroForest_NonPasture_ScndnvN">
+                        <LandNode name="AllForestLand_ScndnvN">
+                            <UnmanagedLandLeaf name="UnmanagedForest_ScndnvN">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_Sweden">
+                    <LandNode name="AgroForest_NonPasture_Sweden">
+                        <LandNode name="AllForestLand_Sweden">
+                            <UnmanagedLandLeaf name="UnmanagedForest_Sweden">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_Finland">
+                    <LandNode name="AgroForest_NonPasture_Finland">
+                        <LandNode name="AllForestLand_Finland">
+                            <UnmanagedLandLeaf name="UnmanagedForest_Finland">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_Scotland">
+                    <LandNode name="AgroForest_NonPasture_Scotland">
+                        <LandNode name="AllForestLand_Scotland">
+                            <UnmanagedLandLeaf name="UnmanagedForest_Scotland">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_NevaR">
+                    <LandNode name="AgroForest_NonPasture_NevaR">
+                        <LandNode name="AllForestLand_NevaR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_NevaR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_DnkGrmCst">
+                    <LandNode name="AgroForest_NonPasture_DnkGrmCst">
+                        <LandNode name="AllForestLand_DnkGrmCst">
+                            <UnmanagedLandLeaf name="UnmanagedForest_DnkGrmCst">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_Ireland">
+                    <LandNode name="AgroForest_NonPasture_Ireland">
+                        <LandNode name="AllForestLand_Ireland">
+                            <UnmanagedLandLeaf name="UnmanagedForest_Ireland">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_EngWales">
+                    <LandNode name="AgroForest_NonPasture_EngWales">
+                        <LandNode name="AllForestLand_EngWales">
+                            <UnmanagedLandLeaf name="UnmanagedForest_EngWales">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_EmsWeserR">
+                    <LandNode name="AgroForest_NonPasture_EmsWeserR">
+                        <LandNode name="AllForestLand_EmsWeserR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_EmsWeserR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_OderR">
+                    <LandNode name="AgroForest_NonPasture_OderR">
+                        <LandNode name="AllForestLand_OderR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_OderR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_ElbeR">
+                    <LandNode name="AgroForest_NonPasture_ElbeR">
+                        <LandNode name="AllForestLand_ElbeR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_ElbeR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_RhineR">
+                    <LandNode name="AgroForest_NonPasture_RhineR">
+                        <LandNode name="AllForestLand_RhineR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_RhineR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_ScheldtR">
+                    <LandNode name="AgroForest_NonPasture_ScheldtR">
+                        <LandNode name="AllForestLand_ScheldtR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_ScheldtR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_FranceCstW">
+                    <LandNode name="AgroForest_NonPasture_FranceCstW">
+                        <LandNode name="AllForestLand_FranceCstW">
+                            <UnmanagedLandLeaf name="UnmanagedForest_FranceCstW">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_LoireR">
+                    <LandNode name="AgroForest_NonPasture_LoireR">
+                        <LandNode name="AllForestLand_LoireR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_LoireR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_SeineR">
+                    <LandNode name="AgroForest_NonPasture_SeineR">
+                        <LandNode name="AllForestLand_SeineR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_SeineR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_ItalyCstE">
+                    <LandNode name="AgroForest_NonPasture_ItalyCstE">
+                        <LandNode name="AllForestLand_ItalyCstE">
+                            <UnmanagedLandLeaf name="UnmanagedForest_ItalyCstE">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_DanubeR">
+                    <LandNode name="AgroForest_NonPasture_DanubeR">
+                        <LandNode name="AllForestLand_DanubeR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_DanubeR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_AdrBlkSea">
+                    <LandNode name="AgroForest_NonPasture_AdrBlkSea">
+                        <LandNode name="AllForestLand_AdrBlkSea">
+                            <UnmanagedLandLeaf name="UnmanagedForest_AdrBlkSea">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_PoR">
+                    <LandNode name="AgroForest_NonPasture_PoR">
+                        <LandNode name="AllForestLand_PoR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_PoR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_ItalyCstW">
+                    <LandNode name="AgroForest_NonPasture_ItalyCstW">
+                        <LandNode name="AllForestLand_ItalyCstW">
+                            <UnmanagedLandLeaf name="UnmanagedForest_ItalyCstW">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_IberiaCst">
+                    <LandNode name="AgroForest_NonPasture_IberiaCst">
+                        <LandNode name="AllForestLand_IberiaCst">
+                            <UnmanagedLandLeaf name="UnmanagedForest_IberiaCst">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_FranceCstS">
+                    <LandNode name="AgroForest_NonPasture_FranceCstS">
+                        <LandNode name="AllForestLand_FranceCstS">
+                            <UnmanagedLandLeaf name="UnmanagedForest_FranceCstS">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_RhoneR">
+                    <LandNode name="AgroForest_NonPasture_RhoneR">
+                        <LandNode name="AllForestLand_RhoneR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_RhoneR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_MeditIsl">
+                    <LandNode name="AgroForest_NonPasture_MeditIsl">
+                        <LandNode name="AllForestLand_MeditIsl">
+                            <UnmanagedLandLeaf name="UnmanagedForest_MeditIsl">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_Gironde">
+                    <LandNode name="AgroForest_NonPasture_Gironde">
+                        <LandNode name="AllForestLand_Gironde">
+                            <UnmanagedLandLeaf name="UnmanagedForest_Gironde">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_SpainCstSE">
+                    <LandNode name="AgroForest_NonPasture_SpainCstSE">
+                        <LandNode name="AllForestLand_SpainCstSE">
+                            <UnmanagedLandLeaf name="UnmanagedForest_SpainCstSE">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_TiberR">
+                    <LandNode name="AgroForest_NonPasture_TiberR">
+                        <LandNode name="AllForestLand_TiberR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_TiberR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_TagusR">
+                    <LandNode name="AgroForest_NonPasture_TagusR">
+                        <LandNode name="AllForestLand_TagusR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_TagusR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_EbroR">
+                    <LandNode name="AgroForest_NonPasture_EbroR">
+                        <LandNode name="AllForestLand_EbroR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_EbroR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_DouroR">
+                    <LandNode name="AgroForest_NonPasture_DouroR">
+                        <LandNode name="AllForestLand_DouroR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_DouroR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_GuadianaR">
+                    <LandNode name="AgroForest_NonPasture_GuadianaR">
+                        <LandNode name="AllForestLand_GuadianaR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_GuadianaR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_GuadalqR">
+                    <LandNode name="AgroForest_NonPasture_GuadalqR">
+                        <LandNode name="AllForestLand_GuadalqR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_GuadalqR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+            </LandAllocatorRoot>
+            <policy-portfolio-standard name="const_unmgd_forest">
+                <market>global</market>
+                <policyType>subsidy</policyType>
+                <constraint year="2030">22538.1</constraint>
+                <constraint year="2035">22538.1</constraint>
+                <constraint year="2040">22538.1</constraint>
+                <constraint year="2045">22538.1</constraint>
+                <constraint year="2050">22538.1</constraint>
+            </policy-portfolio-standard>
+        </region>
+        <region name="Europe_Eastern">
+            <LandAllocatorRoot name="root">
+                <LandNode name="AgroForestLand_NevaR">
+                    <LandNode name="AgroForest_NonPasture_NevaR">
+                        <LandNode name="AllForestLand_NevaR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_NevaR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_DaugavaR">
+                    <LandNode name="AgroForest_NonPasture_DaugavaR">
+                        <LandNode name="AllForestLand_DaugavaR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_DaugavaR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_WislaR">
+                    <LandNode name="AgroForest_NonPasture_WislaR">
+                        <LandNode name="AllForestLand_WislaR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_WislaR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_NemanR">
+                    <LandNode name="AgroForest_NonPasture_NemanR">
+                        <LandNode name="AllForestLand_NemanR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_NemanR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_DnieperR">
+                    <LandNode name="AgroForest_NonPasture_DnieperR">
+                        <LandNode name="AllForestLand_DnieperR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_DnieperR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_BlackSeaN">
+                    <LandNode name="AgroForest_NonPasture_BlackSeaN">
+                        <LandNode name="AllForestLand_BlackSeaN">
+                            <UnmanagedLandLeaf name="UnmanagedForest_BlackSeaN">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_DniesterR">
+                    <LandNode name="AgroForest_NonPasture_DniesterR">
+                        <LandNode name="AllForestLand_DniesterR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_DniesterR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_DonR">
+                    <LandNode name="AgroForest_NonPasture_DonR">
+                        <LandNode name="AllForestLand_DonR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_DonR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_DanubeR">
+                    <LandNode name="AgroForest_NonPasture_DanubeR">
+                        <LandNode name="AllForestLand_DanubeR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_DanubeR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+            </LandAllocatorRoot>
+            <policy-portfolio-standard name="const_unmgd_forest">
+                <market>global</market>
+                <policyType>subsidy</policyType>
+                <constraint year="2030">22538.1</constraint>
+                <constraint year="2035">22538.1</constraint>
+                <constraint year="2040">22538.1</constraint>
+                <constraint year="2045">22538.1</constraint>
+                <constraint year="2050">22538.1</constraint>
+            </policy-portfolio-standard>
+        </region>
+        <region name="Europe_Non_EU">
+            <LandAllocatorRoot name="root">
+                <LandNode name="AgroForestLand_DanubeR">
+                    <LandNode name="AgroForest_NonPasture_DanubeR">
+                        <LandNode name="AllForestLand_DanubeR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_DanubeR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_AdrBlkSea">
+                    <LandNode name="AgroForest_NonPasture_AdrBlkSea">
+                        <LandNode name="AllForestLand_AdrBlkSea">
+                            <UnmanagedLandLeaf name="UnmanagedForest_AdrBlkSea">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_BlackSeaS">
+                    <LandNode name="AgroForest_NonPasture_BlackSeaS">
+                        <LandNode name="AllForestLand_BlackSeaS">
+                            <UnmanagedLandLeaf name="UnmanagedForest_BlackSeaS">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_CaspianSW">
+                    <LandNode name="AgroForest_NonPasture_CaspianSW">
+                        <LandNode name="AllForestLand_CaspianSW">
+                            <UnmanagedLandLeaf name="UnmanagedForest_CaspianSW">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_MeditE">
+                    <LandNode name="AgroForest_NonPasture_MeditE">
+                        <LandNode name="AllForestLand_MeditE">
+                            <UnmanagedLandLeaf name="UnmanagedForest_MeditE">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_TigrEuphR">
+                    <LandNode name="AgroForest_NonPasture_TigrEuphR">
+                        <LandNode name="AllForestLand_TigrEuphR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_TigrEuphR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+            </LandAllocatorRoot>
+            <policy-portfolio-standard name="const_unmgd_forest">
+                <market>global</market>
+                <policyType>subsidy</policyType>
+                <constraint year="2030">22538.1</constraint>
+                <constraint year="2035">22538.1</constraint>
+                <constraint year="2040">22538.1</constraint>
+                <constraint year="2045">22538.1</constraint>
+                <constraint year="2050">22538.1</constraint>
+            </policy-portfolio-standard>
+        </region>
+        <region name="European Free Trade Association">
+            <LandAllocatorRoot name="root">
+                <LandNode name="AgroForestLand_ScndnvN">
+                    <LandNode name="AgroForest_NonPasture_ScndnvN">
+                        <LandNode name="AllForestLand_ScndnvN">
+                            <UnmanagedLandLeaf name="UnmanagedForest_ScndnvN">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_Iceland">
+                    <LandNode name="AgroForest_NonPasture_Iceland">
+                        <LandNode name="AllForestLand_Iceland">
+                            <UnmanagedLandLeaf name="UnmanagedForest_Iceland">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_Sweden">
+                    <LandNode name="AgroForest_NonPasture_Sweden">
+                        <LandNode name="AllForestLand_Sweden">
+                            <UnmanagedLandLeaf name="UnmanagedForest_Sweden">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_RhineR">
+                    <LandNode name="AgroForest_NonPasture_RhineR">
+                        <LandNode name="AllForestLand_RhineR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_RhineR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_DanubeR">
+                    <LandNode name="AgroForest_NonPasture_DanubeR">
+                        <LandNode name="AllForestLand_DanubeR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_DanubeR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_PoR">
+                    <LandNode name="AgroForest_NonPasture_PoR">
+                        <LandNode name="AllForestLand_PoR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_PoR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_RhoneR">
+                    <LandNode name="AgroForest_NonPasture_RhoneR">
+                        <LandNode name="AllForestLand_RhoneR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_RhoneR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+            </LandAllocatorRoot>
+            <policy-portfolio-standard name="const_unmgd_forest">
+                <market>global</market>
+                <policyType>subsidy</policyType>
+                <constraint year="2030">22538.1</constraint>
+                <constraint year="2035">22538.1</constraint>
+                <constraint year="2040">22538.1</constraint>
+                <constraint year="2045">22538.1</constraint>
+                <constraint year="2050">22538.1</constraint>
+            </policy-portfolio-standard>
+        </region>
+        <region name="India">
+            <LandAllocatorRoot name="root">
+                <LandNode name="AgroForestLand_IndusR">
+                    <LandNode name="AgroForest_NonPasture_IndusR">
+                        <LandNode name="AllForestLand_IndusR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_IndusR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_SabarmatiR">
+                    <LandNode name="AgroForest_NonPasture_SabarmatiR">
+                        <LandNode name="AllForestLand_SabarmatiR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_SabarmatiR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_GangesR">
+                    <LandNode name="AgroForest_NonPasture_GangesR">
+                        <LandNode name="AllForestLand_GangesR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_GangesR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_MahiR">
+                    <LandNode name="AgroForest_NonPasture_MahiR">
+                        <LandNode name="AllForestLand_MahiR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_MahiR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_BengalBay">
+                    <LandNode name="AgroForest_NonPasture_BengalBay">
+                        <LandNode name="AllForestLand_BengalBay">
+                            <UnmanagedLandLeaf name="UnmanagedForest_BengalBay">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_TaptiR">
+                    <LandNode name="AgroForest_NonPasture_TaptiR">
+                        <LandNode name="AllForestLand_TaptiR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_TaptiR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_BengalW">
+                    <LandNode name="AgroForest_NonPasture_BengalW">
+                        <LandNode name="AllForestLand_BengalW">
+                            <UnmanagedLandLeaf name="UnmanagedForest_BengalW">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_BrahmaniR">
+                    <LandNode name="AgroForest_NonPasture_BrahmaniR">
+                        <LandNode name="AllForestLand_BrahmaniR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_BrahmaniR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_MahanadiR">
+                    <LandNode name="AgroForest_NonPasture_MahanadiR">
+                        <LandNode name="AllForestLand_MahanadiR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_MahanadiR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_GodavariR">
+                    <LandNode name="AgroForest_NonPasture_GodavariR">
+                        <LandNode name="AllForestLand_GodavariR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_GodavariR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_IndCstNE">
+                    <LandNode name="AgroForest_NonPasture_IndCstNE">
+                        <LandNode name="AllForestLand_IndCstNE">
+                            <UnmanagedLandLeaf name="UnmanagedForest_IndCstNE">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_IndCstW">
+                    <LandNode name="AgroForest_NonPasture_IndCstW">
+                        <LandNode name="AllForestLand_IndCstW">
+                            <UnmanagedLandLeaf name="UnmanagedForest_IndCstW">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_IrrawaddyR">
+                    <LandNode name="AgroForest_NonPasture_IrrawaddyR">
+                        <LandNode name="AllForestLand_IrrawaddyR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_IrrawaddyR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_KrishnaR">
+                    <LandNode name="AgroForest_NonPasture_KrishnaR">
+                        <LandNode name="AllForestLand_KrishnaR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_KrishnaR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_AdnNicIsl">
+                    <LandNode name="AgroForest_NonPasture_AdnNicIsl">
+                        <LandNode name="AllForestLand_AdnNicIsl">
+                            <UnmanagedLandLeaf name="UnmanagedForest_AdnNicIsl">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_IndCstE">
+                    <LandNode name="AgroForest_NonPasture_IndCstE">
+                        <LandNode name="AllForestLand_IndCstE">
+                            <UnmanagedLandLeaf name="UnmanagedForest_IndCstE">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_PennarR">
+                    <LandNode name="AgroForest_NonPasture_PennarR">
+                        <LandNode name="AllForestLand_PennarR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_PennarR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_CauveryR">
+                    <LandNode name="AgroForest_NonPasture_CauveryR">
+                        <LandNode name="AllForestLand_CauveryR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_CauveryR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_IndCstS">
+                    <LandNode name="AgroForest_NonPasture_IndCstS">
+                        <LandNode name="AllForestLand_IndCstS">
+                            <UnmanagedLandLeaf name="UnmanagedForest_IndCstS">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_NarmadaR">
+                    <LandNode name="AgroForest_NonPasture_NarmadaR">
+                        <LandNode name="AllForestLand_NarmadaR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_NarmadaR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+            </LandAllocatorRoot>
+            <policy-portfolio-standard name="const_unmgd_forest">
+                <market>global</market>
+                <policyType>subsidy</policyType>
+                <constraint year="2030">22538.1</constraint>
+                <constraint year="2035">22538.1</constraint>
+                <constraint year="2040">22538.1</constraint>
+                <constraint year="2045">22538.1</constraint>
+                <constraint year="2050">22538.1</constraint>
+            </policy-portfolio-standard>
+        </region>
+        <region name="Indonesia">
+            <LandAllocatorRoot name="root">
+                <LandNode name="AgroForestLand_IdnE">
+                    <LandNode name="AgroForest_NonPasture_IdnE">
+                        <LandNode name="AllForestLand_IdnE">
+                            <UnmanagedLandLeaf name="UnmanagedForest_IdnE">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_BorneoCstN">
+                    <LandNode name="AgroForest_NonPasture_BorneoCstN">
+                        <LandNode name="AllForestLand_BorneoCstN">
+                            <UnmanagedLandLeaf name="UnmanagedForest_BorneoCstN">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_Sumatra">
+                    <LandNode name="AgroForest_NonPasture_Sumatra">
+                        <LandNode name="AllForestLand_Sumatra">
+                            <UnmanagedLandLeaf name="UnmanagedForest_Sumatra">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_Sulawesi">
+                    <LandNode name="AgroForest_NonPasture_Sulawesi">
+                        <LandNode name="AllForestLand_Sulawesi">
+                            <UnmanagedLandLeaf name="UnmanagedForest_Sulawesi">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_Kalimantan">
+                    <LandNode name="AgroForest_NonPasture_Kalimantan">
+                        <LandNode name="AllForestLand_Kalimantan">
+                            <UnmanagedLandLeaf name="UnmanagedForest_Kalimantan">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_IrianJaya">
+                    <LandNode name="AgroForest_NonPasture_IrianJaya">
+                        <LandNode name="AllForestLand_IrianJaya">
+                            <UnmanagedLandLeaf name="UnmanagedForest_IrianJaya">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_JavaTimor">
+                    <LandNode name="AgroForest_NonPasture_JavaTimor">
+                        <LandNode name="AllForestLand_JavaTimor">
+                            <UnmanagedLandLeaf name="UnmanagedForest_JavaTimor">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_SepikR">
+                    <LandNode name="AgroForest_NonPasture_SepikR">
+                        <LandNode name="AllForestLand_SepikR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_SepikR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_FlyR">
+                    <LandNode name="AgroForest_NonPasture_FlyR">
+                        <LandNode name="AllForestLand_FlyR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_FlyR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+            </LandAllocatorRoot>
+            <policy-portfolio-standard name="const_unmgd_forest">
+                <market>global</market>
+                <policyType>subsidy</policyType>
+                <constraint year="2030">22538.1</constraint>
+                <constraint year="2035">22538.1</constraint>
+                <constraint year="2040">22538.1</constraint>
+                <constraint year="2045">22538.1</constraint>
+                <constraint year="2050">22538.1</constraint>
+            </policy-portfolio-standard>
+        </region>
+        <region name="Japan">
+            <LandAllocatorRoot name="root">
+                <LandNode name="AgroForestLand_Japan">
+                    <LandNode name="AgroForest_NonPasture_Japan">
+                        <LandNode name="AllForestLand_Japan">
+                            <UnmanagedLandLeaf name="UnmanagedForest_Japan">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_Taiwan">
+                    <LandNode name="AgroForest_NonPasture_Taiwan">
+                        <LandNode name="AllForestLand_Taiwan">
+                            <UnmanagedLandLeaf name="UnmanagedForest_Taiwan">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+            </LandAllocatorRoot>
+            <policy-portfolio-standard name="const_unmgd_forest">
+                <market>global</market>
+                <policyType>subsidy</policyType>
+                <constraint year="2030">22538.1</constraint>
+                <constraint year="2035">22538.1</constraint>
+                <constraint year="2040">22538.1</constraint>
+                <constraint year="2045">22538.1</constraint>
+                <constraint year="2050">22538.1</constraint>
+            </policy-portfolio-standard>
+        </region>
+        <region name="Mexico">
+            <LandAllocatorRoot name="root">
+                <LandNode name="AgroForestLand_MexBaja">
+                    <LandNode name="AgroForest_NonPasture_MexBaja">
+                        <LandNode name="AllForestLand_MexBaja">
+                            <UnmanagedLandLeaf name="UnmanagedForest_MexBaja">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_MexCstNW">
+                    <LandNode name="AgroForest_NonPasture_MexCstNW">
+                        <LandNode name="AllForestLand_MexCstNW">
+                            <UnmanagedLandLeaf name="UnmanagedForest_MexCstNW">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_MexGulf">
+                    <LandNode name="AgroForest_NonPasture_MexGulf">
+                        <LandNode name="AllForestLand_MexGulf">
+                            <UnmanagedLandLeaf name="UnmanagedForest_MexGulf">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_YucatanP">
+                    <LandNode name="AgroForest_NonPasture_YucatanP">
+                        <LandNode name="AllForestLand_YucatanP">
+                            <UnmanagedLandLeaf name="UnmanagedForest_YucatanP">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_MexInt">
+                    <LandNode name="AgroForest_NonPasture_MexInt">
+                        <LandNode name="AllForestLand_MexInt">
+                            <UnmanagedLandLeaf name="UnmanagedForest_MexInt">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_MexCstW">
+                    <LandNode name="AgroForest_NonPasture_MexCstW">
+                        <LandNode name="AllForestLand_MexCstW">
+                            <UnmanagedLandLeaf name="UnmanagedForest_MexCstW">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_Papaloapan">
+                    <LandNode name="AgroForest_NonPasture_Papaloapan">
+                        <LandNode name="AllForestLand_Papaloapan">
+                            <UnmanagedLandLeaf name="UnmanagedForest_Papaloapan">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_RioLerma">
+                    <LandNode name="AgroForest_NonPasture_RioLerma">
+                        <LandNode name="AllForestLand_RioLerma">
+                            <UnmanagedLandLeaf name="UnmanagedForest_RioLerma">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_RioVerde">
+                    <LandNode name="AgroForest_NonPasture_RioVerde">
+                        <LandNode name="AllForestLand_RioVerde">
+                            <UnmanagedLandLeaf name="UnmanagedForest_RioVerde">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_GrijUsuR">
+                    <LandNode name="AgroForest_NonPasture_GrijUsuR">
+                        <LandNode name="AllForestLand_GrijUsuR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_GrijUsuR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_RioBalsas">
+                    <LandNode name="AgroForest_NonPasture_RioBalsas">
+                        <LandNode name="AllForestLand_RioBalsas">
+                            <UnmanagedLandLeaf name="UnmanagedForest_RioBalsas">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_CntAmer">
+                    <LandNode name="AgroForest_NonPasture_CntAmer">
+                        <LandNode name="AllForestLand_CntAmer">
+                            <UnmanagedLandLeaf name="UnmanagedForest_CntAmer">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_Tehuantpc">
+                    <LandNode name="AgroForest_NonPasture_Tehuantpc">
+                        <LandNode name="AllForestLand_Tehuantpc">
+                            <UnmanagedLandLeaf name="UnmanagedForest_Tehuantpc">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_California">
+                    <LandNode name="AgroForest_NonPasture_California">
+                        <LandNode name="AllForestLand_California">
+                            <UnmanagedLandLeaf name="UnmanagedForest_California">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_UsaColoRS">
+                    <LandNode name="AgroForest_NonPasture_UsaColoRS">
+                        <LandNode name="AllForestLand_UsaColoRS">
+                            <UnmanagedLandLeaf name="UnmanagedForest_UsaColoRS">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_RioGrande">
+                    <LandNode name="AgroForest_NonPasture_RioGrande">
+                        <LandNode name="AllForestLand_RioGrande">
+                            <UnmanagedLandLeaf name="UnmanagedForest_RioGrande">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+            </LandAllocatorRoot>
+            <policy-portfolio-standard name="const_unmgd_forest">
+                <market>global</market>
+                <policyType>subsidy</policyType>
+                <constraint year="2030">22538.1</constraint>
+                <constraint year="2035">22538.1</constraint>
+                <constraint year="2040">22538.1</constraint>
+                <constraint year="2045">22538.1</constraint>
+                <constraint year="2050">22538.1</constraint>
+            </policy-portfolio-standard>
+        </region>
+        <region name="Middle East">
+            <LandAllocatorRoot name="root">
+                <LandNode name="AgroForestLand_CaspianE">
+                    <LandNode name="AgroForest_NonPasture_CaspianE">
+                        <LandNode name="AllForestLand_CaspianE">
+                            <UnmanagedLandLeaf name="UnmanagedForest_CaspianE">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_CaspianSW">
+                    <LandNode name="AgroForest_NonPasture_CaspianSW">
+                        <LandNode name="AllForestLand_CaspianSW">
+                            <UnmanagedLandLeaf name="UnmanagedForest_CaspianSW">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_Iran">
+                    <LandNode name="AgroForest_NonPasture_Iran">
+                        <LandNode name="AllForestLand_Iran">
+                            <UnmanagedLandLeaf name="UnmanagedForest_Iran">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_TigrEuphR">
+                    <LandNode name="AgroForest_NonPasture_TigrEuphR">
+                        <LandNode name="AllForestLand_TigrEuphR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_TigrEuphR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_RedSeaE">
+                    <LandNode name="AgroForest_NonPasture_RedSeaE">
+                        <LandNode name="AllForestLand_RedSeaE">
+                            <UnmanagedLandLeaf name="UnmanagedForest_RedSeaE">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_ArabianP">
+                    <LandNode name="AgroForest_NonPasture_ArabianP">
+                        <LandNode name="AllForestLand_ArabianP">
+                            <UnmanagedLandLeaf name="UnmanagedForest_ArabianP">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+            </LandAllocatorRoot>
+            <policy-portfolio-standard name="const_unmgd_forest">
+                <market>global</market>
+                <policyType>subsidy</policyType>
+                <constraint year="2030">22538.1</constraint>
+                <constraint year="2035">22538.1</constraint>
+                <constraint year="2040">22538.1</constraint>
+                <constraint year="2045">22538.1</constraint>
+                <constraint year="2050">22538.1</constraint>
+            </policy-portfolio-standard>
+        </region>
+        <region name="Pakistan">
+            <LandAllocatorRoot name="root">
+                <LandNode name="AgroForestLand_IndusR">
+                    <LandNode name="AgroForest_NonPasture_IndusR">
+                        <LandNode name="AllForestLand_IndusR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_IndusR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+            </LandAllocatorRoot>
+            <policy-portfolio-standard name="const_unmgd_forest">
+                <market>global</market>
+                <policyType>subsidy</policyType>
+                <constraint year="2030">22538.1</constraint>
+                <constraint year="2035">22538.1</constraint>
+                <constraint year="2040">22538.1</constraint>
+                <constraint year="2045">22538.1</constraint>
+                <constraint year="2050">22538.1</constraint>
+            </policy-portfolio-standard>
+        </region>
+        <region name="Russia">
+            <LandAllocatorRoot name="root">
+                <LandNode name="AgroForestLand_SiberiaN">
+                    <LandNode name="AgroForest_NonPasture_SiberiaN">
+                        <LandNode name="AllForestLand_SiberiaN">
+                            <UnmanagedLandLeaf name="UnmanagedForest_SiberiaN">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_SiberiaW">
+                    <LandNode name="AgroForest_NonPasture_SiberiaW">
+                        <LandNode name="AllForestLand_SiberiaW">
+                            <UnmanagedLandLeaf name="UnmanagedForest_SiberiaW">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_KaraSea">
+                    <LandNode name="AgroForest_NonPasture_KaraSea">
+                        <LandNode name="AllForestLand_KaraSea">
+                            <UnmanagedLandLeaf name="UnmanagedForest_KaraSea">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_LenaR">
+                    <LandNode name="AgroForest_NonPasture_LenaR">
+                        <LandNode name="AllForestLand_LenaR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_LenaR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_ScndnvN">
+                    <LandNode name="AgroForest_NonPasture_ScndnvN">
+                        <LandNode name="AllForestLand_ScndnvN">
+                            <UnmanagedLandLeaf name="UnmanagedForest_ScndnvN">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_BarentsSea">
+                    <LandNode name="AgroForest_NonPasture_BarentsSea">
+                        <LandNode name="AllForestLand_BarentsSea">
+                            <UnmanagedLandLeaf name="UnmanagedForest_BarentsSea">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_Finland">
+                    <LandNode name="AgroForest_NonPasture_Finland">
+                        <LandNode name="AllForestLand_Finland">
+                            <UnmanagedLandLeaf name="UnmanagedForest_Finland">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_DvinaRN">
+                    <LandNode name="AgroForest_NonPasture_DvinaRN">
+                        <LandNode name="AllForestLand_DvinaRN">
+                            <UnmanagedLandLeaf name="UnmanagedForest_DvinaRN">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_NevaR">
+                    <LandNode name="AgroForest_NonPasture_NevaR">
+                        <LandNode name="AllForestLand_NevaR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_NevaR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_VolgaR">
+                    <LandNode name="AgroForest_NonPasture_VolgaR">
+                        <LandNode name="AllForestLand_VolgaR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_VolgaR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_BalticSea">
+                    <LandNode name="AgroForest_NonPasture_BalticSea">
+                        <LandNode name="AllForestLand_BalticSea">
+                            <UnmanagedLandLeaf name="UnmanagedForest_BalticSea">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_NarvaR">
+                    <LandNode name="AgroForest_NonPasture_NarvaR">
+                        <LandNode name="AllForestLand_NarvaR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_NarvaR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_DaugavaR">
+                    <LandNode name="AgroForest_NonPasture_DaugavaR">
+                        <LandNode name="AllForestLand_DaugavaR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_DaugavaR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_PolandCst">
+                    <LandNode name="AgroForest_NonPasture_PolandCst">
+                        <LandNode name="AllForestLand_PolandCst">
+                            <UnmanagedLandLeaf name="UnmanagedForest_PolandCst">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_NemanR">
+                    <LandNode name="AgroForest_NonPasture_NemanR">
+                        <LandNode name="AllForestLand_NemanR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_NemanR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_RusCstSE">
+                    <LandNode name="AgroForest_NonPasture_RusCstSE">
+                        <LandNode name="AllForestLand_RusCstSE">
+                            <UnmanagedLandLeaf name="UnmanagedForest_RusCstSE">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_UralR">
+                    <LandNode name="AgroForest_NonPasture_UralR">
+                        <LandNode name="AllForestLand_UralR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_UralR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_DnieperR">
+                    <LandNode name="AgroForest_NonPasture_DnieperR">
+                        <LandNode name="AllForestLand_DnieperR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_DnieperR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_Gobi">
+                    <LandNode name="AgroForest_NonPasture_Gobi">
+                        <LandNode name="AllForestLand_Gobi">
+                            <UnmanagedLandLeaf name="UnmanagedForest_Gobi">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_AmurR">
+                    <LandNode name="AgroForest_NonPasture_AmurR">
+                        <LandNode name="AllForestLand_AmurR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_AmurR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_CaspianNE">
+                    <LandNode name="AgroForest_NonPasture_CaspianNE">
+                        <LandNode name="AllForestLand_CaspianNE">
+                            <UnmanagedLandLeaf name="UnmanagedForest_CaspianNE">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_BlackSeaN">
+                    <LandNode name="AgroForest_NonPasture_BlackSeaN">
+                        <LandNode name="AllForestLand_BlackSeaN">
+                            <UnmanagedLandLeaf name="UnmanagedForest_BlackSeaN">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_YeniseiR">
+                    <LandNode name="AgroForest_NonPasture_YeniseiR">
+                        <LandNode name="AllForestLand_YeniseiR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_YeniseiR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_DonR">
+                    <LandNode name="AgroForest_NonPasture_DonR">
+                        <LandNode name="AllForestLand_DonR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_DonR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_ObR">
+                    <LandNode name="AgroForest_NonPasture_ObR">
+                        <LandNode name="AllForestLand_ObR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_ObR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_BlackSeaS">
+                    <LandNode name="AgroForest_NonPasture_BlackSeaS">
+                        <LandNode name="AllForestLand_BlackSeaS">
+                            <UnmanagedLandLeaf name="UnmanagedForest_BlackSeaS">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_CaspianSW">
+                    <LandNode name="AgroForest_NonPasture_CaspianSW">
+                        <LandNode name="AllForestLand_CaspianSW">
+                            <UnmanagedLandLeaf name="UnmanagedForest_CaspianSW">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_SyrDaryaR">
+                    <LandNode name="AgroForest_NonPasture_SyrDaryaR">
+                        <LandNode name="AllForestLand_SyrDaryaR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_SyrDaryaR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+            </LandAllocatorRoot>
+            <policy-portfolio-standard name="const_unmgd_forest">
+                <market>global</market>
+                <policyType>subsidy</policyType>
+                <constraint year="2030">22538.1</constraint>
+                <constraint year="2035">22538.1</constraint>
+                <constraint year="2040">22538.1</constraint>
+                <constraint year="2045">22538.1</constraint>
+                <constraint year="2050">22538.1</constraint>
+            </policy-portfolio-standard>
+        </region>
+        <region name="South Africa">
+            <LandAllocatorRoot name="root">
+                <LandNode name="AgroForestLand_OrangeR">
+                    <LandNode name="AgroForest_NonPasture_OrangeR">
+                        <LandNode name="AllForestLand_OrangeR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_OrangeR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_AfrCstS">
+                    <LandNode name="AgroForest_NonPasture_AfrCstS">
+                        <LandNode name="AllForestLand_AfrCstS">
+                            <UnmanagedLandLeaf name="UnmanagedForest_AfrCstS">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_LimpopoR">
+                    <LandNode name="AgroForest_NonPasture_LimpopoR">
+                        <LandNode name="AllForestLand_LimpopoR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_LimpopoR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_AfrCstSSW">
+                    <LandNode name="AgroForest_NonPasture_AfrCstSSW">
+                        <LandNode name="AllForestLand_AfrCstSSW">
+                            <UnmanagedLandLeaf name="UnmanagedForest_AfrCstSSW">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+            </LandAllocatorRoot>
+            <policy-portfolio-standard name="const_unmgd_forest">
+                <market>global</market>
+                <policyType>subsidy</policyType>
+                <constraint year="2030">22538.1</constraint>
+                <constraint year="2035">22538.1</constraint>
+                <constraint year="2040">22538.1</constraint>
+                <constraint year="2045">22538.1</constraint>
+                <constraint year="2050">22538.1</constraint>
+            </policy-portfolio-standard>
+        </region>
+        <region name="South America_Northern">
+            <LandAllocatorRoot name="root">
+                <LandNode name="AgroForestLand_SAmerCstN">
+                    <LandNode name="AgroForest_NonPasture_SAmerCstN">
+                        <LandNode name="AllForestLand_SAmerCstN">
+                            <UnmanagedLandLeaf name="UnmanagedForest_SAmerCstN">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_OrinocoR">
+                    <LandNode name="AgroForest_NonPasture_OrinocoR">
+                        <LandNode name="AllForestLand_OrinocoR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_OrinocoR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_SAmerCstNE">
+                    <LandNode name="AgroForest_NonPasture_SAmerCstNE">
+                        <LandNode name="AllForestLand_SAmerCstNE">
+                            <UnmanagedLandLeaf name="UnmanagedForest_SAmerCstNE">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_MagdalenaR">
+                    <LandNode name="AgroForest_NonPasture_MagdalenaR">
+                        <LandNode name="AllForestLand_MagdalenaR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_MagdalenaR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_AmazonR">
+                    <LandNode name="AgroForest_NonPasture_AmazonR">
+                        <LandNode name="AllForestLand_AmazonR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_AmazonR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+            </LandAllocatorRoot>
+            <policy-portfolio-standard name="const_unmgd_forest">
+                <market>global</market>
+                <policyType>subsidy</policyType>
+                <constraint year="2030">22538.1</constraint>
+                <constraint year="2035">22538.1</constraint>
+                <constraint year="2040">22538.1</constraint>
+                <constraint year="2045">22538.1</constraint>
+                <constraint year="2050">22538.1</constraint>
+            </policy-portfolio-standard>
+        </region>
+        <region name="South America_Southern">
+            <LandAllocatorRoot name="root">
+                <LandNode name="AgroForestLand_ColEcuaCst">
+                    <LandNode name="AgroForest_NonPasture_ColEcuaCst">
+                        <LandNode name="AllForestLand_ColEcuaCst">
+                            <UnmanagedLandLeaf name="UnmanagedForest_ColEcuaCst">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_AmazonR">
+                    <LandNode name="AgroForest_NonPasture_AmazonR">
+                        <LandNode name="AllForestLand_AmazonR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_AmazonR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_ChileCstS">
+                    <LandNode name="AgroForest_NonPasture_ChileCstS">
+                        <LandNode name="AllForestLand_ChileCstS">
+                            <UnmanagedLandLeaf name="UnmanagedForest_ChileCstS">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_PeruCst">
+                    <LandNode name="AgroForest_NonPasture_PeruCst">
+                        <LandNode name="AllForestLand_PeruCst">
+                            <UnmanagedLandLeaf name="UnmanagedForest_PeruCst">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_LaPuna">
+                    <LandNode name="AgroForest_NonPasture_LaPuna">
+                        <LandNode name="AllForestLand_LaPuna">
+                            <UnmanagedLandLeaf name="UnmanagedForest_LaPuna">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_RioLaPlata">
+                    <LandNode name="AgroForest_NonPasture_RioLaPlata">
+                        <LandNode name="AllForestLand_RioLaPlata">
+                            <UnmanagedLandLeaf name="UnmanagedForest_RioLaPlata">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_ChileCstN">
+                    <LandNode name="AgroForest_NonPasture_ChileCstN">
+                        <LandNode name="AllForestLand_ChileCstN">
+                            <UnmanagedLandLeaf name="UnmanagedForest_ChileCstN">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_NegroR">
+                    <LandNode name="AgroForest_NonPasture_NegroR">
+                        <LandNode name="AllForestLand_NegroR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_NegroR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_ArgCstS">
+                    <LandNode name="AgroForest_NonPasture_ArgCstS">
+                        <LandNode name="AllForestLand_ArgCstS">
+                            <UnmanagedLandLeaf name="UnmanagedForest_ArgCstS">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+            </LandAllocatorRoot>
+            <policy-portfolio-standard name="const_unmgd_forest">
+                <market>global</market>
+                <policyType>subsidy</policyType>
+                <constraint year="2030">22538.1</constraint>
+                <constraint year="2035">22538.1</constraint>
+                <constraint year="2040">22538.1</constraint>
+                <constraint year="2045">22538.1</constraint>
+                <constraint year="2050">22538.1</constraint>
+            </policy-portfolio-standard>
+        </region>
+        <region name="South Asia">
+            <LandAllocatorRoot name="root">
+                <LandNode name="AgroForestLand_AmuDaryaR">
+                    <LandNode name="AgroForest_NonPasture_AmuDaryaR">
+                        <LandNode name="AllForestLand_AmuDaryaR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_AmuDaryaR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_GangesR">
+                    <LandNode name="AgroForest_NonPasture_GangesR">
+                        <LandNode name="AllForestLand_GangesR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_GangesR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_BengalBay">
+                    <LandNode name="AgroForest_NonPasture_BengalBay">
+                        <LandNode name="AllForestLand_BengalBay">
+                            <UnmanagedLandLeaf name="UnmanagedForest_BengalBay">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_SriLanka">
+                    <LandNode name="AgroForest_NonPasture_SriLanka">
+                        <LandNode name="AllForestLand_SriLanka">
+                            <UnmanagedLandLeaf name="UnmanagedForest_SriLanka">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+            </LandAllocatorRoot>
+            <policy-portfolio-standard name="const_unmgd_forest">
+                <market>global</market>
+                <policyType>subsidy</policyType>
+                <constraint year="2030">22538.1</constraint>
+                <constraint year="2035">22538.1</constraint>
+                <constraint year="2040">22538.1</constraint>
+                <constraint year="2045">22538.1</constraint>
+                <constraint year="2050">22538.1</constraint>
+            </policy-portfolio-standard>
+        </region>
+        <region name="South Korea">
+            <LandAllocatorRoot name="root">
+                <LandNode name="AgroForestLand_Korea">
+                    <LandNode name="AgroForest_NonPasture_Korea">
+                        <LandNode name="AllForestLand_Korea">
+                            <UnmanagedLandLeaf name="UnmanagedForest_Korea">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+            </LandAllocatorRoot>
+            <policy-portfolio-standard name="const_unmgd_forest">
+                <market>global</market>
+                <policyType>subsidy</policyType>
+                <constraint year="2030">22538.1</constraint>
+                <constraint year="2035">22538.1</constraint>
+                <constraint year="2040">22538.1</constraint>
+                <constraint year="2045">22538.1</constraint>
+                <constraint year="2050">22538.1</constraint>
+            </policy-portfolio-standard>
+        </region>
+        <region name="Southeast Asia">
+            <LandAllocatorRoot name="root">
+                <LandNode name="AgroForestLand_RusCstSE">
+                    <LandNode name="AgroForest_NonPasture_RusCstSE">
+                        <LandNode name="AllForestLand_RusCstSE">
+                            <UnmanagedLandLeaf name="UnmanagedForest_RusCstSE">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_Korea">
+                    <LandNode name="AgroForest_NonPasture_Korea">
+                        <LandNode name="AllForestLand_Korea">
+                            <UnmanagedLandLeaf name="UnmanagedForest_Korea">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_BoHai">
+                    <LandNode name="AgroForest_NonPasture_BoHai">
+                        <LandNode name="AllForestLand_BoHai">
+                            <UnmanagedLandLeaf name="UnmanagedForest_BoHai">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_XunJiang">
+                    <LandNode name="AgroForest_NonPasture_XunJiang">
+                        <LandNode name="AllForestLand_XunJiang">
+                            <UnmanagedLandLeaf name="UnmanagedForest_XunJiang">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_Hong">
+                    <LandNode name="AgroForest_NonPasture_Hong">
+                        <LandNode name="AllForestLand_Hong">
+                            <UnmanagedLandLeaf name="UnmanagedForest_Hong">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_GangesR">
+                    <LandNode name="AgroForest_NonPasture_GangesR">
+                        <LandNode name="AllForestLand_GangesR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_GangesR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_SChinaSea">
+                    <LandNode name="AgroForest_NonPasture_SChinaSea">
+                        <LandNode name="AllForestLand_SChinaSea">
+                            <UnmanagedLandLeaf name="UnmanagedForest_SChinaSea">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_BengalBay">
+                    <LandNode name="AgroForest_NonPasture_BengalBay">
+                        <LandNode name="AllForestLand_BengalBay">
+                            <UnmanagedLandLeaf name="UnmanagedForest_BengalBay">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_Phlppns">
+                    <LandNode name="AgroForest_NonPasture_Phlppns">
+                        <LandNode name="AllForestLand_Phlppns">
+                            <UnmanagedLandLeaf name="UnmanagedForest_Phlppns">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_Mekong">
+                    <LandNode name="AgroForest_NonPasture_Mekong">
+                        <LandNode name="AllForestLand_Mekong">
+                            <UnmanagedLandLeaf name="UnmanagedForest_Mekong">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_VietnamCst">
+                    <LandNode name="AgroForest_NonPasture_VietnamCst">
+                        <LandNode name="AllForestLand_VietnamCst">
+                            <UnmanagedLandLeaf name="UnmanagedForest_VietnamCst">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_Salween">
+                    <LandNode name="AgroForest_NonPasture_Salween">
+                        <LandNode name="AllForestLand_Salween">
+                            <UnmanagedLandLeaf name="UnmanagedForest_Salween">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_IrrawaddyR">
+                    <LandNode name="AgroForest_NonPasture_IrrawaddyR">
+                        <LandNode name="AllForestLand_IrrawaddyR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_IrrawaddyR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_SittaungR">
+                    <LandNode name="AgroForest_NonPasture_SittaungR">
+                        <LandNode name="AllForestLand_SittaungR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_SittaungR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_MalaysiaP">
+                    <LandNode name="AgroForest_NonPasture_MalaysiaP">
+                        <LandNode name="AllForestLand_MalaysiaP">
+                            <UnmanagedLandLeaf name="UnmanagedForest_MalaysiaP">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_ChaoPhrR">
+                    <LandNode name="AgroForest_NonPasture_ChaoPhrR">
+                        <LandNode name="AllForestLand_ChaoPhrR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_ChaoPhrR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_ThaiGulf">
+                    <LandNode name="AgroForest_NonPasture_ThaiGulf">
+                        <LandNode name="AllForestLand_ThaiGulf">
+                            <UnmanagedLandLeaf name="UnmanagedForest_ThaiGulf">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_IdnE">
+                    <LandNode name="AgroForest_NonPasture_IdnE">
+                        <LandNode name="AllForestLand_IdnE">
+                            <UnmanagedLandLeaf name="UnmanagedForest_IdnE">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_BorneoCstN">
+                    <LandNode name="AgroForest_NonPasture_BorneoCstN">
+                        <LandNode name="AllForestLand_BorneoCstN">
+                            <UnmanagedLandLeaf name="UnmanagedForest_BorneoCstN">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_Kalimantan">
+                    <LandNode name="AgroForest_NonPasture_Kalimantan">
+                        <LandNode name="AllForestLand_Kalimantan">
+                            <UnmanagedLandLeaf name="UnmanagedForest_Kalimantan">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_IrianJaya">
+                    <LandNode name="AgroForest_NonPasture_IrianJaya">
+                        <LandNode name="AllForestLand_IrianJaya">
+                            <UnmanagedLandLeaf name="UnmanagedForest_IrianJaya">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_PapuaCst">
+                    <LandNode name="AgroForest_NonPasture_PapuaCst">
+                        <LandNode name="AllForestLand_PapuaCst">
+                            <UnmanagedLandLeaf name="UnmanagedForest_PapuaCst">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_JavaTimor">
+                    <LandNode name="AgroForest_NonPasture_JavaTimor">
+                        <LandNode name="AllForestLand_JavaTimor">
+                            <UnmanagedLandLeaf name="UnmanagedForest_JavaTimor">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_SolomonIsl">
+                    <LandNode name="AgroForest_NonPasture_SolomonIsl">
+                        <LandNode name="AllForestLand_SolomonIsl">
+                            <UnmanagedLandLeaf name="UnmanagedForest_SolomonIsl">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_SepikR">
+                    <LandNode name="AgroForest_NonPasture_SepikR">
+                        <LandNode name="AllForestLand_SepikR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_SepikR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_FlyR">
+                    <LandNode name="AgroForest_NonPasture_FlyR">
+                        <LandNode name="AllForestLand_FlyR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_FlyR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_NewCaledn">
+                    <LandNode name="AgroForest_NonPasture_NewCaledn">
+                        <LandNode name="AllForestLand_NewCaledn">
+                            <UnmanagedLandLeaf name="UnmanagedForest_NewCaledn">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+            </LandAllocatorRoot>
+            <policy-portfolio-standard name="const_unmgd_forest">
+                <market>global</market>
+                <policyType>subsidy</policyType>
+                <constraint year="2030">22538.1</constraint>
+                <constraint year="2035">22538.1</constraint>
+                <constraint year="2040">22538.1</constraint>
+                <constraint year="2045">22538.1</constraint>
+                <constraint year="2050">22538.1</constraint>
+            </policy-portfolio-standard>
+        </region>
+        <region name="Taiwan">
+            <LandAllocatorRoot name="root">
+                <LandNode name="AgroForestLand_ChinaCst">
+                    <LandNode name="AgroForest_NonPasture_ChinaCst">
+                        <LandNode name="AllForestLand_ChinaCst">
+                            <UnmanagedLandLeaf name="UnmanagedForest_ChinaCst">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_Taiwan">
+                    <LandNode name="AgroForest_NonPasture_Taiwan">
+                        <LandNode name="AllForestLand_Taiwan">
+                            <UnmanagedLandLeaf name="UnmanagedForest_Taiwan">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+            </LandAllocatorRoot>
+            <policy-portfolio-standard name="const_unmgd_forest">
+                <market>global</market>
+                <policyType>subsidy</policyType>
+                <constraint year="2030">22538.1</constraint>
+                <constraint year="2035">22538.1</constraint>
+                <constraint year="2040">22538.1</constraint>
+                <constraint year="2045">22538.1</constraint>
+                <constraint year="2050">22538.1</constraint>
+            </policy-portfolio-standard>
+        </region>
+        <region name="Argentina">
+            <LandAllocatorRoot name="root">
+                <LandNode name="AgroForestLand_ChileCstS">
+                    <LandNode name="AgroForest_NonPasture_ChileCstS">
+                        <LandNode name="AllForestLand_ChileCstS">
+                            <UnmanagedLandLeaf name="UnmanagedForest_ChileCstS">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_MarChiq">
+                    <LandNode name="AgroForest_NonPasture_MarChiq">
+                        <LandNode name="AllForestLand_MarChiq">
+                            <UnmanagedLandLeaf name="UnmanagedForest_MarChiq">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_Salinas">
+                    <LandNode name="AgroForest_NonPasture_Salinas">
+                        <LandNode name="AllForestLand_Salinas">
+                            <UnmanagedLandLeaf name="UnmanagedForest_Salinas">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_RioLaPlata">
+                    <LandNode name="AgroForest_NonPasture_RioLaPlata">
+                        <LandNode name="AllForestLand_RioLaPlata">
+                            <UnmanagedLandLeaf name="UnmanagedForest_RioLaPlata">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_Pampas">
+                    <LandNode name="AgroForest_NonPasture_Pampas">
+                        <LandNode name="AllForestLand_Pampas">
+                            <UnmanagedLandLeaf name="UnmanagedForest_Pampas">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_ArgCstN">
+                    <LandNode name="AgroForest_NonPasture_ArgCstN">
+                        <LandNode name="AllForestLand_ArgCstN">
+                            <UnmanagedLandLeaf name="UnmanagedForest_ArgCstN">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_ArgColoR">
+                    <LandNode name="AgroForest_NonPasture_ArgColoR">
+                        <LandNode name="AllForestLand_ArgColoR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_ArgColoR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_NegroR">
+                    <LandNode name="AgroForest_NonPasture_NegroR">
+                        <LandNode name="AllForestLand_NegroR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_NegroR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_Patagonia">
+                    <LandNode name="AgroForest_NonPasture_Patagonia">
+                        <LandNode name="AllForestLand_Patagonia">
+                            <UnmanagedLandLeaf name="UnmanagedForest_Patagonia">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_ArgCstS">
+                    <LandNode name="AgroForest_NonPasture_ArgCstS">
+                        <LandNode name="AllForestLand_ArgCstS">
+                            <UnmanagedLandLeaf name="UnmanagedForest_ArgCstS">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+            </LandAllocatorRoot>
+            <policy-portfolio-standard name="const_unmgd_forest">
+                <market>global</market>
+                <policyType>subsidy</policyType>
+                <constraint year="2030">22538.1</constraint>
+                <constraint year="2035">22538.1</constraint>
+                <constraint year="2040">22538.1</constraint>
+                <constraint year="2045">22538.1</constraint>
+                <constraint year="2050">22538.1</constraint>
+            </policy-portfolio-standard>
+        </region>
+        <region name="Colombia">
+            <LandAllocatorRoot name="root">
+                <LandNode name="AgroForestLand_SAmerCstN">
+                    <LandNode name="AgroForest_NonPasture_SAmerCstN">
+                        <LandNode name="AllForestLand_SAmerCstN">
+                            <UnmanagedLandLeaf name="UnmanagedForest_SAmerCstN">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_OrinocoR">
+                    <LandNode name="AgroForest_NonPasture_OrinocoR">
+                        <LandNode name="AllForestLand_OrinocoR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_OrinocoR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_ColEcuaCst">
+                    <LandNode name="AgroForest_NonPasture_ColEcuaCst">
+                        <LandNode name="AllForestLand_ColEcuaCst">
+                            <UnmanagedLandLeaf name="UnmanagedForest_ColEcuaCst">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_MagdalenaR">
+                    <LandNode name="AgroForest_NonPasture_MagdalenaR">
+                        <LandNode name="AllForestLand_MagdalenaR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_MagdalenaR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+                <LandNode name="AgroForestLand_AmazonR">
+                    <LandNode name="AgroForest_NonPasture_AmazonR">
+                        <LandNode name="AllForestLand_AmazonR">
+                            <UnmanagedLandLeaf name="UnmanagedForest_AmazonR">
+                                <land-constraint-policy>const_unmgd_forest</land-constraint-policy>
+                            </UnmanagedLandLeaf>
+                        </LandNode>
+                    </LandNode>
+                </LandNode>
+            </LandAllocatorRoot>
+            <policy-portfolio-standard name="const_unmgd_forest">
+                <market>global</market>
+                <policyType>subsidy</policyType>
+                <constraint year="2030">22538.1</constraint>
+                <constraint year="2035">22538.1</constraint>
+                <constraint year="2040">22538.1</constraint>
+                <constraint year="2045">22538.1</constraint>
+                <constraint year="2050">22538.1</constraint>
+            </policy-portfolio-standard>
+        </region>
+    </world>
+</scenario>
