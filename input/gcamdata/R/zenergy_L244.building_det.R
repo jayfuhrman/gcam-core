@@ -2250,7 +2250,8 @@ module_energy_L244.building_det <- function(command, ...) {
                                  distinct(), by = "supplysector") %>%
       # Add internal.gains.market.name
       left_join(A44.gcam_consumer, by = "building.node.input") %>%
-      select(LEVEL2_DATA_NAMES[["TechYr"]], internal.gains.output.ratio, internal.gains.market.name)
+      select(LEVEL2_DATA_NAMES[["TechYr"]], internal.gains.output.ratio, internal.gains.market.name) %>%
+      add.cg()
 
 
     # L244.Satiation_flsp_cwf: adjust the commercial floorspace satiation levels
