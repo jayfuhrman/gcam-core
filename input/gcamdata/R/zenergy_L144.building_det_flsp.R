@@ -36,15 +36,13 @@ module_energy_L144.building_det_flsp <- function(command, ...) {
              "L102.gdp_mil90usd_GCAM3_R_Y",
              "L102.pcgdp_thous90USD_Scen_R_Y",
              "L221.LN0_Land",
-             "L221.LN1_UnmgdAllocation",
-             FILE = "cwf/A44.res_unadj_sat_cwf_adj"))
+             "L221.LN1_UnmgdAllocation"))
   } else if(command == driver.DECLARE_OUTPUTS) {
     return(c("L144.flsp_bm2_R_res_Yh",
              "L144.flsp_bm2_R_comm_Yh",
              "L144.flspPrice_90USDm2_R_bld_Yh",
              "L144.hab_land_flsp_fin",
-             "L144.flsp_param",
-             "L144.flsp_param_cwf"))
+             "L144.flsp_param"))
   } else if(command == driver.MAKE) {
 
     all_data <- list(...)[[1]]
@@ -65,7 +63,6 @@ module_energy_L144.building_det_flsp <- function(command, ...) {
     L102.pcgdp_thous90USD_Scen_R_Y <- get_data(all_data, "L102.pcgdp_thous90USD_Scen_R_Y")
     L221.LN0_Land<-get_data(all_data, "L221.LN0_Land", strip_attributes = TRUE)
     L221.LN1_UnmgdAllocation<-get_data(all_data, "L221.LN1_UnmgdAllocation", strip_attributes = TRUE)
-    A44.res_unadj_sat_cwf_adj <- get_data(all_data, "cwf/A44.res_unadj_sat_cwf_adj", strip_attributes = TRUE)
     income_shares<-get_data(all_data, "socioeconomics/income_shares")
     n_groups<-nrow(unique(get_data(all_data, "socioeconomics/income_shares") %>%
                             select(category)))
@@ -610,19 +607,6 @@ module_energy_L144.building_det_flsp <- function(command, ...) {
       L144.flspPrice_90USDm2_R_bld_Yh # This is a final output table.
 
     # ===================================================
-    # CWF adjustments
-
-    # for residential, apply the adjustment factor to the unadjusted satiation values
-    A44.res_unadj_sat_cwf_adj_R <- A44.res_unadj_sat_cwf_adj %>%
-      repeat_add_columns(tibble(region = GCAM_region_names$region))
-
-    L144.flsp_param %>%
-      left_join(A44.res_unadj_sat_cwf_adj_R) %>%
-      mutate(unadjust.satiation = unadjust.satiation * adj_frac) %>%
-      dplyr::select(-adj_frac) ->
-      L144.flsp_param_cwf
-
-    # ===================================================
     L144.hab_land_flsp_fin %>%
       add_title("Habitable land per GCAM region") %>%
       add_units("thous km2") %>%
@@ -678,18 +662,7 @@ module_energy_L144.building_det_flsp <- function(command, ...) {
                      "L100.Pop_thous_ctry_Yh", "energy/RECS_ResFloorspace_usa","L102.pcgdp_thous90USD_Scen_R_Y") ->
       L144.flsp_param
 
-    L144.flsp_param_cwf %>%
-      add_title("Parameters for the floorspace Gompertz function") %>%
-      add_units("Unitless") %>%
-      add_comments("Estimated based on historical/observed floorspace values, with CWF adjustments") %>%
-      add_legacy_name("L144.flsp_param") %>%
-      add_precursors("common/iso_GCAM_regID","common/GCAM_region_names", "energy/A44.pcflsp_default",
-                     "energy/A44.HouseholdSize", "energy/CEDB_ResFloorspace_chn", "energy/Other_pcflsp_m2_ctry_Yh",
-                     "energy/IEA_PCResFloorspace", "energy/Odyssee_ResFloorspacePerHouse",
-                     "L100.Pop_thous_ctry_Yh", "energy/RECS_ResFloorspace_usa", "energy/A44.res_unadj_sat_cwf_adj") ->
-      L144.flsp_param_cwf
-
-    return_data(L144.flsp_bm2_R_res_Yh, L144.flsp_bm2_R_comm_Yh, L144.flspPrice_90USDm2_R_bld_Yh,L144.hab_land_flsp_fin, L144.flsp_param,L144.flsp_param_cwf)
+    return_data(L144.flsp_bm2_R_res_Yh, L144.flsp_bm2_R_comm_Yh, L144.flspPrice_90USDm2_R_bld_Yh,L144.hab_land_flsp_fin, L144.flsp_param)
   } else {
     stop("Unknown command")
   }

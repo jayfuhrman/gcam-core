@@ -78,10 +78,10 @@ module_energy_L244.building_det <- function(command, ...) {
              "L144.end_use_eff_cwf",
              'L144.shell_eff_R_Y_cwf',
              'L144.internal_gains_cwf',
-             "L144.flsp_param_cwf",
              FILE = "cwf/A44.satiation_flsp_cwf_adj",
              FILE = "cwf/A44.globaltech_shrwt_cwf_H2_scenarios",
              FILE = "cwf/A44.globaltech_shrwt_cwf_no_H2_building",
+             FILE = "cwf/A44.res_unadj_sat_cwf_adj",
              "L144.prices_bld"))
   } else if(command == driver.DECLARE_OUTPUTS) {
     return(c("L244.SubregionalShares",
@@ -255,7 +255,7 @@ module_energy_L244.building_det <- function(command, ...) {
     L144.end_use_eff_cwf <- get_data(all_data, "L144.end_use_eff_cwf", strip_attributes = TRUE)
     L144.shell_eff_R_Y_cwf <- get_data(all_data, "L144.shell_eff_R_Y_cwf", strip_attributes = TRUE)
     L144.internal_gains_cwf <- get_data(all_data, "L144.internal_gains_cwf", strip_attributes = TRUE)
-    L144.flsp_param_cwf <- get_data(all_data, "L144.flsp_param_cwf", strip_attributes = TRUE)
+    A44.res_unadj_sat_cwf_adj <- get_data(all_data, "cwf/A44.res_unadj_sat_cwf_adj", strip_attributes = TRUE)
     A44.satiation_flsp_cwf_adj <- get_data(all_data, "cwf/A44.satiation_flsp_cwf_adj", strip_attributes = TRUE)
     A44.globaltech_shrwt_cwf_H2_scenarios <- get_data(all_data, "cwf/A44.globaltech_shrwt_cwf_H2_scenarios") %>% gather_years
     A44.globaltech_shrwt_cwf_no_H2_building <- get_data(all_data, "cwf/A44.globaltech_shrwt_cwf_no_H2_building") %>% gather_years
@@ -566,6 +566,15 @@ module_energy_L244.building_det <- function(command, ...) {
       mutate(nodeInput = "resid",
              building.node.input = "resid_building") %>%
       select(LEVEL2_DATA_NAMES[["GompFnParam"]])
+
+    # for residential, apply the adjustment factor to the unadjusted satiation values
+    A44.res_unadj_sat_cwf_adj_R <- A44.res_unadj_sat_cwf_adj %>%
+      repeat_add_columns(tibble(region = GCAM_region_names$region))
+
+    L244.GompFnParam_cwf <- L244.GompFnParam %>%
+      left_join(A44.res_unadj_sat_cwf_adj_R, by = c("region")) %>%
+      mutate(unadjust.satiation = unadjust.satiation * adj_frac) %>%
+      dplyr::select(-adj_frac)
 
     #----------------------------------------------------------------------
     # 2- Commercial floorspace
@@ -897,8 +906,10 @@ module_energy_L244.building_det <- function(command, ...) {
     A44.internal_gains<-add.cg(A44.internal_gains)
     A44.sector<-add.cg(A44.sector)
     A44.subsector_interp<-add.cg(A44.subsector_interp)
+    A44.subsector_interp_low_fossil<-add.cg(A44.subsector_interp_low_fossil)
     A44.subsector_logit<-add.cg(A44.subsector_logit)
     A44.subsector_shrwt<-add.cg(A44.subsector_shrwt)
+    A44.subsector_shrwt_low_fossil<-add.cg(A44.subsector_shrwt_low_fossil)
 
     # Adjust calibrated techs in a different file
     calibrated_techs_bld_det_adj<-calibrated_techs_bld_det %>%
@@ -1759,7 +1770,8 @@ module_energy_L244.building_det <- function(command, ...) {
       left_join_error_no_match(calibrated_techs_bld_det, by = c("supplysector", "subsector", "technology")) %>%
       mutate(stub.technology = technology,
              market.name = region) %>%
-      select(LEVEL2_DATA_NAMES[["StubTechEff"]])
+      select(LEVEL2_DATA_NAMES[["StubTechEff"]]) %>%
+      add.cg()
 
     # 2-L244.ThermalServiceImpedance
 
@@ -2244,7 +2256,7 @@ module_energy_L244.building_det <- function(command, ...) {
     # L244.Satiation_flsp_cwf: adjust the commercial floorspace satiation levels
     L244.Satiation_flsp_cwf <- L244.Satiation_flsp
     L244.SatiationAdder_cwf <- L244.SatiationAdder
-    L244.GompFnParam_cwf <- L244.GompFnParam
+
     L244.Satiation_flsp_class_cwf <- L244.Satiation_flsp_class %>%
       # join adjustments
       left_join(A44.satiation_flsp_cwf_adj) %>%
@@ -2318,32 +2330,6 @@ module_energy_L244.building_det <- function(command, ...) {
              # Need to match in the demand in the final calibration year to check this.
              satiation.adder = if_else(satiation.adder > pcFlsp_mm2_fby, pcFlsp_mm2_fby * 0.999, satiation.adder)) %>%
       select(LEVEL2_DATA_NAMES[["SatiationAdder"]])
-
-    # L244.GompFnParam_cwf: write the function parameters for residential floorspace
-    L244.GompFnParam_cwf <-L144.flsp_param_cwf %>%
-      left_join_error_no_match(L144.hab_land_flsp_fin %>% filter(year==MODEL_FINAL_BASE_YEAR),by="region") %>%
-      rename(area_thouskm2=value) %>%
-      left_join_error_no_match(GCAM_region_names, by="region") %>%
-      left_join_error_no_match(L102.pcgdp_thous90USD_Scen_R_Y %>% filter(scenario== socioeconomics.BASE_GDP_SCENARIO), by=c("GCAM_region_ID","year")) %>%
-      rename(gdp_pc=value) %>%
-      left_join_error_no_match(L101.Pop_thous_R_Yh %>% rename(pop_thous = value), by=c("GCAM_region_ID","year")) %>%
-      left_join_error_no_match(L144.flsp_bm2_R_res_Yh,by=c("GCAM_region_ID","year","region")) %>%
-      rename(flsp=value) %>%
-      mutate(tot.dens=pop_thous/area_thouskm2,
-             flsp_pc=(flsp*1E9)/(pop_thous*1E3),
-             base_flsp=flsp_pc,
-             flsp_est=(`unadjust.satiation` +(-`land.density.param`*log(tot.dens)))*exp(-`b.param`
-                                                                                        *exp(-`income.param`*log(gdp_pc))),
-             bias.adjust.param=flsp_pc-flsp_est,
-             base_flsp=round(base_flsp,energy.DIGITS_FLOORSPACE),
-             bias.adjust.param=round(bias.adjust.param,energy.DIGITS_FLOORSPACE),
-             gcam.consumer="resid",
-             nodeInput="resid",
-             building.node.input="resid_building") %>%
-      rename(pop.dens=tot.dens,
-             habitable.land=area_thouskm2,
-             base.pcFlsp=base_flsp) %>%
-      select(LEVEL2_DATA_NAMES[["GompFnParam"]])
 
     # L244.GlobalTechShrwt_bld_cwf_H2_scenarios: Default shareweights for global building technologies for CWF hydrogen scenarios
     L244.GlobalTechShrwt_bld_cwf_H2_scenarios <- A44.globaltech_shrwt_cwf_H2_scenarios %>%
@@ -3460,7 +3446,6 @@ module_energy_L244.building_det <- function(command, ...) {
       add_comments("Computed offline based on data from RECS and IEA with CWF adjustments") %>%
       add_legacy_name("L244.GompFnParam") %>%
       add_precursors("common/GCAM_region_names",
-                     "L144.flsp_param_cwf",
                      "L102.pcgdp_thous90USD_Scen_R_Y", "L101.Pop_thous_R_Yh",
                      "L144.flsp_bm2_R_res_Yh","L144.hab_land_flsp_fin") ->
       L244.GompFnParam_cwf
