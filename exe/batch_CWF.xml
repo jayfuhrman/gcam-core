@@ -71,6 +71,7 @@
 
 			<Value name = "bio_trade">../input/gcamdata/xml/bio_trade.xml</Value>
 			<Value name = "ag_trade">../input/gcamdata/xml/ag_trade.xml</Value>
+			<Value name = "ag_storage">../input/gcamdata/xml/ag_storage.xml</Value>
 
 			<Value name = "unlim_supply_water">../input/gcamdata/xml/unlimited_water_supply.xml</Value>
 			<Value name = "water_supply">../input/gcamdata/xml/water_supply_constrained.xml</Value>
@@ -174,8 +175,6 @@
 			<!--no gas H2 forecourt-->
 			<Value name = "hydrogen">../input/gcamdata/xml/hydrogen_no_gas_forecourt.xml</Value>
 
-			<!--H2 combustion turbine technologies instead of gas peakers as well as "improved grid management such that peakers do not need to run as often-->
-			<Value name = "energy_distribution">../input/gcamdata/xml/grid_management_cwf.xml</Value>
 			<!--Accelerate retirement of unabated fossil power (1/2 lifetime + halflife)-->
 			<Value name = "fossil-power-retirement">../input/gcamdata/xml/accelerated_fossil_retirement.xml</Value>
 			<Value name = "cement CCS">../input/gcamdata/xml/cement_all_CCS_post2030.xml</Value>
