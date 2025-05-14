@@ -161,15 +161,8 @@
 			<Value name = "bio_constraint">../input/extra/bio_constraint/cwf_mid_bio_constraint.xml</Value>
  	 		<Value name = "bio_mkt">../input/extra/bio_constraint/bio_ceiling_mkt.xml</Value>
 
-			<!--carbon storage constraint -->
-	
-			<Value name = "cstorage_constraint">../input/extra/ccs_constraint/cwf_mid_cstorage_constraint.xml</Value>
- 	 		<Value name = "cstorage_mkt">../input/extra/ccs_constraint/cstorage_ceiling_mkt.xml</Value>
-
-			<!--Enhanced Weathering Constraint -->
-			<!--Value name = "ew_constraint">../input/extra/cdr_constraint/cwf_mid_ew_constraint.xml</Value>
- 	 		<Value name = "ew_mkt">../input/extra/cdr_constraint/EW_constraint_mkt.xml</Value-->
-			<!--Superceded by regional explicit rate + growth limits on ERW-->
+			<!--carbon storage rate limits (rapid growth)-->
+			<Value name = "ccs">../input/gcamdata/xml/Cstorage_rapid.xml</Value>
 
 
 			<!--no gas H2 forecourt-->
