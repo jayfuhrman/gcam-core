@@ -2249,7 +2249,12 @@ module_energy_L244.building_det <- function(command, ...) {
                                  select(supplysector, building.node.input) %>%
                                  distinct(), by = "supplysector") %>%
       # Add internal.gains.market.name
-      left_join(A44.gcam_consumer, by = "building.node.input") %>%
+      left_join_error_no_match(A44.gcam_consumer %>%
+                                 select(-gcam.consumer) %>%
+                                 #mutate(internal.gains.market.name=paste0(nodeInput,"-internal-gains-trial-market")) %>%
+                                 distinct() %>%
+                                 mutate(gcam.consumer= if_else(grepl("resid",nodeInput),"resid","comm"))
+                               , by = "building.node.input") %>%
       select(LEVEL2_DATA_NAMES[["TechYr"]], internal.gains.output.ratio, internal.gains.market.name) %>%
       add.cg()
 
