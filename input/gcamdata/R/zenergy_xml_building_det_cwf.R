@@ -69,7 +69,6 @@ module_energy_building_det_cwf_xml <- function(command, ...) {
       "L244.StubTechEff_bld_cwf",
       "L244.StubTechIntGainOutputRatio_cwf",
       "L244.Satiation_flsp_cwf",
-      "L244.SatiationAdder_cwf",
       "L244.GompFnParam_cwf",
       "L244.globaltech_shrwt_cwf_no_H2_building"
       ))
@@ -136,7 +135,6 @@ module_energy_building_det_cwf_xml <- function(command, ...) {
     L244.ShellConductance_bld_cwf <- get_data(all_data, "L244.ShellConductance_bld_cwf")
     L244.StubTechEff_bld_cwf <- get_data(all_data, "L244.StubTechEff_bld_cwf")
     L244.StubTechIntGainOutputRatio_cwf <- get_data(all_data, "L244.StubTechIntGainOutputRatio_cwf")
-    L244.SatiationAdder_cwf <- get_data(all_data, "L244.SatiationAdder_cwf")
     L244.Satiation_flsp_cwf <- get_data(all_data, "L244.Satiation_flsp_cwf")
     L244.GompFnParam_cwf <- get_data(all_data, "L244.GompFnParam_cwf")
     L244.globaltech_shrwt_cwf_no_H2_building <- get_data(all_data, "L244.globaltech_shrwt_cwf_no_H2_building")
@@ -186,7 +184,7 @@ module_energy_building_det_cwf_xml <- function(command, ...) {
       add_xml_data(L244.StubTechIntGainOutputRatio, "StubTechIntGainOutputRatio") %>%
       add_xml_data(L244.GlobalTechShrwt_bld, "GlobalTechShrwt") %>%
       add_xml_data(L244.ShellConductance_bld_cwf, "ShellConductance") %>% # CWF version
-      add_xml_data(L244.SatiationAdder_cwf, "SatiationAdder") %>% # CWF version
+      add_xml_data(L244.SatiationAdder, "SatiationAdder") %>%
       add_xml_data(L244.Satiation_flsp_cwf, "Satiation_flsp") %>% # CWF version
       add_xml_data(L244.GompFnParam_cwf, "GompFnParam") %>% # CWF version
       add_xml_data(L244.StubTechEff_bld_cwf, "StubTechEff") %>% # CWF version
@@ -217,7 +215,7 @@ module_energy_building_det_cwf_xml <- function(command, ...) {
                      "L244.GenericBaseDens", "L244.ThermalBaseDens",
                      "L244.GenericServiceCoef","L244.ThermalServiceCoef",
                      "L244.GlobalTechTrackCapital_bld",
-                     "L244.ShellConductance_bld_cwf", "L244.SatiationAdder_cwf", "L244.Satiation_flsp_cwf",
+                     "L244.ShellConductance_bld_cwf", "L244.SatiationAdder", "L244.Satiation_flsp_cwf",
                      "L244.GompFnParam_cwf", "L244.StubTechEff_bld_cwf", "L244.StubTechIntGainOutputRatio_cwf",
                      "L244.globaltech_shrwt_cwf_no_H2_building"
                      ) ->

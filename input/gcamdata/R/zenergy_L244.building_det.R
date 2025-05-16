@@ -148,7 +148,6 @@ module_energy_L244.building_det <- function(command, ...) {
              "L244.StubTechEff_bld_cwf",
              "L244.StubTechIntGainOutputRatio_cwf",
              "L244.Satiation_flsp_cwf",
-             "L244.SatiationAdder_cwf",
              "L244.GompFnParam_cwf",
              "L244.GlobalTechShrwt_bld_cwf_H2_scenarios",
              "L244.globaltech_shrwt_cwf_no_H2_building",
@@ -2310,36 +2309,6 @@ module_energy_L244.building_det <- function(command, ...) {
       separate(building.service.input,c("building.service.input","group"),sep = "_") %>%
       select(region,year,gcam.consumer,building.service.input,est)
 
-    # L244.SatiationAdder_cwf: Satiation adders in floorspace demand function
-    L244.SatiationAdder_cwf<- L244.Satiation_flsp_cwf %>%
-      mutate(satiation.level = satiation.level * 1E6) %>%
-      left_join_error_no_match(L244.Satiation_impedance,by = c("region", "gcam.consumer", "nodeInput", "building.node.input")) %>%
-      mutate(year = max(MODEL_BASE_YEARS)) %>%
-      left_join_error_no_match(A_regions %>% select(GCAM_region_ID,region),by = "region") %>%
-      left_join_error_no_match(L244.Floorspace,by=c("region","year","gcam.consumer", "nodeInput", "building.node.input")) %>%
-      rename(observed_flsp_bm2 = base.building.size) %>%
-      left_join_error_no_match(L101.Pop_thous_R_Yh_gr, by = c("year", "GCAM_region_ID","gcam.consumer","region")) %>%
-      rename(pop_thous = value) %>%
-      mutate(observed_pcflsp = observed_flsp_bm2*1E9 / (pop_thous*1E3)) %>%
-      left_join_error_no_match(L102.pcgdp_thous90USD_Scen_R_Y_gr %>% filter(scenario == socioeconomics.BASE_GDP_SCENARIO),by = c("year", "GCAM_region_ID","region","gcam.consumer")) %>%
-      rename(pcGDP_thous90USD = value) %>%
-      mutate(est_pcflsp = satiation.level * (1-exp(-log(2)*pcGDP_thous90USD/`satiation-impedance`)),
-             est_flsp_bm2 = (est_pcflsp*pop_thous*1E3) / 1E9) %>%
-      group_by(region,nodeInput,building.node.input,year) %>%
-      summarise(pop_thous = sum(pop_thous),
-                est_flsp_bm2 = sum(est_flsp_bm2),
-                observed_flsp_bm2 = sum(observed_flsp_bm2)) %>%
-      ungroup() %>%
-      left_join_error_no_match(A_regions %>% select(GCAM_region_ID,region),by="region") %>%
-      left_join_error_no_match(L101.Pop_thous_R_Yh, by = c("year", "GCAM_region_ID")) %>%
-      mutate(est_flsp_bm2 = round(est_flsp_bm2,3),
-             observed_flsp_bm2 = round(observed_flsp_bm2,3),
-             satiation.adder = ((observed_flsp_bm2-est_flsp_bm2)*1E9) / (pop_thous*1E3)) %>%
-      select(region,nodeInput,building.node.input,year,satiation.adder) %>%
-      mutate(satiation.adder = round(satiation.adder,energy.DIGITS_SATIATION_ADDER),
-             gcam.consumer = nodeInput) %>%
-      select(LEVEL2_DATA_NAMES[["SatiationAdder"]])
-
     # L244.GlobalTechShrwt_bld_cwf_H2_scenarios: Default shareweights for global building technologies for CWF hydrogen scenarios
     L244.GlobalTechShrwt_bld_cwf_H2_scenarios <- A44.globaltech_shrwt_cwf_H2_scenarios %>%
       # Repeat for all model years
@@ -3439,15 +3408,6 @@ module_energy_L244.building_det <- function(command, ...) {
       add_precursors("energy/A44.satiation_flsp", "cwf/A44.satiation_flsp_cwf_adj", "energy/A44.gcam_consumer", "common/GCAM_region_names", "energy/A_regions") ->
       L244.Satiation_flsp_cwf
 
-    L244.SatiationAdder_cwf %>%
-      add_title("Satiation adders in floorspace demand function") %>%
-      add_units("Unitless") %>%
-      add_comments("Satiation adder compute using satiation level, per-capita GDP and per-capita floorsapce, with CWF adjustments") %>%
-      add_legacy_name("L244.SatiationAdder") %>%
-      add_precursors("energy/A44.satiation_flsp", "cwf/A44.satiation_flsp_cwf_adj", "energy/A44.gcam_consumer", "common/GCAM_region_names", "energy/A_regions",
-                     "L102.pcgdp_thous90USD_Scen_R_Y", "L101.Pop_thous_R_Yh",
-                     "L144.flsp_bm2_R_res_Yh", "L144.flsp_bm2_R_comm_Yh") ->
-      L244.SatiationAdder_cwf
 
     L244.GompFnParam_cwf %>%
       add_title("Parameters for the floorspace Gompertz function") %>%
@@ -3513,7 +3473,7 @@ module_energy_L244.building_det <- function(command, ...) {
                 L244.GenericShares,L244.ThermalShares,L244.GenericServicePrice,L244.ThermalServicePrice,L244.GenericBaseDens,L244.ThermalBaseDens,
     			      L244.GlobalTechTrackCapital_bld,
                 L244.ShellConductance_bld_cwf, L244.StubTechEff_bld_cwf, L244.StubTechIntGainOutputRatio_cwf,
-                L244.Satiation_flsp_cwf, L244.SatiationAdder_cwf, L244.GompFnParam_cwf, L244.GlobalTechShrwt_bld_cwf_H2_scenarios,
+                L244.Satiation_flsp_cwf, L244.GompFnParam_cwf, L244.GlobalTechShrwt_bld_cwf_H2_scenarios,
 				        L244.globaltech_shrwt_cwf_no_H2_building)
   } else {
     stop("Unknown command")
