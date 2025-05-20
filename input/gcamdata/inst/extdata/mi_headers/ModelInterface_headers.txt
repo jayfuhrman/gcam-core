@@ -484,7 +484,7 @@ StubTranTechCost, world/+{name}region, region/+{name}supplysector, supplysector/
 
 StubTranTechInterpTo, world/+{name}region, region/+{name}supplysector, supplysector/+{name}tranSubsector, tranSubsector/+{name}stub-technology, stub-technology/+{apply-to}interpolation-rule, stub-technology/+{from-year}interpolation-rule, stub-technology/+{to-year}interpolation-rule, interpolation-rule/+to-value, interpolation-rule/+{name}interpolation-function, scenario, scenario/world
 
-DeleteStubTranTechInterp, world/+{name}region, region/+{name}supplysector, supplysector/+{name}tranSubsector, tranSubsector/+{name}stub-technology, stub-technology/+{name; delete=1}interpolation-rule, scenario, scenario/world 
+DeleteStubTranTechInterp, world/+{name}region, region/+{name}supplysector, supplysector/+{name}tranSubsector, tranSubsector/+{name}stub-technology, stub-technology/+{name; delete=1}interpolation-rule, scenario, scenario/world
 
 StubTranTechProd, world/+{name}region, region/+{name}supplysector, supplysector/+{name}tranSubsector, tranSubsector/+{name}stub-technology, stub-technology/+{year}period, CalDataOutput/+calOutputValue, period/CalDataOutput, scenario, scenario/world
 
@@ -641,6 +641,8 @@ GHGConstrLink, world/+{name}region, region/+{name}linked-ghg-policy, linked-ghg-
 GHGConstrLinkAdj, world/+{name}region, region/+{name}linked-ghg-policy, linked-ghg-policy/+{year;fillout=1}price-adjust, linked-ghg-policy/+price-adjust, linked-ghg-policy/+{year;fillout=1}demand-adjust, linked-ghg-policy/+demand-adjust, scenario, scenario/world, world/region
 
 GHGConstrLinkMkt, world/+{name}region, region/+{name}linked-ghg-policy, linked-ghg-policy/+market, linked-ghg-policy/+linked-policy, scenario, scenario, scenario/world, world/region
+
+GHGConstrLinkNDC, world/+{name}region, region/+{name}linked-ghg-policy, linked-ghg-policy/+market, linked-ghg-policy/+linked-policy, linked-ghg-policy/+{year;fillout=1}price-adjust, linked-ghg-policy/+price-adjust, linked-ghg-policy/+{year;fillout=1}demand-adjust, linked-ghg-policy/+demand-adjust, linked-ghg-policy/+price-unit, linked-ghg-policy/+output-unit, scenario, scenario/world
 
 #####, LAND ALLOCATOR
 
