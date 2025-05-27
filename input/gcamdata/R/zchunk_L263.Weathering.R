@@ -385,7 +385,7 @@ module_energy_L263.Weathering <- function(command, ...) {
       complete(year = c(year, MODEL_YEARS), nesting(supplysector, subsector, technology, minicam.non.energy.input)) %>%
       # Extrapolate to fill out values for all years
       # Rule 2 is used so years outside of min-max range are assigned values from closest data, as opposed to NAs
-      group_by(supplysector, subsector, technology) %>%
+      group_by(supplysector, subsector, technology,minicam.non.energy.input) %>%
       mutate(input.cost = approx_fun(year, value, rule = 2)) %>%
       filter(year %in% MODEL_YEARS) %>% # This will drop 1971
       # Assign the columns "sector.name" and "subsector.name", consistent with the location info of a global technology
