@@ -32,8 +32,7 @@ module_energy_L144.building_det_en <- function(command, ...) {
              "L101.in_EJ_ctry_bld_Fi_Yh",
              "L142.in_EJ_R_bld_F_Yh",
              "L143.HDDCDD_scen_RG3_Y",
-             "L143.HDDCDD_scen_ctry_Y",
-             FILE = "cwf/A44.USA_TechChange_cwf_adj"))
+             "L143.HDDCDD_scen_ctry_Y"))
   } else if(command == driver.DECLARE_OUTPUTS) {
     return(c("L144.end_use_eff",
              "L144.shell_eff_R_Y",
@@ -42,10 +41,7 @@ module_energy_L144.building_det_en <- function(command, ...) {
              "L144.internal_gains",
              "L144.base_service_EJ_serv",
              "L144.base_service_EJ_serv_fuel",
-             "L144.prices_bld",
-             "L144.end_use_eff_cwf",
-             "L144.shell_eff_R_Y_cwf",
-             "L144.internal_gains_cwf"))
+             "L144.prices_bld"))
   } else if(command == driver.MAKE) {
 
     all_data <- list(...)[[1]]
@@ -66,7 +62,6 @@ module_energy_L144.building_det_en <- function(command, ...) {
     L142.in_EJ_R_bld_F_Yh <- get_data(all_data, "L142.in_EJ_R_bld_F_Yh")
     L143.HDDCDD_scen_RG3_Y <- get_data(all_data, "L143.HDDCDD_scen_RG3_Y")
     L143.HDDCDD_scen_ctry_Y <- get_data(all_data, "L143.HDDCDD_scen_ctry_Y")
-    A44.USA_TechChange_cwf_adj <- get_data(all_data, "cwf/A44.USA_TechChange_cwf_adj")
 
     # ===================================================
 
@@ -559,123 +554,8 @@ module_energy_L144.building_det_en <- function(command, ...) {
       select(GCAM_region_ID, region_GCAM3, supplysector, subsector, technology, year, value) ->
       L144.internal_gains # This is a final output table.
 
-    # ===================================================
-    # CWF adjustments
-    # apply the multipliers to the standard TechChange values to generate L144.USA_TechMult_cwf
-    A44.USA_TechChange_cwf_adj %>%
-      gather_years %>% # Year needs to be integer (or numeric) for the interpolation step below
-      # Expand table to include all historical and future years
-      group_by(supplysector, technology) %>%
-      complete(year = HIST_FUT_YEARS) %>%
-      # Extrapolate to fill out values for all years
-      # Rule 2 is used in case there are years outside of min-max range, which will be assigned values from closest data
-      mutate(value = approx_fun(year, value, rule = 2)) %>%
-      ungroup() %>%
-      # NAs will be introduced in residential and commercial shell technology rows
-      left_join(calibrated_techs_bld_det, by = c("supplysector", "technology")) %>%
-      select(supplysector, subsector, technology, year, value) ->
-      L144.USA_TechChange_cwf_adj
-
-    # apply the adjustments to L144.USA_TechChange to get L144.USA_TechChange_cwf
-    L144.USA_TechChange %>%
-      left_join_error_no_match(L144.USA_TechChange_cwf_adj %>% rename(adj = value) %>%
-                                 select(-subsector), by = c("supplysector","technology","year")) %>%
-      mutate(value = value * adj) %>%
-      dplyr::select(-adj) ->
-      L144.USA_TechChange_cwf
-
-    # Convert the tech change table into ratios (multipliers) from a base year.
-    # This will be a step-dependent process
-    L144.USA_TechChange_cwf %>%
-      # Set exponent to incremental year step (i.e., 1 for historical years, 5 for future)
-      # Note that using lag in this way will calculate wrong exponent values for the base
-      # historical year, but that will be addressed two steps later
-      mutate(exponent = year - lag(year, n = 1L),
-             value_ratio = (1 + value) ^ exponent,
-             # Set base year to 1
-             value_ratio = replace(value_ratio, year == HISTORICAL_YEARS[1], 1)) %>%
-      # Apply cumprod to each grouping
-      group_by(supplysector, subsector, technology) %>%
-      mutate(value_ratio = cumprod(value_ratio)) %>%
-      ungroup() ->
-      L144.USA_TechMult_unadj_cwf
-
-    # These technology multipliers assume a base year of the first historical year. However most of the efficiencies are based on data
-    # from more recent years. This next part adjusts the scale so that the index year is not the first historical year.
-    L144.USA_TechMult_unadj_cwf %>%
-      # Add column for base year efficiency
-      left_join_error_no_match(L144.USA_TechMult_2000, by = c("supplysector", "technology", "subsector")) %>%
-      # Adjust efficiencies for all years by dividing by base year efficiency
-      mutate(value = value_ratio / value_ratio_2000) %>%
-      select(supplysector, technology, subsector, year, value) ->
-      L144.USA_TechMult_cwf
-
-    # expand to regions
-    L144.USA_TechMult_cwf %>%
-      # Expand table by GCAM region IDs
-      repeat_add_columns(GCAM_region_names) %>%
-      # Match GCAM 3.0 region names using GCAM region ID
-      # Some IDs can span multiple regions, as stated above (e.g., 1 covers both USA and Latin America). Select first one.
-      left_join_keep_first_only(RG3_GCAMregionID, by = "GCAM_region_ID") %>%
-      select(GCAM_region_ID, region_GCAM3, supplysector, subsector, technology, year, value) ->
-      L144.TechMult_R_cwf
-
-    # Apply shell efficiency multipliers (by GCAM 3.0 region and year) to get shell efficiency.
-    # Note that this produces a final output table.
-    L144.TechMult_R_cwf %>%
-      # Subset the technology multiplier table so that it includes only shells
-      filter(grepl("shell", technology)) %>%
-      # Join shell efficiency multipliers (by GCAM 3.0 region and year)
-      left_join_error_no_match(A44.shell_eff_mult_RG3_complete, by = c("region_GCAM3", "year")) %>%
-      # Multiply value by shell efficiency multiplier
-      mutate(value = value * value_shell,
-             year = as.integer(year)) %>%
-      select(GCAM_region_ID, region_GCAM3, supplysector, subsector, technology, year, value) ->
-      L144.shell_eff_R_Y_cwf # This is a final output table.
-
-    # Apply efficiency multipliers (by GCAM 3.0 region and year) to get efficiency of energy-consuming techs (no shells)
-    L144.TechMult_R_cwf %>%
-      # Subset the technology multiplier table so that it includes only energy-consuming techs (no shells)
-      filter(!grepl("shell", technology)) %>%
-      # Join efficiency multipliers (by GCAM 3.0 region and year)
-      left_join_error_no_match(LA44.tech_eff_mult_RG3_complete, by = c("region_GCAM3", "year")) %>%
-      # Multiply value by efficiency multiplier
-      mutate(value = value * value_tech) ->
-      L144.end_use_eff_Index_cwf
-
-    # These values are indexed to the USA in the base year. Unlike shells, the end-use technology values read to the model
-    # are not just indices, so need to multiply through by assumed base efficiency levels for each technology
-    # Note that this produces a final output table.
-    L144.end_use_eff_Index_cwf %>%
-      # Join efficiency values (by sector and technology)
-      left_join_error_no_match(A44.cost_efficiency, by = c("supplysector", "subsector", "technology")) %>%
-      # Multiply by efficiency values
-      mutate(value = value * efficiency,
-             # Prepare to drop region/subsector combinations where district heat and traditional biomass are not modeled
-             region_subsector = paste(GCAM_region_ID, subsector),
-             year = as.integer(year)) %>%
-      # Drop district heat and traditional biomass in regions where these are not modeled
-      filter(!region_subsector %in% c(regions_NoDistHeat, regions_NoTradBio)) %>%
-      select(GCAM_region_ID, region_GCAM3, supplysector, subsector, technology, year, value) ->
-      L144.end_use_eff_cwf # This is a final output table.
-
-    # get internal gains
-    L144.end_use_eff_cwf %>%
-      # Prepare for filtering
-      mutate(supp_tech_2 = paste(supplysector, technology)) %>%
-      # Subset only for those in the internal gains assumptions table
-      filter(supp_tech_2 %in% supp_tech) ->
-      L144.end_use_eff_for_intgains_cwf
-
-    # This is for both historical and future years
-    # Note that this produces a final output table.
-    L144.end_use_eff_for_intgains_cwf %>%
-      left_join_error_no_match(A44.internal_gains, by = c("supplysector", "subsector", "technology")) %>%
-      mutate(value = input.ratio / value) %>%
-      select(GCAM_region_ID, region_GCAM3, supplysector, subsector, technology, year, value) ->
-      L144.internal_gains_cwf # This is a final output table.
-
-    # note don't need to adjust L144.base_service_EJ_serv because it is only for the base years
+    
+	# note don't need to adjust L144.base_service_EJ_serv because it is only for the base years
     # 1G
     # Create L144.prices_bld to calibrate satiation impedance (mu) at region level within the DS
     L144.prices_bld<-A44.Calprice_bld %>%
@@ -751,13 +631,6 @@ module_energy_L144.building_det_en <- function(command, ...) {
                      "energy/A_regions", "energy/A44.cost_efficiency", "common/GCAM_region_names") ->
       L144.base_service_EJ_serv
 
-    L144.end_use_eff_cwf %>%
-      add_title("Building end-use technology efficiency by GCAM region ID / GCAM 3.0 region name / supplysector / subsector / technology / year") %>%
-      add_units("Unitless efficiency") %>%
-      add_comments("End-use tech efficiency is the product of region-specific adjustment factors, tech-specific improvement rates, and tech-specific efficiency levels; with CWF adjustments") %>%
-      add_legacy_name("L144.end_use_eff") %>%
-      add_precursors("energy/A44.USA_TechChange", "cwf/A44.USA_TechChange_cwf_adj", "energy/calibrated_techs_bld_det", "common/iso_GCAM_regID", "energy/A44.tech_eff_mult_RG3") ->  L144.end_use_eff_cwf
-
     L144.base_service_EJ_serv_fuel %>%
       add_title("Building energy output by each service by GCAM region ID / sector / service / fuel / historical year") %>%
       add_units("EJ/yr") %>%
@@ -767,25 +640,6 @@ module_energy_L144.building_det_en <- function(command, ...) {
                      "energy/A_regions", "energy/A44.cost_efficiency", "common/GCAM_region_names") ->
       L144.base_service_EJ_serv_fuel
 
-    L144.shell_eff_R_Y_cwf %>%
-      add_title("Building end-use shell efficiency by GCAM region ID / GCAM 3.0 region name / supplysector / subsector / technology / year") %>%
-      add_units("Unitless efficiency") %>%
-      add_comments("Shell efficiency is the product of region-specific adjustment factors and tech-specific improvement rates; with CWF adjustments") %>%
-      add_legacy_name("L144.shell_eff_R_Y") %>%
-      add_precursors("energy/A44.USA_TechChange", "cwf/A44.USA_TechChange_cwf_adj", "energy/calibrated_techs_bld_det", "common/iso_GCAM_regID", "energy/A44.shell_eff_mult_RG3",
-                     "common/GCAM_region_names") ->
-      L144.shell_eff_R_Y_cwf
-
-    L144.internal_gains_cwf %>%
-      add_title("Building Internal Gains by supplysector / subsector / technology / year") %>%
-      add_units("Unitless output ratio") %>%
-      add_comments("Divide by efficiency of each technology to get internal gain energy released") %>%
-      add_comments("Start with table of efficiencies. Subset only the supplysector / subsector / technologies that are in the internal gains assumptions table.") %>%
-      add_comments("Then divide the intgains assumptions by the efficiency, matching on supplysector / subsector / technology; with CWF adjustments") %>%
-      add_legacy_name("L144.internal_gains") %>%
-      add_precursors("energy/A44.USA_TechChange", "cwf/A44.USA_TechChange_cwf_adj", "energy/calibrated_techs_bld_det", "common/iso_GCAM_regID", "energy/A44.tech_eff_mult_RG3",
-                     "energy/A_regions", "energy/A44.cost_efficiency", "energy/A44.internal_gains", "common/GCAM_region_names") ->
-      L144.internal_gains_cwf
 
     L144.prices_bld %>%
       add_title("Residential average service prices by GCAM region ID / historical year") %>%
@@ -798,8 +652,7 @@ module_energy_L144.building_det_en <- function(command, ...) {
 
 
     return_data(L144.end_use_eff, L144.shell_eff_R_Y, L144.in_EJ_R_bld_serv_F_Yh, L144.NEcost_75USDGJ, L144.internal_gains,
-                L144.base_service_EJ_serv,L144.base_service_EJ_serv_fuel,L144.prices_bld,
-                L144.end_use_eff_cwf, L144.shell_eff_R_Y_cwf, L144.internal_gains_cwf)
+                L144.base_service_EJ_serv,L144.base_service_EJ_serv_fuel,L144.prices_bld)
   } else {
     stop("Unknown command")
   }
