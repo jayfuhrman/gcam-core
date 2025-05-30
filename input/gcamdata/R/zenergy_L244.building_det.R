@@ -46,10 +46,8 @@ module_energy_L244.building_det <- function(command, ...) {
              FILE = "energy/A_regions",
              FILE = "energy/A44.sector",
              FILE = "energy/A44.subsector_interp",
-             FILE = "cwf/A44.subsector_interp_low_fossil",
              FILE = "energy/A44.subsector_logit",
              FILE = "energy/A44.subsector_shrwt",
-             FILE = "cwf/A44.subsector_shrwt_low_fossil",
              FILE = "energy/A44.fuelprefElasticity",
              FILE = "energy/A44.globaltech_shrwt",
              FILE = "energy/A44.gcam_consumer",
@@ -75,13 +73,6 @@ module_energy_L244.building_det <- function(command, ...) {
              FILE = "socioeconomics/income_shares",
              "L144.flsp_param",
              "L144.hab_land_flsp_fin",
-             "L144.end_use_eff_cwf",
-             'L144.shell_eff_R_Y_cwf',
-             'L144.internal_gains_cwf',
-             FILE = "cwf/A44.satiation_flsp_cwf_adj",
-             FILE = "cwf/A44.globaltech_shrwt_cwf_H2_scenarios",
-             FILE = "cwf/A44.globaltech_shrwt_cwf_no_H2_building",
-             FILE = "cwf/A44.res_unadj_sat_cwf_adj",
              "L144.prices_bld"))
   } else if(command == driver.DECLARE_OUTPUTS) {
     return(c("L244.SubregionalShares",
@@ -105,13 +96,9 @@ module_energy_L244.building_det <- function(command, ...) {
              "L244.Supplysector_bld",
              "L244.FinalEnergyKeyword_bld",
              "L244.SubsectorShrwt_bld",
-             "L244.SubsectorShrwt_bld_low_fossil",
              "L244.SubsectorShrwtFllt_bld",
-             "L244.SubsectorShrwtFllt_bld_low_fossil",
              "L244.SubsectorInterp_bld",
-             "L244.SubsectorInterp_bld_low_fossil",
              "L244.SubsectorInterpTo_bld",
-             "L244.SubsectorInterpTo_bld_low_fossil",
              "L244.SubsectorLogit_bld",
              "L244.FuelPrefElast_bld",
              "L244.StubTech_bld",
@@ -144,13 +131,6 @@ module_energy_L244.building_det <- function(command, ...) {
              "L244.HDDCDD_B1_HadCM3",
              "L244.HDDCDD_constdd_no_GCM",
              "L244.GompFnParam",
-             "L244.ShellConductance_bld_cwf",
-             "L244.StubTechEff_bld_cwf",
-             "L244.StubTechIntGainOutputRatio_cwf",
-             "L244.Satiation_flsp_cwf",
-             "L244.GompFnParam_cwf",
-             "L244.GlobalTechShrwt_bld_cwf_H2_scenarios",
-             "L244.globaltech_shrwt_cwf_no_H2_building",
              "L244.Satiation_impedance",
              "L244.Satiation_impedance_SSP1",
              "L244.Satiation_impedance_SSP2",
@@ -222,10 +202,8 @@ module_energy_L244.building_det <- function(command, ...) {
     A_regions <- get_data(all_data, "energy/A_regions")
     A44.sector <- get_data(all_data, "energy/A44.sector", strip_attributes = TRUE)
     A44.subsector_interp <- get_data(all_data, "energy/A44.subsector_interp", strip_attributes = TRUE)
-    A44.subsector_interp_low_fossil <- get_data(all_data, "cwf/A44.subsector_interp_low_fossil", strip_attributes = TRUE)
     A44.subsector_logit <- get_data(all_data, "energy/A44.subsector_logit", strip_attributes = TRUE)
     A44.subsector_shrwt <- get_data(all_data, "energy/A44.subsector_shrwt", strip_attributes = TRUE)
-    A44.subsector_shrwt_low_fossil <- get_data(all_data, "cwf/A44.subsector_shrwt_low_fossil", strip_attributes = TRUE)
     A44.fuelprefElasticity <- get_data(all_data, "energy/A44.fuelprefElasticity", strip_attributes = TRUE)
     A44.globaltech_shrwt <- get_data(all_data, "energy/A44.globaltech_shrwt") %>%
       gather_years
@@ -251,13 +229,6 @@ module_energy_L244.building_det <- function(command, ...) {
     L102.pcgdp_thous90USD_Scen_R_Y <- get_data(all_data, "L102.pcgdp_thous90USD_Scen_R_Y") # year comes in as double
     L144.flsp_param <- get_data(all_data, "L144.flsp_param", strip_attributes = TRUE)
     L144.hab_land_flsp_fin<-get_data(all_data, "L144.hab_land_flsp_fin", strip_attributes = TRUE)
-    L144.end_use_eff_cwf <- get_data(all_data, "L144.end_use_eff_cwf", strip_attributes = TRUE)
-    L144.shell_eff_R_Y_cwf <- get_data(all_data, "L144.shell_eff_R_Y_cwf", strip_attributes = TRUE)
-    L144.internal_gains_cwf <- get_data(all_data, "L144.internal_gains_cwf", strip_attributes = TRUE)
-    A44.res_unadj_sat_cwf_adj <- get_data(all_data, "cwf/A44.res_unadj_sat_cwf_adj", strip_attributes = TRUE)
-    A44.satiation_flsp_cwf_adj <- get_data(all_data, "cwf/A44.satiation_flsp_cwf_adj", strip_attributes = TRUE)
-    A44.globaltech_shrwt_cwf_H2_scenarios <- get_data(all_data, "cwf/A44.globaltech_shrwt_cwf_H2_scenarios") %>% gather_years
-    A44.globaltech_shrwt_cwf_no_H2_building <- get_data(all_data, "cwf/A44.globaltech_shrwt_cwf_no_H2_building") %>% gather_years
     L144.prices_bld<-get_data(all_data, "L144.prices_bld", strip_attributes = TRUE)
     income_shares<-get_data(all_data, "socioeconomics/income_shares")
     n_groups<-nrow(unique(get_data(all_data, "socioeconomics/income_shares") %>%
@@ -565,15 +536,6 @@ module_energy_L244.building_det <- function(command, ...) {
       mutate(nodeInput = "resid",
              building.node.input = "resid_building") %>%
       select(LEVEL2_DATA_NAMES[["GompFnParam"]])
-
-    # for residential, apply the adjustment factor to the unadjusted satiation values
-    A44.res_unadj_sat_cwf_adj_R <- A44.res_unadj_sat_cwf_adj %>%
-      repeat_add_columns(tibble(region = GCAM_region_names$region))
-
-    L244.GompFnParam_cwf <- L244.GompFnParam %>%
-      left_join(A44.res_unadj_sat_cwf_adj_R, by = c("region")) %>%
-      mutate(unadjust.satiation = unadjust.satiation * adj_frac) %>%
-      dplyr::select(-adj_frac)
 
     #----------------------------------------------------------------------
     # 2- Commercial floorspace
@@ -905,10 +867,8 @@ module_energy_L244.building_det <- function(command, ...) {
     A44.internal_gains<-add.cg(A44.internal_gains)
     A44.sector<-add.cg(A44.sector)
     A44.subsector_interp<-add.cg(A44.subsector_interp)
-    A44.subsector_interp_low_fossil<-add.cg(A44.subsector_interp_low_fossil)
     A44.subsector_logit<-add.cg(A44.subsector_logit)
     A44.subsector_shrwt<-add.cg(A44.subsector_shrwt)
-    A44.subsector_shrwt_low_fossil<-add.cg(A44.subsector_shrwt_low_fossil)
 
     # Adjust calibrated techs in a different file
     calibrated_techs_bld_det_adj<-calibrated_techs_bld_det %>%
@@ -1257,18 +1217,6 @@ module_energy_L244.building_det <- function(command, ...) {
         write_to_all_regions(LEVEL2_DATA_NAMES[["SubsectorShrwtFllt"]], GCAM_region_names = GCAM_region_names) %>%
         semi_join(L244.Tech_bld, by = c("region", "supplysector", "subsector"))
     }
-    if(any(!is.na(A44.subsector_shrwt_low_fossil$year))) {
-      L244.SubsectorShrwt_bld_low_fossil <- A44.subsector_shrwt_low_fossil %>%
-        filter(!is.na(year)) %>%
-        write_to_all_regions(LEVEL2_DATA_NAMES[["SubsectorShrwt"]], GCAM_region_names = GCAM_region_names) %>%
-        semi_join(L244.Tech_bld, by = c("region", "supplysector", "subsector"))
-    }
-    if(any(!is.na(A44.subsector_shrwt_low_fossil$year.fillout))) {
-      L244.SubsectorShrwtFllt_bld_low_fossil <- A44.subsector_shrwt_low_fossil %>%
-        filter(!is.na(year.fillout)) %>%
-        write_to_all_regions(LEVEL2_DATA_NAMES[["SubsectorShrwtFllt"]], GCAM_region_names = GCAM_region_names) %>%
-        semi_join(L244.Tech_bld, by = c("region", "supplysector", "subsector"))
-    }
 
     # L244.SubsectorInterp_bld and L244.SubsectorInterpTo_bld: Subsector shareweight interpolation of building sector
     if(any(is.na(A44.subsector_interp$to.value))) {
@@ -1296,19 +1244,6 @@ module_energy_L244.building_det <- function(command, ...) {
       filter(value_gj_m2 <= 1e-03) %>%
       # take out Indonesia because it does not include heating demand
       filter(region != "Indonesia")
-
-    if(any(is.na(A44.subsector_interp_low_fossil$to.value))) {
-      L244.SubsectorInterp_bld_low_fossil <- A44.subsector_interp_low_fossil %>%
-        filter(is.na(to.value)) %>%
-        write_to_all_regions(LEVEL2_DATA_NAMES[["SubsectorInterp"]], GCAM_region_names = GCAM_region_names) %>%
-        semi_join(L244.Tech_bld, by = c("region", "supplysector", "subsector"))
-    }
-    if(any(!is.na(A44.subsector_interp_low_fossil$to.value))) {
-      L244.SubsectorInterpTo_bld_low_fossil <- A44.subsector_interp_low_fossil %>%
-        filter(!is.na(to.value)) %>%
-        write_to_all_regions(LEVEL2_DATA_NAMES[["SubsectorInterpTo"]], GCAM_region_names = GCAM_region_names) %>%
-        semi_join(L244.Tech_bld, by = c("region", "supplysector", "subsector"))
-    }
 
     elec_heat_regions<-unique(elec_adj$region)
 
@@ -1744,33 +1679,6 @@ module_energy_L244.building_det <- function(command, ...) {
     }
 
     # ===================================================
-    # CWF adjustments
-
-    # L244.ShellConductance_bld_cwf: Shell conductance (inverse of shell efficiency)
-    L244.ShellConductance_bld_cwf <- L144.shell_eff_R_Y_cwf %>%
-      rename(shell.conductance = value) %>%
-      filter(year %in% MODEL_YEARS) %>%
-      mutate(shell.conductance = round(shell.conductance, digits = energy.DIGITS_EFFICIENCY)) %>%
-      left_join_error_no_match(GCAM_region_names, by = "GCAM_region_ID") %>%
-      filter(supplysector != "resid") %>%
-      left_join_error_no_match(A44.gcam_consumer, by = c("supplysector" = "gcam.consumer")) %>%
-      mutate(gcam.consumer = supplysector,
-             shell.year = year,
-             floor.to.surface.ratio = energy.FLOOR_TO_SURFACE_RATIO) %>%
-      select(LEVEL2_DATA_NAMES[["ShellConductance"]])
-
-    # L244.StubTechEff_bld_cwf: Assumed efficiencies (all years) of buildings technologies
-    L244.StubTechEff_bld_cwf <- L144.end_use_eff_cwf %>%
-      filter(year %in% MODEL_YEARS) %>%
-      mutate(value = round(value, energy.DIGITS_CALOUTPUT)) %>%
-      rename(efficiency = value) %>%
-      # Add region and input
-      left_join_error_no_match(GCAM_region_names, by = "GCAM_region_ID") %>%
-      left_join_error_no_match(calibrated_techs_bld_det, by = c("supplysector", "subsector", "technology")) %>%
-      mutate(stub.technology = technology,
-             market.name = region) %>%
-      select(LEVEL2_DATA_NAMES[["StubTechEff"]]) %>%
-      add.cg()
 
     # 2-L244.ThermalServiceImpedance
 
@@ -2235,41 +2143,6 @@ module_energy_L244.building_det <- function(command, ...) {
              obs = value) %>%
       filter(year == MODEL_FINAL_BASE_YEAR)
 
-    # L244.StubTechIntGainOutputRatio_cwf: Output ratios of internal gain energy from non-thermal building services
-    L244.StubTechIntGainOutputRatio_cwf <- L144.internal_gains_cwf %>%
-      filter(year %in% MODEL_YEARS) %>%
-      # Round and rename value
-      mutate(value = round(value, energy.DIGITS_EFFICIENCY)) %>%
-      rename(internal.gains.output.ratio = value) %>%
-      # Add region name
-      left_join_error_no_match(GCAM_region_names, by = "GCAM_region_ID") %>%
-      # Add building.node.input
-      left_join_error_no_match(calibrated_techs_bld_det %>%
-                                 select(supplysector, building.node.input) %>%
-                                 distinct(), by = "supplysector") %>%
-      # Add internal.gains.market.name
-      left_join_error_no_match(A44.gcam_consumer %>%
-                                 select(-gcam.consumer) %>%
-                                 #mutate(internal.gains.market.name=paste0(nodeInput,"-internal-gains-trial-market")) %>%
-                                 distinct() %>%
-                                 mutate(gcam.consumer= if_else(grepl("resid",nodeInput),"resid","comm"))
-                               , by = "building.node.input") %>%
-      select(LEVEL2_DATA_NAMES[["TechYr"]], internal.gains.output.ratio, internal.gains.market.name) %>%
-      add.cg()
-
-    L244.Satiation_flsp_class_cwf <- L244.Satiation_flsp_class %>%
-      # join adjustments
-      left_join(A44.satiation_flsp_cwf_adj) %>%
-      # join SSP values, which will be used to replace some of the values
-      left_join(L244.Satiation_flsp_class_SSPs %>%
-                  rename(satiation.level.SSP = satiation.level) %>%
-                  dplyr::select(-value),
-                by = c("region.class" = "region.class", "sector" = "sector", "match_SSP" = "SSP")) %>%
-      # either replace with SSP value or the original value times the adjustment factor
-      mutate(satiation.level = case_when(!is.na(match_SSP) ~ satiation.level.SSP,
-                                         !is.na(adj_frac) ~ satiation.level * adj_frac)) %>%
-      dplyr::select(region.class, sector, satiation.level)
-
     L244.GenericServiceAdder_aggObs_gr<-L244.GenericBaseService %>%
       rename(obs = value) %>%
       filter(year == MODEL_FINAL_BASE_YEAR)
@@ -2279,15 +2152,6 @@ module_energy_L244.building_det <- function(command, ...) {
     Adder.Conv.Year<-2030
     ADJ_MODEL_YEARS<-c(MODEL_BASE_YEARS,MODEL_FUTURE_YEARS[MODEL_FUTURE_YEARS >= Adder.Conv.Year])
 
-    L244.Satiation_flsp_cwf <- write_to_all_regions(A44.gcam_consumer, c("region", "gcam.consumer", "nodeInput", "building.node.input"), # replace with LEVEL2_DATA_NAMES[["BldNodes]]
-                                                GCAM_region_names = GCAM_region_names) %>%
-      # Match in the region class, and use this to then match in the satiation floorspace
-      left_join_error_no_match(A_regions %>% select(region, region.class),
-                               by = "region") %>%
-      # Residential floorspace does not use the satiation demand function, so filter the commercial floorspace
-      filter(!grepl("resid",gcam.consumer)) %>%
-      left_join_error_no_match(L244.Satiation_flsp_class_cwf, by = c("region.class", "gcam.consumer" = "sector")) %>%
-      select(LEVEL2_DATA_NAMES[["Satiation_flsp"]])
 
     L244.GenericServiceAdder_coal_tradbio_pre<-L244.GenericShares_pre %>%
       filter(grepl("resid",building.service.input)) %>%
@@ -2308,31 +2172,6 @@ module_energy_L244.building_det <- function(command, ...) {
       mutate(est = serv) %>%
       separate(building.service.input,c("building.service.input","group"),sep = "_") %>%
       select(region,year,gcam.consumer,building.service.input,est)
-
-    # L244.GlobalTechShrwt_bld_cwf_H2_scenarios: Default shareweights for global building technologies for CWF hydrogen scenarios
-    L244.GlobalTechShrwt_bld_cwf_H2_scenarios <- A44.globaltech_shrwt_cwf_H2_scenarios %>%
-      # Repeat for all model years
-      complete(nesting(scenario, supplysector, subsector, technology), year = c(year, MODEL_YEARS)) %>%
-      # Interpolate
-      group_by(scenario, supplysector, subsector, technology) %>%
-      mutate(share.weight = approx_fun(year, value, rule = 2)) %>%
-      ungroup() %>%
-      filter(year %in% MODEL_YEARS) %>%
-      rename(sector.name = supplysector,
-             subsector.name = subsector) %>%
-      select(LEVEL2_DATA_NAMES[["GlobalTechYr"]], scenario, share.weight)
-
-    L244.globaltech_shrwt_cwf_no_H2_building <-
-      A44.globaltech_shrwt_cwf_no_H2_building %>%
-      complete(nesting(supplysector, subsector, technology), year = c(year, MODEL_YEARS)) %>%
-      # Interpolate
-      group_by(supplysector, subsector, technology) %>%
-      mutate(share.weight = approx_fun(year, value, rule = 2)) %>%
-      ungroup() %>%
-      filter(year %in% MODEL_YEARS) %>%
-      rename(sector.name = supplysector,
-             subsector.name = subsector) %>%
-      select(LEVEL2_DATA_NAMES[["GlobalTechYr"]], share.weight)
 
     L244.GenericServiceAdder_coal_tradbio_pre_agg<-L244.GenericServiceAdder_coal_tradbio_pre %>%
       group_by(region,year,building.service.input) %>%
@@ -3103,20 +2942,6 @@ module_energy_L244.building_det <- function(command, ...) {
         L244.SubsectorShrwt_bld
     }
 
-    if(exists("L244.SubsectorShrwt_bld_low_fossil")) {
-      L244.SubsectorShrwt_bld_low_fossil %>%
-        add_title("Subsector shareweights for building sector") %>%
-        add_units("Unitless") %>%
-        add_comments("A44.subsector_shrwt written to all regions") %>%
-        add_legacy_name("L244.SubsectorShrwt_bld_low_fossil") %>%
-        add_precursors("energy/A44.subsector_shrwt_low_fossil", "common/GCAM_region_names", "L144.end_use_eff")  ->
-        L244.SubsectorShrwt_bld_low_fossil
-    } else {
-      missing_data() %>%
-        add_legacy_name("L244.SubsectorShrwt_bld_low_fossil") ->
-        L244.SubsectorShrwt_bld_low_fossil
-    }
-
     if(exists("L244.SubsectorShrwtFllt_bld")) {
       L244.SubsectorShrwtFllt_bld %>%
         add_title("Subsector shareweights for building sector") %>%
@@ -3129,20 +2954,6 @@ module_energy_L244.building_det <- function(command, ...) {
       missing_data() %>%
         add_legacy_name("L244.SubsectorShrwtFllt_bld") ->
         L244.SubsectorShrwtFllt_bld
-    }
-
-    if(exists("L244.SubsectorShrwtFllt_bld_low_fossil")) {
-      L244.SubsectorShrwtFllt_bld_low_fossil %>%
-        add_title("Subsector shareweights for building sector") %>%
-        add_units("Unitless") %>%
-        add_comments("A44.subsector_shrwt written to all regions") %>%
-        add_legacy_name("L244.SubsectorShrwtFllt_bld_low_fossil") %>%
-        add_precursors("energy/A44.subsector_shrwt_low_fossil", "common/GCAM_region_names", "L144.end_use_eff")  ->
-        L244.SubsectorShrwtFllt_bld_low_fossil
-    } else {
-      missing_data() %>%
-        add_legacy_name("L244.SubsectorShrwtFllt_bld_low_fossil") ->
-        L244.SubsectorShrwtFllt_bld_low_fossil
     }
 
     if(exists("L244.SubsectorInterp_bld")) {
@@ -3158,19 +2969,6 @@ module_energy_L244.building_det <- function(command, ...) {
         add_legacy_name("L244.SubsectorInterp_bld") ->
         L244.SubsectorInterp_bld
     }
-    if(exists("L244.SubsectorInterp_bld_low_fossil")) {
-      L244.SubsectorInterp_bld_low_fossil %>%
-        add_title("Subsector shareweight interpolation for building sector") %>%
-        add_units("NA") %>%
-        add_comments("A44.subsector_interp written to all regions") %>%
-        add_legacy_name("L244.SubsectorInterp_bld") %>%
-        add_precursors("energy/A44.subsector_interp_low_fossil", "common/GCAM_region_names", "L144.end_use_eff")  ->
-        L244.SubsectorInterp_bld_low_fossil
-    } else {
-      missing_data() %>%
-        add_legacy_name("L244.SubsectorInterp_bld_low_fossil") ->
-        L244.SubsectorInterp_bld_low_fossil
-    }
 
     if(exists("L244.SubsectorInterpTo_bld")) {
       L244.SubsectorInterpTo_bld %>%
@@ -3184,19 +2982,6 @@ module_energy_L244.building_det <- function(command, ...) {
       missing_data() %>%
         add_legacy_name("L244.SubsectorInterpTo_bld") ->
         L244.SubsectorInterpTo_bld
-    }
-    if(exists("L244.SubsectorInterpTo_bld_low_fossil")) {
-      L244.SubsectorInterpTo_bld_low_fossil %>%
-        add_title("Subsector shareweight interpolation for building sector") %>%
-        add_units("NA") %>%
-        add_comments("A44.subsector_interp written to all regions") %>%
-        add_legacy_name("L244.SubsectorInterpTo_bld_low_fossil") %>%
-        add_precursors("energy/A44.subsector_interp_low_fossil", "common/GCAM_region_names", "L144.end_use_eff")  ->
-        L244.SubsectorInterpTo_bld_low_fossil
-    } else {
-      missing_data() %>%
-        add_legacy_name("L244.SubsectorInterpTo_bld_low_fossil") ->
-        L244.SubsectorInterpTo_bld_low_fossil
     }
 
     L244.SubsectorLogit_bld %>%
@@ -3343,14 +3128,6 @@ module_energy_L244.building_det <- function(command, ...) {
       same_precursors_as(L244.ThermalBaseService) ->
       L244.DeleteThermalService
 
-    L244.ShellConductance_bld_cwf %>%
-      add_title("Shell conductance (inverse of shell efficiency)") %>%
-      add_units("Unitless") %>%
-      add_comments("Shell conductance from L144.shell_eff_R_Y_cwf") %>%
-      add_legacy_name("L244.ShellConductance_bld") %>%
-      add_precursors("L144.shell_eff_R_Y_cwf", "common/GCAM_region_names", "energy/A44.gcam_consumer") ->
-      L244.ShellConductance_bld_cwf
-
     L244.GenericServicePrice %>%
       add_title("Final-base-year service prices") %>%
       add_units("$1975/GJ") %>%
@@ -3383,58 +3160,6 @@ module_energy_L244.building_det <- function(command, ...) {
       add_precursors("common/GCAM_region_names","L144.in_EJ_R_bld_serv_F_Yh","L144.flsp_bm2_R_res_Yh") ->
       L244.ThermalBaseDens
 
-    L244.StubTechEff_bld_cwf %>%
-      add_title("Assumed efficiencies of buildings technologies") %>%
-      add_units("Unitless efficiency") %>%
-      add_comments("Efficiencies taken from L144.end_use_eff_cwf") %>%
-      add_legacy_name("L244.StubTechEff_bld") %>%
-      add_precursors("L144.end_use_eff_cwf", "common/GCAM_region_names", "energy/calibrated_techs_bld_det") ->
-      L244.StubTechEff_bld_cwf
-
-    L244.StubTechIntGainOutputRatio_cwf %>%
-      add_title("Output ratios of internal gain energy from non-thermal building services") %>%
-      add_units("Unitless output ratio") %>%
-      add_comments("Values from L144.internal_gains_cwf") %>%
-      add_legacy_name("L244.StubTechIntGainOutputRatio") %>%
-      add_precursors("L144.internal_gains_cwf", "common/GCAM_region_names",
-                     "energy/calibrated_techs_bld_det", "energy/A44.gcam_consumer") ->
-      L244.StubTechIntGainOutputRatio_cwf
-
-    L244.Satiation_flsp_cwf %>%
-      add_title("Floorspace demand satiation") %>%
-      add_units("Million squared meters per capita") %>%
-      add_comments("Values from A44.satiation_flsp added to A44.gcam_consumer written to all regions, with CWF adjustments") %>%
-      add_legacy_name("L244.Satiation_flsp") %>%
-      add_precursors("energy/A44.satiation_flsp", "cwf/A44.satiation_flsp_cwf_adj", "energy/A44.gcam_consumer", "common/GCAM_region_names", "energy/A_regions") ->
-      L244.Satiation_flsp_cwf
-
-
-    L244.GompFnParam_cwf %>%
-      add_title("Parameters for the floorspace Gompertz function") %>%
-      add_units("Unitless") %>%
-      add_comments("Computed offline based on data from RECS and IEA with CWF adjustments") %>%
-      add_legacy_name("L244.GompFnParam") %>%
-      add_precursors("common/GCAM_region_names",
-                     "L102.pcgdp_thous90USD_Scen_R_Y", "L101.Pop_thous_R_Yh",
-                     "L144.flsp_bm2_R_res_Yh","L144.hab_land_flsp_fin") ->
-      L244.GompFnParam_cwf
-
-    L244.GlobalTechShrwt_bld_cwf_H2_scenarios %>%
-      add_title("Default shareweights for global building technologies for CWF hydrogen scenarios") %>%
-      add_units("Unitless") %>%
-      add_comments("Values interpolated from A44.globaltech_shrwt_cwf_H2_scenarios") %>%
-      add_legacy_name("L244.GlobalTechShrwt_bld_cwf_H2_scenarios") %>%
-      add_precursors("cwf/A44.globaltech_shrwt_cwf_H2_scenarios") ->
-      L244.GlobalTechShrwt_bld_cwf_H2_scenarios
-
-    L244.globaltech_shrwt_cwf_no_H2_building %>%
-      add_title("prevent the use of H2 in building sector by setting shareweights to be 0") %>%
-      add_units("Unitless") %>%
-      add_comments("Values interpolated from A44.globaltech_shrwt_cwf_no_H2_building") %>%
-      add_legacy_name("L244.globaltech_shrwt_cwf_no_H2_building") %>%
-      add_precursors("cwf/A44.globaltech_shrwt_cwf_no_H2_building") ->
-      L244.globaltech_shrwt_cwf_no_H2_building
-
     return_data(L244.SubregionalShares, L244.SubregionalShares_SSP1,L244.SubregionalShares_SSP2,L244.SubregionalShares_SSP3,
                 L244.SubregionalShares_SSP4,L244.SubregionalShares_SSP5,
                 L244.PriceExp_IntGains, L244.Floorspace, L244.DemandFunction_serv, L244.DemandFunction_flsp,
@@ -3442,13 +3167,9 @@ module_energy_L244.building_det <- function(command, ...) {
                 L244.GenericServiceSatiation, L244.Intgains_scalar, L244.ShellConductance_bld,
                 L244.Supplysector_bld, L244.FinalEnergyKeyword_bld,
 				L244.SubsectorShrwtFllt_bld,
-				L244.SubsectorShrwtFllt_bld_low_fossil,
 				L244.SubsectorShrwt_bld,
-				L244.SubsectorShrwt_bld_low_fossil,
 				L244.SubsectorInterp_bld,
-				L244.SubsectorInterp_bld_low_fossil,
                 L244.SubsectorInterpTo_bld,
-				L244.SubsectorInterpTo_bld_low_fossil,
 				L244.FuelPrefElast_bld,
                 L244.StubTech_bld, L244.StubTechEff_bld, L244.StubTechCalInput_bld, L244.GlobalTechShrwt_bld,
                 L244.GlobalTechCost_bld, L244.DeleteGenericService, L244.Satiation_flsp_SSP1, L244.SatiationAdder_SSP1,
@@ -3471,10 +3192,7 @@ module_energy_L244.building_det <- function(command, ...) {
                 L244.GenericServiceCoef_SSP4,L244.GenericServiceCoef_SSP5,L244.ThermalServiceCoef,
                 L244.GenericCoalCoef,L244.ThermalCoalCoef,L244.GenericTradBioCoef,L244.ThermalTradBioCoef,
                 L244.GenericShares,L244.ThermalShares,L244.GenericServicePrice,L244.ThermalServicePrice,L244.GenericBaseDens,L244.ThermalBaseDens,
-    			      L244.GlobalTechTrackCapital_bld,
-                L244.ShellConductance_bld_cwf, L244.StubTechEff_bld_cwf, L244.StubTechIntGainOutputRatio_cwf,
-                L244.Satiation_flsp_cwf, L244.GompFnParam_cwf, L244.GlobalTechShrwt_bld_cwf_H2_scenarios,
-				        L244.globaltech_shrwt_cwf_no_H2_building)
+    			      L244.GlobalTechTrackCapital_bld)
   } else {
     stop("Unknown command")
   }
