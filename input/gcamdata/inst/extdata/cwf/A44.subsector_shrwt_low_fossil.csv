@@ -6,6 +6,8 @@
 supplysector,subsector,year.fillout,year,share.weight
 resid heating modern,biomass,start-year,,1
 resid heating coal,coal,start-year,,1
+resid heating coal,coal,2050,,0
+resid heating coal,coal,end-year,,0
 resid heating modern,electricity,start-year,,1
 resid heating modern,electricity,2050,,1
 resid heating modern,electricity,end-year,,1
@@ -25,6 +27,8 @@ resid cooling modern,gas,2050,,0
 resid cooling modern,gas,end-year,,0
 resid others modern,biomass,start-year,,1
 resid others coal,coal,start-year,,1
+resid others coal,coal,2050,,0
+resid others coal,coal,end-year,,0
 resid others modern,electricity,start-year,,1
 resid others modern,electricity,2050,,1
 resid others modern,electricity,end-year,,1

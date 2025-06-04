@@ -59,10 +59,12 @@ module_energy_L244.building_det_cwf <- function(command, ...) {
              "L144.end_use_eff_cwf",
              'L144.shell_eff_R_Y_cwf',
              'L144.internal_gains_cwf',
-             "L244.GompFnParam"))
+             "L244.GompFnParam",
+             "L244.Supplysector_bld"))
 
   } else if(command == driver.DECLARE_OUTPUTS) {
-    return(c("L244.SubsectorShrwt_bld_low_fossil",
+    return(c("L244.DeleteSupplySector_cwf",
+             "L244.SubsectorShrwt_bld_low_fossil",
              "L244.SubsectorShrwtFllt_bld_low_fossil",
              "L244.SubsectorInterp_bld_low_fossil",
              "L244.SubsectorInterpTo_bld_low_fossil",
@@ -121,6 +123,7 @@ module_energy_L244.building_det_cwf <- function(command, ...) {
     L144.shell_eff_R_Y_cwf <- get_data(all_data, "L144.shell_eff_R_Y_cwf", strip_attributes = TRUE)
     L144.internal_gains_cwf <- get_data(all_data, "L144.internal_gains_cwf", strip_attributes = TRUE)
 
+    L244.Supplysector_bld <- get_data(all_data,"L244.Supplysector_bld", strip_attributes = TRUE)
     L244.GompFnParam <- get_data(all_data,"L244.GompFnParam", strip_attributes = TRUE)
 
     # for residential, apply the adjustment factor to the unadjusted satiation values
@@ -331,6 +334,10 @@ module_energy_L244.building_det_cwf <- function(command, ...) {
              subsector.name = subsector) %>%
       select(LEVEL2_DATA_NAMES[["GlobalTechYr"]], share.weight)
 
+    L244.DeleteSupplySector_cwf <- L244.Supplysector_bld %>%
+      filter(str_detect(supplysector,"resid heating") | str_detect(supplysector,"resid others")) %>%
+      select(LEVEL2_DATA_NAMES[["DeleteSupplysector"]])
+
 
     if(exists("L244.SubsectorShrwt_bld_low_fossil")) {
       L244.SubsectorShrwt_bld_low_fossil %>%
@@ -426,6 +433,11 @@ module_energy_L244.building_det_cwf <- function(command, ...) {
       add_precursors("energy/A44.satiation_flsp", "cwf/A44.satiation_flsp_cwf_adj", "energy/A44.gcam_consumer", "common/GCAM_region_names", "energy/A_regions") ->
       L244.Satiation_flsp_cwf
 
+    L244.DeleteSupplySector_cwf %>%
+      add_title("Remove coal and TradBio sectors") %>%
+      add_precursors("L244.Supplysector_bld") ->
+      L244.DeleteSupplySector_cwf
+
 
     L244.GompFnParam_cwf %>%
       add_title("Parameters for the floorspace Gompertz function") %>%
@@ -453,6 +465,7 @@ module_energy_L244.building_det_cwf <- function(command, ...) {
       L244.globaltech_shrwt_cwf_no_H2_building
 
     return_data(
+        L244.DeleteSupplySector_cwf,
 				L244.SubsectorShrwtFllt_bld_low_fossil,
 
 				L244.SubsectorShrwt_bld_low_fossil,

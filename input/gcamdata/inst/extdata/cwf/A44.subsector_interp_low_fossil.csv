@@ -5,7 +5,9 @@
 # ----------
 supplysector,subsector,apply.to,from.year,to.year,to.value,interpolation.function
 resid heating modern,biomass,share-weight,final-calibration-year,end-year,,fixed
-resid heating coal,coal,share-weight,final-calibration-year,end-year,,fixed
+resid heating coal,coal,share-weight,final-calibration-year,2025,,fixed
+resid heating coal,coal,share-weight,2025,2050,0,linear
+resid heating coal,coal,share-weight,2050,end-year,,fixed
 resid heating modern,electricity,share-weight,final-calibration-year,2025,,fixed
 resid heating modern,electricity,share-weight,2025,2050,1,linear
 resid heating modern,electricity,share-weight,2050,end-year,,fixed
@@ -24,7 +26,9 @@ resid cooling modern,gas,share-weight,final-calibration-year,2025,,fixed
 resid cooling modern,gas,share-weight,2025,2050,0,linear
 resid cooling modern,gas,share-weight,2050,end-year,,fixed
 resid others modern,biomass,share-weight,final-calibration-year,end-year,,fixed
-resid others coal,coal,share-weight,final-calibration-year,end-year,,fixed
+resid others coal,coal,share-weight,final-calibration-year,2025,,fixed
+resid others coal,coal,share-weight,2025,2050,0,linear
+resid others coal,coal,share-weight,2050,end-year,,fixed
 resid others modern,electricity,share-weight,final-calibration-year,2025,,fixed
 resid others modern,electricity,share-weight,2025,2050,1,linear
 resid others modern,electricity,share-weight,2050,end-year,,fixed

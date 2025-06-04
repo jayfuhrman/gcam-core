@@ -43,9 +43,7 @@
 			<Value name = "fertilizer_energy">../input/gcamdata/xml/en_Fert.xml</Value> 
 			<Value name = "fertilizer_energy_cwf">../input/gcamdata/xml/en_Fert_cwf.xml</Value> 
 			<Value name = "hddcdd">../input/gcamdata/xml/HDDCDD_constdd_no_GCM.xml</Value>
-			<!--CWF standard assumptions for buildings + coordinated fossil phase-out represented thru shareweight interp reaching zero by 2050-->
 			<Value name = "building">../input/gcamdata/xml/building_det.xml</Value>
-			<Value name = "building_cwf">../input/gcamdata/xml/building_det_cwf.xml</Value>
 			<Value name = "transportation">../input/gcamdata/xml/transportation_UCD_CORE.xml</Value>
 			<Value name = "transportation_CWF">../input/gcamdata/xml/transportation_UCD_CWF_high.xml</Value>
 			<Value name = "carbon_content">../input/gcamdata/xml/Ccoef.xml</Value>
@@ -126,6 +124,8 @@
 			<Value name = "solver">../input/solution/cal_broyden_config.xml</Value>
 
 		<!--additional CWF files-->
+			<!--CWF standard assumptions for buildings + coordinated fossil phase-out represented thru shareweight interp reaching zero by 2050-->
+			<Value name = "building_cwf">../input/gcamdata/xml/building_det_cwf.xml</Value>
 
 			<Value name="aglu">../input/gcamdata/xml/food_cwf.xml</Value>
 			<Value name="aglu">../input/gcamdata/xml/ag_prodchange_ssp1_IRR_MGMT.xml</Value> <!--use SSP1 ag productivity change-->
