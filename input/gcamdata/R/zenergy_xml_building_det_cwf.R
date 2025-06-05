@@ -235,7 +235,8 @@ module_energy_building_det_cwf_xml <- function(command, ...) {
       summarize(calibrated.value = sum(calibrated.value)) %>%
       ungroup() %>%
       filter(calibrated.value == 0,
-             str_detect(subsector,"traditional biomass")) %>%
+             str_detect(subsector,"traditional biomass"),
+             region %in% c('Japan','Taiwan')) %>%
       select(LEVEL2_DATA_NAMES[["DeleteSubsector"]])
 
 
