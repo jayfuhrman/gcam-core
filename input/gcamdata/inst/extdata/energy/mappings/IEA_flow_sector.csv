@@ -7,13 +7,13 @@
 # ----------
 flow_code,flow_name,sector,conversion
 INDPROD,Production,out_resources,0.00004186
-IMPORTS,Imports,,
-EXPORTS,Exports,,
+IMPORTS,Imports,imports,0.00004186
+EXPORTS,Exports,exports,-0.00004186
 MARBUNK,International Marine Bunkers,in_trn_international ship,-0.00004186
 AVBUNK,International Aviation Bunkers,in_trn_international air,-0.00004186
 STOCKCHA,Stock Changes,,
 TES,Total Primary Energy Supply,,
-TRANSFER,Transfers,,
+TRANSFER,Transfers,transfers,0.00004186
 STATDIFF,Statistical Differences,,
 TOTTRANF,Transformation Sector,,
 MAINELEC,Main Activity Producer Electricity Plants,in_electricity generation,-0.00004186

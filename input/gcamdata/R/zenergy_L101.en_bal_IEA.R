@@ -8,7 +8,7 @@
 #' @param ... other optional parameters, depending on command
 #' @return Depends on \code{command}: either a vector of required inputs,
 #' a vector of output names, or (if \code{command} is "MAKE") all
-#' the generated outputs: \code{L101.en_bal_EJ_R_Si_Fi_Yh_full}, \code{L101.en_bal_EJ_ctry_Si_Fi_Yh_full}, \code{L101.in_EJ_ctry_trn_Fi_Yh}, \code{L101.in_EJ_ctry_bld_Fi_Yh}. The corresponding file in the
+#' the generated outputs: \code{L101.en_bal_EJ_R_Si_Fi_Yh_full}, \code{L101.detailed_refined_liquids_EJ_R_Yh}, \code{L101.en_bal_EJ_ctry_Si_Fi_Yh_full}, \code{L101.in_EJ_ctry_trn_Fi_Yh}, \code{L101.in_EJ_ctry_bld_Fi_Yh}. The corresponding file in the
 #' original data system was \code{LA101.en_bal_IEA.R} (energy level1).
 #' @details Assign IEA product and flow data to nomenclature used in GCAM (fuel and sector, respectively), summarizing
 #' by (generally) iso and/or region, sector, fuel, and year.
@@ -29,7 +29,8 @@ module_energy_L101.en_bal_IEA <- function(command, ...) {
     return(c("L101.en_bal_EJ_R_Si_Fi_Yh_full",
              "L101.en_bal_EJ_ctry_Si_Fi_Yh_full",
              "L101.in_EJ_ctry_trn_Fi_Yh",
-             "L101.in_EJ_ctry_bld_Fi_Yh"))
+             "L101.in_EJ_ctry_bld_Fi_Yh",
+             "L101.liquids_imports_exports_EJ_R_Yh_full"))
   } else if(command == driver.MAKE) {
 
     all_data <- list(...)[[1]]
@@ -137,6 +138,20 @@ module_energy_L101.en_bal_IEA <- function(command, ...) {
                sector = if_else(fuel == "heat" & grepl("trn_", sector), NA_character_, sector)) %>%
         na.omit() ->
         L101.IEA_en_bal_ctry_hist_clean
+
+      #SD (6/2025): Extract data on the production, consumption, imports, exports, and transfers of refined liquids by product (e.g., DFO, RFO, Gasoline).
+      L101.detailed_refined_liquids_EJ_R_Yh <- L101.IEA_en_bal_ctry_hist_clean %>%
+        filter(fuel %in% energy.REFINED_LIQUIDS_AGG,sector %in% c("net_oil refining",
+                                                       energy.REFINING_TRADE_TRANSFER,
+                                                       energy.LIQUIDS_ENDUSE_SECTORS,
+                                                       energy.LIQUIDS_INDUSTRIAL_SECTORS)) %>%
+        tidyr::gather(year,value,-FLOW,-PRODUCT,-iso,-GCAM_region_ID,-sector,-fuel,-conversion)%>%
+        filter(year %in% MODEL_BASE_YEARS)%>%
+        mutate(value=value*conversion)
+
+      #remove the imports, exports, transfers flows from IEA data
+      L101.IEA_en_bal_ctry_hist_clean <- L101.IEA_en_bal_ctry_hist_clean %>%
+        filter(!(sector %in% energy.REFINING_TRADE_TRANSFER))
 
       # Aggregate by relevant categories, multiplying through by conversion factors (to EJ) (82-85)
       L101.IEA_en_bal_ctry_hist_clean %>%
@@ -280,15 +295,24 @@ module_energy_L101.en_bal_IEA <- function(command, ...) {
       same_precursors_as(L101.en_bal_EJ_R_Si_Fi_Yh_full) ->
       L101.in_EJ_ctry_bld_Fi_Yh
 
+    L101.detailed_refined_liquids_EJ_R_Yh %>%
+      add_units("EJ") %>%
+      add_comments("Refined liquids production, imports, exports, consumption by GCAM region and historical year") %>%
+      add_legacy_name("L101.detailed_refined_liquids_EJ_R_Yh_full") %>%
+      same_precursors_as(L101.en_bal_EJ_R_Si_Fi_Yh_full) ->
+      L101.detailed_refined_liquids_EJ_R_Yh
+
     # At this point outputs should be identical to the prebuilt versions
     verify_identical_prebuilt(L101.en_bal_EJ_R_Si_Fi_Yh_full,
                               L101.en_bal_EJ_ctry_Si_Fi_Yh_full,
                               L101.in_EJ_ctry_trn_Fi_Yh,
-                              L101.in_EJ_ctry_bld_Fi_Yh)
+                              L101.in_EJ_ctry_bld_Fi_Yh,
+                              L101.detailed_refined_liquids_EJ_R_Yh)
     }
 
     return_data(L101.en_bal_EJ_R_Si_Fi_Yh_full, L101.en_bal_EJ_ctry_Si_Fi_Yh_full,
-                L101.in_EJ_ctry_trn_Fi_Yh, L101.in_EJ_ctry_bld_Fi_Yh)
+                L101.in_EJ_ctry_trn_Fi_Yh, L101.in_EJ_ctry_bld_Fi_Yh,
+                L101.detailed_refined_liquids_EJ_R_Yh)
   } else {
     stop("Unknown command")
   }

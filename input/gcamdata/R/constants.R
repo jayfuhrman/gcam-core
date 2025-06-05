@@ -547,6 +547,17 @@ energy.DEFAULT_ELECTRIC_EFFICIENCY <- 0.33
 
 energy.ELECTRICITY_INPUT_FUELS <- c("biomass", "coal", "gas", "refined liquids")
 energy.RSRC_FUELS              <- c("coal", "gas", "refined liquids")
+energy.REFINED_LIQUIDS <- c("Distillate_FuelOil","Heavy_Residual","Gasoline","LPG",
+                            "Residual_FuelOil","Jet_Kerosene","Other")
+energy.REFINED_LIQUIDS_AGG <- c("refined liquids","refined biofuels_ethanol","refined biofuels_FT")
+energy.REFINING_TRADE_TRANSFER <- c("imports","exports","transfers")
+energy.LIQUIDS_ENDUSE_SECTORS <- c("in_bld_comm","in_bld_resid","in_trn_domestic air","in_trn_domestic ship",
+                                   "in_trn_international air","in_trn_international ship","in_trn_rail",
+                                   "in_trn_road","in_trn_unspecified")
+energy.LIQUIDS_INDUSTRIAL_SECTORS <- c("in_industry_agriculture","in_electricity generation","in_industry_chp",
+                                       "in_industry_energy distribution","in_industry_feedstocks","in_industry_general",
+                                       "in_industry_ownuse","in_industry_pipeline","net_industry_energy_iron and steel",
+                                       "net_industry_energy transformation","net_gas works","in_heat")
 
 # Assumed base year heat price, used for calculating adjustment to non-energy costs of electricity
 # technologies with secondary output of heat in units of 1975$/EJ
