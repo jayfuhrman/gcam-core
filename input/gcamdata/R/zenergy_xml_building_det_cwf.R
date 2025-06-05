@@ -116,8 +116,19 @@ module_energy_building_det_cwf_xml <- function(command, ...) {
     L244.Intgains_scalar <- get_data(all_data, "L244.Intgains_scalar") %>% remove_coal_trad_bio(thermal.building.service.input)
     L244.GenericServiceSatiation <- get_data(all_data, "L244.GenericServiceSatiation") %>% remove_coal_trad_bio(building.service.input)
     L244.ThermalServiceSatiation <- get_data(all_data, "L244.ThermalServiceSatiation") %>% remove_coal_trad_bio(thermal.building.service.input)
-    L244.GenericBaseService <- get_data(all_data, "L244.GenericBaseService") %>% remove_coal_trad_bio(building.service.input)
-    L244.ThermalBaseService <- get_data(all_data, "L244.ThermalBaseService") %>% remove_coal_trad_bio(thermal.building.service.input)
+
+    L244.GenericBaseService <- get_data(all_data, "L244.GenericBaseService") %>%
+      remove_coal_trad_bio(building.service.input) %>%
+      group_by(region,gcam.consumer,nodeInput,building.node.input,building.service.input,year) %>%
+      summarize(base.service = sum(base.service)) %>%
+      ungroup()
+
+    L244.ThermalBaseService <- get_data(all_data, "L244.ThermalBaseService") %>%
+      remove_coal_trad_bio(thermal.building.service.input) %>%
+      group_by(region,gcam.consumer,nodeInput,building.node.input,thermal.building.service.input,year) %>%
+      summarize(base.service = sum(base.service)) %>%
+      ungroup()
+
     L244.SatiationAdder <- get_data(all_data, "L244.SatiationAdder")
     L244.Satiation_flsp <- get_data(all_data, "L244.Satiation_flsp")
     L244.DemandFunction_flsp <- get_data(all_data, "L244.DemandFunction_flsp")
@@ -217,17 +228,24 @@ module_energy_building_det_cwf_xml <- function(command, ...) {
     L244.HDDCDD_constdd_no_GCM <- get_data(all_data, "L244.HDDCDD_constdd_no_GCM") %>%
       filter(thermal.building.service.input %in% L244.DeleteSupplySector_cwf$supplysector) %>%
       remove_coal_trad_bio(thermal.building.service.input)
+
+    #to avoid a bunch of warnings in log file about missing markets we delete unused subsectors for traditional biomass
+    L244.DeleteSubsector_cwf <- L244.StubTechCalInput_bld %>%
+      group_by(region,supplysector,subsector) %>%
+      summarize(calibrated.value = sum(calibrated.value)) %>%
+      ungroup() %>%
+      filter(calibrated.value == 0,
+             str_detect(subsector,"traditional biomass")) %>%
+      select(LEVEL2_DATA_NAMES[["DeleteSubsector"]])
+
+
+
     # ===================================================
 
     curr_env <- environment()
 
     # Produce outputs
     create_xml("building_det_cwf.xml") %>%
-      add_xml_data(L201.en_pol_emissions, "InputEmissions") %>%
-      add_xml_data(L201.en_ghg_emissions, "InputEmissions") %>%
-      add_xml_data(L251.ssp15_ef, "InputEmissCoeff") %>%
-      add_xml_data(L281.GlobalTechAccountOutputUseBasePrice_fd, "GlobalTechAccountOutputUseBasePrice") %>%
-      add_xml_data(L244.HDDCDD_constdd_no_GCM, "HDDCDD") %>%
       add_xml_data(L244.DeleteSupplySector_cwf, "DeleteSupplysector") %>%
       add_xml_data(L244.FinalEnergyKeyword_bld, "FinalEnergyKeyword") %>%
       add_logit_tables_xml(L244.Supplysector_bld, "Supplysector") %>%
@@ -278,6 +296,14 @@ module_energy_building_det_cwf_xml <- function(command, ...) {
       add_xml_data(L244.GlobalTechCost_bld, "GlobalTechCost") %>%
 
       add_xml_data(L244.globaltech_shrwt_cwf_no_H2_building, "GlobalTechShrwt") %>% # CWF version
+
+      add_xml_data(L201.en_pol_emissions, "InputEmissions") %>%
+      add_xml_data(L201.en_ghg_emissions, "InputEmissions") %>%
+      add_xml_data(L251.ssp15_ef, "InputEmissCoeff") %>%
+      add_xml_data(L281.GlobalTechAccountOutputUseBasePrice_fd, "GlobalTechAccountOutputUseBasePrice") %>%
+      add_xml_data(L244.HDDCDD_constdd_no_GCM, "HDDCDD") %>%
+
+      add_xml_data(L244.DeleteSubsector_cwf, "DeleteSubsector") %>%
 
       add_precursors("L244.FinalEnergyKeyword_bld", "L244.Supplysector_bld", "L244.SubsectorLogit_bld",
 					 "L244.SubsectorInterpTo_bld", "L244.SubsectorInterp_bld" , "L244.SubsectorShrwtFllt_bld",
