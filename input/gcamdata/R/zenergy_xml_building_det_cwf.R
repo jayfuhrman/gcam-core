@@ -235,9 +235,15 @@ module_energy_building_det_cwf_xml <- function(command, ...) {
       summarize(calibrated.value = sum(calibrated.value)) %>%
       ungroup() %>%
       filter(calibrated.value == 0,
-             str_detect(subsector,"traditional biomass"),
-             region %in% c('Japan','Taiwan')) %>%
+             str_detect(subsector,"traditional biomass")) %>%
       select(LEVEL2_DATA_NAMES[["DeleteSubsector"]])
+
+    L244.DeleteSupplysector <- L244.StubTechCalInput_bld %>%
+      group_by(region,supplysector) %>%
+      summarize(calibrated.value = sum(calibrated.value)) %>%
+      ungroup() %>%
+      filter(calibrated.value == 0) %>%
+      select(LEVEL2_DATA_NAMES[["DeleteSupplysector"]])
 
 
 
@@ -303,7 +309,7 @@ module_energy_building_det_cwf_xml <- function(command, ...) {
       add_xml_data(L251.ssp15_ef, "InputEmissCoeff") %>%
       add_xml_data(L281.GlobalTechAccountOutputUseBasePrice_fd, "GlobalTechAccountOutputUseBasePrice") %>%
       add_xml_data(L244.HDDCDD_constdd_no_GCM, "HDDCDD") %>%
-
+      add_xml_data(L244.DeleteSupplysector, "DeleteSupplysector") %>%
       add_xml_data(L244.DeleteSubsector_cwf, "DeleteSubsector") %>%
 
       add_precursors("L244.FinalEnergyKeyword_bld", "L244.Supplysector_bld", "L244.SubsectorLogit_bld",
