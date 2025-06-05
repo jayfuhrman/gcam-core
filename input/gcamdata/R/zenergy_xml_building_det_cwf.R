@@ -245,7 +245,13 @@ module_energy_building_det_cwf_xml <- function(command, ...) {
       filter(calibrated.value == 0) %>%
       select(LEVEL2_DATA_NAMES[["DeleteSupplysector"]])
 
-
+    L244.DeleteThermalService <- L244.DeleteSupplysector %>%
+      filter(str_detect(supplysector,'resid heating')) %>%
+      mutate(nodeInput = "resid",
+             building.node.input = "resid_building",
+             thermal.building.service.input = supplysector,
+             gcam.consumer = paste0("resid_", str_extract(supplysector, "(?<=_).*"))) %>%
+      bind_rows(L244.DeleteThermalService)
 
     # ===================================================
 
