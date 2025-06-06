@@ -31,7 +31,10 @@ module_energy_batch_Weathering_xml <- function(command, ...) {
              "L263.StubTechEff",
              "L263.TechPmult"))
   } else if(command == driver.DECLARE_OUTPUTS) {
-    return(c(XML = "Weathering.xml"))
+    return(c(XML = "Weathering.xml",
+             XML = "Weathering_high.xml",
+             XML = "Weathering_med.xml",
+             XML = "Weathering_low.xml"))
   } else if(command == driver.MAKE) {
 
     all_data <- list(...)[[1]]
@@ -81,14 +84,38 @@ module_energy_batch_Weathering_xml <- function(command, ...) {
       add_xml_data(L263.GlobalTechInputPMult, "GlobalTechInputPMult") %>%
       add_xml_data(L263.GlobalTechSCurve, "GlobalTechSCurve") %>%
       add_xml_data(L263.GlobalTechProfitShutdown, "GlobalTechProfitShutdown") %>%
-      add_xml_data(L263.StubTechEff,"StubTechEff") %>%
-      add_xml_data(L263.TechPmult,"TechPmult") %>%
       add_precursors("L263.Rsrc", "L263.RsrcCurves_C", "L263.ResTechShrwt_C", "L263.Supplysector_C", "L263.SubsectorLogit_C", "L263.SubsectorShrwtFllt_C", "L263.StubTech_C", "L263.GlobalTechCoef_C","L263.GlobalTechCost_C", "L263.GlobalTechShrwt_C","L263.RsrcPrice","L263.WeatheringRsrcMax","L263.GlobalTechCSeq","L263.SubsectorInterp",
-                     "L263.GlobalTechInputPMult","L263.GlobalTechProfitShutdown","L263.GlobalTechSCurve",
-                     "L263.StubTechEff","L263.TechPmult") ->
+                     "L263.GlobalTechInputPMult","L263.GlobalTechProfitShutdown","L263.GlobalTechSCurve") ->
       Weathering.xml
 
-    return_data(Weathering.xml)
+    create_xml("Weathering_high.xml") %>%
+      add_xml_data(L263.StubTechEff %>%
+                     filter(scenario == 'rapid_growth_rate'),"StubTechEff") %>%
+      add_xml_data(L263.TechPmult %>%
+                     filter(scenario == 'rapid_growth_rate'),"TechPmult") %>%
+      add_precursors("L263.StubTechEff","L263.TechPmult") ->
+      Weathering_high.xml
+
+    create_xml("Weathering_med.xml") %>%
+      add_xml_data(L263.StubTechEff %>%
+                     filter(scenario == 'medium_growth_rate'),"StubTechEff") %>%
+      add_xml_data(L263.TechPmult %>%
+                     filter(scenario == 'medium_growth_rate'),"TechPmult") %>%
+      add_precursors("L263.StubTechEff","L263.TechPmult") ->
+      Weathering_med.xml
+
+    create_xml("Weathering_low.xml") %>%
+      add_xml_data(L263.StubTechEff %>%
+                     filter(scenario == 'slow_growth_rate'),"StubTechEff") %>%
+      add_xml_data(L263.TechPmult %>%
+                     filter(scenario == 'slow_growth_rate'),"TechPmult") %>%
+      add_precursors("L263.StubTechEff","L263.TechPmult") ->
+      Weathering_low.xml
+
+    return_data(Weathering.xml,
+                Weathering_high.xml,
+                Weathering_med.xml,
+                Weathering_low.xml)
   } else {
     stop("Unknown command")
   }

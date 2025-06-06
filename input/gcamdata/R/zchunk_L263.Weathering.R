@@ -359,12 +359,12 @@ module_energy_L263.Weathering <- function(command, ...) {
              minicam.energy.input = 'inorganic-surface-storage',
              market.name = region) %>%
       mutate(efficiency = if_else(efficiency == 0, 0.01,efficiency)) %>%
-      filter(scenario == 'rapid_growth_rate') %>%
+      #filter(scenario == 'rapid_growth_rate') %>%
       select(c(LEVEL2_DATA_NAMES[['StubTechEff']])) %>%
       ungroup() -> L263.StubTechEff
 
     L263.StubTechEff %>%
-      select(region,supplysector,subsector,technology = stub.technology,year,pMult = efficiency) ->
+      select(region,supplysector,subsector,technology = stub.technology,year,pMult = efficiency,scenario) ->
       L263.TechPmult
 
     A63.globaltech_coef %>%
