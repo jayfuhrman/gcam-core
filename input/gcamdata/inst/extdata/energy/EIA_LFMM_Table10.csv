@@ -1,0 +1,29 @@
+# File: EIA_LFMM_Table10.csv
+# Title: Non-petroleum fuel technology characteristics for the year 2025
+# Units: basis 2022$; see header columns
+# Source: Based on EIA Assumptions to NEMS LFMM for AEO2023. 
+# Comments: LPG and Heavy_Residual bio-analogues not present in the LFMM so were 
+#   assumed to be similar to BTL and pyrolysis process costs.
+# Column types: ccccnnnnnn
+# ----------
+description,product,subsector,technology,Nameplate capacity b/sd,Overnight capital cost $/b/sd,Utilization %,Cost of Capital (WACC) %,Fixed O&M cost $/d/b/sd,Non-feedstock variable O&M cost $/b
+Corn ethanol,Gasoline,biorefining,Gasoline,6800,27500,100,12,7,7
+Advanced grain ethanol,Gasoline,biorefining,Gasoline,3400,65500,100,12,20,3
+Cellulosic ethanol,Gasoline,biorefining,Gasoline,4400,206600,85,12,42,1
+Biobutanol (retrofit of corn ethanol plant),Gasoline,biorefining,Gasoline,6500,14300,90,12,2,7
+Methyl ester biodiesel (FAME),98.5% Biodiesel; 1.5% Glycerol,biorefining,Distillate_FuelOil,1200,29800,100,12,23,8
+Hydroprocessed non-ester renewable diesel (NERD),98% Renewable Diesel; 2% Renewable Naphtha,biorefining,Distillate_FuelOil,2100,42300,95,12,24,8
+Biomass-to-liquids (BTL),22% DFO; 46% Jet; 32% Gasoline,biorefining,Distillate_FuelOil,6000,474700,85,12,78,8
+Biomass-to-liquids (BTL),22% DFO; 46% Jet; 32% Gasoline,biorefining,Jet_Kerosene,6000,474700,85,12,78,8
+HEFA sustainable aviation fuel/NERD,50% SAF; 50% Renewable Diesel,biorefining,Jet_Kerosene,2100,52300,95,12,24,8
+Pyrolysis,60% DFO; 40% Gasoline,biorefining,Residual_FuelOil,5200,420400,90,12,73,7
+Biomass-to-liquids (BTL),22% DFO; 46% Jet; 32% Gasoline,biorefining,Other,6000,474700,85,12,78,8
+Biomass-to-liquids (BTL),Assume as BTL byproduct,biorefining,LPG,6000,474700,85,12,78,8
+Pyrolysis,Assume as pyrolysis downstream product,biorefining,Heavy_Residual,5200,420400,90,12,73,7
+FT GTL,52% dist; 23% kero; 24.5% naphtha; .5% LPG,gtl,Distillate_FuelOil,24000,209300,85,12,36,10
+FT GTL,52% dist; 23% kero; 24.5% naphtha; .5% LPG,gtl,Jet_Kerosene,24000,209300,85,12,36,10
+FT GTL,52% dist; 23% kero; 24.5% naphtha; .5% LPG,gtl,Other,24000,209300,85,12,36,10
+FT GTL,52% dist; 23% kero; 24.5% naphtha; .5% LPG,gtl,LPG,24000,209300,85,12,36,10
+FT CTL,51% dist; 21% kero; 28% naphtha,ctl,Distillate_FuelOil,24000,260500,85,15,44,12
+FT CTL,51% dist; 21% kero; 28% naphtha,ctl,Jet_Kerosene,24000,260500,85,15,44,12
+FT CTL,51% dist; 21% kero; 28% naphtha,ctl,Other,24000,260500,85,15,44,12
