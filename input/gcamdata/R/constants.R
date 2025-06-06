@@ -558,6 +558,7 @@ energy.LIQUIDS_INDUSTRIAL_SECTORS <- c("in_industry_agriculture","in_electricity
                                        "in_industry_energy distribution","in_industry_feedstocks","in_industry_general",
                                        "in_industry_ownuse","in_industry_pipeline","net_industry_energy_iron and steel",
                                        "net_industry_energy transformation","net_gas works","in_heat")
+energy.LIQUIDS_EFW_SECTORS <- c("in_desalination")
 
 # Assumed base year heat price, used for calculating adjustment to non-energy costs of electricity
 # technologies with secondary output of heat in units of 1975$/EJ

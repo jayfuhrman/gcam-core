@@ -30,7 +30,7 @@ module_energy_L101.en_bal_IEA <- function(command, ...) {
              "L101.en_bal_EJ_ctry_Si_Fi_Yh_full",
              "L101.in_EJ_ctry_trn_Fi_Yh",
              "L101.in_EJ_ctry_bld_Fi_Yh",
-             "L101.liquids_imports_exports_EJ_R_Yh_full"))
+             "L101.detailed_refined_liquids_EJ_R_Yh"))
   } else if(command == driver.MAKE) {
 
     all_data <- list(...)[[1]]

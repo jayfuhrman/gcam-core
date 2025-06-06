@@ -1,0 +1,34 @@
+# File: IEA_product_fuel_liquids.csv
+# Title: Mapping from products in IEA energy balances to refined liquids product names
+# Units: NA
+# Source: International Energy Agency,2023, Energy Balances of OECD Countries 1960-2016 and Energy Balances of Non-OECD Countries 1971-2015.Oil shale and oil sands is a new fuel (only available in Estonia and Israel) that used to be called lignite. We map it to coal to stay consistent with prior versions of the energy balances.
+# Description: The conversion factors convert from the units in IEA Energy Balances (kilotonnes of oil equivalent, terajoules of heat, and gigawatt-hours of electricity) to exajoules, and all energy inputs are indicated as positive numbers. In the IEA Energy Balances, the standard adopted is that for energy production and transformation sectors, energy inputs are negative and energy outputs are positive, whereas for energy consumption sectors, energy inputs are positive. We don't use that convention in GCAM; all energy inputs (and outputs) are indicated as positive numbers.
+# Column types: cc 
+# ----------
+PRODUCT,fuel_category
+Crude/NGL/feedstocks (if no detail),Unrefined_Liquids
+Crude oil,Unrefined_Liquids
+Natural gas liquids,Unrefined_Liquids
+Refinery feedstocks,Unrefined_Liquids
+Additives/blending components,Unrefined_Liquids
+Other hydrocarbons,Unrefined_Liquids
+Refinery gas,Other
+Ethane,Other
+Liquefied petroleum gases (LPG),LPG
+Motor gasoline excl. biofuels,Gasoline
+Aviation gasoline,Gasoline
+Gasoline type jet fuel,Gasoline
+Kerosene type jet fuel excl. biofuels,Jet_Kerosene
+Other kerosene,Jet_Kerosene
+Gas/diesel oil excl. biofuels,Distillate_FuelOil
+Fuel oil,Residual_FuelOil
+Naphtha,Other
+White spirit & SBP,Other
+Lubricants,Other
+Bitumen,Heavy_Residual
+Paraffin waxes,Other
+Petroleum coke,Heavy_Residual
+Other oil products,Other
+Biogasoline,Gasoline
+Biodiesels,Distillate_FuelOil
+Other liquid biofuels,Gasoline

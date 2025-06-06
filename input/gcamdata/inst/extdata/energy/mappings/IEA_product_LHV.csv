@@ -1,0 +1,23 @@
+# File: IEA_product_LHV.csv
+# Title: Lower Heating Values from IEA 2016 Key World Energy Statistics p.59
+# Units: toe / tonne
+# Column types: ccnnnn
+# ----------
+product,gcam_mapping,OECD_Europe,OECD Americas,OECD Asia Oceania,Non-OECD
+Refinery gas,Other,1.182,1.149,1.149,1.149
+Ethane,Other,1.182,1.18,1.18,1.18
+Liquefied petroleum gases (LPG),LPG,1.099,1.13,1.139,1.13
+Motor gasoline excl. biofuels,Gasoline,1.051,1.07,1.065,1.07
+Aviation gasoline,Gasoline,1.051,1.07,1.065,1.07
+Gasoline type jet fuel,Gasoline,1.027,1.07,1.065,1.07
+Kerosene type jet fuel excl. biofuels,Jet_Kerosene,1.027,1.065,1.063,1.065
+Other kerosene,Jet_Kerosene,1.027,1.046,1.025,1.046
+Gas/diesel oil excl. biofuels,Distillate_FuelOil,1.017,1.017,1.017,1.034
+Fuel oil,Residual_FuelOil,0.955,0.96,1.017,0.96
+Naphtha,Other,1.051,1.075,1.032,1.075
+White spirit & SBP,Other,1.041,1.027,1.027,1.027
+Lubricants,Other,1.003,1.003,1.025,1.003
+Bitumen,Heavy_Residual,0.931,0.955,0.927,0.931
+Paraffin waxes,Other,0.955,0.955,0.955,0.955
+Petroleum coke,Heavy_Residual,0.764,0.764,0.807,0.764
+Other oil products,Other,0.955,0.955,0.955,0.955
