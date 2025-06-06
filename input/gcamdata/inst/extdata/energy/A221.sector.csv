@@ -1,0 +1,15 @@
+# File: A221.sector.csv
+# Title: Primary energy transformation supplysectors
+# Units: N/A
+# Description: Energy transformation supplysector units and logit exponents
+# Column types: cccciic 
+# ----------
+supplysector,output.unit,input.unit,price.unit,logit.exponent,traded,logit.type
+refining,EJ,EJ,1975$/GJ,-3,0,
+Distillate_FuelOil,EJ,EJ,1975$/GJ,-3,0,
+Residual_FuelOil,EJ,EJ,1975$/GJ,-3,0,
+Gasoline,EJ,EJ,1975$/GJ,-3,0,
+LPG,EJ,EJ,1975$/GJ,-3,0,
+Heavy_Residual,EJ,EJ,1975$/GJ,-3,0,
+Jet_Kerosene,EJ,EJ,1975$/GJ,-3,0,
+Other,EJ,EJ,1975$/GJ,-3,0,

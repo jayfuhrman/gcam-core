@@ -1,0 +1,26 @@
+# File: A221.globaltech_retirement.csv
+# Title: Primary energy transformation technology lifetimes and shutdown rates
+# Units: Years for lifetime and half.life; Unitless for shutdown.rate; steepness; median.shutdown.point; profit.shutdown.steepness
+# Comments: maximum lifetime of cohort. If no retirement function is used; the entire cohort is retired in this number of years.
+#           shutdown.rate: portion of cohort retired each year; used by the phased-shutdown-decider retirement function.
+#           half.life: number of years at which 50% of the cohort is retired; using the s-curve-shutdown-decider retirement function.
+#           steepness: shape parameter used by the s-curve-shutdown-decider retirement function.
+#           median.shutdown.point: profit-ratio at which 50% of the cohort is shut down for lack of profitability.
+#           profit.shutdown.steepness: shape parameter of profit-shutdown-decider function.
+# Column types: ccccininni
+# ----------
+supplysector,subsector,technology,year,lifetime,shutdown.rate,half.life,steepness,median.shutdown.point,profit.shutdown.steepness
+refining,crude oil refining,high Distillate_FuelOil,final-calibration-year,50,0.01,25,0.2,-0.1,10
+refining,crude oil refining,high Residual_FuelOil,final-calibration-year,50,0.01,25,0.2,-0.1,10
+refining,crude oil refining,high Gasoline,final-calibration-year,50,0.01,25,0.2,-0.1,10
+refining,crude oil refining,high LPG,final-calibration-year,50,0.01,25,0.2,-0.1,10
+refining,crude oil refining,high Jet_Kerosene,final-calibration-year,50,0.01,25,0.2,-0.1,10
+refining,crude oil refining,high Heavy_Residual,final-calibration-year,50,0.01,25,0.2,-0.1,10
+refining,crude oil refining,high Other,final-calibration-year,50,0.01,25,0.2,-0.1,10
+refining,crude oil refining,high Distillate_FuelOil,initial-future-year,50,0.01,25,0.3,-0.1,10
+refining,crude oil refining,high Residual_FuelOil,initial-future-year,50,0.01,25,0.3,-0.1,10
+refining,crude oil refining,high Gasoline,initial-future-year,50,0.01,25,0.3,-0.1,10
+refining,crude oil refining,high LPG,initial-future-year,50,0.01,25,0.3,-0.1,10
+refining,crude oil refining,high Jet_Kerosene,initial-future-year,50,0.01,25,0.3,-0.1,10
+refining,crude oil refining,high Heavy_Residual,initial-future-year,50,0.01,25,0.3,-0.1,10
+refining,crude oil refining,high Other,initial-future-year,50,0.01,25,0.3,-0.1,10

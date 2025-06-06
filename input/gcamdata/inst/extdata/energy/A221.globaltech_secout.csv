@@ -1,0 +1,55 @@
+# File: A221.globaltech_secout.csv
+# Title: Slate of outputs of refined liquids production technologies
+# Units: NA
+# Column types: cccccnnnn
+# ----------
+sec.output.type,supplysector,subsector,technology,fractional.secondary.output,1971,2015,2020,2100
+res-secondary-output,refining,crude oil refining,high LPG,LPG_crude oil,1,1,0.47,0.47
+secondary-output,refining,crude oil refining,high LPG,Gasoline_crude oil,0,0,0.15,0.15
+res-secondary-output,refining,crude oil refining,high LPG,Jet_Kerosene_crude oil,0,0,0.01,0.01
+res-secondary-output,refining,crude oil refining,high LPG,Distillate_FuelOil_crude oil,0,0,0.23,0.23
+res-secondary-output,refining,crude oil refining,high LPG,Residual_FuelOil_crude oil,0,0,0,0
+res-secondary-output,refining,crude oil refining,high LPG,Heavy_Residual_crude oil,0,0,0.03,0.03
+res-secondary-output,refining,crude oil refining,high LPG,Other_crude oil,0,0,0.11,0.11
+res-secondary-output,refining,crude oil refining,high Gasoline,LPG_crude oil,0,0,0.02,0.02
+secondary-output,refining,crude oil refining,high Gasoline,Gasoline_crude oil,1,1,0.69,0.69
+res-secondary-output,refining,crude oil refining,high Gasoline,Jet_Kerosene_crude oil,0,0,0.01,0.01
+res-secondary-output,refining,crude oil refining,high Gasoline,Distillate_FuelOil_crude oil,0,0,0.19,0.19
+res-secondary-output,refining,crude oil refining,high Gasoline,Residual_FuelOil_crude oil,0,0,0,0
+res-secondary-output,refining,crude oil refining,high Gasoline,Heavy_Residual_crude oil,0,0,0.02,0.02
+res-secondary-output,refining,crude oil refining,high Gasoline,Other_crude oil,0,0,0.07,0.07
+res-secondary-output,refining,crude oil refining,high Jet_Kerosene,LPG_crude oil,0,0,0.01,0.01
+secondary-output,refining,crude oil refining,high Jet_Kerosene,Gasoline_crude oil,0,0,0.16,0.16
+res-secondary-output,refining,crude oil refining,high Jet_Kerosene,Jet_Kerosene_crude oil,1,1,0.78,0.78
+res-secondary-output,refining,crude oil refining,high Jet_Kerosene,Distillate_FuelOil_crude oil,0,0,0,0
+res-secondary-output,refining,crude oil refining,high Jet_Kerosene,Residual_FuelOil_crude oil,0,0,0,0
+res-secondary-output,refining,crude oil refining,high Jet_Kerosene,Heavy_Residual_crude oil,0,0,0,0
+res-secondary-output,refining,crude oil refining,high Jet_Kerosene,Other_crude oil,0,0,0.05,0.05
+res-secondary-output,refining,crude oil refining,high Distillate_FuelOil,LPG_crude oil,0,0,0.01,0.01
+secondary-output,refining,crude oil refining,high Distillate_FuelOil,Gasoline_crude oil,0,0,0.16,0.16
+res-secondary-output,refining,crude oil refining,high Distillate_FuelOil,Jet_Kerosene_crude oil,0,0,0,0
+res-secondary-output,refining,crude oil refining,high Distillate_FuelOil,Distillate_FuelOil_crude oil,1,1,0.75,0.75
+res-secondary-output,refining,crude oil refining,high Distillate_FuelOil,Residual_FuelOil_crude oil,0,0,0.03,0.03
+res-secondary-output,refining,crude oil refining,high Distillate_FuelOil,Heavy_Residual_crude oil,0,0,0,0
+res-secondary-output,refining,crude oil refining,high Distillate_FuelOil,Other_crude oil,0,0,0.05,0.05
+res-secondary-output,refining,crude oil refining,high Residual_FuelOil,LPG_crude oil,0,0,0,0
+secondary-output,refining,crude oil refining,high Residual_FuelOil,Gasoline_crude oil,0,0,0.04,0.04
+res-secondary-output,refining,crude oil refining,high Residual_FuelOil,Jet_Kerosene_crude oil,0,0,0.1,0.1
+res-secondary-output,refining,crude oil refining,high Residual_FuelOil,Distillate_FuelOil_crude oil,0,0,0.18,0.18
+res-secondary-output,refining,crude oil refining,high Residual_FuelOil,Residual_FuelOil_crude oil,1,1,0.68,0.68
+res-secondary-output,refining,crude oil refining,high Residual_FuelOil,Heavy_Residual_crude oil,0,0,0,0
+res-secondary-output,refining,crude oil refining,high Residual_FuelOil,Other_crude oil,0,0,0,0
+res-secondary-output,refining,crude oil refining,high Heavy_Residual,LPG_crude oil,0,0,0.04,0.04
+secondary-output,refining,crude oil refining,high Heavy_Residual,Gasoline_crude oil,0,0,0.12,0.12
+res-secondary-output,refining,crude oil refining,high Heavy_Residual,Jet_Kerosene_crude oil,0,0,0.01,0.01
+res-secondary-output,refining,crude oil refining,high Heavy_Residual,Distillate_FuelOil_crude oil,0,0,0.31,0.31
+res-secondary-output,refining,crude oil refining,high Heavy_Residual,Residual_FuelOil_crude oil,0,0,0,0
+res-secondary-output,refining,crude oil refining,high Heavy_Residual,Heavy_Residual_crude oil,1,1,0.45,0.45
+res-secondary-output,refining,crude oil refining,high Heavy_Residual,Other_crude oil,0,0,0.07,0.07
+res-secondary-output,refining,crude oil refining,high Other,LPG_crude oil,0,0,0,0
+secondary-output,refining,crude oil refining,high Other,Gasoline_crude oil,0,0,0,0
+res-secondary-output,refining,crude oil refining,high Other,Jet_Kerosene_crude oil,0,0,0.01,0.01
+res-secondary-output,refining,crude oil refining,high Other,Distillate_FuelOil_crude oil,0,0,0.23,0.23
+res-secondary-output,refining,crude oil refining,high Other,Residual_FuelOil_crude oil,0,0,0,0
+res-secondary-output,refining,crude oil refining,high Other,Heavy_Residual_crude oil,0,0,0.03,0.03
+res-secondary-output,refining,crude oil refining,high Other,Other_crude oil,1,1,0.73,0.73

@@ -1,0 +1,40 @@
+# File: A221.stubtech_regional_output.csv
+# Title: Atmospheric crude product yields for regional residual oil production
+# Units: NA
+# Description: True Boiling Point (TBP) crude cuts to use for the High Residual_FuelOil technology
+# Source: Table 16.2 in the Springer Handbook of Petroleum Technology; Individual assays
+# Column types: ccnnnnnnn
+# ----------
+region,crude.type,LPG,Gasoline,Jet_Kerosene,Distillate_FuelOil,Residual_FuelOil,Heavy_Residual,Other
+Africa_Eastern,WTI-Cushing,.03,.24,.15,.25,.33,0,0
+Africa_Northern,Roncador Heavy,,,,,,,
+Africa_Southern,Roncador Heavy,,,,,,,
+Africa_Western,WTI-Cushing,.03,.24,.15,.25,.33,0,0
+Argentina,Roncador Heavy,,,,,,,
+Australia_NZ,Brent,.03,.32,.10,.15,.40,0,0
+Brazil,Brent,.03,.32,.10,.15,.40,0,0
+Canada,Roncador Heavy,,,,,,,
+Central America and Caribbean,Roncador Heavy,,,,,,,
+Central Asia,Bonny Lt,0.01,0.29,0.13,0.22,0.35,0,0
+China,Bonny Lt,0.01,0.29,0.13,0.22,0.35,0,0
+Colombia,Brent,.03,.32,.10,.15,.40,0,0
+EU-12,Brent,.03,.32,.10,.15,.40,0,0
+EU-15,Bonny Lt,0.01,0.29,0.13,0.22,0.35,0,0
+Europe_Eastern,Roncador Heavy,,,,,,,
+Europe_Non_EU,WTI-Cushing,.03,.24,.15,.25,.33,0,0
+European Free Trade Association,Brent,.03,.32,.10,.15,.40,0,0
+India,Bonny Lt,0.01,0.29,0.13,0.22,0.35,0,0
+Indonesia,Brent,.03,.32,.10,.15,.40,0,0
+Japan,Roncador Heavy,,,,,,,
+Mexico,Roncador Heavy,,,,,,,
+Middle East,Roncador Heavy,,,,,,,
+Pakistan,Roncador Heavy,,,,,,,
+Russia,Roncador Heavy,,,,,,,
+South Africa,Bonny Lt,0.01,0.29,0.13,0.22,0.35,0,0
+South America_Northern,Brent,.03,.32,.10,.15,.40,0,0
+South America_Southern,Bonny Lt,0.01,0.29,0.13,0.22,0.35,0,0
+South Asia,Roncador Heavy,,,,,,,
+South Korea,WTI-Cushing,.03,.24,.15,.25,.33,0,0
+Southeast Asia,WTI-Cushing,.03,.24,.15,.25,.33,0,0
+Taiwan,WTI-Cushing,.03,.24,.15,.25,.33,0,0
+USA,Roncador Heavy,,,,,,,

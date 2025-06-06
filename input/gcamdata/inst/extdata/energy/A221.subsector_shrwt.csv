@@ -1,0 +1,15 @@
+# File: A221.subsector_shrwt.csv
+# Title: Primary energy transformation subsector shareweights
+# Units: N/A
+# Description: shareweights and fillout years for subsectors 
+# Column types: ccccnn 
+# ----------
+supplysector,subsector,year.fillout,year,traded,share.weight
+refining,crude oil refining,start-year,,0,1
+Distillate_FuelOil,Distillate_FuelOil,start-year,,0,1
+Residual_FuelOil,Residual_FuelOil,start-year,,0,1
+Gasoline,Gasoline,start-year,,0,1
+LPG,LPG,start-year,,0,1
+Heavy_Residual,Heavy_Residual,start-year,,0,1
+Jet_Kerosene,Jet_Kerosene,start-year,,0,1
+Other,Other,start-year,,0,1

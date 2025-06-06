@@ -1,0 +1,22 @@
+# File: A221.globaltech_shrwt.csv
+# Title: Primary energy transformation default technology shareweights
+# Units: N/A
+# Description: Shareweights of transformation technologies 
+# Column types: cccnnnnnn 
+# ----------
+supplysector,subsector,technology,1971,2015,2020,2025,2050,2100
+refining,crude oil refining,high Distillate_FuelOil,1,1,1,1,1,1
+refining,crude oil refining,high Residual_FuelOil,1,1,1,1,1,1
+refining,crude oil refining,high Gasoline,1,1,1,1,1,1
+refining,crude oil refining,high LPG,1,1,1,1,1,1
+refining,crude oil refining,high Jet_Kerosene,1,1,1,1,1,1
+refining,crude oil refining,high Heavy_Residual,1,1,1,1,1,1
+refining,crude oil refining,high Other,1,1,1,1,1,1
+Distillate_FuelOil,Distillate_FuelOil,crude oil,1,1,1,1,1,1
+Residual_FuelOil,Residual_FuelOil,crude oil,1,1,1,1,1,1
+Gasoline,Gasoline,crude oil,1,1,1,1,1,1
+LPG,LPG,crude oil,1,1,1,1,1,1
+Heavy_Residual,Heavy_Residual,crude oil,1,1,1,1,1,1
+Jet_Kerosene,Jet_Kerosene,crude oil,1,1,1,1,1,1
+Other,Other,crude oil,1,1,1,1,1,1
+
