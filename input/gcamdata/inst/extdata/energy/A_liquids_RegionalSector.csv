@@ -1,0 +1,15 @@
+# File: A_liquids_RegionalSector.csv
+# Title: Supplysector assumptions for regional refined liquids markets (including logit exponent for subsector competition)
+# Units: Various
+# Comments: These sectors compete domestic production and imports from the globally traded markets
+# Source: NA
+# Column types: ccccnc
+# ----------
+supplysector,output.unit,input.unit,price.unit,logit.exponent,logit.type
+regional Distillate_FuelOil,EJ,EJ,1975$/GJ,-3,
+regional Residual_FuelOil,EJ,EJ,1975$/GJ,-3,
+regional Gasoline,EJ,EJ,1975$/GJ,-3,
+regional Heavy_Residual,EJ,EJ,1975$/GJ,-3,
+regional Jet_Kerosene,EJ,EJ,1975$/GJ,-3,
+regional LPG,EJ,EJ,1975$/GJ,-3,
+regional Other,EJ,EJ,1975$/GJ,-3,

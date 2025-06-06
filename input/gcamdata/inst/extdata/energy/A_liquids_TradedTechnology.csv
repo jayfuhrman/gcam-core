@@ -1,0 +1,15 @@
+# File: A_liquids_TradedTechnology.csv
+# Title: Technology-level assumptions of traded refined liquids markets
+# Units: Various
+# Comments: for traded fuels, each subsector has only one technology; there is no technology-level competition
+# Source: NA
+# Column types: ccccnnni
+# ----------
+supplysector,subsector,technology,minicam.energy.input,coefficient,input.cost,share.weight,traded
+traded Distillate_FuelOil,traded Distillate_FuelOil,traded Distillate_FuelOil,Distillate_FuelOil,1,0,1,1
+traded Residual_FuelOil,traded Residual_FuelOil,traded Residual_FuelOil,Residual_FuelOil,1,0,1,1
+traded Gasoline,traded Gasoline,traded Gasoline,Gasoline,1,0,1,1
+traded Heavy_Residual,traded Heavy_Residual,traded Heavy_Residual,Heavy_Residual,1,0,1,1
+traded Jet_Kerosene,traded Jet_Kerosene,traded Jet_Kerosene,Jet_Kerosene,1,0,1,1
+traded LPG,traded LPG,traded LPG,LPG,1,0,1,1
+traded Other,traded Other,traded Other,Other,1,0,1,1

@@ -1,0 +1,15 @@
+# File: A_liquids_TradedSector.csv
+# Title: Supplysector assumptions for traded refined liquids markets (including logit exponent for subsector competition)
+# Units: Various
+# Comments: These sectors compete different regions in supplying the pool of globally traded refined liquids
+# Source: NA
+# Column types: ccccinc
+# ----------
+supplysector,output.unit,input.unit,price.unit,traded,logit.exponent,logit.type
+traded Distillate_FuelOil,EJ,EJ,1975$/GJ,1,-6,
+traded Residual_FuelOil,EJ,EJ,1975$/GJ,1,-6,
+traded Gasoline,EJ,EJ,1975$/GJ,1,-6,
+traded Heavy_Residual,EJ,EJ,1975$/GJ,1,-6,
+traded Jet_Kerosene,EJ,EJ,1975$/GJ,1,-6,
+traded LPG,EJ,EJ,1975$/GJ,1,-6,
+traded Other,EJ,EJ,1975$/GJ,1,-6,

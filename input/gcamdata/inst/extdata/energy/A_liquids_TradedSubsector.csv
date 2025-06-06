@@ -1,0 +1,15 @@
+# File: A_liquids_TradedSubsector.csv
+# Title: Subsector assumptions for traded refined liquids markets
+# Units: Various
+# Comments: These subsectors' shareweights evolve over time. They are calibrated to 2015 shares, but become 1 in some to.year following an interpolation.function
+# Source: NA
+# Column types: ccncncccncic
+# ----------
+supplysector,subsector,logit.exponent,year.fillout,share.weight,apply.to,from.year,to.year,to.value,interpolation.function,traded,logit.type
+traded Distillate_FuelOil,traded Distillate_FuelOil,-6,start-year,1,share-weight,final-calibration-year,2300,1,s-curve,1,absolute-cost-logit
+traded Residual_FuelOil,traded Residual_FuelOil,-6,start-year,1,share-weight,final-calibration-year,2300,1,s-curve,1,absolute-cost-logit
+traded Gasoline,traded Gasoline,-6,start-year,1,share-weight,final-calibration-year,2300,1,s-curve,1,absolute-cost-logit
+traded Heavy_Residual,traded Heavy_Residual,-6,start-year,1,share-weight,final-calibration-year,2300,1,s-curve,1,absolute-cost-logit
+traded Jet_Kerosene,traded Jet_Kerosene,-6,start-year,1,share-weight,final-calibration-year,2300,1,s-curve,1,absolute-cost-logit
+traded LPG,traded LPG,-6,start-year,1,share-weight,final-calibration-year,2300,1,s-curve,1,absolute-cost-logit
+traded Other,traded Other,-6,start-year,1,share-weight,final-calibration-year,2300,1,s-curve,1,absolute-cost-logit

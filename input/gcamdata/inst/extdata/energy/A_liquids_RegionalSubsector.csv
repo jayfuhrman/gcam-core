@@ -1,0 +1,22 @@
+# File: A_liquids_RegionalSubsector.csv
+# Title: Subsector assumptions for regional refined liquids markets
+# Units: Various
+# Comments: These subsectors' shareweights evolve over time. They are calibrated to 2015 shares, but become 1 in some to.year following an interpolation.function
+# Source: NA
+# Column types: ccncncccncc
+# ----------
+supplysector,subsector,logit.exponent,year.fillout,share.weight,apply.to,from.year,to.year,to.value,interpolation.function,logit.type
+regional Distillate_FuelOil,domestic Distillate_FuelOil,-6,start-year,1,share-weight,final-calibration-year,2300,1,s-curve,absolute-cost-logit
+regional Distillate_FuelOil,imported Distillate_FuelOil,-6,start-year,1,share-weight,final-calibration-year,2300,1,s-curve,absolute-cost-logit
+regional Residual_FuelOil,domestic Residual_FuelOil,-6,start-year,1,share-weight,final-calibration-year,2300,1,s-curve,absolute-cost-logit
+regional Residual_FuelOil,imported Residual_FuelOil,-6,start-year,1,share-weight,final-calibration-year,2300,1,s-curve,absolute-cost-logit
+regional Gasoline,domestic Gasoline,-6,start-year,1,share-weight,final-calibration-year,2300,1,s-curve,absolute-cost-logit
+regional Gasoline,imported Gasoline,-6,start-year,1,share-weight,final-calibration-year,2300,1,s-curve,absolute-cost-logit
+regional Heavy_Residual,domestic Heavy_Residual,-6,start-year,1,share-weight,final-calibration-year,2300,1,s-curve,absolute-cost-logit
+regional Heavy_Residual,imported Heavy_Residual,-6,start-year,1,share-weight,final-calibration-year,2300,1,s-curve,absolute-cost-logit
+regional Jet_Kerosene,domestic Jet_Kerosene,-6,start-year,1,share-weight,final-calibration-year,2300,1,s-curve,absolute-cost-logit
+regional Jet_Kerosene,imported Jet_Kerosene,-6,start-year,1,share-weight,final-calibration-year,2300,1,s-curve,absolute-cost-logit
+regional LPG,domestic LPG,-6,start-year,1,share-weight,final-calibration-year,2300,1,s-curve,absolute-cost-logit
+regional LPG,imported LPG,-6,start-year,1,share-weight,final-calibration-year,2300,1,s-curve,absolute-cost-logit
+regional Other,domestic Other,-6,start-year,1,share-weight,final-calibration-year,2300,1,s-curve,absolute-cost-logit
+regional Other,imported Other,-6,start-year,1,share-weight,final-calibration-year,2300,1,s-curve,absolute-cost-logit

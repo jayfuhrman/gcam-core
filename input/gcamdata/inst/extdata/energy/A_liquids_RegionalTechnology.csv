@@ -1,0 +1,22 @@
+# File: A_liquids_RegionalTechnology.csv
+# Title: Technology-level assumptions of regional refined liquids markets
+# Units: Various
+# Comments: Subsectors capture competition between domestic and imported resources; there is no technology competition.
+# Source: NA
+# Column types: ccccnnnc
+# ----------
+supplysector,subsector,technology,minicam.energy.input,coefficient,input.cost,share.weight,market.name
+regional Distillate_FuelOil,domestic Distillate_FuelOil,domestic Distillate_FuelOil,Distillate_FuelOil,1,0,1,regional
+regional Distillate_FuelOil,imported Distillate_FuelOil,imported Distillate_FuelOil,traded Distillate_FuelOil,1,0,1,USA
+regional Residual_FuelOil,domestic Residual_FuelOil,domestic Residual_FuelOil,Residual_FuelOil,1,0,1,regional
+regional Residual_FuelOil,imported Residual_FuelOil,imported Residual_FuelOil,traded Residual_FuelOil,1,0,1,USA
+regional Gasoline,domestic Gasoline,domestic Gasoline,Gasoline,1,0,1,regional
+regional Gasoline,imported Gasoline,imported Gasoline,traded Gasoline,1,0,1,USA
+regional Heavy_Residual,domestic Heavy_Residual,domestic Heavy_Residual,Heavy_Residual,1,0,1,regional
+regional Heavy_Residual,imported Heavy_Residual,imported Heavy_Residual,traded Heavy_Residual,1,0,1,USA
+regional Jet_Kerosene,domestic Jet_Kerosene,domestic Jet_Kerosene,Jet_Kerosene,1,0,1,regional
+regional Jet_Kerosene,imported Jet_Kerosene,imported Jet_Kerosene,traded Jet_Kerosene,1,0,1,USA
+regional LPG,domestic LPG,domestic LPG,LPG,1,0,1,regional
+regional LPG,imported LPG,imported LPG,traded LPG,1,0,1,USA
+regional Other,domestic Other,domestic Other,Other,1,0,1,regional
+regional Other,imported Other,imported Other,traded Other,1,0,1,USA
