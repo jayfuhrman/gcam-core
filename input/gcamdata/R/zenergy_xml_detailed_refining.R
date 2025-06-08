@@ -18,6 +18,7 @@ module_energy_detailed_refining_xml <- function(command, ...) {
              "L2221.SubsectorLogit_en",
              "L2221.SubsectorShrwtFllt_en",
              "L2221.SubsectorInterp_en",
+             "L2221.StubTechCoef_refining",
              "L2221.GlobalTechCoef_en",
              "L2221.GlobalTechCost_en",
              "L2221.GlobalTechFractSecOut_en",
@@ -70,6 +71,7 @@ module_energy_detailed_refining_xml <- function(command, ...) {
     L2221.GlobalTechShutdown <- get_data(all_data,"L2221.GlobalTechShutdown")
     L2221.StubTech_en <- get_data(all_data, "L2221.StubTech_en")
     L2221.StubTechShrwt <- get_data(all_data, "L2221.StubTechShrwt")
+    L2221.StubTechCoef_refining <- get_data(all_data, "L2221.StubTechCoef_refining")
 
     L2221.GlobalTechInputPmult <- L2221.GlobalTechCoef_en %>%
       filter(minicam.energy.input == 'refining') %>%
@@ -100,7 +102,7 @@ module_energy_detailed_refining_xml <- function(command, ...) {
       add_xml_data(L2221.SubsectorInterp_en, "SubsectorInterp") %>%
       add_xml_data(L2221.GlobalTechCoef_en %>%
                    #  filter(sector.name %in% c('crude oil refining','biorefining')) %>%
-                     filter(sector.name == 'refining') %>%
+                     filter(sector.name == "oil refining") %>%
                      rename(profit.rate.technology = technology) %>%
                      select(LEVEL2_DATA_NAMES[['GlobalTechProfitRate']]),"GlobalTechProfitRate") %>%
       add_xml_data(L2221.GlobalTechInputPmult, "GlobalTechInputPMult") %>%
@@ -113,6 +115,7 @@ module_energy_detailed_refining_xml <- function(command, ...) {
       add_xml_data(L2221.GlobalTechInterp, "GlobalTechInterpTo") %>%
       add_xml_data(L2221.GlobalTechShrwt, "GlobalTechShrwt") %>%
       add_xml_data(L2221.GlobalTechCoef_en, "GlobalTechCoef") %>%
+      add_xml_data(L2221.StubTechCoef_refining, "StubTechCoef") %>%
       add_xml_data(L2221.GlobalTechCost_en, "GlobalTechCost") %>%
       add_xml_data(L2221.GlobalTechSCurve, "GlobalTechSCurve") %>%
       add_xml_data(L2221.GlobalTechProfitShutdown, "GlobalTechProfitShutdown") %>%
@@ -141,7 +144,8 @@ module_energy_detailed_refining_xml <- function(command, ...) {
                      "L2221.SectorZeroProfitMarketName",
                      "L2221.GlobalTechShutdown",
                      "L2221.ResTechShrwt",
-                     "L2221.StubTechSecondaryOutput") ->
+                     "L2221.StubTechSecondaryOutput",
+                     "L2221.StubTechCoef_refining") ->
       detailed_refining.xml
 
     return_data(detailed_refining.xml)

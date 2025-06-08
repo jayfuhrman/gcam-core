@@ -8,13 +8,14 @@
 #' @param ... other optional parameters, depending on command
 #' @return Depends on \code{command}: either a vector of required inputs,
 #' a vector of output names, or (if \code{command} is "MAKE") all
-#' the generated outputs: \code{LB1092.Tradebalance_refined_liquids_EJ_R_Y}, \code{LB1092.GCAM_REG_LIQUIDS_PROD_agg}.
+#' the generated outputs: \code{LB1092.Tradebalance_refined_liquids_EJ_R_Y}, \code{LB1092.GCAM_REG_LIQUIDS_PROD_agg}, \code{L1093.IO_R_oilrefining_F_Yh}.
 #' @importFrom dplyr filter dplyr::if_else mutate select distinct coalesce
 #' @importFrom tidyr gather spread
 #' @author Siddarth Durga, Maggie Liu (Jan 2025)
 module_energy_L1093.refined_liquids_GrossTrade <- function(command, ...){
   if(command == driver.DECLARE_INPUTS) {
     return(c(FILE = "common/GCAM_region_names",
+             "L122.in_EJ_R_refining_F_Yh",
              "L122.out_EJ_R_refining_F_Yh",
              "L101.detailed_refined_liquids_EJ_R_Yh",
              "L1012.en_bal_EJ_R_Si_Fi_Yh",
@@ -24,7 +25,8 @@ module_energy_L1093.refined_liquids_GrossTrade <- function(command, ...){
              FILE = "energy/Resourcetradeearth-RefinedLiquids-2015"))
   } else if(command == driver.DECLARE_OUTPUTS) {
     return(c("LB1092.Tradebalance_refined_liquids_EJ_R_Y",
-             "LB1092.GCAM_REG_LIQUIDS_PROD_agg"))
+             "LB1092.GCAM_REG_LIQUIDS_PROD_agg",
+             "L1093.IO_R_oilrefining_F_Yh"))
   } else if(command == driver.MAKE) {
 
     # Silence data-masked variable package check
@@ -40,6 +42,7 @@ module_energy_L1093.refined_liquids_GrossTrade <- function(command, ...){
     GCAM_region_iso_mapping <- get_data(all_data, "energy/mappings/Liquids_Trade_GCAM_regID", strip_attributes = TRUE)
     IEA_product_fuel_liquids <- get_data(all_data,"energy/mappings/IEA_product_fuel_liquids")
     L122.out_EJ_R_refining_F_Yh <- get_data(all_data, "L122.out_EJ_R_refining_F_Yh", strip_attributes = TRUE)
+    L122.in_EJ_R_refining_F_Yh <-  get_data(all_data,"L122.in_EJ_R_refining_F_Yh", strip_attributes = TRUE)
     L101.detailed_refined_liquids_EJ_R_Yh <- get_data(all_data, "L101.detailed_refined_liquids_EJ_R_Yh", strip_attributes = TRUE)
     L1012.en_bal_EJ_R_Si_Fi_Yh <- get_data(all_data, "L1012.en_bal_EJ_R_Si_Fi_Yh", strip_attributes = TRUE)
     convert_lhv <- get_data(all_data, "energy/mappings/IEA_product_LHV", strip_attributes = TRUE)
@@ -400,7 +403,6 @@ module_energy_L1093.refined_liquids_GrossTrade <- function(command, ...){
               exports_reval = exports_reval * scaling,
               domestic_supply = production_reval - exports_reval)
 
-
     #===========================================================================
     # Re-calibrate crude-based refined liquids production
     #===========================================================================
@@ -411,6 +413,20 @@ module_energy_L1093.refined_liquids_GrossTrade <- function(command, ...){
        rename(value=production_reval) %>%
        mutate(value=round(value,energy.DIGITS_CALOUTPUT)) %>%
        mutate(metric="production") -> crude_liquids_production
+
+    #Calculate regional crude oil to refined liquids IO coefficients
+    L122.in_EJ_R_refining_F_Yh<- L122.in_EJ_R_refining_F_Yh %>%
+      left_join(GCAM_region_names,by=c("GCAM_region_ID"))%>%
+      select(-GCAM_region_ID)
+
+    L1093.IO_R_oilrefining_F_Yh <- crude_liquids_production %>%
+      group_by(year,region)%>%
+      summarize(value=sum(value))%>%
+      ungroup()%>%
+      left_join(L122.in_EJ_R_refining_F_Yh %>%
+                  filter(sector=="oil refining"),by=c("year","region"))%>%
+      mutate(IO_coeff=value.y/value.x)%>%
+      select(-value.y,-value.x)#has to be oil/total liquids
 
     #liquids imports
      liquids_trade_balance_orig_scaled%>%
@@ -466,8 +482,19 @@ module_energy_L1093.refined_liquids_GrossTrade <- function(command, ...){
                       "L1012.en_bal_EJ_R_Si_Fi_Yh",
                       "common/GCAM_region_names") -> LB1092.GCAM_REG_LIQUIDS_PROD_agg
 
+     L1093.IO_R_oilrefining_F_Yh %>%
+       add_title("Crude-based refined liquids production IO coefficients by region / year") %>%
+       add_units("EJ") %>%
+       add_comments("Determined from IEA energy balances data") %>%
+       add_precursors("L122.out_EJ_R_refining_F_Yh",
+                      "L101.detailed_refined_liquids_EJ_R_Yh",
+                      "L1012.en_bal_EJ_R_Si_Fi_Yh",
+                      "L122.in_EJ_R_refining_F_Yh",
+                      "common/GCAM_region_names") -> L1093.IO_R_oilrefining_F_Yh
+
     return_data(LB1092.Tradebalance_refined_liquids_EJ_R_Y,
-                 LB1092.GCAM_REG_LIQUIDS_PROD_agg)
+                 LB1092.GCAM_REG_LIQUIDS_PROD_agg,
+                L1093.IO_R_oilrefining_F_Yh)
 
   } else {
     stop("Unknown command")
