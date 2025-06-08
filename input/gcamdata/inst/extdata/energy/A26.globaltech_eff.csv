@@ -16,6 +16,19 @@ elect_td_trn,elect_td_trn,elect_td_trn,electricity_net_ownuse,1,1,1
 gas pipeline,gas pipeline,gas pipeline,gas processing,1,1,1
 wholesale gas,wholesale gas,wholesale gas,gas pipeline,1,1,1
 delivered gas,delivered gas,delivered gas,gas pipeline,1,1,1
-refined liquids enduse,refined liquids enduse,refined liquids enduse,refining,1,1,1
-refined liquids industrial,refined liquids industrial,refined liquids industrial,refining,1,1,1
+refined liquids enduse,refined liquids enduse,refined liquids gasoline,regional Gasoline,1,1,1
+refined liquids enduse,refined liquids enduse,refined liquids distillate_fueloil,regional Distillate_FuelOil,1,1,1
+refined liquids enduse,refined liquids enduse,refined liquids residual_fueloil,regional Residual_FuelOil,1,1,1
+refined liquids enduse,refined liquids enduse,refined liquids lpg,regional LPG,1,1,1
+refined liquids enduse,refined liquids enduse,refined liquids heavy_residual,regional Heavy_Residual,1,1,1
+refined liquids enduse,refined liquids enduse,refined liquids jet_kerosene,regional Jet_Kerosene,1,1,1
+refined liquids enduse,refined liquids enduse,refined liquids other,regional Other,1,1,1
+refined liquids enduse,refined liquids enduse,refined liquids ft,refining,1,1,1
+refined liquids industrial,refined liquids industrial,refined liquids gasoline,regional Gasoline,1,1,1
+refined liquids industrial,refined liquids industrial,refined liquids distillate_fueloil,regional Distillate_FuelOil,1,1,1
+refined liquids industrial,refined liquids industrial,refined liquids residual_fueloil,regional Residual_FuelOil,1,1,1
+refined liquids industrial,refined liquids industrial,refined liquids lpg,regional LPG,1,1,1
+refined liquids industrial,refined liquids industrial,refined liquids heavy_residual,regional Heavy_Residual,1,1,1
+refined liquids industrial,refined liquids industrial,refined liquids jet_kerosene,regional Jet_Kerosene,1,1,1
+refined liquids industrial,refined liquids industrial,refined liquids other,regional Other,1,1,1
 backup_electricity,hydrogen,hydrogen combustion turbine,H2 industrial,0.377,0.377,0.428

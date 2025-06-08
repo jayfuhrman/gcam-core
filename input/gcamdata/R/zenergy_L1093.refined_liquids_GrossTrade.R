@@ -8,7 +8,7 @@
 #' @param ... other optional parameters, depending on command
 #' @return Depends on \code{command}: either a vector of required inputs,
 #' a vector of output names, or (if \code{command} is "MAKE") all
-#' the generated outputs: \code{LB1092.Tradebalance_refined_liquids_EJ_R_Y}, \code{LB1092.GCAM_REG_LIQUIDS_PROD_agg}, \code{L1093.IO_R_oilrefining_F_Yh}.
+#' the generated outputs: \code{LB1092.Tradebalance_refined_liquids_EJ_R_Y}, \code{L1093.en_bal_EJ_liquids_enduse_total}, \code{L1093.out_EJ_R_bioliquids_ctl_gtl_prod_F_Yh}, \code{L1093.en_bal_EJ_liquids_industrial_total}, \code{LB1092.GCAM_REG_LIQUIDS_PROD_agg}, \code{L1093.IO_R_oilrefining_F_Yh}.
 #' @importFrom dplyr filter dplyr::if_else mutate select distinct coalesce
 #' @importFrom tidyr gather spread
 #' @author Siddarth Durga, Maggie Liu (Jan 2025)
@@ -26,6 +26,9 @@ module_energy_L1093.refined_liquids_GrossTrade <- function(command, ...){
   } else if(command == driver.DECLARE_OUTPUTS) {
     return(c("LB1092.Tradebalance_refined_liquids_EJ_R_Y",
              "LB1092.GCAM_REG_LIQUIDS_PROD_agg",
+             "L1093.en_bal_EJ_liquids_enduse_total",
+             "L1093.en_bal_EJ_liquids_industrial_total",
+             "L1093.out_EJ_R_bioliquids_ctl_gtl_prod_F_Yh",
              "L1093.IO_R_oilrefining_F_Yh"))
   } else if(command == driver.MAKE) {
 
@@ -482,6 +485,33 @@ module_energy_L1093.refined_liquids_GrossTrade <- function(command, ...){
                       "L1012.en_bal_EJ_R_Si_Fi_Yh",
                       "common/GCAM_region_names") -> LB1092.GCAM_REG_LIQUIDS_PROD_agg
 
+     harmonized_liquids_enduse %>%
+       add_title("Conventional refined liquids enduse consumption by region / year / type.") %>%
+       add_units("EJ") %>%
+       add_comments("Determined from IEA energy balances data") %>%
+       add_precursors("L122.out_EJ_R_refining_F_Yh",
+                      "L101.detailed_refined_liquids_EJ_R_Yh",
+                      "L1012.en_bal_EJ_R_Si_Fi_Yh",
+                      "common/GCAM_region_names") -> L1093.en_bal_EJ_liquids_enduse_total
+
+     harmonized_liquids_industrial %>%
+       add_title("Conventional refined liquids industrial consumption by region / year / type.") %>%
+       add_units("EJ") %>%
+       add_comments("Determined from IEA energy balances data") %>%
+       add_precursors("L122.out_EJ_R_refining_F_Yh",
+                      "L101.detailed_refined_liquids_EJ_R_Yh",
+                      "L1012.en_bal_EJ_R_Si_Fi_Yh",
+                      "common/GCAM_region_names") -> L1093.en_bal_EJ_liquids_industrial_total
+
+     L1093.out_EJ_R_bioliquids_ctl_gtl_prod_F_Yh %>%
+       add_title("FT refined liquids consumption by region / year.") %>%
+       add_units("EJ") %>%
+       add_comments("Determined from IEA energy balances data") %>%
+       add_precursors("L122.out_EJ_R_refining_F_Yh",
+                      "L101.detailed_refined_liquids_EJ_R_Yh",
+                      "L1012.en_bal_EJ_R_Si_Fi_Yh",
+                      "common/GCAM_region_names") -> L1093.out_EJ_R_bioliquids_ctl_gtl_prod_F_Yh
+
      L1093.IO_R_oilrefining_F_Yh %>%
        add_title("Crude-based refined liquids production IO coefficients by region / year") %>%
        add_units("EJ") %>%
@@ -494,6 +524,9 @@ module_energy_L1093.refined_liquids_GrossTrade <- function(command, ...){
 
     return_data(LB1092.Tradebalance_refined_liquids_EJ_R_Y,
                  LB1092.GCAM_REG_LIQUIDS_PROD_agg,
+                L1093.en_bal_EJ_liquids_enduse_total,
+                L1093.en_bal_EJ_liquids_industrial_total,
+                L1093.out_EJ_R_bioliquids_ctl_gtl_prod_F_Yh,
                 L1093.IO_R_oilrefining_F_Yh)
 
   } else {

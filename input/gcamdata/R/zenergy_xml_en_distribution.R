@@ -25,7 +25,8 @@ module_energy_en_distribution_xml <- function(command, ...) {
               "L226.GlobalTechShrwt_en",
               "L226.StubTechCoef_elecownuse",
               "L226.StubTechCoef_electd",
-              "L226.StubTechCoef_gaspipe"))
+              "L226.StubTechCoef_gaspipe",
+              "L226.StubTechProd_liq"))
   } else if(command == driver.DECLARE_OUTPUTS) {
     return(c(XML = "en_distribution.xml"))
   } else if(command == driver.MAKE) {
@@ -47,6 +48,7 @@ module_energy_en_distribution_xml <- function(command, ...) {
     L226.StubTechCoef_elecownuse <- get_data(all_data, "L226.StubTechCoef_elecownuse")
     L226.StubTechCoef_electd <- get_data(all_data, "L226.StubTechCoef_electd")
     L226.StubTechCoef_gaspipe <- get_data(all_data, "L226.StubTechCoef_gaspipe")
+    L226.StubTechProd_liq <- get_data(all_data, "L226.StubTechProd_liq")
 
     # ===================================================
 
@@ -91,6 +93,7 @@ module_energy_en_distribution_xml <- function(command, ...) {
       add_xml_data(L226.StubTechCoef_elecownuse, "StubTechCoef") %>%
       add_xml_data(L226.StubTechCoef_electd, "StubTechCoef") %>%
       add_xml_data(L226.StubTechCoef_gaspipe, "StubTechCoef") %>%
+      add_xml_data(L226.StubTechProd_liq, "StubTechProd") %>%
       add_precursors("L226.Supplysector_en",
                      "L226.SubsectorLogit_en",
                      "L226.SubsectorShrwt_en",
@@ -104,7 +107,8 @@ module_energy_en_distribution_xml <- function(command, ...) {
                      "L226.GlobalTechShrwt_en",
                      "L226.StubTechCoef_elecownuse",
                      "L226.StubTechCoef_electd",
-                     "L226.StubTechCoef_gaspipe") ->
+                     "L226.StubTechCoef_gaspipe",
+                     "L226.StubTechProd_liq") ->
       en_distribution.xml
 
     return_data(en_distribution.xml)
