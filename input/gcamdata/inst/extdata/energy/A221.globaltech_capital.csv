@@ -5,31 +5,31 @@
 # Column types: ccccnnnnnnnn
 # ----------
 supplysector,subsector,technology,minicam.non.energy.input,1971,1990,2005,2010,2015,2020,2050,2100
-refining,biorefining,Distillate_FuelOil,capital,,,,,,,,
-refining,biorefining,Residual_FuelOil,capital,,,,,,,,
-refining,biorefining,Gasoline,capital,,,,,,,,
-refining,biorefining,Heavy_Residual,capital,,,,,,,,
-refining,biorefining,Jet_Kerosene,capital,,,,,,,,
-refining,biorefining,LPG,capital,,,,,,,,
-refining,biorefining,Other,capital,,,,,,,,
-refining,ctl,Distillate_FuelOil,capital,,,,,,,,
-refining,ctl,Residual_FuelOil,capital,,,,,,,,
-refining,ctl,Gasoline,capital,,,,,,,,
-refining,ctl,Heavy_Residual,capital,,,,,,,,
-refining,ctl,Jet_Kerosene,capital,,,,,,,,
-refining,ctl,LPG,capital,,,,,,,,
-refining,ctl,Other,capital,,,,,,,,
-refining,gtl,Distillate_FuelOil,capital,,,,,,,,
-refining,gtl,Residual_FuelOil,capital,,,,,,,,
-refining,gtl,Gasoline,capital,,,,,,,,
-refining,gtl,Heavy_Residual,capital,,,,,,,,
-refining,gtl,Jet_Kerosene,capital,,,,,,,,
-refining,gtl,LPG,capital,,,,,,,,
-refining,gtl,Other,capital,,,,,,,,
-refining,crude oil refining,high Distillate_FuelOil,capital,,,,,8,8,8,8
-refining,crude oil refining,high Residual_FuelOil,capital,,,,,8,8,8,8
-refining,crude oil refining,high Gasoline,capital,,,,,8,8,8,8
-refining,crude oil refining,high LPG,capital,,,,,8,8,8,8
-refining,crude oil refining,high Jet_Kerosene,capital,,,,,8,8,8,8
-refining,crude oil refining,high Heavy_Residual,capital,,,,,8,8,8,8
-refining,crude oil refining,high Other,capital,,,,,8,8,8,8
+oil refining,biorefining,Distillate_FuelOil,capital,,,,,,,,
+oil refining,biorefining,Residual_FuelOil,capital,,,,,,,,
+oil refining,biorefining,Gasoline,capital,,,,,,,,
+oil refining,biorefining,Heavy_Residual,capital,,,,,,,,
+oil refining,biorefining,Jet_Kerosene,capital,,,,,,,,
+oil refining,biorefining,LPG,capital,,,,,,,,
+oil refining,biorefining,Other,capital,,,,,,,,
+oil refining,ctl,Distillate_FuelOil,capital,,,,,,,,
+oil refining,ctl,Residual_FuelOil,capital,,,,,,,,
+oil refining,ctl,Gasoline,capital,,,,,,,,
+oil refining,ctl,Heavy_Residual,capital,,,,,,,,
+oil refining,ctl,Jet_Kerosene,capital,,,,,,,,
+oil refining,ctl,LPG,capital,,,,,,,,
+oil refining,ctl,Other,capital,,,,,,,,
+oil refining,gtl,Distillate_FuelOil,capital,,,,,,,,
+oil refining,gtl,Residual_FuelOil,capital,,,,,,,,
+oil refining,gtl,Gasoline,capital,,,,,,,,
+oil refining,gtl,Heavy_Residual,capital,,,,,,,,
+oil refining,gtl,Jet_Kerosene,capital,,,,,,,,
+oil refining,gtl,LPG,capital,,,,,,,,
+oil refining,gtl,Other,capital,,,,,,,,
+oil refining,crude oil refining,high Distillate_FuelOil,capital,,,,,8,8,8,8
+oil refining,crude oil refining,high Residual_FuelOil,capital,,,,,8,8,8,8
+oil refining,crude oil refining,high Gasoline,capital,,,,,8,8,8,8
+oil refining,crude oil refining,high LPG,capital,,,,,8,8,8,8
+oil refining,crude oil refining,high Jet_Kerosene,capital,,,,,8,8,8,8
+oil refining,crude oil refining,high Heavy_Residual,capital,,,,,8,8,8,8
+oil refining,crude oil refining,high Other,capital,,,,,8,8,8,8

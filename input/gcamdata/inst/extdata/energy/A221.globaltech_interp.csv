@@ -5,13 +5,13 @@
 # Column types: ccccccc 
 # ----------
 supplysector,subsector,technology,apply.to,from.year,to.year,interpolation.function
-refining,crude oil refining,high Distillate_FuelOil,share-weight,final-calibration-year,2020,linear
-refining,crude oil refining,high Residual_FuelOil,share-weight,final-calibration-year,2020,linear
-refining,crude oil refining,high Gasoline,share-weight,final-calibration-year,2020,linear
-refining,crude oil refining,high LPG,share-weight,final-calibration-year,2020,linear
-refining,crude oil refining,high Jet_Kerosene,share-weight,final-calibration-year,2020,linear
-refining,crude oil refining,high Heavy_Residual,share-weight,final-calibration-year,2020,linear
-refining,crude oil refining,high Other,share-weight,final-calibration-year,2020,linear
+oil refining,crude oil refining,high Distillate_FuelOil,share-weight,final-calibration-year,2020,linear
+oil refining,crude oil refining,high Residual_FuelOil,share-weight,final-calibration-year,2020,linear
+oil refining,crude oil refining,high Gasoline,share-weight,final-calibration-year,2020,linear
+oil refining,crude oil refining,high LPG,share-weight,final-calibration-year,2020,linear
+oil refining,crude oil refining,high Jet_Kerosene,share-weight,final-calibration-year,2020,linear
+oil refining,crude oil refining,high Heavy_Residual,share-weight,final-calibration-year,2020,linear
+oil refining,crude oil refining,high Other,share-weight,final-calibration-year,2020,linear
 Distillate_FuelOil,Distillate_FuelOil,crude oil,share-weight,final-calibration-year,2050,s-curve
 Residual_FuelOil,Residual_FuelOil,crude oil,share-weight,final-calibration-year,2050,s-curve
 Gasoline,Gasoline,crude oil,share-weight,final-calibration-year,2050,s-curve

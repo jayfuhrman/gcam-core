@@ -5,7 +5,7 @@
 # Column types: cccciic 
 # ----------
 supplysector,output.unit,input.unit,price.unit,logit.exponent,traded,logit.type
-refining,EJ,EJ,1975$/GJ,-3,0,
+oil refining,EJ,EJ,1975$/GJ,-3,0,
 Distillate_FuelOil,EJ,EJ,1975$/GJ,-3,0,
 Residual_FuelOil,EJ,EJ,1975$/GJ,-3,0,
 Gasoline,EJ,EJ,1975$/GJ,-3,0,

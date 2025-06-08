@@ -5,31 +5,31 @@
 # Column types: ccccnnnnnnnn
 # ----------
 supplysector,subsector,technology,minicam.non.energy.input,1971,1990,2005,2010,2015,2020,2050,2100
-refining,biorefining,Distillate_FuelOil,OM-fixed,,,,,,,,
-refining,biorefining,Residual_FuelOil,OM-fixed,,,,,,,,
-refining,biorefining,Gasoline,OM-fixed,,,,,,,,
-refining,biorefining,Heavy_Residual,OM-fixed,,,,,,,,
-refining,biorefining,Jet_Kerosene,OM-fixed,,,,,,,,
-refining,biorefining,LPG,OM-fixed,,,,,,,,
-refining,biorefining,Other,OM-fixed,,,,,,,,
-refining,ctl,Distillate_FuelOil,OM-fixed,,,,,,,,
-refining,ctl,Residual_FuelOil,OM-fixed,,,,,,,,
-refining,ctl,Gasoline,OM-fixed,,,,,,,,
-refining,ctl,Heavy_Residual,OM-fixed,,,,,,,,
-refining,ctl,Jet_Kerosene,OM-fixed,,,,,,,,
-refining,ctl,LPG,OM-fixed,,,,,,,,
-refining,ctl,Other,OM-fixed,,,,,,,,
-refining,gtl,Distillate_FuelOil,OM-fixed,,,,,,,,
-refining,gtl,Residual_FuelOil,OM-fixed,,,,,,,,
-refining,gtl,Gasoline,OM-fixed,,,,,,,,
-refining,gtl,Heavy_Residual,OM-fixed,,,,,,,,
-refining,gtl,Jet_Kerosene,OM-fixed,,,,,,,,
-refining,gtl,LPG,OM-fixed,,,,,,,,
-refining,gtl,Other,OM-fixed,,,,,,,,
-refining,crude oil refining,high Distillate_FuelOil,OM-fixed,,,,,3,3,3,3
-refining,crude oil refining,high Residual_FuelOil,OM-fixed,,,,,3,3,3,3
-refining,crude oil refining,high Gasoline,OM-fixed,,,,,3,3,3,3
-refining,crude oil refining,high LPG,OM-fixed,,,,,3,3,3,3
-refining,crude oil refining,high Jet_Kerosene,OM-fixed,,,,,3,3,3,3
-refining,crude oil refining,high Heavy_Residual,OM-fixed,,,,,3,3,3,3
-refining,crude oil refining,high Other,OM-fixed,,,,,3,3,3,3
+oil refining,biorefining,Distillate_FuelOil,OM-fixed,,,,,,,,
+oil refining,biorefining,Residual_FuelOil,OM-fixed,,,,,,,,
+oil refining,biorefining,Gasoline,OM-fixed,,,,,,,,
+oil refining,biorefining,Heavy_Residual,OM-fixed,,,,,,,,
+oil refining,biorefining,Jet_Kerosene,OM-fixed,,,,,,,,
+oil refining,biorefining,LPG,OM-fixed,,,,,,,,
+oil refining,biorefining,Other,OM-fixed,,,,,,,,
+oil refining,ctl,Distillate_FuelOil,OM-fixed,,,,,,,,
+oil refining,ctl,Residual_FuelOil,OM-fixed,,,,,,,,
+oil refining,ctl,Gasoline,OM-fixed,,,,,,,,
+oil refining,ctl,Heavy_Residual,OM-fixed,,,,,,,,
+oil refining,ctl,Jet_Kerosene,OM-fixed,,,,,,,,
+oil refining,ctl,LPG,OM-fixed,,,,,,,,
+oil refining,ctl,Other,OM-fixed,,,,,,,,
+oil refining,gtl,Distillate_FuelOil,OM-fixed,,,,,,,,
+oil refining,gtl,Residual_FuelOil,OM-fixed,,,,,,,,
+oil refining,gtl,Gasoline,OM-fixed,,,,,,,,
+oil refining,gtl,Heavy_Residual,OM-fixed,,,,,,,,
+oil refining,gtl,Jet_Kerosene,OM-fixed,,,,,,,,
+oil refining,gtl,LPG,OM-fixed,,,,,,,,
+oil refining,gtl,Other,OM-fixed,,,,,,,,
+oil refining,crude oil refining,high Distillate_FuelOil,OM-fixed,,,,,3,3,3,3
+oil refining,crude oil refining,high Residual_FuelOil,OM-fixed,,,,,3,3,3,3
+oil refining,crude oil refining,high Gasoline,OM-fixed,,,,,3,3,3,3
+oil refining,crude oil refining,high LPG,OM-fixed,,,,,3,3,3,3
+oil refining,crude oil refining,high Jet_Kerosene,OM-fixed,,,,,3,3,3,3
+oil refining,crude oil refining,high Heavy_Residual,OM-fixed,,,,,3,3,3,3
+oil refining,crude oil refining,high Other,OM-fixed,,,,,3,3,3,3

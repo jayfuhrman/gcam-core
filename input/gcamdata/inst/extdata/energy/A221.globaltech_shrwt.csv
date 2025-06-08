@@ -5,13 +5,13 @@
 # Column types: cccnnnnnn 
 # ----------
 supplysector,subsector,technology,1971,2015,2020,2025,2050,2100
-refining,crude oil refining,high Distillate_FuelOil,1,1,1,1,1,1
-refining,crude oil refining,high Residual_FuelOil,1,1,1,1,1,1
-refining,crude oil refining,high Gasoline,1,1,1,1,1,1
-refining,crude oil refining,high LPG,1,1,1,1,1,1
-refining,crude oil refining,high Jet_Kerosene,1,1,1,1,1,1
-refining,crude oil refining,high Heavy_Residual,1,1,1,1,1,1
-refining,crude oil refining,high Other,1,1,1,1,1,1
+oil refining,crude oil refining,high Distillate_FuelOil,1,1,1,1,1,1
+oil refining,crude oil refining,high Residual_FuelOil,1,1,1,1,1,1
+oil refining,crude oil refining,high Gasoline,1,1,1,1,1,1
+oil refining,crude oil refining,high LPG,1,1,1,1,1,1
+oil refining,crude oil refining,high Jet_Kerosene,1,1,1,1,1,1
+oil refining,crude oil refining,high Heavy_Residual,1,1,1,1,1,1
+oil refining,crude oil refining,high Other,1,1,1,1,1,1
 Distillate_FuelOil,Distillate_FuelOil,crude oil,1,1,1,1,1,1
 Residual_FuelOil,Residual_FuelOil,crude oil,1,1,1,1,1,1
 Gasoline,Gasoline,crude oil,1,1,1,1,1,1

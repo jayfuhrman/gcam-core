@@ -4,24 +4,38 @@
 # Column types: ccccnnn 
 # ----------
 supplysector,subsector,technology,minicam.energy.input,1971,2020,2100
-refining,crude oil refining,high Distillate_FuelOil,crude oil,1,1,1
-refining,crude oil refining,high Residual_FuelOil,crude oil,1,1,1
-refining,crude oil refining,high Gasoline,crude oil,1,1,1
-refining,crude oil refining,high LPG,crude oil,1,1,1
-refining,crude oil refining,high Jet_Kerosene,crude oil,1,1,1
-refining,crude oil refining,high Heavy_Residual,crude oil,1,1,1
-refining,crude oil refining,high Other,crude oil,1,1,1
-Residual_FuelOil,Residual_FuelOil,crude oil,refining,1,1,1
+oil refining,crude oil refining,high Distillate_FuelOil,crude oil,1,1,1
+oil refining,crude oil refining,high Residual_FuelOil,crude oil,1,1,1
+oil refining,crude oil refining,high Gasoline,crude oil,1,1,1
+oil refining,crude oil refining,high LPG,crude oil,1,1,1
+oil refining,crude oil refining,high Jet_Kerosene,crude oil,1,1,1
+oil refining,crude oil refining,high Heavy_Residual,crude oil,1,1,1
+oil refining,crude oil refining,high Other,crude oil,1,1,1
+Residual_FuelOil,Residual_FuelOil,crude oil,oil refining,1,1,1
 Residual_FuelOil,Residual_FuelOil,crude oil,Residual_FuelOil_crude oil,1,1,1
-Gasoline,Gasoline,crude oil,refining,1,1,1
+Gasoline,Gasoline,crude oil,oil refining,1,1,1
 Gasoline,Gasoline,crude oil,Gasoline_crude oil,1,1,1
-LPG,LPG,crude oil,refining,1,1,1
+LPG,LPG,crude oil,oil refining,1,1,1
 LPG,LPG,crude oil,LPG_crude oil,1,1,1
-Heavy_Residual,Heavy_Residual,crude oil,refining,1,1,1
+Heavy_Residual,Heavy_Residual,crude oil,oil refining,1,1,1
 Heavy_Residual,Heavy_Residual,crude oil,Heavy_Residual_crude oil,1,1,1
-Jet_Kerosene,Jet_Kerosene,crude oil,refining,1,1,1
+Jet_Kerosene,Jet_Kerosene,crude oil,oil refining,1,1,1
 Jet_Kerosene,Jet_Kerosene,crude oil,Jet_Kerosene_crude oil,1,1,1
-Other,Other,crude oil,refining,1,1,1
+Other,Other,crude oil,oil refining,1,1,1
 Other,Other,crude oil,Other_crude oil,1,1,1
-Distillate_FuelOil,Distillate_FuelOil,crude oil,refining,1,1,1
+Distillate_FuelOil,Distillate_FuelOil,crude oil,oil refining,1,1,1
 Distillate_FuelOil,Distillate_FuelOil,crude oil,Distillate_FuelOil_crude oil,1,1,1
+oil refining,crude oil refining,high Distillate_FuelOil,electricity,1,1,1
+oil refining,crude oil refining,high Residual_FuelOil,electricity,1,1,1
+oil refining,crude oil refining,high Gasoline,electricity,1,1,1
+oil refining,crude oil refining,high LPG,electricity,1,1,1
+oil refining,crude oil refining,high Jet_Kerosene,electricity,1,1,1
+oil refining,crude oil refining,high Heavy_Residual,electricity,1,1,1
+oil refining,crude oil refining,high Other,electricity,1,1,1
+oil refining,crude oil refining,high Distillate_FuelOil,natural gas,1,1,1
+oil refining,crude oil refining,high Residual_FuelOil,natural gas,1,1,1
+oil refining,crude oil refining,high Gasoline,natural gas,1,1,1
+oil refining,crude oil refining,high LPG,natural gas,1,1,1
+oil refining,crude oil refining,high Jet_Kerosene,natural gas,1,1,1
+oil refining,crude oil refining,high Heavy_Residual,natural gas,1,1,1
+oil refining,crude oil refining,high Other,natural gas,1,1,1
