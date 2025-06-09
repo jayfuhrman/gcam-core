@@ -57,6 +57,7 @@ generate_level2_data_names <- function() {
   level2_data_names[["RenewRsrc"]] <- c("region", "renewresource", "output.unit", "price.unit", "market")
   level2_data_names[["UnlimitRsrc"]] <- c("region", "unlimited.resource", "output.unit", "price.unit", "market")
   level2_data_names[["RsrcPrice"]] <- c("region", "resource", "year", "price")
+  level2_data_names[["RsrcCal"]] <- c("region", "resource", "fully.calibrated")
   level2_data_names[["RenewRsrcPrice"]] <- c("region", "renewresource", "year", "price")
   level2_data_names[["UnlimitRsrcPrice"]] <- c("region", "unlimited.resource", "year", "price")
   level2_data_names[["RenewRsrcMkt"]] <- c("region", "renewresource", "market")
@@ -88,6 +89,8 @@ generate_level2_data_names <- function() {
 
   # Supplysectors
   level2_data_names[["Supplysector"]] <- c("region", "supplysector", "output.unit", "input.unit", "price.unit", "logit.year.fillout", "logit.exponent")
+  level2_data_names[["ProfitRateSector"]] <- c("region", "profit.rate.sector")
+  level2_data_names[["SectorZeroProfitMarketName"]] <- c("region", "profit.rate.sector", "zero.profit.market.name")
   level2_data_names[["FinalEnergyKeyword"]] <- c("region", "supplysector", "final.energy")
   level2_data_names[["SupplysectorPrice"]] <- c("region", "supplysector", "year", "price")
   level2_data_names[["Supplysector_absolute-cost-logit"]] <- c("region", "supplysector")
@@ -99,6 +102,7 @@ generate_level2_data_names <- function() {
 
   # Subsectors
   level2_data_names[["Subsector"]] <- c("region", "supplysector", "subsector")
+  level2_data_names[["ProfitRateSubsector"]] <- c("region", "profit.rate.sector", "profit.rate.subsector")
   level2_data_names[["SubsectorAll"]] <- c(level2_data_names[["Subsector"]], "logit.year.fillout", "logit.exponent", "year.fillout", "share.weight", "apply.to", "from.year", "to.year", "interpolation.function")
   level2_data_names[["SubsectorAllTo"]] <- c(level2_data_names[["Subsector"]], "logit.year.fillout", "logit.exponent", "year.fillout", "share.weight", "apply.to", "from.year", "to.year", "to.value", "interpolation.function")
   level2_data_names[["SubsectorLogit"]] <- c(level2_data_names[["Subsector"]], "logit.year.fillout", "logit.exponent")
@@ -124,6 +128,7 @@ generate_level2_data_names <- function() {
 
   # Technologies
   level2_data_names[["Tech"]] <- c("region", "supplysector", "subsector", "technology")
+  level2_data_names[["TechProfitRate"]] <- c("region", "supplysector", "subsector", "profit-rate-technology")
   level2_data_names[["TechInterp"]] <- c(level2_data_names[["Tech"]], "apply.to", "from.year", "to.year", "interpolation.function")
   level2_data_names[["TechInterpTo"]] <- c(level2_data_names[["Tech"]], "apply.to", "from.year", "to.year", "to.value", "interpolation.function")
   level2_data_names[["TechYr"]] <- c(level2_data_names[["Tech"]], "year")
@@ -146,6 +151,7 @@ generate_level2_data_names <- function() {
   level2_data_names[["TechIntGainOutputRatio"]] <- c("region", "supplysector", "subsector", "technology", "year", "internal.gains.output.ratio", "internal.gains.market.name")
   level2_data_names[["TechLifetime"]] <- c(level2_data_names[["TechYr"]], "lifetime")
   level2_data_names[["TechSecOut"]] <- c(level2_data_names[["TechYr"]], "secondary.output", "output.ratio")
+  level2_data_names[["TechRESSecOut"]] <- c(level2_data_names[["TechYr"]], "res.secondary.output", "output.ratio")
   level2_data_names[["TechSecOutPMult"]] <- c(level2_data_names[["TechSecOut"]], "pMultiplier")
   level2_data_names[["TechAccountOutput"]] <- c(level2_data_names[["TechYr"]], "output.accounting", "output.ratio", "market.name")
   level2_data_names[["TechAccountInput"]] <- c(level2_data_names[["TechYr"]], "input.accounting", "tracking.market", "currency.tracking.market")
@@ -194,6 +200,8 @@ generate_level2_data_names <- function() {
   level2_data_names[["GlobalRenewTech"]] <- c(level2_data_names[["GlobalTechYr"]], "renewable.input")
   level2_data_names[["GlobalTechSecOut"]] <- c(level2_data_names[["GlobalTechYr"]], "secondary.output", "output.ratio")
   level2_data_names[["GlobalTechRESSecOut"]] <- c(level2_data_names[["GlobalTechYr"]], "res.secondary.output", "output.ratio")
+  level2_data_names[["GlobalTechZeroProfitOut"]] <- c(level2_data_names[["GlobalTechYr"]], "zero.profit.output", "output.ratio")
+  level2_data_names[["GlobalTechZeroProfitMarketName"]] <- c(level2_data_names[["GlobalTechYr"]], "zero.profit.market.name")
   level2_data_names[["GlobalTechAccountOutputUseBasePrice"]] <- c(level2_data_names[["GlobalTechYr"]], "output.accounting", "output.ratio", "use.base.price")
   level2_data_names[["GlobalTechAccountInput"]] <- c(level2_data_names[["GlobalTechYr"]], "input.accounting", "tracking.market", "currency.tracking.market")
   level2_data_names[["GlobalTechCSeq"]] <- c(level2_data_names[["GlobalTechYr"]], "remove.fraction", "target.gas")
@@ -225,6 +233,7 @@ generate_level2_data_names <- function() {
   level2_data_names[["GlobalTranTechProfitShutdown"]] <- c("sector.name", "subsector.name", "tranTechnology", "year", "median.shutdown.point", "steepness")
   level2_data_names[["GlobalPassThroughTech"]] <- c("sector.name", "subsector.name", "technology")
   level2_data_names[["GlobalResBio"]] <- c("sector.name", "subsector.name", "technology", "year", "residue.biomass.production", "mass.conversion", "harvest.index", "eros.ctrl", "mass.to.energy", "water.content")
+  level2_data_names[["GlobalTechProfitRate"]] <- c("sector.name","subsector.name", "profit.rate.technology")
   level2_data_names[["GlobalTechIntGainOutputRatio"]] <- c(level2_data_names[["GlobalTechYr"]], "internal.gains.output.ratio", "internal.gains.market.name")
   level2_data_names[["AvgFossilEffKeyword"]] <- c(level2_data_names[["GlobalTechYr"]], "average.fossil.efficiency")
   level2_data_names[["PrimaryConsKeyword"]] <- c(level2_data_names[["GlobalTechYr"]], "primary.consumption")
@@ -316,6 +325,7 @@ generate_level2_data_names <- function() {
   level2_data_names[["PerCapitaBased"]] <- c(level2_data_names[["EnergyFinalDemand"]], "perCapitaBased")
   level2_data_names[["BaseService"]] <- c(level2_data_names[["EnergyFinalDemand"]], "year", "base.service")
   level2_data_names[["PriceElasticity"]] <- c(level2_data_names[["EnergyFinalDemand"]], "year", "price.elasticity")
+  level2_data_names[["FixedService"]] <- c("region", "fixed.final.demand", "year", "service")
   level2_data_names[["IncomeElasticity"]] <- c(level2_data_names[["EnergyFinalDemand"]], "year", "income.elasticity")
   level2_data_names[["aeei"]] <- c("region", "energy.final.demand", "year", "aeei")
   level2_data_names[["FinalDemandInfo"]] <- c("region", "energy.final.demand", "perCapitaBased", "income.elasticity", "year", "base.service", "aeei")

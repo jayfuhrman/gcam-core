@@ -502,11 +502,11 @@ run_xml_tests <- function(olddir, newdir = XML_DIR)
 #' intermittent-technology or tranTechnology.
 #' @author Pralit Patel
 XML_NODE_EQUIV <- list(
-  "sector" = c("supplysector", "AgSupplySector", "pass-through-sector"),
+  "sector" = c("supplysector", "AgSupplySector", "pass-through-sector","profit-rate-sector"),
   "subsector" = c("subsector", "AgSupplySubsector", "tranSubsector",
-                  "nesting-subsector"),
+                  "nesting-subsector","profit-rate-subsector"),
   "technology" = c("technology", "stub-technology", "intermittent-technology", "backup-intermittent-technology",
-                   "tranTechnology", "AgProductionTechnology", "pass-through-technology",
+                   "tranTechnology", "AgProductionTechnology", "pass-through-technology","profit-rate-technology",
                    "resource-reserve-technology"),
   "discrete-choice" = c("dummy-logit-tag", "relative-cost-logit",
                         "absolute-cost-logit"),

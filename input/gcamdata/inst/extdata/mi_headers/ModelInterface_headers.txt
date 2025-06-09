@@ -79,6 +79,8 @@ RenewRsrcMkt, world/+{name}region, region/+{name}renewresource, renewresource/+m
 
 RsrcPrice, world/+{name}region, region/+{name}resource, resource/+{year}price, resource/+price, scenario, scenario/world
 
+RsrcCal, world/+{name}region, region/+{name}resource, resource/+fully-calibrated, scenario, scenario/world
+
 RenewRsrcPrice, world/+{name}region, region/+{name}renewresource, renewresource/+{year}price, renewresource/+price, scenario, scenario/world
 
 UnlimitRsrcPrice, world/+{name}region, region/+{name}unlimited-resource, unlimited-resource/+{year}price, unlimited-resource/+price, scenario, scenario/world
@@ -154,6 +156,10 @@ DeleteSupplysector, world/+{name}region, region/+{name; delete=1}supplysector, s
 
 Supplysector, world/+{name}region, region/+{name}supplysector, supplysector/+output-unit, supplysector/+input-unit, supplysector/+price-unit, dummy-logit-tag/+{year;fillout=1}logit-exponent, dummy-logit-tag/+logit-exponent, supplysector/dummy-logit-tag, scenario, scenario/world
 
+ProfitRateSector, world/+{name}region, region/+{name}profit-rate-sector, scenario, scenario/world
+
+SectorZeroProfitMarketName, world/+{name}region, region/+{name}profit-rate-sector, profit-rate-sector/+zero-profit-market-name, scenario, scenario/world
+
 Supplysector_relative-cost-logit, world/+{name}region, region/+{name}supplysector, supplysector/relative-cost-logit, scenario/world, scenario
 
 Supplysector_absolute-cost-logit, world/+{name}region, region/+{name}supplysector, supplysector/absolute-cost-logit, scenario/world, scenario
@@ -174,6 +180,8 @@ DeleteSubsector, world/+{name}region, region/+{name}supplysector, supplysector/+
 DeleteNestingSubsector1, world/+{name}region, region/+{name}supplysector, supplysector/+{name;delete=1}nesting-subsector, scenario, scenario/world
 
 Subsector, world/+{name}region, region/+{name}supplysector, supplysector/+{name}subsector, scenario, scenario/world
+
+ProfitRateSubsector, world/+{name}region, region/+{name}supplysector, supplysector/+{name}profit-rate-subsector, scenario, scenario/world
 
 SubsectorAll, world/+{name}region, region/+{name}supplysector, supplysector/+{name}subsector, dummy-logit-tag/+{year;fillout=1}logit-exponent, dummy-logit-tag/+logit-exponent, subsector/+{year;fillout=1}share-weight, subsector/+share-weight, subsector/+{apply-to}interpolation-rule, subsector/+{from-year}interpolation-rule, subsector/+{to-year}interpolation-rule, interpolation-rule/+{name}interpolation-function, subsector/dummy-logit-tag, scenario/world, scenario
 
@@ -221,7 +229,7 @@ tranSubsectorFuelPref, world/+{name}region, region/+{name}supplysector, supplyse
 
 #####, TECHNOLOGY
 
-
+TechProfitRate, world/+{name}region, region/+{name}supplysector, supplysector/+{name}subsector, subsector/+{name}profit-rate-technology, scenario, scenario/world
 Tech, world/+{name}region, region/+{name}supplysector, supplysector/+{name}subsector, subsector/+{name}technology, scenario, scenario/world
 
 PassThroughTech, world/+{name}region, region/+{name}supplysector, supplysector/+{name}subsector, subsector/+{name}pass-through-technology, scenario, scenario/world
@@ -267,6 +275,8 @@ TechLifetime, world/+{name}region, region/+{name}supplysector, supplysector/+{na
 TechIntGainOutputRatio, world/+{name}region, region/+{name}supplysector, supplysector/+{name}subsector, subsector/+{name}technology, technology/+{year}period, internal-gains/+output-ratio, internal-gains/+internal-gains-market-name, scenario, scenario/world, period/internal-gains
 
 TechSecOut, world/+{name}region, region/+{name}supplysector, supplysector/+{name}subsector, subsector/+{name}technology, technology/+{year}period, period/+{name}secondary-output, secondary-output/+output-ratio, scenario, scenario/world
+
+TechRESSecOut, world/+{name}region, region/+{name}supplysector, supplysector/+{name}subsector, subsector/+{name}technology, technology/+{year}period, period/+{name}res-secondary-output, res-secondary-output/+output-ratio, scenario, scenario/world
 
 TechSecOutPMult, world/+{name}region, region/+{name}supplysector, supplysector/+{name}subsector, subsector/+{name}technology, technology/+{year}period, period/+{name}secondary-output, secondary-output/+pMultiplier, scenario, scenario/world
 
@@ -339,6 +349,10 @@ GlobalTechSecOut, global-technology-database/+{sector-name}location-info, global
 
 GlobalTechRESSecOut, global-technology-database/+{sector-name}location-info, global-technology-database/+{subsector-name}location-info, location-info/+{name}technology, technology/+{year}period, period/+{name}res-secondary-output, res-secondary-output/+output-ratio, scenario, scenario/world, world/global-technology-database
 
+GlobalTechZeroProfitOut, global-technology-database/+{sector-name}location-info, global-technology-database/+{subsector-name}location-info, location-info/+{name}technology, technology/+{year}period, period/+{name}zero-profit-output, zero-profit-output/+output-ratio, scenario, scenario/world, world/global-technology-database
+
+GlobalTechZeroProfitMarketName, global-technology-database/+{sector-name}location-info, global-technology-database/+{subsector-name}location-info, location-info/+{name}technology, technology/+{year}period, period/+zero-profit-market-name, scenario, scenario/world, world/global-technology-database
+
 GlobalTechIntGainOutputRatio, global-technology-database/+{sector-name}location-info, global-technology-database/+{subsector-name}location-info, location-info/+{name}technology, technology/+{year}period, internal-gains/+output-ratio, internal-gains/+internal-gains-market-name, scenario, scenario/world, world/global-technology-database, period/internal-gains
 
 GlobalTechCapture, global-technology-database/+{sector-name}location-info, global-technology-database/+{subsector-name}location-info, location-info/+{name}technology, technology/+{year}period, standard-capture-component/+remove-fraction, standard-capture-component/+storage-market, scenario, scenario/world, world/global-technology-database, period/standard-capture-component
@@ -357,7 +371,9 @@ GlobalTechAccountInput,global-technology-database/+{sector-name}location-info, g
 
 DeleteGlobalTechInput, global-technology-database/+{sector-name}location-info, global-technology-database/+{subsector-name}location-info, location-info/+{name}technology, technology/+{year}period, period/+{name;delete=1}minicam-energy-input, scenario, scenario/world, world/global-technology-database
 
-GlobalTechInputPMult, global-technology-database/+{sector-name}location-info, global-technology-database/+{subsector-name}location-info, location-info/+{name}technology, technology/+{year}period, period/+{name}minicam-energy-input, minicam-energy-input/+price-unit-conversion, scenario, scenario/world, world/global-technology-database  
+GlobalTechInputPMult, global-technology-database/+{sector-name}location-info, global-technology-database/+{subsector-name}location-info, location-info/+{name}technology, technology/+{year}period, period/+{name}minicam-energy-input, minicam-energy-input/+price-unit-conversion, scenario, scenario/world, world/global-technology-database
+
+GlobalTechProfitRate, global-technology-database/+{sector-name}location-info, global-technology-database/+{subsector-name}location-info, location-info/+{name}profit-rate-technology, scenario, scenario/world, world/global-technology-database    
 
 DeleteGlobalTech, global-technology-database/+{sector-name}location-info, global-technology-database/+{subsector-name}location-info, location-info/+{name;delete=1}technology, scenario, scenario/world, world/global-technology-database
 
@@ -504,6 +520,8 @@ StubTranTechProd, world/+{name}region, region/+{name}supplysector, supplysector/
 PerCapitaBased, world/+{name}region, region/+{name}energy-final-demand, energy-final-demand/+perCapitaBased, energy-final-demand/final-energy-consumer, scenario, scenario/world
 
 BaseService, world/+{name}region, region/+{name}energy-final-demand, energy-final-demand/+{year}base-service, energy-final-demand/+base-service, scenario, scenario/world
+
+FixedService, world/+{name}region, region/+{name}fixed-final-demand, fixed-final-demand/+{year}service, fixed-final-demand/+service, scenario, scenario/world
 
 IncomeElasticity, world/+{name}region, region/+{name}energy-final-demand, energy-final-demand/+{year}income-elasticity, energy-final-demand/+income-elasticity, scenario, scenario/world
 
