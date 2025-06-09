@@ -200,3 +200,95 @@ void PassThroughTechnology::toDebugXMLDerived( const int aPeriod, ostream& aOut,
     XMLWriteElement( mPassThroughFixedOutput, "pass-through-fixed-output", aOut, aTabs );
 }
 
+ProfitRateTechnology::ProfitRateTechnology(const string& aName, const int aYear) :
+    Technology(aName, aYear)
+{
+}
+
+ProfitRateTechnology::ProfitRateTechnology() {
+}
+
+ProfitRateTechnology::~ProfitRateTechnology() {
+}
+
+ProfitRateTechnology* ProfitRateTechnology::clone() const {
+    ProfitRateTechnology* clone = new ProfitRateTechnology(mName, mYear);
+    clone->copy(*this);
+    return clone;
+}
+
+void ProfitRateTechnology::copy( const ProfitRateTechnology& aOther ) {
+    Technology::copy( aOther );
+    
+    mZeroProfitMarketName = aOther.mZeroProfitMarketName;
+}
+
+const string& ProfitRateTechnology::getXMLNameStatic() {
+    const static string XML_NAME = "profit-rate-technology";
+
+    return XML_NAME;
+}
+
+const string& ProfitRateTechnology::getXMLName() const {
+    return getXMLNameStatic();
+}
+
+void ProfitRateTechnology::calcCost(const string& aRegionName,
+    const string& aSectorName,
+    const int aPeriod)
+{
+    // A Technology can only calculate costs if it is operating
+    // Note that attempted to retrieve a cost when the technology is not
+    // operating will cause an abort.
+    if (mProductionState[aPeriod]->isOperating()) {
+        // Note we now allow costs in any sector to be <= 0.  If,
+        // however, you are using the relative cost logit, costs will be
+        // clamped on the low end for market share purposes (not for
+        // other purposes, though).
+
+        double secondaryValue = std::max(calcSecondaryValue(aRegionName, aPeriod), util::getSmallNumber());
+
+
+        double cost = getTotalInputCost(aRegionName, aSectorName, aPeriod)
+            * mPMultiplier / secondaryValue;
+            
+
+        mCosts[aPeriod] = cost;
+
+        assert(util::isValidNumber(mCosts[aPeriod]));
+    }
+}
+
+void ProfitRateTechnology::production(const string& aRegionName,
+    const string& aSectorName,
+    double aVariableDemand,
+    double aFixedOutputScaleFactor,
+    const int aPeriod)
+{
+    Technology::production(aRegionName,aSectorName,aVariableDemand,aFixedOutputScaleFactor,aPeriod);
+    // ideally we would just call Technology::production with totalDemand and scale factor of 1
+    // however we may have capital inputs here and when tracking new investments we need to
+    // make sure it is calculating demands based off of just aVariableDemand
+    /*if (!mProductionState[aPeriod]->isOperating()) {
+        return;
+    }
+
+    Marketplace* marketplace = scenario->getMarketplace();
+    double totalDemand = marketplace->getDemand(aSectorName, aRegionName, aPeriod);
+    double techDemand = getOutput(aPeriod);
+    // avoid divide by zero errors
+    if (totalDemand == 0.0) {
+        totalDemand = util::getSmallNumber();
+    }
+    double techProfitRate = getCost(aPeriod);
+    mShareAdjustedProfitRate = techProfitRate * (techDemand / totalDemand);
+    marketplace->addToDemand(mZeroProfitMarketName, aRegionName, mShareAdjustedProfitRate, aPeriod, true);*/
+
+}
+
+double ProfitRateTechnology::getMarginalRevenue( const string& aRegionName,
+                                       const string& aSectorName,
+                                       const int aPeriod ) const
+{
+    return std::max(calcSecondaryValue( aRegionName, aPeriod ), 0.0);
+}

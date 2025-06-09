@@ -67,6 +67,7 @@ class ResidueBiomassOutput;
 class FractionalSecondaryOutput;
 class GenericOutput;
 class OutputAccounting;
+class ZeroProfitOutput;
 
 /*! 
 * \ingroup Objects
@@ -294,7 +295,7 @@ protected:
          */
         DEFINE_SUBCLASS_FAMILY( IOutput, PrimaryOutput, SecondaryOutput, RESSecondaryOutput,
                                 InternalGains, ResidueBiomassOutput, FractionalSecondaryOutput,
-                                GenericOutput, OutputAccounting )
+                                GenericOutput, OutputAccounting, ZeroProfitOutput )
     )
 };
 

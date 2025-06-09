@@ -117,3 +117,50 @@ protected:
 
 #endif // _PASS_THROUGH_TECHNOLOGY_H_
 
+class ProfitRateTechnology : public Technology
+{
+public:
+    ProfitRateTechnology(const std::string& aName, const int aYear);
+    ProfitRateTechnology();
+    virtual ~ProfitRateTechnology();
+
+    static const std::string& getXMLNameStatic();
+
+    // ITechnology methods
+    virtual const std::string& getXMLName() const;
+
+    virtual ProfitRateTechnology* clone() const;
+
+    virtual void calcCost(const std::string& aRegionName,
+        const std::string& aSectorName,
+        const int aPeriod);
+
+    virtual void production(const std::string& aRegionName,
+        const std::string& aSectorName,
+        double aVariableDemand,
+        double aFixedOutputScaleFactor,
+        const int aPeriod);
+    
+    virtual double getMarginalRevenue( const std::string& aRegionName,
+                               const std::string& aSectorName,
+                               const int aPeriod ) const;
+
+protected:
+    virtual void toDebugXMLDerived(const int aPeriod, std::ostream& aout, Tabs* aTabs) const {}
+    // Define data such that introspection utilities can process the data from this
+    // subclass together with the data members of the parent classes.
+    DEFINE_DATA_WITH_PARENT(
+        Technology,
+
+        //! The name of the sector this technology is retrieving fixed output from (extracted from the input objects).
+        DEFINE_VARIABLE(SIMPLE | STATE, "share-adjusted-profit-rate", mShareAdjustedProfitRate, Value),
+
+        //! The market name in which mPassThroughSectorName exists (extracted from the input objects).
+        DEFINE_VARIABLE(SIMPLE, "zero-profit-market-name", mZeroProfitMarketName, std::string)
+
+
+    )
+    
+    void copy( const ProfitRateTechnology& aOther );
+
+};

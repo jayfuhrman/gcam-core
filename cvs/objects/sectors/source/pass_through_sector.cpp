@@ -52,6 +52,9 @@
 #include "containers/include/iinfo.h"
 #include "util/logger/include/ilogger.h"
 
+#include "sectors/include/sector_utils.h"
+#include "functions/include/idiscrete_choice.hpp"
+
 using namespace std;
 
 extern Scenario* scenario;
@@ -182,3 +185,101 @@ string CalcFixedOutputActivity::getDescription() const {
     return mSector->mRegionName + " " + mSector->getName() + "-fixed-output";
 }
 
+/* \brief Constructor
+ */
+ProfitRateSector::ProfitRateSector():
+SupplySector()
+{
+}
+
+const string& ProfitRateSector::getXMLNameStatic() {
+    const static string XML_NAME = "profit-rate-sector";
+    return XML_NAME;
+}
+
+const string& ProfitRateSector::getXMLName() const {
+    return getXMLNameStatic();
+}
+
+void ProfitRateSector::completeInit( const IInfo* aRegionInfo,
+                                     ILandAllocator* aLandAllocator )
+{
+    SupplySector::completeInit( aRegionInfo, aLandAllocator );
+
+    if( mZeroProfitMarketName.empty() ) {
+        ILogger& mainLog = ILogger::getLogger( "main_log" );
+        mainLog.setLevel( ILogger::SEVERE );
+        mainLog << "No zero profit constraint market name in " << mName << " in " << mRegionName << "." << endl;
+        abort();
+    }
+
+    // TODO: we should add dependencies just to be sure even though the techs will
+    // likely add the right ones already
+    //MarketDependencyFinder* depFinder = scenario->getMarketplace()->getDependencyFinder();
+
+    // Ensure we gather the fixed demands after we calculate prices / before we
+    // set supplies
+    //depFinder->addDependency( fixedDemandActivityName, mRegionName, mName, mRegionName );
+    //depFinder->addDependency( fixedDemandActivityName, mRegionName, mMarginalRevenueSector, mMarginalRevenueMarket );
+}
+
+const vector<double> ProfitRateSector::calcChildShares( const int aPeriod, std::pair<double, double>& oUnnormalizedShareSum ) const {
+    // Calculate unnormalized shares.
+    vector<double> subsecShares( mSubsectors.size() );
+    for( unsigned int i = 0; i < mSubsectors.size(); ++i ){
+        subsecShares[ i ] = mSubsectors[ i ]->calcShare( mDiscreteChoiceModel, aPeriod );
+    }
+
+    // Normalize the shares.  After normalization they will be true shares, not log(shares).
+    oUnnormalizedShareSum = SectorUtils::normalizeLogShares( subsecShares );
+    if( oUnnormalizedShareSum.first == 0.0 ) {
+        // This should no longer happen, but it's still technically possible.
+        ILogger& mainLog = ILogger::getLogger( "main_log" );
+        mainLog.setLevel( ILogger::DEBUG );
+        mainLog << "Shares for sector " << mName << " in region " << mRegionName
+                << " did not normalize correctly. Sum is " << oUnnormalizedShareSum.first << " * exp( "
+                << oUnnormalizedShareSum.second << " ) "<< "." << endl;
+    }
+
+    return subsecShares;
+}
+
+double ProfitRateSector::getPrice( const int aPeriod ) const {
+    /*pair<double, double> unnormalizedSum;
+    const vector<double>& subsecShares = calcChildShares( aPeriod, unnormalizedSum );
+    
+
+    if( unnormalizedSum.first < util::getSmallNumber() ) {
+        // TODO: I don't think this is still true
+        
+        // None of the subsector have a valid share.  Set the price
+        // to NaN.  This gets tested in calcShare(), and any subsector
+        // with a NaN price gets a share of zero.  Therefore, as long
+        // as you use only subsectors with positive shares, you will
+        // never see the NaN price.
+        return numeric_limits<double>::signaling_NaN();
+    }
+    else {
+        double profitRate = mDiscreteChoiceModel->calcAverageValue( unnormalizedSum.first, unnormalizedSum.second, aPeriod );
+        return profitRate;
+    }*/
+    return SupplySector::getPrice(aPeriod);
+}
+
+void ProfitRateSector::calcFinalSupplyPrice( const int aPeriod ) {
+    // Instruct all subsectors to calculate their costs. This must be done
+    // before prices can be calculated.
+    calcCosts( aPeriod );
+
+    // Set the price into the market.
+    Marketplace* marketplace = scenario->getMarketplace();
+
+    mProfitRate = getPrice( aPeriod );
+    
+    // set the calculated profit rate into the zero profit constraint market
+    marketplace->addToDemand(mZeroProfitMarketName, mRegionName, mProfitRate, aPeriod);
+
+    // set the price of the sector as well even though no one will be using it
+    // TODO: just set zero?
+    marketplace->setPrice( mName, mRegionName, mProfitRate, aPeriod, true );
+}

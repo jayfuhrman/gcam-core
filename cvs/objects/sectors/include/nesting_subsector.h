@@ -120,3 +120,31 @@ public:
 
 #endif // _NESTING_SUBSECTOR_H_
 
+class ProfitRateSubsector: public Subsector
+{
+    friend class CalibrateShareWeightVisitor;
+protected:
+    
+    // Define data such that introspection utilities can process the data from this
+    // subclass together with the data members of the parent classes.
+    DEFINE_DATA_WITH_PARENT(
+        Subsector
+    )
+    
+    const std::vector<double> calcChildShares( const int aPeriod, std::pair<double, double>& oUnnormalizedShareSum ) const;
+
+public:
+    ProfitRateSubsector();
+
+    virtual ~ProfitRateSubsector();
+
+    static const std::string& getXMLNameStatic();
+    
+    virtual const std::string& getXMLName() const;
+
+    virtual double getPrice( const int aPeriod ) const;
+
+    virtual void setOutput( const double aVariableDemand,
+                            const double aFixedOutputScaleFactor,
+                            const int aPeriod );
+};

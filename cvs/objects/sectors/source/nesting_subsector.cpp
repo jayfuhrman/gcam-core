@@ -453,3 +453,166 @@ void NestingSubsector::accept( IVisitor* aVisitor, const int period ) const {
             
     aVisitor->endVisitNestingSubsector( this, period );
 }
+
+
+#include "technologies/include/itechnology.h"
+#include "technologies/include/itechnology_container.h"
+#include "marketplace/include/marketplace.h"
+
+ProfitRateSubsector::ProfitRateSubsector():
+    Subsector()
+{
+}
+
+/*! \brief Default destructor.
+*
+* deletes all subsector objects associated with this subsector.
+*
+*/
+ProfitRateSubsector::~ProfitRateSubsector() {
+}
+
+/*! \brief Get the XML node name for output to XML.
+*
+* This public function accesses the private constant string, XML_NAME.
+* This way the tag is always consistent for both read-in and output and can be easily changed.
+* This function may be virtual to be overridden by derived class pointers.
+* \author Josh Lurz, James Blackwood
+* \return The constant XML_NAME.
+*/
+const string& ProfitRateSubsector::getXMLName() const {
+    return getXMLNameStatic();
+}
+
+/*! \brief Get the XML node name in static form for comparison when parsing XML.
+*
+* This public function accesses the private constant string, XML_NAME.
+* This way the tag is always consistent for both read-in and output and can be easily changed.
+* The "==" operator that is used when parsing, required this second function to return static.
+* \note A function cannot be static and virtual.
+* \author Josh Lurz, James Blackwood
+* \return The constant XML_NAME as a static.
+*/
+const string& ProfitRateSubsector::getXMLNameStatic() {
+    static const string XML_NAME = "profit-rate-subsector";
+    return XML_NAME;
+}
+
+/*!
+ * \brief calculate child subsector shares within this nest
+ *
+ * Calls child subsectors to first calculate cost, then their share. Follows this by normalizing shares.
+ *
+ * \param aGDP The GDP object in case of fuel preference elasticity is used.
+ * \param aPeriod model period
+ * \return A vector of subsector shares.
+*/
+const vector<double> ProfitRateSubsector::calcChildShares( const int aPeriod, std::pair<double, double>& oUnnormalizedShareSum ) const {
+    // Calculate unnormalized shares.
+    vector<double> logTechShares( mTechContainers.size() );
+    for( unsigned int i = 0; i < mTechContainers.size(); ++i ){
+        // determine shares based on Technology costs
+        double lts = mTechContainers[ i ]->getNewVintageTechnology( aPeriod )->
+            calcShare( mRegionName, mDiscreteChoiceModel, aPeriod );
+
+        // Check that Technology shares are valid.
+        assert( util::isValidNumber( lts ) || lts == -numeric_limits<double>::infinity() );
+        logTechShares[ i ] = lts;
+    }
+
+    // Normalize the shares.  After normalization they will be true shares, not log(shares).
+    oUnnormalizedShareSum = SectorUtils::normalizeLogShares( logTechShares );
+    if( oUnnormalizedShareSum.first == 0.0 && !allOutputFixed( aPeriod ) ){
+        // This should no longer happen, but it's still technically possible.
+        ILogger& mainLog = ILogger::getLogger( "main_log" );
+        mainLog.setLevel( ILogger::DEBUG );
+        mainLog << "Shares for subsector " << mName << " in region " << mRegionName
+                << " did not normalize correctly. Sum is " << oUnnormalizedShareSum.first << " * exp( "
+                << oUnnormalizedShareSum.second << " ) "<< "." << endl;
+
+        // All shares are zero likely due to underflow.  Give 100% share to the
+        // minimum cost subsector.
+        /*assert( mTechContainers.size() > 0 );
+        int minPriceIndex = 0;
+        double minPrice = mSubsectors[ minPriceIndex ]->getPrice( aPeriod );
+        subsecShares[ 0 ] = 0.0;
+        for( int i = 1; i < mSubsectors.size(); ++i ) {
+            double currPrice = mSubsectors[ i ]->getPrice( aPeriod );
+            subsecShares[ i ] = 0.0;                  // zero out all subsector shares ...
+            if( currPrice < minPrice ) {
+                minPrice = currPrice;
+                minPriceIndex = i;
+            }
+        }
+        subsecShares[ minPriceIndex ] = 1.0;        // ... except the lowest price*/
+    }
+
+    return logTechShares;
+}
+
+/*! \brief Returns the subsector price.
+* \details Calculates and returns share-weighted total price (subsectorprice)
+*          and cost of fuel (fuelprice).
+* \author Sonny Kim
+* \param aGDP Regional GDP object.
+* \param aPeriod Model period
+*/
+double ProfitRateSubsector::getPrice( const int aPeriod ) const {
+    /*pair<double, double> unnormalizedSum;
+    const vector<double>& techShares = calcChildShares( aPeriod, unnormalizedSum );
+    
+
+    if( unnormalizedSum.first < util::getSmallNumber() ) {
+        // None of the technologies have a valid share.  Set the price
+        // to NaN.  This gets tested in calcShare(), and any subsector
+        // with a NaN price gets a share of zero.  Therefore, as long
+        // as you use only subsectors with positive shares, you will
+        // never see the NaN price.
+        return numeric_limits<double>::signaling_NaN();
+    }
+    else {
+        double profitRate = mDiscreteChoiceModel->calcAverageValue( unnormalizedSum.first, unnormalizedSum.second, aPeriod );
+        return profitRate;
+    }*/
+    return Subsector::getPrice(aPeriod);
+}
+
+/*! \brief The demand passed to this function is shared out at the subsector
+*          level.
+* \details Variable demand (could be energy or energy service) is passed to
+*          child subsectors.
+* \author Sonny Kim, Josh Lurz
+* \param aSubsectorVariableDemand Total variable demand for this subsector.
+* \param aFixedOutputScaleFactor Scale factor to scale down fixed output
+*        technologies.
+* \param aPeriod Model period
+* \param aGDP Regional GDP container.
+*/
+void ProfitRateSubsector::setOutput( const double aSubsectorVariableDemand,
+                                  const double aFixedOutputScaleFactor,
+                                  const int aPeriod )
+
+{
+    /*pair<double, double> unnormalizedSum;
+    const vector<double>& shares = calcChildShares( aPeriod, unnormalizedSum );
+    for( TechIterator techIter = mTechContainers.begin(); techIter != mTechContainers.end(); ++techIter ) {
+        ITechnologyContainer::TechRangeIterator vintageIter = (*techIter)->getVintageBegin( aPeriod );
+        
+        // The first year is the current vintage, only pass variable output to current vintage.
+        // Make sure that a new vintage technology exists for production.
+        if( vintageIter != (*techIter)->getVintageEnd( aPeriod ) ) {
+            (*vintageIter).second->production( mRegionName, mSectorName,
+                                            aSubsectorVariableDemand * shares[ techIter - mTechContainers.begin() ],
+                                            aFixedOutputScaleFactor, aPeriod );
+            ++vintageIter;
+        }
+        
+        // Loop over old vintages which do not get variable demand.
+        for( ; vintageIter != (*techIter)->getVintageEnd( aPeriod ); ++vintageIter ) {
+            // calculate Technology output and fuel input for past vintages
+            (*vintageIter).second->production( mRegionName, mSectorName, 0,
+                                            aFixedOutputScaleFactor, aPeriod );
+        }
+    }*/
+    Subsector::setOutput(aSubsectorVariableDemand, aFixedOutputScaleFactor, aPeriod);
+}

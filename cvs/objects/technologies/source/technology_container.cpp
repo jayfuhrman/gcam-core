@@ -136,6 +136,7 @@ bool TechnologyContainer::hasTechnologyType( const string& aTechNodeName ) {
              aTechNodeName == TranTechnology::getXMLNameStatic() ||
              aTechNodeName == AgProductionTechnology::getXMLNameStatic() ||
              aTechNodeName == PassThroughTechnology::getXMLNameStatic() ||
+             aTechNodeName == ProfitRateTechnology::getXMLNameStatic() ||
              aTechNodeName == UnmanagedLandTechnology::getXMLNameStatic() ||
              aTechNodeName == AgStorageTechnology::getXMLNameStatic() ||
              aTechNodeName == ResourceReserveTechnology::getXMLNameStatic() );

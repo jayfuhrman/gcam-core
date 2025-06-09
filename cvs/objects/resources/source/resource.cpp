@@ -72,7 +72,8 @@ Resource::Resource():
 mResourcePrice( Value( 0.0 ) ),
 mAvailable( Value( 0.0 ) ),
 mAnnualProd( Value( 0.0 ) ),
-mCumulProd( Value( 0.0 ) )
+mCumulProd( Value( 0.0 ) ),
+mFullyCal(false)
 {
 }
 
@@ -192,7 +193,14 @@ void Resource::initCalc( const string& aRegionName, const int aPeriod ) {
         minprice = std::min( minprice, mSubResource[i]->getLowestPrice( aPeriod ) );
         maxprice = std::max( maxprice, mSubResource[i]->getHighestPrice( aPeriod ) );
     }
-    SectorUtils::setSupplyBehaviorBounds( mName, aRegionName, minprice, maxprice, aPeriod );
+        if(!mSubResource.empty()) {
+        SectorUtils::setSupplyBehaviorBounds( mName, aRegionName, minprice, maxprice, aPeriod );
+    }
+    if(mFullyCal) {
+        Marketplace* marketplace = scenario->getMarketplace();
+        IInfo* productInfo = marketplace->getMarketInfo( mName, aRegionName, aPeriod, false );
+        productInfo->setBoolean( "fully-calibrated", true );
+    }
 }
 
 /*! \brief Perform any calculations needed for each period after solution is

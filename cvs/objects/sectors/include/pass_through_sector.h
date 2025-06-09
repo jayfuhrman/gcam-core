@@ -115,5 +115,39 @@ private:
     const PassThroughSector* mSector;
 };
 
+class ProfitRateSector: public SupplySector
+{
+public:
+    explicit ProfitRateSector();
+    virtual ~ProfitRateSector(){};
+    static const std::string& getXMLNameStatic();
+    
+    virtual const std::string& getXMLName() const;
+    
+    virtual void completeInit( const IInfo* aRegionInfo,
+                               ILandAllocator* aLandAllocator );
+
+    virtual void calcFinalSupplyPrice( const int aPeriod );
+    
+protected:
+    
+    const std::vector<double> calcChildShares( const int aPeriod, std::pair<double, double>& oUnnormalizedShareSum ) const;
+    
+    virtual double getPrice( const int aPeriod ) const;
+    
+    // Define data such that introspection utilities can process the data from this
+    // subclass together with the data members of the parent classes.
+    DEFINE_DATA_WITH_PARENT(
+        SupplySector,
+        
+        //! The appropriate sector name for which's marginal revenue should be used
+        //! when calculating fixed output.
+        DEFINE_VARIABLE( SIMPLE, "zero-profit-market-name", mZeroProfitMarketName, std::string ),
+
+        //! State value used to set the fixed output to market.
+        DEFINE_VARIABLE( SIMPLE | STATE | NOT_PARSABLE, "profit-rate", mProfitRate, Value )
+    )
+};
+
 #endif // _PASS_THROUGH_SECTOR_H_
 

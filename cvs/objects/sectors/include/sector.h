@@ -74,6 +74,7 @@ class TObjectMetaInfo;
 class SupplySector;
 class AgSupplySector;
 class PassThroughSector;
+class ProfitRateSector;
 
 /*! 
 * \ingroup Objects
@@ -100,7 +101,7 @@ protected:
          * hierarchy under introspection.
          */
         DEFINE_SUBCLASS_FAMILY( Sector, SupplySector, AgSupplySector, 
-                                PassThroughSector ),
+                                PassThroughSector, ProfitRateSector),
 
         //! Sector name
         DEFINE_VARIABLE( SIMPLE, "name", mName, std::string ),

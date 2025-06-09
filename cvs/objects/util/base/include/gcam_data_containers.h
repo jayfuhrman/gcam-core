@@ -186,6 +186,7 @@
 #include "technologies/include/primary_output.h"
 #include "technologies/include/profit_shutdown_decider.h"
 #include "technologies/include/res_secondary_output.h"
+#include "technologies/include/zero_profit_output.h"
 #include "technologies/include/residue_biomass_output.h"
 #include "technologies/include/retired_production_state.h"
 #include "technologies/include/s_curve_shutdown_decider.h"

@@ -71,6 +71,7 @@ class TranSubsector;
 class AgSupplySubsector;
 class SubsectorAddTechCosts;
 class NestingSubsector;
+class ProfitRateSubsector;
 
 /*! 
 * \ingroup Objects
@@ -98,7 +99,7 @@ protected:
          * hierarchy under introspection.
          */
         DEFINE_SUBCLASS_FAMILY( Subsector, TranSubsector, AgSupplySubsector, SubsectorAddTechCosts,
-                                NestingSubsector ),
+                                NestingSubsector, ProfitRateSubsector),
 
         //! subsector name
         DEFINE_VARIABLE( SIMPLE, "name", mName, std::string ),

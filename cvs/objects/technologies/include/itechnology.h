@@ -75,6 +75,7 @@ class NukeFuelTechnology;
 class TranTechnology;
 class AgProductionTechnology;
 class PassThroughTechnology;
+class ProfitRateTechnology;
 class AgStorageTechnology;
 class UnmanagedLandTechnology;
 class ResourceReserveTechnology;
@@ -234,7 +235,7 @@ public:
          */
         DEFINE_SUBCLASS_FAMILY( ITechnology, Technology, DefaultTechnology, BackupIntermittentTechnology, IntermittentTechnology,
                                 WindTechnology, SolarTechnology, NukeFuelTechnology, TranTechnology,
-                                AgProductionTechnology, PassThroughTechnology, AgStorageTechnology, 
+                                AgProductionTechnology, PassThroughTechnology, ProfitRateTechnology, AgStorageTechnology, 
                                 UnmanagedLandTechnology, ResourceReserveTechnology, EmptyTechnology )
     )
 };
