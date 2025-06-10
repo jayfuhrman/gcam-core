@@ -97,8 +97,8 @@ protected:
         DEFINE_VARIABLE( ARRAY | STATE | NOT_PARSABLE, "annualprod", mAnnualProd, objects::PeriodVector<Value> ),
 
         //! cumulative production of Resource
-        DEFINE_VARIABLE( ARRAY | STATE | NOT_PARSABLE, "cummprod", mCumulProd, objects::PeriodVector<Value>,
-                            DEFINE_VARIABLE( SIMPLE, "fully-calibrated", mFullyCal, bool ))
+        DEFINE_VARIABLE( ARRAY | STATE | NOT_PARSABLE, "cummprod", mCumulProd, objects::PeriodVector<Value> ),
+        DEFINE_VARIABLE( SIMPLE, "fully-calibrated", mFullyCal, bool )
     )
     
     //! Pointer to the resource's information store.
