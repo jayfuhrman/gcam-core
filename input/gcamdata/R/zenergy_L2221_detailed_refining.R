@@ -281,8 +281,7 @@ module_energy_L2221.refining <- function(command, ...) {
       filter(year %in% c(MODEL_BASE_YEARS, MODEL_FUTURE_YEARS)) %>%
       rename(sector.name = supplysector,
              subsector.name = subsector) %>%
-      select(LEVEL2_DATA_NAMES[["GlobalTechCoef"]])%>%
-      filter(subsector.name!="crude oil refining") -> L2221.GlobalTechCoef_en
+      select(LEVEL2_DATA_NAMES[["GlobalTechCoef"]]) -> L2221.GlobalTechCoef_en
 
 
     A221.globaltech_cost <-

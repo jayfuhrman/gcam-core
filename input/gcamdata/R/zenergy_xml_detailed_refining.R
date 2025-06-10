@@ -74,7 +74,7 @@ module_energy_detailed_refining_xml <- function(command, ...) {
     L2221.StubTechCoef_refining <- get_data(all_data, "L2221.StubTechCoef_refining")
 
     L2221.GlobalTechInputPmult <- L2221.GlobalTechCoef_en %>%
-      filter(minicam.energy.input == 'refining') %>%
+      filter(minicam.energy.input == 'oil refining') %>%
       mutate(price.unit.conversion = 0) %>%
       select(LEVEL2_DATA_NAMES[["GlobalTechInputPMult"]])
 

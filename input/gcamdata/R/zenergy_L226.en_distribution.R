@@ -85,6 +85,19 @@ module_energy_L226.en_distribution <- function(command, ...) {
       rbind(L1093.en_bal_EJ_liquids_industrial_total)%>%
       rename(fuel=fuel_category,sector=type)
 
+    #Complete combinations
+    complete_combinations <- expand.grid(
+      region = unique(L126.in_EJ_R_Y_liq_tot$region),
+      year = unique(L126.in_EJ_R_Y_liq_tot$year),
+      fuel = unique(L126.in_EJ_R_Y_liq_tot$fuel),
+      sector = unique(L126.in_EJ_R_Y_liq_tot$sector))
+
+    L126.in_EJ_R_Y_liq_tot <- complete_combinations %>%
+      left_join(L126.in_EJ_R_Y_liq_tot,by=c("region","year","fuel","sector"))%>%
+      mutate(value=ifelse(is.na(value),0,value))
+
+    L126.in_EJ_R_Y_liq_tot <- as_tibble(L126.in_EJ_R_Y_liq_tot)
+
     #Add FT fuels (from biorefining, ctl/gtl) to refined liquids enduse and rbind with L126.in_EJ_R_Y_liq_tot
     L126.in_EJ_R_Y_liq_tot <- L126.in_EJ_R_Y_liq_tot %>%
       rbind((L1093.out_EJ_R_bioliquids_ctl_gtl_prod_F_Yh %>%
