@@ -254,6 +254,7 @@
 		CDD5A20D130338B60088463C /* empty_technology.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CDD5A20A130338B60088463C /* empty_technology.cpp */; };
 		CDD5A20E130338B60088463C /* stub_technology_container.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CDD5A20B130338B60088463C /* stub_technology_container.cpp */; };
 		CDD5A20F130338B60088463C /* technology_container.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CDD5A20C130338B60088463C /* technology_container.cpp */; };
+		CDD819FC2C18A9D9000FC59B /* zero_profit_output.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CDD819FB2C18A9D9000FC59B /* zero_profit_output.cpp */; };
 		CDE074A41468959600432712 /* gcam_consumer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CDE074A31468959600432712 /* gcam_consumer.cpp */; };
 		CDE074AF146895AA00432712 /* building_function.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CDE074AA146895AA00432712 /* building_function.cpp */; };
 		CDE074B0146895AA00432712 /* building_node_input.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CDE074AB146895AA00432712 /* building_node_input.cpp */; };
@@ -865,6 +866,8 @@
 		CDD5A20A130338B60088463C /* empty_technology.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = empty_technology.cpp; sourceTree = "<group>"; };
 		CDD5A20B130338B60088463C /* stub_technology_container.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = stub_technology_container.cpp; sourceTree = "<group>"; };
 		CDD5A20C130338B60088463C /* technology_container.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = technology_container.cpp; sourceTree = "<group>"; };
+		CDD819F82C18A9D0000FC59B /* zero_profit_output.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = zero_profit_output.h; sourceTree = "<group>"; };
+		CDD819FB2C18A9D9000FC59B /* zero_profit_output.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = zero_profit_output.cpp; sourceTree = "<group>"; };
 		CDE074A01468959200432712 /* gcam_consumer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gcam_consumer.h; sourceTree = "<group>"; };
 		CDE074A31468959600432712 /* gcam_consumer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gcam_consumer.cpp; sourceTree = "<group>"; };
 		CDE074A5146895A000432712 /* building_function.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = building_function.h; sourceTree = "<group>"; };
@@ -1807,6 +1810,7 @@
 		CD48866B122873C200F5A88A /* include */ = {
 			isa = PBXGroup;
 			children = (
+				CDD819F82C18A9D0000FC59B /* zero_profit_output.h */,
 				CD48866C122873C200F5A88A /* ag_production_technology.h */,
 				CDAC857A2BF30ACD0056386E /* ag_storage_technology.h */,
 				8C900C8E2D42DFA10055A304 /* backup_intermittent_technology.h */,
@@ -1864,6 +1868,7 @@
 		CD48869E122873C200F5A88A /* source */ = {
 			isa = PBXGroup;
 			children = (
+				CDD819FB2C18A9D9000FC59B /* zero_profit_output.cpp */,
 				CDAC857D2BF30AD60056386E /* ag_storage_technology.cpp */,
 				8C900C8F2D42DFAB0055A304 /* backup_intermittent_technology.cpp */,
 				9CA541B025939CF300CFA8F2 /* output_accounting.cpp */,
@@ -2202,6 +2207,7 @@
 			files = (
 				CD48872A122873C200F5A88A /* asimple_carbon_calc.cpp in Sources */,
 				CD48872B122873C200F5A88A /* carbon_model_utils.cpp in Sources */,
+				CDD819FC2C18A9D9000FC59B /* zero_profit_output.cpp in Sources */,
 				CD48872C122873C200F5A88A /* land_carbon_densities.cpp in Sources */,
 				CD48872D122873C200F5A88A /* magicc_model.cpp in Sources */,
 				CD48872F122873C200F5A88A /* consumer.cpp in Sources */,
