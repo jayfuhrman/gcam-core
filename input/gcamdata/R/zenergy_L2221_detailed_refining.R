@@ -250,7 +250,7 @@ module_energy_L2221.refining <- function(command, ...) {
       left_join(A222.IO_R_oilrefining_F_Yh%>%
                   select(-sector)%>%
                   mutate(supplysector="oil refining")%>%
-                  mutate(fuel=ifelse(fuel=="oil","crude oil",fuel))%>%
+                  mutate(fuel=ifelse(fuel=="oil","regional oil",fuel))%>%
                   mutate(fuel=ifelse(fuel=="gas","natural gas",fuel))%>%
                   rename(minicam.energy.input=fuel),
                 by=c("region","supplysector","minicam.energy.input","year"))%>%
@@ -262,7 +262,7 @@ module_energy_L2221.refining <- function(command, ...) {
       filter(year %in% c(MODEL_BASE_YEARS, MODEL_FUTURE_YEARS)) %>%
       rename(stub.technology = technology)%>%
       mutate(market.name=region)%>%
-      mutate(minicam.energy.input=ifelse(minicam.energy.input=="crude oil","regional oil",minicam.energy.input))%>%
+      #mutate(minicam.energy.input=ifelse(minicam.energy.input=="crude oil","regional oil",minicam.energy.input))%>%
       mutate(minicam.energy.input=ifelse(minicam.energy.input=="natural gas","wholesale gas",minicam.energy.input))%>%
       mutate(minicam.energy.input=ifelse(minicam.energy.input=="electricity","elect_td_ind",minicam.energy.input))-> L2221.StubTechCoef_refining
 

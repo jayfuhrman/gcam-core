@@ -4,13 +4,13 @@
 # Column types: ccccnnn 
 # ----------
 supplysector,subsector,technology,minicam.energy.input,1971,2020,2100
-oil refining,crude oil refining,high Distillate_FuelOil,crude oil,1,1,1
-oil refining,crude oil refining,high Residual_FuelOil,crude oil,1,1,1
-oil refining,crude oil refining,high Gasoline,crude oil,1,1,1
-oil refining,crude oil refining,high LPG,crude oil,1,1,1
-oil refining,crude oil refining,high Jet_Kerosene,crude oil,1,1,1
-oil refining,crude oil refining,high Heavy_Residual,crude oil,1,1,1
-oil refining,crude oil refining,high Other,crude oil,1,1,1
+oil refining,crude oil refining,high Distillate_FuelOil,regional oil,1,1,1
+oil refining,crude oil refining,high Residual_FuelOil,regional oil,1,1,1
+oil refining,crude oil refining,high Gasoline,regional oil,1,1,1
+oil refining,crude oil refining,high LPG,regional oil,1,1,1
+oil refining,crude oil refining,high Jet_Kerosene,regional oil,1,1,1
+oil refining,crude oil refining,high Heavy_Residual,regional oil,1,1,1
+oil refining,crude oil refining,high Other,regional oil,1,1,1
 Residual_FuelOil,Residual_FuelOil,crude oil,oil refining,1,1,1
 Residual_FuelOil,Residual_FuelOil,crude oil,Residual_FuelOil_crude oil,1,1,1
 Gasoline,Gasoline,crude oil,oil refining,1,1,1
