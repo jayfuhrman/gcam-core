@@ -72,7 +72,8 @@ module_water_electricity_water_cwf_xml <- function(command, ...) {
 
     L2233.GlobalIntTechBackup_elec_cool <- L2233.GlobalIntTechBackup_elec_cool %>%
       mutate(backup.capacity.factor = energy.BACKUP_CAPACITY_FACTOR_LOW,
-             capacity.limit = energy.CAPACITY_LIMIT_HI)
+             capacity.limit = energy.CAPACITY_LIMIT_HI) %>%
+      rename(backup.intermittent.technology = technology)
 
     create_xml("grid_management_cwf.xml") %>%
       add_node_equiv_xml("sector") %>%

@@ -1,0 +1,76 @@
+# File: A44.subsector_shrwt_low_fossil.csv
+# Title: Building default subsector shareweights for fossil fuel phase-out
+# Units: Unitless
+# Column types: ccccn
+# ----------
+supplysector,subsector,year.fillout,year,share.weight
+resid heating modern,biomass,start-year,,1
+resid heating coal,coal,start-year,,1
+resid heating coal,coal,2050,,0
+resid heating coal,coal,end-year,,0
+resid heating modern,electricity,start-year,,1
+resid heating modern,electricity,2050,,1
+resid heating modern,electricity,end-year,,1
+resid heating modern,gas,start-year,,1
+resid heating modern,gas,2050,,0
+resid heating modern,gas,end-year,,0
+resid heating modern,refined liquids,start-year,,1
+resid heating modern,refined liquids,2050,,0
+resid heating modern,refined liquids,end-year,,0
+resid heating TradBio,traditional biomass,start-year,,1
+resid heating modern,district heat,start-year,,1
+resid cooling modern,electricity,start-year,,1
+resid cooling modern,electricity,2050,,1
+resid cooling modern,electricity,end-year,,1
+resid cooling modern,gas,start-year,,1
+resid cooling modern,gas,2050,,0
+resid cooling modern,gas,end-year,,0
+resid others modern,biomass,start-year,,1
+resid others coal,coal,start-year,,1
+resid others coal,coal,2050,,0
+resid others coal,coal,end-year,,0
+resid others modern,electricity,start-year,,1
+resid others modern,electricity,2050,,1
+resid others modern,electricity,end-year,,1
+resid others modern,gas,start-year,,1
+resid others modern,gas,2050,,0
+resid others modern,gas,end-year,,0
+resid others modern,refined liquids,start-year,,1
+resid others modern,refined liquids,2050,,0
+resid others modern,refined liquids,end-year,,0
+resid others TradBio,traditional biomass,start-year,,1
+resid others modern,district heat,start-year,,1
+comm heating,biomass,start-year,,1
+comm heating,coal,start-year,,1
+comm heating,coal,2050,,0
+comm heating,coal,end-year,,0
+comm heating,electricity,start-year,,1
+comm heating,electricity,2050,,1
+comm heating,electricity,end-year,,1
+comm heating,gas,start-year,,1
+comm heating,gas,2050,,0
+comm heating,gas,end-year,,0
+comm heating,refined liquids,start-year,,1
+comm heating,refined liquids,2050,,0
+comm heating,refined liquids,end-year,,0
+comm heating,district heat,start-year,,1
+comm cooling,electricity,start-year,,1
+comm cooling,electricity,2050,,1
+comm cooling,electricity,end-year,,1
+comm cooling,gas,start-year,,1
+comm cooling,gas,2050,,0
+comm cooling,gas,end-year,,0
+comm others,biomass,start-year,,1
+comm others,coal,start-year,,1
+comm others,coal,2050,,0
+comm others,coal,end-year,,0
+comm others,electricity,start-year,,1
+comm others,electricity,2050,,1
+comm others,electricity,end-year,,1
+comm others,gas,start-year,,1
+comm others,gas,2050,,0
+comm others,gas,end-year,,0
+comm others,refined liquids,start-year,,1
+comm others,refined liquids,2050,,0
+comm others,refined liquids,end-year,,0
+comm others,district heat,start-year,,1

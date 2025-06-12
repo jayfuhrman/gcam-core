@@ -22,6 +22,7 @@
 #' @importFrom tidyr complete replace_na
 #' @author BBL August 2017
 module_aglu_L202.an_input <- function(command, ...) {
+
   MODULE_INPUTS <-
     c(FILE = "common/GCAM_region_names",
       FILE = "energy/A_regions",
@@ -98,7 +99,7 @@ module_aglu_L202.an_input <- function(command, ...) {
 
     get_data_list(all_data, MODULE_INPUTS, strip_attributes = TRUE)
 
-    L110.For_ALL_bm3_R_Y <- L110.For_ALL_bm3_R_Y %>% filter(GCAM_commodity %in% aglu.FOREST_commodities) %>%  group_by(GCAM_commodity, GCAM_region_ID,year) %>%
+    L110.For_ALL_bm3_R_Y <- L110.For_ALL_bm3_R_Y %>% filter(GCAM_commodity %in% aglu.FOREST_COMMODITIES) %>%  group_by(GCAM_commodity, GCAM_region_ID,year) %>%
       mutate(value=sum(Prod_bm3)) %>% ungroup() %>% select(GCAM_commodity, GCAM_region_ID,year,value) %>% distinct() %>% mutate(GCAM_commodity= paste0(GCAM_commodity,"_processing"))
     L110.IO_Coefs_pulp <-L110.IO_Coefs_pulp
     L1321.For_Cost <- L1321.For_Cost %>% mutate(GCAM_commodity = paste0(GCAM_commodity, "_processing"))
@@ -309,13 +310,13 @@ module_aglu_L202.an_input <- function(command, ...) {
              tech.share.weight = if_else(calOutputValue > 0, 1, 0)) %>%
       select(LEVEL2_DATA_NAMES[["StubTechProd"]]) %>%
       #Take out forest supply sectors from this
-      filter(!stub.technology %in% c(aglu.FOREST_commodities, "woodpulp_energy"))->
+      filter(!stub.technology %in% c(aglu.FOREST_COMMODITIES, "woodpulp_energy"))->
       L202.StubTechProd_in
 
     A_an_input_technology %>%
       write_to_all_regions(c(LEVEL2_DATA_NAMES[["Tech"]]), GCAM_region_names) %>%
       mutate(stub.technology = technology) %>%
-      filter(stub.technology %in% aglu.FOREST_commodities) %>%
+      filter(stub.technology %in% aglu.FOREST_COMMODITIES) %>%
       repeat_add_columns(tibble(year = MODEL_BASE_YEARS)) %>%
       # not every region/technology/year has a match, so need to use left_join
       left_join(L110.For_ALL_bm3_R_Y %>% left_join_error_no_match(GCAM_region_names, by = c("GCAM_region_ID")), by = c("region", "supplysector" = "GCAM_commodity", "year")) %>%
@@ -420,13 +421,13 @@ module_aglu_L202.an_input <- function(command, ...) {
     A_an_input_technology %>%
       write_to_all_regions(c(LEVEL2_DATA_NAMES[["Tech"]], "minicam.energy.input", "market.name"), GCAM_region_names) %>%
       rename(stub.technology = technology) %>%
-      filter(stub.technology %in% aglu.FOREST_commodities) %>%
+      filter(stub.technology %in% aglu.FOREST_COMMODITIES) %>%
       repeat_add_columns(tibble(year = c(MODEL_BASE_YEARS, MODEL_FUTURE_YEARS))) %>%
       left_join(L110.IO_Coefs_pulp%>% left_join_error_no_match(GCAM_region_names, by = c("GCAM_region_ID")), by = c("region","year")) %>%
       mutate(coefficient = IO,
-             coefficient=if_else(stub.technology == "woodpulp",aglu.FOREST_pulp_conversion,coefficient)) %>%
-      group_by(GCAM_region_ID,stub.technology) %>%
-      mutate(coefficient= ifelse(is.na(coefficient),approx_fun(year, coefficient, rule = 1),coefficient)) %>%
+             coefficient=if_else(stub.technology == "woodpulp",aglu.FOREST_PULP_CONVERSION,coefficient)) %>%
+      group_by(region, stub.technology) %>%
+      mutate(coefficient= if_else(is.na(coefficient),approx_fun(year, coefficient, rule = 1),coefficient)) %>%
       ungroup() %>%
       select(colnames(L202.StubTechCoef_an))->L202.StubTechCoef_an_Forest
 
@@ -439,8 +440,8 @@ module_aglu_L202.an_input <- function(command, ...) {
       filter(year == MODEL_FINAL_BASE_YEAR) %>%
       select(GCAM_region_ID, coefficient) %>%
       # adjusted IO values will be assigned to the year they are fully phased in, and interpolated for years in between. We are basically maintaining calibration values to 2100
-      mutate(year = PHASE_IN_YEAR) %>%
-      mutate(coefficient = coefficient)
+      mutate(year = PHASE_IN_YEAR,
+             coefficient = coefficient)
 
     A_an_input_technology %>%
       write_to_all_regions(c(LEVEL2_DATA_NAMES[["Tech"]], "minicam.energy.input", "market.name"), GCAM_region_names) %>%
@@ -601,7 +602,7 @@ module_aglu_L202.an_input <- function(command, ...) {
     # Originally, we assume nonfeedcost if the same at the system level and it is
     # computed as the delta between price and feedcost (per output unit).
     # However, this could give us negative value at the tech level!
-    # The negative nonfeedcost may lead to negative price and causing solution
+    # The negative nonfeedcost may lead to negative price, causing solution
     # issues (at least higher iterations).
     # Our price data is from FAO; cost data from mostly FAO for FeedCrops but
     # our supply assumptions for other sources. There is also quality difference
@@ -612,6 +613,7 @@ module_aglu_L202.an_input <- function(command, ...) {
     # 2. set minimum value for nonfeedcost to zero for all tech except FeedCrops
     # 3. recalculate FeedCrops nonfeedcost to balance the value
     # 4. check and adjust nonfeedcost of FeedCrops tech to ensure the cost share is reasonable
+    # 5. phase out the negative nonfeedcost
 
 
     # Step 1
@@ -658,13 +660,38 @@ module_aglu_L202.an_input <- function(command, ...) {
 
     # Step 4 check and adjust nonfeedcost of FeedCrops tech to ensure the cost share is reasonable
     # set nonfeedcost >= -50% of feedcost (per unit of output)
-    # about 30 techs are adjusted but the prodduction was small so won't affect output prices significantly
+    # about 13 techs are adjusted but the production was small so won't affect output prices significantly
     L202.an_nonFeedCost_R_C_2 %>%
       mutate(feedcostperoutput = if_else(Prod_Mt == 0, 0, FeedCost_bilUSD / Prod_Mt),
              nonFeedCost_min = -feedcostperoutput * 0.5,
-             nonFeedCost = pmax(nonFeedCost, nonFeedCost_min) ) ->
+             nonFeedCost = pmax(nonFeedCost, nonFeedCost_min) )%>%
+      select(region, supplysector = GCAM_commodity, subsector = system,
+             stub.technology = feed, nonFeedCost) ->
       L202.an_nonFeedCost_R_C_3
 
+
+    # Step 5 Phase out negative nonFeedCost
+    # phase out negative nonFeedCost to zero till the last future year
+    # max(MODEL_FUTURE_YEARS) can be changed to other years
+    Zero_Cost_year <- max(MODEL_FUTURE_YEARS)
+    Zero_Cost_year <- 2050
+
+    L202.an_nonFeedCost_R_C_3 %>%
+      filter(nonFeedCost <0) %>%
+      repeat_add_columns(tibble(year = MODEL_YEARS)) %>%
+      # linear interpolation to 0 in the last year
+      mutate(nonFeedCost = if_else(year > MODEL_FINAL_BASE_YEAR, NA_real_, nonFeedCost),
+             nonFeedCost = if_else(year >= Zero_Cost_year, 0, nonFeedCost)) %>%
+      group_by_at(vars(-year, -nonFeedCost)) %>%
+      mutate(nonFeedCost = approx_fun(year, nonFeedCost, rule = 1)) %>%
+      ungroup() %>%
+      # bind rows with positive nonFeedCost
+      bind_rows(
+        L202.an_nonFeedCost_R_C_3 %>%
+          filter(nonFeedCost >=0) %>%
+          repeat_add_columns(tibble(year = MODEL_YEARS))
+      ) ->
+      L202.an_nonFeedCost_R_C_4
 
     A_an_technology %>%
       repeat_add_columns(tibble(year = MODEL_YEARS)) %>%
@@ -673,10 +700,8 @@ module_aglu_L202.an_input <- function(command, ...) {
       filter(!minicam.energy.input %in% c("regional industrial_roundwood")) %>%
       mutate(stub.technology = technology,
              minicam.non.energy.input = "non-feed") %>%
-      left_join_error_no_match(L202.an_nonFeedCost_R_C_3 %>%
-                  select(region, supplysector = GCAM_commodity, subsector = system,
-                         stub.technology = feed, nonFeedCost),
-                  by = c("supplysector", "subsector", "region", "stub.technology")) %>%
+      left_join_error_no_match(L202.an_nonFeedCost_R_C_4,
+                               by = c("supplysector", "subsector", "year", "region", "stub.technology")) %>%
       mutate(input.cost = round(nonFeedCost, aglu.DIGITS_CALPRICE)) %>%
       select(LEVEL2_DATA_NAMES[["StubTechCost"]]) ->
       L202.StubTechCost_an

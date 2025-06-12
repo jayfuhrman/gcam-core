@@ -130,8 +130,8 @@ module_energy_Cstorage_xml <- function(command, ...) {
       add_xml_data(L261.TechPmult %>%
                      filter(scenario == 'slow growth rate'), "TechPmult") %>%
       add_xml_data(L261.RsrcPrice, "RenewRsrcPrice") %>%
-      add_xml_data(L261.DeleteNonCO2, "DeleteNonCO2") %>%
-      add_xml_data(L261.OutputEmissCoeff_C, "OutputEmissCoeff") %>%
+      #add_xml_data(L261.DeleteNonCO2, "DeleteNonCO2") %>%
+      #add_xml_data(L261.OutputEmissCoeff_C, "OutputEmissCoeff") %>%
       add_precursors("L261.Rsrc", "L261.UnlimitRsrc", "L261.RsrcCurves_C", "L261.ResTechShrwt_C", "L261.Supplysector_C", "L261.SubsectorLogit_C", "L261.SubsectorShrwtFllt_C", "L261.StubTech_C", "L261.GlobalTechCoef_C", "L261.GlobalTechCost_C", "L261.GlobalTechShrwt_C",
                      "L261.ResSubresourceProdLifetime","L261.ResReserveTechLifetime","L261.ResReserveTechDeclinePhase","L261.ResReserveTechProfitShutdown",
                      "L261.ResReserveTechInvestmentInput",
@@ -171,8 +171,8 @@ module_energy_Cstorage_xml <- function(command, ...) {
                      filter(scenario == 'rapid growth rate'), "StubTechEff") %>%
       add_xml_data(L261.TechPmult %>%
                      filter(scenario == 'rapid growth rate'), "TechPmult") %>%
-      add_xml_data(L261.DeleteNonCO2, "DeleteNonCO2") %>%
-      add_xml_data(L261.OutputEmissCoeff_C, "OutputEmissCoeff") %>%
+      #add_xml_data(L261.DeleteNonCO2, "DeleteNonCO2") %>%
+      #add_xml_data(L261.OutputEmissCoeff_C, "OutputEmissCoeff") %>%
       add_precursors("L261.Rsrc", "L261.UnlimitRsrc", "L261.RsrcCurves_C", "L261.ResTechShrwt_C", "L261.Supplysector_C", "L261.SubsectorLogit_C", "L261.SubsectorShrwtFllt_C", "L261.StubTech_C", "L261.GlobalTechCoef_C", "L261.GlobalTechCost_C", "L261.GlobalTechShrwt_C",
                      "L261.ResSubresourceProdLifetime","L261.ResReserveTechLifetime","L261.ResReserveTechDeclinePhase","L261.ResReserveTechProfitShutdown",
                      "L261.ResReserveTechInvestmentInput",

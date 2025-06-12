@@ -286,35 +286,6 @@ void Technology::completeInit( const string& aRegionName,
     // need to acccess those TechVintageVector for any reason then they will be able to.
     initTechVintageVector();
     
-    // Check if both the original MiniCAM non-energy-input and the new input-capital
-    // are in the vector.  If so, eliminate the non-energy-input and use input-capital 
-    // only so that non-energy costs are not double accounted.
-    // Does not check for fixed and variable O&M, however.
-    vector<IInput*>::iterator iterNonEnergy = mInputs.end();
-    vector<IInput*>::iterator iterCapital = mInputs.end();
-	
-    // First look for input-capital since most technologies will have non-energy-input.
-    for( vector<IInput*>::iterator iter = mInputs.begin(); iter != mInputs.end(); ++iter ) {
-        // Cannot use hasTypeFlag() as both have same type.
-        if( ( *iter )->isSameType( InputCapital::getXMLNameStatic() ) ){
-            iterCapital = iter;
-        }
-    }
-    // Only look for non-energy-input iterator if input-capital iterator is found.
-    if( iterCapital != mInputs.end() ){
-        for( vector<IInput*>::iterator iter = mInputs.begin(); iter != mInputs.end(); ++iter ) {
-            // Cannot use hasTypeFlag() as both have same type.
-            if( ( *iter )->isSameType( NonEnergyInput::getXMLNameStatic() ) ){
-                iterNonEnergy = iter;
-            }
-        }
-    }
-    // If both are found, then eliminate the orginal non-energy-input since the 
-    // more detailed levelized capital calculation is intended to be used.
-    //if( iterNonEnergy != mInputs.end() && iterCapital != mInputs.end() ){
-    // mInputs.erase( iterNonEnergy );
-	//}
-    
     // Complete the initialization of the inputs. Pass the inputs and outputs
     // the most local info object available.
     const IInfo* localInfo = getTechInfo() != 0 ? getTechInfo() : mTechnologyInfo.get();
@@ -1198,7 +1169,7 @@ double Technology::getCalibrationOutput( const bool aHasRequiredInput,
     assert( !aHasRequiredInput || ( !aRequiredInput.empty() && aRequiredInput != "allInputs" ) );
 
     // Check if this is an existing vintage which cannot have a calibration value.
-    if( !mProductionState[ aPeriod ]->isNewInvestment() ) {
+    if(!mProductionState[aPeriod] || !mProductionState[ aPeriod ]->isNewInvestment() ) {
         return -1;
     }
 
@@ -1416,16 +1387,19 @@ bool Technology::isAllCalibrated( const int aPeriod,
 		output -= fixedOutput;
 	}
     double relativeDiff;
+	double absDiff;
     double sectorOutput = scenario->getMarketplace()->getSupply( aSectorName, aRegionName, aPeriod );
 
     // Do not write warning to main log if the calibration value or the
     // relative difference is smaller than the criteria for calibration accuracy.
     if( calOutput > aCalAccuracy ) {
-        relativeDiff = fabs( output - calOutput ) / calOutput;
+        absDiff = output - calOutput;
+		relativeDiff = absDiff / calOutput;	
     }
     else {
         // Use absolute accuracy since the calibrated output level is zero.
-        relativeDiff = fabs( output - calOutput );
+        absDiff = output - calOutput;
+        relativeDiff = absDiff;
     }
     // Return false (not calibrated) and print warning only if relativeDiff is
     // greater than the calibration accuracy.
@@ -1437,7 +1411,7 @@ bool Technology::isAllCalibrated( const int aPeriod,
      *          a very tight tolerence we probably won't be able to calibrate exactly when scales
      *          are so different.
      */
-    if( relativeDiff > aCalAccuracy && ( fabs( output - calOutput ) ) > aCalAccuracy * sectorOutput ) {
+    if( relativeDiff > aCalAccuracy && ( fabs( absDiff ) ) > aCalAccuracy * sectorOutput ) {
         // Print warning then return false.
         if( aPrintWarnings ) {
             double sectorShare = sectorOutput > 0.0 ? calOutput / sectorOutput : numeric_limits<double>::quiet_NaN();
@@ -1454,6 +1428,7 @@ bool Technology::isAllCalibrated( const int aPeriod,
             mainLog.precision(4); // for floating-point
             mainLog << " Output: "; mainLog.width(8); mainLog << output;
             mainLog << " Calibration: "; mainLog.width(8); mainLog << calOutput;
+			mainLog << " absDiff: "; mainLog.width(8); mainLog << absDiff;
             mainLog << " relativeDiff: "; mainLog.width(8); mainLog << relativeDiff;
             mainLog << " SectorOutput: "; mainLog.width(8); mainLog << sectorOutput;
             mainLog << " SectorShare: "; mainLog.width(8); mainLog << sectorShare;

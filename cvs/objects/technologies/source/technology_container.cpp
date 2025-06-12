@@ -53,6 +53,7 @@
 #include "technologies/include/technology.h"
 #include "technologies/include/itechnology.h"
 #include "technologies/include/default_technology.h"
+#include "technologies/include/backup_intermittent_technology.h"
 #include "technologies/include/intermittent_technology.h"
 #include "technologies/include/wind_technology.h"
 #include "technologies/include/solar_technology.h"
@@ -62,6 +63,7 @@
 #include "technologies/include/pass_through_technology.h"
 #include "technologies/include/unmanaged_land_technology.h"
 #include "technologies/include/resource_reserve_technology.h"
+#include "technologies/include/ag_storage_technology.h"
 #include "technologies/include/empty_technology.h"
 
 extern Scenario* scenario;
@@ -126,6 +128,7 @@ ITechnologyContainer* TechnologyContainer::clone() const {
  */
 bool TechnologyContainer::hasTechnologyType( const string& aTechNodeName ) {
     return ( aTechNodeName == DefaultTechnology::getXMLNameStatic() ||
+             aTechNodeName == BackupIntermittentTechnology::getXMLNameStatic() ||
              aTechNodeName == IntermittentTechnology::getXMLNameStatic() ||
              aTechNodeName == WindTechnology::getXMLNameStatic() ||
              aTechNodeName == SolarTechnology::getXMLNameStatic() ||
@@ -134,6 +137,7 @@ bool TechnologyContainer::hasTechnologyType( const string& aTechNodeName ) {
              aTechNodeName == AgProductionTechnology::getXMLNameStatic() ||
              aTechNodeName == PassThroughTechnology::getXMLNameStatic() ||
              aTechNodeName == UnmanagedLandTechnology::getXMLNameStatic() ||
+             aTechNodeName == AgStorageTechnology::getXMLNameStatic() ||
              aTechNodeName == ResourceReserveTechnology::getXMLNameStatic() );
 }
 
