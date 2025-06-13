@@ -8,7 +8,7 @@
 #' @param ... other optional parameters, depending on command
 #' @return Depends on \code{command}: either a vector of required inputs,
 #' a vector of output names, or (if \code{command} is "MAKE") all
-#' the generated outputs: \code{LB1092.Tradebalance_refined_liquids_EJ_R_Y}, \code{L1093.en_bal_EJ_liquids_enduse_total}, \code{L1093.out_EJ_R_bioliquids_ctl_gtl_prod_F_Yh}, \code{L1093.en_bal_EJ_liquids_industrial_total}, \code{LB1092.GCAM_REG_LIQUIDS_PROD_agg}, \code{L1093.IO_R_oilrefining_F_Yh}.
+#' the generated outputs: \code{LB1092.Tradebalance_refined_liquids_EJ_R_Y}, \code{L1093.en_bal_EJ_liquids_enduse_total}, \code{L1093.en_bal_EJ_liquids_industrial_total}, \code{LB1092.GCAM_REG_LIQUIDS_PROD_agg}, \code{LB1092.GCAM_BIO_LIQUIDS_PROD_agg"}, \code{LB1092.GCAM_CTL_GTL_LIQUIDS_PROD_agg}, \code{L1093.IO_R_oilrefining_F_Yh}.
 #' @importFrom dplyr filter dplyr::if_else mutate select distinct coalesce
 #' @importFrom tidyr gather spread
 #' @author Siddarth Durga, Maggie Liu (Jan 2025)
@@ -19,6 +19,7 @@ module_energy_L1093.refined_liquids_GrossTrade <- function(command, ...){
              "L122.out_EJ_R_refining_F_Yh",
              "L101.detailed_refined_liquids_EJ_R_Yh",
              "L1012.en_bal_EJ_R_Si_Fi_Yh",
+             FILE = "energy/A22.globaltech_coef_ctlgtl",
              FILE = "energy/mappings/IEA_product_fuel_liquids",
              FILE = "energy/mappings/Liquids_Trade_GCAM_regID",
              FILE = "energy/mappings/IEA_product_LHV",
@@ -26,9 +27,10 @@ module_energy_L1093.refined_liquids_GrossTrade <- function(command, ...){
   } else if(command == driver.DECLARE_OUTPUTS) {
     return(c("LB1092.Tradebalance_refined_liquids_EJ_R_Y",
              "LB1092.GCAM_REG_LIQUIDS_PROD_agg",
+             "LB1092.GCAM_BIO_LIQUIDS_PROD_agg",
+             "LB1092.GCAM_CTL_GTL_LIQUIDS_PROD_agg",
              "L1093.en_bal_EJ_liquids_enduse_total",
              "L1093.en_bal_EJ_liquids_industrial_total",
-             "L1093.out_EJ_R_bioliquids_ctl_gtl_prod_F_Yh",
              "L1093.IO_R_oilrefining_F_Yh"))
   } else if(command == driver.MAKE) {
 
@@ -50,7 +52,7 @@ module_energy_L1093.refined_liquids_GrossTrade <- function(command, ...){
     L1012.en_bal_EJ_R_Si_Fi_Yh <- get_data(all_data, "L1012.en_bal_EJ_R_Si_Fi_Yh", strip_attributes = TRUE)
     convert_lhv <- get_data(all_data, "energy/mappings/IEA_product_LHV", strip_attributes = TRUE)
     raw_liquids_trade <- get_data(all_data, "energy/Resourcetradeearth-RefinedLiquids-2015", strip_attributes = TRUE)
-
+    A22.globaltech_coef_ctlgtl <- get_data(all_data,"energy/A22.globaltech_coef_ctlgtl", strip_attributes = TRUE)
 
     #==========================================================================================
     # Estimate refined liquids production by product categories (e.g, Gasoline, DFO, RFO etc.)
@@ -58,7 +60,6 @@ module_energy_L1093.refined_liquids_GrossTrade <- function(command, ...){
 
     #Aggregate by GCAM region, sector, and aggregate fuel category
     L101.detailed_refined_liquids_EJ_R_Yh <- L101.detailed_refined_liquids_EJ_R_Yh %>%
-      filter(fuel=="refined liquids") %>% #remove this when biorefining, ctl/gtl are modeled as profit-rate subsectors
       left_join(IEA_product_fuel_liquids,by=c("PRODUCT"))%>%
       left_join(GCAM_region_names,by=c("GCAM_region_ID"))%>%
       group_by(region,sector,fuel_category,year)%>%
@@ -112,22 +113,6 @@ module_energy_L1093.refined_liquids_GrossTrade <- function(command, ...){
      summarize(value=sum(value))%>%
      ungroup()
 
-   # Subtract biofuels, coal to liquids, and gas to liquids consumption from refined liquids enduse consumption
-   L122.out_EJ_R_refining_F_Yh %>%
-     filter(year%in%MODEL_BASE_YEARS)%>%
-     left_join(GCAM_region_names,by = c("GCAM_region_ID")) %>%
-     select(-GCAM_region_ID) %>%
-     filter(sector%in% c("gtl","ctl","biodiesel","corn ethanol","sugar cane ethanol")) %>%
-     group_by(region,year) %>%
-     summarize(value=sum(value)) %>%
-     ungroup() -> L1093.out_EJ_R_bioliquids_ctl_gtl_prod_F_Yh
-
-   # Subtract from total refined liquids end-use
-   L1093.en_bal_EJ_liquids_enduse_total <- L1093.en_bal_EJ_liquids_enduse_total %>%
-     rename(total_cons=value)%>%
-     left_join(L1093.out_EJ_R_bioliquids_ctl_gtl_prod_F_Yh,by=c("year","region")) %>%
-     mutate(value=total_cons-value)
-
    #=========================================================================================
    #Calculate shares and apply to total refined liquids consumption
    #=========================================================================================
@@ -179,7 +164,7 @@ module_energy_L1093.refined_liquids_GrossTrade <- function(command, ...){
    # Conduct domestic trade balance (consumption = production - exports + imports)
    #=============================================================================
 
-    #Estimate total production from oil refining and bio-refining
+    #Estimate total liquids production from refining
      L1093.out_EJ_R_liquids_prod_F_Yh %>%
        rename(production=value) -> liquids_total_prod_orig
 
@@ -407,15 +392,45 @@ module_energy_L1093.refined_liquids_GrossTrade <- function(command, ...){
               domestic_supply = production_reval - exports_reval)
 
     #===========================================================================
-    # Re-calibrate crude-based refined liquids production
+    # Re-calibrate refined liquids production
     #===========================================================================
     #
-    #Aggregate liquids production (crude and bio-based)
+    #Aggregate liquids production (crude + bio + ctl/gtl)
     liquids_trade_balance_orig_scaled %>%
        select(production_reval,year,fuel,region) %>%
        rename(value=production_reval) %>%
-       mutate(value=round(value,energy.DIGITS_CALOUTPUT)) %>%
-       mutate(metric="production") -> crude_liquids_production
+       mutate(value=round(value,energy.DIGITS_CALOUTPUT)) -> total_liquids_production
+
+    #Filter bioliquids production
+    L122.out_EJ_R_refining_F_Yh %>%
+      filter(year %in% HISTORICAL_YEARS) %>%
+      filter(sector %in% c("biodiesel","corn ethanol","sugar cane ethanol"))-> bioliquids_production
+
+    #Disaggregate CTL and GTL-based liquids production to individual products
+    #such as gasoline, distillate_fueloil, Jet_Kerosene, and other
+    L122.out_EJ_R_refining_F_Yh %>%
+      filter(year %in% HISTORICAL_YEARS) %>%
+      filter(sector %in% c("ctl","gtl")) %>%
+      left_join(A22.globaltech_coef_ctlgtl,by=c("sector","fuel"))%>%
+      mutate(value=value*ratio)%>%
+      select(-ratio,-fuel)%>%
+      rename(fuel=product)-> ctl_gtl_production
+
+    #Estimate crude-based liquids production (by subtracting total - bioliquids - ctl/gtl)
+    bioliquids_production %>%
+      mutate(fuel=ifelse(sector=="biodiesel","Distillate_FuelOil","Gasoline")) %>%
+      rbind(ctl_gtl_production)%>%
+      group_by(year,fuel,GCAM_region_ID)%>%
+      summarize(value=sum(value),.groups ="drop")%>%
+      left_join(GCAM_region_names,by=c("GCAM_region_ID"))%>%
+      select(-GCAM_region_ID)-> non_crude_liquids
+
+    #Substract total non_crude_liquids production from total liquids production
+    crude_liquids_production <- total_liquids_production %>%
+      rename(total=value)%>%
+      left_join(non_crude_liquids,by=c("year","fuel","region"))%>%
+      mutate(value=total-value)%>%
+      select(-total)
 
     #Calculate regional crude oil to refined liquids IO coefficients
     L122.in_EJ_R_refining_F_Yh<- L122.in_EJ_R_refining_F_Yh %>%
@@ -457,7 +472,8 @@ module_energy_L1093.refined_liquids_GrossTrade <- function(command, ...){
 
 
      #COMBINE ADJUSTED REFINED LIQUIDS PRODUCTION, CONSUMPTION and TRADE DATA
-     LB1092.Tradebalance_refined_liquids_EJ_R_Y <- rbind(crude_liquids_production,
+     LB1092.Tradebalance_refined_liquids_EJ_R_Y <- rbind(total_liquids_production %>%
+                                                           mutate(metric="production"),
                                                          liquids_consumption,
                                                          liquids_imports,
                                                          liquids_exports,
@@ -484,6 +500,25 @@ module_energy_L1093.refined_liquids_GrossTrade <- function(command, ...){
                       "L101.detailed_refined_liquids_EJ_R_Yh",
                       "L1012.en_bal_EJ_R_Si_Fi_Yh",
                       "common/GCAM_region_names") -> LB1092.GCAM_REG_LIQUIDS_PROD_agg
+
+     bioliquids_production %>%
+       add_title("Bio-based refined liquids production by region / year / type.") %>%
+       add_units("EJ") %>%
+       add_comments("Determined from IEA energy balances data") %>%
+       add_precursors("L122.out_EJ_R_refining_F_Yh",
+                      "L101.detailed_refined_liquids_EJ_R_Yh",
+                      "L1012.en_bal_EJ_R_Si_Fi_Yh",
+                      "common/GCAM_region_names") -> LB1092.GCAM_BIO_LIQUIDS_PROD_agg
+
+     ctl_gtl_production %>%
+       add_title("CTL/GTL refined liquids production by region / year / type.") %>%
+       add_units("EJ") %>%
+       add_comments("Determined from IEA energy balances data") %>%
+       add_precursors("L122.out_EJ_R_refining_F_Yh",
+                      "L101.detailed_refined_liquids_EJ_R_Yh",
+                      "L1012.en_bal_EJ_R_Si_Fi_Yh",
+                      "common/GCAM_region_names",
+                      "energy/A22.globaltech_coef_ctlgtl") -> LB1092.GCAM_CTL_GTL_LIQUIDS_PROD_agg
 
      harmonized_liquids_enduse %>%
        add_title("Conventional refined liquids enduse consumption by region / year / type.") %>%
@@ -524,9 +559,10 @@ module_energy_L1093.refined_liquids_GrossTrade <- function(command, ...){
 
     return_data(LB1092.Tradebalance_refined_liquids_EJ_R_Y,
                  LB1092.GCAM_REG_LIQUIDS_PROD_agg,
+                LB1092.GCAM_BIO_LIQUIDS_PROD_agg,
+                LB1092.GCAM_CTL_GTL_LIQUIDS_PROD_agg,
                 L1093.en_bal_EJ_liquids_enduse_total,
                 L1093.en_bal_EJ_liquids_industrial_total,
-                L1093.out_EJ_R_bioliquids_ctl_gtl_prod_F_Yh,
                 L1093.IO_R_oilrefining_F_Yh)
 
   } else {
