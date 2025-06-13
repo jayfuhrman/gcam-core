@@ -4,38 +4,110 @@
 # Column types: ccccnnn 
 # ----------
 supplysector,subsector,technology,minicam.energy.input,1971,2020,2100
-oil refining,crude oil refining,high Distillate_FuelOil,regional oil,1,1,1
-oil refining,crude oil refining,high Residual_FuelOil,regional oil,1,1,1
-oil refining,crude oil refining,high Gasoline,regional oil,1,1,1
-oil refining,crude oil refining,high LPG,regional oil,1,1,1
-oil refining,crude oil refining,high Jet_Kerosene,regional oil,1,1,1
-oil refining,crude oil refining,high Heavy_Residual,regional oil,1,1,1
-oil refining,crude oil refining,high Other,regional oil,1,1,1
-Residual_FuelOil,Residual_FuelOil,crude oil,oil refining,1,1,1
-Residual_FuelOil,Residual_FuelOil,crude oil,Residual_FuelOil_crude oil,1,1,1
-Gasoline,Gasoline,crude oil,oil refining,1,1,1
-Gasoline,Gasoline,crude oil,Gasoline_crude oil,1,1,1
-LPG,LPG,crude oil,oil refining,1,1,1
-LPG,LPG,crude oil,LPG_crude oil,1,1,1
-Heavy_Residual,Heavy_Residual,crude oil,oil refining,1,1,1
-Heavy_Residual,Heavy_Residual,crude oil,Heavy_Residual_crude oil,1,1,1
-Jet_Kerosene,Jet_Kerosene,crude oil,oil refining,1,1,1
-Jet_Kerosene,Jet_Kerosene,crude oil,Jet_Kerosene_crude oil,1,1,1
-Other,Other,crude oil,oil refining,1,1,1
-Other,Other,crude oil,Other_crude oil,1,1,1
-Distillate_FuelOil,Distillate_FuelOil,crude oil,oil refining,1,1,1
+refining,biorefining,biodiesel,regional biomassOil,1.0309,1.0309,1.03
+refining,biorefining,biodiesel,wholesale gas,0.05767,0.05767,0.06
+refining,biorefining,Residual_FuelOil,regional biomass,1.961,1.961,1.739
+refining,biorefining,corn ethanol,regional corn for ethanol,1,1,1
+refining,biorefining,corn ethanol,wholesale gas,0.318,0.318,0.318
+refining,biorefining,corn ethanol,elect_td_ind,0.026,0.026,0.026
+refining,biorefining,sugar cane ethanol,regional sugar for ethanol,1,1,1
+refining,biorefining,cellulosic ethanol,regional biomass,2.057,2.057,1.771
+refining,biorefining,Jet_Kerosene,regional biomass,1.961,1.961,1.739
+refining,biorefining,LPG,regional biomass,1.961,1.961,1.739
+refining,biorefining,Heavy_Residual,regional biomass,1.961,1.961,1.739
+refining,biorefining,Other,regional biomass,1.961,1.961,1.739
+refining,ctl,Distillate_FuelOil,regional coal,2.112,2.112,1.959
+refining,ctl,Residual_FuelOil,regional coal,2.112,2.112,1.959
+refining,ctl,Gasoline,regional coal,2.112,2.112,1.959
+refining,ctl,Jet_Kerosene,regional coal,2.112,2.112,1.959
+refining,ctl,LPG,regional coal,2.112,2.112,1.959
+refining,ctl,Heavy_Residual,regional coal,2.112,2.112,1.959
+refining,ctl,Other,regional coal,2.112,2.112,1.959
+refining,gtl,Distillate_FuelOil,regional natural gas,1.654,1.654,1.534
+refining,gtl,Residual_FuelOil,regional natural gas,1.654,1.654,1.534
+refining,gtl,Gasoline,regional natural gas,1.654,1.654,1.534
+refining,gtl,Jet_Kerosene,regional natural gas,1.654,1.654,1.534
+refining,gtl,LPG,regional natural gas,1.654,1.654,1.534
+refining,gtl,Heavy_Residual,regional natural gas,1.654,1.654,1.534
+refining,gtl,Other,regional natural gas,1.654,1.654,1.534
+refining,crude oil refining,high Distillate_FuelOil,regional oil,1.055,1.055,1.02
+refining,crude oil refining,high Residual_FuelOil,regional oil,1.055,1.055,1.02
+refining,crude oil refining,high Gasoline,regional oil,1.055,1.055,1.02
+refining,crude oil refining,high LPG,regional oil,1.055,1.055,1.02
+refining,crude oil refining,high Jet_Kerosene,regional oil,1.055,1.055,1.02
+refining,crude oil refining,high Heavy_Residual,regional oil,1.055,1.055,1.02
+refining,crude oil refining,high Other,regional oil,1.055,1.055,1.02
+refining,crude oil refining,high Distillate_FuelOil,elect_td_ind,0.005,0.005,0.005
+refining,crude oil refining,high Residual_FuelOil,elect_td_ind,0.005,0.005,0.005
+refining,crude oil refining,high Gasoline,elect_td_ind,0.005,0.005,0.005
+refining,crude oil refining,high LPG,elect_td_ind,0.005,0.005,0.005
+refining,crude oil refining,high Jet_Kerosene,elect_td_ind,0.005,0.005,0.005
+refining,crude oil refining,high Heavy_Residual,elect_td_ind,0.005,0.005,0.005
+refining,crude oil refining,high Other,elect_td_ind,0.005,0.005,0.005
+refining,crude oil refining,high Distillate_FuelOil,wholesale gas,0.018,0.018,0.018
+refining,crude oil refining,high Residual_FuelOil,wholesale gas,0.018,0.018,0.018
+refining,crude oil refining,high Gasoline,wholesale gas,0.018,0.018,0.018
+refining,crude oil refining,high LPG,wholesale gas,0.018,0.018,0.018
+refining,crude oil refining,high Jet_Kerosene,wholesale gas,0.018,0.018,0.018
+refining,crude oil refining,high Heavy_Residual,wholesale gas,0.018,0.018,0.018
+refining,crude oil refining,high Other,wholesale gas,0.018,0.018,0.018
+Distillate_FuelOil,Distillate_FuelOil,biomassOil,refining,1,1,1
+Distillate_FuelOil,Distillate_FuelOil,biomassOil,Distillate_FuelOil_biomassOil,1,1,1
+Distillate_FuelOil,Distillate_FuelOil,crude oil,refining,1,1,1
 Distillate_FuelOil,Distillate_FuelOil,crude oil,Distillate_FuelOil_crude oil,1,1,1
-oil refining,crude oil refining,high Distillate_FuelOil,electricity,1,1,1
-oil refining,crude oil refining,high Residual_FuelOil,electricity,1,1,1
-oil refining,crude oil refining,high Gasoline,electricity,1,1,1
-oil refining,crude oil refining,high LPG,electricity,1,1,1
-oil refining,crude oil refining,high Jet_Kerosene,electricity,1,1,1
-oil refining,crude oil refining,high Heavy_Residual,electricity,1,1,1
-oil refining,crude oil refining,high Other,electricity,1,1,1
-oil refining,crude oil refining,high Distillate_FuelOil,natural gas,1,1,1
-oil refining,crude oil refining,high Residual_FuelOil,natural gas,1,1,1
-oil refining,crude oil refining,high Gasoline,natural gas,1,1,1
-oil refining,crude oil refining,high LPG,natural gas,1,1,1
-oil refining,crude oil refining,high Jet_Kerosene,natural gas,1,1,1
-oil refining,crude oil refining,high Heavy_Residual,natural gas,1,1,1
-oil refining,crude oil refining,high Other,natural gas,1,1,1
+Distillate_FuelOil,Distillate_FuelOil,coal,refining,1,1,1
+Distillate_FuelOil,Distillate_FuelOil,coal,Distillate_FuelOil_coal,1,1,1
+Distillate_FuelOil,Distillate_FuelOil,natural gas,refining,1,1,1
+Distillate_FuelOil,Distillate_FuelOil,natural gas,Distillate_FuelOil_natural gas,1,1,1
+Residual_FuelOil,Residual_FuelOil,biomass,refining,1,1,1
+Residual_FuelOil,Residual_FuelOil,biomass,Residual_FuelOil_biomass,1,1,1
+Residual_FuelOil,Residual_FuelOil,crude oil,refining,1,1,1
+Residual_FuelOil,Residual_FuelOil,crude oil,Residual_FuelOil_crude oil,1,1,1
+Residual_FuelOil,Residual_FuelOil,coal,refining,1,1,1
+Residual_FuelOil,Residual_FuelOil,coal,Residual_FuelOil_coal,1,1,1
+Residual_FuelOil,Residual_FuelOil,natural gas,refining,1,1,1
+Residual_FuelOil,Residual_FuelOil,natural gas,Residual_FuelOil_natural gas,1,1,1
+Gasoline,Gasoline,corn,refining,1,1,1
+Gasoline,Gasoline,corn,Gasoline_corn,1,1,1
+Gasoline,Gasoline,sugar,refining,1,1,1
+Gasoline,Gasoline,sugar,Gasoline_sugar,1,1,1
+Gasoline,Gasoline,biomass,refining,1,1,1
+Gasoline,Gasoline,biomass,Gasoline_biomass,1,1,1
+Gasoline,Gasoline,crude oil,refining,1,1,1
+Gasoline,Gasoline,crude oil,Gasoline_crude oil,1,1,1
+Gasoline,Gasoline,coal,refining,1,1,1
+Gasoline,Gasoline,coal,Gasoline_coal,1,1,1
+Gasoline,Gasoline,natural gas,refining,1,1,1
+Gasoline,Gasoline,natural gas,Gasoline_natural gas,1,1,1
+LPG,LPG,biomass,refining,1,1,1
+LPG,LPG,biomass,LPG_biomass,1,1,1
+LPG,LPG,crude oil,refining,1,1,1
+LPG,LPG,crude oil,LPG_crude oil,1,1,1
+LPG,LPG,coal,refining,1,1,1
+LPG,LPG,coal,LPG_coal,1,1,1
+LPG,LPG,natural gas,refining,1,1,1
+LPG,LPG,natural gas,LPG_natural gas,1,1,1
+Heavy_Residual,Heavy_Residual,biomass,refining,1,1,1
+Heavy_Residual,Heavy_Residual,biomass,Heavy_Residual_biomass,1,1,1
+Heavy_Residual,Heavy_Residual,crude oil,refining,1,1,1
+Heavy_Residual,Heavy_Residual,crude oil,Heavy_Residual_crude oil,1,1,1
+Heavy_Residual,Heavy_Residual,coal,refining,1,1,1
+Heavy_Residual,Heavy_Residual,coal,Heavy_Residual_coal,1,1,1
+Heavy_Residual,Heavy_Residual,natural gas,refining,1,1,1
+Heavy_Residual,Heavy_Residual,natural gas,Heavy_Residual_natural gas,1,1,1
+Jet_Kerosene,Jet_Kerosene,biomass,refining,1,1,1
+Jet_Kerosene,Jet_Kerosene,biomass,Jet_Kerosene_biomass,1,1,1
+Jet_Kerosene,Jet_Kerosene,crude oil,refining,1,1,1
+Jet_Kerosene,Jet_Kerosene,crude oil,Jet_Kerosene_crude oil,1,1,1
+Jet_Kerosene,Jet_Kerosene,coal,refining,1,1,1
+Jet_Kerosene,Jet_Kerosene,coal,Jet_Kerosene_coal,1,1,1
+Jet_Kerosene,Jet_Kerosene,natural gas,refining,1,1,1
+Jet_Kerosene,Jet_Kerosene,natural gas,Jet_Kerosene_natural gas,1,1,1
+Other,Other,biomass,refining,1,1,1
+Other,Other,biomass,Other_biomass,1,1,1
+Other,Other,crude oil,refining,1,1,1
+Other,Other,crude oil,Other_crude oil,1,1,1
+Other,Other,coal,refining,1,1,1
+Other,Other,coal,Other_coal,1,1,1
+Other,Other,natural gas,refining,1,1,1
+Other,Other,natural gas,Other_natural gas,1,1,1

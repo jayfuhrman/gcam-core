@@ -1,0 +1,85 @@
+# File: calibrated_techs_refining.csv
+# Title: Mapping from calibrated intermediate sectors and fuels to supplysector / subsector / technology / input in GCAM
+# Units: n/a
+# Column types: cccccccc
+# ----------
+sector,fuel,supplysector,subsector,technology,minicam.energy.input,calibration,secondary.output
+Gasoline,corn,Gasoline,Gasoline,corn,regional corn for ethanol,output,Gasoline_corn
+Gasoline,gas,Gasoline,Gasoline,gas,wholesale gas,output,Gasoline_corn
+Gasoline,electricity,Gasoline,Gasoline,electricity,elect_td_ind,output,Gasoline_corn
+Gasoline,sugar,Gasoline,Gasoline,sugar,regional sugar for ethanol,output,Gasoline_sugar
+Gasoline,biomass,Gasoline,Gasoline,biomass,regional biomass,output,Gasoline_biomass
+Distillate_FuelOil,biomassOil,Distillate_FuelOil,Distillate_FuelOil,biomassOil,regional biomassOil,output,Distillate_FuelOil_biomassOil
+Distillate_FuelOil,gas,Distillate_FuelOil,Distillate_FuelOil,gas,wholesale gas,output,Distillate_FuelOil_biomassOil
+LPG,biomass,LPG,LPG,biomass,regional biomass,output,LPG_biomass
+Jet_Kerosene,biomass,Jet_Kerosene,Jet_Kerosene,biomass,regional biomass,output,Jet_Kerosene_biomass
+Residual_FuelOil,biomass,Residual_FuelOil,Residual_FuelOil,biomass,regional biomass,output,Residual_FuelOil_biomass
+Heavy_Residual,biomass,Heavy_Residual,Heavy_Residual,biomass,regional biomass,output,Heavy_Residual_biomass
+Other,biomass,Other,Other,biomass,regional biomass,output,Other_biomass
+biorefining,corn,refining,biorefining,biorefining,regional corn for ethanol,output,
+biorefining,sugar,refining,biorefining,biorefining,regional sugar for ethanol,output,
+biorefining,biomass,refining,biorefining,biorefining,regional biomass,output,
+biorefining,biomassOil,refining,biorefining,biorefining,regional biomassOil,output,
+biorefining,gas,refining,biorefining,biorefining,wholesale gas,output,
+biorefining,electricity,refining,biorefining,biorefining,elect_td_ind,output,
+gtl,natural gas,refining,gtl,gtl,regional natural gas,output,
+LPG,natural gas,LPG,LPG,natural gas,regional natural gas,output,LPG_natural gas
+Gasoline,natural gas,Gasoline,Gasoline,natural gas,regional natural gas,output,Gasoline_natural gas
+Jet_Kerosene,natural gas,Jet_Kerosene,Jet_Kerosene,natural gas,regional natural gas,output,Jet_Kerosene_natural gas
+Distillate_FuelOil,natural gas,Distillate_FuelOil,Distillate_FuelOil,natural gas,regional natural gas,output,Distillate_FuelOil_natural gas
+Residual_FuelOil,natural gas,Residual_FuelOil,Residual_FuelOil,natural gas,regional natural gas,output,Residual_FuelOil_natural gas
+Heavy_Residual,natural gas,Heavy_Residual,Heavy_Residual,natural gas,regional natural gas,output,Heavy_Residual_natural gas
+Other,natural gas,Other,Other,natural gas,regional natural gas,output,Other_natural gas
+ctl,coal,refining,ctl,ctl,regional coal,output,
+LPG,coal,LPG,LPG,coal,regional coal,output,LPG_coal
+Gasoline,coal,Gasoline,Gasoline,coal,regional coal,output,Gasoline_coal
+Jet_Kerosene,coal,Jet_Kerosene,Jet_Kerosene,coal,regional coal,output,Jet_Kerosene_coal
+Distillate_FuelOil,coal,Distillate_FuelOil,Distillate_FuelOil,coal,regional coal,output,Distillate_FuelOil_coal
+Residual_FuelOil,coal,Residual_FuelOil,Residual_FuelOil,coal,regional coal,output,Residual_FuelOil_coal
+Heavy_Residual,coal,Heavy_Residual,Heavy_Residual,coal,regional coal,output,Heavy_Residual_coal
+Other,coal,Other,Other,coal,regional coal,output,Other_coal
+oil refining,oil,refining,crude oil refining,crude oil refining,regional oil,output,
+oil refining,gas,refining,crude oil refining,crude oil refining,wholesale gas,output,
+oil refining,electricity,refining,crude oil refining,crude oil refining,elect_td_ind,output,
+LPG,oil,LPG,LPG,crude oil,regional oil,output,LPG_crude oil
+LPG,gas,LPG,LPG,gas,wholesale gas,output,LPG_crude oil
+LPG,electricity,LPG,LPG,electricity,elect_td_ind,output,LPG_crude oil
+Gasoline,oil,Gasoline,Gasoline,crude oil,regional oil,output,Gasoline_crude oil
+Gasoline,gas,Gasoline,Gasoline,gas,wholesale gas,output,Gasoline_crude oil
+Gasoline,electricity,Gasoline,Gasoline,electricity,elect_td_ind,output,Gasoline_crude oil
+Jet_Kerosene,oil,Jet_Kerosene,Jet_Kerosene,crude oil,regional oil,output,Jet_Kerosene_crude oil
+Jet_Kerosene,gas,Jet_Kerosene,Jet_Kerosene,gas,wholesale gas,output,Jet_Kerosene_crude oil
+Jet_Kerosene,electricity,Jet_Kerosene,Jet_Kerosene,electricity,elect_td_ind,output,Jet_Kerosene_crude oil
+Distillate_FuelOil,oil,Distillate_FuelOil,Distillate_FuelOil,crude oil,regional oil,output,Distillate_FuelOil_crude oil
+Distillate_FuelOil,gas,Distillate_FuelOil,Distillate_FuelOil,gas,wholesale gas,output,Distillate_FuelOil_crude oil
+Distillate_FuelOil,electricity,Distillate_FuelOil,Distillate_FuelOil,electricity,elect_td_ind,output,Distillate_FuelOil_crude oil
+Residual_FuelOil,oil,Residual_FuelOil,Residual_FuelOil,crude oil,regional oil,output,Residual_FuelOil_crude oil
+Residual_FuelOil,gas,Residual_FuelOil,Residual_FuelOil,gas,wholesale gas,output,Residual_FuelOil_crude oil
+Residual_FuelOil,electricity,Residual_FuelOil,Residual_FuelOil,electricity,elect_td_ind,output,Residual_FuelOil_crude oil
+Heavy_Residual,oil,Heavy_Residual,Heavy_Residual,crude oil,regional oil,output,Heavy_Residual_crude oil
+Heavy_Residual,gas,Heavy_Residual,Heavy_Residual,gas,wholesale gas,output,Heavy_Residual_crude oil
+Heavy_Residual,electricity,Heavy_Residual,Heavy_Residual,electricity,elect_td_ind,output,Heavy_Residual_crude oil
+Other,oil,Other,Other,crude oil,regional oil,output,Other_crude oil
+Other,gas,Other,Other,gas,wholesale gas,output,Other_crude oil
+Other,electricity,Other,Other,electricity,elect_td_ind,output,Other_crude oil
+high LPG,oil,refining,crude oil refining,high LPG,regional oil,output,
+high LPG,gas,refining,crude oil refining,high LPG,wholesale gas,output,
+high LPG,electricity,refining,crude oil refining,high LPG,elect_td_ind,output,
+high Gasoline,oil,refining,crude oil refining,high Gasoline,regional oil,output,
+high Gasoline,gas,refining,crude oil refining,high Gasoline,wholesale gas,output,
+high Gasoline,electricity,refining,crude oil refining,high Gasoline,elect_td_ind,output,
+high Jet_Kerosene,oil,refining,crude oil refining,high Jet_Kerosene,regional oil,output,
+high Jet_Kerosene,gas,refining,crude oil refining,high Jet_Kerosene,wholesale gas,output,
+high Jet_Kerosene,electricity,refining,crude oil refining,high Jet_Kerosene,elect_td_ind,output,
+high Distillate_FuelOil,oil,refining,crude oil refining,high Distillate_FuelOil,regional oil,output,
+high Distillate_FuelOil,gas,refining,crude oil refining,high Distillate_FuelOil,wholesale gas,output,
+high Distillate_FuelOil,electricity,refining,crude oil refining,high Distillate_FuelOil,elect_td_ind,output,
+high Residual_FuelOil,oil,refining,crude oil refining,high Residual_FuelOil,regional oil,output,
+high Residual_FuelOil,gas,refining,crude oil refining,high Residual_FuelOil,wholesale gas,output,
+high Residual_FuelOil,electricity,refining,crude oil refining,high Residual_FuelOil,elect_td_ind,output,
+high Heavy_Residual,oil,refining,crude oil refining,high Heavy_Residual,regional oil,output,
+high Heavy_Residual,gas,refining,crude oil refining,high Heavy_Residual,wholesale gas,output,
+high Heavy_Residual,electricity,refining,crude oil refining,high Heavy_Residual,elect_td_ind,output,
+high Other,oil,refining,crude oil refining,high Other,regional oil,output,
+high Other,gas,refining,crude oil refining,high Other,wholesale gas,output,
+high Other,electricity,refining,crude oil refining,high Other,elect_td_ind,output,

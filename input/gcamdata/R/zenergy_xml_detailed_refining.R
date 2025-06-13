@@ -10,6 +10,7 @@
 #' a vector of output names, or (if \code{command} is "MAKE") all
 #' the generated outputs: \code{en_transformation.xml}. The corresponding file in the
 #' original data system was \code{batch_en_transformation.xml.R} (energy XML).
+#' @importFrom dplyr filter mutate select rename
 module_energy_detailed_refining_xml <- function(command, ...) {
   if(command == driver.DECLARE_INPUTS) {
     return(c("L2221.Supplysector_en",
@@ -18,7 +19,6 @@ module_energy_detailed_refining_xml <- function(command, ...) {
              "L2221.SubsectorLogit_en",
              "L2221.SubsectorShrwtFllt_en",
              "L2221.SubsectorInterp_en",
-             "L2221.StubTechCoef_refining",
              "L2221.GlobalTechCoef_en",
              "L2221.GlobalTechCost_en",
              "L2221.GlobalTechFractSecOut_en",
@@ -28,7 +28,7 @@ module_energy_detailed_refining_xml <- function(command, ...) {
              "L2221.GlobalTechShutdown",
              "L2221.Rsrc",
              "L2221.RsrcPrice",
-             "L2221.StubTechCalInput",
+             "L2221.StubTechProd",
              "L2221.PortfolioStdConstraint",
              "L2221.PortfolioStdFixedTax",
              "L2221.GlobalTechInterp",
@@ -37,14 +37,16 @@ module_energy_detailed_refining_xml <- function(command, ...) {
              "L2221.SectorZeroProfitMarketName",
              "L2221.StubTechSecondaryOutput",
              "L2221.StubTech_en",
-             "L2221.StubTechShrwt"))
+             #"L2221.StubTechShrwt",
+             "L2221.StubTechCoef_refining"))
   } else if(command == driver.DECLARE_OUTPUTS) {
     return(c(XML = "detailed_refining.xml"))
   } else if(command == driver.MAKE) {
 
     all_data <- list(...)[[1]]
 
-    year.share.weight <- share.weight <- NULL # silence package checks
+    minicam.energy.input <- price.unit.conversion <- sector.name <-
+      profit.rate.technology <- technology <- NULL # silence package checks
 
     # Load required inputs
     L2221.Supplysector_en <- get_data(all_data, "L2221.Supplysector_en")
@@ -61,7 +63,7 @@ module_energy_detailed_refining_xml <- function(command, ...) {
     L2221.GlobalTechShrwt <- get_data(all_data, "L2221.GlobalTechShrwt")
     L2221.Rsrc <- get_data(all_data, "L2221.Rsrc")
     L2221.RsrcPrice <- get_data(all_data, "L2221.RsrcPrice")
-    L2221.StubTechCalInput <- get_data(all_data, "L2221.StubTechCalInput")
+    L2221.StubTechProd <- get_data(all_data, "L2221.StubTechProd")
     L2221.PortfolioStdConstraint <- get_data(all_data, "L2221.PortfolioStdConstraint")
     L2221.PortfolioStdFixedTax <- get_data(all_data,'L2221.PortfolioStdFixedTax')
     L2221.GlobalTechInterp <- get_data(all_data,"L2221.GlobalTechInterp")
@@ -70,11 +72,11 @@ module_energy_detailed_refining_xml <- function(command, ...) {
     L2221.SectorZeroProfitMarketName <- get_data(all_data,"L2221.SectorZeroProfitMarketName")
     L2221.GlobalTechShutdown <- get_data(all_data,"L2221.GlobalTechShutdown")
     L2221.StubTech_en <- get_data(all_data, "L2221.StubTech_en")
-    L2221.StubTechShrwt <- get_data(all_data, "L2221.StubTechShrwt")
+    #L2221.StubTechShrwt <- get_data(all_data, "L2221.StubTechShrwt")
     L2221.StubTechCoef_refining <- get_data(all_data, "L2221.StubTechCoef_refining")
 
     L2221.GlobalTechInputPmult <- L2221.GlobalTechCoef_en %>%
-      filter(minicam.energy.input == 'oil refining') %>%
+      filter(minicam.energy.input == 'refining') %>%
       mutate(price.unit.conversion = 0) %>%
       select(LEVEL2_DATA_NAMES[["GlobalTechInputPMult"]])
 
@@ -101,15 +103,14 @@ module_energy_detailed_refining_xml <- function(command, ...) {
       add_xml_data(L2221.SubsectorShrwtFllt_en, "SubsectorShrwtFllt") %>%
       add_xml_data(L2221.SubsectorInterp_en, "SubsectorInterp") %>%
       add_xml_data(L2221.GlobalTechCoef_en %>%
-                   #  filter(sector.name %in% c('crude oil refining','biorefining')) %>%
-                     filter(sector.name == "oil refining") %>%
+                     filter(sector.name == 'refining') %>%
                      rename(profit.rate.technology = technology) %>%
                      select(LEVEL2_DATA_NAMES[['GlobalTechProfitRate']]),"GlobalTechProfitRate") %>%
       add_xml_data(L2221.GlobalTechInputPmult, "GlobalTechInputPMult") %>%
       add_xml_data(L2221.GlobalTechFractSecOut_en, "GlobalTechSecOut") %>%
       add_xml_data(L2221.GlobalTechResSecOut_en, "GlobalTechRESSecOut") %>%
       add_xml_data(L2221.StubTech_en, "StubTech") %>%
-      add_xml_data(L2221.StubTechShrwt, "StubTechShrwt") %>%
+      #add_xml_data(L2221.StubTechShrwt, "StubTechShrwt") %>%
       add_xml_data(L2221.StubTechSecondaryOutput, "StubTechSecOut") %>%
       add_xml_data(L2221.GlobalTechZeroProfitOut_en, "GlobalTechZeroProfitOut") %>%
       add_xml_data(L2221.GlobalTechInterp, "GlobalTechInterpTo") %>%
@@ -120,7 +121,7 @@ module_energy_detailed_refining_xml <- function(command, ...) {
       add_xml_data(L2221.GlobalTechSCurve, "GlobalTechSCurve") %>%
       add_xml_data(L2221.GlobalTechProfitShutdown, "GlobalTechProfitShutdown") %>%
       add_xml_data(L2221.GlobalTechShutdown, "GlobalTechShutdown") %>%
-      add_xml_data(L2221.StubTechCalInput, "StubTechCalInput") %>%
+      add_xml_data(L2221.StubTechProd, "StubTechProd") %>%
       add_xml_data(L2221.PortfolioStdFixedTax, "PortfolioStdFixedTax") %>%
       add_xml_data(L2221.PortfolioStdConstraint, "PortfolioStdConstraint") %>%
       add_precursors("L2221.Supplysector_en",
@@ -136,16 +137,14 @@ module_energy_detailed_refining_xml <- function(command, ...) {
                      "L2221.GlobalTechInterp",
                      "L2221.Rsrc",
                      "L2221.RsrcPrice",
-                     "L2221.StubTechCalInput",
                      "L2221.PortfolioStdConstraint",
                      "L2221.PortfolioStdFixedTax",
                      "L2221.GlobalTechSCurve",
                      "L2221.GlobalTechProfitShutdown",
                      "L2221.SectorZeroProfitMarketName",
                      "L2221.GlobalTechShutdown",
-                     "L2221.ResTechShrwt",
-                     "L2221.StubTechSecondaryOutput",
-                     "L2221.StubTechCoef_refining") ->
+                     "L2221.StubTechCoef_refining",
+                     "L2221.StubTechSecondaryOutput") ->
       detailed_refining.xml
 
     return_data(detailed_refining.xml)

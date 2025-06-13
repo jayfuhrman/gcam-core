@@ -5,31 +5,31 @@
 # Column types: cccn 
 # ----------
 supplysector,subsector,product,value
-oil refining,biorefining,Distillate_FuelOil,5.359
-oil refining,biorefining,Residual_FuelOil,5.359
-oil refining,biorefining,Gasoline,3.563
-oil refining,biorefining,Heavy_Residual,5.719
-oil refining,biorefining,Jet_Kerosene,5.67
-oil refining,biorefining,LPG,3.841
-oil refining,biorefining,Other,5.359
-oil refining,crude oil refining,Distillate_FuelOil,5.825
-oil refining,crude oil refining,Residual_FuelOil,6.287
-oil refining,crude oil refining,Gasoline,5.052
-oil refining,crude oil refining,Heavy_Residual,5.719
-oil refining,crude oil refining,Jet_Kerosene,5.67
-oil refining,crude oil refining,LPG,3.841
-oil refining,crude oil refining,Other,5.8
-oil refining,ctl,Distillate_FuelOil,5.825
-oil refining,ctl,Residual_FuelOil,6.287
-oil refining,ctl,Gasoline,5.052
-oil refining,ctl,Heavy_Residual,5.719
-oil refining,ctl,Jet_Kerosene,5.67
-oil refining,ctl,LPG,3.841
-oil refining,ctl,Other,5.8
-oil refining,gtl,Distillate_FuelOil,5.825
-oil refining,gtl,Residual_FuelOil,6.287
-oil refining,gtl,Gasoline,5.052
-oil refining,gtl,Heavy_Residual,5.719
-oil refining,gtl,Jet_Kerosene,5.67
-oil refining,gtl,LPG,3.841
-oil refining,gtl,Other,5.8
+refining,biorefining,Distillate_FuelOil,5.359
+refining,biorefining,Residual_FuelOil,5.359
+refining,biorefining,Gasoline,3.558
+refining,biorefining,Heavy_Residual,5.719
+refining,biorefining,Jet_Kerosene,5.67
+refining,biorefining,LPG,3.841
+refining,biorefining,Other,5.359
+refining,crude oil refining,Distillate_FuelOil,5.825
+refining,crude oil refining,Residual_FuelOil,6.287
+refining,crude oil refining,Gasoline,5.052
+refining,crude oil refining,Heavy_Residual,5.719
+refining,crude oil refining,Jet_Kerosene,5.67
+refining,crude oil refining,LPG,3.841
+refining,crude oil refining,Other,5.8
+refining,ctl,Distillate_FuelOil,5.825
+refining,ctl,Residual_FuelOil,6.287
+refining,ctl,Gasoline,5.052
+refining,ctl,Heavy_Residual,5.719
+refining,ctl,Jet_Kerosene,5.67
+refining,ctl,LPG,3.841
+refining,ctl,Other,5.8
+refining,gtl,Distillate_FuelOil,5.825
+refining,gtl,Residual_FuelOil,6.287
+refining,gtl,Gasoline,5.052
+refining,gtl,Heavy_Residual,5.719
+refining,gtl,Jet_Kerosene,5.67
+refining,gtl,LPG,3.841
+refining,gtl,Other,5.8

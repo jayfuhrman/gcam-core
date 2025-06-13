@@ -5,7 +5,10 @@
 # Column types: ccccnn 
 # ----------
 supplysector,subsector,year.fillout,year,traded,share.weight
-oil refining,crude oil refining,start-year,,0,1
+refining,crude oil refining,start-year,,0,1
+refining,biorefining,start-year,,0,1
+refining,ctl,start-year,,0,1
+refining,gtl,start-year,,0,1
 Distillate_FuelOil,Distillate_FuelOil,start-year,,0,1
 Residual_FuelOil,Residual_FuelOil,start-year,,0,1
 Gasoline,Gasoline,start-year,,0,1

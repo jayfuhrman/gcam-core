@@ -45,7 +45,7 @@ module_energy_L1093.refined_liquids_GrossTrade <- function(command, ...){
     # Load required inputs
     GCAM_region_names <- get_data(all_data, "common/GCAM_region_names", strip_attributes = TRUE)
     GCAM_region_iso_mapping <- get_data(all_data, "energy/mappings/Liquids_Trade_GCAM_regID", strip_attributes = TRUE)
-    IEA_product_fuel_liquids <- get_data(all_data,"energy/mappings/IEA_product_fuel_liquids")
+    IEA_product_fuel_liquids <- get_data(all_data,"energy/mappings/IEA_product_fuel_liquids", strip_attributes = TRUE)
     L122.out_EJ_R_refining_F_Yh <- get_data(all_data, "L122.out_EJ_R_refining_F_Yh", strip_attributes = TRUE)
     L122.in_EJ_R_refining_F_Yh <-  get_data(all_data,"L122.in_EJ_R_refining_F_Yh", strip_attributes = TRUE)
     L101.detailed_refined_liquids_EJ_R_Yh <- get_data(all_data, "L101.detailed_refined_liquids_EJ_R_Yh", strip_attributes = TRUE)
@@ -537,15 +537,6 @@ module_energy_L1093.refined_liquids_GrossTrade <- function(command, ...){
                       "L101.detailed_refined_liquids_EJ_R_Yh",
                       "L1012.en_bal_EJ_R_Si_Fi_Yh",
                       "common/GCAM_region_names") -> L1093.en_bal_EJ_liquids_industrial_total
-
-     L1093.out_EJ_R_bioliquids_ctl_gtl_prod_F_Yh %>%
-       add_title("FT refined liquids consumption by region / year.") %>%
-       add_units("EJ") %>%
-       add_comments("Determined from IEA energy balances data") %>%
-       add_precursors("L122.out_EJ_R_refining_F_Yh",
-                      "L101.detailed_refined_liquids_EJ_R_Yh",
-                      "L1012.en_bal_EJ_R_Si_Fi_Yh",
-                      "common/GCAM_region_names") -> L1093.out_EJ_R_bioliquids_ctl_gtl_prod_F_Yh
 
      L1093.IO_R_oilrefining_F_Yh %>%
        add_title("Crude-based refined liquids production IO coefficients by region / year") %>%

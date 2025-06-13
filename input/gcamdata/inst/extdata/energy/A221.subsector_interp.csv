@@ -4,7 +4,10 @@
 # Column types: cccccccc 
 # ----------
 supplysector,subsector,apply.to,from.year,to.year,to.value,interpolation.function,traded
-oil refining,crude oil refining,share-weight,final-calibration-year,end-year,1,s-curve,0
+refining,crude oil refining,share-weight,final-calibration-year,end-year,1,s-curve,0
+refining,biorefining,share-weight,final-calibration-year,end-year,1,s-curve,0
+refining,ctl,share-weight,final-calibration-year,2025,0,s-curve,0
+refining,gtl,share-weight,final-calibration-year,2025,0,s-curve,0
 Distillate_FuelOil,Distillate_FuelOil,share-weight,final-calibration-year,end-year,1,s-curve,0
 Residual_FuelOil,Residual_FuelOil,share-weight,final-calibration-year,end-year,1,s-curve,0
 Gasoline,Gasoline,share-weight,final-calibration-year,end-year,1,s-curve,0

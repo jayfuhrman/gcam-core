@@ -10,17 +10,38 @@
 # Column types: ccccininni
 # ----------
 supplysector,subsector,technology,year,lifetime,shutdown.rate,half.life,steepness,median.shutdown.point,profit.shutdown.steepness
-oil refining,crude oil refining,high Distillate_FuelOil,final-calibration-year,50,0.01,25,0.2,-0.1,10
-oil refining,crude oil refining,high Residual_FuelOil,final-calibration-year,50,0.01,25,0.2,-0.1,10
-oil refining,crude oil refining,high Gasoline,final-calibration-year,50,0.01,25,0.2,-0.1,10
-oil refining,crude oil refining,high LPG,final-calibration-year,50,0.01,25,0.2,-0.1,10
-oil refining,crude oil refining,high Jet_Kerosene,final-calibration-year,50,0.01,25,0.2,-0.1,10
-oil refining,crude oil refining,high Heavy_Residual,final-calibration-year,50,0.01,25,0.2,-0.1,10
-oil refining,crude oil refining,high Other,final-calibration-year,50,0.01,25,0.2,-0.1,10
-oil refining,crude oil refining,high Distillate_FuelOil,initial-future-year,50,0.01,25,0.3,-0.1,10
-oil refining,crude oil refining,high Residual_FuelOil,initial-future-year,50,0.01,25,0.3,-0.1,10
-oil refining,crude oil refining,high Gasoline,initial-future-year,50,0.01,25,0.3,-0.1,10
-oil refining,crude oil refining,high LPG,initial-future-year,50,0.01,25,0.3,-0.1,10
-oil refining,crude oil refining,high Jet_Kerosene,initial-future-year,50,0.01,25,0.3,-0.1,10
-oil refining,crude oil refining,high Heavy_Residual,initial-future-year,50,0.01,25,0.3,-0.1,10
-oil refining,crude oil refining,high Other,initial-future-year,50,0.01,25,0.3,-0.1,10
+refining,biorefining,Distillate_FuelOil,final-calibration-year,50,0.01,25,0.2,-0.1,10
+refining,biorefining,Residual_FuelOil,final-calibration-year,50,0.01,25,0.2,-0.1,10
+refining,biorefining,Gasoline,final-calibration-year,50,0.01,25,0.2,-0.1,10
+refining,biorefining,Jet_Kerosene,final-calibration-year,50,0.01,25,0.2,-0.1,10
+refining,biorefining,LPG,final-calibration-year,50,0.01,25,0.2,-0.1,10
+refining,biorefining,Heavy_Residual,final-calibration-year,50,0.01,25,0.2,-0.1,10
+refining,biorefining,Other,final-calibration-year,50,0.01,25,0.2,-0.1,10
+refining,ctl,Distillate_FuelOil,final-calibration-year,50,0.01,25,0.2,-0.1,10
+refining,ctl,Residual_FuelOil,final-calibration-year,50,0.01,25,0.2,-0.1,10
+refining,ctl,Gasoline,final-calibration-year,50,0.01,25,0.2,-0.1,10
+refining,ctl,Jet_Kerosene,final-calibration-year,50,0.01,25,0.2,-0.1,10
+refining,ctl,LPG,final-calibration-year,50,0.01,25,0.2,-0.1,10
+refining,ctl,Heavy_Residual,final-calibration-year,50,0.01,25,0.2,-0.1,10
+refining,ctl,Other,final-calibration-year,50,0.01,25,0.2,-0.1,10
+refining,gtl,Distillate_FuelOil,final-calibration-year,50,0.01,25,0.2,-0.1,10
+refining,gtl,Residual_FuelOil,final-calibration-year,50,0.01,25,0.2,-0.1,10
+refining,gtl,Gasoline,final-calibration-year,50,0.01,25,0.2,-0.1,10
+refining,gtl,Jet_Kerosene,final-calibration-year,50,0.01,25,0.2,-0.1,10
+refining,gtl,LPG,final-calibration-year,50,0.01,25,0.2,-0.1,10
+refining,gtl,Heavy_Residual,final-calibration-year,50,0.01,25,0.2,-0.1,10
+refining,gtl,Other,final-calibration-year,50,0.01,25,0.2,-0.1,10
+refining,crude oil refining,high Distillate_FuelOil,final-calibration-year,50,0.01,25,0.2,-0.1,10
+refining,crude oil refining,high Residual_FuelOil,final-calibration-year,50,0.01,25,0.2,-0.1,10
+refining,crude oil refining,high Gasoline,final-calibration-year,50,0.01,25,0.2,-0.1,10
+refining,crude oil refining,high LPG,final-calibration-year,50,0.01,25,0.2,-0.1,10
+refining,crude oil refining,high Jet_Kerosene,final-calibration-year,50,0.01,25,0.2,-0.1,10
+refining,crude oil refining,high Heavy_Residual,final-calibration-year,50,0.01,25,0.2,-0.1,10
+refining,crude oil refining,high Other,final-calibration-year,50,0.01,25,0.2,-0.1,10
+refining,crude oil refining,high Distillate_FuelOil,initial-future-year,50,0.01,25,0.3,-0.1,10
+refining,crude oil refining,high Residual_FuelOil,initial-future-year,50,0.01,25,0.3,-0.1,10
+refining,crude oil refining,high Gasoline,initial-future-year,50,0.01,25,0.3,-0.1,10
+refining,crude oil refining,high LPG,initial-future-year,50,0.01,25,0.3,-0.1,10
+refining,crude oil refining,high Jet_Kerosene,initial-future-year,50,0.01,25,0.3,-0.1,10
+refining,crude oil refining,high Heavy_Residual,initial-future-year,50,0.01,25,0.3,-0.1,10
+refining,crude oil refining,high Other,initial-future-year,50,0.01,25,0.3,-0.1,10

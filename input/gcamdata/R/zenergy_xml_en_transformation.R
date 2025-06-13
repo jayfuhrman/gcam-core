@@ -37,24 +37,33 @@ module_energy_en_transformation_xml <- function(command, ...) {
     all_data <- list(...)[[1]]
 
     # Load required inputs
-    L222.Supplysector_en <- get_data(all_data, "L222.Supplysector_en")
+    L222.Supplysector_en <- get_data(all_data, "L222.Supplysector_en") %>%
+      filter(supplysector!="refining")
     L222.SectorUseTrialMarket_en <- get_data(all_data, "L222.SectorUseTrialMarket_en")
-    L222.SubsectorLogit_en <- get_data(all_data, "L222.SubsectorLogit_en") %>% filter(subsector!="oil refining")
-    L222.SubsectorShrwtFllt_en <- get_data(all_data, "L222.SubsectorShrwtFllt_en")%>% filter(subsector!="oil refining")
-    L222.SubsectorInterp_en <- get_data(all_data, "L222.SubsectorInterp_en")%>% filter(subsector!="oil refining")
-    L222.StubTech_en <- get_data(all_data, "L222.StubTech_en")%>% filter(subsector!="oil refining")
-    L222.GlobalTechInterp_en <- get_data(all_data, "L222.GlobalTechInterp_en")%>% filter(subsector.name!="oil refining")
-    L222.GlobalTechCoef_en <- get_data(all_data, "L222.GlobalTechCoef_en")%>% filter(subsector.name!="oil refining")
-    L222.GlobalTechCost_en <- get_data(all_data, "L222.GlobalTechCost_en")%>% filter(subsector.name!="oil refining")
-    L222.GlobalTechTrackCapital_en <- get_data(all_data, "L222.GlobalTechTrackCapital_en")%>% filter(subsector.name!="oil refining")
-    L222.GlobalTechShrwt_en <- get_data(all_data, "L222.GlobalTechShrwt_en")%>% filter(subsector.name!="oil refining")
-    L222.GlobalTechCapture_en <- get_data(all_data, "L222.GlobalTechCapture_en")%>% filter(subsector.name!="oil refining")
-    L222.GlobalTechSCurve_en <- get_data(all_data, "L222.GlobalTechSCurve_en")%>% filter(subsector.name!="oil refining")
-    L222.GlobalTechProfitShutdown_en <- get_data(all_data, "L222.GlobalTechProfitShutdown_en")%>% filter(subsector.name!="oil refining")
-    L222.GlobalTechKeyword_en <- get_data(all_data, "L222.GlobalTechKeyword_en")%>% filter(subsector.name!="oil refining")
+    L222.SubsectorLogit_en <- get_data(all_data, "L222.SubsectorLogit_en")%>%
+      filter(supplysector!="refining")
+    L222.SubsectorShrwtFllt_en <- get_data(all_data, "L222.SubsectorShrwtFllt_en")%>%
+      filter(supplysector!="refining")
+    L222.SubsectorInterp_en <- get_data(all_data, "L222.SubsectorInterp_en")%>%
+      filter(supplysector!="refining")
+    L222.StubTech_en <- get_data(all_data, "L222.StubTech_en")%>%
+      filter(supplysector!="refining")
+    #L222.GlobalTechInterp_en <- get_data(all_data, "L222.GlobalTechInterp_en")
+    L222.GlobalTechCoef_en <- get_data(all_data, "L222.GlobalTechCoef_en")%>%
+      filter(sector.name!="refining")
+    L222.GlobalTechCost_en <- get_data(all_data, "L222.GlobalTechCost_en")%>%
+      filter(sector.name!="refining")
+    L222.GlobalTechTrackCapital_en <- get_data(all_data, "L222.GlobalTechTrackCapital_en")%>%
+      filter(sector.name!="refining")
+    L222.GlobalTechShrwt_en <- get_data(all_data, "L222.GlobalTechShrwt_en")%>%
+      filter(sector.name!="refining")
+    L222.GlobalTechCapture_en <- get_data(all_data, "L222.GlobalTechCapture_en")
+    L222.GlobalTechSCurve_en <- get_data(all_data, "L222.GlobalTechSCurve_en")
+    L222.GlobalTechProfitShutdown_en <- get_data(all_data, "L222.GlobalTechProfitShutdown_en")
+    L222.GlobalTechKeyword_en <- get_data(all_data, "L222.GlobalTechKeyword_en")
     L222.StubTechProd_gasproc <- get_data(all_data, "L222.StubTechProd_gasproc")
-    L222.StubTechProd_refining <- get_data(all_data, "L222.StubTechProd_refining")%>% filter(subsector!="oil refining")
-    L222.StubTechCoef_refining <- get_data(all_data, "L222.StubTechCoef_refining")%>% filter(subsector!="oil refining")
+    L222.StubTechProd_refining <- get_data(all_data, "L222.StubTechProd_refining")
+    L222.StubTechCoef_refining <- get_data(all_data, "L222.StubTechCoef_refining")
 
     year.share.weight <- share.weight <- NULL # silence package checks
     # ===================================================
@@ -65,25 +74,25 @@ module_energy_en_transformation_xml <- function(command, ...) {
     # Produce outputs
     create_xml("en_transformation.xml") %>%
       add_logit_tables_xml(L222.Supplysector_en, "Supplysector") %>%
-      add_xml_data(L222.SectorUseTrialMarket_en, "SectorUseTrialMarket") %>%
+      #add_xml_data(L222.SectorUseTrialMarket_en, "SectorUseTrialMarket") %>%
       add_logit_tables_xml(L222.SubsectorLogit_en, "SubsectorLogit") %>%
       add_xml_data(L222.SubsectorShrwtFllt_en, "SubsectorShrwtFllt") %>%
       add_xml_data(L222.SubsectorInterp_en, "SubsectorInterp") %>%
       add_xml_data(L222.StubTech_en, "StubTech") %>%
-      add_xml_data(L222.GlobalTechInterp_en, "GlobalTechInterp") %>%
+      #add_xml_data(L222.GlobalTechInterp_en, "GlobalTechInterp") %>%
       add_xml_data(L222.GlobalTechCoef_en, "GlobalTechCoef") %>%
       # set non-energy inputs to be read as tracking
       add_node_equiv_xml("input") %>%
       add_xml_data(L222.GlobalTechTrackCapital_en, "GlobalTechTrackCapital") %>%
       add_xml_data(L222.GlobalTechCost_en, "GlobalTechCost") %>%
       add_xml_data(L222.GlobalTechShrwt_en, "GlobalTechShrwt") %>%
-      add_xml_data(L222.GlobalTechCapture_en, "GlobalTechCapture") %>%
-      add_xml_data(L222.GlobalTechSCurve_en, "GlobalTechSCurve") %>%
-      add_xml_data(L222.GlobalTechProfitShutdown_en, "GlobalTechProfitShutdown") %>%
-      add_xml_data(L222.GlobalTechKeyword_en, "PrimaryConsKeyword") %>%
+      #add_xml_data(L222.GlobalTechCapture_en, "GlobalTechCapture") %>%
+      #add_xml_data(L222.GlobalTechSCurve_en, "GlobalTechSCurve") %>%
+      #add_xml_data(L222.GlobalTechProfitShutdown_en, "GlobalTechProfitShutdown") %>%
+      #add_xml_data(L222.GlobalTechKeyword_en, "PrimaryConsKeyword") %>%
       add_xml_data(L222.StubTechProd_gasproc, "StubTechProd") %>%
-      add_xml_data(L222.StubTechProd_refining, "StubTechProd") %>%
-      add_xml_data(L222.StubTechCoef_refining, "StubTechCoef") %>%
+      #add_xml_data(L222.StubTechProd_refining, "StubTechProd") %>%
+      #add_xml_data(L222.StubTechCoef_refining, "StubTechCoef") %>%
       add_precursors("L222.Supplysector_en",
                      "L222.SectorUseTrialMarket_en",
                      "L222.SubsectorLogit_en",

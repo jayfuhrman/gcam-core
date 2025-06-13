@@ -8,11 +8,10 @@
 #' @param ... other optional parameters, depending on command
 #' @return Depends on \code{command}: either a vector of required inputs,
 #' a vector of output names, or (if \code{command} is "MAKE") all
-#' the generated outputs: \code{L1221.globaltech_capital}, \code{L1221.globaltech_OMfixed},
-#' \code{L1221.globaltech_OMvar}.
+#' the generated outputs: \code{L1221.globaltech_capital},
+#' \code{L1221.globaltech_OMfixed}, \code{L1221.globaltech_OMvar}.
 #' @details Includes EIA FRS and NEMS LMMM data as starting point.
-#' @importFrom assertthat assert_that
-#' @importFrom dplyr filter mutate select pull left_join anti_join bind_rows arrange rename
+#' @importFrom dplyr filter mutate select group_by summarize slice left_join bind_rows arrange rename coalesce
 #' @author MEL Jan 2025
 
 module_energy_L1221.refining_cost <- function(command, ...) {
@@ -38,13 +37,12 @@ module_energy_L1221.refining_cost <- function(command, ...) {
     all_data <- list(...)[[1]]
 
     # Silence global package checks
-    supplysector <- subsector <- technology <- minicam.energy.input <- improvement.max <- improvement.rate <-
-      improvement.shadow.technology <- `input-capital` <- fixed.charge.rate <- period <- lifetime <-
-      steepness <- half.life <- variable.om <- fixed.om <- fcr <- capacity.factor <- atb.technology <-
-      `OM-fixed` <- `OM-var` <- capital <- capital.cost <- case <- conversion <- cost_end_year <- cost_ratio <-
-      final_ATB_cost <- improvement.rate.base <- inferred <- initial_ATB_cost <- input <- input.OM.fixed <-
-      input.OM.var <- long_term_improvement <- mid_ATB_cost <- shadow_tech <- shadow_tech_cost <-
-      target_ATB_cost <- tech_detail <- tech_type <- uniroot <- value <- year <- NULL
+    descriptor <- `schedule/element` <- kbpd <- value <- year <- name <-
+      NECC <- ECC <- Sales <- CAPEX <- GJ <- margin <- om_var <- om_fixed <-
+      capital <- subsector <- base_year <- cal <- technology <- wacc <- crf <-
+      minicam.energy.input <- `Cost of Capital (WACC) %` <- `Utilization %` <-
+      `Overnight capital cost $/b/sd` <- `Fixed O&M cost $/d/b/sd` <-
+      `Non-feedstock variable O&M cost $/b` <- product <- supplysector <- NULL
 
     # Load required inputs ----------------------------------------------------
 
@@ -65,8 +63,9 @@ module_energy_L1221.refining_cost <- function(command, ...) {
     # Mapping and Conversions
     heating_vals <- get_data(all_data, "energy/A221.globaltech_HHV")
     frs_base_years <- c(1977, 1990, 2005, 2009)
-    altfuels <- c("Cellulosic ethanol", "Pyrolysis", "Biomass-to-liquids (BTL)",
-                  "FT GTL", "FT CTL")
+    altfuels <- c("Corn ethanol", "Advanced grain ethanol", "Cellulosic ethanol",
+                  "Methyl ester biodiesel (FAME)", "Pyrolysis", "FT GTL",
+                  "FT CTL", "Biomass-to-liquids (BTL)")
     CRUDE_BBL_TO_GJ <- 5.51 * CONV_BTU_KJ # per API; 5.51mmbtu/bbl
 
     # Calculate crude refining costs ------------------------------------------
@@ -140,30 +139,35 @@ module_energy_L1221.refining_cost <- function(command, ...) {
     A1221.crude_refining_capital <- A221.globaltech_capital %>%
       left_join(crude_bbl_costs, by = c("year", "subsector")) %>%
       filter(subsector == "crude oil refining") %>%
-      mutate(value = dplyr::coalesce(cal, capital)) %>%
+      mutate(value = dplyr::coalesce(cal, capital),
+             minicam.energy.input = "oil") %>%
       select(-c(om_var, om_fixed, capital, cal, margin))
 
     A1221.crude_refining_OMfixed <- A221.globaltech_OMfixed %>%
       left_join(crude_bbl_costs, by = c("year", "subsector")) %>%
       filter(subsector == "crude oil refining") %>%
-      mutate(value = dplyr::coalesce(cal, om_fixed)) %>%
+      mutate(value = dplyr::coalesce(cal, om_fixed),
+             minicam.energy.input = "oil") %>%
       select(-c(om_var, capital, om_fixed, cal, margin))
 
     # Add margin cost based on 2005 and 2010 average margin
+    # TODO: endogenize the 1.58 calc from above tables
     A1221.crude_refining_OMvar <- A221.globaltech_OMvar %>%
       left_join(crude_bbl_costs, by = c("year", "subsector")) %>%
       filter(subsector == "crude oil refining") %>%
-      mutate(cal = cal + 1.58, value = dplyr::coalesce(cal, om_var)) %>%
+      mutate(cal = cal + 1.58,
+             value = dplyr::coalesce(cal, om_var),
+             minicam.energy.input = "oil") %>%
       select(-c(om_fixed, capital, om_var, cal, margin))
 
     # Calculate biorefining costs ---------------------------------------------
     ## Biofuels, CTL, GTL cost data from the EIA LFMM assumptions Table 10
-    ## CAPEX = CRF * overnight capital cost
+    ## CAPEX = CRF * overnight capital cost / utilization
     ## CRF = {i(1 + i)^n} / {[(1 + i)^n]-1}
     ## Variable costs assume a US Gulf Coast facility
     ## Estimates using 20-year plant lifetime and 2022 USD and are converted
     ## to 1975$/bbl. Then 1975$/GJ per product.
-    # TODO: RECHECK MATH
+
     LFMM_cost_bbl <- EIA_LFMM_Table10 %>%
       filter(description %in% altfuels) %>%
       mutate(
@@ -178,7 +182,9 @@ module_energy_L1221.refining_cost <- function(command, ...) {
           ~ . * gdp_deflator(1975, base_year = 2022)
         )
       ) %>%
-      select(subsector, product = technology, capital, om_var, om_fixed)
+      select(subsector, technology, product, minicam.energy.input,
+             capital, om_var, om_fixed) %>%
+      na.omit
 
     # Fill out products that aren't currently made with CTL/GTL separately.
     # Capital and variable costs increased to reflect these technologies
@@ -190,6 +196,7 @@ module_energy_L1221.refining_cost <- function(command, ...) {
       filter(subsector == "gtl") %>%
       slice(rep(1, 3)) %>%
       mutate(product = c("Gasoline", "Heavy_Residual", "Residual_FuelOil"),
+             technology = product,
              capital = capital * MULTIPLIER,
              om_var = om_var * MULTIPLIER)
 
@@ -197,6 +204,7 @@ module_energy_L1221.refining_cost <- function(command, ...) {
       filter(subsector == "ctl") %>%
       slice(rep(1, 4)) %>%
       mutate(product = c("LPG", "Gasoline", "Heavy_Residual", "Residual_FuelOil"),
+             technology = product,
              capital = capital * MULTIPLIER,
              om_var = om_var * MULTIPLIER)
 
@@ -214,23 +222,24 @@ module_energy_L1221.refining_cost <- function(command, ...) {
         om_fixed = om_fixed / GJ_LHV
       ) %>%
       select(
-        supplysector, subsector, technology = product, capital, om_var, om_fixed
+        supplysector, subsector, technology, product,
+        minicam.energy.input, capital, om_var, om_fixed
       )
 
     A1221.alt_refining_capital <- A221.globaltech_capital %>%
       filter(subsector %in% c("biorefining", "ctl", "gtl")) %>%
-      left_join(altcost, by = c("supplysector", "subsector", "technology")) %>%
+      left_join(altcost, by = c("supplysector", "subsector", "technology", "product")) %>%
       select(-c(om_var, om_fixed, value, cal), value = capital)
 
     A1221.alt_refining_OMfixed <- A221.globaltech_OMfixed %>%
       filter(subsector %in% c("biorefining", "ctl", "gtl")) %>%
-      left_join(altcost, by = c("supplysector", "subsector", "technology")) %>%
+      left_join(altcost, by = c("supplysector", "subsector", "technology", "product")) %>%
       select(-c(om_var, capital, value, cal)) %>%
       rename(value = om_fixed)
 
     A1221.alt_refining_OMvar <- A221.globaltech_OMvar %>%
       filter(subsector %in% c("biorefining", "ctl", "gtl")) %>%
-      left_join(altcost, by = c("supplysector", "subsector", "technology")) %>%
+      left_join(altcost, by = c("supplysector", "subsector", "technology", "product")) %>%
       select(-c(om_fixed, capital, value, cal)) %>%
       rename(value = om_var)
 

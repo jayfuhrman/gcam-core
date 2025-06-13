@@ -5,17 +5,63 @@
 # Column types: ccccccc 
 # ----------
 supplysector,subsector,technology,apply.to,from.year,to.year,interpolation.function
-oil refining,crude oil refining,high Distillate_FuelOil,share-weight,final-calibration-year,2025,linear
-oil refining,crude oil refining,high Residual_FuelOil,share-weight,final-calibration-year,2025,linear
-oil refining,crude oil refining,high Gasoline,share-weight,final-calibration-year,2025,linear
-oil refining,crude oil refining,high LPG,share-weight,final-calibration-year,2025,linear
-oil refining,crude oil refining,high Jet_Kerosene,share-weight,final-calibration-year,2025,linear
-oil refining,crude oil refining,high Heavy_Residual,share-weight,final-calibration-year,2025,linear
-oil refining,crude oil refining,high Other,share-weight,final-calibration-year,2025,linear
+refining,biorefining,biodiesel,share-weight,final-calibration-year,2025,linear
+refining,biorefining,Residual_FuelOil,share-weight,final-calibration-year,2025,linear
+refining,biorefining,corn ethanol,share-weight,final-calibration-year,2025,linear
+refining,biorefining,sugar cane ethanol,share-weight,final-calibration-year,2025,linear
+refining,biorefining,cellulosic ethanol,share-weight,final-calibration-year,2025,linear
+refining,biorefining,Jet_Kerosene,share-weight,final-calibration-year,2025,linear
+refining,biorefining,LPG,share-weight,final-calibration-year,2025,linear
+refining,biorefining,Other,share-weight,final-calibration-year,2025,linear
+refining,biorefining,Heavy_Residual,share-weight,final-calibration-year,2025,linear
+refining,ctl,Distillate_FuelOil,share-weight,final-calibration-year,2025,fixed
+refining,ctl,Residual_FuelOil,share-weight,final-calibration-year,2025,fixed
+refining,ctl,Gasoline,share-weight,final-calibration-year,2025,fixed
+refining,ctl,Jet_Kerosene,share-weight,final-calibration-year,2025,fixed
+refining,ctl,LPG,share-weight,final-calibration-year,2025,fixed
+refining,ctl,Other,share-weight,final-calibration-year,2025,fixed
+refining,ctl,Heavy_Residual,share-weight,final-calibration-year,2025,fixed
+refining,gtl,Distillate_FuelOil,share-weight,final-calibration-year,2025,fixed
+refining,gtl,Residual_FuelOil,share-weight,final-calibration-year,2025,fixed
+refining,gtl,Gasoline,share-weight,final-calibration-year,2025,fixed
+refining,gtl,Jet_Kerosene,share-weight,final-calibration-year,2025,fixed
+refining,gtl,LPG,share-weight,final-calibration-year,2025,fixed
+refining,gtl,Other,share-weight,final-calibration-year,2025,fixed
+refining,gtl,Heavy_Residual,share-weight,final-calibration-year,2025,fixed
+refining,crude oil refining,high Distillate_FuelOil,share-weight,final-calibration-year,2025,linear
+refining,crude oil refining,high Residual_FuelOil,share-weight,final-calibration-year,2025,linear
+refining,crude oil refining,high Gasoline,share-weight,final-calibration-year,2025,linear
+refining,crude oil refining,high LPG,share-weight,final-calibration-year,2025,linear
+refining,crude oil refining,high Jet_Kerosene,share-weight,final-calibration-year,2025,linear
+refining,crude oil refining,high Heavy_Residual,share-weight,final-calibration-year,2025,linear
+refining,crude oil refining,high Other,share-weight,final-calibration-year,2025,linear
+Distillate_FuelOil,biodiesel,biomassOil,share-weight,final-calibration-year,2050,s-curve
 Distillate_FuelOil,Distillate_FuelOil,crude oil,share-weight,final-calibration-year,2050,s-curve
+Distillate_FuelOil,Distillate_FuelOil,coal,share-weight,final-calibration-year,2100,fixed
+Distillate_FuelOil,Distillate_FuelOil,natural gas,share-weight,final-calibration-year,2100,fixed
+Residual_FuelOil,Residual_FuelOil,biomass,share-weight,final-calibration-year,2050,s-curve
 Residual_FuelOil,Residual_FuelOil,crude oil,share-weight,final-calibration-year,2050,s-curve
+Residual_FuelOil,Residual_FuelOil,coal,share-weight,final-calibration-year,2100,fixed
+Residual_FuelOil,Residual_FuelOil,natural gas,share-weight,final-calibration-year,2100,fixed
+Gasoline,corn ethanol,regional corn for ethanol,share-weight,final-calibration-year,2050,s-curve
+Gasoline,sugar cane ethanol,regional sugar for ethanol,share-weight,final-calibration-year,2050,s-curve
+Gasoline,cellulosic ethanol,biomass,share-weight,final-calibration-year,2050,s-curve
 Gasoline,Gasoline,crude oil,share-weight,final-calibration-year,2050,s-curve
+Gasoline,Gasoline,coal,share-weight,final-calibration-year,2100,fixed
+Gasoline,Gasoline,natural gas,share-weight,final-calibration-year,2100,fixed
+LPG,LPG,biomass,share-weight,final-calibration-year,2050,s-curve
 LPG,LPG,crude oil,share-weight,final-calibration-year,2050,s-curve
+LPG,LPG,coal,share-weight,final-calibration-year,2100,fixed
+LPG,LPG,natural gas,share-weight,final-calibration-year,2100,fixed
+Heavy_Residual,Heavy_Residual,biomass,share-weight,final-calibration-year,2050,s-curve
 Heavy_Residual,Heavy_Residual,crude oil,share-weight,final-calibration-year,2050,s-curve
+Heavy_Residual,Heavy_Residual,coal,share-weight,final-calibration-year,2100,fixed
+Heavy_Residual,Heavy_Residual,natural gas,share-weight,final-calibration-year,2100,fixed
+Jet_Kerosene,Jet_Kerosene,biomass,share-weight,final-calibration-year,2050,s-curve
 Jet_Kerosene,Jet_Kerosene,crude oil,share-weight,final-calibration-year,2050,s-curve
+Jet_Kerosene,Jet_Kerosene,coal,share-weight,final-calibration-year,2100,fixed
+Jet_Kerosene,Jet_Kerosene,natural gas,share-weight,final-calibration-year,2100,fixed
+Other,Other,biomass,share-weight,final-calibration-year,2050,s-curve
 Other,Other,crude oil,share-weight,final-calibration-year,2050,s-curve
+Other,Other,coal,share-weight,final-calibration-year,2100,fixed
+Other,Other,natural gas,share-weight,final-calibration-year,2100,fixed
