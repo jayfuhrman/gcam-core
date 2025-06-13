@@ -31,7 +31,6 @@ module_energy_L226.en_distribution <- function(command, ...) {
              FILE = "energy/A26.globaltech_shrwt",
              "L1093.en_bal_EJ_liquids_enduse_total",
              "L1093.en_bal_EJ_liquids_industrial_total",
-             "L1093.out_EJ_R_bioliquids_ctl_gtl_prod_F_Yh",
              "L126.IO_R_elecownuse_F_Yh",
              "L126.IO_R_electd_F_Yh",
              "L126.IO_R_gaspipe_F_Yh"))
@@ -77,7 +76,6 @@ module_energy_L226.en_distribution <- function(command, ...) {
     L126.IO_R_gaspipe_F_Yh <- get_data(all_data, "L126.IO_R_gaspipe_F_Yh")
     L1093.en_bal_EJ_liquids_enduse_total <- get_data(all_data,"L1093.en_bal_EJ_liquids_enduse_total")
     L1093.en_bal_EJ_liquids_industrial_total <- get_data(all_data,"L1093.en_bal_EJ_liquids_industrial_total")
-    L1093.out_EJ_R_bioliquids_ctl_gtl_prod_F_Yh <- get_data(all_data,"L1093.out_EJ_R_bioliquids_ctl_gtl_prod_F_Yh")
 
     #==================================================================================================================
     #Calibrate detailed refined liquids by the defined groupings (enduse or industrial)
@@ -97,11 +95,6 @@ module_energy_L226.en_distribution <- function(command, ...) {
       mutate(value=ifelse(is.na(value),0,value))
 
     L126.in_EJ_R_Y_liq_tot <- as_tibble(L126.in_EJ_R_Y_liq_tot)
-
-    #Add FT fuels (from biorefining, ctl/gtl) to refined liquids enduse and rbind with L126.in_EJ_R_Y_liq_tot
-    L126.in_EJ_R_Y_liq_tot <- L126.in_EJ_R_Y_liq_tot %>%
-      rbind((L1093.out_EJ_R_bioliquids_ctl_gtl_prod_F_Yh %>%
-               mutate(sector="refined liquids enduse",fuel="FT")))
 
     L226.StubTechProd_liq <- L126.in_EJ_R_Y_liq_tot %>%
       filter(year %in% c(MODEL_BASE_YEARS)) %>%
@@ -504,8 +497,7 @@ module_energy_L226.en_distribution <- function(command, ...) {
       add_comments("Refined product consumption from historical data divided by use") %>%
       add_legacy_name("L226.StubTechProd_liq") %>%
       add_precursors("L1093.en_bal_EJ_liquids_enduse_total",
-                     "L1093.en_bal_EJ_liquids_industrial_total",
-                     "L1093.out_EJ_R_bioliquids_ctl_gtl_prod_F_Yh") ->
+                     "L1093.en_bal_EJ_liquids_industrial_total") ->
       L226.StubTechProd_liq
 
     return_data(L226.Supplysector_en, L226.SubsectorLogit_en, L226.SubsectorShrwt_en,
