@@ -335,8 +335,23 @@ module_energy_L2221.refining <- function(command, ...) {
       rename(sector.name = supplysector, subsector.name = subsector) %>%
       select(LEVEL2_DATA_NAMES[["GlobalTechCost"]])
 
+    #Complete region, year, subsector, output, input combinations
+    combinations_all <- L1221.refiningFuelsOutputsEJCombined %>%
+      distinct(subsector,output,input)%>%
+      tidyr::crossing(expand.grid(
+        region = unique(L1221.refiningFuelsOutputsEJCombined$region),
+        year = unique(L1221.refiningFuelsOutputsEJCombined$year)))
+
+    # # left_join to get technology and regions in history that are both in historical data
+    # # and also not present in the historical data. These are calibrated to zero output explicitly to
+    # # ensure we can solve the historical periods
+    L1221.refiningFuelsOutputsEJCombined_all <- combinations_all %>%
+      left_join(L1221.refiningFuelsOutputsEJCombined,by=c("subsector","output","input","region","year"))%>%
+      mutate(value=ifelse(is.na(value),0,value))
+
+
     # Calibrated historical production
-    L2221.StubTechProd <- L1221.refiningFuelsOutputsEJCombined %>%
+    L2221.StubTechProd <- L1221.refiningFuelsOutputsEJCombined_all %>%
       rename(sector = subsector) %>%
       left_join_error_no_match(calibrated_techs_refining,
                                by = c("input" = "fuel", "sector")) %>%
@@ -348,41 +363,6 @@ module_energy_L2221.refining <- function(command, ...) {
              tech.share.weight = share.weight) %>%
       set_subsector_shrwt() %>%
       select(LEVEL2_DATA_NAMES[["StubTechProd"]], "share.weight")
-
-    # # #calibrate historical fuel blending
-    # CalFuels <- L1221.refiningFuelsOutputsEJCombined %>%
-    #   mutate(stub.technology = input,
-    #          minicam.energy.input = paste0(output,'_',input),
-    #          supplysector = output,
-    #          subsector = output,
-    #          share.weight.year = year,
-    #          subs.share.weight = 1,
-    #          calibrated.value = value,
-    #          tech.share.weight = if_else(calibrated.value == 0, 0, 1)) %>%
-    #   select(LEVEL2_DATA_NAMES[['StubTechCalInput']])
-    #
-    # # left_join_error_no_match get technology and regions in history that are not
-    # # in the historical data.  These are calibrated to zero output explicitly to
-    # # ensure we can solve the historical periods
-    # ZeroCalValueTechs <- left_join_error_no_match(L2221.GlobalTechCoef_en,
-    #                                               L2221.GlobalTechShrwt,
-    #                                               by = c('sector.name','subsector.name','technology','year')) %>%
-    #   rename(supplysector = sector.name,
-    #          subsector = subsector.name,
-    #          stub.technology = technology,
-    #          tech.share.weight = share.weight) %>%
-    #   mutate(calibrated.value = 0,
-    #          share.weight.year = year,
-    #          subs.share.weight = 1,
-    #          tech.share.weight = 0) %>%
-    #   write_to_all_regions(c(LEVEL2_DATA_NAMES[['StubTechCalInput']]), has_traded = FALSE,
-    #                        GCAM_region_names = GCAM_region_names) %>%
-    #   anti_join(CalFuels,by = c('region','supplysector','subsector','stub.technology','year')) %>%
-    #   filter(year %in% MODEL_BASE_YEARS,
-    #          stub.technology == 'biomass',
-    #          minicam.energy.input != 'biorefining') #filter for fuel markets only
-    #
-    # L2221.StubTechCalInput <- bind_rows(CalFuels, ZeroCalValueTechs)
 
     # Secondary output ratios
     SecondaryOutputs  <- A221.globaltech_secout %>%
