@@ -335,9 +335,18 @@ module_energy_L2221.refining <- function(command, ...) {
       rename(sector.name = supplysector, subsector.name = subsector) %>%
       select(LEVEL2_DATA_NAMES[["GlobalTechCost"]])
 
+    #biomass technology combinations
+    biomass_combinations <- data.frame(
+      subsector = c("Residual_FuelOil","Gasoline",
+                    "LPG","Heavy_Residual","Jet_Kerosene","Other"),
+      output = c("Residual_FuelOil","Gasoline",
+                 "LPG","Heavy_Residual","Jet_Kerosene","Other"),
+      input = "biomass")
+
     #Complete region, year, subsector, output, input combinations
     combinations_all <- L1221.refiningFuelsOutputsEJCombined %>%
       distinct(subsector,output,input)%>%
+      rbind(biomass_combinations)%>%
       tidyr::crossing(expand.grid(
         region = unique(L1221.refiningFuelsOutputsEJCombined$region),
         year = unique(L1221.refiningFuelsOutputsEJCombined$year)))
