@@ -3,7 +3,7 @@
 # Units: Unitless
 # Column types: ccccnnn 
 # ----------
-supplysector,subsector,technology,minicam.energy.input,1971,2020,2100
+supplysector,subsector,technology,minicam.energy.input,1971,2021,2100
 refining,biorefining,biodiesel,regional biomassOil,1.0309,1.0309,1.03
 refining,biorefining,biodiesel,wholesale gas,0.05767,0.05767,0.06
 refining,biorefining,Residual_FuelOil,regional biomass,1.961,1.961,1.739
