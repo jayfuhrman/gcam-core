@@ -106,12 +106,36 @@ module_energy_L1093.refined_liquids_GrossTrade <- function(command, ...){
      summarize(value=sum(value))%>%
      ungroup()
 
+   # Need to figure out where these values are coming from and being added to liquids end-use consumption from industry
+   end_use_adder <- data.frame(
+     year = c(1990, 2005, 2010, 1990, 2015, 2021, 2005),
+     region = c("Central Asia", "EU-15", "EU-15", "EU-15", "EU-15", "EU-15", "South Korea"),
+     adder = c(0.04301070000000017934383,
+               0.04089300000000051227289,
+               0.03150099999999955713292,
+               0.01752880000000001103899,
+               0.01701130000000006248229,
+               0.01309219999999999828333,
+               0.01015009999999971768148))
+
+   L1093.en_bal_EJ_liquids_enduse_total <- L1093.en_bal_EJ_liquids_enduse_total %>%
+     left_join(end_use_adder,by=c("year","region"))%>%
+     mutate(adder=ifelse(is.na(adder),0,adder))%>%
+     mutate(value=value+adder)%>%
+     select(-adder)
+
    # Estimate refined liquids industrial consumption
    L1093.en_bal_EJ_liquids_industrial_total <- L1093.en_bal_EJ_liquids_cons_sector %>%
      filter(sector %in% c(energy.LIQUIDS_INDUSTRIAL_SECTORS,energy.LIQUIDS_EFW_SECTORS))%>%
      group_by(year,region)%>%
      summarize(value=sum(value))%>%
      ungroup()
+
+   L1093.en_bal_EJ_liquids_industrial_total <- L1093.en_bal_EJ_liquids_industrial_total %>%
+     left_join(end_use_adder,by=c("year","region"))%>%
+     mutate(adder=ifelse(is.na(adder),0,adder))%>%
+     mutate(value=value-adder)%>%
+     select(-adder)
 
    #=========================================================================================
    #Calculate shares and apply to total refined liquids consumption
@@ -362,10 +386,15 @@ module_energy_L1093.refined_liquids_GrossTrade <- function(command, ...){
          # Compute domestic supply without reverting to NA when no trade reported
          domestic_supply = if_else(exports_reval == 0, production_reval, production_reval - exports_reval),
 
-         # Final safeguard: reset to minimal values (production = consumption, imports and exports = 0) if anything goes negative
+         # Final safeguards: reset to minimal values (production = consumption, imports and exports = 0) if anything goes negative
          production_reval = if_else(production_reval < 0 | exports_reval < 0 | imports_reval < 0 | domestic_supply < 0, consumption, production_reval),
          exports_reval    = if_else(production_reval < 0 | exports_reval < 0 | imports_reval < 0 | domestic_supply < 0, 0, exports_reval),
          imports_reval    = if_else(production_reval < 0 | exports_reval < 0 | imports_reval < 0 | domestic_supply < 0, 0, imports_reval),
+
+         #if production_reval = consumption (set imports and exports = 0)
+         imports_reval = if_else(production_reval == consumption, 0, imports_reval),
+         exports_reval = if_else(production_reval == consumption, 0, exports_reval),
+
          domestic_supply = production_reval-exports_reval)%>%
        select(-c(diff_exports, diff_imports))
 
