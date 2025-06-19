@@ -26,7 +26,8 @@ module_energy_batch_en_transformation_biochar_xml <- function(command, ...) {
              "L2221.GlobalTechProfitShutdown_en"))
 
   } else if(command == driver.DECLARE_OUTPUTS) {
-    return(c(XML = "en_transformation_biochar.xml"))
+    return(c(XML = "en_transformation_biochar.xml",
+             XML = "MMRVcost_biochar.xml"))
   } else if(command == driver.MAKE) {
 
     all_data <- list(...)[[1]]
@@ -58,7 +59,8 @@ module_energy_batch_en_transformation_biochar_xml <- function(command, ...) {
       add_xml_data(L2221.StubTech_en, "StubTech") %>%
       add_xml_data(L2221.GlobalTechInterp_en, "GlobalTechInterp") %>%
       add_xml_data(L2221.GlobalTechCoef_en, "GlobalTechCoef") %>%
-      add_xml_data(L2221.GlobalTechCost_en, "GlobalTechCost") %>%
+      add_xml_data(L2221.GlobalTechCost_en %>%
+                     filter(minicam.non.energy.input != "MMRV cost"), "GlobalTechCost") %>%
       add_xml_data(L2221.GlobalTechShrwt_en, "GlobalTechShrwt") %>%
       add_xml_data(L2221.GlobalTechCapture_en, "GlobalTechCapture") %>%
       add_xml_data(L2221.GlobalTechSCurve_en, "GlobalTechSCurve") %>%
@@ -77,7 +79,14 @@ module_energy_batch_en_transformation_biochar_xml <- function(command, ...) {
                      "L2221.GlobalTechProfitShutdown_en") ->
       en_transformation_biochar.xml
 
-    return_data(en_transformation_biochar.xml)
+    create_xml("MMRVcost_biochar.xml") %>%
+      add_xml_data(L2221.GlobalTechCost_en %>%
+                     filter(minicam.non.energy.input == "MMRV cost"), "GlobalTechCost") %>%
+      add_precursors("L2221.GlobalTechCost_en") ->
+      MMRVcost_biochar.xml
+
+      return_data(en_transformation_biochar.xml,
+                  MMRVcost_biochar.xml)
   } else {
     stop("Unknown command")
   }
