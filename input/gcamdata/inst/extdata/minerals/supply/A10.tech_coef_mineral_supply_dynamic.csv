@@ -1,9 +1,0 @@
-# File: A10.tech_coef_mineral_supply_dynamic.csv
-# Title: Mineral supply dynamic technology coefficients
-# Units: unitless
-# Column types: ccccnn
-# ----------
-supplysector,subsector,technology,minicam.energy.input,1971,2100
-copper dynamic-capacity,copper dynamic-capacity,copper dynamic-capacity,copper,1,1
-lithium dynamic-capacity,lithium dynamic-capacity,lithium dynamic-capacity,lithium,1,1
-nickel dynamic-capacity,nickel dynamic-capacity,nickel dynamic-capacity,nickel,1,1

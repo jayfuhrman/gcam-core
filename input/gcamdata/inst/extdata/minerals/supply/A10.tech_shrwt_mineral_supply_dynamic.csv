@@ -1,9 +1,0 @@
-# File: A10.tech_shrwt_mineral_supply_dynamic.csv
-# Title: Mineral supply dynamic technology shareweights
-# Units: unitless
-# Column types: cccnn
-# ----------
-supplysector,subsector,technology,1971,2100
-copper dynamic-capacity,copper dynamic-capacity,copper dynamic-capacity,1,1
-lithium dynamic-capacity,lithium dynamic-capacity,lithium dynamic-capacity,1,1
-nickel dynamic-capacity,nickel dynamic-capacity,nickel dynamic-capacity,1,1

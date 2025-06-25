@@ -1,9 +1,0 @@
-# File: A10.subsector_mineral_supply_dynamic.csv
-# Title: Mineral supply dynamic subsector info
-# Units: unitless
-# Column types: cccnnc
-# ----------
-supplysector,subsector,year.fillout,share.weight,logit.exponent,logit.type
-copper dynamic-capacity,copper dynamic-capacity,start-year,1,-6,
-lithium dynamic-capacity,lithium dynamic-capacity,start-year,1,-6,
-nickel dynamic-capacity,nickel dynamic-capacity,start-year,1,-6,
