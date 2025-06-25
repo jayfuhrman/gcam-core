@@ -31,7 +31,7 @@
 #' \code{L244.GenericServiceCoef_SSP3}, \code{L244.GenericServiceCoef_SSP4}, \code{L244.GenericServiceCoef_SSP5},
 #'  \code{L244.ThermalCoalCoef}, \code{L244.GenericCoalCoef},\code{L244.ThermalTradBioCoef}, \code{L244.GenericTradBioCoef},
 #' \code{L244.GenericShares}, \code{L244.ThermalShares},\code{L244.GenericServicePrice}, \code{L244.ThermalServicePrice},
-#' \code{L244.GenericBaseDens}, \code{L244.ThermalBaseDens},
+#' \code{L244.GenericBaseDens}, \code{L244.ThermalBaseDens},\code{L244.gcam_consumer}
 #' The corresponding file in the original data system was \code{L244.building_det.R} (energy level2).
 #' @details Creates level2 data for the building sector.
 #' @importFrom assertthat assert_that
@@ -167,7 +167,8 @@ module_energy_L244.building_det <- function(command, ...) {
              "L244.GenericServicePrice",
              "L244.ThermalServicePrice",
              "L244.GenericBaseDens",
-             "L244.ThermalBaseDens"))
+             "L244.ThermalBaseDens",
+             "L244.gcam_consumer"))
   } else if(command == driver.MAKE) {
 
     # Silence package checks
@@ -296,7 +297,7 @@ module_energy_L244.building_det <- function(command, ...) {
 
 
     # Adjust gcam.consumer file to add the multiple consumers combining the raw file with multiple consumer information
-    A44.gcam_consumer<-A44.gcam_consumer %>%
+    L244.gcam_consumer<-A44.gcam_consumer %>%
       filter(gcam.consumer == "resid") %>%
       repeat_add_columns(tibble(group=unique(L144.income_shares$group))) %>%
       unite(gcam.consumer, c(gcam.consumer,group),sep="_") %>%
@@ -304,7 +305,7 @@ module_energy_L244.building_det <- function(command, ...) {
 
 
     # Create the final dataset with subregional population and income shares
-    L244.SubregionalShares <- write_to_all_regions(A44.gcam_consumer, LEVEL2_DATA_NAMES[["DeleteConsumer"]],
+    L244.SubregionalShares <- write_to_all_regions(L244.gcam_consumer, LEVEL2_DATA_NAMES[["DeleteConsumer"]],
                                                    GCAM_region_names = GCAM_region_names) %>%
       # filter residential sector to implement multiple consumers
       filter(grepl("resid",gcam.consumer)) %>%
@@ -321,7 +322,7 @@ module_energy_L244.building_det <- function(command, ...) {
       rename(subregional.income.share = share) %>%
       select(-scen,-GCAM_region_ID) %>%
       # bind commercial subregional population and income shares (currently not used, set to 1)
-      bind_rows(write_to_all_regions(A44.gcam_consumer, LEVEL2_DATA_NAMES[["DeleteConsumer"]],
+      bind_rows(write_to_all_regions(L244.gcam_consumer, LEVEL2_DATA_NAMES[["DeleteConsumer"]],
                                      GCAM_region_names = GCAM_region_names) %>%
                   filter(gcam.consumer == "comm") %>%
                   repeat_add_columns(tibble(pop.year.fillout=MODEL_YEARS)) %>%
@@ -331,7 +332,7 @@ module_energy_L244.building_det <- function(command, ...) {
 
    # Create a similar dataframe with all historical years
    # Used to create the historical subregional GDPpc dataframe
-    L244.SubregionalShares_allhist<-write_to_all_regions(A44.gcam_consumer, LEVEL2_DATA_NAMES[["DeleteConsumer"]],
+    L244.SubregionalShares_allhist<-write_to_all_regions(L244.gcam_consumer, LEVEL2_DATA_NAMES[["DeleteConsumer"]],
                                                          GCAM_region_names = GCAM_region_names) %>%
       filter(grepl("resid",gcam.consumer)) %>%
       separate(gcam.consumer,c("gcam.consumer","group"),sep = "_") %>%
@@ -346,7 +347,7 @@ module_energy_L244.building_det <- function(command, ...) {
       unite(gcam.consumer,c("gcam.consumer","group"),sep = "_") %>%
       rename(subregional.income.share=share) %>%
       select(-scen,-GCAM_region_ID) %>%
-      bind_rows(write_to_all_regions(A44.gcam_consumer, LEVEL2_DATA_NAMES[["DeleteConsumer"]],
+      bind_rows(write_to_all_regions(L244.gcam_consumer, LEVEL2_DATA_NAMES[["DeleteConsumer"]],
                                      GCAM_region_names = GCAM_region_names) %>%
                   filter(gcam.consumer=="comm") %>%
                   repeat_add_columns(tibble(pop.year.fillout=HISTORICAL_YEARS)) %>%
@@ -355,7 +356,7 @@ module_energy_L244.building_det <- function(command, ...) {
                          subregional.income.share = 1))
 
     # Generate subregional shares for diferent SSP scenarios
-    L244.SubregionalShares_SSP <- write_to_all_regions(A44.gcam_consumer, LEVEL2_DATA_NAMES[["DeleteConsumer"]],
+    L244.SubregionalShares_SSP <- write_to_all_regions(L244.gcam_consumer, LEVEL2_DATA_NAMES[["DeleteConsumer"]],
                                                    GCAM_region_names = GCAM_region_names) %>%
       # filter residential sector to implement multiple consumers
       filter(grepl("resid",gcam.consumer)) %>%
@@ -453,7 +454,7 @@ module_energy_L244.building_det <- function(command, ...) {
 
 
     # Also need a price exponent on floorspace and naming of internal gains trial markets
-    L244.PriceExp_IntGains <- write_to_all_regions(A44.gcam_consumer, LEVEL2_DATA_NAMES[["PriceExp_IntGains"]],
+    L244.PriceExp_IntGains <- write_to_all_regions(L244.gcam_consumer, LEVEL2_DATA_NAMES[["PriceExp_IntGains"]],
                                                    GCAM_region_names = GCAM_region_names)
 
     # ===================================================
@@ -463,7 +464,7 @@ module_energy_L244.building_det <- function(command, ...) {
     # 1- Residential floorspace
 
     # Filter residential gcam.consumer table
-    A44.gcam_consumer_resid <- A44.gcam_consumer %>%
+    L244.gcam_consumer_resid <- L244.gcam_consumer %>%
       filter(grepl("resid", gcam.consumer))
 
 
@@ -494,7 +495,7 @@ module_energy_L244.building_det <- function(command, ...) {
 
     # Combine observed data with the bias adder to obtain historical residential floorspace (BM2)
     L244.Floorspace_resid<-L244.Floorspace_resid_est %>%
-      select(region, gcam.consumer, year, flsp_est) %>%
+      select(region, gcam.consumer, nodeInput, building.node.input, year, flsp_est) %>%
       left_join_error_no_match(L244.Floorspace_resid_adder, by = c("region", "gcam.consumer","year")) %>%
       mutate(base.building.size = flsp_est + bias.adder,
              nodeInput = "resid",
@@ -539,17 +540,17 @@ module_energy_L244.building_det <- function(command, ...) {
     # 2- Commercial floorspace
 
     # Filter commercial gcam.consumer table
-    A44.gcam_consumer_comm <- A44.gcam_consumer %>%
-      filter(grepl("comm", A44.gcam_consumer$gcam.consumer))
+    L244.gcam_consumer_comm <- L244.gcam_consumer %>%
+      filter(grepl("comm", L244.gcam_consumer$gcam.consumer))
 
     # Format L144.flsp_bm2_R_comm_Yh (commercial floorspace)
     L244.Floorspace_comm <- L144.flsp_bm2_R_comm_Yh %>%
       mutate(base.building.size = round(value, energy.DIGITS_FLOORSPACE)) %>%
       select(-value) %>%
       left_join_error_no_match(GCAM_region_names, by = "GCAM_region_ID") %>%
-      mutate(gcam.consumer = A44.gcam_consumer_comm$gcam.consumer,
-             nodeInput = A44.gcam_consumer_comm$nodeInput,
-             building.node.input = A44.gcam_consumer_comm$building.node.input) %>%
+      mutate(gcam.consumer = L244.gcam_consumer_comm$gcam.consumer,
+             nodeInput = L244.gcam_consumer_comm$nodeInput,
+             building.node.input = L244.gcam_consumer_comm$building.node.input) %>%
       select(region, gcam.consumer, nodeInput, building.node.input, year, base.building.size)
 
     #-------------
@@ -563,13 +564,13 @@ module_energy_L244.building_det <- function(command, ...) {
     # Commercial floorspace uses the satiation demand function, so the following code estimates the satiation level, impedance, and adder, required for the satiation function.
     # Different satiation levels assumed for different regions, classified in "region classes"
     L244.Satiation_flsp_class <- A44.satiation_flsp %>%
-      tidyr::gather(sector, value, comm) %>%
+      gather(sector, value, resid, comm) %>%
       # Converting from square meters per capita to million square meters per capita
       mutate(satiation.level = value * CONV_THOUS_BIL) %>%
       select(-value)
 
     # Based on these classes, write the satiation level for all GCAM regions
-    L244.Satiation_flsp <- write_to_all_regions(A44.gcam_consumer_comm, c("region", "gcam.consumer", "nodeInput", "building.node.input"), # replace with LEVEL2_DATA_NAMES[["BldNodes]]
+    L244.Satiation_flsp <- write_to_all_regions(L244.gcam_consumer_comm, c("region", "gcam.consumer", "nodeInput", "building.node.input"), # replace with LEVEL2_DATA_NAMES[["BldNodes]]
                                                 GCAM_region_names = GCAM_region_names) %>%
       # Match in the region class, and use this to then match in the satiation floorspace
       left_join_error_no_match(A_regions %>% select(region, region.class),
@@ -580,11 +581,11 @@ module_energy_L244.building_det <- function(command, ...) {
 
     # Extend the analysis to SSP assumptions
     L244.Satiation_flsp_class_SSPs <- A44.satiation_flsp_SSPs %>%
-      tidyr::gather(sector, value, comm) %>%
+      gather(sector, value, resid, comm) %>%
       mutate(satiation.level = value * CONV_THOUS_BIL)
 
 
-    L244.Satiation_flsp_SSPs <- write_to_all_regions(A44.gcam_consumer_comm, c("region", "gcam.consumer", "nodeInput", "building.node.input"), # replace with LEVEL2_DATA_NAMES[["BldNodes]]
+    L244.Satiation_flsp_SSPs <- write_to_all_regions(L244.gcam_consumer_comm, c("region", "gcam.consumer", "nodeInput", "building.node.input"), # replace with LEVEL2_DATA_NAMES[["BldNodes]]
                                                      GCAM_region_names = GCAM_region_names) %>%
       repeat_add_columns(tibble(SSP = unique(L244.Satiation_flsp_class_SSPs$SSP))) %>%
       # Match in the region class, and use this to then match in the satiation floorspace
@@ -1169,7 +1170,7 @@ module_energy_L244.building_det <- function(command, ...) {
       filter(year %in% MODEL_YEARS) %>%
       mutate(shell.conductance = round(shell.conductance, digits = energy.DIGITS_EFFICIENCY)) %>%
       left_join_error_no_match(GCAM_region_names, by = "GCAM_region_ID") %>%
-      left_join_error_no_match(A44.gcam_consumer %>%
+      left_join_error_no_match(L244.gcam_consumer %>%
                                  select(-gcam.consumer) %>%
                                  #mutate(internal.gains.market.name=paste0(nodeInput,"-internal-gains-trial-market")) %>%
                                  distinct() %>%
@@ -1346,7 +1347,7 @@ module_energy_L244.building_det <- function(command, ...) {
                                  select(supplysector, building.node.input) %>%
                                  distinct(), by = "supplysector") %>%
       # Add internal.gains.market.name
-      left_join_error_no_match(A44.gcam_consumer %>%
+      left_join_error_no_match(L244.gcam_consumer %>%
                                  select(-gcam.consumer) %>%
                                  #mutate(internal.gains.market.name=paste0(nodeInput,"-internal-gains-trial-market")) %>%
                                  distinct() %>%
@@ -2649,8 +2650,8 @@ module_energy_L244.building_det <- function(command, ...) {
       filter(year == MODEL_FINAL_BASE_YEAR) %>%
       rename(building.service.input = market) %>%
       filter(grepl("resid",building.service.input)) %>%
-      repeat_add_columns(tibble(gcam.consumer = unique(A44.gcam_consumer_resid$gcam.consumer))) %>%
-      left_join_error_no_match(A44.gcam_consumer_resid %>% select(gcam.consumer,nodeInput,building.node.input), by = "gcam.consumer") %>%
+      repeat_add_columns(tibble(gcam.consumer = unique(L244.gcam_consumer_resid$gcam.consumer))) %>%
+      left_join_error_no_match(L244.gcam_consumer_resid %>% select(gcam.consumer,nodeInput,building.node.input), by = "gcam.consumer") %>%
       separate(gcam.consumer,c("adj","group"), sep = "_",remove = F) %>%
       mutate(building.service.input = paste0(building.service.input,"_",group)) %>%
       select(-adj,-group) %>%
@@ -2659,8 +2660,8 @@ module_energy_L244.building_det <- function(command, ...) {
                   filter(year == MODEL_FINAL_BASE_YEAR) %>%
                   rename(building.service.input = market) %>%
                   filter(grepl("comm",building.service.input)) %>%
-                  repeat_add_columns(tibble(gcam.consumer = unique(A44.gcam_consumer_comm$gcam.consumer))) %>%
-                  left_join_error_no_match(A44.gcam_consumer_comm %>% select(gcam.consumer,nodeInput,building.node.input), by = "gcam.consumer")) %>%
+                  repeat_add_columns(tibble(gcam.consumer = unique(L244.gcam_consumer_comm$gcam.consumer))) %>%
+                  left_join_error_no_match(L244.gcam_consumer_comm %>% select(gcam.consumer,nodeInput,building.node.input), by = "gcam.consumer")) %>%
       select(LEVEL2_DATA_NAMES[["GenericServicePrice"]])
 
 
@@ -2669,8 +2670,8 @@ module_energy_L244.building_det <- function(command, ...) {
       filter(year == MODEL_FINAL_BASE_YEAR) %>%
       rename(thermal.building.service.input = market) %>%
       filter(grepl("resid",thermal.building.service.input)) %>%
-      repeat_add_columns(tibble(gcam.consumer = unique(A44.gcam_consumer_resid$gcam.consumer))) %>%
-      left_join_error_no_match(A44.gcam_consumer_resid %>% select(gcam.consumer,nodeInput,building.node.input), by = "gcam.consumer") %>%
+      repeat_add_columns(tibble(gcam.consumer = unique(L244.gcam_consumer_resid$gcam.consumer))) %>%
+      left_join_error_no_match(L244.gcam_consumer_resid %>% select(gcam.consumer,nodeInput,building.node.input), by = "gcam.consumer") %>%
       separate(gcam.consumer,c("adj","group"), sep = "_",remove = F) %>%
       mutate(thermal.building.service.input = paste0(thermal.building.service.input,"_",group)) %>%
       select(-adj,-group) %>%
@@ -2679,8 +2680,8 @@ module_energy_L244.building_det <- function(command, ...) {
                   filter(year == MODEL_FINAL_BASE_YEAR) %>%
                   rename(thermal.building.service.input = market) %>%
                   filter(grepl("comm",thermal.building.service.input)) %>%
-                  repeat_add_columns(tibble(gcam.consumer = unique(A44.gcam_consumer_comm$gcam.consumer))) %>%
-                  left_join_error_no_match(A44.gcam_consumer_comm %>% select(gcam.consumer,nodeInput,building.node.input), by = "gcam.consumer")) %>%
+                  repeat_add_columns(tibble(gcam.consumer = unique(L244.gcam_consumer_comm$gcam.consumer))) %>%
+                  left_join_error_no_match(L244.gcam_consumer_comm %>% select(gcam.consumer,nodeInput,building.node.input), by = "gcam.consumer")) %>%
       select(LEVEL2_DATA_NAMES[["ThermalServicePrice"]])
 
     #------------------------------------------------------
@@ -3153,6 +3154,12 @@ module_energy_L244.building_det <- function(command, ...) {
       add_precursors("common/GCAM_region_names","L144.in_EJ_R_bld_serv_F_Yh","L144.flsp_bm2_R_res_Yh") ->
       L244.ThermalBaseDens
 
+    L244.gcam_consumer %>%
+      add_title("gcam.consumer file with multiple consumers") %>%
+      add_units("NA") %>%
+      add_comments("Adjusts the A44.gcam_consumer file by adding multiple consumers") %>%
+      add_precursors("socioeconomics/income_shares", "energy/A44.gcam_consumer") ->
+      L244.gcam_consumer
 
     return_data(L244.SubregionalShares, L244.SubregionalShares_SSP1,L244.SubregionalShares_SSP2,L244.SubregionalShares_SSP3,
                 L244.SubregionalShares_SSP4,L244.SubregionalShares_SSP5,
@@ -3182,7 +3189,7 @@ module_energy_L244.building_det <- function(command, ...) {
                 L244.GenericServiceCoef_SSP4,L244.GenericServiceCoef_SSP5,L244.ThermalServiceCoef,
                 L244.GenericCoalCoef,L244.ThermalCoalCoef,L244.GenericTradBioCoef,L244.ThermalTradBioCoef,
                 L244.GenericShares,L244.ThermalShares,L244.GenericServicePrice,L244.ThermalServicePrice,L244.GenericBaseDens,L244.ThermalBaseDens,
-    L244.GlobalTechTrackCapital_bld)
+    L244.GlobalTechTrackCapital_bld, L244.gcam_consumer)
 
   } else {
     stop("Unknown command")
