@@ -38,6 +38,8 @@ module_emissions_L201.en_nonco2 <- function(command, ...) {
              FILE = "energy/calibrated_techs",
              FILE = "energy/calibrated_techs_bld_det",
              FILE = "socioeconomics/income_shares",
+             FILE = "minerals/transport/A54.trn_tech_mineral_mapping_new_structure",
+             FILE = "minerals/transport/A54.trn_tech_mineral_bev_mapping",
              FILE = UCD_tech_map_name))
   } else if(command == driver.DECLARE_OUTPUTS) {
     return(c("L201.en_pol_emissions",
@@ -81,6 +83,8 @@ module_emissions_L201.en_nonco2 <- function(command, ...) {
     L244.DeleteGenericService <- get_data(all_data, "L244.DeleteGenericService", strip_attributes = TRUE)
     income_shares<-get_data(all_data, "socioeconomics/income_shares")
     groups<-income_shares %>% select(category) %>% distinct()
+    A54.trn_tech_mineral_mapping_new_structure <- get_data(all_data, "minerals/transport/A54.trn_tech_mineral_mapping_new_structure",strip_attributes = TRUE)
+    A54.trn_tech_mineral_bev_mapping <- get_data(all_data, "minerals/transport/A54.trn_tech_mineral_bev_mapping",strip_attributes = TRUE)
 
     # make a complete mapping to be able to look up with sector + subsector + tech the
     # input name to use for an input-driver
@@ -97,6 +101,19 @@ module_emissions_L201.en_nonco2 <- function(command, ...) {
       distinct() ->
       EnTechInputNameMap
 
+    # update the trn sector-tech for EnTechInputNameMap
+    A54.trn_tech_mineral_mapping_new_structure %>%
+      filter(supplysector_L2 %in% c("trn_fret_road_pass", "trn_pasg_road_bus_pass", "trn_pasg_road_ldv_4w_pass"),
+             stub.technology_L2 == "BEV") %>%
+      left_join(A54.trn_tech_mineral_bev_mapping,
+                by = c("supplysector_L2" = "from.supplysector", "tranSubsector_L2" = "from.subsector", "stub.technology_L2" = "from.technology")) %>%
+      select(supplysector, tranSubsector, stub.technology, supplysector_L2 = to.supplysector, tranSubsector_L2 = to.subsector, stub.technology_L2 = to.technology) %>%
+      rbind(A54.trn_tech_mineral_mapping_new_structure %>%
+              anti_join(A54.trn_tech_mineral_mapping_new_structure %>%
+                          filter(supplysector_L2 %in% c("trn_fret_road_pass", "trn_pasg_road_bus_pass", "trn_pasg_road_ldv_4w_pass"),
+                                 stub.technology_L2 == "BEV"))) ->
+      A54.trn_tech_mineral_mapping_new_structure_all
+
     # Adjust residential sector for multiple consumer groups
     EnTechInputNameMap_resid<-EnTechInputNameMap %>%
       filter(grepl("resid",supplysector)) %>%
@@ -106,7 +123,16 @@ module_emissions_L201.en_nonco2 <- function(command, ...) {
     EnTechInputNameMap<-EnTechInputNameMap %>%
       filter(!grepl("resid",supplysector)) %>%
       bind_rows(EnTechInputNameMap_resid)
-
+  EnTechInputNameMap %>%
+      filter(grepl("trn_", supplysector)) %>%
+      left_join(A54.trn_tech_mineral_mapping_new_structure_all,
+                by = c("supplysector", "subsector" = "tranSubsector", "stub.technology")) %>%
+      na.omit() %>%
+      select(supplysector = supplysector_L2, subsector = tranSubsector_L2, fuel,
+             stub.technology = stub.technology_L2, input.name) %>%
+      rbind(EnTechInputNameMap %>%
+              filter(!grepl("trn_", supplysector))) ->
+      EnTechInputNameMap
 
 
     # L201.en_pol_emissions: Pollutant emissions for energy technologies in all regions
@@ -447,6 +473,8 @@ module_emissions_L201.en_nonco2 <- function(command, ...) {
                      "energy/calibrated_techs",
                      "energy/calibrated_techs_bld_det",
                      UCD_tech_map_name,
+                     "minerals/transport/A54.trn_tech_mineral_mapping_new_structure",
+                     "minerals/transport/A54.trn_tech_mineral_bev_mapping",
                      "L111.nonghg_tg_R_en_S_F_Yh",
                      "L244.DeleteThermalService","L244.DeleteGenericService","socioeconomics/income_shares",
                      "emissions/mappings/ind_subsector_revised") ->
@@ -464,6 +492,8 @@ module_emissions_L201.en_nonco2 <- function(command, ...) {
                      "energy/calibrated_techs",
                      "energy/calibrated_techs_bld_det",
                      UCD_tech_map_name,
+                     "minerals/transport/A54.trn_tech_mineral_mapping_new_structure",
+                     "minerals/transport/A54.trn_tech_mineral_bev_mapping",                     
                      "L112.ghg_tg_R_en_S_F_Yh",
                      "L244.DeleteThermalService",
                      "emissions/mappings/ind_subsector_revised") ->
@@ -481,6 +511,8 @@ module_emissions_L201.en_nonco2 <- function(command, ...) {
                      "energy/calibrated_techs",
                      "energy/calibrated_techs_bld_det",
                      UCD_tech_map_name,
+                     "minerals/transport/A54.trn_tech_mineral_mapping_new_structure",
+                     "minerals/transport/A54.trn_tech_mineral_bev_mapping",                     
                      "L114.bcoc_tgej_R_en_S_F_2000",
                      "L244.DeleteThermalService") ->
       L201.en_bcoc_emissions
@@ -593,7 +625,9 @@ module_emissions_L201.en_nonco2 <- function(command, ...) {
       same_precursors_as(L201.ghg_res) ->
       L201.ResReadInControl_ghg_res
 
-    return_data(L201.en_pol_emissions, L201.en_ghg_emissions, L201.en_bcoc_emissions, L201.en_iron_and_steel_ef, L201.OutputEmissions_elec, L201.nonghg_max_reduction, L201.nonghg_steepness, L201.nonghg_max_reduction_res, L201.nonghg_steepness_res, L201.nonghg_res, L201.ghg_res, L201.ResReadInControl_nonghg_res, L201.ResReadInControl_ghg_res)
+    return_data(L201.en_pol_emissions, L201.en_ghg_emissions, L201.en_bcoc_emissions, L201.en_iron_and_steel_ef, L201.OutputEmissions_elec, 
+                L201.nonghg_max_reduction, L201.nonghg_steepness, L201.nonghg_max_reduction_res, L201.nonghg_steepness_res, 
+                L201.nonghg_res, L201.ghg_res, L201.ResReadInControl_nonghg_res, L201.ResReadInControl_ghg_res)
   } else {
     stop("Unknown command")
   }

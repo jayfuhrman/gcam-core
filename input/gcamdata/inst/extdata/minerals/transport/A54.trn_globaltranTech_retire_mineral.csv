@@ -1,0 +1,256 @@
+# File: A54.trn_globaltranTech_retire_mineral.csv
+# Title: Transportation technology retirement parameters. Only applies to vintaged technologies
+# Units: Years for lifetime and half.life; Unitless for steepness
+# Source: Documented in JIRA issue https://jira.pnnl.gov/jira/browse/JGCRI-358?src=confmacro
+# Comments: maximum lifetime of cohort. If no retirement function is used; the entire cohort is retired in this number of years
+# half.life: number of years at which 50% of the cohort is retired; using the s-curve-shutdown-decider retirement function
+# steepness: shape parameter used by the s-curve-shutdown-decider retirement function
+# Column types: cccciinnn
+# ----------
+supplysector,tranSubsector,tranTechnology,year,lifetime,half.life,steepness,median.shutdown.point,profit.shutdown.steepness
+trn_pasg_road_ldv_4w_pass,Car,FCEV,final-calibration-year,25,11,0.218,-0.1,6
+trn_pasg_road_ldv_4w_pass,Car,Hybrid Liquids,final-calibration-year,25,11,0.218,-0.1,6
+trn_pasg_road_ldv_4w_pass,Car,Liquids,final-calibration-year,25,11,0.218,-0.1,6
+trn_pasg_road_ldv_4w_pass,Car,NG,final-calibration-year,25,11,0.218,-0.1,6
+trn_fret_road_pass,Heavy truck,FCEV,final-calibration-year,20,10,0.193,-0.1,6
+trn_fret_road_pass,Heavy truck,Hybrid Liquids,final-calibration-year,20,10,0.193,-0.1,6
+trn_fret_road_pass,Heavy truck,Liquids,final-calibration-year,20,10,0.193,-0.1,6
+trn_fret_road_pass,Heavy truck,NG,final-calibration-year,20,10,0.193,-0.1,6
+trn_pasg_road_ldv_4w_pass,Large Car and Truck,FCEV,final-calibration-year,25,11,0.23,-0.1,6
+trn_pasg_road_ldv_4w_pass,Large Car and Truck,Hybrid Liquids,final-calibration-year,25,11,0.23,-0.1,6
+trn_pasg_road_ldv_4w_pass,Large Car and Truck,Liquids,final-calibration-year,25,11,0.23,-0.1,6
+trn_pasg_road_ldv_4w_pass,Large Car and Truck,NG,final-calibration-year,25,11,0.23,-0.1,6
+trn_fret_road_pass,Light truck,FCEV,final-calibration-year,20,10,0.193,-0.1,6
+trn_fret_road_pass,Light truck,Hybrid Liquids,final-calibration-year,20,10,0.193,-0.1,6
+trn_fret_road_pass,Light truck,Liquids,final-calibration-year,20,10,0.193,-0.1,6
+trn_fret_road_pass,Light truck,NG,final-calibration-year,20,10,0.193,-0.1,6
+trn_fret_road_pass,Medium truck,FCEV,final-calibration-year,20,10,0.193,-0.1,6
+trn_fret_road_pass,Medium truck,Hybrid Liquids,final-calibration-year,20,10,0.193,-0.1,6
+trn_fret_road_pass,Medium truck,Liquids,final-calibration-year,20,10,0.193,-0.1,6
+trn_fret_road_pass,Medium truck,NG,final-calibration-year,20,10,0.193,-0.1,6
+trn_pasg_road_ldv_4w_pass,Mini Car,FCEV,final-calibration-year,25,11,0.218,-0.1,6
+trn_pasg_road_ldv_4w_pass,Mini Car,Hybrid Liquids,final-calibration-year,25,11,0.218,-0.1,6
+trn_pasg_road_ldv_4w_pass,Mini Car,Liquids,final-calibration-year,25,11,0.218,-0.1,6
+trn_pasg_road_ldv_4w_pass,Mini Car,NG,final-calibration-year,25,11,0.218,-0.1,6
+trn_fret_road_ht_bev_pass,fret_road_ht_bev,h_truck_bev (NMC111),final-calibration-year,20,10,0.193,-0.1,6
+trn_fret_road_ht_bev_pass,fret_road_ht_bev,h_truck_bev (NMC622),final-calibration-year,20,10,0.193,-0.1,6
+trn_fret_road_ht_bev_pass,fret_road_ht_bev,h_truck_bev (NMC811),final-calibration-year,20,10,0.193,-0.1,6
+trn_fret_road_ht_bev_pass,fret_road_ht_bev,h_truck_bev (NCA),final-calibration-year,20,10,0.193,-0.1,6
+trn_fret_road_ht_bev_pass,fret_road_ht_bev,h_truck_bev (LFP),final-calibration-year,20,10,0.193,-0.1,6
+trn_fret_road_ht_bev_pass,fret_road_ht_bev,h_truck_bev (Na_ion),final-calibration-year,20,10,0.193,-0.1,6
+trn_fret_road_ht_bev_pass,fret_road_ht_bev,h_truck_bev (LFP_si),final-calibration-year,20,10,0.193,-0.1,6
+trn_fret_road_ht_bev_pass,fret_road_ht_bev,h_truck_bev (NMC811_si),final-calibration-year,20,10,0.193,-0.1,6
+trn_fret_road_ht_bev_pass,fret_road_ht_bev,h_truck_bev (LFP_ssb),final-calibration-year,20,10,0.193,-0.1,6
+trn_fret_road_ht_bev_pass,fret_road_ht_bev,h_truck_bev (NMC811_ssb),final-calibration-year,20,10,0.193,-0.1,6
+trn_fret_road_mt_bev_pass,fret_road_mt_bev,m_truck_bev (NMC111),final-calibration-year,20,10,0.193,-0.1,6
+trn_fret_road_mt_bev_pass,fret_road_mt_bev,m_truck_bev (NMC622),final-calibration-year,20,10,0.193,-0.1,6
+trn_fret_road_mt_bev_pass,fret_road_mt_bev,m_truck_bev (NMC811),final-calibration-year,20,10,0.193,-0.1,6
+trn_fret_road_mt_bev_pass,fret_road_mt_bev,m_truck_bev (NCA),final-calibration-year,20,10,0.193,-0.1,6
+trn_fret_road_mt_bev_pass,fret_road_mt_bev,m_truck_bev (LFP),final-calibration-year,20,10,0.193,-0.1,6
+trn_fret_road_mt_bev_pass,fret_road_mt_bev,m_truck_bev (Na_ion),final-calibration-year,20,10,0.193,-0.1,6
+trn_fret_road_mt_bev_pass,fret_road_mt_bev,m_truck_bev (LFP_si),final-calibration-year,20,10,0.193,-0.1,6
+trn_fret_road_mt_bev_pass,fret_road_mt_bev,m_truck_bev (NMC811_si),final-calibration-year,20,10,0.193,-0.1,6
+trn_fret_road_mt_bev_pass,fret_road_mt_bev,m_truck_bev (LFP_ssb),final-calibration-year,20,10,0.193,-0.1,6
+trn_fret_road_mt_bev_pass,fret_road_mt_bev,m_truck_bev (NMC811_ssb),final-calibration-year,20,10,0.193,-0.1,6
+trn_fret_road_lt_bev_pass,fret_road_lt_bev,l_truck_bev (NMC111),final-calibration-year,20,10,0.193,-0.1,6
+trn_fret_road_lt_bev_pass,fret_road_lt_bev,l_truck_bev (NMC622),final-calibration-year,20,10,0.193,-0.1,6
+trn_fret_road_lt_bev_pass,fret_road_lt_bev,l_truck_bev (NMC811),final-calibration-year,20,10,0.193,-0.1,6
+trn_fret_road_lt_bev_pass,fret_road_lt_bev,l_truck_bev (NCA),final-calibration-year,20,10,0.193,-0.1,6
+trn_fret_road_lt_bev_pass,fret_road_lt_bev,l_truck_bev (LFP),final-calibration-year,20,10,0.193,-0.1,6
+trn_fret_road_lt_bev_pass,fret_road_lt_bev,l_truck_bev (Na_ion),final-calibration-year,20,10,0.193,-0.1,6
+trn_fret_road_lt_bev_pass,fret_road_lt_bev,l_truck_bev (LFP_si),final-calibration-year,20,10,0.193,-0.1,6
+trn_fret_road_lt_bev_pass,fret_road_lt_bev,l_truck_bev (NMC811_si),final-calibration-year,20,10,0.193,-0.1,6
+trn_fret_road_lt_bev_pass,fret_road_lt_bev,l_truck_bev (LFP_ssb),final-calibration-year,20,10,0.193,-0.1,6
+trn_fret_road_lt_bev_pass,fret_road_lt_bev,l_truck_bev (NMC811_ssb),final-calibration-year,20,10,0.193,-0.1,6
+trn_pasg_road_ldv_4W_hc_bev_pass,largecar_bev,largecar_bev (NMC111),final-calibration-year,25,11,0.23,-0.1,6
+trn_pasg_road_ldv_4W_hc_bev_pass,largecar_bev,largecar_bev (NMC622),final-calibration-year,25,11,0.23,-0.1,6
+trn_pasg_road_ldv_4W_hc_bev_pass,largecar_bev,largecar_bev (NMC811),final-calibration-year,25,11,0.23,-0.1,6
+trn_pasg_road_ldv_4W_hc_bev_pass,largecar_bev,largecar_bev (NCA),final-calibration-year,25,11,0.23,-0.1,6
+trn_pasg_road_ldv_4W_hc_bev_pass,largecar_bev,largecar_bev (LFP),final-calibration-year,25,11,0.23,-0.1,6
+trn_pasg_road_ldv_4W_hc_bev_pass,largecar_bev,largecar_bev (Na_ion),final-calibration-year,25,11,0.23,-0.1,6
+trn_pasg_road_ldv_4W_hc_bev_pass,largecar_bev,largecar_bev (LFP_si),final-calibration-year,25,11,0.23,-0.1,6
+trn_pasg_road_ldv_4W_hc_bev_pass,largecar_bev,largecar_bev (NMC811_si),final-calibration-year,25,11,0.23,-0.1,6
+trn_pasg_road_ldv_4W_hc_bev_pass,largecar_bev,largecar_bev (LFP_ssb),final-calibration-year,25,11,0.23,-0.1,6
+trn_pasg_road_ldv_4W_hc_bev_pass,largecar_bev,largecar_bev (NMC811_ssb),final-calibration-year,25,11,0.23,-0.1,6
+trn_pasg_road_ldv_4W_lc_bev_pass,minicar_bev,minicar_bev (NMC111),final-calibration-year,25,11,0.218,-0.1,6
+trn_pasg_road_ldv_4W_lc_bev_pass,minicar_bev,minicar_bev (NMC622),final-calibration-year,25,11,0.218,-0.1,6
+trn_pasg_road_ldv_4W_lc_bev_pass,minicar_bev,minicar_bev (NMC811),final-calibration-year,25,11,0.218,-0.1,6
+trn_pasg_road_ldv_4W_lc_bev_pass,minicar_bev,minicar_bev (NCA),final-calibration-year,25,11,0.218,-0.1,6
+trn_pasg_road_ldv_4W_lc_bev_pass,minicar_bev,minicar_bev (LFP),final-calibration-year,25,11,0.218,-0.1,6
+trn_pasg_road_ldv_4W_lc_bev_pass,minicar_bev,minicar_bev (Na_ion),final-calibration-year,25,11,0.218,-0.1,6
+trn_pasg_road_ldv_4W_lc_bev_pass,minicar_bev,minicar_bev (LFP_si),final-calibration-year,25,11,0.218,-0.1,6
+trn_pasg_road_ldv_4W_lc_bev_pass,minicar_bev,minicar_bev (NMC811_si),final-calibration-year,25,11,0.218,-0.1,6
+trn_pasg_road_ldv_4W_lc_bev_pass,minicar_bev,minicar_bev (LFP_ssb),final-calibration-year,25,11,0.218,-0.1,6
+trn_pasg_road_ldv_4W_lc_bev_pass,minicar_bev,minicar_bev (NMC811_ssb),final-calibration-year,25,11,0.218,-0.1,6
+trn_pasg_road_ldv_4W_mc_bev_pass,car_bev,car_bev (NMC111),final-calibration-year,25,11,0.218,-0.1,6
+trn_pasg_road_ldv_4W_mc_bev_pass,car_bev,car_bev (NMC622),final-calibration-year,25,11,0.218,-0.1,6
+trn_pasg_road_ldv_4W_mc_bev_pass,car_bev,car_bev (NMC811),final-calibration-year,25,11,0.218,-0.1,6
+trn_pasg_road_ldv_4W_mc_bev_pass,car_bev,car_bev (NCA),final-calibration-year,25,11,0.218,-0.1,6
+trn_pasg_road_ldv_4W_mc_bev_pass,car_bev,car_bev (LFP),final-calibration-year,25,11,0.218,-0.1,6
+trn_pasg_road_ldv_4W_mc_bev_pass,car_bev,car_bev (Na_ion),final-calibration-year,25,11,0.218,-0.1,6
+trn_pasg_road_ldv_4W_mc_bev_pass,car_bev,car_bev (LFP_si),final-calibration-year,25,11,0.218,-0.1,6
+trn_pasg_road_ldv_4W_mc_bev_pass,car_bev,car_bev (NMC811_si),final-calibration-year,25,11,0.218,-0.1,6
+trn_pasg_road_ldv_4W_mc_bev_pass,car_bev,car_bev (LFP_ssb),final-calibration-year,25,11,0.218,-0.1,6
+trn_pasg_road_ldv_4W_mc_bev_pass,car_bev,car_bev (NMC811_ssb),final-calibration-year,25,11,0.218,-0.1,6
+trn_aviation_intl_pass,International Aviation,Liquids,final-calibration-year,25,12,0.218,-0.1,6
+trn_aviation_intl_pass,International Aviation,BEV,final-calibration-year,25,12,0.218,-0.1,6
+trn_aviation_intl_pass,International Aviation,Hydrogen,final-calibration-year,25,12,0.218,-0.1,6
+trn_dom_ship_pass,Domestic Ship,Liquids,final-calibration-year,25,12,0.218,-0.1,6
+trn_dom_ship_pass,Domestic Ship,BEV,final-calibration-year,25,12,0.218,-0.1,6
+trn_dom_ship_pass,Domestic Ship,FCEV,final-calibration-year,25,12,0.218,-0.1,6
+trn_dom_ship_pass,Domestic Ship,Hybrid Liquids,final-calibration-year,25,12,0.218,-0.1,6
+trn_fret_rail_pass,Freight Rail,Coal,final-calibration-year,30,15,0.218,-0.1,6
+trn_fret_rail_pass,Freight Rail,Electric,final-calibration-year,30,15,0.218,-0.1,6
+trn_fret_rail_pass,Freight Rail,Liquids,final-calibration-year,30,15,0.218,-0.1,6
+trn_fret_rail_pass,Freight Rail,BEV,final-calibration-year,30,15,0.218,-0.1,6
+trn_fret_rail_pass,Freight Rail,FCEV,final-calibration-year,30,15,0.218,-0.1,6
+trn_fret_rail_pass,Freight Rail,Hybrid Liquids,final-calibration-year,30,15,0.218,-0.1,6
+trn_pasg_cycle_pass,Cycle,Cycle,final-calibration-year,15,7,0.218,-0.1,6
+trn_pasg_aviation_dom_pass,Domestic Aviation,Liquids,final-calibration-year,25,12,0.218,-0.1,6
+trn_pasg_aviation_dom_pass,Domestic Aviation,BEV,final-calibration-year,25,12,0.218,-0.1,6
+trn_pasg_aviation_dom_pass,Domestic Aviation,Hydrogen,final-calibration-year,25,12,0.218,-0.1,6
+trn_pasg_hsr_pass,HSR,Electric,final-calibration-year,20,10,0.218,-0.1,6
+trn_pasg_rail_pass,Passenger Rail,Electric,final-calibration-year,30,15,0.218,-0.1,6
+trn_pasg_rail_pass,Passenger Rail,Liquids,final-calibration-year,30,15,0.218,-0.1,6
+trn_pasg_road_bus_pass,Bus,Liquids,final-calibration-year,15,7,0.218,-0.1,6
+trn_pasg_road_bus_pass,Bus,NG,final-calibration-year,15,7,0.218,-0.1,6
+trn_pasg_road_bus_pass,Bus,FCEV,final-calibration-year,15,7,0.218,-0.1,6
+trn_pasg_road_bus_pass,Bus,Hybrid Liquids,final-calibration-year,15,7,0.218,-0.1,6
+trn_pasg_road_ldv_2_3W_pass,2W and 3W,Liquids,final-calibration-year,15,7,0.218,-0.1,6
+trn_pasg_road_ldv_2_3W_pass,2W and 3W,NG,final-calibration-year,15,7,0.218,-0.1,6
+trn_pasg_road_ldv_2_3W_pass,2W and 3W,BEV,final-calibration-year,15,7,0.218,-0.1,6
+trn_pasg_road_ldv_2_3W_pass,2W and 3W,LA-BEV,final-calibration-year,15,7,0.218,-0.1,6
+trn_ship_intl_pass,International Ship,Liquids,final-calibration-year,30,15,0.218,-0.1,6
+trn_ship_intl_pass,International Ship,BEV,final-calibration-year,30,15,0.218,-0.1,6
+trn_ship_intl_pass,International Ship,FCEV,final-calibration-year,30,15,0.218,-0.1,6
+trn_ship_intl_pass,International Ship,Hybrid Liquids,final-calibration-year,30,15,0.218,-0.1,6
+trn_bus_bev_pass,bus_bev,bus_bev (NMC111),final-calibration-year,15,7,0.218,-0.1,6
+trn_bus_bev_pass,bus_bev,bus_bev (LFP),final-calibration-year,15,7,0.218,-0.1,6
+trn_bus_bev_pass,bus_bev,bus_bev (Na_ion),final-calibration-year,15,7,0.218,-0.1,6
+trn_bus_bev_pass,bus_bev,bus_bev (LFP_si),final-calibration-year,15,7,0.218,-0.1,6
+trn_bus_bev_pass,bus_bev,bus_bev (NMC811_si),final-calibration-year,15,7,0.218,-0.1,6
+trn_bus_bev_pass,bus_bev,bus_bev (LFP_ssb),final-calibration-year,15,7,0.218,-0.1,6
+trn_bus_bev_pass,bus_bev,bus_bev (NMC811_ssb),final-calibration-year,15,7,0.218,-0.1,6
+trn_pasg_road_ldv_4w_pass,Car,FCEV,initial-future-year,25,12,0.193,-0.1,6
+trn_pasg_road_ldv_4w_pass,Car,Hybrid Liquids,initial-future-year,25,12,0.193,-0.1,6
+trn_pasg_road_ldv_4w_pass,Car,Liquids,initial-future-year,25,12,0.193,-0.1,6
+trn_pasg_road_ldv_4w_pass,Car,NG,initial-future-year,25,12,0.193,-0.1,6
+trn_fret_road_pass,Heavy truck,FCEV,initial-future-year,20,10,0.193,-0.1,6
+trn_fret_road_pass,Heavy truck,Hybrid Liquids,initial-future-year,20,10,0.193,-0.1,6
+trn_fret_road_pass,Heavy truck,Liquids,initial-future-year,20,10,0.193,-0.1,6
+trn_fret_road_pass,Heavy truck,NG,initial-future-year,20,10,0.193,-0.1,6
+trn_pasg_road_ldv_4w_pass,Large Car and Truck,FCEV,initial-future-year,25,12,0.193,-0.1,6
+trn_pasg_road_ldv_4w_pass,Large Car and Truck,Hybrid Liquids,initial-future-year,25,12,0.193,-0.1,6
+trn_pasg_road_ldv_4w_pass,Large Car and Truck,Liquids,initial-future-year,25,12,0.193,-0.1,6
+trn_pasg_road_ldv_4w_pass,Large Car and Truck,NG,initial-future-year,25,12,0.193,-0.1,6
+trn_fret_road_pass,Light truck,FCEV,initial-future-year,20,10,0.193,-0.1,6
+trn_fret_road_pass,Light truck,Hybrid Liquids,initial-future-year,20,10,0.193,-0.1,6
+trn_fret_road_pass,Light truck,Liquids,initial-future-year,20,10,0.193,-0.1,6
+trn_fret_road_pass,Light truck,NG,initial-future-year,20,10,0.193,-0.1,6
+trn_fret_road_pass,Medium truck,FCEV,initial-future-year,20,10,0.193,-0.1,6
+trn_fret_road_pass,Medium truck,Hybrid Liquids,initial-future-year,20,10,0.193,-0.1,6
+trn_fret_road_pass,Medium truck,Liquids,initial-future-year,20,10,0.193,-0.1,6
+trn_fret_road_pass,Medium truck,NG,initial-future-year,20,10,0.193,-0.1,6
+trn_pasg_road_ldv_4w_pass,Mini Car,FCEV,initial-future-year,25,12,0.193,-0.1,6
+trn_pasg_road_ldv_4w_pass,Mini Car,Hybrid Liquids,initial-future-year,25,12,0.193,-0.1,6
+trn_pasg_road_ldv_4w_pass,Mini Car,Liquids,initial-future-year,25,12,0.193,-0.1,6
+trn_pasg_road_ldv_4w_pass,Mini Car,NG,initial-future-year,25,12,0.193,-0.1,6
+trn_fret_road_ht_bev_pass,fret_road_ht_bev,h_truck_bev (NMC111),initial-future-year,20,10,0.193,-0.1,6
+trn_fret_road_ht_bev_pass,fret_road_ht_bev,h_truck_bev (NMC622),initial-future-year,20,10,0.193,-0.1,6
+trn_fret_road_ht_bev_pass,fret_road_ht_bev,h_truck_bev (NMC811),initial-future-year,20,10,0.193,-0.1,6
+trn_fret_road_ht_bev_pass,fret_road_ht_bev,h_truck_bev (NCA),initial-future-year,20,10,0.193,-0.1,6
+trn_fret_road_ht_bev_pass,fret_road_ht_bev,h_truck_bev (LFP),initial-future-year,20,10,0.193,-0.1,6
+trn_fret_road_ht_bev_pass,fret_road_ht_bev,h_truck_bev (Na_ion),initial-future-year,20,10,0.193,-0.1,6
+trn_fret_road_ht_bev_pass,fret_road_ht_bev,h_truck_bev (LFP_si),initial-future-year,20,10,0.193,-0.1,6
+trn_fret_road_ht_bev_pass,fret_road_ht_bev,h_truck_bev (NMC811_si),initial-future-year,20,10,0.193,-0.1,6
+trn_fret_road_ht_bev_pass,fret_road_ht_bev,h_truck_bev (LFP_ssb),initial-future-year,20,10,0.193,-0.1,6
+trn_fret_road_ht_bev_pass,fret_road_ht_bev,h_truck_bev (NMC811_ssb),initial-future-year,20,10,0.193,-0.1,6
+trn_fret_road_mt_bev_pass,fret_road_mt_bev,m_truck_bev (NMC111),initial-future-year,20,10,0.193,-0.1,6
+trn_fret_road_mt_bev_pass,fret_road_mt_bev,m_truck_bev (NMC622),initial-future-year,20,10,0.193,-0.1,6
+trn_fret_road_mt_bev_pass,fret_road_mt_bev,m_truck_bev (NMC811),initial-future-year,20,10,0.193,-0.1,6
+trn_fret_road_mt_bev_pass,fret_road_mt_bev,m_truck_bev (NCA),initial-future-year,20,10,0.193,-0.1,6
+trn_fret_road_mt_bev_pass,fret_road_mt_bev,m_truck_bev (LFP),initial-future-year,20,10,0.193,-0.1,6
+trn_fret_road_mt_bev_pass,fret_road_mt_bev,m_truck_bev (Na_ion),initial-future-year,20,10,0.193,-0.1,6
+trn_fret_road_mt_bev_pass,fret_road_mt_bev,m_truck_bev (LFP_si),initial-future-year,20,10,0.193,-0.1,6
+trn_fret_road_mt_bev_pass,fret_road_mt_bev,m_truck_bev (NMC811_si),initial-future-year,20,10,0.193,-0.1,6
+trn_fret_road_mt_bev_pass,fret_road_mt_bev,m_truck_bev (LFP_ssb),initial-future-year,20,10,0.193,-0.1,6
+trn_fret_road_mt_bev_pass,fret_road_mt_bev,m_truck_bev (NMC811_ssb),initial-future-year,20,10,0.193,-0.1,6
+trn_fret_road_lt_bev_pass,fret_road_lt_bev,l_truck_bev (NMC111),initial-future-year,20,10,0.193,-0.1,6
+trn_fret_road_lt_bev_pass,fret_road_lt_bev,l_truck_bev (NMC622),initial-future-year,20,10,0.193,-0.1,6
+trn_fret_road_lt_bev_pass,fret_road_lt_bev,l_truck_bev (NMC811),initial-future-year,20,10,0.193,-0.1,6
+trn_fret_road_lt_bev_pass,fret_road_lt_bev,l_truck_bev (NCA),initial-future-year,20,10,0.193,-0.1,6
+trn_fret_road_lt_bev_pass,fret_road_lt_bev,l_truck_bev (LFP),initial-future-year,20,10,0.193,-0.1,6
+trn_fret_road_lt_bev_pass,fret_road_lt_bev,l_truck_bev (Na_ion),initial-future-year,20,10,0.193,-0.1,6
+trn_fret_road_lt_bev_pass,fret_road_lt_bev,l_truck_bev (LFP_si),initial-future-year,20,10,0.193,-0.1,6
+trn_fret_road_lt_bev_pass,fret_road_lt_bev,l_truck_bev (NMC811_si),initial-future-year,20,10,0.193,-0.1,6
+trn_fret_road_lt_bev_pass,fret_road_lt_bev,l_truck_bev (LFP_ssb),initial-future-year,20,10,0.193,-0.1,6
+trn_fret_road_lt_bev_pass,fret_road_lt_bev,l_truck_bev (NMC811_ssb),initial-future-year,20,10,0.193,-0.1,6
+trn_pasg_road_ldv_4W_hc_bev_pass,largecar_bev,largecar_bev (NMC111),initial-future-year,25,12,0.193,-0.1,6
+trn_pasg_road_ldv_4W_hc_bev_pass,largecar_bev,largecar_bev (NMC622),initial-future-year,25,12,0.193,-0.1,6
+trn_pasg_road_ldv_4W_hc_bev_pass,largecar_bev,largecar_bev (NMC811),initial-future-year,25,12,0.193,-0.1,6
+trn_pasg_road_ldv_4W_hc_bev_pass,largecar_bev,largecar_bev (NCA),initial-future-year,25,12,0.193,-0.1,6
+trn_pasg_road_ldv_4W_hc_bev_pass,largecar_bev,largecar_bev (LFP),initial-future-year,25,12,0.193,-0.1,6
+trn_pasg_road_ldv_4W_hc_bev_pass,largecar_bev,largecar_bev (Na_ion),initial-future-year,25,12,0.193,-0.1,6
+trn_pasg_road_ldv_4W_hc_bev_pass,largecar_bev,largecar_bev (LFP_si),initial-future-year,25,12,0.193,-0.1,6
+trn_pasg_road_ldv_4W_hc_bev_pass,largecar_bev,largecar_bev (NMC811_si),initial-future-year,25,12,0.193,-0.1,6
+trn_pasg_road_ldv_4W_hc_bev_pass,largecar_bev,largecar_bev (LFP_ssb),initial-future-year,25,12,0.193,-0.1,6
+trn_pasg_road_ldv_4W_hc_bev_pass,largecar_bev,largecar_bev (NMC811_ssb),initial-future-year,25,12,0.193,-0.1,6
+trn_pasg_road_ldv_4W_lc_bev_pass,minicar_bev,minicar_bev (NMC111),initial-future-year,25,12,0.193,-0.1,6
+trn_pasg_road_ldv_4W_lc_bev_pass,minicar_bev,minicar_bev (NMC622),initial-future-year,25,12,0.193,-0.1,6
+trn_pasg_road_ldv_4W_lc_bev_pass,minicar_bev,minicar_bev (NMC811),initial-future-year,25,12,0.193,-0.1,6
+trn_pasg_road_ldv_4W_lc_bev_pass,minicar_bev,minicar_bev (NCA),initial-future-year,25,12,0.193,-0.1,6
+trn_pasg_road_ldv_4W_lc_bev_pass,minicar_bev,minicar_bev (LFP),initial-future-year,25,12,0.193,-0.1,6
+trn_pasg_road_ldv_4W_lc_bev_pass,minicar_bev,minicar_bev (Na_ion),initial-future-year,25,12,0.193,-0.1,6
+trn_pasg_road_ldv_4W_lc_bev_pass,minicar_bev,minicar_bev (LFP_si),initial-future-year,25,12,0.193,-0.1,6
+trn_pasg_road_ldv_4W_lc_bev_pass,minicar_bev,minicar_bev (NMC811_si),initial-future-year,25,12,0.193,-0.1,6
+trn_pasg_road_ldv_4W_lc_bev_pass,minicar_bev,minicar_bev (LFP_ssb),initial-future-year,25,12,0.193,-0.1,6
+trn_pasg_road_ldv_4W_lc_bev_pass,minicar_bev,minicar_bev (NMC811_ssb),initial-future-year,25,12,0.193,-0.1,6
+trn_pasg_road_ldv_4W_mc_bev_pass,car_bev,car_bev (NMC111),initial-future-year,25,12,0.193,-0.1,6
+trn_pasg_road_ldv_4W_mc_bev_pass,car_bev,car_bev (NMC622),initial-future-year,25,12,0.193,-0.1,6
+trn_pasg_road_ldv_4W_mc_bev_pass,car_bev,car_bev (NMC811),initial-future-year,25,12,0.193,-0.1,6
+trn_pasg_road_ldv_4W_mc_bev_pass,car_bev,car_bev (NCA),initial-future-year,25,12,0.193,-0.1,6
+trn_pasg_road_ldv_4W_mc_bev_pass,car_bev,car_bev (LFP),initial-future-year,25,12,0.193,-0.1,6
+trn_pasg_road_ldv_4W_mc_bev_pass,car_bev,car_bev (Na_ion),initial-future-year,25,12,0.193,-0.1,6
+trn_pasg_road_ldv_4W_mc_bev_pass,car_bev,car_bev (LFP_si),initial-future-year,25,12,0.193,-0.1,6
+trn_pasg_road_ldv_4W_mc_bev_pass,car_bev,car_bev (NMC811_si),initial-future-year,25,12,0.193,-0.1,6
+trn_pasg_road_ldv_4W_mc_bev_pass,car_bev,car_bev (LFP_ssb),initial-future-year,25,12,0.193,-0.1,6
+trn_pasg_road_ldv_4W_mc_bev_pass,car_bev,car_bev (NMC811_ssb),initial-future-year,25,12,0.193,-0.1,6
+trn_aviation_intl_pass,International Aviation,Liquids,initial-future-year,25,12,0.193,-0.1,6
+trn_aviation_intl_pass,International Aviation,BEV,initial-future-year,25,12,0.193,-0.1,6
+trn_aviation_intl_pass,International Aviation,Hydrogen,initial-future-year,25,12,0.193,-0.1,6
+trn_dom_ship_pass,Domestic Ship,Liquids,initial-future-year,25,12,0.193,-0.1,6
+trn_dom_ship_pass,Domestic Ship,BEV,initial-future-year,25,12,0.193,-0.1,6
+trn_dom_ship_pass,Domestic Ship,FCEV,initial-future-year,25,12,0.193,-0.1,6
+trn_dom_ship_pass,Domestic Ship,Hybrid Liquids,initial-future-year,25,12,0.193,-0.1,6
+trn_fret_rail_pass,Freight Rail,Coal,initial-future-year,30,15,0.193,-0.1,6
+trn_fret_rail_pass,Freight Rail,Electric,initial-future-year,30,15,0.193,-0.1,6
+trn_fret_rail_pass,Freight Rail,Liquids,initial-future-year,30,15,0.193,-0.1,6
+trn_fret_rail_pass,Freight Rail,BEV,initial-future-year,30,15,0.193,-0.1,6
+trn_fret_rail_pass,Freight Rail,FCEV,initial-future-year,30,15,0.193,-0.1,6
+trn_fret_rail_pass,Freight Rail,Hybrid Liquids,initial-future-year,30,15,0.193,-0.1,6
+trn_pasg_cycle_pass,Cycle,Cycle,initial-future-year,15,7,0.193,-0.1,6
+trn_pasg_aviation_dom_pass,Domestic Aviation,Liquids,initial-future-year,25,12,0.193,-0.1,6
+trn_pasg_aviation_dom_pass,Domestic Aviation,BEV,initial-future-year,25,12,0.193,-0.1,6
+trn_pasg_aviation_dom_pass,Domestic Aviation,Hydrogen,initial-future-year,25,12,0.193,-0.1,6
+trn_pasg_hsr_pass,HSR,Electric,initial-future-year,20,10,0.193,-0.1,6
+trn_pasg_rail_pass,Passenger Rail,Electric,initial-future-year,30,15,0.193,-0.1,6
+trn_pasg_rail_pass,Passenger Rail,Liquids,initial-future-year,30,15,0.193,-0.1,6
+trn_pasg_road_bus_pass,Bus,Liquids,initial-future-year,15,7,0.193,-0.1,6
+trn_pasg_road_bus_pass,Bus,NG,initial-future-year,15,7,0.193,-0.1,6
+trn_pasg_road_bus_pass,Bus,FCEV,initial-future-year,15,7,0.193,-0.1,6
+trn_pasg_road_bus_pass,Bus,Hybrid Liquids,initial-future-year,15,7,0.193,-0.1,6
+trn_pasg_road_ldv_2_3W_pass,2W and 3W,Liquids,initial-future-year,15,7,0.193,-0.1,6
+trn_pasg_road_ldv_2_3W_pass,2W and 3W,NG,initial-future-year,15,7,0.193,-0.1,6
+trn_pasg_road_ldv_2_3W_pass,2W and 3W,BEV,initial-future-year,15,7,0.193,-0.1,6
+trn_pasg_road_ldv_2_3W_pass,2W and 3W,LA-BEV,initial-future-year,15,7,0.193,-0.1,6
+trn_ship_intl_pass,International Ship,Liquids,initial-future-year,30,15,0.193,-0.1,6
+trn_ship_intl_pass,International Ship,BEV,initial-future-year,30,15,0.193,-0.1,6
+trn_ship_intl_pass,International Ship,FCEV,initial-future-year,30,15,0.193,-0.1,6
+trn_ship_intl_pass,International Ship,Hybrid Liquids,initial-future-year,30,15,0.193,-0.1,6
+trn_bus_bev_pass,bus_bev,bus_bev (NMC111),initial-future-year,15,7,0.193,-0.1,6
+trn_bus_bev_pass,bus_bev,bus_bev (LFP),initial-future-year,15,7,0.193,-0.1,6
+trn_bus_bev_pass,bus_bev,bus_bev (Na_ion),initial-future-year,15,7,0.193,-0.1,6
+trn_bus_bev_pass,bus_bev,bus_bev (LFP_si),initial-future-year,15,7,0.193,-0.1,6
+trn_bus_bev_pass,bus_bev,bus_bev (NMC811_si),initial-future-year,15,7,0.193,-0.1,6
+trn_bus_bev_pass,bus_bev,bus_bev (LFP_ssb),initial-future-year,15,7,0.193,-0.1,6
+trn_bus_bev_pass,bus_bev,bus_bev (NMC811_ssb),initial-future-year,15,7,0.193,-0.1,6

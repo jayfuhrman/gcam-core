@@ -1,0 +1,1736 @@
+# File: A26.td_mineral_coef_Mt_EJ.csv
+# Title: Electricity transmission and distribution sector technology mineral use intensity
+# Units: Mt/EJ for different technologies
+# Description: this dataset defines the mineral use intensity for electricity transmission and distrubution varied by region and over time.
+# Comment:
+# Column types: ccnn
+# ----------
+region,mineral,year,value
+Africa_Eastern,steel,2015,6.681389657
+Africa_Eastern,steel,2020,5.962054906
+Africa_Eastern,steel,2025,5.242720156
+Africa_Eastern,steel,2030,4.523385405
+Africa_Eastern,steel,2035,3.804050655
+Africa_Eastern,steel,2040,3.084715904
+Africa_Eastern,steel,2045,2.365381154
+Africa_Eastern,steel,2050,1.646046403
+Africa_Eastern,steel,2055,1.646046403
+Africa_Eastern,steel,2060,1.646046403
+Africa_Eastern,steel,2065,1.646046403
+Africa_Eastern,steel,2070,1.646046403
+Africa_Eastern,steel,2075,1.646046403
+Africa_Eastern,steel,2080,1.646046403
+Africa_Eastern,steel,2085,1.646046403
+Africa_Eastern,steel,2090,1.646046403
+Africa_Eastern,steel,2095,1.646046403
+Africa_Eastern,steel,2100,1.646046403
+Africa_Northern,steel,2015,2.66257903
+Africa_Northern,steel,2020,2.454909716
+Africa_Northern,steel,2025,2.247240403
+Africa_Northern,steel,2030,2.039571089
+Africa_Northern,steel,2035,1.831901775
+Africa_Northern,steel,2040,1.624232462
+Africa_Northern,steel,2045,1.416563148
+Africa_Northern,steel,2050,1.208893834
+Africa_Northern,steel,2055,1.208893834
+Africa_Northern,steel,2060,1.208893834
+Africa_Northern,steel,2065,1.208893834
+Africa_Northern,steel,2070,1.208893834
+Africa_Northern,steel,2075,1.208893834
+Africa_Northern,steel,2080,1.208893834
+Africa_Northern,steel,2085,1.208893834
+Africa_Northern,steel,2090,1.208893834
+Africa_Northern,steel,2095,1.208893834
+Africa_Northern,steel,2100,1.208893834
+Africa_Southern,steel,2015,6.292413828
+Africa_Southern,steel,2020,5.666729233
+Africa_Southern,steel,2025,5.041044639
+Africa_Southern,steel,2030,4.415360045
+Africa_Southern,steel,2035,3.789675451
+Africa_Southern,steel,2040,3.163990857
+Africa_Southern,steel,2045,2.538306262
+Africa_Southern,steel,2050,1.912621668
+Africa_Southern,steel,2055,1.912621668
+Africa_Southern,steel,2060,1.912621668
+Africa_Southern,steel,2065,1.912621668
+Africa_Southern,steel,2070,1.912621668
+Africa_Southern,steel,2075,1.912621668
+Africa_Southern,steel,2080,1.912621668
+Africa_Southern,steel,2085,1.912621668
+Africa_Southern,steel,2090,1.912621668
+Africa_Southern,steel,2095,1.912621668
+Africa_Southern,steel,2100,1.912621668
+Africa_Western,steel,2015,4.926957789
+Africa_Western,steel,2020,4.520067906
+Africa_Western,steel,2025,4.113178023
+Africa_Western,steel,2030,3.70628814
+Africa_Western,steel,2035,3.299398256
+Africa_Western,steel,2040,2.892508373
+Africa_Western,steel,2045,2.48561849
+Africa_Western,steel,2050,2.078728607
+Africa_Western,steel,2055,2.078728607
+Africa_Western,steel,2060,2.078728607
+Africa_Western,steel,2065,2.078728607
+Africa_Western,steel,2070,2.078728607
+Africa_Western,steel,2075,2.078728607
+Africa_Western,steel,2080,2.078728607
+Africa_Western,steel,2085,2.078728607
+Africa_Western,steel,2090,2.078728607
+Africa_Western,steel,2095,2.078728607
+Africa_Western,steel,2100,2.078728607
+Argentina,steel,2015,2.223686847
+Argentina,steel,2020,2.060626839
+Argentina,steel,2025,1.89756683
+Argentina,steel,2030,1.734506822
+Argentina,steel,2035,1.571446814
+Argentina,steel,2040,1.408386806
+Argentina,steel,2045,1.245326798
+Argentina,steel,2050,1.08226679
+Argentina,steel,2055,1.08226679
+Argentina,steel,2060,1.08226679
+Argentina,steel,2065,1.08226679
+Argentina,steel,2070,1.08226679
+Argentina,steel,2075,1.08226679
+Argentina,steel,2080,1.08226679
+Argentina,steel,2085,1.08226679
+Argentina,steel,2090,1.08226679
+Argentina,steel,2095,1.08226679
+Argentina,steel,2100,1.08226679
+Australia_NZ,steel,2015,1.748386939
+Australia_NZ,steel,2020,1.614999489
+Australia_NZ,steel,2025,1.481612039
+Australia_NZ,steel,2030,1.348224588
+Australia_NZ,steel,2035,1.214837138
+Australia_NZ,steel,2040,1.081449688
+Australia_NZ,steel,2045,0.948062238
+Australia_NZ,steel,2050,0.814674787
+Australia_NZ,steel,2055,0.814674787
+Australia_NZ,steel,2060,0.814674787
+Australia_NZ,steel,2065,0.814674787
+Australia_NZ,steel,2070,0.814674787
+Australia_NZ,steel,2075,0.814674787
+Australia_NZ,steel,2080,0.814674787
+Australia_NZ,steel,2085,0.814674787
+Australia_NZ,steel,2090,0.814674787
+Australia_NZ,steel,2095,0.814674787
+Australia_NZ,steel,2100,0.814674787
+Brazil,steel,2015,2.144005366
+Brazil,steel,2020,2.004242915
+Brazil,steel,2025,1.864480463
+Brazil,steel,2030,1.724718012
+Brazil,steel,2035,1.584955561
+Brazil,steel,2040,1.44519311
+Brazil,steel,2045,1.305430659
+Brazil,steel,2050,1.165668207
+Brazil,steel,2055,1.165668207
+Brazil,steel,2060,1.165668207
+Brazil,steel,2065,1.165668207
+Brazil,steel,2070,1.165668207
+Brazil,steel,2075,1.165668207
+Brazil,steel,2080,1.165668207
+Brazil,steel,2085,1.165668207
+Brazil,steel,2090,1.165668207
+Brazil,steel,2095,1.165668207
+Brazil,steel,2100,1.165668207
+Canada,steel,2015,1.271215115
+Canada,steel,2020,1.187997916
+Canada,steel,2025,1.104780717
+Canada,steel,2030,1.021563518
+Canada,steel,2035,0.938346319
+Canada,steel,2040,0.85512912
+Canada,steel,2045,0.771911921
+Canada,steel,2050,0.688694722
+Canada,steel,2055,0.688694722
+Canada,steel,2060,0.688694722
+Canada,steel,2065,0.688694722
+Canada,steel,2070,0.688694722
+Canada,steel,2075,0.688694722
+Canada,steel,2080,0.688694722
+Canada,steel,2085,0.688694722
+Canada,steel,2090,0.688694722
+Canada,steel,2095,0.688694722
+Canada,steel,2100,0.688694722
+Central America and Caribbean,steel,2015,2.08262376
+Central America and Caribbean,steel,2020,1.960442946
+Central America and Caribbean,steel,2025,1.838262132
+Central America and Caribbean,steel,2030,1.716081318
+Central America and Caribbean,steel,2035,1.593900504
+Central America and Caribbean,steel,2040,1.47171969
+Central America and Caribbean,steel,2045,1.349538876
+Central America and Caribbean,steel,2050,1.227358062
+Central America and Caribbean,steel,2055,1.227358062
+Central America and Caribbean,steel,2060,1.227358062
+Central America and Caribbean,steel,2065,1.227358062
+Central America and Caribbean,steel,2070,1.227358062
+Central America and Caribbean,steel,2075,1.227358062
+Central America and Caribbean,steel,2080,1.227358062
+Central America and Caribbean,steel,2085,1.227358062
+Central America and Caribbean,steel,2090,1.227358062
+Central America and Caribbean,steel,2095,1.227358062
+Central America and Caribbean,steel,2100,1.227358062
+Central Asia,steel,2015,2.564755633
+Central Asia,steel,2020,2.349005087
+Central Asia,steel,2025,2.133254542
+Central Asia,steel,2030,1.917503997
+Central Asia,steel,2035,1.701753452
+Central Asia,steel,2040,1.486002907
+Central Asia,steel,2045,1.270252361
+Central Asia,steel,2050,1.054501816
+Central Asia,steel,2055,1.054501816
+Central Asia,steel,2060,1.054501816
+Central Asia,steel,2065,1.054501816
+Central Asia,steel,2070,1.054501816
+Central Asia,steel,2075,1.054501816
+Central Asia,steel,2080,1.054501816
+Central Asia,steel,2085,1.054501816
+Central Asia,steel,2090,1.054501816
+Central Asia,steel,2095,1.054501816
+Central Asia,steel,2100,1.054501816
+China,steel,2015,1.294537723
+China,steel,2020,1.252290908
+China,steel,2025,1.210044093
+China,steel,2030,1.167797278
+China,steel,2035,1.125550463
+China,steel,2040,1.083303649
+China,steel,2045,1.041056834
+China,steel,2050,0.998810019
+China,steel,2055,0.998810019
+China,steel,2060,0.998810019
+China,steel,2065,0.998810019
+China,steel,2070,0.998810019
+China,steel,2075,0.998810019
+China,steel,2080,0.998810019
+China,steel,2085,0.998810019
+China,steel,2090,0.998810019
+China,steel,2095,0.998810019
+China,steel,2100,0.998810019
+Colombia,steel,2015,2.442429845
+Colombia,steel,2020,2.283075317
+Colombia,steel,2025,2.123720788
+Colombia,steel,2030,1.96436626
+Colombia,steel,2035,1.805011732
+Colombia,steel,2040,1.645657204
+Colombia,steel,2045,1.486302676
+Colombia,steel,2050,1.326948147
+Colombia,steel,2055,1.326948147
+Colombia,steel,2060,1.326948147
+Colombia,steel,2065,1.326948147
+Colombia,steel,2070,1.326948147
+Colombia,steel,2075,1.326948147
+Colombia,steel,2080,1.326948147
+Colombia,steel,2085,1.326948147
+Colombia,steel,2090,1.326948147
+Colombia,steel,2095,1.326948147
+Colombia,steel,2100,1.326948147
+EU-12,steel,2015,2.07953634
+EU-12,steel,2020,1.921822742
+EU-12,steel,2025,1.764109145
+EU-12,steel,2030,1.606395547
+EU-12,steel,2035,1.44868195
+EU-12,steel,2040,1.290968352
+EU-12,steel,2045,1.133254754
+EU-12,steel,2050,0.975541157
+EU-12,steel,2055,0.975541157
+EU-12,steel,2060,0.975541157
+EU-12,steel,2065,0.975541157
+EU-12,steel,2070,0.975541157
+EU-12,steel,2075,0.975541157
+EU-12,steel,2080,0.975541157
+EU-12,steel,2085,0.975541157
+EU-12,steel,2090,0.975541157
+EU-12,steel,2095,0.975541157
+EU-12,steel,2100,0.975541157
+EU-15,steel,2015,1.052720967
+EU-15,steel,2020,1.040154781
+EU-15,steel,2025,1.027588596
+EU-15,steel,2030,1.01502241
+EU-15,steel,2035,1.002456225
+EU-15,steel,2040,0.989890039
+EU-15,steel,2045,0.977323854
+EU-15,steel,2050,0.964757669
+EU-15,steel,2055,0.964757669
+EU-15,steel,2060,0.964757669
+EU-15,steel,2065,0.964757669
+EU-15,steel,2070,0.964757669
+EU-15,steel,2075,0.964757669
+EU-15,steel,2080,0.964757669
+EU-15,steel,2085,0.964757669
+EU-15,steel,2090,0.964757669
+EU-15,steel,2095,0.964757669
+EU-15,steel,2100,0.964757669
+Europe_Eastern,steel,2015,2.562749633
+Europe_Eastern,steel,2020,2.352885504
+Europe_Eastern,steel,2025,2.143021375
+Europe_Eastern,steel,2030,1.933157247
+Europe_Eastern,steel,2035,1.723293118
+Europe_Eastern,steel,2040,1.513428989
+Europe_Eastern,steel,2045,1.303564861
+Europe_Eastern,steel,2050,1.093700732
+Europe_Eastern,steel,2055,1.093700732
+Europe_Eastern,steel,2060,1.093700732
+Europe_Eastern,steel,2065,1.093700732
+Europe_Eastern,steel,2070,1.093700732
+Europe_Eastern,steel,2075,1.093700732
+Europe_Eastern,steel,2080,1.093700732
+Europe_Eastern,steel,2085,1.093700732
+Europe_Eastern,steel,2090,1.093700732
+Europe_Eastern,steel,2095,1.093700732
+Europe_Eastern,steel,2100,1.093700732
+Europe_Non_EU,steel,2015,1.663999357
+Europe_Non_EU,steel,2020,1.59241115
+Europe_Non_EU,steel,2025,1.520822943
+Europe_Non_EU,steel,2030,1.449234736
+Europe_Non_EU,steel,2035,1.377646529
+Europe_Non_EU,steel,2040,1.306058322
+Europe_Non_EU,steel,2045,1.234470115
+Europe_Non_EU,steel,2050,1.162881908
+Europe_Non_EU,steel,2055,1.162881908
+Europe_Non_EU,steel,2060,1.162881908
+Europe_Non_EU,steel,2065,1.162881908
+Europe_Non_EU,steel,2070,1.162881908
+Europe_Non_EU,steel,2075,1.162881908
+Europe_Non_EU,steel,2080,1.162881908
+Europe_Non_EU,steel,2085,1.162881908
+Europe_Non_EU,steel,2090,1.162881908
+Europe_Non_EU,steel,2095,1.162881908
+Europe_Non_EU,steel,2100,1.162881908
+European Free Trade Association,steel,2015,0.951340245
+European Free Trade Association,steel,2020,0.921531052
+European Free Trade Association,steel,2025,0.891721858
+European Free Trade Association,steel,2030,0.861912665
+European Free Trade Association,steel,2035,0.832103471
+European Free Trade Association,steel,2040,0.802294278
+European Free Trade Association,steel,2045,0.772485084
+European Free Trade Association,steel,2050,0.742675891
+European Free Trade Association,steel,2055,0.742675891
+European Free Trade Association,steel,2060,0.742675891
+European Free Trade Association,steel,2065,0.742675891
+European Free Trade Association,steel,2070,0.742675891
+European Free Trade Association,steel,2075,0.742675891
+European Free Trade Association,steel,2080,0.742675891
+European Free Trade Association,steel,2085,0.742675891
+European Free Trade Association,steel,2090,0.742675891
+European Free Trade Association,steel,2095,0.742675891
+European Free Trade Association,steel,2100,0.742675891
+India,steel,2015,2.759189557
+India,steel,2020,2.545172308
+India,steel,2025,2.331155059
+India,steel,2030,2.11713781
+India,steel,2035,1.90312056
+India,steel,2040,1.689103311
+India,steel,2045,1.475086062
+India,steel,2050,1.261068813
+India,steel,2055,1.261068813
+India,steel,2060,1.261068813
+India,steel,2065,1.261068813
+India,steel,2070,1.261068813
+India,steel,2075,1.261068813
+India,steel,2080,1.261068813
+India,steel,2085,1.261068813
+India,steel,2090,1.261068813
+India,steel,2095,1.261068813
+India,steel,2100,1.261068813
+Indonesia,steel,2015,1.456720988
+Indonesia,steel,2020,1.443672442
+Indonesia,steel,2025,1.430623895
+Indonesia,steel,2030,1.417575348
+Indonesia,steel,2035,1.404526801
+Indonesia,steel,2040,1.391478255
+Indonesia,steel,2045,1.378429708
+Indonesia,steel,2050,1.365381161
+Indonesia,steel,2055,1.365381161
+Indonesia,steel,2060,1.365381161
+Indonesia,steel,2065,1.365381161
+Indonesia,steel,2070,1.365381161
+Indonesia,steel,2075,1.365381161
+Indonesia,steel,2080,1.365381161
+Indonesia,steel,2085,1.365381161
+Indonesia,steel,2090,1.365381161
+Indonesia,steel,2095,1.365381161
+Indonesia,steel,2100,1.365381161
+Japan,steel,2015,0.557149933
+Japan,steel,2020,0.557149933
+Japan,steel,2025,0.557149933
+Japan,steel,2030,0.557149933
+Japan,steel,2035,0.557149933
+Japan,steel,2040,0.557149933
+Japan,steel,2045,0.557149933
+Japan,steel,2050,0.557149933
+Japan,steel,2055,0.557149933
+Japan,steel,2060,0.557149933
+Japan,steel,2065,0.557149933
+Japan,steel,2070,0.557149933
+Japan,steel,2075,0.557149933
+Japan,steel,2080,0.557149933
+Japan,steel,2085,0.557149933
+Japan,steel,2090,0.557149933
+Japan,steel,2095,0.557149933
+Japan,steel,2100,0.557149933
+Mexico,steel,2015,1.847425657
+Mexico,steel,2020,1.753015352
+Mexico,steel,2025,1.658605048
+Mexico,steel,2030,1.564194743
+Mexico,steel,2035,1.469784439
+Mexico,steel,2040,1.375374134
+Mexico,steel,2045,1.280963829
+Mexico,steel,2050,1.186553525
+Mexico,steel,2055,1.186553525
+Mexico,steel,2060,1.186553525
+Mexico,steel,2065,1.186553525
+Mexico,steel,2070,1.186553525
+Mexico,steel,2075,1.186553525
+Mexico,steel,2080,1.186553525
+Mexico,steel,2085,1.186553525
+Mexico,steel,2090,1.186553525
+Mexico,steel,2095,1.186553525
+Mexico,steel,2100,1.186553525
+Middle East,steel,2015,2.016558789
+Middle East,steel,2020,1.88266252
+Middle East,steel,2025,1.748766252
+Middle East,steel,2030,1.614869984
+Middle East,steel,2035,1.480973716
+Middle East,steel,2040,1.347077448
+Middle East,steel,2045,1.21318118
+Middle East,steel,2050,1.079284911
+Middle East,steel,2055,1.079284911
+Middle East,steel,2060,1.079284911
+Middle East,steel,2065,1.079284911
+Middle East,steel,2070,1.079284911
+Middle East,steel,2075,1.079284911
+Middle East,steel,2080,1.079284911
+Middle East,steel,2085,1.079284911
+Middle East,steel,2090,1.079284911
+Middle East,steel,2095,1.079284911
+Middle East,steel,2100,1.079284911
+Pakistan,steel,2015,2.570782907
+Pakistan,steel,2020,2.436738762
+Pakistan,steel,2025,2.302694616
+Pakistan,steel,2030,2.168650471
+Pakistan,steel,2035,2.034606326
+Pakistan,steel,2040,1.900562181
+Pakistan,steel,2045,1.766518036
+Pakistan,steel,2050,1.632473891
+Pakistan,steel,2055,1.632473891
+Pakistan,steel,2060,1.632473891
+Pakistan,steel,2065,1.632473891
+Pakistan,steel,2070,1.632473891
+Pakistan,steel,2075,1.632473891
+Pakistan,steel,2080,1.632473891
+Pakistan,steel,2085,1.632473891
+Pakistan,steel,2090,1.632473891
+Pakistan,steel,2095,1.632473891
+Pakistan,steel,2100,1.632473891
+Russia,steel,2015,1.795461322
+Russia,steel,2020,1.667604796
+Russia,steel,2025,1.53974827
+Russia,steel,2030,1.411891743
+Russia,steel,2035,1.284035217
+Russia,steel,2040,1.156178691
+Russia,steel,2045,1.028322165
+Russia,steel,2050,0.900465639
+Russia,steel,2055,0.900465639
+Russia,steel,2060,0.900465639
+Russia,steel,2065,0.900465639
+Russia,steel,2070,0.900465639
+Russia,steel,2075,0.900465639
+Russia,steel,2080,0.900465639
+Russia,steel,2085,0.900465639
+Russia,steel,2090,0.900465639
+Russia,steel,2095,0.900465639
+Russia,steel,2100,0.900465639
+South Africa,steel,2015,2.041340305
+South Africa,steel,2020,1.902790915
+South Africa,steel,2025,1.764241525
+South Africa,steel,2030,1.625692134
+South Africa,steel,2035,1.487142744
+South Africa,steel,2040,1.348593354
+South Africa,steel,2045,1.210043963
+South Africa,steel,2050,1.071494573
+South Africa,steel,2055,1.071494573
+South Africa,steel,2060,1.071494573
+South Africa,steel,2065,1.071494573
+South Africa,steel,2070,1.071494573
+South Africa,steel,2075,1.071494573
+South Africa,steel,2080,1.071494573
+South Africa,steel,2085,1.071494573
+South Africa,steel,2090,1.071494573
+South Africa,steel,2095,1.071494573
+South Africa,steel,2100,1.071494573
+South America_Northern,steel,2015,1.558121213
+South America_Northern,steel,2020,1.537287641
+South America_Northern,steel,2025,1.516454069
+South America_Northern,steel,2030,1.495620497
+South America_Northern,steel,2035,1.474786925
+South America_Northern,steel,2040,1.453953354
+South America_Northern,steel,2045,1.433119782
+South America_Northern,steel,2050,1.41228621
+South America_Northern,steel,2055,1.41228621
+South America_Northern,steel,2060,1.41228621
+South America_Northern,steel,2065,1.41228621
+South America_Northern,steel,2070,1.41228621
+South America_Northern,steel,2075,1.41228621
+South America_Northern,steel,2080,1.41228621
+South America_Northern,steel,2085,1.41228621
+South America_Northern,steel,2090,1.41228621
+South America_Northern,steel,2095,1.41228621
+South America_Northern,steel,2100,1.41228621
+South America_Southern,steel,2015,2.078001853
+South America_Southern,steel,2020,1.938561779
+South America_Southern,steel,2025,1.799121705
+South America_Southern,steel,2030,1.659681631
+South America_Southern,steel,2035,1.520241557
+South America_Southern,steel,2040,1.380801483
+South America_Southern,steel,2045,1.24136141
+South America_Southern,steel,2050,1.101921336
+South America_Southern,steel,2055,1.101921336
+South America_Southern,steel,2060,1.101921336
+South America_Southern,steel,2065,1.101921336
+South America_Southern,steel,2070,1.101921336
+South America_Southern,steel,2075,1.101921336
+South America_Southern,steel,2080,1.101921336
+South America_Southern,steel,2085,1.101921336
+South America_Southern,steel,2090,1.101921336
+South America_Southern,steel,2095,1.101921336
+South America_Southern,steel,2100,1.101921336
+South Asia,steel,2015,5.477326837
+South Asia,steel,2020,4.939777808
+South Asia,steel,2025,4.402228779
+South Asia,steel,2030,3.86467975
+South Asia,steel,2035,3.327130721
+South Asia,steel,2040,2.789581691
+South Asia,steel,2045,2.252032662
+South Asia,steel,2050,1.714483633
+South Asia,steel,2055,1.714483633
+South Asia,steel,2060,1.714483633
+South Asia,steel,2065,1.714483633
+South Asia,steel,2070,1.714483633
+South Asia,steel,2075,1.714483633
+South Asia,steel,2080,1.714483633
+South Asia,steel,2085,1.714483633
+South Asia,steel,2090,1.714483633
+South Asia,steel,2095,1.714483633
+South Asia,steel,2100,1.714483633
+South Korea,steel,2015,0.650262505
+South Korea,steel,2020,0.650262505
+South Korea,steel,2025,0.650262505
+South Korea,steel,2030,0.650262505
+South Korea,steel,2035,0.650262505
+South Korea,steel,2040,0.650262505
+South Korea,steel,2045,0.650262505
+South Korea,steel,2050,0.650262505
+South Korea,steel,2055,0.650262505
+South Korea,steel,2060,0.650262505
+South Korea,steel,2065,0.650262505
+South Korea,steel,2070,0.650262505
+South Korea,steel,2075,0.650262505
+South Korea,steel,2080,0.650262505
+South Korea,steel,2085,0.650262505
+South Korea,steel,2090,0.650262505
+South Korea,steel,2095,0.650262505
+South Korea,steel,2100,0.650262505
+Southeast Asia,steel,2015,1.841443797
+Southeast Asia,steel,2020,1.760326958
+Southeast Asia,steel,2025,1.679210119
+Southeast Asia,steel,2030,1.59809328
+Southeast Asia,steel,2035,1.516976441
+Southeast Asia,steel,2040,1.435859602
+Southeast Asia,steel,2045,1.354742763
+Southeast Asia,steel,2050,1.273625924
+Southeast Asia,steel,2055,1.273625924
+Southeast Asia,steel,2060,1.273625924
+Southeast Asia,steel,2065,1.273625924
+Southeast Asia,steel,2070,1.273625924
+Southeast Asia,steel,2075,1.273625924
+Southeast Asia,steel,2080,1.273625924
+Southeast Asia,steel,2085,1.273625924
+Southeast Asia,steel,2090,1.273625924
+Southeast Asia,steel,2095,1.273625924
+Southeast Asia,steel,2100,1.273625924
+Taiwan,steel,2015,0.539231261
+Taiwan,steel,2020,0.539231261
+Taiwan,steel,2025,0.539231261
+Taiwan,steel,2030,0.539231261
+Taiwan,steel,2035,0.539231261
+Taiwan,steel,2040,0.539231261
+Taiwan,steel,2045,0.539231261
+Taiwan,steel,2050,0.539231261
+Taiwan,steel,2055,0.539231261
+Taiwan,steel,2060,0.539231261
+Taiwan,steel,2065,0.539231261
+Taiwan,steel,2070,0.539231261
+Taiwan,steel,2075,0.539231261
+Taiwan,steel,2080,0.539231261
+Taiwan,steel,2085,0.539231261
+Taiwan,steel,2090,0.539231261
+Taiwan,steel,2095,0.539231261
+Taiwan,steel,2100,0.539231261
+USA,steel,2015,0.936650576
+USA,steel,2020,0.913790183
+USA,steel,2025,0.890929791
+USA,steel,2030,0.868069398
+USA,steel,2035,0.845209006
+USA,steel,2040,0.822348613
+USA,steel,2045,0.799488221
+USA,steel,2050,0.776627828
+USA,steel,2055,0.776627828
+USA,steel,2060,0.776627828
+USA,steel,2065,0.776627828
+USA,steel,2070,0.776627828
+USA,steel,2075,0.776627828
+USA,steel,2080,0.776627828
+USA,steel,2085,0.776627828
+USA,steel,2090,0.776627828
+USA,steel,2095,0.776627828
+USA,steel,2100,0.776627828
+Africa_Eastern,aluminium,2015,2.45906719
+Africa_Eastern,aluminium,2020,2.237501945
+Africa_Eastern,aluminium,2025,2.015936701
+Africa_Eastern,aluminium,2030,1.794371457
+Africa_Eastern,aluminium,2035,1.572806212
+Africa_Eastern,aluminium,2040,1.351240968
+Africa_Eastern,aluminium,2045,1.129675724
+Africa_Eastern,aluminium,2050,0.908110479
+Africa_Eastern,aluminium,2055,0.908110479
+Africa_Eastern,aluminium,2060,0.908110479
+Africa_Eastern,aluminium,2065,0.908110479
+Africa_Eastern,aluminium,2070,0.908110479
+Africa_Eastern,aluminium,2075,0.908110479
+Africa_Eastern,aluminium,2080,0.908110479
+Africa_Eastern,aluminium,2085,0.908110479
+Africa_Eastern,aluminium,2090,0.908110479
+Africa_Eastern,aluminium,2095,0.908110479
+Africa_Eastern,aluminium,2100,0.908110479
+Africa_Northern,aluminium,2015,1.635423961
+Africa_Northern,aluminium,2020,1.503748064
+Africa_Northern,aluminium,2025,1.372072167
+Africa_Northern,aluminium,2030,1.24039627
+Africa_Northern,aluminium,2035,1.108720373
+Africa_Northern,aluminium,2040,0.977044477
+Africa_Northern,aluminium,2045,0.84536858
+Africa_Northern,aluminium,2050,0.713692683
+Africa_Northern,aluminium,2055,0.713692683
+Africa_Northern,aluminium,2060,0.713692683
+Africa_Northern,aluminium,2065,0.713692683
+Africa_Northern,aluminium,2070,0.713692683
+Africa_Northern,aluminium,2075,0.713692683
+Africa_Northern,aluminium,2080,0.713692683
+Africa_Northern,aluminium,2085,0.713692683
+Africa_Northern,aluminium,2090,0.713692683
+Africa_Northern,aluminium,2095,0.713692683
+Africa_Northern,aluminium,2100,0.713692683
+Africa_Southern,aluminium,2015,2.007389898
+Africa_Southern,aluminium,2020,1.866473899
+Africa_Southern,aluminium,2025,1.7255579
+Africa_Southern,aluminium,2030,1.584641901
+Africa_Southern,aluminium,2035,1.443725902
+Africa_Southern,aluminium,2040,1.302809903
+Africa_Southern,aluminium,2045,1.161893905
+Africa_Southern,aluminium,2050,1.020977906
+Africa_Southern,aluminium,2055,1.020977906
+Africa_Southern,aluminium,2060,1.020977906
+Africa_Southern,aluminium,2065,1.020977906
+Africa_Southern,aluminium,2070,1.020977906
+Africa_Southern,aluminium,2075,1.020977906
+Africa_Southern,aluminium,2080,1.020977906
+Africa_Southern,aluminium,2085,1.020977906
+Africa_Southern,aluminium,2090,1.020977906
+Africa_Southern,aluminium,2095,1.020977906
+Africa_Southern,aluminium,2100,1.020977906
+Africa_Western,aluminium,2015,1.75348918
+Africa_Western,aluminium,2020,1.658640161
+Africa_Western,aluminium,2025,1.563791142
+Africa_Western,aluminium,2030,1.468942123
+Africa_Western,aluminium,2035,1.374093105
+Africa_Western,aluminium,2040,1.279244086
+Africa_Western,aluminium,2045,1.184395067
+Africa_Western,aluminium,2050,1.089546048
+Africa_Western,aluminium,2055,1.089546048
+Africa_Western,aluminium,2060,1.089546048
+Africa_Western,aluminium,2065,1.089546048
+Africa_Western,aluminium,2070,1.089546048
+Africa_Western,aluminium,2075,1.089546048
+Africa_Western,aluminium,2080,1.089546048
+Africa_Western,aluminium,2085,1.089546048
+Africa_Western,aluminium,2090,1.089546048
+Africa_Western,aluminium,2095,1.089546048
+Africa_Western,aluminium,2100,1.089546048
+Argentina,aluminium,2015,1.380014779
+Argentina,aluminium,2020,1.276390517
+Argentina,aluminium,2025,1.172766254
+Argentina,aluminium,2030,1.069141991
+Argentina,aluminium,2035,0.965517728
+Argentina,aluminium,2040,0.861893466
+Argentina,aluminium,2045,0.758269203
+Argentina,aluminium,2050,0.65464494
+Argentina,aluminium,2055,0.65464494
+Argentina,aluminium,2060,0.65464494
+Argentina,aluminium,2065,0.65464494
+Argentina,aluminium,2070,0.65464494
+Argentina,aluminium,2075,0.65464494
+Argentina,aluminium,2080,0.65464494
+Argentina,aluminium,2085,0.65464494
+Argentina,aluminium,2090,0.65464494
+Argentina,aluminium,2095,0.65464494
+Argentina,aluminium,2100,0.65464494
+Australia_NZ,aluminium,2015,1.158119319
+Australia_NZ,aluminium,2020,1.067600049
+Australia_NZ,aluminium,2025,0.97708078
+Australia_NZ,aluminium,2030,0.88656151
+Australia_NZ,aluminium,2035,0.79604224
+Australia_NZ,aluminium,2040,0.705522971
+Australia_NZ,aluminium,2045,0.615003701
+Australia_NZ,aluminium,2050,0.524484431
+Australia_NZ,aluminium,2055,0.524484431
+Australia_NZ,aluminium,2060,0.524484431
+Australia_NZ,aluminium,2065,0.524484431
+Australia_NZ,aluminium,2070,0.524484431
+Australia_NZ,aluminium,2075,0.524484431
+Australia_NZ,aluminium,2080,0.524484431
+Australia_NZ,aluminium,2085,0.524484431
+Australia_NZ,aluminium,2090,0.524484431
+Australia_NZ,aluminium,2095,0.524484431
+Australia_NZ,aluminium,2100,0.524484431
+Brazil,aluminium,2015,1.2783168
+Brazil,aluminium,2020,1.194799551
+Brazil,aluminium,2025,1.111282302
+Brazil,aluminium,2030,1.027765053
+Brazil,aluminium,2035,0.944247804
+Brazil,aluminium,2040,0.860730555
+Brazil,aluminium,2045,0.777213306
+Brazil,aluminium,2050,0.693696057
+Brazil,aluminium,2055,0.693696057
+Brazil,aluminium,2060,0.693696057
+Brazil,aluminium,2065,0.693696057
+Brazil,aluminium,2070,0.693696057
+Brazil,aluminium,2075,0.693696057
+Brazil,aluminium,2080,0.693696057
+Brazil,aluminium,2085,0.693696057
+Brazil,aluminium,2090,0.693696057
+Brazil,aluminium,2095,0.693696057
+Brazil,aluminium,2100,0.693696057
+Canada,aluminium,2015,0.649220415
+Canada,aluminium,2020,0.622193817
+Canada,aluminium,2025,0.595167219
+Canada,aluminium,2030,0.568140621
+Canada,aluminium,2035,0.541114022
+Canada,aluminium,2040,0.514087424
+Canada,aluminium,2045,0.487060826
+Canada,aluminium,2050,0.460034228
+Canada,aluminium,2055,0.460034228
+Canada,aluminium,2060,0.460034228
+Canada,aluminium,2065,0.460034228
+Canada,aluminium,2070,0.460034228
+Canada,aluminium,2075,0.460034228
+Canada,aluminium,2080,0.460034228
+Canada,aluminium,2085,0.460034228
+Canada,aluminium,2090,0.460034228
+Canada,aluminium,2095,0.460034228
+Canada,aluminium,2100,0.460034228
+Central America and Caribbean,aluminium,2015,1.382603847
+Central America and Caribbean,aluminium,2020,1.288258493
+Central America and Caribbean,aluminium,2025,1.193913139
+Central America and Caribbean,aluminium,2030,1.099567785
+Central America and Caribbean,aluminium,2035,1.005222431
+Central America and Caribbean,aluminium,2040,0.910877077
+Central America and Caribbean,aluminium,2045,0.816531723
+Central America and Caribbean,aluminium,2050,0.722186369
+Central America and Caribbean,aluminium,2055,0.722186369
+Central America and Caribbean,aluminium,2060,0.722186369
+Central America and Caribbean,aluminium,2065,0.722186369
+Central America and Caribbean,aluminium,2070,0.722186369
+Central America and Caribbean,aluminium,2075,0.722186369
+Central America and Caribbean,aluminium,2080,0.722186369
+Central America and Caribbean,aluminium,2085,0.722186369
+Central America and Caribbean,aluminium,2090,0.722186369
+Central America and Caribbean,aluminium,2095,0.722186369
+Central America and Caribbean,aluminium,2100,0.722186369
+Central Asia,aluminium,2015,1.376993845
+Central Asia,aluminium,2020,1.271923251
+Central Asia,aluminium,2025,1.166852657
+Central Asia,aluminium,2030,1.061782063
+Central Asia,aluminium,2035,0.95671147
+Central Asia,aluminium,2040,0.851640876
+Central Asia,aluminium,2045,0.746570282
+Central Asia,aluminium,2050,0.641499688
+Central Asia,aluminium,2055,0.641499688
+Central Asia,aluminium,2060,0.641499688
+Central Asia,aluminium,2065,0.641499688
+Central Asia,aluminium,2070,0.641499688
+Central Asia,aluminium,2075,0.641499688
+Central Asia,aluminium,2080,0.641499688
+Central Asia,aluminium,2085,0.641499688
+Central Asia,aluminium,2090,0.641499688
+Central Asia,aluminium,2095,0.641499688
+Central Asia,aluminium,2100,0.641499688
+China,aluminium,2015,0.639549487
+China,aluminium,2020,0.636028171
+China,aluminium,2025,0.632506856
+China,aluminium,2030,0.628985541
+China,aluminium,2035,0.625464225
+China,aluminium,2040,0.62194291
+China,aluminium,2045,0.618421594
+China,aluminium,2050,0.614900279
+China,aluminium,2055,0.614900279
+China,aluminium,2060,0.614900279
+China,aluminium,2065,0.614900279
+China,aluminium,2070,0.614900279
+China,aluminium,2075,0.614900279
+China,aluminium,2080,0.614900279
+China,aluminium,2085,0.614900279
+China,aluminium,2090,0.614900279
+China,aluminium,2095,0.614900279
+China,aluminium,2100,0.614900279
+Colombia,aluminium,2015,1.38031706
+Colombia,aluminium,2020,1.292775783
+Colombia,aluminium,2025,1.205234507
+Colombia,aluminium,2030,1.117693231
+Colombia,aluminium,2035,1.030151955
+Colombia,aluminium,2040,0.942610679
+Colombia,aluminium,2045,0.855069403
+Colombia,aluminium,2050,0.767528127
+Colombia,aluminium,2055,0.767528127
+Colombia,aluminium,2060,0.767528127
+Colombia,aluminium,2065,0.767528127
+Colombia,aluminium,2070,0.767528127
+Colombia,aluminium,2075,0.767528127
+Colombia,aluminium,2080,0.767528127
+Colombia,aluminium,2085,0.767528127
+Colombia,aluminium,2090,0.767528127
+Colombia,aluminium,2095,0.767528127
+Colombia,aluminium,2100,0.767528127
+EU-12,aluminium,2015,1.068843593
+EU-12,aluminium,2020,1.002393204
+EU-12,aluminium,2025,0.935942815
+EU-12,aluminium,2030,0.869492426
+EU-12,aluminium,2035,0.803042037
+EU-12,aluminium,2040,0.736591648
+EU-12,aluminium,2045,0.670141258
+EU-12,aluminium,2050,0.603690869
+EU-12,aluminium,2055,0.603690869
+EU-12,aluminium,2060,0.603690869
+EU-12,aluminium,2065,0.603690869
+EU-12,aluminium,2070,0.603690869
+EU-12,aluminium,2075,0.603690869
+EU-12,aluminium,2080,0.603690869
+EU-12,aluminium,2085,0.603690869
+EU-12,aluminium,2090,0.603690869
+EU-12,aluminium,2095,0.603690869
+EU-12,aluminium,2100,0.603690869
+EU-15,aluminium,2015,0.601781497
+EU-15,aluminium,2020,0.601309318
+EU-15,aluminium,2025,0.600837138
+EU-15,aluminium,2030,0.600364959
+EU-15,aluminium,2035,0.599892779
+EU-15,aluminium,2040,0.5994206
+EU-15,aluminium,2045,0.59894842
+EU-15,aluminium,2050,0.598476241
+EU-15,aluminium,2055,0.598476241
+EU-15,aluminium,2060,0.598476241
+EU-15,aluminium,2065,0.598476241
+EU-15,aluminium,2070,0.598476241
+EU-15,aluminium,2075,0.598476241
+EU-15,aluminium,2080,0.598476241
+EU-15,aluminium,2085,0.598476241
+EU-15,aluminium,2090,0.598476241
+EU-15,aluminium,2095,0.598476241
+EU-15,aluminium,2100,0.598476241
+Europe_Eastern,aluminium,2015,1.42072873
+Europe_Eastern,aluminium,2020,1.312058442
+Europe_Eastern,aluminium,2025,1.203388155
+Europe_Eastern,aluminium,2030,1.094717867
+Europe_Eastern,aluminium,2035,0.986047579
+Europe_Eastern,aluminium,2040,0.877377292
+Europe_Eastern,aluminium,2045,0.768707004
+Europe_Eastern,aluminium,2050,0.660036716
+Europe_Eastern,aluminium,2055,0.660036716
+Europe_Eastern,aluminium,2060,0.660036716
+Europe_Eastern,aluminium,2065,0.660036716
+Europe_Eastern,aluminium,2070,0.660036716
+Europe_Eastern,aluminium,2075,0.660036716
+Europe_Eastern,aluminium,2080,0.660036716
+Europe_Eastern,aluminium,2085,0.660036716
+Europe_Eastern,aluminium,2090,0.660036716
+Europe_Eastern,aluminium,2095,0.660036716
+Europe_Eastern,aluminium,2100,0.660036716
+Europe_Non_EU,aluminium,2015,0.920607165
+Europe_Non_EU,aluminium,2020,0.888006364
+Europe_Non_EU,aluminium,2025,0.855405563
+Europe_Non_EU,aluminium,2030,0.822804761
+Europe_Non_EU,aluminium,2035,0.79020396
+Europe_Non_EU,aluminium,2040,0.757603159
+Europe_Non_EU,aluminium,2045,0.725002358
+Europe_Non_EU,aluminium,2050,0.692401556
+Europe_Non_EU,aluminium,2055,0.692401556
+Europe_Non_EU,aluminium,2060,0.692401556
+Europe_Non_EU,aluminium,2065,0.692401556
+Europe_Non_EU,aluminium,2070,0.692401556
+Europe_Non_EU,aluminium,2075,0.692401556
+Europe_Non_EU,aluminium,2080,0.692401556
+Europe_Non_EU,aluminium,2085,0.692401556
+Europe_Non_EU,aluminium,2090,0.692401556
+Europe_Non_EU,aluminium,2095,0.692401556
+Europe_Non_EU,aluminium,2100,0.692401556
+European Free Trade Association,aluminium,2015,0.534502579
+European Free Trade Association,aluminium,2020,0.527851153
+European Free Trade Association,aluminium,2025,0.521199728
+European Free Trade Association,aluminium,2030,0.514548303
+European Free Trade Association,aluminium,2035,0.507896878
+European Free Trade Association,aluminium,2040,0.501245452
+European Free Trade Association,aluminium,2045,0.494594027
+European Free Trade Association,aluminium,2050,0.487942602
+European Free Trade Association,aluminium,2055,0.487942602
+European Free Trade Association,aluminium,2060,0.487942602
+European Free Trade Association,aluminium,2065,0.487942602
+European Free Trade Association,aluminium,2070,0.487942602
+European Free Trade Association,aluminium,2075,0.487942602
+European Free Trade Association,aluminium,2080,0.487942602
+European Free Trade Association,aluminium,2085,0.487942602
+European Free Trade Association,aluminium,2090,0.487942602
+European Free Trade Association,aluminium,2095,0.487942602
+European Free Trade Association,aluminium,2100,0.487942602
+India,aluminium,2015,0.938905152
+India,aluminium,2020,0.910150372
+India,aluminium,2025,0.881395593
+India,aluminium,2030,0.852640813
+India,aluminium,2035,0.823886033
+India,aluminium,2040,0.795131254
+India,aluminium,2045,0.766376474
+India,aluminium,2050,0.737621695
+India,aluminium,2055,0.737621695
+India,aluminium,2060,0.737621695
+India,aluminium,2065,0.737621695
+India,aluminium,2070,0.737621695
+India,aluminium,2075,0.737621695
+India,aluminium,2080,0.737621695
+India,aluminium,2085,0.737621695
+India,aluminium,2090,0.737621695
+India,aluminium,2095,0.737621695
+India,aluminium,2100,0.737621695
+Indonesia,aluminium,2015,0.741100041
+Indonesia,aluminium,2020,0.741100041
+Indonesia,aluminium,2025,0.741100041
+Indonesia,aluminium,2030,0.741100041
+Indonesia,aluminium,2035,0.741100041
+Indonesia,aluminium,2040,0.741100041
+Indonesia,aluminium,2045,0.741100041
+Indonesia,aluminium,2050,0.741100041
+Indonesia,aluminium,2055,0.741100041
+Indonesia,aluminium,2060,0.741100041
+Indonesia,aluminium,2065,0.741100041
+Indonesia,aluminium,2070,0.741100041
+Indonesia,aluminium,2075,0.741100041
+Indonesia,aluminium,2080,0.741100041
+Indonesia,aluminium,2085,0.741100041
+Indonesia,aluminium,2090,0.741100041
+Indonesia,aluminium,2095,0.741100041
+Indonesia,aluminium,2100,0.741100041
+Japan,aluminium,2015,0.360517106
+Japan,aluminium,2020,0.360517106
+Japan,aluminium,2025,0.360517106
+Japan,aluminium,2030,0.360517106
+Japan,aluminium,2035,0.360517106
+Japan,aluminium,2040,0.360517106
+Japan,aluminium,2045,0.360517106
+Japan,aluminium,2050,0.360517106
+Japan,aluminium,2055,0.360517106
+Japan,aluminium,2060,0.360517106
+Japan,aluminium,2065,0.360517106
+Japan,aluminium,2070,0.360517106
+Japan,aluminium,2075,0.360517106
+Japan,aluminium,2080,0.360517106
+Japan,aluminium,2085,0.360517106
+Japan,aluminium,2090,0.360517106
+Japan,aluminium,2095,0.360517106
+Japan,aluminium,2100,0.360517106
+Mexico,aluminium,2015,1.253063963
+Mexico,aluminium,2020,1.174537366
+Mexico,aluminium,2025,1.096010769
+Mexico,aluminium,2030,1.017484171
+Mexico,aluminium,2035,0.938957574
+Mexico,aluminium,2040,0.860430977
+Mexico,aluminium,2045,0.78190438
+Mexico,aluminium,2050,0.703377782
+Mexico,aluminium,2055,0.703377782
+Mexico,aluminium,2060,0.703377782
+Mexico,aluminium,2065,0.703377782
+Mexico,aluminium,2070,0.703377782
+Mexico,aluminium,2075,0.703377782
+Mexico,aluminium,2080,0.703377782
+Mexico,aluminium,2085,0.703377782
+Mexico,aluminium,2090,0.703377782
+Mexico,aluminium,2095,0.703377782
+Mexico,aluminium,2100,0.703377782
+Middle East,aluminium,2015,1.222833873
+Middle East,aluminium,2020,1.141462856
+Middle East,aluminium,2025,1.06009184
+Middle East,aluminium,2030,0.978720823
+Middle East,aluminium,2035,0.897349807
+Middle East,aluminium,2040,0.81597879
+Middle East,aluminium,2045,0.734607774
+Middle East,aluminium,2050,0.653236757
+Middle East,aluminium,2055,0.653236757
+Middle East,aluminium,2060,0.653236757
+Middle East,aluminium,2065,0.653236757
+Middle East,aluminium,2070,0.653236757
+Middle East,aluminium,2075,0.653236757
+Middle East,aluminium,2080,0.653236757
+Middle East,aluminium,2085,0.653236757
+Middle East,aluminium,2090,0.653236757
+Middle East,aluminium,2095,0.653236757
+Middle East,aluminium,2100,0.653236757
+Pakistan,aluminium,2015,1.819336736
+Pakistan,aluminium,2020,1.688325917
+Pakistan,aluminium,2025,1.557315097
+Pakistan,aluminium,2030,1.426304278
+Pakistan,aluminium,2035,1.295293459
+Pakistan,aluminium,2040,1.164282639
+Pakistan,aluminium,2045,1.03327182
+Pakistan,aluminium,2050,0.902261001
+Pakistan,aluminium,2055,0.902261001
+Pakistan,aluminium,2060,0.902261001
+Pakistan,aluminium,2065,0.902261001
+Pakistan,aluminium,2070,0.902261001
+Pakistan,aluminium,2075,0.902261001
+Pakistan,aluminium,2080,0.902261001
+Pakistan,aluminium,2085,0.902261001
+Pakistan,aluminium,2090,0.902261001
+Pakistan,aluminium,2095,0.902261001
+Pakistan,aluminium,2100,0.902261001
+Russia,aluminium,2015,1.012310818
+Russia,aluminium,2020,0.948711288
+Russia,aluminium,2025,0.885111758
+Russia,aluminium,2030,0.821512227
+Russia,aluminium,2035,0.757912697
+Russia,aluminium,2040,0.694313167
+Russia,aluminium,2045,0.630713637
+Russia,aluminium,2050,0.567114106
+Russia,aluminium,2055,0.567114106
+Russia,aluminium,2060,0.567114106
+Russia,aluminium,2065,0.567114106
+Russia,aluminium,2070,0.567114106
+Russia,aluminium,2075,0.567114106
+Russia,aluminium,2080,0.567114106
+Russia,aluminium,2085,0.567114106
+Russia,aluminium,2090,0.567114106
+Russia,aluminium,2095,0.567114106
+Russia,aluminium,2100,0.567114106
+South Africa,aluminium,2015,1.113358656
+South Africa,aluminium,2020,1.047100813
+South Africa,aluminium,2025,0.98084297
+South Africa,aluminium,2030,0.914585127
+South Africa,aluminium,2035,0.848327284
+South Africa,aluminium,2040,0.782069442
+South Africa,aluminium,2045,0.715811599
+South Africa,aluminium,2050,0.649553756
+South Africa,aluminium,2055,0.649553756
+South Africa,aluminium,2060,0.649553756
+South Africa,aluminium,2065,0.649553756
+South Africa,aluminium,2070,0.649553756
+South Africa,aluminium,2075,0.649553756
+South Africa,aluminium,2080,0.649553756
+South Africa,aluminium,2085,0.649553756
+South Africa,aluminium,2090,0.649553756
+South Africa,aluminium,2095,0.649553756
+South Africa,aluminium,2100,0.649553756
+South America_Northern,aluminium,2015,0.937811003
+South America_Northern,aluminium,2020,0.918950666
+South America_Northern,aluminium,2025,0.900090328
+South America_Northern,aluminium,2030,0.881229991
+South America_Northern,aluminium,2035,0.862369654
+South America_Northern,aluminium,2040,0.843509317
+South America_Northern,aluminium,2045,0.824648979
+South America_Northern,aluminium,2050,0.805788642
+South America_Northern,aluminium,2055,0.805788642
+South America_Northern,aluminium,2060,0.805788642
+South America_Northern,aluminium,2065,0.805788642
+South America_Northern,aluminium,2070,0.805788642
+South America_Northern,aluminium,2075,0.805788642
+South America_Northern,aluminium,2080,0.805788642
+South America_Northern,aluminium,2085,0.805788642
+South America_Northern,aluminium,2090,0.805788642
+South America_Northern,aluminium,2095,0.805788642
+South America_Northern,aluminium,2100,0.805788642
+South America_Southern,aluminium,2015,1.26451191
+South America_Southern,aluminium,2020,1.178711004
+South America_Southern,aluminium,2025,1.092910098
+South America_Southern,aluminium,2030,1.007109192
+South America_Southern,aluminium,2035,0.921308286
+South America_Southern,aluminium,2040,0.83550738
+South America_Southern,aluminium,2045,0.749706474
+South America_Southern,aluminium,2050,0.663905568
+South America_Southern,aluminium,2055,0.663905568
+South America_Southern,aluminium,2060,0.663905568
+South America_Southern,aluminium,2065,0.663905568
+South America_Southern,aluminium,2070,0.663905568
+South America_Southern,aluminium,2075,0.663905568
+South America_Southern,aluminium,2080,0.663905568
+South America_Southern,aluminium,2085,0.663905568
+South America_Southern,aluminium,2090,0.663905568
+South America_Southern,aluminium,2095,0.663905568
+South America_Southern,aluminium,2100,0.663905568
+South Asia,aluminium,2015,3.009732359
+South Asia,aluminium,2020,2.713691526
+South Asia,aluminium,2025,2.417650694
+South Asia,aluminium,2030,2.121609862
+South Asia,aluminium,2035,1.82556903
+South Asia,aluminium,2040,1.529528198
+South Asia,aluminium,2045,1.233487366
+South Asia,aluminium,2050,0.937446534
+South Asia,aluminium,2055,0.937446534
+South Asia,aluminium,2060,0.937446534
+South Asia,aluminium,2065,0.937446534
+South Asia,aluminium,2070,0.937446534
+South Asia,aluminium,2075,0.937446534
+South Asia,aluminium,2080,0.937446534
+South Asia,aluminium,2085,0.937446534
+South Asia,aluminium,2090,0.937446534
+South Asia,aluminium,2095,0.937446534
+South Asia,aluminium,2100,0.937446534
+South Korea,aluminium,2015,0.335577122
+South Korea,aluminium,2020,0.335577122
+South Korea,aluminium,2025,0.335577122
+South Korea,aluminium,2030,0.335577122
+South Korea,aluminium,2035,0.335577122
+South Korea,aluminium,2040,0.335577122
+South Korea,aluminium,2045,0.335577122
+South Korea,aluminium,2050,0.335577122
+South Korea,aluminium,2055,0.335577122
+South Korea,aluminium,2060,0.335577122
+South Korea,aluminium,2065,0.335577122
+South Korea,aluminium,2070,0.335577122
+South Korea,aluminium,2075,0.335577122
+South Korea,aluminium,2080,0.335577122
+South Korea,aluminium,2085,0.335577122
+South Korea,aluminium,2090,0.335577122
+South Korea,aluminium,2095,0.335577122
+South Korea,aluminium,2100,0.335577122
+Southeast Asia,aluminium,2015,1.140501008
+Southeast Asia,aluminium,2020,1.08376487
+Southeast Asia,aluminium,2025,1.027028732
+Southeast Asia,aluminium,2030,0.970292594
+Southeast Asia,aluminium,2035,0.913556457
+Southeast Asia,aluminium,2040,0.856820319
+Southeast Asia,aluminium,2045,0.800084181
+Southeast Asia,aluminium,2050,0.743348043
+Southeast Asia,aluminium,2055,0.743348043
+Southeast Asia,aluminium,2060,0.743348043
+Southeast Asia,aluminium,2065,0.743348043
+Southeast Asia,aluminium,2070,0.743348043
+Southeast Asia,aluminium,2075,0.743348043
+Southeast Asia,aluminium,2080,0.743348043
+Southeast Asia,aluminium,2085,0.743348043
+Southeast Asia,aluminium,2090,0.743348043
+Southeast Asia,aluminium,2095,0.743348043
+Southeast Asia,aluminium,2100,0.743348043
+Taiwan,aluminium,2015,0.273994551
+Taiwan,aluminium,2020,0.273994551
+Taiwan,aluminium,2025,0.273994551
+Taiwan,aluminium,2030,0.273994551
+Taiwan,aluminium,2035,0.273994551
+Taiwan,aluminium,2040,0.273994551
+Taiwan,aluminium,2045,0.273994551
+Taiwan,aluminium,2050,0.273994551
+Taiwan,aluminium,2055,0.273994551
+Taiwan,aluminium,2060,0.273994551
+Taiwan,aluminium,2065,0.273994551
+Taiwan,aluminium,2070,0.273994551
+Taiwan,aluminium,2075,0.273994551
+Taiwan,aluminium,2080,0.273994551
+Taiwan,aluminium,2085,0.273994551
+Taiwan,aluminium,2090,0.273994551
+Taiwan,aluminium,2095,0.273994551
+Taiwan,aluminium,2100,0.273994551
+USA,aluminium,2015,0.592187169
+USA,aluminium,2020,0.579769985
+USA,aluminium,2025,0.567352801
+USA,aluminium,2030,0.554935617
+USA,aluminium,2035,0.542518433
+USA,aluminium,2040,0.53010125
+USA,aluminium,2045,0.517684066
+USA,aluminium,2050,0.505266882
+USA,aluminium,2055,0.505266882
+USA,aluminium,2060,0.505266882
+USA,aluminium,2065,0.505266882
+USA,aluminium,2070,0.505266882
+USA,aluminium,2075,0.505266882
+USA,aluminium,2080,0.505266882
+USA,aluminium,2085,0.505266882
+USA,aluminium,2090,0.505266882
+USA,aluminium,2095,0.505266882
+USA,aluminium,2100,0.505266882
+Africa_Eastern,copper,2015,5.11576379
+Africa_Eastern,copper,2020,4.552845408
+Africa_Eastern,copper,2025,3.989927026
+Africa_Eastern,copper,2030,3.427008644
+Africa_Eastern,copper,2035,2.864090262
+Africa_Eastern,copper,2040,2.30117188
+Africa_Eastern,copper,2045,1.738253498
+Africa_Eastern,copper,2050,1.175335116
+Africa_Eastern,copper,2055,1.175335116
+Africa_Eastern,copper,2060,1.175335116
+Africa_Eastern,copper,2065,1.175335116
+Africa_Eastern,copper,2070,1.175335116
+Africa_Eastern,copper,2075,1.175335116
+Africa_Eastern,copper,2080,1.175335116
+Africa_Eastern,copper,2085,1.175335116
+Africa_Eastern,copper,2090,1.175335116
+Africa_Eastern,copper,2095,1.175335116
+Africa_Eastern,copper,2100,1.175335116
+Africa_Northern,copper,2015,1.497138538
+Africa_Northern,copper,2020,1.401128573
+Africa_Northern,copper,2025,1.305118607
+Africa_Northern,copper,2030,1.209108642
+Africa_Northern,copper,2035,1.113098677
+Africa_Northern,copper,2040,1.017088712
+Africa_Northern,copper,2045,0.921078746
+Africa_Northern,copper,2050,0.825068781
+Africa_Northern,copper,2055,0.825068781
+Africa_Northern,copper,2060,0.825068781
+Africa_Northern,copper,2065,0.825068781
+Africa_Northern,copper,2070,0.825068781
+Africa_Northern,copper,2075,0.825068781
+Africa_Northern,copper,2080,0.825068781
+Africa_Northern,copper,2085,0.825068781
+Africa_Northern,copper,2090,0.825068781
+Africa_Northern,copper,2095,0.825068781
+Africa_Northern,copper,2100,0.825068781
+Africa_Southern,copper,2015,2.529843393
+Africa_Southern,copper,2020,2.367867075
+Africa_Southern,copper,2025,2.205890757
+Africa_Southern,copper,2030,2.043914439
+Africa_Southern,copper,2035,1.881938121
+Africa_Southern,copper,2040,1.719961803
+Africa_Southern,copper,2045,1.557985485
+Africa_Southern,copper,2050,1.396009166
+Africa_Southern,copper,2055,1.396009166
+Africa_Southern,copper,2060,1.396009166
+Africa_Southern,copper,2065,1.396009166
+Africa_Southern,copper,2070,1.396009166
+Africa_Southern,copper,2075,1.396009166
+Africa_Southern,copper,2080,1.396009166
+Africa_Southern,copper,2085,1.396009166
+Africa_Southern,copper,2090,1.396009166
+Africa_Southern,copper,2095,1.396009166
+Africa_Southern,copper,2100,1.396009166
+Africa_Western,copper,2015,4.065292848
+Africa_Western,copper,2020,3.703944462
+Africa_Western,copper,2025,3.342596076
+Africa_Western,copper,2030,2.981247691
+Africa_Western,copper,2035,2.619899305
+Africa_Western,copper,2040,2.258550919
+Africa_Western,copper,2045,1.897202533
+Africa_Western,copper,2050,1.535854147
+Africa_Western,copper,2055,1.535854147
+Africa_Western,copper,2060,1.535854147
+Africa_Western,copper,2065,1.535854147
+Africa_Western,copper,2070,1.535854147
+Africa_Western,copper,2075,1.535854147
+Africa_Western,copper,2080,1.535854147
+Africa_Western,copper,2085,1.535854147
+Africa_Western,copper,2090,1.535854147
+Africa_Western,copper,2095,1.535854147
+Africa_Western,copper,2100,1.535854147
+Argentina,copper,2015,1.328633595
+Argentina,copper,2020,1.24265477
+Argentina,copper,2025,1.156675945
+Argentina,copper,2030,1.07069712
+Argentina,copper,2035,0.984718296
+Argentina,copper,2040,0.898739471
+Argentina,copper,2045,0.812760646
+Argentina,copper,2050,0.726781822
+Argentina,copper,2055,0.726781822
+Argentina,copper,2060,0.726781822
+Argentina,copper,2065,0.726781822
+Argentina,copper,2070,0.726781822
+Argentina,copper,2075,0.726781822
+Argentina,copper,2080,0.726781822
+Argentina,copper,2085,0.726781822
+Argentina,copper,2090,0.726781822
+Argentina,copper,2095,0.726781822
+Argentina,copper,2100,0.726781822
+Australia_NZ,copper,2015,1.038736268
+Australia_NZ,copper,2020,0.965318345
+Australia_NZ,copper,2025,0.891900423
+Australia_NZ,copper,2030,0.8184825
+Australia_NZ,copper,2035,0.745064578
+Australia_NZ,copper,2040,0.671646655
+Australia_NZ,copper,2045,0.598228733
+Australia_NZ,copper,2050,0.524810811
+Australia_NZ,copper,2055,0.524810811
+Australia_NZ,copper,2060,0.524810811
+Australia_NZ,copper,2065,0.524810811
+Australia_NZ,copper,2070,0.524810811
+Australia_NZ,copper,2075,0.524810811
+Australia_NZ,copper,2080,0.524810811
+Australia_NZ,copper,2085,0.524810811
+Australia_NZ,copper,2090,0.524810811
+Australia_NZ,copper,2095,0.524810811
+Australia_NZ,copper,2100,0.524810811
+Brazil,copper,2015,1.070060117
+Brazil,copper,2020,1.030242878
+Brazil,copper,2025,0.99042564
+Brazil,copper,2030,0.950608401
+Brazil,copper,2035,0.910791163
+Brazil,copper,2040,0.870973924
+Brazil,copper,2045,0.831156686
+Brazil,copper,2050,0.791339447
+Brazil,copper,2055,0.791339447
+Brazil,copper,2060,0.791339447
+Brazil,copper,2065,0.791339447
+Brazil,copper,2070,0.791339447
+Brazil,copper,2075,0.791339447
+Brazil,copper,2080,0.791339447
+Brazil,copper,2085,0.791339447
+Brazil,copper,2090,0.791339447
+Brazil,copper,2095,0.791339447
+Brazil,copper,2100,0.791339447
+Canada,copper,2015,0.891307614
+Canada,copper,2020,0.8258181
+Canada,copper,2025,0.760328586
+Canada,copper,2030,0.694839072
+Canada,copper,2035,0.629349558
+Canada,copper,2040,0.563860044
+Canada,copper,2045,0.498370531
+Canada,copper,2050,0.432881017
+Canada,copper,2055,0.432881017
+Canada,copper,2060,0.432881017
+Canada,copper,2065,0.432881017
+Canada,copper,2070,0.432881017
+Canada,copper,2075,0.432881017
+Canada,copper,2080,0.432881017
+Canada,copper,2085,0.432881017
+Canada,copper,2090,0.432881017
+Canada,copper,2095,0.432881017
+Canada,copper,2100,0.432881017
+Central America and Caribbean,copper,2015,2.004739497
+Central America and Caribbean,copper,2020,1.838281118
+Central America and Caribbean,copper,2025,1.671822738
+Central America and Caribbean,copper,2030,1.505364359
+Central America and Caribbean,copper,2035,1.338905979
+Central America and Caribbean,copper,2040,1.1724476
+Central America and Caribbean,copper,2045,1.00598922
+Central America and Caribbean,copper,2050,0.83953084
+Central America and Caribbean,copper,2055,0.83953084
+Central America and Caribbean,copper,2060,0.83953084
+Central America and Caribbean,copper,2065,0.83953084
+Central America and Caribbean,copper,2070,0.83953084
+Central America and Caribbean,copper,2075,0.83953084
+Central America and Caribbean,copper,2080,0.83953084
+Central America and Caribbean,copper,2085,0.83953084
+Central America and Caribbean,copper,2090,0.83953084
+Central America and Caribbean,copper,2095,0.83953084
+Central America and Caribbean,copper,2100,0.83953084
+Central Asia,copper,2015,1.163897832
+Central Asia,copper,2020,1.098405067
+Central Asia,copper,2025,1.032912302
+Central Asia,copper,2030,0.967419537
+Central Asia,copper,2035,0.901926772
+Central Asia,copper,2040,0.836434007
+Central Asia,copper,2045,0.770941242
+Central Asia,copper,2050,0.705448477
+Central Asia,copper,2055,0.705448477
+Central Asia,copper,2060,0.705448477
+Central Asia,copper,2065,0.705448477
+Central Asia,copper,2070,0.705448477
+Central Asia,copper,2075,0.705448477
+Central Asia,copper,2080,0.705448477
+Central Asia,copper,2085,0.705448477
+Central Asia,copper,2090,0.705448477
+Central Asia,copper,2095,0.705448477
+Central Asia,copper,2100,0.705448477
+China,copper,2015,1.151136531
+China,copper,2020,1.081389411
+China,copper,2025,1.011642291
+China,copper,2030,0.941895172
+China,copper,2035,0.872148052
+China,copper,2040,0.802400932
+China,copper,2045,0.732653812
+China,copper,2050,0.662906692
+China,copper,2055,0.662906692
+China,copper,2060,0.662906692
+China,copper,2065,0.662906692
+China,copper,2070,0.662906692
+China,copper,2075,0.662906692
+China,copper,2080,0.662906692
+China,copper,2085,0.662906692
+China,copper,2090,0.662906692
+China,copper,2095,0.662906692
+China,copper,2100,0.662906692
+Colombia,copper,2015,2.692324686
+Colombia,copper,2020,2.438860326
+Colombia,copper,2025,2.185395966
+Colombia,copper,2030,1.931931607
+Colombia,copper,2035,1.678467247
+Colombia,copper,2040,1.425002887
+Colombia,copper,2045,1.171538527
+Colombia,copper,2050,0.918074168
+Colombia,copper,2055,0.918074168
+Colombia,copper,2060,0.918074168
+Colombia,copper,2065,0.918074168
+Colombia,copper,2070,0.918074168
+Colombia,copper,2075,0.918074168
+Colombia,copper,2080,0.918074168
+Colombia,copper,2085,0.918074168
+Colombia,copper,2090,0.918074168
+Colombia,copper,2095,0.918074168
+Colombia,copper,2100,0.918074168
+EU-12,copper,2015,1.092813437
+EU-12,copper,2020,1.028873459
+EU-12,copper,2025,0.964933481
+EU-12,copper,2030,0.900993503
+EU-12,copper,2035,0.837053525
+EU-12,copper,2040,0.773113547
+EU-12,copper,2045,0.70917357
+EU-12,copper,2050,0.645233592
+EU-12,copper,2055,0.645233592
+EU-12,copper,2060,0.645233592
+EU-12,copper,2065,0.645233592
+EU-12,copper,2070,0.645233592
+EU-12,copper,2075,0.645233592
+EU-12,copper,2080,0.645233592
+EU-12,copper,2085,0.645233592
+EU-12,copper,2090,0.645233592
+EU-12,copper,2095,0.645233592
+EU-12,copper,2100,0.645233592
+EU-15,copper,2015,0.865471801
+EU-15,copper,2020,0.832842137
+EU-15,copper,2025,0.800212473
+EU-15,copper,2030,0.76758281
+EU-15,copper,2035,0.734953146
+EU-15,copper,2040,0.702323482
+EU-15,copper,2045,0.669693818
+EU-15,copper,2050,0.637064155
+EU-15,copper,2055,0.637064155
+EU-15,copper,2060,0.637064155
+EU-15,copper,2065,0.637064155
+EU-15,copper,2070,0.637064155
+EU-15,copper,2075,0.637064155
+EU-15,copper,2080,0.637064155
+EU-15,copper,2085,0.637064155
+EU-15,copper,2090,0.637064155
+EU-15,copper,2095,0.637064155
+EU-15,copper,2100,0.637064155
+Europe_Eastern,copper,2015,1.2216279
+Europe_Eastern,copper,2020,1.152193996
+Europe_Eastern,copper,2025,1.082760092
+Europe_Eastern,copper,2030,1.013326188
+Europe_Eastern,copper,2035,0.943892284
+Europe_Eastern,copper,2040,0.87445838
+Europe_Eastern,copper,2045,0.805024476
+Europe_Eastern,copper,2050,0.735590572
+Europe_Eastern,copper,2055,0.735590572
+Europe_Eastern,copper,2060,0.735590572
+Europe_Eastern,copper,2065,0.735590572
+Europe_Eastern,copper,2070,0.735590572
+Europe_Eastern,copper,2075,0.735590572
+Europe_Eastern,copper,2080,0.735590572
+Europe_Eastern,copper,2085,0.735590572
+Europe_Eastern,copper,2090,0.735590572
+Europe_Eastern,copper,2095,0.735590572
+Europe_Eastern,copper,2100,0.735590572
+Europe_Non_EU,copper,2015,1.125171137
+Europe_Non_EU,copper,2020,1.077171186
+Europe_Non_EU,copper,2025,1.029171234
+Europe_Non_EU,copper,2030,0.981171282
+Europe_Non_EU,copper,2035,0.933171331
+Europe_Non_EU,copper,2040,0.885171379
+Europe_Non_EU,copper,2045,0.837171427
+Europe_Non_EU,copper,2050,0.789171475
+Europe_Non_EU,copper,2055,0.789171475
+Europe_Non_EU,copper,2060,0.789171475
+Europe_Non_EU,copper,2065,0.789171475
+Europe_Non_EU,copper,2070,0.789171475
+Europe_Non_EU,copper,2075,0.789171475
+Europe_Non_EU,copper,2080,0.789171475
+Europe_Non_EU,copper,2085,0.789171475
+Europe_Non_EU,copper,2090,0.789171475
+Europe_Non_EU,copper,2095,0.789171475
+Europe_Non_EU,copper,2100,0.789171475
+European Free Trade Association,copper,2015,0.545846901
+European Free Trade Association,copper,2020,0.535296583
+European Free Trade Association,copper,2025,0.524746265
+European Free Trade Association,copper,2030,0.514195947
+European Free Trade Association,copper,2035,0.503645628
+European Free Trade Association,copper,2040,0.49309531
+European Free Trade Association,copper,2045,0.482544992
+European Free Trade Association,copper,2050,0.471994674
+European Free Trade Association,copper,2055,0.471994674
+European Free Trade Association,copper,2060,0.471994674
+European Free Trade Association,copper,2065,0.471994674
+European Free Trade Association,copper,2070,0.471994674
+European Free Trade Association,copper,2075,0.471994674
+European Free Trade Association,copper,2080,0.471994674
+European Free Trade Association,copper,2085,0.471994674
+European Free Trade Association,copper,2090,0.471994674
+European Free Trade Association,copper,2095,0.471994674
+European Free Trade Association,copper,2100,0.471994674
+India,copper,2015,2.136556476
+India,copper,2020,1.955050785
+India,copper,2025,1.773545093
+India,copper,2030,1.592039402
+India,copper,2035,1.41053371
+India,copper,2040,1.229028019
+India,copper,2045,1.047522327
+India,copper,2050,0.866016635
+India,copper,2055,0.866016635
+India,copper,2060,0.866016635
+India,copper,2065,0.866016635
+India,copper,2070,0.866016635
+India,copper,2075,0.866016635
+India,copper,2080,0.866016635
+India,copper,2085,0.866016635
+India,copper,2090,0.866016635
+India,copper,2095,0.866016635
+India,copper,2100,0.866016635
+Indonesia,copper,2015,1.106669211
+Indonesia,copper,2020,1.084090775
+Indonesia,copper,2025,1.061512338
+Indonesia,copper,2030,1.038933902
+Indonesia,copper,2035,1.016355466
+Indonesia,copper,2040,0.99377703
+Indonesia,copper,2045,0.971198594
+Indonesia,copper,2050,0.948620158
+Indonesia,copper,2055,0.948620158
+Indonesia,copper,2060,0.948620158
+Indonesia,copper,2065,0.948620158
+Indonesia,copper,2070,0.948620158
+Indonesia,copper,2075,0.948620158
+Indonesia,copper,2080,0.948620158
+Indonesia,copper,2085,0.948620158
+Indonesia,copper,2090,0.948620158
+Indonesia,copper,2095,0.948620158
+Indonesia,copper,2100,0.948620158
+Japan,copper,2015,1.322887004
+Japan,copper,2020,1.222473094
+Japan,copper,2025,1.122059185
+Japan,copper,2030,1.021645275
+Japan,copper,2035,0.921231366
+Japan,copper,2040,0.820817457
+Japan,copper,2045,0.720403547
+Japan,copper,2050,0.619989638
+Japan,copper,2055,0.619989638
+Japan,copper,2060,0.619989638
+Japan,copper,2065,0.619989638
+Japan,copper,2070,0.619989638
+Japan,copper,2075,0.619989638
+Japan,copper,2080,0.619989638
+Japan,copper,2085,0.619989638
+Japan,copper,2090,0.619989638
+Japan,copper,2095,0.619989638
+Japan,copper,2100,0.619989638
+Mexico,copper,2015,0.819165399
+Mexico,copper,2020,0.817515199
+Mexico,copper,2025,0.815864999
+Mexico,copper,2030,0.814214799
+Mexico,copper,2035,0.8125646
+Mexico,copper,2040,0.8109144
+Mexico,copper,2045,0.8092642
+Mexico,copper,2050,0.807614
+Mexico,copper,2055,0.807614
+Mexico,copper,2060,0.807614
+Mexico,copper,2065,0.807614
+Mexico,copper,2070,0.807614
+Mexico,copper,2075,0.807614
+Mexico,copper,2080,0.807614
+Mexico,copper,2085,0.807614
+Mexico,copper,2090,0.807614
+Mexico,copper,2095,0.807614
+Mexico,copper,2100,0.807614
+Middle East,copper,2015,1.025488268
+Middle East,copper,2020,0.982488059
+Middle East,copper,2025,0.93948785
+Middle East,copper,2030,0.896487641
+Middle East,copper,2035,0.853487432
+Middle East,copper,2040,0.810487222
+Middle East,copper,2045,0.767487013
+Middle East,copper,2050,0.724486804
+Middle East,copper,2055,0.724486804
+Middle East,copper,2060,0.724486804
+Middle East,copper,2065,0.724486804
+Middle East,copper,2070,0.724486804
+Middle East,copper,2075,0.724486804
+Middle East,copper,2080,0.724486804
+Middle East,copper,2085,0.724486804
+Middle East,copper,2090,0.724486804
+Middle East,copper,2095,0.724486804
+Middle East,copper,2100,0.724486804
+Pakistan,copper,2015,1.787768785
+Pakistan,copper,2020,1.698692151
+Pakistan,copper,2025,1.609615518
+Pakistan,copper,2030,1.520538884
+Pakistan,copper,2035,1.431462251
+Pakistan,copper,2040,1.342385617
+Pakistan,copper,2045,1.253308984
+Pakistan,copper,2050,1.16423235
+Pakistan,copper,2055,1.16423235
+Pakistan,copper,2060,1.16423235
+Pakistan,copper,2065,1.16423235
+Pakistan,copper,2070,1.16423235
+Pakistan,copper,2075,1.16423235
+Pakistan,copper,2080,1.16423235
+Pakistan,copper,2085,1.16423235
+Pakistan,copper,2090,1.16423235
+Pakistan,copper,2095,1.16423235
+Pakistan,copper,2100,1.16423235
+Russia,copper,2015,0.893564553
+Russia,copper,2020,0.850003751
+Russia,copper,2025,0.806442949
+Russia,copper,2030,0.762882147
+Russia,copper,2035,0.719321345
+Russia,copper,2040,0.675760544
+Russia,copper,2045,0.632199742
+Russia,copper,2050,0.58863894
+Russia,copper,2055,0.58863894
+Russia,copper,2060,0.58863894
+Russia,copper,2065,0.58863894
+Russia,copper,2070,0.58863894
+Russia,copper,2075,0.58863894
+Russia,copper,2080,0.58863894
+Russia,copper,2085,0.58863894
+Russia,copper,2090,0.58863894
+Russia,copper,2095,0.58863894
+Russia,copper,2100,0.58863894
+South Africa,copper,2015,1.186834017
+South Africa,copper,2020,1.119928488
+South Africa,copper,2025,1.053022959
+South Africa,copper,2030,0.98611743
+South Africa,copper,2035,0.919211901
+South Africa,copper,2040,0.852306372
+South Africa,copper,2045,0.785400844
+South Africa,copper,2050,0.718495315
+South Africa,copper,2055,0.718495315
+South Africa,copper,2060,0.718495315
+South Africa,copper,2065,0.718495315
+South Africa,copper,2070,0.718495315
+South Africa,copper,2075,0.718495315
+South Africa,copper,2080,0.718495315
+South Africa,copper,2085,0.718495315
+South Africa,copper,2090,0.718495315
+South Africa,copper,2095,0.718495315
+South Africa,copper,2100,0.718495315
+South America_Northern,copper,2015,0.945637248
+South America_Northern,copper,2020,0.945637248
+South America_Northern,copper,2025,0.945637248
+South America_Northern,copper,2030,0.945637248
+South America_Northern,copper,2035,0.945637248
+South America_Northern,copper,2040,0.945637248
+South America_Northern,copper,2045,0.945637248
+South America_Northern,copper,2050,0.945637248
+South America_Northern,copper,2055,0.945637248
+South America_Northern,copper,2060,0.945637248
+South America_Northern,copper,2065,0.945637248
+South America_Northern,copper,2070,0.945637248
+South America_Northern,copper,2075,0.945637248
+South America_Northern,copper,2080,0.945637248
+South America_Northern,copper,2085,0.945637248
+South America_Northern,copper,2090,0.945637248
+South America_Northern,copper,2095,0.945637248
+South America_Northern,copper,2100,0.945637248
+South America_Southern,copper,2015,1.404505625
+South America_Southern,copper,2020,1.309852264
+South America_Southern,copper,2025,1.215198903
+South America_Southern,copper,2030,1.120545542
+South America_Southern,copper,2035,1.02589218
+South America_Southern,copper,2040,0.931238819
+South America_Southern,copper,2045,0.836585458
+South America_Southern,copper,2050,0.741932096
+South America_Southern,copper,2055,0.741932096
+South America_Southern,copper,2060,0.741932096
+South America_Southern,copper,2065,0.741932096
+South America_Southern,copper,2070,0.741932096
+South America_Southern,copper,2075,0.741932096
+South America_Southern,copper,2080,0.741932096
+South America_Southern,copper,2085,0.741932096
+South America_Southern,copper,2090,0.741932096
+South America_Southern,copper,2095,0.741932096
+South America_Southern,copper,2100,0.741932096
+South Asia,copper,2015,6.31104072
+South Asia,copper,2020,5.585395096
+South Asia,copper,2025,4.859749473
+South Asia,copper,2030,4.13410385
+South Asia,copper,2035,3.408458227
+South Asia,copper,2040,2.682812603
+South Asia,copper,2045,1.95716698
+South Asia,copper,2050,1.231521357
+South Asia,copper,2055,1.231521357
+South Asia,copper,2060,1.231521357
+South Asia,copper,2065,1.231521357
+South Asia,copper,2070,1.231521357
+South Asia,copper,2075,1.231521357
+South Asia,copper,2080,1.231521357
+South Asia,copper,2085,1.231521357
+South Asia,copper,2090,1.231521357
+South Asia,copper,2095,1.231521357
+South Asia,copper,2100,1.231521357
+South Korea,copper,2015,1.051515482
+South Korea,copper,2020,0.976613674
+South Korea,copper,2025,0.901711866
+South Korea,copper,2030,0.826810058
+South Korea,copper,2035,0.75190825
+South Korea,copper,2040,0.677006441
+South Korea,copper,2045,0.602104633
+South Korea,copper,2050,0.527202825
+South Korea,copper,2055,0.527202825
+South Korea,copper,2060,0.527202825
+South Korea,copper,2065,0.527202825
+South Korea,copper,2070,0.527202825
+South Korea,copper,2075,0.527202825
+South Korea,copper,2080,0.527202825
+South Korea,copper,2085,0.527202825
+South Korea,copper,2090,0.527202825
+South Korea,copper,2095,0.527202825
+South Korea,copper,2100,0.527202825
+Southeast Asia,copper,2015,1.794246189
+Southeast Asia,copper,2020,1.663055183
+Southeast Asia,copper,2025,1.531864178
+Southeast Asia,copper,2030,1.400673172
+Southeast Asia,copper,2035,1.269482166
+Southeast Asia,copper,2040,1.13829116
+Southeast Asia,copper,2045,1.007100154
+Southeast Asia,copper,2050,0.875909148
+Southeast Asia,copper,2055,0.875909148
+Southeast Asia,copper,2060,0.875909148
+Southeast Asia,copper,2065,0.875909148
+Southeast Asia,copper,2070,0.875909148
+Southeast Asia,copper,2075,0.875909148
+Southeast Asia,copper,2080,0.875909148
+Southeast Asia,copper,2085,0.875909148
+Southeast Asia,copper,2090,0.875909148
+Southeast Asia,copper,2095,0.875909148
+Southeast Asia,copper,2100,0.875909148
+Taiwan,copper,2015,0.039169561
+Taiwan,copper,2020,0.039169561
+Taiwan,copper,2025,0.039169561
+Taiwan,copper,2030,0.039169561
+Taiwan,copper,2035,0.039169561
+Taiwan,copper,2040,0.039169561
+Taiwan,copper,2045,0.039169561
+Taiwan,copper,2050,0.039169561
+Taiwan,copper,2055,0.039169561
+Taiwan,copper,2060,0.039169561
+Taiwan,copper,2065,0.039169561
+Taiwan,copper,2070,0.039169561
+Taiwan,copper,2075,0.039169561
+Taiwan,copper,2080,0.039169561
+Taiwan,copper,2085,0.039169561
+Taiwan,copper,2090,0.039169561
+Taiwan,copper,2095,0.039169561
+Taiwan,copper,2100,0.039169561
+USA,copper,2015,0.905968604
+USA,copper,2020,0.847517606
+USA,copper,2025,0.789066607
+USA,copper,2030,0.730615608
+USA,copper,2035,0.672164609
+USA,copper,2040,0.61371361
+USA,copper,2045,0.555262611
+USA,copper,2050,0.496811612
+USA,copper,2055,0.496811612
+USA,copper,2060,0.496811612
+USA,copper,2065,0.496811612
+USA,copper,2070,0.496811612
+USA,copper,2075,0.496811612
+USA,copper,2080,0.496811612
+USA,copper,2085,0.496811612
+USA,copper,2090,0.496811612
+USA,copper,2095,0.496811612
+USA,copper,2100,0.496811612

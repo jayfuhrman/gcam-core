@@ -30,6 +30,8 @@ CarbonCoef, world/+{name}region, region/+{name}PrimaryFuelCO2Coef, region/+Prima
 
 FinalEnergyKeyword, world/+{name}region, region/+{name}supplysector, supplysector/+{final-energy}keyword, scenario, scenario/world
 
+PassThruFinalEnergyKeyword, world/+{name}region, region/+{name}pass-through-sector, pass-through-sector/+{final-energy}keyword, scenario, scenario/world
+
 PrimaryConsKeywordff, world/+{name}region, region/+{name}supplysector, supplysector/+{name}subsector, subsector/+{name}technology,  technology/+{year}period, period/+{primary-consumption}keyword, scenario, scenario/world
 
 PrimaryConsKeyword, global-technology-database/+{sector-name}location-info, global-technology-database/+{subsector-name}location-info, location-info/+{name}technology, technology/+{year}period, period/+{primary-consumption}keyword, scenario, scenario/world, world/global-technology-database
@@ -164,8 +166,15 @@ SectorUseTrialMarket, world/+{name}region, region/+{name}supplysector, supplysec
 
 ElecReserve,world/+{name}region,region/+{name}supplysector,{name=electricity-reserve-margin}object-meta-info/+value,{name=average-grid-capacity-factor}object-meta-info/+value,@supplysector/object-meta-info,scenario,scenario/world
 
+PassThruSectorElecReserve,world/+{name}region,region/+{name}pass-through-sector,{name=electricity-reserve-margin}object-meta-info/+value,{name=average-grid-capacity-factor}object-meta-info/+value,@pass-through-sector/object-meta-info,scenario,scenario/world
+
 PassThroughSector, world/+{name}region, region/+{name}pass-through-sector, pass-through-sector/+marginal-revenue-sector, pass-through-sector/+marginal-revenue-market, scenario, scenario/world
 
+PassThroughSectorData, world/+{name}region, region/+{name}pass-through-sector, pass-through-sector/+output-unit, pass-through-sector/+input-unit, pass-through-sector/+price-unit, dummy-logit-tag/+{year;fillout=1}logit-exponent, dummy-logit-tag/+logit-exponent, pass-through-sector/dummy-logit-tag, scenario, scenario/world
+
+PassThroughSectorData_relative-cost-logit, world/+{name}region, region/+{name}pass-through-sector, pass-through-sector/relative-cost-logit, scenario/world, scenario
+
+PassThroughSectorData_absolute-cost-logit, world/+{name}region, region/+{name}pass-through-sector, pass-through-sector/absolute-cost-logit, scenario/world, scenario
 
 #####, SUBSECTOR
 
@@ -200,9 +209,15 @@ FuelPrefElast, world/+{name}region, region/+{name}supplysector, supplysector/+{n
 
 tranSubsectorLogit, world/+{name}region, region/+{name}supplysector, supplysector/+{name}tranSubsector, dummy-logit-tag/+{year;fillout=1}logit-exponent, dummy-logit-tag/+logit-exponent, tranSubsector/dummy-logit-tag, scenario/world, scenario
 
-tranSubsector_relative-cost-logit, world/+{name}region, region/+{name}supplysector, supplysector/+{name}tranSubsector, tranSubsector/relative-cost-logit, scenario/world, scenario
+tranSubsectorLogit_relative-cost-logit, world/+{name}region, region/+{name}supplysector, supplysector/+{name}tranSubsector, tranSubsector/relative-cost-logit, scenario/world, scenario
 
-tranSubsector_absolute-cost-logit, world/+{name}region, region/+{name}supplysector, supplysector/+{name}tranSubsector, tranSubsector/absolute-cost-logit, scenario/world, scenario
+tranSubsectorLogit_absolute-cost-logit, world/+{name}region, region/+{name}supplysector, supplysector/+{name}tranSubsector, tranSubsector/absolute-cost-logit, scenario/world, scenario
+
+PassThrutranSubsectorLogit, world/+{name}region, region/+{name}pass-through-sector, pass-through-sector/+{name}tranSubsector, dummy-logit-tag/+{year;fillout=1}logit-exponent, dummy-logit-tag/+logit-exponent, tranSubsector/dummy-logit-tag, scenario/world, scenario
+
+PassThrutranSubsectorLogit_relative-cost-logit, world/+{name}region, region/+{name}pass-through-sector, pass-through-sector/+{name}tranSubsector, tranSubsector/relative-cost-logit, scenario/world, scenario
+
+PassThrutranSubsectorLogit_absolute-cost-logit, world/+{name}region, region/+{name}pass-through-sector, pass-through-sector/+{name}tranSubsector, tranSubsector/absolute-cost-logit, scenario/world, scenario
 
 tranSubsectorShrwt, world/+{name}region, region/+{name}supplysector, supplysector/+{name}tranSubsector, tranSubsector/+{year}share-weight, tranSubsector/+share-weight, scenario/world, scenario
 
@@ -218,6 +233,15 @@ tranSubsectorVOTT, world/+{name}region, region/+{name}supplysector, supplysector
 
 tranSubsectorFuelPref, world/+{name}region, region/+{name}supplysector, supplysector/+{name}tranSubsector, tranSubsector/+{year;fillout=1}fuelprefElasticity, tranSubsector/+fuelprefElasticity, scenario/world, scenario
 
+PassThrutranSubsectorInterp, world/+{name}region, region/+{name}pass-through-sector, pass-through-sector/+{name}tranSubsector, tranSubsector/+{apply-to}interpolation-rule, tranSubsector/+{from-year}interpolation-rule, tranSubsector/+{to-year}interpolation-rule, interpolation-rule/+{name}interpolation-function, scenario/world, scenario
+
+PassThrutranSubsectorShrwtFllt, world/+{name}region, region/+{name}pass-through-sector, pass-through-sector/+{name}tranSubsector, tranSubsector/+{year;fillout=1}share-weight, tranSubsector/+share-weight, scenario/world, scenario
+
+PassThrutranSubsectorSpeed, world/+{name}region, region/+{name}pass-through-sector, pass-through-sector/+{name}tranSubsector, tranSubsector/+{year}speed, tranSubsector/+speed, scenario/world, scenario
+
+PassThrutranSubsectorFuelPref, world/+{name}region, region/+{name}pass-through-sector, pass-through-sector/+{name}tranSubsector, tranSubsector/+{year;fillout=1}fuelprefElasticity, tranSubsector/+fuelprefElasticity, scenario/world, scenario
+
+PassThrutranSubsectorVOTT, world/+{name}region, region/+{name}pass-through-sector, pass-through-sector/+{name}tranSubsector, tranSubsector/+addTimeValue, tranSubsector/+{year;fillout=1}time-value-multiplier, tranSubsector/+time-value-multiplier, scenario/world, scenario
 
 #####, TECHNOLOGY
 
@@ -279,6 +303,8 @@ TechSCurve, world/+{name}region, region/+{name}supplysector, supplysector/+{name
 TechAccountOutput, world/+{name}region, region/+{name}supplysector, supplysector/+{name}subsector, subsector/+{name}technology, technology/+{year}period, period/+{name}output-accounting, output-accounting/+output-ratio, output-accounting/+market-name, scenario, scenario/world
 
 TechProfitShutdown, world/+{name}region, region/+{name}supplysector, supplysector/+{name}subsector, subsector/+{name}technology, technology/+{year}period, profit-shutdown-decider/+median-shutdown-point, profit-shutdown-decider/+steepness, scenario, scenario/world, period/{name=profit}profit-shutdown-decider
+
+RegionalTechMineralCurCoef, world/+{name}region, region/+{name}supplysector, supplysector/+{name}subsector, subsector/+{name}technology, technology/+{year}period, period/+{name}minicam-energy-input, minicam-energy-input/+coefficient, minicam-energy-input/+{year}current-coef, minicam-energy-input/+current-coef, scenario, scenario/world
 
 #####, FOOD STORAGE TECHNOLOGY
 
@@ -347,6 +373,14 @@ GlobalTechCSeq, global-technology-database/+{sector-name}location-info, global-t
 
 GlobalPassThroughTech, global-technology-database/+{sector-name}location-info, global-technology-database/+{subsector-name}location-info, location-info/+{name}pass-through-technology, scenario, scenario/world, world/global-technology-database
 
+GlobalPassThruTechCapFac, global-technology-database/+{sector-name}location-info, global-technology-database/+{subsector-name}location-info, location-info/+{name}pass-through-technology, pass-through-technology/+{year}period, period/+capacity-factor, scenario, scenario/world, world/global-technology-database
+
+GlobalIntPassThruTechBackup, global-technology-database/+{sector-name}location-info, global-technology-database/+{subsector-name}location-info, location-info/+{name}pass-through-technology, pass-through-technology/+{year}period, period/+electric-sector-name, period/+trial-market-name, period/+backup-capital-cost, period/+backup-capacity-factor, capacity-limit-backup-calculator/+capacity-limit, period/+{name}minicam-energy-input, period/+{name}minicam-non-energy-input, minicam-energy-input/+flag, scenario, scenario/world, world/global-technology-database, period/capacity-limit-backup-calculator
+
+GlobalPassThroughTechCapFac, global-technology-database/+{sector-name}location-info, global-technology-database/+{subsector-name}location-info, location-info/+{name}pass-through-technology, pass-through-technology/+{year}period, period/+capacity-factor, scenario, scenario/world, world/global-technology-database
+
+GlobalIntPassThroughTechBackup, global-technology-database/+{sector-name}location-info, global-technology-database/+{subsector-name}location-info, location-info/+{name}pass-through-technology, pass-through-technology/+{year}period, period/+electric-sector-name, period/+trial-market-name, period/+backup-capital-cost, period/+backup-capacity-factor, capacity-limit-backup-calculator/+capacity-limit, period/+{name}minicam-energy-input, period/+{name}minicam-non-energy-input, minicam-energy-input/+flag, scenario, scenario/world, world/global-technology-database, period/capacity-limit-backup-calculator
+
 GlobalTechCTaxInput,global-technology-database/+{sector-name}location-info, global-technology-database/+{subsector-name}location-info, location-info/+{name}technology, technology/+{year}period, period/+{name}ctax-input, ctax-input/+fuel-C-coef, scenario, scenario/world, world/global-technology-database
 
 GlobalTechAccountOutput,global-technology-database/+{sector-name}location-info, global-technology-database/+{subsector-name}location-info, location-info/+{name}technology, technology/+{year}period, period/+{name}output-accounting, output-accounting/+output-ratio, scenario, scenario/world, world/global-technology-database
@@ -361,6 +395,17 @@ GlobalTechInputPMult, global-technology-database/+{sector-name}location-info, gl
 
 DeleteGlobalTech, global-technology-database/+{sector-name}location-info, global-technology-database/+{subsector-name}location-info, location-info/+{name;delete=1}technology, scenario, scenario/world, world/global-technology-database
 
+GlobalTechMineralCurCoef, global-technology-database/+{sector-name}location-info, global-technology-database/+{subsector-name}location-info, location-info/+{name}technology, technology/+{year}period, period/+{name}minicam-energy-input, minicam-energy-input/+coefficient, minicam-energy-input/+{year}current-coef, minicam-energy-input/+current-coef, scenario, scenario/world, world/global-technology-database
+
+GlobalPassThruTechShrwt, global-technology-database/+{sector-name}location-info, global-technology-database/+{subsector-name}location-info, location-info/+{name}pass-through-technology, pass-through-technology/+{year}period, period/+share-weight, scenario, scenario/world, world/global-technology-database, period/{name=CO2}CO2
+
+GlobalPassThruTechCoef, global-technology-database/+{sector-name}location-info, global-technology-database/+{subsector-name}location-info, location-info/+{name}pass-through-technology, pass-through-technology/+{year}period, period/+{name}minicam-energy-input, minicam-energy-input/+coefficient, scenario, scenario/world, world/global-technology-database, period/{name=CO2}CO2
+
+GlobalPassThruTechEff, global-technology-database/+{sector-name}location-info, global-technology-database/+{subsector-name}location-info, location-info/+{name}pass-through-technology, pass-through-technology/+{year}period, period/+{name}minicam-energy-input, minicam-energy-input/+efficiency, scenario, scenario/world, world/global-technology-database, period/{name=CO2}CO2
+
+GlobalPassThruTechInterp, global-technology-database/+{sector-name}location-info, global-technology-database/+{subsector-name}location-info, location-info/+{name}pass-through-technology, pass-through-technology/+{apply-to}interpolation-rule, pass-through-technology/+{from-year}interpolation-rule, pass-through-technology/+{to-year}interpolation-rule, interpolation-rule/+{name}interpolation-function, scenario, scenario/world, world/global-technology-database
+
+GlobalTechMineralCurCoefAllYr, global-technology-database/+{sector-name}location-info, global-technology-database/+{subsector-name}location-info, location-info/+{name}technology, technology/+{year}period, period/+{name}minicam-energy-input, minicam-energy-input/+{year}current-coef, minicam-energy-input/+current-coef, scenario, scenario/world, world/global-technology-database
 
 #####, GLOBAL INTERMITTENT TECHNOLOGY
 
@@ -368,6 +413,8 @@ DeleteGlobalTech, global-technology-database/+{sector-name}location-info, global
 GlobalIntTechCoef, global-technology-database/+{sector-name}location-info, global-technology-database/+{subsector-name}location-info, location-info/+{name}intermittent-technology, intermittent-technology/+{year}period, period/+{name}minicam-energy-input, minicam-energy-input/+coefficient, scenario, scenario/world, world/global-technology-database, period/{name=CO2}CO2
 
 GlobalIntTechEff, global-technology-database/+{sector-name}location-info, global-technology-database/+{subsector-name}location-info, location-info/+{name}intermittent-technology, intermittent-technology/+{year}period, period/+{name}minicam-energy-input, minicam-energy-input/+efficiency, minicam-energy-input/+flag, scenario, scenario/world, world/global-technology-database, period/{name=CO2}CO2
+
+GlobalIntTechEffNoFlag, global-technology-database/+{sector-name}location-info, global-technology-database/+{subsector-name}location-info, location-info/+{name}intermittent-technology, intermittent-technology/+{year}period, period/+{name}minicam-energy-input, minicam-energy-input/+efficiency, scenario, scenario/world, world/global-technology-database, period/{name=CO2}CO2
 
 GlobalIntTechShrwt, global-technology-database/+{sector-name}location-info, global-technology-database/+{subsector-name}location-info, location-info/+{name}intermittent-technology, intermittent-technology/+{year}period, period/+share-weight, scenario, scenario/world, world/global-technology-database, period/{name=CO2}CO2
 
@@ -401,6 +448,11 @@ GlobalRenewTech, global-technology-database/+{sector-name}location-info, global-
 
 GlobalResBio, global-technology-database/+{sector-name}location-info, global-technology-database/+{subsector-name}location-info, location-info/+{name}technology, technology/+{year}period, period/+{name}residue-biomass-production, residue-biomass-production/+mass-conversion, residue-biomass-production/+harvest-index, residue-biomass-production/+eros-ctrl, residue-biomass-production/+mass-to-energy, residue-biomass-production/+water-content, scenario, scenario/world, world/global-technology-database
 
+GlobalIntPassThruTechShrwt, global-technology-database/+{sector-name}location-info, global-technology-database/+{subsector-name}location-info, location-info/+{name}pass-through-technology, pass-through-technology/+{year}period, period/+share-weight, scenario, scenario/world, world/global-technology-database, period/{name=CO2}CO2
+
+GlobalIntPassThruTechEff, global-technology-database/+{sector-name}location-info, global-technology-database/+{subsector-name}location-info, location-info/+{name}pass-through-technology, pass-through-technology/+{year}period, period/+{name}minicam-energy-input, minicam-energy-input/+efficiency, minicam-energy-input/+flag, scenario, scenario/world, world/global-technology-database, period/{name=CO2}CO2
+
+
 
 #####, GLOBAL TRANSPORTATION TECHNOLOGY
 
@@ -430,7 +482,11 @@ StubTechInterp, world/+{name}region, region/+{name}supplysector, supplysector/+{
 
 StubTechInterp_NC, world/+{name}region, region/+{name;nocreate=1}supplysector, supplysector/+{name}subsector, subsector/+{name}stub-technology, stub-technology/+{apply-to}interpolation-rule, stub-technology/+{from-year}interpolation-rule, stub-technology/+{to-year}interpolation-rule, interpolation-rule/+{name}interpolation-function, scenario, scenario/world
 
+StubTechInterpTo, world/+{name}region, region/+{name}supplysector, supplysector/+{name}subsector, subsector/+{name}stub-technology, stub-technology/+{apply-to}interpolation-rule, stub-technology/+{from-year}interpolation-rule, stub-technology/+{to-year}interpolation-rule, interpolation-rule/+to-value, interpolation-rule/+{name}interpolation-function, scenario, scenario/world
+
 StubTechProd, world/+{name}region, region/+{name}supplysector, supplysector/+{name}subsector, subsector/+{name}stub-technology, stub-technology/+{year}period, CalDataOutput/+calOutputValue, subsector/+{year}share-weight, subsector/+share-weight, period/+share-weight, period/CalDataOutput, scenario, scenario/world
+
+StubTechCal, world/+{name}region, region/+{name}supplysector, supplysector/+{name}subsector, subsector/+{name}stub-technology, stub-technology/+{year}period, CalDataOutput/+calOutputValue, period/CalDataOutput, scenario, scenario/world
 
 StubTechCalInput, world/+{name}region, region/+{name}supplysector, supplysector/+{name}subsector, subsector/+{name}stub-technology, stub-technology/+{year}period, period/+{name}minicam-energy-input, minicam-energy-input/+calibrated-value, subsector/+{year}share-weight, subsector/+share-weight, period/+share-weight, scenario, scenario/world
 
@@ -482,6 +538,10 @@ StubTechLifetime, world/+{name}region, region/+{name}supplysector, supplysector/
 
 StubTechProfitShutdown, world/+{name}region, region/+{name}supplysector, supplysector/+{name}subsector, subsector/+{name}stub-technology, stub-technology/+{year}period, profit-shutdown-decider/+median-shutdown-point, profit-shutdown-decider/+steepness, scenario, scenario/world, period/{name=profit}profit-shutdown-decider
 
+RegionalStubTechMineralCurCoef, world/+{name}region, region/+{name}supplysector, supplysector/+{name}subsector, subsector/+{name}stub-technology, stub-technology/+{year}period, period/+{name}minicam-energy-input, minicam-energy-input/+coefficient, minicam-energy-input/+{year}current-coef, minicam-energy-input/+current-coef, scenario, scenario/world
+
+RegionalStubTechMineralCurCoefAllYr, world/+{name}region, region/+{name}supplysector, supplysector/+{name}subsector, subsector/+{name}stub-technology, stub-technology/+{year}period, period/+{name}minicam-energy-input, minicam-energy-input/+{year}current-coef, minicam-energy-input/+current-coef, scenario, scenario/world
+
 #####, STUB TRANSPORTATION TECHNOLOGY
 
 
@@ -496,6 +556,24 @@ StubTranTechLoadFactor, world/+{name}region, region/+{name}supplysector, supplys
 StubTranTechCost, world/+{name}region, region/+{name}supplysector, supplysector/+{name}tranSubsector, tranSubsector/+{name}stub-technology, stub-technology/+{year}period, period/+{name}minicam-non-energy-input, minicam-non-energy-input/+input-cost, scenario, scenario/world
 
 StubTranTechProd, world/+{name}region, region/+{name}supplysector, supplysector/+{name}tranSubsector, tranSubsector/+{name}stub-technology, stub-technology/+{year}period, CalDataOutput/+calOutputValue, period/CalDataOutput, scenario, scenario/world
+
+PassThruStubTranTechMineralCoef, world/+{name}region, region/+{name}pass-through-sector, pass-through-sector/+{name}tranSubsector, tranSubsector/+{name}stub-technology, stub-technology/+{year}period, period/+{name}minicam-energy-input, minicam-energy-input/+coefficient, scenario, scenario/world
+
+PassThruStubTranTechMineralCurCoef, world/+{name}region, region/+{name}pass-through-sector, pass-through-sector/+{name}tranSubsector, tranSubsector/+{name}stub-technology, stub-technology/+{year}period, period/+{name}minicam-energy-input, minicam-energy-input/+{year}current-coef, minicam-energy-input/+current-coef, scenario, scenario/world
+
+PassThruStubTranTech, world/+{name}region, region/+{name}pass-through-sector, pass-through-sector/+{name}tranSubsector, tranSubsector/+{name}stub-technology, scenario, scenario/world
+
+PassThruStubTranTechCalInput, world/+{name}region, region/+{name}pass-through-sector, pass-through-sector/+{name}tranSubsector, tranSubsector/+{name}stub-technology, stub-technology/+{year}period, period/+{name}minicam-energy-input, minicam-energy-input/+calibrated-value, tranSubsector/+{year}share-weight, tranSubsector/+share-weight, period/+share-weight, scenario, scenario/world
+
+PassThruStubTranTechLoadFactor, world/+{name}region, region/+{name}pass-through-sector, pass-through-sector/+{name}tranSubsector, tranSubsector/+{name}stub-technology, stub-technology/+{year}period, period/+loadFactor, scenario, scenario/world
+
+PassThruStubTranTechTrackCapital, world/+{name}region, region/+{name}pass-through-sector, pass-through-sector/+{name}tranSubsector, tranSubsector/+{name}stub-technology, stub-technology/+{year}period, period/+{name}tracking-non-energy-input, tracking-non-energy-input/+capital-coef, tracking-non-energy-input/+tracking-market, tracking-non-energy-input/+depreciation-rate, scenario, scenario/world
+
+PassThruStubTranTechCost, world/+{name}region, region/+{name}pass-through-sector, pass-through-sector/+{name}tranSubsector, tranSubsector/+{name}stub-technology, stub-technology/+{year}period, period/+{name}minicam-non-energy-input, minicam-non-energy-input/+input-cost, scenario, scenario/world
+
+PassThruStubTranTechCoef, world/+{name}region, region/+{name}pass-through-sector, pass-through-sector/+{name}tranSubsector, tranSubsector/+{name}stub-technology, stub-technology/+{year}period, period/+{name}minicam-energy-input, minicam-energy-input/+coefficient, minicam-energy-input/+market-name, scenario, scenario/world
+
+PassThruStubTranTechProd, world/+{name}region, region/+{name}pass-through-sector, pass-through-sector/+{name}tranSubsector, tranSubsector/+{name}stub-technology, stub-technology/+{year}period, CalDataOutput/+calOutputValue, period/CalDataOutput, scenario, scenario/world
 
 
 #####, FINAL DEMAND

@@ -1,0 +1,102 @@
+# File: A54.trn_tech_mineral_mapping_master.csv
+# Title: transport sector ev subtype technology master mapping
+# Units: None
+# Column types: ccccccccccccccc
+# ----------
+supplysector_L1,tranSubsector_L1,tranTechnology_L1,supplysector_L2,tranSubsector_L2,tranTechnology_L2,supplysector_L3,tranSubsector_L3,tranTechnology_L3,supplysector_L4,tranSubsector_L4,tranTechnology_L4,supplysector_L5,tranSubsector_L5,tranTechnology_L5
+trn_aviation_intl,aviation_intl,aviation_intl,trn_aviation_intl_pthru,International Aviation,Liquids,,,,,,,,,
+trn_aviation_intl,aviation_intl,aviation_intl,trn_aviation_intl_pthru,International Aviation,BEV,,,,,,,,,
+trn_aviation_intl,aviation_intl,aviation_intl,trn_aviation_intl_pthru,International Aviation,Hydrogen,,,,,,,,,
+trn_shipping_intl,shipping_intl,shipping_intl,trn_ship_intl_pthru,International Ship,Liquids,,,,,,,,,
+trn_shipping_intl,shipping_intl,shipping_intl,trn_ship_intl_pthru,International Ship,BEV,,,,,,,,,
+trn_shipping_intl,shipping_intl,shipping_intl,trn_ship_intl_pthru,International Ship,FCEV,,,,,,,,,
+trn_shipping_intl,shipping_intl,shipping_intl,trn_ship_intl_pthru,International Ship,Hybrid Liquids,,,,,,,,,
+trn_freight,fret_dom_ship,fret_dom_ship,trn_dom_ship_pthru,Domestic Ship,Liquids,,,,,,,,,
+trn_freight,fret_dom_ship,fret_dom_ship,trn_dom_ship_pthru,Domestic Ship,BEV,,,,,,,,,
+trn_freight,fret_dom_ship,fret_dom_ship,trn_dom_ship_pthru,Domestic Ship,FCEV,,,,,,,,,
+trn_freight,fret_dom_ship,fret_dom_ship,trn_dom_ship_pthru,Domestic Ship,Hybrid Liquids,,,,,,,,,
+trn_freight,fret_rail,fret_rail,trn_fret_rail_pthru,Freight Rail,Coal,,,,,,,,,
+trn_freight,fret_rail,fret_rail,trn_fret_rail_pthru,Freight Rail,Electric,,,,,,,,,
+trn_freight,fret_rail,fret_rail,trn_fret_rail_pthru,Freight Rail,Liquids,,,,,,,,,
+trn_freight,fret_rail,fret_rail,trn_fret_rail_pthru,Freight Rail,BEV,,,,,,,,,
+trn_freight,fret_rail,fret_rail,trn_fret_rail_pthru,Freight Rail,FCEV,,,,,,,,,
+trn_freight,fret_rail,fret_rail,trn_fret_rail_pthru,Freight Rail,Hybrid Liquids,,,,,,,,,
+trn_freight,fret_road,fret_road,trn_fret_road_pthru,Light truck,Liquids,,,,,,,,,
+trn_freight,fret_road,fret_road,trn_fret_road_pthru,Light truck,NG,,,,,,,,,
+trn_freight,fret_road,fret_road,trn_fret_road_pthru,Light truck,FCEV,,,,,,,,,
+trn_freight,fret_road,fret_road,trn_fret_road_pthru,Light truck,Hybrid Liquids,,,,,,,,,
+trn_freight,fret_road,fret_road,trn_fret_road_pthru,Light truck,light_truck_bev,trn_light_truck_bev_pthru,light_truck_bev,light_truck_bev (LMO),,,,,,
+trn_freight,fret_road,fret_road,trn_fret_road_pthru,Light truck,light_truck_bev,trn_light_truck_bev_pthru,light_truck_bev,light_truck_bev (NMC111),,,,,,
+trn_freight,fret_road,fret_road,trn_fret_road_pthru,Light truck,light_truck_bev,trn_light_truck_bev_pthru,light_truck_bev,light_truck_bev (NMC622),,,,,,
+trn_freight,fret_road,fret_road,trn_fret_road_pthru,Light truck,light_truck_bev,trn_light_truck_bev_pthru,light_truck_bev,light_truck_bev (NMC811),,,,,,
+trn_freight,fret_road,fret_road,trn_fret_road_pthru,Light truck,light_truck_bev,trn_light_truck_bev_pthru,light_truck_bev,light_truck_bev (NCA),,,,,,
+trn_freight,fret_road,fret_road,trn_fret_road_pthru,Light truck,light_truck_bev,trn_light_truck_bev_pthru,light_truck_bev,light_truck_bev (LFP),,,,,,
+trn_freight,fret_road,fret_road,trn_fret_road_pthru,Medium truck,Liquids,,,,,,,,,
+trn_freight,fret_road,fret_road,trn_fret_road_pthru,Medium truck,NG,,,,,,,,,
+trn_freight,fret_road,fret_road,trn_fret_road_pthru,Medium truck,FCEV,,,,,,,,,
+trn_freight,fret_road,fret_road,trn_fret_road_pthru,Medium truck,Hybrid Liquids,,,,,,,,,
+trn_freight,fret_road,fret_road,trn_fret_road_pthru,Medium truck,medium_truck_bev,trn_med_truck_bev_pthru,med_truck_bev,med_truck_bev (LMO),,,,,,
+trn_freight,fret_road,fret_road,trn_fret_road_pthru,Medium truck,medium_truck_bev,trn_med_truck_bev_pthru,med_truck_bev,med_truck_bev (NMC111),,,,,,
+trn_freight,fret_road,fret_road,trn_fret_road_pthru,Medium truck,medium_truck_bev,trn_med_truck_bev_pthru,med_truck_bev,med_truck_bev (NMC622),,,,,,
+trn_freight,fret_road,fret_road,trn_fret_road_pthru,Medium truck,medium_truck_bev,trn_med_truck_bev_pthru,med_truck_bev,med_truck_bev (NMC811),,,,,,
+trn_freight,fret_road,fret_road,trn_fret_road_pthru,Medium truck,medium_truck_bev,trn_med_truck_bev_pthru,med_truck_bev,med_truck_bev (NCA),,,,,,
+trn_freight,fret_road,fret_road,trn_fret_road_pthru,Medium truck,medium_truck_bev,trn_med_truck_bev_pthru,med_truck_bev,med_truck_bev (LFP),,,,,,
+trn_freight,fret_road,fret_road,trn_fret_road_pthru,Heavy truck,Liquids,,,,,,,,,
+trn_freight,fret_road,fret_road,trn_fret_road_pthru,Heavy truck,NG,,,,,,,,,
+trn_freight,fret_road,fret_road,trn_fret_road_pthru,Heavy truck,FCEV,,,,,,,,,
+trn_freight,fret_road,fret_road,trn_fret_road_pthru,Heavy truck,Hybrid Liquids,,,,,,,,,
+trn_freight,fret_road,fret_road,trn_fret_road_pthru,Heavy truck,heavy_truck_bev,trn_heavy_truck_bev_pthru,heavy_truck_bev,heavy_truck_bev (LMO),,,,,,
+trn_freight,fret_road,fret_road,trn_fret_road_pthru,Heavy truck,heavy_truck_bev,trn_heavy_truck_bev_pthru,heavy_truck_bev,heavy_truck_bev (NMC111),,,,,,
+trn_freight,fret_road,fret_road,trn_fret_road_pthru,Heavy truck,heavy_truck_bev,trn_heavy_truck_bev_pthru,heavy_truck_bev,heavy_truck_bev (NMC622),,,,,,
+trn_freight,fret_road,fret_road,trn_fret_road_pthru,Heavy truck,heavy_truck_bev,trn_heavy_truck_bev_pthru,heavy_truck_bev,heavy_truck_bev (NMC811),,,,,,
+trn_freight,fret_road,fret_road,trn_fret_road_pthru,Heavy truck,heavy_truck_bev,trn_heavy_truck_bev_pthru,heavy_truck_bev,heavy_truck_bev (NCA),,,,,,
+trn_freight,fret_road,fret_road,trn_fret_road_pthru,Heavy truck,heavy_truck_bev,trn_heavy_truck_bev_pthru,heavy_truck_bev,heavy_truck_bev (LFP),,,,,,
+trn_passenger,pass_cycle,pass_cycle,trn_pass_cycle_pthru,Cycle,Cycle,,,,,,,,,
+trn_passenger,pass_aviation_dom,pass_aviation_dom,trn_pass_aviation_dom_pthru,Domestic Aviation,Liquids,,,,,,,,,
+trn_passenger,pass_aviation_dom,pass_aviation_dom,trn_pass_aviation_dom_pthru,Domestic Aviation,BEV,,,,,,,,,
+trn_passenger,pass_aviation_dom,pass_aviation_dom,trn_pass_aviation_dom_pthru,Domestic Aviation,Hydrogen,,,,,,,,,
+trn_passenger,pass_hsr,pass_hsr,trn_pass_hsr_pthru,HSR,Electric,,,,,,,,,
+trn_passenger,pass_rail,pass_rail,trn_pass_rail_pthru,Passenger Rail,Electric,,,,,,,,,
+trn_passenger,pass_rail,pass_rail,trn_pass_rail_pthru,Passenger Rail,Liquids,,,,,,,,,
+trn_passenger,Walk,Walk,,,,,,,,,,,,
+trn_passenger,pass_road,pass_road,trn_pass_road_pthru,pass_bus,pass_bus,trn_pass_bus_pthru,Bus,Liquids,,,,,,
+trn_passenger,pass_road,pass_road,trn_pass_road_pthru,pass_bus,pass_bus,trn_pass_bus_pthru,Bus,NG,,,,,,
+trn_passenger,pass_road,pass_road,trn_pass_road_pthru,pass_bus,pass_bus,trn_pass_bus_pthru,Bus,FCEV,,,,,,
+trn_passenger,pass_road,pass_road,trn_pass_road_pthru,pass_bus,pass_bus,trn_pass_bus_pthru,Bus,Hybrid Liquids,,,,,,
+trn_passenger,pass_road,pass_road,trn_pass_road_pthru,pass_bus,pass_bus,trn_pass_bus_pthru,Bus,bus_bev,trn_bus_bev_pass,bus_bev,bus_bev (LMO),,,
+trn_passenger,pass_road,pass_road,trn_pass_road_pthru,pass_bus,pass_bus,trn_pass_bus_pthru,Bus,bus_bev,trn_bus_bev_pass,bus_bev,bus_bev (NMC111),,,
+trn_passenger,pass_road,pass_road,trn_pass_road_pthru,pass_bus,pass_bus,trn_pass_bus_pthru,Bus,bus_bev,trn_bus_bev_pass,bus_bev,bus_bev (LFP),,,
+trn_passenger,pass_road,pass_road,trn_pass_road_pthru,pass_ldv,pass_ldv,trn_pass_ldv_pthru,ldv_2_3W,ldv_2_3W,trn_ldv_2_3W_pthru,2W and 3W,Liquids,,,
+trn_passenger,pass_road,pass_road,trn_pass_road_pthru,pass_ldv,pass_ldv,trn_pass_ldv_pthru,ldv_2_3W,ldv_2_3W,trn_ldv_2_3W_pthru,2W and 3W,NG,,,
+trn_passenger,pass_road,pass_road,trn_pass_road_pthru,pass_ldv,pass_ldv,trn_pass_ldv_pthru,ldv_2_3W,ldv_2_3W,trn_ldv_2_3W_pthru,2W and 3W,BEV,,,
+trn_passenger,pass_road,pass_road,trn_pass_road_pthru,pass_ldv,pass_ldv,trn_pass_ldv_pthru,ldv_2_3W,ldv_2_3W,trn_ldv_2_3W_pthru,2W and 3W,LA-BEV,,,
+trn_passenger,pass_road,pass_road,trn_pass_road_pthru,pass_ldv,pass_ldv,trn_pass_ldv_pthru,ldv_4w,ldv_4w,trn_ldv_4w_pthru,Car,FCEV,,,
+trn_passenger,pass_road,pass_road,trn_pass_road_pthru,pass_ldv,pass_ldv,trn_pass_ldv_pthru,ldv_4w,ldv_4w,trn_ldv_4w_pthru,Car,Hybrid Liquids,,,
+trn_passenger,pass_road,pass_road,trn_pass_road_pthru,pass_ldv,pass_ldv,trn_pass_ldv_pthru,ldv_4w,ldv_4w,trn_ldv_4w_pthru,Car,Liquids,,,
+trn_passenger,pass_road,pass_road,trn_pass_road_pthru,pass_ldv,pass_ldv,trn_pass_ldv_pthru,ldv_4w,ldv_4w,trn_ldv_4w_pthru,Car,NG,,,
+trn_passenger,pass_road,pass_road,trn_pass_road_pthru,pass_ldv,pass_ldv,trn_pass_ldv_pthru,ldv_4w,ldv_4w,trn_ldv_4w_pthru,Car,car_bev,trn_car_bev_pthru,car_bev,car_bev (LMO)
+trn_passenger,pass_road,pass_road,trn_pass_road_pthru,pass_ldv,pass_ldv,trn_pass_ldv_pthru,ldv_4w,ldv_4w,trn_ldv_4w_pthru,Car,car_bev,trn_car_bev_pthru,car_bev,car_bev (NMC111)
+trn_passenger,pass_road,pass_road,trn_pass_road_pthru,pass_ldv,pass_ldv,trn_pass_ldv_pthru,ldv_4w,ldv_4w,trn_ldv_4w_pthru,Car,car_bev,trn_car_bev_pthru,car_bev,car_bev (NMC622)
+trn_passenger,pass_road,pass_road,trn_pass_road_pthru,pass_ldv,pass_ldv,trn_pass_ldv_pthru,ldv_4w,ldv_4w,trn_ldv_4w_pthru,Car,car_bev,trn_car_bev_pthru,car_bev,car_bev (NMC811)
+trn_passenger,pass_road,pass_road,trn_pass_road_pthru,pass_ldv,pass_ldv,trn_pass_ldv_pthru,ldv_4w,ldv_4w,trn_ldv_4w_pthru,Car,car_bev,trn_car_bev_pthru,car_bev,car_bev (NCA)
+trn_passenger,pass_road,pass_road,trn_pass_road_pthru,pass_ldv,pass_ldv,trn_pass_ldv_pthru,ldv_4w,ldv_4w,trn_ldv_4w_pthru,Car,car_bev,trn_car_bev_pthru,car_bev,car_bev (LFP)
+trn_passenger,pass_road,pass_road,trn_pass_road_pthru,pass_ldv,pass_ldv,trn_pass_ldv_pthru,ldv_4w,ldv_4w,trn_ldv_4w_pthru,Large Car and Truck,FCEV,,,
+trn_passenger,pass_road,pass_road,trn_pass_road_pthru,pass_ldv,pass_ldv,trn_pass_ldv_pthru,ldv_4w,ldv_4w,trn_ldv_4w_pthru,Large Car and Truck,Hybrid Liquids,,,
+trn_passenger,pass_road,pass_road,trn_pass_road_pthru,pass_ldv,pass_ldv,trn_pass_ldv_pthru,ldv_4w,ldv_4w,trn_ldv_4w_pthru,Large Car and Truck,Liquids,,,
+trn_passenger,pass_road,pass_road,trn_pass_road_pthru,pass_ldv,pass_ldv,trn_pass_ldv_pthru,ldv_4w,ldv_4w,trn_ldv_4w_pthru,Large Car and Truck,NG,,,
+trn_passenger,pass_road,pass_road,trn_pass_road_pthru,pass_ldv,pass_ldv,trn_pass_ldv_pthru,ldv_4w,ldv_4w,trn_ldv_4w_pthru,Large Car and Truck,large_car_bev,trn_large_car_bev_pthru,largecar_bev,large_car_bev (LMO)
+trn_passenger,pass_road,pass_road,trn_pass_road_pthru,pass_ldv,pass_ldv,trn_pass_ldv_pthru,ldv_4w,ldv_4w,trn_ldv_4w_pthru,Large Car and Truck,large_car_bev,trn_large_car_bev_pthru,largecar_bev,large_car_bev (NMC111)
+trn_passenger,pass_road,pass_road,trn_pass_road_pthru,pass_ldv,pass_ldv,trn_pass_ldv_pthru,ldv_4w,ldv_4w,trn_ldv_4w_pthru,Large Car and Truck,large_car_bev,trn_large_car_bev_pthru,largecar_bev,large_car_bev (NMC622)
+trn_passenger,pass_road,pass_road,trn_pass_road_pthru,pass_ldv,pass_ldv,trn_pass_ldv_pthru,ldv_4w,ldv_4w,trn_ldv_4w_pthru,Large Car and Truck,large_car_bev,trn_large_car_bev_pthru,largecar_bev,large_car_bev (NMC811)
+trn_passenger,pass_road,pass_road,trn_pass_road_pthru,pass_ldv,pass_ldv,trn_pass_ldv_pthru,ldv_4w,ldv_4w,trn_ldv_4w_pthru,Large Car and Truck,large_car_bev,trn_large_car_bev_pthru,largecar_bev,large_car_bev (NCA)
+trn_passenger,pass_road,pass_road,trn_pass_road_pthru,pass_ldv,pass_ldv,trn_pass_ldv_pthru,ldv_4w,ldv_4w,trn_ldv_4w_pthru,Large Car and Truck,large_car_bev,trn_large_car_bev_pthru,largecar_bev,large_car_bev (LFP)
+trn_passenger,pass_road,pass_road,trn_pass_road_pthru,pass_ldv,pass_ldv,trn_pass_ldv_pthru,ldv_4w,ldv_4w,trn_ldv_4w_pthru,Mini Car,FCEV,,,
+trn_passenger,pass_road,pass_road,trn_pass_road_pthru,pass_ldv,pass_ldv,trn_pass_ldv_pthru,ldv_4w,ldv_4w,trn_ldv_4w_pthru,Mini Car,Hybrid Liquids,,,
+trn_passenger,pass_road,pass_road,trn_pass_road_pthru,pass_ldv,pass_ldv,trn_pass_ldv_pthru,ldv_4w,ldv_4w,trn_ldv_4w_pthru,Mini Car,Liquids,,,
+trn_passenger,pass_road,pass_road,trn_pass_road_pthru,pass_ldv,pass_ldv,trn_pass_ldv_pthru,ldv_4w,ldv_4w,trn_ldv_4w_pthru,Mini Car,NG,,,
+trn_passenger,pass_road,pass_road,trn_pass_road_pthru,pass_ldv,pass_ldv,trn_pass_ldv_pthru,ldv_4w,ldv_4w,trn_ldv_4w_pthru,Mini Car,mini_car_bev,trn_mini_car_bev_pthru,mini_car_bev,mini_car_bev (LMO)
+trn_passenger,pass_road,pass_road,trn_pass_road_pthru,pass_ldv,pass_ldv,trn_pass_ldv_pthru,ldv_4w,ldv_4w,trn_ldv_4w_pthru,Mini Car,mini_car_bev,trn_mini_car_bev_pthru,mini_car_bev,mini_car_bev (NMC111)
+trn_passenger,pass_road,pass_road,trn_pass_road_pthru,pass_ldv,pass_ldv,trn_pass_ldv_pthru,ldv_4w,ldv_4w,trn_ldv_4w_pthru,Mini Car,mini_car_bev,trn_mini_car_bev_pthru,mini_car_bev,mini_car_bev (NMC622)
+trn_passenger,pass_road,pass_road,trn_pass_road_pthru,pass_ldv,pass_ldv,trn_pass_ldv_pthru,ldv_4w,ldv_4w,trn_ldv_4w_pthru,Mini Car,mini_car_bev,trn_mini_car_bev_pthru,mini_car_bev,mini_car_bev (NMC811)
+trn_passenger,pass_road,pass_road,trn_pass_road_pthru,pass_ldv,pass_ldv,trn_pass_ldv_pthru,ldv_4w,ldv_4w,trn_ldv_4w_pthru,Mini Car,mini_car_bev,trn_mini_car_bev_pthru,mini_car_bev,mini_car_bev (NCA)
+trn_passenger,pass_road,pass_road,trn_pass_road_pthru,pass_ldv,pass_ldv,trn_pass_ldv_pthru,ldv_4w,ldv_4w,trn_ldv_4w_pthru,Mini Car,mini_car_bev,trn_mini_car_bev_pthru,mini_car_bev,mini_car_bev (LFP)

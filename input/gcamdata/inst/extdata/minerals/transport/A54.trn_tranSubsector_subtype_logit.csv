@@ -1,0 +1,14 @@
+# File: A54.trn_tranSubsector_subtype_logit.csv
+# Title: Transportation subtype subsector logit exponents (for mineral modeling)
+# Source: based on data from A54.tranSubsector_logit_revised
+# Units: Unitless
+# Column types: ccicc
+# ----------
+supplysector,tranSubsector,logit.exponent,logit.factor,logit.type
+trn_fret_road_lt_bev_pass,fret_road_lt_bev,-8,Fuel types,absolute-cost-logit
+trn_fret_road_mt_bev_pass,fret_road_mt_bev,-8,Fuel types,absolute-cost-logit
+trn_fret_road_ht_bev_pass,fret_road_ht_bev,-8,Fuel types,absolute-cost-logit
+trn_bus_bev_pass,bus_bev,-3,Fuel types,absolute-cost-logit
+trn_pasg_road_ldv_4W_mc_bev_pass,car_bev,-8,Fuel types and ICE efficiency levels,absolute-cost-logit
+trn_pasg_road_ldv_4W_hc_bev_pass,largecar_bev,-8,Fuel types and ICE efficiency levels,absolute-cost-logit
+trn_pasg_road_ldv_4W_lc_bev_pass,minicar_bev,-8,Fuel types and ICE efficiency levels,absolute-cost-logit

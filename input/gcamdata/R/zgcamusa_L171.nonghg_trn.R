@@ -43,7 +43,8 @@ module_gcamusa_L171.nonghg_trn <- function(command, ...) {
              FILE="gcam-usa/emissions/MOVES_EV_Efs_ORD",
              FILE="gcam-usa/emissions/NEI_pollutant_mapping",
              FILE="gcam-usa/emissions/MARKAL_GCAM_mapping",
-             FILE="gcam-usa/emissions/MOVES_motorcycle_data"))
+             FILE="gcam-usa/emissions/MOVES_motorcycle_data",
+             FILE="minerals/transport/A54.trn_tech_mineral_bev_mapping"))
   } else if(command == driver.DECLARE_OUTPUTS) {
     return(c("L171.nonco2_tgpkm_censusR_trn_SMarkal_F_V_Y",
              "L171.nonco2_tgpkm_state_trn_SMarkal_F_Y"))
@@ -80,6 +81,7 @@ module_gcamusa_L171.nonghg_trn <- function(command, ...) {
     NEI_pollutant_mapping <- get_data(all_data, "gcam-usa/emissions/NEI_pollutant_mapping")
     MARKAL_GCAM_mapping <- get_data(all_data, "gcam-usa/emissions/MARKAL_GCAM_mapping")
     MOVES_motorcycle_data <- get_data(all_data, "gcam-usa/emissions/MOVES_motorcycle_data")
+    A54.trn_tech_mineral_bev_mapping <- get_data(all_data, "minerals/transport/A54.trn_tech_mineral_bev_mapping")
     # -----------------------------------------------------------------------------
 
     # Perform computations
@@ -90,6 +92,15 @@ module_gcamusa_L171.nonghg_trn <- function(command, ...) {
     # each vintage existing in a given year to accurately capture the fleet EF
     # =================================================================================
 
+    # Update the BEV in the trnMARKAL_UCD_mapping for the new mineral structure
+    trnMARKAL_UCD_mapping %>%
+      filter(MARKAL_fuel == "ELC") %>%
+      left_join(A54.trn_tech_mineral_bev_mapping %>%
+                  select(from.subsector, from.technology, to.technology),
+                by = c("size.class" = "from.subsector", "UCD_technology" = "from.technology")) %>%
+      select(MARKAL_mode, MARKAL_class,  MARKAL_fuel, UCD_mode, size.class, UCD_technology = to.technology) %>%
+      rbind(trnMARKAL_UCD_mapping %>% filter(MARKAL_fuel != "ELC")) ->
+      trnMARKAL_UCD_mapping
     # 1a. Age fraction data
     # =================================================================================
     # The base year vehicle emissions must incorporate past vintages. Here we will assign age fractions to
@@ -367,10 +378,19 @@ module_gcamusa_L171.nonghg_trn <- function(command, ...) {
       select(-Vintage)
 
     # Prepare Load factor
-    StubTranTechLoadFactor_USA <- L254.StubTranTechLoadFactor %>%
+    StubTranTechLoadFactor_USA_CORE <- L254.StubTranTechLoadFactor %>%
       filter(region == "USA",
-             sce == "CORE") %>%
-      select( -c( region, sce ) )
+             sce == "CORE")
+
+    StubTranTechLoadFactor_USA_CORE %>%
+      filter(grepl("bev", tranSubsector)) %>%
+      left_join(A54.trn_tech_mineral_bev_mapping,
+                by = c("supplysector" = "to.supplysector", "tranSubsector" = "to.subsector", "stub.technology" = "to.technology")) %>%
+      select(region, supplysector, tranSubsector = from.subsector, stub.technology, year, loadFactor, sce) %>%
+      rbind(StubTranTechLoadFactor_USA_CORE %>%
+              filter(!grepl("bev", tranSubsector))) %>%
+      select( -c( region, sce )) ->
+      StubTranTechLoadFactor_USA
 
     # Make a table with the base and future year emission factors
     MARKAL_LDV_EFs_gpm_Y.long <- bind_rows(MARKAL_LDV_EFs_gpm_Yb.avg, MARKAL_LDV_EFs_gpm_Yf)
@@ -733,7 +753,8 @@ module_gcamusa_L171.nonghg_trn <- function(command, ...) {
                      "gcam-usa/emissions/MARKAL_LDV_eff_missing_mapping",
                      "gcam-usa/emissions/MARKAL_HDV_EFs_gpm",
                      "gcam-usa/states_subregions",
-                     "gcam-usa/emissions/MOVES_motorcycle_data")
+                     "gcam-usa/emissions/MOVES_motorcycle_data",
+                     "minerals/transport/A54.trn_tech_mineral_bev_mapping")
 
     L171.nonco2_tgpkm_state_trn_SMarkal_F_Y <- L171.nonco2_tgpkm_state_trn_SMarkal_F_Y %>%
       add_title("Transportation non-co2 emission factor by U.S. state / MARKAL vehicle class / fuel / pollutant / year") %>%
@@ -760,7 +781,8 @@ module_gcamusa_L171.nonghg_trn <- function(command, ...) {
                      "gcam-usa/emissions/MOVES_EV_Efs_ORD",
                      "gcam-usa/emissions/NEI_pollutant_mapping",
                      "gcam-usa/emissions/MARKAL_GCAM_mapping",
-                     "gcam-usa/emissions/MOVES_motorcycle_data")
+                     "gcam-usa/emissions/MOVES_motorcycle_data",
+                     "minerals/transport/A54.trn_tech_mineral_bev_mapping")
 
 
 

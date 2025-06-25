@@ -1,0 +1,31 @@
+# File: A54.trn_sector_mineral.csv
+# Title: Transportation sector default supplysector information for subtype technologies (units and logit exponents)
+# Units: Unitless
+# Column types: ccccicccc
+# ----------
+supplysector,output.unit,input.unit,price.unit,logit.exponent,final.energy,logit.factor,energy.final.demand,logit.type
+trn_aviation_intl,million pass-km,EJ,1990$/pass-km,-3,transportation,,trn_aviation_intl,
+trn_aviation_intl_pass,million pass-km,EJ,1990$/pass-km,-3,transportation,,trn_aviation_intl,
+trn_shipping_intl,million ton-km,EJ,1990$/ton-km,-3,transportation,,trn_shipping_intl,
+trn_ship_intl_pass,million ton-km,EJ,1990$/ton-km,-3,transportation,,trn_shipping_intl,
+trn_freight,million ton-km,EJ,1990$/ton-km,-2,transportation,road / rail / air / ship,trn_freight,
+trn_dom_ship_pass,million ton-km,EJ,1990$/ton-km,-2,transportation,road / rail / air / ship,trn_freight,
+trn_fret_rail_pass,million ton-km,EJ,1990$/ton-km,-2,transportation,road / rail / air / ship,trn_freight,
+trn_fret_road_pass,million ton-km,EJ,1990$/ton-km,-1,transportation,truck size classes,trn_freight,
+trn_fret_road_lt_bev_pass,million ton-km,EJ,1990$/ton-km,-1,transportation,truck size classes,trn_freight,
+trn_fret_road_mt_bev_pass,million ton-km,EJ,1990$/ton-km,-1,transportation,truck size classes,trn_freight,
+trn_fret_road_ht_bev_pass,million ton-km,EJ,1990$/ton-km,-1,transportation,truck size classes,trn_freight,
+trn_passenger,million pass-km,EJ,1990$/pass-km,-2,transportation,ldv / bus,trn_passenger,
+trn_pasg_cycle_pass,million pass-km,EJ,1990$/pass-km,-2,transportation,ldv / bus,trn_passenger,
+trn_pasg_aviation_dom_pass,million pass-km,EJ,1990$/pass-km,-2,transportation,ldv / bus,trn_passenger,
+trn_pasg_hsr_pass,million pass-km,EJ,1990$/pass-km,-2,transportation,ldv / bus,trn_passenger,
+trn_pasg_rail_pass,million pass-km,EJ,1990$/pass-km,-2,transportation,ldv / bus,trn_passenger,
+trn_pasg_road_pass,million pass-km,EJ,1990$/pass-km,-4,transportation,light bus / heavy bus,trn_passenger,
+trn_pasg_road_bus_pass,million pass-km,EJ,1990$/pass-km,-4,transportation,2W / 3W / 4W,trn_passenger,
+trn_pasg_road_ldv_pass,million pass-km,EJ,1990$/pass-km,-4,transportation,moped / motorcycle size classes,trn_passenger,
+trn_pasg_road_ldv_2_3W_pass,million pass-km,EJ,1990$/pass-km,-6,transportation,car / light truck size classes,trn_passenger,
+trn_pasg_road_ldv_4w_pass,million pass-km,EJ,1990$/pass-km,-6,transportation,rail / air / road / hsr,trn_passenger,absolute-cost-logit
+trn_bus_bev_pass,million pass-km,EJ,1990$/pass-km,-4,transportation,2W / 3W / 4W,trn_passenger,
+trn_pasg_road_ldv_4W_mc_bev_pass,million pass-km,EJ,1990$/pass-km,-6,transportation,rail / air / road / hsr,trn_passenger,absolute-cost-logit
+trn_pasg_road_ldv_4W_hc_bev_pass,million pass-km,EJ,1990$/pass-km,-6,transportation,rail / air / road / hsr,trn_passenger,absolute-cost-logit
+trn_pasg_road_ldv_4W_lc_bev_pass,million pass-km,EJ,1990$/pass-km,-6,transportation,rail / air / road / hsr,trn_passenger,absolute-cost-logit

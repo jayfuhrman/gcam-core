@@ -1,0 +1,11 @@
+# File: A_mineral_RegionalSubsector.csv
+# Title: Subsector assumptions for regional mineral markets
+# Units: Various
+# Comments: Shareweights wont matter for now since there is only 1 technology
+# Source: NA
+# Column types: ccncncccncc
+# ----------
+supplysector,subsector,logit.exponent,year.fillout,share.weight,apply.to,from.year,to.year,to.value,interpolation.function,logit.type
+regional copper,imported copper,-6,start-year,1,share-weight,final-calibration-year,2300,1,s-curve,
+regional lithium,imported lithium,-6,start-year,1,share-weight,final-calibration-year,2300,1,s-curve,
+regional nickel,imported nickel,-6,start-year,1,share-weight,final-calibration-year,2300,1,s-curve,

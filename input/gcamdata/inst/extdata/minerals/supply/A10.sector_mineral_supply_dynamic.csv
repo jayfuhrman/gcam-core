@@ -1,0 +1,9 @@
+# File: A10.sector_mineral_supply_dynamic.csv
+# Title: Mineral supply dynamic supplysector info
+# Units: Mt for output and input unit, 1975$/kg for price unit, unitless for logit exponent
+# Column types: ccccnc
+# ----------
+supplysector,output.unit,input.unit,price.unit,logit.exponent,logit.type
+copper dynamic-capacity,Mt,Mt,1975$/kg,-6,absolute-cost-logit
+lithium dynamic-capacity,Mt,Mt,1975$/kg,-6,absolute-cost-logit
+nickel dynamic-capacity,Mt,Mt,1975$/kg,-6,absolute-cost-logit

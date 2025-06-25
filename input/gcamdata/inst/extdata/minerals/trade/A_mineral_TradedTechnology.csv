@@ -1,0 +1,11 @@
+# File: A_mineral_TradedTechnology.csv
+# Title: Technology-level assumptions of traded mineral markets
+# Units: Various
+# Comments: for traded minerals, each subsector has only one technology; there is no technology-level competition
+# Source: NA
+# Column types: ccccnnni 
+# ----------
+supplysector,subsector,technology,minicam.energy.input,coefficient,input.cost,share.weight,traded
+traded copper,traded copper,traded copper,copper,1,0,1,1
+traded lithium,traded lithium,traded lithium,lithium,1,0,1,1
+traded nickel,traded nickel,traded nickel,nickel,1,0,1,1

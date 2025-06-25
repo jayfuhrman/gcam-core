@@ -1,0 +1,1736 @@
+# File: A26.td_nonenergy_cost_nonmineral.csv
+# Title: Electricity transmission and distribution sector non-energy costs (excluding mineral costs)
+# Units: $1975/GJ
+# Description: Updates non-energy costs for the electricity transmission sectors to have regionally and time varying costs. Costs are total transmission and distribution costs minus mineral costs. Regional variation is based on regional variation in mineral costs which reflects disparities in transmission and distribution intensity (per unit electricity generation).
+# Comment:
+# Column types: ccccncn
+# ----------
+region,supplysector,subsector,stub.technology,year,minicam.non.energy.input,input.cost
+USA,elect_td_bld,elect_td_bld,elect_td_bld,2015,non-energy,1.727935569
+USA,elect_td_ind,elect_td_ind,elect_td_ind,2015,non-energy,0.264279406
+USA,elect_td_trn,elect_td_trn,elect_td_trn,2015,non-energy,1.727935569
+USA,elect_td_bld,elect_td_bld,elect_td_bld,2020,non-energy,1.699335925
+USA,elect_td_ind,elect_td_ind,elect_td_ind,2020,non-energy,0.266013341
+USA,elect_td_trn,elect_td_trn,elect_td_trn,2020,non-energy,1.699335925
+USA,elect_td_bld,elect_td_bld,elect_td_bld,2025,non-energy,1.657699259
+USA,elect_td_ind,elect_td_ind,elect_td_ind,2025,non-energy,0.264560311
+USA,elect_td_trn,elect_td_trn,elect_td_trn,2025,non-energy,1.657699259
+USA,elect_td_bld,elect_td_bld,elect_td_bld,2030,non-energy,1.594689517
+USA,elect_td_ind,elect_td_ind,elect_td_ind,2030,non-energy,0.257745984
+USA,elect_td_trn,elect_td_trn,elect_td_trn,2030,non-energy,1.594689517
+USA,elect_td_bld,elect_td_bld,elect_td_bld,2035,non-energy,1.525623278
+USA,elect_td_ind,elect_td_ind,elect_td_ind,2035,non-energy,0.24943795
+USA,elect_td_trn,elect_td_trn,elect_td_trn,2035,non-energy,1.525623278
+USA,elect_td_bld,elect_td_bld,elect_td_bld,2040,non-energy,1.499062963
+USA,elect_td_ind,elect_td_ind,elect_td_ind,2040,non-energy,0.251693434
+USA,elect_td_trn,elect_td_trn,elect_td_trn,2040,non-energy,1.499062963
+USA,elect_td_bld,elect_td_bld,elect_td_bld,2045,non-energy,1.465884069
+USA,elect_td_ind,elect_td_ind,elect_td_ind,2045,non-energy,0.252307762
+USA,elect_td_trn,elect_td_trn,elect_td_trn,2045,non-energy,1.465884069
+USA,elect_td_bld,elect_td_bld,elect_td_bld,2050,non-energy,1.480270285
+USA,elect_td_ind,elect_td_ind,elect_td_ind,2050,non-energy,0.264716031
+USA,elect_td_trn,elect_td_trn,elect_td_trn,2050,non-energy,1.480270285
+USA,elect_td_bld,elect_td_bld,elect_td_bld,2055,non-energy,1.443039595
+USA,elect_td_ind,elect_td_ind,elect_td_ind,2055,non-energy,0.255269438
+USA,elect_td_trn,elect_td_trn,elect_td_trn,2055,non-energy,1.443039595
+USA,elect_td_bld,elect_td_bld,elect_td_bld,2060,non-energy,1.405739444
+USA,elect_td_ind,elect_td_ind,elect_td_ind,2060,non-energy,0.245753385
+USA,elect_td_trn,elect_td_trn,elect_td_trn,2060,non-energy,1.405739444
+USA,elect_td_bld,elect_td_bld,elect_td_bld,2065,non-energy,1.368439293
+USA,elect_td_ind,elect_td_ind,elect_td_ind,2065,non-energy,0.236237331
+USA,elect_td_trn,elect_td_trn,elect_td_trn,2065,non-energy,1.368439293
+USA,elect_td_bld,elect_td_bld,elect_td_bld,2070,non-energy,1.331139143
+USA,elect_td_ind,elect_td_ind,elect_td_ind,2070,non-energy,0.226721278
+USA,elect_td_trn,elect_td_trn,elect_td_trn,2070,non-energy,1.331139143
+USA,elect_td_bld,elect_td_bld,elect_td_bld,2075,non-energy,1.293838992
+USA,elect_td_ind,elect_td_ind,elect_td_ind,2075,non-energy,0.217205225
+USA,elect_td_trn,elect_td_trn,elect_td_trn,2075,non-energy,1.293838992
+USA,elect_td_bld,elect_td_bld,elect_td_bld,2080,non-energy,1.256538842
+USA,elect_td_ind,elect_td_ind,elect_td_ind,2080,non-energy,0.207689171
+USA,elect_td_trn,elect_td_trn,elect_td_trn,2080,non-energy,1.256538842
+USA,elect_td_bld,elect_td_bld,elect_td_bld,2085,non-energy,1.219308152
+USA,elect_td_ind,elect_td_ind,elect_td_ind,2085,non-energy,0.198242578
+USA,elect_td_trn,elect_td_trn,elect_td_trn,2085,non-energy,1.219308152
+USA,elect_td_bld,elect_td_bld,elect_td_bld,2090,non-energy,1.182008001
+USA,elect_td_ind,elect_td_ind,elect_td_ind,2090,non-energy,0.188726525
+USA,elect_td_trn,elect_td_trn,elect_td_trn,2090,non-energy,1.182008001
+USA,elect_td_bld,elect_td_bld,elect_td_bld,2095,non-energy,1.144707851
+USA,elect_td_ind,elect_td_ind,elect_td_ind,2095,non-energy,0.179210472
+USA,elect_td_trn,elect_td_trn,elect_td_trn,2095,non-energy,1.144707851
+USA,elect_td_bld,elect_td_bld,elect_td_bld,2100,non-energy,1.1074077
+USA,elect_td_ind,elect_td_ind,elect_td_ind,2100,non-energy,0.169694418
+USA,elect_td_trn,elect_td_trn,elect_td_trn,2100,non-energy,1.1074077
+Africa_Eastern,elect_td_bld,elect_td_bld,elect_td_bld,2015,non-energy,9.457571379
+Africa_Eastern,elect_td_ind,elect_td_ind,elect_td_ind,2015,non-energy,1.446489901
+Africa_Eastern,elect_td_trn,elect_td_trn,elect_td_trn,2015,non-energy,9.457571379
+Africa_Eastern,elect_td_bld,elect_td_bld,elect_td_bld,2020,non-energy,8.785175599
+Africa_Eastern,elect_td_ind,elect_td_ind,elect_td_ind,2020,non-energy,1.375227746
+Africa_Eastern,elect_td_trn,elect_td_trn,elect_td_trn,2020,non-energy,8.785175599
+Africa_Eastern,elect_td_bld,elect_td_bld,elect_td_bld,2025,non-energy,8.004684729
+Africa_Eastern,elect_td_ind,elect_td_ind,elect_td_ind,2025,non-energy,1.277506684
+Africa_Eastern,elect_td_trn,elect_td_trn,elect_td_trn,2025,non-energy,8.004684729
+Africa_Eastern,elect_td_bld,elect_td_bld,elect_td_bld,2030,non-energy,7.085255801
+Africa_Eastern,elect_td_ind,elect_td_ind,elect_td_ind,2030,non-energy,1.145173534
+Africa_Eastern,elect_td_trn,elect_td_trn,elect_td_trn,2030,non-energy,7.085255801
+Africa_Eastern,elect_td_bld,elect_td_bld,elect_td_bld,2035,non-energy,6.107140846
+Africa_Eastern,elect_td_ind,elect_td_ind,elect_td_ind,2035,non-energy,0.9985117
+Africa_Eastern,elect_td_trn,elect_td_trn,elect_td_trn,2035,non-energy,6.107140846
+Africa_Eastern,elect_td_bld,elect_td_bld,elect_td_bld,2040,non-energy,5.241532311
+Africa_Eastern,elect_td_ind,elect_td_ind,elect_td_ind,2040,non-energy,0.880055942
+Africa_Eastern,elect_td_trn,elect_td_trn,elect_td_trn,2040,non-energy,5.241532311
+Africa_Eastern,elect_td_bld,elect_td_bld,elect_td_bld,2045,non-energy,4.261602601
+Africa_Eastern,elect_td_ind,elect_td_ind,elect_td_ind,2045,non-energy,0.733506447
+Africa_Eastern,elect_td_trn,elect_td_trn,elect_td_trn,2045,non-energy,4.261602601
+Africa_Eastern,elect_td_bld,elect_td_bld,elect_td_bld,2050,non-energy,3.275635363
+Africa_Eastern,elect_td_ind,elect_td_ind,elect_td_ind,2050,non-energy,0.585780314
+Africa_Eastern,elect_td_trn,elect_td_trn,elect_td_trn,2050,non-energy,3.275635363
+Africa_Eastern,elect_td_bld,elect_td_bld,elect_td_bld,2055,non-energy,3.193248946
+Africa_Eastern,elect_td_ind,elect_td_ind,elect_td_ind,2055,non-energy,0.564876298
+Africa_Eastern,elect_td_trn,elect_td_trn,elect_td_trn,2055,non-energy,3.193248946
+Africa_Eastern,elect_td_bld,elect_td_bld,elect_td_bld,2060,non-energy,3.110708822
+Africa_Eastern,elect_td_ind,elect_td_ind,elect_td_ind,2060,non-energy,0.543818575
+Africa_Eastern,elect_td_trn,elect_td_trn,elect_td_trn,2060,non-energy,3.110708822
+Africa_Eastern,elect_td_bld,elect_td_bld,elect_td_bld,2065,non-energy,3.028168699
+Africa_Eastern,elect_td_ind,elect_td_ind,elect_td_ind,2065,non-energy,0.522760853
+Africa_Eastern,elect_td_trn,elect_td_trn,elect_td_trn,2065,non-energy,3.028168699
+Africa_Eastern,elect_td_bld,elect_td_bld,elect_td_bld,2070,non-energy,2.945628575
+Africa_Eastern,elect_td_ind,elect_td_ind,elect_td_ind,2070,non-energy,0.50170313
+Africa_Eastern,elect_td_trn,elect_td_trn,elect_td_trn,2070,non-energy,2.945628575
+Africa_Eastern,elect_td_bld,elect_td_bld,elect_td_bld,2075,non-energy,2.863088452
+Africa_Eastern,elect_td_ind,elect_td_ind,elect_td_ind,2075,non-energy,0.480645408
+Africa_Eastern,elect_td_trn,elect_td_trn,elect_td_trn,2075,non-energy,2.863088452
+Africa_Eastern,elect_td_bld,elect_td_bld,elect_td_bld,2080,non-energy,2.780548328
+Africa_Eastern,elect_td_ind,elect_td_ind,elect_td_ind,2080,non-energy,0.459587686
+Africa_Eastern,elect_td_trn,elect_td_trn,elect_td_trn,2080,non-energy,2.780548328
+Africa_Eastern,elect_td_bld,elect_td_bld,elect_td_bld,2085,non-energy,2.698161911
+Africa_Eastern,elect_td_ind,elect_td_ind,elect_td_ind,2085,non-energy,0.438683669
+Africa_Eastern,elect_td_trn,elect_td_trn,elect_td_trn,2085,non-energy,2.698161911
+Africa_Eastern,elect_td_bld,elect_td_bld,elect_td_bld,2090,non-energy,2.615621787
+Africa_Eastern,elect_td_ind,elect_td_ind,elect_td_ind,2090,non-energy,0.417625947
+Africa_Eastern,elect_td_trn,elect_td_trn,elect_td_trn,2090,non-energy,2.615621787
+Africa_Eastern,elect_td_bld,elect_td_bld,elect_td_bld,2095,non-energy,2.533081664
+Africa_Eastern,elect_td_ind,elect_td_ind,elect_td_ind,2095,non-energy,0.396568225
+Africa_Eastern,elect_td_trn,elect_td_trn,elect_td_trn,2095,non-energy,2.533081664
+Africa_Eastern,elect_td_bld,elect_td_bld,elect_td_bld,2100,non-energy,2.45054154
+Africa_Eastern,elect_td_ind,elect_td_ind,elect_td_ind,2100,non-energy,0.375510502
+Africa_Eastern,elect_td_trn,elect_td_trn,elect_td_trn,2100,non-energy,2.45054154
+Africa_Northern,elect_td_bld,elect_td_bld,elect_td_bld,2015,non-energy,3.296548071
+Africa_Northern,elect_td_ind,elect_td_ind,elect_td_ind,2015,non-energy,0.504191119
+Africa_Northern,elect_td_trn,elect_td_trn,elect_td_trn,2015,non-energy,3.296548071
+Africa_Northern,elect_td_bld,elect_td_bld,elect_td_bld,2020,non-energy,3.192372902
+Africa_Northern,elect_td_ind,elect_td_ind,elect_td_ind,2020,non-energy,0.499732731
+Africa_Northern,elect_td_trn,elect_td_trn,elect_td_trn,2020,non-energy,3.192372902
+Africa_Northern,elect_td_bld,elect_td_bld,elect_td_bld,2025,non-energy,3.059792375
+Africa_Northern,elect_td_ind,elect_td_ind,elect_td_ind,2025,non-energy,0.488327191
+Africa_Northern,elect_td_trn,elect_td_trn,elect_td_trn,2025,non-energy,3.059792375
+Africa_Northern,elect_td_bld,elect_td_bld,elect_td_bld,2030,non-energy,2.884324761
+Africa_Northern,elect_td_ind,elect_td_ind,elect_td_ind,2030,non-energy,0.466186751
+Africa_Northern,elect_td_trn,elect_td_trn,elect_td_trn,2030,non-energy,2.884324761
+Africa_Northern,elect_td_bld,elect_td_bld,elect_td_bld,2035,non-energy,2.694846588
+Africa_Northern,elect_td_ind,elect_td_ind,elect_td_ind,2035,non-energy,0.440604845
+Africa_Northern,elect_td_trn,elect_td_trn,elect_td_trn,2035,non-energy,2.694846588
+Africa_Northern,elect_td_bld,elect_td_bld,elect_td_bld,2040,non-energy,2.574906297
+Africa_Northern,elect_td_ind,elect_td_ind,elect_td_ind,2040,non-energy,0.432328077
+Africa_Northern,elect_td_trn,elect_td_trn,elect_td_trn,2040,non-energy,2.574906297
+Africa_Northern,elect_td_bld,elect_td_bld,elect_td_bld,2045,non-energy,2.434828274
+Africa_Northern,elect_td_ind,elect_td_ind,elect_td_ind,2045,non-energy,0.419082304
+Africa_Northern,elect_td_trn,elect_td_trn,elect_td_trn,2045,non-energy,2.434828274
+Africa_Northern,elect_td_bld,elect_td_bld,elect_td_bld,2050,non-energy,2.35987591
+Africa_Northern,elect_td_ind,elect_td_ind,elect_td_ind,2050,non-energy,0.422015487
+Africa_Northern,elect_td_trn,elect_td_trn,elect_td_trn,2050,non-energy,2.35987591
+Africa_Northern,elect_td_bld,elect_td_bld,elect_td_bld,2055,non-energy,2.300522014
+Africa_Northern,elect_td_ind,elect_td_ind,elect_td_ind,2055,non-energy,0.406955543
+Africa_Northern,elect_td_trn,elect_td_trn,elect_td_trn,2055,non-energy,2.300522014
+Africa_Northern,elect_td_bld,elect_td_bld,elect_td_bld,2060,non-energy,2.241057383
+Africa_Northern,elect_td_ind,elect_td_ind,elect_td_ind,2060,non-energy,0.391784864
+Africa_Northern,elect_td_trn,elect_td_trn,elect_td_trn,2060,non-energy,2.241057383
+Africa_Northern,elect_td_bld,elect_td_bld,elect_td_bld,2065,non-energy,2.181592751
+Africa_Northern,elect_td_ind,elect_td_ind,elect_td_ind,2065,non-energy,0.376614185
+Africa_Northern,elect_td_trn,elect_td_trn,elect_td_trn,2065,non-energy,2.181592751
+Africa_Northern,elect_td_bld,elect_td_bld,elect_td_bld,2070,non-energy,2.12212812
+Africa_Northern,elect_td_ind,elect_td_ind,elect_td_ind,2070,non-energy,0.361443507
+Africa_Northern,elect_td_trn,elect_td_trn,elect_td_trn,2070,non-energy,2.12212812
+Africa_Northern,elect_td_bld,elect_td_bld,elect_td_bld,2075,non-energy,2.062663489
+Africa_Northern,elect_td_ind,elect_td_ind,elect_td_ind,2075,non-energy,0.346272828
+Africa_Northern,elect_td_trn,elect_td_trn,elect_td_trn,2075,non-energy,2.062663489
+Africa_Northern,elect_td_bld,elect_td_bld,elect_td_bld,2080,non-energy,2.003198857
+Africa_Northern,elect_td_ind,elect_td_ind,elect_td_ind,2080,non-energy,0.331102149
+Africa_Northern,elect_td_trn,elect_td_trn,elect_td_trn,2080,non-energy,2.003198857
+Africa_Northern,elect_td_bld,elect_td_bld,elect_td_bld,2085,non-energy,1.943844961
+Africa_Northern,elect_td_ind,elect_td_ind,elect_td_ind,2085,non-energy,0.316042205
+Africa_Northern,elect_td_trn,elect_td_trn,elect_td_trn,2085,non-energy,1.943844961
+Africa_Northern,elect_td_bld,elect_td_bld,elect_td_bld,2090,non-energy,1.88438033
+Africa_Northern,elect_td_ind,elect_td_ind,elect_td_ind,2090,non-energy,0.300871526
+Africa_Northern,elect_td_trn,elect_td_trn,elect_td_trn,2090,non-energy,1.88438033
+Africa_Northern,elect_td_bld,elect_td_bld,elect_td_bld,2095,non-energy,1.824915698
+Africa_Northern,elect_td_ind,elect_td_ind,elect_td_ind,2095,non-energy,0.285700848
+Africa_Northern,elect_td_trn,elect_td_trn,elect_td_trn,2095,non-energy,1.824915698
+Africa_Northern,elect_td_bld,elect_td_bld,elect_td_bld,2100,non-energy,1.765451067
+Africa_Northern,elect_td_ind,elect_td_ind,elect_td_ind,2100,non-energy,0.270530169
+Africa_Northern,elect_td_trn,elect_td_trn,elect_td_trn,2100,non-energy,1.765451067
+Africa_Southern,elect_td_bld,elect_td_bld,elect_td_bld,2015,non-energy,5.375851945
+Africa_Southern,elect_td_ind,elect_td_ind,elect_td_ind,2015,non-energy,0.822210612
+Africa_Southern,elect_td_trn,elect_td_trn,elect_td_trn,2015,non-energy,5.375851945
+Africa_Southern,elect_td_bld,elect_td_bld,elect_td_bld,2020,non-energy,5.205570923
+Africa_Southern,elect_td_ind,elect_td_ind,elect_td_ind,2020,non-energy,0.814877914
+Africa_Southern,elect_td_trn,elect_td_trn,elect_td_trn,2020,non-energy,5.205570923
+Africa_Southern,elect_td_bld,elect_td_bld,elect_td_bld,2025,non-energy,4.988939526
+Africa_Southern,elect_td_ind,elect_td_ind,elect_td_ind,2025,non-energy,0.796209195
+Africa_Southern,elect_td_trn,elect_td_trn,elect_td_trn,2025,non-energy,4.988939526
+Africa_Southern,elect_td_bld,elect_td_bld,elect_td_bld,2030,non-energy,4.702353027
+Africa_Southern,elect_td_ind,elect_td_ind,elect_td_ind,2030,non-energy,0.760030461
+Africa_Southern,elect_td_trn,elect_td_trn,elect_td_trn,2030,non-energy,4.702353027
+Africa_Southern,elect_td_bld,elect_td_bld,elect_td_bld,2035,non-energy,4.39289912
+Africa_Southern,elect_td_ind,elect_td_ind,elect_td_ind,2035,non-energy,0.718234813
+Africa_Southern,elect_td_trn,elect_td_trn,elect_td_trn,2035,non-energy,4.39289912
+Africa_Southern,elect_td_bld,elect_td_bld,elect_td_bld,2040,non-energy,4.196751746
+Africa_Southern,elect_td_ind,elect_td_ind,elect_td_ind,2040,non-energy,0.704636754
+Africa_Southern,elect_td_trn,elect_td_trn,elect_td_trn,2040,non-energy,4.196751746
+Africa_Southern,elect_td_bld,elect_td_bld,elect_td_bld,2045,non-energy,3.967704601
+Africa_Southern,elect_td_ind,elect_td_ind,elect_td_ind,2045,non-energy,0.682920764
+Africa_Southern,elect_td_trn,elect_td_trn,elect_td_trn,2045,non-energy,3.967704601
+Africa_Southern,elect_td_bld,elect_td_bld,elect_td_bld,2050,non-energy,3.844656158
+Africa_Southern,elect_td_ind,elect_td_ind,elect_td_ind,2050,non-energy,0.687538032
+Africa_Southern,elect_td_trn,elect_td_trn,elect_td_trn,2050,non-energy,3.844656158
+Africa_Southern,elect_td_bld,elect_td_bld,elect_td_bld,2055,non-energy,3.74795814
+Africa_Southern,elect_td_ind,elect_td_ind,elect_td_ind,2055,non-energy,0.663002714
+Africa_Southern,elect_td_trn,elect_td_trn,elect_td_trn,2055,non-energy,3.74795814
+Africa_Southern,elect_td_bld,elect_td_bld,elect_td_bld,2060,non-energy,3.651079715
+Africa_Southern,elect_td_ind,elect_td_ind,elect_td_ind,2060,non-energy,0.638286989
+Africa_Southern,elect_td_trn,elect_td_trn,elect_td_trn,2060,non-energy,3.651079715
+Africa_Southern,elect_td_bld,elect_td_bld,elect_td_bld,2065,non-energy,3.554201291
+Africa_Southern,elect_td_ind,elect_td_ind,elect_td_ind,2065,non-energy,0.613571265
+Africa_Southern,elect_td_trn,elect_td_trn,elect_td_trn,2065,non-energy,3.554201291
+Africa_Southern,elect_td_bld,elect_td_bld,elect_td_bld,2070,non-energy,3.457322866
+Africa_Southern,elect_td_ind,elect_td_ind,elect_td_ind,2070,non-energy,0.58885554
+Africa_Southern,elect_td_trn,elect_td_trn,elect_td_trn,2070,non-energy,3.457322866
+Africa_Southern,elect_td_bld,elect_td_bld,elect_td_bld,2075,non-energy,3.360444441
+Africa_Southern,elect_td_ind,elect_td_ind,elect_td_ind,2075,non-energy,0.564139815
+Africa_Southern,elect_td_trn,elect_td_trn,elect_td_trn,2075,non-energy,3.360444441
+Africa_Southern,elect_td_bld,elect_td_bld,elect_td_bld,2080,non-energy,3.263566016
+Africa_Southern,elect_td_ind,elect_td_ind,elect_td_ind,2080,non-energy,0.53942409
+Africa_Southern,elect_td_trn,elect_td_trn,elect_td_trn,2080,non-energy,3.263566016
+Africa_Southern,elect_td_bld,elect_td_bld,elect_td_bld,2085,non-energy,3.166867998
+Africa_Southern,elect_td_ind,elect_td_ind,elect_td_ind,2085,non-energy,0.514888772
+Africa_Southern,elect_td_trn,elect_td_trn,elect_td_trn,2085,non-energy,3.166867998
+Africa_Southern,elect_td_bld,elect_td_bld,elect_td_bld,2090,non-energy,3.069989573
+Africa_Southern,elect_td_ind,elect_td_ind,elect_td_ind,2090,non-energy,0.490173048
+Africa_Southern,elect_td_trn,elect_td_trn,elect_td_trn,2090,non-energy,3.069989573
+Africa_Southern,elect_td_bld,elect_td_bld,elect_td_bld,2095,non-energy,2.973111149
+Africa_Southern,elect_td_ind,elect_td_ind,elect_td_ind,2095,non-energy,0.465457323
+Africa_Southern,elect_td_trn,elect_td_trn,elect_td_trn,2095,non-energy,2.973111149
+Africa_Southern,elect_td_bld,elect_td_bld,elect_td_bld,2100,non-energy,2.876232724
+Africa_Southern,elect_td_ind,elect_td_ind,elect_td_ind,2100,non-energy,0.440741598
+Africa_Southern,elect_td_trn,elect_td_trn,elect_td_trn,2100,non-energy,2.876232724
+Africa_Western,elect_td_bld,elect_td_bld,elect_td_bld,2015,non-energy,7.376546739
+Africa_Western,elect_td_ind,elect_td_ind,elect_td_ind,2015,non-energy,1.128207225
+Africa_Western,elect_td_trn,elect_td_trn,elect_td_trn,2015,non-energy,7.376546739
+Africa_Western,elect_td_bld,elect_td_bld,elect_td_bld,2020,non-energy,7.028240162
+Africa_Western,elect_td_ind,elect_td_ind,elect_td_ind,2020,non-energy,1.100197801
+Africa_Western,elect_td_trn,elect_td_trn,elect_td_trn,2020,non-energy,7.028240162
+Africa_Western,elect_td_bld,elect_td_bld,elect_td_bld,2025,non-energy,6.608167804
+Africa_Western,elect_td_ind,elect_td_ind,elect_td_ind,2025,non-energy,1.054629735
+Africa_Western,elect_td_trn,elect_td_trn,elect_td_trn,2025,non-energy,6.608167804
+Africa_Western,elect_td_bld,elect_td_bld,elect_td_bld,2030,non-energy,6.087225757
+Africa_Western,elect_td_ind,elect_td_ind,elect_td_ind,2030,non-energy,0.983864243
+Africa_Western,elect_td_trn,elect_td_trn,elect_td_trn,2030,non-energy,6.087225757
+Africa_Western,elect_td_bld,elect_td_bld,elect_td_bld,2035,non-energy,5.529230179
+Africa_Western,elect_td_ind,elect_td_ind,elect_td_ind,2035,non-energy,0.904023857
+Africa_Western,elect_td_trn,elect_td_trn,elect_td_trn,2035,non-energy,5.529230179
+Africa_Western,elect_td_bld,elect_td_bld,elect_td_bld,2040,non-energy,5.10000718
+Africa_Western,elect_td_ind,elect_td_ind,elect_td_ind,2040,non-energy,0.8562938
+Africa_Western,elect_td_trn,elect_td_trn,elect_td_trn,2040,non-energy,5.10000718
+Africa_Western,elect_td_bld,elect_td_bld,elect_td_bld,2045,non-energy,4.608283111
+Africa_Western,elect_td_ind,elect_td_ind,elect_td_ind,2045,non-energy,0.793177048
+Africa_Western,elect_td_trn,elect_td_trn,elect_td_trn,2045,non-energy,4.608283111
+Africa_Western,elect_td_bld,elect_td_bld,elect_td_bld,2050,non-energy,4.20280253
+Africa_Western,elect_td_ind,elect_td_ind,elect_td_ind,2050,non-energy,0.751585178
+Africa_Western,elect_td_trn,elect_td_trn,elect_td_trn,2050,non-energy,4.20280253
+Africa_Western,elect_td_bld,elect_td_bld,elect_td_bld,2055,non-energy,4.097096673
+Africa_Western,elect_td_ind,elect_td_ind,elect_td_ind,2055,non-energy,0.724764288
+Africa_Western,elect_td_trn,elect_td_trn,elect_td_trn,2055,non-energy,4.097096673
+Africa_Western,elect_td_bld,elect_td_bld,elect_td_bld,2060,non-energy,3.991193603
+Africa_Western,elect_td_ind,elect_td_ind,elect_td_ind,2060,non-energy,0.697746187
+Africa_Western,elect_td_trn,elect_td_trn,elect_td_trn,2060,non-energy,3.991193603
+Africa_Western,elect_td_bld,elect_td_bld,elect_td_bld,2065,non-energy,3.885290534
+Africa_Western,elect_td_ind,elect_td_ind,elect_td_ind,2065,non-energy,0.670728085
+Africa_Western,elect_td_trn,elect_td_trn,elect_td_trn,2065,non-energy,3.885290534
+Africa_Western,elect_td_bld,elect_td_bld,elect_td_bld,2070,non-energy,3.779387464
+Africa_Western,elect_td_ind,elect_td_ind,elect_td_ind,2070,non-energy,0.643709984
+Africa_Western,elect_td_trn,elect_td_trn,elect_td_trn,2070,non-energy,3.779387464
+Africa_Western,elect_td_bld,elect_td_bld,elect_td_bld,2075,non-energy,3.673484394
+Africa_Western,elect_td_ind,elect_td_ind,elect_td_ind,2075,non-energy,0.616691882
+Africa_Western,elect_td_trn,elect_td_trn,elect_td_trn,2075,non-energy,3.673484394
+Africa_Western,elect_td_bld,elect_td_bld,elect_td_bld,2080,non-energy,3.567581325
+Africa_Western,elect_td_ind,elect_td_ind,elect_td_ind,2080,non-energy,0.589673781
+Africa_Western,elect_td_trn,elect_td_trn,elect_td_trn,2080,non-energy,3.567581325
+Africa_Western,elect_td_bld,elect_td_bld,elect_td_bld,2085,non-energy,3.461875468
+Africa_Western,elect_td_ind,elect_td_ind,elect_td_ind,2085,non-energy,0.562852891
+Africa_Western,elect_td_trn,elect_td_trn,elect_td_trn,2085,non-energy,3.461875468
+Africa_Western,elect_td_bld,elect_td_bld,elect_td_bld,2090,non-energy,3.355972398
+Africa_Western,elect_td_ind,elect_td_ind,elect_td_ind,2090,non-energy,0.53583479
+Africa_Western,elect_td_trn,elect_td_trn,elect_td_trn,2090,non-energy,3.355972398
+Africa_Western,elect_td_bld,elect_td_bld,elect_td_bld,2095,non-energy,3.250069328
+Africa_Western,elect_td_ind,elect_td_ind,elect_td_ind,2095,non-energy,0.508816688
+Africa_Western,elect_td_trn,elect_td_trn,elect_td_trn,2095,non-energy,3.250069328
+Africa_Western,elect_td_bld,elect_td_bld,elect_td_bld,2100,non-energy,3.144166259
+Africa_Western,elect_td_ind,elect_td_ind,elect_td_ind,2100,non-energy,0.481798587
+Africa_Western,elect_td_trn,elect_td_trn,elect_td_trn,2100,non-energy,3.144166259
+Australia_NZ,elect_td_bld,elect_td_bld,elect_td_bld,2015,non-energy,2.28881108
+Australia_NZ,elect_td_ind,elect_td_ind,elect_td_ind,2015,non-energy,0.350062609
+Australia_NZ,elect_td_trn,elect_td_trn,elect_td_trn,2015,non-energy,2.28881108
+Australia_NZ,elect_td_bld,elect_td_bld,elect_td_bld,2020,non-energy,2.207715987
+Australia_NZ,elect_td_ind,elect_td_ind,elect_td_ind,2020,non-energy,0.345594945
+Australia_NZ,elect_td_trn,elect_td_trn,elect_td_trn,2020,non-energy,2.207715987
+Australia_NZ,elect_td_bld,elect_td_bld,elect_td_bld,2025,non-energy,2.106274616
+Australia_NZ,elect_td_ind,elect_td_ind,elect_td_ind,2025,non-energy,0.336150641
+Australia_NZ,elect_td_trn,elect_td_trn,elect_td_trn,2025,non-energy,2.106274616
+Australia_NZ,elect_td_bld,elect_td_bld,elect_td_bld,2030,non-energy,1.974683423
+Australia_NZ,elect_td_ind,elect_td_ind,elect_td_ind,2030,non-energy,0.319163522
+Australia_NZ,elect_td_trn,elect_td_trn,elect_td_trn,2030,non-energy,1.974683423
+Australia_NZ,elect_td_bld,elect_td_bld,elect_td_bld,2035,non-energy,1.832930691
+Australia_NZ,elect_td_ind,elect_td_ind,elect_td_ind,2035,non-energy,0.299682419
+Australia_NZ,elect_td_trn,elect_td_trn,elect_td_trn,2035,non-energy,1.832930691
+Australia_NZ,elect_td_bld,elect_td_bld,elect_td_bld,2040,non-energy,1.737416971
+Australia_NZ,elect_td_ind,elect_td_ind,elect_td_ind,2040,non-energy,0.291713193
+Australia_NZ,elect_td_trn,elect_td_trn,elect_td_trn,2040,non-energy,1.737416971
+Australia_NZ,elect_td_bld,elect_td_bld,elect_td_bld,2045,non-energy,1.626594484
+Australia_NZ,elect_td_ind,elect_td_ind,elect_td_ind,2045,non-energy,0.279969216
+Australia_NZ,elect_td_trn,elect_td_trn,elect_td_trn,2045,non-energy,1.626594484
+Australia_NZ,elect_td_bld,elect_td_bld,elect_td_bld,2050,non-energy,1.5564627
+Australia_NZ,elect_td_ind,elect_td_ind,elect_td_ind,2050,non-energy,0.278341484
+Australia_NZ,elect_td_trn,elect_td_trn,elect_td_trn,2050,non-energy,1.5564627
+Australia_NZ,elect_td_bld,elect_td_bld,elect_td_bld,2055,non-energy,1.517315673
+Australia_NZ,elect_td_ind,elect_td_ind,elect_td_ind,2055,non-energy,0.268408657
+Australia_NZ,elect_td_trn,elect_td_trn,elect_td_trn,2055,non-energy,1.517315673
+Australia_NZ,elect_td_bld,elect_td_bld,elect_td_bld,2060,non-energy,1.47809561
+Australia_NZ,elect_td_ind,elect_td_ind,elect_td_ind,2060,non-energy,0.258402793
+Australia_NZ,elect_td_trn,elect_td_trn,elect_td_trn,2060,non-energy,1.47809561
+Australia_NZ,elect_td_bld,elect_td_bld,elect_td_bld,2065,non-energy,1.438875548
+Australia_NZ,elect_td_ind,elect_td_ind,elect_td_ind,2065,non-energy,0.24839693
+Australia_NZ,elect_td_trn,elect_td_trn,elect_td_trn,2065,non-energy,1.438875548
+Australia_NZ,elect_td_bld,elect_td_bld,elect_td_bld,2070,non-energy,1.399655485
+Australia_NZ,elect_td_ind,elect_td_ind,elect_td_ind,2070,non-energy,0.238391067
+Australia_NZ,elect_td_trn,elect_td_trn,elect_td_trn,2070,non-energy,1.399655485
+Australia_NZ,elect_td_bld,elect_td_bld,elect_td_bld,2075,non-energy,1.360435423
+Australia_NZ,elect_td_ind,elect_td_ind,elect_td_ind,2075,non-energy,0.228385204
+Australia_NZ,elect_td_trn,elect_td_trn,elect_td_trn,2075,non-energy,1.360435423
+Australia_NZ,elect_td_bld,elect_td_bld,elect_td_bld,2080,non-energy,1.32121536
+Australia_NZ,elect_td_ind,elect_td_ind,elect_td_ind,2080,non-energy,0.21837934
+Australia_NZ,elect_td_trn,elect_td_trn,elect_td_trn,2080,non-energy,1.32121536
+Australia_NZ,elect_td_bld,elect_td_bld,elect_td_bld,2085,non-energy,1.282068334
+Australia_NZ,elect_td_ind,elect_td_ind,elect_td_ind,2085,non-energy,0.208446513
+Australia_NZ,elect_td_trn,elect_td_trn,elect_td_trn,2085,non-energy,1.282068334
+Australia_NZ,elect_td_bld,elect_td_bld,elect_td_bld,2090,non-energy,1.242848271
+Australia_NZ,elect_td_ind,elect_td_ind,elect_td_ind,2090,non-energy,0.198440649
+Australia_NZ,elect_td_trn,elect_td_trn,elect_td_trn,2090,non-energy,1.242848271
+Australia_NZ,elect_td_bld,elect_td_bld,elect_td_bld,2095,non-energy,1.203628209
+Australia_NZ,elect_td_ind,elect_td_ind,elect_td_ind,2095,non-energy,0.188434786
+Australia_NZ,elect_td_trn,elect_td_trn,elect_td_trn,2095,non-energy,1.203628209
+Australia_NZ,elect_td_bld,elect_td_bld,elect_td_bld,2100,non-energy,1.164408146
+Australia_NZ,elect_td_ind,elect_td_ind,elect_td_ind,2100,non-energy,0.178428923
+Australia_NZ,elect_td_trn,elect_td_trn,elect_td_trn,2100,non-energy,1.164408146
+Brazil,elect_td_bld,elect_td_bld,elect_td_bld,2015,non-energy,2.435269709
+Brazil,elect_td_ind,elect_td_ind,elect_td_ind,2015,non-energy,0.37246275
+Brazil,elect_td_trn,elect_td_trn,elect_td_trn,2015,non-energy,2.435269709
+Brazil,elect_td_bld,elect_td_bld,elect_td_bld,2020,non-energy,2.414674755
+Brazil,elect_td_ind,elect_td_ind,elect_td_ind,2020,non-energy,0.377992185
+Brazil,elect_td_trn,elect_td_trn,elect_td_trn,2020,non-energy,2.414674755
+Brazil,elect_td_bld,elect_td_bld,elect_td_bld,2025,non-energy,2.37710992
+Brazil,elect_td_ind,elect_td_ind,elect_td_ind,2025,non-energy,0.379374568
+Brazil,elect_td_trn,elect_td_trn,elect_td_trn,2025,non-energy,2.37710992
+Brazil,elect_td_bld,elect_td_bld,elect_td_bld,2030,non-energy,2.310261876
+Brazil,elect_td_ind,elect_td_ind,elect_td_ind,2030,non-energy,0.373402292
+Brazil,elect_td_trn,elect_td_trn,elect_td_trn,2030,non-energy,2.310261876
+Brazil,elect_td_bld,elect_td_bld,elect_td_bld,2035,non-energy,2.235853905
+Brazil,elect_td_ind,elect_td_ind,elect_td_ind,2035,non-energy,0.365559979
+Brazil,elect_td_trn,elect_td_trn,elect_td_trn,2035,non-energy,2.235853905
+Brazil,elect_td_bld,elect_td_bld,elect_td_bld,2040,non-energy,2.225942636
+Brazil,elect_td_ind,elect_td_ind,elect_td_ind,2040,non-energy,0.373736901
+Brazil,elect_td_trn,elect_td_trn,elect_td_trn,2040,non-energy,2.225942636
+Brazil,elect_td_bld,elect_td_bld,elect_td_bld,2045,non-energy,2.209687636
+Brazil,elect_td_ind,elect_td_ind,elect_td_ind,2045,non-energy,0.380331129
+Brazil,elect_td_trn,elect_td_trn,elect_td_trn,2045,non-energy,2.209687636
+Brazil,elect_td_bld,elect_td_bld,elect_td_bld,2050,non-energy,2.270647417
+Brazil,elect_td_ind,elect_td_ind,elect_td_ind,2050,non-energy,0.406058798
+Brazil,elect_td_trn,elect_td_trn,elect_td_trn,2050,non-energy,2.270647417
+Brazil,elect_td_bld,elect_td_bld,elect_td_bld,2055,non-energy,2.213537731
+Brazil,elect_td_ind,elect_td_ind,elect_td_ind,2055,non-energy,0.39156828
+Brazil,elect_td_trn,elect_td_trn,elect_td_trn,2055,non-energy,2.213537731
+Brazil,elect_td_bld,elect_td_bld,elect_td_bld,2060,non-energy,2.156321498
+Brazil,elect_td_ind,elect_td_ind,elect_td_ind,2060,non-energy,0.376971215
+Brazil,elect_td_trn,elect_td_trn,elect_td_trn,2060,non-energy,2.156321498
+Brazil,elect_td_bld,elect_td_bld,elect_td_bld,2065,non-energy,2.099105264
+Brazil,elect_td_ind,elect_td_ind,elect_td_ind,2065,non-energy,0.36237415
+Brazil,elect_td_trn,elect_td_trn,elect_td_trn,2065,non-energy,2.099105264
+Brazil,elect_td_bld,elect_td_bld,elect_td_bld,2070,non-energy,2.04188903
+Brazil,elect_td_ind,elect_td_ind,elect_td_ind,2070,non-energy,0.347777085
+Brazil,elect_td_trn,elect_td_trn,elect_td_trn,2070,non-energy,2.04188903
+Brazil,elect_td_bld,elect_td_bld,elect_td_bld,2075,non-energy,1.984672797
+Brazil,elect_td_ind,elect_td_ind,elect_td_ind,2075,non-energy,0.33318002
+Brazil,elect_td_trn,elect_td_trn,elect_td_trn,2075,non-energy,1.984672797
+Brazil,elect_td_bld,elect_td_bld,elect_td_bld,2080,non-energy,1.927456563
+Brazil,elect_td_ind,elect_td_ind,elect_td_ind,2080,non-energy,0.318582954
+Brazil,elect_td_trn,elect_td_trn,elect_td_trn,2080,non-energy,1.927456563
+Brazil,elect_td_bld,elect_td_bld,elect_td_bld,2085,non-energy,1.870346877
+Brazil,elect_td_ind,elect_td_ind,elect_td_ind,2085,non-energy,0.304092437
+Brazil,elect_td_trn,elect_td_trn,elect_td_trn,2085,non-energy,1.870346877
+Brazil,elect_td_bld,elect_td_bld,elect_td_bld,2090,non-energy,1.813130644
+Brazil,elect_td_ind,elect_td_ind,elect_td_ind,2090,non-energy,0.289495372
+Brazil,elect_td_trn,elect_td_trn,elect_td_trn,2090,non-energy,1.813130644
+Brazil,elect_td_bld,elect_td_bld,elect_td_bld,2095,non-energy,1.75591441
+Brazil,elect_td_ind,elect_td_ind,elect_td_ind,2095,non-energy,0.274898307
+Brazil,elect_td_trn,elect_td_trn,elect_td_trn,2095,non-energy,1.75591441
+Brazil,elect_td_bld,elect_td_bld,elect_td_bld,2100,non-energy,1.698698177
+Brazil,elect_td_ind,elect_td_ind,elect_td_ind,2100,non-energy,0.260301242
+Brazil,elect_td_trn,elect_td_trn,elect_td_trn,2100,non-energy,1.698698177
+Canada,elect_td_bld,elect_td_bld,elect_td_bld,2015,non-energy,1.768799861
+Canada,elect_td_ind,elect_td_ind,elect_td_ind,2015,non-energy,0.270529403
+Canada,elect_td_trn,elect_td_trn,elect_td_trn,2015,non-energy,1.768799861
+Canada,elect_td_bld,elect_td_bld,elect_td_bld,2020,non-energy,1.717071249
+Canada,elect_td_ind,elect_td_ind,elect_td_ind,2020,non-energy,0.268789622
+Canada,elect_td_trn,elect_td_trn,elect_td_trn,2020,non-energy,1.717071249
+Canada,elect_td_bld,elect_td_bld,elect_td_bld,2025,non-energy,1.650398246
+Canada,elect_td_ind,elect_td_ind,elect_td_ind,2025,non-energy,0.263395107
+Canada,elect_td_trn,elect_td_trn,elect_td_trn,2025,non-energy,1.650398246
+Canada,elect_td_bld,elect_td_bld,elect_td_bld,2030,non-energy,1.560891083
+Canada,elect_td_ind,elect_td_ind,elect_td_ind,2030,non-energy,0.252283221
+Canada,elect_td_trn,elect_td_trn,elect_td_trn,2030,non-energy,1.560891083
+Canada,elect_td_bld,elect_td_bld,elect_td_bld,2035,non-energy,1.464072714
+Canada,elect_td_ind,elect_td_ind,elect_td_ind,2035,non-energy,0.239374491
+Canada,elect_td_trn,elect_td_trn,elect_td_trn,2035,non-energy,1.464072714
+Canada,elect_td_bld,elect_td_bld,elect_td_bld,2040,non-energy,1.405536335
+Canada,elect_td_ind,elect_td_ind,elect_td_ind,2040,non-energy,0.235990266
+Canada,elect_td_trn,elect_td_trn,elect_td_trn,2040,non-energy,1.405536335
+Canada,elect_td_bld,elect_td_bld,elect_td_bld,2045,non-energy,1.336825779
+Canada,elect_td_ind,elect_td_ind,elect_td_ind,2045,non-energy,0.230094267
+Canada,elect_td_trn,elect_td_trn,elect_td_trn,2045,non-energy,1.336825779
+Canada,elect_td_bld,elect_td_bld,elect_td_bld,2050,non-energy,1.305211245
+Canada,elect_td_ind,elect_td_ind,elect_td_ind,2050,non-energy,0.233410306
+Canada,elect_td_trn,elect_td_trn,elect_td_trn,2050,non-energy,1.305211245
+Canada,elect_td_bld,elect_td_bld,elect_td_bld,2055,non-energy,1.272383514
+Canada,elect_td_ind,elect_td_ind,elect_td_ind,2055,non-energy,0.225080882
+Canada,elect_td_trn,elect_td_trn,elect_td_trn,2055,non-energy,1.272383514
+Canada,elect_td_bld,elect_td_bld,elect_td_bld,2060,non-energy,1.239494536
+Canada,elect_td_ind,elect_td_ind,elect_td_ind,2060,non-energy,0.216690212
+Canada,elect_td_trn,elect_td_trn,elect_td_trn,2060,non-energy,1.239494536
+Canada,elect_td_bld,elect_td_bld,elect_td_bld,2065,non-energy,1.206605559
+Canada,elect_td_ind,elect_td_ind,elect_td_ind,2065,non-energy,0.208299541
+Canada,elect_td_trn,elect_td_trn,elect_td_trn,2065,non-energy,1.206605559
+Canada,elect_td_bld,elect_td_bld,elect_td_bld,2070,non-energy,1.173716582
+Canada,elect_td_ind,elect_td_ind,elect_td_ind,2070,non-energy,0.199908871
+Canada,elect_td_trn,elect_td_trn,elect_td_trn,2070,non-energy,1.173716582
+Canada,elect_td_bld,elect_td_bld,elect_td_bld,2075,non-energy,1.140827604
+Canada,elect_td_ind,elect_td_ind,elect_td_ind,2075,non-energy,0.191518201
+Canada,elect_td_trn,elect_td_trn,elect_td_trn,2075,non-energy,1.140827604
+Canada,elect_td_bld,elect_td_bld,elect_td_bld,2080,non-energy,1.107938627
+Canada,elect_td_ind,elect_td_ind,elect_td_ind,2080,non-energy,0.183127531
+Canada,elect_td_trn,elect_td_trn,elect_td_trn,2080,non-energy,1.107938627
+Canada,elect_td_bld,elect_td_bld,elect_td_bld,2085,non-energy,1.075110895
+Canada,elect_td_ind,elect_td_ind,elect_td_ind,2085,non-energy,0.174798106
+Canada,elect_td_trn,elect_td_trn,elect_td_trn,2085,non-energy,1.075110895
+Canada,elect_td_bld,elect_td_bld,elect_td_bld,2090,non-energy,1.042221918
+Canada,elect_td_ind,elect_td_ind,elect_td_ind,2090,non-energy,0.166407436
+Canada,elect_td_trn,elect_td_trn,elect_td_trn,2090,non-energy,1.042221918
+Canada,elect_td_bld,elect_td_bld,elect_td_bld,2095,non-energy,1.00933294
+Canada,elect_td_ind,elect_td_ind,elect_td_ind,2095,non-energy,0.158016766
+Canada,elect_td_trn,elect_td_trn,elect_td_trn,2095,non-energy,1.00933294
+Canada,elect_td_bld,elect_td_bld,elect_td_bld,2100,non-energy,0.976443963
+Canada,elect_td_ind,elect_td_ind,elect_td_ind,2100,non-energy,0.149626096
+Canada,elect_td_trn,elect_td_trn,elect_td_trn,2100,non-energy,0.976443963
+Central America and Caribbean,elect_td_bld,elect_td_bld,elect_td_bld,2015,non-energy,3.860630593
+Central America and Caribbean,elect_td_ind,elect_td_ind,elect_td_ind,2015,non-energy,0.590464818
+Central America and Caribbean,elect_td_trn,elect_td_trn,elect_td_trn,2015,non-energy,3.860630593
+Central America and Caribbean,elect_td_bld,elect_td_bld,elect_td_bld,2020,non-energy,3.69955172
+Central America and Caribbean,elect_td_ind,elect_td_ind,elect_td_ind,2020,non-energy,0.579126293
+Central America and Caribbean,elect_td_trn,elect_td_trn,elect_td_trn,2020,non-energy,3.69955172
+Central America and Caribbean,elect_td_bld,elect_td_bld,elect_td_bld,2025,non-energy,3.502423865
+Central America and Caribbean,elect_td_ind,elect_td_ind,elect_td_ind,2025,non-energy,0.55896891
+Central America and Caribbean,elect_td_trn,elect_td_trn,elect_td_trn,2025,non-energy,3.502423865
+Central America and Caribbean,elect_td_bld,elect_td_bld,elect_td_bld,2030,non-energy,3.253407146
+Central America and Caribbean,elect_td_ind,elect_td_ind,elect_td_ind,2030,non-energy,0.525840684
+Central America and Caribbean,elect_td_trn,elect_td_trn,elect_td_trn,2030,non-energy,3.253407146
+Central America and Caribbean,elect_td_bld,elect_td_bld,elect_td_bld,2035,non-energy,2.986047988
+Central America and Caribbean,elect_td_ind,elect_td_ind,elect_td_ind,2035,non-energy,0.488215996
+Central America and Caribbean,elect_td_trn,elect_td_trn,elect_td_trn,2035,non-energy,2.986047988
+Central America and Caribbean,elect_td_bld,elect_td_bld,elect_td_bld,2040,non-energy,2.79102438
+Central America and Caribbean,elect_td_ind,elect_td_ind,elect_td_ind,2040,non-energy,0.468614414
+Central America and Caribbean,elect_td_trn,elect_td_trn,elect_td_trn,2040,non-energy,2.79102438
+Central America and Caribbean,elect_td_bld,elect_td_bld,elect_td_bld,2045,non-energy,2.566501243
+Central America and Caribbean,elect_td_ind,elect_td_ind,elect_td_ind,2045,non-energy,0.441745837
+Central America and Caribbean,elect_td_trn,elect_td_trn,elect_td_trn,2045,non-energy,2.566501243
+Central America and Caribbean,elect_td_bld,elect_td_bld,elect_td_bld,2050,non-energy,2.398068736
+Central America and Caribbean,elect_td_ind,elect_td_ind,elect_td_ind,2050,non-energy,0.428845491
+Central America and Caribbean,elect_td_trn,elect_td_trn,elect_td_trn,2050,non-energy,2.398068736
+Central America and Caribbean,elect_td_bld,elect_td_bld,elect_td_bld,2055,non-energy,2.337754241
+Central America and Caribbean,elect_td_ind,elect_td_ind,elect_td_ind,2055,non-energy,0.413541814
+Central America and Caribbean,elect_td_trn,elect_td_trn,elect_td_trn,2055,non-energy,2.337754241
+Central America and Caribbean,elect_td_bld,elect_td_bld,elect_td_bld,2060,non-energy,2.277327219
+Central America and Caribbean,elect_td_ind,elect_td_ind,elect_td_ind,2060,non-energy,0.398125609
+Central America and Caribbean,elect_td_trn,elect_td_trn,elect_td_trn,2060,non-energy,2.277327219
+Central America and Caribbean,elect_td_bld,elect_td_bld,elect_td_bld,2065,non-energy,2.216900198
+Central America and Caribbean,elect_td_ind,elect_td_ind,elect_td_ind,2065,non-energy,0.382709404
+Central America and Caribbean,elect_td_trn,elect_td_trn,elect_td_trn,2065,non-energy,2.216900198
+Central America and Caribbean,elect_td_bld,elect_td_bld,elect_td_bld,2070,non-energy,2.156473176
+Central America and Caribbean,elect_td_ind,elect_td_ind,elect_td_ind,2070,non-energy,0.367293199
+Central America and Caribbean,elect_td_trn,elect_td_trn,elect_td_trn,2070,non-energy,2.156473176
+Central America and Caribbean,elect_td_bld,elect_td_bld,elect_td_bld,2075,non-energy,2.096046154
+Central America and Caribbean,elect_td_ind,elect_td_ind,elect_td_ind,2075,non-energy,0.351876994
+Central America and Caribbean,elect_td_trn,elect_td_trn,elect_td_trn,2075,non-energy,2.096046154
+Central America and Caribbean,elect_td_bld,elect_td_bld,elect_td_bld,2080,non-energy,2.035619132
+Central America and Caribbean,elect_td_ind,elect_td_ind,elect_td_ind,2080,non-energy,0.33646079
+Central America and Caribbean,elect_td_trn,elect_td_trn,elect_td_trn,2080,non-energy,2.035619132
+Central America and Caribbean,elect_td_bld,elect_td_bld,elect_td_bld,2085,non-energy,1.975304637
+Central America and Caribbean,elect_td_ind,elect_td_ind,elect_td_ind,2085,non-energy,0.321157112
+Central America and Caribbean,elect_td_trn,elect_td_trn,elect_td_trn,2085,non-energy,1.975304637
+Central America and Caribbean,elect_td_bld,elect_td_bld,elect_td_bld,2090,non-energy,1.914877615
+Central America and Caribbean,elect_td_ind,elect_td_ind,elect_td_ind,2090,non-energy,0.305740907
+Central America and Caribbean,elect_td_trn,elect_td_trn,elect_td_trn,2090,non-energy,1.914877615
+Central America and Caribbean,elect_td_bld,elect_td_bld,elect_td_bld,2095,non-energy,1.854450593
+Central America and Caribbean,elect_td_ind,elect_td_ind,elect_td_ind,2095,non-energy,0.290324702
+Central America and Caribbean,elect_td_trn,elect_td_trn,elect_td_trn,2095,non-energy,1.854450593
+Central America and Caribbean,elect_td_bld,elect_td_bld,elect_td_bld,2100,non-energy,1.794023572
+Central America and Caribbean,elect_td_ind,elect_td_ind,elect_td_ind,2100,non-energy,0.274908497
+Central America and Caribbean,elect_td_trn,elect_td_trn,elect_td_trn,2100,non-energy,1.794023572
+Central Asia,elect_td_bld,elect_td_bld,elect_td_bld,2015,non-energy,2.665823275
+Central Asia,elect_td_ind,elect_td_ind,elect_td_ind,2015,non-energy,0.407724805
+Central Asia,elect_td_trn,elect_td_trn,elect_td_trn,2015,non-energy,2.665823275
+Central Asia,elect_td_bld,elect_td_bld,elect_td_bld,2020,non-energy,2.595904993
+Central Asia,elect_td_ind,elect_td_ind,elect_td_ind,2020,non-energy,0.406361891
+Central Asia,elect_td_trn,elect_td_trn,elect_td_trn,2020,non-energy,2.595904993
+Central Asia,elect_td_bld,elect_td_bld,elect_td_bld,2025,non-energy,2.504036343
+Central Asia,elect_td_ind,elect_td_ind,elect_td_ind,2025,non-energy,0.399631375
+Central Asia,elect_td_trn,elect_td_trn,elect_td_trn,2025,non-energy,2.504036343
+Central Asia,elect_td_bld,elect_td_bld,elect_td_bld,2030,non-energy,2.378095852
+Central Asia,elect_td_ind,elect_td_ind,elect_td_ind,2030,non-energy,0.384366141
+Central Asia,elect_td_trn,elect_td_trn,elect_td_trn,2030,non-energy,2.378095852
+Central Asia,elect_td_bld,elect_td_bld,elect_td_bld,2035,non-energy,2.241534569
+Central Asia,elect_td_ind,elect_td_ind,elect_td_ind,2035,non-energy,0.366488763
+Central Asia,elect_td_trn,elect_td_trn,elect_td_trn,2035,non-energy,2.241534569
+Central Asia,elect_td_bld,elect_td_bld,elect_td_bld,2040,non-energy,2.164542866
+Central Asia,elect_td_ind,elect_td_ind,elect_td_ind,2040,non-energy,0.363427849
+Central Asia,elect_td_trn,elect_td_trn,elect_td_trn,2040,non-energy,2.164542866
+Central Asia,elect_td_bld,elect_td_bld,elect_td_bld,2045,non-energy,2.073435031
+Central Asia,elect_td_ind,elect_td_ind,elect_td_ind,2045,non-energy,0.356879349
+Central Asia,elect_td_trn,elect_td_trn,elect_td_trn,2045,non-energy,2.073435031
+Central Asia,elect_td_bld,elect_td_bld,elect_td_bld,2050,non-energy,2.042389595
+Central Asia,elect_td_ind,elect_td_ind,elect_td_ind,2050,non-energy,0.36523956
+Central Asia,elect_td_trn,elect_td_trn,elect_td_trn,2050,non-energy,2.042389595
+Central Asia,elect_td_bld,elect_td_bld,elect_td_bld,2055,non-energy,1.991020885
+Central Asia,elect_td_ind,elect_td_ind,elect_td_ind,2055,non-energy,0.352205708
+Central Asia,elect_td_trn,elect_td_trn,elect_td_trn,2055,non-energy,1.991020885
+Central Asia,elect_td_bld,elect_td_bld,elect_td_bld,2060,non-energy,1.939556339
+Central Asia,elect_td_ind,elect_td_ind,elect_td_ind,2060,non-energy,0.339076019
+Central Asia,elect_td_trn,elect_td_trn,elect_td_trn,2060,non-energy,1.939556339
+Central Asia,elect_td_bld,elect_td_bld,elect_td_bld,2065,non-energy,1.888091792
+Central Asia,elect_td_ind,elect_td_ind,elect_td_ind,2065,non-energy,0.32594633
+Central Asia,elect_td_trn,elect_td_trn,elect_td_trn,2065,non-energy,1.888091792
+Central Asia,elect_td_bld,elect_td_bld,elect_td_bld,2070,non-energy,1.836627245
+Central Asia,elect_td_ind,elect_td_ind,elect_td_ind,2070,non-energy,0.312816642
+Central Asia,elect_td_trn,elect_td_trn,elect_td_trn,2070,non-energy,1.836627245
+Central Asia,elect_td_bld,elect_td_bld,elect_td_bld,2075,non-energy,1.785162698
+Central Asia,elect_td_ind,elect_td_ind,elect_td_ind,2075,non-energy,0.299686953
+Central Asia,elect_td_trn,elect_td_trn,elect_td_trn,2075,non-energy,1.785162698
+Central Asia,elect_td_bld,elect_td_bld,elect_td_bld,2080,non-energy,1.733698151
+Central Asia,elect_td_ind,elect_td_ind,elect_td_ind,2080,non-energy,0.286557264
+Central Asia,elect_td_trn,elect_td_trn,elect_td_trn,2080,non-energy,1.733698151
+Central Asia,elect_td_bld,elect_td_bld,elect_td_bld,2085,non-energy,1.682329442
+Central Asia,elect_td_ind,elect_td_ind,elect_td_ind,2085,non-energy,0.273523412
+Central Asia,elect_td_trn,elect_td_trn,elect_td_trn,2085,non-energy,1.682329442
+Central Asia,elect_td_bld,elect_td_bld,elect_td_bld,2090,non-energy,1.630864895
+Central Asia,elect_td_ind,elect_td_ind,elect_td_ind,2090,non-energy,0.260393723
+Central Asia,elect_td_trn,elect_td_trn,elect_td_trn,2090,non-energy,1.630864895
+Central Asia,elect_td_bld,elect_td_bld,elect_td_bld,2095,non-energy,1.579400348
+Central Asia,elect_td_ind,elect_td_ind,elect_td_ind,2095,non-energy,0.247264035
+Central Asia,elect_td_trn,elect_td_trn,elect_td_trn,2095,non-energy,1.579400348
+Central Asia,elect_td_bld,elect_td_bld,elect_td_bld,2100,non-energy,1.527935801
+Central Asia,elect_td_ind,elect_td_ind,elect_td_ind,2100,non-energy,0.234134346
+Central Asia,elect_td_trn,elect_td_trn,elect_td_trn,2100,non-energy,1.527935801
+China,elect_td_bld,elect_td_bld,elect_td_bld,2015,non-energy,2.149859142
+China,elect_td_ind,elect_td_ind,elect_td_ind,2015,non-energy,0.328810581
+China,elect_td_trn,elect_td_trn,elect_td_trn,2015,non-energy,2.149859142
+China,elect_td_bld,elect_td_bld,elect_td_bld,2020,non-energy,2.12357569
+China,elect_td_ind,elect_td_ind,elect_td_ind,2020,non-energy,0.332423658
+China,elect_td_trn,elect_td_trn,elect_td_trn,2020,non-energy,2.12357569
+China,elect_td_bld,elect_td_bld,elect_td_bld,2025,non-energy,2.081734173
+China,elect_td_ind,elect_td_ind,elect_td_ind,2025,non-energy,0.332234112
+China,elect_td_trn,elect_td_trn,elect_td_trn,2025,non-energy,2.081734173
+China,elect_td_bld,elect_td_bld,elect_td_bld,2030,non-energy,2.013696557
+China,elect_td_ind,elect_td_ind,elect_td_ind,2030,non-energy,0.325469125
+China,elect_td_trn,elect_td_trn,elect_td_trn,2030,non-energy,2.013696557
+China,elect_td_bld,elect_td_bld,elect_td_bld,2035,non-energy,1.938583943
+China,elect_td_ind,elect_td_ind,elect_td_ind,2035,non-energy,0.316956624
+China,elect_td_trn,elect_td_trn,elect_td_trn,2035,non-energy,1.938583943
+China,elect_td_bld,elect_td_bld,elect_td_bld,2040,non-energy,1.918522112
+China,elect_td_ind,elect_td_ind,elect_td_ind,2040,non-energy,0.322120839
+China,elect_td_trn,elect_td_trn,elect_td_trn,2040,non-energy,1.918522112
+China,elect_td_bld,elect_td_bld,elect_td_bld,2045,non-energy,1.891633446
+China,elect_td_ind,elect_td_ind,elect_td_ind,2045,non-energy,0.325587686
+China,elect_td_trn,elect_td_trn,elect_td_trn,2045,non-energy,1.891633446
+China,elect_td_bld,elect_td_bld,elect_td_bld,2050,non-energy,1.92872631
+China,elect_td_ind,elect_td_ind,elect_td_ind,2050,non-energy,0.344913209
+China,elect_td_trn,elect_td_trn,elect_td_trn,2050,non-energy,1.92872631
+China,elect_td_bld,elect_td_bld,elect_td_bld,2055,non-energy,1.880216377
+China,elect_td_ind,elect_td_ind,elect_td_ind,2055,non-energy,0.332604718
+China,elect_td_trn,elect_td_trn,elect_td_trn,2055,non-energy,1.880216377
+China,elect_td_bld,elect_td_bld,elect_td_bld,2060,non-energy,1.831615941
+China,elect_td_ind,elect_td_ind,elect_td_ind,2060,non-energy,0.320205724
+China,elect_td_trn,elect_td_trn,elect_td_trn,2060,non-energy,1.831615941
+China,elect_td_bld,elect_td_bld,elect_td_bld,2065,non-energy,1.783015505
+China,elect_td_ind,elect_td_ind,elect_td_ind,2065,non-energy,0.30780673
+China,elect_td_trn,elect_td_trn,elect_td_trn,2065,non-energy,1.783015505
+China,elect_td_bld,elect_td_bld,elect_td_bld,2070,non-energy,1.734415068
+China,elect_td_ind,elect_td_ind,elect_td_ind,2070,non-energy,0.295407736
+China,elect_td_trn,elect_td_trn,elect_td_trn,2070,non-energy,1.734415068
+China,elect_td_bld,elect_td_bld,elect_td_bld,2075,non-energy,1.685814632
+China,elect_td_ind,elect_td_ind,elect_td_ind,2075,non-energy,0.283008742
+China,elect_td_trn,elect_td_trn,elect_td_trn,2075,non-energy,1.685814632
+China,elect_td_bld,elect_td_bld,elect_td_bld,2080,non-energy,1.637214196
+China,elect_td_ind,elect_td_ind,elect_td_ind,2080,non-energy,0.270609748
+China,elect_td_trn,elect_td_trn,elect_td_trn,2080,non-energy,1.637214196
+China,elect_td_bld,elect_td_bld,elect_td_bld,2085,non-energy,1.588704263
+China,elect_td_ind,elect_td_ind,elect_td_ind,2085,non-energy,0.258301258
+China,elect_td_trn,elect_td_trn,elect_td_trn,2085,non-energy,1.588704263
+China,elect_td_bld,elect_td_bld,elect_td_bld,2090,non-energy,1.540103827
+China,elect_td_ind,elect_td_ind,elect_td_ind,2090,non-energy,0.245902264
+China,elect_td_trn,elect_td_trn,elect_td_trn,2090,non-energy,1.540103827
+China,elect_td_bld,elect_td_bld,elect_td_bld,2095,non-energy,1.49150339
+China,elect_td_ind,elect_td_ind,elect_td_ind,2095,non-energy,0.23350327
+China,elect_td_trn,elect_td_trn,elect_td_trn,2095,non-energy,1.49150339
+China,elect_td_bld,elect_td_bld,elect_td_bld,2100,non-energy,1.442902954
+China,elect_td_ind,elect_td_ind,elect_td_ind,2100,non-energy,0.221104276
+China,elect_td_trn,elect_td_trn,elect_td_trn,2100,non-energy,1.442902954
+EU-12,elect_td_bld,elect_td_bld,elect_td_bld,2015,non-energy,2.357808467
+EU-12,elect_td_ind,elect_td_ind,elect_td_ind,2015,non-energy,0.360615426
+EU-12,elect_td_trn,elect_td_trn,elect_td_trn,2015,non-energy,2.357808467
+EU-12,elect_td_bld,elect_td_bld,elect_td_bld,2020,non-energy,2.303981783
+EU-12,elect_td_ind,elect_td_ind,elect_td_ind,2020,non-energy,0.360664353
+EU-12,elect_td_trn,elect_td_trn,elect_td_trn,2020,non-energy,2.303981783
+EU-12,elect_td_bld,elect_td_bld,elect_td_bld,2025,non-energy,2.231311608
+EU-12,elect_td_ind,elect_td_ind,elect_td_ind,2025,non-energy,0.356105904
+EU-12,elect_td_trn,elect_td_trn,elect_td_trn,2025,non-energy,2.231311608
+EU-12,elect_td_bld,elect_td_bld,elect_td_bld,2030,non-energy,2.128847377
+EU-12,elect_td_ind,elect_td_ind,elect_td_ind,2030,non-energy,0.344080686
+EU-12,elect_td_trn,elect_td_trn,elect_td_trn,2030,non-energy,2.128847377
+EU-12,elect_td_bld,elect_td_bld,elect_td_bld,2035,non-energy,2.017386176
+EU-12,elect_td_ind,elect_td_ind,elect_td_ind,2035,non-energy,0.329840714
+EU-12,elect_td_trn,elect_td_trn,elect_td_trn,2035,non-energy,2.017386176
+EU-12,elect_td_bld,elect_td_bld,elect_td_bld,2040,non-energy,1.960477994
+EU-12,elect_td_ind,elect_td_ind,elect_td_ind,2040,non-energy,0.329165253
+EU-12,elect_td_trn,elect_td_trn,elect_td_trn,2040,non-energy,1.960477994
+EU-12,elect_td_bld,elect_td_bld,elect_td_bld,2045,non-energy,1.89229778
+EU-12,elect_td_ind,elect_td_ind,elect_td_ind,2045,non-energy,0.325702031
+EU-12,elect_td_trn,elect_td_trn,elect_td_trn,2045,non-energy,1.89229778
+EU-12,elect_td_bld,elect_td_bld,elect_td_bld,2050,non-energy,1.88137799
+EU-12,elect_td_ind,elect_td_ind,elect_td_ind,2050,non-energy,0.336445931
+EU-12,elect_td_trn,elect_td_trn,elect_td_trn,2050,non-energy,1.88137799
+EU-12,elect_td_bld,elect_td_bld,elect_td_bld,2055,non-energy,1.834058928
+EU-12,elect_td_ind,elect_td_ind,elect_td_ind,2055,non-energy,0.324439602
+EU-12,elect_td_trn,elect_td_trn,elect_td_trn,2055,non-energy,1.834058928
+EU-12,elect_td_bld,elect_td_bld,elect_td_bld,2060,non-energy,1.786651584
+EU-12,elect_td_ind,elect_td_ind,elect_td_ind,2060,non-energy,0.312344991
+EU-12,elect_td_trn,elect_td_trn,elect_td_trn,2060,non-energy,1.786651584
+EU-12,elect_td_bld,elect_td_bld,elect_td_bld,2065,non-energy,1.73924424
+EU-12,elect_td_ind,elect_td_ind,elect_td_ind,2065,non-energy,0.30025038
+EU-12,elect_td_trn,elect_td_trn,elect_td_trn,2065,non-energy,1.73924424
+EU-12,elect_td_bld,elect_td_bld,elect_td_bld,2070,non-energy,1.691836896
+EU-12,elect_td_ind,elect_td_ind,elect_td_ind,2070,non-energy,0.288155769
+EU-12,elect_td_trn,elect_td_trn,elect_td_trn,2070,non-energy,1.691836896
+EU-12,elect_td_bld,elect_td_bld,elect_td_bld,2075,non-energy,1.644429553
+EU-12,elect_td_ind,elect_td_ind,elect_td_ind,2075,non-energy,0.276061158
+EU-12,elect_td_trn,elect_td_trn,elect_td_trn,2075,non-energy,1.644429553
+EU-12,elect_td_bld,elect_td_bld,elect_td_bld,2080,non-energy,1.597022209
+EU-12,elect_td_ind,elect_td_ind,elect_td_ind,2080,non-energy,0.263966547
+EU-12,elect_td_trn,elect_td_trn,elect_td_trn,2080,non-energy,1.597022209
+EU-12,elect_td_bld,elect_td_bld,elect_td_bld,2085,non-energy,1.549703147
+EU-12,elect_td_ind,elect_td_ind,elect_td_ind,2085,non-energy,0.251960218
+EU-12,elect_td_trn,elect_td_trn,elect_td_trn,2085,non-energy,1.549703147
+EU-12,elect_td_bld,elect_td_bld,elect_td_bld,2090,non-energy,1.502295803
+EU-12,elect_td_ind,elect_td_ind,elect_td_ind,2090,non-energy,0.239865607
+EU-12,elect_td_trn,elect_td_trn,elect_td_trn,2090,non-energy,1.502295803
+EU-12,elect_td_bld,elect_td_bld,elect_td_bld,2095,non-energy,1.45488846
+EU-12,elect_td_ind,elect_td_ind,elect_td_ind,2095,non-energy,0.227770996
+EU-12,elect_td_trn,elect_td_trn,elect_td_trn,2095,non-energy,1.45488846
+EU-12,elect_td_bld,elect_td_bld,elect_td_bld,2100,non-energy,1.407481116
+EU-12,elect_td_ind,elect_td_ind,elect_td_ind,2100,non-energy,0.215676385
+EU-12,elect_td_trn,elect_td_trn,elect_td_trn,2100,non-energy,1.407481116
+EU-15,elect_td_bld,elect_td_bld,elect_td_bld,2015,non-energy,1.684762807
+EU-15,elect_td_ind,elect_td_ind,elect_td_ind,2015,non-energy,0.257676341
+EU-15,elect_td_trn,elect_td_trn,elect_td_trn,2015,non-energy,1.684762807
+EU-15,elect_td_bld,elect_td_bld,elect_td_bld,2020,non-energy,1.701360366
+EU-15,elect_td_ind,elect_td_ind,elect_td_ind,2020,non-energy,0.266330246
+EU-15,elect_td_trn,elect_td_trn,elect_td_trn,2020,non-energy,1.701360366
+EU-15,elect_td_bld,elect_td_bld,elect_td_bld,2025,non-energy,1.708414649
+EU-15,elect_td_ind,elect_td_ind,elect_td_ind,2025,non-energy,0.272654228
+EU-15,elect_td_trn,elect_td_trn,elect_td_trn,2025,non-energy,1.708414649
+EU-15,elect_td_bld,elect_td_bld,elect_td_bld,2030,non-energy,1.696523133
+EU-15,elect_td_ind,elect_td_ind,elect_td_ind,2030,non-energy,0.274205117
+EU-15,elect_td_trn,elect_td_trn,elect_td_trn,2030,non-energy,1.696523133
+EU-15,elect_td_bld,elect_td_bld,elect_td_bld,2035,non-energy,1.680928481
+EU-15,elect_td_ind,elect_td_ind,elect_td_ind,2035,non-energy,0.274830202
+EU-15,elect_td_trn,elect_td_trn,elect_td_trn,2035,non-energy,1.680928481
+EU-15,elect_td_bld,elect_td_bld,elect_td_bld,2040,non-energy,1.717137646
+EU-15,elect_td_ind,elect_td_ind,elect_td_ind,2040,non-energy,0.288308284
+EU-15,elect_td_trn,elect_td_trn,elect_td_trn,2040,non-energy,1.717137646
+EU-15,elect_td_bld,elect_td_bld,elect_td_bld,2045,non-energy,1.753627771
+EU-15,elect_td_ind,elect_td_ind,elect_td_ind,2045,non-energy,0.301834168
+EU-15,elect_td_trn,elect_td_trn,elect_td_trn,2045,non-energy,1.753627771
+EU-15,elect_td_bld,elect_td_bld,elect_td_bld,2050,non-energy,1.8594643
+EU-15,elect_td_ind,elect_td_ind,elect_td_ind,2050,non-energy,0.332527116
+EU-15,elect_td_trn,elect_td_trn,elect_td_trn,2050,non-energy,1.8594643
+EU-15,elect_td_bld,elect_td_bld,elect_td_bld,2055,non-energy,1.812696396
+EU-15,elect_td_ind,elect_td_ind,elect_td_ind,2055,non-energy,0.320660633
+EU-15,elect_td_trn,elect_td_trn,elect_td_trn,2055,non-energy,1.812696396
+EU-15,elect_td_bld,elect_td_bld,elect_td_bld,2060,non-energy,1.765841238
+EU-15,elect_td_ind,elect_td_ind,elect_td_ind,2060,non-energy,0.308706896
+EU-15,elect_td_trn,elect_td_trn,elect_td_trn,2060,non-energy,1.765841238
+EU-15,elect_td_bld,elect_td_bld,elect_td_bld,2065,non-energy,1.718986079
+EU-15,elect_td_ind,elect_td_ind,elect_td_ind,2065,non-energy,0.29675316
+EU-15,elect_td_trn,elect_td_trn,elect_td_trn,2065,non-energy,1.718986079
+EU-15,elect_td_bld,elect_td_bld,elect_td_bld,2070,non-energy,1.672130921
+EU-15,elect_td_ind,elect_td_ind,elect_td_ind,2070,non-energy,0.284799423
+EU-15,elect_td_trn,elect_td_trn,elect_td_trn,2070,non-energy,1.672130921
+EU-15,elect_td_bld,elect_td_bld,elect_td_bld,2075,non-energy,1.625275763
+EU-15,elect_td_ind,elect_td_ind,elect_td_ind,2075,non-energy,0.272845686
+EU-15,elect_td_trn,elect_td_trn,elect_td_trn,2075,non-energy,1.625275763
+EU-15,elect_td_bld,elect_td_bld,elect_td_bld,2080,non-energy,1.578420605
+EU-15,elect_td_ind,elect_td_ind,elect_td_ind,2080,non-energy,0.260891949
+EU-15,elect_td_trn,elect_td_trn,elect_td_trn,2080,non-energy,1.578420605
+EU-15,elect_td_bld,elect_td_bld,elect_td_bld,2085,non-energy,1.5316527
+EU-15,elect_td_ind,elect_td_ind,elect_td_ind,2085,non-energy,0.249025466
+EU-15,elect_td_trn,elect_td_trn,elect_td_trn,2085,non-energy,1.5316527
+EU-15,elect_td_bld,elect_td_bld,elect_td_bld,2090,non-energy,1.484797542
+EU-15,elect_td_ind,elect_td_ind,elect_td_ind,2090,non-energy,0.237071729
+EU-15,elect_td_trn,elect_td_trn,elect_td_trn,2090,non-energy,1.484797542
+EU-15,elect_td_bld,elect_td_bld,elect_td_bld,2095,non-energy,1.437942384
+EU-15,elect_td_ind,elect_td_ind,elect_td_ind,2095,non-energy,0.225117992
+EU-15,elect_td_trn,elect_td_trn,elect_td_trn,2095,non-energy,1.437942384
+EU-15,elect_td_bld,elect_td_bld,elect_td_bld,2100,non-energy,1.391087226
+EU-15,elect_td_ind,elect_td_ind,elect_td_ind,2100,non-energy,0.213164255
+EU-15,elect_td_trn,elect_td_trn,elect_td_trn,2100,non-energy,1.391087226
+Europe_Eastern,elect_td_bld,elect_td_bld,elect_td_bld,2015,non-energy,2.772643421
+Europe_Eastern,elect_td_ind,elect_td_ind,elect_td_ind,2015,non-energy,0.424062431
+Europe_Eastern,elect_td_trn,elect_td_trn,elect_td_trn,2015,non-energy,2.772643421
+Europe_Eastern,elect_td_bld,elect_td_bld,elect_td_bld,2020,non-energy,2.699757104
+Europe_Eastern,elect_td_ind,elect_td_ind,elect_td_ind,2020,non-energy,0.422618858
+Europe_Eastern,elect_td_trn,elect_td_trn,elect_td_trn,2020,non-energy,2.699757104
+Europe_Eastern,elect_td_bld,elect_td_bld,elect_td_bld,2025,non-energy,2.604029014
+Europe_Eastern,elect_td_ind,elect_td_ind,elect_td_ind,2025,non-energy,0.415589693
+Europe_Eastern,elect_td_trn,elect_td_trn,elect_td_trn,2025,non-energy,2.604029014
+Europe_Eastern,elect_td_bld,elect_td_bld,elect_td_bld,2030,non-energy,2.472856734
+Europe_Eastern,elect_td_ind,elect_td_ind,elect_td_ind,2030,non-energy,0.399682124
+Europe_Eastern,elect_td_trn,elect_td_trn,elect_td_trn,2030,non-energy,2.472856734
+Europe_Eastern,elect_td_bld,elect_td_bld,elect_td_bld,2035,non-energy,2.330629847
+Europe_Eastern,elect_td_ind,elect_td_ind,elect_td_ind,2035,non-energy,0.381055756
+Europe_Eastern,elect_td_trn,elect_td_trn,elect_td_trn,2035,non-energy,2.330629847
+Europe_Eastern,elect_td_bld,elect_td_bld,elect_td_bld,2040,non-energy,2.250320754
+Europe_Eastern,elect_td_ind,elect_td_ind,elect_td_ind,2040,non-energy,0.37783
+Europe_Eastern,elect_td_trn,elect_td_trn,elect_td_trn,2040,non-energy,2.250320754
+Europe_Eastern,elect_td_bld,elect_td_bld,elect_td_bld,2045,non-energy,2.155304703
+Europe_Eastern,elect_td_ind,elect_td_ind,elect_td_ind,2045,non-energy,0.370970746
+Europe_Eastern,elect_td_trn,elect_td_trn,elect_td_trn,2045,non-energy,2.155304703
+Europe_Eastern,elect_td_bld,elect_td_bld,elect_td_bld,2050,non-energy,2.122671844
+Europe_Eastern,elect_td_ind,elect_td_ind,elect_td_ind,2050,non-energy,0.379596396
+Europe_Eastern,elect_td_trn,elect_td_trn,elect_td_trn,2050,non-energy,2.122671844
+Europe_Eastern,elect_td_bld,elect_td_bld,elect_td_bld,2055,non-energy,2.069283933
+Europe_Eastern,elect_td_ind,elect_td_ind,elect_td_ind,2055,non-energy,0.36605021
+Europe_Eastern,elect_td_trn,elect_td_trn,elect_td_trn,2055,non-energy,2.069283933
+Europe_Eastern,elect_td_bld,elect_td_bld,elect_td_bld,2060,non-energy,2.015796418
+Europe_Eastern,elect_td_ind,elect_td_ind,elect_td_ind,2060,non-energy,0.352404419
+Europe_Eastern,elect_td_trn,elect_td_trn,elect_td_trn,2060,non-energy,2.015796418
+Europe_Eastern,elect_td_bld,elect_td_bld,elect_td_bld,2065,non-energy,1.962308902
+Europe_Eastern,elect_td_ind,elect_td_ind,elect_td_ind,2065,non-energy,0.338758629
+Europe_Eastern,elect_td_trn,elect_td_trn,elect_td_trn,2065,non-energy,1.962308902
+Europe_Eastern,elect_td_bld,elect_td_bld,elect_td_bld,2070,non-energy,1.908821387
+Europe_Eastern,elect_td_ind,elect_td_ind,elect_td_ind,2070,non-energy,0.325112838
+Europe_Eastern,elect_td_trn,elect_td_trn,elect_td_trn,2070,non-energy,1.908821387
+Europe_Eastern,elect_td_bld,elect_td_bld,elect_td_bld,2075,non-energy,1.855333872
+Europe_Eastern,elect_td_ind,elect_td_ind,elect_td_ind,2075,non-energy,0.311467047
+Europe_Eastern,elect_td_trn,elect_td_trn,elect_td_trn,2075,non-energy,1.855333872
+Europe_Eastern,elect_td_bld,elect_td_bld,elect_td_bld,2080,non-energy,1.801846357
+Europe_Eastern,elect_td_ind,elect_td_ind,elect_td_ind,2080,non-energy,0.297821257
+Europe_Eastern,elect_td_trn,elect_td_trn,elect_td_trn,2080,non-energy,1.801846357
+Europe_Eastern,elect_td_bld,elect_td_bld,elect_td_bld,2085,non-energy,1.748458446
+Europe_Eastern,elect_td_ind,elect_td_ind,elect_td_ind,2085,non-energy,0.28427507
+Europe_Eastern,elect_td_trn,elect_td_trn,elect_td_trn,2085,non-energy,1.748458446
+Europe_Eastern,elect_td_bld,elect_td_bld,elect_td_bld,2090,non-energy,1.694970931
+Europe_Eastern,elect_td_ind,elect_td_ind,elect_td_ind,2090,non-energy,0.27062928
+Europe_Eastern,elect_td_trn,elect_td_trn,elect_td_trn,2090,non-energy,1.694970931
+Europe_Eastern,elect_td_bld,elect_td_bld,elect_td_bld,2095,non-energy,1.641483416
+Europe_Eastern,elect_td_ind,elect_td_ind,elect_td_ind,2095,non-energy,0.256983489
+Europe_Eastern,elect_td_trn,elect_td_trn,elect_td_trn,2095,non-energy,1.641483416
+Europe_Eastern,elect_td_bld,elect_td_bld,elect_td_bld,2100,non-energy,1.587995901
+Europe_Eastern,elect_td_ind,elect_td_ind,elect_td_ind,2100,non-energy,0.243337698
+Europe_Eastern,elect_td_trn,elect_td_trn,elect_td_trn,2100,non-energy,1.587995901
+Europe_Non_EU,elect_td_bld,elect_td_bld,elect_td_bld,2015,non-energy,2.289331089
+Europe_Non_EU,elect_td_ind,elect_td_ind,elect_td_ind,2015,non-energy,0.350142142
+Europe_Non_EU,elect_td_trn,elect_td_trn,elect_td_trn,2015,non-energy,2.289331089
+Europe_Non_EU,elect_td_bld,elect_td_bld,elect_td_bld,2020,non-energy,2.283900514
+Europe_Non_EU,elect_td_ind,elect_td_ind,elect_td_ind,2020,non-energy,0.35752084
+Europe_Non_EU,elect_td_trn,elect_td_trn,elect_td_trn,2020,non-energy,2.283900514
+Europe_Non_EU,elect_td_bld,elect_td_bld,elect_td_bld,2025,non-energy,2.263509108
+Europe_Non_EU,elect_td_ind,elect_td_ind,elect_td_ind,2025,non-energy,0.36124446
+Europe_Non_EU,elect_td_trn,elect_td_trn,elect_td_trn,2025,non-energy,2.263509108
+Europe_Non_EU,elect_td_bld,elect_td_bld,elect_td_bld,2030,non-energy,2.216182246
+Europe_Non_EU,elect_td_ind,elect_td_ind,elect_td_ind,2030,non-energy,0.358196419
+Europe_Non_EU,elect_td_trn,elect_td_trn,elect_td_trn,2030,non-energy,2.216182246
+Europe_Non_EU,elect_td_bld,elect_td_bld,elect_td_bld,2035,non-energy,2.162438091
+Europe_Non_EU,elect_td_ind,elect_td_ind,elect_td_ind,2035,non-energy,0.353556564
+Europe_Non_EU,elect_td_trn,elect_td_trn,elect_td_trn,2035,non-energy,2.162438091
+Europe_Non_EU,elect_td_bld,elect_td_bld,elect_td_bld,2040,non-energy,2.172569849
+Europe_Non_EU,elect_td_ind,elect_td_ind,elect_td_ind,2040,non-energy,0.364775583
+Europe_Non_EU,elect_td_trn,elect_td_trn,elect_td_trn,2040,non-energy,2.172569849
+Europe_Non_EU,elect_td_bld,elect_td_bld,elect_td_bld,2045,non-energy,2.178846911
+Europe_Non_EU,elect_td_ind,elect_td_ind,elect_td_ind,2045,non-energy,0.375022827
+Europe_Non_EU,elect_td_trn,elect_td_trn,elect_td_trn,2045,non-energy,2.178846911
+Europe_Non_EU,elect_td_bld,elect_td_bld,elect_td_bld,2050,non-energy,2.264904694
+Europe_Non_EU,elect_td_ind,elect_td_ind,elect_td_ind,2050,non-energy,0.405031829
+Europe_Non_EU,elect_td_trn,elect_td_trn,elect_td_trn,2050,non-energy,2.264904694
+Europe_Non_EU,elect_td_bld,elect_td_bld,elect_td_bld,2055,non-energy,2.207939445
+Europe_Non_EU,elect_td_ind,elect_td_ind,elect_td_ind,2055,non-energy,0.39057796
+Europe_Non_EU,elect_td_trn,elect_td_trn,elect_td_trn,2055,non-energy,2.207939445
+Europe_Non_EU,elect_td_bld,elect_td_bld,elect_td_bld,2060,non-energy,2.150867918
+Europe_Non_EU,elect_td_ind,elect_td_ind,elect_td_ind,2060,non-energy,0.376017812
+Europe_Non_EU,elect_td_trn,elect_td_trn,elect_td_trn,2060,non-energy,2.150867918
+Europe_Non_EU,elect_td_bld,elect_td_bld,elect_td_bld,2065,non-energy,2.09379639
+Europe_Non_EU,elect_td_ind,elect_td_ind,elect_td_ind,2065,non-energy,0.361457665
+Europe_Non_EU,elect_td_trn,elect_td_trn,elect_td_trn,2065,non-energy,2.09379639
+Europe_Non_EU,elect_td_bld,elect_td_bld,elect_td_bld,2070,non-energy,2.036724863
+Europe_Non_EU,elect_td_ind,elect_td_ind,elect_td_ind,2070,non-energy,0.346897517
+Europe_Non_EU,elect_td_trn,elect_td_trn,elect_td_trn,2070,non-energy,2.036724863
+Europe_Non_EU,elect_td_bld,elect_td_bld,elect_td_bld,2075,non-energy,1.979653336
+Europe_Non_EU,elect_td_ind,elect_td_ind,elect_td_ind,2075,non-energy,0.33233737
+Europe_Non_EU,elect_td_trn,elect_td_trn,elect_td_trn,2075,non-energy,1.979653336
+Europe_Non_EU,elect_td_bld,elect_td_bld,elect_td_bld,2080,non-energy,1.922581808
+Europe_Non_EU,elect_td_ind,elect_td_ind,elect_td_ind,2080,non-energy,0.317777222
+Europe_Non_EU,elect_td_trn,elect_td_trn,elect_td_trn,2080,non-energy,1.922581808
+Europe_Non_EU,elect_td_bld,elect_td_bld,elect_td_bld,2085,non-energy,1.86561656
+Europe_Non_EU,elect_td_ind,elect_td_ind,elect_td_ind,2085,non-energy,0.303323353
+Europe_Non_EU,elect_td_trn,elect_td_trn,elect_td_trn,2085,non-energy,1.86561656
+Europe_Non_EU,elect_td_bld,elect_td_bld,elect_td_bld,2090,non-energy,1.808545032
+Europe_Non_EU,elect_td_ind,elect_td_ind,elect_td_ind,2090,non-energy,0.288763206
+Europe_Non_EU,elect_td_trn,elect_td_trn,elect_td_trn,2090,non-energy,1.808545032
+Europe_Non_EU,elect_td_bld,elect_td_bld,elect_td_bld,2095,non-energy,1.751473505
+Europe_Non_EU,elect_td_ind,elect_td_ind,elect_td_ind,2095,non-energy,0.274203058
+Europe_Non_EU,elect_td_trn,elect_td_trn,elect_td_trn,2095,non-energy,1.751473505
+Europe_Non_EU,elect_td_bld,elect_td_bld,elect_td_bld,2100,non-energy,1.694401978
+Europe_Non_EU,elect_td_ind,elect_td_ind,elect_td_ind,2100,non-energy,0.25964291
+Europe_Non_EU,elect_td_trn,elect_td_trn,elect_td_trn,2100,non-energy,1.694401978
+European Free Trade Association,elect_td_bld,elect_td_bld,elect_td_bld,2015,non-energy,1.169116846
+European Free Trade Association,elect_td_ind,elect_td_ind,elect_td_ind,2015,non-energy,0.17881078
+European Free Trade Association,elect_td_trn,elect_td_trn,elect_td_trn,2015,non-energy,1.169116846
+European Free Trade Association,elect_td_bld,elect_td_bld,elect_td_bld,2020,non-energy,1.193690819
+European Free Trade Association,elect_td_ind,elect_td_ind,elect_td_ind,2020,non-energy,0.186859866
+European Free Trade Association,elect_td_trn,elect_td_trn,elect_td_trn,2020,non-energy,1.193690819
+European Free Trade Association,elect_td_bld,elect_td_bld,elect_td_bld,2025,non-energy,1.212572234
+European Free Trade Association,elect_td_ind,elect_td_ind,elect_td_ind,2025,non-energy,0.193520318
+European Free Trade Association,elect_td_trn,elect_td_trn,elect_td_trn,2025,non-energy,1.212572234
+European Free Trade Association,elect_td_bld,elect_td_bld,elect_td_bld,2030,non-energy,1.218862189
+European Free Trade Association,elect_td_ind,elect_td_ind,elect_td_ind,2030,non-energy,0.197001881
+European Free Trade Association,elect_td_trn,elect_td_trn,elect_td_trn,2030,non-energy,1.218862189
+European Free Trade Association,elect_td_bld,elect_td_bld,elect_td_bld,2035,non-energy,1.223228736
+European Free Trade Association,elect_td_ind,elect_td_ind,elect_td_ind,2035,non-energy,0.199996731
+European Free Trade Association,elect_td_trn,elect_td_trn,elect_td_trn,2035,non-energy,1.223228736
+European Free Trade Association,elect_td_bld,elect_td_bld,elect_td_bld,2040,non-energy,1.266584589
+European Free Trade Association,elect_td_ind,elect_td_ind,elect_td_ind,2040,non-energy,0.212660197
+European Free Trade Association,elect_td_trn,elect_td_trn,elect_td_trn,2040,non-energy,1.266584589
+European Free Trade Association,elect_td_bld,elect_td_bld,elect_td_bld,2045,non-energy,1.312111993
+European Free Trade Association,elect_td_ind,elect_td_ind,elect_td_ind,2045,non-energy,0.225840534
+European Free Trade Association,elect_td_trn,elect_td_trn,elect_td_trn,2045,non-energy,1.312111993
+European Free Trade Association,elect_td_bld,elect_td_bld,elect_td_bld,2050,non-energy,1.412503299
+European Free Trade Association,elect_td_ind,elect_td_ind,elect_td_ind,2050,non-energy,0.252597293
+European Free Trade Association,elect_td_trn,elect_td_trn,elect_td_trn,2050,non-energy,1.412503299
+European Free Trade Association,elect_td_bld,elect_td_bld,elect_td_bld,2055,non-energy,1.376977035
+European Free Trade Association,elect_td_ind,elect_td_ind,elect_td_ind,2055,non-energy,0.243583166
+European Free Trade Association,elect_td_trn,elect_td_trn,elect_td_trn,2055,non-energy,1.376977035
+European Free Trade Association,elect_td_bld,elect_td_bld,elect_td_bld,2060,non-energy,1.341384491
+European Free Trade Association,elect_td_ind,elect_td_ind,elect_td_ind,2060,non-energy,0.234502759
+European Free Trade Association,elect_td_trn,elect_td_trn,elect_td_trn,2060,non-energy,1.341384491
+European Free Trade Association,elect_td_bld,elect_td_bld,elect_td_bld,2065,non-energy,1.305791946
+European Free Trade Association,elect_td_ind,elect_td_ind,elect_td_ind,2065,non-energy,0.225422352
+European Free Trade Association,elect_td_trn,elect_td_trn,elect_td_trn,2065,non-energy,1.305791946
+European Free Trade Association,elect_td_bld,elect_td_bld,elect_td_bld,2070,non-energy,1.270199402
+European Free Trade Association,elect_td_ind,elect_td_ind,elect_td_ind,2070,non-energy,0.216341945
+European Free Trade Association,elect_td_trn,elect_td_trn,elect_td_trn,2070,non-energy,1.270199402
+European Free Trade Association,elect_td_bld,elect_td_bld,elect_td_bld,2075,non-energy,1.234606858
+European Free Trade Association,elect_td_ind,elect_td_ind,elect_td_ind,2075,non-energy,0.207261538
+European Free Trade Association,elect_td_trn,elect_td_trn,elect_td_trn,2075,non-energy,1.234606858
+European Free Trade Association,elect_td_bld,elect_td_bld,elect_td_bld,2080,non-energy,1.199014313
+European Free Trade Association,elect_td_ind,elect_td_ind,elect_td_ind,2080,non-energy,0.198181131
+European Free Trade Association,elect_td_trn,elect_td_trn,elect_td_trn,2080,non-energy,1.199014313
+European Free Trade Association,elect_td_bld,elect_td_bld,elect_td_bld,2085,non-energy,1.163488049
+European Free Trade Association,elect_td_ind,elect_td_ind,elect_td_ind,2085,non-energy,0.189167005
+European Free Trade Association,elect_td_trn,elect_td_trn,elect_td_trn,2085,non-energy,1.163488049
+European Free Trade Association,elect_td_bld,elect_td_bld,elect_td_bld,2090,non-energy,1.127895505
+European Free Trade Association,elect_td_ind,elect_td_ind,elect_td_ind,2090,non-energy,0.180086598
+European Free Trade Association,elect_td_trn,elect_td_trn,elect_td_trn,2090,non-energy,1.127895505
+European Free Trade Association,elect_td_bld,elect_td_bld,elect_td_bld,2095,non-energy,1.092302961
+European Free Trade Association,elect_td_ind,elect_td_ind,elect_td_ind,2095,non-energy,0.171006191
+European Free Trade Association,elect_td_trn,elect_td_trn,elect_td_trn,2095,non-energy,1.092302961
+European Free Trade Association,elect_td_bld,elect_td_bld,elect_td_bld,2100,non-energy,1.056710417
+European Free Trade Association,elect_td_ind,elect_td_ind,elect_td_ind,2100,non-energy,0.161925784
+European Free Trade Association,elect_td_trn,elect_td_trn,elect_td_trn,2100,non-energy,1.056710417
+India,elect_td_bld,elect_td_bld,elect_td_bld,2015,non-energy,3.902751556
+India,elect_td_ind,elect_td_ind,elect_td_ind,2015,non-energy,0.596907016
+India,elect_td_trn,elect_td_trn,elect_td_trn,2015,non-energy,3.902751556
+India,elect_td_bld,elect_td_bld,elect_td_bld,2020,non-energy,3.74458439
+India,elect_td_ind,elect_td_ind,elect_td_ind,2020,non-energy,0.586175688
+India,elect_td_trn,elect_td_trn,elect_td_trn,2020,non-energy,3.74458439
+India,elect_td_bld,elect_td_bld,elect_td_bld,2025,non-energy,3.550307465
+India,elect_td_ind,elect_td_ind,elect_td_ind,2025,non-energy,0.566610887
+India,elect_td_trn,elect_td_trn,elect_td_trn,2025,non-energy,3.550307465
+India,elect_td_bld,elect_td_bld,elect_td_bld,2030,non-energy,3.303774276
+India,elect_td_ind,elect_td_ind,elect_td_ind,2030,non-energy,0.533981407
+India,elect_td_trn,elect_td_trn,elect_td_trn,2030,non-energy,3.303774276
+India,elect_td_bld,elect_td_bld,elect_td_bld,2035,non-energy,3.038929663
+India,elect_td_ind,elect_td_ind,elect_td_ind,2035,non-energy,0.496862099
+India,elect_td_trn,elect_td_trn,elect_td_trn,2035,non-energy,3.038929663
+India,elect_td_bld,elect_td_bld,elect_td_bld,2040,non-energy,2.84829724
+India,elect_td_ind,elect_td_ind,elect_td_ind,2040,non-energy,0.478230556
+India,elect_td_trn,elect_td_trn,elect_td_trn,2040,non-energy,2.84829724
+India,elect_td_bld,elect_td_bld,elect_td_bld,2045,non-energy,2.628550294
+India,elect_td_ind,elect_td_ind,elect_td_ind,2045,non-energy,0.452425711
+India,elect_td_trn,elect_td_trn,elect_td_trn,2045,non-energy,2.628550294
+India,elect_td_bld,elect_td_bld,elect_td_bld,2050,non-energy,2.467916973
+India,elect_td_ind,elect_td_ind,elect_td_ind,2050,non-energy,0.441336419
+India,elect_td_trn,elect_td_trn,elect_td_trn,2050,non-energy,2.467916973
+India,elect_td_bld,elect_td_bld,elect_td_bld,2055,non-energy,2.405845706
+India,elect_td_ind,elect_td_ind,elect_td_ind,2055,non-energy,0.425586992
+India,elect_td_trn,elect_td_trn,elect_td_trn,2055,non-energy,2.405845706
+India,elect_td_bld,elect_td_bld,elect_td_bld,2060,non-energy,2.343658634
+India,elect_td_ind,elect_td_ind,elect_td_ind,2060,non-energy,0.409721762
+India,elect_td_trn,elect_td_trn,elect_td_trn,2060,non-energy,2.343658634
+India,elect_td_bld,elect_td_bld,elect_td_bld,2065,non-energy,2.281471562
+India,elect_td_ind,elect_td_ind,elect_td_ind,2065,non-energy,0.393856531
+India,elect_td_trn,elect_td_trn,elect_td_trn,2065,non-energy,2.281471562
+India,elect_td_bld,elect_td_bld,elect_td_bld,2070,non-energy,2.21928449
+India,elect_td_ind,elect_td_ind,elect_td_ind,2070,non-energy,0.377991301
+India,elect_td_trn,elect_td_trn,elect_td_trn,2070,non-energy,2.21928449
+India,elect_td_bld,elect_td_bld,elect_td_bld,2075,non-energy,2.157097418
+India,elect_td_ind,elect_td_ind,elect_td_ind,2075,non-energy,0.36212607
+India,elect_td_trn,elect_td_trn,elect_td_trn,2075,non-energy,2.157097418
+India,elect_td_bld,elect_td_bld,elect_td_bld,2080,non-energy,2.094910346
+India,elect_td_ind,elect_td_ind,elect_td_ind,2080,non-energy,0.346260839
+India,elect_td_trn,elect_td_trn,elect_td_trn,2080,non-energy,2.094910346
+India,elect_td_bld,elect_td_bld,elect_td_bld,2085,non-energy,2.032839079
+India,elect_td_ind,elect_td_ind,elect_td_ind,2085,non-energy,0.330511413
+India,elect_td_trn,elect_td_trn,elect_td_trn,2085,non-energy,2.032839079
+India,elect_td_bld,elect_td_bld,elect_td_bld,2090,non-energy,1.970652007
+India,elect_td_ind,elect_td_ind,elect_td_ind,2090,non-energy,0.314646183
+India,elect_td_trn,elect_td_trn,elect_td_trn,2090,non-energy,1.970652007
+India,elect_td_bld,elect_td_bld,elect_td_bld,2095,non-energy,1.908464935
+India,elect_td_ind,elect_td_ind,elect_td_ind,2095,non-energy,0.298780952
+India,elect_td_trn,elect_td_trn,elect_td_trn,2095,non-energy,1.908464935
+India,elect_td_bld,elect_td_bld,elect_td_bld,2100,non-energy,1.846277864
+India,elect_td_ind,elect_td_ind,elect_td_ind,2100,non-energy,0.282915721
+India,elect_td_trn,elect_td_trn,elect_td_trn,2100,non-energy,1.846277864
+Indonesia,elect_td_bld,elect_td_bld,elect_td_bld,2015,non-energy,2.151386536
+Indonesia,elect_td_ind,elect_td_ind,elect_td_ind,2015,non-energy,0.329044188
+Indonesia,elect_td_trn,elect_td_trn,elect_td_trn,2015,non-energy,2.151386536
+Indonesia,elect_td_bld,elect_td_bld,elect_td_bld,2020,non-energy,2.202528386
+Indonesia,elect_td_ind,elect_td_ind,elect_td_ind,2020,non-energy,0.344782881
+Indonesia,elect_td_trn,elect_td_trn,elect_td_trn,2020,non-energy,2.202528386
+Indonesia,elect_td_bld,elect_td_bld,elect_td_bld,2025,non-energy,2.243616607
+Indonesia,elect_td_ind,elect_td_ind,elect_td_ind,2025,non-energy,0.358069719
+Indonesia,elect_td_trn,elect_td_trn,elect_td_trn,2025,non-energy,2.243616607
+Indonesia,elect_td_bld,elect_td_bld,elect_td_bld,2030,non-energy,2.261786286
+Indonesia,elect_td_ind,elect_td_ind,elect_td_ind,2030,non-energy,0.365567295
+Indonesia,elect_td_trn,elect_td_trn,elect_td_trn,2030,non-energy,2.261786286
+Indonesia,elect_td_bld,elect_td_bld,elect_td_bld,2035,non-energy,2.276709671
+Indonesia,elect_td_ind,elect_td_ind,elect_td_ind,2035,non-energy,0.372239858
+Indonesia,elect_td_trn,elect_td_trn,elect_td_trn,2035,non-energy,2.276709671
+Indonesia,elect_td_bld,elect_td_bld,elect_td_bld,2040,non-energy,2.364759488
+Indonesia,elect_td_ind,elect_td_ind,elect_td_ind,2040,non-energy,0.397044321
+Indonesia,elect_td_trn,elect_td_trn,elect_td_trn,2040,non-energy,2.364759488
+Indonesia,elect_td_bld,elect_td_bld,elect_td_bld,2045,non-energy,2.45770177
+Indonesia,elect_td_ind,elect_td_ind,elect_td_ind,2045,non-energy,0.423019287
+Indonesia,elect_td_trn,elect_td_trn,elect_td_trn,2045,non-energy,2.45770177
+Indonesia,elect_td_bld,elect_td_bld,elect_td_bld,2050,non-energy,2.654661166
+Indonesia,elect_td_ind,elect_td_ind,elect_td_ind,2050,non-energy,0.474731794
+Indonesia,elect_td_trn,elect_td_trn,elect_td_trn,2050,non-energy,2.654661166
+Indonesia,elect_td_bld,elect_td_bld,elect_td_bld,2055,non-energy,2.587893043
+Indonesia,elect_td_ind,elect_td_ind,elect_td_ind,2055,non-energy,0.457790628
+Indonesia,elect_td_trn,elect_td_trn,elect_td_trn,2055,non-energy,2.587893043
+Indonesia,elect_td_bld,elect_td_bld,elect_td_bld,2060,non-energy,2.521000353
+Indonesia,elect_td_ind,elect_td_ind,elect_td_ind,2060,non-energy,0.440724895
+Indonesia,elect_td_trn,elect_td_trn,elect_td_trn,2060,non-energy,2.521000353
+Indonesia,elect_td_bld,elect_td_bld,elect_td_bld,2065,non-energy,2.454107663
+Indonesia,elect_td_ind,elect_td_ind,elect_td_ind,2065,non-energy,0.423659163
+Indonesia,elect_td_trn,elect_td_trn,elect_td_trn,2065,non-energy,2.454107663
+Indonesia,elect_td_bld,elect_td_bld,elect_td_bld,2070,non-energy,2.387214974
+Indonesia,elect_td_ind,elect_td_ind,elect_td_ind,2070,non-energy,0.40659343
+Indonesia,elect_td_trn,elect_td_trn,elect_td_trn,2070,non-energy,2.387214974
+Indonesia,elect_td_bld,elect_td_bld,elect_td_bld,2075,non-energy,2.320322284
+Indonesia,elect_td_ind,elect_td_ind,elect_td_ind,2075,non-energy,0.389527697
+Indonesia,elect_td_trn,elect_td_trn,elect_td_trn,2075,non-energy,2.320322284
+Indonesia,elect_td_bld,elect_td_bld,elect_td_bld,2080,non-energy,2.253429594
+Indonesia,elect_td_ind,elect_td_ind,elect_td_ind,2080,non-energy,0.372461964
+Indonesia,elect_td_trn,elect_td_trn,elect_td_trn,2080,non-energy,2.253429594
+Indonesia,elect_td_bld,elect_td_bld,elect_td_bld,2085,non-energy,2.186661471
+Indonesia,elect_td_ind,elect_td_ind,elect_td_ind,2085,non-energy,0.355520799
+Indonesia,elect_td_trn,elect_td_trn,elect_td_trn,2085,non-energy,2.186661471
+Indonesia,elect_td_bld,elect_td_bld,elect_td_bld,2090,non-energy,2.119768781
+Indonesia,elect_td_ind,elect_td_ind,elect_td_ind,2090,non-energy,0.338455066
+Indonesia,elect_td_trn,elect_td_trn,elect_td_trn,2090,non-energy,2.119768781
+Indonesia,elect_td_bld,elect_td_bld,elect_td_bld,2095,non-energy,2.052876092
+Indonesia,elect_td_ind,elect_td_ind,elect_td_ind,2095,non-energy,0.321389333
+Indonesia,elect_td_trn,elect_td_trn,elect_td_trn,2095,non-energy,2.052876092
+Indonesia,elect_td_bld,elect_td_bld,elect_td_bld,2100,non-energy,1.985983402
+Indonesia,elect_td_ind,elect_td_ind,elect_td_ind,2100,non-energy,0.3043236
+Indonesia,elect_td_trn,elect_td_trn,elect_td_trn,2100,non-energy,1.985983402
+Japan,elect_td_bld,elect_td_bld,elect_td_bld,2015,non-energy,2.189124494
+Japan,elect_td_ind,elect_td_ind,elect_td_ind,2015,non-energy,0.334816027
+Japan,elect_td_trn,elect_td_trn,elect_td_trn,2015,non-energy,2.189124494
+Japan,elect_td_bld,elect_td_bld,elect_td_bld,2020,non-energy,2.123635874
+Japan,elect_td_ind,elect_td_ind,elect_td_ind,2020,non-energy,0.332433079
+Japan,elect_td_trn,elect_td_trn,elect_td_trn,2020,non-energy,2.123635874
+Japan,elect_td_bld,elect_td_bld,elect_td_bld,2025,non-energy,2.039547067
+Japan,elect_td_ind,elect_td_ind,elect_td_ind,2025,non-energy,0.325501266
+Japan,elect_td_trn,elect_td_trn,elect_td_trn,2025,non-energy,2.039547067
+Japan,elect_td_bld,elect_td_bld,elect_td_bld,2030,non-energy,1.927135494
+Japan,elect_td_ind,elect_td_ind,elect_td_ind,2030,non-energy,0.31147846
+Japan,elect_td_trn,elect_td_trn,elect_td_trn,2030,non-energy,1.927135494
+Japan,elect_td_bld,elect_td_bld,elect_td_bld,2035,non-energy,1.805602682
+Japan,elect_td_ind,elect_td_ind,elect_td_ind,2035,non-energy,0.295214315
+Japan,elect_td_trn,elect_td_trn,elect_td_trn,2035,non-energy,1.805602682
+Japan,elect_td_bld,elect_td_bld,elect_td_bld,2040,non-energy,1.731107111
+Japan,elect_td_ind,elect_td_ind,elect_td_ind,2040,non-energy,0.290653765
+Japan,elect_td_trn,elect_td_trn,elect_td_trn,2040,non-energy,1.731107111
+Japan,elect_td_bld,elect_td_bld,elect_td_bld,2045,non-energy,1.643797468
+Japan,elect_td_ind,elect_td_ind,elect_td_ind,2045,non-energy,0.282930192
+Japan,elect_td_trn,elect_td_trn,elect_td_trn,2045,non-energy,1.643797468
+Japan,elect_td_bld,elect_td_bld,elect_td_bld,2050,non-energy,1.601641243
+Japan,elect_td_ind,elect_td_ind,elect_td_ind,2050,non-energy,0.286420742
+Japan,elect_td_trn,elect_td_trn,elect_td_trn,2050,non-energy,1.601641243
+Japan,elect_td_bld,elect_td_bld,elect_td_bld,2055,non-energy,1.561357917
+Japan,elect_td_ind,elect_td_ind,elect_td_ind,2055,non-energy,0.276199599
+Japan,elect_td_trn,elect_td_trn,elect_td_trn,2055,non-energy,1.561357917
+Japan,elect_td_bld,elect_td_bld,elect_td_bld,2060,non-energy,1.520999437
+Japan,elect_td_ind,elect_td_ind,elect_td_ind,2060,non-energy,0.265903302
+Japan,elect_td_trn,elect_td_trn,elect_td_trn,2060,non-energy,1.520999437
+Japan,elect_td_bld,elect_td_bld,elect_td_bld,2065,non-energy,1.480640956
+Japan,elect_td_ind,elect_td_ind,elect_td_ind,2065,non-energy,0.255607004
+Japan,elect_td_trn,elect_td_trn,elect_td_trn,2065,non-energy,1.480640956
+Japan,elect_td_bld,elect_td_bld,elect_td_bld,2070,non-energy,1.440282476
+Japan,elect_td_ind,elect_td_ind,elect_td_ind,2070,non-energy,0.245310707
+Japan,elect_td_trn,elect_td_trn,elect_td_trn,2070,non-energy,1.440282476
+Japan,elect_td_bld,elect_td_bld,elect_td_bld,2075,non-energy,1.399923995
+Japan,elect_td_ind,elect_td_ind,elect_td_ind,2075,non-energy,0.235014409
+Japan,elect_td_trn,elect_td_trn,elect_td_trn,2075,non-energy,1.399923995
+Japan,elect_td_bld,elect_td_bld,elect_td_bld,2080,non-energy,1.359565515
+Japan,elect_td_ind,elect_td_ind,elect_td_ind,2080,non-energy,0.224718111
+Japan,elect_td_trn,elect_td_trn,elect_td_trn,2080,non-energy,1.359565515
+Japan,elect_td_bld,elect_td_bld,elect_td_bld,2085,non-energy,1.31928219
+Japan,elect_td_ind,elect_td_ind,elect_td_ind,2085,non-energy,0.214496969
+Japan,elect_td_trn,elect_td_trn,elect_td_trn,2085,non-energy,1.31928219
+Japan,elect_td_bld,elect_td_bld,elect_td_bld,2090,non-energy,1.278923709
+Japan,elect_td_ind,elect_td_ind,elect_td_ind,2090,non-energy,0.204200671
+Japan,elect_td_trn,elect_td_trn,elect_td_trn,2090,non-energy,1.278923709
+Japan,elect_td_bld,elect_td_bld,elect_td_bld,2095,non-energy,1.238565229
+Japan,elect_td_ind,elect_td_ind,elect_td_ind,2095,non-energy,0.193904374
+Japan,elect_td_trn,elect_td_trn,elect_td_trn,2095,non-energy,1.238565229
+Japan,elect_td_bld,elect_td_bld,elect_td_bld,2100,non-energy,1.198206748
+Japan,elect_td_ind,elect_td_ind,elect_td_ind,2100,non-energy,0.183608076
+Japan,elect_td_trn,elect_td_trn,elect_td_trn,2100,non-energy,1.198206748
+Mexico,elect_td_bld,elect_td_bld,elect_td_bld,2015,non-energy,2.022162005
+Mexico,elect_td_ind,elect_td_ind,elect_td_ind,2015,non-energy,0.30927992
+Mexico,elect_td_trn,elect_td_trn,elect_td_trn,2015,non-energy,2.022162005
+Mexico,elect_td_bld,elect_td_bld,elect_td_bld,2020,non-energy,2.050834837
+Mexico,elect_td_ind,elect_td_ind,elect_td_ind,2020,non-energy,0.321036835
+Mexico,elect_td_trn,elect_td_trn,elect_td_trn,2020,non-energy,2.050834837
+Mexico,elect_td_bld,elect_td_bld,elect_td_bld,2025,non-energy,2.068676472
+Mexico,elect_td_ind,elect_td_ind,elect_td_ind,2025,non-energy,0.330150169
+Mexico,elect_td_trn,elect_td_trn,elect_td_trn,2025,non-energy,2.068676472
+Mexico,elect_td_bld,elect_td_bld,elect_td_bld,2030,non-energy,2.064150601
+Mexico,elect_td_ind,elect_td_ind,elect_td_ind,2030,non-energy,0.333623895
+Mexico,elect_td_trn,elect_td_trn,elect_td_trn,2030,non-energy,2.064150601
+Mexico,elect_td_bld,elect_td_bld,elect_td_bld,2035,non-energy,2.055613206
+Mexico,elect_td_ind,elect_td_ind,elect_td_ind,2035,non-energy,0.336090797
+Mexico,elect_td_trn,elect_td_trn,elect_td_trn,2035,non-energy,2.055613206
+Mexico,elect_td_bld,elect_td_bld,elect_td_bld,2040,non-energy,2.111292299
+Mexico,elect_td_ind,elect_td_ind,elect_td_ind,2040,non-energy,0.354487051
+Mexico,elect_td_trn,elect_td_trn,elect_td_trn,2040,non-energy,2.111292299
+Mexico,elect_td_bld,elect_td_bld,elect_td_bld,2045,non-energy,2.168633476
+Mexico,elect_td_ind,elect_td_ind,elect_td_ind,2045,non-energy,0.373264892
+Mexico,elect_td_trn,elect_td_trn,elect_td_trn,2045,non-energy,2.168633476
+Mexico,elect_td_bld,elect_td_bld,elect_td_bld,2050,non-energy,2.313727706
+Mexico,elect_td_ind,elect_td_ind,elect_td_ind,2050,non-energy,0.413762825
+Mexico,elect_td_trn,elect_td_trn,elect_td_trn,2050,non-energy,2.313727706
+Mexico,elect_td_bld,elect_td_bld,elect_td_bld,2055,non-energy,2.255534496
+Mexico,elect_td_ind,elect_td_ind,elect_td_ind,2055,non-energy,0.398997384
+Mexico,elect_td_trn,elect_td_trn,elect_td_trn,2055,non-energy,2.255534496
+Mexico,elect_td_bld,elect_td_bld,elect_td_bld,2060,non-energy,2.197232717
+Mexico,elect_td_ind,elect_td_ind,elect_td_ind,2060,non-energy,0.384123373
+Mexico,elect_td_trn,elect_td_trn,elect_td_trn,2060,non-energy,2.197232717
+Mexico,elect_td_bld,elect_td_bld,elect_td_bld,2065,non-energy,2.138930937
+Mexico,elect_td_ind,elect_td_ind,elect_td_ind,2065,non-energy,0.369249362
+Mexico,elect_td_trn,elect_td_trn,elect_td_trn,2065,non-energy,2.138930937
+Mexico,elect_td_bld,elect_td_bld,elect_td_bld,2070,non-energy,2.080629158
+Mexico,elect_td_ind,elect_td_ind,elect_td_ind,2070,non-energy,0.354375352
+Mexico,elect_td_trn,elect_td_trn,elect_td_trn,2070,non-energy,2.080629158
+Mexico,elect_td_bld,elect_td_bld,elect_td_bld,2075,non-energy,2.022327378
+Mexico,elect_td_ind,elect_td_ind,elect_td_ind,2075,non-energy,0.339501341
+Mexico,elect_td_trn,elect_td_trn,elect_td_trn,2075,non-energy,2.022327378
+Mexico,elect_td_bld,elect_td_bld,elect_td_bld,2080,non-energy,1.964025599
+Mexico,elect_td_ind,elect_td_ind,elect_td_ind,2080,non-energy,0.32462733
+Mexico,elect_td_trn,elect_td_trn,elect_td_trn,2080,non-energy,1.964025599
+Mexico,elect_td_bld,elect_td_bld,elect_td_bld,2085,non-energy,1.905832389
+Mexico,elect_td_ind,elect_td_ind,elect_td_ind,2085,non-energy,0.309861889
+Mexico,elect_td_trn,elect_td_trn,elect_td_trn,2085,non-energy,1.905832389
+Mexico,elect_td_bld,elect_td_bld,elect_td_bld,2090,non-energy,1.847530609
+Mexico,elect_td_ind,elect_td_ind,elect_td_ind,2090,non-energy,0.294987878
+Mexico,elect_td_trn,elect_td_trn,elect_td_trn,2090,non-energy,1.847530609
+Mexico,elect_td_bld,elect_td_bld,elect_td_bld,2095,non-energy,1.78922883
+Mexico,elect_td_ind,elect_td_ind,elect_td_ind,2095,non-energy,0.280113867
+Mexico,elect_td_trn,elect_td_trn,elect_td_trn,2095,non-energy,1.78922883
+Mexico,elect_td_bld,elect_td_bld,elect_td_bld,2100,non-energy,1.73092705
+Mexico,elect_td_ind,elect_td_ind,elect_td_ind,2100,non-energy,0.265239856
+Mexico,elect_td_trn,elect_td_trn,elect_td_trn,2100,non-energy,1.73092705
+Middle East,elect_td_bld,elect_td_bld,elect_td_bld,2015,non-energy,2.328833956
+Middle East,elect_td_ind,elect_td_ind,elect_td_ind,2015,non-energy,0.356183915
+Middle East,elect_td_trn,elect_td_trn,elect_td_trn,2015,non-energy,2.328833956
+Middle East,elect_td_bld,elect_td_bld,elect_td_bld,2020,non-energy,2.30077166
+Middle East,elect_td_ind,elect_td_ind,elect_td_ind,2020,non-energy,0.360161842
+Middle East,elect_td_trn,elect_td_trn,elect_td_trn,2020,non-energy,2.30077166
+Middle East,elect_td_bld,elect_td_bld,elect_td_bld,2025,non-energy,2.255885243
+Middle East,elect_td_ind,elect_td_ind,elect_td_ind,2025,non-energy,0.36002773
+Middle East,elect_td_trn,elect_td_trn,elect_td_trn,2025,non-energy,2.255885243
+Middle East,elect_td_bld,elect_td_bld,elect_td_bld,2030,non-energy,2.182639332
+Middle East,elect_td_ind,elect_td_ind,elect_td_ind,2030,non-energy,0.352774955
+Middle East,elect_td_trn,elect_td_trn,elect_td_trn,2030,non-energy,2.182639332
+Middle East,elect_td_bld,elect_td_bld,elect_td_bld,2035,non-energy,2.101749691
+Middle East,elect_td_ind,elect_td_ind,elect_td_ind,2035,non-energy,0.343634068
+Middle East,elect_td_trn,elect_td_trn,elect_td_trn,2035,non-energy,2.101749691
+Middle East,elect_td_bld,elect_td_bld,elect_td_bld,2040,non-energy,2.080589098
+Middle East,elect_td_ind,elect_td_ind,elect_td_ind,2040,non-energy,0.349331968
+Middle East,elect_td_trn,elect_td_trn,elect_td_trn,2040,non-energy,2.080589098
+Middle East,elect_td_bld,elect_td_bld,elect_td_bld,2045,non-energy,2.052095293
+Middle East,elect_td_ind,elect_td_ind,elect_td_ind,2045,non-energy,0.353206356
+Middle East,elect_td_trn,elect_td_trn,elect_td_trn,2045,non-energy,2.052095293
+Middle East,elect_td_bld,elect_td_bld,elect_td_bld,2050,non-energy,2.093120775
+Middle East,elect_td_ind,elect_td_ind,elect_td_ind,2050,non-energy,0.374311793
+Middle East,elect_td_trn,elect_td_trn,elect_td_trn,2050,non-energy,2.093120775
+Middle East,elect_td_bld,elect_td_bld,elect_td_bld,2055,non-energy,2.040476111
+Middle East,elect_td_ind,elect_td_ind,elect_td_ind,2055,non-energy,0.360954191
+Middle East,elect_td_trn,elect_td_trn,elect_td_trn,2055,non-energy,2.040476111
+Middle East,elect_td_bld,elect_td_bld,elect_td_bld,2060,non-energy,1.98773323
+Middle East,elect_td_ind,elect_td_ind,elect_td_ind,2060,non-energy,0.347498372
+Middle East,elect_td_trn,elect_td_trn,elect_td_trn,2060,non-energy,1.98773323
+Middle East,elect_td_bld,elect_td_bld,elect_td_bld,2065,non-energy,1.934990348
+Middle East,elect_td_ind,elect_td_ind,elect_td_ind,2065,non-energy,0.334042554
+Middle East,elect_td_trn,elect_td_trn,elect_td_trn,2065,non-energy,1.934990348
+Middle East,elect_td_bld,elect_td_bld,elect_td_bld,2070,non-energy,1.882247467
+Middle East,elect_td_ind,elect_td_ind,elect_td_ind,2070,non-energy,0.320586735
+Middle East,elect_td_trn,elect_td_trn,elect_td_trn,2070,non-energy,1.882247467
+Middle East,elect_td_bld,elect_td_bld,elect_td_bld,2075,non-energy,1.829504586
+Middle East,elect_td_ind,elect_td_ind,elect_td_ind,2075,non-energy,0.307130916
+Middle East,elect_td_trn,elect_td_trn,elect_td_trn,2075,non-energy,1.829504586
+Middle East,elect_td_bld,elect_td_bld,elect_td_bld,2080,non-energy,1.776761704
+Middle East,elect_td_ind,elect_td_ind,elect_td_ind,2080,non-energy,0.293675097
+Middle East,elect_td_trn,elect_td_trn,elect_td_trn,2080,non-energy,1.776761704
+Middle East,elect_td_bld,elect_td_bld,elect_td_bld,2085,non-energy,1.724117041
+Middle East,elect_td_ind,elect_td_ind,elect_td_ind,2085,non-energy,0.280317496
+Middle East,elect_td_trn,elect_td_trn,elect_td_trn,2085,non-energy,1.724117041
+Middle East,elect_td_bld,elect_td_bld,elect_td_bld,2090,non-energy,1.671374159
+Middle East,elect_td_ind,elect_td_ind,elect_td_ind,2090,non-energy,0.266861677
+Middle East,elect_td_trn,elect_td_trn,elect_td_trn,2090,non-energy,1.671374159
+Middle East,elect_td_bld,elect_td_bld,elect_td_bld,2095,non-energy,1.618631278
+Middle East,elect_td_ind,elect_td_ind,elect_td_ind,2095,non-energy,0.253405858
+Middle East,elect_td_trn,elect_td_trn,elect_td_trn,2095,non-energy,1.618631278
+Middle East,elect_td_bld,elect_td_bld,elect_td_bld,2100,non-energy,1.565888397
+Middle East,elect_td_ind,elect_td_ind,elect_td_ind,2100,non-energy,0.239950039
+Middle East,elect_td_trn,elect_td_trn,elect_td_trn,2100,non-energy,1.565888397
+Pakistan,elect_td_bld,elect_td_bld,elect_td_bld,2015,non-energy,3.807909197
+Pakistan,elect_td_ind,elect_td_ind,elect_td_ind,2015,non-energy,0.582401335
+Pakistan,elect_td_trn,elect_td_trn,elect_td_trn,2015,non-energy,3.807909197
+Pakistan,elect_td_bld,elect_td_bld,elect_td_bld,2020,non-energy,3.743252605
+Pakistan,elect_td_ind,elect_td_ind,elect_td_ind,2020,non-energy,0.585967211
+Pakistan,elect_td_trn,elect_td_trn,elect_td_trn,2020,non-energy,3.743252605
+Pakistan,elect_td_bld,elect_td_bld,elect_td_bld,2025,non-energy,3.649749767
+Pakistan,elect_td_ind,elect_td_ind,elect_td_ind,2025,non-energy,0.582481369
+Pakistan,elect_td_trn,elect_td_trn,elect_td_trn,2025,non-energy,3.649749767
+Pakistan,elect_td_bld,elect_td_bld,elect_td_bld,2030,non-energy,3.509076965
+Pakistan,elect_td_ind,elect_td_ind,elect_td_ind,2030,non-energy,0.567164007
+Pakistan,elect_td_trn,elect_td_trn,elect_td_trn,2030,non-energy,3.509076965
+Pakistan,elect_td_bld,elect_td_bld,elect_td_bld,2035,non-energy,3.354976539
+Pakistan,elect_td_ind,elect_td_ind,elect_td_ind,2035,non-energy,0.548535462
+Pakistan,elect_td_trn,elect_td_trn,elect_td_trn,2035,non-energy,3.354976539
+Pakistan,elect_td_bld,elect_td_bld,elect_td_bld,2040,non-energy,3.294168071
+Pakistan,elect_td_ind,elect_td_ind,elect_td_ind,2040,non-energy,0.553092495
+Pakistan,elect_td_trn,elect_td_trn,elect_td_trn,2040,non-energy,3.294168071
+Pakistan,elect_td_bld,elect_td_bld,elect_td_bld,2045,non-energy,3.218527164
+Pakistan,elect_td_ind,elect_td_ind,elect_td_ind,2045,non-energy,0.553972448
+Pakistan,elect_td_trn,elect_td_trn,elect_td_trn,2045,non-energy,3.218527164
+Pakistan,elect_td_bld,elect_td_bld,elect_td_bld,2050,non-energy,3.246865073
+Pakistan,elect_td_ind,elect_td_ind,elect_td_ind,2050,non-energy,0.580635337
+Pakistan,elect_td_trn,elect_td_trn,elect_td_trn,2050,non-energy,3.246865073
+Pakistan,elect_td_bld,elect_td_bld,elect_td_bld,2055,non-energy,3.165202265
+Pakistan,elect_td_ind,elect_td_ind,elect_td_ind,2055,non-energy,0.559914923
+Pakistan,elect_td_trn,elect_td_trn,elect_td_trn,2055,non-energy,3.165202265
+Pakistan,elect_td_bld,elect_td_bld,elect_td_bld,2060,non-energy,3.083387101
+Pakistan,elect_td_ind,elect_td_ind,elect_td_ind,2060,non-energy,0.539042153
+Pakistan,elect_td_trn,elect_td_trn,elect_td_trn,2060,non-energy,3.083387101
+Pakistan,elect_td_bld,elect_td_bld,elect_td_bld,2065,non-energy,3.001571937
+Pakistan,elect_td_ind,elect_td_ind,elect_td_ind,2065,non-energy,0.518169383
+Pakistan,elect_td_trn,elect_td_trn,elect_td_trn,2065,non-energy,3.001571937
+Pakistan,elect_td_bld,elect_td_bld,elect_td_bld,2070,non-energy,2.919756773
+Pakistan,elect_td_ind,elect_td_ind,elect_td_ind,2070,non-energy,0.497296613
+Pakistan,elect_td_trn,elect_td_trn,elect_td_trn,2070,non-energy,2.919756773
+Pakistan,elect_td_bld,elect_td_bld,elect_td_bld,2075,non-energy,2.837941609
+Pakistan,elect_td_ind,elect_td_ind,elect_td_ind,2075,non-energy,0.476423843
+Pakistan,elect_td_trn,elect_td_trn,elect_td_trn,2075,non-energy,2.837941609
+Pakistan,elect_td_bld,elect_td_bld,elect_td_bld,2080,non-energy,2.756126445
+Pakistan,elect_td_ind,elect_td_ind,elect_td_ind,2080,non-energy,0.455551073
+Pakistan,elect_td_trn,elect_td_trn,elect_td_trn,2080,non-energy,2.756126445
+Pakistan,elect_td_bld,elect_td_bld,elect_td_bld,2085,non-energy,2.674463637
+Pakistan,elect_td_ind,elect_td_ind,elect_td_ind,2085,non-energy,0.434830659
+Pakistan,elect_td_trn,elect_td_trn,elect_td_trn,2085,non-energy,2.674463637
+Pakistan,elect_td_bld,elect_td_bld,elect_td_bld,2090,non-energy,2.592648473
+Pakistan,elect_td_ind,elect_td_ind,elect_td_ind,2090,non-energy,0.413957889
+Pakistan,elect_td_trn,elect_td_trn,elect_td_trn,2090,non-energy,2.592648473
+Pakistan,elect_td_bld,elect_td_bld,elect_td_bld,2095,non-energy,2.51083331
+Pakistan,elect_td_ind,elect_td_ind,elect_td_ind,2095,non-energy,0.393085119
+Pakistan,elect_td_trn,elect_td_trn,elect_td_trn,2095,non-energy,2.51083331
+Pakistan,elect_td_bld,elect_td_bld,elect_td_bld,2100,non-energy,2.429018146
+Pakistan,elect_td_ind,elect_td_ind,elect_td_ind,2100,non-energy,0.372212349
+Pakistan,elect_td_trn,elect_td_trn,elect_td_trn,2100,non-energy,2.429018146
+Russia,elect_td_bld,elect_td_bld,elect_td_bld,2015,non-energy,2.006601138
+Russia,elect_td_ind,elect_td_ind,elect_td_ind,2015,non-energy,0.30689996
+Russia,elect_td_trn,elect_td_trn,elect_td_trn,2015,non-energy,2.006601138
+Russia,elect_td_bld,elect_td_bld,elect_td_bld,2020,non-energy,1.974480251
+Russia,elect_td_ind,elect_td_ind,elect_td_ind,2020,non-energy,0.30908432
+Russia,elect_td_trn,elect_td_trn,elect_td_trn,2020,non-energy,1.974480251
+Russia,elect_td_bld,elect_td_bld,elect_td_bld,2025,non-energy,1.927297555
+Russia,elect_td_ind,elect_td_ind,elect_td_ind,2025,non-energy,0.307586818
+Russia,elect_td_trn,elect_td_trn,elect_td_trn,2025,non-energy,1.927297555
+Russia,elect_td_bld,elect_td_bld,elect_td_bld,2030,non-energy,1.855341367
+Russia,elect_td_ind,elect_td_ind,elect_td_ind,2030,non-energy,0.299874541
+Russia,elect_td_trn,elect_td_trn,elect_td_trn,2030,non-energy,1.855341367
+Russia,elect_td_bld,elect_td_bld,elect_td_bld,2035,non-energy,1.776405955
+Russia,elect_td_ind,elect_td_ind,elect_td_ind,2035,non-energy,0.290440678
+Russia,elect_td_trn,elect_td_trn,elect_td_trn,2035,non-energy,1.776405955
+Russia,elect_td_bld,elect_td_bld,elect_td_bld,2040,non-energy,1.747085535
+Russia,elect_td_ind,elect_td_ind,elect_td_ind,2040,non-energy,0.29333655
+Russia,elect_td_trn,elect_td_trn,elect_td_trn,2040,non-energy,1.747085535
+Russia,elect_td_bld,elect_td_bld,elect_td_bld,2045,non-energy,1.710244324
+Russia,elect_td_ind,elect_td_ind,elect_td_ind,2045,non-energy,0.294367015
+Russia,elect_td_trn,elect_td_trn,elect_td_trn,2045,non-energy,1.710244324
+Russia,elect_td_bld,elect_td_bld,elect_td_bld,2050,non-energy,1.729202474
+Russia,elect_td_ind,elect_td_ind,elect_td_ind,2050,non-energy,0.309232456
+Russia,elect_td_trn,elect_td_trn,elect_td_trn,2050,non-energy,1.729202474
+Russia,elect_td_bld,elect_td_bld,elect_td_bld,2055,non-energy,1.685710821
+Russia,elect_td_ind,elect_td_ind,elect_td_ind,2055,non-energy,0.29819726
+Russia,elect_td_trn,elect_td_trn,elect_td_trn,2055,non-energy,1.685710821
+Russia,elect_td_bld,elect_td_bld,elect_td_bld,2060,non-energy,1.642138027
+Russia,elect_td_ind,elect_td_ind,elect_td_ind,2060,non-energy,0.287080924
+Russia,elect_td_trn,elect_td_trn,elect_td_trn,2060,non-energy,1.642138027
+Russia,elect_td_bld,elect_td_bld,elect_td_bld,2065,non-energy,1.598565233
+Russia,elect_td_ind,elect_td_ind,elect_td_ind,2065,non-energy,0.275964587
+Russia,elect_td_trn,elect_td_trn,elect_td_trn,2065,non-energy,1.598565233
+Russia,elect_td_bld,elect_td_bld,elect_td_bld,2070,non-energy,1.554992438
+Russia,elect_td_ind,elect_td_ind,elect_td_ind,2070,non-energy,0.26484825
+Russia,elect_td_trn,elect_td_trn,elect_td_trn,2070,non-energy,1.554992438
+Russia,elect_td_bld,elect_td_bld,elect_td_bld,2075,non-energy,1.511419644
+Russia,elect_td_ind,elect_td_ind,elect_td_ind,2075,non-energy,0.253731914
+Russia,elect_td_trn,elect_td_trn,elect_td_trn,2075,non-energy,1.511419644
+Russia,elect_td_bld,elect_td_bld,elect_td_bld,2080,non-energy,1.46784685
+Russia,elect_td_ind,elect_td_ind,elect_td_ind,2080,non-energy,0.242615577
+Russia,elect_td_trn,elect_td_trn,elect_td_trn,2080,non-energy,1.46784685
+Russia,elect_td_bld,elect_td_bld,elect_td_bld,2085,non-energy,1.424355197
+Russia,elect_td_ind,elect_td_ind,elect_td_ind,2085,non-energy,0.231580381
+Russia,elect_td_trn,elect_td_trn,elect_td_trn,2085,non-energy,1.424355197
+Russia,elect_td_bld,elect_td_bld,elect_td_bld,2090,non-energy,1.380782403
+Russia,elect_td_ind,elect_td_ind,elect_td_ind,2090,non-energy,0.220464045
+Russia,elect_td_trn,elect_td_trn,elect_td_trn,2090,non-energy,1.380782403
+Russia,elect_td_bld,elect_td_bld,elect_td_bld,2095,non-energy,1.337209608
+Russia,elect_td_ind,elect_td_ind,elect_td_ind,2095,non-energy,0.209347708
+Russia,elect_td_trn,elect_td_trn,elect_td_trn,2095,non-energy,1.337209608
+Russia,elect_td_bld,elect_td_bld,elect_td_bld,2100,non-energy,1.293636814
+Russia,elect_td_ind,elect_td_ind,elect_td_ind,2100,non-energy,0.198231371
+Russia,elect_td_trn,elect_td_trn,elect_td_trn,2100,non-energy,1.293636814
+South Africa,elect_td_bld,elect_td_bld,elect_td_bld,2015,non-energy,2.514898845
+South Africa,elect_td_ind,elect_td_ind,elect_td_ind,2015,non-energy,0.384641642
+South Africa,elect_td_trn,elect_td_trn,elect_td_trn,2015,non-energy,2.514898845
+South Africa,elect_td_bld,elect_td_bld,elect_td_bld,2020,non-energy,2.4650146
+South Africa,elect_td_ind,elect_td_ind,elect_td_ind,2020,non-energy,0.385872364
+South Africa,elect_td_trn,elect_td_trn,elect_td_trn,2020,non-energy,2.4650146
+South Africa,elect_td_bld,elect_td_bld,elect_td_bld,2025,non-energy,2.395567592
+South Africa,elect_td_ind,elect_td_ind,elect_td_ind,2025,non-energy,0.382320318
+South Africa,elect_td_trn,elect_td_trn,elect_td_trn,2025,non-energy,2.395567592
+South Africa,elect_td_bld,elect_td_bld,elect_td_bld,2030,non-energy,2.294661916
+South Africa,elect_td_ind,elect_td_ind,elect_td_ind,2030,non-energy,0.370880907
+South Africa,elect_td_trn,elect_td_trn,elect_td_trn,2030,non-energy,2.294661916
+South Africa,elect_td_bld,elect_td_bld,elect_td_bld,2035,non-energy,2.184532536
+South Africa,elect_td_ind,elect_td_ind,elect_td_ind,2035,non-energy,0.357168985
+South Africa,elect_td_trn,elect_td_trn,elect_td_trn,2035,non-energy,2.184532536
+South Africa,elect_td_bld,elect_td_bld,elect_td_bld,2040,non-energy,2.134344214
+South Africa,elect_td_ind,elect_td_ind,elect_td_ind,2040,non-energy,0.35835748
+South Africa,elect_td_trn,elect_td_trn,elect_td_trn,2040,non-energy,2.134344214
+South Africa,elect_td_bld,elect_td_bld,elect_td_bld,2045,non-energy,2.073272611
+South Africa,elect_td_ind,elect_td_ind,elect_td_ind,2045,non-energy,0.356851394
+South Africa,elect_td_trn,elect_td_trn,elect_td_trn,2045,non-energy,2.073272611
+South Africa,elect_td_bld,elect_td_bld,elect_td_bld,2050,non-energy,2.07716406
+South Africa,elect_td_ind,elect_td_ind,elect_td_ind,2050,non-energy,0.371458261
+South Africa,elect_td_trn,elect_td_trn,elect_td_trn,2050,non-energy,2.07716406
+South Africa,elect_td_bld,elect_td_bld,elect_td_bld,2055,non-energy,2.024920729
+South Africa,elect_td_ind,elect_td_ind,elect_td_ind,2055,non-energy,0.35820249
+South Africa,elect_td_trn,elect_td_trn,elect_td_trn,2055,non-energy,2.024920729
+South Africa,elect_td_bld,elect_td_bld,elect_td_bld,2060,non-energy,1.972579928
+South Africa,elect_td_ind,elect_td_ind,elect_td_ind,2060,non-energy,0.344849251
+South Africa,elect_td_trn,elect_td_trn,elect_td_trn,2060,non-energy,1.972579928
+South Africa,elect_td_bld,elect_td_bld,elect_td_bld,2065,non-energy,1.920239127
+South Africa,elect_td_ind,elect_td_ind,elect_td_ind,2065,non-energy,0.331496011
+South Africa,elect_td_trn,elect_td_trn,elect_td_trn,2065,non-energy,1.920239127
+South Africa,elect_td_bld,elect_td_bld,elect_td_bld,2070,non-energy,1.867898326
+South Africa,elect_td_ind,elect_td_ind,elect_td_ind,2070,non-energy,0.318142771
+South Africa,elect_td_trn,elect_td_trn,elect_td_trn,2070,non-energy,1.867898326
+South Africa,elect_td_bld,elect_td_bld,elect_td_bld,2075,non-energy,1.815557525
+South Africa,elect_td_ind,elect_td_ind,elect_td_ind,2075,non-energy,0.304789531
+South Africa,elect_td_trn,elect_td_trn,elect_td_trn,2075,non-energy,1.815557525
+South Africa,elect_td_bld,elect_td_bld,elect_td_bld,2080,non-energy,1.763216724
+South Africa,elect_td_ind,elect_td_ind,elect_td_ind,2080,non-energy,0.291436292
+South Africa,elect_td_trn,elect_td_trn,elect_td_trn,2080,non-energy,1.763216724
+South Africa,elect_td_bld,elect_td_bld,elect_td_bld,2085,non-energy,1.710973393
+South Africa,elect_td_ind,elect_td_ind,elect_td_ind,2085,non-energy,0.278180521
+South Africa,elect_td_trn,elect_td_trn,elect_td_trn,2085,non-energy,1.710973393
+South Africa,elect_td_bld,elect_td_bld,elect_td_bld,2090,non-energy,1.658632592
+South Africa,elect_td_ind,elect_td_ind,elect_td_ind,2090,non-energy,0.264827281
+South Africa,elect_td_trn,elect_td_trn,elect_td_trn,2090,non-energy,1.658632592
+South Africa,elect_td_bld,elect_td_bld,elect_td_bld,2095,non-energy,1.606291791
+South Africa,elect_td_ind,elect_td_ind,elect_td_ind,2095,non-energy,0.251474042
+South Africa,elect_td_trn,elect_td_trn,elect_td_trn,2095,non-energy,1.606291791
+South Africa,elect_td_bld,elect_td_bld,elect_td_bld,2100,non-energy,1.55395099
+South Africa,elect_td_ind,elect_td_ind,elect_td_ind,2100,non-energy,0.238120802
+South Africa,elect_td_trn,elect_td_trn,elect_td_trn,2100,non-energy,1.55395099
+South America_Northern,elect_td_bld,elect_td_bld,elect_td_bld,2015,non-energy,2.022141429
+South America_Northern,elect_td_ind,elect_td_ind,elect_td_ind,2015,non-energy,0.309276773
+South America_Northern,elect_td_trn,elect_td_trn,elect_td_trn,2015,non-energy,2.022141429
+South America_Northern,elect_td_bld,elect_td_bld,elect_td_bld,2020,non-energy,2.092108155
+South America_Northern,elect_td_ind,elect_td_ind,elect_td_ind,2020,non-energy,0.327497743
+South America_Northern,elect_td_trn,elect_td_trn,elect_td_trn,2020,non-energy,2.092108155
+South America_Northern,elect_td_bld,elect_td_bld,elect_td_bld,2025,non-energy,2.154184727
+South America_Northern,elect_td_ind,elect_td_ind,elect_td_ind,2025,non-energy,0.343796849
+South America_Northern,elect_td_trn,elect_td_trn,elect_td_trn,2025,non-energy,2.154184727
+South America_Northern,elect_td_bld,elect_td_bld,elect_td_bld,2030,non-energy,2.195651584
+South America_Northern,elect_td_ind,elect_td_ind,elect_td_ind,2030,non-energy,0.354878096
+South America_Northern,elect_td_trn,elect_td_trn,elect_td_trn,2030,non-energy,2.195651584
+South America_Northern,elect_td_bld,elect_td_bld,elect_td_bld,2035,non-energy,2.235151156
+South America_Northern,elect_td_ind,elect_td_ind,elect_td_ind,2035,non-energy,0.365445081
+South America_Northern,elect_td_trn,elect_td_trn,elect_td_trn,2035,non-energy,2.235151156
+South America_Northern,elect_td_bld,elect_td_bld,elect_td_bld,2040,non-energy,2.348483889
+South America_Northern,elect_td_ind,elect_td_ind,elect_td_ind,2040,non-energy,0.39431164
+South America_Northern,elect_td_trn,elect_td_trn,elect_td_trn,2040,non-energy,2.348483889
+South America_Northern,elect_td_bld,elect_td_bld,elect_td_bld,2045,non-energy,2.469730167
+South America_Northern,elect_td_ind,elect_td_ind,elect_td_ind,2045,non-energy,0.425089613
+South America_Northern,elect_td_trn,elect_td_trn,elect_td_trn,2045,non-energy,2.469730167
+South America_Northern,elect_td_bld,elect_td_bld,elect_td_bld,2050,non-energy,2.700051887
+South America_Northern,elect_td_ind,elect_td_ind,elect_td_ind,2050,non-energy,0.482848995
+South America_Northern,elect_td_trn,elect_td_trn,elect_td_trn,2050,non-energy,2.700051887
+South America_Northern,elect_td_bld,elect_td_bld,elect_td_bld,2055,non-energy,2.63214213
+South America_Northern,elect_td_ind,elect_td_ind,elect_td_ind,2055,non-energy,0.465618161
+South America_Northern,elect_td_trn,elect_td_trn,elect_td_trn,2055,non-energy,2.63214213
+South America_Northern,elect_td_bld,elect_td_bld,elect_td_bld,2060,non-energy,2.564105676
+South America_Northern,elect_td_ind,elect_td_ind,elect_td_ind,2060,non-energy,0.44826063
+South America_Northern,elect_td_trn,elect_td_trn,elect_td_trn,2060,non-energy,2.564105676
+South America_Northern,elect_td_bld,elect_td_bld,elect_td_bld,2065,non-energy,2.496069221
+South America_Northern,elect_td_ind,elect_td_ind,elect_td_ind,2065,non-energy,0.430903098
+South America_Northern,elect_td_trn,elect_td_trn,elect_td_trn,2065,non-energy,2.496069221
+South America_Northern,elect_td_bld,elect_td_bld,elect_td_bld,2070,non-energy,2.428032767
+South America_Northern,elect_td_ind,elect_td_ind,elect_td_ind,2070,non-energy,0.413545567
+South America_Northern,elect_td_trn,elect_td_trn,elect_td_trn,2070,non-energy,2.428032767
+South America_Northern,elect_td_bld,elect_td_bld,elect_td_bld,2075,non-energy,2.359996312
+South America_Northern,elect_td_ind,elect_td_ind,elect_td_ind,2075,non-energy,0.396188036
+South America_Northern,elect_td_trn,elect_td_trn,elect_td_trn,2075,non-energy,2.359996312
+South America_Northern,elect_td_bld,elect_td_bld,elect_td_bld,2080,non-energy,2.291959858
+South America_Northern,elect_td_ind,elect_td_ind,elect_td_ind,2080,non-energy,0.378830505
+South America_Northern,elect_td_trn,elect_td_trn,elect_td_trn,2080,non-energy,2.291959858
+South America_Northern,elect_td_bld,elect_td_bld,elect_td_bld,2085,non-energy,2.224050101
+South America_Northern,elect_td_ind,elect_td_ind,elect_td_ind,2085,non-energy,0.361599671
+South America_Northern,elect_td_trn,elect_td_trn,elect_td_trn,2085,non-energy,2.224050101
+South America_Northern,elect_td_bld,elect_td_bld,elect_td_bld,2090,non-energy,2.156013646
+South America_Northern,elect_td_ind,elect_td_ind,elect_td_ind,2090,non-energy,0.34424214
+South America_Northern,elect_td_trn,elect_td_trn,elect_td_trn,2090,non-energy,2.156013646
+South America_Northern,elect_td_bld,elect_td_bld,elect_td_bld,2095,non-energy,2.087977192
+South America_Northern,elect_td_ind,elect_td_ind,elect_td_ind,2095,non-energy,0.326884608
+South America_Northern,elect_td_trn,elect_td_trn,elect_td_trn,2095,non-energy,2.087977192
+South America_Northern,elect_td_bld,elect_td_bld,elect_td_bld,2100,non-energy,2.019940737
+South America_Northern,elect_td_ind,elect_td_ind,elect_td_ind,2100,non-energy,0.309527077
+South America_Northern,elect_td_trn,elect_td_trn,elect_td_trn,2100,non-energy,2.019940737
+South America_Southern,elect_td_bld,elect_td_bld,elect_td_bld,2015,non-energy,2.915308708
+South America_Southern,elect_td_ind,elect_td_ind,elect_td_ind,2015,non-energy,0.445882398
+South America_Southern,elect_td_trn,elect_td_trn,elect_td_trn,2015,non-energy,2.915308708
+South America_Southern,elect_td_bld,elect_td_bld,elect_td_bld,2020,non-energy,2.828800706
+South America_Southern,elect_td_ind,elect_td_ind,elect_td_ind,2020,non-energy,0.44281929
+South America_Southern,elect_td_trn,elect_td_trn,elect_td_trn,2020,non-energy,2.828800706
+South America_Southern,elect_td_bld,elect_td_bld,elect_td_bld,2025,non-energy,2.717572588
+South America_Southern,elect_td_ind,elect_td_ind,elect_td_ind,2025,non-energy,0.433710666
+South America_Southern,elect_td_trn,elect_td_trn,elect_td_trn,2025,non-energy,2.717572588
+South America_Southern,elect_td_bld,elect_td_bld,elect_td_bld,2030,non-energy,2.568656368
+South America_Southern,elect_td_ind,elect_td_ind,elect_td_ind,2030,non-energy,0.415165997
+South America_Southern,elect_td_trn,elect_td_trn,elect_td_trn,2030,non-energy,2.568656368
+South America_Southern,elect_td_bld,elect_td_bld,elect_td_bld,2035,non-energy,2.407628067
+South America_Southern,elect_td_ind,elect_td_ind,elect_td_ind,2035,non-energy,0.393644891
+South America_Southern,elect_td_trn,elect_td_trn,elect_td_trn,2035,non-energy,2.407628067
+South America_Southern,elect_td_bld,elect_td_bld,elect_td_bld,2040,non-energy,2.3094045
+South America_Southern,elect_td_ind,elect_td_ind,elect_td_ind,2040,non-energy,0.387750191
+South America_Southern,elect_td_trn,elect_td_trn,elect_td_trn,2040,non-energy,2.3094045
+South America_Southern,elect_td_bld,elect_td_bld,elect_td_bld,2045,non-energy,2.194222822
+South America_Southern,elect_td_ind,elect_td_ind,elect_td_ind,2045,non-energy,0.377669327
+South America_Southern,elect_td_trn,elect_td_trn,elect_td_trn,2045,non-energy,2.194222822
+South America_Southern,elect_td_bld,elect_td_bld,elect_td_bld,2050,non-energy,2.139536923
+South America_Southern,elect_td_ind,elect_td_ind,elect_td_ind,2050,non-energy,0.38261237
+South America_Southern,elect_td_trn,elect_td_trn,elect_td_trn,2050,non-energy,2.139536923
+South America_Southern,elect_td_bld,elect_td_bld,elect_td_bld,2055,non-energy,2.085724834
+South America_Southern,elect_td_ind,elect_td_ind,elect_td_ind,2055,non-energy,0.368958557
+South America_Southern,elect_td_trn,elect_td_trn,elect_td_trn,2055,non-energy,2.085724834
+South America_Southern,elect_td_bld,elect_td_bld,elect_td_bld,2060,non-energy,2.031812349
+South America_Southern,elect_td_ind,elect_td_ind,elect_td_ind,2060,non-energy,0.355204347
+South America_Southern,elect_td_trn,elect_td_trn,elect_td_trn,2060,non-energy,2.031812349
+South America_Southern,elect_td_bld,elect_td_bld,elect_td_bld,2065,non-energy,1.977899864
+South America_Southern,elect_td_ind,elect_td_ind,elect_td_ind,2065,non-energy,0.341450138
+South America_Southern,elect_td_trn,elect_td_trn,elect_td_trn,2065,non-energy,1.977899864
+South America_Southern,elect_td_bld,elect_td_bld,elect_td_bld,2070,non-energy,1.923987379
+South America_Southern,elect_td_ind,elect_td_ind,elect_td_ind,2070,non-energy,0.327695929
+South America_Southern,elect_td_trn,elect_td_trn,elect_td_trn,2070,non-energy,1.923987379
+South America_Southern,elect_td_bld,elect_td_bld,elect_td_bld,2075,non-energy,1.870074894
+South America_Southern,elect_td_ind,elect_td_ind,elect_td_ind,2075,non-energy,0.313941719
+South America_Southern,elect_td_trn,elect_td_trn,elect_td_trn,2075,non-energy,1.870074894
+South America_Southern,elect_td_bld,elect_td_bld,elect_td_bld,2080,non-energy,1.81616241
+South America_Southern,elect_td_ind,elect_td_ind,elect_td_ind,2080,non-energy,0.30018751
+South America_Southern,elect_td_trn,elect_td_trn,elect_td_trn,2080,non-energy,1.81616241
+South America_Southern,elect_td_bld,elect_td_bld,elect_td_bld,2085,non-energy,1.76235032
+South America_Southern,elect_td_ind,elect_td_ind,elect_td_ind,2085,non-energy,0.286533696
+South America_Southern,elect_td_trn,elect_td_trn,elect_td_trn,2085,non-energy,1.76235032
+South America_Southern,elect_td_bld,elect_td_bld,elect_td_bld,2090,non-energy,1.708437836
+South America_Southern,elect_td_ind,elect_td_ind,elect_td_ind,2090,non-energy,0.272779487
+South America_Southern,elect_td_trn,elect_td_trn,elect_td_trn,2090,non-energy,1.708437836
+South America_Southern,elect_td_bld,elect_td_bld,elect_td_bld,2095,non-energy,1.654525351
+South America_Southern,elect_td_ind,elect_td_ind,elect_td_ind,2095,non-energy,0.259025278
+South America_Southern,elect_td_trn,elect_td_trn,elect_td_trn,2095,non-energy,1.654525351
+South America_Southern,elect_td_bld,elect_td_bld,elect_td_bld,2100,non-energy,1.600612866
+South America_Southern,elect_td_ind,elect_td_ind,elect_td_ind,2100,non-energy,0.245271068
+South America_Southern,elect_td_trn,elect_td_trn,elect_td_trn,2100,non-energy,1.600612866
+South Asia,elect_td_bld,elect_td_bld,elect_td_bld,2015,non-energy,11.37390629
+South Asia,elect_td_ind,elect_td_ind,elect_td_ind,2015,non-energy,1.739584077
+South Asia,elect_td_trn,elect_td_trn,elect_td_trn,2015,non-energy,11.37390629
+South Asia,elect_td_bld,elect_td_bld,elect_td_bld,2020,non-energy,10.50986375
+South Asia,elect_td_ind,elect_td_ind,elect_td_ind,2020,non-energy,1.645209715
+South Asia,elect_td_trn,elect_td_trn,elect_td_trn,2020,non-energy,10.50986375
+South Asia,elect_td_bld,elect_td_bld,elect_td_bld,2025,non-energy,9.511877673
+South Asia,elect_td_ind,elect_td_ind,elect_td_ind,2025,non-energy,1.518046958
+South Asia,elect_td_trn,elect_td_trn,elect_td_trn,2025,non-energy,9.511877673
+South Asia,elect_td_bld,elect_td_bld,elect_td_bld,2030,non-energy,8.344443233
+South Asia,elect_td_ind,elect_td_ind,elect_td_ind,2030,non-energy,1.348693091
+South Asia,elect_td_trn,elect_td_trn,elect_td_trn,2030,non-energy,8.344443233
+South Asia,elect_td_bld,elect_td_bld,elect_td_bld,2035,non-energy,7.103688917
+South Asia,elect_td_ind,elect_td_ind,elect_td_ind,2035,non-energy,1.161446358
+South Asia,elect_td_trn,elect_td_trn,elect_td_trn,2035,non-energy,7.103688917
+South Asia,elect_td_bld,elect_td_bld,elect_td_bld,2040,non-energy,5.985334338
+South Asia,elect_td_ind,elect_td_ind,elect_td_ind,2040,non-energy,1.004940681
+South Asia,elect_td_trn,elect_td_trn,elect_td_trn,2040,non-energy,5.985334338
+South Asia,elect_td_bld,elect_td_bld,elect_td_bld,2045,non-energy,4.721106936
+South Asia,elect_td_ind,elect_td_ind,elect_td_ind,2045,non-energy,0.812596269
+South Asia,elect_td_trn,elect_td_trn,elect_td_trn,2045,non-energy,4.721106936
+South Asia,elect_td_bld,elect_td_bld,elect_td_bld,2050,non-energy,3.421009961
+South Asia,elect_td_ind,elect_td_ind,elect_td_ind,2050,non-energy,0.611777584
+South Asia,elect_td_trn,elect_td_trn,elect_td_trn,2050,non-energy,3.421009961
+South Asia,elect_td_bld,elect_td_bld,elect_td_bld,2055,non-energy,3.334967187
+South Asia,elect_td_ind,elect_td_ind,elect_td_ind,2055,non-energy,0.589945835
+South Asia,elect_td_trn,elect_td_trn,elect_td_trn,2055,non-energy,3.334967187
+South Asia,elect_td_bld,elect_td_bld,elect_td_bld,2060,non-energy,3.248763885
+South Asia,elect_td_ind,elect_td_ind,elect_td_ind,2060,non-energy,0.567953559
+South Asia,elect_td_trn,elect_td_trn,elect_td_trn,2060,non-energy,3.248763885
+South Asia,elect_td_bld,elect_td_bld,elect_td_bld,2065,non-energy,3.162560582
+South Asia,elect_td_ind,elect_td_ind,elect_td_ind,2065,non-energy,0.545961283
+South Asia,elect_td_trn,elect_td_trn,elect_td_trn,2065,non-energy,3.162560582
+South Asia,elect_td_bld,elect_td_bld,elect_td_bld,2070,non-energy,3.07635728
+South Asia,elect_td_ind,elect_td_ind,elect_td_ind,2070,non-energy,0.523969007
+South Asia,elect_td_trn,elect_td_trn,elect_td_trn,2070,non-energy,3.07635728
+South Asia,elect_td_bld,elect_td_bld,elect_td_bld,2075,non-energy,2.990153978
+South Asia,elect_td_ind,elect_td_ind,elect_td_ind,2075,non-energy,0.50197673
+South Asia,elect_td_trn,elect_td_trn,elect_td_trn,2075,non-energy,2.990153978
+South Asia,elect_td_bld,elect_td_bld,elect_td_bld,2080,non-energy,2.903950676
+South Asia,elect_td_ind,elect_td_ind,elect_td_ind,2080,non-energy,0.479984454
+South Asia,elect_td_trn,elect_td_trn,elect_td_trn,2080,non-energy,2.903950676
+South Asia,elect_td_bld,elect_td_bld,elect_td_bld,2085,non-energy,2.817907902
+South Asia,elect_td_ind,elect_td_ind,elect_td_ind,2085,non-energy,0.458152705
+South Asia,elect_td_trn,elect_td_trn,elect_td_trn,2085,non-energy,2.817907902
+South Asia,elect_td_bld,elect_td_bld,elect_td_bld,2090,non-energy,2.7317046
+South Asia,elect_td_ind,elect_td_ind,elect_td_ind,2090,non-energy,0.436160429
+South Asia,elect_td_trn,elect_td_trn,elect_td_trn,2090,non-energy,2.7317046
+South Asia,elect_td_bld,elect_td_bld,elect_td_bld,2095,non-energy,2.645501298
+South Asia,elect_td_ind,elect_td_ind,elect_td_ind,2095,non-energy,0.414168152
+South Asia,elect_td_trn,elect_td_trn,elect_td_trn,2095,non-energy,2.645501298
+South Asia,elect_td_bld,elect_td_bld,elect_td_bld,2100,non-energy,2.559297995
+South Asia,elect_td_ind,elect_td_ind,elect_td_ind,2100,non-energy,0.392175876
+South Asia,elect_td_trn,elect_td_trn,elect_td_trn,2100,non-energy,2.559297995
+South Korea,elect_td_bld,elect_td_bld,elect_td_bld,2015,non-energy,1.785617096
+South Korea,elect_td_ind,elect_td_ind,elect_td_ind,2015,non-energy,0.273101518
+South Korea,elect_td_trn,elect_td_trn,elect_td_trn,2015,non-energy,1.785617096
+South Korea,elect_td_bld,elect_td_bld,elect_td_bld,2020,non-energy,1.742955687
+South Korea,elect_td_ind,elect_td_ind,elect_td_ind,2020,non-energy,0.272841561
+South Korea,elect_td_trn,elect_td_trn,elect_td_trn,2020,non-energy,1.742955687
+South Korea,elect_td_bld,elect_td_bld,elect_td_bld,2025,non-energy,1.685888585
+South Korea,elect_td_ind,elect_td_ind,elect_td_ind,2025,non-energy,0.269059183
+South Korea,elect_td_trn,elect_td_trn,elect_td_trn,2025,non-energy,1.685888585
+South Korea,elect_td_bld,elect_td_bld,elect_td_bld,2030,non-energy,1.606177073
+South Korea,elect_td_ind,elect_td_ind,elect_td_ind,2030,non-energy,0.259602692
+South Korea,elect_td_trn,elect_td_trn,elect_td_trn,2030,non-energy,1.606177073
+South Korea,elect_td_bld,elect_td_bld,elect_td_bld,2035,non-energy,1.519558046
+South Korea,elect_td_ind,elect_td_ind,elect_td_ind,2035,non-energy,0.24844629
+South Korea,elect_td_trn,elect_td_trn,elect_td_trn,2035,non-energy,1.519558046
+South Korea,elect_td_bld,elect_td_bld,elect_td_bld,2040,non-energy,1.473811259
+South Korea,elect_td_ind,elect_td_ind,elect_td_ind,2040,non-energy,0.24745366
+South Korea,elect_td_trn,elect_td_trn,elect_td_trn,2040,non-energy,1.473811259
+South Korea,elect_td_bld,elect_td_bld,elect_td_bld,2045,non-energy,1.419240691
+South Korea,elect_td_ind,elect_td_ind,elect_td_ind,2045,non-energy,0.24427951
+South Korea,elect_td_trn,elect_td_trn,elect_td_trn,2045,non-energy,1.419240691
+South Korea,elect_td_bld,elect_td_bld,elect_td_bld,2050,non-energy,1.407054883
+South Korea,elect_td_ind,elect_td_ind,elect_td_ind,2050,non-energy,0.251622955
+South Korea,elect_td_trn,elect_td_trn,elect_td_trn,2050,non-energy,1.407054883
+South Korea,elect_td_bld,elect_td_bld,elect_td_bld,2055,non-energy,1.371665654
+South Korea,elect_td_ind,elect_td_ind,elect_td_ind,2055,non-energy,0.242643599
+South Korea,elect_td_trn,elect_td_trn,elect_td_trn,2055,non-energy,1.371665654
+South Korea,elect_td_bld,elect_td_bld,elect_td_bld,2060,non-energy,1.3362104
+South Korea,elect_td_ind,elect_td_ind,elect_td_ind,2060,non-energy,0.233598217
+South Korea,elect_td_trn,elect_td_trn,elect_td_trn,2060,non-energy,1.3362104
+South Korea,elect_td_bld,elect_td_bld,elect_td_bld,2065,non-energy,1.300755146
+South Korea,elect_td_ind,elect_td_ind,elect_td_ind,2065,non-energy,0.224552836
+South Korea,elect_td_trn,elect_td_trn,elect_td_trn,2065,non-energy,1.300755146
+South Korea,elect_td_bld,elect_td_bld,elect_td_bld,2070,non-energy,1.265299892
+South Korea,elect_td_ind,elect_td_ind,elect_td_ind,2070,non-energy,0.215507455
+South Korea,elect_td_trn,elect_td_trn,elect_td_trn,2070,non-energy,1.265299892
+South Korea,elect_td_bld,elect_td_bld,elect_td_bld,2075,non-energy,1.229844638
+South Korea,elect_td_ind,elect_td_ind,elect_td_ind,2075,non-energy,0.206462073
+South Korea,elect_td_trn,elect_td_trn,elect_td_trn,2075,non-energy,1.229844638
+South Korea,elect_td_bld,elect_td_bld,elect_td_bld,2080,non-energy,1.194389384
+South Korea,elect_td_ind,elect_td_ind,elect_td_ind,2080,non-energy,0.197416692
+South Korea,elect_td_trn,elect_td_trn,elect_td_trn,2080,non-energy,1.194389384
+South Korea,elect_td_bld,elect_td_bld,elect_td_bld,2085,non-energy,1.159000154
+South Korea,elect_td_ind,elect_td_ind,elect_td_ind,2085,non-energy,0.188437335
+South Korea,elect_td_trn,elect_td_trn,elect_td_trn,2085,non-energy,1.159000154
+South Korea,elect_td_bld,elect_td_bld,elect_td_bld,2090,non-energy,1.1235449
+South Korea,elect_td_ind,elect_td_ind,elect_td_ind,2090,non-energy,0.179391954
+South Korea,elect_td_trn,elect_td_trn,elect_td_trn,2090,non-energy,1.1235449
+South Korea,elect_td_bld,elect_td_bld,elect_td_bld,2095,non-energy,1.088089646
+South Korea,elect_td_ind,elect_td_ind,elect_td_ind,2095,non-energy,0.170346572
+South Korea,elect_td_trn,elect_td_trn,elect_td_trn,2095,non-energy,1.088089646
+South Korea,elect_td_bld,elect_td_bld,elect_td_bld,2100,non-energy,1.052634392
+South Korea,elect_td_ind,elect_td_ind,elect_td_ind,2100,non-energy,0.161301191
+South Korea,elect_td_trn,elect_td_trn,elect_td_trn,2100,non-energy,1.052634392
+Southeast Asia,elect_td_bld,elect_td_bld,elect_td_bld,2015,non-energy,3.404632728
+Southeast Asia,elect_td_ind,elect_td_ind,elect_td_ind,2015,non-energy,0.520722145
+Southeast Asia,elect_td_trn,elect_td_trn,elect_td_trn,2015,non-energy,3.404632728
+Southeast Asia,elect_td_bld,elect_td_bld,elect_td_bld,2020,non-energy,3.30310481
+Southeast Asia,elect_td_ind,elect_td_ind,elect_td_ind,2020,non-energy,0.517066658
+Southeast Asia,elect_td_trn,elect_td_trn,elect_td_trn,2020,non-energy,3.30310481
+Southeast Asia,elect_td_bld,elect_td_bld,elect_td_bld,2025,non-energy,3.172671993
+Southeast Asia,elect_td_ind,elect_td_ind,elect_td_ind,2025,non-energy,0.5063422
+Southeast Asia,elect_td_trn,elect_td_trn,elect_td_trn,2025,non-energy,3.172671993
+Southeast Asia,elect_td_bld,elect_td_bld,elect_td_bld,2030,non-energy,2.998203989
+Southeast Asia,elect_td_ind,elect_td_ind,elect_td_ind,2030,non-energy,0.484592787
+Southeast Asia,elect_td_trn,elect_td_trn,elect_td_trn,2030,non-energy,2.998203989
+Southeast Asia,elect_td_bld,elect_td_bld,elect_td_bld,2035,non-energy,2.809566188
+Southeast Asia,elect_td_ind,elect_td_ind,elect_td_ind,2035,non-energy,0.45936139
+Southeast Asia,elect_td_trn,elect_td_trn,elect_td_trn,2035,non-energy,2.809566188
+Southeast Asia,elect_td_bld,elect_td_bld,elect_td_bld,2040,non-energy,2.694158254
+Southeast Asia,elect_td_ind,elect_td_ind,elect_td_ind,2040,non-energy,0.452350542
+Southeast Asia,elect_td_trn,elect_td_trn,elect_td_trn,2040,non-energy,2.694158254
+Southeast Asia,elect_td_bld,elect_td_bld,elect_td_bld,2045,non-energy,2.558870176
+Southeast Asia,elect_td_ind,elect_td_ind,elect_td_ind,2045,non-energy,0.440432379
+Southeast Asia,elect_td_trn,elect_td_trn,elect_td_trn,2045,non-energy,2.558870176
+Southeast Asia,elect_td_bld,elect_td_bld,elect_td_bld,2050,non-energy,2.493973759
+Southeast Asia,elect_td_ind,elect_td_ind,elect_td_ind,2050,non-energy,0.445996141
+Southeast Asia,elect_td_trn,elect_td_trn,elect_td_trn,2050,non-energy,2.493973759
+Southeast Asia,elect_td_bld,elect_td_bld,elect_td_bld,2055,non-energy,2.431247131
+Southeast Asia,elect_td_ind,elect_td_ind,elect_td_ind,2055,non-energy,0.430080429
+Southeast Asia,elect_td_trn,elect_td_trn,elect_td_trn,2055,non-energy,2.431247131
+Southeast Asia,elect_td_bld,elect_td_bld,elect_td_bld,2060,non-energy,2.368403475
+Southeast Asia,elect_td_ind,elect_td_ind,elect_td_ind,2060,non-energy,0.41404769
+Southeast Asia,elect_td_trn,elect_td_trn,elect_td_trn,2060,non-energy,2.368403475
+Southeast Asia,elect_td_bld,elect_td_bld,elect_td_bld,2065,non-energy,2.305559818
+Southeast Asia,elect_td_ind,elect_td_ind,elect_td_ind,2065,non-energy,0.398014951
+Southeast Asia,elect_td_trn,elect_td_trn,elect_td_trn,2065,non-energy,2.305559818
+Southeast Asia,elect_td_bld,elect_td_bld,elect_td_bld,2070,non-energy,2.242716162
+Southeast Asia,elect_td_ind,elect_td_ind,elect_td_ind,2070,non-energy,0.381982212
+Southeast Asia,elect_td_trn,elect_td_trn,elect_td_trn,2070,non-energy,2.242716162
+Southeast Asia,elect_td_bld,elect_td_bld,elect_td_bld,2075,non-energy,2.179872506
+Southeast Asia,elect_td_ind,elect_td_ind,elect_td_ind,2075,non-energy,0.365949473
+Southeast Asia,elect_td_trn,elect_td_trn,elect_td_trn,2075,non-energy,2.179872506
+Southeast Asia,elect_td_bld,elect_td_bld,elect_td_bld,2080,non-energy,2.11702885
+Southeast Asia,elect_td_ind,elect_td_ind,elect_td_ind,2080,non-energy,0.349916734
+Southeast Asia,elect_td_trn,elect_td_trn,elect_td_trn,2080,non-energy,2.11702885
+Southeast Asia,elect_td_bld,elect_td_bld,elect_td_bld,2085,non-energy,2.054302222
+Southeast Asia,elect_td_ind,elect_td_ind,elect_td_ind,2085,non-energy,0.334001022
+Southeast Asia,elect_td_trn,elect_td_trn,elect_td_trn,2085,non-energy,2.054302222
+Southeast Asia,elect_td_bld,elect_td_bld,elect_td_bld,2090,non-energy,1.991458565
+Southeast Asia,elect_td_ind,elect_td_ind,elect_td_ind,2090,non-energy,0.317968283
+Southeast Asia,elect_td_trn,elect_td_trn,elect_td_trn,2090,non-energy,1.991458565
+Southeast Asia,elect_td_bld,elect_td_bld,elect_td_bld,2095,non-energy,1.928614909
+Southeast Asia,elect_td_ind,elect_td_ind,elect_td_ind,2095,non-energy,0.301935544
+Southeast Asia,elect_td_trn,elect_td_trn,elect_td_trn,2095,non-energy,1.928614909
+Southeast Asia,elect_td_bld,elect_td_bld,elect_td_bld,2100,non-energy,1.865771253
+Southeast Asia,elect_td_ind,elect_td_ind,elect_td_ind,2100,non-energy,0.285902805
+Southeast Asia,elect_td_trn,elect_td_trn,elect_td_trn,2100,non-energy,1.865771253
+Taiwan,elect_td_bld,elect_td_bld,elect_td_bld,2015,non-energy,0.249369943
+Taiwan,elect_td_ind,elect_td_ind,elect_td_ind,2015,non-energy,0.038139929
+Taiwan,elect_td_trn,elect_td_trn,elect_td_trn,2015,non-energy,0.249369943
+Taiwan,elect_td_bld,elect_td_bld,elect_td_bld,2020,non-energy,0.259477477
+Taiwan,elect_td_ind,elect_td_ind,elect_td_ind,2020,non-energy,0.040618497
+Taiwan,elect_td_trn,elect_td_trn,elect_td_trn,2020,non-energy,0.259477477
+Taiwan,elect_td_bld,elect_td_bld,elect_td_bld,2025,non-energy,0.268717351
+Taiwan,elect_td_ind,elect_td_ind,elect_td_ind,2025,non-energy,0.042885913
+Taiwan,elect_td_trn,elect_td_trn,elect_td_trn,2025,non-energy,0.268717351
+Taiwan,elect_td_bld,elect_td_bld,elect_td_bld,2030,non-energy,0.2754786
+Taiwan,elect_td_ind,elect_td_ind,elect_td_ind,2030,non-energy,0.04452497
+Taiwan,elect_td_trn,elect_td_trn,elect_td_trn,2030,non-energy,0.2754786
+Taiwan,elect_td_bld,elect_td_bld,elect_td_bld,2035,non-energy,0.282070472
+Taiwan,elect_td_ind,elect_td_ind,elect_td_ind,2035,non-energy,0.046118253
+Taiwan,elect_td_trn,elect_td_trn,elect_td_trn,2035,non-energy,0.282070472
+Taiwan,elect_td_bld,elect_td_bld,elect_td_bld,2040,non-energy,0.298111946
+Taiwan,elect_td_ind,elect_td_ind,elect_td_ind,2040,non-energy,0.050053147
+Taiwan,elect_td_trn,elect_td_trn,elect_td_trn,2040,non-energy,0.298111946
+Taiwan,elect_td_bld,elect_td_bld,elect_td_bld,2045,non-energy,0.315353258
+Taiwan,elect_td_ind,elect_td_ind,elect_td_ind,2045,non-energy,0.054278559
+Taiwan,elect_td_trn,elect_td_trn,elect_td_trn,2045,non-energy,0.315353258
+Taiwan,elect_td_bld,elect_td_bld,elect_td_bld,2050,non-energy,0.346809576
+Taiwan,elect_td_ind,elect_td_ind,elect_td_ind,2050,non-energy,0.062019792
+Taiwan,elect_td_trn,elect_td_trn,elect_td_trn,2050,non-energy,0.346809576
+Taiwan,elect_td_bld,elect_td_bld,elect_td_bld,2055,non-energy,0.338086872
+Taiwan,elect_td_ind,elect_td_ind,elect_td_ind,2055,non-energy,0.059806568
+Taiwan,elect_td_trn,elect_td_trn,elect_td_trn,2055,non-energy,0.338086872
+Taiwan,elect_td_bld,elect_td_bld,elect_td_bld,2060,non-energy,0.329347894
+Taiwan,elect_td_ind,elect_td_ind,elect_td_ind,2060,non-energy,0.057577071
+Taiwan,elect_td_trn,elect_td_trn,elect_td_trn,2060,non-energy,0.329347894
+Taiwan,elect_td_bld,elect_td_bld,elect_td_bld,2065,non-energy,0.320608916
+Taiwan,elect_td_ind,elect_td_ind,elect_td_ind,2065,non-energy,0.055347574
+Taiwan,elect_td_trn,elect_td_trn,elect_td_trn,2065,non-energy,0.320608916
+Taiwan,elect_td_bld,elect_td_bld,elect_td_bld,2070,non-energy,0.311869938
+Taiwan,elect_td_ind,elect_td_ind,elect_td_ind,2070,non-energy,0.053118077
+Taiwan,elect_td_trn,elect_td_trn,elect_td_trn,2070,non-energy,0.311869938
+Taiwan,elect_td_bld,elect_td_bld,elect_td_bld,2075,non-energy,0.30313096
+Taiwan,elect_td_ind,elect_td_ind,elect_td_ind,2075,non-energy,0.050888579
+Taiwan,elect_td_trn,elect_td_trn,elect_td_trn,2075,non-energy,0.30313096
+Taiwan,elect_td_bld,elect_td_bld,elect_td_bld,2080,non-energy,0.294391982
+Taiwan,elect_td_ind,elect_td_ind,elect_td_ind,2080,non-energy,0.048659082
+Taiwan,elect_td_trn,elect_td_trn,elect_td_trn,2080,non-energy,0.294391982
+Taiwan,elect_td_bld,elect_td_bld,elect_td_bld,2085,non-energy,0.285669278
+Taiwan,elect_td_ind,elect_td_ind,elect_td_ind,2085,non-energy,0.046445859
+Taiwan,elect_td_trn,elect_td_trn,elect_td_trn,2085,non-energy,0.285669278
+Taiwan,elect_td_bld,elect_td_bld,elect_td_bld,2090,non-energy,0.2769303
+Taiwan,elect_td_ind,elect_td_ind,elect_td_ind,2090,non-energy,0.044216362
+Taiwan,elect_td_trn,elect_td_trn,elect_td_trn,2090,non-energy,0.2769303
+Taiwan,elect_td_bld,elect_td_bld,elect_td_bld,2095,non-energy,0.268191322
+Taiwan,elect_td_ind,elect_td_ind,elect_td_ind,2095,non-energy,0.041986864
+Taiwan,elect_td_trn,elect_td_trn,elect_td_trn,2095,non-energy,0.268191322
+Taiwan,elect_td_bld,elect_td_bld,elect_td_bld,2100,non-energy,0.259452344
+Taiwan,elect_td_ind,elect_td_ind,elect_td_ind,2100,non-energy,0.039757367
+Taiwan,elect_td_trn,elect_td_trn,elect_td_trn,2100,non-energy,0.259452344
+Argentina,elect_td_bld,elect_td_bld,elect_td_bld,2015,non-energy,2.875762406
+Argentina,elect_td_ind,elect_td_ind,elect_td_ind,2015,non-energy,0.439833982
+Argentina,elect_td_trn,elect_td_trn,elect_td_trn,2015,non-energy,2.875762406
+Argentina,elect_td_bld,elect_td_bld,elect_td_bld,2020,non-energy,2.789221906
+Argentina,elect_td_ind,elect_td_ind,elect_td_ind,2020,non-energy,0.436623641
+Argentina,elect_td_trn,elect_td_trn,elect_td_trn,2020,non-energy,2.789221906
+Argentina,elect_td_bld,elect_td_bld,elect_td_bld,2025,non-energy,2.678210729
+Argentina,elect_td_ind,elect_td_ind,elect_td_ind,2025,non-energy,0.427428715
+Argentina,elect_td_trn,elect_td_trn,elect_td_trn,2025,non-energy,2.678210729
+Argentina,elect_td_bld,elect_td_bld,elect_td_bld,2030,non-energy,2.529971363
+Argentina,elect_td_ind,elect_td_ind,elect_td_ind,2030,non-energy,0.408913429
+Argentina,elect_td_trn,elect_td_trn,elect_td_trn,2030,non-energy,2.529971363
+Argentina,elect_td_bld,elect_td_bld,elect_td_bld,2035,non-energy,2.369724516
+Argentina,elect_td_ind,elect_td_ind,elect_td_ind,2035,non-energy,0.387447697
+Argentina,elect_td_trn,elect_td_trn,elect_td_trn,2035,non-energy,2.369724516
+Argentina,elect_td_bld,elect_td_bld,elect_td_bld,2040,non-energy,2.271149584
+Argentina,elect_td_ind,elect_td_ind,elect_td_ind,2040,non-energy,0.381327171
+Argentina,elect_td_trn,elect_td_trn,elect_td_trn,2040,non-energy,2.271149584
+Argentina,elect_td_bld,elect_td_bld,elect_td_bld,2045,non-energy,2.155664005
+Argentina,elect_td_ind,elect_td_ind,elect_td_ind,2045,non-energy,0.371032589
+Argentina,elect_td_trn,elect_td_trn,elect_td_trn,2045,non-energy,2.155664005
+Argentina,elect_td_bld,elect_td_bld,elect_td_bld,2050,non-energy,2.099230837
+Argentina,elect_td_ind,elect_td_ind,elect_td_ind,2050,non-energy,0.375404452
+Argentina,elect_td_trn,elect_td_trn,elect_td_trn,2050,non-energy,2.099230837
+Argentina,elect_td_bld,elect_td_bld,elect_td_bld,2055,non-energy,2.046432498
+Argentina,elect_td_ind,elect_td_ind,elect_td_ind,2055,non-energy,0.362007859
+Argentina,elect_td_trn,elect_td_trn,elect_td_trn,2055,non-energy,2.046432498
+Argentina,elect_td_bld,elect_td_bld,elect_td_bld,2060,non-energy,1.993535654
+Argentina,elect_td_ind,elect_td_ind,elect_td_ind,2060,non-energy,0.348512761
+Argentina,elect_td_trn,elect_td_trn,elect_td_trn,2060,non-energy,1.993535654
+Argentina,elect_td_bld,elect_td_bld,elect_td_bld,2065,non-energy,1.94063881
+Argentina,elect_td_ind,elect_td_ind,elect_td_ind,2065,non-energy,0.335017663
+Argentina,elect_td_trn,elect_td_trn,elect_td_trn,2065,non-energy,1.94063881
+Argentina,elect_td_bld,elect_td_bld,elect_td_bld,2070,non-energy,1.887741966
+Argentina,elect_td_ind,elect_td_ind,elect_td_ind,2070,non-energy,0.321522565
+Argentina,elect_td_trn,elect_td_trn,elect_td_trn,2070,non-energy,1.887741966
+Argentina,elect_td_bld,elect_td_bld,elect_td_bld,2075,non-energy,1.834845122
+Argentina,elect_td_ind,elect_td_ind,elect_td_ind,2075,non-energy,0.308027467
+Argentina,elect_td_trn,elect_td_trn,elect_td_trn,2075,non-energy,1.834845122
+Argentina,elect_td_bld,elect_td_bld,elect_td_bld,2080,non-energy,1.781948278
+Argentina,elect_td_ind,elect_td_ind,elect_td_ind,2080,non-energy,0.294532369
+Argentina,elect_td_trn,elect_td_trn,elect_td_trn,2080,non-energy,1.781948278
+Argentina,elect_td_bld,elect_td_bld,elect_td_bld,2085,non-energy,1.729149938
+Argentina,elect_td_ind,elect_td_ind,elect_td_ind,2085,non-energy,0.281135775
+Argentina,elect_td_trn,elect_td_trn,elect_td_trn,2085,non-energy,1.729149938
+Argentina,elect_td_bld,elect_td_bld,elect_td_bld,2090,non-energy,1.676253094
+Argentina,elect_td_ind,elect_td_ind,elect_td_ind,2090,non-energy,0.267640677
+Argentina,elect_td_trn,elect_td_trn,elect_td_trn,2090,non-energy,1.676253094
+Argentina,elect_td_bld,elect_td_bld,elect_td_bld,2095,non-energy,1.623356251
+Argentina,elect_td_ind,elect_td_ind,elect_td_ind,2095,non-energy,0.254145579
+Argentina,elect_td_trn,elect_td_trn,elect_td_trn,2095,non-energy,1.623356251
+Argentina,elect_td_bld,elect_td_bld,elect_td_bld,2100,non-energy,1.570459407
+Argentina,elect_td_ind,elect_td_ind,elect_td_ind,2100,non-energy,0.240650481
+Argentina,elect_td_trn,elect_td_trn,elect_td_trn,2100,non-energy,1.570459407
+Colombia,elect_td_bld,elect_td_bld,elect_td_bld,2015,non-energy,4.910995472
+Colombia,elect_td_ind,elect_td_ind,elect_td_ind,2015,non-energy,0.751113057
+Colombia,elect_td_trn,elect_td_trn,elect_td_trn,2015,non-energy,4.910995472
+Colombia,elect_td_bld,elect_td_bld,elect_td_bld,2020,non-energy,4.658457701
+Colombia,elect_td_ind,elect_td_ind,elect_td_ind,2020,non-energy,0.729233037
+Colombia,elect_td_trn,elect_td_trn,elect_td_trn,2020,non-energy,4.658457701
+Colombia,elect_td_bld,elect_td_bld,elect_td_bld,2025,non-energy,4.356670618
+Colombia,elect_td_ind,elect_td_ind,elect_td_ind,2025,non-energy,0.695302316
+Colombia,elect_td_trn,elect_td_trn,elect_td_trn,2025,non-energy,4.356670618
+Colombia,elect_td_bld,elect_td_bld,elect_td_bld,2030,non-energy,3.986849828
+Colombia,elect_td_ind,elect_td_ind,elect_td_ind,2030,non-energy,0.644385332
+Colombia,elect_td_trn,elect_td_trn,elect_td_trn,2030,non-energy,3.986849828
+Colombia,elect_td_bld,elect_td_bld,elect_td_bld,2035,non-energy,3.591338115
+Colombia,elect_td_ind,elect_td_ind,elect_td_ind,2035,non-energy,0.587180354
+Colombia,elect_td_trn,elect_td_trn,elect_td_trn,2035,non-energy,3.591338115
+Colombia,elect_td_bld,elect_td_bld,elect_td_bld,2040,non-energy,3.276748477
+Colombia,elect_td_ind,elect_td_ind,elect_td_ind,2040,non-energy,0.550167737
+Colombia,elect_td_trn,elect_td_trn,elect_td_trn,2040,non-energy,3.276748477
+Colombia,elect_td_bld,elect_td_bld,elect_td_bld,2045,non-energy,2.91742209
+Colombia,elect_td_ind,elect_td_ind,elect_td_ind,2045,non-energy,0.502146284
+Colombia,elect_td_trn,elect_td_trn,elect_td_trn,2045,non-energy,2.91742209
+Colombia,elect_td_bld,elect_td_bld,elect_td_bld,2050,non-energy,2.604849931
+Colombia,elect_td_ind,elect_td_ind,elect_td_ind,2050,non-energy,0.465824074
+Colombia,elect_td_trn,elect_td_trn,elect_td_trn,2050,non-energy,2.604849931
+Colombia,elect_td_bld,elect_td_bld,elect_td_bld,2055,non-energy,2.539334625
+Colombia,elect_td_ind,elect_td_ind,elect_td_ind,2055,non-energy,0.449200788
+Colombia,elect_td_trn,elect_td_trn,elect_td_trn,2055,non-energy,2.539334625
+Colombia,elect_td_bld,elect_td_bld,elect_td_bld,2060,non-energy,2.473697089
+Colombia,elect_td_ind,elect_td_ind,elect_td_ind,2060,non-energy,0.432455271
+Colombia,elect_td_trn,elect_td_trn,elect_td_trn,2060,non-energy,2.473697089
+Colombia,elect_td_bld,elect_td_bld,elect_td_bld,2065,non-energy,2.408059552
+Colombia,elect_td_ind,elect_td_ind,elect_td_ind,2065,non-energy,0.415709754
+Colombia,elect_td_trn,elect_td_trn,elect_td_trn,2065,non-energy,2.408059552
+Colombia,elect_td_bld,elect_td_bld,elect_td_bld,2070,non-energy,2.342422016
+Colombia,elect_td_ind,elect_td_ind,elect_td_ind,2070,non-energy,0.398964238
+Colombia,elect_td_trn,elect_td_trn,elect_td_trn,2070,non-energy,2.342422016
+Colombia,elect_td_bld,elect_td_bld,elect_td_bld,2075,non-energy,2.27678448
+Colombia,elect_td_ind,elect_td_ind,elect_td_ind,2075,non-energy,0.382218721
+Colombia,elect_td_trn,elect_td_trn,elect_td_trn,2075,non-energy,2.27678448
+Colombia,elect_td_bld,elect_td_bld,elect_td_bld,2080,non-energy,2.211146944
+Colombia,elect_td_ind,elect_td_ind,elect_td_ind,2080,non-energy,0.365473204
+Colombia,elect_td_trn,elect_td_trn,elect_td_trn,2080,non-energy,2.211146944
+Colombia,elect_td_bld,elect_td_bld,elect_td_bld,2085,non-energy,2.145631637
+Colombia,elect_td_ind,elect_td_ind,elect_td_ind,2085,non-energy,0.348849917
+Colombia,elect_td_trn,elect_td_trn,elect_td_trn,2085,non-energy,2.145631637
+Colombia,elect_td_bld,elect_td_bld,elect_td_bld,2090,non-energy,2.079994101
+Colombia,elect_td_ind,elect_td_ind,elect_td_ind,2090,non-energy,0.332104401
+Colombia,elect_td_trn,elect_td_trn,elect_td_trn,2090,non-energy,2.079994101
+Colombia,elect_td_bld,elect_td_bld,elect_td_bld,2095,non-energy,2.014356565
+Colombia,elect_td_ind,elect_td_ind,elect_td_ind,2095,non-energy,0.315358884
+Colombia,elect_td_trn,elect_td_trn,elect_td_trn,2095,non-energy,2.014356565
+Colombia,elect_td_bld,elect_td_bld,elect_td_bld,2100,non-energy,1.948719028
+Colombia,elect_td_ind,elect_td_ind,elect_td_ind,2100,non-energy,0.298613367
+Colombia,elect_td_trn,elect_td_trn,elect_td_trn,2100,non-energy,1.948719028

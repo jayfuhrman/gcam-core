@@ -1,0 +1,8 @@
+# File: A44.bld_materials_sector.csv
+# Title: Building sector default materials supplysector information (units and logit exponents)
+# Units: In file
+# Column types: ccccic
+# ----------
+supplysector,output.unit,input.unit,price.unit,logit.exponent,logit.type
+resid materials,billion m2,Mt,1975$/m2,0,
+comm materials,billion m2,Mt,1975$/m2,0,

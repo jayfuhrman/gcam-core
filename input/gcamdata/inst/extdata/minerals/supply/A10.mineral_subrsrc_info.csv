@@ -1,0 +1,9 @@
+# File: A10.mineral_subrsrc_info.csv
+# Title: Information about mineral subresources types in each region. Note that only some types of resources have subresources
+# Units: NA
+# Column types: cccc
+# ----------
+resource,resource_type,subresource,subresource_type
+copper,resource,copper,subresource
+lithium,resource,lithium,subresource
+nickel,resource,nickel,subresource

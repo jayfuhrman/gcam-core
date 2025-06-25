@@ -21,20 +21,20 @@ peak generation,coal,,0.006,0
 peak generation,gas,,0.06,0.5
 peak generation,biomass,,0.05,0.2
 peak generation,refined liquids,,0.3,0.09
-trn_aviation_intl,International Aviation,Liquids,0.7,0.2
-trn_shipping_intl,International Ship,Liquids,0.66,0.21
-trn_freight,Freight Rail,Liquids,0.66,0.21
-trn_freight,Domestic Ship,Liquids,0.66,0.21
-trn_freight_road,,Liquids,0.66,0.21
-trn_freight_road,,NG,0.06,0.5
-trn_pass,Domestic Aviation,Liquids,0.7,0.2
-trn_pass,Passenger Rail,Liquids,0.66,0.21
-trn_pass_road,Bus,Liquids,0.66,0.21
-trn_pass_road,Bus,NG,0.06,0.5
-trn_pass_road_LDV_4W,,Liquids,0.34,0.36
-trn_pass_road_LDV_4W,,NG,0.06,0.5
-trn_pass_road_LDV_4W,,Hybrid Liquids,0.34,0.36
-trn_pass_road_LDV_2W,,Liquids,0.05,0.79
+trn_aviation_intl_pass,International Aviation,Liquids,0.7,0.2
+trn_ship_intl_pass,International Ship,Liquids,0.66,0.21
+trn_fret_rail_pass,Freight Rail,Liquids,0.66,0.21
+trn_dom_ship_pass,Domestic Ship,Liquids,0.66,0.21
+trn_fret_road_pass,,Liquids,0.66,0.21
+trn_fret_road_pass,,NG,0.06,0.5
+trn_pasg_aviation_dom_pass,Domestic Aviation,Liquids,0.7,0.2
+trn_pasg_rail_pass,Passenger Rail,Liquids,0.66,0.21
+trn_pasg_road_bus_pass,Bus,Liquids,0.66,0.21
+trn_pasg_road_bus_pass,Bus,NG,0.06,0.5
+trn_pasg_road_ldv_4w_pass,,Liquids,0.34,0.36
+trn_pasg_road_ldv_4w_pass,,NG,0.06,0.5
+trn_pasg_road_ldv_4w_pass,,Hybrid Liquids,0.34,0.36
+trn_pasg_road_ldv_2_3W_pass,,Liquids,0.05,0.79
 comm cooking,gas,,0.06,0.5
 comm cooling,gas,,0.06,0.5
 comm heating,biomass,,0.05,0.2

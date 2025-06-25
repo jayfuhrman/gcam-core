@@ -563,9 +563,9 @@ local:generate-sector-input-coefs(remove($outputNameQueue, 1), $currTree, $coefs
                     <axis1 name="technology">technology</axis1>
                     <axis2 name="Year">physical-output[@vintage]</axis2>
                     <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' (:collapse:) and
-               (@name='electricity' or @name='elect_td_bld' or @name='industrial energy use')]/
+               (@name='electricity' or @name='elect_td_bld' or @name='industrial energy use' or contains(@name, '_mineral'))]/
                *[@type='subsector']/*[@type='technology' and not (@name='electricity' or @name='elect_td_bld')]/
-               *[@type='output' and (@name='electricity' or @name='elect_td_bld')]/
+               *[@type='output' and (@name='electricity' or @name='elect_td_bld' or contains(@name, '_mineral'))]/
                physical-output/node()</xPath>
                     <comments/>
                 </supplyDemandQuery>
@@ -632,7 +632,7 @@ local:generate-sector-input-coefs(remove($outputNameQueue, 1), $currTree, $coefs
                     <axis1 name="technology">technology</axis1>
                     <axis2 name="Year">physical-output[@vintage]</axis2>
                     <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and (@name='electricity' or @name='elect_td_bld' or
-                  contains(@name,'elec_')) and not(contains(@name, 'water_td'))]/
+                  contains(@name,'elec_') or contains(@name, '_mineral')) and not(contains(@name, 'water_td'))]/
                   *[@type='subsector' and not (@name='elect_td_bld')]/
                   *[@type='technology' and not(@name='biomass (conv)' or @name='biomass (conv CCS)' or @name='biomass (IGCC)' or @name='biomass (IGCC CCS)'
                                    or @name='coal (conv pul)' or @name='coal (conv pul CCS)' or @name='coal (IGCC)' or @name='coal (IGCC CCS)'
@@ -692,7 +692,7 @@ local:generate-sector-input-coefs(remove($outputNameQueue, 1), $currTree, $coefs
                     <axis1 name="technology">technology</axis1>
                     <axis2 name="Year">physical-output[@vintage]</axis2>
                     <xPath buildList="true" dataName="output" group="false" sumAll="false"> *[@type='sector' and (@name='electricity' or @name='elect_td_bld' or
-                  contains(@name,'elec_')) and not(contains(@name, 'water_td'))]/
+                  contains(@name,'elec_') or contains(@name, '_mineral')) and not(contains(@name, 'water_td'))]/
                   *[@type='subsector' and not (@name='elect_td_bld')]/
                   *[@type='technology' and not(@name='biomass (conv)' or @name='biomass (conv CCS)' or @name='biomass (IGCC)' or @name='biomass (IGCC CCS)'
                                    or @name='coal (conv pul)' or @name='coal (conv pul CCS)' or @name='coal (IGCC)' or @name='coal (IGCC CCS)'
@@ -1097,7 +1097,7 @@ local:generate-sector-input-coefs(remove($outputNameQueue, 1), $currTree, $coefs
                 <supplyDemandQuery title="elec share-weights by tech">
                     <axis1 name="technology">technology</axis1>
                     <axis2 name="Year">technology</axis2>
-                    <xPath buildList="true" dataName="share-weight" group="false" sumAll="false">*[@type='sector' and (@name='electricity' or @name='elect_td_bld')]/
+                    <xPath buildList="true" dataName="share-weight" group="false" sumAll="false">*[@type='sector' and (@name='electricity' or @name='elect_td_bld' or contains(@name, '_mineral'))]/
                *[@type='subsector' and not (@name='elect_td_bld')]/
                *[@type='technology']/share-weight/node()</xPath>
                     <comments/>
@@ -1674,6 +1674,14 @@ local:generate-sector-input-coefs(remove($outputNameQueue, 1), $currTree, $coefs
                             <rewrite from="refined liquids (steam/CT)" to="refined liquids"/>
                         </level>
                     </labelRewriteList>
+                </supplyDemandQuery>
+                <supplyDemandQuery title="elec capacity factor">
+                    <axis1 name="technology">technology</axis1>
+                    <axis2 name="Year">technology[@year]</axis2>
+                    <xPath buildList="true" dataName="output" group="false" sumAll="false">
+                  *[@type='sector' and (@name='electricity' or @name='elect_td_bld' or contains(@name,'elec_') or contains(@name, '_mineral'))]/*[@type='subsector']//
+                  *[@type='technology' or contains(@name, '_mineral')]/capacity-factor/node()</xPath>
+                    <comments/>
                 </supplyDemandQuery>
             </queryGroup>
             <queryGroup name="refining">
@@ -3199,6 +3207,13 @@ element input {
                     <xPath buildList="true" dataName="Price" group="false" sumAll="false">*[@type='sector' and (@name='transportation' or (exists(child::keyword[@final-energy='transportation'])))]/*[@type='subsector']/speed/text()</xPath>
                     <comments/>
                 </supplyDemandQuery>
+            <supplyDemandQuery title="transport inputs by tech">
+                <axis1 name="input">input</axis1>
+                <axis2 name="Year">demand-physical[@vintage]</axis2>
+                <xPath buildList="true" dataName="input" group="false" sumAll="false">*[@type='sector' and (@name='transportation' or (exists(child::keyword[@final-energy='transportation'])))]/
+                 *[@type='subsector']/*[@type='technology']/*[@type='input']/demand-physical/node()</xPath>
+                <comments/>
+            </supplyDemandQuery>
             </queryGroup>
             <queryGroup name="aggregated GCAM-USA">
                 <supplyDemandQuery title="building final energy by tech">

@@ -1,0 +1,152 @@
+# File: A23.globaltech_subtype_interp_to.csv
+# Title: subtype pv and wind share weight
+# Units: Unitless
+# Source: add later
+# Comments: add later
+# Column types: cccciinc
+# ----------
+supplysector,subsector,stub.technology,apply.to,from.year,to.year,to.value,interpolation.function
+pv_mineral,pv_mineral,pv_mineral (a-Si),share-weight,2015,2020,0.05,linear
+pv_mineral,pv_mineral,pv_mineral (a-Si),share-weight,2020,2040,0,linear
+pv_mineral,pv_mineral,pv_mineral (a-Si),share-weight,2040,2100,0,linear
+pv_mineral,pv_mineral,pv_mineral (CdTe),share-weight,2015,2020,0.05,linear
+pv_mineral,pv_mineral,pv_mineral (CdTe),share-weight,2020,2040,0.1,linear
+pv_mineral,pv_mineral,pv_mineral (CdTe),share-weight,2040,2100,0.1,linear
+pv_mineral,pv_mineral,pv_mineral (CIGS),share-weight,2015,2020,0.05,linear
+pv_mineral,pv_mineral,pv_mineral (CIGS),share-weight,2020,2040,0.1,linear
+pv_mineral,pv_mineral,pv_mineral (CIGS),share-weight,2040,2100,0.1,linear
+pv_mineral,pv_mineral,pv_mineral (c-Si),share-weight,2015,2020,1,linear
+pv_mineral,pv_mineral,pv_mineral (c-Si),share-weight,2020,2040,1,linear
+pv_mineral,pv_mineral,pv_mineral (c-Si),share-weight,2040,2100,1,linear
+pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (a-Si) (LFP),share-weight,2015,2020,0.05,linear
+pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (a-Si) (LFP),share-weight,2020,2040,0,linear
+pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (a-Si) (LFP),share-weight,2040,2100,0,linear
+pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (a-Si) (NMC532),share-weight,2015,2020,0.01,linear
+pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (a-Si) (NMC532),share-weight,2020,2040,0,linear
+pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (a-Si) (NMC532),share-weight,2040,2100,0,linear
+pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (a-Si) (NMC811),share-weight,2015,2020,0.01,linear
+pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (a-Si) (NMC811),share-weight,2020,2040,0,linear
+pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (a-Si) (NMC811),share-weight,2040,2100,0,linear
+pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (a-Si) (VRFB),share-weight,2015,2020,0,linear
+pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (a-Si) (VRFB),share-weight,2020,2040,0,linear
+pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (a-Si) (VRFB),share-weight,2040,2100,0,linear
+pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (CdTe) (LFP),share-weight,2015,2020,0.05,linear
+pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (CdTe) (LFP),share-weight,2020,2040,0.1,linear
+pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (CdTe) (LFP),share-weight,2040,2100,0.2,linear
+pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (CdTe) (NMC532),share-weight,2015,2020,0,linear
+pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (CdTe) (NMC532),share-weight,2020,2040,0.05,linear
+pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (CdTe) (NMC532),share-weight,2040,2100,0.1,linear
+pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (CdTe) (NMC811),share-weight,2015,2020,0,linear
+pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (CdTe) (NMC811),share-weight,2020,2040,0.05,linear
+pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (CdTe) (NMC811),share-weight,2040,2100,0.1,linear
+pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (CdTe) (VRFB),share-weight,2015,2020,0,linear
+pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (CdTe) (VRFB),share-weight,2020,2040,0.05,linear
+pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (CdTe) (VRFB),share-weight,2040,2100,0.1,linear
+pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (CIGS) (LFP),share-weight,2015,2020,0.05,linear
+pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (CIGS) (LFP),share-weight,2020,2040,0.1,linear
+pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (CIGS) (LFP),share-weight,2040,2100,0.2,linear
+pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (CIGS) (NMC532),share-weight,2015,2020,0,linear
+pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (CIGS) (NMC532),share-weight,2020,2040,0.05,linear
+pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (CIGS) (NMC532),share-weight,2040,2100,0.1,linear
+pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (CIGS) (NMC811),share-weight,2015,2020,0,linear
+pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (CIGS) (NMC811),share-weight,2020,2040,0.05,linear
+pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (CIGS) (NMC811),share-weight,2040,2100,0.1,linear
+pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (CIGS) (VRFB),share-weight,2015,2020,0,linear
+pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (CIGS) (VRFB),share-weight,2020,2040,0.05,linear
+pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (CIGS) (VRFB),share-weight,2040,2100,0.1,linear
+pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (c-Si) (LFP),share-weight,2015,2020,1,linear
+pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (c-Si) (LFP),share-weight,2020,2040,1,linear
+pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (c-Si) (LFP),share-weight,2040,2100,1,linear
+pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (c-Si) (NMC532),share-weight,2015,2020,0.05,linear
+pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (c-Si) (NMC532),share-weight,2020,2040,0.2,linear
+pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (c-Si) (NMC532),share-weight,2040,2100,0.5,linear
+pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (c-Si) (NMC811),share-weight,2015,2020,0.05,linear
+pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (c-Si) (NMC811),share-weight,2020,2040,0.2,linear
+pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (c-Si) (NMC811),share-weight,2040,2100,0.5,linear
+pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (c-Si) (VRFB),share-weight,2015,2020,0,linear
+pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (c-Si) (VRFB),share-weight,2020,2040,0.2,linear
+pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (c-Si) (VRFB),share-weight,2040,2100,0.5,linear
+rooftop_pv_mineral,rooftop_pv_mineral,rooftop_pv_mineral (a-Si),share-weight,2015,2020,0.05,linear
+rooftop_pv_mineral,rooftop_pv_mineral,rooftop_pv_mineral (a-Si),share-weight,2020,2040,0,linear
+rooftop_pv_mineral,rooftop_pv_mineral,rooftop_pv_mineral (a-Si),share-weight,2040,2100,0,linear
+rooftop_pv_mineral,rooftop_pv_mineral,rooftop_pv_mineral (CdTe),share-weight,2015,2020,0.05,linear
+rooftop_pv_mineral,rooftop_pv_mineral,rooftop_pv_mineral (CdTe),share-weight,2020,2040,0.1,linear
+rooftop_pv_mineral,rooftop_pv_mineral,rooftop_pv_mineral (CdTe),share-weight,2040,2100,0.1,linear
+rooftop_pv_mineral,rooftop_pv_mineral,rooftop_pv_mineral (CIGS),share-weight,2015,2020,0.05,linear
+rooftop_pv_mineral,rooftop_pv_mineral,rooftop_pv_mineral (CIGS),share-weight,2020,2040,0.1,linear
+rooftop_pv_mineral,rooftop_pv_mineral,rooftop_pv_mineral (CIGS),share-weight,2040,2100,0.1,linear
+rooftop_pv_mineral,rooftop_pv_mineral,rooftop_pv_mineral (c-Si),share-weight,2015,2020,1,linear
+rooftop_pv_mineral,rooftop_pv_mineral,rooftop_pv_mineral (c-Si),share-weight,2020,2040,1,linear
+rooftop_pv_mineral,rooftop_pv_mineral,rooftop_pv_mineral (c-Si),share-weight,2040,2100,1,linear
+wind_mineral,wind_mineral,wind_mineral (DD-EESG),share-weight,2015,2020,0.1,linear
+wind_mineral,wind_mineral,wind_mineral (DD-EESG),share-weight,2020,2040,0.2,linear
+wind_mineral,wind_mineral,wind_mineral (DD-EESG),share-weight,2040,2100,0.5,linear
+wind_mineral,wind_mineral,wind_mineral (DD-PMSG),share-weight,2015,2020,0.1,linear
+wind_mineral,wind_mineral,wind_mineral (DD-PMSG),share-weight,2020,2040,0.2,linear
+wind_mineral,wind_mineral,wind_mineral (DD-PMSG),share-weight,2040,2100,0.5,linear
+wind_mineral,wind_mineral,wind_mineral (GB-DFIG),share-weight,2015,2020,1,linear
+wind_mineral,wind_mineral,wind_mineral (GB-DFIG),share-weight,2020,2040,1,linear
+wind_mineral,wind_mineral,wind_mineral (GB-DFIG),share-weight,2040,2100,1,linear
+wind_mineral,wind_mineral,wind_mineral (GB-PMSG),share-weight,2015,2020,0.1,linear
+wind_mineral,wind_mineral,wind_mineral (GB-PMSG),share-weight,2020,2040,0.2,linear
+wind_mineral,wind_mineral,wind_mineral (GB-PMSG),share-weight,2040,2100,0.5,linear
+wind_offshore_mineral,wind_offshore_mineral,wind_offshore_mineral (DD-EESG),share-weight,2015,2020,0,linear
+wind_offshore_mineral,wind_offshore_mineral,wind_offshore_mineral (DD-EESG),share-weight,2020,2040,0,linear
+wind_offshore_mineral,wind_offshore_mineral,wind_offshore_mineral (DD-EESG),share-weight,2040,2100,0,linear
+wind_offshore_mineral,wind_offshore_mineral,wind_offshore_mineral (DD-PMSG),share-weight,2015,2020,1,linear
+wind_offshore_mineral,wind_offshore_mineral,wind_offshore_mineral (DD-PMSG),share-weight,2020,2040,1,linear
+wind_offshore_mineral,wind_offshore_mineral,wind_offshore_mineral (DD-PMSG),share-weight,2040,2100,1,linear
+wind_offshore_mineral,wind_offshore_mineral,wind_offshore_mineral (GB-DFIG),share-weight,2015,2020,0.2,linear
+wind_offshore_mineral,wind_offshore_mineral,wind_offshore_mineral (GB-DFIG),share-weight,2020,2040,0,linear
+wind_offshore_mineral,wind_offshore_mineral,wind_offshore_mineral (GB-DFIG),share-weight,2040,2100,0,linear
+wind_offshore_mineral,wind_offshore_mineral,wind_offshore_mineral (GB-PMSG),share-weight,2015,2020,0.2,linear
+wind_offshore_mineral,wind_offshore_mineral,wind_offshore_mineral (GB-PMSG),share-weight,2020,2040,0.2,linear
+wind_offshore_mineral,wind_offshore_mineral,wind_offshore_mineral (GB-PMSG),share-weight,2040,2100,0.2,linear
+wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (DD-EESG) (LFP),share-weight,2015,2020,0.1,linear
+wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (DD-EESG) (LFP),share-weight,2020,2040,0.2,linear
+wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (DD-EESG) (LFP),share-weight,2040,2100,0.5,linear
+wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (DD-EESG) (NMC532),share-weight,2015,2020,0,linear
+wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (DD-EESG) (NMC532),share-weight,2020,2040,0.05,linear
+wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (DD-EESG) (NMC532),share-weight,2040,2100,0.1,linear
+wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (DD-EESG) (NMC811),share-weight,2015,2020,0,linear
+wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (DD-EESG) (NMC811),share-weight,2020,2040,0.05,linear
+wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (DD-EESG) (NMC811),share-weight,2040,2100,0.1,linear
+wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (DD-EESG) (VRFB),share-weight,2015,2020,0,linear
+wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (DD-EESG) (VRFB),share-weight,2020,2040,0.05,linear
+wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (DD-EESG) (VRFB),share-weight,2040,2100,0.1,linear
+wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (DD-PMSG) (LFP),share-weight,2015,2020,1,linear
+wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (DD-PMSG) (LFP),share-weight,2020,2040,1,linear
+wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (DD-PMSG) (LFP),share-weight,2040,2100,1,linear
+wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (DD-PMSG) (NMC532),share-weight,2015,2020,0.1,linear
+wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (DD-PMSG) (NMC532),share-weight,2020,2040,0.2,linear
+wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (DD-PMSG) (NMC532),share-weight,2040,2100,0.5,linear
+wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (DD-PMSG) (NMC811),share-weight,2015,2020,0,linear
+wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (DD-PMSG) (NMC811),share-weight,2020,2040,0.2,linear
+wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (DD-PMSG) (NMC811),share-weight,2040,2100,0.5,linear
+wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (DD-PMSG) (VRFB),share-weight,2015,2020,0,linear
+wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (DD-PMSG) (VRFB),share-weight,2020,2040,0.2,linear
+wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (DD-PMSG) (VRFB),share-weight,2040,2100,0.5,linear
+wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (GB-DFIG) (LFP),share-weight,2015,2020,1,linear
+wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (GB-DFIG) (LFP),share-weight,2020,2040,1,linear
+wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (GB-DFIG) (LFP),share-weight,2040,2100,1,linear
+wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (GB-DFIG) (NMC532),share-weight,2015,2020,0.1,linear
+wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (GB-DFIG) (NMC532),share-weight,2020,2040,0.2,linear
+wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (GB-DFIG) (NMC532),share-weight,2040,2100,0.5,linear
+wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (GB-DFIG) (NMC811),share-weight,2015,2020,0,linear
+wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (GB-DFIG) (NMC811),share-weight,2020,2040,0.2,linear
+wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (GB-DFIG) (NMC811),share-weight,2040,2100,0.5,linear
+wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (GB-DFIG) (VRFB),share-weight,2015,2020,0,linear
+wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (GB-DFIG) (VRFB),share-weight,2020,2040,0.2,linear
+wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (GB-DFIG) (VRFB),share-weight,2040,2100,0.5,linear
+wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (GB-PMSG) (LFP),share-weight,2015,2020,0.1,linear
+wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (GB-PMSG) (LFP),share-weight,2020,2040,0.2,linear
+wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (GB-PMSG) (LFP),share-weight,2040,2100,0.5,linear
+wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (GB-PMSG) (NMC532),share-weight,2015,2020,0,linear
+wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (GB-PMSG) (NMC532),share-weight,2020,2040,0.05,linear
+wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (GB-PMSG) (NMC532),share-weight,2040,2100,0.1,linear
+wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (GB-PMSG) (NMC811),share-weight,2015,2020,0,linear
+wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (GB-PMSG) (NMC811),share-weight,2020,2040,0.05,linear
+wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (GB-PMSG) (NMC811),share-weight,2040,2100,0.1,linear
+wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (GB-PMSG) (VRFB),share-weight,2015,2020,0,linear
+wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (GB-PMSG) (VRFB),share-weight,2020,2040,0.05,linear
+wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (GB-PMSG) (VRFB),share-weight,2040,2100,0.1,linear

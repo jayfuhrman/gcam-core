@@ -24,10 +24,21 @@ module_water_electricity_water_coefs_xml <- function(command, ...) {
     L2233.GlobalTechCoef_elec_cool <- get_data(all_data, "L2233.GlobalTechCoef_elec_cool")
     L2233.GlobalIntTechCoef_elec_cool <- get_data(all_data, "L2233.GlobalIntTechCoef_elec_cool")
 
+    # L2233.GlobalTechCoef_elec_cool %>%
+    #   filter(subsector.name == "pv_storage_mineral") %>%
+    #   rbind(L2233.GlobalIntTechCoef_elec_cool %>%
+    #           filter(subsector.name == "pv_mineral")) %>%
+    #   rename(pass.through.technology = technology) ->
+    #   L2233.GlobalTechCoef_elec_pv_cool
+    #
+    # L2233.GlobalTechCoef_elec_cool <- L2233.GlobalTechCoef_elec_cool %>% filter(subsector.name != "pv_storage_mineral")
+    # L2233.GlobalIntTechCoef_elec_cool <- L2233.GlobalIntTechCoef_elec_cool %>% filter(subsector.name != "pv_mineral")
+
     # ===================================================
 
     # Produce outputs
     create_xml("electricity_water_coefs.xml") %>%
+      # add_xml_data(L2233.GlobalTechCoef_elec_pv_cool, "GlobalPassThruTechCoef") %>%
       add_xml_data(L2233.GlobalTechCoef_elec_cool, "GlobalTechCoef") %>%
       add_xml_data(L2233.GlobalIntTechCoef_elec_cool, "GlobalIntTechCoef") %>%
       add_precursors("L2233.GlobalTechCoef_elec_cool", "L2233.GlobalIntTechCoef_elec_cool") ->

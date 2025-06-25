@@ -16,25 +16,48 @@ module_energy_transportation_UCD_CORE_xml <- function(command, ...) {
 
 
   if(command == driver.DECLARE_INPUTS) {
-    return(c("L254.Supplysector_trn",
-             "L254.FinalEnergyKeyword_trn",
-             "L254.tranSubsectorLogit",
-             "L254.tranSubsectorShrwtFllt",
-             "L254.tranSubsectorInterp",
+    return(c("L254.PassThruSector_trn",
+             "L254.SupplysectorData_trn",
+             "L254.PassThruSectorData_trn",
+             # "L254.FinalEnergyKeyword_trn",
+             "L254.FinalEnergyKeyword_Supplysector_trn",
+             "L254.FinalEnergyKeyword_PassThrusector_trn",
+             # "L254.tranSubsectorLogit",
+             "L254.tranSubsectorLogit_Supplysector",
+             "L254.tranSubsectorLogit_PassThrusector",
+             # "L254.tranSubsectorShrwtFllt",
+             "L254.tranSubsectorShrwtFllt_Supplysector",
+             "L254.tranSubsectorShrwtFllt_PassThrusector",
+             # "L254.tranSubsectorInterp",
+             "L254.tranSubsectorInterp_Supplysector",
+             "L254.tranSubsectorInterp_PassThrusector",
              "L254.tranSubsectorSpeed",
              "L254.tranSubsectorSpeed_passthru",
-             "L254.tranSubsectorSpeed_noVOTT",
-             "L254.tranSubsectorSpeed_nonmotor",
-             "L254.tranSubsectorVOTT",
+             "L254.tranSubsectorSpeed_subtype",
+             # "L254.tranSubsectorSpeed_noVOTT",
+             "L254.tranSubsectorSpeed_noVOTT_Supplysector",
+             "L254.tranSubsectorSpeed_noVOTT_PassThrusector",
+             # "L254.tranSubsectorSpeed_nonmotor",
+             "L254.tranSubsectorSpeed_nonmotor_Supplysector",
+             "L254.tranSubsectorSpeed_nonmotor_PassThrusector",
+             # "L254.tranSubsectorVOTT",
+             "L254.tranSubsectorVOTT_Supplysector",
+             "L254.tranSubsectorVOTT_PassThrusector",
              "L254.tranSubsectorFuelPref",
              "L254.StubTranTech",
-             "L254.StubTech_passthru",
-             "L254.StubTech_nonmotor",
+             # "L254.StubTech_passthru",
+             "L254.StubTech_passthru_Supplysector",
+             "L254.StubTech_passthru_PassThruSector",
+             # "L254.StubTech_nonmotor",
+             "L254.StubTech_nonmotor_Supplysector",
+             "L254.StubTech_nonmotor_PassThruSector",
              "L254.GlobalTechShrwt_passthru",
              "L254.GlobalTechShrwt_nonmotor",
              "L254.GlobalTechCoef_passthru",
              "L254.GlobalRenewTech_nonmotor",
-             "L254.GlobalTranTechInterp",
+             # "L254.GlobalTranTechInterp",
+             "L254.GlobalTranTechInterp_passthru",
+             "L254.GlobalTranTechInterp_Supplysector",
              "L254.GlobalTranTechShrwt",
              "L254.GlobalTranTechSCurve",
              "L254.StubTranTechCalInput",
@@ -42,8 +65,12 @@ module_energy_transportation_UCD_CORE_xml <- function(command, ...) {
              "L254.StubTranTechCost",
              "L254.StubTechTrackCapital",
              "L254.StubTranTechCoef",
-             "L254.StubTechCalInput_passthru",
-             "L254.StubTechProd_nonmotor",
+             # "L254.StubTechCalInput_passthru_all",
+             "L254.StubTechCalInput_passthru_Supplysector",
+             "L254.StubTechCalInput_passthru_PassThrusector",
+             # "L254.StubTechProd_nonmotor",
+             "L254.StubTechProd_nonmotor_Supplysector",
+             "L254.StubTechProd_nonmotor_PassThrusector",
              "L254.PerCapitaBased_trn",
              "L254.PriceElasticity_trn",
              "L254.IncomeElasticity_trn",
@@ -67,33 +94,67 @@ module_energy_transportation_UCD_CORE_xml <- function(command, ...) {
     L254.StubTranTechCost <- get_data(all_data, "L254.StubTranTechCost")
     L254.StubTechTrackCapital <- get_data(all_data, "L254.StubTechTrackCapital")
 
-    L254.Supplysector_trn <- get_data(all_data, "L254.Supplysector_trn")
-    L254.FinalEnergyKeyword_trn <- get_data(all_data, "L254.FinalEnergyKeyword_trn")
-    L254.tranSubsectorLogit <- get_data(all_data, "L254.tranSubsectorLogit")
-    L254.tranSubsectorShrwtFllt <- get_data(all_data, "L254.tranSubsectorShrwtFllt")
-    L254.tranSubsectorInterp <- get_data(all_data, "L254.tranSubsectorInterp")
+    L254.PassThruSector_trn <- get_data(all_data, "L254.PassThruSector_trn")
+    L254.SupplysectorData_trn <- get_data(all_data, "L254.SupplysectorData_trn")
+    L254.PassThruSectorData_trn <- get_data(all_data, "L254.PassThruSectorData_trn")
+    # L254.FinalEnergyKeyword_trn <- get_data(all_data, "L254.FinalEnergyKeyword_trn")
+    L254.FinalEnergyKeyword_Supplysector_trn <- get_data(all_data, "L254.FinalEnergyKeyword_Supplysector_trn")
+    L254.FinalEnergyKeyword_PassThrusector_trn <- get_data(all_data, "L254.FinalEnergyKeyword_PassThrusector_trn")
+
+    # L254.tranSubsectorLogit <- get_data(all_data, "L254.tranSubsectorLogit")
+    L254.tranSubsectorLogit_Supplysector <- get_data(all_data, "L254.tranSubsectorLogit_Supplysector")
+    L254.tranSubsectorLogit_PassThrusector <- get_data(all_data, "L254.tranSubsectorLogit_PassThrusector")
+
+    # L254.tranSubsectorShrwtFllt <- get_data(all_data, "L254.tranSubsectorShrwtFllt")
+    L254.tranSubsectorShrwtFllt_Supplysector <- get_data(all_data, "L254.tranSubsectorShrwtFllt_Supplysector")
+    L254.tranSubsectorShrwtFllt_PassThrusector <- get_data(all_data, "L254.tranSubsectorShrwtFllt_PassThrusector")
+
+    # L254.tranSubsectorInterp <- get_data(all_data, "L254.tranSubsectorInterp")
+    L254.tranSubsectorInterp_Supplysector <- get_data(all_data, "L254.tranSubsectorInterp_Supplysector")
+    L254.tranSubsectorInterp_PassThrusector <- get_data(all_data, "L254.tranSubsectorInterp_PassThrusector")
 
     L254.tranSubsectorSpeed_passthru <- get_data(all_data, "L254.tranSubsectorSpeed_passthru")
-    L254.tranSubsectorSpeed_noVOTT <- get_data(all_data, "L254.tranSubsectorSpeed_noVOTT")
-    L254.tranSubsectorSpeed_nonmotor <- get_data(all_data, "L254.tranSubsectorSpeed_nonmotor")
-    L254.tranSubsectorVOTT <- get_data(all_data, "L254.tranSubsectorVOTT")
+    L254.tranSubsectorSpeed_subtype <- get_data(all_data, "L254.tranSubsectorSpeed_subtype")
+    # L254.tranSubsectorSpeed_noVOTT <- get_data(all_data, "L254.tranSubsectorSpeed_noVOTT")
+    L254.tranSubsectorSpeed_noVOTT_Supplysector <- get_data(all_data, "L254.tranSubsectorSpeed_noVOTT_Supplysector")
+    L254.tranSubsectorSpeed_noVOTT_PassThrusector <- get_data(all_data, "L254.tranSubsectorSpeed_noVOTT_PassThrusector")
+
+    # L254.tranSubsectorSpeed_nonmotor <- get_data(all_data, "L254.tranSubsectorSpeed_nonmotor")
+    L254.tranSubsectorSpeed_nonmotor_Supplysector <- get_data(all_data, "L254.tranSubsectorSpeed_nonmotor_Supplysector")
+    L254.tranSubsectorSpeed_nonmotor_PassThrusector <- get_data(all_data, "L254.tranSubsectorSpeed_nonmotor_PassThrusector")
+
+    # L254.tranSubsectorVOTT <- get_data(all_data, "L254.tranSubsectorVOTT")
+    L254.tranSubsectorVOTT_Supplysector <- get_data(all_data, "L254.tranSubsectorVOTT_Supplysector")
+    L254.tranSubsectorVOTT_PassThrusector <- get_data(all_data, "L254.tranSubsectorVOTT_PassThrusector")
     L254.tranSubsectorFuelPref <- get_data(all_data, "L254.tranSubsectorFuelPref")
 
-    L254.StubTech_passthru <- get_data(all_data, "L254.StubTech_passthru")
-    L254.StubTech_nonmotor <- get_data(all_data, "L254.StubTech_nonmotor")
-    L254.GlobalTechShrwt_passthru<- get_data(all_data, "L254.GlobalTechShrwt_passthru")
+    # L254.StubTech_passthru <- get_data(all_data, "L254.StubTech_passthru")
+    L254.StubTech_passthru_Supplysector <- get_data(all_data, "L254.StubTech_passthru_Supplysector")
+    L254.StubTech_passthru_PassThruSector <- get_data(all_data, "L254.StubTech_passthru_PassThruSector")
+    # L254.StubTech_nonmotor <- get_data(all_data, "L254.StubTech_nonmotor")
+    L254.StubTech_nonmotor_Supplysector <- get_data(all_data, "L254.StubTech_nonmotor_Supplysector")
+    L254.StubTech_nonmotor_PassThruSector <- get_data(all_data, "L254.StubTech_nonmotor_PassThruSector")
+    L254.GlobalTechShrwt_passthru<- get_data(all_data, "L254.GlobalTechShrwt_passthru") %>% rename(pass.through.technology = technology)
     L254.GlobalTechShrwt_nonmotor <- get_data(all_data, "L254.GlobalTechShrwt_nonmotor")
-    L254.GlobalTechCoef_passthru <- get_data(all_data, "L254.GlobalTechCoef_passthru")
+    L254.GlobalTechCoef_passthru <- get_data(all_data, "L254.GlobalTechCoef_passthru") %>% rename(pass.through.technology = technology)
     L254.GlobalRenewTech_nonmotor <- get_data(all_data, "L254.GlobalRenewTech_nonmotor")
-    L254.GlobalTranTechInterp <- get_data(all_data, "L254.GlobalTranTechInterp")
+
+    # L254.GlobalTranTechInterp <- get_data(all_data, "L254.GlobalTranTechInterp")
+    L254.GlobalTranTechInterp_passthru <- get_data(all_data, "L254.GlobalTranTechInterp_passthru")  %>% rename(pass.through.technology = tranTechnology)
+    L254.GlobalTranTechInterp_Supplysector <- get_data(all_data, "L254.GlobalTranTechInterp_Supplysector")
+
     L254.GlobalTranTechShrwt <- get_data(all_data, "L254.GlobalTranTechShrwt")
     L254.GlobalTranTechSCurve <- get_data(all_data, "L254.GlobalTranTechSCurve")
-    L254.StubTranTechCalInput <- get_data(all_data, "L254.StubTranTechCalInput")
-
 
     L254.StubTranTechCoef <- get_data(all_data, "L254.StubTranTechCoef")
-    L254.StubTechCalInput_passthru <- get_data(all_data, "L254.StubTechCalInput_passthru")
-    L254.StubTechProd_nonmotor <- get_data(all_data, "L254.StubTechProd_nonmotor")
+    # L254.StubTechCalInput_passthru_all <- get_data(all_data, "L254.StubTechCalInput_passthru_all")
+    L254.StubTechCalInput_passthru_Supplysector <- get_data(all_data, "L254.StubTechCalInput_passthru_Supplysector")
+    L254.StubTechCalInput_passthru_PassThrusector <- get_data(all_data, "L254.StubTechCalInput_passthru_PassThrusector")
+
+    L254.StubTranTechCalInput <- get_data(all_data, "L254.StubTranTechCalInput")
+    # L254.StubTechProd_nonmotor <- get_data(all_data, "L254.StubTechProd_nonmotor")
+    L254.StubTechProd_nonmotor_Supplysector <- get_data(all_data, "L254.StubTechProd_nonmotor_Supplysector")
+    L254.StubTechProd_nonmotor_PassThrusector <- get_data(all_data, "L254.StubTechProd_nonmotor_PassThrusector")
     L254.PerCapitaBased_trn <- get_data(all_data, "L254.PerCapitaBased_trn")
     L254.PriceElasticity_trn <- get_data(all_data, "L254.PriceElasticity_trn")
     L254.IncomeElasticity_trn <- get_data(all_data, "L254.IncomeElasticity_trn")
@@ -118,20 +179,26 @@ module_energy_transportation_UCD_CORE_xml <- function(command, ...) {
       xml_name <- paste0("transportation_UCD_", i, ".xml")
       #Read SSP specific data
       L254.tranSubsectorSpeed_SSP <- L254.tranSubsectorSpeed %>% filter(sce== i)
-      L254.StubTranTech_SSP <- L254.StubTranTech %>% filter(sce== i)
+      L254.tranSubsectorSpeed_subtype_SSP <- L254.tranSubsectorSpeed_subtype %>% filter(sce== i)
+      L254.StubTranTech_SSP <- L254.StubTranTech %>% filter(sce== i) %>% rename(pass.through.sector = supplysector)
       #kbn 2020-03-26 We have energy demand assumptions only for SSP1. So get that data for SSP1. For the other SSPs, keep
       #data from the CORE.
       if (i=="SSP1"){
       #VOTT and Demand data
       L254.tranSubsectorSpeed_passthru_SSP <- L254.tranSubsectorSpeed_passthru %>% filter(sce==i)
-      L254.tranSubsectorVOTT_SSP<- L254.tranSubsectorVOTT %>% filter(sce==i)
-      L254.tranSubsectorFuelPref_SSP<-L254.tranSubsectorFuelPref %>% filter(sce==i)
+      # L254.tranSubsectorVOTT_SSP<- L254.tranSubsectorVOTT %>% filter(sce==i)
+      L254.tranSubsectorVOTT_Supplysector_SSP<- L254.tranSubsectorVOTT_Supplysector %>% filter(sce==i)
+      L254.tranSubsectorVOTT_PassThrusector_SSP<- L254.tranSubsectorVOTT_PassThrusector %>% filter(sce==i)
+      L254.tranSubsectorFuelPref_SSP<-L254.tranSubsectorFuelPref %>% filter(sce==i) %>% rename(pass.through.sector = supplysector)
       L254.PerCapitaBased_trn_SSP<- L254.PerCapitaBased_trn %>% filter(sce==i)
       L254.PriceElasticity_trn_SSP <- L254.PriceElasticity_trn %>%  filter(sce==i)
       L254.IncomeElasticity_trn_SSP <- L254.IncomeElasticity_trn %>% filter(sce==i)}else{
         L254.tranSubsectorSpeed_passthru_SSP <- L254.tranSubsectorSpeed_passthru %>% filter(sce=="CORE")
-        L254.tranSubsectorVOTT_SSP<- L254.tranSubsectorVOTT %>% filter(sce=="CORE")
-        L254.tranSubsectorFuelPref_SSP<-L254.tranSubsectorFuelPref %>% filter(sce=="CORE")
+        # L254.tranSubsectorVOTT_SSP<- L254.tranSubsectorVOTT %>% filter(sce=="CORE")
+        L254.tranSubsectorVOTT_Supplysector_SSP<- L254.tranSubsectorVOTT_Supplysector %>% filter(sce=="CORE")
+        L254.tranSubsectorVOTT_PassThrusector_SSP<- L254.tranSubsectorVOTT_PassThrusector %>% filter(sce=="CORE")
+
+        L254.tranSubsectorFuelPref_SSP<-L254.tranSubsectorFuelPref %>% filter(sce=="CORE") %>% rename(pass.through.sector = supplysector)
         L254.PerCapitaBased_trn_SSP <- L254.PerCapitaBased_trn %>% filter(sce=="CORE")
         L254.PriceElasticity_trn_SSP <- L254.PriceElasticity_trn %>% filter(sce=="CORE")
         L254.IncomeElasticity_trn_SSP <- L254.IncomeElasticity_trn %>% filter(sce=="CORE")
@@ -143,93 +210,172 @@ module_energy_transportation_UCD_CORE_xml <- function(command, ...) {
       # feeding the model outputs from the CORE in the base year, so having SSP values for these variables in the base year would lead to a calibration error
       # i.e. mismatch between calibrated output and actual.
 
-      L254.StubTranTechLoadFactor_SSP <- L254.StubTranTechLoadFactor %>% filter(sce== i)
-      if (i != "CORE"){L254.StubTranTechLoadFactor_SSP<-L254.StubTranTechLoadFactor %>%  filter(sce== i) %>% filter(year>MODEL_FINAL_BASE_YEAR)}
+      L254.StubTranTechLoadFactor_SSP <- L254.StubTranTechLoadFactor %>% filter(sce== i) %>% rename(pass.through.sector = supplysector)
+      if (i != "CORE"){L254.StubTranTechLoadFactor_SSP<-L254.StubTranTechLoadFactor %>%  filter(sce== i) %>% filter(year>MODEL_FINAL_BASE_YEAR) %>% rename(pass.through.sector = supplysector)}
 
 
-      L254.StubTranTechCost_SSP <- L254.StubTranTechCost %>%  filter(sce== i)
-      if (i != "CORE"){L254.StubTranTechCost_SSP<-L254.StubTranTechCost %>%  filter(sce== i) %>% filter(year>MODEL_FINAL_BASE_YEAR)}
+      L254.StubTranTechCost_SSP <- L254.StubTranTechCost %>%  filter(sce== i) %>% rename(pass.through.sector = supplysector)
+      if (i != "CORE"){L254.StubTranTechCost_SSP<-L254.StubTranTechCost %>%  filter(sce== i) %>% filter(year>MODEL_FINAL_BASE_YEAR) %>% rename(pass.through.sector = supplysector)}
 
-      L254.StubTechTrackCapital_SSP <- L254.StubTechTrackCapital %>%  filter(sce== i)
-      if (i != "CORE"){L254.StubTechTrackCapital_SSP<-L254.StubTechTrackCapital %>%  filter(sce== i) %>% filter(year>MODEL_FINAL_BASE_YEAR)}
+      L254.StubTechTrackCapital_SSP <- L254.StubTechTrackCapital %>%  filter(sce== i) %>% rename(pass.through.sector = supplysector, tranSubsector = subsector)
+      if (i != "CORE"){L254.StubTechTrackCapital_SSP<-L254.StubTechTrackCapital %>%  filter(sce== i) %>% filter(year>MODEL_FINAL_BASE_YEAR) %>% rename(pass.through.sector = supplysector, tranSubsector = subsector)}
 
-      L254.StubTranTechCoef_SSP <- L254.StubTranTechCoef %>%  filter(sce== i)
+      L254.StubTranTechCoef_SSP <- L254.StubTranTechCoef %>%  filter(sce== i) %>% rename(pass.through.sector = supplysector)
+      if (i != "CORE"){L254.StubTranTechCoef_SSP<-L254.StubTranTechCoef %>%  filter(sce== i) %>% filter(year>MODEL_FINAL_BASE_YEAR) %>% rename(pass.through.sector = supplysector)}
 
-      if (i != "CORE"){L254.StubTranTechCoef_SSP<-L254.StubTranTechCoef %>%  filter(sce== i) %>% filter(year>MODEL_FINAL_BASE_YEAR)}
+      # L254.StubTech_passthru_SSP <- L254.StubTech_passthru %>% filter(sce==i)
+      L254.StubTech_passthru_Supplysector_SSP <- L254.StubTech_passthru_Supplysector %>% filter(sce==i)
+      L254.StubTech_passthru_PassThruSector_SSP <- L254.StubTech_passthru_PassThruSector %>% filter(sce==i)
+      # L254.StubTech_nonmotor_SSP <- L254.StubTech_nonmotor %>% filter(sce==i)
+      L254.StubTech_nonmotor_Supplysector_SSP <- L254.StubTech_nonmotor_Supplysector %>% filter(sce==i)
+      L254.StubTech_nonmotor_PassThruSector_SSP <- L254.StubTech_nonmotor_PassThruSector %>% filter(sce==i)
+      L254.PassThruSector_trn_SSP <- L254.PassThruSector_trn %>% filter(sce==i)
+      L254.SupplysectorData_trn_SSP  <- L254.SupplysectorData_trn %>% filter(sce==i)
+      L254.PassThruSectorData_trn_SSP  <- L254.PassThruSectorData_trn %>% filter(sce==i)
+      # L254.FinalEnergyKeyword_trn_SSP <- L254.FinalEnergyKeyword_trn %>% filter(sce==i)
+      L254.FinalEnergyKeyword_Supplysector_trn_SSP <- L254.FinalEnergyKeyword_Supplysector_trn %>% filter(sce==i)
+      L254.FinalEnergyKeyword_PassThrusector_trn_SSP <- L254.FinalEnergyKeyword_PassThrusector_trn %>% filter(sce==i)
+      # L254.tranSubsectorLogit_SSP <- L254.tranSubsectorLogit %>% filter(sce==i)
+      L254.tranSubsectorLogit_Supplysector_SSP <- L254.tranSubsectorLogit_Supplysector %>% filter(sce==i)
+      L254.tranSubsectorLogit_PassThrusector_SSP <- L254.tranSubsectorLogit_PassThrusector %>% filter(sce==i)
 
-      L254.StubTech_passthru_SSP <- L254.StubTech_passthru %>% filter(sce==i)
-      L254.StubTech_nonmotor_SSP <- L254.StubTech_nonmotor %>% filter(sce==i)
-      L254.Supplysector_trn_SSP  <- L254.Supplysector_trn %>% filter(sce==i)
-      L254.FinalEnergyKeyword_trn_SSP <- L254.FinalEnergyKeyword_trn %>% filter(sce==i)
-      L254.tranSubsectorLogit_SSP <- L254.tranSubsectorLogit %>% filter(sce==i)
-      #L254.tranSubsectorShrwt_SSP <- L254.tranSubsectorShrwt %>%  filter(sce ==i)
-      L254.tranSubsectorShrwtFllt_SSP <- L254.tranSubsectorShrwtFllt %>%  filter(sce ==i)
-      L254.tranSubsectorInterp_SSP <- L254.tranSubsectorInterp %>%  filter(sce ==i)
-      L254.tranSubsectorFuelPref_SSP <- L254.tranSubsectorFuelPref %>%  filter(sce ==i)
-      L254.StubTranTechCalInput_SSP <-  L254.StubTranTechCalInput %>% filter(sce ==i)
-      L254.GlobalTranTechInterp_SSP <- L254.GlobalTranTechInterp %>% filter(sce==i)
+      # L254.tranSubsectorShrwt_SSP <- L254.tranSubsectorShrwt %>%  filter(sce ==i)
+      # L254.tranSubsectorShrwtFllt_SSP <- L254.tranSubsectorShrwtFllt %>%  filter(sce ==i)
+      L254.tranSubsectorShrwtFllt_Supplysector_SSP <- L254.tranSubsectorShrwtFllt_Supplysector %>%  filter(sce ==i)
+      L254.tranSubsectorShrwtFllt_PassThrusector_SSP <- L254.tranSubsectorShrwtFllt_PassThrusector %>%  filter(sce ==i)
+      # L254.tranSubsectorInterp_SSP <- L254.tranSubsectorInterp %>%  filter(sce ==i)
+      L254.tranSubsectorInterp_Supplysector_SSP <- L254.tranSubsectorInterp_Supplysector %>%  filter(sce ==i)
+      L254.tranSubsectorInterp_PassThrusector_SSP <- L254.tranSubsectorInterp_PassThrusector %>%  filter(sce ==i)
+
+      L254.tranSubsectorFuelPref_SSP <- L254.tranSubsectorFuelPref %>%  filter(sce ==i) %>% rename(pass.through.sector = supplysector)
+      L254.StubTranTechCalInput_SSP <-  L254.StubTranTechCalInput %>% filter(sce ==i) %>% rename(pass.through.sector = supplysector)
+
+      # L254.GlobalTranTechInterp_SSP <- L254.GlobalTranTechInterp %>% filter(sce==i)
+      L254.GlobalTranTechInterp_passthru_SSP <- L254.GlobalTranTechInterp_passthru %>% filter(sce==i)
+      L254.GlobalTranTechInterp_Supplysector_SSP <- L254.GlobalTranTechInterp_Supplysector %>% filter(sce==i)
+
       L254.GlobalTranTechShrwt_SSP <- L254.GlobalTranTechShrwt %>%  filter(sce==i)
-      if (i != "CORE"){L254.StubTranTechCalInput_SSP<-L254.StubTranTechCalInput %>%  filter(sce== i) %>% filter(year>MODEL_FINAL_BASE_YEAR)}
+      if (i != "CORE"){L254.StubTranTechCalInput_SSP<-L254.StubTranTechCalInput %>%
+        filter(sce== i) %>%
+        filter(year>MODEL_FINAL_BASE_YEAR) %>%
+        rename(pass.through.sector = supplysector)}
 
       L254.BaseService_trn_SSP <- L254.BaseService_trn %>% filter(sce =="CORE")
 
 
       #Create xmls
       create_xml(xml_name) %>%
-        add_logit_tables_xml(L254.Supplysector_trn_SSP, "Supplysector") %>%
-        add_xml_data(L254.FinalEnergyKeyword_trn_SSP, "FinalEnergyKeyword") %>%
-        add_logit_tables_xml(L254.tranSubsectorLogit_SSP, "tranSubsectorLogit", "tranSubsector") %>%
-        add_xml_data(L254.tranSubsectorShrwtFllt_SSP, "tranSubsectorShrwtFllt") %>%
-        add_xml_data(L254.tranSubsectorInterp_SSP, "tranSubsectorInterp") %>%
-        add_xml_data(L254.tranSubsectorSpeed_SSP, "tranSubsectorSpeed") %>%
-        add_xml_data(L254.tranSubsectorSpeed_passthru_SSP, "tranSubsectorSpeed") %>%
-        add_xml_data(L254.tranSubsectorSpeed_noVOTT, "tranSubsectorSpeed") %>%
-        add_xml_data(L254.tranSubsectorSpeed_nonmotor, "tranSubsectorSpeed") %>%
-        add_xml_data(L254.tranSubsectorVOTT_SSP, "tranSubsectorVOTT") %>%
-        add_xml_data(L254.tranSubsectorFuelPref_SSP, "tranSubsectorFuelPref") %>%
-        add_xml_data(L254.StubTranTech_SSP, "StubTranTech") %>%
-        add_xml_data(L254.StubTech_passthru_SSP, "StubTranTech") %>%
-        add_xml_data(L254.StubTech_nonmotor_SSP, "StubTranTech") %>%
-        add_xml_data(L254.GlobalTechShrwt_passthru, "GlobalTechShrwt") %>%
+        add_logit_tables_xml(L254.SupplysectorData_trn_SSP, "Supplysector") %>%
+        add_logit_tables_xml(L254.PassThruSectorData_trn_SSP, "PassThroughSectorData") %>%
+        add_xml_data(L254.PassThruSector_trn_SSP, "PassThroughSector") %>%
+        # add_xml_data(L254.FinalEnergyKeyword_trn_SSP, "FinalEnergyKeyword") %>%
+        add_xml_data(L254.FinalEnergyKeyword_Supplysector_trn_SSP, "FinalEnergyKeyword") %>%
+        add_xml_data(L254.FinalEnergyKeyword_PassThrusector_trn_SSP, "PassThruFinalEnergyKeyword") %>%
+        # add_logit_tables_xml(L254.tranSubsectorLogit_SSP, "tranSubsectorLogit", "tranSubsector") %>%
+        add_logit_tables_xml(L254.tranSubsectorLogit_Supplysector_SSP, "tranSubsectorLogit") %>%
+        add_logit_tables_xml(L254.tranSubsectorLogit_PassThrusector_SSP, "PassThrutranSubsectorLogit") %>%
+        # add_xml_data(L254.tranSubsectorShrwtFllt_SSP, "tranSubsectorShrwtFllt") %>%
+        add_xml_data(L254.tranSubsectorShrwtFllt_Supplysector_SSP, "tranSubsectorShrwtFllt") %>%
+        add_xml_data(L254.tranSubsectorShrwtFllt_PassThrusector_SSP, "PassThrutranSubsectorShrwtFllt") %>%
+        # add_xml_data(L254.tranSubsectorInterp_SSP, "tranSubsectorInterp") %>%
+        add_xml_data(L254.tranSubsectorInterp_Supplysector_SSP, "tranSubsectorInterp") %>%
+        add_xml_data(L254.tranSubsectorInterp_PassThrusector_SSP, "PassThrutranSubsectorInterp") %>%
+
+        add_xml_data(L254.tranSubsectorSpeed_SSP, "PassThrutranSubsectorSpeed") %>%
+        add_xml_data(L254.tranSubsectorSpeed_subtype_SSP, "PassThrutranSubsectorSpeed") %>%
+        add_xml_data(L254.tranSubsectorSpeed_passthru_SSP, "PassThrutranSubsectorSpeed") %>%
+        # add_xml_data(L254.tranSubsectorSpeed_noVOTT, "tranSubsectorSpeed") %>%
+        add_xml_data(L254.tranSubsectorSpeed_noVOTT_Supplysector, "tranSubsectorSpeed") %>%
+        add_xml_data(L254.tranSubsectorSpeed_noVOTT_PassThrusector, "PassThrutranSubsectorSpeed") %>%
+        # add_xml_data(L254.tranSubsectorSpeed_nonmotor, "tranSubsectorSpeed") %>%
+        add_xml_data(L254.tranSubsectorSpeed_nonmotor_Supplysector, "tranSubsectorSpeed") %>%
+        add_xml_data(L254.tranSubsectorSpeed_nonmotor_PassThrusector, "PassThrutranSubsectorSpeed") %>%
+        # add_xml_data(L254.tranSubsectorVOTT_SSP, "tranSubsectorVOTT") %>%
+        add_xml_data(L254.tranSubsectorVOTT_Supplysector_SSP, "tranSubsectorVOTT") %>%
+        add_xml_data(L254.tranSubsectorVOTT_PassThrusector_SSP, "PassThrutranSubsectorVOTT") %>%
+        add_xml_data(L254.tranSubsectorFuelPref_SSP, "PassThrutranSubsectorFuelPref") %>%
+        add_xml_data(L254.StubTranTech_SSP, "PassThruStubTranTech") %>%
+        # add_xml_data(L254.StubTech_passthru_SSP, "StubTranTech") %>%
+        add_xml_data(L254.StubTech_passthru_Supplysector_SSP, "StubTranTech") %>%
+        add_xml_data(L254.StubTech_passthru_PassThruSector_SSP, "PassThruStubTranTech") %>%
+        # add_xml_data(L254.StubTech_nonmotor_SSP, "StubTranTech") %>%
+        add_xml_data(L254.StubTech_nonmotor_Supplysector_SSP, "StubTranTech") %>%
+        add_xml_data(L254.StubTech_nonmotor_PassThruSector_SSP, "PassThruStubTranTech") %>%
+        add_xml_data(L254.GlobalTechShrwt_passthru, "GlobalPassThruTechShrwt") %>%
         add_xml_data(L254.GlobalTechShrwt_nonmotor, "GlobalTechShrwt") %>%
-        add_xml_data(L254.GlobalTechCoef_passthru, "GlobalTechCoef") %>%
+        add_xml_data(L254.GlobalTechCoef_passthru, "GlobalPassThruTechCoef") %>%
         add_xml_data(L254.GlobalRenewTech_nonmotor, "GlobalRenewTech") %>%
-        add_xml_data(L254.GlobalTranTechInterp_SSP, "GlobalTranTechInterp") %>%
+        # add_xml_data(L254.GlobalTranTechInterp_SSP, "GlobalTranTechInterp") %>%
+        add_xml_data(L254.GlobalTranTechInterp_passthru_SSP, "GlobalPassThruTechInterp") %>%
+        add_xml_data(L254.GlobalTranTechInterp_Supplysector_SSP, "GlobalTranTechInterp") %>%
         add_xml_data(L254.GlobalTranTechShrwt_SSP, "GlobalTranTechShrwt") %>%
         add_xml_data(L254.GlobalTranTechSCurve, "GlobalTranTechSCurve") %>%
         add_node_equiv_xml("technology") %>%
         add_node_equiv_xml("input") %>%
-        add_xml_data(L254.StubTranTechCalInput_SSP, "StubTranTechCalInput") %>%
-        add_xml_data(L254.StubTranTechLoadFactor_SSP, "StubTranTechLoadFactor") %>%
+        add_xml_data(L254.StubTranTechLoadFactor_SSP, "PassThruStubTranTechLoadFactor") %>%
         add_node_equiv_xml("subsector") %>%
-        add_xml_data(L254.StubTechTrackCapital_SSP, "StubTechTrackCapital") %>%
-        add_xml_data(L254.StubTranTechCost_SSP, "StubTranTechCost") %>%
-        add_xml_data(L254.StubTranTechCoef_SSP, "StubTranTechCoef") %>%
-        add_xml_data(L254.StubTechCalInput_passthru, "StubTranTechCalInput") %>%
-        add_xml_data(L254.StubTechProd_nonmotor, "StubTranTechProd") %>%
+        add_xml_data(L254.StubTechTrackCapital_SSP, "PassThruStubTranTechTrackCapital") %>%
+        add_xml_data(L254.StubTranTechCost_SSP, "PassThruStubTranTechCost") %>%
+        add_xml_data(L254.StubTranTechCoef_SSP, "PassThruStubTranTechCoef") %>%
+        # add_xml_data(L254.StubTechCalInput_passthru_all, "StubTranTechCalInput") %>%
+        add_xml_data(L254.StubTechCalInput_passthru_Supplysector, "StubTranTechCalInput") %>%
+        add_xml_data(L254.StubTechCalInput_passthru_PassThrusector, "PassThruStubTranTechCalInput") %>%
+        # note, here it is important to have the L254.StubTranTechCalInput_SSP as input after L254.StubTechCalInput_passthru_PassThrusector,
+        # Because subsector shwrt of fret and passenger road veh (e.g., Light truck) is 0 in L254.StubTechCalInput_passthru_PassThrusector,
+        # This is because, the subsector only have BEV as the tech, while in L254.StubTranTechCalInput_SSP, the same subsectors have fuel type
+        # tech, which lead to shwrt being 1, we use L254.StubTranTechCalInput_SSP to overwrite some of the 0 shwrt of subsector in the
+        # L254.StubTechCalInput_passthru_PassThrusector. Need to fix this issue later.
+        add_xml_data(L254.StubTranTechCalInput_SSP, "PassThruStubTranTechCalInput") %>%
+
+        # add_xml_data(L254.StubTechProd_nonmotor, "StubTranTechProd") %>%
+        add_xml_data(L254.StubTechProd_nonmotor_Supplysector, "StubTranTechProd") %>%
+        add_xml_data(L254.StubTechProd_nonmotor_PassThrusector, "PassThruStubTranTechProd") %>%
         add_xml_data(L254.PerCapitaBased_trn_SSP, "PerCapitaBased") %>%
         add_xml_data(L254.PriceElasticity_trn_SSP, "PriceElasticity") %>%
         add_xml_data(L254.IncomeElasticity_trn_SSP, "IncomeElasticity") %>%
         add_xml_data(L254.BaseService_trn_SSP, "BaseService") %>%
-        add_precursors("L254.Supplysector_trn",
-                       "L254.FinalEnergyKeyword_trn",
-                       "L254.tranSubsectorLogit",
-                       "L254.tranSubsectorShrwtFllt",
-                       "L254.tranSubsectorInterp",
+        add_precursors("L254.PassThruSector_trn",
+                       "L254.SupplysectorData_trn",
+                       "L254.PassThruSectorData_trn",
+                       # "L254.FinalEnergyKeyword_trn",
+                       "L254.FinalEnergyKeyword_Supplysector_trn",
+                       "L254.FinalEnergyKeyword_PassThrusector_trn",
+                       # "L254.tranSubsectorLogit",
+                       "L254.tranSubsectorLogit_Supplysector",
+                       "L254.tranSubsectorLogit_PassThrusector",
+                       # "L254.tranSubsectorShrwtFllt",
+                       "L254.tranSubsectorShrwtFllt_Supplysector",
+                       "L254.tranSubsectorShrwtFllt_PassThrusector",
+                       # "L254.tranSubsectorInterp",
+                       "L254.tranSubsectorInterp_Supplysector",
+                       "L254.tranSubsectorInterp_PassThrusector",
                        "L254.tranSubsectorSpeed",
+                       "L254.tranSubsectorSpeed_subtype",
                        "L254.tranSubsectorSpeed_passthru",
-                       "L254.tranSubsectorSpeed_noVOTT",
-                       "L254.tranSubsectorSpeed_nonmotor",
-                       "L254.tranSubsectorVOTT",
+                       # "L254.tranSubsectorSpeed_noVOTT",
+                       "L254.tranSubsectorSpeed_noVOTT_Supplysector",
+                       "L254.tranSubsectorSpeed_noVOTT_PassThrusector",
+                       # "L254.tranSubsectorSpeed_nonmotor",
+                       "L254.tranSubsectorSpeed_nonmotor_Supplysector",
+                       "L254.tranSubsectorSpeed_nonmotor_PassThrusector",
+                       # "L254.tranSubsectorVOTT",
+                       "L254.tranSubsectorVOTT_Supplysector",
+                       "L254.tranSubsectorVOTT_PassThrusector",
                        "L254.tranSubsectorFuelPref",
                        "L254.StubTranTech",
-                       "L254.StubTech_passthru",
-                       "L254.StubTech_nonmotor",
+                       # "L254.StubTech_passthru",
+                       "L254.StubTech_passthru_Supplysector",
+                       "L254.StubTech_passthru_PassThruSector",
+                       # "L254.StubTech_nonmotor",
+                       "L254.StubTech_nonmotor_Supplysector",
+                       "L254.StubTech_nonmotor_PassThruSector",
                        "L254.GlobalTechShrwt_passthru",
                        "L254.GlobalTechShrwt_nonmotor",
                        "L254.GlobalTechCoef_passthru",
                        "L254.GlobalRenewTech_nonmotor",
-                       "L254.GlobalTranTechInterp",
+                       # "L254.GlobalTranTechInterp",
+                       "L254.GlobalTranTechInterp_passthru",
+                       "L254.GlobalTranTechInterp_Supplysector",
                        "L254.GlobalTranTechShrwt",
                        "L254.GlobalTranTechSCurve",
                        "L254.StubTranTechCalInput",
@@ -237,8 +383,13 @@ module_energy_transportation_UCD_CORE_xml <- function(command, ...) {
                        "L254.StubTranTechCost",
                        "L254.StubTechTrackCapital",
                        "L254.StubTranTechCoef",
-                       "L254.StubTechCalInput_passthru",
-                       "L254.StubTechProd_nonmotor",
+                       # "L254.StubTechCalInput_passthru_all",
+                       "L254.StubTechCalInput_passthru_Supplysector",
+                       "L254.StubTechCalInput_passthru_PassThrusector",
+
+                       # "L254.StubTechProd_nonmotor",
+                       "L254.StubTechProd_nonmotor_Supplysector",
+                       "L254.StubTechProd_nonmotor_PassThrusector",
                        "L254.PerCapitaBased_trn",
                        "L254.PriceElasticity_trn",
                        "L254.IncomeElasticity_trn",

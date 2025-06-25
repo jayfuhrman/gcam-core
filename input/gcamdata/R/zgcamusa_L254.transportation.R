@@ -39,12 +39,14 @@
 module_gcamusa_L254.transportation <- function(command, ...) {
   if(command == driver.DECLARE_INPUTS) {
     return(c(FILE = "energy/mappings/UCD_techs",
-             FILE = "energy/A54.globaltech_nonmotor",
+             FILE = "minerals/transport/A54.globaltech_nonmotor_mineral",
              FILE = "energy/A54.globaltech_passthru",
-             FILE = "energy/A54.sector",
-             FILE=  "energy/mappings/UCD_size_class_revisions",
-             FILE=  "energy/mappings/UCD_techs_revised",
+             FILE = "minerals/transport/A54.trn_sector_mineral",
+             FILE = "energy/mappings/UCD_size_class_revisions",
+             FILE = "energy/mappings/UCD_techs_revised",
              FILE = "gcam-usa/states_subregions",
+             FILE = "minerals/transport/A54.trn_tech_mineral_bev_mapping",
+             FILE = "minerals/transport/A54.trn_tech_mineral_mapping_new_structure",
              "L254.Supplysector_trn",
              "L254.FinalEnergyKeyword_trn",
              "L254.tranSubsectorLogit",
@@ -128,9 +130,9 @@ module_gcamusa_L254.transportation <- function(command, ...) {
       colnames(UCD_techs)[colnames(UCD_techs)=='rev.mode']<-'mode'
     }
 
-    A54.globaltech_nonmotor <- get_data(all_data, "energy/A54.globaltech_nonmotor",strip_attributes = TRUE)
+    A54.globaltech_nonmotor <- get_data(all_data, "minerals/transport/A54.globaltech_nonmotor_mineral",strip_attributes = TRUE)
     A54.globaltech_passthru <- get_data(all_data, "energy/A54.globaltech_passthru",strip_attributes = TRUE)
-    A54.sector <- get_data(all_data, "energy/A54.sector",strip_attributes = TRUE)
+    A54.sector <- get_data(all_data, "minerals/transport/A54.trn_sector_mineral",strip_attributes = TRUE)
     states_subregions <- get_data(all_data, "gcam-usa/states_subregions",strip_attributes = TRUE)
     #kbn 2020-02-27 Making changes to select the CORE scenario for transportation in GCAM USA
     L254.Supplysector_trn <- get_data(all_data, "L254.Supplysector_trn",strip_attributes = TRUE) %>% filter(sce %in% c("CORE"))
@@ -156,6 +158,21 @@ module_gcamusa_L254.transportation <- function(command, ...) {
     L154.in_EJ_state_trn_m_sz_tech_F <- get_data(all_data, "L154.in_EJ_state_trn_m_sz_tech_F",strip_attributes = TRUE)
     L154.out_mpkm_state_trn_nonmotor_Yh <- get_data(all_data, "L154.out_mpkm_state_trn_nonmotor_Yh",strip_attributes = TRUE)
 
+    A54.trn_tech_mineral_bev_mapping <- get_data(all_data, "minerals/transport/A54.trn_tech_mineral_bev_mapping")
+    A54.trn_tech_mineral_mapping_new_structure <- get_data(all_data, "minerals/transport/A54.trn_tech_mineral_mapping_new_structure")
+
+    # creat the new structure for the new mineral model
+    A54.trn_tech_mineral_mapping_new_structure %>%
+      filter(supplysector_L2 %in% c("trn_fret_road_pass", "trn_pasg_road_bus_pass", "trn_pasg_road_ldv_4w_pass"),
+             stub.technology_L2 == "BEV") %>%
+      left_join(A54.trn_tech_mineral_bev_mapping,
+                by = c("supplysector_L2" = "from.supplysector", "tranSubsector_L2" = "from.subsector", "stub.technology_L2" = "from.technology")) %>%
+      select(supplysector, tranSubsector, stub.technology, supplysector_L2 = to.supplysector, tranSubsector_L2 = to.subsector, stub.technology_L2 = to.technology) %>%
+      rbind(A54.trn_tech_mineral_mapping_new_structure %>%
+              anti_join(A54.trn_tech_mineral_mapping_new_structure %>%
+                          filter(supplysector_L2 %in% c("trn_fret_road_pass", "trn_pasg_road_bus_pass", "trn_pasg_road_ldv_4w_pass"),
+                                 stub.technology_L2 == "BEV"))) ->
+      A54.trn_tech_mineral_mapping_new_structure_all
     # Need to delete the transportation sector in the USA region (energy-final-demands and supplysectors)
     # L254.DeleteSupplysector_USAtrn: Delete transportation supplysectors of the USA region
     L254.Supplysector_trn %>%
@@ -240,9 +257,13 @@ module_gcamusa_L254.transportation <- function(command, ...) {
       mutate(calibrated.value = round(value, digits = energy.DIGITS_CALOUTPUT),
              region = state) %>%
       left_join_keep_first_only(select(UCD_techs, UCD_sector, mode, size.class, UCD_technology, UCD_fuel,
-                                      supplysector, tranSubsector, stub.technology = tranTechnology, minicam.energy.input),
-                               by = c("UCD_sector", "mode", "size.class", "UCD_technology", "UCD_fuel")) %>%
-      select(LEVEL2_DATA_NAMES[["StubTranTech"]], year, minicam.energy.input, calibrated.value,sce) ->
+                                       supplysector, tranSubsector, stub.technology = tranTechnology, minicam.energy.input),
+                                by = c("UCD_sector", "mode", "size.class", "UCD_technology", "UCD_fuel")) %>%
+      select(LEVEL2_DATA_NAMES[["StubTranTech"]], year, minicam.energy.input, calibrated.value,sce) %>%
+      left_join(A54.trn_tech_mineral_mapping_new_structure_all,
+                by = c("supplysector", "tranSubsector", "stub.technology")) %>%
+      select(region, supplysector = supplysector_L2, tranSubsector = tranSubsector_L2,
+             stub.technology = stub.technology_L2, year, minicam.energy.input, calibrated.value,sce) ->
       L254.StubTranTechCalInput_USA
 
     # NOTE: NEED TO WRITE THIS OUT FOR ALL TECHNOLOGIES, NOT JUST THOSE THAT EXIST IN SOME BASE YEARS.
@@ -563,7 +584,9 @@ module_gcamusa_L254.transportation <- function(command, ...) {
       same_precursors_as("L254.StubTranTechCoef_USA") %>%
       add_precursors("L154.in_EJ_state_trn_m_sz_tech_F",
                      "energy/mappings/UCD_techs",
-                     "energy/mappings/UCD_techs_revised") ->
+                     "energy/mappings/UCD_techs_revised",
+                     "minerals/transport/A54.trn_tech_mineral_bev_mapping",
+                     "minerals/transport/A54.trn_tech_mineral_mapping_new_structure") ->
       L254.StubTranTechCalInput_USA
 
     L254.StubTranTechProd_nonmotor_USA %>%
@@ -572,7 +595,7 @@ module_gcamusa_L254.transportation <- function(command, ...) {
       add_comments("Not match shareweights to the calOutputValue because no region should ever have a zero here") %>%
       add_legacy_name("L254.StubTranTechProd_nonmotor_USA") %>%
       add_precursors("L154.out_mpkm_state_trn_nonmotor_Yh",
-                     "energy/A54.globaltech_nonmotor") ->
+                     "minerals/transport/A54.globaltech_nonmotor_mineral") ->
       L254.StubTranTechProd_nonmotor_USA
 
     L254.StubTranTechCalInput_passthru_USA %>%
@@ -598,7 +621,7 @@ module_gcamusa_L254.transportation <- function(command, ...) {
       same_precursors_as("L254.StubTranTechLoadFactor_USA") %>%
       same_precursors_as("L254.StubTranTechCoef_USA") %>%
       same_precursors_as("L254.StubTranTechProd_nonmotor_USA") %>%
-      add_precursors("energy/A54.sector",
+      add_precursors("minerals/transport/A54.trn_sector_mineral",
                      "energy/mappings/UCD_size_class_revisions") ->
       L254.BaseService_trn_USA
 

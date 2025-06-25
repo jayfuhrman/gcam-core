@@ -29,7 +29,8 @@ module_gcamusa_L271.nonghg_trn <- function(command, ...) {
              FILE="gcam-usa/emissions/NEI_pollutant_mapping",
              "L254.GlobalTranTechSCurve",
              "L171.nonco2_tgpkm_censusR_trn_SMarkal_F_V_Y",
-             FILE="gcam-usa/states_subregions"))
+             FILE="gcam-usa/states_subregions",
+             FILE="minerals/transport/A54.trn_tech_mineral_bev_mapping"))
   } else if(command == driver.DECLARE_OUTPUTS) {
     return(c("L271.nonco2_trn_tech_coeff_USA",
              "L271.nonco2_trn_emiss_control_USA"))
@@ -57,6 +58,7 @@ module_gcamusa_L271.nonghg_trn <- function(command, ...) {
     L254.GlobalTranTechSCurve <- get_data(all_data, "L254.GlobalTranTechSCurve")
     L171.nonco2_tgpkm_censusR_trn_SMarkal_F_V_Y <- get_data(all_data, "L171.nonco2_tgpkm_censusR_trn_SMarkal_F_V_Y")
     states_subregions <- get_data(all_data, "gcam-usa/states_subregions")
+    A54.trn_tech_mineral_bev_mapping <- get_data(all_data, "minerals/transport/A54.trn_tech_mineral_bev_mapping")
 
     # ===================================================
     # ===================================================
@@ -66,8 +68,35 @@ module_gcamusa_L271.nonghg_trn <- function(command, ...) {
     # Pollutant emissions for transportation technologies in all U.S. states
     # 1.1 LDV emission coefficients
     # ===================================================
-    L254.StubTranTech_USA_LDV <- L254.StubTranTech_USA %>%
-      filter( supplysector %in% gcamusa.LDV_SUPPLYSECTORS ) %>%
+    # update the MARKAL_UCD_class, MARKAL_UCD_LDV_fuel, MARKAL_UCD_HDV_fuel to include the bev subtypes
+    A54.trn_tech_mineral_bev_mapping %>%
+      select(from.subsector, to.subsector) %>%
+      distinct() %>%
+      right_join(MARKAL_UCD_class,
+                by = c("from.subsector" = "UCD_class")) %>%
+      na.omit() %>%
+      select(MARKAL_class, UCD_class_old, UCD_class = to.subsector) %>%
+      rbind(MARKAL_UCD_class) ->
+      MARKAL_UCD_class
+
+    A54.trn_tech_mineral_bev_mapping %>%
+      filter(grepl("car", to.subsector),
+             to.subsector != "minicar_bev") %>%
+      mutate(MARKAL_LDV_fuel = "ELC") %>%
+      select(MARKAL_LDV_fuel, UCD_LDV_fuel = to.technology) %>%
+      rbind(MARKAL_UCD_LDV_fuel) ->
+      MARKAL_UCD_LDV_fuel
+
+    A54.trn_tech_mineral_bev_mapping %>%
+      filter(!grepl("car", to.subsector)) %>%
+      mutate(MARKAL_HDV_fuel = "ELC") %>%
+      select(MARKAL_HDV_fuel, UCD_HDV_fuel = to.technology) %>%
+      rbind(MARKAL_UCD_HDV_fuel) ->
+      MARKAL_UCD_HDV_fuel    
+
+    L254.StubTranTech_USA_LDV <- 
+      L254.StubTranTech_USA %>%
+      filter(supplysector %in% gcamusa.LDV_SUPPLYSECTORS) %>%
       # this has to be a left join b/c of MARKAL to UCD mapping issues (explained below)
       left_join(MARKAL_UCD_class, by = c("tranSubsector" = "UCD_class")) %>%
       left_join_error_no_match(MARKAL_UCD_LDV_fuel, by = c("stub.technology" = "UCD_LDV_fuel")) %>%
@@ -145,7 +174,7 @@ module_gcamusa_L271.nonghg_trn <- function(command, ...) {
       select( -MARKAL_HDV_fuel )
 
     # Bind the LDV and HDV tables and clean up
-    L271.nonco2_trn_tech_coeff_USA_LDV_HDV <- bind_rows(L271.nonco2_HDV_USA,L271.nonco2_LDV_USA) %>%
+    L271.nonco2_trn_tech_coeff_USA_LDV_HDV <- bind_rows(L271.nonco2_HDV_USA, L271.nonco2_LDV_USA) %>%
       # Re-name the pollutants to match names of existing gases
       mutate(Non.CO2 = gsub("VOC","NMVOC",Non.CO2),
              Non.CO2 = gsub("NOX","NOx",Non.CO2))
@@ -206,7 +235,7 @@ module_gcamusa_L271.nonghg_trn <- function(command, ...) {
       # CH4 and N20 become NA, which is ok because these are GHGs
       na.omit() %>%
       # remove unnecessary columns
-      select( -c( "total_emissions", "CEDS_emissions", "emissions", "output", "scaling_factor" ) )
+      select( -c("total_emissions", "CEDS_emissions", "emissions", "output", "scaling_factor"))
 
     # Need a dataframe that has scaling factors for the current base year, which will be applied to EFs in the degradation table
     # use same approach as above
@@ -498,7 +527,8 @@ module_gcamusa_L271.nonghg_trn <- function(command, ...) {
                      "L171.nonco2_tgpkm_state_trn_SMarkal_F_Y",
                      "L254.StubTranTechOutput_USA",
                      "L170.NEI_1990_2017_GCAM_sectors",
-                     "gcam-usa/emissions/NEI_pollutant_mapping") ->
+                     "gcam-usa/emissions/NEI_pollutant_mapping",
+                     "minerals/transport/A54.trn_tech_mineral_bev_mapping") ->
       L271.nonco2_trn_tech_coeff_USA
 
     L271.nonco2_trn_emiss_control_USA %>%
@@ -512,7 +542,8 @@ module_gcamusa_L271.nonghg_trn <- function(command, ...) {
                      "gcam-usa/emissions/MARKAL_UCD_HDV_fuel",
                      "L254.GlobalTranTechSCurve",
                      "L171.nonco2_tgpkm_censusR_trn_SMarkal_F_V_Y",
-                     "gcam-usa/states_subregions") ->
+                     "gcam-usa/states_subregions",
+                     "minerals/transport/A54.trn_tech_mineral_bev_mapping") ->
       L271.nonco2_trn_emiss_control_USA
 
     return_data(L271.nonco2_trn_tech_coeff_USA,

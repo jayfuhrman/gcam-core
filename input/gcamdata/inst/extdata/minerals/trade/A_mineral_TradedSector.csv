@@ -1,0 +1,11 @@
+# File: A_mineral_TradedSector.csv
+# Title: Supplysector assumptions for traded mineral markets (including logit exponent for subsector competition)
+# Units: Various
+# Comments: These sectors compete different regions in supplying the pool of globally traded minerals
+# Source: NA
+# Column types: ccccinc
+# ----------
+supplysector,output.unit,input.unit,price.unit,traded,logit.exponent,logit.type
+traded copper,Mt,Mt,1975$/kg,1,-6,
+traded lithium,Mt,Mt,1975$/kg,1,-6,
+traded nickel,Mt,Mt,1975$/kg,1,-6,

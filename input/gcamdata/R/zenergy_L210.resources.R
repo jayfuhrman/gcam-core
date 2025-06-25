@@ -121,6 +121,7 @@ module_energy_L210.resources <- function(command, ...) {
       gather_years
     A10.rsrc_info_uranium <- get_data(all_data, "energy/A10.rsrc_info_uranium", strip_attributes = TRUE) %>%
       gather_years
+
     A10.subrsrc_info <- get_data(all_data, "energy/A10.subrsrc_info", strip_attributes = TRUE)
     A10.TechChange <- get_data(all_data, "energy/A10.TechChange") %>%
       gather_years
@@ -208,6 +209,7 @@ module_energy_L210.resources <- function(command, ...) {
     if(!(MODEL_FINAL_BASE_YEAR %in% c(unique(A10.rsrc_info$year)))){
       stop("No calibrated prices for resources in final historical year")
     }
+
 
     # ===================================================
     # ------- FOSSIL RESOURCE RESERVE ADDITIONS
@@ -314,6 +316,7 @@ module_energy_L210.resources <- function(command, ...) {
       tidyr::unnest(cols = data) ->
       L210.Reserve_EJ_R_F_Yh
 
+
     # Given the mismatch between data sets for historical production / regional supply curves / and
     # assumption for production lifetimes it may be the case that for some region + resource there
     # is not enough supply in the supply curve to cover historical reserves.  We will add in just
@@ -400,6 +403,9 @@ module_energy_L210.resources <- function(command, ...) {
       filter(resource_type == "unlimited-resource",
              year %in% MODEL_BASE_YEARS) %>%
       select(region, unlimited.resource = resource, year, price = value)
+
+
+
 
     # B. Tech change
     # Repeat and add region to assumed techchange tables
@@ -668,8 +674,8 @@ module_energy_L210.resources <- function(command, ...) {
     L210.RsrcEnvironCost_SSP4 <- L210.RsrcEnvironCost_SSP4 %>%
       # Set environmental costs for coal to 0 for low growth regions,
       # 10 * environcost for high growth regions
-      mutate(input.cost = if_else(resource == "coal" & region %in% L210.low_reg, 0, input.cost),
-             input.cost = if_else(resource == "coal" & region %in% L210.high_reg, 10 * input.cost, input.cost)) %>%
+      mutate(environCost = if_else(resource == "coal" & region %in% L210.low_reg, 0, input.cost),
+             environCost = if_else(resource == "coal" & region %in% L210.high_reg, 10 * environCost, environCost)) %>%
       add_title("Environmental Costs for Depletable Resources: SSP4", overwrite = TRUE) %>%
       add_units("$/GJ") %>%
       add_comments("A10.EnvironCost_SSPs written to all regions") %>%
@@ -771,7 +777,7 @@ module_energy_L210.resources <- function(command, ...) {
       bind_rows(filter(L210.ResTechShrwt, resource != "uranium"), .) ->
       L210.ResTechShrwt
 
-        # ===================================================
+    # ===================================================
 
     # Produce outputs
 

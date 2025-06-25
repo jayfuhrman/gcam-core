@@ -137,6 +137,7 @@ EnergyInput::EnergyInput( const EnergyInput& aOther )
     mIncomeElasticity = aOther.mIncomeElasticity;
     mTechChange = aOther.mTechChange;
     mPriceUnitConversionFactor = aOther.mPriceUnitConversionFactor;
+    mAdjustedCoefficients = aOther.mAdjustedCoefficients;
     
     // copy keywords
     mKeywordMap = aOther.mKeywordMap;

@@ -1,0 +1,20 @@
+# File: H2A.globaltech_capFactor.csv
+# Title: Hydrogen sector technology capacity factors
+# Units: unitless
+# Description: this dataset defines the capacity factors for hydrogen production technologies that use global average CF
+# Comment: Note that solar and wind electrolysis technologies use capacity factor based on regional power sector CFs, they are omitted here
+# Source: H2A_v3_2018 (Coal CCS, Gas SMR, Grid electrolysis PEM, Biomass); H2A version-nov20 (Nuclear SOEC); H2A version-aug22 (Gas ATR CCS)
+# Column types: cccnnnn
+# ----------
+supplysector,subsector,technology,1975,2015,2040,2100
+H2 central production,biomass,biomass to H2,0.9,0.9,0.9,0.9
+H2 central production,biomass,biomass to H2 CCS,0.9,0.9,0.9,0.9
+H2 central production,coal,coal chemical,0.9,0.9,0.9,0.9
+H2 central production,coal,coal chemical CCS,0.9,0.9,0.9,0.9
+H2 central production,electricity,electrolysis,0.97,0.97,0.97,0.97
+H2 central production,gas,natural gas steam reforming,0.9,0.9,0.9,0.9
+H2 central production,gas,gas ATR CCS,0.9,0.9,0.9,0.9
+H2 central production,nuclear,electrolysis,0.824,0.824,0.875,0.875
+H2 industrial,onsite production,electrolysis,0.86,0.86,0.86,0.86
+H2 wholesale dispensing,forecourt production,electrolysis,0.86,0.86,0.86,0.86
+H2 wholesale dispensing,forecourt production,natural gas steam reforming,0.86,0.86,0.86,0.86

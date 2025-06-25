@@ -1,0 +1,10 @@
+# File: A_mineral_RegionalSector.csv
+# Title: Supplysector assumptions for regional mineral markets (including logit exponent for subsector competition)
+# Units: Various"# Comments: These sectors could be used eventually to compete domestic production and imports from the globally traded markets. For now there are only imports as everything is traded in a single global market
+# Source: NA
+# Column types: ccccnc
+# ----------
+supplysector,output.unit,input.unit,price.unit,logit.exponent,logit.type
+regional copper,Mt,Mt,1975$/kg,-3,
+regional lithium,Mt,Mt,1975$/kg,-3,
+regional nickel,Mt,Mt,1975$/kg,-3,

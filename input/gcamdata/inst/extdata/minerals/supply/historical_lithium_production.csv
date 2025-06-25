@@ -1,0 +1,65 @@
+# File: historical_lithium_production.csv
+# Title: Historical lithium production by country
+# Units: tonnes
+# Source: Our World in Data (https://ourworldindata.org/metals-minerals) which processes data from USGS - Mineral Commodity Summaries (2024); USGS - Historical Statistics for Mineral and Material Commodities (2023)
+# Column types: cnn
+# ----------
+Entity,Year,production
+Argentina,2020,5900
+Argentina,2021,5970
+Argentina,2022,6590
+Argentina,2023,9600
+Australia,2020,39700
+Australia,2021,55300
+Australia,2022,74700
+Australia,2023,86000
+Brazil,2020,1420
+Brazil,2021,1700
+Brazil,2022,2630
+Brazil,2023,4900
+Canada,2021,0
+Canada,2022,520
+Canada,2023,3400
+Chile,2020,21500
+Chile,2021,28300
+Chile,2022,38000
+Chile,2023,44000
+China,2020,13300
+China,2021,14000
+China,2022,22600
+China,2023,33000
+Other,2021,0
+Other,2022,0
+Other,2023,0
+Portugal,2020,348
+Portugal,2021,900
+Portugal,2022,380
+Portugal,2023,380
+World,2000,14100
+World,2001,13100
+World,2002,14100
+World,2003,16600
+World,2004,17700
+World,2005,20300
+World,2006,22400
+World,2007,23300
+World,2008,24700
+World,2009,17500
+World,2010,24400
+World,2011,31000
+World,2012,32700
+World,2013,30300
+World,2014,31600
+World,2015,32200
+World,2016,40200
+World,2017,76400
+World,2018,91800
+World,2019,83800
+World,2020,82500
+World,2021,100000
+World,2022,146000
+World,2023,180000
+Zimbabwe,2020,417
+Zimbabwe,2021,710
+Zimbabwe,2022,1030
+Zimbabwe,2023,3400

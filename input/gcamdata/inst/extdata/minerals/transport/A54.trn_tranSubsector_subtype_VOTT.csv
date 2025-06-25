@@ -1,0 +1,13 @@
+# File: A54.trn_tranSubsector_subtype_VOTT.csv
+# Title: Transportation subtype subsector value of time in transit multipliers (VOTT = wage rate * this factor)
+# Source: based on data from A54.tranSubsector_VOTT
+# Units: Unitless
+# Column types: ccnnnnicn
+# ----------
+supplysector,tranSubsector,in.vehicle.VOTT,wait.walk.vott,wait.walk.share,time.value.multiplier,addTimeValue,speed.source,fuelprefElasticity
+trn_pasg_road_ldv_4W_mc_bev_pass,car_bev,0.82,1.066,0,0.82,0,,0
+trn_pasg_road_ldv_4W_mc_bev_pass,car_bev,0.82,1.066,0,0.82,0,,-0.1
+trn_pasg_road_ldv_4W_hc_bev_pass,largecar_bev,0.82,1.066,0,0.82,0,,0.1
+trn_pasg_road_ldv_4W_hc_bev_pass,largecar_bev,0.82,1.066,0,0.82,0,,0.2
+trn_pasg_road_ldv_4W_hc_bev_pass,largecar_bev,0.82,1.066,0,0.82,0,,0
+trn_pasg_road_ldv_4W_lc_bev_pass,minicar_bev,0.82,1.066,0,0.82,0,,-0.2

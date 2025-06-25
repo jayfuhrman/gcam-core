@@ -1,0 +1,40 @@
+# File: A23.globaltech_storage_mineral_coef_ratio_reduction.csv
+# Title: Electricity sector technology with storage mineral use intensity change ratio. assuming intensity reduce overtime
+# Units: unitless
+# Description: this dataset defines the mineral use intensity reduction in terms of percentage. assuming intensity reduce overtime
+# Comment:
+# Column types: cccnnnnnnnn
+# ----------
+supplysector,subsector,technology,steel,aluminium,silicon,copper,graphite,lithium,cobalt,nickel,manganese,neodymium,tellurium,vanadium
+pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (c-Si) (LFP),0.7,0.7,,0.7,0.7,0.7,,,,,,
+pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (CdTe) (LFP),0.7,0.7,,0.7,0.7,0.7,,,,,,
+pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (CIGS) (LFP),0.7,0.7,,0.7,0.7,0.7,,,,,,
+pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (a-Si) (LFP),0.7,0.7,,0.7,0.7,0.7,,,,,,
+pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (c-Si) (NMC532),0.7,0.7,,0.7,0.7,0.7,0.7,0.7,0.7,,,
+pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (CdTe) (NMC532),0.7,0.7,,0.7,0.7,0.7,0.7,0.7,0.7,,,
+pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (CIGS) (NMC532),0.7,0.7,,0.7,0.7,0.7,0.7,0.7,0.7,,,
+pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (a-Si) (NMC532),0.7,0.7,,0.7,0.7,0.7,0.7,0.7,0.7,,,
+pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (c-Si) (NMC811),0.7,0.7,,0.7,0.7,0.7,0.7,0.7,0.7,,,
+pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (CdTe) (NMC811),0.7,0.7,,0.7,0.7,0.7,0.7,0.7,0.7,,,
+pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (CIGS) (NMC811),0.7,0.7,,0.7,0.7,0.7,0.7,0.7,0.7,,,
+pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (a-Si) (NMC811),0.7,0.7,,0.7,0.7,0.7,0.7,0.7,0.7,,,
+pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (c-Si) (VRFB),0.7,0.7,,0.7,,,,,,,,0.7
+pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (CdTe) (VRFB),0.7,0.7,,0.7,,,,,,,,0.7
+pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (CIGS) (VRFB),0.7,0.7,,0.7,,,,,,,,0.7
+pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (a-Si) (VRFB),0.7,0.7,,0.7,,,,,,,,0.7
+wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (DD-EESG) (LFP),0.7,0.7,,0.7,0.7,0.7,,,,,,
+wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (DD-PMSG) (LFP),0.7,0.7,,0.7,0.7,0.7,,,,,,
+wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (GB-PMSG) (LFP),0.7,0.7,,0.7,0.7,0.7,,,,,,
+wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (GB-DFIG) (LFP),0.7,0.7,,0.7,0.7,0.7,,,,,,
+wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (DD-EESG) (NMC532),0.7,0.7,,0.7,0.7,0.7,0.7,0.7,0.7,,,
+wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (DD-PMSG) (NMC532),0.7,0.7,,0.7,0.7,0.7,0.7,0.7,0.7,,,
+wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (GB-PMSG) (NMC532),0.7,0.7,,0.7,0.7,0.7,0.7,0.7,0.7,,,
+wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (GB-DFIG) (NMC532),0.7,0.7,,0.7,0.7,0.7,0.7,0.7,0.7,,,
+wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (DD-EESG) (NMC811),0.7,0.7,,0.7,0.7,0.7,0.7,0.7,0.7,,,
+wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (DD-PMSG) (NMC811),0.7,0.7,,0.7,0.7,0.7,0.7,0.7,0.7,,,
+wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (GB-PMSG) (NMC811),0.7,0.7,,0.7,0.7,0.7,0.7,0.7,0.7,,,
+wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (GB-DFIG) (NMC811),0.7,0.7,,0.7,0.7,0.7,0.7,0.7,0.7,,,
+wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (DD-EESG) (VRFB),0.7,0.7,,0.7,,,,,,,,0.7
+wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (DD-PMSG) (VRFB),0.7,0.7,,0.7,,,,,,,,0.7
+wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (GB-PMSG) (VRFB),0.7,0.7,,0.7,,,,,,,,0.7
+wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (GB-DFIG) (VRFB),0.7,0.7,,0.7,,,,,,,,0.7

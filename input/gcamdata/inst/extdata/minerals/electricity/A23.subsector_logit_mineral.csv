@@ -1,0 +1,13 @@
+# File: A23.subsector_logit_mineral.csv
+# Title: Electric sector subsector logit exponents
+# Units: Unitless logit-exponent
+# Source: None (GCAM assumptions)
+# Column types: ccic
+# ----------
+supplysector,subsector,logit.exponent,logit.type
+pv_mineral,pv_mineral,-3,
+pv_storage_mineral,pv_storage_mineral,-3,
+rooftop_pv_mineral,rooftop_pv_mineral,-3,
+wind_mineral,wind_mineral,-3,
+wind_offshore_mineral,wind_offshore_mineral,-3,
+wind_storage_mineral,wind_storage_mineral,-3,

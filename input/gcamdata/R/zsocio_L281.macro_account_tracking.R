@@ -22,7 +22,8 @@
 module_socio_L281.macro_account_tracking <- function(command, ...) {
   if(command == driver.DECLARE_INPUTS) {
     return(c(FILE = "common/GCAM_region_names",
-             FILE = "energy/A54.sector",
+             # FILE = "energy/A54.sector",
+             FILE = "minerals/transport/A54.trn_sector_mineral",
              # Final energy tracking
              "L232.GlobalTechEff_ind",
              "L2321.GlobalTechCoef_cement",
@@ -62,7 +63,7 @@ module_socio_L281.macro_account_tracking <- function(command, ...) {
     all_data <- list(...)[[1]]
 
     GCAM_region_names <- get_data(all_data, "common/GCAM_region_names", strip_attributes = TRUE)
-    A54.sector <- get_data(all_data, "energy/A54.sector", strip_attributes = TRUE)
+    A54.sector <- get_data(all_data, "minerals/transport/A54.trn_sector_mineral", strip_attributes = TRUE)
 
     all_fd_globaltech_names <- c("L232.GlobalTechEff_ind",
                                  "L2321.GlobalTechCoef_cement",
@@ -237,7 +238,7 @@ module_socio_L281.macro_account_tracking <- function(command, ...) {
       add_units("NA") %>%
       add_comments("Sets up a sector mapping to make sure we calculate the base price") %>%
       add_comments("of the correct sector when pass-through sectors are involved") %>%
-      add_precursors("energy/A54.sector") ->
+      add_precursors("minerals/transport/A54.trn_sector_mineral") ->
       L281.BasePriceSectorMapping
 
     fd_accounting %>%

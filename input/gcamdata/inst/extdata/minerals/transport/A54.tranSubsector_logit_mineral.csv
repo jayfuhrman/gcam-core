@@ -1,0 +1,39 @@
+# File: A54.tranSubsector_logit_mineral.csv
+# Title: Transportation default subsector logit exponents
+# Source: Documented in JIRA issue https://jira.pnnl.gov/jira/browse/JGCRI-358?src=confmacro.
+# Units: Unitless
+# Column types: ccicc
+# ----------
+supplysector,tranSubsector,logit.exponent,logit.factor,logit.type
+trn_aviation_intl_pass,International Aviation,-6,,absolute-cost-logit
+trn_dom_ship_pass,Domestic Ship,-6,,absolute-cost-logit
+trn_fret_rail_pass,Freight Rail,-1,Fuel types and efficiency levels,absolute-cost-logit
+trn_fret_road_pass,Light truck,-8,Fuel types,absolute-cost-logit
+trn_fret_road_pass,Medium truck,-8,Fuel types,absolute-cost-logit
+trn_fret_road_pass,Heavy truck,-8,Fuel types,absolute-cost-logit
+trn_pasg_cycle_pass,Cycle,-6,,absolute-cost-logit
+trn_pasg_aviation_dom_pass,Domestic Aviation,-6,,absolute-cost-logit
+trn_pasg_hsr_pass,HSR,-6,,absolute-cost-logit
+trn_pasg_rail_pass,Passenger Rail,-1,Fuel types and efficiency levels,absolute-cost-logit
+trn_passenger,Walk,-6,,absolute-cost-logit
+trn_pasg_road_bus_pass,Bus,-3,Fuel types,absolute-cost-logit
+trn_pasg_road_ldv_2_3W_pass,2W and 3W,-8,Fuel types,absolute-cost-logit
+trn_pasg_road_ldv_4w_pass,Car,-8,Fuel types and ICE efficiency levels,absolute-cost-logit
+trn_pasg_road_ldv_4w_pass,Large Car and Truck,-8,Fuel types and ICE efficiency levels,absolute-cost-logit
+trn_pasg_road_ldv_4w_pass,Mini Car,-8,Fuel types and ICE efficiency levels,absolute-cost-logit
+trn_ship_intl_pass,International Ship,-6,,absolute-cost-logit
+# Passthrough tranSubsectors are listed belowabsolute-cost-logit
+trn_passenger,pasg_road,-6,,absolute-cost-logit
+trn_pasg_road_pass,pasg_road_ldv,-6,,absolute-cost-logit
+trn_pasg_road_pass,pasg_road_bus,-6,,absolute-cost-logit
+trn_pasg_road_ldv_pass,pasg_road_ldv_4w,-6,,absolute-cost-logit
+trn_pasg_road_ldv_pass,pasg_road_ldv_2_3W,-6,,absolute-cost-logit
+trn_freight,fret_road,-6,,absolute-cost-logit
+trn_aviation_intl,aviation_intl,-6,,absolute-cost-logit
+trn_shipping_intl,shipping_intl,-6,,absolute-cost-logit
+trn_freight,fret_dom_ship,-6,,absolute-cost-logit
+trn_freight,fret_rail,-1,Fuel types and efficiency levels,absolute-cost-logit
+trn_passenger,pasg_aviation_dom,-6,,absolute-cost-logit
+trn_passenger,pasg_hsr,-6,,absolute-cost-logit
+trn_passenger,pasg_rail,-1,Fuel types and efficiency levels,absolute-cost-logit
+trn_passenger,pasg_cycle,-6,,absolute-cost-logit
