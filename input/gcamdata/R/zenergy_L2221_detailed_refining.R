@@ -16,7 +16,7 @@
 #' by interpolating assumptions.
 #' @importFrom assertthat assert_that
 #' @importFrom dplyr anti_join distinct filter full_join if_else group_by inner_join left_join mutate select summarise
-#' @importFrom tidyr gather
+#' @importFrom tidyr gather complete
 #' @author JF July 2024 SD Jan 2025
 module_energy_L2221.refining <- function(command, ...) {
   if(command == driver.DECLARE_INPUTS) {
@@ -62,7 +62,7 @@ module_energy_L2221.refining <- function(command, ...) {
                 "L2221.PortfolioStdFixedTax",
                 "L2221.StubTechProd",
                 "L2221.GlobalTechSCurve",
-                #"L2221.StubTechShrwt",
+                "L2221.StubTechShrwt",
                 "L2221.GlobalTechProfitShutdown",
                  "L2221.GlobalTechShutdown",
                 "L2221.SectorZeroProfitMarketName",
@@ -142,12 +142,23 @@ module_energy_L2221.refining <- function(command, ...) {
       select(region, year, subsector, output = GCAM_mapping, value, input)
 
     # A. Output unit, price unit, market
+    # TODO: modify product prices here for development convenience, possibly
+    # switch to full calculation in here later; oil product prices from SEDS
     L2221.rsrc_info <- A221.rsrc_info %>%
       gather_years() %>%
        # Repeat and add region to resource assumptions table
       repeat_add_columns(select(GCAM_region_names, region)) %>%
       # Reset regional markets to the names of the specific regions
-      mutate(market = if_else(market == "regional", region, market))
+      mutate(market = if_else(market == "regional", region, market),
+             value = if_else(grepl("bio|corn|sugar", resource) & year == 2010,
+                             3.0, value),
+             value = if_else(grepl("gas|coal", resource) & year == 2010,
+                             3.25, value),
+             value = if_else(grepl("bio|corn|sugar", resource) & year <= 1990,
+                             2.5, value),
+             value = if_else(grepl("gas|coal", resource) & year <= 1990,
+                             2.5, value)
+             )
 
     # L2221.Rsrc: output unit, price unit, and market for depletable resources
     L2221.Rsrc <- L2221.rsrc_info %>%
@@ -166,13 +177,20 @@ module_energy_L2221.refining <- function(command, ...) {
       select(LEVEL2_DATA_NAMES[['PortfolioStdConstraint']]) %>%
       filter(!is.na(region))
 
+    # SEDS gasoline: avg mogas consumer price
+    seds_gas_price <- data.frame(year = c(1975, 1990, 2005, 2010, 2015, 2021),
+                                 price = c(4.64, 3.62, 4.68, 5.19, 4.20, 4.71))
+
+    what_seems_to_work <- data.frame(year = c(1975, 1990, 2005, 2010, 2015, 2021),
+                                     price = c(4.2, 4.2,  4.68,  4.5,  4.3, 5))
+
     L2221.PortfolioStdFixedTax <- L2221.rsrc_info %>%
       filter(resource.type == "policy-portfolio-standard") %>%
       select(-year) %>%
       repeat_add_columns(tibble(year = c(HISTORICAL_YEARS, MODEL_FUTURE_YEARS))) %>%
       filter(year %in% c(MODEL_BASE_YEARS)) %>%
-      mutate(policyType = 'tax',
-             price = 4.2) %>% #TODO: in the future we will need to calibrate this
+      left_join(what_seems_to_work, by = "year") %>%
+      mutate(policyType = 'tax') %>% #TODO: in the future we will need to calibrate this
       rename(policy.portfolio.standard = resource) %>%
       select(LEVEL2_DATA_NAMES[['PortfolioStdFixedTax']])
 
@@ -409,7 +427,7 @@ module_energy_L2221.refining <- function(command, ...) {
              subsector = "crude oil refining",
              stub.technology = 'high Residual_FuelOil',
              secondary.output = paste0(secondary.output,"_crude oil"),
-             year = 1975) %>%
+             year = 2025) %>%   # TODO: don't want to overwrite the secout in history, do still need to extend for all future years
       arrange(region) %>%
       complete(nesting(region,
                        supplysector,
@@ -436,6 +454,13 @@ module_energy_L2221.refining <- function(command, ...) {
     #   rename(supplysector = sector.name, subsector = subsector.name,
     #          stub.technology = technology) %>%
     #   select(LEVEL2_DATA_NAMES[['StubTechShrwt']])
+
+    # Explicitly zero out share weights in history for regions where a tech has
+    # no production
+    L2221.StubTechShrwt <- L2221.StubTechProd %>%
+      filter(calOutputValue == 0, stub.technology != "crude oil")  %>%
+      mutate(share.weight = 0) %>%
+      select(LEVEL2_DATA_NAMES[['StubTechShrwt']])
 
     L2221.globaltech_retirement_base <- A221.globaltech_retirement %>%
       set_years() %>%
@@ -485,6 +510,10 @@ module_energy_L2221.refining <- function(command, ...) {
       rename(profit.rate.sector = supplysector,
              profit.rate.subsector = subsector) %>%
       select(LEVEL2_DATA_NAMES[['ProfitRateSubsector']])
+
+    # TODO: instead of having blank stub-technology in the profitratesubsectors
+    # with a sw fillout, cal their shareweights to 0 when no production
+    # cal production as well
 
     #======================================================
     # Produce outputs
@@ -701,7 +730,7 @@ module_energy_L2221.refining <- function(command, ...) {
     return_data(L2221.Supplysector_en,
                 L2221.ProfitRateSector,
                 L2221.ProfitRateSubsector,
-                #L2221.StubTechShrwt,
+                L2221.StubTechShrwt,
                 L2221.SubsectorLogit_en,
                 L2221.SubsectorShrwtFllt_en,
                 L2221.SubsectorInterp_en,

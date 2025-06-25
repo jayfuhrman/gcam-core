@@ -37,7 +37,7 @@ module_energy_detailed_refining_xml <- function(command, ...) {
              "L2221.SectorZeroProfitMarketName",
              "L2221.StubTechSecondaryOutput",
              "L2221.StubTech_en",
-             #"L2221.StubTechShrwt",
+             "L2221.StubTechShrwt",
              "L2221.StubTechCoef_refining"))
   } else if(command == driver.DECLARE_OUTPUTS) {
     return(c(XML = "detailed_refining.xml"))
@@ -55,15 +55,15 @@ module_energy_detailed_refining_xml <- function(command, ...) {
     L2221.SubsectorLogit_en <- get_data(all_data, "L2221.SubsectorLogit_en")
     L2221.SubsectorShrwtFllt_en <- get_data(all_data, "L2221.SubsectorShrwtFllt_en")
     L2221.SubsectorInterp_en <- get_data(all_data, "L2221.SubsectorInterp_en")
-    L2221.GlobalTechCoef_en <- get_data(all_data, "L2221.GlobalTechCoef_en")
-    L2221.GlobalTechCost_en <- get_data(all_data, "L2221.GlobalTechCost_en")
+    L2221.GlobalTechCoef_en <- get_data(all_data, "L2221.GlobalTechCoef_en") #%>% filter(!(grepl("biomass$", minicam.energy.input) & year < 2025))
+    L2221.GlobalTechCost_en <- get_data(all_data, "L2221.GlobalTechCost_en") # TODO: zero out biorefining prod that use biomass e.g. cellulosic etoh?
     L2221.GlobalTechFractSecOut_en <- get_data(all_data, "L2221.GlobalTechFractSecOut_en")
     L2221.GlobalTechResSecOut_en <- get_data(all_data, "L2221.GlobalTechResSecOut_en")
     L2221.GlobalTechZeroProfitOut_en <- get_data(all_data, "L2221.GlobalTechZeroProfitOut_en")
-    L2221.GlobalTechShrwt <- get_data(all_data, "L2221.GlobalTechShrwt")
-    L2221.Rsrc <- get_data(all_data, "L2221.Rsrc")
-    L2221.RsrcPrice <- get_data(all_data, "L2221.RsrcPrice")
-    L2221.StubTechProd <- get_data(all_data, "L2221.StubTechProd")
+    L2221.GlobalTechShrwt <- get_data(all_data, "L2221.GlobalTechShrwt") #%>% filter(!(grepl("biomass$", technology) & year < 2025))
+    L2221.Rsrc <- get_data(all_data, "L2221.Rsrc") #%>% filter(!grepl("_biomass$", resource))
+    L2221.RsrcPrice <- get_data(all_data, "L2221.RsrcPrice") #%>% filter(!grepl("_biomass$", resource))
+    L2221.StubTechProd <- get_data(all_data, "L2221.StubTechProd") #%>% filter(stub.technology != "biomass")
     L2221.PortfolioStdConstraint <- get_data(all_data, "L2221.PortfolioStdConstraint")
     L2221.PortfolioStdFixedTax <- get_data(all_data,'L2221.PortfolioStdFixedTax')
     L2221.GlobalTechInterp <- get_data(all_data,"L2221.GlobalTechInterp")
@@ -71,9 +71,9 @@ module_energy_detailed_refining_xml <- function(command, ...) {
     L2221.GlobalTechProfitShutdown <- get_data(all_data,"L2221.GlobalTechProfitShutdown")
     L2221.SectorZeroProfitMarketName <- get_data(all_data,"L2221.SectorZeroProfitMarketName")
     L2221.GlobalTechShutdown <- get_data(all_data,"L2221.GlobalTechShutdown")
-    L2221.StubTech_en <- get_data(all_data, "L2221.StubTech_en")
-    #L2221.StubTechShrwt <- get_data(all_data, "L2221.StubTechShrwt")
-    L2221.StubTechCoef_refining <- get_data(all_data, "L2221.StubTechCoef_refining")
+    L2221.StubTech_en <- get_data(all_data, "L2221.StubTech_en") #%>% filter(stub.technology != "biomass")
+    L2221.StubTechShrwt <- get_data(all_data, "L2221.StubTechShrwt") #%>% filter(stub.technology != "biomass")
+    L2221.StubTechCoef_refining <- get_data(all_data, "L2221.StubTechCoef_refining") #%>% filter(stub.technology != "biomass")
 
     L2221.GlobalTechInputPmult <- L2221.GlobalTechCoef_en %>%
       filter(minicam.energy.input == 'refining') %>%
@@ -110,7 +110,7 @@ module_energy_detailed_refining_xml <- function(command, ...) {
       add_xml_data(L2221.GlobalTechFractSecOut_en, "GlobalTechSecOut") %>%
       add_xml_data(L2221.GlobalTechResSecOut_en, "GlobalTechRESSecOut") %>%
       add_xml_data(L2221.StubTech_en, "StubTech") %>%
-      #add_xml_data(L2221.StubTechShrwt, "StubTechShrwt") %>%
+      add_xml_data(L2221.StubTechShrwt, "StubTechShrwt") %>%
       add_xml_data(L2221.StubTechSecondaryOutput, "StubTechSecOut") %>%
       add_xml_data(L2221.GlobalTechZeroProfitOut_en, "GlobalTechZeroProfitOut") %>%
       add_xml_data(L2221.GlobalTechInterp, "GlobalTechInterpTo") %>%
