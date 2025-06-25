@@ -8,7 +8,10 @@
 #' @param ... other optional parameters, depending on command
 #' @return Depends on \code{command}: either a vector of required inputs,
 #' a vector of output names, or (if \code{command} is "MAKE") all
-#' the generated outputs:
+#' the generated outputs:\code{L2112.Supplysector_tra}, \code{L2112.SectorUseTrialMarket_tra},
+#' \code{L2112.SubsectorAll_tra}, \code{L2112.TechShrwt_tra}, \code{L2112.TechCoef_tra},
+#' \code{L2112.Supplysector_reg}, \code{L2112.SubsectorAll_reg}, \code{L2112.TechShrwt_reg},
+#' \code{L2112.TechCoef_reg}
 #' @details Set up data tables for mineral supply curves
 #' @importFrom assertthat assert_that
 #' @importFrom dplyr arrange bind_rows filter if_else group_by left_join mutate select summarise
@@ -24,11 +27,18 @@ module_minerals_L2112.trade <- function(command, ...) {
       FILE = "minerals/trade/A_mineral_RegionalTechnology",
       FILE = "minerals/trade/A_mineral_TradedSector",
       FILE = "minerals/trade/A_mineral_TradedSubsector",
-      FILE = "minerals/trade/A_mineral_TradedTechnology",
-      "L2111.RsrcCalProd")
+      FILE = "minerals/trade/A_mineral_TradedTechnology")
 
   MODULE_OUTPUTS <-
-    c()
+    c("L2112.Supplysector_tra",
+      "L2112.SectorUseTrialMarket_tra",
+      "L2112.SubsectorAll_tra",
+      "L2112.TechShrwt_tra",
+      "L2112.TechCoef_tra",
+      "L2112.Supplysector_reg",
+      "L2112.SubsectorAll_reg",
+      "L2112.TechShrwt_reg",
+      "L2112.TechCoef_reg")
 
   if(command == driver.DECLARE_INPUTS) {
     return(MODULE_INPUTS)
@@ -84,20 +94,6 @@ module_minerals_L2112.trade <- function(command, ...) {
     # L2112.TechCoef_tra: Coefficient and market name of traded technologies
     L2112.TechCoef_tra <- select(A_mineral_TradedTechnology_R_Y, LEVEL2_DATA_NAMES[["TechCoef"]])
 
-    # L2112.Production_tra: Output (gross exports) of traded technologies
-    # For now, gross exports = gross production, because everything is being sent to a single global market
-    L2112.Production_tra <- A_mineral_TradedTechnology_R_Y %>%
-      filter(year %in% MODEL_BASE_YEARS) %>%
-      # use LJ as there will be several NAs (regions that do not produce a given mineral). We need to filter those out
-      left_join(L2111.RsrcCalProd, by = c("market.name" = "region",
-                                                         "year",
-                                          "minicam.energy.input" = "resource")) %>%
-      na.omit() %>%
-      mutate(calOutputValue = cal.production,
-             share.weight.year = year,
-             subs.share.weight = if_else(calOutputValue > 0, 1, 0),
-             tech.share.weight = subs.share.weight) %>%
-      select(LEVEL2_DATA_NAMES[["Production"]])
 
     # PART 2: REGIONAL SUPPLY SECTOR / SUBSECTOR / TECHNOLOGY")
     # L2112.Supplysector_reg: generic supplysector info for regional mineral commodities
@@ -122,19 +118,81 @@ module_minerals_L2112.trade <- function(command, ...) {
     # L2112.TechCoef_reg: Coefficient and market name of regional technologies
     L2112.TechCoef_reg <- select(A_mineral_RegionalTechnology_R_Y, LEVEL2_DATA_NAMES[["TechCoef"]])
 
-    # L2112.Production_reg_imp: Output (flow) of gross imports. Calibrated "imports" here needs to match the sum of demands across all mineral-demanding sectors
-    L239.Production_reg_imp <- A_ff_RegionalTechnology_R_Y %>%
-      filter(year %in% MODEL_BASE_YEARS,
-             grepl( "import", subsector)) %>%
-      left_join_error_no_match(L239.GrossImports_EJ_R_C_Y,
-                               by = c("region", minicam.energy.input = "supplysector", "year")) %>%
-      rename(calOutputValue = GrossImp_EJ) %>%
-      mutate(calOutputValue = round(calOutputValue, energy.DIGITS_CALOUTPUT),
-             share.weight.year = year,
-             subs.share.weight = if_else(calOutputValue > 0, 1, 0),
-             tech.share.weight = subs.share.weight) %>%
-      select(LEVEL2_DATA_NAMES[["Production"]])
 
+    # ===================================================
+
+    # Produce outputs
+    L2112.Supplysector_tra %>%
+      add_title("Supplysector info for traded mineral commodities") %>%
+      add_comments("Supplysector info for traded mineral commodities") %>%
+      add_units("None") %>%
+      add_precursors("common/GCAM_region_names",
+                     "minerals/trade/A_mineral_TradedSector") ->
+      L2112.Supplysector_tra
+
+    L2112.SectorUseTrialMarket_tra %>%
+      add_title("Solved markets for traded mineral commodities") %>%
+      add_comments("Solved markets for traded mineral commodities") %>%
+      add_units("None") %>%
+      add_precursors("common/GCAM_region_names",
+                     "minerals/trade/A_mineral_TradedSector") ->
+      L2112.SectorUseTrialMarket_tra
+
+    L2112.SubsectorAll_tra %>%
+      add_title("Subsector info for traded mineral commodities") %>%
+      add_comments("Subsector info for traded mineral commodities") %>%
+      add_units("None") %>%
+      add_precursors("common/GCAM_region_names",
+                     "minerals/trade/A_mineral_TradedSubsector") ->
+      L2112.SubsectorAll_tra
+
+    L2112.TechShrwt_tra %>%
+      add_title("Tech shareweight info for traded mineral commodities") %>%
+      add_comments("Tech shareweight info for traded mineral commodities") %>%
+      add_units("None") %>%
+      add_precursors("common/GCAM_region_names",
+                     "minerals/trade/A_mineral_TradedTechnology") ->
+      L2112.TechShrwt_tra
+
+    L2112.TechCoef_tra %>%
+      add_title("Tech coefficient info for traded mineral commodities") %>%
+      add_comments("Tech coefficient info for traded mineral commodities") %>%
+      add_units("None") %>%
+      add_precursors("common/GCAM_region_names",
+                     "minerals/trade/A_mineral_TradedTechnology") ->
+      L2112.TechCoef_tra
+
+    L2112.Supplysector_reg %>%
+      add_title("Supplysector info for regional (imported) mineral commodities") %>%
+      add_comments("Supplysector info for regional (imported) mineral commodities") %>%
+      add_units("None") %>%
+      add_precursors("common/GCAM_region_names",
+                     "minerals/trade/A_mineral_RegionalSector") ->
+      L2112.Supplysector_reg
+
+    L2112.SubsectorAll_reg %>%
+      add_title("Subsector info for regional (imported) mineral commodities") %>%
+      add_comments("Subsector info for regional (imported) mineral commodities") %>%
+      add_units("None") %>%
+      add_precursors("common/GCAM_region_names",
+                     "minerals/trade/A_mineral_RegionalSubsector") ->
+      L2112.SubsectorAll_reg
+
+    L2112.TechShrwt_reg %>%
+      add_title("Tech shareweight info for regional mineral commodities") %>%
+      add_comments("Tech shareweight info for regional mineral commodities") %>%
+      add_units("None") %>%
+      add_precursors("common/GCAM_region_names",
+                     "minerals/trade/A_mineral_RegionalTechnology") ->
+      L2112.TechShrwt_reg
+
+    L2112.TechCoef_reg %>%
+      add_title("Tech coefficient info for regional mineral commodities") %>%
+      add_comments("Tech coefficient info for regional mineral commodities") %>%
+      add_units("None") %>%
+      add_precursors("common/GCAM_region_names",
+                     "minerals/trade/A_mineral_RegionalTechnology") ->
+      L2112.TechCoef_reg
 
 
 

@@ -2,7 +2,7 @@
 
 #' module_minerals_resources_xml
 #'
-#' Construct XML data structure for \code{resources.xml}.
+#' Construct XML data structure for \code{minerals_resources.xml}.
 #'
 #' @param command API command to execute
 #' @param ... other optional parameters, depending on command
@@ -26,15 +26,7 @@ module_minerals_resources_xml <- function(command, ...) {
       "L2111.ResReserveTechDeclinePhase",
       "L2111.ResReserveTechProfitShutdown",
       "L2111.ResReserveTechInvestmentInput",
-      "L2111.ResTechShrwt",
-      "L2111.Supplysector_dyn",
-      "L2111.SubsectorLogit_dyn",
-      "L2111.SubsectorShrwtFllt_dyn",
-      "L2111.StubTech_dyn",
-      "L2111.GlobalTechCoef_dyn",
-      "L2111.GlobalTechShrwt_dyn",
-      "L2111.StubTechEfficiency_dyn",
-      "L2111.TechPMult_dyn"
+      "L2111.ResTechShrwt"
     )
 
   MODULE_OUTPUTS <-
@@ -55,7 +47,7 @@ module_minerals_resources_xml <- function(command, ...) {
     # ===================================================
 
     # Produce outputs
-    create_xml("resources_mineral.xml") %>%
+    create_xml("minerals_resources.xml") %>%
       add_xml_data(L2111.Rsrc, "Rsrc") %>%
       add_xml_data(L2111.UnlimitRsrc, "UnlimitRsrc") %>%
       add_node_equiv_xml("resource") %>%
@@ -73,14 +65,6 @@ module_minerals_resources_xml <- function(command, ...) {
       add_xml_data(L2111.RsrcCalProd, "RsrcCalProd") %>%
       add_xml_data(L2111.RsrcCurves_minerals, "RsrcCurves") %>%
       add_xml_data(L2111.ResTechShrwt, "ResTechShrwt") %>%
-      add_logit_tables_xml(L2111.Supplysector_dyn, "Supplysector") %>%
-      add_logit_tables_xml(L2111.SubsectorLogit_dyn, "SubsectorLogit") %>%
-      add_xml_data(L2111.SubsectorShrwtFllt_dyn, "SubsectorShrwtFllt") %>%
-      add_xml_data(L2111.StubTech_dyn, "StubTech") %>%
-      add_xml_data(L2111.GlobalTechCoef_dyn, "GlobalTechCoef") %>%
-      add_xml_data(L2111.GlobalTechShrwt_dyn, "GlobalTechShrwt") %>%
-      add_xml_data(L2111.StubTechEfficiency_dyn, "StubTechEff") %>%
-      add_xml_data(L2111.TechPMult_dyn, "TechPmult") %>%
       add_precursors("L2111.Rsrc",
                    "L2111.UnlimitRsrc",
                    "L2111.RsrcPrice",
@@ -94,15 +78,7 @@ module_minerals_resources_xml <- function(command, ...) {
                    "L2111.ResReserveTechDeclinePhase",
                    "L2111.ResReserveTechProfitShutdown",
                    "L2111.ResReserveTechInvestmentInput",
-                   "L2111.ResTechShrwt",
-                   "L2111.Supplysector_dyn",
-                   "L2111.SubsectorLogit_dyn",
-                   "L2111.SubsectorShrwtFllt_dyn",
-                   "L2111.StubTech_dyn",
-                   "L2111.GlobalTechCoef_dyn",
-                   "L2111.GlobalTechShrwt_dyn",
-                   "L2111.StubTechEfficiency_dyn",
-                   "L2111.TechPMult_dyn") ->
+                   "L2111.ResTechShrwt") ->
       minerals_resources.xml
 
 
