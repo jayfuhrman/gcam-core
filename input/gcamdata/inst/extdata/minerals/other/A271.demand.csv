@@ -1,0 +1,19 @@
+# File: A271.demand.csv
+# Title: CMM demand in other sector assumptions
+# Units: Unitless
+# Column types: cinnn
+# ----------
+energy.final.demand,perCapitaBased,income.elasticity,price.elasticity,aeei
+steel_other,1,0.366163898,-0.05,0.005
+aluminium_other,1,0.366163898,-0.05,0.005
+copper_other,1,0.366163898,-0.05,0.005
+silicon_other,1,0.366163898,-0.05,0.005
+lithium_other,1,0.366163898,-0.05,0.005
+graphite_other,1,0.366163898,-0.05,0.005
+cobalt_other,1,0.366163898,-0.05,0.005
+nickel_other,1,0.366163898,-0.05,0.005
+manganese_other,1,0.366163898,-0.05,0.005
+neodymium_other,1,0.366163898,-0.05,0.005
+tellurium_other,1,0.366163898,-0.05,0.005
+vanadium_other,1,0.366163898,-0.05,0.005
+platinum_other,1,0.366163898,-0.05,0.005

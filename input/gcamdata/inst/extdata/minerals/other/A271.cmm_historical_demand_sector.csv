@@ -1,0 +1,19 @@
+# File: A271.cmm_historical_demand_sector.csv
+# Title: global total CMM historical demand in sectors that are explicitly modelled in GCAM
+# Units: Mt
+# Column types: ccnnnnn
+# ----------
+resource,unit,1975,1990,2005,2010,2015
+steel,Mt,5000,5000,5000,5000,5000
+aluminium,Mt,5000,5000,5000,5000,5000
+silicon,Mt,5000,5000,5000,5000,5000
+copper,Mt,5000,5000,5000,5000,5000
+graphite,Mt,5000,5000,5000,5000,5000
+lithium,Mt,5000,5000,5000,5000,5000
+cobalt,Mt,5000,5000,5000,5000,5000
+nickel,Mt,5000,5000,5000,5000,5000
+manganese,Mt,5000,5000,5000,5000,5000
+neodymium,Mt,5000,5000,5000,5000,5000
+tellurium,Mt,5000,5000,5000,5000,5000
+vanadium,Mt,5000,5000,5000,5000,5000
+platinum,Mt,5000,5000,5000,5000,5000
