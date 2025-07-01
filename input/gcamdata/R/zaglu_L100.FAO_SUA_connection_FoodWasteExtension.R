@@ -97,8 +97,6 @@ module_aglu_L100.FAO_SUA_connection_FoodWasteExtension <- function(command, ...)
       add_legacy_name("L101.CropMeat_Food_Pcal_R_C_Y") %>%
       add_precursors("common/GCAM_region_names",
                      "aglu/FAO/FAO_ag_items_PRODSTAT",
-                     "FAO_Food_Macronutrient_All_2010_2019",
-                     "FAO_Food_MacronutrientRate_2010_2019_MaxValue",
                      "DF_Macronutrient_FoodItem4",
                      "L100.AgMIP_FoodWaste_Share_Pathway_SSP") ->
       L101.CropMeat_Food_Pcal_R_C_Y
