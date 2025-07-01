@@ -106,17 +106,18 @@ module_energy_L1093.refined_liquids_GrossTrade <- function(command, ...){
      summarize(value=sum(value))%>%
      ungroup()
 
-   # Need to figure out where these values are coming from and being added to liquids end-use consumption from industry
-   end_use_adder <- data.frame(
-     year = c(1990, 2005, 2010, 1990, 2015, 2021, 2005),
-     region = c("Central Asia", "EU-15", "EU-15", "EU-15", "EU-15", "EU-15", "South Korea"),
-     adder = c(0.04301070000000017934383,
-               0.04089300000000051227289,
-               0.03150099999999955713292,
-               0.01752880000000001103899,
-               0.01701130000000006248229,
-               0.01309219999999999828333,
-               0.01015009999999971768148))
+   # TODO: liqsplit has taken 'inputs by tech', and filtered+grouped for inputs
+   # in the refined liquids enduse/industrial buckets; adder is the difference
+   # between the expected query output and L1012 consumption
+   # TODO: Need to figure out where these values are coming from and being added
+   # to liquids end-use consumption from industry
+   liqsplit <- read.csv("liqsplit.csv") %>% filter(input == "refined liquids enduse") %>% select(-input)
+   # <- read.csv("DIFF_liquids_enduse.csv") %>% select(region, year, GCAM_enduse) %>% rename(value = GCAM_enduse)
+   end_use_adder <- left_join(L1093.en_bal_EJ_liquids_enduse_total, liqsplit,
+                  by = c("region", "year")) %>%
+     mutate(adder = value.y - value.x) %>%
+     filter(year > 1975) %>%
+     select(year, region, adder)
 
    L1093.en_bal_EJ_liquids_enduse_total <- L1093.en_bal_EJ_liquids_enduse_total %>%
      left_join(end_use_adder,by=c("year","region"))%>%

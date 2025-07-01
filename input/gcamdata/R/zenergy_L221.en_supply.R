@@ -102,6 +102,21 @@ module_energy_L221.en_supply <- function(command, ...) {
       filter(traded == TRUE) %>%
       rename(use.trial.market = traded) -> L221.SectorUseTrialMarket_en
 
+    # Calibrate first-gen biofuel share weights to history to stop GCAM from
+    # attempting to solve regions with 0 biorefining demand
+    # TODO: find the right mapping file to join instead of this
+    bio_map <- data.frame(GCAM_commodity = c("Corn", "SugarCrop", "OilCrop", "OilPalm", "Soybean"),
+                          stub.technology = c("regional corn for ethanol", "regional sugar for ethanol", "OilCrop", "OilPalm", "Soybean"),
+                          subsector = c("regional corn for ethanol", "regional sugar for ethanol", "regional biomassOil", "regional biomassOil", "regional biomassOil"))
+
+    zero_bio <- L122.in_Mt_R_C_Yh %>%
+      filter(year %in% MODEL_BASE_YEARS) %>%
+      left_join_error_no_match(GCAM_region_names, by = "GCAM_region_ID") %>%
+      left_join_error_no_match(bio_map, by = "GCAM_commodity") %>%
+      mutate(supplysector = subsector,
+             share.weight = if_else(value > 0, 1, 0)) %>%
+      select(LEVEL2_DATA_NAMES[["StubTechShrwt"]])
+
     # Subsector information
     # Subsector logit exponents of upstream energy handling sectors
     A21.subsector_logit %>%
@@ -325,7 +340,8 @@ module_energy_L221.en_supply <- function(command, ...) {
 
       # Calibrate the price (as a fixed price, not a point on a supply curve) in the base year
       L221.StubTechFractSecOut_en %>%
-        filter(year %in% MODEL_BASE_YEARS) %>%                                 # In the base years the fractional secondary outputs are de-activated in order to calibrate the flows
+        filter(year %in% MODEL_BASE_YEARS) %>%
+        # In the base years the fractional secondary outputs are de-activated in order to calibrate the flows
         select(-output.ratio) %>%
         left_join(L221.ag_FeedPrice_R_Yf, by = "region") %>%
         mutate(calPrice = round(feed_price, digits = energy.DIGITS_COST)) %>%
@@ -372,14 +388,17 @@ module_energy_L221.en_supply <- function(command, ...) {
       select(LEVEL2_DATA_NAMES[["StubTechInterp"]])
 
     # Technology share-weights for regions without calibration values
+    # TODO: rename or separate if having other first gen in here works
     L221.StubTechShrwt_bioOil <- filter(L221.StubTechCalInput_bioOil,
                                         year == MODEL_FINAL_BASE_YEAR,
                                         tech.share.weight == 0) %>%
       select(region, supplysector, subsector, stub.technology) %>%
       repeat_add_columns(tibble(year = MODEL_FUTURE_YEARS)) %>%
-      mutate(share.weight = 1)
+      mutate(share.weight = 1) %>%
+      bind_rows(zero_bio)
 
-    # For regions with no agricultural and land use sector (Taiwan), need to remove the passthrough supplysectors for first-gen biofuels
+    # For regions with no agricultural and land use sector (Taiwan), need to
+    # remove the passthrough supplysectors for first-gen biofuels
     ag_en <- c("regional corn for ethanol", "regional sugar for ethanol", "regional biomassOil")
 
     L221.SubsectorLogit_en %>%
