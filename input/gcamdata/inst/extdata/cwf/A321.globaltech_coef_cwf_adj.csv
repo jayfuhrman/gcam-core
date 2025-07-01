@@ -5,11 +5,11 @@
 # Column types: ccccnnn
 # ----------
 supplysector,subsector,technology,minicam.energy.input,2020,2050,2100
-cement,cement,cement,process heat cement,1,0.9,0.8
-cement,cement,cement,elect_td_ind,1,0.9,0.8
+cement,cement,cement,process heat cement,1,0.8,0.75
+cement,cement,cement,elect_td_ind,1,0.8,0.75
 cement,cement,cement,limestone,1,0.6,0.6
-cement,cement,cement CCS,process heat cement CCS,1,0.9,0.8
-cement,cement,cement CCS,elect_td_ind,1,0.9,0.8
+cement,cement,cement CCS,process heat cement CCS,1,0.8,0.75
+cement,cement,cement CCS,elect_td_ind,1,0.8,0.75
 cement,cement,cement CCS,limestone,1,0.6,0.6
 process heat cement,biomass,biomass,delivered biomass,1,1,1
 process heat cement,coal,coal,delivered coal,1,1,1
