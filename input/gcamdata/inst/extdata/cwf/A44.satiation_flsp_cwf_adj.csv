@@ -5,7 +5,7 @@
 # ----------
 region.class,match_SSP,adj_frac
 A,,0.85
-B,SSP4,
-C,SSP4,
-D,SSP4,
-E,SSP4,
+B,,0.85
+C,,0.85
+D,,0.85
+E,,0.85

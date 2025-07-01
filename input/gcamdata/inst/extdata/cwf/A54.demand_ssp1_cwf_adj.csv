@@ -4,7 +4,7 @@
 # Column types: cn
 # ----------
 energy.final.demand,income.elasticity_adj
-trn_pass,1
-trn_freight,1
-trn_aviation_intl,0.75
-trn_shipping_intl,0.75
+trn_pass,0.75
+trn_freight,0.75
+trn_aviation_intl,0.5
+trn_shipping_intl,0.5
