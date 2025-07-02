@@ -186,8 +186,10 @@ module_energy_L2441.building_det_mineral <- function(command, ...) {
       repeat_add_columns(tibble(year = MODEL_YEARS)) %>%
       filter(year >= max(MODEL_BASE_YEARS)) %>%
       select(LEVEL2_DATA_NAMES[["TechSCurve"]]) %>%
-      #BY 1-24-2025: for 2015 vintages, halve the half life
-      mutate(half.life = if_else(year == 2015, half.life/2, half.life))
+      #BY 1-24-2025: for 2015 vintages, halve the half life --
+      #YQ 04-21-2025: updated half.life and steepness in 2015 to smooth out the retirement of 2015 vintage, so that mineral demand in 2020 has not sudden spike.
+      mutate(half.life = if_else(year == 2015, half.life*0.667, half.life),
+             steepness = if_else(year == 2015, 0.1, steepness))
 
     L2441.TechProfitShutdownMaterials <- A44.bld_materials_mean_lifetime_vintage_reg %>%
       rename(supplysector = sector) %>%

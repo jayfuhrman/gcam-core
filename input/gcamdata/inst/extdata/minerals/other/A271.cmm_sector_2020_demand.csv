@@ -1,0 +1,19 @@
+# File: A271.cmm_sector_2020_demand.csv
+# Title: global sector 2020 CMM historical demand
+# Units: Mt
+# Column types: ccn
+# ----------
+resource,unit,2020
+steel,Mt,451.4088617
+aluminium,Mt,46.92608837
+silicon,Mt,0.085024698
+copper,Mt,13.07017291
+graphite,Mt,0.00165227
+lithium,Mt,0.000430836
+cobalt,Mt,0.010250649
+nickel,Mt,0.609850309
+manganese,Mt,1.149509283
+neodymium,Mt,0.01056218
+tellurium,Mt,0.000158358
+vanadium,Mt,0.012815125
+platinum,Mt,0.000185616
