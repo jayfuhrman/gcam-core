@@ -1,8 +1,9 @@
 # File: Mineral_supply_curve_data.csv
 # Title: Data used to construct mineral supply curves in GCAM
 # Units: Quantities in kt; Costs in $2020/t
-# Source: Data from Karan Bhuwalka (Stanford) based on his PhD thesis: https://dspace.mit.edu/handle/1721.1/155648
+# Source: Data from Karan Bhuwalka (Stanford) based on S&P data
 # Column types: ccnnnnnnc
+# Description: Data provided is a 2023 snapshot.
 # ----------
 Country,Stage,Capacity,Number of Projects,P50,P10,P90,Resource,Mineral
 USA,Production,1249.359152,16,8335.963301,4437.41172,13213.81807,144088.675,Cu
