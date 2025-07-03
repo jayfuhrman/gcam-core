@@ -27,7 +27,8 @@ module_minerals_L2112.trade <- function(command, ...) {
       FILE = "minerals/trade/A_mineral_RegionalTechnology",
       FILE = "minerals/trade/A_mineral_TradedSector",
       FILE = "minerals/trade/A_mineral_TradedSubsector",
-      FILE = "minerals/trade/A_mineral_TradedTechnology")
+      FILE = "minerals/trade/A_mineral_TradedTechnology",
+      "L2111.mineral_regions")
 
   MODULE_OUTPUTS <-
     c("L2112.Supplysector_tra",
@@ -74,7 +75,13 @@ module_minerals_L2112.trade <- function(command, ...) {
     L2112.SubsectorAll_tra <- write_to_all_regions(A_mineral_TradedSubsector,
                                                   c(LEVEL2_DATA_NAMES[["SubsectorAllTo"]], "logit.type"),
                                                   GCAM_region_names,
-                                                  has_traded = TRUE)
+                                                  has_traded = TRUE) %>%
+      mutate(source.region = subsector) %>%
+      separate(source.region, into = c("source.region", "resource"), sep = " traded ") %>%
+      # filter to only the regions that have supply curves for that particular mineral.
+      semi_join(L2111.mineral_regions, by = c("source.region" = "region", "resource")) %>%
+      select(-source.region, -resource)
+
 
     # Base technology-level table for several tables to be written out")
     A_mineral_TradedTechnology_R_Y <- repeat_add_columns(A_mineral_TradedTechnology,
@@ -83,7 +90,9 @@ module_minerals_L2112.trade <- function(command, ...) {
       mutate(subsector = paste(region, subsector, sep = " "),
              technology = subsector,
              market.name = region,
-             region = gcam.USA_REGION)
+             region = gcam.USA_REGION) %>%
+      # filter to only the regions that have supply curves for that particular mineral.
+      semi_join(L2111.mineral_regions, by = c("market.name" = "region", "minicam.energy.input" = "resource"))
 
     # L2112.TechShrwt_tra: Share-weights of traded technologies
     L2112.TechShrwt_tra <- select(A_mineral_TradedTechnology_R_Y, LEVEL2_DATA_NAMES[["TechShrwt"]])

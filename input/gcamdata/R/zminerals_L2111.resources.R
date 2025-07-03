@@ -9,7 +9,7 @@
 #' @return Depends on \code{command}: either a vector of required inputs,
 #' a vector of output names, or (if \code{command} is "MAKE") all
 #' the generated outputs: \code{L2111.Rsrc}, \code{L2111.UnlimitRsrc}, \code{L2111.RsrcPrice}, \code{L2111.UnlimitRsrcPrice}, \code{L2111.SubresourcePriceAdder},
-#' \code{L2111.RsrcCalProd}, \code{L2111.ReserveCalReserve}, \code{L2111.RsrcCurves_minerals},
+#' \code{L2111.RsrcCalProd}, \code{L2111.ReserveCalReserve}, \code{L2111.RsrcCurves_minerals}, \code{L2111.mineral_regions}
 #' \code{L2111.ResSubresourceProdLifetime}, \code{L2111.ResReserveTechLifetime}, \code{L2111.ResReserveTechDeclinePhase},
 #' \code{L2111.ResReserveTechProfitShutdown}, \code{L2111.ResReserveTechInvestmentInput}, \code{L2111.ResTechShrwt},
 #' @details Set up data tables for mineral supply curves
@@ -41,6 +41,7 @@ if(command == driver.DECLARE_INPUTS) {
            "L2111.RsrcCalProd",
            "L2111.ReserveCalReserve",
            "L2111.RsrcCurves_minerals",
+           "L2111.mineral_regions",
            "L2111.ResSubresourceProdLifetime",
            "L2111.ResReserveTechLifetime",
            "L2111.ResReserveTechDeclinePhase",
@@ -316,9 +317,10 @@ if(command == driver.DECLARE_INPUTS) {
 
   # Make a generic table that lists region/mineral resource combinations that exist
   # We will use this to filter out combinations for which supply curve data does not exist
+  # Also, write this out so we can use this to filter in the trade chunk.
   L2111.mineral_regions <- L2111.RsrcCurves_minerals %>%
     select(region, resource) %>%
-    distinct()
+    distinct() ##final-output
 
   # A. Output unit, price unit, market
   L2111.mineral_rsrc_info <- A10.mineral_rsrc_info %>%
@@ -543,6 +545,12 @@ if(command == driver.DECLARE_INPUTS) {
     add_precursors("L1111.ResSupplyCurves_PricePoints", "L1111.mineral_production_R_Yb", "common/GCAM_region_names") ->
     L2111.RsrcCurves_minerals
 
+  L2111.mineral_regions %>%
+    add_title("Set of regions/mineral resource combinations that exist") %>%
+    add_units("NA") %>%
+    add_comments("NA") %>%
+    same_precursors_as("L2111.RsrcCurves_minerals") ->
+    L2111.mineral_regions
 
   L2111.ResSubresourceProdLifetime %>%
     add_title("Average production lifetime for reserve subresource") %>%
@@ -601,6 +609,7 @@ if(command == driver.DECLARE_INPUTS) {
               L2111.RsrcCalProd,
               L2111.ReserveCalReserve,
               L2111.RsrcCurves_minerals,
+              L2111.mineral_regions,
               L2111.ResSubresourceProdLifetime,
               L2111.ResReserveTechLifetime,
               L2111.ResReserveTechDeclinePhase,
