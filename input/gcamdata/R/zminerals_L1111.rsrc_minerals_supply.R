@@ -188,7 +188,9 @@ if(command == driver.DECLARE_INPUTS) {
 
   L1111.mineral_production_R_Yb <- L1111.mineral_production_R_Y_hist %>%
     # filter to GCAM model base years and the first model future year
-    filter(Year %in% c(MODEL_BASE_YEARS, 2020)) ##final-output
+    filter(Year %in% c(MODEL_BASE_YEARS, 2020)) %>%
+    complete(Mineral, region = GCAM_region_names$region, Units, Year = c(MODEL_BASE_YEARS, 2020)) %>%
+    mutate(value = if_else(is.na(value), 0, value)) ##final-output
 
 
 # PROCESS SUPPLY CURVE DATA -----------------------------------------------

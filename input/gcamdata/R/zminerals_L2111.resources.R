@@ -91,7 +91,7 @@ if(command == driver.DECLARE_INPUTS) {
     stop("No calibrated prices for resources in final historical year")
   }
 
-  # ===================================================
+   # ===================================================
   # ------- MINERAL RESOURCE RESERVE ADDITIONS
   # Taken from zenergy_L210.Resources (fossil resources),
   # we are modeling minerals with the similar resource-reserve approach
@@ -187,15 +187,16 @@ if(command == driver.DECLARE_INPUTS) {
   # Note: because we are back calculating this our choice of MODEL_BASE_YEARS matters, which is
   # why this is Level2 processing.
 
-    L2111.mineral_Reserve_Mt_R_Yh <- L1111.mineral_production_R_Yb %>%
-      filter(Year %in% MODEL_BASE_YEARS) %>%
-      rename(year = Year) %>%
-      complete(Mineral, resource, region, Units, year = MODEL_BASE_YEARS) %>%
-      mutate(value = if_else(is.na(value), 0, value)) %>%
-      # Use LJ because there are some regions with NAs
-      left_join(L1111.mineral_AvgProdLifetime, by = c("Mineral", "resource", "region")) %>%
-      # omit NAs for now. These are regions with no future resources but very tiny historical production.
-      na.omit() %>%
+  L2111.mineral_production_R_Yb <- L1111.mineral_production_R_Yb %>%
+    filter(Year %in% MODEL_BASE_YEARS) %>%
+    rename(year = Year) %>%
+    # Use LJ because there are some regions with NAs
+    left_join(L1111.mineral_AvgProdLifetime, by = c("Mineral", "resource", "region")) %>%
+    # omit NAs for now. These are regions with no future resources but very tiny historical production.
+    na.omit()
+
+
+    L2111.mineral_Reserve_Mt_R_Yh <- L2111.mineral_production_R_Yb %>%
       mutate(lifetime = round(Lifetime, digits = 0)) %>%
       rename(technology = resource) %>%
       select(-Mineral, - Lifetime) %>%
@@ -204,7 +205,8 @@ if(command == driver.DECLARE_INPUTS) {
       filter(year_operate >= year) %>%
       tidyr::nest(data = -c(region, technology)) %>%
       mutate(data = lapply(data, lag_prod_helper)) %>%
-      tidyr::unnest(cols = data)
+      tidyr::unnest(cols = data) %>%
+      mutate(value = if_else(is.na(value), 0, value))
 
   ReserveTotal_Mt_R_F <- L2111.mineral_Reserve_Mt_R_Yh %>%
     group_by(region, technology) %>%
@@ -227,6 +229,8 @@ if(command == driver.DECLARE_INPUTS) {
     left_join(L1111.ResSupplyCurves_PricePoints, by = c("Mineral", "resource", "region", "percentile")) %>%
     # omit NA rows
     na.omit() %>%
+    # omit rows with 0 Quantity available
+    filter(Q != 0) %>%
     select(resource, region, Year, Units, Q, P, percentile)
 
 # TIME EVOLVING SUPPLY CURVE ----------------------------------------------
@@ -253,27 +257,25 @@ if(command == driver.DECLARE_INPUTS) {
     ungroup() %>%
     mutate(available = incr_Q,
            extractioncost = P) %>%
-    select(region, resource, subresource, grade, available, extractioncost)
+    select(region, resource, subresource, grade, available, extractioncost) %>%
+  # For grades that have the same cost, collapse them into a single grade
+    group_by(region, resource, subresource, extractioncost) %>%
+    summarise(available = sum(available),
+              grade = first(grade),
+              .groups = "drop") %>%
+    arrange(region, resource, subresource, grade)
 
-  # We need to add a grade above the final grade, with available 0 and cost higher than the final grade cost
-  L2111.RsrcCurves_minerals_final_grade <- L2111.RsrcCurves_minerals_main %>%
-    group_by(region, resource, subresource) %>%
-    filter(row_number() == n()) %>% # last row per group
-    mutate(grade = paste0("grade ", as.numeric(gsub("grade ", "", grade))+1),
-           available = 0,
-           extractioncost = extractioncost * 1.1) %>% # arbitrary, just need the cost to be higher than the final grade cost
-    ungroup()
 
   # We need to add a "grade" below the grade 1 called "grade 0" in the first subresource year
   # This will cover all of the production in historical years and will be available at cost 0
 
   # First calculate total historical production by linearly interpolating between base year cal.production
-  L2111.mineral_hist_prod_total <- L1111.mineral_production_R_Yb %>%
-    filter(Year %in% MODEL_BASE_YEARS) %>%
+  L2111.mineral_hist_prod_total <- L2111.mineral_production_R_Yb %>%
+    filter(year %in% MODEL_BASE_YEARS) %>%
     group_by(Mineral, resource, region, Units) %>%
-    arrange(Year, .by_group = TRUE) %>%
-    complete(Year = c(seq(min(MODEL_BASE_YEARS), max(MODEL_BASE_YEARS),by=1))) %>%
-    mutate(value = approx_fun(Year, value, rule = 2)) %>%
+    arrange(year, .by_group = TRUE) %>%
+    complete(year = c(seq(min(MODEL_BASE_YEARS), max(MODEL_BASE_YEARS),by=1))) %>%
+    mutate(value = approx_fun(year, value, rule = 2)) %>%
     dplyr::summarise(value = sum(value)) %>%
     ungroup()
 
@@ -284,10 +286,23 @@ if(command == driver.DECLARE_INPUTS) {
            extractioncost = 0) %>%
     select(region, resource, subresource, grade, available, extractioncost)
 
+  # bind historical grade in with the main supply curve grades
+  L2111.RsrcCurves_minerals_main_grade_historical <- bind_rows(L2111.RsrcCurves_minerals_main,
+                                                               L2111.RsrcCurves_minerals_grade_historical)
+
+  # We need to add a grade above the final grade, with available 0 and cost higher than the final grade cost
+  L2111.RsrcCurves_minerals_final_grade <- L2111.RsrcCurves_minerals_main_grade_historical %>%
+    group_by(region, resource, subresource) %>%
+    filter(row_number() == n()) %>% # last row per group
+    mutate(grade = paste0("grade ", as.numeric(gsub("grade ", "", grade))+1),
+           available = 0,
+           extractioncost = (extractioncost+0.1) * 1.1) %>% # arbitrary, just need the cost to be higher than the final grade cost
+    ungroup()
+
+
   # bind all of the grades together for final-output
-  L2111.RsrcCurves_minerals <- bind_rows(L2111.RsrcCurves_minerals_main,
-                                         L2111.RsrcCurves_minerals_final_grade,
-                                         L2111.RsrcCurves_minerals_grade_historical) %>%
+  L2111.RsrcCurves_minerals <- bind_rows(L2111.RsrcCurves_minerals_main_grade_historical,
+                                         L2111.RsrcCurves_minerals_final_grade) %>%
     arrange(region, resource, subresource, grade) %>%
     # convert to the final units needed in the xml
       #available: Mt
@@ -299,13 +314,18 @@ if(command == driver.DECLARE_INPUTS) {
   # ===================================================
   # LEVEL2 TABLES
 
+  # Make a generic table that lists region/mineral resource combinations that exist
+  # We will use this to filter out combinations for which supply curve data does not exist
+  L2111.mineral_regions <- L2111.RsrcCurves_minerals %>%
+    select(region, resource) %>%
+    distinct()
+
   # A. Output unit, price unit, market
   L2111.mineral_rsrc_info <- A10.mineral_rsrc_info %>%
     # Repeat and add region to resource assumptions table
     repeat_add_columns(select(GCAM_region_names, region)) %>%
     # Reset regional markets to the names of the specific regions
     mutate(market = if_else(market == "regional", region, market))
-    # TO-DO: filter to only the regions that have supply curves for that particular mineral.
 
   # Currently, copper, lithium and nickel will be treated as depletable resources.
   # All other minerals are still unlimited resources (FOR NOW)
@@ -314,7 +334,9 @@ if(command == driver.DECLARE_INPUTS) {
   L2111.Rsrc <- L2111.mineral_rsrc_info %>%
     filter(resource_type == "resource") %>%
     select(region, resource = resource, output.unit = `output-unit`, price.unit = `price-unit`, market) %>%
-    distinct() ##final-output
+    distinct() %>%
+    # filter to only the regions that have supply curves for that particular mineral.
+    semi_join(L2111.mineral_regions, by = c("region", "resource"))##final-output
 
   # L2111.UnlimitRsrc: output unit, price unit, and market for unlimited resources
   L2111.UnlimitRsrc <- L2111.mineral_rsrc_info %>%
@@ -327,7 +349,9 @@ if(command == driver.DECLARE_INPUTS) {
   L2111.RsrcPrice <- L2111.mineral_rsrc_info %>%
     filter(resource_type == "resource",
            year %in% MODEL_BASE_YEARS) %>%
-    select(region, resource = resource, year, price = value) ##final-output
+    select(region, resource = resource, year, price = value) %>%
+    # filter to only the regions that have supply curves for that particular mineral.
+    semi_join(L2111.mineral_regions, by = c("region", "resource")) ##final-output
 
   # L2111.UnlimitRsrcPrice: prices for unlimited resources
   # update the mineral price by multiplying the fixed-charge-rate (assumed to be 0.13). The mineral cost is considered part of the capital cost,
@@ -346,14 +370,14 @@ if(command == driver.DECLARE_INPUTS) {
   # C. Calibrated production (depletable resources only)
   # L2111.RsrcCalProd: calibrated production of depletable resources
   # NOTE: Assuming all calibrated production goes in the final model base year for now.
-  L2111.RsrcCalProd <- L1111.mineral_production_R_Yb %>%
-    filter(Year %in% MODEL_BASE_YEARS) %>%
+  L2111.RsrcCalProd <- L2111.mineral_production_R_Yb %>%
+    filter(year %in% MODEL_BASE_YEARS) %>%
     mutate(resource = resource,
            subresource = paste0(resource, "_", max(MODEL_BASE_YEARS))) %>%
     mutate(cal.production = round(value, energy.DIGITS_CALPRODUCTION)) %>%
-    select(region, resource, subresource, year= Year, cal.production) %>%
+    select(region, resource, subresource, year, cal.production) %>%
     # Convert to Mt for final-output
-    mutate(cal.production = cal.production/1000) #kt to Mt
+    mutate(cal.production = cal.production/1000)  #kt to Mt
   ##final-output
 
   L2111.ReserveCalReserve <- L2111.mineral_Reserve_Mt_R_Yh %>%
@@ -363,7 +387,7 @@ if(command == driver.DECLARE_INPUTS) {
     rename(cal.reserve = value) %>%
     select(region, resource, reserve.subresource, year, cal.reserve) %>%
     # Convert to Mt for final-output
-    mutate(cal.reserve = cal.reserve/1000) #kt to Mt
+    mutate(cal.reserve = cal.reserve/1000)  #kt to Mt
   ##final-output
 
   # D. Resource supply curves
@@ -376,50 +400,48 @@ if(command == driver.DECLARE_INPUTS) {
     repeat_add_columns(tibble(year = c(MODEL_FINAL_BASE_YEAR, MODEL_FUTURE_YEARS))) %>%
     mutate(reserve.subresource = paste0(resource, "_", year),
            avg.prod.lifetime = Lifetime) %>%
-    select(LEVEL2_DATA_NAMES[["ResSubresourceProdLifetime"]]) ##final-output
+    select(LEVEL2_DATA_NAMES[["ResSubresourceProdLifetime"]]) %>%
+    # filter to only the regions that have supply curves for that particular mineral.
+    semi_join(L2111.mineral_regions, by = c("region", "resource")) ##final-output
 
   L2111.SubresourcePriceAdder <- A10.mineral_SubresourcePriceAdder %>%
     repeat_add_columns(GCAM_region_names) %>%
     rename(price.adder = value) %>%
     repeat_add_columns(tibble(vintage = c(MODEL_FINAL_BASE_YEAR, MODEL_FUTURE_YEARS))) %>%
     mutate(subresource = paste0(resource, "_", vintage)) %>%
-    select(LEVEL2_DATA_NAMES[["SubresourcePriceAdder"]]) ##final-output
+    select(LEVEL2_DATA_NAMES[["SubresourcePriceAdder"]]) %>%
+    # filter to only the regions that have supply curves for that particular mineral.
+    semi_join(L2111.mineral_regions, by = c("region", "resource")) ##final-output
 
   L2111.ResReserveTechLifetime <- A10.mineral_ResReserveTechLifetime %>%
     repeat_add_columns(GCAM_region_names) %>%
     repeat_add_columns(tibble(vintage = c(MODEL_FINAL_BASE_YEAR, MODEL_FUTURE_YEARS))) %>%
     mutate(reserve.subresource = paste0(resource, "_", vintage),
            resource.reserve.technology = reserve.subresource) %>%
-    # need to write all vintages out to all years, and then remove the irrelevant ones
     repeat_add_columns(tibble(year = MODEL_YEARS)) %>%
-    # only keep years equal to or after a given vintage
-    # or all years for the MODEL_FINAL_BASE_YEAR
-    filter(year >= vintage | vintage == MODEL_FINAL_BASE_YEAR) %>%
-    select(LEVEL2_DATA_NAMES[["ResReserveTechLifetime"]]) ##final-output
+    select(LEVEL2_DATA_NAMES[["ResReserveTechLifetime"]]) %>%
+    # filter to only the regions that have supply curves for that particular mineral.
+    semi_join(L2111.mineral_regions, by = c("region", "resource")) ##final-output
 
   L2111.ResReserveTechDeclinePhase <- A10.mineral_ResReserveTechDeclinePhase %>%
     repeat_add_columns(GCAM_region_names) %>%
     repeat_add_columns(tibble(vintage = c(MODEL_FINAL_BASE_YEAR, MODEL_FUTURE_YEARS))) %>%
     mutate(reserve.subresource = paste0(resource, "_", vintage),
            resource.reserve.technology = reserve.subresource) %>%
-    # need to write all vintages out to all years, and then remove the irrelevant ones
     repeat_add_columns(tibble(year = MODEL_YEARS)) %>%
-    # only keep years equal to or after a given vintage
-    # or all years for the MODEL_FINAL_BASE_YEAR
-    filter(year >= vintage | vintage == MODEL_FINAL_BASE_YEAR) %>%
-    select(LEVEL2_DATA_NAMES[["ResReserveTechDeclinePhase"]]) ##final-output
+    select(LEVEL2_DATA_NAMES[["ResReserveTechDeclinePhase"]]) %>%
+    # filter to only the regions that have supply curves for that particular mineral.
+    semi_join(L2111.mineral_regions, by = c("region", "resource")) ##final-output
 
   L2111.ResReserveTechProfitShutdown <- A10.mineral_ResReserveTechProfitShutdown %>%
     repeat_add_columns(GCAM_region_names) %>%
     repeat_add_columns(tibble(vintage = c(MODEL_FINAL_BASE_YEAR, MODEL_FUTURE_YEARS))) %>%
     mutate(reserve.subresource = paste0(resource, "_", vintage),
            resource.reserve.technology = reserve.subresource) %>%
-    # need to write all vintages out to all years, and then remove the irrelevant ones
     repeat_add_columns(tibble(year = MODEL_YEARS)) %>%
-    # only keep years equal to or after a given vintage
-    # or all years for the MODEL_FINAL_BASE_YEAR
-    filter(year >= vintage | vintage == MODEL_FINAL_BASE_YEAR) %>%
-    select(LEVEL2_DATA_NAMES[["ResReserveTechProfitShutdown"]]) ##final-output
+    select(LEVEL2_DATA_NAMES[["ResReserveTechProfitShutdown"]]) %>%
+    # filter to only the regions that have supply curves for that particular mineral.
+    semi_join(L2111.mineral_regions, by = c("region", "resource")) ##final-output
 
   L2111.ResReserveTechInvestmentInput <- L2111.ResSubresourceProdLifetime %>%
     mutate(resource.reserve.technology = reserve.subresource,
@@ -429,32 +451,34 @@ if(command == driver.DECLARE_INPUTS) {
            minicam.non.energy.input = "investment-cost",
            tracking.market = "capital",
            vintage = as.integer(str_extract(reserve.subresource, "\\d{4}"))) %>%
-    # need to write all vintages out to all years, and then remove the irrelevant ones
     repeat_add_columns(tibble(year = MODEL_YEARS)) %>%
-    # only keep years equal to or after a given vintage
-    # or all years for the MODEL_FINAL_BASE_YEAR
-    filter(year >= vintage | vintage == MODEL_FINAL_BASE_YEAR) %>%
-    select(LEVEL2_DATA_NAMES[["ResReserveTechInvestmentInput"]]) ##final-output
+    select(LEVEL2_DATA_NAMES[["ResReserveTechInvestmentInput"]]) %>%
+    # filter to only the regions that have supply curves for that particular mineral.
+    semi_join(L2111.mineral_regions, by = c("region", "resource")) ##final-output
+
 
   # We need to make sure we have at least a shell technology for ALL resources
   # and so we will just use the share weight table to facilitate doing that.
+  # For base years, shareweight is set to 1 if there is a production value for the given year
+  # For future years, shareweight is set to 1 after the vintage year
   L2111.ResTechShrwt <- A10.mineral_subrsrc_info %>%
     repeat_add_columns(GCAM_region_names) %>%
     repeat_add_columns(tibble(vintage = c(MODEL_FINAL_BASE_YEAR, MODEL_FUTURE_YEARS))) %>%
     mutate(subresource = paste0(resource, "_", vintage)) %>%
     # need to write all vintages out to all years, and then remove the irrelevant ones
     repeat_add_columns(tibble(year = MODEL_YEARS)) %>%
-    # only keep years equal to or after a given vintage
-    # or all years for the MODEL_FINAL_BASE_YEAR
-    filter(year >= vintage | vintage == MODEL_FINAL_BASE_YEAR) %>%
     left_join(L2111.RsrcCalProd %>%
                 mutate(prod_value = as.double(cal.production)),
               by = c("region", "resource", "subresource", "year")) %>%
     mutate(prod_value = if_else(is.na(prod_value), 0, prod_value),
            technology = subresource,
-           share.weight = if_else(year > MODEL_FINAL_BASE_YEAR | prod_value > 0, 1, 0)) %>%
+           share.weight = if_else((year > MODEL_FINAL_BASE_YEAR | prod_value > 0)
+                                  & (year >= vintage | vintage == MODEL_FINAL_BASE_YEAR), 1, 0)) %>%
     filter(year %in% MODEL_YEARS) %>%
-    select(LEVEL2_DATA_NAMES[["ResTechShrwt"]]) ##final-output
+    select(LEVEL2_DATA_NAMES[["ResTechShrwt"]])  %>%
+    # filter to only the regions that have supply curves for that particular mineral.
+    semi_join(L2111.mineral_regions, by = c("region", "resource")) ##final-output
+
 
   # ===================================================
   # Set up annual production limit constraint as a policy portfolio standard (this will be in a separate XML)
