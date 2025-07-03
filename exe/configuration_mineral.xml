@@ -19,7 +19,11 @@
 	<ScenarioComponents>
         <Value name = "climate">../input/gcamdata/xml/hector.xml</Value>
 		<Value name = "socioeconomics">../input/gcamdata/xml/socioeconomics_gSSP2.xml</Value>
-		<Value name = "resources">../input/gcamdata/xml/resources.xml</Value>
+		<Value name = "resources_energy">../input/gcamdata/xml/resources.xml</Value>
+<!--Minerals supply-->
+		<Value name = "resources_minerals">../input/gcamdata/xml/minerals_resources.xml</Value>
+<!--Minerals trade-->
+		<Value name = "minerals_trade">../input/gcamdata/xml/minerals_trade.xml</Value>
 		<Value name = "energy_supply">../input/gcamdata/xml/en_supply.xml</Value>
 		<Value name = "energy_transformation">../input/gcamdata/xml/en_transformation.xml</Value>
 <!--Electricity generation minerals demand-->
@@ -46,6 +50,7 @@
 		<Value name = "cement_income_elas">../input/gcamdata/xml/cement_incelas_gssp2.xml</Value>
 		<Value name = "fertilizer_energy">../input/gcamdata/xml/en_Fert.xml</Value>
 		<Value name = "hddcdd">../input/gcamdata/xml/HDDCDD_constdd_no_GCM.xml</Value>
+<!--Building minerals demand-->
 		<Value name = "building">../input/gcamdata/xml/building_det.xml</Value>
 		<Value name = "transportation">../input/gcamdata/xml/transportation_UCD_CORE.xml</Value>
 <!--Transport minerals demand-->
@@ -55,6 +60,9 @@
 		<Value name = "carbon_content">../input/gcamdata/xml/Ccoef.xml</Value>
 		<Value name = "carbon_storage">../input/gcamdata/xml/Cstorage.xml</Value>
         <Value name = "wind_update">../input/gcamdata/xml/onshore_wind.xml</Value>
+
+<!--Other minerals demand-->
+		<Value name = "other">../input/gcamdata/xml/mineral_demand_other_sector.xml</Value>
 
 
 		<Value name = "ag_base">../input/gcamdata/xml/ag_For_Past_bio_base_IRR_MGMT.xml</Value>
