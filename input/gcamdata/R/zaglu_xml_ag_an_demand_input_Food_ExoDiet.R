@@ -24,7 +24,8 @@ module_aglu_ag_an_demand_input_Food_ExoDiet_xml <- function(command, ...) {
       "L100.AgMIP_FoodWaste_Share_Pathway_SSP",
       "L100.IncomeElasticity_Food_ExoDiet_2050EL2_SSP",
       "L100.IncomeElasticity_Food_ExoDiet_2100EL2_SSP",
-      "L100.IncomeElasticity_Food_ExoDiet_Static_SSP"
+      "L100.IncomeElasticity_Food_ExoDiet_Static_SSP",
+      "L100.IncomeElasticity_Food_ExoDiet_ExoRef_SSP"
       )
 
   MODULE_OUTPUTS <-
@@ -35,6 +36,9 @@ module_aglu_ag_an_demand_input_Food_ExoDiet_xml <- function(command, ...) {
 	    XML = "ag_an_demand_input_Food_ExoDiet_SSP1_Static.xml", # Static,
 	    XML = "ag_an_demand_input_Food_ExoDiet_SSP1_RegHet_Diet.xml", # Diet - Regional Heterogeneity
       XML = "ag_an_demand_input_Food_ExoDiet_SSP1_RegHet_DietWaste.xml", # Diet Waste - Regional Heterogeneity,
+
+      XML = "ag_an_demand_input_Food_ExoDiet_SSP1_ExoRef.xml", # ExoRef,
+
 
 
       XML = "ag_an_demand_input_Food_ExoDiet_SSP2_2050EL2.xml",
@@ -296,6 +300,20 @@ module_aglu_ag_an_demand_input_Food_ExoDiet_xml <- function(command, ...) {
                      L203.IncomeElasticity_Food_ExoDiet_Static %>%
                        distinct(region, energy.final.demand, year)) %>% nrow ==0
     )
+
+    # ExoRef ----
+    L203.IncomeElasticity_Food_ExoDiet_ExoRef <-
+      L100.IncomeElasticity_Food_ExoDiet_ExoRef_SSP %>%
+      filter(scenario == "gSSP1") %>% select(-scenario)
+
+    # assure sector names are the identical
+    assertthat::assert_that(
+      dplyr::setdiff(L203.IncomeElasticity_Food_ExoDiet_ExoRef %>%
+                       distinct(region, energy.final.demand, year),
+                     L203.IncomeElasticity_Food_ExoDiet_ExoRef %>%
+                       distinct(region, energy.final.demand, year)) %>% nrow ==0
+    )
+
     #Regional heterogeneity income elasticity
     # Low/lower-middle income regions: static
     # Upper-middle income regions: converge to EL2 by 2100
@@ -403,6 +421,28 @@ module_aglu_ag_an_demand_input_Food_ExoDiet_xml <- function(command, ...) {
                                                               L203.StubCalorieContent_Food_ExoDiet_HalfWaste2100_high_income)
 
     # Produce outputs ----
+
+    #Exo Ref
+    create_xml("ag_an_demand_input_Food_ExoDiet_SSP1_ExoRef.xml") %>%
+      add_logit_tables_xml(L203.Supplysector_demand_Food_ExoDiet, "Supplysector") %>%
+      add_logit_tables_xml_generate_levels(L203.SubsectorAll_demand_Food_ExoDiet,
+                                           "SubsectorLogit","subsector","nesting-subsector",1,FALSE) %>%
+      add_xml_data_generate_levels(L203.StubTech_demand_Food_ExoDiet, "StubTech","subsector","nesting-subsector",1,FALSE) %>%
+      add_xml_data_generate_levels(L203.StubTechProd_food_Food_ExoDiet, "StubTechProd", "subsector","nesting-subsector",1,FALSE) %>%
+      add_xml_data_generate_levels(L203.StubCalorieContent_Food_ExoDiet_WasteTrend, "StubCalorieContent", "subsector","nesting-subsector",1,FALSE) %>%
+      add_node_equiv_xml("subsector") %>%
+      add_logit_tables_xml(L203.NestingSubsectorAll_demand_Food_ExoDiet, "SubsectorAll", "SubsectorLogit") %>%
+
+      add_xml_data(L203.GlobalTechCoef_demand_Food_ExoDiet, "GlobalTechCoef") %>%
+      add_xml_data(L203.GlobalTechShrwt_demand_Food_ExoDiet, "GlobalTechShrwt") %>%
+      #add_xml_data(L203.GlobalTechInterp_demand_Food_ExoDiet, "GlobalTechInterp") %>%
+
+      add_xml_data(L203.IncomeElasticity_Food_ExoDiet_ExoRef, "IncomeElasticity") %>%
+      add_xml_data(L203.PriceElasticity_Food_ExoDiet, "PriceElasticity") %>%
+      add_xml_data(L203.PerCapitaBased_Food_ExoDiet, "PerCapitaBased") %>%
+      add_xml_data(L203.BaseService_Food_ExoDiet, "BaseService")  ->
+      ag_an_demand_input_Food_ExoDiet_SSP1_ExoRef.xml
+
 
     #Diet 2050
     create_xml("ag_an_demand_input_Food_ExoDiet_SSP1_2050EL2.xml") %>%
