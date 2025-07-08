@@ -25,7 +25,7 @@ module_energy_transportation_cwf_xml <- function(command, ...) {
              "L254.tranSubsectorFuelPref",
              "L254.PerCapitaBased_trn",
              "L254.PriceElasticity_trn",
-             "L254.IncomeElasticity_trn",
+             "L254.IncomeElasticity_trn_cwf",
              "L254.StubTranTechLoadFactor",
              "L254.StubTranTechCoef",
              "L254.StubTranTechCost",
@@ -72,7 +72,7 @@ module_energy_transportation_cwf_xml <- function(command, ...) {
     L254.tranSubsectorFuelPref <- get_data(all_data,"L254.tranSubsectorFuelPref")
     L254.PerCapitaBased_trn <- get_data(all_data,"L254.PerCapitaBased_trn")
     L254.PriceElasticity_trn <- get_data(all_data,"L254.PriceElasticity_trn")
-    L254.IncomeElasticity_trn <- get_data(all_data,"L254.IncomeElasticity_trn")
+    L254.IncomeElasticity_trn_cwf <- get_data(all_data,"L254.IncomeElasticity_trn_cwf")
     L254.StubTranTechLoadFactor <- get_data(all_data,"L254.StubTranTechLoadFactor")
     L254.StubTranTechCoef <- get_data(all_data,"L254.StubTranTechCoef")
     L254.StubTranTechCost <- get_data(all_data,"L254.StubTranTechCost")
@@ -100,7 +100,7 @@ module_energy_transportation_cwf_xml <- function(command, ...) {
         L254.tranSubsectorFuelPref_SSP <- L254.tranSubsectorFuelPref %>% filter(sce=="SSP1") # SSP1
         L254.PerCapitaBased_trn_SSP<- L254.PerCapitaBased_trn %>% filter(sce=="SSP1") # SSP1
         L254.PriceElasticity_trn_SSP <- L254.PriceElasticity_trn %>%  filter(sce=="SSP1") # SSP1
-        L254.IncomeElasticity_trn_SSP <- L254.IncomeElasticity_trn %>% filter(sce== "CWF") # CWF version (for all high/med/low)
+        L254.IncomeElasticity_trn_SSP <- L254.IncomeElasticity_trn_cwf %>% filter(sce== "CWF") # CWF version (for all high/med/low)
 
         # CWF versions for share weights for the respective scenarios
         L254.GlobalTranTechInterp_SSP <- L254.GlobalTranTechInterp_cwf %>% filter(sce==i)
