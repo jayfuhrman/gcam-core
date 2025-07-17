@@ -230,8 +230,6 @@ if(command == driver.DECLARE_INPUTS) {
     left_join(L1111.ResSupplyCurves_PricePoints, by = c("Mineral", "resource", "region", "percentile")) %>%
     # omit NA rows
     na.omit() %>%
-    # omit rows with 0 Quantity available
-    filter(Q != 0) %>%
     select(resource, region, Year, Units, Q, P, percentile)
 
 # TIME EVOLVING SUPPLY CURVE ----------------------------------------------
@@ -309,8 +307,12 @@ if(command == driver.DECLARE_INPUTS) {
       #available: Mt
       #extractioncost: 1975$/kg
     mutate(available = available/1000, #from kt to Mt
-           extractioncost = (extractioncost/1000)*gdp_deflator(1975, base_year = 2020)) #from 2020$/t to 1975$/kg
-           ##final-output
+           extractioncost = (extractioncost/1000)*gdp_deflator(1975, base_year = 2020)) %>% #from 2020$/t to 1975$/kg
+    group_by(region, resource, subresource, grade) %>%
+    # Keep only the row with lowest extraction cost for each group with same grade
+    dplyr::slice_min(order_by = extractioncost, n = 1, with_ties = FALSE) %>%
+    ungroup()
+    ##final-output
 
   # ===================================================
   # LEVEL2 TABLES
