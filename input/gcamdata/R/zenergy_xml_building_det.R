@@ -135,7 +135,6 @@ module_energy_building_det_xml <- function(command, ...) {
     L2441.TechCalOutputMaterials <- get_data(all_data, "L2441.TechCalOutputMaterials", strip_attributes = TRUE)
     L2441.TechShrwtMaterials <- get_data(all_data, "L2441.TechShrwtMaterials", strip_attributes = TRUE)
     L2441.TechCoefMaterials <- get_data(all_data, "L2441.TechCoefMaterials", strip_attributes = TRUE)
-      # mutate(current.coef = if_else(minicam.energy.input == "copper", 0, current.coef))
 
     L2441.TechLifetimeMaterials <- get_data(all_data, "L2441.TechLifetimeMaterials", strip_attributes = TRUE)
     L2441.TechSCurveMaterials <- get_data(all_data, "L2441.TechSCurveMaterials", strip_attributes = TRUE)

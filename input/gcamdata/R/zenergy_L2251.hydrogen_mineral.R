@@ -256,6 +256,14 @@ module_energy_L2251.hydrogen_mineral <- function(command, ...) {
       rename(input.cost = cost) %>%
       select(LEVEL2_DATA_NAMES[["StubTechCost"]])
 
+    #------------------------------------------------------------------------------------------------------------------
+
+    ## BY 7-7-2025: Regionalize demands
+    ## For minerals that are now traded, we need to differentiate mineral supply and demand
+    # Mineral supplies are named as: copper, lithium, nickel
+    # Mineral demands are named as: regional copper, regional lithium, regional nickel
+    L2251.GlobalTechMineralCoef <- regionalize_mineral_inputs(L2251.GlobalTechMineralCoef)
+    L2251.StubTechMineralCoef <- regionalize_mineral_inputs(L2251.StubTechMineralCoef)
 
     ## ===================================================================
     ## Section 3 -- Produce outputs, add appropriate flags and comments

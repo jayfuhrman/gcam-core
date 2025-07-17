@@ -254,6 +254,15 @@ module_energy_L2441.building_det_mineral <- function(command, ...) {
         semi_join(L2441.TechCalOutputMaterials, by = c("region", "supplysector", "subsector"))
     }
 
+    #------------------------------------------------------------------------------------------------------------------
+
+    ## BY 7-7-2025: Regionalize demands
+    ## For minerals that are now traded, we need to differentiate mineral supply and demand
+    # Mineral supplies are named as: copper, lithium, nickel
+    # Mineral demands are named as: regional copper, regional lithium, regional nickel
+    L2441.TechCoefMaterials <- regionalize_mineral_inputs(L2441.TechCoefMaterials)
+
+
     #===================================================
 
     L2441.GenericBaseServiceMaterials %>%

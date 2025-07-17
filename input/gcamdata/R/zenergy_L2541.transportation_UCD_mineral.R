@@ -198,6 +198,17 @@ module_energy_L2541.transportation_UCD_mineral <- function(command, ...) {
     #          share = mineral_cost/input.cost)
 
 
+    #------------------------------------------------------------------------------------------------------------------
+
+    ## BY 7-7-2025: Regionalize demands
+    ## For minerals that are now traded, we need to differentiate mineral supply and demand
+    # Mineral supplies are named as: copper, lithium, nickel
+    # Mineral demands are named as: regional copper, regional lithium, regional nickel
+    L2541.trn_globaltech_mineral_curcoef_final <- regionalize_mineral_inputs(L2541.trn_globaltech_mineral_curcoef_final)
+    L2541.trn_globaltech_mineral_coef_final <- regionalize_mineral_inputs(L2541.trn_globaltech_mineral_coef_final)
+
+    #------------------------------------------------------------------------------------------------------------------
+
     L2541.trn_globaltech_mineral_curcoef_final %>%
       add_title("transport sector technology mineral intensity") %>%
       add_units("kg/vkm") %>%

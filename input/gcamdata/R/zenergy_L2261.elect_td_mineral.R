@@ -100,6 +100,14 @@ module_energy_L2261.elect_td_mineral <- function(command, ...) {
     L2261.StubTechProfitShutdown_elect_td <- L2261.StubTech_elect_td_vintage %>%
       select(LEVEL2_DATA_NAMES[["StubTechProfitShutdown"]])
 
+    #------------------------------------------------------------------------------------------------------------------
+
+    ## BY 7-7-2025: Regionalize demands
+    ## For minerals that are now traded, we need to differentiate mineral supply and demand
+    # Mineral supplies are named as: copper, lithium, nickel
+    # Mineral demands are named as: regional copper, regional lithium, regional nickel
+    L2261.StubTechCoef_elect_td_mineral <- regionalize_mineral_inputs(L2261.StubTechCoef_elect_td_mineral)
+
     # ===================================================
     L2261.StubTechCost_elect_td  %>%
       add_title("Regional-specific non-mineral non-energy cost for elect_td technologies") %>%

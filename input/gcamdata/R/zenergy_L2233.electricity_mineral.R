@@ -909,6 +909,14 @@ module_energy_L2233.electricity_mineral <- function(command, ...) {
 
     #------------------------------------------------------------------------------------------------------------------
 
+    ## BY 7-7-2025: Regionalize demands
+    ## For minerals that are now traded, we need to differentiate mineral supply and demand
+    # Mineral supplies are named as: copper, lithium, nickel
+    # Mineral demands are named as: regional copper, regional lithium, regional nickel
+    L2233.Regionaltech_mineral_coef_constance_final <- regionalize_mineral_inputs(L2233.Regionaltech_mineral_coef_constance_final)
+    L2233.Regionaltech_mineral_coef_reduction_final <- regionalize_mineral_inputs(L2233.Regionaltech_mineral_coef_reduction_final)
+    L2233.Globaltech_mineral_coef_constance_final <- regionalize_mineral_inputs(L2233.Globaltech_mineral_coef_constance_final)
+    L2233.Globaltech_mineral_coef_reduction_final <- regionalize_mineral_inputs(L2233.Globaltech_mineral_coef_reduction_final)
 
     ## ===================================================================
     ## Section 3 -- Produce outputs, add appropriate flags and comments
