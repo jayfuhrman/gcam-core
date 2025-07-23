@@ -27,6 +27,7 @@ if(command == driver.DECLARE_INPUTS) {
            FILE = "minerals/supply/A10.mineral_ResReserveTechDeclinePhase",
            FILE = "minerals/supply/A10.mineral_ResReserveTechLifetime",
            FILE = "minerals/supply/A10.mineral_ResReserveTechProfitShutdown",
+          # FILE = "minerals/other/A271.cmm_historical_demand_all",
            "L1111.mineral_production_R_Yb",
            "L1111.mineral_AnnProdLimit_R_Y",
            "L1111.mineral_AnnResourceLimit_R_Y",
@@ -62,6 +63,8 @@ if(command == driver.DECLARE_INPUTS) {
   A10.mineral_ResReserveTechDeclinePhase <- get_data(all_data, "minerals/supply/A10.mineral_ResReserveTechDeclinePhase", strip_attributes = TRUE)
   A10.mineral_ResReserveTechLifetime <- get_data(all_data, "minerals/supply/A10.mineral_ResReserveTechLifetime", strip_attributes = TRUE)
   A10.mineral_ResReserveTechProfitShutdown <- get_data(all_data, "minerals/supply/A10.mineral_ResReserveTechProfitShutdown", strip_attributes = TRUE)
+
+ # A271.cmm_historical_demand_all <- get_data(all_data, "minerals/other/A271.cmm_historical_demand_all", strip_attributes = TRUE)
 
   L1111.mineral_production_R_Yb <- get_data(all_data, "L1111.mineral_production_R_Yb", strip_attributes = TRUE) %>%
     mutate(resource = case_when(Mineral == "Cu" ~ "copper",
@@ -383,6 +386,16 @@ if(command == driver.DECLARE_INPUTS) {
     # Convert to Mt for final-output
     mutate(cal.production = cal.production/1000)  #kt to Mt
   ##final-output
+
+  # # Compare with demand-side (GLOBAL TOTALS)
+  # Supply_Mt <- L2111.RsrcCalProd %>%
+  #   group_by(resource, year) %>%
+  #   dplyr::summarise(value = sum(cal.production)) %>%
+  #   spread(key = year, value = value)
+  #
+  # Demand_Mt <- A271.cmm_historical_demand_all %>%
+  #   filter(resource %in% c("copper", "lithium", "nickel"))
+  #
 
   L2111.ReserveCalReserve <- L2111.mineral_Reserve_Mt_R_Yh %>%
     filter(year %in% MODEL_BASE_YEARS) %>%

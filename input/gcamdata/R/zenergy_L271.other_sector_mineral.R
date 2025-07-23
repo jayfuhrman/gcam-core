@@ -22,7 +22,8 @@ module_energy_L271.other_sector_mineral <- function(command, ...) {
              FILE = "minerals/other/A271.sector.csv",
              FILE = "minerals/other/A271.tech_input.csv",
              FILE = "minerals/other/A271.demand.csv",
-             "L201.Pop_gSSP2"))
+             "L201.Pop_gSSP2",
+             "L2111.RsrcCalProd"))
   } else if(command == driver.DECLARE_OUTPUTS) {
     return(c("L271.Supplysector_mineral_other_sector",
              "L271.SubsectorLogit_mineral_other_sector",
@@ -55,6 +56,8 @@ module_energy_L271.other_sector_mineral <- function(command, ...) {
     A271.tech_input <- get_data(all_data, "minerals/other/A271.tech_input.csv",strip_attributes = TRUE)
     A271.demand <- get_data(all_data, "minerals/other/A271.demand.csv",strip_attributes = TRUE)
     L201.Pop_gSSP2 <- get_data(all_data, "L201.Pop_gSSP2",strip_attributes = TRUE)
+
+    L2111.RsrcCalProd <- get_data(all_data, "L2111.RsrcCalProd", strip_attributes = TRUE)
 
     A271.sector %>%
       left_join_error_no_match(A271.tech_input, by = "supplysector") %>%
@@ -163,18 +166,33 @@ module_energy_L271.other_sector_mineral <- function(command, ...) {
       mutate(demand = ratio * y2020) %>%
       select(resource,  unit,   year, value = demand)
 
+    ## BY 7-23-2025: for minerals that have supply curves, we need to adjust all demand such that
+    ## total global supply = total global demand (for now)
+    A271.cmm_historical_demand_all_Rsrc_adj <- L2111.RsrcCalProd %>%
+      filter(year %in% MODEL_BASE_YEARS) %>%
+      mutate(unit = "Mt") %>%
+      group_by(resource, unit, year) %>%
+      dplyr::summarise(value = sum(cal.production)) %>%
+      ungroup() %>%
+      tidyr::pivot_wider(names_from = "year")
 
-    A271.cmm_historical_demand_other_sector <-
-      A271.cmm_historical_demand_all %>%
+    # Bind together the original and supply-adjusted data
+    A271.cmm_historical_demand_all_adj <- A271.cmm_historical_demand_all %>%
       # we don't have 1975 data, so we just assume 1975 demand = 1990 demand * 0.6
       mutate(`1975` = `1990`*0.6) %>%
+      filter(! (resource %in% energy.TRADED_MINERAL)) %>%
+      bind_rows(A271.cmm_historical_demand_all_Rsrc_adj)
+
+    A271.cmm_historical_demand_other_sector <-
+      A271.cmm_historical_demand_all_adj %>%
       gather_years() %>%
       filter(year != 2020) %>%
       rename(annual_total_demand = value) %>%
       left_join(A271.cmm_historical_sector_demand %>%
                   rename(sector_demand = value),
                 by = c("resource", "unit", "year")) %>%
-      mutate(value = (annual_total_demand - sector_demand)*0.85) %>%
+      # BY 7-23-2025: for now, we will remove any loss rate, so that supply and demand balance.
+      mutate(value = (annual_total_demand - sector_demand)) %>%
       select(resource, unit, year, value)
 
     A271.pop_region_share <-
