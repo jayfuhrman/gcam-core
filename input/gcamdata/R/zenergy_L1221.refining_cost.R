@@ -9,7 +9,8 @@
 #' @return Depends on \code{command}: either a vector of required inputs,
 #' a vector of output names, or (if \code{command} is "MAKE") all
 #' the generated outputs: \code{L1221.globaltech_capital},
-#' \code{L1221.globaltech_OMfixed}, \code{L1221.globaltech_OMvar}.
+#' \code{L1221.globaltech_OMfixed}, \code{L1221.globaltech_OMvar},
+#' \code{L1221.globaltech_margin}.
 #' @details Includes EIA FRS and NEMS LMMM data as starting point.
 #' @importFrom dplyr filter mutate select group_by summarize slice left_join bind_rows arrange rename coalesce
 #' @author MEL Jan 2025
@@ -20,6 +21,7 @@ module_energy_L1221.refining_cost <- function(command, ...) {
       FILE = "energy/A221.globaltech_capital",
       FILE = "energy/A221.globaltech_OMfixed",
       FILE = "energy/A221.globaltech_OMvar",
+      FILE = "energy/A221.globaltech_margin",
       FILE = "energy/EIA_FRS_Stats",
       FILE = "energy/EIA_FRS_Opex",
       FILE = "energy/EIA_FRS_PPE",
@@ -31,7 +33,8 @@ module_energy_L1221.refining_cost <- function(command, ...) {
     return(c(
       "L1221.globaltech_capital",
       "L1221.globaltech_OMfixed",
-      "L1221.globaltech_OMvar"
+      "L1221.globaltech_OMvar",
+      "L1221.globaltech_margin"
     ))
   } else if (command == driver.MAKE) {
     all_data <- list(...)[[1]]
@@ -40,7 +43,7 @@ module_energy_L1221.refining_cost <- function(command, ...) {
     descriptor <- `schedule/element` <- kbpd <- value <- year <- name <-
       NECC <- ECC <- Sales <- CAPEX <- GJ <- margin <- om_var <- om_fixed <-
       capital <- subsector <- base_year <- cal <- technology <- wacc <- crf <-
-      minicam.energy.input <- `Cost of Capital (WACC) %` <- `Utilization %` <-
+      `Cost of Capital (WACC) %` <- `Utilization %` <-
       `Overnight capital cost $/b/sd` <- `Fixed O&M cost $/d/b/sd` <-
       `Non-feedstock variable O&M cost $/b` <- product <- supplysector <- NULL
 
@@ -50,6 +53,7 @@ module_energy_L1221.refining_cost <- function(command, ...) {
     A221.globaltech_capital <- get_data(all_data, "energy/A221.globaltech_capital") %>% gather_years()
     A221.globaltech_OMvar <- get_data(all_data, "energy/A221.globaltech_OMvar") %>% gather_years()
     A221.globaltech_OMfixed <- get_data(all_data, "energy/A221.globaltech_OMfixed") %>% gather_years()
+    A221.globaltech_margin <- get_data(all_data, "energy/A221.globaltech_margin") %>% gather_years()
 
     # EIA FRS files
     EIA_FRS_Opex <- get_data(all_data, "energy/EIA_FRS_Opex") %>% gather_years()
@@ -66,7 +70,6 @@ module_energy_L1221.refining_cost <- function(command, ...) {
     altfuels <- c("Corn ethanol", "Advanced grain ethanol", "Cellulosic ethanol",
                   "Methyl ester biodiesel (FAME)", "Pyrolysis", "FT GTL",
                   "FT CTL", "Biomass-to-liquids (BTL)")
-    CRUDE_BBL_TO_GJ <- 5.51 * CONV_BTU_KJ # per API; 5.51mmbtu/bbl
 
     # Calculate crude refining costs ------------------------------------------
     ## Normalize cost components to $1975/GJ
@@ -112,53 +115,50 @@ module_energy_L1221.refining_cost <- function(command, ...) {
       left_join(frs_sales, by = "year") %>%
       left_join(frs_throughput, by = "year") %>%
       mutate(
-        GJ       = kbpd * 1000 * CRUDE_BBL_TO_GJ * 365,
+        GJ       = kbpd * 1000 * CONV_BBL_GJ * 365,
         margin   = Sales - CAPEX - NECC - ECC,
-        om_var   = NECC * .25 + margin,
+        om_var   = NECC * .25,
         om_fixed = NECC * .75,
         across(
           -c(year, kbpd, GJ),
           ~ . * 1000000 / GJ * gdp_deflator(1975, base_year = year)
-        )
+        ),
+        subsector = "crude oil refining"
       ) %>%
-      select(year, capital = CAPEX, om_var, om_fixed, margin)
-    crude_bbl_costs$subsector <- "crude oil refining"
+      select(year, capital = CAPEX, om_var, om_fixed, margin, subsector)
 
     # Assume 1977 and 2009 data can be proxies for 1971 and 2010 base years
     crude_bbl_costs$year <- c(1971, 1990, 2005, 2010)
 
-    # Normalize Rule of Thumb costs to 1975$ from 2020$
-    A221.globaltech_capital$cal <- A221.globaltech_capital$value *
-      gdp_deflator(1975, base_year = 2022) / CRUDE_BBL_TO_GJ
-    A221.globaltech_OMfixed$cal <- A221.globaltech_OMfixed$value *
-      gdp_deflator(1975, base_year = 2022) / CRUDE_BBL_TO_GJ
-    A221.globaltech_OMvar$cal <- A221.globaltech_OMvar$value *
-      gdp_deflator(1975, base_year = 2022) / CRUDE_BBL_TO_GJ
-
-    # Combine historical and future costs
+    # Normalize Rule of Thumb costs to 1975$ from 2022$ and combine historical
+    # and future costs
     A1221.crude_refining_capital <- A221.globaltech_capital %>%
       left_join(crude_bbl_costs, by = c("year", "subsector")) %>%
       filter(subsector == "crude oil refining") %>%
-      mutate(value = dplyr::coalesce(cal, capital),
-             minicam.energy.input = "oil") %>%
-      select(-c(om_var, om_fixed, capital, cal, margin))
+      mutate(
+        value = value * gdp_deflator(1975, base_year = 2022) / CONV_BBL_GJ,
+        value = dplyr::coalesce(value, capital)
+        ) %>%
+      select(-c(om_var, om_fixed, capital, margin))
 
     A1221.crude_refining_OMfixed <- A221.globaltech_OMfixed %>%
       left_join(crude_bbl_costs, by = c("year", "subsector")) %>%
       filter(subsector == "crude oil refining") %>%
-      mutate(value = dplyr::coalesce(cal, om_fixed),
-             minicam.energy.input = "oil") %>%
-      select(-c(om_var, capital, om_fixed, cal, margin))
+      mutate(
+        value = value * gdp_deflator(1975, base_year = 2022) / CONV_BBL_GJ,
+        value = dplyr::coalesce(value, om_fixed)
+        ) %>%
+      select(-c(om_var, capital, om_fixed, margin))
 
-    # Add margin cost based on 2005 and 2010 average margin
-    # TODO: endogenize the 1.58 calc from above tables
     A1221.crude_refining_OMvar <- A221.globaltech_OMvar %>%
       left_join(crude_bbl_costs, by = c("year", "subsector")) %>%
       filter(subsector == "crude oil refining") %>%
-      mutate(cal = cal + 1.58,
-             value = dplyr::coalesce(cal, om_var),
-             minicam.energy.input = "oil") %>%
-      select(-c(om_fixed, capital, om_var, cal, margin))
+      mutate(
+        value = value * gdp_deflator(1975, base_year = 2022) / CONV_BBL_GJ,
+        value = dplyr::coalesce(value, om_var)
+        ) %>%
+      select(-c(om_fixed, capital, om_var, margin))
+
 
     # Calculate biorefining costs ---------------------------------------------
     ## Biofuels, CTL, GTL cost data from the EIA LFMM assumptions Table 10
@@ -182,16 +182,15 @@ module_energy_L1221.refining_cost <- function(command, ...) {
           ~ . * gdp_deflator(1975, base_year = 2022)
         )
       ) %>%
-      select(subsector, technology, product, minicam.energy.input,
-             capital, om_var, om_fixed) %>%
+      select(subsector, technology, product, capital, om_var, om_fixed) %>%
       na.omit
 
     # Fill out products that aren't currently made with CTL/GTL separately.
     # Capital and variable costs increased to reflect these technologies
     # can't/don't make these these products at scale yet
-    # TODO: add expectation of profit to om_var?
+    # TODO: add expectation of profit to om_var? or subsidy/discount
     # TODO: if using multiplier find one from lit
-    MULTIPLIER = 2.5
+    MULTIPLIER = 1.25
     placeholder_gtl <- LFMM_cost_bbl %>%
       filter(subsector == "gtl") %>%
       slice(rep(1, 3)) %>%
@@ -214,6 +213,7 @@ module_energy_L1221.refining_cost <- function(command, ...) {
     ## IEA data convention. Assume HHV * 0.95 = LHV per API; the conversion to
     ## GJ from MMBTU is the same as BTU to kJ.
     heating_vals$GJ_LHV <- heating_vals$value * 0.95 * CONV_BTU_KJ
+    DISCOUNT <- .75 # TODO: apply as proxy for subsidies?
     altcost <- LFMM_cost_bbl %>%
       left_join(heating_vals, by = c("subsector", "product")) %>%
       mutate(
@@ -222,31 +222,46 @@ module_energy_L1221.refining_cost <- function(command, ...) {
         om_fixed = om_fixed / GJ_LHV
       ) %>%
       select(
-        supplysector, subsector, technology, product,
-        minicam.energy.input, capital, om_var, om_fixed
+        supplysector, subsector, technology, capital, om_var, om_fixed
       )
 
     A1221.alt_refining_capital <- A221.globaltech_capital %>%
       filter(subsector %in% c("biorefining", "ctl", "gtl")) %>%
-      left_join(altcost, by = c("supplysector", "subsector", "technology", "product")) %>%
-      select(-c(om_var, om_fixed, value, cal), value = capital)
+      left_join(altcost, by = c("supplysector", "subsector", "technology")) %>%
+      select(-c(om_var, om_fixed, value), value = capital)
 
     A1221.alt_refining_OMfixed <- A221.globaltech_OMfixed %>%
       filter(subsector %in% c("biorefining", "ctl", "gtl")) %>%
-      left_join(altcost, by = c("supplysector", "subsector", "technology", "product")) %>%
-      select(-c(om_var, capital, value, cal)) %>%
+      left_join(altcost, by = c("supplysector", "subsector", "technology")) %>%
+      select(-c(om_var, capital, value)) %>%
       rename(value = om_fixed)
 
     A1221.alt_refining_OMvar <- A221.globaltech_OMvar %>%
       filter(subsector %in% c("biorefining", "ctl", "gtl")) %>%
-      left_join(altcost, by = c("supplysector", "subsector", "technology", "product")) %>%
-      select(-c(om_fixed, capital, value, cal)) %>%
+      left_join(altcost, by = c("supplysector", "subsector", "technology")) %>%
+      select(-c(om_fixed, capital, value)) %>%
       rename(value = om_var)
 
     # Regroup subsectors ------------------------------------------------------
     L1221.globaltech_capital <- bind_rows(A1221.alt_refining_capital, A1221.crude_refining_capital)
     L1221.globaltech_OMfixed <- bind_rows(A1221.alt_refining_OMfixed, A1221.crude_refining_OMfixed)
     L1221.globaltech_OMvar <- bind_rows(A1221.alt_refining_OMvar, A1221.crude_refining_OMvar)
+
+    # FRS data stops in 2009. Assume margin term for crude oil refining afterwards
+    L1221.globaltech_margin <- A221.globaltech_margin %>%
+      left_join(crude_bbl_costs %>% select(-capital, -om_fixed, -om_var),
+                by = c("year", "subsector")) %>%
+      select(-value) %>%
+      left_join(L1221.globaltech_capital %>% select(-minicam.non.energy.input),
+                by = c("supplysector", "subsector", "technology", "year")) %>%
+      mutate(margin = replace_na(margin, -1),
+             # Assume alternative fuels get a 15% discount/subsidy
+             margin = if_else(margin <= 0 & !grepl("crude", subsector), value * -.05, margin),
+             value = if_else(margin == -1, 1, margin)) %>%
+      select(-margin)
+
+    # TODO: can do stubtech costs (same adder all technologies in a different region)
+    # TODO: calculate the historical discounts
 
     # Produce outputs ---------------------------------------------------------
 
@@ -296,10 +311,26 @@ module_energy_L1221.refining_cost <- function(command, ...) {
         "energy/A221.globaltech_HHV"
       ) -> L1221.globaltech_OMvar
 
+    L1221.globaltech_margin %>%
+      add_title("Refining technology financial profit estimates") %>%
+      add_units("1975$/GJ") %>%
+      add_comments(
+        "Will be used in place of A221.globaltech_cost by relevant chunks"
+      ) %>%
+      add_precursors(
+        "energy/A221.globaltech_margin",
+        "energy/EIA_FRS_Stats",
+        "energy/EIA_FRS_Opex",
+        "energy/EIA_FRS_PPE",
+        "energy/EIA_FRS_Sales",
+        "energy/calibrated_techs_refining"
+      ) -> L1221.globaltech_margin
+
     return_data(
       L1221.globaltech_capital,
       L1221.globaltech_OMfixed,
-      L1221.globaltech_OMvar
+      L1221.globaltech_OMvar,
+      L1221.globaltech_margin
     )
   } else {
     stop("Unknown command")

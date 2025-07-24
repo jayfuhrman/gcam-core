@@ -16,7 +16,7 @@
 #' by interpolating assumptions.
 #' @importFrom assertthat assert_that
 #' @importFrom dplyr anti_join distinct filter full_join if_else group_by inner_join left_join mutate select summarise
-#' @importFrom tidyr gather complete
+#' @importFrom tidyr gather complete crossing
 #' @author JF July 2024 SD Jan 2025
 module_energy_L2221.refining <- function(command, ...) {
   if(command == driver.DECLARE_INPUTS) {
@@ -32,6 +32,7 @@ module_energy_L2221.refining <- function(command, ...) {
              FILE = "energy/A221.globaltech_secout",
              FILE = "energy/A221.rsrc_info",
              FILE = "energy/A221.stubtech_regional_output",
+             FILE = "energy/A221.stubtech_margin",
              FILE = "energy/calibrated_techs_refining",
              FILE = "energy/refining_mapping",
              "LB1092.GCAM_REG_LIQUIDS_PROD_agg",
@@ -41,7 +42,7 @@ module_energy_L2221.refining <- function(command, ...) {
              "L1221.globaltech_capital",
              "L1221.globaltech_OMfixed",
              "L1221.globaltech_OMvar",
-             "LB1092.Tradebalance_refined_liquids_EJ_R_Y"))
+             "L1221.globaltech_margin"))
   } else if(command == driver.DECLARE_OUTPUTS) {
     return(c("L2221.Supplysector_en",
              "L2221.ProfitRateSector",
@@ -69,6 +70,7 @@ module_energy_L2221.refining <- function(command, ...) {
                 "L2221.SectorZeroProfitMarketName",
                 "L2221.StubTechSecondaryOutput",
                 "L2221.SubsectorShrwt",
+                "L2221.StubTechCost",
                 "L2221.StubTech_en"))
   } else if(command == driver.MAKE) {
 
@@ -98,11 +100,12 @@ module_energy_L2221.refining <- function(command, ...) {
     A221.globaltech_retirement <- get_data(all_data,"energy/A221.globaltech_retirement", strip_attributes = TRUE)
     A221.globaltech_secout <- get_data(all_data, "energy/A221.globaltech_secout", strip_attributes = TRUE)
     A221.rsrc_info <- get_data(all_data, "energy/A221.rsrc_info", strip_attributes = TRUE)
-    LB1092.Tradebalance_refined_liquids_EJ_R_Y <- get_data(all_data,"LB1092.Tradebalance_refined_liquids_EJ_R_Y", strip_attributes = TRUE)
     A221.globaltech_capital <- get_data(all_data, "L1221.globaltech_capital", strip_attributes = TRUE)
     A221.globaltech_OMvar <- get_data(all_data, "L1221.globaltech_OMvar", strip_attributes = TRUE)
     A221.globaltech_OMfixed <- get_data(all_data, "L1221.globaltech_OMfixed", strip_attributes = TRUE)
+    A221.globaltech_margin <-  get_data(all_data, "L1221.globaltech_margin", strip_attributes = TRUE)
     A221.stubtech_regional_output <- get_data(all_data, "energy/A221.stubtech_regional_output", strip_attributes = TRUE)
+    A221.stubtech_margin <- get_data(all_data, "energy/A221.stubtech_margin", strip_attributes = TRUE)
     LB1092.GCAM_REG_LIQUIDS_PROD_agg <- get_data(all_data,"LB1092.GCAM_REG_LIQUIDS_PROD_agg", strip_attributes = TRUE)
     LB1092.GCAM_BIO_LIQUIDS_PROD_agg <- get_data(all_data,"LB1092.GCAM_BIO_LIQUIDS_PROD_agg", strip_attributes = TRUE)
     LB1092.GCAM_CTL_GTL_LIQUIDS_PROD_agg <- get_data(all_data,"LB1092.GCAM_CTL_GTL_LIQUIDS_PROD_agg", strip_attributes = TRUE)
@@ -160,6 +163,8 @@ module_energy_L2221.refining <- function(command, ...) {
       select(region, resource = resource, output.unit = `output-unit`, price.unit = `price-unit`, market) %>%
       distinct()
 
+
+# Constraints -------------------------------------------------------------
     L2221.PortfolioStdConstraint <- L2221.rsrc_info %>%
       filter(resource.type == "policy-portfolio-standard") %>%
       select(-year)%>%
@@ -171,20 +176,33 @@ module_energy_L2221.refining <- function(command, ...) {
       select(LEVEL2_DATA_NAMES[['PortfolioStdConstraint']]) %>%
       filter(!is.na(region))
 
+    # TODO: this is where the ethanol and biodiesel cost guesses come from; incorporate
+    # # in gasoline gallon equivalent so conv to GJ
+    bio_price_for_conv <- data.frame(year = c(2005, 2010, 2015, 2021),
+                                     E85 = c(2.75, 3.37, 2.95, 3.18),
+                                     B99 = c(3.3, 3.63, 3.62, 3.47))
+    bio_price_usa <- bio_price_for_conv %>%
+      mutate(across(c("E85", "B99"), ~ . * 42 / (.95 * 5.052) * CONV_MMBTU_GJ),
+             E85conv = E85 * gdp_deflator(1975, base_year = year),
+             B99conv = B99 * gdp_deflator(1975, base_year = year))
+
+
     # SEDS gasoline: avg mogas consumer price
     seds_gas_price <- data.frame(year = c(1975, 1990, 2005, 2010, 2015, 2021),
                                  price = c(4.64, 3.62, 4.68, 5.19, 4.20, 4.71))
-    # TODO: prices that solve
-    what_seems_to_work <- data.frame(year = c(1975, 1990, 2005, 2010, 2015, 2021),
-                                     price = c(4.2, 4.2,  4.68,  4.5,  4.3, 4.7))
+    # TODO: GCAM crude price is $2.02 vs $3ish in 2005; $4.67 vs $2.5is4.64h in 2015
+    #what_seems_to_work <- data.frame(year = c(1975, 1990, 2005, 2010, 2015, 2021),
+    #                                 price = c(4.2, 4.2, 5.6, 4.5, 4.3, 4.9))
+
 
     L2221.PortfolioStdFixedTax <- L2221.rsrc_info %>%
       filter(resource.type == "policy-portfolio-standard") %>%
       select(-year) %>%
       repeat_add_columns(tibble(year = c(HISTORICAL_YEARS, MODEL_FUTURE_YEARS))) %>%
       filter(year %in% c(MODEL_BASE_YEARS)) %>%
-      left_join(what_seems_to_work, by = "year") %>%
-      mutate(policyType = 'tax') %>%
+      left_join(seds_gas_price, by = "year") %>%
+      mutate(policyType = 'tax', #) %>%
+             price = if_else(year > MODEL_FINAL_BASE_YEAR, 4.5, price)) %>%  # Extend fixed tax price out to 2100 for testing
       rename(policy.portfolio.standard = resource) %>%
       select(LEVEL2_DATA_NAMES[['PortfolioStdFixedTax']])
 
@@ -264,6 +282,8 @@ module_energy_L2221.refining <- function(command, ...) {
       mutate(to.value = 1) %>%
       select(LEVEL2_DATA_NAMES[["GlobalTechInterpTo"]])-> L2221.GlobalTechInterp
 
+
+# Calibrations ------------------------------------------------------------
     # L222.StubTechCoef_refining: calibrated input-output coefficients of oil refining by region and input
     # interpolates values of IO coefficients for base years from historical values
     L1093.IO_R_oilrefining_F_Yh %>%
@@ -292,9 +312,9 @@ module_energy_L2221.refining <- function(command, ...) {
       left_join(A222.IO_R_oilrefining_F_Yh%>%
                   select(-sector)%>%
                   mutate(supplysector="refining")%>%
-                  mutate(fuel=ifelse(fuel=="oil","regional oil",fuel))%>%
-                  mutate(fuel=ifelse(fuel=="gas","wholesale gas",fuel))%>%
-                  mutate(fuel=ifelse(fuel=="electricity","elect_td_ind",fuel))%>%
+                  mutate(fuel=if_else(fuel=="oil","regional oil",fuel))%>%
+                  mutate(fuel=if_else(fuel=="gas","wholesale gas",fuel))%>%
+                  mutate(fuel=if_else(fuel=="electricity","elect_td_ind",fuel))%>%
                   rename(minicam.energy.input=fuel),
                 by=c("region","supplysector","minicam.energy.input","year"))%>%
       arrange(region,supplysector, subsector, technology, minicam.energy.input, year) %>%
@@ -305,9 +325,9 @@ module_energy_L2221.refining <- function(command, ...) {
       filter(year %in% c(MODEL_BASE_YEARS, MODEL_FUTURE_YEARS)) %>%
       rename(stub.technology = technology)%>%
       mutate(market.name=region)%>%
-      #mutate(minicam.energy.input=ifelse(minicam.energy.input=="crude oil","regional oil",minicam.energy.input))%>%
-      mutate(minicam.energy.input=ifelse(minicam.energy.input=="natural gas","wholesale gas",minicam.energy.input))%>%
-      mutate(minicam.energy.input=ifelse(minicam.energy.input=="electricity","elect_td_ind",minicam.energy.input))-> L2221.StubTechCoef_refining
+      #mutate(minicam.energy.input=if_else(minicam.energy.input=="crude oil","regional oil",minicam.energy.input))%>%
+      mutate(minicam.energy.input=if_else(minicam.energy.input=="natural gas","wholesale gas",minicam.energy.input))%>%
+      mutate(minicam.energy.input=if_else(minicam.energy.input=="electricity","elect_td_ind",minicam.energy.input))-> L2221.StubTechCoef_refining
 
     # reorders columns to match expected model interface input
     L2221.StubTechCoef_refining <- L2221.StubTechCoef_refining[c(LEVEL2_DATA_NAMES[["StubTechYr"]], "minicam.energy.input", "coefficient", "market.name")]
@@ -327,13 +347,20 @@ module_energy_L2221.refining <- function(command, ...) {
       select(LEVEL2_DATA_NAMES[["GlobalTechCoef"]]) -> L2221.GlobalTechCoef_en
 
 
+# Costs -------------------------------------------------------------------
+    # TODO: allow to stay broken out
     A221.globaltech_cost <-
       bind_rows(A221.globaltech_capital,
                 A221.globaltech_OMvar,
-                A221.globaltech_OMfixed) %>%
-      group_by(supplysector, subsector, technology, year) %>%
-      summarize(value = sum(value), .groups = "drop") %>%
-      mutate(minicam.non.energy.input = "non-energy-cost")
+                A221.globaltech_OMfixed,
+                A221.globaltech_margin,
+                A221.globaltech_margin %>%
+                  mutate(value = 0,
+                         minicam.non.energy.input = "cost.adjustment")) %>%
+      select(supplysector, subsector, technology, minicam.non.energy.input, year, value) #%>%
+      #group_by(supplysector, subsector, technology, year) %>%
+      #summarize(value = sum(value), .groups = "drop") %>%
+      #mutate(minicam.non.energy.input = "non-energy-cost")
 
     L2221.GlobalTechCost_en <- A221.globaltech_cost %>%
       complete(nesting(supplysector, subsector, technology, minicam.non.energy.input),
@@ -346,6 +373,71 @@ module_energy_L2221.refining <- function(command, ...) {
       filter(year %in% c(MODEL_BASE_YEARS, MODEL_FUTURE_YEARS)) %>%
       rename(sector.name = supplysector, subsector.name = subsector) %>%
       select(LEVEL2_DATA_NAMES[["GlobalTechCost"]])
+
+
+    L2221.ProdPrice <- L2221.rsrc_info %>%
+      filter(year %in% MODEL_BASE_YEARS) %>%
+      select(region, resource = resource, year, price = value)
+
+    non_en_cost <- L2221.GlobalTechCost_en %>%
+      group_by(sector.name, subsector.name, technology, year) %>%
+      summarize(costs = sum(input.cost), .groups = "drop") %>%
+      select(-sector.name)
+
+    # Add regional cost variation based on what was required to meet a normal
+    # profit rate in history
+    # TODO: this is a temporary troubleshooting read-in file
+    profit_rate_components <- read.csv("A221.stubtech_cost_adjust.csv")
+    profit_rate_calcs <- profit_rate_components %>%
+      left_join(L2221.ProdPrice, by = c("region", "resource", "year")) %>%
+      mutate(technology = if_else(subsector == "crude oil refining", paste("high", technology) , technology)) %>%
+      left_join(non_en_cost, by = c("subsector" = "subsector.name", "technology", "year")) %>%
+      mutate(non.en.cost = costs * feed.EJ * 1E9,
+             rev = price * product.EJ * 1E9,
+             cost = non.en.cost + feed.cost) %>%
+      group_by(region, year, subsector) %>%
+      mutate(subsector_discrepancy = sum(rev) - sum(cost),
+             cost.adj = subsector_discrepancy / sum(feed.EJ) / 1E9) %>%
+      ungroup() %>%
+      mutate(cost.adj = round(cost.adj, 6))#%>%
+    #  select(region, year, subsector, technology, cost, rev, cost.adj, feed.EJ)
+
+
+    check_pr <- profit_rate_calcs %>%  # TODO: temporary troubleshooting
+      group_by(region, year) %>%
+      summarize(pr = (sum(cost) + sum(cost.adj * feed.EJ * 1E9)) / sum(rev), .groups = "drop")
+
+    L2221.StubTechCost <- profit_rate_calcs %>% # A221.stubtech_margin %>%
+      mutate(supplysector = "refining",
+             minicam.non.energy.input = "cost.adjustment") %>%
+      rename(input.cost = cost.adj) %>%
+      select(LEVEL2_DATA_NAMES[["TechCost"]]) %>%
+      distinct()
+    L2221.StubTechCost <- L2221.StubTechCost %>%
+      filter(year == MODEL_FINAL_BASE_YEAR) %>%   # extend cost adjustment to the future
+      complete(nesting(region, supplysector, subsector, technology, minicam.non.energy.input, input.cost),
+               year = MODEL_FUTURE_YEARS) %>%
+      bind_rows(L2221.StubTechCost) %>%
+      arrange(region, supplysector, subsector, year)
+
+    # check_adder <- L2221.StubTechCost %>%
+    #   filter(input.cost > 5 | input.cost < -5) %>%
+    #   left_join(profit_rate_components, by = c("region", "year", "subsector" = "sector", "technology"))
+
+    # TODO: from the old en_transformation. incorporate capital tracking into detailed refining
+    # # L222.GlobalTechTrackCapital_en: We want track capital investments for these technologies thus
+    # # we will change the object type accordingly and add the market name which will track investments
+    # # and the fraction of the total non-energy cost we should assume is annual investment in capital
+    # FCR <- (socioeconomics.DEFAULT_INTEREST_RATE * (1+socioeconomics.DEFAULT_INTEREST_RATE)^socioeconomics.REFINING_CAP_PAYMENTS) /
+    #   ((1+socioeconomics.DEFAULT_INTEREST_RATE)^socioeconomics.REFINING_CAP_PAYMENTS -1)
+    # L222.GlobalTechCost_en %>%
+    #   mutate(capital.coef = socioeconomics.REFINING_CAPITAL_RATIO / FCR,
+    #          tracking.market = socioeconomics.EN_CAPITAL_MARKET_NAME,
+    #          # refining has vintaging so no need to for depreciation rate (although will get ignored)
+    #          depreciation.rate = if_else(sector.name == "refining", 0, 1/30)) %>%
+    #   select(LEVEL2_DATA_NAMES[['GlobalTechTrackCapital']]) ->
+    #   L222.GlobalTechTrackCapital_en
+
 
     #biomass technology combinations
     biomass_combinations <- data.frame(
@@ -368,7 +460,7 @@ module_energy_L2221.refining <- function(command, ...) {
     # # ensure we can solve the historical periods
     L1221.refiningFuelsOutputsEJCombined_all <- combinations_all %>%
       left_join(L1221.refiningFuelsOutputsEJCombined,by=c("subsector","output","input","region","year"))%>%
-      mutate(value=ifelse(is.na(value),0,value))
+      mutate(value=if_else(is.na(value),0,value))
 
 
     # Calibrated historical production
@@ -402,14 +494,8 @@ module_energy_L2221.refining <- function(command, ...) {
     L2221.SubsectorShrwt <-  L2221.rsrc_info %>%
       distinct(region,resource) %>%
       mutate(fully.calibrated=1) %>%
+      #filter(resource != "Gasoline_crude oil") %>%  # having the resource and the
       select(LEVEL2_DATA_NAMES[["RsrcCal"]])
-
-    # Explicitly zero out share weights in history for regions where a tech has
-    # no production
-    #L2221.StubTechShrwt <- L2221.StubTechProd %>%
-    #  filter(calOutputValue == 0, stub.technology != "crude oil")  %>%
-    #  mutate(share.weight = 0) %>%
-    #  select(LEVEL2_DATA_NAMES[['StubTechShrwt']])
 
     # Secondary output ratios
     SecondaryOutputs  <- A221.globaltech_secout %>%
@@ -442,12 +528,12 @@ module_energy_L2221.refining <- function(command, ...) {
     # Use region-specific High Residual_FuelOil ratios for outlier regions
     L2221.StubTechSecondaryOutput <- A221.stubtech_regional_output %>%
       select(-crude.type) %>%
-      tidyr::gather(key = "secondary.output", value = output.ratio, -region) %>%
+      gather(key = "secondary.output", value = output.ratio, -region) %>%
       mutate(supplysector = "refining",
              subsector = "crude oil refining",
              stub.technology = 'high Residual_FuelOil',
              secondary.output = paste0(secondary.output,"_crude oil"),
-             year = 2025) %>%   # TODO: don't want to overwrite the secout in history, do still need to extend for all future years
+             year = 2030) %>%   # TODO: don't want to overwrite the secout in history, do still need to extend for all future years
       arrange(region) %>%
       complete(nesting(region,
                        supplysector,
@@ -459,21 +545,6 @@ module_energy_L2221.refining <- function(command, ...) {
       filter(!is.na(output.ratio)) %>%
       select(LEVEL2_DATA_NAMES[["StubTechSecOut"]])
 
-    # develop a table of supply side technologies to zero out in the historical
-    # years to avoid having to come up with a solution, particularly when
-    # multiple options need to be zero simultaneously
-    # limiting to just biomass for now which is going to be one tech per output product
-    # L2221.StubTechShrwt <- L2221.StubTechCalInput %>%
-    #   filter(calibrated.value == 0,
-    #          stub.technology %in% c("biomass", "coal", "natural gas"),
-    #          minicam.energy.input != "oil refining") %>%
-    #   select(region, minicam.energy.input, year) %>%
-    #   rename(res.secondary.output = minicam.energy.input) %>%
-    #   left_join(L2221.GlobalTechResSecOut_en, by = c("res.secondary.output", "year")) %>%
-    #   mutate(share.weight = 0) %>%
-    #   rename(supplysector = sector.name, subsector = subsector.name,
-    #          stub.technology = technology) %>%
-    #   select(LEVEL2_DATA_NAMES[['StubTechShrwt']])
 
     L2221.globaltech_retirement_base <- A221.globaltech_retirement %>%
       set_years() %>%
@@ -608,7 +679,7 @@ module_energy_L2221.refining <- function(command, ...) {
       add_units("1975$/GJ for supplysector refining technologies") %>%
       add_comments("For refining sector, the non-energy costs of global refined liquids manufacturing technologies") %>%
       add_legacy_name("L2221.GlobalTechCost_en") %>%
-      add_precursors("energy/A221.globaltech_cost") ->
+      add_precursors("L1221.globaltech_capital", "L1221.globaltech_OMvar", "L1221.globaltech_OMfixed", "L1221.globaltech_margin") ->
       L2221.GlobalTechCost_en
 
     L2221.GlobalTechFractSecOut_en %>%
@@ -640,7 +711,9 @@ module_energy_L2221.refining <- function(command, ...) {
       add_units("EJ") %>%
       add_comments("Values are calculated using L1221.refiningFuelsOutputsEJCombined then given GCAM region, supplysector, subsector, and technology information") %>%
       add_legacy_name("L2221.StubTechProd") %>%
-      add_precursors("L1221.refiningFuelsOutputsEJCombined","energy/calibrated_techs_refining") ->
+      add_precursors("LB1092.GCAM_REG_LIQUIDS_PROD_agg", "LB1092.GCAM_BIO_LIQUIDS_PROD_agg",
+                     "LB1092.GCAM_CTL_GTL_LIQUIDS_PROD_agg", "energy/calibrated_techs_refining",
+                     "energy/refining_mapping") ->
       L2221.StubTechProd
 
     L2221.GlobalTechShrwt %>%
@@ -722,12 +795,20 @@ module_energy_L2221.refining <- function(command, ...) {
     }
 
     L2221.StubTechSecondaryOutput %>%
-      add_title("Stub technology secondary outputs for refining sector") %>%
+      add_title("Stub technology secondary outputs for the refining sector") %>%
       add_units("NA") %>%
       add_comments("Regional crude oil quality adjustments for technologies in the refining sector") %>%
       add_legacy_name("L2221.StubTech_en") %>%
       add_precursors("energy/A221.stubtech_regional_output") ->
       L2221.StubTechSecondaryOutput
+
+    L2221.StubTechCost %>%
+      add_title("Stub technology secondary outputs for refining sector") %>%
+      add_units("1975$/GJ") %>%
+      add_comments("Regional cost adjustments for technologies in the refining sector") %>%
+      add_legacy_name("L2221.StubTechCost") %>%
+      add_precursors("energy/A221.stubtech_margin") ->
+    L2221.StubTechCost
 
     L2221.PortfolioStdConstraint %>%
       add_title("Policy portfolio standard constraint for refining sector") %>%
@@ -779,6 +860,7 @@ module_energy_L2221.refining <- function(command, ...) {
                 L2221.GlobalTechShutdown,
                 L2221.SectorZeroProfitMarketName,
                 L2221.StubTechSecondaryOutput,
+                L2221.StubTechCost,
                 L2221.StubTech_en)
   } else {
     stop("Unknown command")
