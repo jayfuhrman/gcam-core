@@ -2,36 +2,36 @@
 # Title: Refining technology capital costs
 # Units: $/bbl
 # Source: Crude refining costs estimated from The Palgrave Handbook of International Energy Economics Ch 8.
-# Column types: cccccnnnnnnnn
+# Column types: ccccnnnnnnnnn
 # ----------
-supplysector,subsector,technology,product,minicam.non.energy.input,1971,1990,2005,2010,2015,2020,2050,2100
-refining,biorefining,biodiesel,Distillate_FuelOil,capital,,,,,,,,
-refining,biorefining,Residual_FuelOil,Residual_FuelOil,capital,,,,,,,,
-refining,biorefining,corn ethanol,Gasoline,capital,,,,,,,,
-refining,biorefining,sugar cane ethanol,Gasoline,capital,,,,,,,,
-refining,biorefining,cellulosic ethanol,Gasoline,capital,,,,,,,,
-refining,biorefining,Heavy_Residual,Heavy_Residual,capital,,,,,,,,
-refining,biorefining,Jet_Kerosene,Jet_Kerosene,capital,,,,,,,,
-refining,biorefining,LPG,LPG,capital,,,,,,,,
-refining,biorefining,Other,Other,capital,,,,,,,,
-refining,ctl,Distillate_FuelOil,Distillate_FuelOil,capital,,,,,,,,
-refining,ctl,Residual_FuelOil,Residual_FuelOil,capital,,,,,,,,
-refining,ctl,Gasoline,Gasoline,capital,,,,,,,,
-refining,ctl,Heavy_Residual,Heavy_Residual,capital,,,,,,,,
-refining,ctl,Jet_Kerosene,Jet_Kerosene,capital,,,,,,,,
-refining,ctl,LPG,LPG,capital,,,,,,,,
-refining,ctl,Other,Other,capital,,,,,,,,
-refining,gtl,Distillate_FuelOil,Distillate_FuelOil,capital,,,,,,,,
-refining,gtl,Residual_FuelOil,Residual_FuelOil,capital,,,,,,,,
-refining,gtl,Gasoline,Gasoline,capital,,,,,,,,
-refining,gtl,Heavy_Residual,Heavy_Residual,capital,,,,,,,,
-refining,gtl,Jet_Kerosene,Jet_Kerosene,capital,,,,,,,,
-refining,gtl,LPG,LPG,capital,,,,,,,,
-refining,gtl,Other,Other,capital,,,,,,,,
-refining,crude oil refining,high Distillate_FuelOil,Distillate_FuelOil,capital,,,,,8,8,8,8
-refining,crude oil refining,high Residual_FuelOil,Residual_FuelOil,capital,,,,,8,8,8,8
-refining,crude oil refining,high Gasoline,Gasoline,capital,,,,,8,8,8,8
-refining,crude oil refining,high LPG,Heavy_Residual,capital,,,,,8,8,8,8
-refining,crude oil refining,high Jet_Kerosene,Jet_Kerosene,capital,,,,,8,8,8,8
-refining,crude oil refining,high Heavy_Residual,LPG,capital,,,,,8,8,8,8
-refining,crude oil refining,high Other,Other,capital,,,,,8,8,8,8
+supplysector,subsector,technology,minicam.non.energy.input,1971,1990,2005,2010,2015,2021,2025,2050,2100
+refining,biorefining,biodiesel,capital,,,,,,,,,
+refining,biorefining,Residual_FuelOil,capital,,,,,,,,,
+refining,biorefining,corn ethanol,capital,,,,,,,,,
+refining,biorefining,sugar cane ethanol,capital,,,,,,,,,
+refining,biorefining,cellulosic ethanol,capital,,,,,,,,,
+refining,biorefining,Heavy_Residual,capital,,,,,,,,,
+refining,biorefining,Jet_Kerosene,capital,,,,,,,,,
+refining,biorefining,LPG,capital,,,,,,,,,
+refining,biorefining,Other,capital,,,,,,,,,
+refining,ctl,Distillate_FuelOil,capital,,,,,,,,,
+refining,ctl,Residual_FuelOil,capital,,,,,,,,,
+refining,ctl,Gasoline,capital,,,,,,,,,
+refining,ctl,Heavy_Residual,capital,,,,,,,,,
+refining,ctl,Jet_Kerosene,capital,,,,,,,,,
+refining,ctl,LPG,capital,,,,,,,,,
+refining,ctl,Other,capital,,,,,,,,,
+refining,gtl,Distillate_FuelOil,capital,,,,,,,,,
+refining,gtl,Residual_FuelOil,capital,,,,,,,,,
+refining,gtl,Gasoline,capital,,,,,,,,,
+refining,gtl,Heavy_Residual,capital,,,,,,,,,
+refining,gtl,Jet_Kerosene,capital,,,,,,,,,
+refining,gtl,LPG,capital,,,,,,,,,
+refining,gtl,Other,capital,,,,,,,,,
+refining,crude oil refining,high Distillate_FuelOil,capital,,,,,8,8,8,8,8
+refining,crude oil refining,high Residual_FuelOil,capital,,,,,8,8,8,8,8
+refining,crude oil refining,high Gasoline,capital,,,,,8,8,8,8,8
+refining,crude oil refining,high LPG,capital,,,,,8,8,8,8,8
+refining,crude oil refining,high Jet_Kerosene,capital,,,,,8,8,8,8,8
+refining,crude oil refining,high Heavy_Residual,capital,,,,,8,8,8,8,8
+refining,crude oil refining,high Other,capital,,,,,8,8,8,8,8

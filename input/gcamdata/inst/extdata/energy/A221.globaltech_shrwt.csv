@@ -4,7 +4,7 @@
 # Description: Shareweights of transformation technologies 
 # Column types: cccnnnnnn 
 # ----------
-supplysector,subsector,technology,1971,2015,2020,2025,2050,2100
+supplysector,subsector,technology,1971,2015,2021,2025,2050,2100
 refining,biorefining,biodiesel,1,1,1,1,1,1
 refining,biorefining,Residual_FuelOil,1,1,1,1,1,1
 refining,biorefining,corn ethanol,1,1,1,1,1,1
@@ -21,47 +21,47 @@ refining,crude oil refining,high LPG,1,1,1,1,1,1
 refining,crude oil refining,high Jet_Kerosene,1,1,1,1,1,1
 refining,crude oil refining,high Heavy_Residual,1,1,1,1,1,1
 refining,crude oil refining,high Other,1,1,1,1,1,1
-refining,ctl,Distillate_FuelOil,1,1,0,0,0,0
-refining,ctl,Residual_FuelOil,1,1,0,0,0,0
-refining,ctl,Gasoline,1,1,0,0,0,0
-refining,ctl,Jet_Kerosene,1,1,0,0,0,0
-refining,ctl,LPG,1,1,0,0,0,0
-refining,ctl,Other,1,1,0,0,0,0
-refining,ctl,Heavy_Residual,1,1,0,0,0,0
-refining,gtl,Distillate_FuelOil,1,1,0,0,0,0
-refining,gtl,Residual_FuelOil,1,1,0,0,0,0
-refining,gtl,Gasoline,1,1,0,0,0,0
-refining,gtl,Jet_Kerosene,1,1,0,0,0,0
-refining,gtl,LPG,1,1,0,0,0,0
-refining,gtl,Other,1,1,0,0,0,0
-refining,gtl,Heavy_Residual,1,1,0,0,0,0
+refining,ctl,Distillate_FuelOil,1,1,1,1,1,1
+refining,ctl,Residual_FuelOil,1,1,1,1,1,1
+refining,ctl,Gasoline,1,1,1,1,1,1
+refining,ctl,Jet_Kerosene,1,1,1,1,1,1
+refining,ctl,LPG,1,1,1,1,1,1
+refining,ctl,Other,1,1,1,1,1,1
+refining,ctl,Heavy_Residual,1,1,1,1,1,1
+refining,gtl,Distillate_FuelOil,1,1,1,1,1,1
+refining,gtl,Residual_FuelOil,1,1,1,1,1,1
+refining,gtl,Gasoline,1,1,1,1,1,1
+refining,gtl,Jet_Kerosene,1,1,1,1,1,1
+refining,gtl,LPG,1,1,1,1,1,1
+refining,gtl,Other,1,1,1,1,1,1
+refining,gtl,Heavy_Residual,1,1,1,1,1,1
 Distillate_FuelOil,Distillate_FuelOil,biomassOil,1,1,1,1,1,1
 Distillate_FuelOil,Distillate_FuelOil,crude oil,1,1,1,1,1,1
-Distillate_FuelOil,Distillate_FuelOil,coal,1,1,0,0,0,0
-Distillate_FuelOil,Distillate_FuelOil,natural gas,1,1,0,0,0,0
+Distillate_FuelOil,Distillate_FuelOil,coal,1,1,1,1,1,1
+Distillate_FuelOil,Distillate_FuelOil,natural gas,1,1,1,1,1,1
 Residual_FuelOil,Residual_FuelOil,biomass,1,1,1,1,1,1
 Residual_FuelOil,Residual_FuelOil,crude oil,1,1,1,1,1,1
-Residual_FuelOil,Residual_FuelOil,coal,1,1,0,0,0,0
-Residual_FuelOil,Residual_FuelOil,natural gas,1,1,0,0,0,0
+Residual_FuelOil,Residual_FuelOil,coal,1,1,1,1,1,1
+Residual_FuelOil,Residual_FuelOil,natural gas,1,1,1,1,1,1
 Gasoline,Gasoline,corn,1,1,1,1,1,1
 Gasoline,Gasoline,sugar,1,1,1,1,1,1
 Gasoline,Gasoline,biomass,1,1,1,1,1,1
 Gasoline,Gasoline,crude oil,1,1,1,1,1,1
-Gasoline,Gasoline,coal,1,1,0,0,0,0
-Gasoline,Gasoline,natural gas,1,1,0,0,0,0
+Gasoline,Gasoline,coal,1,1,1,1,1,1
+Gasoline,Gasoline,natural gas,1,1,1,1,1,1
 LPG,LPG,biomass,1,1,1,1,1,1
 LPG,LPG,crude oil,1,1,1,1,1,1
-LPG,LPG,coal,1,1,0,0,0,0
-LPG,LPG,natural gas,1,1,0,0,0,0
+LPG,LPG,coal,1,1,1,1,1,1
+LPG,LPG,natural gas,1,1,1,1,1,1
 Heavy_Residual,Heavy_Residual,biomass,1,1,1,1,1,1
 Heavy_Residual,Heavy_Residual,crude oil,1,1,1,1,1,1
-Heavy_Residual,Heavy_Residual,coal,1,1,0,0,0,0
-Heavy_Residual,Heavy_Residual,natural gas,1,1,0,0,0,0
+Heavy_Residual,Heavy_Residual,coal,1,1,1,1,1,1
+Heavy_Residual,Heavy_Residual,natural gas,1,1,1,1,1,1
 Jet_Kerosene,Jet_Kerosene,biomass,1,1,1,1,1,1
 Jet_Kerosene,Jet_Kerosene,crude oil,1,1,1,1,1,1
-Jet_Kerosene,Jet_Kerosene,coal,1,1,0,0,0,0
-Jet_Kerosene,Jet_Kerosene,natural gas,1,1,0,0,0,0
+Jet_Kerosene,Jet_Kerosene,coal,1,1,1,1,1,1
+Jet_Kerosene,Jet_Kerosene,natural gas,1,1,1,1,1,1
 Other,Other,biomass,1,1,1,1,1,1
 Other,Other,crude oil,1,1,1,1,1,1
-Other,Other,coal,1,1,0,0,0,0
-Other,Other,natural gas,1,1,0,0,0,0
+Other,Other,coal,1,1,1,1,1,1
+Other,Other,natural gas,1,1,1,1,1,1

@@ -5,15 +5,15 @@
 # Column types: ccccccc 
 # ----------
 supplysector,subsector,technology,apply.to,from.year,to.year,interpolation.function
-refining,biorefining,biodiesel,share-weight,final-calibration-year,2025,linear
-refining,biorefining,Residual_FuelOil,share-weight,final-calibration-year,2025,linear
-refining,biorefining,corn ethanol,share-weight,final-calibration-year,2025,linear
-refining,biorefining,sugar cane ethanol,share-weight,final-calibration-year,2025,linear
-refining,biorefining,cellulosic ethanol,share-weight,final-calibration-year,2025,linear
-refining,biorefining,Jet_Kerosene,share-weight,final-calibration-year,2025,linear
-refining,biorefining,LPG,share-weight,final-calibration-year,2025,linear
-refining,biorefining,Other,share-weight,final-calibration-year,2025,linear
-refining,biorefining,Heavy_Residual,share-weight,final-calibration-year,2025,linear
+refining,biorefining,biodiesel,share-weight,final-calibration-year,2050,linear
+refining,biorefining,Residual_FuelOil,share-weight,final-calibration-year,2050,linear
+refining,biorefining,corn ethanol,share-weight,final-calibration-year,2050,linear
+refining,biorefining,sugar cane ethanol,share-weight,final-calibration-year,2050,linear
+refining,biorefining,cellulosic ethanol,share-weight,final-calibration-year,2050,linear
+refining,biorefining,Jet_Kerosene,share-weight,final-calibration-year,2050,linear
+refining,biorefining,LPG,share-weight,final-calibration-year,2050,linear
+refining,biorefining,Other,share-weight,final-calibration-year,2050,linear
+refining,biorefining,Heavy_Residual,share-weight,final-calibration-year,2050,linear
 refining,ctl,Distillate_FuelOil,share-weight,final-calibration-year,2025,fixed
 refining,ctl,Residual_FuelOil,share-weight,final-calibration-year,2025,fixed
 refining,ctl,Gasoline,share-weight,final-calibration-year,2025,fixed
@@ -62,6 +62,6 @@ Other,Other,biomass,share-weight,final-calibration-year,2050,s-curve
 Other,Other,crude oil,share-weight,final-calibration-year,2050,s-curve
 Other,Other,coal,share-weight,final-calibration-year,2100,fixed
 Other,Other,natural gas,share-weight,final-calibration-year,2100,fixed
-Gasoline,Gasoline,corn,share-weight,final-calibration-year,2100,fixed
-Gasoline,Gasoline,sugar,share-weight,final-calibration-year,2100,fixed
+Gasoline,Gasoline,corn,share-weight,final-calibration-year,2050,s-curve
+Gasoline,Gasoline,sugar,share-weight,final-calibration-year,2050,s-curve
 Gasoline,Gasoline,biomass,share-weight,final-calibration-year,2050,s-curve

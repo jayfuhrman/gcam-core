@@ -2,36 +2,36 @@
 # Title: Refining technology variable operations and maintenance costs
 # Units: $/bbl (GTL values in 2011 USD)
 # Source: Non-margin crude refining costs estimated from The Palgrave Handbook of International Energy Economics Ch 8.; GTL values from 2013 NETL FT NGL Report
-# Column types: cccccnnnnnnnn
+# Column types: ccccnnnnnnnnn
 # ----------
-supplysector,subsector,technology,product,minicam.non.energy.input,1971,1990,2005,2010,2015,2020,2050,2100
-refining,biorefining,biodiesel,Distillate_FuelOil,OM-var,,,,,,,,
-refining,biorefining,Residual_FuelOil,Residual_FuelOil,OM-var,,,,,,,,
-refining,biorefining,corn ethanol,Gasoline,OM-var,,,,,,,,
-refining,biorefining,sugar cane ethanol,Gasoline,OM-var,,,,,,,,
-refining,biorefining,cellulosic ethanol,Gasoline,OM-var,,,,,,,,
-refining,biorefining,Heavy_Residual,Heavy_Residual,OM-var,,,,,,,,
-refining,biorefining,Jet_Kerosene,Jet_Kerosene,OM-var,,,,,,,,
-refining,biorefining,LPG,LPG,OM-var,,,,,,,,
-refining,biorefining,Other,Other,OM-var,,,,,,,,
-refining,ctl,Distillate_FuelOil,Distillate_FuelOil,OM-var,,,,,,,,
-refining,ctl,Residual_FuelOil,Residual_FuelOil,OM-var,,,,,,,,
-refining,ctl,Gasoline,Gasoline,OM-var,,,,,,,,
-refining,ctl,Heavy_Residual,Heavy_Residual,OM-var,,,,,,,,
-refining,ctl,Jet_Kerosene,Jet_Kerosene,OM-var,,,,,,,,
-refining,ctl,LPG,LPG,OM-var,,,,,,,,
-refining,ctl,Other,Other,OM-var,,,,,,,,
-refining,gtl,Distillate_FuelOil,Distillate_FuelOil,OM-var,,,,,,,,
-refining,gtl,Residual_FuelOil,Residual_FuelOil,OM-var,,,,,,,,
-refining,gtl,Gasoline,Gasoline,OM-var,,,,,,,,
-refining,gtl,Heavy_Residual,Heavy_Residual,OM-var,,,,,,,,
-refining,gtl,Jet_Kerosene,Jet_Kerosene,OM-var,,,,,,,,
-refining,gtl,LPG,LPG,OM-var,,,,,,,,
-refining,gtl,Other,Other,OM-var,,,,,,,,
-refining,crude oil refining,high Distillate_FuelOil,Distillate_FuelOil,OM-var,,,,,1,1,1,1
-refining,crude oil refining,high Residual_FuelOil,Residual_FuelOil,OM-var,,,,,1,1,1,1
-refining,crude oil refining,high Gasoline,Gasoline,OM-var,,,,,1,1,1,1
-refining,crude oil refining,high LPG,Heavy_Residual,OM-var,,,,,1,1,1,1
-refining,crude oil refining,high Jet_Kerosene,Jet_Kerosene,OM-var,,,,,1,1,1,1
-refining,crude oil refining,high Heavy_Residual,LPG,OM-var,,,,,1,1,1,1
-refining,crude oil refining,high Other,Other,OM-var,,,,,1,1,1,1
+supplysector,subsector,technology,minicam.non.energy.input,1971,1990,2005,2010,2015,2021,2025,2050,2100
+refining,biorefining,biodiesel,OM-var,,,,,,,,,
+refining,biorefining,Residual_FuelOil,OM-var,,,,,,,,,
+refining,biorefining,corn ethanol,OM-var,,,,,,,,,
+refining,biorefining,sugar cane ethanol,OM-var,,,,,,,,,
+refining,biorefining,cellulosic ethanol,OM-var,,,,,,,,,
+refining,biorefining,Heavy_Residual,OM-var,,,,,,,,,
+refining,biorefining,Jet_Kerosene,OM-var,,,,,,,,,
+refining,biorefining,LPG,OM-var,,,,,,,,,
+refining,biorefining,Other,OM-var,,,,,,,,,
+refining,ctl,Distillate_FuelOil,OM-var,,,,,,,,,
+refining,ctl,Residual_FuelOil,OM-var,,,,,,,,,
+refining,ctl,Gasoline,OM-var,,,,,,,,,
+refining,ctl,Heavy_Residual,OM-var,,,,,,,,,
+refining,ctl,Jet_Kerosene,OM-var,,,,,,,,,
+refining,ctl,LPG,OM-var,,,,,,,,,
+refining,ctl,Other,OM-var,,,,,,,,,
+refining,gtl,Distillate_FuelOil,OM-var,,,,,,,,,
+refining,gtl,Residual_FuelOil,OM-var,,,,,,,,,
+refining,gtl,Gasoline,OM-var,,,,,,,,,
+refining,gtl,Heavy_Residual,OM-var,,,,,,,,,
+refining,gtl,Jet_Kerosene,OM-var,,,,,,,,,
+refining,gtl,LPG,OM-var,,,,,,,,,
+refining,gtl,Other,OM-var,,,,,,,,,
+refining,crude oil refining,high Distillate_FuelOil,OM-var,,,,,1,1,1,1,1
+refining,crude oil refining,high Residual_FuelOil,OM-var,,,,,1,1,1,1,1
+refining,crude oil refining,high Gasoline,OM-var,,,,,1,1,1,1,1
+refining,crude oil refining,high LPG,OM-var,,,,,1,1,1,1,1
+refining,crude oil refining,high Jet_Kerosene,OM-var,,,,,1,1,1,1,1
+refining,crude oil refining,high Heavy_Residual,OM-var,,,,,1,1,1,1,1
+refining,crude oil refining,high Other,OM-var,,,,,1,1,1,1,1

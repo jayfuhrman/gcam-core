@@ -15,7 +15,7 @@ elect_td_trn,elect_td_trn,share-weight,final-calibration-year,end-year,,linear
 gas pipeline,gas pipeline,share-weight,final-calibration-year,end-year,,linear
 wholesale gas,wholesale gas,share-weight,final-calibration-year,end-year,,linear
 delivered gas,delivered gas,share-weight,final-calibration-year,end-year,,linear
-refined liquids enduse,refined liquids enduse,share-weight,final-calibration-year,end-year,,linear
-refined liquids industrial,refined liquids industrial,share-weight,final-calibration-year,end-year,,linear
+refined liquids enduse,refined liquids enduse,share-weight,final-calibration-year,end-year,,fixed
+refined liquids industrial,refined liquids industrial,share-weight,final-calibration-year,end-year,,fixed
 backup_electricity,hydrogen,share-weight,final-calibration-year,initial-future-year,,linear
 backup_electricity,hydrogen,share-weight,initial-future-year,2030,,linear

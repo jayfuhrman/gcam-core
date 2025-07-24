@@ -1,0 +1,1403 @@
+# File: A221.stubtech_margin.csv
+# Title: Regional cost adjustments for refining subsectors in history
+# Units: 1975$/GJ
+# Description: Cost adjustments by refining subsector in history for each GCAM region. Global costs are based on USA 
+# NEMS assumptions and will not be reflective of every region. These adjustments allow each region's refining sector to
+# have a profit rate of 1 in history based on price estimates from A221.rsrc_info.csv.
+# Source: NEMS costs, SEDS prices, and GCAM version 8 baseline commodity prices.
+# Column types: ciccn
+# ----------
+region,year,subsector,technology,cost.adj
+EU-15,1990,biorefining,biodiesel,7.68487
+South America_Southern,1990,biorefining,corn ethanol,8.488801
+Brazil,1990,biorefining,sugar cane ethanol,14.03847
+Central America and Caribbean,1990,biorefining,sugar cane ethanol,9.02921
+China,2005,biorefining,biodiesel,-2.049487
+EU-12,2005,biorefining,biodiesel,0.913941
+EU-15,2005,biorefining,biodiesel,-0.617825
+European Free Trade Association,2005,biorefining,biodiesel,-0.051876
+South Korea,2005,biorefining,biodiesel,-4.390065
+USA,2005,biorefining,biodiesel,0.992624
+Australia_NZ,2005,biorefining,corn ethanol,-0.972628
+Canada,2005,biorefining,corn ethanol,1.060701
+China,2005,biorefining,corn ethanol,-2.049487
+EU-12,2005,biorefining,corn ethanol,0.913941
+EU-15,2005,biorefining,corn ethanol,-0.617825
+European Free Trade Association,2005,biorefining,corn ethanol,-0.051876
+India,2005,biorefining,corn ethanol,2.755171
+South America_Southern,2005,biorefining,corn ethanol,0.085158
+USA,2005,biorefining,corn ethanol,0.992624
+Brazil,2005,biorefining,sugar cane ethanol,2.68833
+Central America and Caribbean,2005,biorefining,sugar cane ethanol,-2.30518
+Colombia,2005,biorefining,sugar cane ethanol,-8.5921
+EU-12,2005,biorefining,sugar cane ethanol,0.913941
+EU-15,2005,biorefining,sugar cane ethanol,-0.617825
+Southeast Asia,2005,biorefining,sugar cane ethanol,-0.00054
+Argentina,2010,biorefining,biodiesel,-2.403101
+Australia_NZ,2010,biorefining,biodiesel,0.463578
+Brazil,2010,biorefining,biodiesel,2.834119
+Canada,2010,biorefining,biodiesel,1.459722
+Central America and Caribbean,2010,biorefining,biodiesel,-1.170566
+China,2010,biorefining,biodiesel,-1.570043
+Colombia,2010,biorefining,biodiesel,-1.576257
+EU-12,2010,biorefining,biodiesel,1.171827
+EU-15,2010,biorefining,biodiesel,-0.528731
+Europe_Non_EU,2010,biorefining,biodiesel,0.707603
+European Free Trade Association,2010,biorefining,biodiesel,1.526723
+India,2010,biorefining,biodiesel,3.189166
+Indonesia,2010,biorefining,biodiesel,4.171952
+Japan,2010,biorefining,biodiesel,1.033776
+South America_Southern,2010,biorefining,biodiesel,1.033457
+South Korea,2010,biorefining,biodiesel,-4.632677
+Southeast Asia,2010,biorefining,biodiesel,1.45085
+USA,2010,biorefining,biodiesel,1.406763
+Africa_Eastern,2010,biorefining,corn ethanol,-0.697439
+Argentina,2010,biorefining,corn ethanol,-2.403101
+Australia_NZ,2010,biorefining,corn ethanol,0.463578
+Canada,2010,biorefining,corn ethanol,1.459722
+China,2010,biorefining,corn ethanol,-1.570043
+EU-12,2010,biorefining,corn ethanol,1.171827
+EU-15,2010,biorefining,corn ethanol,-0.528731
+European Free Trade Association,2010,biorefining,corn ethanol,1.526723
+India,2010,biorefining,corn ethanol,3.189166
+Japan,2010,biorefining,corn ethanol,1.033776
+South America_Southern,2010,biorefining,corn ethanol,1.033457
+USA,2010,biorefining,corn ethanol,1.406763
+Brazil,2010,biorefining,sugar cane ethanol,2.834119
+Central America and Caribbean,2010,biorefining,sugar cane ethanol,-1.170566
+Colombia,2010,biorefining,sugar cane ethanol,-1.576257
+EU-12,2010,biorefining,sugar cane ethanol,1.171827
+EU-15,2010,biorefining,sugar cane ethanol,-0.528731
+Southeast Asia,2010,biorefining,sugar cane ethanol,1.45085
+Taiwan,2010,biorefining,sugar cane ethanol,-4.8956
+Argentina,2015,biorefining,biodiesel,-3.154412
+Australia_NZ,2015,biorefining,biodiesel,-0.358259
+Brazil,2015,biorefining,biodiesel,1.014469
+Canada,2015,biorefining,biodiesel,0.164101
+China,2015,biorefining,biodiesel,-2.267185
+Colombia,2015,biorefining,biodiesel,-2.331902
+EU-12,2015,biorefining,biodiesel,0.243933
+EU-15,2015,biorefining,biodiesel,-1.405907
+Europe_Non_EU,2015,biorefining,biodiesel,0.067393
+European Free Trade Association,2015,biorefining,biodiesel,0.718275
+India,2015,biorefining,biodiesel,1.695297
+Indonesia,2015,biorefining,biodiesel,3.400396
+Japan,2015,biorefining,biodiesel,-0.3452
+South America_Southern,2015,biorefining,biodiesel,0.176008
+South Korea,2015,biorefining,biodiesel,-3.95764
+Southeast Asia,2015,biorefining,biodiesel,0.256274
+USA,2015,biorefining,biodiesel,-0.338983
+Africa_Eastern,2015,biorefining,corn ethanol,-2.558023
+Africa_Northern,2015,biorefining,corn ethanol,-0.480504
+Africa_Southern,2015,biorefining,corn ethanol,-0.250149
+Africa_Western,2015,biorefining,corn ethanol,-0.835655
+Argentina,2015,biorefining,corn ethanol,-3.154412
+Australia_NZ,2015,biorefining,corn ethanol,-0.358259
+Canada,2015,biorefining,corn ethanol,0.164101
+China,2015,biorefining,corn ethanol,-2.267185
+EU-12,2015,biorefining,corn ethanol,0.243933
+EU-15,2015,biorefining,corn ethanol,-1.405907
+Europe_Non_EU,2015,biorefining,corn ethanol,0.067393
+European Free Trade Association,2015,biorefining,corn ethanol,0.718275
+India,2015,biorefining,corn ethanol,1.695297
+Japan,2015,biorefining,corn ethanol,-0.3452
+South America_Southern,2015,biorefining,corn ethanol,0.176008
+USA,2015,biorefining,corn ethanol,-0.338983
+Ukraine,2015,biorefining,corn ethanol,-0.386713
+Brazil,2015,biorefining,sugar cane ethanol,1.014469
+Central America and Caribbean,2015,biorefining,sugar cane ethanol,-3.16522
+Colombia,2015,biorefining,sugar cane ethanol,-2.331902
+EU-12,2015,biorefining,sugar cane ethanol,0.243933
+EU-15,2015,biorefining,sugar cane ethanol,-1.405907
+Europe_Non_EU,2015,biorefining,sugar cane ethanol,0.067393
+Southeast Asia,2015,biorefining,sugar cane ethanol,0.256274
+Taiwan,2015,biorefining,sugar cane ethanol,-5.7798
+Argentina,2021,biorefining,biodiesel,-3.041741
+Australia_NZ,2021,biorefining,biodiesel,-1.3458
+Brazil,2021,biorefining,biodiesel,-0.349824
+Canada,2021,biorefining,biodiesel,-0.179478
+China,2021,biorefining,biodiesel,-2.255171
+Colombia,2021,biorefining,biodiesel,-2.667173
+EU-12,2021,biorefining,biodiesel,-0.684419
+EU-15,2021,biorefining,biodiesel,-2.36611
+Europe_Non_EU,2021,biorefining,biodiesel,-0.93877
+European Free Trade Association,2021,biorefining,biodiesel,-0.482745
+India,2021,biorefining,biodiesel,1.136534
+Indonesia,2021,biorefining,biodiesel,2.116009
+Japan,2021,biorefining,biodiesel,-0.517919
+South America_Southern,2021,biorefining,biodiesel,-0.831993
+South Korea,2021,biorefining,biodiesel,-4.942642
+Southeast Asia,2021,biorefining,biodiesel,-0.613862
+USA,2021,biorefining,biodiesel,-0.715754
+Africa_Eastern,2021,biorefining,corn ethanol,-1.950752
+Africa_Northern,2021,biorefining,corn ethanol,-0.582238
+Africa_Southern,2021,biorefining,corn ethanol,-0.210542
+Africa_Western,2021,biorefining,corn ethanol,-0.777775
+Argentina,2021,biorefining,corn ethanol,-3.041741
+Australia_NZ,2021,biorefining,corn ethanol,-1.3458
+Canada,2021,biorefining,corn ethanol,-0.179478
+Central Asia,2021,biorefining,corn ethanol,0.488244
+China,2021,biorefining,corn ethanol,-2.255171
+EU-12,2021,biorefining,corn ethanol,-0.684419
+EU-15,2021,biorefining,corn ethanol,-2.36611
+Europe_Non_EU,2021,biorefining,corn ethanol,-0.93877
+European Free Trade Association,2021,biorefining,corn ethanol,-0.482745
+India,2021,biorefining,corn ethanol,1.136534
+Japan,2021,biorefining,corn ethanol,-0.517919
+South America_Southern,2021,biorefining,corn ethanol,-0.831993
+USA,2021,biorefining,corn ethanol,-0.715754
+Ukraine,2021,biorefining,corn ethanol,-0.376531
+Brazil,2021,biorefining,sugar cane ethanol,-0.349824
+Central America and Caribbean,2021,biorefining,sugar cane ethanol,-3.49062
+Colombia,2021,biorefining,sugar cane ethanol,-2.667173
+EU-12,2021,biorefining,sugar cane ethanol,-0.684419
+EU-15,2021,biorefining,sugar cane ethanol,-2.36611
+Europe_Non_EU,2021,biorefining,sugar cane ethanol,-0.93877
+Southeast Asia,2021,biorefining,sugar cane ethanol,-0.613862
+Africa_Eastern,1990,crude oil refining,Distillate_FuelOil,-1.334435
+Africa_Northern,1990,crude oil refining,Distillate_FuelOil,0.722794
+Africa_Southern,1990,crude oil refining,Distillate_FuelOil,-0.859559
+Africa_Western,1990,crude oil refining,Distillate_FuelOil,-0.161058
+Argentina,1990,crude oil refining,Distillate_FuelOil,0.379196
+Australia_NZ,1990,crude oil refining,Distillate_FuelOil,0.198714
+Brazil,1990,crude oil refining,Distillate_FuelOil,0.002618
+Canada,1990,crude oil refining,Distillate_FuelOil,0.246979
+Central America and Caribbean,1990,crude oil refining,Distillate_FuelOil,-1.343213
+Central Asia,1990,crude oil refining,Distillate_FuelOil,-0.590602
+China,1990,crude oil refining,Distillate_FuelOil,-0.267166
+Colombia,1990,crude oil refining,Distillate_FuelOil,-0.071711
+EU-12,1990,crude oil refining,Distillate_FuelOil,-0.393195
+EU-15,1990,crude oil refining,Distillate_FuelOil,-0.201283
+Europe_Non_EU,1990,crude oil refining,Distillate_FuelOil,-0.221564
+European Free Trade Association,1990,crude oil refining,Distillate_FuelOil,-0.320442
+India,1990,crude oil refining,Distillate_FuelOil,-0.290984
+Indonesia,1990,crude oil refining,Distillate_FuelOil,0.223713
+Japan,1990,crude oil refining,Distillate_FuelOil,-0.805467
+Mexico,1990,crude oil refining,Distillate_FuelOil,-0.258194
+Middle East,1990,crude oil refining,Distillate_FuelOil,0.804896
+Pakistan,1990,crude oil refining,Distillate_FuelOil,-1.276642
+Russia,1990,crude oil refining,Distillate_FuelOil,-0.150091
+South Africa,1990,crude oil refining,Distillate_FuelOil,-0.710146
+South America_Northern,1990,crude oil refining,Distillate_FuelOil,2.741069
+South America_Southern,1990,crude oil refining,Distillate_FuelOil,-0.021411
+South Asia,1990,crude oil refining,Distillate_FuelOil,-1.375387
+South Korea,1990,crude oil refining,Distillate_FuelOil,-0.644041
+Southeast Asia,1990,crude oil refining,Distillate_FuelOil,-0.291485
+Taiwan,1990,crude oil refining,Distillate_FuelOil,-0.928537
+USA,1990,crude oil refining,Distillate_FuelOil,-0.058438
+Ukraine,1990,crude oil refining,Distillate_FuelOil,-0.418347
+Africa_Eastern,1990,crude oil refining,Gasoline,-1.334435
+Africa_Northern,1990,crude oil refining,Gasoline,0.722794
+Africa_Southern,1990,crude oil refining,Gasoline,-0.859559
+Africa_Western,1990,crude oil refining,Gasoline,-0.161058
+Argentina,1990,crude oil refining,Gasoline,0.379196
+Australia_NZ,1990,crude oil refining,Gasoline,0.198714
+Brazil,1990,crude oil refining,Gasoline,0.002618
+Canada,1990,crude oil refining,Gasoline,0.246979
+Central America and Caribbean,1990,crude oil refining,Gasoline,-1.343213
+Central Asia,1990,crude oil refining,Gasoline,-0.590602
+China,1990,crude oil refining,Gasoline,-0.267166
+Colombia,1990,crude oil refining,Gasoline,-0.071711
+EU-12,1990,crude oil refining,Gasoline,-0.393195
+EU-15,1990,crude oil refining,Gasoline,-0.201283
+Europe_Non_EU,1990,crude oil refining,Gasoline,-0.221564
+European Free Trade Association,1990,crude oil refining,Gasoline,-0.320442
+India,1990,crude oil refining,Gasoline,-0.290984
+Indonesia,1990,crude oil refining,Gasoline,0.223713
+Japan,1990,crude oil refining,Gasoline,-0.805467
+Mexico,1990,crude oil refining,Gasoline,-0.258194
+Middle East,1990,crude oil refining,Gasoline,0.804896
+Pakistan,1990,crude oil refining,Gasoline,-1.276642
+Russia,1990,crude oil refining,Gasoline,-0.150091
+South Africa,1990,crude oil refining,Gasoline,-0.710146
+South America_Northern,1990,crude oil refining,Gasoline,2.741069
+South America_Southern,1990,crude oil refining,Gasoline,-0.021411
+South Asia,1990,crude oil refining,Gasoline,-1.375387
+South Korea,1990,crude oil refining,Gasoline,-0.644041
+Southeast Asia,1990,crude oil refining,Gasoline,-0.291485
+Taiwan,1990,crude oil refining,Gasoline,-0.928537
+USA,1990,crude oil refining,Gasoline,-0.058438
+Ukraine,1990,crude oil refining,Gasoline,-0.418347
+Africa_Eastern,1990,crude oil refining,Heavy_Residual,-1.334435
+Africa_Northern,1990,crude oil refining,Heavy_Residual,0.722794
+Africa_Southern,1990,crude oil refining,Heavy_Residual,-0.859559
+Africa_Western,1990,crude oil refining,Heavy_Residual,-0.161058
+Argentina,1990,crude oil refining,Heavy_Residual,0.379196
+Australia_NZ,1990,crude oil refining,Heavy_Residual,0.198714
+Brazil,1990,crude oil refining,Heavy_Residual,0.002618
+Canada,1990,crude oil refining,Heavy_Residual,0.246979
+Central America and Caribbean,1990,crude oil refining,Heavy_Residual,-1.343213
+Central Asia,1990,crude oil refining,Heavy_Residual,-0.590602
+China,1990,crude oil refining,Heavy_Residual,-0.267166
+EU-12,1990,crude oil refining,Heavy_Residual,-0.393195
+EU-15,1990,crude oil refining,Heavy_Residual,-0.201283
+Europe_Non_EU,1990,crude oil refining,Heavy_Residual,-0.221564
+European Free Trade Association,1990,crude oil refining,Heavy_Residual,-0.320442
+India,1990,crude oil refining,Heavy_Residual,-0.290984
+Indonesia,1990,crude oil refining,Heavy_Residual,0.223713
+Japan,1990,crude oil refining,Heavy_Residual,-0.805467
+Mexico,1990,crude oil refining,Heavy_Residual,-0.258194
+Middle East,1990,crude oil refining,Heavy_Residual,0.804896
+Pakistan,1990,crude oil refining,Heavy_Residual,-1.276642
+Russia,1990,crude oil refining,Heavy_Residual,-0.150091
+South Africa,1990,crude oil refining,Heavy_Residual,-0.710146
+South America_Northern,1990,crude oil refining,Heavy_Residual,2.741069
+South America_Southern,1990,crude oil refining,Heavy_Residual,-0.021411
+South Asia,1990,crude oil refining,Heavy_Residual,-1.375387
+South Korea,1990,crude oil refining,Heavy_Residual,-0.644041
+Southeast Asia,1990,crude oil refining,Heavy_Residual,-0.291485
+Taiwan,1990,crude oil refining,Heavy_Residual,-0.928537
+USA,1990,crude oil refining,Heavy_Residual,-0.058438
+Ukraine,1990,crude oil refining,Heavy_Residual,-0.418347
+Africa_Eastern,1990,crude oil refining,Jet_Kerosene,-1.334435
+Africa_Northern,1990,crude oil refining,Jet_Kerosene,0.722794
+Africa_Southern,1990,crude oil refining,Jet_Kerosene,-0.859559
+Africa_Western,1990,crude oil refining,Jet_Kerosene,-0.161058
+Argentina,1990,crude oil refining,Jet_Kerosene,0.379196
+Australia_NZ,1990,crude oil refining,Jet_Kerosene,0.198714
+Brazil,1990,crude oil refining,Jet_Kerosene,0.002618
+Canada,1990,crude oil refining,Jet_Kerosene,0.246979
+Central America and Caribbean,1990,crude oil refining,Jet_Kerosene,-1.343213
+Central Asia,1990,crude oil refining,Jet_Kerosene,-0.590602
+China,1990,crude oil refining,Jet_Kerosene,-0.267166
+Colombia,1990,crude oil refining,Jet_Kerosene,-0.071711
+EU-12,1990,crude oil refining,Jet_Kerosene,-0.393195
+EU-15,1990,crude oil refining,Jet_Kerosene,-0.201283
+Europe_Non_EU,1990,crude oil refining,Jet_Kerosene,-0.221564
+European Free Trade Association,1990,crude oil refining,Jet_Kerosene,-0.320442
+India,1990,crude oil refining,Jet_Kerosene,-0.290984
+Indonesia,1990,crude oil refining,Jet_Kerosene,0.223713
+Japan,1990,crude oil refining,Jet_Kerosene,-0.805467
+Mexico,1990,crude oil refining,Jet_Kerosene,-0.258194
+Middle East,1990,crude oil refining,Jet_Kerosene,0.804896
+Pakistan,1990,crude oil refining,Jet_Kerosene,-1.276642
+Russia,1990,crude oil refining,Jet_Kerosene,-0.150091
+South Africa,1990,crude oil refining,Jet_Kerosene,-0.710146
+South America_Northern,1990,crude oil refining,Jet_Kerosene,2.741069
+South America_Southern,1990,crude oil refining,Jet_Kerosene,-0.021411
+South Asia,1990,crude oil refining,Jet_Kerosene,-1.375387
+South Korea,1990,crude oil refining,Jet_Kerosene,-0.644041
+Southeast Asia,1990,crude oil refining,Jet_Kerosene,-0.291485
+Taiwan,1990,crude oil refining,Jet_Kerosene,-0.928537
+USA,1990,crude oil refining,Jet_Kerosene,-0.058438
+Ukraine,1990,crude oil refining,Jet_Kerosene,-0.418347
+Africa_Eastern,1990,crude oil refining,LPG,-1.334435
+Africa_Northern,1990,crude oil refining,LPG,0.722794
+Africa_Southern,1990,crude oil refining,LPG,-0.859559
+Africa_Western,1990,crude oil refining,LPG,-0.161058
+Argentina,1990,crude oil refining,LPG,0.379196
+Australia_NZ,1990,crude oil refining,LPG,0.198714
+Brazil,1990,crude oil refining,LPG,0.002618
+Canada,1990,crude oil refining,LPG,0.246979
+Central America and Caribbean,1990,crude oil refining,LPG,-1.343213
+Central Asia,1990,crude oil refining,LPG,-0.590602
+China,1990,crude oil refining,LPG,-0.267166
+Colombia,1990,crude oil refining,LPG,-0.071711
+EU-12,1990,crude oil refining,LPG,-0.393195
+EU-15,1990,crude oil refining,LPG,-0.201283
+Europe_Non_EU,1990,crude oil refining,LPG,-0.221564
+European Free Trade Association,1990,crude oil refining,LPG,-0.320442
+India,1990,crude oil refining,LPG,-0.290984
+Indonesia,1990,crude oil refining,LPG,0.223713
+Japan,1990,crude oil refining,LPG,-0.805467
+Mexico,1990,crude oil refining,LPG,-0.258194
+Middle East,1990,crude oil refining,LPG,0.804896
+Pakistan,1990,crude oil refining,LPG,-1.276642
+Russia,1990,crude oil refining,LPG,-0.150091
+South Africa,1990,crude oil refining,LPG,-0.710146
+South America_Northern,1990,crude oil refining,LPG,2.741069
+South America_Southern,1990,crude oil refining,LPG,-0.021411
+South Asia,1990,crude oil refining,LPG,-1.375387
+South Korea,1990,crude oil refining,LPG,-0.644041
+Southeast Asia,1990,crude oil refining,LPG,-0.291485
+Taiwan,1990,crude oil refining,LPG,-0.928537
+USA,1990,crude oil refining,LPG,-0.058438
+Ukraine,1990,crude oil refining,LPG,-0.418347
+Africa_Eastern,1990,crude oil refining,Other,-1.334435
+Africa_Northern,1990,crude oil refining,Other,0.722794
+Africa_Southern,1990,crude oil refining,Other,-0.859559
+Africa_Western,1990,crude oil refining,Other,-0.161058
+Argentina,1990,crude oil refining,Other,0.379196
+Australia_NZ,1990,crude oil refining,Other,0.198714
+Brazil,1990,crude oil refining,Other,0.002618
+Canada,1990,crude oil refining,Other,0.246979
+Central America and Caribbean,1990,crude oil refining,Other,-1.343213
+Central Asia,1990,crude oil refining,Other,-0.590602
+China,1990,crude oil refining,Other,-0.267166
+Colombia,1990,crude oil refining,Other,-0.071711
+EU-12,1990,crude oil refining,Other,-0.393195
+EU-15,1990,crude oil refining,Other,-0.201283
+Europe_Non_EU,1990,crude oil refining,Other,-0.221564
+European Free Trade Association,1990,crude oil refining,Other,-0.320442
+India,1990,crude oil refining,Other,-0.290984
+Indonesia,1990,crude oil refining,Other,0.223713
+Japan,1990,crude oil refining,Other,-0.805467
+Mexico,1990,crude oil refining,Other,-0.258194
+Middle East,1990,crude oil refining,Other,0.804896
+Pakistan,1990,crude oil refining,Other,-1.276642
+Russia,1990,crude oil refining,Other,-0.150091
+South Africa,1990,crude oil refining,Other,-0.710146
+South America_Northern,1990,crude oil refining,Other,2.741069
+South America_Southern,1990,crude oil refining,Other,-0.021411
+South Asia,1990,crude oil refining,Other,-1.375387
+South Korea,1990,crude oil refining,Other,-0.644041
+Southeast Asia,1990,crude oil refining,Other,-0.291485
+Taiwan,1990,crude oil refining,Other,-0.928537
+USA,1990,crude oil refining,Other,-0.058438
+Ukraine,1990,crude oil refining,Other,-0.418347
+Africa_Eastern,1990,crude oil refining,Residual_FuelOil,-1.334435
+Africa_Northern,1990,crude oil refining,Residual_FuelOil,0.722794
+Africa_Southern,1990,crude oil refining,Residual_FuelOil,-0.859559
+Africa_Western,1990,crude oil refining,Residual_FuelOil,-0.161058
+Argentina,1990,crude oil refining,Residual_FuelOil,0.379196
+Australia_NZ,1990,crude oil refining,Residual_FuelOil,0.198714
+Brazil,1990,crude oil refining,Residual_FuelOil,0.002618
+Canada,1990,crude oil refining,Residual_FuelOil,0.246979
+Central America and Caribbean,1990,crude oil refining,Residual_FuelOil,-1.343213
+Central Asia,1990,crude oil refining,Residual_FuelOil,-0.590602
+China,1990,crude oil refining,Residual_FuelOil,-0.267166
+Colombia,1990,crude oil refining,Residual_FuelOil,-0.071711
+EU-12,1990,crude oil refining,Residual_FuelOil,-0.393195
+EU-15,1990,crude oil refining,Residual_FuelOil,-0.201283
+Europe_Non_EU,1990,crude oil refining,Residual_FuelOil,-0.221564
+European Free Trade Association,1990,crude oil refining,Residual_FuelOil,-0.320442
+India,1990,crude oil refining,Residual_FuelOil,-0.290984
+Indonesia,1990,crude oil refining,Residual_FuelOil,0.223713
+Japan,1990,crude oil refining,Residual_FuelOil,-0.805467
+Mexico,1990,crude oil refining,Residual_FuelOil,-0.258194
+Middle East,1990,crude oil refining,Residual_FuelOil,0.804896
+Pakistan,1990,crude oil refining,Residual_FuelOil,-1.276642
+Russia,1990,crude oil refining,Residual_FuelOil,-0.150091
+South Africa,1990,crude oil refining,Residual_FuelOil,-0.710146
+South America_Northern,1990,crude oil refining,Residual_FuelOil,2.741069
+South America_Southern,1990,crude oil refining,Residual_FuelOil,-0.021411
+South Asia,1990,crude oil refining,Residual_FuelOil,-1.375387
+South Korea,1990,crude oil refining,Residual_FuelOil,-0.644041
+Southeast Asia,1990,crude oil refining,Residual_FuelOil,-0.291485
+Taiwan,1990,crude oil refining,Residual_FuelOil,-0.928537
+USA,1990,crude oil refining,Residual_FuelOil,-0.058438
+Ukraine,1990,crude oil refining,Residual_FuelOil,-0.418347
+Africa_Eastern,2005,crude oil refining,Distillate_FuelOil,-2.840486
+Africa_Northern,2005,crude oil refining,Distillate_FuelOil,-0.321901
+Africa_Southern,2005,crude oil refining,Distillate_FuelOil,-3.28325
+Africa_Western,2005,crude oil refining,Distillate_FuelOil,-2.525823
+Argentina,2005,crude oil refining,Distillate_FuelOil,-0.159504
+Australia_NZ,2005,crude oil refining,Distillate_FuelOil,-1.424881
+Brazil,2005,crude oil refining,Distillate_FuelOil,-1.040256
+Canada,2005,crude oil refining,Distillate_FuelOil,-0.805249
+Central America and Caribbean,2005,crude oil refining,Distillate_FuelOil,-2.576341
+Central Asia,2005,crude oil refining,Distillate_FuelOil,-0.674875
+China,2005,crude oil refining,Distillate_FuelOil,-1.376324
+Colombia,2005,crude oil refining,Distillate_FuelOil,-0.667974
+EU-12,2005,crude oil refining,Distillate_FuelOil,-1.056203
+EU-15,2005,crude oil refining,Distillate_FuelOil,-1.316391
+Europe_Non_EU,2005,crude oil refining,Distillate_FuelOil,-1.148316
+European Free Trade Association,2005,crude oil refining,Distillate_FuelOil,-0.058186
+India,2005,crude oil refining,Distillate_FuelOil,-0.631114
+Indonesia,2005,crude oil refining,Distillate_FuelOil,-1.846829
+Japan,2005,crude oil refining,Distillate_FuelOil,-1.637966
+Mexico,2005,crude oil refining,Distillate_FuelOil,-1.965367
+Middle East,2005,crude oil refining,Distillate_FuelOil,-0.086275
+Pakistan,2005,crude oil refining,Distillate_FuelOil,-2.096488
+Russia,2005,crude oil refining,Distillate_FuelOil,-0.105575
+South Africa,2005,crude oil refining,Distillate_FuelOil,-1.382808
+South America_Northern,2005,crude oil refining,Distillate_FuelOil,0.892629
+South America_Southern,2005,crude oil refining,Distillate_FuelOil,-1.37735
+South Asia,2005,crude oil refining,Distillate_FuelOil,-3.254063
+South Korea,2005,crude oil refining,Distillate_FuelOil,-0.602063
+Southeast Asia,2005,crude oil refining,Distillate_FuelOil,-1.291103
+Taiwan,2005,crude oil refining,Distillate_FuelOil,-0.935633
+USA,2005,crude oil refining,Distillate_FuelOil,-1.448971
+Ukraine,2005,crude oil refining,Distillate_FuelOil,-0.422384
+Africa_Eastern,2005,crude oil refining,Gasoline,-2.840486
+Africa_Northern,2005,crude oil refining,Gasoline,-0.321901
+Africa_Southern,2005,crude oil refining,Gasoline,-3.28325
+Africa_Western,2005,crude oil refining,Gasoline,-2.525823
+Argentina,2005,crude oil refining,Gasoline,-0.159504
+Australia_NZ,2005,crude oil refining,Gasoline,-1.424881
+Brazil,2005,crude oil refining,Gasoline,-1.040256
+Canada,2005,crude oil refining,Gasoline,-0.805249
+Central America and Caribbean,2005,crude oil refining,Gasoline,-2.576341
+Central Asia,2005,crude oil refining,Gasoline,-0.674875
+China,2005,crude oil refining,Gasoline,-1.376324
+Colombia,2005,crude oil refining,Gasoline,-0.667974
+EU-12,2005,crude oil refining,Gasoline,-1.056203
+EU-15,2005,crude oil refining,Gasoline,-1.316391
+Europe_Non_EU,2005,crude oil refining,Gasoline,-1.148316
+European Free Trade Association,2005,crude oil refining,Gasoline,-0.058186
+India,2005,crude oil refining,Gasoline,-0.631114
+Indonesia,2005,crude oil refining,Gasoline,-1.846829
+Japan,2005,crude oil refining,Gasoline,-1.637966
+Mexico,2005,crude oil refining,Gasoline,-1.965367
+Middle East,2005,crude oil refining,Gasoline,-0.086275
+Pakistan,2005,crude oil refining,Gasoline,-2.096488
+Russia,2005,crude oil refining,Gasoline,-0.105575
+South Africa,2005,crude oil refining,Gasoline,-1.382808
+South America_Northern,2005,crude oil refining,Gasoline,0.892629
+South America_Southern,2005,crude oil refining,Gasoline,-1.37735
+South Asia,2005,crude oil refining,Gasoline,-3.254063
+South Korea,2005,crude oil refining,Gasoline,-0.602063
+Southeast Asia,2005,crude oil refining,Gasoline,-1.291103
+Taiwan,2005,crude oil refining,Gasoline,-0.935633
+USA,2005,crude oil refining,Gasoline,-1.448971
+Ukraine,2005,crude oil refining,Gasoline,-0.422384
+Africa_Eastern,2005,crude oil refining,Heavy_Residual,-2.840486
+Africa_Northern,2005,crude oil refining,Heavy_Residual,-0.321901
+Africa_Southern,2005,crude oil refining,Heavy_Residual,-3.28325
+Africa_Western,2005,crude oil refining,Heavy_Residual,-2.525823
+Argentina,2005,crude oil refining,Heavy_Residual,-0.159504
+Australia_NZ,2005,crude oil refining,Heavy_Residual,-1.424881
+Brazil,2005,crude oil refining,Heavy_Residual,-1.040256
+Canada,2005,crude oil refining,Heavy_Residual,-0.805249
+Central America and Caribbean,2005,crude oil refining,Heavy_Residual,-2.576341
+Central Asia,2005,crude oil refining,Heavy_Residual,-0.674875
+China,2005,crude oil refining,Heavy_Residual,-1.376324
+Colombia,2005,crude oil refining,Heavy_Residual,-0.667974
+EU-12,2005,crude oil refining,Heavy_Residual,-1.056203
+EU-15,2005,crude oil refining,Heavy_Residual,-1.316391
+Europe_Non_EU,2005,crude oil refining,Heavy_Residual,-1.148316
+European Free Trade Association,2005,crude oil refining,Heavy_Residual,-0.058186
+India,2005,crude oil refining,Heavy_Residual,-0.631114
+Indonesia,2005,crude oil refining,Heavy_Residual,-1.846829
+Japan,2005,crude oil refining,Heavy_Residual,-1.637966
+Mexico,2005,crude oil refining,Heavy_Residual,-1.965367
+Middle East,2005,crude oil refining,Heavy_Residual,-0.086275
+Pakistan,2005,crude oil refining,Heavy_Residual,-2.096488
+Russia,2005,crude oil refining,Heavy_Residual,-0.105575
+South Africa,2005,crude oil refining,Heavy_Residual,-1.382808
+South America_Northern,2005,crude oil refining,Heavy_Residual,0.892629
+South America_Southern,2005,crude oil refining,Heavy_Residual,-1.37735
+South Asia,2005,crude oil refining,Heavy_Residual,-3.254063
+South Korea,2005,crude oil refining,Heavy_Residual,-0.602063
+Southeast Asia,2005,crude oil refining,Heavy_Residual,-1.291103
+Taiwan,2005,crude oil refining,Heavy_Residual,-0.935633
+USA,2005,crude oil refining,Heavy_Residual,-1.448971
+Ukraine,2005,crude oil refining,Heavy_Residual,-0.422384
+Africa_Eastern,2005,crude oil refining,Jet_Kerosene,-2.840486
+Africa_Northern,2005,crude oil refining,Jet_Kerosene,-0.321901
+Africa_Southern,2005,crude oil refining,Jet_Kerosene,-3.28325
+Africa_Western,2005,crude oil refining,Jet_Kerosene,-2.525823
+Argentina,2005,crude oil refining,Jet_Kerosene,-0.159504
+Australia_NZ,2005,crude oil refining,Jet_Kerosene,-1.424881
+Brazil,2005,crude oil refining,Jet_Kerosene,-1.040256
+Canada,2005,crude oil refining,Jet_Kerosene,-0.805249
+Central America and Caribbean,2005,crude oil refining,Jet_Kerosene,-2.576341
+Central Asia,2005,crude oil refining,Jet_Kerosene,-0.674875
+China,2005,crude oil refining,Jet_Kerosene,-1.376324
+Colombia,2005,crude oil refining,Jet_Kerosene,-0.667974
+EU-12,2005,crude oil refining,Jet_Kerosene,-1.056203
+EU-15,2005,crude oil refining,Jet_Kerosene,-1.316391
+Europe_Non_EU,2005,crude oil refining,Jet_Kerosene,-1.148316
+European Free Trade Association,2005,crude oil refining,Jet_Kerosene,-0.058186
+India,2005,crude oil refining,Jet_Kerosene,-0.631114
+Indonesia,2005,crude oil refining,Jet_Kerosene,-1.846829
+Japan,2005,crude oil refining,Jet_Kerosene,-1.637966
+Mexico,2005,crude oil refining,Jet_Kerosene,-1.965367
+Middle East,2005,crude oil refining,Jet_Kerosene,-0.086275
+Pakistan,2005,crude oil refining,Jet_Kerosene,-2.096488
+Russia,2005,crude oil refining,Jet_Kerosene,-0.105575
+South Africa,2005,crude oil refining,Jet_Kerosene,-1.382808
+South America_Northern,2005,crude oil refining,Jet_Kerosene,0.892629
+South America_Southern,2005,crude oil refining,Jet_Kerosene,-1.37735
+South Asia,2005,crude oil refining,Jet_Kerosene,-3.254063
+South Korea,2005,crude oil refining,Jet_Kerosene,-0.602063
+Southeast Asia,2005,crude oil refining,Jet_Kerosene,-1.291103
+Taiwan,2005,crude oil refining,Jet_Kerosene,-0.935633
+USA,2005,crude oil refining,Jet_Kerosene,-1.448971
+Ukraine,2005,crude oil refining,Jet_Kerosene,-0.422384
+Africa_Eastern,2005,crude oil refining,LPG,-2.840486
+Africa_Northern,2005,crude oil refining,LPG,-0.321901
+Africa_Southern,2005,crude oil refining,LPG,-3.28325
+Africa_Western,2005,crude oil refining,LPG,-2.525823
+Argentina,2005,crude oil refining,LPG,-0.159504
+Australia_NZ,2005,crude oil refining,LPG,-1.424881
+Brazil,2005,crude oil refining,LPG,-1.040256
+Canada,2005,crude oil refining,LPG,-0.805249
+Central America and Caribbean,2005,crude oil refining,LPG,-2.576341
+Central Asia,2005,crude oil refining,LPG,-0.674875
+China,2005,crude oil refining,LPG,-1.376324
+Colombia,2005,crude oil refining,LPG,-0.667974
+EU-12,2005,crude oil refining,LPG,-1.056203
+EU-15,2005,crude oil refining,LPG,-1.316391
+Europe_Non_EU,2005,crude oil refining,LPG,-1.148316
+European Free Trade Association,2005,crude oil refining,LPG,-0.058186
+India,2005,crude oil refining,LPG,-0.631114
+Indonesia,2005,crude oil refining,LPG,-1.846829
+Japan,2005,crude oil refining,LPG,-1.637966
+Mexico,2005,crude oil refining,LPG,-1.965367
+Middle East,2005,crude oil refining,LPG,-0.086275
+Pakistan,2005,crude oil refining,LPG,-2.096488
+Russia,2005,crude oil refining,LPG,-0.105575
+South Africa,2005,crude oil refining,LPG,-1.382808
+South America_Northern,2005,crude oil refining,LPG,0.892629
+South America_Southern,2005,crude oil refining,LPG,-1.37735
+South Asia,2005,crude oil refining,LPG,-3.254063
+South Korea,2005,crude oil refining,LPG,-0.602063
+Southeast Asia,2005,crude oil refining,LPG,-1.291103
+Taiwan,2005,crude oil refining,LPG,-0.935633
+USA,2005,crude oil refining,LPG,-1.448971
+Ukraine,2005,crude oil refining,LPG,-0.422384
+Africa_Eastern,2005,crude oil refining,Other,-2.840486
+Africa_Northern,2005,crude oil refining,Other,-0.321901
+Africa_Southern,2005,crude oil refining,Other,-3.28325
+Africa_Western,2005,crude oil refining,Other,-2.525823
+Argentina,2005,crude oil refining,Other,-0.159504
+Australia_NZ,2005,crude oil refining,Other,-1.424881
+Brazil,2005,crude oil refining,Other,-1.040256
+Canada,2005,crude oil refining,Other,-0.805249
+Central America and Caribbean,2005,crude oil refining,Other,-2.576341
+Central Asia,2005,crude oil refining,Other,-0.674875
+China,2005,crude oil refining,Other,-1.376324
+Colombia,2005,crude oil refining,Other,-0.667974
+EU-12,2005,crude oil refining,Other,-1.056203
+EU-15,2005,crude oil refining,Other,-1.316391
+Europe_Non_EU,2005,crude oil refining,Other,-1.148316
+European Free Trade Association,2005,crude oil refining,Other,-0.058186
+India,2005,crude oil refining,Other,-0.631114
+Indonesia,2005,crude oil refining,Other,-1.846829
+Japan,2005,crude oil refining,Other,-1.637966
+Mexico,2005,crude oil refining,Other,-1.965367
+Middle East,2005,crude oil refining,Other,-0.086275
+Pakistan,2005,crude oil refining,Other,-2.096488
+Russia,2005,crude oil refining,Other,-0.105575
+South Africa,2005,crude oil refining,Other,-1.382808
+South America_Northern,2005,crude oil refining,Other,0.892629
+South America_Southern,2005,crude oil refining,Other,-1.37735
+South Asia,2005,crude oil refining,Other,-3.254063
+South Korea,2005,crude oil refining,Other,-0.602063
+Southeast Asia,2005,crude oil refining,Other,-1.291103
+Taiwan,2005,crude oil refining,Other,-0.935633
+USA,2005,crude oil refining,Other,-1.448971
+Ukraine,2005,crude oil refining,Other,-0.422384
+Africa_Eastern,2005,crude oil refining,Residual_FuelOil,-2.840486
+Africa_Northern,2005,crude oil refining,Residual_FuelOil,-0.321901
+Africa_Southern,2005,crude oil refining,Residual_FuelOil,-3.28325
+Africa_Western,2005,crude oil refining,Residual_FuelOil,-2.525823
+Argentina,2005,crude oil refining,Residual_FuelOil,-0.159504
+Australia_NZ,2005,crude oil refining,Residual_FuelOil,-1.424881
+Brazil,2005,crude oil refining,Residual_FuelOil,-1.040256
+Canada,2005,crude oil refining,Residual_FuelOil,-0.805249
+Central America and Caribbean,2005,crude oil refining,Residual_FuelOil,-2.576341
+Central Asia,2005,crude oil refining,Residual_FuelOil,-0.674875
+China,2005,crude oil refining,Residual_FuelOil,-1.376324
+Colombia,2005,crude oil refining,Residual_FuelOil,-0.667974
+EU-12,2005,crude oil refining,Residual_FuelOil,-1.056203
+EU-15,2005,crude oil refining,Residual_FuelOil,-1.316391
+Europe_Non_EU,2005,crude oil refining,Residual_FuelOil,-1.148316
+European Free Trade Association,2005,crude oil refining,Residual_FuelOil,-0.058186
+India,2005,crude oil refining,Residual_FuelOil,-0.631114
+Indonesia,2005,crude oil refining,Residual_FuelOil,-1.846829
+Japan,2005,crude oil refining,Residual_FuelOil,-1.637966
+Mexico,2005,crude oil refining,Residual_FuelOil,-1.965367
+Middle East,2005,crude oil refining,Residual_FuelOil,-0.086275
+Pakistan,2005,crude oil refining,Residual_FuelOil,-2.096488
+Russia,2005,crude oil refining,Residual_FuelOil,-0.105575
+South Africa,2005,crude oil refining,Residual_FuelOil,-1.382808
+South America_Northern,2005,crude oil refining,Residual_FuelOil,0.892629
+South America_Southern,2005,crude oil refining,Residual_FuelOil,-1.37735
+South Asia,2005,crude oil refining,Residual_FuelOil,-3.254063
+South Korea,2005,crude oil refining,Residual_FuelOil,-0.602063
+Southeast Asia,2005,crude oil refining,Residual_FuelOil,-1.291103
+Taiwan,2005,crude oil refining,Residual_FuelOil,-0.935633
+USA,2005,crude oil refining,Residual_FuelOil,-1.448971
+Ukraine,2005,crude oil refining,Residual_FuelOil,-0.422384
+Africa_Eastern,2010,crude oil refining,Distillate_FuelOil,-4.131607
+Africa_Northern,2010,crude oil refining,Distillate_FuelOil,-1.382891
+Africa_Southern,2010,crude oil refining,Distillate_FuelOil,-4.468227
+Africa_Western,2010,crude oil refining,Distillate_FuelOil,-4.305127
+Argentina,2010,crude oil refining,Distillate_FuelOil,-1.609575
+Australia_NZ,2010,crude oil refining,Distillate_FuelOil,-2.754502
+Brazil,2010,crude oil refining,Distillate_FuelOil,-2.241744
+Canada,2010,crude oil refining,Distillate_FuelOil,-1.584991
+Central America and Caribbean,2010,crude oil refining,Distillate_FuelOil,-4.174771
+Central Asia,2010,crude oil refining,Distillate_FuelOil,-1.204067
+China,2010,crude oil refining,Distillate_FuelOil,-2.163459
+Colombia,2010,crude oil refining,Distillate_FuelOil,-2.244111
+EU-12,2010,crude oil refining,Distillate_FuelOil,-1.999562
+EU-15,2010,crude oil refining,Distillate_FuelOil,-2.136827
+Europe_Non_EU,2010,crude oil refining,Distillate_FuelOil,-2.662287
+European Free Trade Association,2010,crude oil refining,Distillate_FuelOil,-0.920343
+India,2010,crude oil refining,Distillate_FuelOil,-0.650185
+Indonesia,2010,crude oil refining,Distillate_FuelOil,-2.809498
+Japan,2010,crude oil refining,Distillate_FuelOil,-2.250351
+Mexico,2010,crude oil refining,Distillate_FuelOil,-3.149156
+Middle East,2010,crude oil refining,Distillate_FuelOil,-0.663376
+Pakistan,2010,crude oil refining,Distillate_FuelOil,-3.727547
+Russia,2010,crude oil refining,Distillate_FuelOil,0.074075
+South Africa,2010,crude oil refining,Distillate_FuelOil,-3.36944
+South America_Northern,2010,crude oil refining,Distillate_FuelOil,-1.085213
+South America_Southern,2010,crude oil refining,Distillate_FuelOil,-2.812904
+South Asia,2010,crude oil refining,Distillate_FuelOil,-4.588497
+South Korea,2010,crude oil refining,Distillate_FuelOil,-1.038365
+Southeast Asia,2010,crude oil refining,Distillate_FuelOil,-2.353278
+Taiwan,2010,crude oil refining,Distillate_FuelOil,-1.952964
+USA,2010,crude oil refining,Distillate_FuelOil,-1.960526
+Ukraine,2010,crude oil refining,Distillate_FuelOil,-2.097809
+Africa_Eastern,2010,crude oil refining,Gasoline,-4.131607
+Africa_Northern,2010,crude oil refining,Gasoline,-1.382891
+Africa_Southern,2010,crude oil refining,Gasoline,-4.468227
+Africa_Western,2010,crude oil refining,Gasoline,-4.305127
+Argentina,2010,crude oil refining,Gasoline,-1.609575
+Australia_NZ,2010,crude oil refining,Gasoline,-2.754502
+Brazil,2010,crude oil refining,Gasoline,-2.241744
+Canada,2010,crude oil refining,Gasoline,-1.584991
+Central America and Caribbean,2010,crude oil refining,Gasoline,-4.174771
+Central Asia,2010,crude oil refining,Gasoline,-1.204067
+China,2010,crude oil refining,Gasoline,-2.163459
+Colombia,2010,crude oil refining,Gasoline,-2.244111
+EU-12,2010,crude oil refining,Gasoline,-1.999562
+EU-15,2010,crude oil refining,Gasoline,-2.136827
+Europe_Non_EU,2010,crude oil refining,Gasoline,-2.662287
+European Free Trade Association,2010,crude oil refining,Gasoline,-0.920343
+India,2010,crude oil refining,Gasoline,-0.650185
+Indonesia,2010,crude oil refining,Gasoline,-2.809498
+Japan,2010,crude oil refining,Gasoline,-2.250351
+Mexico,2010,crude oil refining,Gasoline,-3.149156
+Middle East,2010,crude oil refining,Gasoline,-0.663376
+Pakistan,2010,crude oil refining,Gasoline,-3.727547
+Russia,2010,crude oil refining,Gasoline,0.074075
+South Africa,2010,crude oil refining,Gasoline,-3.36944
+South America_Northern,2010,crude oil refining,Gasoline,-1.085213
+South America_Southern,2010,crude oil refining,Gasoline,-2.812904
+South Asia,2010,crude oil refining,Gasoline,-4.588497
+South Korea,2010,crude oil refining,Gasoline,-1.038365
+Southeast Asia,2010,crude oil refining,Gasoline,-2.353278
+Taiwan,2010,crude oil refining,Gasoline,-1.952964
+USA,2010,crude oil refining,Gasoline,-1.960526
+Ukraine,2010,crude oil refining,Gasoline,-2.097809
+Africa_Eastern,2010,crude oil refining,Heavy_Residual,-4.131607
+Africa_Northern,2010,crude oil refining,Heavy_Residual,-1.382891
+Africa_Southern,2010,crude oil refining,Heavy_Residual,-4.468227
+Africa_Western,2010,crude oil refining,Heavy_Residual,-4.305127
+Argentina,2010,crude oil refining,Heavy_Residual,-1.609575
+Australia_NZ,2010,crude oil refining,Heavy_Residual,-2.754502
+Brazil,2010,crude oil refining,Heavy_Residual,-2.241744
+Canada,2010,crude oil refining,Heavy_Residual,-1.584991
+Central America and Caribbean,2010,crude oil refining,Heavy_Residual,-4.174771
+Central Asia,2010,crude oil refining,Heavy_Residual,-1.204067
+China,2010,crude oil refining,Heavy_Residual,-2.163459
+Colombia,2010,crude oil refining,Heavy_Residual,-2.244111
+EU-12,2010,crude oil refining,Heavy_Residual,-1.999562
+EU-15,2010,crude oil refining,Heavy_Residual,-2.136827
+Europe_Non_EU,2010,crude oil refining,Heavy_Residual,-2.662287
+European Free Trade Association,2010,crude oil refining,Heavy_Residual,-0.920343
+India,2010,crude oil refining,Heavy_Residual,-0.650185
+Indonesia,2010,crude oil refining,Heavy_Residual,-2.809498
+Japan,2010,crude oil refining,Heavy_Residual,-2.250351
+Mexico,2010,crude oil refining,Heavy_Residual,-3.149156
+Middle East,2010,crude oil refining,Heavy_Residual,-0.663376
+Pakistan,2010,crude oil refining,Heavy_Residual,-3.727547
+Russia,2010,crude oil refining,Heavy_Residual,0.074075
+South Africa,2010,crude oil refining,Heavy_Residual,-3.36944
+South America_Northern,2010,crude oil refining,Heavy_Residual,-1.085213
+South America_Southern,2010,crude oil refining,Heavy_Residual,-2.812904
+South Asia,2010,crude oil refining,Heavy_Residual,-4.588497
+South Korea,2010,crude oil refining,Heavy_Residual,-1.038365
+Southeast Asia,2010,crude oil refining,Heavy_Residual,-2.353278
+Taiwan,2010,crude oil refining,Heavy_Residual,-1.952964
+USA,2010,crude oil refining,Heavy_Residual,-1.960526
+Ukraine,2010,crude oil refining,Heavy_Residual,-2.097809
+Africa_Eastern,2010,crude oil refining,Jet_Kerosene,-4.131607
+Africa_Northern,2010,crude oil refining,Jet_Kerosene,-1.382891
+Africa_Southern,2010,crude oil refining,Jet_Kerosene,-4.468227
+Africa_Western,2010,crude oil refining,Jet_Kerosene,-4.305127
+Argentina,2010,crude oil refining,Jet_Kerosene,-1.609575
+Australia_NZ,2010,crude oil refining,Jet_Kerosene,-2.754502
+Brazil,2010,crude oil refining,Jet_Kerosene,-2.241744
+Canada,2010,crude oil refining,Jet_Kerosene,-1.584991
+Central America and Caribbean,2010,crude oil refining,Jet_Kerosene,-4.174771
+Central Asia,2010,crude oil refining,Jet_Kerosene,-1.204067
+China,2010,crude oil refining,Jet_Kerosene,-2.163459
+Colombia,2010,crude oil refining,Jet_Kerosene,-2.244111
+EU-12,2010,crude oil refining,Jet_Kerosene,-1.999562
+EU-15,2010,crude oil refining,Jet_Kerosene,-2.136827
+Europe_Non_EU,2010,crude oil refining,Jet_Kerosene,-2.662287
+European Free Trade Association,2010,crude oil refining,Jet_Kerosene,-0.920343
+India,2010,crude oil refining,Jet_Kerosene,-0.650185
+Indonesia,2010,crude oil refining,Jet_Kerosene,-2.809498
+Japan,2010,crude oil refining,Jet_Kerosene,-2.250351
+Mexico,2010,crude oil refining,Jet_Kerosene,-3.149156
+Middle East,2010,crude oil refining,Jet_Kerosene,-0.663376
+Pakistan,2010,crude oil refining,Jet_Kerosene,-3.727547
+Russia,2010,crude oil refining,Jet_Kerosene,0.074075
+South Africa,2010,crude oil refining,Jet_Kerosene,-3.36944
+South America_Northern,2010,crude oil refining,Jet_Kerosene,-1.085213
+South America_Southern,2010,crude oil refining,Jet_Kerosene,-2.812904
+South Asia,2010,crude oil refining,Jet_Kerosene,-4.588497
+South Korea,2010,crude oil refining,Jet_Kerosene,-1.038365
+Southeast Asia,2010,crude oil refining,Jet_Kerosene,-2.353278
+Taiwan,2010,crude oil refining,Jet_Kerosene,-1.952964
+USA,2010,crude oil refining,Jet_Kerosene,-1.960526
+Ukraine,2010,crude oil refining,Jet_Kerosene,-2.097809
+Africa_Eastern,2010,crude oil refining,LPG,-4.131607
+Africa_Northern,2010,crude oil refining,LPG,-1.382891
+Africa_Southern,2010,crude oil refining,LPG,-4.468227
+Africa_Western,2010,crude oil refining,LPG,-4.305127
+Argentina,2010,crude oil refining,LPG,-1.609575
+Australia_NZ,2010,crude oil refining,LPG,-2.754502
+Brazil,2010,crude oil refining,LPG,-2.241744
+Canada,2010,crude oil refining,LPG,-1.584991
+Central America and Caribbean,2010,crude oil refining,LPG,-4.174771
+Central Asia,2010,crude oil refining,LPG,-1.204067
+China,2010,crude oil refining,LPG,-2.163459
+Colombia,2010,crude oil refining,LPG,-2.244111
+EU-12,2010,crude oil refining,LPG,-1.999562
+EU-15,2010,crude oil refining,LPG,-2.136827
+Europe_Non_EU,2010,crude oil refining,LPG,-2.662287
+European Free Trade Association,2010,crude oil refining,LPG,-0.920343
+India,2010,crude oil refining,LPG,-0.650185
+Indonesia,2010,crude oil refining,LPG,-2.809498
+Japan,2010,crude oil refining,LPG,-2.250351
+Mexico,2010,crude oil refining,LPG,-3.149156
+Middle East,2010,crude oil refining,LPG,-0.663376
+Pakistan,2010,crude oil refining,LPG,-3.727547
+Russia,2010,crude oil refining,LPG,0.074075
+South Africa,2010,crude oil refining,LPG,-3.36944
+South America_Northern,2010,crude oil refining,LPG,-1.085213
+South America_Southern,2010,crude oil refining,LPG,-2.812904
+South Asia,2010,crude oil refining,LPG,-4.588497
+South Korea,2010,crude oil refining,LPG,-1.038365
+Southeast Asia,2010,crude oil refining,LPG,-2.353278
+Taiwan,2010,crude oil refining,LPG,-1.952964
+USA,2010,crude oil refining,LPG,-1.960526
+Ukraine,2010,crude oil refining,LPG,-2.097809
+Africa_Eastern,2010,crude oil refining,Other,-4.131607
+Africa_Northern,2010,crude oil refining,Other,-1.382891
+Africa_Southern,2010,crude oil refining,Other,-4.468227
+Africa_Western,2010,crude oil refining,Other,-4.305127
+Argentina,2010,crude oil refining,Other,-1.609575
+Australia_NZ,2010,crude oil refining,Other,-2.754502
+Brazil,2010,crude oil refining,Other,-2.241744
+Canada,2010,crude oil refining,Other,-1.584991
+Central America and Caribbean,2010,crude oil refining,Other,-4.174771
+Central Asia,2010,crude oil refining,Other,-1.204067
+China,2010,crude oil refining,Other,-2.163459
+Colombia,2010,crude oil refining,Other,-2.244111
+EU-12,2010,crude oil refining,Other,-1.999562
+EU-15,2010,crude oil refining,Other,-2.136827
+Europe_Non_EU,2010,crude oil refining,Other,-2.662287
+European Free Trade Association,2010,crude oil refining,Other,-0.920343
+India,2010,crude oil refining,Other,-0.650185
+Indonesia,2010,crude oil refining,Other,-2.809498
+Japan,2010,crude oil refining,Other,-2.250351
+Mexico,2010,crude oil refining,Other,-3.149156
+Middle East,2010,crude oil refining,Other,-0.663376
+Pakistan,2010,crude oil refining,Other,-3.727547
+Russia,2010,crude oil refining,Other,0.074075
+South Africa,2010,crude oil refining,Other,-3.36944
+South America_Northern,2010,crude oil refining,Other,-1.085213
+South America_Southern,2010,crude oil refining,Other,-2.812904
+South Asia,2010,crude oil refining,Other,-4.588497
+South Korea,2010,crude oil refining,Other,-1.038365
+Southeast Asia,2010,crude oil refining,Other,-2.353278
+Taiwan,2010,crude oil refining,Other,-1.952964
+USA,2010,crude oil refining,Other,-1.960526
+Ukraine,2010,crude oil refining,Other,-2.097809
+Africa_Eastern,2010,crude oil refining,Residual_FuelOil,-4.131607
+Africa_Northern,2010,crude oil refining,Residual_FuelOil,-1.382891
+Africa_Southern,2010,crude oil refining,Residual_FuelOil,-4.468227
+Africa_Western,2010,crude oil refining,Residual_FuelOil,-4.305127
+Argentina,2010,crude oil refining,Residual_FuelOil,-1.609575
+Australia_NZ,2010,crude oil refining,Residual_FuelOil,-2.754502
+Brazil,2010,crude oil refining,Residual_FuelOil,-2.241744
+Canada,2010,crude oil refining,Residual_FuelOil,-1.584991
+Central America and Caribbean,2010,crude oil refining,Residual_FuelOil,-4.174771
+Central Asia,2010,crude oil refining,Residual_FuelOil,-1.204067
+China,2010,crude oil refining,Residual_FuelOil,-2.163459
+Colombia,2010,crude oil refining,Residual_FuelOil,-2.244111
+EU-12,2010,crude oil refining,Residual_FuelOil,-1.999562
+EU-15,2010,crude oil refining,Residual_FuelOil,-2.136827
+Europe_Non_EU,2010,crude oil refining,Residual_FuelOil,-2.662287
+European Free Trade Association,2010,crude oil refining,Residual_FuelOil,-0.920343
+India,2010,crude oil refining,Residual_FuelOil,-0.650185
+Indonesia,2010,crude oil refining,Residual_FuelOil,-2.809498
+Japan,2010,crude oil refining,Residual_FuelOil,-2.250351
+Mexico,2010,crude oil refining,Residual_FuelOil,-3.149156
+Middle East,2010,crude oil refining,Residual_FuelOil,-0.663376
+Pakistan,2010,crude oil refining,Residual_FuelOil,-3.727547
+Russia,2010,crude oil refining,Residual_FuelOil,0.074075
+South Africa,2010,crude oil refining,Residual_FuelOil,-3.36944
+South America_Northern,2010,crude oil refining,Residual_FuelOil,-1.085213
+South America_Southern,2010,crude oil refining,Residual_FuelOil,-2.812904
+South Asia,2010,crude oil refining,Residual_FuelOil,-4.588497
+South Korea,2010,crude oil refining,Residual_FuelOil,-1.038365
+Southeast Asia,2010,crude oil refining,Residual_FuelOil,-2.353278
+Taiwan,2010,crude oil refining,Residual_FuelOil,-1.952964
+USA,2010,crude oil refining,Residual_FuelOil,-1.960526
+Ukraine,2010,crude oil refining,Residual_FuelOil,-2.097809
+Africa_Eastern,2015,crude oil refining,Distillate_FuelOil,-5.486075
+Africa_Northern,2015,crude oil refining,Distillate_FuelOil,-3.861321
+Africa_Southern,2015,crude oil refining,Distillate_FuelOil,-5.505196
+Africa_Western,2015,crude oil refining,Distillate_FuelOil,-5.512019
+Argentina,2015,crude oil refining,Distillate_FuelOil,-3.488025
+Australia_NZ,2015,crude oil refining,Distillate_FuelOil,-4.362237
+Brazil,2015,crude oil refining,Distillate_FuelOil,-3.483265
+Canada,2015,crude oil refining,Distillate_FuelOil,-3.009696
+Central America and Caribbean,2015,crude oil refining,Distillate_FuelOil,-5.401892
+Central Asia,2015,crude oil refining,Distillate_FuelOil,-3.259976
+China,2015,crude oil refining,Distillate_FuelOil,-3.576262
+Colombia,2015,crude oil refining,Distillate_FuelOil,-3.65526
+EU-12,2015,crude oil refining,Distillate_FuelOil,-3.054542
+EU-15,2015,crude oil refining,Distillate_FuelOil,-3.402951
+Europe_Non_EU,2015,crude oil refining,Distillate_FuelOil,-3.61692
+European Free Trade Association,2015,crude oil refining,Distillate_FuelOil,-2.183984
+India,2015,crude oil refining,Distillate_FuelOil,-2.806502
+Indonesia,2015,crude oil refining,Distillate_FuelOil,-4.000033
+Japan,2015,crude oil refining,Distillate_FuelOil,-3.696384
+Mexico,2015,crude oil refining,Distillate_FuelOil,-4.40915
+Middle East,2015,crude oil refining,Distillate_FuelOil,-2.683226
+Pakistan,2015,crude oil refining,Distillate_FuelOil,-4.818507
+Russia,2015,crude oil refining,Distillate_FuelOil,-1.634563
+South Africa,2015,crude oil refining,Distillate_FuelOil,-4.430216
+South America_Northern,2015,crude oil refining,Distillate_FuelOil,-3.050171
+South America_Southern,2015,crude oil refining,Distillate_FuelOil,-4.361396
+South Asia,2015,crude oil refining,Distillate_FuelOil,-5.673495
+South Korea,2015,crude oil refining,Distillate_FuelOil,-2.593182
+Southeast Asia,2015,crude oil refining,Distillate_FuelOil,-4.024249
+Taiwan,2015,crude oil refining,Distillate_FuelOil,-3.426883
+USA,2015,crude oil refining,Distillate_FuelOil,-2.919427
+Ukraine,2015,crude oil refining,Distillate_FuelOil,-5.204723
+Africa_Eastern,2015,crude oil refining,Gasoline,-5.486075
+Africa_Northern,2015,crude oil refining,Gasoline,-3.861321
+Africa_Southern,2015,crude oil refining,Gasoline,-5.505196
+Africa_Western,2015,crude oil refining,Gasoline,-5.512019
+Argentina,2015,crude oil refining,Gasoline,-3.488025
+Australia_NZ,2015,crude oil refining,Gasoline,-4.362237
+Brazil,2015,crude oil refining,Gasoline,-3.483265
+Canada,2015,crude oil refining,Gasoline,-3.009696
+Central America and Caribbean,2015,crude oil refining,Gasoline,-5.401892
+Central Asia,2015,crude oil refining,Gasoline,-3.259976
+China,2015,crude oil refining,Gasoline,-3.576262
+Colombia,2015,crude oil refining,Gasoline,-3.65526
+EU-12,2015,crude oil refining,Gasoline,-3.054542
+EU-15,2015,crude oil refining,Gasoline,-3.402951
+Europe_Non_EU,2015,crude oil refining,Gasoline,-3.61692
+European Free Trade Association,2015,crude oil refining,Gasoline,-2.183984
+India,2015,crude oil refining,Gasoline,-2.806502
+Indonesia,2015,crude oil refining,Gasoline,-4.000033
+Japan,2015,crude oil refining,Gasoline,-3.696384
+Mexico,2015,crude oil refining,Gasoline,-4.40915
+Middle East,2015,crude oil refining,Gasoline,-2.683226
+Pakistan,2015,crude oil refining,Gasoline,-4.818507
+Russia,2015,crude oil refining,Gasoline,-1.634563
+South Africa,2015,crude oil refining,Gasoline,-4.430216
+South America_Northern,2015,crude oil refining,Gasoline,-3.050171
+South America_Southern,2015,crude oil refining,Gasoline,-4.361396
+South Asia,2015,crude oil refining,Gasoline,-5.673495
+South Korea,2015,crude oil refining,Gasoline,-2.593182
+Southeast Asia,2015,crude oil refining,Gasoline,-4.024249
+Taiwan,2015,crude oil refining,Gasoline,-3.426883
+USA,2015,crude oil refining,Gasoline,-2.919427
+Ukraine,2015,crude oil refining,Gasoline,-5.204723
+Africa_Eastern,2015,crude oil refining,Heavy_Residual,-5.486075
+Africa_Northern,2015,crude oil refining,Heavy_Residual,-3.861321
+Africa_Southern,2015,crude oil refining,Heavy_Residual,-5.505196
+Africa_Western,2015,crude oil refining,Heavy_Residual,-5.512019
+Argentina,2015,crude oil refining,Heavy_Residual,-3.488025
+Australia_NZ,2015,crude oil refining,Heavy_Residual,-4.362237
+Brazil,2015,crude oil refining,Heavy_Residual,-3.483265
+Canada,2015,crude oil refining,Heavy_Residual,-3.009696
+Central America and Caribbean,2015,crude oil refining,Heavy_Residual,-5.401892
+Central Asia,2015,crude oil refining,Heavy_Residual,-3.259976
+China,2015,crude oil refining,Heavy_Residual,-3.576262
+Colombia,2015,crude oil refining,Heavy_Residual,-3.65526
+EU-12,2015,crude oil refining,Heavy_Residual,-3.054542
+EU-15,2015,crude oil refining,Heavy_Residual,-3.402951
+Europe_Non_EU,2015,crude oil refining,Heavy_Residual,-3.61692
+European Free Trade Association,2015,crude oil refining,Heavy_Residual,-2.183984
+India,2015,crude oil refining,Heavy_Residual,-2.806502
+Indonesia,2015,crude oil refining,Heavy_Residual,-4.000033
+Japan,2015,crude oil refining,Heavy_Residual,-3.696384
+Mexico,2015,crude oil refining,Heavy_Residual,-4.40915
+Middle East,2015,crude oil refining,Heavy_Residual,-2.683226
+Pakistan,2015,crude oil refining,Heavy_Residual,-4.818507
+Russia,2015,crude oil refining,Heavy_Residual,-1.634563
+South Africa,2015,crude oil refining,Heavy_Residual,-4.430216
+South America_Northern,2015,crude oil refining,Heavy_Residual,-3.050171
+South America_Southern,2015,crude oil refining,Heavy_Residual,-4.361396
+South Asia,2015,crude oil refining,Heavy_Residual,-5.673495
+South Korea,2015,crude oil refining,Heavy_Residual,-2.593182
+Southeast Asia,2015,crude oil refining,Heavy_Residual,-4.024249
+Taiwan,2015,crude oil refining,Heavy_Residual,-3.426883
+USA,2015,crude oil refining,Heavy_Residual,-2.919427
+Ukraine,2015,crude oil refining,Heavy_Residual,-5.204723
+Africa_Eastern,2015,crude oil refining,Jet_Kerosene,-5.486075
+Africa_Northern,2015,crude oil refining,Jet_Kerosene,-3.861321
+Africa_Southern,2015,crude oil refining,Jet_Kerosene,-5.505196
+Africa_Western,2015,crude oil refining,Jet_Kerosene,-5.512019
+Argentina,2015,crude oil refining,Jet_Kerosene,-3.488025
+Australia_NZ,2015,crude oil refining,Jet_Kerosene,-4.362237
+Brazil,2015,crude oil refining,Jet_Kerosene,-3.483265
+Canada,2015,crude oil refining,Jet_Kerosene,-3.009696
+Central America and Caribbean,2015,crude oil refining,Jet_Kerosene,-5.401892
+Central Asia,2015,crude oil refining,Jet_Kerosene,-3.259976
+China,2015,crude oil refining,Jet_Kerosene,-3.576262
+Colombia,2015,crude oil refining,Jet_Kerosene,-3.65526
+EU-12,2015,crude oil refining,Jet_Kerosene,-3.054542
+EU-15,2015,crude oil refining,Jet_Kerosene,-3.402951
+Europe_Non_EU,2015,crude oil refining,Jet_Kerosene,-3.61692
+European Free Trade Association,2015,crude oil refining,Jet_Kerosene,-2.183984
+India,2015,crude oil refining,Jet_Kerosene,-2.806502
+Indonesia,2015,crude oil refining,Jet_Kerosene,-4.000033
+Japan,2015,crude oil refining,Jet_Kerosene,-3.696384
+Mexico,2015,crude oil refining,Jet_Kerosene,-4.40915
+Middle East,2015,crude oil refining,Jet_Kerosene,-2.683226
+Pakistan,2015,crude oil refining,Jet_Kerosene,-4.818507
+Russia,2015,crude oil refining,Jet_Kerosene,-1.634563
+South Africa,2015,crude oil refining,Jet_Kerosene,-4.430216
+South America_Northern,2015,crude oil refining,Jet_Kerosene,-3.050171
+South America_Southern,2015,crude oil refining,Jet_Kerosene,-4.361396
+South Asia,2015,crude oil refining,Jet_Kerosene,-5.673495
+South Korea,2015,crude oil refining,Jet_Kerosene,-2.593182
+Southeast Asia,2015,crude oil refining,Jet_Kerosene,-4.024249
+Taiwan,2015,crude oil refining,Jet_Kerosene,-3.426883
+USA,2015,crude oil refining,Jet_Kerosene,-2.919427
+Ukraine,2015,crude oil refining,Jet_Kerosene,-5.204723
+Africa_Eastern,2015,crude oil refining,LPG,-5.486075
+Africa_Northern,2015,crude oil refining,LPG,-3.861321
+Africa_Southern,2015,crude oil refining,LPG,-5.505196
+Africa_Western,2015,crude oil refining,LPG,-5.512019
+Argentina,2015,crude oil refining,LPG,-3.488025
+Australia_NZ,2015,crude oil refining,LPG,-4.362237
+Brazil,2015,crude oil refining,LPG,-3.483265
+Canada,2015,crude oil refining,LPG,-3.009696
+Central America and Caribbean,2015,crude oil refining,LPG,-5.401892
+Central Asia,2015,crude oil refining,LPG,-3.259976
+China,2015,crude oil refining,LPG,-3.576262
+Colombia,2015,crude oil refining,LPG,-3.65526
+EU-12,2015,crude oil refining,LPG,-3.054542
+EU-15,2015,crude oil refining,LPG,-3.402951
+Europe_Non_EU,2015,crude oil refining,LPG,-3.61692
+European Free Trade Association,2015,crude oil refining,LPG,-2.183984
+India,2015,crude oil refining,LPG,-2.806502
+Indonesia,2015,crude oil refining,LPG,-4.000033
+Japan,2015,crude oil refining,LPG,-3.696384
+Mexico,2015,crude oil refining,LPG,-4.40915
+Middle East,2015,crude oil refining,LPG,-2.683226
+Pakistan,2015,crude oil refining,LPG,-4.818507
+Russia,2015,crude oil refining,LPG,-1.634563
+South Africa,2015,crude oil refining,LPG,-4.430216
+South America_Northern,2015,crude oil refining,LPG,-3.050171
+South America_Southern,2015,crude oil refining,LPG,-4.361396
+South Asia,2015,crude oil refining,LPG,-5.673495
+South Korea,2015,crude oil refining,LPG,-2.593182
+Southeast Asia,2015,crude oil refining,LPG,-4.024249
+Taiwan,2015,crude oil refining,LPG,-3.426883
+USA,2015,crude oil refining,LPG,-2.919427
+Ukraine,2015,crude oil refining,LPG,-5.204723
+Africa_Eastern,2015,crude oil refining,Other,-5.486075
+Africa_Northern,2015,crude oil refining,Other,-3.861321
+Africa_Southern,2015,crude oil refining,Other,-5.505196
+Africa_Western,2015,crude oil refining,Other,-5.512019
+Argentina,2015,crude oil refining,Other,-3.488025
+Australia_NZ,2015,crude oil refining,Other,-4.362237
+Brazil,2015,crude oil refining,Other,-3.483265
+Canada,2015,crude oil refining,Other,-3.009696
+Central America and Caribbean,2015,crude oil refining,Other,-5.401892
+Central Asia,2015,crude oil refining,Other,-3.259976
+China,2015,crude oil refining,Other,-3.576262
+Colombia,2015,crude oil refining,Other,-3.65526
+EU-12,2015,crude oil refining,Other,-3.054542
+EU-15,2015,crude oil refining,Other,-3.402951
+Europe_Non_EU,2015,crude oil refining,Other,-3.61692
+European Free Trade Association,2015,crude oil refining,Other,-2.183984
+India,2015,crude oil refining,Other,-2.806502
+Indonesia,2015,crude oil refining,Other,-4.000033
+Japan,2015,crude oil refining,Other,-3.696384
+Mexico,2015,crude oil refining,Other,-4.40915
+Middle East,2015,crude oil refining,Other,-2.683226
+Pakistan,2015,crude oil refining,Other,-4.818507
+Russia,2015,crude oil refining,Other,-1.634563
+South Africa,2015,crude oil refining,Other,-4.430216
+South America_Northern,2015,crude oil refining,Other,-3.050171
+South America_Southern,2015,crude oil refining,Other,-4.361396
+South Asia,2015,crude oil refining,Other,-5.673495
+South Korea,2015,crude oil refining,Other,-2.593182
+Southeast Asia,2015,crude oil refining,Other,-4.024249
+Taiwan,2015,crude oil refining,Other,-3.426883
+USA,2015,crude oil refining,Other,-2.919427
+Ukraine,2015,crude oil refining,Other,-5.204723
+Africa_Eastern,2015,crude oil refining,Residual_FuelOil,-5.486075
+Africa_Northern,2015,crude oil refining,Residual_FuelOil,-3.861321
+Africa_Southern,2015,crude oil refining,Residual_FuelOil,-5.505196
+Africa_Western,2015,crude oil refining,Residual_FuelOil,-5.512019
+Argentina,2015,crude oil refining,Residual_FuelOil,-3.488025
+Australia_NZ,2015,crude oil refining,Residual_FuelOil,-4.362237
+Brazil,2015,crude oil refining,Residual_FuelOil,-3.483265
+Canada,2015,crude oil refining,Residual_FuelOil,-3.009696
+Central America and Caribbean,2015,crude oil refining,Residual_FuelOil,-5.401892
+Central Asia,2015,crude oil refining,Residual_FuelOil,-3.259976
+China,2015,crude oil refining,Residual_FuelOil,-3.576262
+Colombia,2015,crude oil refining,Residual_FuelOil,-3.65526
+EU-12,2015,crude oil refining,Residual_FuelOil,-3.054542
+EU-15,2015,crude oil refining,Residual_FuelOil,-3.402951
+Europe_Non_EU,2015,crude oil refining,Residual_FuelOil,-3.61692
+European Free Trade Association,2015,crude oil refining,Residual_FuelOil,-2.183984
+India,2015,crude oil refining,Residual_FuelOil,-2.806502
+Indonesia,2015,crude oil refining,Residual_FuelOil,-4.000033
+Japan,2015,crude oil refining,Residual_FuelOil,-3.696384
+Mexico,2015,crude oil refining,Residual_FuelOil,-4.40915
+Middle East,2015,crude oil refining,Residual_FuelOil,-2.683226
+Pakistan,2015,crude oil refining,Residual_FuelOil,-4.818507
+Russia,2015,crude oil refining,Residual_FuelOil,-1.634563
+South Africa,2015,crude oil refining,Residual_FuelOil,-4.430216
+South America_Northern,2015,crude oil refining,Residual_FuelOil,-3.050171
+South America_Southern,2015,crude oil refining,Residual_FuelOil,-4.361396
+South Asia,2015,crude oil refining,Residual_FuelOil,-5.673495
+South Korea,2015,crude oil refining,Residual_FuelOil,-2.593182
+Southeast Asia,2015,crude oil refining,Residual_FuelOil,-4.024249
+Taiwan,2015,crude oil refining,Residual_FuelOil,-3.426883
+USA,2015,crude oil refining,Residual_FuelOil,-2.919427
+Ukraine,2015,crude oil refining,Residual_FuelOil,-5.204723
+Africa_Eastern,2021,crude oil refining,Distillate_FuelOil,-3.751266
+Africa_Northern,2021,crude oil refining,Distillate_FuelOil,-1.498946
+Africa_Southern,2021,crude oil refining,Distillate_FuelOil,-3.428047
+Africa_Western,2021,crude oil refining,Distillate_FuelOil,-3.680268
+Argentina,2021,crude oil refining,Distillate_FuelOil,-0.978803
+Australia_NZ,2021,crude oil refining,Distillate_FuelOil,-2.619355
+Brazil,2021,crude oil refining,Distillate_FuelOil,-1.465868
+Canada,2021,crude oil refining,Distillate_FuelOil,-0.415592
+Central America and Caribbean,2021,crude oil refining,Distillate_FuelOil,-3.846129
+Central Asia,2021,crude oil refining,Distillate_FuelOil,-0.960246
+China,2021,crude oil refining,Distillate_FuelOil,-1.4226
+Colombia,2021,crude oil refining,Distillate_FuelOil,-1.093641
+EU-12,2021,crude oil refining,Distillate_FuelOil,-1.427619
+EU-15,2021,crude oil refining,Distillate_FuelOil,-1.0835
+Europe_Non_EU,2021,crude oil refining,Distillate_FuelOil,-1.372393
+European Free Trade Association,2021,crude oil refining,Distillate_FuelOil,0.131754
+India,2021,crude oil refining,Distillate_FuelOil,-0.463839
+Indonesia,2021,crude oil refining,Distillate_FuelOil,-1.955907
+Japan,2021,crude oil refining,Distillate_FuelOil,-1.449445
+Mexico,2021,crude oil refining,Distillate_FuelOil,-2.592633
+Middle East,2021,crude oil refining,Distillate_FuelOil,0.143201
+Pakistan,2021,crude oil refining,Distillate_FuelOil,-2.343644
+Russia,2021,crude oil refining,Distillate_FuelOil,0.976874
+South Africa,2021,crude oil refining,Distillate_FuelOil,-3.261212
+South America_Northern,2021,crude oil refining,Distillate_FuelOil,-1.909099
+South America_Southern,2021,crude oil refining,Distillate_FuelOil,-2.5926
+South Asia,2021,crude oil refining,Distillate_FuelOil,-3.717824
+South Korea,2021,crude oil refining,Distillate_FuelOil,-0.223088
+Southeast Asia,2021,crude oil refining,Distillate_FuelOil,-1.550831
+Taiwan,2021,crude oil refining,Distillate_FuelOil,-1.062107
+USA,2021,crude oil refining,Distillate_FuelOil,-0.6868
+Africa_Eastern,2021,crude oil refining,Gasoline,-3.751266
+Africa_Northern,2021,crude oil refining,Gasoline,-1.498946
+Africa_Southern,2021,crude oil refining,Gasoline,-3.428047
+Africa_Western,2021,crude oil refining,Gasoline,-3.680268
+Argentina,2021,crude oil refining,Gasoline,-0.978803
+Australia_NZ,2021,crude oil refining,Gasoline,-2.619355
+Brazil,2021,crude oil refining,Gasoline,-1.465868
+Canada,2021,crude oil refining,Gasoline,-0.415592
+Central America and Caribbean,2021,crude oil refining,Gasoline,-3.846129
+Central Asia,2021,crude oil refining,Gasoline,-0.960246
+China,2021,crude oil refining,Gasoline,-1.4226
+Colombia,2021,crude oil refining,Gasoline,-1.093641
+EU-12,2021,crude oil refining,Gasoline,-1.427619
+EU-15,2021,crude oil refining,Gasoline,-1.0835
+Europe_Non_EU,2021,crude oil refining,Gasoline,-1.372393
+European Free Trade Association,2021,crude oil refining,Gasoline,0.131754
+India,2021,crude oil refining,Gasoline,-0.463839
+Indonesia,2021,crude oil refining,Gasoline,-1.955907
+Japan,2021,crude oil refining,Gasoline,-1.449445
+Mexico,2021,crude oil refining,Gasoline,-2.592633
+Middle East,2021,crude oil refining,Gasoline,0.143201
+Pakistan,2021,crude oil refining,Gasoline,-2.343644
+Russia,2021,crude oil refining,Gasoline,0.976874
+South Africa,2021,crude oil refining,Gasoline,-3.261212
+South America_Northern,2021,crude oil refining,Gasoline,-1.909099
+South America_Southern,2021,crude oil refining,Gasoline,-2.5926
+South Asia,2021,crude oil refining,Gasoline,-3.717824
+South Korea,2021,crude oil refining,Gasoline,-0.223088
+Southeast Asia,2021,crude oil refining,Gasoline,-1.550831
+Taiwan,2021,crude oil refining,Gasoline,-1.062107
+USA,2021,crude oil refining,Gasoline,-0.6868
+Ukraine,2021,crude oil refining,Gasoline,-3.732748
+Africa_Eastern,2021,crude oil refining,Heavy_Residual,-3.751266
+Africa_Northern,2021,crude oil refining,Heavy_Residual,-1.498946
+Africa_Southern,2021,crude oil refining,Heavy_Residual,-3.428047
+Africa_Western,2021,crude oil refining,Heavy_Residual,-3.680268
+Argentina,2021,crude oil refining,Heavy_Residual,-0.978803
+Brazil,2021,crude oil refining,Heavy_Residual,-1.465868
+Canada,2021,crude oil refining,Heavy_Residual,-0.415592
+Central America and Caribbean,2021,crude oil refining,Heavy_Residual,-3.846129
+Central Asia,2021,crude oil refining,Heavy_Residual,-0.960246
+China,2021,crude oil refining,Heavy_Residual,-1.4226
+Colombia,2021,crude oil refining,Heavy_Residual,-1.093641
+EU-12,2021,crude oil refining,Heavy_Residual,-1.427619
+EU-15,2021,crude oil refining,Heavy_Residual,-1.0835
+Europe_Non_EU,2021,crude oil refining,Heavy_Residual,-1.372393
+European Free Trade Association,2021,crude oil refining,Heavy_Residual,0.131754
+India,2021,crude oil refining,Heavy_Residual,-0.463839
+Indonesia,2021,crude oil refining,Heavy_Residual,-1.955907
+Japan,2021,crude oil refining,Heavy_Residual,-1.449445
+Mexico,2021,crude oil refining,Heavy_Residual,-2.592633
+Middle East,2021,crude oil refining,Heavy_Residual,0.143201
+Pakistan,2021,crude oil refining,Heavy_Residual,-2.343644
+Russia,2021,crude oil refining,Heavy_Residual,0.976874
+South Africa,2021,crude oil refining,Heavy_Residual,-3.261212
+South America_Northern,2021,crude oil refining,Heavy_Residual,-1.909099
+South America_Southern,2021,crude oil refining,Heavy_Residual,-2.5926
+South Asia,2021,crude oil refining,Heavy_Residual,-3.717824
+South Korea,2021,crude oil refining,Heavy_Residual,-0.223088
+Southeast Asia,2021,crude oil refining,Heavy_Residual,-1.550831
+Taiwan,2021,crude oil refining,Heavy_Residual,-1.062107
+USA,2021,crude oil refining,Heavy_Residual,-0.6868
+Ukraine,2021,crude oil refining,Heavy_Residual,-3.732748
+Africa_Eastern,2021,crude oil refining,Jet_Kerosene,-3.751266
+Africa_Northern,2021,crude oil refining,Jet_Kerosene,-1.498946
+Africa_Southern,2021,crude oil refining,Jet_Kerosene,-3.428047
+Africa_Western,2021,crude oil refining,Jet_Kerosene,-3.680268
+Argentina,2021,crude oil refining,Jet_Kerosene,-0.978803
+Australia_NZ,2021,crude oil refining,Jet_Kerosene,-2.619355
+Brazil,2021,crude oil refining,Jet_Kerosene,-1.465868
+Canada,2021,crude oil refining,Jet_Kerosene,-0.415592
+Central America and Caribbean,2021,crude oil refining,Jet_Kerosene,-3.846129
+Central Asia,2021,crude oil refining,Jet_Kerosene,-0.960246
+China,2021,crude oil refining,Jet_Kerosene,-1.4226
+Colombia,2021,crude oil refining,Jet_Kerosene,-1.093641
+EU-12,2021,crude oil refining,Jet_Kerosene,-1.427619
+EU-15,2021,crude oil refining,Jet_Kerosene,-1.0835
+Europe_Non_EU,2021,crude oil refining,Jet_Kerosene,-1.372393
+European Free Trade Association,2021,crude oil refining,Jet_Kerosene,0.131754
+India,2021,crude oil refining,Jet_Kerosene,-0.463839
+Indonesia,2021,crude oil refining,Jet_Kerosene,-1.955907
+Japan,2021,crude oil refining,Jet_Kerosene,-1.449445
+Mexico,2021,crude oil refining,Jet_Kerosene,-2.592633
+Middle East,2021,crude oil refining,Jet_Kerosene,0.143201
+Pakistan,2021,crude oil refining,Jet_Kerosene,-2.343644
+Russia,2021,crude oil refining,Jet_Kerosene,0.976874
+South Africa,2021,crude oil refining,Jet_Kerosene,-3.261212
+South America_Northern,2021,crude oil refining,Jet_Kerosene,-1.909099
+South America_Southern,2021,crude oil refining,Jet_Kerosene,-2.5926
+South Asia,2021,crude oil refining,Jet_Kerosene,-3.717824
+South Korea,2021,crude oil refining,Jet_Kerosene,-0.223088
+Southeast Asia,2021,crude oil refining,Jet_Kerosene,-1.550831
+Taiwan,2021,crude oil refining,Jet_Kerosene,-1.062107
+USA,2021,crude oil refining,Jet_Kerosene,-0.6868
+Africa_Eastern,2021,crude oil refining,LPG,-3.751266
+Africa_Northern,2021,crude oil refining,LPG,-1.498946
+Africa_Southern,2021,crude oil refining,LPG,-3.428047
+Africa_Western,2021,crude oil refining,LPG,-3.680268
+Argentina,2021,crude oil refining,LPG,-0.978803
+Australia_NZ,2021,crude oil refining,LPG,-2.619355
+Brazil,2021,crude oil refining,LPG,-1.465868
+Canada,2021,crude oil refining,LPG,-0.415592
+Central America and Caribbean,2021,crude oil refining,LPG,-3.846129
+Central Asia,2021,crude oil refining,LPG,-0.960246
+China,2021,crude oil refining,LPG,-1.4226
+Colombia,2021,crude oil refining,LPG,-1.093641
+EU-12,2021,crude oil refining,LPG,-1.427619
+EU-15,2021,crude oil refining,LPG,-1.0835
+Europe_Non_EU,2021,crude oil refining,LPG,-1.372393
+European Free Trade Association,2021,crude oil refining,LPG,0.131754
+India,2021,crude oil refining,LPG,-0.463839
+Indonesia,2021,crude oil refining,LPG,-1.955907
+Japan,2021,crude oil refining,LPG,-1.449445
+Mexico,2021,crude oil refining,LPG,-2.592633
+Middle East,2021,crude oil refining,LPG,0.143201
+Pakistan,2021,crude oil refining,LPG,-2.343644
+Russia,2021,crude oil refining,LPG,0.976874
+South Africa,2021,crude oil refining,LPG,-3.261212
+South America_Northern,2021,crude oil refining,LPG,-1.909099
+South America_Southern,2021,crude oil refining,LPG,-2.5926
+South Asia,2021,crude oil refining,LPG,-3.717824
+South Korea,2021,crude oil refining,LPG,-0.223088
+Southeast Asia,2021,crude oil refining,LPG,-1.550831
+Taiwan,2021,crude oil refining,LPG,-1.062107
+USA,2021,crude oil refining,LPG,-0.6868
+Ukraine,2021,crude oil refining,LPG,-3.732748
+Africa_Eastern,2021,crude oil refining,Other,-3.751266
+Africa_Northern,2021,crude oil refining,Other,-1.498946
+Africa_Southern,2021,crude oil refining,Other,-3.428047
+Africa_Western,2021,crude oil refining,Other,-3.680268
+Argentina,2021,crude oil refining,Other,-0.978803
+Australia_NZ,2021,crude oil refining,Other,-2.619355
+Brazil,2021,crude oil refining,Other,-1.465868
+Canada,2021,crude oil refining,Other,-0.415592
+Central America and Caribbean,2021,crude oil refining,Other,-3.846129
+Central Asia,2021,crude oil refining,Other,-0.960246
+China,2021,crude oil refining,Other,-1.4226
+Colombia,2021,crude oil refining,Other,-1.093641
+EU-12,2021,crude oil refining,Other,-1.427619
+EU-15,2021,crude oil refining,Other,-1.0835
+Europe_Non_EU,2021,crude oil refining,Other,-1.372393
+European Free Trade Association,2021,crude oil refining,Other,0.131754
+India,2021,crude oil refining,Other,-0.463839
+Indonesia,2021,crude oil refining,Other,-1.955907
+Japan,2021,crude oil refining,Other,-1.449445
+Mexico,2021,crude oil refining,Other,-2.592633
+Middle East,2021,crude oil refining,Other,0.143201
+Pakistan,2021,crude oil refining,Other,-2.343644
+Russia,2021,crude oil refining,Other,0.976874
+South Africa,2021,crude oil refining,Other,-3.261212
+South America_Southern,2021,crude oil refining,Other,-2.5926
+South Asia,2021,crude oil refining,Other,-3.717824
+South Korea,2021,crude oil refining,Other,-0.223088
+Southeast Asia,2021,crude oil refining,Other,-1.550831
+Taiwan,2021,crude oil refining,Other,-1.062107
+USA,2021,crude oil refining,Other,-0.6868
+Ukraine,2021,crude oil refining,Other,-3.732748
+Africa_Eastern,2021,crude oil refining,Residual_FuelOil,-3.751266
+Africa_Northern,2021,crude oil refining,Residual_FuelOil,-1.498946
+Africa_Southern,2021,crude oil refining,Residual_FuelOil,-3.428047
+Africa_Western,2021,crude oil refining,Residual_FuelOil,-3.680268
+Argentina,2021,crude oil refining,Residual_FuelOil,-0.978803
+Australia_NZ,2021,crude oil refining,Residual_FuelOil,-2.619355
+Brazil,2021,crude oil refining,Residual_FuelOil,-1.465868
+Canada,2021,crude oil refining,Residual_FuelOil,-0.415592
+Central America and Caribbean,2021,crude oil refining,Residual_FuelOil,-3.846129
+Central Asia,2021,crude oil refining,Residual_FuelOil,-0.960246
+China,2021,crude oil refining,Residual_FuelOil,-1.4226
+Colombia,2021,crude oil refining,Residual_FuelOil,-1.093641
+EU-12,2021,crude oil refining,Residual_FuelOil,-1.427619
+EU-15,2021,crude oil refining,Residual_FuelOil,-1.0835
+Europe_Non_EU,2021,crude oil refining,Residual_FuelOil,-1.372393
+European Free Trade Association,2021,crude oil refining,Residual_FuelOil,0.131754
+India,2021,crude oil refining,Residual_FuelOil,-0.463839
+Indonesia,2021,crude oil refining,Residual_FuelOil,-1.955907
+Japan,2021,crude oil refining,Residual_FuelOil,-1.449445
+Mexico,2021,crude oil refining,Residual_FuelOil,-2.592633
+Middle East,2021,crude oil refining,Residual_FuelOil,0.143201
+Pakistan,2021,crude oil refining,Residual_FuelOil,-2.343644
+Russia,2021,crude oil refining,Residual_FuelOil,0.976874
+South Africa,2021,crude oil refining,Residual_FuelOil,-3.261212
+South America_Northern,2021,crude oil refining,Residual_FuelOil,-1.909099
+South America_Southern,2021,crude oil refining,Residual_FuelOil,-2.5926
+South Asia,2021,crude oil refining,Residual_FuelOil,-3.717824
+South Korea,2021,crude oil refining,Residual_FuelOil,-0.223088
+Southeast Asia,2021,crude oil refining,Residual_FuelOil,-1.550831
+Taiwan,2021,crude oil refining,Residual_FuelOil,-1.062107
+USA,2021,crude oil refining,Residual_FuelOil,-0.6868
+Ukraine,2021,crude oil refining,Residual_FuelOil,-3.732748
+EU-12,1990,ctl,Distillate_FuelOil,-0.366064
+EU-15,1990,ctl,Distillate_FuelOil,-0.413412
+South Africa,1990,ctl,Distillate_FuelOil,-0.366019
+EU-12,1990,ctl,Gasoline,-0.366064
+EU-15,1990,ctl,Gasoline,-0.413412
+South Africa,1990,ctl,Gasoline,-0.366019
+EU-12,1990,ctl,Jet_Kerosene,-0.366064
+EU-15,1990,ctl,Jet_Kerosene,-0.413412
+South Africa,1990,ctl,Jet_Kerosene,-0.366019
+EU-12,2005,ctl,Distillate_FuelOil,-2.154971
+South Africa,2005,ctl,Distillate_FuelOil,-2.154969
+EU-12,2005,ctl,Gasoline,-2.154971
+South Africa,2005,ctl,Gasoline,-2.154969
+EU-12,2005,ctl,Jet_Kerosene,-2.154971
+South Africa,2005,ctl,Jet_Kerosene,-2.154969
+China,2010,ctl,Distillate_FuelOil,-3.757914
+EU-12,2010,ctl,Distillate_FuelOil,-3.762663
+South Africa,2010,ctl,Distillate_FuelOil,-3.752852
+China,2010,ctl,Gasoline,-3.757914
+EU-12,2010,ctl,Gasoline,-3.762663
+South Africa,2010,ctl,Gasoline,-3.752852
+China,2010,ctl,Jet_Kerosene,-3.757914
+EU-12,2010,ctl,Jet_Kerosene,-3.762663
+South Africa,2010,ctl,Jet_Kerosene,-3.752852
+China,2015,ctl,Distillate_FuelOil,-3.620447
+EU-12,2015,ctl,Distillate_FuelOil,-3.61258
+South Africa,2015,ctl,Distillate_FuelOil,-3.60899
+China,2015,ctl,Gasoline,-3.620447
+EU-12,2015,ctl,Gasoline,-3.61258
+South Africa,2015,ctl,Gasoline,-3.60899
+China,2015,ctl,Jet_Kerosene,-3.620447
+EU-12,2015,ctl,Jet_Kerosene,-3.61258
+South Africa,2015,ctl,Jet_Kerosene,-3.60899
+China,2021,ctl,Distillate_FuelOil,-3.577138
+EU-12,2021,ctl,Distillate_FuelOil,-3.601206
+South Africa,2021,ctl,Distillate_FuelOil,-3.570843
+China,2021,ctl,Gasoline,-3.577138
+EU-12,2021,ctl,Gasoline,-3.601206
+South Africa,2021,ctl,Gasoline,-3.570843
+China,2021,ctl,Jet_Kerosene,-3.577138
+EU-12,2021,ctl,Jet_Kerosene,-3.601206
+South Africa,2021,ctl,Jet_Kerosene,-3.570843
+Australia_NZ,1990,gtl,Distillate_FuelOil,2.911823
+South Africa,1990,gtl,Distillate_FuelOil,2.903313
+Australia_NZ,1990,gtl,Gasoline,2.911823
+South Africa,1990,gtl,Gasoline,2.903313
+Australia_NZ,1990,gtl,Jet_Kerosene,2.911823
+South Africa,1990,gtl,Jet_Kerosene,2.903313
+Australia_NZ,1990,gtl,LPG,2.911823
+South Africa,1990,gtl,LPG,2.903313
+Australia_NZ,1990,gtl,Other,2.911823
+South Africa,1990,gtl,Other,2.903313
+South Africa,2005,gtl,Distillate_FuelOil,0.745313
+Southeast Asia,2005,gtl,Distillate_FuelOil,0.939014
+South Africa,2005,gtl,Gasoline,0.745313
+Southeast Asia,2005,gtl,Gasoline,0.939014
+South Africa,2005,gtl,Jet_Kerosene,0.745313
+Southeast Asia,2005,gtl,Jet_Kerosene,0.939014
+South Africa,2005,gtl,LPG,0.745313
+Southeast Asia,2005,gtl,LPG,0.939014
+South Africa,2005,gtl,Other,0.745313
+Southeast Asia,2005,gtl,Other,0.939014
+Middle East,2010,gtl,Distillate_FuelOil,-2.044328
+South Africa,2010,gtl,Distillate_FuelOil,-2.404983
+Southeast Asia,2010,gtl,Distillate_FuelOil,-2.044331
+Middle East,2010,gtl,Gasoline,-2.044328
+South Africa,2010,gtl,Gasoline,-2.404983
+Southeast Asia,2010,gtl,Gasoline,-2.044331
+Middle East,2010,gtl,Jet_Kerosene,-2.044328
+South Africa,2010,gtl,Jet_Kerosene,-2.404983
+Southeast Asia,2010,gtl,Jet_Kerosene,-2.044331
+Middle East,2010,gtl,LPG,-2.044328
+South Africa,2010,gtl,LPG,-2.404983
+Southeast Asia,2010,gtl,LPG,-2.044331
+Middle East,2010,gtl,Other,-2.044328
+South Africa,2010,gtl,Other,-2.404983
+Southeast Asia,2010,gtl,Other,-2.044331
+Africa_Western,2015,gtl,Distillate_FuelOil,-2.069953
+Middle East,2015,gtl,Distillate_FuelOil,-2.069962
+South Africa,2015,gtl,Distillate_FuelOil,-2.49647
+Southeast Asia,2015,gtl,Distillate_FuelOil,-2.069956
+Africa_Western,2015,gtl,Gasoline,-2.069953
+Middle East,2015,gtl,Gasoline,-2.069962
+South Africa,2015,gtl,Gasoline,-2.49647
+Southeast Asia,2015,gtl,Gasoline,-2.069956
+Africa_Western,2015,gtl,Jet_Kerosene,-2.069953
+Middle East,2015,gtl,Jet_Kerosene,-2.069962
+South Africa,2015,gtl,Jet_Kerosene,-2.49647
+Southeast Asia,2015,gtl,Jet_Kerosene,-2.069956
+Africa_Western,2015,gtl,LPG,-2.069953
+Middle East,2015,gtl,LPG,-2.069962
+South Africa,2015,gtl,LPG,-2.49647
+Southeast Asia,2015,gtl,LPG,-2.069956
+Africa_Western,2015,gtl,Other,-2.069953
+Middle East,2015,gtl,Other,-2.069962
+South Africa,2015,gtl,Other,-2.49647
+Southeast Asia,2015,gtl,Other,-2.069956
+Africa_Western,2021,gtl,Distillate_FuelOil,-0.915883
+Central America and Caribbean,2021,gtl,Distillate_FuelOil,-1.083783
+Central Asia,2021,gtl,Distillate_FuelOil,-0.926433
+EU-15,2021,gtl,Distillate_FuelOil,-1.186551
+Middle East,2021,gtl,Distillate_FuelOil,-0.918311
+South Africa,2021,gtl,Distillate_FuelOil,-1.436624
+Southeast Asia,2021,gtl,Distillate_FuelOil,-0.976396
+Africa_Western,2021,gtl,Gasoline,-0.915883
+Central America and Caribbean,2021,gtl,Gasoline,-1.083783
+Central Asia,2021,gtl,Gasoline,-0.926433
+EU-15,2021,gtl,Gasoline,-1.186551
+Middle East,2021,gtl,Gasoline,-0.918311
+South Africa,2021,gtl,Gasoline,-1.436624
+Southeast Asia,2021,gtl,Gasoline,-0.976396
+Africa_Western,2021,gtl,Jet_Kerosene,-0.915883
+Central America and Caribbean,2021,gtl,Jet_Kerosene,-1.083783
+Central Asia,2021,gtl,Jet_Kerosene,-0.926433
+EU-15,2021,gtl,Jet_Kerosene,-1.186551
+Middle East,2021,gtl,Jet_Kerosene,-0.918311
+South Africa,2021,gtl,Jet_Kerosene,-1.436624
+Southeast Asia,2021,gtl,Jet_Kerosene,-0.976396
+Africa_Western,2021,gtl,LPG,-0.915883
+Central America and Caribbean,2021,gtl,LPG,-1.083783
+Central Asia,2021,gtl,LPG,-0.926433
+EU-15,2021,gtl,LPG,-1.186551
+Middle East,2021,gtl,LPG,-0.918311
+South Africa,2021,gtl,LPG,-1.436624
+Southeast Asia,2021,gtl,LPG,-0.976396
+Africa_Western,2021,gtl,Other,-0.915883
+Central America and Caribbean,2021,gtl,Other,-1.083783
+Central Asia,2021,gtl,Other,-0.926433
+EU-15,2021,gtl,Other,-1.186551
+Middle East,2021,gtl,Other,-0.918311
+South Africa,2021,gtl,Other,-1.436624
+Southeast Asia,2021,gtl,Other,-0.976396
