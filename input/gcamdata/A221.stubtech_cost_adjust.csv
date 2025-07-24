@@ -1,0 +1,1394 @@
+"region","year","subsector","technology","resource","input.price","feed.cost","feed.EJ","product.EJ"
+"EU-15",1990,"biorefining","biodiesel","Distillate_FuelOil_biomassOil",1.8395,2822192.6356903,0.00031895101,0.000293
+"South America_Southern",1990,"biorefining","corn ethanol","Gasoline_corn",1.5915,4051257.917616,0.0008438976,0.0006279
+"Brazil",1990,"biorefining","sugar cane ethanol","Gasoline_sugar",3.1073,699544086.969,0.2450903,0.2450903
+"Central America and Caribbean",1990,"biorefining","sugar cane ethanol","Gasoline_sugar",3.1073,420344430.648,0.0534552,0.0534552
+"China",2005,"biorefining","biodiesel","Distillate_FuelOil_biomassOil",1.8395,23184684.0716174,0.002004928226,0.0018418
+"EU-12",2005,"biorefining","biodiesel","Distillate_FuelOil_biomassOil",1.8395,10656352.8223944,0.001594863907,0.0014651
+"EU-15",2005,"biorefining","biodiesel","Distillate_FuelOil_biomassOil",1.8395,995392088.41541,0.114966925696,0.1056128
+"European Free Trade Association",2005,"biorefining","biodiesel","Distillate_FuelOil_biomassOil",1.8395,2108150.11590848,0.000273448784,0.0002512
+"South Korea",2005,"biorefining","biodiesel","Distillate_FuelOil_biomassOil",1.8395,6063159.01175445,0.000501286485,0.0004605
+"USA",2005,"biorefining","biodiesel","Distillate_FuelOil_biomassOil",1.8395,133087767.902184,0.013488035442,0.0123906
+"Australia_NZ",2005,"biorefining","corn ethanol","Gasoline_corn",1.5915,6217843.599792,0.0010688832,0.0007953
+"Canada",2005,"biorefining","corn ethanol","Gasoline_corn",1.5915,38317786.12116,0.0101267712,0.0075348
+"China",2005,"biorefining","corn ethanol","Gasoline_corn",1.5915,249642322.161116,0.0367377024,0.0273346
+"EU-12",2005,"biorefining","corn ethanol","Gasoline_corn",1.5915,7899456.46074,0.002000544,0.0014885
+"EU-15",2005,"biorefining","corn ethanol","Gasoline_corn",1.5915,146446984.508328,0.0333897984,0.0248436
+"European Free Trade Association",2005,"biorefining","corn ethanol","Gasoline_corn",1.5915,288727.501604,5.63136e-05,4.19e-05
+"India",2005,"biorefining","corn ethanol","Gasoline_corn",1.5915,11989632.106102,0.0057384768,0.0042697
+"South America_Southern",2005,"biorefining","corn ethanol","Gasoline_corn",1.5915,4819816.56497,0.001012704,0.0007535
+"USA",2005,"biorefining","corn ethanol","Gasoline_corn",1.5915,1642344543.82453,0.437420256,0.3254615
+"Brazil",2005,"biorefining","sugar cane ethanol","Gasoline_sugar",3.1073,834714836.58,0.292434,0.292434
+"Central America and Caribbean",2005,"biorefining","sugar cane ethanol","Gasoline_sugar",3.1073,240142773.636,0.0305997,0.0305997
+"Colombia",2005,"biorefining","sugar cane ethanol","Gasoline_sugar",3.1073,8282992.8,0.000586,0.000586
+"EU-12",2005,"biorefining","sugar cane ethanol","Gasoline_sugar",3.1073,1386409.912,0.0002696,0.0002696
+"EU-15",2005,"biorefining","sugar cane ethanol","Gasoline_sugar",3.1073,25136200.635,0.0045003,0.0045003
+"Southeast Asia",2005,"biorefining","sugar cane ethanol","Gasoline_sugar",3.1073,8121400.924,0.0014651,0.0014651
+"Argentina",2010,"biorefining","biodiesel","Distillate_FuelOil_biomassOil",1.8395,213227979.720978,0.020687619708,0.0190044
+"Australia_NZ",2010,"biorefining","biodiesel","Distillate_FuelOil_biomassOil",1.8395,15562071.8071419,0.002506214711,0.0023023
+"Brazil",2010,"biorefining","biodiesel","Distillate_FuelOil_biomassOil",1.8395,882717466.606532,0.092638830998,0.0851014
+"Canada",2010,"biorefining","biodiesel","Distillate_FuelOil_biomassOil",1.8395,61817422.8880208,0.010024858844,0.0092092
+"Central America and Caribbean",2010,"biorefining","biodiesel","Distillate_FuelOil_biomassOil",1.8395,948802.65069863,0.000227837701,0.0002093
+"China",2010,"biorefining","biodiesel","Distillate_FuelOil_biomassOil",1.8395,249273673.693594,0.025426709203,0.0233579
+"Colombia",2010,"biorefining","biodiesel","Distillate_FuelOil_biomassOil",1.8395,86901269.4802785,0.013168975575,0.0120975
+"EU-12",2010,"biorefining","biodiesel","Distillate_FuelOil_biomassOil",1.8395,376421402.66251,0.057187262951,0.0525343
+"EU-15",2010,"biorefining","biodiesel","Distillate_FuelOil_biomassOil",1.8395,3679875985.51172,0.423185724066,0.3887538
+"Europe_Non_EU",2010,"biorefining","biodiesel","Distillate_FuelOil_biomassOil",1.8395,13409556.1665685,0.001913814917,0.0017581
+"European Free Trade Association",2010,"biorefining","biodiesel","Distillate_FuelOil_biomassOil",1.8395,33729067.1792693,0.005468104824,0.0050232
+"India",2010,"biorefining","biodiesel","Distillate_FuelOil_biomassOil",1.8395,5046713.67281124,0.001093577422,0.0010046
+"Indonesia",2010,"biorefining","biodiesel","Distillate_FuelOil_biomassOil",1.8395,28086387.5828192,0.007928708452,0.0072836
+"Japan",2010,"biorefining","biodiesel","Distillate_FuelOil_biomassOil",1.8395,3443101.1367084,0.00031895101,0.000293
+"South America_Southern",2010,"biorefining","biodiesel","Distillate_FuelOil_biomassOil",1.8395,32141868.5668007,0.005240267123,0.0048139
+"South Korea",2010,"biorefining","biodiesel","Distillate_FuelOil_biomassOil",1.8395,187353457.710838,0.015174012658,0.0139394
+"Southeast Asia",2010,"biorefining","biodiesel","Distillate_FuelOil_biomassOil",1.8395,149645888.142433,0.024971033801,0.0229393
+"USA",2010,"biorefining","biodiesel","Distillate_FuelOil_biomassOil",1.8395,387615320.83302,0.039005857954,0.0358322
+"Africa_Eastern",2010,"biorefining","corn ethanol","Gasoline_corn",1.5915,1061116.718912,0.0001688064,0.0001256
+"Argentina",2010,"biorefining","corn ethanol","Gasoline_corn",1.5915,23053921.245264,0.0033755904,0.0025116
+"Australia_NZ",2010,"biorefining","corn ethanol","Gasoline_corn",1.5915,36344388.067776,0.0065823744,0.0048976
+"Canada",2010,"biorefining","corn ethanol","Gasoline_corn",1.5915,220860418.94604,0.0532780416,0.0396414
+"China",2010,"biorefining","corn ethanol","Gasoline_corn",1.5915,461227121.260736,0.0662741184,0.0493111
+"EU-12",2010,"biorefining","corn ethanol","Gasoline_corn",1.5915,78737558.88025,0.018338208,0.0136445
+"EU-15",2010,"biorefining","corn ethanol","Gasoline_corn",1.5915,551581748.681604,0.1178884224,0.0877146
+"European Free Trade Association",2010,"biorefining","corn ethanol","Gasoline_corn",1.5915,1247943.539388,0.0002812992,0.0002093
+"India",2010,"biorefining","corn ethanol","Gasoline_corn",1.5915,25010068.98416,0.010464384,0.007786
+"Japan",2010,"biorefining","corn ethanol","Gasoline_corn",1.5915,47631923.954556,0.0107456832,0.0079953
+"South America_Southern",2010,"biorefining","corn ethanol","Gasoline_corn",1.5915,27213218.709404,0.0053446848,0.0039767
+"USA",2010,"biorefining","corn ethanol","Gasoline_corn",1.5915,5150987587.39198,1.2656214144,0.9416826
+"Brazil",2010,"biorefining","sugar cane ethanol","Gasoline_sugar",3.1073,1441432036.247,0.5047897,0.5047897
+"Central America and Caribbean",2010,"biorefining","sugar cane ethanol","Gasoline_sugar",3.1073,78566062.848,0.0100464,0.0100464
+"Colombia",2010,"biorefining","sugar cane ethanol","Gasoline_sugar",3.1073,84725728.36,0.0060697,0.0060697
+"EU-12",2010,"biorefining","sugar cane ethanol","Gasoline_sugar",3.1073,13257785.98,0.0024716,0.0024716
+"EU-15",2010,"biorefining","sugar cane ethanol","Gasoline_sugar",3.1073,90397830.993,0.0158889,0.0158889
+"Southeast Asia",2010,"biorefining","sugar cane ethanol","Gasoline_sugar",3.1073,76031469.15,0.0136045,0.0136045
+"Taiwan",2010,"biorefining","sugar cane ethanol","Gasoline_sugar",3.1073,18194903.81,0.0015907,0.0015907
+"Argentina",2015,"biorefining","biodiesel","Distillate_FuelOil_biomassOil",1.8395,409352221.191181,0.039415922273,0.0362089
+"Australia_NZ",2015,"biorefining","biodiesel","Distillate_FuelOil_biomassOil",1.8395,34002382.7077707,0.005559218133,0.0051069
+"Brazil",2015,"biorefining","biodiesel","Distillate_FuelOil_biomassOil",1.8395,1360662459.89754,0.142444174208,0.1308544
+"Canada",2015,"biorefining","biodiesel","Distillate_FuelOil_biomassOil",1.8395,119857712.989327,0.019548431203,0.0179579
+"China",2015,"biorefining","biodiesel","Distillate_FuelOil_biomassOil",1.8395,259736882.307307,0.032261840233,0.0296369
+"Colombia",2015,"biorefining","biodiesel","Distillate_FuelOil_biomassOil",1.8395,124811161.036194,0.020596506399,0.0189207
+"EU-12",2015,"biorefining","biodiesel","Distillate_FuelOil_biomassOil",1.8395,400254522.61764,0.061926243589,0.0568877
+"EU-15",2015,"biorefining","biodiesel","Distillate_FuelOil_biomassOil",1.8395,3917862561.78262,0.458956243123,0.4216139
+"Europe_Non_EU",2015,"biorefining","biodiesel","Distillate_FuelOil_biomassOil",1.8395,42876403.0719034,0.006288342319,0.0057767
+"European Free Trade Association",2015,"biorefining","biodiesel","Distillate_FuelOil_biomassOil",1.8395,49012902.4499849,0.008111043927,0.0074511
+"India",2015,"biorefining","biodiesel","Distillate_FuelOil_biomassOil",1.8395,10115588.1468555,0.001731588299,0.0015907
+"Indonesia",2015,"biorefining","biodiesel","Distillate_FuelOil_biomassOil",1.8395,107906488.293739,0.030621365243,0.0281299
+"Japan",2015,"biorefining","biodiesel","Distillate_FuelOil_biomassOil",1.8395,6115607.5456827,0.000592399794,0.0005442
+"South America_Southern",2015,"biorefining","biodiesel","Distillate_FuelOil_biomassOil",1.8395,82838239.2772214,0.014490499555,0.0133115
+"South Korea",2015,"biorefining","biodiesel","Distillate_FuelOil_biomassOil",1.8395,207270897.711883,0.019047253575,0.0174975
+"Southeast Asia",2015,"biorefining","biodiesel","Distillate_FuelOil_biomassOil",1.8395,400041534.974934,0.067121008486,0.0616598
+"USA",2015,"biorefining","biodiesel","Distillate_FuelOil_biomassOil",1.8395,2733274854.78096,0.274225478695,0.2519135
+"Africa_Eastern",2015,"biorefining","corn ethanol","Gasoline_corn",1.5915,2906190.313554,0.0004302144,0.0003201
+"Africa_Northern",2015,"biorefining","corn ethanol","Gasoline_corn",1.5915,8801.550156,1.8816e-06,1.4e-06
+"Africa_Southern",2015,"biorefining","corn ethanol","Gasoline_corn",1.5915,8582098.018188,0.0019297152,0.0014358
+"Africa_Western",2015,"biorefining","corn ethanol","Gasoline_corn",1.5915,1701858.846776,0.0003381504,0.0002516
+"Argentina",2015,"biorefining","corn ethanol","Gasoline_corn",1.5915,156244120.7085,0.022897728,0.017037
+"Australia_NZ",2015,"biorefining","corn ethanol","Gasoline_corn",1.5915,39031462.464508,0.0071449728,0.0053162
+"Canada",2015,"biorefining","corn ethanol","Gasoline_corn",1.5915,335400199.602692,0.0801139584,0.0596086
+"China",2015,"biorefining","corn ethanol","Gasoline_corn",1.5915,572140795.317504,0.0828144576,0.0616179
+"EU-12",2015,"biorefining","corn ethanol","Gasoline_corn",1.5915,82848530.966256,0.0191955456,0.0142824
+"EU-15",2015,"biorefining","corn ethanol","Gasoline_corn",1.5915,527551183.3032,0.11198208,0.08332
+"Europe_Non_EU",2015,"biorefining","corn ethanol","Gasoline_corn",1.5915,8398335.299648,0.0020481216,0.0015239
+"European Free Trade Association",2015,"biorefining","corn ethanol","Gasoline_corn",1.5915,6217451.27458,0.001406496,0.0010465
+"India",2015,"biorefining","corn ethanol","Gasoline_corn",1.5915,78466099.937316,0.0317868096,0.0236509
+"Japan",2015,"biorefining","corn ethanol","Gasoline_corn",1.5915,82779509.875498,0.0186220608,0.0138557
+"South America_Southern",2015,"biorefining","corn ethanol","Gasoline_corn",1.5915,74220189.810172,0.0147400512,0.0109673
+"USA",2015,"biorefining","corn ethanol","Gasoline_corn",1.5915,6449904522.83417,1.5853459776,1.1795729
+"Ukraine",2015,"biorefining","corn ethanol","Gasoline_corn",1.5915,9026139.028452,0.0019690944,0.0014651
+"Brazil",2015,"biorefining","sugar cane ethanol","Gasoline_sugar",3.1073,1846764226.404,0.6466533,0.6466533
+"Central America and Caribbean",2015,"biorefining","sugar cane ethanol","Gasoline_sugar",3.1073,85633194.96,0.0109255,0.0109255
+"Colombia",2015,"biorefining","sugar cane ethanol","Gasoline_sugar",3.1073,132393202.38,0.0095022,0.0095022
+"EU-12",2015,"biorefining","sugar cane ethanol","Gasoline_sugar",3.1073,17929502.976,0.0025872,0.0025872
+"EU-15",2015,"biorefining","sugar cane ethanol","Gasoline_sugar",3.1073,96973089.932,0.0150929,0.0150929
+"Europe_Non_EU",2015,"biorefining","sugar cane ethanol","Gasoline_sugar",3.1073,1573640.233,0.0002761,0.0002761
+"Southeast Asia",2015,"biorefining","sugar cane ethanol","Gasoline_sugar",3.1073,209656072.465,0.0367115,0.0367115
+"Taiwan",2015,"biorefining","sugar cane ethanol","Gasoline_sugar",3.1073,9625707.25,0.0009209,0.0009209
+"Argentina",2021,"biorefining","biodiesel","Distillate_FuelOil_biomassOil",1.8395,166877973.4506,0.017816951761,0.0163673
+"Australia_NZ",2021,"biorefining","biodiesel","Distillate_FuelOil_biomassOil",1.8395,277483.52413602,4.5611083e-05,4.19e-05
+"Brazil",2021,"biorefining","biodiesel","Distillate_FuelOil_biomassOil",1.8395,2574314642.54805,0.24542681506,0.225458
+"Canada",2021,"biorefining","biodiesel","Distillate_FuelOil_biomassOil",1.8395,180172829.924854,0.029527787821,0.0271253
+"China",2021,"biorefining","biodiesel","Distillate_FuelOil_biomassOil",1.8395,475417654.649374,0.065708371197,0.0603621
+"Colombia",2021,"biorefining","biodiesel","Distillate_FuelOil_biomassOil",1.8395,155826962.352163,0.025927886831,0.0238183
+"EU-12",2021,"biorefining","biodiesel","Distillate_FuelOil_biomassOil",1.8395,696160948.938763,0.109134258779,0.1002547
+"EU-15",2021,"biorefining","biodiesel","Distillate_FuelOil_biomassOil",1.8395,5021611809.84186,0.599258764713,0.5505009
+"Europe_Non_EU",2021,"biorefining","biodiesel","Distillate_FuelOil_biomassOil",1.8395,78780143.2766029,0.011665333834,0.0107162
+"European Free Trade Association",2021,"biorefining","biodiesel","Distillate_FuelOil_biomassOil",1.8395,122472987.631979,0.020368668698,0.0187114
+"India",2021,"biorefining","biodiesel","Distillate_FuelOil_biomassOil",1.8395,9279583.66589703,0.001412637289,0.0012977
+"Indonesia",2021,"biorefining","biodiesel","Distillate_FuelOil_biomassOil",1.8395,1138289057.36792,0.328314127141,0.3016013
+"Japan",2021,"biorefining","biodiesel","Distillate_FuelOil_biomassOil",1.8395,4518817.92876332,0.000455675402,0.0004186
+"South America_Southern",2021,"biorefining","biodiesel","Distillate_FuelOil_biomassOil",1.8395,91506413.8009807,0.014444888472,0.0132696
+"South Korea",2021,"biorefining","biodiesel","Distillate_FuelOil_biomassOil",1.8395,314638623.734186,0.029892349914,0.0274602
+"Southeast Asia",2021,"biorefining","biodiesel","Distillate_FuelOil_biomassOil",1.8395,602884589.658948,0.102982640852,0.0946036
+"USA",2021,"biorefining","biodiesel","Distillate_FuelOil_biomassOil",1.8395,3728651147.45146,0.374793018145,0.3442985
+"Africa_Eastern",2021,"biorefining","corn ethanol","Gasoline_corn",1.5915,3258951.166858,0.0005549376,0.0004129
+"Africa_Northern",2021,"biorefining","corn ethanol","Gasoline_corn",1.5915,6053.5524,1.344e-06,1e-06
+"Africa_Southern",2021,"biorefining","corn ethanol","Gasoline_corn",1.5915,10903597.0944,0.0026385408,0.0019632
+"Africa_Western",2021,"biorefining","corn ethanol","Gasoline_corn",1.5915,1113573.129102,0.0002369472,0.0001763
+"Argentina",2021,"biorefining","corn ethanol","Gasoline_corn",1.5915,185027560.089168,0.0284675328,0.0211812
+"Australia_NZ",2021,"biorefining","corn ethanol","Gasoline_corn",1.5915,26414265.9032,0.005007072,0.0037255
+"Canada",2021,"biorefining","corn ethanol","Gasoline_corn",1.5915,337019232.284064,0.0846147456,0.0629574
+"Central Asia",2021,"biorefining","corn ethanol","Gasoline_corn",1.5915,386260.75206,0.0001124928,8.37e-05
+"China",2021,"biorefining","corn ethanol","Gasoline_corn",1.5915,689832541.774884,0.1052622144,0.0783201
+"EU-12",2021,"biorefining","corn ethanol","Gasoline_corn",1.5915,108682601.02728,0.0266261184,0.0198111
+"EU-15",2021,"biorefining","corn ethanol","Gasoline_corn",1.5915,623245179.39768,0.137464992,0.1022805
+"Europe_Non_EU",2021,"biorefining","corn ethanol","Gasoline_corn",1.5915,11504043.868044,0.0029531712,0.0021973
+"European Free Trade Association",2021,"biorefining","corn ethanol","Gasoline_corn",1.5915,32055349.6627,0.00703248,0.0052325
+"India",2021,"biorefining","corn ethanol","Gasoline_corn",1.5915,315580726.772924,0.1143762816,0.0851014
+"Japan",2021,"biorefining","corn ethanol","Gasoline_corn",1.5915,111163090.766382,0.0254294208,0.0189207
+"South America_Southern",2021,"biorefining","corn ethanol","Gasoline_corn",1.5915,117500631.723384,0.0244730304,0.0182091
+"USA",2021,"biorefining","corn ethanol","Gasoline_corn",1.5915,5963509446.42725,1.5808451904,1.1762241
+"Ukraine",2021,"biorefining","corn ethanol","Gasoline_corn",1.5915,12333491.764028,0.0028693056,0.0021349
+"Brazil",2021,"biorefining","sugar cane ethanol","Gasoline_sugar",3.1073,1776612535.38,0.622207,0.622207
+"Central America and Caribbean",2021,"biorefining","sugar cane ethanol","Gasoline_sugar",3.1073,75359066.404,0.0096697,0.0096697
+"Colombia",2021,"biorefining","sugar cane ethanol","Gasoline_sugar",3.1073,117311917.28,0.0084976,0.0084976
+"EU-12",2021,"biorefining","sugar cane ethanol","Gasoline_sugar",3.1073,19700994.051,0.0035887,0.0035887
+"EU-15",2021,"biorefining","sugar cane ethanol","Gasoline_sugar",3.1073,106702651.625,0.0185275,0.0185275
+"Europe_Non_EU",2021,"biorefining","sugar cane ethanol","Gasoline_sugar",3.1073,2235864.5,0.000398,0.000398
+"Southeast Asia",2021,"biorefining","sugar cane ethanol","Gasoline_sugar",3.1073,255301827.11,0.0447485,0.0447485
+"Africa_Eastern",1990,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",0.8788,156800875.975416,0.09796931976396,0.0485916
+"Africa_Northern",1990,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",0.8788,879560510.720074,0.60463988103834,0.8025354
+"Africa_Southern",1990,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",0.8788,150212955.109701,0.10355943130624,0.0618527
+"Africa_Western",1990,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",0.8788,253968303.460293,0.1750229396772,0.1502328
+"Argentina",1990,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",0.8788,477001918.444353,0.327430224381,0.3405021
+"Australia_NZ",1990,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",0.8788,647757355.535921,0.432581010543,0.403458
+"Brazil",1990,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",0.8788,1427673822.34752,0.92997382782381,0.8849407
+"Canada",1990,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",0.8788,1290979510.27405,0.86078276540511,0.8492559
+"Central America and Caribbean",1990,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",0.8788,409232165.051854,0.262751742782,0.138535
+"Central Asia",1990,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",0.8788,1124884831.03195,0.7527343108677,0.5720955
+"China",1990,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",0.8788,2163458962.51181,1.44549698108604,1.3050924
+"Colombia",1990,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",0.8788,132370772.921155,0.09106261430288,0.0861908
+"EU-12",1990,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",0.8788,1855534117.92177,1.1519611139248,1.018252
+"EU-15",1990,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",0.8788,13951951113.4867,8.75444353963008,7.8322214
+"Europe_Non_EU",1990,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",0.8788,1274581225.26258,0.79310243065958,0.8031269
+"European Free Trade Association",1990,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",0.8788,604782621.18262,0.41242605016652,0.3011762
+"India",1990,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",0.8788,1439170507.97697,0.95167499287616,0.8095168
+"Indonesia",1990,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",0.8788,626530583.659818,0.43142004221808,0.4616741
+"Japan",1990,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",0.8788,4922679666.48107,3.04198102974572,2.1623348
+"Mexico",1990,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",0.8788,873311624.378175,0.60205966355852,0.5189252
+"Middle East",1990,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",0.8788,3032480675.36093,2.01934630077858,2.7024999
+"Pakistan",1990,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",0.8788,215097242.310718,0.13760411110233,0.0698289
+"Russia",1990,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",0.8788,4981799181.65022,3.34194931082824,3.2606903
+"South Africa",1990,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",0.8788,228732594.029669,0.1429114250554,0.097666
+"South America_Northern",1990,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",0.8788,361964918.165513,0.2452259286554,0.5070989
+"South America_Southern",1990,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",0.8788,333605526.732047,0.22892230625859,0.2289711
+"South Asia",1990,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",0.8788,101310231.176391,0.06644862470904,0.0299256
+"South Korea",1990,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",0.8788,1084969271.65512,0.67789395292416,0.5571328
+"Southeast Asia",1990,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",0.8788,1559357183.70119,1.0253367862196,0.919031
+"Taiwan",1990,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",0.8788,353351702.008054,0.21441870417766,0.1649177
+"USA",1990,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",0.8788,10877645698.0796,7.03315727614838,6.2279009
+"Ukraine",1990,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",0.8788,974251067.490838,0.605465942805,0.609975
+"Africa_Eastern",1990,"crude oil refining","Gasoline","Gasoline_crude oil",0.8788,94614386.1068493,0.05911514836324,0.0293204
+"Africa_Northern",1990,"crude oil refining","Gasoline","Gasoline_crude oil",0.8788,268673991.373812,0.18469566130176,0.2451456
+"Africa_Southern",1990,"crude oil refining","Gasoline","Gasoline_crude oil",0.8788,37659184.6806221,0.02596289878016,0.0155068
+"Africa_Western",1990,"crude oil refining","Gasoline","Gasoline_crude oil",0.8788,307243007.179509,0.2117373450905,0.181747
+"Argentina",1990,"crude oil refining","Gasoline","Gasoline_crude oil",0.8788,343818620.928718,0.236008711588,0.2454308
+"Australia_NZ",1990,"crude oil refining","Gasoline","Gasoline_crude oil",0.8788,1002410359.78936,0.66942302192415,0.6243549
+"Brazil",1990,"crude oil refining","Gasoline","Gasoline_crude oil",0.8788,635348227.678107,0.41386009468419,0.3938193
+"Canada",1990,"crude oil refining","Gasoline","Gasoline_crude oil",0.8788,1927258720.74283,1.28503285922792,1.2678248
+"Central America and Caribbean",1990,"crude oil refining","Gasoline","Gasoline_crude oil",0.8788,406204021.316375,0.26080749178748,0.1375099
+"Central Asia",1990,"crude oil refining","Gasoline","Gasoline_crude oil",0.8788,701987531.1524,0.46974595613932,0.3570178
+"China",1990,"crude oil refining","Gasoline","Gasoline_crude oil",0.8788,1580345771.53316,1.05589478765572,0.9533332
+"Colombia",1990,"crude oil refining","Gasoline","Gasoline_crude oil",0.8788,233558604.652,0.16067336212664,0.1520774
+"EU-12",1990,"crude oil refining","Gasoline","Gasoline_crude oil",0.8788,1087996693.80007,0.67545504619456,0.5970544
+"EU-15",1990,"crude oil refining","Gasoline","Gasoline_crude oil",0.8788,9481759936.40524,5.9495285888256,5.3227855
+"Europe_Non_EU",1990,"crude oil refining","Gasoline","Gasoline_crude oil",0.8788,759258998.853664,0.4724454946894,0.478417
+"European Free Trade Association",1990,"crude oil refining","Gasoline","Gasoline_crude oil",0.8788,371638368.698524,0.2534354313835,0.1850725
+"India",1990,"crude oil refining","Gasoline","Gasoline_crude oil",0.8788,282867848.582223,0.18705098269613,0.1591099
+"Indonesia",1990,"crude oil refining","Gasoline","Gasoline_crude oil",0.8788,282597837.328836,0.1945928484432,0.208239
+"Japan",1990,"crude oil refining","Gasoline","Gasoline_crude oil",0.8788,3206565036.04236,1.98150411384772,1.4085148
+"Mexico",1990,"crude oil refining","Gasoline","Gasoline_crude oil",0.8788,1327251569.95653,0.91500514977631,0.7886581
+"Middle East",1990,"crude oil refining","Gasoline","Gasoline_crude oil",0.8788,1478827155.05577,0.98475949717218,1.3179079
+"Pakistan",1990,"crude oil refining","Gasoline","Gasoline_crude oil",0.8788,113727951.245586,0.07275515701885,0.0369205
+"Russia",1990,"crude oil refining","Gasoline","Gasoline_crude oil",0.8788,2844570723.79173,1.90822849804816,1.8618302
+"South Africa",1990,"crude oil refining","Gasoline","Gasoline_crude oil",0.8788,545103547.722754,0.34057902914225,0.2327525
+"South America_Northern",1990,"crude oil refining","Gasoline","Gasoline_crude oil",0.8788,482344960.649915,0.3267816436662,0.6757467
+"South America_Southern",1990,"crude oil refining","Gasoline","Gasoline_crude oil",0.8788,302216569.316188,0.20738299726368,0.2074272
+"South Asia",1990,"crude oil refining","Gasoline","Gasoline_crude oil",0.8788,41373354.794216,0.02713647470499,0.0122211
+"South Korea",1990,"crude oil refining","Gasoline","Gasoline_crude oil",0.8788,310124034.23709,0.1937669692203,0.159249
+"Southeast Asia",1990,"crude oil refining","Gasoline","Gasoline_crude oil",0.8788,707623449.370305,0.46528939040692,0.4170487
+"Taiwan",1990,"crude oil refining","Gasoline","Gasoline_crude oil",0.8788,281242266.808428,0.1706617006975,0.1312625
+"USA",1990,"crude oil refining","Gasoline","Gasoline_crude oil",0.8788,24278935573.5668,15.698026680214,13.9006922
+"Ukraine",1990,"crude oil refining","Gasoline","Gasoline_crude oil",0.8788,592747143.020261,0.36837343039104,0.3711168
+"Africa_Eastern",1990,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",0.8788,4857149.76494282,0.00303475127612,0.0015052
+"Africa_Northern",1990,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",0.8788,49868935.9331472,0.03428160669178,0.0455018
+"Africa_Southern",1990,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",0.8788,1931433.27936768,0.00133156379136,0.0007953
+"Africa_Western",1990,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",0.8788,707642.617514141,0.0004876738139,0.0004186
+"Argentina",1990,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",0.8788,62534635.8762209,0.042925885756,0.0446396
+"Australia_NZ",1990,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",0.8788,44555574.6270756,0.0297548076186,0.0277516
+"Brazil",1990,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",0.8788,112982707.083111,0.07359591451443,0.0700321
+"Canada",1990,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",0.8788,242778772.337362,0.16187691700068,0.1597092
+"Central America and Caribbean",1990,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",0.8788,27457414.9071136,0.017629317134,0.009295
+"Central Asia",1990,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",0.8788,34487891.3534843,0.02307811290106,0.0175399
+"China",1990,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",0.8788,240519984.741816,0.16070141281141,0.1450921
+"EU-12",1990,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",0.8788,218667592.208677,0.13575420719404,0.1199971
+"EU-15",1990,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",0.8788,1305113621.93481,0.8189208393216,0.732653
+"Europe_Non_EU",1990,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",0.8788,81295752.4376822,0.05058591605046,0.0512253
+"European Free Trade Association",1990,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",0.8788,25459504.9041922,0.01736187958956,0.0126786
+"India",1990,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",0.8788,124127880.301195,0.08208158723835,0.0698205
+"Indonesia",1990,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",0.8788,25904292.8486032,0.01783732734816,0.0190882
+"Japan",1990,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",0.8788,438303580.821944,0.27085068874349,0.1925291
+"Mexico",1990,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",0.8788,63015571.0194434,0.04344283578491,0.0374441
+"Middle East",1990,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",0.8788,156548272.01063,0.10424639357028,0.1395134
+"Pakistan",1990,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",0.8788,19487199.197328,0.01246654161911,0.0063263
+"Russia",1990,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",0.8788,237636515.530319,0.1594141313904,0.155538
+"South Africa",1990,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",0.8788,21273681.6407747,0.01329173121284,0.0090836
+"South America_Northern",1990,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",0.8788,62599.8662649741,4.24104922e-05,8.77e-05
+"South America_Southern",1990,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",0.8788,4635225.24347106,0.00318072204366,0.0031814
+"South Asia",1990,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",0.8788,4101077.80786617,0.00268986633426,0.0012114
+"South Korea",1990,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",0.8788,63565018.0806322,0.03971572513629,0.0326407
+"Southeast Asia",1990,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",0.8788,47777669.3683345,0.0314156387486,0.0281585
+"Taiwan",1990,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",0.8788,60516286.6823651,0.03672212047752,0.0282444
+"USA",1990,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",0.8788,3082262614.42748,1.9928979427495,1.7647225
+"Ukraine",1990,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",0.8788,152972790.630243,0.09506770687046,0.0957757
+"Africa_Eastern",1990,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",0.8788,103047923.783356,0.06438442982759,0.0319339
+"Africa_Northern",1990,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",0.8788,257945470.439485,0.17732051025486,0.2353566
+"Africa_Southern",1990,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",0.8788,85016335.5557606,0.05861174460928,0.0350069
+"Africa_Western",1990,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",0.8788,219441057.610092,0.15122839529775,0.1298085
+"Argentina",1990,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",0.8788,71850334.8321543,0.049320496095,0.0512895
+"Australia_NZ",1990,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",0.8788,235808864.714357,0.1574763082524,0.1468744
+"Brazil",1990,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",0.8788,180882584.17706,0.11782528092951,0.1121197
+"Canada",1990,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",0.8788,273077398.707786,0.18207904661432,0.1796408
+"Central America and Caribbean",1990,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",0.8788,212919181.161851,0.13670696171916,0.0720783
+"Central Asia",1990,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",0.8788,349471295.421011,0.23385419330924,0.1777346
+"China",1990,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",0.8788,284328667.590623,0.18997181724274,0.1715194
+"Colombia",1990,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",0.8788,52008990.6781586,0.03577885475692,0.0338647
+"EU-12",1990,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",0.8788,182241793.30039,0.11314017736796,0.1000079
+"EU-15",1990,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",0.8788,2462210169.44201,1.5449652694272,1.3822135
+"Europe_Non_EU",1990,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",0.8788,112474097.77173,0.06998650110402,0.0708711
+"European Free Trade Association",1990,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",0.8788,119095767.084755,0.08121628348756,0.0593086
+"India",1990,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",0.8788,572801797.708628,0.37877453973128,0.3221944
+"Indonesia",1990,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",0.8788,392570233.595684,0.27031827522624,0.2892748
+"Japan",1990,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",0.8788,2234210188.29509,1.38063523725415,0.9813985
+"Mexico",1990,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",0.8788,212993373.898085,0.14683729776365,0.1265615
+"Middle East",1990,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",0.8788,1096756344.60156,0.73033634981466,0.9774123
+"Pakistan",1990,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",0.8788,121255087.163672,0.07757049000977,0.0393641
+"Russia",1990,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",0.8788,1289779987.64227,0.86522543034208,0.8441876
+"South Africa",1990,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",0.8788,29844186.5027694,0.01864655643339,0.0127431
+"South America_Northern",1990,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",0.8788,134318612.934832,0.0909988922672,0.1881752
+"South America_Southern",1990,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",0.8788,116916687.122054,0.08022899955609,0.0802461
+"South Asia",1990,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",0.8788,82090956.9292081,0.05384284613365,0.0242485
+"South Korea",1990,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",0.8788,253825798.57742,0.15859156424706,0.1303398
+"Southeast Asia",1990,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",0.8788,809610622.589441,0.53234984423824,0.4771564
+"Taiwan",1990,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",0.8788,81422006.4858367,0.04940800064928,0.0380016
+"USA",1990,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",0.8788,5040184237.9028,3.25883094833588,2.8857134
+"Ukraine",1990,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",0.8788,416305918.339153,0.25872084081128,0.2606476
+"Africa_Eastern",1990,"crude oil refining","LPG","LPG_crude oil",0.8788,7380918.58713375,0.00461160416813,0.0022873
+"Africa_Northern",1990,"crude oil refining","LPG","LPG_crude oil",0.8788,353971925.072966,0.24333236890298,0.3229738
+"Africa_Southern",1990,"crude oil refining","LPG","LPG_crude oil",0.8788,8749856.61037824,0.00603230376448,0.0036029
+"Africa_Western",1990,"crude oil refining","LPG","LPG_crude oil",0.8788,14478780.4359415,0.0099780904952,0.0085648
+"Argentina",1990,"crude oil refining","LPG","LPG_crude oil",0.8788,80058219.4248111,0.054954665246,0.0571486
+"Australia_NZ",1990,"crude oil refining","LPG","LPG_crude oil",0.8788,200202102.474906,0.1336976370261,0.1246966
+"Brazil",1990,"crude oil refining","LPG","LPG_crude oil",0.8788,290785181.07694,0.18941483950158,0.1802426
+"Canada",1990,"crude oil refining","LPG","LPG_crude oil",0.8788,175143924.990736,0.11678022067556,0.1152164
+"Central America and Caribbean",1990,"crude oil refining","LPG","LPG_crude oil",0.8788,41803212.6214661,0.02684018488328,0.0141514
+"Central Asia",1990,"crude oil refining","LPG","LPG_crude oil",0.8788,82060413.8508689,0.05491201175936,0.0417344
+"China",1990,"crude oil refining","LPG","LPG_crude oil",0.8788,185805422.609313,0.12414433650239,0.1120859
+"Colombia",1990,"crude oil refining","LPG","LPG_crude oil",0.8788,29636863.6843606,0.020388264171,0.0192975
+"EU-12",1990,"crude oil refining","LPG","LPG_crude oil",0.8788,111174019.476336,0.06901955942416,0.0610084
+"EU-15",1990,"crude oil refining","LPG","LPG_crude oil",0.8788,1128696792.84601,0.70822441004544,0.6336177
+"Europe_Non_EU",1990,"crude oil refining","LPG","LPG_crude oil",0.8788,108173899.026088,0.0673107217893,0.0681615
+"European Free Trade Association",1990,"crude oil refining","LPG","LPG_crude oil",0.8788,97482316.9297462,0.06647718622238,0.0485453
+"India",1990,"crude oil refining","LPG","LPG_crude oil",0.8788,180683529.649933,0.11947993364188,0.1016324
+"Indonesia",1990,"crude oil refining","LPG","LPG_crude oil",0.8788,171833039.651992,0.11832178532784,0.1266193
+"Japan",1990,"crude oil refining","LPG","LPG_crude oil",0.8788,479886270.845744,0.29654680605933,0.2107947
+"Mexico",1990,"crude oil refining","LPG","LPG_crude oil",0.8788,599817472.653015,0.41351322449089,0.3564139
+"Middle East",1990,"crude oil refining","LPG","LPG_crude oil",0.8788,1139769658.02758,0.75897916230042,1.0157451
+"Pakistan",1990,"crude oil refining","LPG","LPG_crude oil",0.8788,17665173.9495181,0.01130093781156,0.0057348
+"Russia",1990,"crude oil refining","LPG","LPG_crude oil",0.8788,566966856.992629,0.3803393970532,0.3710915
+"South Africa",1990,"crude oil refining","LPG","LPG_crude oil",0.8788,25710811.9896024,0.01606403668158,0.0109782
+"South America_Northern",1990,"crude oil refining","LPG","LPG_crude oil",0.8788,79485912.5166345,0.0538505411262,0.1113567
+"South America_Southern",1990,"crude oil refining","LPG","LPG_crude oil",0.8788,67194156.4974908,0.04610907206241,0.0461189
+"South Asia",1990,"crude oil refining","LPG","LPG_crude oil",0.8788,4378680.8954054,0.00287194412806,0.0012934
+"South Korea",1990,"crude oil refining","LPG","LPG_crude oil",0.8788,95818509.6557223,0.05986785982863,0.0492029
+"Southeast Asia",1990,"crude oil refining","LPG","LPG_crude oil",0.8788,150738432.327107,0.099116264944,0.08884
+"Taiwan",1990,"crude oil refining","LPG","LPG_crude oil",0.8788,40393256.5279945,0.0245111872195,0.0188525
+"USA",1990,"crude oil refining","LPG","LPG_crude oil",0.8788,3187462894.16602,2.0609172672828,1.824954
+"Ukraine",1990,"crude oil refining","LPG","LPG_crude oil",0.8788,60061526.1563928,0.03732632149354,0.0376043
+"Africa_Eastern",1990,"crude oil refining","Other","Other_crude oil",0.8788,2067805.9855005,0.00129196692648,0.0006408
+"Africa_Northern",1990,"crude oil refining","Other","Other_crude oil",0.8788,443426461.948699,0.30482646723466,0.4045946
+"Africa_Southern",1990,"crude oil refining","Other","Other_crude oil",0.8788,13930216.6358016,0.0096037343232,0.005736
+"Africa_Western",1990,"crude oil refining","Other","Other_crude oil",0.8788,18905350.4167365,0.01302867310795,0.0111833
+"Argentina",1990,"crude oil refining","Other","Other_crude oil",0.8788,95080815.3877192,0.065266682403,0.0678723
+"Australia_NZ",1990,"crude oil refining","Other","Other_crude oil",0.8788,124751627.281779,0.083310802317,0.077702
+"Brazil",1990,"crude oil refining","Other","Other_crude oil",0.8788,586189398.119526,0.38183847729489,0.3633483
+"Canada",1990,"crude oil refining","Other","Other_crude oil",0.8788,523123457.318657,0.34880155157803,0.3441307
+"Central America and Caribbean",1990,"crude oil refining","Other","Other_crude oil",0.8788,43305025.3959445,0.02780443930296,0.0146598
+"Central Asia",1990,"crude oil refining","Other","Other_crude oil",0.8788,482001506.43499,0.3225388606678,0.245137
+"China",1990,"crude oil refining","Other","Other_crude oil",0.8788,1063737573.67172,0.71072734822067,0.6416927
+"Colombia",1990,"crude oil refining","Other","Other_crude oil",0.8788,37094188.1560356,0.02551842581552,0.0241532
+"EU-12",1990,"crude oil refining","Other","Other_crude oil",0.8788,525809319.234943,0.32643532837668,0.2885457
+"EU-15",1990,"crude oil refining","Other","Other_crude oil",0.8788,3478273793.24167,2.18251564176384,1.9526022
+"Europe_Non_EU",1990,"crude oil refining","Other","Other_crude oil",0.8788,755954657.324175,0.47038938304518,0.4763349
+"European Free Trade Association",1990,"crude oil refining","Other","Other_crude oil",0.8788,72864996.2065218,0.04968962653406,0.0362861
+"India",1990,"crude oil refining","Other","Other_crude oil",0.8788,556993651.120589,0.36832114473175,0.3133025
+"Indonesia",1990,"crude oil refining","Other","Other_crude oil",0.8788,180224569.226773,0.12410007315264,0.1328028
+"Japan",1990,"crude oil refining","Other","Other_crude oil",0.8788,1585562021.52086,0.97980163604665,0.6964735
+"Mexico",1990,"crude oil refining","Other","Other_crude oil",0.8788,439559192.511295,0.30303141761778,0.2611878
+"Middle East",1990,"crude oil refining","Other","Other_crude oil",0.8788,1372106834.42527,0.91369382264568,1.2228004
+"Pakistan",1990,"crude oil refining","Other","Other_crude oil",0.8788,13100407.7369578,0.00838072093513,0.0042529
+"Russia",1990,"crude oil refining","Other","Other_crude oil",0.8788,1230547782.13853,0.82549058332312,0.8054189
+"South Africa",1990,"crude oil refining","Other","Other_crude oil",0.8788,170376109.564919,0.10645047207465,0.0727485
+"South America_Northern",1990,"crude oil refining","Other","Other_crude oil",0.8788,81292029.2966831,0.055074158782,0.113887
+"South America_Southern",1990,"crude oil refining","Other","Other_crude oil",0.8788,50713857.4792994,0.03480018250044,0.0348076
+"South Asia",1990,"crude oil refining","Other","Other_crude oil",0.8788,32838752.5541379,0.02153869277609,0.0097001
+"South Korea",1990,"crude oil refining","Other","Other_crude oil",0.8788,356310312.849771,0.22262437541379,0.1829657
+"Southeast Asia",1990,"crude oil refining","Other","Other_crude oil",0.8788,303945452.510953,0.19985572049884,0.1791349
+"Taiwan",1990,"crude oil refining","Other","Other_crude oil",0.8788,315051545.721524,0.19117763915918,0.1470421
+"USA",1990,"crude oil refining","Other","Other_crude oil",0.8788,3704025322.35717,2.39491093661686,2.1207073
+"Ukraine",1990,"crude oil refining","Other","Other_crude oil",0.8788,279402540.373406,0.17363976101662,0.1749329
+"Africa_Eastern",1990,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",0.8788,164166305.379137,0.10257124627721,0.0508741
+"Africa_Northern",1990,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",0.8788,994074785.757783,0.68336089771894,0.9070214
+"Africa_Southern",1990,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",0.8788,77914499.3444506,0.05371561485312,0.0320826
+"Africa_Western",1990,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",0.8788,176197771.216075,0.12142716812545,0.1042283
+"Argentina",1990,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",0.8788,173312289.833127,0.118967408209,0.1237169
+"Australia_NZ",1990,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",0.8788,147409118.590737,0.09844177752405,0.0918143
+"Brazil",1990,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",0.8788,694126190.358675,0.45214752847341,0.4302527
+"Canada",1990,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",0.8788,459812924.248654,0.30658816608154,0.3024826
+"Central America and Caribbean",1990,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",0.8788,995407651.240894,0.63911177438592,0.3369696
+"Central Asia",1990,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",0.8788,1192439602.269,0.79793964457844,0.6064526
+"China",1990,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",0.8788,2370515507.65913,1.58384007707759,1.4299979
+"Colombia",1990,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",0.8788,209159391.435791,0.14388826604108,0.1361903
+"EU-12",1990,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",0.8788,1580536757.10338,0.98123600408444,0.8673431
+"EU-15",1990,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",0.8788,7235838264.05455,4.54027806070272,4.0619901
+"Europe_Non_EU",1990,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",0.8788,1826387375.10805,1.13646132377774,1.1508257
+"European Free Trade Association",1990,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",0.8788,92385235.1306271,0.0630012772922,0.046007
+"India",1990,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",0.8788,670973945.426679,0.44369247507137,0.3774151
+"Indonesia",1990,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",0.8788,531108164.644691,0.36571352267424,0.3913598
+"Japan",1990,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",0.8788,4360174844.71701,2.69437990335149,1.9152491
+"Mexico",1990,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",0.8788,1317707371.90222,0.90842539461319,0.7829869
+"Middle East",1990,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",0.8788,2919471084.95569,1.9440925653825,2.6017875
+"Pakistan",1990,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",0.8788,215074755.777651,0.13758972579752,0.0698216
+"Russia",1990,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",0.8788,6027866298.23544,4.04368439726624,3.9453628
+"South Africa",1990,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",0.8788,214207819.0321,0.13383639006829,0.0914641
+"South America_Northern",1990,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",0.8788,388042723.343672,0.2628932595794,0.5436329
+"South America_Southern",1990,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",0.8788,448567825.489987,0.30781019166702,0.3078758
+"South Asia",1990,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",0.8788,108241506.315754,0.0709947963557,0.031973
+"South Korea",1990,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",0.8788,1232576970.20179,0.77011994389365,0.6329295
+"Southeast Asia",1990,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",0.8788,1392430319.26028,0.91557601010716,0.8206501
+"Taiwan",1990,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",0.8788,872116173.134257,0.5292121664425,0.4070375
+"USA",1990,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",0.8788,3674567008.38361,2.37586408024584,2.1038412
+"Ukraine",1990,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",0.8788,2012838083.37967,1.2509146240979,1.2602305
+"Africa_Eastern",2005,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",2.1594,368761591.709416,0.18782073257176,0.0737221
+"Africa_Northern",2005,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",2.1594,1578786398.05264,0.80310166515107,0.9598331
+"Africa_Southern",2005,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",2.1594,213908752.883328,0.10895145664191,0.0290139
+"Africa_Western",2005,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",2.1594,670045627.613324,0.34136664350738,0.1697921
+"Argentina",2005,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",2.1594,715983461.902655,0.36683913486624,0.4205343
+"Australia_NZ",2005,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",2.1594,1363753684.61765,0.66465250127952,0.5347868
+"Brazil",2005,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",2.1594,2942622851.98204,1.47674615715195,1.3718013
+"Canada",2005,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",2.1594,2739844303.53539,1.37609113009896,1.3845942
+"Central America and Caribbean",2005,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",2.1594,794820785.443655,0.38481888976862,0.2114986
+"Central Asia",2005,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",2.1594,707877367.741619,0.35773125816204,0.3959757
+"China",2005,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",2.1594,12613310881.1788,6.0505087555423,4.912607
+"Colombia",2005,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",2.1594,299119539.955,0.1537484347104,0.1634992
+"EU-12",2005,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",2.1594,2368823281.30004,1.11028687377894,1.0663266
+"EU-15",2005,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",2.1594,24419682022.0856,11.5465988726405,10.0163891
+"Europe_Non_EU",2005,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",2.1594,1562751975.24687,0.73634547203008,0.7382432
+"European Free Trade Association",2005,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",2.1594,682095517.560452,0.34437009537495,0.3836187
+"India",2005,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",2.1594,4216094434.51778,2.03851352105568,2.1017016
+"Indonesia",2005,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",2.1594,1724623961.04738,0.86653840475092,0.5988524
+"Japan",2005,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",2.1594,6503622032.26893,3.03893820468132,2.4577996
+"Mexico",2005,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",2.1594,1773450724.17297,0.89850713926288,0.6400331
+"Middle East",2005,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",2.1594,6390619786.48428,3.18349883190112,4.0559044
+"Pakistan",2005,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",2.1594,461418718.590583,0.22163346874998,0.1507086
+"Russia",2005,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",2.1594,3978448167.29484,1.95317209737356,2.5609652
+"South Africa",2005,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",2.1594,763936809.164732,0.33663446007849,0.3195801
+"South America_Northern",2005,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",2.1594,1041767919.35809,0.51959527036048,0.8256848
+"South America_Southern",2005,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",2.1594,877968967.479038,0.446009598288,0.3921472
+"South Asia",2005,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",2.1594,324300189.015691,0.15795019872378,0.0507673
+"South Korea",2005,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",2.1594,2468104537.22401,1.16826714564096,1.3442304
+"Southeast Asia",2005,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",2.1594,4621514430.07734,2.27300589800435,1.9355585
+"Taiwan",2005,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",2.1594,1184950679.88936,0.55090256135625,0.6005975
+"USA",2005,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",2.1594,20604942495.1192,9.90999862369614,8.5111802
+"Ukraine",2005,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",2.1594,424262853.350671,0.19813948621155,0.2475093
+"Africa_Eastern",2005,"crude oil refining","Gasoline","Gasoline_crude oil",2.1594,295499074.052269,0.15050605543136,0.0590756
+"Africa_Northern",2005,"crude oil refining","Gasoline","Gasoline_crude oil",2.1594,499947795.15008,0.25431490116008,0.3039464
+"Africa_Southern",2005,"crude oil refining","Gasoline","Gasoline_crude oil",2.1594,63930287.5131299,0.03256200531397,0.0086713
+"Africa_Western",2005,"crude oil refining","Gasoline","Gasoline_crude oil",2.1594,540070064.529054,0.27514828481724,0.1368558
+"Argentina",2005,"crude oil refining","Gasoline","Gasoline_crude oil",2.1594,388488691.513541,0.19904489849728,0.2281796
+"Australia_NZ",2005,"crude oil refining","Gasoline","Gasoline_crude oil",2.1594,1715749034.62882,0.83620444094616,0.6728194
+"Brazil",2005,"crude oil refining","Gasoline","Gasoline_crude oil",2.1594,1552776933.62623,0.77925629106775,0.7238785
+"Canada",2005,"crude oil refining","Gasoline","Gasoline_crude oil",2.1594,3151870646.66497,1.58303201189144,1.5928138
+"Central America and Caribbean",2005,"crude oil refining","Gasoline","Gasoline_crude oil",2.1594,681952856.18181,0.33017297206683,0.1814649
+"Central Asia",2005,"crude oil refining","Gasoline","Gasoline_crude oil",2.1594,565668769.866324,0.28586505229408,0.3164264
+"China",2005,"crude oil refining","Gasoline","Gasoline_crude oil",2.1594,6108182095.49465,2.93004823217225,2.3790025
+"Colombia",2005,"crude oil refining","Gasoline","Gasoline_crude oil",2.1594,350997732.98984,0.1804139978358,0.1918559
+"EU-12",2005,"crude oil refining","Gasoline","Gasoline_crude oil",2.1594,1978453253.13877,0.92731724425626,0.8906014
+"EU-15",2005,"crude oil refining","Gasoline","Gasoline_crude oil",2.1594,12674718621.3105,5.99311209750796,5.1988766
+"Europe_Non_EU",2005,"crude oil refining","Gasoline","Gasoline_crude oil",2.1594,1027037568.83162,0.4839248168568,0.485172
+"European Free Trade Association",2005,"crude oil refining","Gasoline","Gasoline_crude oil",2.1594,454445856.08601,0.2294364334233,0.2555858
+"India",2005,"crude oil refining","Gasoline","Gasoline_crude oil",2.1594,1013429412.49004,0.49000077965112,0.5051894
+"Indonesia",2005,"crude oil refining","Gasoline","Gasoline_crude oil",2.1594,1106895710.35998,0.55616045279718,0.3843546
+"Japan",2005,"crude oil refining","Gasoline","Gasoline_crude oil",2.1594,5130863794.94423,2.39749141818324,1.9390172
+"Mexico",2005,"crude oil refining","Gasoline","Gasoline_crude oil",2.1594,2340180796.03326,1.18563720082064,0.8445643
+"Middle East",2005,"crude oil refining","Gasoline","Gasoline_crude oil",2.1594,3475833044.31346,1.7314925322044,2.2059905
+"Pakistan",2005,"crude oil refining","Gasoline","Gasoline_crude oil",2.1594,182409505.943396,0.08761684324098,0.0595786
+"Russia",2005,"crude oil refining","Gasoline","Gasoline_crude oil",2.1594,3084401507.72037,1.51425045863364,1.9854588
+"South Africa",2005,"crude oil refining","Gasoline","Gasoline_crude oil",2.1594,800435469.639564,0.35271786739063,0.3348487
+"South America_Northern",2005,"crude oil refining","Gasoline","Gasoline_crude oil",2.1594,903185253.733555,0.45047536728569,0.7158469
+"South America_Southern",2005,"crude oil refining","Gasoline","Gasoline_crude oil",2.1594,671026297.436925,0.34088240068425,0.2997157
+"South Asia",2005,"crude oil refining","Gasoline","Gasoline_crude oil",2.1594,82563285.4808114,0.04021239515328,0.0129248
+"South Korea",2005,"crude oil refining","Gasoline","Gasoline_crude oil",2.1594,830682368.957557,0.3932000875489,0.4524235
+"Southeast Asia",2005,"crude oil refining","Gasoline","Gasoline_crude oil",2.1594,2499909450.82598,1.2295339573589,1.046999
+"Taiwan",2005,"crude oil refining","Gasoline","Gasoline_crude oil",2.1594,1214155317.66934,0.5644802655,0.6154
+"USA",2005,"crude oil refining","Gasoline","Gasoline_crude oil",2.1594,37160136468.6643,17.8722605679708,15.3495511
+"Ukraine",2005,"crude oil refining","Gasoline","Gasoline_crude oil",2.1594,386093315.829166,0.18031352644695,0.2252417
+"Africa_Eastern",2005,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",2.1594,18424048.8366893,0.00938389037048,0.0036833
+"Africa_Northern",2005,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",2.1594,114682918.313929,0.05833724104534,0.0697222
+"Africa_Southern",2005,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",2.1594,2160180.62359128,0.0011002580417,0.000293
+"Africa_Western",2005,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",2.1594,8755196.67536311,0.00446049041908,0.0022186
+"Argentina",2005,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",2.1594,113355539.607813,0.05807850361728,0.0665796
+"Australia_NZ",2005,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",2.1594,81552851.2213581,0.03974640520656,0.0319804
+"Brazil",2005,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",2.1594,317325472.147342,0.1592488045977,0.1479318
+"Canada",2005,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",2.1594,508455573.264716,0.25537261497528,0.2569506
+"Central America and Caribbean",2005,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",2.1594,76840324.795946,0.03720286260623,0.0204469
+"Central Asia",2005,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",2.1594,36852104.8067081,0.0186234938694,0.0206145
+"China",2005,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",2.1594,1514955174.50495,0.72671240992513,0.5900417
+"Colombia",2005,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",2.1594,13095645.5991949,0.0067312052322,0.0071581
+"EU-12",2005,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",2.1594,297339108.279912,0.13936527540507,0.1338473
+"EU-15",2005,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",2.1594,2039167078.79961,0.96419946303552,0.8364192
+"Europe_Non_EU",2005,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",2.1594,214703036.53403,0.10116487535264,0.1014256
+"European Free Trade Association",2005,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",2.1594,17107565.4607241,0.00863710990275,0.0096215
+"India",2005,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",2.1594,483906248.511998,0.23397232814304,0.2412248
+"Indonesia",2005,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",2.1594,48341403.236833,0.02428916876397,0.0167859
+"Japan",2005,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",2.1594,421425144.41731,0.19691872704606,0.1592618
+"Mexico",2005,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",2.1594,307702725.794469,0.1558955611952,0.111049
+"Middle East",2005,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",2.1594,662219949.962801,0.3298860685824,0.420288
+"Pakistan",2005,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",2.1594,35351780.6951828,0.01698053734338,0.0115466
+"Russia",2005,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",2.1594,352524037.152814,0.17306750875393,0.2269231
+"South Africa",2005,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",2.1594,29318737.1942291,0.0129195204985,0.012265
+"South America_Northern",2005,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",2.1594,174262201.9497,0.08691553488368,0.1381168
+"South America_Southern",2005,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",2.1594,31677185.3277817,0.01609205931675,0.0141487
+"South Asia",2005,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",2.1594,26964276.7658341,0.01313293367646,0.0042211
+"South Korea",2005,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",2.1594,190783544.477301,0.0903066071879,0.1039085
+"Southeast Asia",2005,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",2.1594,228746708.605028,0.11250481323275,0.0958025
+"Taiwan",2005,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",2.1594,192201931.099836,0.089357758038,0.0974184
+"USA",2005,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",2.1594,6067222614.99397,2.91804589013004,2.5061572
+"Ukraine",2005,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",2.1594,39327431.6185686,0.01836672014385,0.0229431
+"Africa_Eastern",2005,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",2.1594,126298748.051232,0.06432753278864,0.0252494
+"Africa_Northern",2005,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",2.1594,416317932.341525,0.21177381887007,0.2531031
+"Africa_Southern",2005,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",2.1594,118676489.692445,0.06044622413461,0.0160969
+"Africa_Western",2005,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",2.1594,396245852.885849,0.20187448619756,0.1004102
+"Argentina",2005,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",2.1594,93117759.6773811,0.04770953551072,0.0546929
+"Australia_NZ",2005,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",2.1594,455083953.87632,0.22179422255484,0.1784581
+"Brazil",2005,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",2.1594,307733749.145885,0.15443522814045,0.1434603
+"Canada",2005,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",2.1594,398094554.437233,0.19994361891108,0.2011791
+"Central America and Caribbean",2005,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",2.1594,456163257.646453,0.22085511800344,0.1213832
+"Central Asia",2005,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",2.1594,147665844.975318,0.0746240675544,0.082602
+"China",2005,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",2.1594,1104273690.29916,0.52971164308967,0.4300903
+"Colombia",2005,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",2.1594,78203585.5761032,0.0401969021244,0.0427462
+"EU-12",2005,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",2.1594,181878348.510265,0.08524787162034,0.0818726
+"EU-15",2005,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",2.1594,4154242628.19482,1.96429147619558,1.7039743
+"Europe_Non_EU",2005,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",2.1594,214378311.358095,0.10101186968268,0.1012722
+"European Free Trade Association",2005,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",2.1594,76972398.3066922,0.0388611147027,0.0432902
+"India",2005,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",2.1594,1385933920.883,0.6701095245588,0.690881
+"Indonesia",2005,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",2.1594,1048318920.20651,0.52672850737518,0.3640146
+"Japan",2005,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",2.1594,3611207504.71375,1.68740378771334,1.3647202
+"Mexico",2005,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",2.1594,363688778.034673,0.18426052614816,0.1312542
+"Middle East",2005,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",2.1594,2818171560.30076,1.40387727169888,1.7885956
+"Pakistan",2005,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",2.1594,179673605.225504,0.0863027067705,0.058685
+"Russia",2005,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",2.1594,674939310.053465,0.33135347562247,0.4344649
+"South Africa",2005,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",2.1594,168414571.466767,0.07421313864566,0.0704534
+"South America_Northern",2005,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",2.1594,259289036.822152,0.12932377229674,0.2055074
+"South America_Southern",2005,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",2.1594,183934188.826416,0.09343885343175,0.0821547
+"South Asia",2005,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",2.1594,167548890.676769,0.08160457956768,0.0262288
+"South Korea",2005,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",2.1594,1355948574.33083,0.64183268847726,0.7385049
+"Southeast Asia",2005,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",2.1594,1627306030.98384,0.80036019842578,0.6815398
+"Taiwan",2005,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",2.1594,382847004.934198,0.17799170818275,0.1940477
+"USA",2005,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",2.1594,8302885380.74503,3.99329348846184,3.4296312
+"Ukraine",2005,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",2.1594,40103074.9626416,0.0187289615526,0.0233956
+"Africa_Eastern",2005,"crude oil refining","LPG","LPG_crude oil",2.1594,64943108.9678789,0.03307736645048,0.0129833
+"Africa_Northern",2005,"crude oil refining","LPG","LPG_crude oil",2.1594,911694181.63003,0.46376325276094,0.5542702
+"Africa_Southern",2005,"crude oil refining","LPG","LPG_crude oil",2.1594,50469339.4498092,0.02570585810395,0.0068455
+"Africa_Western",2005,"crude oil refining","LPG","LPG_crude oil",2.1594,64332503.2549522,0.03277533618538,0.0163021
+"Argentina",2005,"crude oil refining","LPG","LPG_crude oil",2.1594,239995107.08957,0.12296317183488,0.1409616
+"Australia_NZ",2005,"crude oil refining","LPG","LPG_crude oil",2.1594,372098207.910015,0.18134946757512,0.1459158
+"Brazil",2005,"crude oil refining","LPG","LPG_crude oil",2.1594,591663980.05347,0.2969247344357,0.2758238
+"Canada",2005,"crude oil refining","LPG","LPG_crude oil",2.1594,335022069.133678,0.16826536351988,0.1693051
+"Central America and Caribbean",2005,"crude oil refining","LPG","LPG_crude oil",2.1594,129404444.880329,0.0626522050278,0.034434
+"Central Asia",2005,"crude oil refining","LPG","LPG_crude oil",2.1594,187287421.792822,0.09464713535004,0.1047657
+"China",2005,"crude oil refining","LPG","LPG_crude oil",2.1594,1673402638.02832,0.80271844627615,0.6517535
+"Colombia",2005,"crude oil refining","LPG","LPG_crude oil",2.1594,57288166.8549013,0.0294463075956,0.0313138
+"EU-12",2005,"crude oil refining","LPG","LPG_crude oil",2.1594,227636394.82386,0.10669504270854,0.1024706
+"EU-15",2005,"crude oil refining","LPG","LPG_crude oil",2.1594,1808310335.02519,0.85504119410326,0.7417271
+"Europe_Non_EU",2005,"crude oil refining","LPG","LPG_crude oil",2.1594,158110042.948396,0.07449909905834,0.0746911
+"European Free Trade Association",2005,"crude oil refining","LPG","LPG_crude oil",2.1594,454346462.757604,0.22938625263615,0.2555299
+"India",2005,"crude oil refining","LPG","LPG_crude oil",2.1594,730924620.111939,0.35340757758456,0.3643622
+"Indonesia",2005,"crude oil refining","LPG","LPG_crude oil",2.1594,236387587.025243,0.11877309325992,0.0820824
+"Japan",2005,"crude oil refining","LPG","LPG_crude oil",2.1594,583234588.339768,0.27252719546172,0.2204116
+"Mexico",2005,"crude oil refining","LPG","LPG_crude oil",2.1594,990205986.334441,0.50168134695552,0.3573624
+"Middle East",2005,"crude oil refining","LPG","LPG_crude oil",2.1594,2988557598.37721,1.48875538545176,1.8967337
+"Pakistan",2005,"crude oil refining","LPG","LPG_crude oil",2.1594,77531372.7052399,0.03724068048669,0.0253233
+"Russia",2005,"crude oil refining","LPG","LPG_crude oil",2.1594,790121221.694224,0.38790067354458,0.5086086
+"South Africa",2005,"crude oil refining","LPG","LPG_crude oil",2.1594,104752393.810289,0.04615992462886,0.0438214
+"South America_Northern",2005,"crude oil refining","LPG","LPG_crude oil",2.1594,178143701.072747,0.08885148294732,0.1411932
+"South America_Southern",2005,"crude oil refining","LPG","LPG_crude oil",2.1594,198666217.011008,0.100922746617,0.0887348
+"South Asia",2005,"crude oil refining","LPG","LPG_crude oil",2.1594,11303519.8732898,0.0055053720927,0.0017695
+"South Korea",2005,"crude oil refining","LPG","LPG_crude oil",2.1594,311216500.374425,0.14731305221688,0.1695012
+"Southeast Asia",2005,"crude oil refining","LPG","LPG_crude oil",2.1594,822370473.106458,0.40446761856899,0.3444209
+"Taiwan",2005,"crude oil refining","LPG","LPG_crude oil",2.1594,139292064.919906,0.064759113306,0.0706008
+"USA",2005,"crude oil refining","LPG","LPG_crude oil",2.1594,5208546098.00049,2.5050632718276,2.151468
+"Ukraine",2005,"crude oil refining","LPG","LPG_crude oil",2.1594,58324094.15195,0.02723855260425,0.0340255
+"Africa_Eastern",2005,"crude oil refining","Other","Other_crude oil",2.1594,7331503.91766501,0.00373414278392,0.0014657
+"Africa_Northern",2005,"crude oil refining","Other","Other_crude oil",2.1594,805622573.375865,0.40980643800801,0.4897833
+"Africa_Southern",2005,"crude oil refining","Other","Other_crude oil",2.1594,31310822.8338901,0.01594773336961,0.0042469
+"Africa_Western",2005,"crude oil refining","Other","Other_crude oil",2.1594,100021788.251188,0.05095787618902,0.0253459
+"Argentina",2005,"crude oil refining","Other","Other_crude oil",2.1594,330865662.266949,0.16952133640128,0.1943346
+"Australia_NZ",2005,"crude oil refining","Other","Other_crude oil",2.1594,312836700.563855,0.15246719247552,0.1226768
+"Brazil",2005,"crude oil refining","Other","Other_crude oil",2.1594,1066768630.02685,0.5353545303644,0.4973096
+"Canada",2005,"crude oil refining","Other","Other_crude oil",2.1594,1142766815.59449,0.5739564385764,0.577503
+"Central America and Caribbean",2005,"crude oil refining","Other","Other_crude oil",2.1594,445779785.461858,0.21582787625134,0.1186202
+"Central Asia",2005,"crude oil refining","Other","Other_crude oil",2.1594,130632126.2123,0.06601594710592,0.0730736
+"China",2005,"crude oil refining","Other","Other_crude oil",2.1594,5900130032.03213,2.83024724863612,2.2979708
+"Colombia",2005,"crude oil refining","Other","Other_crude oil",2.1594,115179698.278419,0.0592027465788,0.0629574
+"EU-12",2005,"crude oil refining","Other","Other_crude oil",2.1594,824324606.543629,0.386367694713,0.37107
+"EU-15",2005,"crude oil refining","Other","Other_crude oil",2.1594,6582514032.24634,3.11247497142406,2.6999951
+"Europe_Non_EU",2005,"crude oil refining","Other","Other_crude oil",2.1594,411988822.2527,0.19412300134502,0.1946233
+"European Free Trade Association",2005,"crude oil refining","Other","Other_crude oil",2.1594,230882167.21758,0.11656565964465,0.1298509
+"India",2005,"crude oil refining","Other","Other_crude oil",2.1594,2017684207.66225,0.97556556249444,1.0058053
+"Indonesia",2005,"crude oil refining","Other","Other_crude oil",2.1594,525356050.875564,0.26396548148124,0.1824228
+"Japan",2005,"crude oil refining","Other","Other_crude oil",2.1594,2926212039.93461,1.36732693244373,1.1058519
+"Mexico",2005,"crude oil refining","Other","Other_crude oil",2.1594,742093110.789778,0.37597659126016,0.2678192
+"Middle East",2005,"crude oil refining","Other","Other_crude oil",2.1594,4266900600.27549,2.12556426929728,2.7080536
+"Pakistan",2005,"crude oil refining","Other","Other_crude oil",2.1594,160067949.63341,0.07688551305702,0.0522814
+"Russia",2005,"crude oil refining","Other","Other_crude oil",2.1594,1311966647.46118,0.64409451644265,0.8445255
+"South Africa",2005,"crude oil refining","Other","Other_crude oil",2.1594,3607889.93454953,0.00158984364357,0.0015093
+"South America_Northern",2005,"crude oil refining","Other","Other_crude oil",2.1594,274627165.930572,0.13697386325541,0.2176641
+"South America_Southern",2005,"crude oil refining","Other","Other_crude oil",2.1594,109421036.134892,0.055586056203,0.0488732
+"South Asia",2005,"crude oil refining","Other","Other_crude oil",2.1594,118636813.074174,0.05778198359334,0.0185719
+"South Korea",2005,"crude oil refining","Other","Other_crude oil",2.1594,1921841373.39273,0.90969572066568,1.0467132
+"Southeast Asia",2005,"crude oil refining","Other","Other_crude oil",2.1594,1998073280.30377,0.98271517258886,0.8368226
+"Taiwan",2005,"crude oil refining","Other","Other_crude oil",2.1594,704097625.923379,0.3273462703125,0.356875
+"USA",2005,"crude oil refining","Other","Other_crude oil",2.1594,5924549179.64104,2.84942674458666,2.4472238
+"Ukraine",2005,"crude oil refining","Other","Other_crude oil",2.1594,82913273.7557684,0.03872220566175,0.0483705
+"Africa_Eastern",2005,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",2.1594,202413434.319864,0.10309490025816,0.0404661
+"Africa_Northern",2005,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",2.1594,1622281137.75797,0.8252266960772,0.986276
+"Africa_Southern",2005,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",2.1594,209926795.358407,0.10692330180122,0.0284738
+"Africa_Western",2005,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",2.1594,486410250.992176,0.24781033993196,0.1232582
+"Argentina",2005,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",2.1594,162033506.559867,0.08301900047776,0.0951707
+"Australia_NZ",2005,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",2.1594,158061117.312884,0.07703423144664,0.0619826
+"Brazil",2005,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",2.1594,1218875145.10496,0.61168871347865,0.5682191
+"Canada",2005,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",2.1594,559700335.058313,0.28111037754712,0.2828474
+"Central America and Caribbean",2005,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",2.1594,1069993696.65947,0.5180460727107,0.284721
+"Central Asia",2005,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",2.1594,634363724.689235,0.32058057469676,0.3548533
+"China",2005,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",2.1594,1588634818.94483,0.76205597181687,0.6187383
+"Colombia",2005,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",2.1594,188131743.544595,0.0967003395822,0.1028331
+"EU-12",2005,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",2.1594,604380975.025884,0.28327831317357,0.2720623
+"EU-15",2005,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",2.1594,7630513117.30822,3.60801070539306,3.1298601
+"Europe_Non_EU",2005,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",2.1594,1118034707.9315,0.5268013144746,0.528159
+"European Free Trade Association",2005,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",2.1594,64830409.7375302,0.0327309794739,0.0364614
+"India",2005,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",2.1594,1061928403.54382,0.51345040834332,0.5293659
+"Indonesia",2005,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",2.1594,886863258.485212,0.44560500758279,0.3079513
+"Japan",2005,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",2.1594,3370240833.61773,1.57480763449053,1.2736559
+"Mexico",2005,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",2.1594,2095842404.30275,1.06184476251184,0.7563833
+"Middle East",2005,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",2.1594,5760648016.98797,2.86967725287936,3.6560832
+"Pakistan",2005,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",2.1594,396915021.741099,0.19065037789572,0.1296404
+"Russia",2005,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",2.1594,3431628124.88073,1.68471726166457,2.2089719
+"South Africa",2005,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",2.1594,467019873.930927,0.20579579517651,0.1953699
+"South America_Northern",2005,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",2.1594,603333642.650335,0.30092048463504,0.4781904
+"South America_Southern",2005,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",2.1594,779453272.613174,0.39596347237725,0.3481449
+"South Asia",2005,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",2.1594,400326660.77153,0.19497884295168,0.0626688
+"South Korea",2005,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",2.1594,2163594475.44274,1.02412855858732,1.1783818
+"Southeast Asia",2005,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",2.1594,1802806050.0427,0.88667661795798,0.7550418
+"Taiwan",2005,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",2.1594,1017246709.73195,0.47293429797,0.515596
+"USA",2005,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",2.1594,3325744519.63201,1.59952514403402,1.3737486
+"Ukraine",2005,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",2.1594,338788328.136971,0.1582211233941,0.1976446
+"Africa_Eastern",2010,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",1.5631,1134958861.6001,0.29388080736,0.1008
+"Africa_Northern",2010,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",1.5631,3828889331.8554,0.9922140054717,0.9985285
+"Africa_Southern",2010,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",1.5631,572068202.859299,0.14813013256566,0.0357378
+"Africa_Western",2010,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",1.5631,1584208417.8816,0.4103394465065,0.1210174
+"Argentina",2010,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",1.5631,1990447692.99315,0.51896250385546,0.4816238
+"Australia_NZ",2010,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",1.5631,2754964801.27113,0.6989294939615,0.4979825
+"Brazil",2010,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",1.5631,6612125335.64933,1.7085008046265,1.388521
+"Canada",2010,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",1.5631,5401523342.30936,1.39078955900224,1.3966816
+"Central America and Caribbean",2010,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",1.5631,1756961318.82887,0.44273936979668,0.1698686
+"Central Asia",2010,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",1.5631,1892588935.18919,0.48782156516385,0.5378235
+"China",2010,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",1.5631,32763871877.8965,8.19958094694414,6.6972854
+"Colombia",2010,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",1.5631,773859250.269745,0.2027942315055,0.1742211
+"EU-12",2010,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",1.5631,5267651892.83164,1.30913741072622,1.1743917
+"EU-15",2010,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",1.5631,43204440592.061,10.763125451723,9.1411686
+"Europe_Non_EU",2010,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",1.5631,2972777285.34803,0.74060158641105,0.5783309
+"European Free Trade Association",2010,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",1.5631,1244759915.76903,0.32120699918663,0.3455839
+"India",2010,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",1.5631,11648388028.5815,2.933017105824,3.477578
+"Indonesia",2010,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",1.5631,3580390128.05907,0.91945484359056,0.6268596
+"Japan",2010,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",1.5631,10186596758.956,2.52033019211322,2.1739554
+"Mexico",2010,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",1.5631,3532868251.03014,0.9161119136727,0.572931
+"Middle East",2010,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",1.5631,16852841142.0545,4.34532992362677,5.2405949
+"Pakistan",2010,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",1.5631,1237593588.3001,0.31045705563474,0.1454418
+"Russia",2010,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",1.5631,8432680656.04924,2.14113020029532,3.1318508
+"South Africa",2010,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",1.5631,1846550241.3883,0.44655405267822,0.2812021
+"South America_Northern",2010,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",1.5631,1899440778.77715,0.48659292606712,0.5846392
+"South America_Southern",2010,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",1.5631,2413079326.02826,0.6190069001718,0.4378794
+"South Asia",2010,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",1.5631,883389575.658221,0.22284182827764,0.0549153
+"South Korea",2010,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",1.5631,5805101873.72557,1.43182621435454,1.6183558
+"Southeast Asia",2010,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",1.5631,9680111324.08358,2.45151800335035,1.9630809
+"Taiwan",2010,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",1.5631,2789324265.20671,0.6906283179313,0.655249
+"USA",2010,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",1.5631,36949640587.7282,9.3390773704445,9.0475175
+"Ukraine",2010,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",1.5631,884440459.611632,0.21680347317512,0.2019784
+"Africa_Eastern",2010,"crude oil refining","Gasoline","Gasoline_crude oil",1.5631,774760300.509781,0.20061271851148,0.0688094
+"Africa_Northern",2010,"crude oil refining","Gasoline","Gasoline_crude oil",1.5631,1191906706.18542,0.308869341627,0.310835
+"Africa_Southern",2010,"crude oil refining","Gasoline","Gasoline_crude oil",1.5631,98883930.0780416,0.02560479606778,0.0061774
+"Africa_Western",2010,"crude oil refining","Gasoline","Gasoline_crude oil",1.5631,1036542530.23787,0.26848379502175,0.0791813
+"Argentina",2010,"crude oil refining","Gasoline","Gasoline_crude oil",1.5631,814791405.784863,0.21243772923777,0.1971531
+"Australia_NZ",2010,"crude oil refining","Gasoline","Gasoline_crude oil",1.5631,3384943939.66147,0.85875404061208,0.6118564
+"Brazil",2010,"crude oil refining","Gasoline","Gasoline_crude oil",1.5631,3804399850.36482,0.9830152750471,0.7989094
+"Canada",2010,"crude oil refining","Gasoline","Gasoline_crude oil",1.5631,6313765908.03701,1.62567467479052,1.6325618
+"Central America and Caribbean",2010,"crude oil refining","Gasoline","Gasoline_crude oil",1.5631,1642991127.91557,0.41401984708448,0.1588496
+"Central Asia",2010,"crude oil refining","Gasoline","Gasoline_crude oil",1.5631,1349457591.32197,0.347827519268,0.38348
+"China",2010,"crude oil refining","Gasoline","Gasoline_crude oil",1.5631,16320901457.4349,4.08451580832906,3.3361666
+"Colombia",2010,"crude oil refining","Gasoline","Gasoline_crude oil",1.5631,686373553.029928,0.179868105426,0.1545252
+"EU-12",2010,"crude oil refining","Gasoline","Gasoline_crude oil",1.5631,3269272569.02748,0.81249238048534,0.7288649
+"EU-15",2010,"crude oil refining","Gasoline","Gasoline_crude oil",1.5631,20198823589.8246,5.03194739464935,4.2736545
+"Europe_Non_EU",2010,"crude oil refining","Gasoline","Gasoline_crude oil",1.5631,2331964430.91924,0.58095726360165,0.4536657
+"European Free Trade Association",2010,"crude oil refining","Gasoline","Gasoline_crude oil",1.5631,848179516.607152,0.21887047763153,0.2354809
+"India",2010,"crude oil refining","Gasoline","Gasoline_crude oil",1.5631,4519759906.84881,1.1380573078848,1.3493556
+"Indonesia",2010,"crude oil refining","Gasoline","Gasoline_crude oil",1.5631,2278716493.77716,0.58518117926688,0.3989608
+"Japan",2010,"crude oil refining","Gasoline","Gasoline_crude oil",1.5631,9053957504.00443,2.24009676591843,1.9322351
+"Mexico",2010,"crude oil refining","Gasoline","Gasoline_crude oil",1.5631,4866882721.21954,1.26203665875651,0.7892703
+"Middle East",2010,"crude oil refining","Gasoline","Gasoline_crude oil",1.5631,8345171924.11039,2.15171584268706,2.5950322
+"Pakistan",2010,"crude oil refining","Gasoline","Gasoline_crude oil",1.5631,527118656.77589,0.13223057043917,0.0619469
+"Russia",2010,"crude oil refining","Gasoline","Gasoline_crude oil",1.5631,5613699925.21837,1.4253667292213,2.084897
+"South Africa",2010,"crude oil refining","Gasoline","Gasoline_crude oil",1.5631,1801999594.51306,0.43578030200214,0.2744177
+"South America_Northern",2010,"crude oil refining","Gasoline","Gasoline_crude oil",1.5631,1955497165.78121,0.50095327974691,0.6018931
+"South America_Southern",2010,"crude oil refining","Gasoline","Gasoline_crude oil",1.5631,1988708975.58992,0.5101467511016,0.3608728
+"South Asia",2010,"crude oil refining","Gasoline","Gasoline_crude oil",1.5631,232138037.112628,0.05855860882716,0.0144307
+"South Korea",2010,"crude oil refining","Gasoline","Gasoline_crude oil",1.5631,2298677589.40764,0.56696797101183,0.6408291
+"Southeast Asia",2010,"crude oil refining","Gasoline","Gasoline_crude oil",1.5631,6254245617.61154,1.58390696301225,1.2683315
+"Taiwan",2010,"crude oil refining","Gasoline","Gasoline_crude oil",1.5631,2498418052.7006,0.61860081265881,0.5869113
+"USA",2010,"crude oil refining","Gasoline","Gasoline_crude oil",1.5631,64792524357.7915,16.3764082242465,15.8651475
+"Ukraine",2010,"crude oil refining","Gasoline","Gasoline_crude oil",1.5631,766186444.17215,0.18781578837897,0.1749729
+"Africa_Eastern",2010,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",1.5631,151295195.627051,0.03917565274382,0.0134371
+"Africa_Northern",2010,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",1.5631,246209537.999604,0.0638024582877,0.0642085
+"Africa_Southern",2010,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",1.5631,22781689.5922344,0.00589904260104,0.0014232
+"Africa_Western",2010,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",1.5631,6771844.49980046,0.00175403368175,0.0005173
+"Argentina",2010,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",1.5631,264447416.936077,0.06894845522159,0.0639877
+"Australia_NZ",2010,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",1.5631,169301855.635208,0.04295156882994,0.0306027
+"Brazil",2010,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",1.5631,1091155135.57962,0.2819425422956,0.2291384
+"Canada",2010,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",1.5631,986700802.024895,0.2540566959262,0.255133
+"Central America and Caribbean",2010,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",1.5631,81707080.2393875,0.02058949211086,0.0078997
+"Central Asia",2010,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",1.5631,157214554.191662,0.04052261347742,0.0446762
+"China",2010,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",1.5631,4590578095.97497,1.14885129668112,0.9383632
+"Colombia",2010,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",1.5631,65635038.4513467,0.017200036283,0.0147766
+"EU-12",2010,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",1.5631,632577965.784414,0.1572107453297,0.1410295
+"EU-15",2010,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",1.5631,3716489826.28992,0.92585497444818,0.7863326
+"Europe_Non_EU",2010,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",1.5631,706140038.644188,0.17591914316145,0.1373741
+"European Free Trade Association",2010,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",1.5631,18633007.8463283,0.00480819832027,0.0051731
+"India",2010,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",1.5631,875625612.842854,0.2204789962752,0.2614144
+"Indonesia",2010,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",1.5631,42318609.3613551,0.01086754486512,0.0074092
+"Japan",2010,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",1.5631,523069046.19229,0.12941581382607,0.1116299
+"Mexico",2010,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",1.5631,631764017.594949,0.16382341543014,0.1024542
+"Middle East",2010,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",1.5631,1274877221.11365,0.32871384066105,0.3964385
+"Pakistan",2010,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",1.5631,71250948.1612031,0.01787368631062,0.0083734
+"Russia",2010,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",1.5631,651225939.316517,0.16535187122093,0.2418617
+"South Africa",2010,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",1.5631,119614454.94898,0.0289265455221,0.0182155
+"South America_Northern",2010,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",1.5631,169090877.087558,0.04331718344294,0.0520454
+"South America_Southern",2010,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",1.5631,138492691.235112,0.035526362757,0.025131
+"South Asia",2010,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",1.5631,53196121.804746,0.01341913167972,0.0033069
+"South Korea",2010,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",1.5631,549605425.816773,0.13555997351187,0.1532199
+"Southeast Asia",2010,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",1.5631,533134692.53774,0.1350180027078,0.1081172
+"Taiwan",2010,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",1.5631,274808775.182468,0.06804182809594,0.0645562
+"USA",2010,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",1.5631,9063105480.88421,2.2907135754546,2.219199
+"Ukraine",2010,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",1.5631,81164410.1304172,0.01989588538522,0.0185354
+"Africa_Eastern",2010,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",1.5631,263907210.054564,0.06833486797012,0.0234386
+"Africa_Northern",2010,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",1.5631,1041837700.9749,0.26998063112856,0.2716988
+"Africa_Southern",2010,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",1.5631,258607072.939392,0.06696316943585,0.0161555
+"Africa_Western",2010,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",1.5631,847162590.502198,0.2194308681635,0.0647146
+"Argentina",2010,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",1.5631,256737292.942935,0.06693822141007,0.0621221
+"Australia_NZ",2010,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",1.5631,1293306693.28541,0.32810952512276,0.2337758
+"Brazil",2010,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",1.5631,767680665.513902,0.198360280265,0.16121
+"Canada",2010,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",1.5631,625165627.290412,0.16096826246628,0.1616502
+"Central America and Caribbean",2010,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",1.5631,651696631.825431,0.16422203094678,0.0630081
+"Central Asia",2010,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",1.5631,354393435.005639,0.09134617503772,0.1007092
+"China",2010,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",1.5631,3927719880.42735,0.98296249040739,0.8028679
+"Colombia",2010,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",1.5631,241537883.167385,0.0632963802905,0.0543781
+"EU-12",2010,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",1.5631,366257347.13893,0.09102370559934,0.0816549
+"EU-15",2010,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",1.5631,7114821044.06155,1.77245001704442,1.5053494
+"Europe_Non_EU",2010,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",1.5631,669468320.586014,0.16678319722155,0.1302399
+"European Free Trade Association",2010,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",1.5631,102074347.945545,0.0263400151163,0.028339
+"India",2010,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",1.5631,2553398679.64103,0.6429354848928,0.7623066
+"Indonesia",2010,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",1.5631,1245035397.22393,0.319728796437,0.2179825
+"Japan",2010,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",1.5631,5430228619.44125,1.34352713310483,1.1588831
+"Mexico",2010,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",1.5631,670630248.583049,0.17390186011524,0.1087572
+"Middle East",2010,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",1.5631,5696799354.9825,1.46886050235951,1.7714887
+"Pakistan",2010,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",1.5631,300485433.923683,0.0753783988209,0.035313
+"Russia",2010,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",1.5631,1287602976.09847,0.32693347828094,0.4782086
+"South Africa",2010,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",1.5631,355875904.596525,0.08606201114172,0.0541946
+"South America_Northern",2010,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",1.5631,517013841.374838,0.13244702372545,0.1591345
+"South America_Southern",2010,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",1.5631,572654134.925503,0.1468981384521,0.1039143
+"South Asia",2010,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",1.5631,380773171.604597,0.0960529669554,0.0236705
+"South Korea",2010,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",1.5631,2874346066.19522,0.70895638633537,0.8013149
+"Southeast Asia",2010,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",1.5631,3692639171.93516,0.9351722420127,0.7488498
+"Taiwan",2010,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",1.5631,730469906.763193,0.1808621569389,0.171597
+"USA",2010,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",1.5631,12358260091.1665,3.12356887156874,3.0260531
+"Ukraine",2010,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",1.5631,64858313.1244908,0.01589876107188,0.0148116
+"Africa_Eastern",2010,"crude oil refining","LPG","LPG_crude oil",1.5631,226175457.662619,0.0585647888675,0.0200875
+"Africa_Northern",2010,"crude oil refining","LPG","LPG_crude oil",1.5631,2125399709.86668,0.55077365172456,0.5542788
+"Africa_Southern",2010,"crude oil refining","LPG","LPG_crude oil",1.5631,469055971.948039,0.12145636299675,0.0293025
+"Africa_Western",2010,"crude oil refining","LPG","LPG_crude oil",1.5631,313260316.442635,0.08114024860025,0.0239299
+"Argentina",2010,"crude oil refining","LPG","LPG_crude oil",1.5631,665473464.701777,0.1735065818141,0.161023
+"Australia_NZ",2010,"crude oil refining","LPG","LPG_crude oil",1.5631,829062767.510929,0.21033169653978,0.1498599
+"Brazil",2010,"crude oil refining","LPG","LPG_crude oil",1.5631,1161426893.19302,0.3000999952068,0.2438952
+"Canada",2010,"crude oil refining","LPG","LPG_crude oil",1.5631,581445468.680075,0.14971115289556,0.1503454
+"Central America and Caribbean",2010,"crude oil refining","LPG","LPG_crude oil",1.5631,621903444.156335,0.15671440002088,0.0601276
+"Central Asia",2010,"crude oil refining","LPG","LPG_crude oil",1.5631,539181995.127416,0.13897608713692,0.1532212
+"China",2010,"crude oil refining","LPG","LPG_crude oil",1.5631,5275073634.74743,1.32015512178774,1.0782814
+"Colombia",2010,"crude oil refining","LPG","LPG_crude oil",1.5631,132833598.52031,0.034809802326,0.0299052
+"EU-12",2010,"crude oil refining","LPG","LPG_crude oil",1.5631,452256498.649675,0.11239655043114,0.1008279
+"EU-15",2010,"crude oil refining","LPG","LPG_crude oil",1.5631,3368047547.84243,0.83905075006242,0.7126094
+"Europe_Non_EU",2010,"crude oil refining","LPG","LPG_crude oil",1.5631,379975480.37533,0.09466247099985,0.0739213
+"European Free Trade Association",2010,"crude oil refining","LPG","LPG_crude oil",1.5631,1123131553.21016,0.28982112239337,0.3118161
+"India",2010,"crude oil refining","LPG","LPG_crude oil",1.5631,1540663812.44669,0.3879329315904,0.4599588
+"Indonesia",2010,"crude oil refining","LPG","LPG_crude oil",1.5631,677215980.523702,0.17391107984844,0.1185679
+"Japan",2010,"crude oil refining","LPG","LPG_crude oil",1.5631,867002129.386036,0.21451046851314,0.1850298
+"Mexico",2010,"crude oil refining","LPG","LPG_crude oil",1.5631,1885936532.29379,0.48904425608318,0.3058454
+"Middle East",2010,"crude oil refining","LPG","LPG_crude oil",1.5631,8883228809.89166,2.29044821823675,2.7623475
+"Pakistan",2010,"crude oil refining","LPG","LPG_crude oil",1.5631,154588366.187476,0.03877932905896,0.0181672
+"Russia",2010,"crude oil refining","LPG","LPG_crude oil",1.5631,1946104468.38856,0.49413267502396,0.7227724
+"South Africa",2010,"crude oil refining","LPG","LPG_crude oil",1.5631,118597940.572427,0.02868072030474,0.0180607
+"South America_Northern",2010,"crude oil refining","LPG","LPG_crude oil",1.5631,425056012.186059,0.10888954845183,0.1308303
+"South America_Southern",2010,"crude oil refining","LPG","LPG_crude oil",1.5631,624810842.852986,0.1602774591189,0.1133787
+"South Asia",2010,"crude oil refining","LPG","LPG_crude oil",1.5631,36668952.6910153,0.0092500259046,0.0022795
+"South Korea",2010,"crude oil refining","LPG","LPG_crude oil",1.5631,581608251.089809,0.14345345844221,0.1621417
+"Southeast Asia",2010,"crude oil refining","LPG","LPG_crude oil",1.5631,2198023035.406,0.55665610267005,0.4457487
+"Taiwan",2010,"crude oil refining","LPG","LPG_crude oil",1.5631,308363301.153611,0.07634982803682,0.0724386
+"USA",2010,"crude oil refining","LPG","LPG_crude oil",1.5631,7795473682.89776,1.97031772720478,1.9088057
+"Ukraine",2010,"crude oil refining","LPG","LPG_crude oil",1.5631,144674026.257801,0.0354640394727,0.033039
+"Africa_Eastern",2010,"crude oil refining","Other","Other_crude oil",1.5631,11906934.4855368,0.0030831245415,0.0010575
+"Africa_Northern",2010,"crude oil refining","Other","Other_crude oil",1.5631,3026475964.77955,0.78427752259494,0.7892687
+"Africa_Southern",2010,"crude oil refining","Other","Other_crude oil",1.5631,133085277.733163,0.0344608208158,0.008314
+"Africa_Western",2010,"crude oil refining","Other","Other_crude oil",1.5631,295462133.991584,0.07653018829925,0.0225703
+"Argentina",2010,"crude oil refining","Other","Other_crude oil",1.5631,805658777.139899,0.21005661073611,0.1949433
+"Australia_NZ",2010,"crude oil refining","Other","Other_crude oil",1.5631,587513016.96833,0.14905096989116,0.1061978
+"Brazil",2010,"crude oil refining","Other","Other_crude oil",1.5631,2452165192.03062,0.63361264207645,0.5149453
+"Canada",2010,"crude oil refining","Other","Other_crude oil",1.5631,2559513088.17139,0.65902595500706,0.6618179
+"Central America and Caribbean",2010,"crude oil refining","Other","Other_crude oil",1.5631,301021349.059213,0.07585483012606,0.0291037
+"Central Asia",2010,"crude oil refining","Other","Other_crude oil",1.5631,236438708.088783,0.06094292241736,0.0671896
+"China",2010,"crude oil refining","Other","Other_crude oil",1.5631,15395056007.3745,3.85281105925599,3.1469139
+"Colombia",2010,"crude oil refining","Other","Other_crude oil",1.5631,36264373.7008737,0.0095032860215,0.0081643
+"EU-12",2010,"crude oil refining","Other","Other_crude oil",1.5631,1527167397.50705,0.37953760293814,0.3404729
+"EU-15",2010,"crude oil refining","Other","Other_crude oil",1.5631,12555294588.1111,3.12778522030002,2.6564414
+"Europe_Non_EU",2010,"crude oil refining","Other","Other_crude oil",1.5631,727450058.205424,0.1812280623231,0.1415198
+"European Free Trade Association",2010,"crude oil refining","Other","Other_crude oil",1.5631,438585079.31542,0.11317571800816,0.1217648
+"India",2010,"crude oil refining","Other","Other_crude oil",1.5631,3925931872.85266,0.9885338049456,1.1720707
+"Indonesia",2010,"crude oil refining","Other","Other_crude oil",1.5631,1361442415.76993,0.34962246533952,0.2383632
+"Japan",2010,"crude oil refining","Other","Other_crude oil",1.5631,4924434971.32332,1.218385534542,1.05094
+"Mexico",2010,"crude oil refining","Other","Other_crude oil",1.5631,1577885116.34603,0.40916310792794,0.2558882
+"Middle East",2010,"crude oil refining","Other","Other_crude oil",1.5631,10681772738.7664,2.75418407661345,3.3216265
+"Pakistan",2010,"crude oil refining","Other","Other_crude oil",1.5631,426761133.832613,0.10705534217497,0.0501529
+"Russia",2010,"crude oil refining","Other","Other_crude oil",1.5631,3668092233.23469,0.93136019000239,1.3623091
+"South Africa",2010,"crude oil refining","Other","Other_crude oil",1.5631,6951434.87738411,0.00168107606652,0.0010586
+"South America_Northern",2010,"crude oil refining","Other","Other_crude oil",1.5631,544427178.453652,0.13946968852842,0.1675722
+"South America_Southern",2010,"crude oil refining","Other","Other_crude oil",1.5631,232096909.410831,0.0595378638755,0.0421165
+"South Asia",2010,"crude oil refining","Other","Other_crude oil",1.5631,169746928.092183,0.04281997076136,0.0105522
+"South Korea",2010,"crude oil refining","Other","Other_crude oil",1.5631,3882027216.20723,0.95750056655527,1.0822379
+"Southeast Asia",2010,"crude oil refining","Other","Other_crude oil",1.5631,5099672895.91044,1.2915078656604,1.0341896
+"Taiwan",2010,"crude oil refining","Other","Other_crude oil",1.5631,1334207454.32874,0.33034576203573,0.3134229
+"USA",2010,"crude oil refining","Other","Other_crude oil",1.5631,9949166562.42823,2.51466684979924,2.4361606
+"Ukraine",2010,"crude oil refining","Other","Other_crude oil",1.5631,131249236.472966,0.03217321189876,0.0299732
+"Africa_Eastern",2010,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",1.5631,501476168.431996,0.1298498352996,0.044538
+"Africa_Northern",2010,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",1.5631,3116037207.82818,0.80748632076024,0.8126252
+"Africa_Southern",2010,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",1.5631,471293802.333785,0.12203582207181,0.0294423
+"Africa_Western",2010,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",1.5631,1119171338.43957,0.28988619324175,0.0854933
+"Argentina",2010,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",1.5631,560247381.925954,0.14607135124739,0.1355617
+"Australia_NZ",2010,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",1.5631,278821087.110941,0.07073639606224,0.0503992
+"Brazil",2010,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",1.5631,2498188412.22783,0.645504538365,0.52461
+"Canada",2010,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",1.5631,890310939.563246,0.22923813904702,0.2302093
+"Central America and Caribbean",2010,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",1.5631,2723019779.99666,0.68617791889876,0.2632702
+"Central Asia",2010,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",1.5631,829770732.983755,0.21387637334508,0.2357988
+"China",2010,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",1.5631,2241098631.49745,0.56086379862345,0.4581045
+"Colombia",2010,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",1.5631,569293323.171661,0.149186563233,0.1281666
+"EU-12",2010,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",1.5631,971851413.92092,0.2415283070171,0.2166685
+"EU-15",2010,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",1.5631,10013173474.7753,2.4944899367283,2.118581
+"Europe_Non_EU",2010,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",1.5631,1521366384.57704,0.37901472252345,0.2959701
+"European Free Trade Association",2010,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",1.5631,77365288.8077335,0.0199639078543,0.021479
+"India",2010,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",1.5631,2463227942.83277,0.620230857192,0.7353865
+"Indonesia",2010,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",1.5631,2188507008.77834,0.56201511496848,0.3831668
+"Japan",2010,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",1.5631,3792974180.78963,0.93844367966616,0.8094712
+"Mexico",2010,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",1.5631,3801409056.942,0.98574752251019,0.6164807
+"Middle East",2010,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",1.5631,11888188240.9494,3.0652457746248,3.696776
+"Pakistan",2010,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",1.5631,811445967.898404,0.2035556166273,0.095361
+"Russia",2010,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",1.5631,6592893608.20337,1.67399243344189,2.4485641
+"South Africa",2010,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",1.5631,777336029.708706,0.18798435405594,0.1183767
+"South America_Northern",2010,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",1.5631,1788078178.33902,0.45806439587703,0.5503623
+"South America_Southern",2010,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",1.5631,1496580754.95891,0.3839052467076,0.2715708
+"South Asia",2010,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",1.5631,706204295.416739,0.17814547586316,0.0439007
+"South Korea",2010,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",1.5631,2290990569.46098,0.56507197040593,0.6386861
+"Southeast Asia",2010,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",1.5631,4800072236.66907,1.215633076068,0.973432
+"Taiwan",2010,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",1.5631,1285178700.0315,0.31820638959598,0.3019054
+"USA",2010,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",1.5631,4653797311.59087,1.17625428740296,1.1395324
+"Ukraine",2010,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",1.5631,334589830.55036,0.08201822583314,0.0764098
+"Africa_Eastern",2015,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",1.4567,2171824828.04607,0.4672208717526,0.0896065
+"Africa_Northern",2015,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",1.4567,4972978984.46705,1.08285433071936,0.8441592
+"Africa_Southern",2015,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",1.4567,917093267.000274,0.19928881923067,0.0423319
+"Africa_Western",2015,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",1.4567,2745185298.82939,0.59685924287566,0.1122034
+"Argentina",2015,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",1.4567,2269005778.40371,0.4970028743175,0.421163
+"Australia_NZ",2015,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",1.4567,4007964111.31849,0.85253255307744,0.4918622
+"Brazil",2015,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",1.4567,9760220075.50884,2.12632958967,1.766325
+"Canada",2015,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",1.4567,6368519905.70103,1.38230942562246,1.3551826
+"Central America and Caribbean",2015,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",1.4567,2256387095.3148,0.47987313232299,0.1355017
+"Central Asia",2015,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",1.4567,2533303554.18167,0.54943486000634,0.5199502
+"China",2015,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",1.4567,45171154088.739,9.56534523053012,7.9135709
+"Colombia",2015,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",1.4567,1342187290.42993,0.29366233000788,0.2325252
+"EU-12",2015,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",1.4567,6469725256.47014,1.3616429045316,1.3354494
+"EU-15",2015,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",1.4567,49278950342.4114,10.3910492140724,9.1181308
+"Europe_Non_EU",2015,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",1.4567,4539047563.19099,0.96024758252462,0.8200966
+"European Free Trade Association",2015,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",1.4567,1227108765.44736,0.26587318271832,0.3464803
+"India",2015,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",1.4567,19421885730.3624,4.12939610510365,4.3124803
+"Indonesia",2015,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",1.4567,7697507359.94273,1.65377524168307,1.0785709
+"Japan",2015,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",1.4567,11126654194.2553,2.33113778441025,1.9592085
+"Mexico",2015,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",1.4567,4535962229.11616,0.9929835816524,0.5635955
+"Middle East",2015,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",1.4567,22517704242.0712,4.8929879550025,5.798075
+"Pakistan",2015,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",1.4567,2012690575.70793,0.42598519208429,0.1946071
+"Russia",2015,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",1.4567,9792110246.5592,2.08957370004,3.2756
+"South Africa",2015,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",1.4567,2204571328.76805,0.45464538235716,0.2816588
+"South America_Northern",2015,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",1.4567,1973251900.41701,0.42473247222345,0.4648845
+"South America_Southern",2015,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",1.4567,2589242050.56676,0.55899121438992,0.3349398
+"South Asia",2015,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",1.4567,1491859744.34935,0.3160231032805,0.054055
+"South Korea",2015,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",1.4567,7905382825.77775,1.65047663578924,1.9422998
+"Southeast Asia",2015,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",1.4567,14917991588.9389,3.17607611608089,2.1991909
+"Taiwan",2015,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",1.4567,3404458145.03227,0.71373071071707,0.6557799
+"USA",2015,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",1.4567,45162383751.0461,9.748678811704,10.06796
+"Ukraine",2015,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",1.4567,469911929.524057,0.0993397616142,0.032902
+"Africa_Eastern",2015,"crude oil refining","Gasoline","Gasoline_crude oil",1.4567,1226293980.23532,0.26381047636608,0.0505952
+"Africa_Northern",2015,"crude oil refining","Gasoline","Gasoline_crude oil",1.4567,2114634424.19017,0.460456609866,0.3589575
+"Africa_Southern",2015,"crude oil refining","Gasoline","Gasoline_crude oil",1.4567,93018070.3250356,0.02021327826648,0.0042936
+"Africa_Western",2015,"crude oil refining","Gasoline","Gasoline_crude oil",1.4567,1324042019.87052,0.28787372490027,0.0541173
+"Argentina",2015,"crude oil refining","Gasoline","Gasoline_crude oil",1.4567,1309702548.50842,0.28687715884425,0.2431013
+"Australia_NZ",2015,"crude oil refining","Gasoline","Gasoline_crude oil",1.4567,3926380820.95277,0.83517900177504,0.4818502
+"Brazil",2015,"crude oil refining","Gasoline","Gasoline_crude oil",1.4567,5387895112.29895,1.17378918863388,0.9750573
+"Canada",2015,"crude oil refining","Gasoline","Gasoline_crude oil",1.4567,7456069077.15952,1.61836576097115,1.5866065
+"Central America and Caribbean",2015,"crude oil refining","Gasoline","Gasoline_crude oil",1.4567,2274534547.75617,0.48373260965505,0.1365915
+"Central Asia",2015,"crude oil refining","Gasoline","Gasoline_crude oil",1.4567,1747210920.63745,0.37894337060293,0.3586079
+"China",2015,"crude oil refining","Gasoline","Gasoline_crude oil",1.4567,30431106042.8599,6.4440247525,5.33125
+"Colombia",2015,"crude oil refining","Gasoline","Gasoline_crude oil",1.4567,939121621.806543,0.20547403897123,0.1626967
+"EU-12",2015,"crude oil refining","Gasoline","Gasoline_crude oil",1.4567,3569504709.04751,0.7512514932386,0.7367999
+"EU-15",2015,"crude oil refining","Gasoline","Gasoline_crude oil",1.4567,21148181882.4505,4.4593441459643,3.9130681
+"Europe_Non_EU",2015,"crude oil refining","Gasoline","Gasoline_crude oil",1.4567,2956614784.93898,0.62547972017687,0.5341891
+"European Free Trade Association",2015,"crude oil refining","Gasoline","Gasoline_crude oil",1.4567,878749435.124196,0.19039543657992,0.2481193
+"India",2015,"crude oil refining","Gasoline","Gasoline_crude oil",1.4567,7684887301.60855,1.63392701058955,1.7063701
+"Indonesia",2015,"crude oil refining","Gasoline","Gasoline_crude oil",1.4567,3328164120.21764,0.71504126789361,0.4663407
+"Japan",2015,"crude oil refining","Gasoline","Gasoline_crude oil",1.4567,10356351406.3614,2.16975216902705,1.8235717
+"Mexico",2015,"crude oil refining","Gasoline","Gasoline_crude oil",1.4567,5692636199.13643,1.24619518341184,0.7073128
+"Middle East",2015,"crude oil refining","Gasoline","Gasoline_crude oil",1.4567,12360248772.7146,2.68582212980359,3.1826357
+"Pakistan",2015,"crude oil refining","Gasoline","Gasoline_crude oil",1.4567,835654979.555798,0.17686605744505,0.0807995
+"Russia",2015,"crude oil refining","Gasoline","Gasoline_crude oil",1.4567,5594889118.00641,1.19391355502091,1.8715699
+"South Africa",2015,"crude oil refining","Gasoline","Gasoline_crude oil",1.4567,2410604057.32885,0.49713519769326,0.3079818
+"South America_Northern",2015,"crude oil refining","Gasoline","Gasoline_crude oil",1.4567,2601421444.78184,0.55994278343469,0.6128769
+"South America_Southern",2015,"crude oil refining","Gasoline","Gasoline_crude oil",1.4567,2910797131.47074,0.62841170952224,0.3765356
+"South Asia",2015,"crude oil refining","Gasoline","Gasoline_crude oil",1.4567,445711555.403651,0.09441581183496,0.0161496
+"South Korea",2015,"crude oil refining","Gasoline","Gasoline_crude oil",1.4567,3758221743.02773,0.784637166306,0.92337
+"Southeast Asia",2015,"crude oil refining","Gasoline","Gasoline_crude oil",1.4567,9517364601.66592,2.02626970387875,1.4030375
+"Taiwan",2015,"crude oil refining","Gasoline","Gasoline_crude oil",1.4567,3110468099.70745,0.65209690144272,0.5991504
+"USA",2015,"crude oil refining","Gasoline","Gasoline_crude oil",1.4567,74032422626.3442,15.9805185176887,16.5039001
+"Ukraine",2015,"crude oil refining","Gasoline","Gasoline_crude oil",1.4567,921934013.965084,0.19489759552194,0.0645514
+"Africa_Eastern",2015,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",1.4567,150307976.219668,0.0323354916906,0.0062015
+"Africa_Northern",2015,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",1.4567,281465245.42925,0.0612883868828,0.0477785
+"Africa_Southern",2015,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",1.4567,4192052.49857798,0.00091095335955,0.0001935
+"Africa_Western",2015,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",1.4567,19783329.4947697,0.00430129910314,0.0008086
+"Argentina",2015,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",1.4567,308538087.21633,0.06758216203875,0.0572695
+"Australia_NZ",2015,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",1.4567,70266583.0485075,0.01494637870464,0.0086232
+"Brazil",2015,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",1.4567,1421770911.66035,0.3097423557878,0.2573005
+"Canada",2015,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",1.4567,1177225586.98547,0.25552091366115,0.2505065
+"Central America and Caribbean",2015,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",1.4567,115623817.238591,0.02459009070945,0.0069435
+"Central Asia",2015,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",1.4567,290384832.663385,0.06298003633201,0.0596003
+"China",2015,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",1.4567,9694216478.72002,2.05282617256768,1.6983376
+"Colombia",2015,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",1.4567,99791344.3979865,0.02183373283258,0.0172882
+"EU-12",2015,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",1.4567,560442836.394225,0.1179529240146,0.1156839
+"EU-15",2015,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",1.4567,3329296062.63087,0.7020214309484,0.6160228
+"Europe_Non_EU",2015,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",1.4567,958544441.440238,0.20278262561063,0.1731859
+"European Free Trade Association",2015,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",1.4567,21568946.6109644,0.00467326503144,0.0060901
+"India",2015,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",1.4567,2740661499.05305,0.5827074196974,0.6085428
+"Indonesia",2015,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",1.4567,78868393.1994893,0.0169445237173,0.011051
+"Japan",2015,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",1.4567,596810196.890767,0.1250373001447,0.1050878
+"Mexico",2015,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",1.4567,1061991038.64801,0.23248422539112,0.1319529
+"Middle East",2015,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",1.4567,1716908853.55936,0.37307596946794,0.4420862
+"Pakistan",2015,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",1.4567,93945576.0529836,0.01988354531164,0.0090836
+"Russia",2015,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",1.4567,1064747301.8863,0.22721026450779,0.3561731
+"South Africa",2015,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",1.4567,103535300.94809,0.02135192718546,0.0132278
+"South America_Northern",2015,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",1.4567,320365516.834147,0.06895705406459,0.0754759
+"South America_Southern",2015,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",1.4567,199572130.723332,0.04308560788552,0.0258163
+"South Asia",2015,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",1.4567,78331261.2415565,0.01659303989882,0.0028382
+"South Korea",2015,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",1.4567,668642908.030922,0.13959848899318,0.1642811
+"Southeast Asia",2015,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",1.4567,798463840.927411,0.16999486288785,0.1177085
+"Taiwan",2015,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",1.4567,262721334.811819,0.05507845214352,0.0506064
+"USA",2015,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",1.4567,8965442551.59313,1.93526586909268,1.9986482
+"Ukraine",2015,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",1.4567,103365771.039372,0.02185160752254,0.0072374
+"Africa_Eastern",2015,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",1.4567,137951771.063369,0.02967732291468,0.0056917
+"Africa_Northern",2015,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",1.4567,1110216725.28865,0.24174704795072,0.1884584
+"Africa_Southern",2015,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",1.4567,533603871.143281,0.11595471174365,0.0246305
+"Africa_Western",2015,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",1.4567,632396171.302138,0.13749581864722,0.0258478
+"Argentina",2015,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",1.4567,311668211.081086,0.06826778416125,0.0578505
+"Australia_NZ",2015,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",1.4567,1615738649.96829,0.34368316634208,0.1982854
+"Brazil",2015,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",1.4567,1076555327.28977,0.23453481884872,0.1948262
+"Canada",2015,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",1.4567,1009440753.18876,0.21910263112959,0.2148029
+"Central America and Caribbean",2015,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",1.4567,747309360.591924,0.15893269573566,0.0448778
+"Central Asia",2015,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",1.4567,386175290.782921,0.08375552407803,0.0792609
+"China",2015,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",1.4567,8209242434.12392,1.73837130238584,1.4381838
+"Colombia",2015,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",1.4567,394146429.757351,0.08623681639077,0.0682833
+"EU-12",2015,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",1.4567,435281973.711272,0.0916110943632,0.0898488
+"EU-15",2015,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",1.4567,8281833028.92953,1.7463223950262,1.5323954
+"Europe_Non_EU",2015,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",1.4567,1258525754.00319,0.26624447001321,0.2273853
+"European Free Trade Association",2015,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",1.4567,166263743.818717,0.03602375924976,0.0469454
+"India",2015,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",1.4567,3654215782.43536,0.77694332201775,0.8113905
+"Indonesia",2015,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",1.4567,1009340582.2039,0.21685233767509,0.1414283
+"Japan",2015,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",1.4567,6069703237.41282,1.2716594143993,1.0687682
+"Mexico",2015,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",1.4567,782619087.499881,0.17132592057024,0.0972408
+"Middle East",2015,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",1.4567,6894600385.21375,1.4981632353256,1.775288
+"Pakistan",2015,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",1.4567,360881077.167905,0.07638034223064,0.0348936
+"Russia",2015,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",1.4567,1530194199.0761,0.32653365554853,0.5118717
+"South Africa",2015,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",1.4567,557704289.334151,0.1150145048871,0.071253
+"South America_Northern",2015,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",1.4567,493551415.890095,0.10623444122673,0.1162773
+"South America_Southern",2015,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",1.4567,828091803.594964,0.1787766589132,0.1071205
+"South Asia",2015,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",1.4567,672701651.664417,0.14249949725242,0.0243742
+"South Korea",2015,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",1.4567,3590865955.7765,0.74969681960684,0.8822518
+"Southeast Asia",2015,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",1.4567,6068174599.56794,1.29192889666104,0.8945624
+"Taiwan",2015,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",1.4567,885388715.422382,0.1856181190071,0.170547
+"USA",2015,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",1.4567,14518110614.1192,3.13385577940316,3.2364934
+"Ukraine",2015,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",1.4567,38024847.1571591,0.00803848341504,0.0026624
+"Africa_Eastern",2015,"crude oil refining","LPG","LPG_crude oil",1.4567,353370986.066641,0.07602008137584,0.0145796
+"Africa_Northern",2015,"crude oil refining","LPG","LPG_crude oil",1.4567,3567049523.85159,0.77671653889104,0.6055038
+"Africa_Southern",2015,"crude oil refining","LPG","LPG_crude oil",1.4567,534704420.32637,0.11619386642409,0.0246813
+"Africa_Western",2015,"crude oil refining","LPG","LPG_crude oil",1.4567,804111850.326429,0.17483030758537,0.0328663
+"Argentina",2015,"crude oil refining","LPG","LPG_crude oil",1.4567,654832687.460178,0.143434508172,0.1215472
+"Australia_NZ",2015,"crude oil refining","LPG","LPG_crude oil",1.4567,928270681.534859,0.1974521108712,0.1139185
+"Brazil",2015,"crude oil refining","LPG","LPG_crude oil",1.4567,1466416531.30683,0.31946870430956,0.2653801
+"Canada",2015,"crude oil refining","LPG","LPG_crude oil",1.4567,620156216.303094,0.13460706661005,0.1319655
+"Central America and Caribbean",2015,"crude oil refining","LPG","LPG_crude oil",1.4567,637888448.505112,0.13566179690196,0.0383068
+"Central Asia",2015,"crude oil refining","LPG","LPG_crude oil",1.4567,933837354.052081,0.20253506337421,0.1916663
+"China",2015,"crude oil refining","LPG","LPG_crude oil",1.4567,6771226903.96305,1.43386026496956,1.1862567
+"Colombia",2015,"crude oil refining","LPG","LPG_crude oil",1.4567,170380435.788497,0.03727819218537,0.0295173
+"EU-12",2015,"crude oil refining","LPG","LPG_crude oil",1.4567,534678256.426643,0.1125304128398,0.1103657
+"EU-15",2015,"crude oil refining","LPG","LPG_crude oil",1.4567,3637008373.62126,0.7669062092373,0.6729591
+"Europe_Non_EU",2015,"crude oil refining","LPG","LPG_crude oil",1.4567,500545946.481522,0.10589182606262,0.0904366
+"European Free Trade Association",2015,"crude oil refining","LPG","LPG_crude oil",1.4567,1227790885.46464,0.26602097517576,0.3466729
+"India",2015,"crude oil refining","LPG","LPG_crude oil",1.4567,2255205813.59021,0.47949196242505,0.5007511
+"Indonesia",2015,"crude oil refining","LPG","LPG_crude oil",1.4567,781283106.391068,0.1678552026879,0.109473
+"Japan",2015,"crude oil refining","LPG","LPG_crude oil",1.4567,1047407069.25603,0.219441545695,0.18443
+"Mexico",2015,"crude oil refining","LPG","LPG_crude oil",1.4567,1968210450.0281,0.43086793130008,0.2445511
+"Middle East",2015,"crude oil refining","LPG","LPG_crude oil",1.4567,11809057223.1002,2.56605087851752,3.0407096
+"Pakistan",2015,"crude oil refining","LPG","LPG_crude oil",1.4567,280971075.255296,0.05946742082829,0.0271671
+"Russia",2015,"crude oil refining","LPG","LPG_crude oil",1.4567,2589589560.86763,0.55260185026905,0.8662545
+"South Africa",2015,"crude oil refining","LPG","LPG_crude oil",1.4567,103042976.417206,0.02125039584843,0.0131649
+"South America_Northern",2015,"crude oil refining","LPG","LPG_crude oil",1.4567,541128364.360939,0.11647513829161,0.1274861
+"South America_Southern",2015,"crude oil refining","LPG","LPG_crude oil",1.4567,904151124.139495,0.19519709822576,0.1169594
+"South Asia",2015,"crude oil refining","LPG","LPG_crude oil",1.4567,40862964.3415716,0.00865606894306,0.0014806
+"South Korea",2015,"crude oil refining","LPG","LPG_crude oil",1.4567,538955217.628602,0.11252244376226,0.1324177
+"Southeast Asia",2015,"crude oil refining","LPG","LPG_crude oil",1.4567,3490857715.04378,0.74321196303717,0.5146177
+"Taiwan",2015,"crude oil refining","LPG","LPG_crude oil",1.4567,256217987.090606,0.05371505192141,0.0493537
+"USA",2015,"crude oil refining","LPG","LPG_crude oil",1.4567,11628253832.4141,2.51005598770116,2.5922634
+"Ukraine",2015,"crude oil refining","LPG","LPG_crude oil",1.4567,224194350.304051,0.04739486681475,0.0156975
+"Africa_Eastern",2015,"crude oil refining","Other","Other_crude oil",1.4567,22162640.2411134,0.00476780998176,0.0009144
+"Africa_Northern",2015,"crude oil refining","Other","Other_crude oil",1.4567,3126823588.32752,0.68085838982864,0.5307758
+"Africa_Southern",2015,"crude oil refining","Other","Other_crude oil",1.4567,263653021.718057,0.05729308160407,0.0121699
+"Africa_Western",2015,"crude oil refining","Other","Other_crude oil",1.4567,285906544.410067,0.06216191078342,0.0116858
+"Argentina",2015,"crude oil refining","Other","Other_crude oil",1.4567,717190034.573133,0.15709325732325,0.1331217
+"Australia_NZ",2015,"crude oil refining","Other","Other_crude oil",1.4567,1048443878.66386,0.22301410686576,0.1286663
+"Brazil",2015,"crude oil refining","Other","Other_crude oil",1.4567,2413387057.93151,0.52577260275956,0.4367551
+"Canada",2015,"crude oil refining","Other","Other_crude oil",1.4567,4095454498.58903,0.8889326624448,0.871488
+"Central America and Caribbean",2015,"crude oil refining","Other","Other_crude oil",1.4567,259512899.456051,0.05519144662668,0.0155844
+"Central Asia",2015,"crude oil refining","Other","Other_crude oil",1.4567,329786835.341762,0.07152572908558,0.0676874
+"China",2015,"crude oil refining","Other","Other_crude oil",1.4567,18228628944.5855,3.86005477282376,3.1934882
+"Colombia",2015,"crude oil refining","Other","Other_crude oil",1.4567,144853357.118325,0.03169302426281,0.0250949
+"EU-12",2015,"crude oil refining","Other","Other_crude oil",1.4567,1710276963.76097,0.3599513735394,0.3530271
+"EU-15",2015,"crude oil refining","Other","Other_crude oil",1.4567,11896878049.4591,2.5085973716318,2.2012906
+"Europe_Non_EU",2015,"crude oil refining","Other","Other_crude oil",1.4567,749673221.952556,0.15859536368403,0.1354479
+"European Free Trade Association",2015,"crude oil refining","Other","Other_crude oil",1.4567,708619990.37678,0.15353411000256,0.2000824
+"India",2015,"crude oil refining","Other","Other_crude oil",1.4567,5251421765.07639,1.1165342482199,1.1660378
+"Indonesia",2015,"crude oil refining","Other","Other_crude oil",1.4567,1734665739.32354,0.37268522368915,0.2430605
+"Japan",2015,"crude oil refining","Other","Other_crude oil",1.4567,5321451483.34483,1.1148936961783,0.9370142
+"Mexico",2015,"crude oil refining","Other","Other_crude oil",1.4567,1918563963.13009,0.419999642746,0.2383825
+"Middle East",2015,"crude oil refining","Other","Other_crude oil",1.4567,14986216035.6296,3.2564320840665,3.858795
+"Pakistan",2015,"crude oil refining","Other","Other_crude oil",1.4567,559821973.147998,0.11848610692708,0.0541292
+"Russia",2015,"crude oil refining","Other","Other_crude oil",1.4567,5239377162.77996,1.11804957749349,1.7526461
+"South Africa",2015,"crude oil refining","Other","Other_crude oil",1.4567,58953710.1211854,0.0121579337124,0.007532
+"South America_Northern",2015,"crude oil refining","Other","Other_crude oil",1.4567,55190075.190681,0.01187938401224,0.0130024
+"South America_Southern",2015,"crude oil refining","Other","Other_crude oil",1.4567,337806074.780203,0.0729289206192,0.043698
+"South Asia",2015,"crude oil refining","Other","Other_crude oil",1.4567,288919317.985778,0.06120225430935,0.0104685
+"South Korea",2015,"crude oil refining","Other","Other_crude oil",1.4567,6416584143.64984,1.33964697777022,1.5765119
+"Southeast Asia",2015,"crude oil refining","Other","Other_crude oil",1.4567,6897462888.51362,1.4684863583115,1.016815
+"Taiwan",2015,"crude oil refining","Other","Other_crude oil",1.4567,1491914794.25695,0.31277382804312,0.2873784
+"USA",2015,"crude oil refining","Other","Other_crude oil",1.4567,12488332412.9743,2.6957111533126,2.783999
+"Ukraine",2015,"crude oil refining","Other","Other_crude oil",1.4567,148160366.375803,0.03132122117298,0.0103738
+"Africa_Eastern",2015,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",1.4567,371059410.00361,0.07982536103976,0.0153094
+"Africa_Northern",2015,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",1.4567,3626643913.99123,0.78969307541992,0.6156199
+"Africa_Southern",2015,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",1.4567,1364317025.88345,0.29647271322136,0.0629752
+"Africa_Western",2015,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",1.4567,1952616578.42583,0.42453864703511,0.0798089
+"Argentina",2015,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",1.4567,944952608.658531,0.206982356355,0.175398
+"Australia_NZ",2015,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",1.4567,438002531.00241,0.09316735520544,0.0537522
+"Brazil",2015,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",1.4567,3008337626.69772,0.65538658574064,0.5444244
+"Canada",2015,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",1.4567,753132732.060941,0.16347008248191,0.1602621
+"Central America and Caribbean",2015,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",1.4567,3632323009.52481,0.77249786785647,0.2181301
+"Central Asia",2015,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",1.4567,1125529843.76759,0.24411023744968,0.2310104
+"China",2015,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",1.4567,3111002865.64765,0.65877919268188,0.5450191
+"Colombia",2015,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",1.4567,677604712.676061,0.14825574654714,0.1173906
+"EU-12",2015,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",1.4567,1155379262.60628,0.2431654997092,0.2384878
+"EU-15",2015,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",1.4567,10779280672.0227,2.2729387533015,1.9945005
+"Europe_Non_EU",2015,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",1.4567,1844645361.294,0.3902396315831,0.333283
+"European Free Trade Association",2015,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",1.4567,19041985.9031069,0.00412575766704,0.0053766
+"India",2015,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",1.4567,1661018596.71884,0.3531584841462,0.3688164
+"Indonesia",2015,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",1.4567,1391647820.89592,0.2989893485931,0.194997
+"Japan",2015,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",1.4567,3947647882.78027,0.82706903426975,0.6951115
+"Mexico",2015,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",1.4567,3548619592.15212,0.77684090266856,0.4409177
+"Middle East",2015,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",1.4567,15182972320.2077,3.29918627073499,3.9094577
+"Pakistan",2015,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",1.4567,1156356110.12039,0.24474232931419,0.1118081
+"Russia",2015,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",1.4567,7527220496.72388,1.60626071278998,2.5179622
+"South Africa",2015,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",1.4567,1142321276.07678,0.23557917430908,0.1459444
+"South America_Northern",2015,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",1.4567,2220870799.49882,0.47803118545618,0.5232218
+"South America_Southern",2015,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",1.4567,1831281070.13089,0.39535509206552,0.2368913
+"South Asia",2015,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",1.4567,938170165.380957,0.1987341291243,0.033993
+"South Korea",2015,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",1.4567,1043627859.75494,0.21788741126712,0.2564124
+"Southeast Asia",2015,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",1.4567,2490049121.64258,0.53013741802758,0.3670798
+"Taiwan",2015,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",1.4567,1314097267.46506,0.27549511161645,0.2531265
+"USA",2015,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",1.4567,3330729614.52987,0.71896588540746,0.7425129
+"Ukraine",2015,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",1.4567,171361750.167421,0.03622601245443,0.0119983
+"Africa_Eastern",2021,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",1.4567,1490579358.21092,0.54896781065796,0.0659292
+"Africa_Northern",2021,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",1.4567,2975905620.6057,1.13401467418816,0.8884448
+"Africa_Southern",2021,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",1.4567,285350263.982131,0.10957478188058,0.0236198
+"Africa_Western",2021,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",1.4567,1927601420.39118,0.73970679569499,0.0850347
+"Argentina",2021,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",1.4567,1331497679.89092,0.51445999663048,0.4521224
+"Australia_NZ",2021,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",1.4567,2005979129.83595,0.72789433341974,0.3382234
+"Brazil",2021,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",1.4567,4303637232.2178,1.6403624959168,1.295741
+"Canada",2021,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",1.4567,3548740735.16565,1.32867835642674,1.4465121
+"Central America and Caribbean",2021,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",1.4567,1348495000.4111,0.49038321687168,0.0579392
+"Central Asia",2021,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",1.4567,1468561170.91183,0.55717125479946,0.5321538
+"China",2021,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",1.4567,23576896162.5673,8.4210756530474,7.156177
+"Colombia",2021,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",1.4567,1156941103.04447,0.44443750925883,0.3708427
+"EU-12",2021,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",1.4567,4634725363.5596,1.666359729483,1.301871
+"EU-15",2021,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",1.4567,27493749137.2389,9.91943231606276,8.7576217
+"Europe_Non_EU",2021,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",1.4567,3860670048.62674,1.39169363576276,1.1195188
+"European Free Trade Association",2021,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",1.4567,588168652.347574,0.21806551704678,0.2751906
+"India",2021,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",1.4567,12855058571.7239,4.69987569455265,4.8290345
+"Indonesia",2021,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",1.4567,4366161560.75587,1.60849666020033,0.9769323
+"Japan",2021,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",1.4567,5689667921.76418,2.0444977256424,1.698548
+"Mexico",2021,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",1.4567,1354212591.81551,0.52763047902145,0.2546495
+"Middle East",2021,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",1.4567,11975855304.0595,4.57564369770324,5.8421313
+"Pakistan",2021,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",1.4567,1094159654.36355,0.39979671599339,0.2275759
+"Russia",2021,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",1.4567,6334261274.52864,2.35288018582991,3.6148211
+"South Africa",2021,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",1.4567,1376097423.63743,0.47214945359421,0.1534103
+"South America_Northern",2021,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",1.4567,463986674.788174,0.17630234933376,0.1219296
+"South America_Southern",2021,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",1.4567,1566030036.1649,0.57001129237217,0.2910589
+"South Asia",2021,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",1.4567,1229954101.14518,0.44756200644265,0.0634873
+"South Korea",2021,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",1.4567,5201912492.28664,1.84520831133576,2.1073038
+"Southeast Asia",2021,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",1.4567,8519279205.53305,3.12004117904856,2.4437653
+"Taiwan",2021,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",1.4567,1739161523.47639,0.62883120682655,0.5822557
+"USA",2021,"crude oil refining","Distillate_FuelOil","Distillate_FuelOil_crude oil",1.4567,23138603862.2623,8.75694347340458,9.0980314
+"Africa_Eastern",2021,"crude oil refining","Gasoline","Gasoline_crude oil",1.4567,879273883.261275,0.32382915810804,0.0388908
+"Africa_Northern",2021,"crude oil refining","Gasoline","Gasoline_crude oil",1.4567,1175760412.66395,0.44804161531812,0.3510186
+"Africa_Southern",2021,"crude oil refining","Gasoline","Gasoline_crude oil",1.4567,2678352.63316533,0.00102849004407,0.0002217
+"Africa_Western",2021,"crude oil refining","Gasoline","Gasoline_crude oil",1.4567,610029574.093248,0.2340956054287,0.026911
+"Argentina",2021,"crude oil refining","Gasoline","Gasoline_crude oil",1.4567,691829410.833665,0.26730692943867,0.2349171
+"Australia_NZ",2021,"crude oil refining","Gasoline","Gasoline_crude oil",1.4567,1962973960.26329,0.71228937583364,0.3309724
+"Brazil",2021,"crude oil refining","Gasoline","Gasoline_crude oil",1.4567,3179886390.83343,1.21203672506368,0.9574016
+"Canada",2021,"crude oil refining","Gasoline","Gasoline_crude oil",1.4567,3631180249.09717,1.3595444033007,1.4801155
+"Central America and Caribbean",2021,"crude oil refining","Gasoline","Gasoline_crude oil",1.4567,941271350.901043,0.3422954277645,0.0404425
+"Central Asia",2021,"crude oil refining","Gasoline","Gasoline_crude oil",1.4567,1381131420.56498,0.52400045832708,0.5004724
+"China",2021,"crude oil refining","Gasoline","Gasoline_crude oil",1.4567,23305318847.0358,8.3240750511033,7.0737465
+"Colombia",2021,"crude oil refining","Gasoline","Gasoline_crude oil",1.4567,545287354.993149,0.20947147028121,0.1747849
+"EU-12",2021,"crude oil refining","Gasoline","Gasoline_crude oil",1.4567,2305048114.12672,0.8287523101372,0.6474764
+"EU-15",2021,"crude oil refining","Gasoline","Gasoline_crude oil",1.4567,12427166421.1997,4.48358045242272,3.9584424
+"Europe_Non_EU",2021,"crude oil refining","Gasoline","Gasoline_crude oil",1.4567,1501781981.44983,0.54136209506698,0.4354874
+"European Free Trade Association",2021,"crude oil refining","Gasoline","Gasoline_crude oil",1.4567,535807885.254978,0.19865258556286,0.2506922
+"India",2021,"crude oil refining","Gasoline","Gasoline_crude oil",1.4567,4816772272.71308,1.76103677819988,1.8094324
+"Indonesia",2021,"crude oil refining","Gasoline","Gasoline_crude oil",1.4567,2190369021.29821,0.80693332263099,0.4900969
+"Japan",2021,"crude oil refining","Gasoline","Gasoline_crude oil",1.4567,4966106317.3768,1.78449660169746,1.4825417
+"Mexico",2021,"crude oil refining","Gasoline","Gasoline_crude oil",1.4567,2643460077.22344,1.02994914923188,0.4970828
+"Middle East",2021,"crude oil refining","Gasoline","Gasoline_crude oil",1.4567,7396833941.06797,2.8261260466242,3.6083665
+"Pakistan",2021,"crude oil refining","Gasoline","Gasoline_crude oil",1.4567,615447767.623039,0.22487942722059,0.1280079
+"Russia",2021,"crude oil refining","Gasoline","Gasoline_crude oil",1.4567,3197239843.63384,1.18762424715292,1.8245932
+"South Africa",2021,"crude oil refining","Gasoline","Gasoline_crude oil",1.4567,1376056161.42655,0.47213529621699,0.1534057
+"South America_Northern",2021,"crude oil refining","Gasoline","Gasoline_crude oil",1.4567,357326089.436974,0.13577422040136,0.0939006
+"South America_Southern",2021,"crude oil refining","Gasoline","Gasoline_crude oil",1.4567,2078874797.5967,0.75667904362803,0.3863751
+"South Asia",2021,"crude oil refining","Gasoline","Gasoline_crude oil",1.4567,277000388.008056,0.10079632185205,0.0142981
+"South Korea",2021,"crude oil refining","Gasoline","Gasoline_crude oil",1.4567,2758006423.36291,0.97831256920464,1.1172732
+"Southeast Asia",2021,"crude oil refining","Gasoline","Gasoline_crude oil",1.4567,5580665191.33941,2.04382375355808,1.6008204
+"Taiwan",2021,"crude oil refining","Gasoline","Gasoline_crude oil",1.4567,1499881525.61314,0.54231438375135,0.5021469
+"USA",2021,"crude oil refining","Gasoline","Gasoline_crude oil",1.4567,41552863090.2961,15.7259303718537,16.3384643
+"Ukraine",2021,"crude oil refining","Gasoline","Gasoline_crude oil",1.4567,817487393.111912,0.29512990755908,0.0494791
+"Africa_Eastern",2021,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",1.4567,123055115.652403,0.04532016162564,0.0054428
+"Africa_Northern",2021,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",1.4567,135878210.795908,0.05177848513678,0.0405659
+"Africa_Southern",2021,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",1.4567,8287550.3218377,0.0031824274706,0.000686
+"Africa_Western",2021,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",1.4567,17447874.9648684,0.00669552924449,0.0007697
+"Argentina",2021,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",1.4567,187517181.34565,0.07245231436764,0.0636732
+"Brazil",2021,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",1.4567,746258702.564712,0.28444190852672,0.2246839
+"Canada",2021,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",1.4567,903947844.88678,0.33844567030158,0.3684607
+"Central America and Caribbean",2021,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",1.4567,153040236.579089,0.0556534236327,0.0065755
+"Central Asia",2021,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",1.4567,252853712.85691,0.09593255171367,0.0916251
+"China",2021,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",1.4567,7697352880.71645,2.74930128587618,2.3363389
+"Colombia",2021,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",1.4567,83540372.9643438,0.03209193206562,0.0267778
+"EU-12",2021,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",1.4567,510666334.191559,0.1836039350228,0.1434436
+"EU-15",2021,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",1.4567,1679284814.60667,0.60586688176772,0.5349049
+"Europe_Non_EU",2021,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",1.4567,568480756.533106,0.20492583954491,0.1648483
+"European Free Trade Association",2021,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",1.4567,13106649.0889988,0.00485933447649,0.0061323
+"India",2021,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",1.4567,1828762900.54707,0.66860514554841,0.6869793
+"Indonesia",2021,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",1.4567,25630295.2810781,0.00944221687308,0.0057348
+"Japan",2021,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",1.4567,432739524.547896,0.15549852573108,0.1291866
+"Mexico",2021,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",1.4567,473039379.071537,0.18430636052565,0.0889515
+"Middle East",2021,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",1.4567,718990249.509872,0.2747063253816,0.350742
+"Pakistan",2021,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",1.4567,28617997.3831507,0.01045677504783,0.0059523
+"Russia",2021,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",1.4567,768410904.034449,0.28542851523169,0.4385149
+"South Africa",2021,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",1.4567,114047853.849144,0.03913068286701,0.0127143
+"South America_Northern",2021,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",1.4567,73969452.7158909,0.02810638537992,0.0194382
+"South America_Southern",2021,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",1.4567,109182395.404754,0.03974074370972,0.0202924
+"South Asia",2021,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",1.4567,43159683.0630885,0.0157051668279,0.0022278
+"South Korea",2021,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",1.4567,315587635.141945,0.11194439125652,0.1278451
+"Southeast Asia",2021,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",1.4567,424963214.875637,0.15563555296224,0.1219012
+"Taiwan",2021,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",1.4567,133143944.444974,0.0481410531091,0.0445754
+"USA",2021,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",1.4567,4858621573.49003,1.83877448833926,1.9103958
+"Ukraine",2021,"crude oil refining","Heavy_Residual","Heavy_Residual_crude oil",1.4567,220775176.573487,0.07970441868888,0.0133626
+"Africa_Eastern",2021,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",1.4567,41028169.0259453,0.01511032874661,0.0018147
+"Africa_Northern",2021,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",1.4567,426163098.681796,0.16239601288306,0.1272293
+"Africa_Southern",2021,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",1.4567,115231984.307266,0.04424919525193,0.0095383
+"Africa_Western",2021,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",1.4567,101035368.98261,0.03877178562507,0.0044571
+"Argentina",2021,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",1.4567,77411813.4023988,0.02991013943443,0.0262859
+"Australia_NZ",2021,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",1.4567,306010457.553429,0.11103967868227,0.0515957
+"Brazil",2021,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",1.4567,466315244.777937,0.17773943237632,0.1403984
+"Canada",2021,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",1.4567,337130739.063698,0.12622458210072,0.1374188
+"Central America and Caribbean",2021,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",1.4567,200075293.09231,0.07275782692056,0.0085964
+"Central Asia",2021,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",1.4567,139256356.951632,0.05283378089955,0.0504615
+"China",2021,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",1.4567,5658149404.01316,2.02094897729114,1.7173897
+"Colombia",2021,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",1.4567,152274977.642488,0.05849624635842,0.0488098
+"EU-12",2021,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",1.4567,196371625.229285,0.0706030546854,0.0551598
+"EU-15",2021,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",1.4567,3301993098.77222,1.19132159415152,1.0517884
+"Europe_Non_EU",2021,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",1.4567,545564038.43856,0.19666482518133,0.1582029
+"European Free Trade Association",2021,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",1.4567,37596631.1930177,0.01393907816678,0.0175906
+"India",2021,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",1.4567,1292911239.07383,0.47269501526061,0.4856853
+"Indonesia",2021,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",1.4567,426063212.271698,0.1569619548972,0.095332
+"Japan",2021,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",1.4567,2409138639.39812,0.865688215329,0.719205
+"Mexico",2021,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",1.4567,278681704.309256,0.1085804119884,0.052404
+"Middle East",2021,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",1.4567,2650940513.23613,1.01285118635856,1.2931972
+"Pakistan",2021,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",1.4567,98023720.6537665,0.03581704137101,0.0203881
+"Russia",2021,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",1.4567,930106225.537988,0.34549072321748,0.5307908
+"South Africa",2021,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",1.4567,214077320.056385,0.07345155070806,0.0238658
+"South America_Northern",2021,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",1.4567,49827453.8723686,0.0189330807464,0.013094
+"South America_Southern",2021,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",1.4567,363977187.732392,0.1324822017344,0.067648
+"South Asia",2021,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",1.4567,321078362.200146,0.11683564116565,0.0165733
+"South Korea",2021,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",1.4567,1486424868.37523,0.52726060374316,0.6021533
+"Southeast Asia",2021,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",1.4567,1585274631.50318,0.58057988370408,0.4547379
+"Taiwan",2021,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",1.4567,377256807.568256,0.1364053024313,0.1263022
+"USA",2021,"crude oil refining","Jet_Kerosene","Jet_Kerosene_crude oil",1.4567,6998288548.72635,2.64854429405402,2.7517066
+"Africa_Eastern",2021,"crude oil refining","LPG","LPG_crude oil",1.4567,278160450.300331,0.10244414869416,0.0123032
+"Africa_Northern",2021,"crude oil refining","LPG","LPG_crude oil",1.4567,2053393260.64309,0.78247713009608,0.6130324
+"Africa_Southern",2021,"crude oil refining","LPG","LPG_crude oil",1.4567,852262197.513554,0.32726952165518,0.0705458
+"Africa_Western",2021,"crude oil refining","LPG","LPG_crude oil",1.4567,1111874162.77681,0.42667579794415,0.0490495
+"Argentina",2021,"crude oil refining","LPG","LPG_crude oil",1.4567,372772901.926719,0.14403085244945,0.1265785
+"Australia_NZ",2021,"crude oil refining","LPG","LPG_crude oil",1.4567,1111111595.30598,0.40318058248509,0.1873419
+"Brazil",2021,"crude oil refining","LPG","LPG_crude oil",1.4567,816399425.957717,0.31117655317312,0.2458019
+"Canada",2021,"crude oil refining","LPG","LPG_crude oil",1.4567,798094443.281402,0.2988132671019,0.3253135
+"Central America and Caribbean",2021,"crude oil refining","LPG","LPG_crude oil",1.4567,484757364.074103,0.1762830974712,0.020828
+"Central Asia",2021,"crude oil refining","LPG","LPG_crude oil",1.4567,665445945.924472,0.25246980516429,0.2411337
+"China",2021,"crude oil refining","LPG","LPG_crude oil",1.4567,5583688317.48736,1.99435334576618,1.6947889
+"Colombia",2021,"crude oil refining","LPG","LPG_crude oil",1.4567,109010113.005755,0.04187610154122,0.0349418
+"EU-12",2021,"crude oil refining","LPG","LPG_crude oil",1.4567,371357320.359525,0.1335170555652,0.1043124
+"EU-15",2021,"crude oil refining","LPG","LPG_crude oil",1.4567,1973596482.26449,0.71205118761072,0.6286524
+"Europe_Non_EU",2021,"crude oil refining","LPG","LPG_crude oil",1.4567,286488288.503699,0.1032732460452,0.083076
+"European Free Trade Association",2021,"crude oil refining","LPG","LPG_crude oil",1.4567,613121362.877758,0.22731681886602,0.2868654
+"India",2021,"crude oil refining","LPG","LPG_crude oil",1.4567,1548112808.99455,0.56599802504388,0.5815524
+"Indonesia",2021,"crude oil refining","LPG","LPG_crude oil",1.4567,402228664.469859,0.1481812925229,0.089999
+"Japan",2021,"crude oil refining","LPG","LPG_crude oil",1.4567,381351735.317923,0.13703308633266,0.1138457
+"Mexico",2021,"crude oil refining","LPG","LPG_crude oil",1.4567,696878157.646107,0.27151878394917,0.1310427
+"Middle East",2021,"crude oil refining","LPG","LPG_crude oil",1.4567,6007291428.6673,2.29522021333464,2.9305118
+"Pakistan",2021,"crude oil refining","LPG","LPG_crude oil",1.4567,222073986.547895,0.08114396301795,0.0461895
+"Russia",2021,"crude oil refining","LPG","LPG_crude oil",1.4567,2479580711.48321,0.92104762850172,1.4150412
+"South Africa",2021,"crude oil refining","LPG","LPG_crude oil",1.4567,66309269.8779349,0.02275121296161,0.0073923
+"South America_Northern",2021,"crude oil refining","LPG","LPG_crude oil",1.4567,85427027.2434848,0.03245995287796,0.0224491
+"South America_Southern",2021,"crude oil refining","LPG","LPG_crude oil",1.4567,684725627.872584,0.24922979192648,0.1272616
+"South Asia",2021,"crude oil refining","LPG","LPG_crude oil",1.4567,37328340.6616209,0.0135832280474,0.0019268
+"South Korea",2021,"crude oil refining","LPG","LPG_crude oil",1.4567,303751842.966766,0.10774603111008,0.1230504
+"Southeast Asia",2021,"crude oil refining","LPG","LPG_crude oil",1.4567,2117127418.56177,0.7753619253276,0.6073005
+"Taiwan",2021,"crude oil refining","LPG","LPG_crude oil",1.4567,158224065.855588,0.057209309738,0.052972
+"USA",2021,"crude oil refining","LPG","LPG_crude oil",1.4567,10158027451.401,3.84436644158499,3.9941067
+"Ukraine",2021,"crude oil refining","LPG","LPG_crude oil",1.4567,234719637.159602,0.08473865823608,0.0142066
+"Africa_Eastern",2021,"crude oil refining","Other","Other_crude oil",1.4567,6384721.95565491,0.00235143926712,0.0002824
+"Africa_Northern",2021,"crude oil refining","Other","Other_crude oil",1.4567,1746211480.67889,0.6654207813629,0.5213245
+"Africa_Southern",2021,"crude oil refining","Other","Other_crude oil",1.4567,193538461.969201,0.07431895965271,0.0160201
+"Africa_Western",2021,"crude oil refining","Other","Other_crude oil",1.4567,117975471.569652,0.04527245991948,0.0052044
+"Argentina",2021,"crude oil refining","Other","Other_crude oil",1.4567,456870440.329445,0.17652420183842,0.1551346
+"Australia_NZ",2021,"crude oil refining","Other","Other_crude oil",1.4567,846928424.732857,0.30731845212446,0.1427986
+"Brazil",2021,"crude oil refining","Other","Other_crude oil",1.4567,1357779659.51849,0.51752754960832,0.4088009
+"Canada",2021,"crude oil refining","Other","Other_crude oil",1.4567,2037995684.38158,0.76304271244614,0.8307131
+"Central America and Caribbean",2021,"crude oil refining","Other","Other_crude oil",1.4567,245958271.176412,0.08944327431612,0.0105678
+"Central Asia",2021,"crude oil refining","Other","Other_crude oil",1.4567,232653034.460788,0.08826842606967,0.0843051
+"China",2021,"crude oil refining","Other","Other_crude oil",1.4567,18357406860.9717,6.55680505627592,5.5719316
+"Colombia",2021,"crude oil refining","Other","Other_crude oil",1.4567,98838439.7535481,0.03796866570606,0.0316814
+"EU-12",2021,"crude oil refining","Other","Other_crude oil",1.4567,1385658178.72606,0.4981967229412,0.3892244
+"EU-15",2021,"crude oil refining","Other","Other_crude oil",1.4567,5269026334.31114,1.90100483691256,1.6783502
+"Europe_Non_EU",2021,"crude oil refining","Other","Other_crude oil",1.4567,929608562.061867,0.33510512508891,0.2695683
+"European Free Trade Association",2021,"crude oil refining","Other","Other_crude oil",1.4567,292260770.085087,0.10835666893623,0.1367421
+"India",2021,"crude oil refining","Other","Other_crude oil",1.4567,3863045014.29496,1.41234917510088,1.4511624
+"Indonesia",2021,"crude oil refining","Other","Other_crude oil",1.4567,613632567.191226,0.22606262301168,0.1373008
+"Japan",2021,"crude oil refining","Other","Other_crude oil",1.4567,2492162902.06723,0.89552175193152,0.7439904
+"Mexico",2021,"crude oil refining","Other","Other_crude oil",1.4567,599613435.417921,0.23362234708888,0.1127528
+"Middle East",2021,"crude oil refining","Other","Other_crude oil",1.4567,9049398412.70176,3.45752530936548,4.4145301
+"Pakistan",2021,"crude oil refining","Other","Other_crude oil",1.4567,110208834.402713,0.04026937923725,0.0229225
+"Russia",2021,"crude oil refining","Other","Other_crude oil",1.4567,3576530699.49481,1.3285129634126,2.041046
+"South Africa",2021,"crude oil refining","Other","Other_crude oil",1.4567,123158729.41088,0.042256693311,0.01373
+"South America_Southern",2021,"crude oil refining","Other","Other_crude oil",1.4567,94450702.8194403,0.03437862999832,0.0175544
+"South Asia",2021,"crude oil refining","Other","Other_crude oil",1.4567,516730555.046199,0.1880305645482,0.0266724
+"South Korea",2021,"crude oil refining","Other","Other_crude oil",1.4567,3932126535.61131,1.39479327564476,1.5929113
+"Southeast Asia",2021,"crude oil refining","Other","Other_crude oil",1.4567,3684811047.00459,1.34949940321248,1.0569924
+"Taiwan",2021,"crude oil refining","Other","Other_crude oil",1.4567,1389008786.33,0.50222596326455,0.4650277
+"USA",2021,"crude oil refining","Other","Other_crude oil",1.4567,9340192785.35347,3.53485200485405,3.6725365
+"Ukraine",2021,"crude oil refining","Other","Other_crude oil",1.4567,291422704.377076,0.10520964179768,0.0176386
+"Africa_Eastern",2021,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",1.4567,280835070.014757,0.10342918858545,0.0124215
+"Africa_Northern",2021,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",1.4567,1882791425.81723,0.71746667317958,0.5620999
+"Africa_Southern",2021,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",1.4567,668481540.784802,0.25669756880714,0.0553334
+"Africa_Western",2021,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",1.4567,1045333312.87182,0.40114110060197,0.0461141
+"Argentina",2021,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",1.4567,200502542.654762,0.07746955851025,0.0680825
+"Australia_NZ",2021,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",1.4567,194166175.831288,0.07045559798069,0.0327379
+"Brazil",2021,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",1.4567,2067603580.97341,0.788082077472,0.622515
+"Canada",2021,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",1.4567,232210576.091897,0.0869415912888,0.094652
+"Central America and Caribbean",2021,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",1.4567,1887814333.40199,0.6865078961271,0.0811115
+"Central Asia",2021,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",1.4567,535046151.42867,0.20299619891355,0.1938815
+"China",2021,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",1.4567,4671220429.23963,1.66844271423402,1.4178321
+"Colombia",2021,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",1.4567,180959944.789078,0.06951554139276,0.0580044
+"EU-12",2021,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",1.4567,497153809.840124,0.178745669504,0.139648
+"EU-15",2021,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",1.4567,5231337739.19946,1.88740721999856,1.6663452
+"Europe_Non_EU",2021,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",1.4567,484806147.352913,0.17476283167211,0.1405843
+"European Free Trade Association",2021,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",1.4567,17511225.2582352,0.00649234598753,0.0081931
+"India",2021,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",1.4567,270088734.126422,0.09874583377515,0.1014595
+"Indonesia",2021,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",1.4567,444911409.992436,0.16390564277103,0.0995493
+"Japan",2021,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",1.4567,1848907928.82785,0.66437762403516,0.5519582
+"Mexico",2021,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",1.4567,2552752383.87498,0.99460747246589,0.4800259
+"Middle East",2021,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",1.4567,7385366733.10384,2.821744743033,3.6027725
+"Pakistan",2021,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",1.4567,872254424.717717,0.31871441532515,0.1814215
+"Russia",2021,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",1.4567,3165333387.85792,1.17577249927869,1.8063849
+"South Africa",2021,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",1.4567,281306916.637711,0.09651853473549,0.0313607
+"South America_Northern",2021,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",1.4567,400276487.051656,0.15209420633144,0.1051874
+"South America_Southern",2021,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",1.4567,1174781999.68574,0.42760291337472,0.2183424
+"South Asia",2021,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",1.4567,631013242.176624,0.2296163348677,0.0325714
+"South Korea",2021,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",1.4567,629856342.351132,0.22342093596868,0.2551559
+"Southeast Asia",2021,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",1.4567,3853545579.86764,1.41129555734232,1.1053941
+"Taiwan",2021,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",1.4567,606171534.093213,0.2191743390032,0.2029408
+"USA",2021,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",1.4567,1172855362.37143,0.44387414953401,0.4611633
+"Ukraine",2021,"crude oil refining","Residual_FuelOil","Residual_FuelOil_crude oil",1.4567,74417819.1611139,0.02686637650296,0.0045042
+"EU-12",1990,"ctl","Distillate_FuelOil","Distillate_FuelOil_coal",7.408,2720337.128256,0.0045538944,0.0021562
+"EU-15",1990,"ctl","Distillate_FuelOil","Distillate_FuelOil_coal",7.408,116157.8170368,0.0001803648,8.54e-05
+"South Africa",1990,"ctl","Distillate_FuelOil","Distillate_FuelOil_coal",7.408,103318452.762624,0.1729584384,0.0818932
+"EU-12",1990,"ctl","Gasoline","Gasoline_coal",10.2419,1493523.370944,0.0025001856,0.0011838
+"EU-15",1990,"ctl","Gasoline","Gasoline_coal",10.2419,63791.5880448,9.90528e-05,4.69e-05
+"South Africa",1990,"ctl","Gasoline","Gasoline_coal",10.2419,56723891.05152,0.094957632,0.044961
+"EU-12",1990,"ctl","Jet_Kerosene","Jet_Kerosene_coal",7.6106,1120205.609952,0.0018752448,0.0008879
+"EU-15",1990,"ctl","Jet_Kerosene","Jet_Kerosene_coal",7.6106,47877.6950784,7.43424e-05,3.52e-05
+"South Africa",1990,"ctl","Jet_Kerosene","Jet_Kerosene_coal",7.6106,42542855.207424,0.0712181184,0.0337207
+"EU-12",2005,"ctl","Distillate_FuelOil","Distillate_FuelOil_coal",7.408,8027329.4601984,0.0155555136,0.0073653
+"South Africa",2005,"ctl","Distillate_FuelOil","Distillate_FuelOil_coal",7.408,47651932.174176,0.0923406528,0.0437219
+"EU-12",2005,"ctl","Gasoline","Gasoline_coal",10.2419,4407167.6833536,0.0085402944,0.0040437
+"South Africa",2005,"ctl","Gasoline","Gasoline_coal",10.2419,26161866.485568,0.0506968704,0.0240042
+"EU-12",2005,"ctl","Jet_Kerosene","Jet_Kerosene_coal",7.6106,3305403.0096384,0.0064052736,0.0030328
+"South Africa",2005,"ctl","Jet_Kerosene","Jet_Kerosene_coal",7.6106,19621345.369824,0.0380225472,0.0180031
+"China",2010,"ctl","Distillate_FuelOil","Distillate_FuelOil_coal",7.408,27250967.0870976,0.0298934592,0.0141541
+"EU-12",2010,"ctl","Distillate_FuelOil","Distillate_FuelOil_coal",7.408,20245156.8033792,0.0220932096,0.0104608
+"South Africa",2010,"ctl","Distillate_FuelOil","Distillate_FuelOil_coal",7.408,91517620.190304,0.100952544,0.0477995
+"China",2010,"ctl","Gasoline","Gasoline_coal",10.2419,14961356.7897024,0.0164121408,0.0077709
+"EU-12",2010,"ctl","Gasoline","Gasoline_coal",10.2419,11115018.4071168,0.0121296384,0.0057432
+"South Africa",2010,"ctl","Gasoline","Gasoline_coal",10.2419,50245039.2763968,0.0554250048,0.0262429
+"China",2010,"ctl","Jet_Kerosene","Jet_Kerosene_coal",7.6106,11221065.7249152,0.0123091584,0.0058282
+"EU-12",2010,"ctl","Jet_Kerosene","Jet_Kerosene_coal",7.6106,8336263.8053376,0.0090972288,0.0043074
+"South Africa",2010,"ctl","Jet_Kerosene","Jet_Kerosene_coal",7.6106,37683827.3226624,0.0415688064,0.0196822
+"China",2015,"ctl","Distillate_FuelOil","Distillate_FuelOil_coal",7.408,69913502.8905984,0.0903116544,0.0427612
+"EU-12",2015,"ctl","Distillate_FuelOil","Distillate_FuelOil_coal",7.408,27743385.8382912,0.0362058048,0.0171429
+"South Africa",2015,"ctl","Distillate_FuelOil","Distillate_FuelOil_coal",7.408,129229501.234944,0.169441536,0.080228
+"China",2015,"ctl","Gasoline","Gasoline_coal",10.2419,38383986.5266176,0.0495830016,0.0234768
+"EU-12",2015,"ctl","Gasoline","Gasoline_coal",10.2419,15231681.8527104,0.0198777216,0.0094118
+"South Africa",2015,"ctl","Gasoline","Gasoline_coal",10.2419,70949618.5246464,0.0930268416,0.0440468
+"China",2015,"ctl","Jet_Kerosene","Jet_Kerosene_coal",7.6106,28787989.8949632,0.0371872512,0.0176076
+"EU-12",2015,"ctl","Jet_Kerosene","Jet_Kerosene_coal",7.6106,11423842.3075392,0.0149083968,0.0070589
+"South Africa",2015,"ctl","Jet_Kerosene","Jet_Kerosene_coal",7.6106,53212213.8934848,0.0697701312,0.0330351
+"China",2021,"ctl","Distillate_FuelOil","Distillate_FuelOil_coal",7.408,344477184.383059,0.4713525696,0.2231783
+"EU-12",2021,"ctl","Distillate_FuelOil","Distillate_FuelOil_coal",7.408,38700061.1002368,0.0512654208,0.0242734
+"South Africa",2021,"ctl","Distillate_FuelOil","Distillate_FuelOil_coal",7.408,114762196.292198,0.1583949312,0.0749976
+"China",2021,"ctl","Gasoline","Gasoline_coal",10.2419,189124631.833421,0.2587816704,0.1225292
+"EU-12",2021,"ctl","Gasoline","Gasoline_coal",10.2419,21246976.700928,0.028145568,0.0133265
+"South Africa",2021,"ctl","Gasoline","Gasoline_coal",10.2419,63006768.0135168,0.0869620224,0.0411752
+"China",2021,"ctl","Jet_Kerosene","Jet_Kerosene_coal",7.6106,141843473.875066,0.1940862528,0.0918969
+"EU-12",2021,"ctl","Jet_Kerosene","Jet_Kerosene_coal",7.6106,15935272.3842048,0.0211092288,0.0099949
+"South Africa",2021,"ctl","Jet_Kerosene","Jet_Kerosene_coal",7.6106,47255076.0101376,0.0652215168,0.0308814
+"Australia_NZ",1990,"gtl","Distillate_FuelOil","Distillate_FuelOil_natural gas",5.284,29965684.69012,0.023113823,0.0139745
+"South Africa",1990,"gtl","Distillate_FuelOil","Distillate_FuelOil_natural gas",5.284,41061609.85839,0.031466523,0.0190245
+"Australia_NZ",1990,"gtl","Gasoline","Gasoline_natural gas",7.2596,5186446.853912,0.0040005298,0.0024187
+"South Africa",1990,"gtl","Gasoline","Gasoline_natural gas",7.2596,7106812.940194,0.0054461258,0.0032927
+"Australia_NZ",1990,"gtl","Jet_Kerosene","Jet_Kerosene_natural gas",5.4284,13253990.98856,0.010223374,0.006181
+"South Africa",1990,"gtl","Jet_Kerosene","Jet_Kerosene_natural gas",5.4284,18161903.255034,0.0139179138,0.0084147
+"Australia_NZ",1990,"gtl","LPG","LPG_natural gas",8.0134,576176.569912,0.0004444298,0.0002687
+"South Africa",1990,"gtl","LPG","LPG_natural gas",8.0134,789741.809098,0.0006051986,0.0003659
+"Australia_NZ",1990,"gtl","Other","Other_natural gas",5.3068,8643935.135736,0.0066674394,0.0040311
+"South Africa",1990,"gtl","Other","Other_natural gas",5.3068,11844616.288516,0.0090768212,0.0054878
+"South Africa",2005,"gtl","Distillate_FuelOil","Distillate_FuelOil_natural gas",5.284,85738680.556128,0.0529604184,0.0320196
+"Southeast Asia",2005,"gtl","Distillate_FuelOil","Distillate_FuelOil_natural gas",5.284,49362152.6472,0.03463476,0.02094
+"South Africa",2005,"gtl","Gasoline","Gasoline_natural gas",7.2596,14839242.835824,0.0091661372,0.0055418
+"Southeast Asia",2005,"gtl","Gasoline","Gasoline_natural gas",7.2596,8543376.963896,0.0059944268,0.0036242
+"South Africa",2005,"gtl","Jet_Kerosene","Jet_Kerosene_natural gas",5.4284,37922836.743,0.023424775,0.0141625
+"Southeast Asia",2005,"gtl","Jet_Kerosene","Jet_Kerosene_natural gas",5.4284,21833205.425172,0.0153191826,0.0092619
+"South Africa",2005,"gtl","LPG","LPG_natural gas",8.0134,1648923.768144,0.0010185332,0.0006158
+"Southeast Asia",2005,"gtl","LPG","LPG_natural gas",8.0134,949290.299476,0.0006660658,0.0004027
+"South Africa",2005,"gtl","Other","Other_natural gas",5.3068,24732249.905952,0.0152770056,0.0092364
+"Southeast Asia",2005,"gtl","Other","Other_natural gas",5.3068,14239118.760752,0.0099908216,0.0060404
+"Middle East",2010,"gtl","Distillate_FuelOil","Distillate_FuelOil_natural gas",5.284,108597417.5034,0.040899285,0.0247275
+"South Africa",2010,"gtl","Distillate_FuelOil","Distillate_FuelOil_natural gas",5.284,176769751.36022,0.058612798,0.035437
+"Southeast Asia",2010,"gtl","Distillate_FuelOil","Distillate_FuelOil_natural gas",5.284,82882304.422512,0.0312146188,0.0188722
+"Middle East",2010,"gtl","Gasoline","Gasoline_natural gas",7.2596,18795884.235408,0.0070787892,0.0042798
+"South Africa",2010,"gtl","Gasoline","Gasoline_natural gas",7.2596,30594630.358598,0.0101444782,0.0061333
+"Southeast Asia",2010,"gtl","Gasoline","Gasoline_natural gas",7.2596,14344828.421448,0.0054024602,0.0032663
+"Middle East",2010,"gtl","Jet_Kerosene","Jet_Kerosene_natural gas",5.4284,48033633.594912,0.0180901288,0.0109372
+"South Africa",2010,"gtl","Jet_Kerosene","Jet_Kerosene_natural gas",5.4284,78186831.836646,0.0259249614,0.0156741
+"Southeast Asia",2010,"gtl","Jet_Kerosene","Jet_Kerosene_natural gas",5.4284,36659396.345208,0.0138064342,0.0083473
+"Middle East",2010,"gtl","LPG","LPG_natural gas",8.0134,2088285.18948,0.000786477,0.0004755
+"South Africa",2010,"gtl","LPG","LPG_natural gas",8.0134,3399514.22389,0.001127201,0.0006815
+"Southeast Asia",2010,"gtl","LPG","LPG_natural gas",8.0134,1593772.229784,0.0006002366,0.0003629
+"Middle East",2010,"gtl","Other","Other_natural gas",5.3068,31326034.548984,0.0117978166,0.0071329
+"South Africa",2010,"gtl","Other","Other_natural gas",5.3068,50991216.873732,0.0169075188,0.0102222
+"Southeast Asia",2010,"gtl","Other","Other_natural gas",5.3068,23908340.153544,0.0090042106,0.0054439
+"Africa_Western",2015,"gtl","Distillate_FuelOil","Distillate_FuelOil_natural gas",5.284,19303667.703532,0.0072005236,0.0043534
+"Middle East",2015,"gtl","Distillate_FuelOil","Distillate_FuelOil_natural gas",5.284,558653482.067628,0.2083851444,0.1259886
+"South Africa",2015,"gtl","Distillate_FuelOil","Distillate_FuelOil_natural gas",5.284,152149827.654168,0.0489640236,0.0296034
+"Southeast Asia",2015,"gtl","Distillate_FuelOil","Distillate_FuelOil_natural gas",5.284,44881226.947866,0.0167412918,0.0101217
+"Africa_Western",2015,"gtl","Gasoline","Gasoline_natural gas",7.2596,3341138.79143,0.001246289,0.0007535
+"Middle East",2015,"gtl","Gasoline","Gasoline_natural gas",7.2596,96689940.470186,0.0360666278,0.0218057
+"South Africa",2015,"gtl","Gasoline","Gasoline_natural gas",7.2596,26333801.926524,0.0084745998,0.0051237
+"Southeast Asia",2015,"gtl","Gasoline","Gasoline_natural gas",7.2596,7767759.701164,0.0028974772,0.0017518
+"Africa_Western",2015,"gtl","Jet_Kerosene","Jet_Kerosene_natural gas",5.4284,8538416.531888,0.0031849424,0.0019256
+"Middle East",2015,"gtl","Jet_Kerosene","Jet_Kerosene_natural gas",5.4284,247096613.071786,0.0921703078,0.0557257
+"South Africa",2015,"gtl","Jet_Kerosene","Jet_Kerosene_natural gas",5.4284,67296979.851576,0.0216571452,0.0130938
+"Southeast Asia",2015,"gtl","Jet_Kerosene","Jet_Kerosene_natural gas",5.4284,19851286.337562,0.0074047926,0.0044769
+"Africa_Western",2015,"gtl","LPG","LPG_natural gas",8.0134,371139.106626,0.0001384398,8.37e-05
+"Middle East",2015,"gtl","LPG","LPG_natural gas",8.0134,10743523.792642,0.0040074766,0.0024229
+"South Africa",2015,"gtl","LPG","LPG_natural gas",8.0134,2925977.991836,0.0009416222,0.0005693
+"Southeast Asia",2015,"gtl","LPG","LPG_natural gas",8.0134,862887.337508,0.0003218684,0.0001946
+"Africa_Western",2015,"gtl","Other","Other_natural gas",5.3068,5568416.847084,0.0020770932,0.0012558
+"Middle East",2015,"gtl","Other","Other_natural gas",5.3068,161150196.394242,0.0601111566,0.0363429
+"South Africa",2015,"gtl","Other","Other_natural gas",5.3068,43889155.916888,0.0141241676,0.0085394
+"Southeast Asia",2015,"gtl","Other","Other_natural gas",5.3068,12946413.973906,0.0048291838,0.0029197
+"Africa_Western",2021,"gtl","Distillate_FuelOil","Distillate_FuelOil_natural gas",5.284,10993759.43248,0.0072005236,0.0043534
+"Central America and Caribbean",2021,"gtl","Distillate_FuelOil","Distillate_FuelOil_natural gas",5.284,1403314.639216,0.0008279924,0.0005006
+"Central Asia",2021,"gtl","Distillate_FuelOil","Distillate_FuelOil_natural gas",5.284,60053388.526264,0.0390631796,0.0236174
+"EU-15",2021,"gtl","Distillate_FuelOil","Distillate_FuelOil_natural gas",5.284,10677763.22868,0.0059405064,0.0035916
+"Middle East",2021,"gtl","Distillate_FuelOil","Distillate_FuelOil_natural gas",5.284,304131683.43096,0.198880268,0.120242
+"South Africa",2021,"gtl","Distillate_FuelOil","Distillate_FuelOil_natural gas",5.284,69662662.7334,0.03402278,0.02057
+"Southeast Asia",2021,"gtl","Distillate_FuelOil","Distillate_FuelOil_natural gas",5.284,32459848.80996,0.0204497252,0.0123638
+"Africa_Western",2021,"gtl","Gasoline","Gasoline_natural gas",7.2596,1902834.0452,0.001246289,0.0007535
+"Central America and Caribbean",2021,"gtl","Gasoline","Gasoline_natural gas",7.2596,243043.106712,0.0001434018,8.67e-05
+"Central Asia",2021,"gtl","Gasoline","Gasoline_natural gas",7.2596,10393787.247536,0.0067608904,0.0040876
+"EU-15",2021,"gtl","Gasoline","Gasoline_natural gas",7.2596,1848005.79768,0.0010281264,0.0006216
+"Middle East",2021,"gtl","Gasoline","Gasoline_natural gas",7.2596,52638137.065668,0.0344215594,0.0208111
+"South Africa",2021,"gtl","Gasoline","Gasoline_natural gas",7.2596,12057025.370124,0.0058885708,0.0035602
+"Southeast Asia",2021,"gtl","Gasoline","Gasoline_natural gas",7.2596,5618081.04858,0.0035393946,0.0021399
+"Africa_Western",2021,"gtl","Jet_Kerosene","Jet_Kerosene_natural gas",5.4284,4862770.05632,0.0031849424,0.0019256
+"Central America and Caribbean",2021,"gtl","Jet_Kerosene","Jet_Kerosene_natural gas",5.4284,620642.950704,0.0003661956,0.0002214
+"Central Asia",2021,"gtl","Jet_Kerosene","Jet_Kerosene_natural gas",5.4284,26562183.272632,0.0172780148,0.0104462
+"EU-15",2021,"gtl","Jet_Kerosene","Jet_Kerosene_natural gas",5.4284,4722879.68178,0.0026275444,0.0015886
+"Middle East",2021,"gtl","Jet_Kerosene","Jet_Kerosene_natural gas",5.4284,134519880.33792,0.087966336,0.053184
+"South Africa",2021,"gtl","Jet_Kerosene","Jet_Kerosene_natural gas",5.4284,30812435.797146,0.0150485882,0.0090983
+"Southeast Asia",2021,"gtl","Jet_Kerosene","Jet_Kerosene_natural gas",5.4284,14357230.72212,0.0090450644,0.0054686
+"Africa_Western",2021,"gtl","LPG","LPG_natural gas",8.0134,211369.88664,0.0001384398,8.37e-05
+"Central America and Caribbean",2021,"gtl","LPG","LPG_natural gas",8.0134,26911.347456,1.58784e-05,9.6e-06
+"Central Asia",2021,"gtl","LPG","LPG_natural gas",8.0134,1154921.755512,0.0007512468,0.0004542
+"EU-15",2021,"gtl","LPG","LPG_natural gas",8.0134,205433.07693,0.0001142914,6.91e-05
+"Middle East",2021,"gtl","LPG","LPG_natural gas",8.0134,5848569.481524,0.0038245442,0.0023123
+"South Africa",2021,"gtl","LPG","LPG_natural gas",8.0134,1339744.743672,0.0006543224,0.0003956
+"Southeast Asia",2021,"gtl","LPG","LPG_natural gas",8.0134,624318.74076,0.0003933212,0.0002378
+"Africa_Western",2021,"gtl","Other","Other_natural gas",5.3068,3171305.89776,0.0020770932,0.0012558
+"Central America and Caribbean",2021,"gtl","Other","Other_natural gas",5.3068,404791.517984,0.0002388376,0.0001444
+"Central Asia",2021,"gtl","Other","Other_natural gas",5.3068,17323063.504572,0.0112682058,0.0068127
+"EU-15",2021,"gtl","Other","Other_natural gas",5.3068,3080009.6628,0.001713544,0.001036
+"Middle East",2021,"gtl","Other","Other_natural gas",5.3068,87730312.753776,0.0573693208,0.0346852
+"South Africa",2021,"gtl","Other","Other_natural gas",5.3068,20095155.170694,0.0098143398,0.0059337
+"Southeast Asia",2021,"gtl","Other","Other_natural gas",5.3068,9363468.4143,0.005898991,0.0035665
