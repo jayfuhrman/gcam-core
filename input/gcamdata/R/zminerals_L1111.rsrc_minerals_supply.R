@@ -376,9 +376,11 @@ if(command == driver.DECLARE_INPUTS) {
      select(Mineral, region, Prod2020, Reset_Capacity)
 
    AnnProdLimit_adj <- AnnProdLimit_check2020 %>%
-     left_join(AnnProdLimit_GrowthRate, by = c("Mineral", "region")) %>%
+     right_join(AnnProdLimit_GrowthRate, by = c("Mineral", "region")) %>%
+     mutate(Prod2020 = if_else(is.na(Prod2020), 0, Prod2020)) %>%
      group_by(Mineral, region, Year) %>%
      mutate(Capacity_adj = if_else(Reset_Capacity == 1, R*Prod2020, Capacity),
+            Capacity_adj = if_else(is.na(Capacity_adj), max(Prod2020, Capacity), Capacity_adj),
             Capacity_adj = if_else(is.nan(Capacity_adj), max(Prod2020, Capacity), Capacity_adj),
             Capacity_adj = if_else(is.infinite(Capacity_adj),  max(Prod2020, Capacity), Capacity_adj)) %>%
      select(Mineral, region, Year, Capacity_adj) %>%
