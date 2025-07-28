@@ -9,7 +9,7 @@
 #' @return Depends on \code{command}: either a vector of required inputs,
 #' a vector of output names, or (if \code{command} is "MAKE") all
 #' the generated outputs:\code{L2112.Supplysector_tra}, \code{L2112.SectorUseTrialMarket_tra},
-#' \code{L2112.SubsectorAll_tra}, \code{L2112.TechShrwt_tra}, \code{L2112.TechCoef_tra},
+#' \code{L2112.SubsectorAll_tra}, \code{L2112.TechShrwt_tra}, \code{L2112.TechCoef_tra},\code{L2112.Production_tra}
 #' \code{L2112.Supplysector_reg}, \code{L2112.SubsectorAll_reg}, \code{L2112.TechShrwt_reg},
 #' \code{L2112.TechCoef_reg}
 #' @details Set up data tables for mineral supply curves
@@ -28,7 +28,8 @@ module_minerals_L2112.trade <- function(command, ...) {
       FILE = "minerals/trade/A_mineral_TradedSector",
       FILE = "minerals/trade/A_mineral_TradedSubsector",
       FILE = "minerals/trade/A_mineral_TradedTechnology",
-      "L2111.mineral_regions")
+      "L2111.mineral_regions",
+      "L2111.RsrcCalProd")
 
   MODULE_OUTPUTS <-
     c("L2112.Supplysector_tra",
@@ -36,6 +37,7 @@ module_minerals_L2112.trade <- function(command, ...) {
       "L2112.SubsectorAll_tra",
       "L2112.TechShrwt_tra",
       "L2112.TechCoef_tra",
+      "L2112.Production_tra",
       "L2112.Supplysector_reg",
       "L2112.SubsectorAll_reg",
       "L2112.TechShrwt_reg",
@@ -103,6 +105,17 @@ module_minerals_L2112.trade <- function(command, ...) {
     # L2112.TechCoef_tra: Coefficient and market name of traded technologies
     L2112.TechCoef_tra <- select(A_mineral_TradedTechnology_R_Y, LEVEL2_DATA_NAMES[["TechCoef"]])
 
+    # L2112.Production_tra: Production (calibrated output values) of traded technologies
+    L2112.Production_tra <- A_mineral_TradedTechnology_R_Y %>%
+      filter(year %in% MODEL_BASE_YEARS) %>%
+      left_join_error_no_match(L2111.RsrcCalProd, by = c("market.name" = "region",
+                                                         "minicam.energy.input" = "resource",
+                                                         "year")) %>%
+      mutate(calOutputValue = round(cal.production, energy.DIGITS_CALOUTPUT),
+             share.weight.year = year,
+             subs.share.weight = if_else(calOutputValue > 0, 1, 0),
+             tech.share.weight = subs.share.weight) %>%
+      select(LEVEL2_DATA_NAMES[["Production"]])
 
     # PART 2: REGIONAL SUPPLY SECTOR / SUBSECTOR / TECHNOLOGY")
     # L2112.Supplysector_reg: generic supplysector info for regional mineral commodities
@@ -126,6 +139,7 @@ module_minerals_L2112.trade <- function(command, ...) {
 
     # L2112.TechCoef_reg: Coefficient and market name of regional technologies
     L2112.TechCoef_reg <- select(A_mineral_RegionalTechnology_R_Y, LEVEL2_DATA_NAMES[["TechCoef"]])
+
 
 
     # ===================================================
@@ -170,6 +184,15 @@ module_minerals_L2112.trade <- function(command, ...) {
       add_precursors("common/GCAM_region_names",
                      "minerals/trade/A_mineral_TradedTechnology") ->
       L2112.TechCoef_tra
+
+    L2112.Production_tra %>%
+      add_title("Production (calibrated values) info for traded mineral commodities") %>%
+      add_comments("Production (calibrated values) info for traded mineral commodities") %>%
+      add_units("None") %>%
+      add_precursors("common/GCAM_region_names",
+                     "minerals/trade/A_mineral_TradedTechnology",
+                     "L2111.RsrcCalProd") ->
+      L2112.Production_tra
 
     L2112.Supplysector_reg %>%
       add_title("Supplysector info for regional (imported) mineral commodities") %>%

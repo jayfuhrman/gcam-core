@@ -18,6 +18,7 @@ module_minerals_trade_xml <- function(command, ...) {
       "L2112.SubsectorAll_tra",
       "L2112.TechShrwt_tra",
       "L2112.TechCoef_tra",
+      "L2112.Production_tra",
       "L2112.Supplysector_reg",
       "L2112.SubsectorAll_reg",
       "L2112.TechShrwt_reg",
@@ -48,6 +49,7 @@ module_minerals_trade_xml <- function(command, ...) {
       add_logit_tables_xml(L2112.SubsectorAll_tra, "SubsectorAllTo", base_logit_header = "SubsectorLogit") %>%
       add_xml_data(L2112.TechShrwt_tra, "TechShrwt") %>%
       add_xml_data(L2112.TechCoef_tra, "TechCoef") %>%
+      add_xml_data(L2112.Production_tra, "Production") %>%
       add_logit_tables_xml(L2112.Supplysector_reg, "Supplysector") %>%
       add_logit_tables_xml(L2112.SubsectorAll_reg, "SubsectorAllTo", base_logit_header = "SubsectorLogit") %>%
       add_xml_data(L2112.TechShrwt_reg, "TechShrwt") %>%
