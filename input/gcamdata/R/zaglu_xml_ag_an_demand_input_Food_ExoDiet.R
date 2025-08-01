@@ -263,7 +263,7 @@ module_aglu_ag_an_demand_input_Food_ExoDiet_xml <- function(command, ...) {
     # 2050 EL2 ----
     L203.IncomeElasticity_Food_ExoDiet_2050EL2 <-
       L100.IncomeElasticity_Food_ExoDiet_2050EL2_SSP %>%
-      filter(scenario == "gSSP1") %>% select(-scenario)
+      filter(scenario == "SSP1") %>% select(-scenario)
 
     # assure sector names are the identical
     assertthat::assert_that(
@@ -277,7 +277,7 @@ module_aglu_ag_an_demand_input_Food_ExoDiet_xml <- function(command, ...) {
     # 2100 EL2 ----
     L203.IncomeElasticity_Food_ExoDiet_2100EL2 <-
       L100.IncomeElasticity_Food_ExoDiet_2100EL2_SSP %>%
-      filter(scenario == "gSSP1") %>% select(-scenario)
+      filter(scenario == "SSP1") %>% select(-scenario)
 
     # assure sector names are the identical
     assertthat::assert_that(
@@ -291,7 +291,7 @@ module_aglu_ag_an_demand_input_Food_ExoDiet_xml <- function(command, ...) {
     # Static ----
     L203.IncomeElasticity_Food_ExoDiet_Static <-
       L100.IncomeElasticity_Food_ExoDiet_Static_SSP %>%
-      filter(scenario == "gSSP1") %>% select(-scenario)
+      filter(scenario == "SSP1") %>% select(-scenario)
 
     # assure sector names are the identical
     assertthat::assert_that(
@@ -304,7 +304,7 @@ module_aglu_ag_an_demand_input_Food_ExoDiet_xml <- function(command, ...) {
     # ExoRef ----
     L203.IncomeElasticity_Food_ExoDiet_ExoRef <-
       L100.IncomeElasticity_Food_ExoDiet_ExoRef_SSP %>%
-      filter(scenario == "gSSP1") %>% select(-scenario)
+      filter(scenario == "SSP1") %>% select(-scenario)
 
     # assure sector names are the identical
     assertthat::assert_that(
@@ -335,7 +335,7 @@ module_aglu_ag_an_demand_input_Food_ExoDiet_xml <- function(command, ...) {
 
     L203.StubCalorieContent_Food_ExoDiet %>%
       left_join(
-        L100.AgMIP_FoodWaste_Share_Pathway_SSP %>% filter(scenario == "gSSP1") %>%
+        L100.AgMIP_FoodWaste_Share_Pathway_SSP %>% filter(scenario == "SSP1") %>%
           left_join_error_no_match(GCAM_region_names, by = "GCAM_region_ID") %>%
           transmute(region, subsector = GCAM_commodity, year, WasteShare) %>%
           mutate(NonWasteShare = (1 - WasteShare) ) %>%
@@ -352,7 +352,7 @@ module_aglu_ag_an_demand_input_Food_ExoDiet_xml <- function(command, ...) {
 
     L203.StubCalorieContent_Food_ExoDiet %>%
       left_join(
-        L100.AgMIP_FoodWaste_Share_Pathway_SSP %>% filter(scenario == "gSSP1") %>%
+        L100.AgMIP_FoodWaste_Share_Pathway_SSP %>% filter(scenario == "SSP1") %>%
           left_join_error_no_match(GCAM_region_names, by = "GCAM_region_ID") %>%
           transmute(region, subsector = GCAM_commodity, year, WasteShare = StaticWaste) %>%
           mutate(NonWasteShare = (1 - WasteShare) ) %>%
@@ -370,7 +370,7 @@ module_aglu_ag_an_demand_input_Food_ExoDiet_xml <- function(command, ...) {
 
     L203.StubCalorieContent_Food_ExoDiet %>%
       left_join(
-        L100.AgMIP_FoodWaste_Share_Pathway_SSP %>% filter(scenario == "gSSP1") %>%
+        L100.AgMIP_FoodWaste_Share_Pathway_SSP %>% filter(scenario == "SSP1") %>%
           left_join_error_no_match(GCAM_region_names, by = "GCAM_region_ID") %>%
           transmute(region, subsector = GCAM_commodity, year, WasteShare = HalfWaste2050) %>%
           mutate(NonWasteShare = (1 - WasteShare) ) %>%
@@ -387,7 +387,7 @@ module_aglu_ag_an_demand_input_Food_ExoDiet_xml <- function(command, ...) {
 
     L203.StubCalorieContent_Food_ExoDiet %>%
       left_join(
-        L100.AgMIP_FoodWaste_Share_Pathway_SSP %>% filter(scenario == "gSSP1") %>%
+        L100.AgMIP_FoodWaste_Share_Pathway_SSP %>% filter(scenario == "SSP1") %>%
           left_join_error_no_match(GCAM_region_names, by = "GCAM_region_ID") %>%
           transmute(region, subsector = GCAM_commodity, year, WasteShare = HalfWaste2100) %>%
           mutate(NonWasteShare = (1 - WasteShare) ) %>%

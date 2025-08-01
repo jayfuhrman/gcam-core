@@ -5,7 +5,7 @@
 		<Value name="BatchFileName">batch_ag.xml</Value>
 		<Value name="policy-target-file">../input/policy/forcing_target_4p5.xml</Value>
 		<Value name="GHGInputFileName">../input/magicc/inputs/input_gases.emk</Value>
-		<Value write-output="1" append-scenario-name="0" name="xmldb-location">../output/cwf_lowdiet</Value>
+		<Value write-output="1" append-scenario-name="0" name="xmldb-location">../output/cwf_lowexodiet</Value>
 		<Value write-output="1" append-scenario-name="0" name="restart">./restart/restart</Value>
 		<Value write-output="1" append-scenario-name="1" name="xmlDebugFileName">debug.xml</Value>
 		<Value write-output="1" append-scenario-name="0" name="climatFileName">gas.emk</Value>
@@ -47,7 +47,7 @@
  	    	<Value name = "paper">../input/gcamdata/xml/paper.xml</Value>
  	    	<Value name = "paper_cwf">../input/gcamdata/xml/paper_cwf.xml</Value>
 	    	<Value name = "paper_income_elas">../input/gcamdata/xml/paper_incelas_ssp2.xml</Value> 
-			<Value name = "food_processing">../input/gcamdata/xml/food_processing.xml</Value> 
+			<Value name = "food_processing">../input/gcamdata/xml/food_processing_Food_ExoDiet.xml</Value> 
 			<Value name = "cement">../input/gcamdata/xml/cement.xml</Value>
 			<Value name = "cement_cwf">../input/gcamdata/xml/cement_cwf.xml</Value>
 			<Value name = "cement_income_elas">../input/gcamdata/xml/cement_incelas_cwf.xml</Value>
@@ -79,8 +79,8 @@
 			<Value name = "protected_land3">../input/gcamdata/xml/protected_land_input_3.xml</Value>
 
  <!--Ag Demand Updates-->
-			Value name = "demand_nonfood">../input/gcamdata/xml/ag_an_demand_input_NonFood.xml</Value>
-		   <Value name = "demand_food">../input/gcamdata/xml/ag_an_demand_input_Food_Waste_SSP1.xml</Value>
+			<Value name = "demand_nonfood">../input/gcamdata/xml/ag_an_demand_input_NonFood.xml</Value>
+		   <Value name = "demand_food">../input/gcamdata/xml/ag_an_demand_input_Food_ExoDiet_SSP1_ExoRef.xml</Value>
 
 			<Value name = "demand_paper">../input/gcamdata/xml/paper_delete_ag_demand.xml</Value>
 
@@ -210,7 +210,7 @@
 
 	</ScenarioComponents>
 	<Strings>
-		<Value name="scenarioName">cwf_lowdiet</Value>
+		<Value name="scenarioName">cwf_lowexodiet</Value>
 		<Value name="debug-region">USA</Value>
 		<Value name="MAGICC-input-dir">../input/magicc/inputs</Value>
 		<Value name="MAGICC-output-dir">../output</Value>
