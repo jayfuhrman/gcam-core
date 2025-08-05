@@ -387,30 +387,30 @@ module_energy_L2221.refining <- function(command, ...) {
     # Add regional cost variation based on what was required to meet a normal
     # profit rate in history
     # TODO: this is a temporary troubleshooting read-in file
-    profit_rate_components <- read.csv("A221.stubtech_cost_adjust.csv")
+    profit_rate_components <- read.csv("A221.stubtech_cost_adjust.csv")   # TODO: need to adjust feed EJ
     profit_rate_calcs <- profit_rate_components %>%
       left_join(L2221.ProdPrice, by = c("region", "resource", "year")) %>%
-      mutate(technology = if_else(subsector == "crude oil refining", paste("high", technology) , technology)) %>%
-      left_join(non_en_cost, by = c("subsector" = "subsector.name", "technology", "year")) %>%
+      mutate(technology = if_else(sector == "crude oil refining", paste("high", technology) , technology)) %>%
+      left_join(non_en_cost, by = c("sector" = "subsector.name", "technology", "year")) %>%
       mutate(non.en.cost = costs * feed.EJ * 1E9,
              rev = price * product.EJ * 1E9,
              cost = non.en.cost + feed.cost) %>%
-      group_by(region, year, subsector) %>%
+      group_by(region, year, sector) %>%
       mutate(subsector_discrepancy = sum(rev) - sum(cost),
              cost.adj = subsector_discrepancy / sum(feed.EJ) / 1E9) %>%
       ungroup() %>%
-      mutate(cost.adj = round(cost.adj, 6))#%>%
-    #  select(region, year, subsector, technology, cost, rev, cost.adj, feed.EJ)
+      mutate(cost.adj = round(cost.adj, 6)) %>%
+      select(region, year, sector, technology, cost, rev, cost.adj, feed.EJ)
 
 
-    check_pr <- profit_rate_calcs %>%  # TODO: temporary troubleshooting
-      group_by(region, year) %>%
-      summarize(pr = (sum(cost) + sum(cost.adj * feed.EJ * 1E9)) / sum(rev), .groups = "drop")
+    # check_pr <- profit_rate_calcs %>%  # TODO: temporary troubleshooting
+    #   group_by(region, year) %>%
+    #   summarize(pr = (sum(cost) + sum(cost.adj * feed.EJ * 1E9)) / sum(rev), .groups = "drop")
 
     L2221.StubTechCost <- profit_rate_calcs %>% # A221.stubtech_margin %>%
       mutate(supplysector = "refining",
              minicam.non.energy.input = "cost.adjustment") %>%
-      rename(input.cost = cost.adj) %>%
+      rename(input.cost = cost.adj, subsector = sector) %>%
       select(LEVEL2_DATA_NAMES[["TechCost"]]) %>%
       distinct()
     L2221.StubTechCost <- L2221.StubTechCost %>%
@@ -807,7 +807,7 @@ module_energy_L2221.refining <- function(command, ...) {
       add_units("1975$/GJ") %>%
       add_comments("Regional cost adjustments for technologies in the refining sector") %>%
       add_legacy_name("L2221.StubTechCost") %>%
-      add_precursors("energy/A221.stubtech_margin") ->
+      add_precursors("energy/A221.stubtech_margin") ->  # TODO: using A221.stubtech_cost_adjust but need to move to correct file structure w header etc
     L2221.StubTechCost
 
     L2221.PortfolioStdConstraint %>%
