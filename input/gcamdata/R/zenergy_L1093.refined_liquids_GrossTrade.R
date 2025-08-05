@@ -119,7 +119,7 @@ module_energy_L1093.refined_liquids_GrossTrade <- function(command, ...){
 
      # TODO: liqsplit has taken 'inputs by tech', and filtered+grouped for inputs
      # in the refined liquids enduse/industrial buckets; adder is the difference
-     # between the expected query output and L1012 consumption
+     # between the expected query output and L1012 'refined liquids enduse' consumption
      # TODO: Need to figure out where these values are coming from and being added
      # to liquids end-use consumption from industry
      liqsplit <- read.csv("liqsplit.csv") %>% filter(input == "refined liquids enduse") %>% select(-input)
@@ -130,20 +130,24 @@ module_energy_L1093.refined_liquids_GrossTrade <- function(command, ...){
        select(year, region, adder)
 
      # Also remove direct crude use when adjusting end use values with the adder
-     end_use_crude <- L121.in_EJ_R_TPES_liq_Yh %>%
+     direct_crude <- L121.in_EJ_R_TPES_liq_Yh %>%
        left_join(GCAM_region_names, by = "GCAM_region_ID") %>%
        filter(fuel == "Feedstock", year %in% MODEL_BASE_YEARS) %>%
        select(region, year, sector, value)
 
      L1093.en_bal_EJ_liquids_enduse_total <- L1093.en_bal_EJ_liquids_enduse_total %>%
        left_join(end_use_adder, by = c("year", "region")) %>%
-       left_join(end_use_crude %>%
-                   filter(sector == "refined liquids enduse") %>%
-                   select(-sector),
-                 by = c("region", "year")) %>%
-       mutate(total = value.x + replace_na(adder, 0),
-              value = total - replace_na(value.y, 0)) %>%
+       mutate(value = value - replace_na(adder, 0)) %>%
        select(region, year, value)
+
+     # %>%
+     #   left_join(direct_crude %>%
+     #               filter(sector == "refined liquids enduse") %>%
+     #               select(-sector),
+     #             by = c("region", "year")) %>%
+     #   mutate(total = value.x + replace_na(adder, 0),
+     #          value = total - replace_na(value.y, 0)) %>%
+     #   select(region, year, value)
 
 
      # Estimate liquids industrial consumption
@@ -156,13 +160,16 @@ module_energy_L1093.refined_liquids_GrossTrade <- function(command, ...){
      # Remove direct crude use for industry as well
      L1093.en_bal_EJ_liquids_industrial_total <- L1093.en_bal_EJ_liquids_industrial_total %>%
        left_join(end_use_adder,by=c("year","region"))%>%
-       left_join(end_use_crude %>%
-                   filter(sector == "refined liquids industrial") %>%
-                   select(-sector),
-                 by = c("region", "year")) %>%
-       mutate(total = value.x - replace_na(adder, 0),
-              value = total - replace_na(value.y, 0)) %>%
+       mutate(value = value - replace_na(adder, 0)) %>%
        select(region, year, value)
+
+       # left_join(direct_crude %>%
+       #             filter(sector == "refined liquids industrial") %>%
+       #             select(-sector),
+       #           by = c("region", "year")) %>%
+       # mutate(total = value.x - replace_na(adder, 0),
+       #        value = total - replace_na(value.y, 0)) %>%
+       # select(region, year, value)
 
 
      #=========================================================================================

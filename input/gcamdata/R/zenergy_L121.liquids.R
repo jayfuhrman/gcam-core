@@ -172,8 +172,8 @@ module_energy_L121.liquids <- function(command, ...) {
         filter(sector %in% c("net_oil refining", "transfers"),
                PRODUCT %in% c("Crude oil", "Natural gas liquids", "Other hydrocarbons",
                               "Refinery feedstocks", "Additives/blending components"),
-               # assume transfers to feedstock are accounted for in net refining,
-               # while transfers from are not
+               # assume transfers to feedstock (pos) are accounted for in net
+               # refining, while transfers from (neg) are not
                !(sector == "transfers" & value > 0)) %>%
         # a negative transfer is a flow consumed to make something else so
         # should be positive here
@@ -186,17 +186,20 @@ module_energy_L121.liquids <- function(command, ...) {
 
       # Maintain industrial vs end use classification for later refined liquids
       # calibrations
-      enduse_crude_cons <- L101.detailed_refined_liquids_EJ_R_Yh %>%
+      direct_crude_cons <- L101.detailed_refined_liquids_EJ_R_Yh %>%
         filter(PRODUCT %in% c("Crude oil", "Natural gas liquids", "Other hydrocarbons",
                               "Refinery feedstocks", "Additives/blending components"),
                sector %in% c(energy.LIQUIDS_INDUSTRIAL_SECTORS,
-                             energy.LIQUIDS_ENDUSE_SECTORS)) %>%
+                             energy.LIQUIDS_ENDUSE_SECTORS,
+                             energy.LIQUIDS_EFW_SECTORS)) %>%
         # there are a handful of other negative consumptions from TPETCHEM,
         # TCOKEOVS, TNONSPEC for ref feedstocks and other hc; assume these are
         # accounted for as consumed in net refining and zero out here
-        mutate(value = if_else(value < 0, 0, value),
+        mutate(value = if_else(value < 0, value, value),
                year = as.numeric(year),
                fuel = "Feedstock",   # needs to be named differently for the join below
+               subsector = sector,
+               value = if_else(value < 0 & grepl("net_", subsector), 0, value),
                sector = if_else(sector %in% energy.LIQUIDS_ENDUSE_SECTORS,
                                 "refined liquids enduse",
                                 "refined liquids industrial")) %>%
@@ -212,14 +215,14 @@ module_energy_L121.liquids <- function(command, ...) {
                                         -sector, -fuel),
                                  by = c("GCAM_region_ID", "year")) %>%
         rename(value = value.x, GCAM = value.y) %>%
-        bind_rows(enduse_crude_cons) %>%
+        bind_rows(direct_crude_cons) %>%
         group_by(year) %>%
         mutate(GCAM = replace_na(GCAM, 0),
                IEA_share = value / sum(value),
                GCAM_global = sum(GCAM),
-               value = IEA_share * GCAM_global) %>%
+               cal = IEA_share * GCAM_global) %>%
         ungroup %>%
-        select(GCAM_region_ID, year, sector, fuel, value)
+        select(GCAM_region_ID, year, sector, fuel, value = cal)
 
       L121.in_EJ_R_TPES_crude_Yh <- L121.in_EJ_R_TPES_liq_Yh %>%
         group_by(GCAM_region_ID, year) %>%
