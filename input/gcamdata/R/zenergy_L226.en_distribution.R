@@ -31,6 +31,7 @@ module_energy_L226.en_distribution <- function(command, ...) {
              FILE = "energy/A26.globaltech_shrwt",
              "L1093.en_bal_EJ_liquids_enduse_total",
              "L1093.en_bal_EJ_liquids_industrial_total",
+             "L121.in_EJ_R_TPES_liq_Yh",
              "L126.IO_R_elecownuse_F_Yh",
              "L126.IO_R_electd_F_Yh",
              "L126.IO_R_gaspipe_F_Yh"))
@@ -76,6 +77,8 @@ module_energy_L226.en_distribution <- function(command, ...) {
     L126.IO_R_gaspipe_F_Yh <- get_data(all_data, "L126.IO_R_gaspipe_F_Yh")
     L1093.en_bal_EJ_liquids_enduse_total <- get_data(all_data,"L1093.en_bal_EJ_liquids_enduse_total")
     L1093.en_bal_EJ_liquids_industrial_total <- get_data(all_data,"L1093.en_bal_EJ_liquids_industrial_total")
+    L121.in_EJ_R_TPES_liq_Yh <- get_data(all_data, "L121.in_EJ_R_TPES_liq_Yh")
+
 
     #==================================================================================================================
     #Calibrate detailed refined liquids by the defined groupings (enduse or industrial)
@@ -90,11 +93,16 @@ module_energy_L226.en_distribution <- function(command, ...) {
       fuel = unique(L126.in_EJ_R_Y_liq_tot$fuel),
       sector = unique(L126.in_EJ_R_Y_liq_tot$sector))
 
+    # Include calibrated oil consumed outside the refining sector
     L126.in_EJ_R_Y_liq_tot <- complete_combinations %>%
       left_join(L126.in_EJ_R_Y_liq_tot,by=c("region","year","fuel","sector"))%>%
-      mutate(value=ifelse(is.na(value),0,value))
-
+      mutate(value = replace_na(value, 0)) %>%
+      bind_rows(L121.in_EJ_R_TPES_liq_Yh %>%
+                  filter(fuel == "Feedstock") %>%
+                  left_join(GCAM_region_names, by = "GCAM_region_ID") %>%
+                  select(-GCAM_region_ID))     # add calibrated end use crude
     L126.in_EJ_R_Y_liq_tot <- as_tibble(L126.in_EJ_R_Y_liq_tot)
+
 
     L226.StubTechProd_liq <- L126.in_EJ_R_Y_liq_tot %>%
       filter(year %in% c(MODEL_BASE_YEARS)) %>%
@@ -497,7 +505,8 @@ module_energy_L226.en_distribution <- function(command, ...) {
       add_comments("Refined product consumption from historical data divided by use") %>%
       add_legacy_name("L226.StubTechProd_liq") %>%
       add_precursors("L1093.en_bal_EJ_liquids_enduse_total",
-                     "L1093.en_bal_EJ_liquids_industrial_total") ->
+                     "L1093.en_bal_EJ_liquids_industrial_total",
+                     "L121.in_EJ_R_TPES_liq_Yh") ->
       L226.StubTechProd_liq
 
     return_data(L226.Supplysector_en, L226.SubsectorLogit_en, L226.SubsectorShrwt_en,

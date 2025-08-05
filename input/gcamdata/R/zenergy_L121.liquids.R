@@ -30,11 +30,13 @@ module_energy_L121.liquids <- function(command, ...) {
              FILE = "energy/A21.globalrsrctech_coef",
              "L100.IEA_en_bal_ctry_hist",
              "L1012.en_bal_EJ_R_Si_Fi_Yh",
-             "L111.Prod_EJ_R_F_Yh"))
+             "L111.Prod_EJ_R_F_Yh",
+             "L101.detailed_refined_liquids_EJ_R_Yh"))
   } else if(command == driver.DECLARE_OUTPUTS) {
     return(c("L121.in_EJ_R_unoil_F_Yh",
              "L121.in_EJ_R_TPES_crude_Yh",
              "L121.in_EJ_R_TPES_unoil_Yh",
+             "L121.in_EJ_R_TPES_liq_Yh",
              "L121.share_R_TPES_biofuel_tech",
              "L121.BiomassOilRatios_kgGJ_R_C"))
   } else if(command == driver.MAKE) {
@@ -75,10 +77,14 @@ module_energy_L121.liquids <- function(command, ...) {
       L121.in_EJ_R_TPES_unoil_Yh <- extract_prebuilt_data("L121.in_EJ_R_TPES_unoil_Yh")
       L121.share_R_TPES_biofuel_tech <- extract_prebuilt_data("L121.share_R_TPES_biofuel_tech")
       L121.BiomassOilRatios_kgGJ_R_C <- extract_prebuilt_data("L121.BiomassOilRatios_kgGJ_R_C")
+
+      # TODO: need a prebuilt version of L121.in_EJ_R_TPES_liq_Yh
     } else {
 
       L100.IEA_en_bal_ctry_hist %>%
         gather_years -> L100.IEA_en_bal_ctry_hist
+
+      L101.detailed_refined_liquids_EJ_R_Yh <- get_data(all_data, "L101.detailed_refined_liquids_EJ_R_Yh", strip_attributes = TRUE)
 
       L111.Prod_EJ_R_F_Yh <- L111.Prod_EJ_R_F_Yh <- get_data(all_data, "L111.Prod_EJ_R_F_Yh", strip_attributes = TRUE)
 
@@ -155,16 +161,75 @@ module_energy_L121.liquids <- function(command, ...) {
         filter(technology=="unconventional oil") -> unoil_prod
 
       # Conventional (crude) oil: calculate as liquids TPES - unconventional oil
-      L1012.en_bal_EJ_R_Si_Fi_Yh %>%
-        filter(sector == energy.TPES_flow, fuel == "refined liquids") -> L121.in_EJ_R_TPES_liq_Yh
+      # L1012.en_bal_EJ_R_Si_Fi_Yh %>%
+      #   filter(sector == energy.TPES_flow, fuel == "refined liquids") -> L121.in_EJ_R_TPES_liq_Yh
 
-      L121.in_EJ_R_TPES_liq_Yh %>%
-        select(GCAM_region_ID, sector, fuel, year, value) %>%
-        mutate(fuel = "crude oil") %>%
-        left_join(rename(L121.in_EJ_R_TPES_unoil_Yh, value_unoil = value, unoil = fuel), by = c("GCAM_region_ID", "sector", "year")) %>%
-        mutate(value_unoil = if_else(is.na(value_unoil), 0, value_unoil),
-               value = value - value_unoil) %>%
-        select(GCAM_region_ID, sector, fuel, year, value) -> L121.in_EJ_R_TPES_crude_Yh
+      # MEL 08/25: Use IEA refining input shares to calibrate regional crude
+      # consumption. Separately track refining feed and end use consumption for
+      # downstream refined products calibration
+      refining_feedstock <- L101.detailed_refined_liquids_EJ_R_Yh %>%
+        # assume oil refining crude for energy not included in crude for feed receipts
+        filter(sector %in% c("net_oil refining", "transfers"),
+               PRODUCT %in% c("Crude oil", "Natural gas liquids", "Other hydrocarbons",
+                              "Refinery feedstocks", "Additives/blending components"),
+               # assume transfers to feedstock are accounted for in net refining,
+               # while transfers from are not
+               !(sector == "transfers" & value > 0)) %>%
+        # a negative transfer is a flow consumed to make something else so
+        # should be positive here
+        mutate(value = if_else(sector == "transfers" & value < 0, -value, value),
+               sector = "oil refining",
+               fuel = "crude oil",
+               year = as.numeric(year)) %>%
+        group_by(GCAM_region_ID, year, sector, fuel) %>%
+        summarize(value = sum(value), .groups = "drop")
+
+      # Maintain industrial vs end use classification for later refined liquids
+      # calibrations
+      enduse_crude_cons <- L101.detailed_refined_liquids_EJ_R_Yh %>%
+        filter(PRODUCT %in% c("Crude oil", "Natural gas liquids", "Other hydrocarbons",
+                              "Refinery feedstocks", "Additives/blending components"),
+               sector %in% c(energy.LIQUIDS_INDUSTRIAL_SECTORS,
+                             energy.LIQUIDS_ENDUSE_SECTORS)) %>%
+        # there are a handful of other negative consumptions from TPETCHEM,
+        # TCOKEOVS, TNONSPEC for ref feedstocks and other hc; assume these are
+        # accounted for as consumed in net refining and zero out here
+        mutate(value = if_else(value < 0, 0, value),
+               year = as.numeric(year),
+               fuel = "Feedstock",   # needs to be named differently for the join below
+               sector = if_else(sector %in% energy.LIQUIDS_ENDUSE_SECTORS,
+                                "refined liquids enduse",
+                                "refined liquids industrial")) %>%
+        group_by(GCAM_region_ID, year, sector, fuel) %>%
+        summarize(value = sum(value), .groups = "drop")
+
+      # Calibrate combined regional consumption to expected GCAM global value
+      # Keep sector differentiation for use in downstream chunks
+      L121.in_EJ_R_TPES_liq_Yh <- refining_feedstock %>%
+        left_join_error_no_match(select(filter(L1012.en_bal_EJ_R_Si_Fi_Yh,
+                                               sector == energy.TPES_flow,
+                                               fuel == "refined liquids"),
+                                        -sector, -fuel),
+                                 by = c("GCAM_region_ID", "year")) %>%
+        rename(value = value.x, GCAM = value.y) %>%
+        bind_rows(enduse_crude_cons) %>%
+        group_by(year) %>%
+        mutate(GCAM = replace_na(GCAM, 0),
+               IEA_share = value / sum(value),
+               GCAM_global = sum(GCAM),
+               value = IEA_share * GCAM_global) %>%
+        ungroup %>%
+        select(GCAM_region_ID, year, sector, fuel, value)
+
+      L121.in_EJ_R_TPES_crude_Yh <- L121.in_EJ_R_TPES_liq_Yh %>%
+        group_by(GCAM_region_ID, year) %>%
+        summarize(value = sum(value), .groups = "drop") %>%
+        left_join(L121.in_EJ_R_TPES_unoil_Yh %>% rename(value_unoil = value),
+                  by = c("GCAM_region_ID", "year")) %>%
+        mutate(value_unoil = replace_na(value_unoil, 0),
+               value = value - value_unoil,
+               fuel = "crude oil") %>%
+        select(GCAM_region_ID, sector, fuel, year, value)
 
       L111.Prod_EJ_R_F_Yh %>%
         filter(fuel=="natural gas") %>%
@@ -247,13 +312,21 @@ module_energy_L121.liquids <- function(command, ...) {
         add_precursors("L111.Prod_EJ_R_F_Yh", "energy/A21.globalrsrctech_coef") ->
         L121.in_EJ_R_unoil_F_Yh
 
+      L121.in_EJ_R_TPES_liq_Yh %>%
+        add_title("Liquids total primary energy supply by GCAM region / historical year", overwrite = TRUE) %>%
+        add_units("EJ") %>%
+        add_comments("Total primary oil consumption by end use: refining, enduse, industrial.") %>%
+        add_legacy_name("L121.in_EJ_R_TPES_liq_Yh") %>%
+        add_precursors("L1012.en_bal_EJ_R_Si_Fi_Yh", "L101.detailed_refined_liquids_EJ_R_Yh") ->
+        L121.in_EJ_R_TPES_liq_Yh
+
       L121.in_EJ_R_TPES_crude_Yh %>%
         add_title("Crude oil total primary energy supply by GCAM region / historical year", overwrite = TRUE) %>%
         add_units("EJ") %>%
         add_comments("Unconventional oil subtracted from total primary energy supply of liquids") %>%
         add_comments("to determine crude oil supply") %>%
         add_legacy_name("L121.in_EJ_R_TPES_crude_Yh") %>%
-        add_precursors("L1012.en_bal_EJ_R_Si_Fi_Yh") ->
+        add_precursors("L1012.en_bal_EJ_R_Si_Fi_Yh", "L101.detailed_refined_liquids_EJ_R_Yh") ->
         L121.in_EJ_R_TPES_crude_Yh
 
       L121.in_EJ_R_TPES_unoil_Yh %>%
@@ -293,6 +366,7 @@ module_energy_L121.liquids <- function(command, ...) {
     return_data(L121.in_EJ_R_unoil_F_Yh,
                 L121.in_EJ_R_TPES_crude_Yh,
                 L121.in_EJ_R_TPES_unoil_Yh,
+                L121.in_EJ_R_TPES_liq_Yh,
                 L121.share_R_TPES_biofuel_tech,
                 L121.BiomassOilRatios_kgGJ_R_C)
   } else {

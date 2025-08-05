@@ -146,7 +146,7 @@ module_energy_L101.en_bal_IEA <- function(command, ...) {
                                                        energy.LIQUIDS_ENDUSE_SECTORS,
                                                        energy.LIQUIDS_INDUSTRIAL_SECTORS)) %>%
         tidyr::gather(year,value,-FLOW,-PRODUCT,-iso,-GCAM_region_ID,-sector,-fuel,-conversion)%>%
-        filter(year %in% MODEL_BASE_YEARS)%>%
+        #filter(year %in% MODEL_BASE_YEARS)%>%
         mutate(value=value*conversion)
 
       #remove the imports, exports, transfers flows from IEA data

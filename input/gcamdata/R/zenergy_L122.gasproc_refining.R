@@ -26,6 +26,7 @@ module_energy_L122.gasproc_refining <- function(command, ...) {
       FILE = "energy/A21.globaltech_secout",
       FILE = "energy/A22.globaltech_coef",
       "L1012.en_bal_EJ_R_Si_Fi_Yh",
+      "L121.in_EJ_R_TPES_liq_Yh",
       "L121.in_EJ_R_unoil_F_Yh",
       "L121.share_R_TPES_biofuel_tech",
       "L121.BiomassOilRatios_kgGJ_R_C")
@@ -177,18 +178,18 @@ module_energy_L122.gasproc_refining <- function(command, ...) {
       mutate(value = value_en_bal - value_gtlctl) %>%
       select(-value_en_bal, -value_gtlctl) -> L122.out_EJ_R_oilrefining_Yh
 
-    # Oil refining: input of oil is equal to TPES, and input of other fuels is from net refinery energy use
-    L1012.en_bal_EJ_R_Si_Fi_Yh %>%
-      filter(sector == "net_oil refining") %>%
-      filter(fuel == "refined liquids") %>%
-      left_join_error_no_match(select(filter(L1012.en_bal_EJ_R_Si_Fi_Yh, sector == energy.TPES_flow, fuel == "refined liquids"), -sector), by = c("GCAM_region_ID", "fuel", "year")) %>%
-      select(-value.x) %>%
-      rename(value = value.y) %>%
-      bind_rows(filter(L1012.en_bal_EJ_R_Si_Fi_Yh, sector == "net_oil refining", fuel!= "refined liquids")) %>%
-      mutate(sector = "oil refining",
-             fuel = if_else(fuel == "refined liquids", "oil", fuel)) -> L122.in_EJ_R_oilrefining_F_Yh
 
-    # Calculate region- and fuel-specific coefficients of crude oil refining
+    # Oil refining: oil input is equal to calibrated consumption of crude oil /
+    # liquid feedstocks and input of other fuels is from net refinery energy use
+    L122.in_EJ_R_oilrefining_F_Yh <- L121.in_EJ_R_TPES_liq_Yh %>%
+      filter(sector == "oil refining") %>%
+      mutate(fuel = "oil") %>%
+      bind_rows(L1012.en_bal_EJ_R_Si_Fi_Yh %>%
+                  filter(sector == "net_oil refining", fuel != "refined liquids") %>%
+                  mutate(sector = "oil refining"))
+
+
+        # Calculate region- and fuel-specific coefficients of crude oil refining
     L122.in_EJ_R_oilrefining_F_Yh %>%
       left_join(select(L122.out_EJ_R_oilrefining_Yh, -fuel), by = c("GCAM_region_ID", "sector", "year")) %>%
       mutate(value = value.x / value.y) %>%
@@ -405,7 +406,7 @@ module_energy_L122.gasproc_refining <- function(command, ...) {
       add_legacy_name("L122.IO_R_oilrefining_F_Yh") %>%
       add_precursors("common/GCAM_region_names", "energy/calibrated_techs",
                      "energy/A_regions", "energy/A21.globaltech_coef", "energy/A22.globaltech_coef", "L1012.en_bal_EJ_R_Si_Fi_Yh",
-                     "L121.in_EJ_R_unoil_F_Yh") ->
+                     "L121.in_EJ_R_TPES_liq_Yh") ->
       L122.IO_R_oilrefining_F_Yh
 
     L122.out_EJ_R_refining_F_Yh %>%
@@ -414,8 +415,7 @@ module_energy_L122.gasproc_refining <- function(command, ...) {
       add_comments("Combines all calibrated refinery output tables, including oil refining, gtl-ctl and biofuels ") %>%
       add_legacy_name("L122.out_EJ_R_refining_F_Yh") %>%
       add_precursors("common/GCAM_region_names", "energy/calibrated_techs",
-                     "energy/A_regions", "energy/A21.globaltech_coef", "energy/A22.globaltech_coef", "L1012.en_bal_EJ_R_Si_Fi_Yh",
-                     "L121.in_EJ_R_unoil_F_Yh")  ->
+                     "energy/A_regions", "energy/A21.globaltech_coef", "energy/A22.globaltech_coef", "L1012.en_bal_EJ_R_Si_Fi_Yh")  ->
       L122.out_EJ_R_refining_F_Yh
 
     L122.in_EJ_R_refining_F_Yh %>%
@@ -425,7 +425,7 @@ module_energy_L122.gasproc_refining <- function(command, ...) {
       add_legacy_name("L122.in_EJ_R_refining_F_Yh") %>%
       add_precursors("common/GCAM_region_names", "energy/calibrated_techs",
                      "energy/A_regions", "energy/A21.globaltech_coef", "energy/A22.globaltech_coef", "L1012.en_bal_EJ_R_Si_Fi_Yh",
-                     "L121.in_EJ_R_unoil_F_Yh") ->
+                     "L121.in_EJ_R_TPES_liq_Yh") ->
       L122.in_EJ_R_refining_F_Yh
 
     L122.in_Mt_R_C_Yh %>%
@@ -435,7 +435,7 @@ module_energy_L122.gasproc_refining <- function(command, ...) {
       add_legacy_name("L122.in_Mt_R_C_Yh") %>%
       add_precursors("common/GCAM_region_names", "energy/calibrated_techs",
                      "energy/A_regions", "energy/A21.globaltech_coef", "energy/A22.globaltech_coef", "L1012.en_bal_EJ_R_Si_Fi_Yh",
-                     "L121.in_EJ_R_unoil_F_Yh", "aglu/A_agStorageSector", "L121.share_R_TPES_biofuel_tech", "L121.BiomassOilRatios_kgGJ_R_C") ->
+                     "aglu/A_agStorageSector", "L121.share_R_TPES_biofuel_tech", "L121.BiomassOilRatios_kgGJ_R_C") ->
       L122.in_Mt_R_C_Yh
 
     L122.FeedOut_Mt_R_C_Yh %>%
