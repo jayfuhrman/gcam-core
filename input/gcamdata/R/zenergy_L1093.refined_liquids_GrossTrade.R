@@ -137,17 +137,15 @@ module_energy_L1093.refined_liquids_GrossTrade <- function(command, ...){
 
      L1093.en_bal_EJ_liquids_enduse_total <- L1093.en_bal_EJ_liquids_enduse_total %>%
        left_join(end_use_adder, by = c("year", "region")) %>%
-       mutate(value = value - replace_na(adder, 0)) %>%
+       # mutate(value = value - replace_na(adder, 0)) %>%
+       # select(region, year, value)
+       left_join(direct_crude %>%
+                   filter(sector == "refined liquids enduse") %>%
+                   select(-sector),
+                 by = c("region", "year")) %>%
+       mutate(total = value.x + replace_na(adder, 0),
+              value = total - replace_na(value.y, 0)) %>%
        select(region, year, value)
-
-     # %>%
-     #   left_join(direct_crude %>%
-     #               filter(sector == "refined liquids enduse") %>%
-     #               select(-sector),
-     #             by = c("region", "year")) %>%
-     #   mutate(total = value.x + replace_na(adder, 0),
-     #          value = total - replace_na(value.y, 0)) %>%
-     #   select(region, year, value)
 
 
      # Estimate liquids industrial consumption
@@ -160,16 +158,15 @@ module_energy_L1093.refined_liquids_GrossTrade <- function(command, ...){
      # Remove direct crude use for industry as well
      L1093.en_bal_EJ_liquids_industrial_total <- L1093.en_bal_EJ_liquids_industrial_total %>%
        left_join(end_use_adder,by=c("year","region"))%>%
-       mutate(value = value - replace_na(adder, 0)) %>%
-       select(region, year, value)
-
-       # left_join(direct_crude %>%
-       #             filter(sector == "refined liquids industrial") %>%
-       #             select(-sector),
-       #           by = c("region", "year")) %>%
-       # mutate(total = value.x - replace_na(adder, 0),
-       #        value = total - replace_na(value.y, 0)) %>%
+       # mutate(value = value - replace_na(adder, 0)) %>%
        # select(region, year, value)
+       left_join(direct_crude %>%
+                   filter(sector == "refined liquids industrial") %>%
+                   select(-sector),
+                 by = c("region", "year")) %>%
+       mutate(total = value.x - replace_na(adder, 0),
+              value = total - replace_na(value.y, 0)) %>%
+       select(region, year, value)
 
 
      #=========================================================================================
@@ -187,7 +184,7 @@ module_energy_L1093.refined_liquids_GrossTrade <- function(command, ...){
          filter(value != 0)
 
        #calculate the shares by refined liquids fuel categories
-       detailed_data_shares <- detailed_data %>% filter(fuel_category != "Unrefined_Liquids") %>% #filtering out crude oil consumption by enduse for now
+       detailed_data_shares <- detailed_data %>%
          group_by(region, year, type) %>%
          mutate(shares = (value/sum(value))) %>%
          ungroup()
@@ -365,73 +362,88 @@ module_energy_L1093.refined_liquids_GrossTrade <- function(command, ...){
     # Conduct regional trade balance
     #===========================================================================
 
-     liquids_trade_balance_orig_recalc <- liquids_trade_balance_no_intra %>%
-       filter(year %in% MODEL_BASE_YEARS) %>%
-       mutate(
+    a_no_intra_regional <- liquids_trade_balance_no_intra %>%
+      group_by(fuel, year) %>%
+      mutate(global_prod = sum(production),
+             global_cons = sum(consumption),
+             bal = global_prod - global_cons,
+             global_exp = sum(exports),
+             global_imp = sum(imports),
+             trade_bal = global_imp - global_exp,
+             prod_share = production / global_prod,
+             cal_prod = prod_share * global_cons) %>%
+      ungroup() %>%
+      select(region, year, fuel, production, cal_prod, consumption, imports, exports)
 
-         # Force trade to the difference between prod and cons if trade not reported
-         imports = if_else((imports == 0 & exports == 0) & (consumption - production > 0), consumption - production, imports),
-         exports = if_else((imports == 0 & exports == 0) & (production - consumption > 0), production - consumption, exports),
 
-         # Calculate positive imports / exports if only missing one of them
-         imports = if_else(imports == 0 & (consumption - production + exports >= 0), consumption - production + exports, imports),
-         exports = if_else(exports == 0 & (production - consumption + imports >= 0), production - consumption + imports, exports),
+    liquids_trade_balance_orig_recalc <- liquids_trade_balance_no_intra %>%
+      filter(year %in% MODEL_BASE_YEARS) %>%
+      mutate(
 
-         # Compute initial scaling factor such that
-         # Consumption = production - scaling_factor * (exports - imports)
-         num = (production - consumption),    # if only negative then consuming more than making up for with imports [increase imp]
-         den = (exports - imports),           # if only negative then producing more than relieving with exports [increase exp]
-         scaling_factor =  num / den,
-         scaling_factor = if_else(is.nan(scaling_factor),1,scaling_factor),
+      # Force trade to the difference between prod and cons if trade not reported
+      imports = if_else((imports == 0 & exports == 0) & (consumption - production > 0), consumption - production, imports),
+      exports = if_else((imports == 0 & exports == 0) & (production - consumption > 0), production - consumption, exports),
 
-         # Scale imports and exports
-         exports_reval = scaling_factor * exports,
-         imports_reval = scaling_factor * imports,
+      # Calculate positive imports / exports if only missing one of them
+      imports = if_else(imports == 0 & (consumption - production + exports >= 0), consumption - production + exports, imports),
+      exports = if_else(exports == 0 & (production - consumption + imports >= 0), production - consumption + imports, exports),
 
-         # Ensure exports/imports are non-negative, while avoiding changing production data
-         # If the scaling factor numerator is negative, calculate imports. If the
-         # scaling factor denominator is negative, calculate exports.
-         exports_reval = if_else(scaling_factor < 0 & den <= 0, production - consumption + imports, exports_reval),
-         imports_reval = if_else(scaling_factor < 0 & num <= 0, consumption - production + exports, imports_reval),
+      # Compute initial scaling factor such that
+      # Consumption = production - scaling_factor * (exports - imports)
+      num = (production - consumption),    # if only negative then consuming more than making up for with imports [increase imp]
+      den = (exports - imports),           # if only negative then producing more than relieving with exports [increase exp]
+      scaling_factor =  num / den,
+      scaling_factor = if_else(is.nan(scaling_factor),1,scaling_factor),
 
-         # Estimate the % increase in imports and exports after scaling
-         diff_exports = if_else(exports == 0, 0, ((exports_reval - exports) / exports) * 100),
-         diff_imports = if_else(imports == 0, 0, ((imports_reval - imports) / imports) * 100),
+      # Scale imports and exports
+      exports_reval = scaling_factor * exports,
+      imports_reval = scaling_factor * imports,
 
-         # for regions with % increase in imports and exports greater than 50%
-         # (tolerance level) use the reported IEA imports and exports
-         exports_reval = if_else(diff_exports >= 50 | diff_exports <= -50, exports, exports_reval),
-         imports_reval = if_else(diff_imports >= 50 | diff_imports <= -50, imports, imports_reval),
+      # Ensure exports/imports are non-negative, while avoiding changing production data
+      # If the scaling factor numerator is negative, calculate imports. If the
+      # scaling factor denominator is negative, calculate exports.
+      exports_reval = if_else(scaling_factor < 0 & den <= 0, production - consumption + imports, exports_reval),
+      imports_reval = if_else(scaling_factor < 0 & num <= 0, consumption - production + exports, imports_reval),
 
-         # Compute re-evaluated production without losing production data from
-         # regions with no reported trade. Production should only change when
-         # modifying exports/imports would be a > 50% change
-         production_reval = consumption + exports_reval - imports_reval,
+      # Estimate the % increase in imports and exports after scaling
+      diff_exports = if_else(exports == 0, 0, ((exports_reval - exports) / exports) * 100),
+      diff_imports = if_else(imports == 0, 0, ((imports_reval - imports) / imports) * 100),
 
-         # Adjust exports to ensure production >= exports
-         adjustment_needed = pmax(0, exports_reval - production_reval, na.rm = TRUE),
-         # Cap adjustment so that imports_reval does not go negative
-         adjustment_capped = pmin(adjustment_needed, imports_reval),
-         exports_reval = exports_reval - adjustment_needed,
-         imports_reval = imports_reval - adjustment_needed,  # Adjust imports to maintain trade balance
+      # for regions with % increase in imports and exports greater than 50%
+      # (tolerance level) use the reported IEA imports and exports
+      exports_reval = if_else(diff_exports >= 50 | diff_exports <= -50, exports, exports_reval),
+      imports_reval = if_else(diff_imports >= 50 | diff_imports <= -50, imports, imports_reval),
 
-         # Final recalculation of production after adjustments
-         production_reval = consumption + exports_reval - imports_reval,
+      # Compute re-evaluated production without losing production data from
+      # regions with no reported trade. Production should only change when
+      # modifying exports/imports would be a > 50% change
+      production_reval = consumption + exports_reval - imports_reval,
+      #production_reval = production,
 
-         # Compute domestic supply without reverting to NA when no trade reported
-         domestic_supply = if_else(exports_reval == 0, production_reval, production_reval - exports_reval),
+      # Adjust exports to ensure production >= exports
+      adjustment_needed = pmax(0, exports_reval - production_reval, na.rm = TRUE),
+      # Cap adjustment so that imports_reval does not go negative
+      adjustment_capped = pmin(adjustment_needed, imports_reval),
+      exports_reval = exports_reval - adjustment_needed,
+      imports_reval = imports_reval - adjustment_needed,  # Adjust imports to maintain trade balance
 
-         # Final safeguards: reset to minimal values (production = consumption, imports and exports = 0) if anything goes negative
-         production_reval = if_else(production_reval < 0 | exports_reval < 0 | imports_reval < 0 | domestic_supply < 0, consumption, production_reval),
-         exports_reval    = if_else(production_reval < 0 | exports_reval < 0 | imports_reval < 0 | domestic_supply < 0, 0, exports_reval),
-         imports_reval    = if_else(production_reval < 0 | exports_reval < 0 | imports_reval < 0 | domestic_supply < 0, 0, imports_reval),
+      # Final recalculation of production after adjustments
+      production_reval = consumption + exports_reval - imports_reval,
 
-         #if production_reval = consumption (set imports and exports = 0)
-         imports_reval = if_else(production_reval == consumption, 0, imports_reval),
-         exports_reval = if_else(production_reval == consumption, 0, exports_reval),
+      # Compute domestic supply without reverting to NA when no trade reported
+      domestic_supply = if_else(exports_reval == 0, production_reval, production_reval - exports_reval),
 
-         domestic_supply = production_reval-exports_reval)%>%
-       select(-c(diff_exports, diff_imports))
+      # Final safeguards: reset to minimal values (production = consumption, imports and exports = 0) if anything goes negative
+      production_reval = if_else(production_reval < 0 | exports_reval < 0 | imports_reval < 0 | domestic_supply < 0, consumption, production_reval),
+      exports_reval    = if_else(production_reval < 0 | exports_reval < 0 | imports_reval < 0 | domestic_supply < 0, 0, exports_reval),
+      imports_reval    = if_else(production_reval < 0 | exports_reval < 0 | imports_reval < 0 | domestic_supply < 0, 0, imports_reval),
+
+      #if production_reval = consumption (set imports and exports = 0)
+      imports_reval = if_else(production_reval == consumption, 0, imports_reval),
+      exports_reval = if_else(production_reval == consumption, 0, exports_reval),
+
+      domestic_supply = production_reval-exports_reval)%>%
+      select(-c(diff_exports, diff_imports))
 
 
      #==============================================================
@@ -451,9 +463,24 @@ module_energy_L1093.refined_liquids_GrossTrade <- function(command, ...){
     #Scale regional exports and production
     liquids_trade_balance_orig_scaled <- liquids_trade_balance_orig_recalc %>%
        left_join(Global_scaling_factors, by = c("fuel","year")) %>%
-       mutate(production_reval = production_reval - (exports_reval - exports_reval * scaling),
-              exports_reval = exports_reval * scaling,
-              domestic_supply = production_reval - exports_reval)
+       mutate(
+         production_reval = production_reval - (exports_reval - exports_reval * scaling),
+         exports_reval = exports_reval * scaling,
+         domestic_supply = production_reval - exports_reval)
+
+
+    # a_scaled <- liquids_trade_balance_orig_scaled %>%
+    #   group_by(fuel, year) %>%
+    #   mutate(global_prod = sum(production_reval),
+    #          global_cons = sum(consumption),
+    #          bal = global_prod - global_cons,
+    #          global_exp = sum(exports_reval),
+    #          global_imp = sum(imports_reval),
+    #          trade_bal = global_imp - global_exp) %>%
+    #   ungroup() %>%
+    #   select(region, year, fuel, production, production_reval, consumption, imports_reval, exports_reval, bal, trade_bal)
+
+
 
     #===========================================================================
     # Re-calibrate refined liquids production

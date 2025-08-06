@@ -195,11 +195,10 @@ module_energy_L121.liquids <- function(command, ...) {
         # there are a handful of other negative consumptions from TPETCHEM,
         # TCOKEOVS, TNONSPEC for ref feedstocks and other hc; assume these are
         # accounted for as consumed in net refining and zero out here
-        mutate(value = if_else(value < 0, value, value),
+        mutate(value = if_else(value < 0, 0, value),
                year = as.numeric(year),
                fuel = "Feedstock",   # needs to be named differently for the join below
                subsector = sector,
-               value = if_else(value < 0 & grepl("net_", subsector), 0, value),
                sector = if_else(sector %in% energy.LIQUIDS_ENDUSE_SECTORS,
                                 "refined liquids enduse",
                                 "refined liquids industrial")) %>%
@@ -222,7 +221,11 @@ module_energy_L121.liquids <- function(command, ...) {
                GCAM_global = sum(GCAM),
                cal = IEA_share * GCAM_global) %>%
         ungroup %>%
-        select(GCAM_region_ID, year, sector, fuel, value = cal)
+        select(GCAM_region_ID, year, sector, fuel, value = cal) %>%
+        # fill out end use crude with 0 in regions that don't use it
+        complete(GCAM_region_ID, year, sector) %>%
+        mutate(fuel = replace_na(fuel, "Feedstock"),
+               value = replace_na(value, 0))
 
       L121.in_EJ_R_TPES_crude_Yh <- L121.in_EJ_R_TPES_liq_Yh %>%
         group_by(GCAM_region_ID, year) %>%
