@@ -124,9 +124,9 @@ module_energy_detailed_refining_xml <- function(command, ...) {
       add_xml_data(L2221.GlobalTechCoef_en, "GlobalTechCoef") %>%
       add_xml_data(L2221.StubTechCoef_refining, "StubTechCoef") %>%
       add_xml_data(L2221.GlobalTechCost_en, "GlobalTechCost") %>%
-      add_xml_data(L2221.GlobalTechSCurve, "GlobalTechSCurve") %>%
-      add_xml_data(L2221.GlobalTechProfitShutdown, "GlobalTechProfitShutdown") %>%
-      add_xml_data(L2221.GlobalTechShutdown, "GlobalTechShutdown") %>%
+      #add_xml_data(L2221.GlobalTechSCurve, "GlobalTechSCurve") %>%
+      #add_xml_data(L2221.GlobalTechProfitShutdown, "GlobalTechProfitShutdown") %>%
+      #add_xml_data(L2221.GlobalTechShutdown, "GlobalTechShutdown") %>%
       add_xml_data(L2221.StubTechProd, "StubTechProd") %>%
       add_xml_data(L2221.PortfolioStdFixedTax, "PortfolioStdFixedTax") %>%
       add_xml_data(L2221.PortfolioStdConstraint, "PortfolioStdConstraint") %>%
@@ -146,10 +146,10 @@ module_energy_detailed_refining_xml <- function(command, ...) {
                      "L2221.SubsectorShrwt",
                      "L2221.PortfolioStdConstraint",
                      "L2221.PortfolioStdFixedTax",
-                     "L2221.GlobalTechSCurve",
-                     "L2221.GlobalTechProfitShutdown",
+                     #"L2221.GlobalTechSCurve",
+                     #"L2221.GlobalTechProfitShutdown",
                      "L2221.SectorZeroProfitMarketName",
-                     "L2221.GlobalTechShutdown",
+                     #"L2221.GlobalTechShutdown",
                      "L2221.StubTechCoef_refining",
                      "L2221.StubTechCost",
                      "L2221.StubTechSecondaryOutput") ->

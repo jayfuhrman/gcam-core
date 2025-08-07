@@ -169,7 +169,7 @@ module_energy_L2221.refining <- function(command, ...) {
       filter(resource.type == "policy-portfolio-standard") %>%
       select(-year)%>%
       repeat_add_columns(tibble(year = c(HISTORICAL_YEARS, MODEL_FUTURE_YEARS))) %>%
-      filter(year %in% c(MODEL_BASE_YEARS, MODEL_FUTURE_YEARS)) %>%
+      filter(year %in% c(MODEL_FUTURE_YEARS)) %>%
       mutate(policyType = 'tax',
              constraint = 1) %>%
       rename(policy.portfolio.standard = resource) %>%
