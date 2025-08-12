@@ -9,7 +9,10 @@
 #' @param ... other optional parameters, depending on command
 #' @return Depends on \code{command}: either a vector of required inputs,
 #' a vector of output names, or (if \code{command} is "MAKE") all
-#' the generated outputs: \code{L226.SectorLogitTables[[ curr_table ]]$data}, \code{L226.Supplysector_en}, \code{L226.StubTechProd_liq}, \code{L226.SubsectorLogitTables[[ curr_table ]]$data}, \code{L226.SubsectorLogit_en}, \code{L226.SubsectorShrwt_en}, \code{L226.SubsectorShrwtFllt_en}, \code{L226.SubsectorInterp_en}, \code{L226.SubsectorInterpTo_en}, \code{L226.StubTech_en}, \code{L226.GlobalTechEff_en}, \code{L226.GlobalTechCost_en}, \code{L226.GlobalTechTrackCapital_en}, \code{L226.GlobalTechShrwt_en}, \code{L226.StubTechCoef_elecownuse}, \code{L226.StubTechCoef_electd}, \code{L226.StubTechCoef_gaspipe}. The corresponding file in the
+#' the generated outputs: \code{L226.SectorLogitTables[[ curr_table ]]$data}, \code{L226.Supplysector_en}, \code{L226.StubTechProd_liq}, \code{L226.SubsectorLogitTables[[ curr_table ]]$data},
+#' \code{L226.SubsectorLogit_en}, \code{L226.SubsectorShrwt_en}, \code{L226.SubsectorShrwtFllt_en}, \code{L226.SubsectorInterp_en}, \code{L226.SubsectorInterpTo_en}, \code{L226.StubTech_en},
+#' \code{L226.GlobalTechEff_en}, \code{L226.GlobalTechCost_en}, \code{L226.GlobalTechTrackCapital_en}, \code{L226.GlobalTechShrwt_en}, \code{L226.StubTechCoef_elecownuse}, \code{L226.StubTechCoef_electd},
+#' \code{L226.StubTechCoef_gaspipe}, \code{L226.StubTechProd_liq}, \code{L226.GlobalTechInterp_liq}. The corresponding file in the
 #' original data system was \code{L226.en_distribution.R} (energy level2).
 #' @details Prepares Level 2 data on energy distribution sector for the generation of en_distribution.xml.
 #' Creates global technology database info--cost, shareweight, logit, efficiencies, and interpolations--and regional values where applicable for electricity net ownuse, gas pipelines, and transmission and distribution.
@@ -29,6 +32,7 @@ module_energy_L226.en_distribution <- function(command, ...) {
              FILE = "energy/A26.globaltech_eff",
              FILE = "energy/A26.globaltech_cost",
              FILE = "energy/A26.globaltech_shrwt",
+             FILE = "energy/A26.globaltech_interp",
              "L1093.en_bal_EJ_liquids_enduse_total",
              "L1093.en_bal_EJ_liquids_industrial_total",
              "L121.in_EJ_R_TPES_liq_Yh",
@@ -50,7 +54,8 @@ module_energy_L226.en_distribution <- function(command, ...) {
              "L226.StubTechCoef_elecownuse",
              "L226.StubTechCoef_electd",
              "L226.StubTechCoef_gaspipe",
-             "L226.StubTechProd_liq"))
+             "L226.StubTechProd_liq",
+             "L226.GlobalTechInterp_liq"))
   } else if(command == driver.MAKE) {
 
     # Silence global variable package check
@@ -72,21 +77,22 @@ module_energy_L226.en_distribution <- function(command, ...) {
     A26.globaltech_eff <- get_data(all_data, "energy/A26.globaltech_eff",strip_attributes = TRUE)
     A26.globaltech_cost <- get_data(all_data, "energy/A26.globaltech_cost",strip_attributes = TRUE)
     A26.globaltech_shrwt <- get_data(all_data, "energy/A26.globaltech_shrwt", strip_attributes = TRUE)
+    A26.globaltech_interp <- get_data(all_data, "energy/A26.globaltech_interp", strip_attributes = TRUE)
     L126.IO_R_elecownuse_F_Yh <- get_data(all_data, "L126.IO_R_elecownuse_F_Yh", strip_attributes = TRUE)
     L126.IO_R_electd_F_Yh <- get_data(all_data, "L126.IO_R_electd_F_Yh")
     L126.IO_R_gaspipe_F_Yh <- get_data(all_data, "L126.IO_R_gaspipe_F_Yh")
-    L1093.en_bal_EJ_liquids_enduse_total <- get_data(all_data,"L1093.en_bal_EJ_liquids_enduse_total")
-    L1093.en_bal_EJ_liquids_industrial_total <- get_data(all_data,"L1093.en_bal_EJ_liquids_industrial_total")
-    L121.in_EJ_R_TPES_liq_Yh <- get_data(all_data, "L121.in_EJ_R_TPES_liq_Yh")
+    L1093.en_bal_EJ_liquids_enduse_total <- get_data(all_data,"L1093.en_bal_EJ_liquids_enduse_total", strip_attributes = TRUE)
+    L1093.en_bal_EJ_liquids_industrial_total <- get_data(all_data,"L1093.en_bal_EJ_liquids_industrial_total", strip_attributes = TRUE)
+    L121.in_EJ_R_TPES_liq_Yh <- get_data(all_data, "L121.in_EJ_R_TPES_liq_Yh", strip_attributes = TRUE)
 
 
-    #==================================================================================================================
-    #Calibrate detailed refined liquids by the defined groupings (enduse or industrial)
+    #======================================================================================
+    # Calibrate detailed refined liquids by the defined groupings (enduse or industrial)
     L126.in_EJ_R_Y_liq_tot <- L1093.en_bal_EJ_liquids_enduse_total%>%
       rbind(L1093.en_bal_EJ_liquids_industrial_total)%>%
       rename(fuel=fuel_category,sector=type)
 
-    #Complete combinations
+    # Complete combinations
     complete_combinations <- expand.grid(
       region = unique(L126.in_EJ_R_Y_liq_tot$region),
       year = unique(L126.in_EJ_R_Y_liq_tot$year),
@@ -103,7 +109,6 @@ module_energy_L226.en_distribution <- function(command, ...) {
                   select(-GCAM_region_ID))     # add calibrated end use crude
     L126.in_EJ_R_Y_liq_tot <- as_tibble(L126.in_EJ_R_Y_liq_tot)
 
-
     L226.StubTechProd_liq <- L126.in_EJ_R_Y_liq_tot %>%
       filter(year %in% c(MODEL_BASE_YEARS)) %>%
       rename(supplysector = sector, stub.technology = fuel) %>%
@@ -115,6 +120,11 @@ module_energy_L226.en_distribution <- function(command, ...) {
              tech.share.weight = share.weight) %>%
       set_subsector_shrwt() %>%
       select(LEVEL2_DATA_NAMES[["StubTechProd"]], "share.weight")
+
+    # Add technology share weight interpolation rules
+    L226.GlobalTechInterp_liq <- A26.globaltech_interp %>%
+      set_years() %>%
+      rename(sector.name = supplysector, subsector.name = subsector)
 
     # ===================================================
     # Remove backup electricity sector (by default)
@@ -500,7 +510,7 @@ module_energy_L226.en_distribution <- function(command, ...) {
       L226.StubTechCoef_gaspipe
 
     L226.StubTechProd_liq %>%
-      #add_title("Calibrated refined liquids enduse and refined liquids industrial production") %>%
+      add_title("Calibrated refined liquids enduse and refined liquids industrial production") %>%
       add_units("EJ") %>%
       add_comments("Refined product consumption from historical data divided by use") %>%
       add_legacy_name("L226.StubTechProd_liq") %>%
@@ -509,10 +519,19 @@ module_energy_L226.en_distribution <- function(command, ...) {
                      "L121.in_EJ_R_TPES_liq_Yh") ->
       L226.StubTechProd_liq
 
+    L226.GlobalTechInterp_liq %>%
+      add_title("Technology shareweight interpolation for disaggregated refined liquids and feedstock") %>%
+      add_units("NA") %>%
+      add_comments("Rules from global technology database are applied to all regions") %>%
+      add_precursors("energy/A26.globaltech_interp") ->
+      L226.GlobalTechInterp_liq
+
     return_data(L226.Supplysector_en, L226.SubsectorLogit_en, L226.SubsectorShrwt_en,
                 L226.SubsectorShrwtFllt_en, L226.SubsectorInterp_en, L226.SubsectorInterpTo_en,
-                L226.StubTech_en, L226.GlobalTechEff_en, L226.GlobalTechCost_en, L226.GlobalTechTrackCapital_en, L226.GlobalTechShrwt_en,
-                L226.StubTechCoef_elecownuse, L226.StubTechCoef_electd, L226.StubTechCoef_gaspipe,L226.StubTechProd_liq)
+                L226.StubTech_en, L226.GlobalTechEff_en, L226.GlobalTechCost_en,
+                L226.GlobalTechTrackCapital_en, L226.GlobalTechShrwt_en,
+                L226.StubTechCoef_elecownuse, L226.StubTechCoef_electd,
+                L226.StubTechCoef_gaspipe,L226.StubTechProd_liq, L226.GlobalTechInterp_liq)
   } else {
     stop("Unknown command")
   }

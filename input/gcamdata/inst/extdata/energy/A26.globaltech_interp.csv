@@ -1,0 +1,34 @@
+# File: A26.globaltech_interp.csv
+# Title: Primary energy transformation technology share-weight interpolation
+# Units: Unitless
+# Column types: ccccccc
+# ----------
+supplysector,subsector,technology,apply.to,from.year,to.year,interpolation.function
+backup_electricity,gas,gas (steam/CT),share-weight,final-calibration-year,initial-future-year,fixed
+csp_backup,gas,CSP gas hybrid mode,share-weight,final-calibration-year,initial-future-year,fixed
+delivered biomass,delivered biomass,delivered biomass,share-weight,final-calibration-year,initial-future-year,fixed
+delivered coal,delivered coal,delivered coal,share-weight,final-calibration-year,initial-future-year,fixed
+electricity_net_ownuse,electricity_net_ownuse,electricity_net_ownuse,share-weight,final-calibration-year,initial-future-year,fixed
+elect_td_bld,elect_td_bld,elect_td_bld,share-weight,final-calibration-year,initial-future-year,fixed
+elect_td_ind,elect_td_ind,elect_td_ind,share-weight,final-calibration-year,initial-future-year,fixed
+elect_td_trn,elect_td_trn,elect_td_trn,share-weight,final-calibration-year,initial-future-year,fixed
+gas pipeline,gas pipeline,gas pipeline,share-weight,final-calibration-year,initial-future-year,fixed
+wholesale gas,wholesale gas,wholesale gas,share-weight,final-calibration-year,initial-future-year,fixed
+delivered gas,delivered gas,delivered gas,share-weight,final-calibration-year,initial-future-year,fixed
+refined liquids enduse,refined liquids enduse,refined liquids gasoline,share-weight,final-calibration-year,initial-future-year,fixed
+refined liquids enduse,refined liquids enduse,refined liquids distillate_fueloil,share-weight,final-calibration-year,initial-future-year,fixed
+refined liquids enduse,refined liquids enduse,refined liquids residual_fueloil,share-weight,final-calibration-year,initial-future-year,fixed
+refined liquids enduse,refined liquids enduse,refined liquids lpg,share-weight,final-calibration-year,initial-future-year,fixed
+refined liquids enduse,refined liquids enduse,refined liquids heavy_residual,share-weight,final-calibration-year,initial-future-year,fixed
+refined liquids enduse,refined liquids enduse,refined liquids jet_kerosene,share-weight,final-calibration-year,initial-future-year,fixed
+refined liquids enduse,refined liquids enduse,refined liquids other,share-weight,final-calibration-year,initial-future-year,fixed
+refined liquids enduse,refined liquids enduse,refined liquids feedstock,share-weight,final-calibration-year,initial-future-year,fixed
+refined liquids industrial,refined liquids industrial,refined liquids gasoline,share-weight,final-calibration-year,initial-future-year,fixed
+refined liquids industrial,refined liquids industrial,refined liquids distillate_fueloil,share-weight,final-calibration-year,initial-future-year,fixed
+refined liquids industrial,refined liquids industrial,refined liquids residual_fueloil,share-weight,final-calibration-year,initial-future-year,fixed
+refined liquids industrial,refined liquids industrial,refined liquids lpg,share-weight,final-calibration-year,initial-future-year,fixed
+refined liquids industrial,refined liquids industrial,refined liquids heavy_residual,share-weight,final-calibration-year,initial-future-year,fixed
+refined liquids industrial,refined liquids industrial,refined liquids jet_kerosene,share-weight,final-calibration-year,initial-future-year,fixed
+refined liquids industrial,refined liquids industrial,refined liquids other,share-weight,final-calibration-year,initial-future-year,fixed
+refined liquids industrial,refined liquids industrial,refined liquids feedstock,share-weight,final-calibration-year,initial-future-year,fixed
+backup_electricity,hydrogen,hydrogen combustion turbine,share-weight,final-calibration-year,initial-future-year,fixed
