@@ -199,6 +199,14 @@ if(command == driver.DECLARE_INPUTS) {
     # omit NAs for now. These are regions with no future resources but very tiny historical production.
     na.omit()
 
+  L1111.mineral_production_R_Yb_global_total <- L1111.mineral_production_R_Yb %>%
+    filter(Year %in% c(MODEL_BASE_YEARS, 2020)) %>%
+    rename(year = Year) %>%
+    group_by(Mineral, Units, year, resource) %>%
+    dplyr::summarise(value = sum(value)) %>%
+    mutate(value = value/1000,
+           Units = "Mt")
+
 
     L2111.mineral_Reserve_Mt_R_Yh <- L2111.mineral_production_R_Yb %>%
       mutate(lifetime = round(Lifetime, digits = 0)) %>%
