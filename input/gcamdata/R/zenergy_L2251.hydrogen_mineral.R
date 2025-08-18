@@ -265,6 +265,9 @@ module_energy_L2251.hydrogen_mineral <- function(command, ...) {
     L2251.GlobalTechMineralCoef <- regionalize_mineral_inputs(L2251.GlobalTechMineralCoef)
     L2251.StubTechMineralCoef <- regionalize_mineral_inputs(L2251.StubTechMineralCoef)
 
+    ## BY 7-28-2025: Modify mineral intensities in the base years such that we would have the equivalent mineral demands if we
+    # had the service demand representing solely the new investment (i.e. if base years were vintaged)
+    ## HYDROGEN TECHNOLOGIES DO NOT HAVE CALIBRATED VALUES, SO WE DON'T NEED TO MAKE ANY ADJUSTMENTS
     ## ===================================================================
     ## Section 3 -- Produce outputs, add appropriate flags and comments
     ## ===================================================================

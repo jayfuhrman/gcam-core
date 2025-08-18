@@ -18,7 +18,7 @@
 #' \code{L254.GlobalTranTechSCurve}, \code{L254.StubTranTechCalInput}, \code{L254.StubTranTechLoadFactor},
 #' \code{L254.StubTranTechCost}, \code{L254.StubTranTechCoef}, \code{L254.StubTechCalInput_passthru_all},
 #' \code{L254.StubTechProd_nonmotor}, \code{L254.PerCapitaBased_trn}, \code{L254.PriceElasticity_trn},
-#' \code{L254.IncomeElasticity_trn}, \code{L254.BaseService_trn}. The corresponding file in the
+#' \code{L254.IncomeElasticity_trn}, \code{L254.BaseService_trn}, \code{L254.StubTranTechOutput}. The corresponding file in the
 #' original data system was \code{L254.transportation_UCD.R} (energy level2).
 #' @details Due to the asymmetrical nature of the transportation sectors in the various regions, we can't simply write
 #' generic information to all regions. Instead, technology information is read from the global UCD transportation
@@ -143,7 +143,8 @@ module_energy_L254.transportation_UCD <- function(command, ...) {
              "L254.PerCapitaBased_trn",
              "L254.PriceElasticity_trn",
              "L254.IncomeElasticity_trn",
-             "L254.BaseService_trn"))
+             "L254.BaseService_trn",
+             "L254.StubTranTechOutput"))
   } else if(command == driver.MAKE) {
 
     all_data <- list(...)[[1]]
@@ -1767,9 +1768,8 @@ module_energy_L254.transportation_UCD <- function(command, ...) {
       add_units("km/vehicle-yr") %>%
       add_comments("Data was subsetted to model years and mapped from UCD technology to GCAM technology") %>%
       add_legacy_name("L254.StubTranTechTravel") %>%
-      add_precursors("common/GCAM_region_names", "energy/mappings/UCD_techs", "energy/mappings/UCD_techs_revised", "
-                     energy/mappings/UCD_size_class_revisions", "L154.travel_kmvyr_R_trn_m_sz_tech_F_Y",
-                     "minerals/transport/A54.trn_tech_mineral_bev_mapping") ->
+      same_precursors_as("L254.StubTranTechLoadFactor") %>%
+      add_precursors("L154.travel_kmvyr_R_trn_m_sz_tech_F_Y") ->
       L254.StubTranTechTravel
 
     L254.StubTranTechCost %>%
@@ -1906,6 +1906,13 @@ module_energy_L254.transportation_UCD <- function(command, ...) {
                      "L154.loadfactor_R_trn_m_sz_tech_F_Y", "L154.in_EJ_R_trn_m_sz_tech_F_Yh") ->
       L254.BaseService_trn
 
+    L254.StubTranTechOutput %>%
+      add_title("Base-year service output of transportation final demand") %>%
+      add_units("units") %>%
+      add_comments("comments describing how data generated") %>%
+      same_precursors_as(L254.BaseService_trn) ->
+      L254.StubTranTechOutput
+
     return_data(L254.Supplysector_trn, L254.SupplysectorData_trn, L254.PassThruSectorData_trn,
                 L254.PassThruSector_trn, L254.FinalEnergyKeyword_trn, L254.FinalEnergyKeyword_Supplysector_trn,
                 L254.FinalEnergyKeyword_PassThrusector_trn, L254.tranSubsectorLogit,
@@ -1936,7 +1943,8 @@ module_energy_L254.transportation_UCD <- function(command, ...) {
                 L254.StubTranTechCost, L254.StubTranTechCoef,
                 L254.StubTechProd_nonmotor, L254.StubTechProd_nonmotor_Supplysector,
                 L254.StubTechProd_nonmotor_PassThrusector,L254.PerCapitaBased_trn, L254.PriceElasticity_trn,
-                L254.IncomeElasticity_trn, L254.BaseService_trn, L254.StubTechTrackCapital)
+                L254.IncomeElasticity_trn, L254.BaseService_trn, L254.StubTechTrackCapital,
+                L254.StubTranTechOutput)
   } else {
     stop("Unknown command")
   }

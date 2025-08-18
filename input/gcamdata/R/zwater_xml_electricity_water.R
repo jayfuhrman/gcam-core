@@ -102,6 +102,8 @@ module_water_electricity_water_xml <- function(command, ...) {
       "L2233.Regionaltech_mineral_coef_reduction_final",
       "L2233.Globaltech_mineral_coef_constance_final",
       "L2233.Globaltech_mineral_coef_reduction_final",
+      "L2233.Regional_Globaltech_mineral_coef_constance_Yb",
+      "L2233.Regional_Globaltech_mineral_coef_reduction_Yb",
       # "L2233.GlobalTechCapital_elec_subtype",
       "L2233.GlobalTechCapital_elec_subtype_pv_wind",
       "L2233.GlobalTechCapital_elec_subtype_pv_wind_storage",
@@ -287,6 +289,8 @@ module_water_electricity_water_xml <- function(command, ...) {
       add_xml_data(L2233.StubTechCapFac_mineral_pv_wind, "StubTechCapFactor") %>%
       add_xml_data(L2233.Regionaltech_mineral_coef_constance_final, "RegionalStubTechMineralCurCoefAllYr") %>%
       add_xml_data(L2233.Globaltech_mineral_coef_constance_final, "GlobalTechMineralCurCoefAllYr") %>%
+      add_xml_data(L2233.Regional_Globaltech_mineral_coef_constance_Yb, "RegionalStubTechMineralCurCoefAllYr") %>%
+
       # add_xml_data(L2233.GlobalTechCapital_elec_subtype, "GlobalIntTechCapital") %>%
       add_xml_data(L2233.GlobalTechCapital_elec_subtype_pv_wind, "GlobalIntTechCapital") %>%
       add_xml_data(L2233.GlobalTechCapital_elec_subtype_pv_wind_storage, "GlobalTechCapital") %>%
@@ -384,6 +388,7 @@ module_water_electricity_water_xml <- function(command, ...) {
                      # "L2233.Globaltech_mineral_coef_final",
                      "L2233.Regionaltech_mineral_coef_constance_final",
                      "L2233.Globaltech_mineral_coef_constance_final",
+                     "L2233.Regional_Globaltech_mineral_coef_constance_Yb",
                      # "L2233.GlobalTechCapital_elec_subtype",
                      "L2233.GlobalTechCapital_elec_subtype_pv_wind",
                      "L2233.GlobalTechCapital_elec_subtype_pv_wind_storage",
@@ -500,6 +505,8 @@ module_water_electricity_water_xml <- function(command, ...) {
     #   add_xml_data(L2233.StubTechCapFac_mineral_pv_wind, "StubTechCapFactor") %>%
     #   add_xml_data(L2233.Regionaltech_mineral_coef_reduction_final, "RegionalTechMineralCurCoefPower") %>%
     #   add_xml_data(L2233.Globaltech_mineral_coef_reduction_final, "GlobalTechMineralCurCoefPower") %>%
+    #   add_xml_data(L2233.Regional_Globaltech_mineral_coef_reduction_Yb, "RegionalStubTechMineralCurCoefAllYr") %>%
+
     #   add_xml_data(L2233.GlobalTechCapital_elec_subtype, "GlobalTechCapital") %>%
     #   add_xml_data(L2233.GlobalIntTechMineral_elecSupplySector, "GlobalIntTechEffNoFlag") %>%
     #   add_xml_data(L2233.GlobalTechMineral_elecSupplySector, "GlobalTechEff") %>%
@@ -577,6 +584,7 @@ module_water_electricity_water_xml <- function(command, ...) {
     #                  "L2233.StubTechCapFac_mineral_pv_wind",
     #                  #"L2233.Regionaltech_mineral_coef_final",
     #                  #"L2233.Globaltech_mineral_coef_final",
+                       #"L2233.Regional_Globaltech_mineral_coef_constance_Yb",
     #                  "L2233.Regionaltech_mineral_coef_reduction_final",
     #                  "L2233.Globaltech_mineral_coef_reduction_final",
     #                  "L2233.GlobalTechCapital_elec_subtype",
