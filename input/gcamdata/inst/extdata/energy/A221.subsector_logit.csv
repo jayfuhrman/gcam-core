@@ -9,10 +9,10 @@ refining,crude oil refining,-6,0,
 refining,biorefining,-6,0,
 refining,ctl,-6,0,
 refining,gtl,-6,0,
-Distillate_FuelOil,Distillate_FuelOil,-12,0,absolute-cost-logit
-Residual_FuelOil,Residual_FuelOil,-12,0,absolute-cost-logit
-Gasoline,Gasoline,-12,0,absolute-cost-logit
-LPG,LPG,-12,0,absolute-cost-logit
-Heavy_Residual,Heavy_Residual,-12,0,absolute-cost-logit
-Jet_Kerosene,Jet_Kerosene,-12,0,absolute-cost-logit
-Other,Other,-12,0,absolute-cost-logit
+Distillate_FuelOil,Distillate_FuelOil,-3,0,absolute-cost-logit
+Residual_FuelOil,Residual_FuelOil,-3,0,absolute-cost-logit
+Gasoline,Gasoline,-3,0,absolute-cost-logit
+LPG,LPG,-3,0,absolute-cost-logit
+Heavy_Residual,Heavy_Residual,-3,0,absolute-cost-logit
+Jet_Kerosene,Jet_Kerosene,-3,0,absolute-cost-logit
+Other,Other,-3,0,absolute-cost-logit
