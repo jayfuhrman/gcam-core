@@ -104,8 +104,8 @@
 		<Value name = "macro">../input/gcamdata/xml/socioeconomics_macro.xml</Value>
 		
 		<!-->cut here for oil credits<-->
-    <Value name = "bio_feedstock_limit">../input/gcamdata/xml/liquids_limits.xml</Value>
-		<Value name = "bio_elec_w_feed_limit">../input/gcamdata/xml/water_elec_liquids_limits.xml</Value>
+        <!--Value name = "bio_feedstock_limit">../input/gcamdata/xml/liquids_limits.xml</Value><-->
+		<!--Value name = "bio_elec_w_feed_limit">../input/gcamdata/xml/water_elec_liquids_limits.xml</Value><-->
 		<Value name = "bio_externality">../input/gcamdata/xml/bio_externality.xml</Value>
         <Value name = "gas_trade">../input/gcamdata/xml/gas_trade.xml</Value>
 
@@ -141,7 +141,7 @@
 		<Value name="numPointsForCO2CostCurve">5</Value>
 		<Value name="carbon-output-start-year">1705</Value>
 		<Value name="parallel-grain-size">50</Value>
-		<Value name="stop-period">6</Value>
+		<Value name="stop-period">-1</Value>
 		<Value name="stop-year">-1</Value>
 		<Value name="restart-period">-1</Value>
 		<Value name="restart-year">-1</Value>
