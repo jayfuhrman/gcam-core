@@ -8,7 +8,7 @@
 #' @param ... other optional parameters, depending on command
 #' @return Depends on \code{command}: either a vector of required inputs,
 #' a vector of output names, or (if \code{command} is "MAKE") all
-#' the generated outputs: \code{L2221.Supplysector_en}, \code{L2221.GlobalTechShutdown}, \code{L2221.ProfitRateSector}, \code{L2221.StubTechCoef_refining}, \code{L2221.ProfitRateSubsector}, \code{L2221.SubsectorLogit_en}, \code{L2221.SubsectorShrwtFllt_en}, \code{L2221.SubsectorInterp_en}, \code{L2221.GlobalTechCoef_en}, \code{L2221.GlobalTechCoef_en}, \code{L2221.GlobalTechCost_en}, \code{L2221.GlobalTechFractSecOut_en}, \code{L2221.GlobalTechResSecOut_en}, \code{L2221.GlobalTechZeroProfitOut_en}, \code{L2221.GlobalTechShrwt}, \code{L2221.GlobalTechInterp}, \code{L2221.Rsrc}, \code{L2221.UnlimitRsrc}, \code{L2221.UnlimitRsrcPrice}, \code{L2221.RsrcPrice}, \code{L2221.PortfolioStdConstraint}, \code{L2221.PortfolioStdFixedTax}, \code{L2221.StubTechCalInput}, \code{L2221.BaseService}, \code{L2221.GlobalTechSCurve}, \code{L2221.GlobalTechProfitShutdown}, \code{L2221.SectorZeroProfitMarketName}, \code{L2221.StubTechSecondaryOutput}, \code{L2221.StubTech_en}, \code{L2221.RenewRsrc}, \code{L2221.RsrcCalProd}, \code{L2221.RsrcCurves_fos}, \code{L2221.SmthRenewRsrcCurves_MSW}, \code{L2221.ResTechShrwt}, \code{L2221.PriceElasticity_fuel}, \code{L2221.IncomeElasticity_fuel}. The corresponding file in the
+#' the generated outputs: \code{L2221.Supplysector_en}, \code{L2221.GlobalTechShutdown}, \code{L2221.GlobalTechLifetime_en}, \code{L2221.ProfitRateSector}, \code{L2221.StubTechCoef_refining}, \code{L2221.ProfitRateSubsector}, \code{L2221.SubsectorLogit_en}, \code{L2221.SubsectorShrwtFllt_en}, \code{L2221.SubsectorInterpTo_en}, \code{L2221.GlobalTechCoef_en}, \code{L2221.GlobalTechCoef_en}, \code{L2221.GlobalTechCost_en}, \code{L2221.GlobalTechFractSecOut_en}, \code{L2221.GlobalTechResSecOut_en}, \code{L2221.GlobalTechZeroProfitOut_en}, \code{L2221.GlobalTechShrwt}, \code{L2221.GlobalTechInterp}, \code{L2221.Rsrc}, \code{L2221.UnlimitRsrc}, \code{L2221.UnlimitRsrcPrice}, \code{L2221.RsrcPrice}, \code{L2221.PortfolioStdConstraint}, \code{L2221.PortfolioStdFixedTax}, \code{L2221.StubTechCalInput}, \code{L2221.BaseService}, \code{L2221.GlobalTechSCurve}, \code{L2221.GlobalTechProfitShutdown}, \code{L2221.SectorZeroProfitMarketName}, \code{L2221.StubTechSecondaryOutput}, \code{L2221.StubTech_en}, \code{L2221.RenewRsrc}, \code{L2221.RsrcCalProd}, \code{L2221.RsrcCurves_fos}, \code{L2221.SmthRenewRsrcCurves_MSW}, \code{L2221.ResTechShrwt}, \code{L2221.PriceElasticity_fuel}, \code{L2221.IncomeElasticity_fuel}. The corresponding file in the
 #' original data system was \code{L2221.refining.R} (energy level2).
 #' @details This chunk creates level 2 output files for refined liquids supply. It creates supply sector information,
 #' subsector logit exponents, subsector shareweight and interpolation, and stubtech info by writing assumption file
@@ -49,7 +49,7 @@ module_energy_L2221.refining <- function(command, ...) {
              "L2221.ProfitRateSubsector",
              "L2221.SubsectorLogit_en",
                 "L2221.SubsectorShrwtFllt_en",
-                "L2221.SubsectorInterp_en",
+                "L2221.SubsectorInterpTo_en",
                 "L2221.StubTechCoef_refining",
                 "L2221.GlobalTechCoef_en",
                 "L2221.GlobalTechCost_en",
@@ -64,13 +64,15 @@ module_energy_L2221.refining <- function(command, ...) {
                 "L2221.PortfolioStdFixedTax",
                 "L2221.StubTechProd",
                 "L2221.GlobalTechSCurve",
+                "L2221.GlobalTechLifetime_en",
                 "L2221.StubTechShrwt",
                 "L2221.GlobalTechProfitShutdown",
-                 "L2221.GlobalTechShutdown",
+                "L2221.GlobalTechShutdown",
                 "L2221.SectorZeroProfitMarketName",
                 "L2221.StubTechSecondaryOutput",
                 "L2221.SubsectorShrwt",
                 "L2221.StubTechCost",
+                "L2221.StubTechTrackCapital_en",
                 "L2221.StubTech_en"))
   } else if(command == driver.MAKE) {
 
@@ -164,53 +166,8 @@ module_energy_L2221.refining <- function(command, ...) {
       distinct()
 
 
-# Constraints -------------------------------------------------------------
-    L2221.PortfolioStdConstraint <- L2221.rsrc_info %>%
-      filter(resource.type == "policy-portfolio-standard") %>%
-      select(-year)%>%
-      repeat_add_columns(tibble(year = c(HISTORICAL_YEARS, MODEL_FUTURE_YEARS))) %>%
-      filter(year %in% c(MODEL_FUTURE_YEARS)) %>%
-      mutate(policyType = 'tax',
-             constraint = 1) %>%
-      rename(policy.portfolio.standard = resource) %>%
-      select(LEVEL2_DATA_NAMES[['PortfolioStdConstraint']]) %>%
-      filter(!is.na(region))
 
-    # TODO: this is where the ethanol and biodiesel cost guesses come from; incorporate
-    # # in gasoline gallon equivalent so conv to GJ
-    bio_price_for_conv <- data.frame(year = c(2005, 2010, 2015, 2021),
-                                     E85 = c(2.75, 3.37, 2.95, 3.18),
-                                     B99 = c(3.3, 3.63, 3.62, 3.47))
-    bio_price_usa <- bio_price_for_conv %>%
-      mutate(across(c("E85", "B99"), ~ . * 42 / (.95 * 5.052) * CONV_MMBTU_GJ),
-             E85conv = E85 * gdp_deflator(1975, base_year = year),
-             B99conv = B99 * gdp_deflator(1975, base_year = year))
-
-
-    # SEDS gasoline: avg mogas consumer price
-    seds_gas_price <- data.frame(year = c(1975, 1990, 2005, 2010, 2015, 2021),
-                                 price = c(4.64, 3.62, 4.68, 5.19, 4.20, 4.71))
-    # TODO: GCAM crude price is $2.02 vs $3ish in 2005; $4.67 vs $2.5is4.64h in 2015
-    #what_seems_to_work <- data.frame(year = c(1975, 1990, 2005, 2010, 2015, 2021),
-    #                                 price = c(4.2, 4.2, 5.6, 4.5, 4.3, 4.9))
-
-
-    L2221.PortfolioStdFixedTax <- L2221.rsrc_info %>%
-      filter(resource.type == "policy-portfolio-standard") %>%
-      select(-year) %>%
-      repeat_add_columns(tibble(year = c(HISTORICAL_YEARS, MODEL_FUTURE_YEARS))) %>%
-      filter(year %in% c(MODEL_BASE_YEARS)) %>%
-      left_join(seds_gas_price, by = "year") %>%
-      mutate(policyType = 'tax', #) %>%
-             price = if_else(year > MODEL_FINAL_BASE_YEAR, 4.5, price)) %>%  # Extend fixed tax price out to 2100 for testing
-      rename(policy.portfolio.standard = resource) %>%
-      select(LEVEL2_DATA_NAMES[['PortfolioStdFixedTax']])
-
-    # L2221.RsrcPrice: historical prices for depletable resources
-    L2221.RsrcPrice <- L2221.rsrc_info %>%
-      filter(resource.type == "resource",
-             year %in% MODEL_BASE_YEARS) %>%
-      select(region, resource = resource, year, price = value)
+# Share Weights and Interpolation -----------------------------------------
 
     L2221.Supplysector_en <- A221.sector %>%
       write_to_all_regions(c(LEVEL2_DATA_NAMES[["Supplysector"]], LOGIT_TYPE_COLNAME),
@@ -357,10 +314,10 @@ module_energy_L2221.refining <- function(command, ...) {
                 A221.globaltech_margin %>%
                   mutate(value = 0,
                          minicam.non.energy.input = "cost.adjustment")) %>%
-      select(supplysector, subsector, technology, minicam.non.energy.input, year, value) #%>%
-      #group_by(supplysector, subsector, technology, year) %>%
-      #summarize(value = sum(value), .groups = "drop") %>%
-      #mutate(minicam.non.energy.input = "non-energy-cost")
+      #select(supplysector, subsector, technology, minicam.non.energy.input, year, value) #%>%
+      group_by(supplysector, subsector, technology, year) %>%
+      summarize(value = sum(value), .groups = "drop") %>%
+      mutate(minicam.non.energy.input = "non-energy-cost")
 
     L2221.GlobalTechCost_en <- A221.globaltech_cost %>%
       complete(nesting(supplysector, subsector, technology, minicam.non.energy.input),
@@ -377,7 +334,7 @@ module_energy_L2221.refining <- function(command, ...) {
 
     L2221.ProdPrice <- L2221.rsrc_info %>%
       filter(year %in% MODEL_BASE_YEARS) %>%
-      select(region, resource = resource, year, price = value)
+      select(region, resource, resource.type, year, price = value)
 
     non_en_cost <- L2221.GlobalTechCost_en %>%
       group_by(sector.name, subsector.name, technology, year) %>%
@@ -394,49 +351,91 @@ module_energy_L2221.refining <- function(command, ...) {
       left_join(non_en_cost, by = c("sector" = "subsector.name", "technology", "year")) %>%
       mutate(non.en.cost = costs * feed.EJ * 1E9,
              rev = price * product.EJ * 1E9,
-             cost = non.en.cost + feed.cost) %>%
+             tot_cost = non.en.cost + feed.cost) %>%
       group_by(region, year, sector) %>%
-      mutate(subsector_discrepancy = sum(rev) - sum(cost),
+      mutate(subsector_discrepancy = sum(rev) - sum(tot_cost),
              cost.adj = subsector_discrepancy / sum(feed.EJ) / 1E9) %>%
       ungroup() %>%
-      mutate(cost.adj = round(cost.adj, 6)) %>%
-      select(region, year, sector, technology, cost, rev, cost.adj, feed.EJ)
+      # this is janky, but without regional price / cost data it's to get us in
+      # the ballpark. either global estimate could be off.
+      mutate(
+        # If adjustment is negative, add it the price
+        adj.price = if_else(cost.adj < 0, price - cost.adj, price),
+
+        # Allow cost increases. Don't allow decreases for simplicity's sake
+        cost.adj = if_else(cost.adj < 0, 0, cost.adj),
+        new.non.en.cost = cost.adj + costs
+      )
+
+      # mutate(
+      #   # calc new total non-energy cost and pct change
+      #   new.non.en.cost = cost.adj + costs,
+      #
+      #   # redo the cost adjuster if it made the total non energy cost negative
+      #   cost.adj = if_else(new.non.en.cost < 0, cost.adj * .25, cost.adj),
+      #   new.non.en.cost = cost.adj + costs,
+      #
+      #   # need to be able to both decrease price if cost.adj is too high
+      #   # or increase price if cost.adj is too negative
+      #   pct.change = cost.adj / costs,
+      #   adj.price = if_else(pct.change > .25 | pct.change < -.25, price - .25 * cost.adj, price),
+      #
+      #   # don't let total non-energy cost or prices come out of this negative
+      #   # (deal with feedstock subsidies separately)
+      #   new.non.en.cost = if_else(new.non.en.cost <= 0, costs * .5, new.non.en.cost),
+      #   adj.price = if_else(adj.price <= 0, .25, adj.price)
+      #   ) %>%
+     #select(region, year, resource, costs, cost.adj, new.non.en.cost, price, pct.change, adj.price)
 
 
-    # check_pr <- profit_rate_calcs %>%  # TODO: temporary troubleshooting
-    #   group_by(region, year) %>%
-    #   summarize(pr = (sum(cost) + sum(cost.adj * feed.EJ * 1E9)) / sum(rev), .groups = "drop")
+    # L2221.RsrcPrice: historical prices for depletable resources
+    L2221.RsrcPrice <- L2221.rsrc_info %>%
+      filter(resource.type == "resource", year %in% MODEL_BASE_YEARS) %>%
+      left_join(profit_rate_calcs %>% select(region, year, resource, adj.price),
+                by = c("region", "year", "resource"))  %>%
+      mutate(adj.price = replace_na(adj.price, 0),
+             price = if_else(adj.price == 0, value, adj.price),
+             price = round(price, 2)) %>%
+      select(region, resource, year, price)
+
+
+    check_pr <- profit_rate_calcs %>%  # TODO: temporary troubleshooting
+      group_by(region, year) %>%
+      summarize(pr = (sum(feed.cost) + sum(new.non.en.cost * feed.EJ * 1E9) + sum(cost.adj * feed.EJ * 1E9)) / sum(adj.price * product.EJ * 1E9), .groups = "drop")
 
     L2221.StubTechCost <- profit_rate_calcs %>% # A221.stubtech_margin %>%
       mutate(supplysector = "refining",
-             minicam.non.energy.input = "cost.adjustment") %>%
-      rename(input.cost = cost.adj, subsector = sector) %>%
-      select(LEVEL2_DATA_NAMES[["TechCost"]]) %>%
-      distinct()
+             minicam.non.energy.input = "non-energy-cost") %>%
+      rename(input.cost = new.non.en.cost, subsector = sector) %>%
+      left_join(L2221.GlobalTechCost_en,
+                by = c("supplysector" = "sector.name", "subsector" = "subsector.name",
+                       "technology", "minicam.non.energy.input", "year")) %>%
+      mutate( #input.cost = if_else(input.cost.x < .5 * input.cost.y, .5 * input.cost.y, input.cost.x),
+             input.cost = round(input.cost.x, energy.DIGITS_COST)) %>%
+      select(LEVEL2_DATA_NAMES[["TechCost"]])
     L2221.StubTechCost <- L2221.StubTechCost %>%
-      filter(year == MODEL_FINAL_BASE_YEAR) %>%   # extend cost adjustment to the future
+      filter(year == MODEL_FINAL_BASE_YEAR) %>%
       complete(nesting(region, supplysector, subsector, technology, minicam.non.energy.input, input.cost),
-               year = MODEL_FUTURE_YEARS) %>%
+               year = c(MODEL_BASE_YEARS, MODEL_FUTURE_YEARS)) %>%
       bind_rows(L2221.StubTechCost) %>%
-      arrange(region, supplysector, subsector, year)
+      arrange(region, supplysector, subsector, year) %>%
+      select(LEVEL2_DATA_NAMES[["TechCost"]])
 
-    # check_adder <- L2221.StubTechCost %>%
-    #   filter(input.cost > 5 | input.cost < -5) %>%
-    #   left_join(profit_rate_components, by = c("region", "year", "subsector" = "sector", "technology"))
 
     # TODO: from the old en_transformation. incorporate capital tracking into detailed refining
     # # L222.GlobalTechTrackCapital_en: We want track capital investments for these technologies thus
     # # we will change the object type accordingly and add the market name which will track investments
     # # and the fraction of the total non-energy cost we should assume is annual investment in capital
-    # FCR <- (socioeconomics.DEFAULT_INTEREST_RATE * (1+socioeconomics.DEFAULT_INTEREST_RATE)^socioeconomics.REFINING_CAP_PAYMENTS) /
-    #   ((1+socioeconomics.DEFAULT_INTEREST_RATE)^socioeconomics.REFINING_CAP_PAYMENTS -1)
-    # L222.GlobalTechCost_en %>%
-    #   mutate(capital.coef = socioeconomics.REFINING_CAPITAL_RATIO / FCR,
-    #          tracking.market = socioeconomics.EN_CAPITAL_MARKET_NAME,
-    #          # refining has vintaging so no need to for depreciation rate (although will get ignored)
-    #          depreciation.rate = if_else(sector.name == "refining", 0, 1/30)) %>%
-    #   select(LEVEL2_DATA_NAMES[['GlobalTechTrackCapital']]) ->
-    #   L222.GlobalTechTrackCapital_en
+    FCR <- (socioeconomics.DEFAULT_INTEREST_RATE * (1+socioeconomics.DEFAULT_INTEREST_RATE)^socioeconomics.REFINING_CAP_PAYMENTS) /
+      ((1+socioeconomics.DEFAULT_INTEREST_RATE)^socioeconomics.REFINING_CAP_PAYMENTS -1)
+    L2221.StubTechTrackCapital_en <- L2221.StubTechCost %>%
+      rename(stub.technology = technology) %>%
+      mutate(capital.coef = socioeconomics.REFINING_CAPITAL_RATIO / FCR,
+             tracking.market = socioeconomics.EN_CAPITAL_MARKET_NAME,
+             # refining has vintaging so no need to for depreciation rate (although will get ignored)
+             depreciation.rate =  0) %>%   # 1/30 with no vintaging
+      select(LEVEL2_DATA_NAMES[['StubTechTrackCapital']])
+
 
 
     #biomass technology combinations
@@ -455,9 +454,9 @@ module_energy_L2221.refining <- function(command, ...) {
         region = unique(L1221.refiningFuelsOutputsEJCombined$region),
         year = unique(L1221.refiningFuelsOutputsEJCombined$year)))
 
-    # # left_join to get technology and regions in history that are both in historical data
-    # # and also not present in the historical data. These are calibrated to zero output explicitly to
-    # # ensure we can solve the historical periods
+    # left_join to get technology and regions in history that are both in historical data
+    # and also not present in the historical data. These are calibrated to zero output explicitly to
+    # ensure we can solve the historical periods
     L1221.refiningFuelsOutputsEJCombined_all <- combinations_all %>%
       left_join(L1221.refiningFuelsOutputsEJCombined,by=c("subsector","output","input","region","year"))%>%
       mutate(value=if_else(is.na(value),0,value))
@@ -528,12 +527,12 @@ module_energy_L2221.refining <- function(command, ...) {
     # Use region-specific High Residual_FuelOil ratios for outlier regions
     L2221.StubTechSecondaryOutput <- A221.stubtech_regional_output %>%
       select(-crude.type) %>%
-      gather(key = "secondary.output", value = output.ratio, -region) %>%
+      tidyr::gather(key = "secondary.output", value = output.ratio, -region) %>%
       mutate(supplysector = "refining",
              subsector = "crude oil refining",
              stub.technology = 'high Residual_FuelOil',
              secondary.output = paste0(secondary.output,"_crude oil"),
-             year = 2030) %>%   # TODO: don't want to overwrite the secout in history, do still need to extend for all future years
+             year = 2025) %>%   # TODO: don't want to overwrite the secout in history, do still need to extend for all future years
       arrange(region) %>%
       complete(nesting(region,
                        supplysector,
@@ -546,36 +545,107 @@ module_energy_L2221.refining <- function(command, ...) {
       select(LEVEL2_DATA_NAMES[["StubTechSecOut"]])
 
 
+# Retirement functions ----------------------------------------------------
+
     L2221.globaltech_retirement_base <- A221.globaltech_retirement %>%
       set_years() %>%
       mutate(year = as.integer(year)) %>%
       rename(sector.name = supplysector, subsector.name = subsector)
 
-    # Copies base year retirement information into all future years and appends back onto itself
-    L2221.globaltech_retirement <- L2221.globaltech_retirement_base %>%
-      filter(year == MODEL_FINAL_BASE_YEAR) %>%
+    # Copies first future year retirement information into all future years
+    L2221.globaltech_retirement_future <- L2221.globaltech_retirement_base %>%
+      filter(year == min(MODEL_FUTURE_YEARS)) %>%
       select(-year) %>%
       repeat_add_columns(tibble(year = MODEL_FUTURE_YEARS))
 
+    # Appends future years onto final base year
+    L2221.globaltech_retirement <- L2221.globaltech_retirement_base %>%
+      mutate(year = as.integer(year)) %>%
+      filter(year == MODEL_FINAL_BASE_YEAR) %>%
+      bind_rows(L2221.globaltech_retirement_future)
+
+    # Retirement may consist of any of three types of retirement function
+    # (phased, s-curve, or none). This section checks for each of these
+    # functions and creates a separate level 2 output for each. All of these
+    # options have different headers, and all are allowed
+
+    # PHASED RETIREMENT
+    if(any(!is.na(L2221.globaltech_retirement$shutdown.rate))) {
+      L2221.GlobalTechShutdown <- L2221.globaltech_retirement %>%
+        filter(!is.na(L2221.globaltech_retirement$shutdown.rate)) %>%
+        select(LEVEL2_DATA_NAMES[["GlobalTechShutdown"]])
+    }
+
     # S-CURVE RETIREMENT
     # Subsets the S-Curve retirement function
-    L2221.GlobalTechSCurve <- L2221.globaltech_retirement %>%
-      filter(!is.na(L2221.globaltech_retirement$half.life),
-             !year %in% MODEL_BASE_YEARS) %>%
-      bind_rows(filter(L2221.globaltech_retirement_base,
-                       year == max(MODEL_BASE_YEARS))) %>%
-      select(LEVEL2_DATA_NAMES[["GlobalTechYr"]], "lifetime", "steepness", "half.life")
+    if(any(!is.na(L2221.globaltech_retirement$half.life))) {
+      L2221.GlobalTechSCurve <- L2221.globaltech_retirement %>%
+        filter(!is.na(L2221.globaltech_retirement$half.life)) %>%
+        select(LEVEL2_DATA_NAMES[["GlobalTechYr"]], "lifetime", "steepness", "half.life")
+    }
 
-    # PROFIT-BASED SHUTDOWN PARAMETERS
+    # PROFIT-BASED SHUTDOWN (includes profit-based idling)
     # Subsets any technologies with a shutdown parameter based on profitability
-    L2221.GlobalTechProfitShutdown <- L2221.globaltech_retirement %>%
-      filter(!is.na(L2221.globaltech_retirement$median.shutdown.point)) %>%
-      select(LEVEL2_DATA_NAMES[["GlobalTechYr"]], "median.shutdown.point", "profit.shutdown.steepness")
+    if(any(!is.na(L2221.globaltech_retirement$median.shutdown.point))) {
+      L2221.GlobalTechProfitShutdown <- L2221.globaltech_retirement %>%
+        filter(!is.na(L2221.globaltech_retirement$median.shutdown.point)) %>%
+        select(LEVEL2_DATA_NAMES[["GlobalTechYr"]], "median.shutdown.point", "profit.shutdown.steepness")
+    }
 
-    L2221.GlobalTechShutdown <- L2221.globaltech_retirement %>%
-      filter(year %in% MODEL_BASE_YEARS,
-             year != MODEL_FINAL_BASE_YEAR) %>%
-      select(LEVEL2_DATA_NAMES[["GlobalTechShutdown"]])
+    # TOTAL LIFETIME SHUTDOWN
+    if(any(is.na(L2221.globaltech_retirement$shutdown.rate) & is.na(L2221.globaltech_retirement$half.life))) {
+      L2221.GlobalTechLifetime_en <- L2221.globaltech_retirement %>%
+        filter(is.na(L2221.globaltech_retirement$shutdown.rate) & is.na(L2221.globaltech_retirement$half.life)) %>%
+        select(LEVEL2_DATA_NAMES[["GlobalTechYr"]], "lifetime")
+    }
+
+# Constraints -------------------------------------------------------------
+    L2221.PortfolioStdConstraint <- L2221.rsrc_info %>%
+      filter(resource.type == "policy-portfolio-standard") %>%
+      select(-year)%>%
+      repeat_add_columns(tibble(year = c(HISTORICAL_YEARS, MODEL_FUTURE_YEARS))) %>%
+      filter(year %in% c(MODEL_FUTURE_YEARS)) %>%
+      mutate(policyType = 'tax',
+             constraint = 1) %>%
+      rename(policy.portfolio.standard = resource) %>%
+      select(LEVEL2_DATA_NAMES[['PortfolioStdConstraint']]) %>%
+      filter(!is.na(region))
+
+    # TODO: this is where the ethanol and biodiesel cost guesses come from
+    # incorporate in script somewhere? in gasoline gallon equivalent so conv to GJ
+    bio_price_for_conv <- data.frame(year = c(2005, 2010, 2015, 2021),
+                                     E85 = c(2.75, 3.37, 2.95, 3.18),
+                                     B99 = c(3.3, 3.63, 3.62, 3.47))
+    bio_price_usa <- bio_price_for_conv %>%
+      mutate(across(c("E85", "B99"), ~ . * 42 / (.95 * 5.052) * CONV_MMBTU_GJ),
+             E85conv = E85 * gdp_deflator(1975, base_year = year),
+             B99conv = B99 * gdp_deflator(1975, base_year = year))
+
+    # SEDS gasoline: avg USA mogas consumer price
+    seds_gas_price <- data.frame(year = c(1975, 1990, 2005, 2010, 2015, 2021),
+                                 price = c(4.64, 3.62, 4.68, 5.19, 4.20, 4.71))
+    # TODO: GCAM crude price is $2.02 vs $3ish in 2005; $4.67 vs $2.5ish in 2015
+
+    adjusted_gas_price <- profit_rate_calcs %>%
+      filter(resource.type == "policy-portfolio-standard") %>%
+      select(region, year, adj.price)
+
+    L2221.PortfolioStdFixedTax <- L2221.rsrc_info %>%
+      filter(resource.type == "policy-portfolio-standard") %>%
+      select(-year) %>%
+      repeat_add_columns(tibble(year = c(HISTORICAL_YEARS, MODEL_FUTURE_YEARS))) %>%
+      filter(year %in% c(MODEL_BASE_YEARS)) %>%
+      left_join(seds_gas_price, by = "year") %>%
+      mutate(policyType = 'tax') %>%
+      # left_join(adjusted_gas_price, by = c("region", "year")) %>%
+      # mutate(policyType = 'tax',
+      #        price = dplyr::coalesce(adj.price, price),
+      #        price = round(price, 2)) %>%
+      rename(policy.portfolio.standard = resource) %>%
+      select(LEVEL2_DATA_NAMES[['PortfolioStdFixedTax']])
+
+
+# Profit Markets ----------------------------------------------------------
 
     L2221.SectorZeroProfitMarketName <- L2221.GlobalTechShrwt %>%
       filter(str_detect(sector.name,'refining')) %>%
@@ -596,8 +666,9 @@ module_energy_L2221.refining <- function(command, ...) {
       select(LEVEL2_DATA_NAMES[['ProfitRateSubsector']])
 
 
-    #======================================================
-    # Produce outputs
+
+# Produce Outputs ---------------------------------------------------------
+
     L2221.Supplysector_en %>%
       add_title("Supply sector information for refining sector") %>%
       add_units("NA") %>%
@@ -644,18 +715,18 @@ module_energy_L2221.refining <- function(command, ...) {
         L2221.SubsectorShrwtFllt_en
     }
 
-    if(exists("L2221.SubsectorInterp_en")) {
-      L2221.SubsectorInterp_en %>%
+    if(exists("L2221.SubsectorInterpTo_en")) {
+      L2221.SubsectorInterpTo_en %>%
         add_title("Subsector shareweight interpolation of refining sector") %>%
         add_units("NA") %>%
-        add_comments("For refining sector, the subsector shareweight interpolation function infromation from A323.subsector_interp is expanded into all GCAM regions") %>%
-        add_legacy_name("L2221.SubsectorInterp_en") %>%
+        add_comments("For refining sector, the subsector shareweight interpolation function information from A221.subsector_interp is expanded into all GCAM regions") %>%
+        add_legacy_name("L2221.SubsectorInterpTo_en") %>%
         add_precursors("energy/A221.subsector_interp") ->
-        L2221.SubsectorInterp_en
+        L2221.SubsectorInterpTo_en
     } else {
       missing_data() %>%
-        add_legacy_name("energy/L2221.SubsectorInterp_en") ->
-        L2221.SubsectorInterp_en
+        add_legacy_name("energy/L2221.SubsectorInterpTo_en") ->
+        L2221.SubsectorInterpTo_en
     }
 
     L2221.GlobalTechCoef_en %>%
@@ -698,13 +769,61 @@ module_energy_L2221.refining <- function(command, ...) {
       add_precursors("energy/A221.globaltech_secout") ->
       L2221.GlobalTechResSecOut_en
 
-    L2221.GlobalTechProfitShutdown %>%
-      add_title("Global tech profit shutdown decider and parameters") %>%
-      add_units("Unitless, used to determine shape of the function defining the relationship between shutdown rate and profitability") %>%
-      add_comments("Filters for any technologies that use a profit-based shutdown parameter") %>%
-      add_legacy_name("L2221.GlobalTechProfitShutdown") %>%
-      add_precursors("energy/A221.globaltech_retirement") ->
-      L2221.GlobalTechProfitShutdown
+    if(exists("L2221.GlobalTechSCurve")) {
+      L2221.GlobalTechSCurve %>%
+        add_title("Global tech lifetime for techs with s-curve retirement function") %>%
+        add_units("Lifetime in years, half-life in years") %>%
+        add_comments("Filters for any technology that uses an S-curve retirement function") %>%
+        add_legacy_name("L2221.GlobalTechSCurve") %>%
+        add_precursors("energy/A221.globaltech_retirement") ->
+        L2221.GlobalTechSCurve
+    } else {
+      missing_data() %>%
+        add_legacy_name("energy/L2221.GlobalTechSCurve") ->
+        L2221.GlobalTechSCurve
+    }
+
+    if(exists("L2221.GlobalTechProfitShutdown")) {
+      L2221.GlobalTechProfitShutdown %>%
+        add_title("Global tech profit shutdown decider and parameters") %>%
+        add_units("Unitless, used to determine shape of the function defining the relationship between shutdown rate and profitability") %>%
+        add_comments("Filters for any technologies that use a profit-based shutdown parameter") %>%
+        add_legacy_name("L2221.GlobalTechProfitShutdown") %>%
+        add_precursors("energy/A221.globaltech_retirement") ->
+        L2221.GlobalTechProfitShutdown
+    } else {
+      missing_data() %>%
+        add_legacy_name("energy/L2221.GlobalTechProfitShutdown") ->
+        L2221.GlobalTechProfitShutdown
+    }
+
+    if(exists("L2221.GlobalTechShutdown")) {
+      L2221.GlobalTechShutdown %>%
+        add_title("Global tech lifetime for techs with shutdown rate") %>%
+        add_units("Lifetime in years") %>%
+        add_comments("Filters for any technology that uses a phased retirement function") %>%
+        add_legacy_name("L2221.GlobalTechShutdown") %>%
+        add_precursors("energy/A221.globaltech_retirement") ->
+        L2221.GlobalTechShutdown
+    } else {
+      missing_data() %>%
+        add_legacy_name("energy/L2221.GlobalTechShutdown") ->
+        L2221.GlobalTechShutdown
+    }
+
+    if(exists("L2221.GlobalTechLifetime_en")) {
+      L2221.GlobalTechLifetime_en %>%
+        add_title("Global tech lifetime for any technology with no retirement function") %>%
+        add_units("Lifetime in years") %>%
+        add_comments("Filters for any technology that has no phased or S-curve retirement function, empty by default.") %>%
+        add_legacy_name("L2221.GlobalTechLifetime_en") %>%
+        add_precursors("energy/A221.globaltech_retirement") ->
+        L2221.GlobalTechLifetime_en
+    } else {
+      missing_data() %>%
+        add_legacy_name("energy/L2221.GlobalTechLifetime_en") ->
+        L2221.GlobalTechLifetime_en
+    }
 
     L2221.StubTechProd %>%
       add_title("Calibrated refining sector production") %>%
@@ -723,14 +842,6 @@ module_energy_L2221.refining <- function(command, ...) {
       add_legacy_name("L2221.GlobalTechShrwt") %>%
       add_precursors("energy/A221.globaltech_shrwt") ->
       L2221.GlobalTechShrwt
-
-    L2221.GlobalTechSCurve %>%
-      add_title("Global tech lifetime for techs with s-curve retirement function") %>%
-      add_units("Lifetime in years, half-life in years") %>%
-      add_comments("Filters for any technology that uses an S-curve retirement function") %>%
-      add_legacy_name("L2221.GlobalTechSCurve") %>%
-      add_precursors("energy/A221.globaltech_retirement") ->
-      L2221.GlobalTechSCurve
 
     L2221.Rsrc %>%
       add_title("Market information for depletable resources") %>%
@@ -840,7 +951,7 @@ module_energy_L2221.refining <- function(command, ...) {
                 L2221.StubTechShrwt,
                 L2221.SubsectorLogit_en,
                 L2221.SubsectorShrwtFllt_en,
-                L2221.SubsectorInterp_en,
+                L2221.SubsectorInterpTo_en,
                 L2221.StubTechCoef_refining,
                 L2221.GlobalTechCoef_en,
                 L2221.GlobalTechCost_en,
@@ -858,9 +969,11 @@ module_energy_L2221.refining <- function(command, ...) {
                 L2221.GlobalTechSCurve,
                 L2221.GlobalTechProfitShutdown,
                 L2221.GlobalTechShutdown,
+                L2221.GlobalTechLifetime_en,
                 L2221.SectorZeroProfitMarketName,
                 L2221.StubTechSecondaryOutput,
                 L2221.StubTechCost,
+                L2221.StubTechTrackCapital_en,
                 L2221.StubTech_en)
   } else {
     stop("Unknown command")
