@@ -8,7 +8,7 @@
 #' @param command API command to execute
 #' @param ... other optional parameters, depending on command
 #' @return Depends on \code{command}.
-#' @author Author name
+#' @author YQ/BY 2025
 #' @importFrom tibble tibble
 #' @importFrom dplyr filter mutate select
 module_energy_L271.other_sector_mineral <- function(command, ...) {
@@ -16,8 +16,6 @@ module_energy_L271.other_sector_mineral <- function(command, ...) {
     return(c(FILE = "common/GCAM_region_names",
              FILE = "minerals/other/A271.cmm_historical_demand_all.csv",
              FILE = "minerals/other/A271.cmm_historical_demand_sector.csv",
-             FILE = "minerals/other/A271.cmm_other_sector_region_share.csv",
-             FILE = "minerals/other/A271.cmm_sector_2020_demand.csv",
              FILE = "minerals/other/A271.cmm_sector_retire.csv",
              FILE = "minerals/other/A271.sector.csv",
              FILE = "minerals/other/A271.tech_input.csv",
@@ -48,15 +46,13 @@ module_energy_L271.other_sector_mineral <- function(command, ...) {
     # Load data
     GCAM_region_names <- get_data(all_data, "common/GCAM_region_names",strip_attributes = TRUE)
     A271.cmm_historical_demand_all <- get_data(all_data, "minerals/other/A271.cmm_historical_demand_all.csv",strip_attributes = TRUE)
-    A271.cmm_historical_demand_sector <- get_data(all_data, "minerals/other/A271.cmm_historical_demand_sector.csv",strip_attributes = TRUE)
-    A271.cmm_other_sector_region_share <- get_data(all_data, "minerals/other/A271.cmm_other_sector_region_share.csv",strip_attributes = TRUE)
-    A271.cmm_sector_2020_demand <- get_data(all_data, "minerals/other/A271.cmm_sector_2020_demand.csv",strip_attributes = TRUE)
+    ## NOTE THIS SECTORAL DEMAND CURRENTLY COMES FROM OUTPUT, WE WILL WANT TO CALCULATE THIS DIRECTLY FROM WITHIN GCAMDATA
+    A271.cmm_historical_demand_sector <- get_data(all_data, "minerals/other/A271.cmm_historical_demand_sector.csv", strip_attributes = TRUE)
     A271.cmm_sector_retire <- get_data(all_data, "minerals/other/A271.cmm_sector_retire.csv",strip_attributes = TRUE)
     A271.sector <- get_data(all_data, "minerals/other/A271.sector.csv",strip_attributes = TRUE)
     A271.tech_input <- get_data(all_data, "minerals/other/A271.tech_input.csv",strip_attributes = TRUE)
     A271.demand <- get_data(all_data, "minerals/other/A271.demand.csv",strip_attributes = TRUE)
     L201.Pop_gSSP2 <- get_data(all_data, "L201.Pop_gSSP2",strip_attributes = TRUE)
-
     L2111.RsrcCalProd <- get_data(all_data, "L2111.RsrcCalProd", strip_attributes = TRUE)
 
     A271.sector %>%
@@ -144,33 +140,12 @@ module_energy_L271.other_sector_mineral <- function(command, ...) {
 
     # Outputs -- demand efficiency projections mineral other sector
 
-
-    A271.cmm_historical_sector_demand_ratio <-
-      A271.cmm_historical_demand_all %>%
-      # we don't have 1975 data, so we just assume 1975 demand = 1990 demand * 0.6
-      mutate(`1975` = `1990`*0.6,
-             ratio_1975 = `1975`/`2020`,
-             ratio_1990 = `1990`/`2020`,
-             ratio_2005 = `2005`/`2020`,
-             ratio_2010 = `2010`/`2020`,
-             ratio_2015 = `2015`/`2020`) %>%
-      select(resource, unit, `1975` = ratio_1975 , `1990` = ratio_1990 , `2005` = ratio_2005 , `2010` = ratio_2010 , `2015` = ratio_2015)%>%
-      gather_years() %>%
-      rename(ratio = value)
-
-    A271.cmm_historical_sector_demand <-
-      A271.cmm_historical_sector_demand_ratio %>%
-      left_join(A271.cmm_sector_2020_demand,
-                by = c("resource",  "unit")) %>%
-      rename(y2020 = `2020`) %>%
-      mutate(demand = ratio * y2020) %>%
-      select(resource,  unit,   year, value = demand)
-
     ## BY 7-23-2025: for minerals that have supply curves, we need to adjust all demand such that
     ## total global supply = total global demand (for now)
     A271.cmm_historical_demand_all_Rsrc_adj <- L2111.RsrcCalProd %>%
-      filter(year %in% MODEL_BASE_YEARS) %>%
-      mutate(unit = "Mt") %>%
+      filter(year %in% c(MODEL_BASE_YEARS, 2020)) %>%
+      mutate(unit = "Mt",
+             resource = paste("regional",resource)) %>%
       group_by(resource, unit, year) %>%
       dplyr::summarise(value = sum(cal.production)) %>%
       ungroup() %>%
@@ -183,17 +158,30 @@ module_energy_L271.other_sector_mineral <- function(command, ...) {
       filter(! (resource %in% energy.TRADED_MINERAL)) %>%
       bind_rows(A271.cmm_historical_demand_all_Rsrc_adj)
 
+    # Prepare the energy sector demand data for joining
+    A271.cmm_historical_demand_sector_long <- A271.cmm_historical_demand_sector %>%
+      # we don't have 1975 data, so we just assume 1975 demand = 1990 demand * 0.6
+      mutate(`1975` = `1990`*0.6) %>%
+      tidyr::pivot_longer(cols = -c(input),
+                          names_to = "year",
+                          values_to = "value") %>%
+        mutate(year = as.numeric(year))
+
+    # Now, we calculate "other" sector demand by subtracting the combined energy sector demand from total "all" demand
     A271.cmm_historical_demand_other_sector <-
       A271.cmm_historical_demand_all_adj %>%
       gather_years() %>%
       filter(year != 2020) %>%
       rename(annual_total_demand = value) %>%
-      left_join(A271.cmm_historical_sector_demand %>%
-                  rename(sector_demand = value),
-                by = c("resource", "unit", "year")) %>%
+      left_join(A271.cmm_historical_demand_sector_long, by = c("resource" = "input", "year")) %>%
+      rename(sector_demand = value) %>%
       # BY 7-23-2025: for now, we will remove any loss rate, so that supply and demand balance.
       mutate(value = (annual_total_demand - sector_demand)) %>%
-      select(resource, unit, year, value)
+      select(resource, unit, year, value) %>%
+      ## CHECK: We cannot have negative demands
+      # For now, if they are from unlimited resource minerals, we can simply re-set the other sector demand to zero.
+      # If there are any depletable resource minerals with negative demands, we would need to make additional adjustments (e.g. adjust supplies)
+      mutate(value = if_else(value < 0, 0, value))
 
     A271.pop_region_share <-
       L201.Pop_gSSP2 %>%
@@ -209,7 +197,7 @@ module_energy_L271.other_sector_mineral <- function(command, ...) {
       left_join(A271.cmm_historical_demand_other_sector,
                 by = c("resource", "year")) %>%
       mutate(value = value * share) %>%
-      left_join(A271.tech_input %>%
+      left_join(regionalize_mineral_inputs(A271.tech_input) %>%
                   select(supplysector, minicam.energy.input),
                 by = c("resource" = "minicam.energy.input")) %>%
       select(region, energy.final.demand = supplysector, year, base.service = value) %>%
@@ -387,8 +375,6 @@ module_energy_L271.other_sector_mineral <- function(command, ...) {
       add_units("None") %>%
       add_precursors("minerals/other/A271.cmm_historical_demand_all.csv",
                      "minerals/other/A271.cmm_historical_demand_sector.csv",
-                     "minerals/other/A271.cmm_other_sector_region_share.csv",
-                     "minerals/other/A271.cmm_sector_2020_demand.csv",
                      "L201.Pop_gSSP2") %>%
       add_legacy_name("L271.regional_cmm_historical_demand_other_sector") %>%
       add_comments("mineral demand in other sector in historical year by region") ->
