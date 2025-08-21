@@ -231,10 +231,7 @@ module_energy_L2541.transportation_UCD_mineral <- function(command, ...) {
       group_by(region, pass.through.sector, tranSubsector, stub.technology) %>%
       arrange(year) %>%
       mutate(lag_output = lag(output),
-             lag_year = lag(year),
-             years_elapsed = year - lag_year,
-             remaining_stock = lag_output * (1 - 0.05)^years_elapsed,
-             new_investment = output - remaining_stock,
+             new_investment = output - lag_output,
              new_investment = pmax(new_investment, 0),
              new_investment = if_else((is.na(new_investment) & !is.na(output)), output, new_investment)) %>%
       ungroup() %>%
@@ -253,12 +250,25 @@ module_energy_L2541.transportation_UCD_mineral <- function(command, ...) {
 
     # Use modified coefficients where they exist, else default to the original coefficients.
     # modified coefficients only exist for technologies with StubTechProd calibrated values in base years.
-    L2541.trn_globaltech_mineral_curcoef_final <- L2541.trn_globaltech_mineral_curcoef_regMineralInputs %>%
+    L2541.trn_globaltech_mineral_curcoef_modMI <- L2541.trn_globaltech_mineral_curcoef_regMineralInputs %>%
       left_join(L2541.trn_globaltech_mineral_curcoef_modified, by = c("region", "pass.through.sector", "tranSubsector", "stub.technology", "year",
                                                                            "minicam.energy.input", "model.year"),
                 suffix = c(".original", ".new")) %>%
       mutate(current.coef = if_else(is.na(current.coef.new), current.coef.original, current.coef.new)) %>%
       select(LEVEL2_DATA_NAMES[["PassThruStubTranTechMineralCurCoef"]], sce)
+
+    ##BY 8-19-2025 Annualize mineral intensities
+    # By default GCAM output reports the mineral demand associated with new investment for each full period (e.g. 5-years)
+    # We want to view annual mineral demand, and therefore we have previously divided output by 5
+    # However, to balance calibration, we now need to do this step internally
+
+    L2541.trn_globaltech_mineral_curcoef_final <- L2541.trn_globaltech_mineral_curcoef_modMI  %>%
+      group_by(region, pass.through.sector, tranSubsector, stub.technology, minicam.energy.input, sce) %>%
+      arrange(year) %>%
+      mutate(years_elapsed = if_else(is.na(lag(year)), 1, year - lag(year)),
+             current.coef  = current.coef / years_elapsed) %>%
+      ungroup() %>%
+      select(-years_elapsed)
 
     L2541.trn_globaltech_mineral_coef_final <-  L2541.trn_globaltech_mineral_coef_regMineralInputs
 

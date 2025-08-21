@@ -123,10 +123,7 @@ module_energy_L2261.elect_td_mineral <- function(command, ...) {
       group_by(region) %>%
       arrange(year) %>%
       mutate(lag_output = lag(output),
-             lag_year = lag(year),
-             years_elapsed = year - lag_year,
-             remaining_stock = lag_output * (1 - 0.05)^years_elapsed,
-             new_investment = output - remaining_stock,
+             new_investment = output - lag_output,
              new_investment = pmax(new_investment, 0),
              new_investment = if_else(year == 1975, output, new_investment)) %>%
       ungroup()
@@ -143,8 +140,22 @@ module_energy_L2261.elect_td_mineral <- function(command, ...) {
       mutate(current.coef = current.coef_new) %>%
       select(LEVEL2_DATA_NAMES[["RegionalStubTechMineralCurCoef"]])
 
-    L2261.StubTechCoef_elect_td_mineral_final <- bind_rows(L2261.StubTechCoef_elect_td_mineral_modified,
+    L2261.StubTechCoef_elect_td_mineral_modMI <- bind_rows(L2261.StubTechCoef_elect_td_mineral_modified,
                                                            filter(L2261.StubTechCoef_elect_td_mineral_regMineralInput, !(year %in% MODEL_BASE_YEARS)))
+
+     ##BY 8-19-2025 Annualize mineral intensities
+    # By default GCAM output reports the mineral demand associated with new investment for each full period (e.g. 5-years)
+    # We want to view annual mineral demand, and therefore we have previously divided output by 5
+    # However, to balance calibration, we now need to do this step internally
+
+    L2261.StubTechCoef_elect_td_mineral_final <- L2261.StubTechCoef_elect_td_mineral_modMI %>%
+      group_by(region, supplysector, subsector, stub.technology, minicam.energy.input) %>%
+      arrange(year) %>%
+      mutate(years_elapsed = if_else(is.na(lag(year)), 1, year - lag(year)),
+             current.coef  = current.coef / years_elapsed) %>%
+      ungroup() %>%
+      select(-years_elapsed)
+
     # ===================================================
     L2261.StubTechCost_elect_td  %>%
       add_title("Regional-specific non-mineral non-energy cost for elect_td technologies") %>%

@@ -921,8 +921,8 @@ module_energy_L2233.electricity_mineral <- function(command, ...) {
     # Mineral demands are named as: regional copper, regional lithium, regional nickel
     L2233.Regionaltech_mineral_coef_constance_regMineralInputs <- regionalize_mineral_inputs(L2233.Regionaltech_mineral_coef_constance)
     L2233.Regionaltech_mineral_coef_reduction_regMineralInputs <- regionalize_mineral_inputs(L2233.Regionaltech_mineral_coef_reduction)
-    L2233.Globaltech_mineral_coef_constance_final <- regionalize_mineral_inputs(L2233.Globaltech_mineral_coef_constance)
-    L2233.Globaltech_mineral_coef_reduction_final <- regionalize_mineral_inputs(L2233.Globaltech_mineral_coef_reduction)
+    L2233.Globaltech_mineral_coef_constance_regMineralInputs <- regionalize_mineral_inputs(L2233.Globaltech_mineral_coef_constance)
+    L2233.Globaltech_mineral_coef_reduction_regMineralInputs <- regionalize_mineral_inputs(L2233.Globaltech_mineral_coef_reduction)
 
     ## BY 7-28-2025: Modify mineral intensities in the base years such that we would have the equivalent mineral demands if we
     # had the service demand representing solely the new investment (i.e. if base years were vintaged)
@@ -945,10 +945,7 @@ module_energy_L2233.electricity_mineral <- function(command, ...) {
       group_by(region, supplysector, subsector, stub.technology) %>%
       arrange(year) %>%
       mutate(lag_output = lag(output),
-             lag_year = lag(year),
-             years_elapsed = year - lag_year,
-             remaining_stock = lag_output * (1 - 0.05)^years_elapsed,
-             new_investment = output - remaining_stock,
+             new_investment = output - lag_output,
              new_investment = pmax(new_investment, 0),
              new_investment = if_else((is.na(new_investment) & !is.na(output)), output, new_investment)) %>%
       ungroup()
@@ -977,14 +974,15 @@ module_energy_L2233.electricity_mineral <- function(command, ...) {
 
     # Use modified coefficients where they exist, else default to the original coefficients.
     # modified coefficients only exist for technologies with StubTechProd calibrated values in base years.
-    L2233.Regionaltech_mineral_coef_constance_final <- L2233.Regionaltech_mineral_coef_constance_regMineralInputs %>%
+    L2233.Regionaltech_mineral_coef_constance_modMI <- L2233.Regionaltech_mineral_coef_constance_regMineralInputs %>%
       left_join(L2233.Regionaltech_mineral_coef_constance_modified, by = c("region", "supplysector", "subsector", "stub.technology", "year",
                                                                            "minicam.energy.input", "model.year"),
                 suffix = c(".original", ".new")) %>%
       mutate(current.coef = if_else(is.na(current.coef.new), current.coef.original, current.coef.new)) %>%
+
       select(LEVEL2_DATA_NAMES[["RegionalStubTechMineralCurCoefAllYr"]])
 
-    L2233.Regionaltech_mineral_coef_reduction_final <- L2233.Regionaltech_mineral_coef_reduction_regMineralInputs %>%
+    L2233.Regionaltech_mineral_coef_reduction_modMI <- L2233.Regionaltech_mineral_coef_reduction_regMineralInputs %>%
       left_join(L2233.Regionaltech_mineral_coef_reduction_modified, by = c("region", "supplysector", "subsector", "stub.technology", "year",
                                                                            "minicam.energy.input", "model.year"),
                 suffix = c(".original", ".new")) %>%
@@ -1002,18 +1000,15 @@ module_energy_L2233.electricity_mineral <- function(command, ...) {
       group_by(region, supplysector, subsector, stub.technology) %>%
       arrange(year) %>%
       mutate(lag_output = lag(output),
-             lag_year = lag(year),
-             years_elapsed = year - lag_year,
-             remaining_stock = lag_output * (1 - 0.05)^years_elapsed,
-             new_investment = output - remaining_stock,
+             new_investment = output - lag_output,
              new_investment = pmax(new_investment, 0),
              new_investment = if_else((is.na(new_investment) & !is.na(output)), output, new_investment)) %>%
       ungroup()
 
-    L2233.Regional_Globaltech_mineral_coef_constance_Yb <- L2233.NewInvestment_elec_cool %>%
+    L2233.Regional_Globaltech_mineral_coef_constance_Yb_modMI <- L2233.NewInvestment_elec_cool %>%
       # Join in the mineral intensity coefficient
       # Using LJ as it is not a 1-to-1 mapping
-      left_join(filter(L2233.Globaltech_mineral_coef_constance_final, year %in% MODEL_BASE_YEARS),
+      left_join(filter(L2233.Globaltech_mineral_coef_constance_regMineralInputs, year %in% MODEL_BASE_YEARS),
                 by = c("supplysector" = "sector.name", "subsector" = "subsector.name", "stub.technology" = "technology", "year")) %>%
       filter(!is.na(current.coef)) %>%
       # adjust the mineral intensities by the ratio between the incremental service demand and the original service demand
@@ -1022,10 +1017,10 @@ module_energy_L2233.electricity_mineral <- function(command, ...) {
       mutate(current.coef = current.coef_new) %>%
       select(LEVEL2_DATA_NAMES[["RegionalStubTechMineralCurCoefAllYr"]])
 
-    L2233.Regional_Globaltech_mineral_coef_reduction_Yb <- L2233.NewInvestment_elec_cool %>%
+    L2233.Regional_Globaltech_mineral_coef_reduction_Yb_modMI <- L2233.NewInvestment_elec_cool %>%
       # Join in the mineral intensity coefficient
       # Using LJ as it is not a 1-to-1 mapping
-      left_join(filter(L2233.Globaltech_mineral_coef_reduction_final, year %in% MODEL_BASE_YEARS),
+      left_join(filter(L2233.Globaltech_mineral_coef_reduction_regMineralInputs, year %in% MODEL_BASE_YEARS),
                 by = c("supplysector" = "sector.name", "subsector" = "subsector.name", "stub.technology" = "technology", "year")) %>%
       filter(!is.na(current.coef)) %>%
       # adjust the mineral intensities by the ratio between the incremental service demand and the original service demand
@@ -1034,7 +1029,57 @@ module_energy_L2233.electricity_mineral <- function(command, ...) {
       mutate(current.coef = current.coef_new) %>%
       select(LEVEL2_DATA_NAMES[["RegionalStubTechMineralCurCoefAllYr"]])
 
+    ##BY 8-19-2025 Annualize mineral intensities
+    # By default GCAM output reports the mineral demand associated with new investment for each full period (e.g. 5-years)
+    # We want to view annual mineral demand, and therefore we have previously divided output by 5
+    # However, to balance calibration, we now need to do this step internally
+    L2233.Regionaltech_mineral_coef_constance_final <- L2233.Regionaltech_mineral_coef_constance_modMI %>%
+      group_by(region, supplysector, subsector, stub.technology, minicam.energy.input, model.year) %>%
+      arrange(year) %>%
+      mutate(years_elapsed = if_else(is.na(lag(year)), 1, year - lag(year)),
+             current.coef  = current.coef / years_elapsed) %>%
+      ungroup() %>%
+      select(-years_elapsed)
 
+    L2233.Regionaltech_mineral_coef_reduction_final <- L2233.Regionaltech_mineral_coef_reduction_modMI %>%
+      group_by(region, supplysector, subsector, stub.technology, minicam.energy.input, model.year) %>%
+      arrange(year) %>%
+      mutate(years_elapsed = if_else(is.na(lag(year)), 1, year - lag(year)),
+             current.coef  = current.coef / years_elapsed) %>%
+      ungroup() %>%
+      select(-years_elapsed)
+
+    L2233.Globaltech_mineral_coef_constance_final <- L2233.Globaltech_mineral_coef_constance_regMineralInputs %>%
+      group_by(sector.name, subsector.name, technology, minicam.energy.input, model.year) %>%
+      arrange(year) %>%
+      mutate(years_elapsed = if_else(is.na(lag(year)), 1, year - lag(year)),
+             current.coef  = current.coef / years_elapsed) %>%
+      ungroup() %>%
+      select(-years_elapsed)
+
+    L2233.Globaltech_mineral_coef_reduction_final <- L2233.Globaltech_mineral_coef_reduction_regMineralInputs %>%
+      group_by(sector.name, subsector.name, technology, minicam.energy.input, model.year) %>%
+      arrange(year) %>%
+      mutate(years_elapsed = if_else(is.na(lag(year)), 1, year - lag(year)),
+             current.coef  = current.coef / years_elapsed) %>%
+      ungroup() %>%
+      select(-years_elapsed)
+
+  L2233.Regional_Globaltech_mineral_coef_constance_Yb <- L2233.Regional_Globaltech_mineral_coef_constance_Yb_modMI %>%
+      group_by(region, supplysector, subsector, stub.technology, minicam.energy.input, model.year) %>%
+      arrange(year) %>%
+      mutate(years_elapsed = if_else(is.na(lag(year)), 1, year - lag(year)),
+             current.coef  = current.coef / years_elapsed) %>%
+      ungroup() %>%
+      select(-years_elapsed)
+
+  L2233.Regional_Globaltech_mineral_coef_reduction_Yb <- L2233.Regional_Globaltech_mineral_coef_reduction_Yb_modMI %>%
+    group_by(region, supplysector, subsector, stub.technology, minicam.energy.input, model.year) %>%
+    arrange(year) %>%
+    mutate(years_elapsed = if_else(is.na(lag(year)), 1, year - lag(year)),
+           current.coef  = current.coef / years_elapsed) %>%
+    ungroup() %>%
+    select(-years_elapsed)
 
     ## ===================================================================
     ## Section 3 -- Produce outputs, add appropriate flags and comments
