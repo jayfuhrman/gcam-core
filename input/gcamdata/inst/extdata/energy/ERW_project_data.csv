@@ -1,0 +1,19 @@
+# File: ERW_project_data.csv
+# Title: Country-level project data to constrain near-term deployment
+# Comments: Collated from publically-available project data from Carbon Direct
+# Units: MtCO2 per year
+# Column types: cn
+# ----------
+country_name,2030
+India,5
+Australia,1
+United States of America,10
+Kenya,5
+Brazil,0.5
+India,0.33
+"Tanzania, United Republic of",0.33
+Zambia,0.33
+United Kingdom,0.5
+Colombia,1
+United Kingdom,1
+Pacific Islands Trust Territory,1

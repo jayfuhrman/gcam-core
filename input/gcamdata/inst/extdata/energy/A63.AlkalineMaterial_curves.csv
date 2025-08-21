@@ -1,0 +1,12 @@
+# File: A63.AlkalineMaterial_curves.csv
+# Title: Carbon storage resource supply curve points
+# Units: cost_2005USDtCO2: 2005$/tCO2
+# Column types: cccnn
+# ----------
+resource,subresource,grade,fraction,cost_2005USDtCO2
+inorganic-surface-storage,inorganic-surface-storage,grade 1,0,0
+inorganic-surface-storage,inorganic-surface-storage,grade 2,0.005,0.001
+inorganic-surface-storage,inorganic-surface-storage,grade 3,0.1,0.002
+inorganic-surface-storage,inorganic-surface-storage,grade 4,0.6,1
+inorganic-surface-storage,inorganic-surface-storage,grade 5,0.295,100
+inorganic-surface-storage,inorganic-surface-storage,grade 6,0,3500

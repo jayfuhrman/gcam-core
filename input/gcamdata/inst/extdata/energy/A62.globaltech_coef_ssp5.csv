@@ -1,6 +1,6 @@
 # File: A62.globaltech_coef_ssp5.csv
-# Title: Default coefficients for DAC
-# Units: airCO2 input is unitless (MtC from the atmosphere per Mt dac demand); all others are GJ per kg C (EJ of energy per Mt C)
+# Title: Default coefficients for DAC. DAC to liquids reflect carbon capture input coefficients only, with H2 production coefs added downstream
+# Units: airCO2 input is unitless (MtC from the atmosphere per Mt dac demand); all others are GJ per kg C (EJ of energy per Mt C). DAC to liquids is also unitless (GJ/GJ)
 # Column types: ccccnnnn
 # ----------
 supplysector,subsector,technology,minicam.energy.input,1971,initial-future-year,2050,2100
@@ -9,9 +9,6 @@ CO2 removal,dac,hightemp DAC NG,elect_td_ind,0.006526667,0.006526667,0.004766667
 CO2 removal,dac,hightemp DAC NG,airCO2,1,1,1,1
 CO2 removal,dac,hightemp DAC NG,water_td_ind_C,0.017233333,0.017233333,0.017233333,0.017233333
 CO2 removal,dac,hightemp DAC NG,water_td_ind_W,0.017233333,0.017233333,0.017233333,0.017233333
-CO2 removal,dac,no DAC,process heat dac,0,0,0,0
-CO2 removal,dac,no DAC,elect_td_ind,0,0,0,0
-CO2 removal,dac,no DAC,airCO2,0,0,0,0
 process heat dac,gas CCS,gas CCS,wholesale gas,1,1,1,1
 CO2 removal,dac,hightemp DAC elec,elect_td_ind,0.0220044,0.0220044,0.0186384,0.0186384
 CO2 removal,dac,hightemp DAC elec,airCO2,1,1,1,1
@@ -19,3 +16,19 @@ CO2 removal,dac,hightemp DAC elec,water_td_ind_C,0.017233333,0.017233333,0.01723
 CO2 removal,dac,hightemp DAC elec,water_td_ind_W,0.017233333,0.017233333,0.017233333,0.017233333
 CO2 removal,dac,lowtemp DAC heatpump,elect_td_ind,0.0200684,0.0200684,0.009320178,0.009320178
 CO2 removal,dac,lowtemp DAC heatpump,airCO2,1,1,1,1
+CO2 removal,dac,lowtemp DAC geothermal,elec_geothermal,0.0066,0.0066,0.0066,0.0066
+CO2 removal,dac,lowtemp DAC geothermal,geothermal,0.019799998,0.019799998,0.019799998,0.019799998
+CO2 removal,dac,lowtemp DAC geothermal,airCO2,1,1,1,1
+refining,dac to liquids,industrial hydrogen,H2 industrial,1.19,1.19,1.19,1.19
+refining,dac to liquids,industrial hydrogen,airCO2,19.6,19.6,19.6,19.6
+refining,dac to liquids,industrial hydrogen,elect_td_ind,0.04312,0.04312,0.04312,0.04312
+refining,dac to liquids,on-site electrolysis (wind),airCO2,19.6,19.6,19.6,19.6
+refining,dac to liquids,on-site electrolysis (wind),onshore wind resource,0.04312,0.04312,0.04312,0.04312
+refining,dac to liquids,on-site electrolysis (solar),airCO2,19.6,19.6,19.6,19.6
+refining,dac to liquids,on-site electrolysis (solar),global solar resource,0.04312,0.04312,0.04312,0.04312
+refining,dac to liquids,on-site electrolysis (grid electricity),airCO2,19.6,19.6,19.6,19.6
+refining,dac to liquids,on-site electrolysis (grid electricity),elect_td_ind,0.04312,0.04312,0.04312,0.04312
+desalinated water,direct ocean capture,direct ocean capture (co-located with desal),airCO2,0.052047189,0.052047189,0.052047189,0.052047189
+desalinated water,direct ocean capture,direct ocean capture (co-located with desal),elect_td_ind,0.043251486,0.022045293,0.014451346,0.006351486
+desalinated water,direct ocean capture,direct ocean capture (co-located with desal),seawater,2.5,2.5,2.5,2.5
+CO2 removal,dac,direct ocean capture (stand-alone),elect_td_ind,0.060671463,0.060671463,0.060671463,0.060671463

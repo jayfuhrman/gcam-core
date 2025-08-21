@@ -1,8 +1,14 @@
 # File: A62.subsector_interp.csv
-# Title: dac subsector shareweight interpolation
+# Title: cdr subsector shareweight interpolation
 # Units: NA
 # Column types: ccccccc
 # ----------
 supplysector,subsector,apply.to,from.year,to.year,to.value,interpolation.function
-CO2 removal,dac,share-weight,final-calibration-year,end-year,,fixed
+CO2 removal,dac,share-weight,2020,2050,,linear
+CO2 removal,dac,share-weight,2050,end-year,,fixed
 process heat dac,gas CCS,share-weight,final-calibration-year,end-year,,fixed
+CO2 removal,no CDR,share-weight,final-calibration-year,end-year,,fixed
+desalinated water,direct ocean capture,share-weight,2020,2050,,linear
+desalinated water,direct ocean capture,share-weight,2050,end-year,,fixed
+refining,dac to liquids,share-weight,2020,2050,,linear
+refining,dac to liquids,share-weight,2050,end-year,,fixed

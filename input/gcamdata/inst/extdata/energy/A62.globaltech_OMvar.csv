@@ -1,0 +1,10 @@
+# File: A62.globaltech_OMvar.csv
+# Title: DAC technology variable operations and maintenance costs
+# Units: 2015$/tCO2
+# Source: 
+# Column types: ccccnnnnnnnnc 
+# ----------
+supplysector,subsector,technology,input.OM.var,1971,1990,2005,2010,2015,2050,improvement.max,improvement.rate,improvement.shadow.technology
+CO2 removal,dac,hightemp DAC NG,OM-var,0,0,0,0,0,0,0.75,0.01,
+CO2 removal,dac,hightemp DAC elec,OM-var,0,0,0,0,0,0,0.75,0.01,
+CO2 removal,dac,lowtemp DAC heatpump,OM-var,0,0,0,0,0,0,0.75,0.01,

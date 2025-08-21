@@ -1,0 +1,11 @@
+# File: A62.globaltech_capacity_factor.csv
+# Title: DAC technology capacity factors
+# Units: Unitless
+# Source:
+# Column types: cccnn 
+# ----------
+supplysector,subsector,technology,1971,2100
+CO2 removal,dac,hightemp DAC NG,0.9,0.9
+CO2 removal,dac,hightemp DAC elec,0.9,0.9
+CO2 removal,dac,lowtemp DAC heatpump,0.9,0.9
+CO2 removal,dac,lowtemp DAC geothermal,0.9,0.9
