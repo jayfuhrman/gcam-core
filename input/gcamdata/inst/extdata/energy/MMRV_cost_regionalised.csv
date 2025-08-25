@@ -1,0 +1,72 @@
+# File: MMRV_cost_regionalised.csv
+# Title: MMRV Costs for ERW and Biochar (regional)
+# Units: 1975$/kgC
+# Source: ILOSAT Labour Wage data, WorldBank Data Logistics Performance Index,ITU data, OECD data
+# Comments: Costs are scaled from the UK source value corresponding to the regional labour wage, logistics performance index, price level index, ICT development index, Environmental Regulation Stringency index, and weighted appropriately for ERW and biochar, Regions are aggregated as per R10 grouping.
+# Column types: cccccn
+# ----------
+region,supplysector,subsector,stub.technology,minicam.non.energy.input,input.cost
+Africa_Eastern,CO2 removal,rock weathering,rock weathering,MMRV cost,0.037654243
+Africa_Northern,CO2 removal,rock weathering,rock weathering,MMRV cost,0.037654243
+Africa_Southern,CO2 removal,rock weathering,rock weathering,MMRV cost,0.037654243
+Africa_Western,CO2 removal,rock weathering,rock weathering,MMRV cost,0.037654243
+South Africa,CO2 removal,rock weathering,rock weathering,MMRV cost,0.037654243
+China,CO2 removal,rock weathering,rock weathering,MMRV cost,0.026568591
+Taiwan,CO2 removal,rock weathering,rock weathering,MMRV cost,0.026568591
+EU-12,CO2 removal,rock weathering,rock weathering,MMRV cost,0.096317
+EU-15,CO2 removal,rock weathering,rock weathering,MMRV cost,0.096317
+Europe_Non_EU,CO2 removal,rock weathering,rock weathering,MMRV cost,0.096317
+European Free Trade Association,CO2 removal,rock weathering,rock weathering,MMRV cost,0.096317
+India,CO2 removal,rock weathering,rock weathering,MMRV cost,0.02767446
+Argentina,CO2 removal,rock weathering,rock weathering,MMRV cost,0.040045819
+Brazil,CO2 removal,rock weathering,rock weathering,MMRV cost,0.040045819
+Central America and Caribbean,CO2 removal,rock weathering,rock weathering,MMRV cost,0.040045819
+Colombia,CO2 removal,rock weathering,rock weathering,MMRV cost,0.040045819
+Mexico,CO2 removal,rock weathering,rock weathering,MMRV cost,0.040045819
+South America_Northern,CO2 removal,rock weathering,rock weathering,MMRV cost,0.040045819
+South America_Southern,CO2 removal,rock weathering,rock weathering,MMRV cost,0.040045819
+Middle East,CO2 removal,rock weathering,rock weathering,MMRV cost,0.086701738
+Canada,CO2 removal,rock weathering,rock weathering,MMRV cost,0.124807048
+USA,CO2 removal,rock weathering,rock weathering,MMRV cost,0.124807048
+Australia_NZ,CO2 removal,rock weathering,rock weathering,MMRV cost,0.116773209
+Japan,CO2 removal,rock weathering,rock weathering,MMRV cost,0.116773209
+South Korea,CO2 removal,rock weathering,rock weathering,MMRV cost,0.116773209
+Europe_Eastern,CO2 removal,rock weathering,rock weathering,MMRV cost,0.048770499
+Russia,CO2 removal,rock weathering,rock weathering,MMRV cost,0.048770499
+Central Asia,CO2 removal,rock weathering,rock weathering,MMRV cost,0.025412413
+Indonesia,CO2 removal,rock weathering,rock weathering,MMRV cost,0.025412413
+Pakistan,CO2 removal,rock weathering,rock weathering,MMRV cost,0.025412413
+South Asia,CO2 removal,rock weathering,rock weathering,MMRV cost,0.025412413
+Southeast Asia,CO2 removal,rock weathering,rock weathering,MMRV cost,0.025412413
+Africa_Eastern,biochar,biochar,slow pyrolysis biochar,MMRV cost,0.008391873
+Africa_Northern,biochar,biochar,slow pyrolysis biochar,MMRV cost,0.008391873
+Africa_Southern,biochar,biochar,slow pyrolysis biochar,MMRV cost,0.008391873
+Africa_Western,biochar,biochar,slow pyrolysis biochar,MMRV cost,0.008391873
+South Africa,biochar,biochar,slow pyrolysis biochar,MMRV cost,0.008391873
+China,biochar,biochar,slow pyrolysis biochar,MMRV cost,0.006873024
+Taiwan,biochar,biochar,slow pyrolysis biochar,MMRV cost,0.006873024
+EU-12,biochar,biochar,slow pyrolysis biochar,MMRV cost,0.01626386
+EU-15,biochar,biochar,slow pyrolysis biochar,MMRV cost,0.01626386
+Europe_Non_EU,biochar,biochar,slow pyrolysis biochar,MMRV cost,0.01626386
+European Free Trade Association,biochar,biochar,slow pyrolysis biochar,MMRV cost,0.01626386
+India,biochar,biochar,slow pyrolysis biochar,MMRV cost,0.007069404
+Argentina,biochar,biochar,slow pyrolysis biochar,MMRV cost,0.00904342
+Brazil,biochar,biochar,slow pyrolysis biochar,MMRV cost,0.00904342
+Central America and Caribbean,biochar,biochar,slow pyrolysis biochar,MMRV cost,0.00904342
+Colombia,biochar,biochar,slow pyrolysis biochar,MMRV cost,0.00904342
+Mexico,biochar,biochar,slow pyrolysis biochar,MMRV cost,0.00904342
+South America_Northern,biochar,biochar,slow pyrolysis biochar,MMRV cost,0.00904342
+South America_Southern,biochar,biochar,slow pyrolysis biochar,MMRV cost,0.00904342
+Middle East,biochar,biochar,slow pyrolysis biochar,MMRV cost,0.015239479
+Canada,biochar,biochar,slow pyrolysis biochar,MMRV cost,0.017618792
+USA,biochar,biochar,slow pyrolysis biochar,MMRV cost,0.017618792
+Australia_NZ,biochar,biochar,slow pyrolysis biochar,MMRV cost,0.017106135
+Japan,biochar,biochar,slow pyrolysis biochar,MMRV cost,0.017106135
+South Korea,biochar,biochar,slow pyrolysis biochar,MMRV cost,0.017106135
+Europe_Eastern,biochar,biochar,slow pyrolysis biochar,MMRV cost,0.010204729
+Russia,biochar,biochar,slow pyrolysis biochar,MMRV cost,0.010204729
+Central Asia,biochar,biochar,slow pyrolysis biochar,MMRV cost,0.006855535
+Indonesia,biochar,biochar,slow pyrolysis biochar,MMRV cost,0.006855535
+Pakistan,biochar,biochar,slow pyrolysis biochar,MMRV cost,0.006855535
+South Asia,biochar,biochar,slow pyrolysis biochar,MMRV cost,0.006855535
+Southeast Asia,biochar,biochar,slow pyrolysis biochar,MMRV cost,0.006855535
