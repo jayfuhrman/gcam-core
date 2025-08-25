@@ -31,8 +31,7 @@ module_energy_batch_Weathering_xml <- function(command, ...) {
              "L263.StubTechEff",
              "L263.TechPmult"))
   } else if(command == driver.DECLARE_OUTPUTS) {
-    return(c(XML = "Weathering.xml",
-             XML = "MMRVcost_weathering.xml"))
+    return(c(XML = "Weathering.xml"))
   } else if(command == driver.MAKE) {
 
     all_data <- list(...)[[1]]
@@ -73,8 +72,7 @@ module_energy_batch_Weathering_xml <- function(command, ...) {
       add_xml_data(L263.SubsectorShrwtFllt_C, "SubsectorShrwtFllt") %>%
       add_xml_data(L263.StubTech_C, "StubTech") %>%
       add_xml_data(L263.GlobalTechCoef_C, "GlobalTechCoef") %>%
-      add_xml_data(L263.GlobalTechCost_C %>%
-                     filter(minicam.non.energy.input != "MMRV cost"), "GlobalTechCost") %>%
+      add_xml_data(L263.GlobalTechCost_C, "GlobalTechCost") %>%
       add_xml_data(L263.GlobalTechShrwt_C, "GlobalTechShrwt") %>%
       add_xml_data(L263.RsrcPrice, "RenewRsrcPrice") %>%
       add_xml_data(L263.WeatheringRsrcMax, "GrdRenewRsrcMax") %>%
@@ -90,14 +88,7 @@ module_energy_batch_Weathering_xml <- function(command, ...) {
                      "L263.StubTechEff","L263.TechPmult") ->
       Weathering.xml
 
-    create_xml("MMRVcost_weathering.xml") %>%
-      add_xml_data(L263.GlobalTechCost_C %>%
-                     filter(minicam.non.energy.input == "MMRV cost"), "GlobalTechCost") %>%
-      add_precursors("L263.GlobalTechCost_C") ->
-      MMRVcost_weathering.xml
-
-    return_data(Weathering.xml,
-                MMRVcost_weathering.xml)
+    return_data(Weathering.xml)
   } else {
     stop("Unknown command")
   }
