@@ -33,3 +33,4 @@ refining,dac to liquids,industrial hydrogen,non-energy,7.468525649,7.468525649,3
 refining,dac to liquids,on-site electrolysis (wind),non-energy,7.468525649,7.468525649,3.609858694,3.609858694
 refining,dac to liquids,on-site electrolysis (solar),non-energy,7.468525649,7.468525649,3.609858694,3.609858694
 refining,dac to liquids,on-site electrolysis (grid electricity),non-energy,7.468525649,7.468525649,3.609858694,3.609858694
+electricity,geothermal,geothermal dac,levelized non-fuel cost,54.94,54.94,54.94,54.94

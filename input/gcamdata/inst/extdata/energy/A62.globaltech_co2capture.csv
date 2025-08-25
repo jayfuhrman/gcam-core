@@ -11,3 +11,4 @@ CO2 removal,dac,lowtemp DAC heatpump,1,1
 CO2 removal,dac,lowtemp DAC geothermal,1,1
 CO2 removal,dac,direct ocean capture (stand-alone),1,1
 desalinated water,direct ocean capture,direct ocean capture (co-located with desal),1,1
+electricity,geothermal,geothermal dac,1,1

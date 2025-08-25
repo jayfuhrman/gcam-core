@@ -20,3 +20,4 @@ refining,dac to liquids,industrial hydrogen,initial-future-year,45,,25,0.2,-0.1,
 refining,dac to liquids,on-site electrolysis (wind),initial-future-year,45,,25,0.2,-0.1,10
 refining,dac to liquids,on-site electrolysis (solar),initial-future-year,45,,25,0.2,-0.1,10
 refining,dac to liquids,on-site electrolysis (grid electricity),initial-future-year,45,,25,0.2,-0.1,10
+electricity,geothermal,geothermal dac,initial-future-year,80,,40,0.1,-0.1,6
