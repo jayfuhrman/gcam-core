@@ -69,7 +69,7 @@ module_energy_L111.rsrc_fos_Prod <- function(command, ...) {
       group_by(sector, fuel, year) %>%
       summarise(value = sum(value), .groups = "drop") %>%
       # remove ctl/gtl products from oil consumption calcs
-      left_join(ctl_gtl_global_out, by = c("year", "fuel")) %>%
+      left_join(ctlgtl_global_out, by = c("year", "fuel")) %>%
       mutate(value = value + replace_na(ctlgtl_out, 0)) %>%
       select(-ctlgtl_out)
 
