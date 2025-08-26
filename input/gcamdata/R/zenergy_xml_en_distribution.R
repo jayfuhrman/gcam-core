@@ -247,7 +247,7 @@ module_energy_en_distribution_xml <- function(command, ...) {
                     # "L2261.GlobalTechCost_elect_td",
                      "L2261.GlobalTechTrackCapital_elect_td",
                      "L2261.GlobalTechShrwt_elect_td",
-                     "L2261.StubTechCoef_elect_td",
+                     "L226.StubTechCoef_elect_td",
                      "L2261.StubTechCost_elect_td",
                      "L2261.StubTechCoef_elect_td_mineral_final",
                      "L2261.StubTechLifetime_elect_td",

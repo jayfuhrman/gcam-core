@@ -99,6 +99,7 @@ if(command == driver.DECLARE_INPUTS) {
   # ------- MINERAL RESOURCE RESERVE ADDITIONS
   # Taken from zenergy_L210.Resources (fossil resources),
   # we are modeling minerals with the similar resource-reserve approach
+  # Use Pralit's function:
 
   # Kind of a level 1.5 we are going to calculate / update historical energy
   # but the years we choose as the model base years matter
@@ -116,6 +117,7 @@ if(command == driver.DECLARE_INPUTS) {
              reserve = 0,
              cumul.prod = 0) ->
       data_proc
+
 
     # operate each model base year one at a time
     for(year_i in MODEL_BASE_YEARS) {
@@ -178,11 +180,13 @@ if(command == driver.DECLARE_INPUTS) {
       prev_slice = curr_slice
       data_proc[data_proc$year_operate == year_i, ] = curr_slice
     }
+
     # ultimately we just need the new vintage reserves
     data_proc %>%
       filter(year == year_operate) %>%
-      select(year, value = reserve)
+     select(year, value = reserve)
   }
+
   # Back calculate reserve additions to be exactly enough given our historical production
   # and assumed production lifetime.  Note production lifetimes may not cover the entire
   # historical period and production may dip below capacity making the calculation a bit more
@@ -199,16 +203,7 @@ if(command == driver.DECLARE_INPUTS) {
     # omit NAs for now. These are regions with no future resources but very tiny historical production.
     na.omit()
 
-  L1111.mineral_production_R_Yb_global_total <- L1111.mineral_production_R_Yb %>%
-    filter(Year %in% c(MODEL_BASE_YEARS, 2020)) %>%
-    rename(year = Year) %>%
-    group_by(Mineral, Units, year, resource) %>%
-    dplyr::summarise(value = sum(value)) %>%
-    mutate(value = value/1000,
-           Units = "Mt")
-
-
-    L2111.mineral_Reserve_Mt_R_Yh <- L2111.mineral_production_R_Yb %>%
+  L2111.mineral_Reserve_kt_R_Yh <- L2111.mineral_production_R_Yb %>%
       mutate(lifetime = round(Lifetime, digits = 0)) %>%
       rename(technology = resource) %>%
       select(-Mineral, - Lifetime) %>%
@@ -220,7 +215,7 @@ if(command == driver.DECLARE_INPUTS) {
       tidyr::unnest(cols = data) %>%
       mutate(value = if_else(is.na(value), 0, value))
 
-  ReserveTotal_Mt_R_F <- L2111.mineral_Reserve_Mt_R_Yh %>%
+  ReserveTotal_kt_R_F <- L2111.mineral_Reserve_kt_R_Yh %>%
     group_by(region, technology) %>%
     summarize(value = sum(value)) %>%
     ungroup()
@@ -280,17 +275,9 @@ if(command == driver.DECLARE_INPUTS) {
   # This will cover all of the production in historical years and will be available at cost 0
 
   # First calculate total historical production by linearly interpolating between base year cal.production
-  L2111.mineral_hist_prod_total <- L2111.mineral_production_R_Yb %>%
-    filter(year %in% MODEL_BASE_YEARS) %>%
-    group_by(Mineral, resource, region, Units) %>%
-    arrange(year, .by_group = TRUE) %>%
-    complete(year = c(seq(min(MODEL_BASE_YEARS), max(MODEL_BASE_YEARS),by=1))) %>%
-    mutate(value = approx_fun(year, value, rule = 2)) %>%
-    dplyr::summarise(value = sum(value)) %>%
-    ungroup()
-
-  L2111.RsrcCurves_minerals_grade_historical <- L2111.mineral_hist_prod_total %>%
-    mutate(subresource = paste0(resource, "_", MODEL_FINAL_BASE_YEAR),
+  L2111.RsrcCurves_minerals_grade_historical <- ReserveTotal_kt_R_F %>%
+    mutate(resource = technology,
+           subresource = paste0(resource, "_", MODEL_FINAL_BASE_YEAR),
            grade = "grade 0",
            available = value,
            extractioncost = 0) %>%
@@ -405,7 +392,7 @@ if(command == driver.DECLARE_INPUTS) {
   #   filter(resource %in% c("copper", "lithium", "nickel"))
   #
 
-  L2111.ReserveCalReserve <- L2111.mineral_Reserve_Mt_R_Yh %>%
+  L2111.ReserveCalReserve <- L2111.mineral_Reserve_kt_R_Yh %>%
     filter(year %in% MODEL_BASE_YEARS) %>%
     mutate(resource = technology,
            reserve.subresource = paste0(resource, "_", max(MODEL_BASE_YEARS))) %>%
