@@ -1,0 +1,25 @@
+# File: A221.biochar_land_alloc.csv
+# Title: Biochar land allocation percentage
+# Units: percentage of total land to bicohar
+# Description: In order to get yield imporvements we need to know land allocation to biochar. We assume that biochar application percentages increases linearly from 0% to 100% in 80 years (2020-2100)
+# Source: Assumption
+# Column types: nn
+# ----------
+year,percentage
+2020,0
+2025,0.0625
+2030,0.125
+2035,0.1875
+2040,0.25
+2045,0.3125
+2050,0.375
+2055,0.4375
+2060,0.5
+2065,0.5625
+2070,0.625
+2075,0.6875
+2080,0.75
+2085,0.8125
+2090,0.875
+2095,0.9375
+2100,1

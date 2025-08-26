@@ -1,0 +1,12 @@
+# File: A221.biochar_yield_increase.csv
+# Title: Biochar yield increases based on metanalysis from Yong Wang (NREL)
+# Units: percentage increase per year
+# Description: Yield increases after biochar application based on irrigation/rainfed and geogrpahic distinction
+# Source: Yong Wang from NREL meta-analysis
+# Column types: ccn
+# ----------
+zone,water,yield_increase
+Tropical,irrigated,0.12
+Tropical,rainfed,0.19
+Temperate,irrigated,0.1
+Temperate,rainfed,0.15

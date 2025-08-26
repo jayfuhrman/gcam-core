@@ -1,0 +1,8 @@
+# File: A221.globaltech_input_driver.csv
+# Title: Refining primary input name to drive non-co2 emissions
+# Units: Unitless
+# Comments: Used to identify which is the appropriate input to drive non-co2 emissions
+# Column types: cccc
+# ----------
+supplysector,subsector,technology,input.name
+biochar,biochar,slow pyrolysis biochar,regional biomass

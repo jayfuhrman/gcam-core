@@ -1,0 +1,8 @@
+# File: A221.subsector_shrwt.csv
+# Title: Primary energy transformation subsector shareweights
+# Units: N/A
+# Description: shareweights and fillout years for subsectors. Biochar same as biomass liquids 
+# Column types: ccccn 
+# ----------
+supplysector,subsector,year.fillout,year,share.weight
+biochar,biochar,initial-future-year,,1

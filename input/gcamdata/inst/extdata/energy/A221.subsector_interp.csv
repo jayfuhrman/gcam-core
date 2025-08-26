@@ -1,0 +1,8 @@
+# File: A221.subsector_interp.csv
+# Title: Primary energy transformation subsector shareweight interpolation
+# Units: NA 
+# Description: biochar same as biomass refining
+# Column types: ccccccc 
+# ----------
+supplysector,subsector,apply.to,from.year,to.year,to.value,interpolation.function
+biochar,biochar,share-weight,final-calibration-year,initial-future-year,,linear

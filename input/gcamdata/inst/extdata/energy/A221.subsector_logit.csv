@@ -1,0 +1,8 @@
+# File: A221.subsector_logit.csv
+# Title: Primary energy transformation subsector logit exponents
+# Units: NA
+# Description: logit exponents and types for subsectors in energy transformation. Biochar same as biomass liquids
+# Column types: ccic 
+# ----------
+supplysector,subsector,logit.exponent,logit.type
+biochar,biochar,-6,absolute-cost-logit

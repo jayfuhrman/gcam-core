@@ -1,0 +1,7 @@
+# File: A221.ghost_shrwt.csv
+# Title: Ghost shareweights for new biochar technologies
+# Units: NA
+# Column types: nn
+# ----------
+year,ghost.unnormalized.share
+2020,0.2

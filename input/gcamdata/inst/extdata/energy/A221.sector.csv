@@ -1,0 +1,8 @@
+# File: A221.sector.csv
+# Title: Primary energy transformation supplysectors biochar
+# Units: N/A
+# Description: Energy transformation supplysector units and logit exponents. Biochar same as refining
+# Column types: ccccic 
+# ----------
+supplysector,output.unit,input.unit,price.unit,logit.exponent,logit.type
+biochar,Mt,EJ,1975$/kg,-6,absolute-cost-logit

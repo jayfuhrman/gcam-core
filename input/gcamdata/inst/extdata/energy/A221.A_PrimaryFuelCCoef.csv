@@ -1,0 +1,9 @@
+# File: A221.A_PrimaryFuelCCoef.csv
+# Title: Global Default Emissions Factors
+# Description: assumed global default emissions factors
+# Units: kg C per GJ
+# Source: Added biochar as 0 since it is a carbon sink with a carbon storage market.
+# Column types: cni 
+# ----------
+PrimaryFuelCO2Coef.name,PrimaryFuelCO2Coef,traded
+biochar,0,0

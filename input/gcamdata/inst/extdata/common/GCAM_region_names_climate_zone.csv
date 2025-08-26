@@ -1,0 +1,40 @@
+# File: GCAM_region_names_climate_zone.csv
+# Title: GCAM 32-region names with climate zone
+# Units: NA
+# Description: Maps GCAM region IDs to region names. Climate regions are temperate if north of the tropic of Cancer (23   27') or south of the Tropic of Capricorn (23   27'). Tropical regions are those within these two tropics. India is split between both temperate and tropical; however, most production happens in southern part https://ipad.fas.usda.gov/rssiws/al/sasia_cropprod.aspx.  Same happens with Mexico so we assume tropical. For South_America Southern most countries are tropical; except for Chile and Uruguay
+# Column types: icc 
+# Source: http://www.ciesin.columbia.edu/docs/004-145/004-145.html
+# ----------
+GCAM_region_ID,region,zone
+1,USA,Temperate
+2,Africa_Eastern,Tropical
+3,Africa_Northern,Temperate
+4,Africa_Southern,Tropical
+5,Africa_Western,Tropical
+6,Australia_NZ,Temperate
+7,Brazil,Tropical
+8,Canada,Temperate
+9,Central America and Caribbean,Tropical
+10,Central Asia,Temperate
+11,China,Temperate
+12,EU-12,Temperate
+13,EU-15,Temperate
+14,Europe_Eastern,Temperate
+15,Europe_Non_EU,Temperate
+16,European Free Trade Association,Temperate
+17,India,Tropical
+18,Indonesia,Tropical
+19,Japan,Temperate
+20,Mexico,Tropical
+21,Middle East,Temperate
+22,Pakistan,Temperate
+23,Russia,Temperate
+24,South Africa,Temperate
+25,South America_Northern,Tropical
+26,South America_Southern,Tropical
+27,South Asia,Temperate
+28,South Korea,Temperate
+29,Southeast Asia,Tropical
+30,Taiwan,Tropical
+31,Argentina,Temperate
+32,Colombia,Tropical

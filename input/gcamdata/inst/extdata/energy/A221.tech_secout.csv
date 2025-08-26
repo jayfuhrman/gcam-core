@@ -1,0 +1,9 @@
+# File: A221.tech_secout.csv
+# Title: Secondary outputs for biochar production
+# Units: GJ out / kg biochar
+# Column types: ccccn
+# Comments: Taking assumptions from Roberts et al 2010 SI spreadsheet we have 20095 MJ of syngas co-produced. We subtract the 211.19 MJ of natural gas that are needed for the slow pyrolisis process and we model the net here
+# Source: Roberts et al 2010 https://pubs.acs.org/doi/full/10.1021/es902266r
+# ----------
+supplysector,subsector,technology,secondary.output,output.ratio
+biochar,biochar,slow pyrolysis biochar,natural gas,0.019883808
