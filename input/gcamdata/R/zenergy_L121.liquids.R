@@ -167,6 +167,12 @@ module_energy_L121.liquids <- function(command, ...) {
       # MEL 08/25: Use IEA refining input shares to calibrate regional crude
       # consumption. Separately track refining feed and end use consumption for
       # downstream refined products calibration
+      ctl_gtl_outputs <- L1012.en_bal_EJ_R_Si_Fi_Yh %>%
+        filter(sector %in% c("out_ctl", "out_gtl")) %>%
+        group_by(GCAM_region_ID, year) %>%
+        summarise(ctlgtl_out = -sum(value), .groups = "drop") %>%
+        mutate(year = as.numeric(year))
+
       refining_feedstock <- L101.detailed_refined_liquids_EJ_R_Yh %>%
         # assume oil refining crude for energy not included in crude for feed receipts
         filter(sector %in% c("net_oil refining", "transfers"),
@@ -182,7 +188,12 @@ module_energy_L121.liquids <- function(command, ...) {
                fuel = "crude oil",
                year = as.numeric(year)) %>%
         group_by(GCAM_region_ID, year, sector, fuel) %>%
-        summarize(value = sum(value), .groups = "drop")
+        summarize(value = sum(value), .groups = "drop") %>%
+        # except some of those negative transfers are actually ctl/gtl outputs
+        # and shouldn't be included in crude oil refining calcs
+        left_join(ctl_gtl_outputs, by = c("GCAM_region_ID", "year")) %>%
+        mutate(value = value + replace_na(ctlgtl_out, 0)) %>%
+        select(-ctlgtl_out)
 
       # Maintain industrial vs end use classification for later refined liquids
       # calibrations
@@ -205,8 +216,8 @@ module_energy_L121.liquids <- function(command, ...) {
         group_by(GCAM_region_ID, year, sector, fuel) %>%
         summarize(value = sum(value), .groups = "drop")
 
-      # Calibrate combined regional consumption to expected GCAM global value
-      # Keep sector differentiation for use in downstream chunks
+      # Calibrate combined regional oil consumption to expected GCAM global
+      # value. Keep sector differentiation for use in downstream chunks
       L121.in_EJ_R_TPES_liq_Yh <- refining_feedstock %>%
         left_join_error_no_match(select(filter(L1012.en_bal_EJ_R_Si_Fi_Yh,
                                                sector == energy.TPES_flow,
@@ -214,6 +225,10 @@ module_energy_L121.liquids <- function(command, ...) {
                                         -sector, -fuel),
                                  by = c("GCAM_region_ID", "year")) %>%
         rename(value = value.x, GCAM = value.y) %>%
+        # also need to remove ctl/gtl outputs from L1012 global consumption
+        left_join(ctl_gtl_outputs, by = c("GCAM_region_ID", "year")) %>%
+        mutate(GCAM = GCAM + replace_na(ctlgtl_out, 0)) %>%
+        select(-ctlgtl_out) %>%
         bind_rows(direct_crude_cons) %>%
         group_by(year) %>%
         mutate(GCAM = replace_na(GCAM, 0),

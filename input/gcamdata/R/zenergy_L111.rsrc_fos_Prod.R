@@ -55,14 +55,24 @@ module_energy_L111.rsrc_fos_Prod <- function(command, ...) {
     # ------- HISTORICAL FOSSIL ENERGY PRODUCTION
 
     # (lines 38-56 in original file)
-    # NOTE: Regional production is derived for each fuel as global TES times regional share of global production
-    # Determine global total primary energy supply (TES) for each fuel
-    L1012.en_bal_EJ_R_Si_Fi_Yh %>%
+    # NOTE: Regional production is derived for each fuel as global TES times
+    # regional share of global production. Determine global total primary energy
+    # supply (TES) for each fuel
+    ctlgtl_global_out <- L1012.en_bal_EJ_R_Si_Fi_Yh %>%
+      filter(sector %in% c("out_ctl", "out_gtl")) %>%
+      group_by(year, fuel) %>%
+      summarise(ctlgtl_out = -sum(value), .groups = "drop") %>%
+      mutate(year = as.numeric(year))
+
+    L111.TES_EJ_F_Yh <- L1012.en_bal_EJ_R_Si_Fi_Yh %>%
       filter(sector == energy.TPES_flow, fuel %in% energy.RSRC_FUELS, year %in% HISTORICAL_YEARS) %>%
       group_by(sector, fuel, year) %>%
-      summarise(value = sum(value)) %>%
-      ungroup ->
-      L111.TES_EJ_F_Yh
+      summarise(value = sum(value), .groups = "drop") %>%
+      # remove ctl/gtl products from oil consumption calcs
+      left_join(ctl_gtl_global_out, by = c("year", "fuel")) %>%
+      mutate(value = value + replace_na(ctlgtl_out, 0)) %>%
+      select(-ctlgtl_out)
+
 
     # Determine regional shares of production for each primary fuel
     L1012.en_bal_EJ_R_Si_Fi_Yh %>%

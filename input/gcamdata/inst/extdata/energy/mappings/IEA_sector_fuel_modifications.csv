@@ -9,11 +9,11 @@ in_electricity generation,heat,,,
 in_heat,heat,,,
 in_industry_chp,electricity,,,
 in_industry_chp,heat,,,
-in_industry_ctl,refined liquids,out_ctl,coal,0.00004186
+in_industry_ctl,refined liquids,out_ctl,refined liquids,0.00004186
 in_industry_energy distribution,gas,net_gas pipeline,gas,-0.00004186
 in_industry_energy distribution,electricity,net_electricity distribution,electricity,-0.00004186
 in_industry_feedstocks,biomass,,,
-in_industry_gtl,refined liquids,out_gtl,gas,0.00004186
+in_industry_gtl,refined liquids,out_gtl,refined liquids,0.00004186
 in_industry_ownuse,electricity,net_electricity ownuse,electricity,-0.00004186
 in_industry_pipeline,gas,net_gas pipeline,gas,0.00004186
 in_trn_road,biomass,in_trn_road,refined biofuels_ethanol,0.00004186

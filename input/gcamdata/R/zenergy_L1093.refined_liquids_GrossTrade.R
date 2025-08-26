@@ -468,7 +468,7 @@ module_energy_L1093.refined_liquids_GrossTrade <- function(command, ...){
          exports_reval = exports_reval * scaling,
          domestic_supply = production_reval - exports_reval)
 
-
+    # TODO: clean this up
     # a_scaled <- liquids_trade_balance_orig_scaled %>%
     #   group_by(fuel, year) %>%
     #   mutate(global_prod = sum(production_reval),
@@ -499,13 +499,13 @@ module_energy_L1093.refined_liquids_GrossTrade <- function(command, ...){
 
     # Disaggregate CTL and GTL-based liquids production to individual products
     # such as gasoline, distillate_fueloil, Jet_Kerosene, and other
-    L122.out_EJ_R_refining_F_Yh %>%
+    ctl_gtl_production <- L122.out_EJ_R_refining_F_Yh %>%
       filter(year %in% HISTORICAL_YEARS) %>%
       filter(sector %in% c("ctl","gtl")) %>%
-      left_join(A22.globaltech_coef_ctlgtl,by=c("sector","fuel"))%>%
-      mutate(value=value*ratio)%>%
-      select(-ratio,-fuel)%>%
-      rename(fuel=product)-> ctl_gtl_production
+      left_join(A22.globaltech_coef_ctlgtl %>% select(-fuel), by = "sector") %>%
+      mutate(value = value * ratio) %>%
+      select(-ratio,-fuel) %>%
+      rename(fuel = product)
 
     # Estimate crude-based liquids production (by subtracting total - bioliquids - ctl/gtl)
     bioliquids_production %>%
@@ -523,8 +523,9 @@ module_energy_L1093.refined_liquids_GrossTrade <- function(command, ...){
       mutate(value=total-value)%>%
       select(-total)
 
-    #Calculate regional crude oil to refined liquids IO coefficients
-    # TODO: this isn't quite correct if production has changed
+    # Calculate regional crude oil to refined liquids IO coefficients
+    # TODO: if production changed during balancing then this ratio will be
+    # artificially greater or smaller than it should be
     L122.in_EJ_R_refining_F_Yh <- L122.in_EJ_R_refining_F_Yh %>%
       left_join(GCAM_region_names,by=c("GCAM_region_ID"))%>%
       select(-GCAM_region_ID)

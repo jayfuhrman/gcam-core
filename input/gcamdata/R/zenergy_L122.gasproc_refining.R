@@ -112,20 +112,21 @@ module_energy_L122.gasproc_refining <- function(command, ...) {
 
     # GAS AND COAL TO LIQUIDS
     # Create L122.out_EJ_R_gtlctl_Yh from L1012.en_bal_EJ_R_Si_Fi_Yh for gas to liquids (gtl) and coal to liquids (ctl) sectors
-    L1012.en_bal_EJ_R_Si_Fi_Yh %>%
+     L122.out_EJ_R_gtlctl_Yh <- L1012.en_bal_EJ_R_Si_Fi_Yh %>%
       filter(sector == "out_gtl" | sector == "out_ctl") %>%
-      mutate(sector = if_else(sector == "out_gtl", "gtl", "ctl")) -> L122.out_EJ_R_gtlctl_Yh
+      mutate(sector = if_else(sector == "out_gtl", "gtl", "ctl"))
 
     # GTL and CTL inputs (L122.in_EJ_R_gtlctl_F_Yh): derived as output times exogenous input-output coefficients
     # Interpolate gas processing IO coefs to all historical years and match in the fuel name
-    L122.globaltech_coef %>%
-      filter(sector == "gtl"| sector == "ctl") -> L122.gtlctl_coef
+    L122.gtlctl_coef <- L122.globaltech_coef %>%
+      filter(sector %in% c("gtl", "ctl"))
 
-    L122.out_EJ_R_gtlctl_Yh %>%
+    L122.in_EJ_R_gtlctl_F_Yh <- L122.out_EJ_R_gtlctl_Yh %>%
       rename(valueInput = value) %>%
-      left_join(L122.gtlctl_coef, by = c("sector", "fuel", "year")) %>%
+      select(-fuel) %>%   # output is 'refined liquids', input is 'gas' or 'coal'
+      left_join(L122.gtlctl_coef, by = c("sector", "year")) %>%
       mutate(value = valueInput * value) %>%
-      select(GCAM_region_ID, sector, fuel, year, value) -> L122.in_EJ_R_gtlctl_F_Yh
+      select(GCAM_region_ID, sector, fuel, year, value)
 
     # CRUDE OIL REFINING
     # Copied from original text:
@@ -137,44 +138,46 @@ module_energy_L122.gasproc_refining <- function(command, ...) {
     tibble(GCAM_region_ID = GCAM_region_names$GCAM_region_ID, sector = "oil refining", fuel = "oil")%>%
       repeat_add_columns(tibble(year = HISTORICAL_YEARS)) -> L122.out_EJ_R_oilrefining_Yh
 
-    # Create en_bal_TPES_OIL, en_bal_oil, ctl_OIL, and gtlctl_oil to adjust the outputs of CTL and GTL given the same fuel names of the oil refining outputs (as mentioned in the note above)
+    # Create en_bal_TPES_OIL, en_bal_oil, ctl_OIL, and gtlctl_oil to adjust the
+    # outputs of CTL and GTL given the same fuel names of the oil refining
+    # outputs (as mentioned in the note above)
     # Get output for refined liquids for oil refining (TPES) sector
-    L1012.en_bal_EJ_R_Si_Fi_Yh %>%
-      filter(sector == energy.TPES_flow) %>%
+    en_bal_TPES_liq <- L1012.en_bal_EJ_R_Si_Fi_Yh %>%
+      filter(sector == energy.TPES_flow) %>%   # this includes gtl/ctl products
       filter(fuel == "refined liquids") %>%
       select(GCAM_region_ID,sector, year, value_en_bal_TPES = value) %>%
-      mutate(sector = "oil refining") -> en_bal_TPES_OIL
+      mutate(sector = "oil refining")
 
     # Output for refined liquids for net_oil refining sector
-    L1012.en_bal_EJ_R_Si_Fi_Yh %>%
-      filter(sector == "net_oil refining") %>%
+    en_bal_oil <- L1012.en_bal_EJ_R_Si_Fi_Yh %>%
+      filter(sector == "net_oil refining") %>% # represents refining losses/gains
       filter(fuel == "refined liquids") %>%
       select(GCAM_region_ID, sector, year, value_en_bal_net_oil = value) %>%
       mutate(sector = "oil refining") %>%
-      left_join_error_no_match(en_bal_TPES_OIL, by = c("GCAM_region_ID", "sector", "year")) %>%
+      left_join_error_no_match(en_bal_TPES_liq, by = c("GCAM_region_ID", "sector", "year")) %>%
       mutate(value_en_bal = value_en_bal_TPES - value_en_bal_net_oil) %>%
-      select(-value_en_bal_TPES, -value_en_bal_net_oil) -> en_bal_oil
+      select(-value_en_bal_TPES, -value_en_bal_net_oil)
 
-    # Output for coal for CTL sector
-    L122.out_EJ_R_gtlctl_Yh %>%
-      filter(sector == "ctl", fuel == "coal") %>%
+    # Output for CTL sector
+    ctl_out <- L122.out_EJ_R_gtlctl_Yh %>%
+      filter(sector == "ctl") %>%
       select(GCAM_region_ID, sector, year, value_ctl_oil = value) %>%
-      mutate(sector = "oil refining") -> ctl_OIL
+      mutate(sector = "oil refining")
 
-    # Output for coal for GTL sector
-    L122.out_EJ_R_gtlctl_Yh %>%
-      filter(sector == "gtl", fuel == "gas") %>%
+    # Output for GTL sector
+    gtlctl_out <- L122.out_EJ_R_gtlctl_Yh %>%
+      filter(sector == "gtl") %>%
       select(GCAM_region_ID, sector, year, value_gtl_oil = value) %>%
       mutate(sector = "oil refining") %>%
-      left_join_error_no_match(ctl_OIL, by = c("GCAM_region_ID", "sector", "year")) %>%
+      left_join_error_no_match(ctl_out, by = c("GCAM_region_ID", "sector", "year")) %>%
       mutate(value_gtlctl = value_ctl_oil + value_gtl_oil) %>%
-      select(-value_ctl_oil, -value_gtl_oil) -> gtlctl_oil
+      select(-value_ctl_oil, -value_gtl_oil)
 
     # Final adjustments to fuel outputs for CTL and GTL to tackle the Note (NOTE*1) made above
     # left_join_error_no_match could be used here since it has some problems with the timeshifting test
     L122.out_EJ_R_oilrefining_Yh %>%
       left_join(en_bal_oil, by = c("GCAM_region_ID", "sector", "year")) %>%
-      left_join(gtlctl_oil, by = c("GCAM_region_ID", "sector", "year")) %>%
+      left_join(gtlctl_out, by = c("GCAM_region_ID", "sector", "year")) %>%
       mutate(value = value_en_bal - value_gtlctl) %>%
       select(-value_en_bal, -value_gtlctl) -> L122.out_EJ_R_oilrefining_Yh
 
@@ -185,13 +188,16 @@ module_energy_L122.gasproc_refining <- function(command, ...) {
       filter(sector == "oil refining") %>%
       mutate(fuel = "oil") %>%
       bind_rows(L1012.en_bal_EJ_R_Si_Fi_Yh %>%
-                  filter(sector == "net_oil refining", fuel != "refined liquids") %>%
+                  filter(sector == "net_oil refining",
+                         fuel != "refined liquids") %>%
                   mutate(sector = "oil refining"))
 
 
-        # Calculate region- and fuel-specific coefficients of crude oil refining
+    # Calculate region- and fuel-specific coefficients of crude oil refining
+    # TODO: this is superseded by the calc post-trade balance; remove?
     L122.in_EJ_R_oilrefining_F_Yh %>%
-      left_join(select(L122.out_EJ_R_oilrefining_Yh, -fuel), by = c("GCAM_region_ID", "sector", "year")) %>%
+      left_join(select(L122.out_EJ_R_oilrefining_Yh, -fuel),
+                by = c("GCAM_region_ID", "sector", "year")) %>%
       mutate(value = value.x / value.y) %>%
       select(-value.x, -value.y) -> L122.IO_R_oilrefining_F_Yh
 

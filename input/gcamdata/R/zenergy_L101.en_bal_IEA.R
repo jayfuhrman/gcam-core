@@ -141,13 +141,20 @@ module_energy_L101.en_bal_IEA <- function(command, ...) {
 
       #SD (6/2025): Extract data on the production, consumption, imports, exports, and transfers of refined liquids by product (e.g., DFO, RFO, Gasoline).
       L101.detailed_refined_liquids_EJ_R_Yh <- L101.IEA_en_bal_ctry_hist_clean %>%
-        filter(fuel %in% energy.REFINED_LIQUIDS_AGG,sector %in% c("net_oil refining",
-                                                       energy.REFINING_TRADE_TRANSFER,
-                                                       energy.LIQUIDS_ENDUSE_SECTORS,
-                                                       energy.LIQUIDS_INDUSTRIAL_SECTORS)) %>%
+        filter(fuel %in% energy.REFINED_LIQUIDS_AGG,
+               sector %in% c("net_oil refining",
+                             energy.REFINING_TRADE_TRANSFER,
+                             energy.LIQUIDS_ENDUSE_SECTORS,
+                             energy.LIQUIDS_INDUSTRIAL_SECTORS,
+                             # for now include ctl/gtl outputs in this chunk.
+                             # might be more appropriate to separate later. need
+                             # them to remove ctl/gtl outputs from crude oil calcs
+                             "out_ctl", "out_gtl")) %>%
         tidyr::gather(year,value,-FLOW,-PRODUCT,-iso,-GCAM_region_ID,-sector,-fuel,-conversion)%>%
         #filter(year %in% MODEL_BASE_YEARS)%>%
-        mutate(value=value*conversion)
+        mutate(value = value * conversion) %>%
+        select(FLOW, PRODUCT, GCAM_region_ID, sector, fuel, year, value)
+
 
       #remove the imports, exports, transfers flows from IEA data
       L101.IEA_en_bal_ctry_hist_clean <- L101.IEA_en_bal_ctry_hist_clean %>%
