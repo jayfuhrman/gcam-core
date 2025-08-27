@@ -4,6 +4,6 @@
 # Column types: cccccccc
 # ----------
 sector,fuel,supplysector,subsector,technology,minicam.energy.input,calibration,secondary.output
-CO2 removal,electricity,CO2 removal,dac,no DAC,elect_td_ind,output,
-CO2 removal,heat,CO2 removal,dac,no DAC,process heat dac,output,
-CO2 removal,airCO2,CO2 removal,dac,no DAC,airCO2,output,
+CO2 removal,electricity,CO2 removal,no CDR,no CDR,elect_td_ind,output,
+CO2 removal,heat,CO2 removal,no CDR,no CDR,process heat dac,output,
+CO2 removal,airCO2,CO2 removal,no CDR,no CDR,airCO2,output,
