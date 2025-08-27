@@ -190,7 +190,8 @@ module_energy_L262.dac <- function(command, ...) {
     A62.globaltech_shrwt <- get_data(all_data, "energy/A62.globaltech_shrwt")%>% gather_years
     A62.globaltech_shrwt_EMF <- get_data(all_data, "energy/A62.globaltech_shrwt_EMF")%>% gather_years
 
-    A62.ew_calibration <- get_data(all_data, "energy/A62.ew_calibration")%>% gather_years
+    A62.ew_calibration <- get_data(all_data, "energy/A62.ew_calibration") %>%
+      mutate(year = MODEL_FINAL_BASE_YEAR) %>% gather_years
 
 
     # ===================================================
