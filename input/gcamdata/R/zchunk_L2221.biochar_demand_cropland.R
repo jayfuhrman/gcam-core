@@ -423,8 +423,8 @@ module_energy_L2221.biochar_demand_cropland <- function(command, ...) {
       group_by(region, AgSupplySector, AgSupplySubsector, AgProductionTechnology, water, GCAM_region_ID, zone) %>%
       mutate(annual_biochar_yield_improv = ((cum_biochar_yield_improv / lag(cum_biochar_yield_improv))^(1/5))-1) %>%
       ungroup() %>%
-      # Now replace NA in 2020 with the same ag prod change from the default technology, since the yield increase comes after the application
-      mutate(annual_biochar_yield_improv = if_else(year == 2020 & is.na(annual_biochar_yield_improv), AgProdChange, annual_biochar_yield_improv)) %>%
+      # Now replace NA in 2025 with the same ag prod change from the default technology, since the yield increase comes after the application
+      mutate(annual_biochar_yield_improv = if_else(year == 2025 & is.na(annual_biochar_yield_improv), AgProdChange, annual_biochar_yield_improv)) %>%
       # Now reanme old ag prod change, and keep the new one
       rename(old_AgProdChange = AgProdChange,
              AgProdChange = annual_biochar_yield_improv) %>%
@@ -472,8 +472,8 @@ module_energy_L2221.biochar_demand_cropland <- function(command, ...) {
       group_by(region, AgSupplySector, AgSupplySubsector, AgProductionTechnology, water, GCAM_region_ID, zone) %>%
       mutate(annual_biochar_yield_improv = ((cum_biochar_yield_improv / lag(cum_biochar_yield_improv))^(1/5))-1) %>%
       ungroup() %>%
-      # Now replace NA in 2020 with the same ag prod change from the default technology, since the yield increase comes after the application
-      mutate(annual_biochar_yield_improv = if_else(year == 2020 & is.na(annual_biochar_yield_improv), AgProdChange, annual_biochar_yield_improv)) %>%
+      # Now replace NA in 2025 with the same ag prod change from the default technology, since the yield increase comes after the application
+      mutate(annual_biochar_yield_improv = if_else(year == 2025 & is.na(annual_biochar_yield_improv), AgProdChange, annual_biochar_yield_improv)) %>%
       # Now reanme old ag prod change, and keep the new one
       rename(old_AgProdChange = AgProdChange,
              AgProdChange = annual_biochar_yield_improv) %>%
