@@ -104,7 +104,8 @@
 			
 			<!-- CCS -->
 			<Value name="ccs">../input/gcamdata/xml/ccs_supply_low.xml</Value>
-			<Value name="ccs">../input/gcamdata/xml/no_offshore_ccs.xml</Value>
+			<!--Value name="ccs">../input/gcamdata/xml/no_offshore_ccs.xml</Value-->
+			<Value name = "ccs">../input/gcamdata/xml/Cstorage_med.xml</Value>
 			
 			<!-- FOSSIL -->
 			<Value name="resource_extraction">../input/gcamdata/xml/resources_SSP2.xml</Value>
@@ -125,6 +126,12 @@
             <Value name = "bio_neg_emiss_budget">../input/gcamdata/xml/negative_emissions_budget.xml</Value>
             <Value name = "bio_externality">../input/gcamdata/xml/bio_externality.xml</Value>
             <Value name = "prune_ag">../input/gcamdata/xml/prune_empty_ag.xml</Value>
+
+
+			<Value name = "dac">../input/gcamdata/xml/dac_ssp2.xml</Value>
+
+			<Value name = "weathering">../input/gcamdata/xml/Weathering.xml</Value>
+			<Value name = "weathering_growth">../input/gcamdata/xml/Weathering_med.xml</Value>
 		</FileSet>
 		<FileSet name="SSP3">
 			<!-- SOCIOECONOMICS -->
@@ -174,6 +181,7 @@
 			<!-- CCS -->
 			<Value name="ccs">../input/gcamdata/xml/ccs_supply_low.xml</Value>
 			<Value name="ccs">../input/gcamdata/xml/no_offshore_ccs.xml</Value>
+			<Value name = "ccs">../input/gcamdata/xml/Cstorage_slow.xml</Value>
 			<!--Value name="ccs">../input/gcamdata/xml/no_bio_ccs.xml</Value-->
 			
 			<!-- NON-CO2 -->
@@ -190,6 +198,13 @@
             <Value name = "bio_neg_emiss_budget">../input/gcamdata/xml/negative_emissions_budget_SSP3.xml</Value>
             <Value name = "bio_externality">../input/gcamdata/xml/bio_externality.xml</Value>
             <Value name = "prune_ag">../input/gcamdata/xml/prune_empty_ag.xml</Value>
+
+			<Value name = "dac">../input/gcamdata/xml/dac_ssp3.xml</Value>
+
+			<Value name = "weathering">../input/gcamdata/xml/Weathering.xml</Value>
+			<Value name = "weathering_growth">../input/gcamdata/xml/Weathering_low.xml</Value>
+
+
 		</FileSet>	
 	</ComponentSet>
 	<runner-set name="policy-target-runner">
