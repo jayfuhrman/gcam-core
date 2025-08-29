@@ -362,7 +362,7 @@ module_energy_L2221.biochar_demand_cropland <- function(command, ...) {
     # This yield improvement is based on tropical/temeprate regions, and between irrigated and rainfed
     # These are teh steps we follow to calculate the increase yields, considering existing ag prod change
     # 1. Share of total biochar land  over total land:
-    #We first assume that biochar is applied linearly from 2020-2100, in a period of 80 years
+    #We first assume that biochar is applied linearly from 2021-2100, in a period of 80 years
     #(1.25% per year, or 6.25% every 5 years)
     # 2. Average yield on biochar land:
     #Then we apply to that percentage of land the yield increase of applying the biochar
@@ -546,7 +546,7 @@ module_energy_L2221.biochar_demand_cropland <- function(command, ...) {
     # 1. First filter for base year, and for high tech crops
     # 2. from total land allocation get total biochar applicaiton (assuming certain biochar application rate from literature)
     # 3. We assume that the total from step 2 is absolute maximum biochar application. To get the rate per year we divide total by 80
-    #(which are the years modeled, since biochar application starts in 2020)
+    #(which are the years modeled, since biochar application starts in 2021)
     # 4. Then that biochar per year applicaiton (in Mt) is divided by the agricultural produciton (in Mt) to get the coefficient
 
     ## L2221.AgCoef_Biochar_ag_irr_mgmt
@@ -615,7 +615,7 @@ module_energy_L2221.biochar_demand_cropland <- function(command, ...) {
 
 
     # Now do the same for biomass crops, however, biomass does not have historical production
-    # One option is to use model outputs for 2020 from a GCAM v5.3 REF case, read them in here,
+    # One option is to use model outputs for 2021 from a GCAM v5.3 REF case, read them in here,
     # calculate coefficients and use those (revise if assumption makes sense)
     # We first prepare the table with the necessary heading
     L2252.LN5_MgdAllocation_bio %>%
@@ -684,7 +684,7 @@ module_energy_L2221.biochar_demand_cropland <- function(command, ...) {
       # Replace NaN from 0/0 with a 0
       mutate(coefficient = if_else(is.na(coefficient), 0, coefficient),
              coefficient_kg_GJ = if_else(is.na(coefficient_kg_GJ), 0, coefficient_kg_GJ),
-             year = 2020) %>%
+             year = 2021) %>%
       # Replace INF with 0
       mutate(coefficient = if_else(is.infinite(coefficient), 0, coefficient),
              coefficient_kg_GJ = if_else(is.infinite(coefficient_kg_GJ), 0, coefficient_kg_GJ)) %>%
