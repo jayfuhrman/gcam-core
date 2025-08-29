@@ -757,7 +757,7 @@
                         </minicam-non-energy-input>
                         <share-weight>1</share-weight>
                     </period>
-                    <period year="2020">
+                    <period year="2021">
                         <minicam-energy-input name="biochar storage">
                             <coefficient>1</coefficient>
                         </minicam-energy-input>
