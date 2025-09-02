@@ -20,7 +20,6 @@ China,Bonny Lt,0.01,0.29,0.13,0.22,0.35,0,0
 Colombia,Brent,.03,.32,.10,.15,.40,0,0
 EU-12,Brent,.03,.32,.10,.15,.40,0,0
 EU-15,Bonny Lt,0.01,0.29,0.13,0.22,0.35,0,0
-Europe_Eastern,Roncador Heavy,,,,,,,
 Europe_Non_EU,WTI-Cushing,.03,.24,.15,.25,.33,0,0
 European Free Trade Association,Brent,.03,.32,.10,.15,.40,0,0
 India,Bonny Lt,0.01,0.29,0.13,0.22,0.35,0,0
@@ -37,4 +36,5 @@ South Asia,Roncador Heavy,,,,,,,
 South Korea,WTI-Cushing,.03,.24,.15,.25,.33,0,0
 Southeast Asia,WTI-Cushing,.03,.24,.15,.25,.33,0,0
 Taiwan,WTI-Cushing,.03,.24,.15,.25,.33,0,0
+Ukraine,Roncador Heavy,,,,,,,
 USA,Roncador Heavy,,,,,,,
