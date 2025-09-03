@@ -548,6 +548,7 @@ energy.DEFAULT_ELECTRIC_EFFICIENCY <- 0.33
 energy.ELECTRICITY_INPUT_FUELS <- c("biomass", "coal", "gas", "refined liquids")
 energy.RSRC_FUELS              <- c("coal", "gas", "refined liquids")
 energy.RSRC_MINERAL            <- c("steel", "aluminium", "silicon", "copper", "graphite", "lithium", "cobalt", "nickel", "manganese", "neodymium", "tellurium", "vanadium", "platinum")
+energy.TRADED_MINERAL          <- c("copper", "lithium", "nickel")
 
 # Assumed base year heat price, used for calculating adjustment to non-energy costs of electricity
 # technologies with secondary output of heat in units of 1975$/EJ

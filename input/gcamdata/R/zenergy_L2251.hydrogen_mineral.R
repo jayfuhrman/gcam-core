@@ -9,7 +9,7 @@
 #' @return Depends on \code{command}.
 #' either a vector of required inputs,
 #' a vector of output names, or (if \code{command} is "MAKE") all
-#' the generated outputs: #' \code{L2251.StubTechMineralCoef}, \code{L2251.GlobalTechMineralCoef},
+#' the generated outputs: #' \code{L2251.StubTechMineralCoef_final}, \code{L2251.GlobalTechMineralCoef_final},
 #' \code{L2251.GlobalTechCost_h2}, \code{L2251.StubTechCost_h2}
 #' @details Mineral inputs required for hydrogen production technologies.
 #' @author BY Feb 2024
@@ -25,8 +25,8 @@ module_energy_L2251.hydrogen_mineral <- function(command, ...) {
             "L225.GlobalTechCost_h2",
             "L225.StubTechCost_h2"))
   } else if(command == driver.DECLARE_OUTPUTS) {
-    return(c("L2251.StubTechMineralCoef",
-             "L2251.GlobalTechMineralCoef",
+    return(c("L2251.StubTechMineralCoef_final",
+             "L2251.GlobalTechMineralCoef_final",
              "L2251.GlobalTechCost_h2",
              "L2251.StubTechCost_h2"))
   } else if(command == driver.MAKE) {
@@ -256,25 +256,59 @@ module_energy_L2251.hydrogen_mineral <- function(command, ...) {
       rename(input.cost = cost) %>%
       select(LEVEL2_DATA_NAMES[["StubTechCost"]])
 
+    #------------------------------------------------------------------------------------------------------------------
+
+    ## BY 7-7-2025: Regionalize demands
+    ## For minerals that are now traded, we need to differentiate mineral supply and demand
+    # Mineral supplies are named as: copper, lithium, nickel
+    # Mineral demands are named as: regional copper, regional lithium, regional nickel
+    L2251.GlobalTechMineralCoef_regMineralInput <- regionalize_mineral_inputs(L2251.GlobalTechMineralCoef)
+    L2251.StubTechMineralCoef_regMineralInput <- regionalize_mineral_inputs(L2251.StubTechMineralCoef)
+
+    ## BY 7-28-2025: Modify mineral intensities in the base years such that we would have the equivalent mineral demands if we
+    # had the service demand representing solely the new investment (i.e. if base years were vintaged)
+    ## HYDROGEN TECHNOLOGIES DO NOT HAVE CALIBRATED VALUES, SO WE DON'T NEED TO MAKE ANY ADJUSTMENTS
+
+
+    ##BY 8-19-2025 Annualize mineral intensities
+    # By default GCAM output reports the mineral demand associated with new investment for each full period (e.g. 5-years)
+    # We want to view annual mineral demand, and therefore we have previously divided output by 5
+    # However, to balance calibration, we now need to do this step internally
+
+    L2251.GlobalTechMineralCoef_final <- L2251.GlobalTechMineralCoef_regMineralInput %>%
+      group_by(sector.name, subsector.name, technology, minicam.energy.input, model.year) %>%
+      arrange(year) %>%
+      mutate(years_elapsed = if_else(is.na(lag(year)), 1, year - lag(year)),
+             current.coef  = current.coef / years_elapsed) %>%
+      ungroup() %>%
+      select(-years_elapsed)
+
+    L2251.StubTechMineralCoef_final <- L2251.StubTechMineralCoef_regMineralInput %>%
+      group_by(region, supplysector, subsector, stub.technology, minicam.energy.input) %>%
+      arrange(year) %>%
+      mutate(years_elapsed = if_else(is.na(lag(year)), 1, year - lag(year)),
+             current.coef  = current.coef / years_elapsed) %>%
+      ungroup() %>%
+      select(-years_elapsed)
 
     ## ===================================================================
     ## Section 3 -- Produce outputs, add appropriate flags and comments
     ## ===================================================================
-    L2251.GlobalTechMineralCoef %>%
+    L2251.GlobalTechMineralCoef_final %>%
       add_title("Mineral intensity data for non-solar and non-wind H2 production technologies") %>%
       add_units("Mt/EJ") %>%
       add_comments("Mineral intensity for most H2 production techs (except solar and wind) are globally specified") %>%
       add_precursors("minerals/supply/A10.mineral_rsrc_info", "minerals/h2/H2.globaltech_mineral_coef_kg_kw_long",
                      "minerals/h2/H2A.globaltech_capFactor") ->
-      L2251.GlobalTechMineralCoef
+      L2251.GlobalTechMineralCoef_final
 
-    L2251.StubTechMineralCoef %>%
+    L2251.StubTechMineralCoef_final %>%
       add_title("Mineral intensity data for solar and wind electrolysis H2 production technologies") %>%
       add_units("Mt/EJ") %>%
       add_comments("Mineral intensity for solar and wind electrolysis techs are regionally specified (Stub tech)") %>%
       add_precursors("minerals/supply/A10.mineral_rsrc_info", "minerals/h2/H2.globaltech_mineral_coef_kg_kw_long",
                      "L223.StubTechCapFactor_elec") ->
-      L2251.StubTechMineralCoef
+      L2251.StubTechMineralCoef_final
 
     L2251.GlobalTechCost_h2 %>%
       add_title("Non-mineral non-energy cost for non-solar and non-wind H2 production technologies") %>%
@@ -292,8 +326,8 @@ module_energy_L2251.hydrogen_mineral <- function(command, ...) {
                      "L223.StubTechCapFactor_elec", "L225.StubTechCost_h2") ->
       L2251.StubTechCost_h2
 
-    return_data(L2251.GlobalTechMineralCoef,
-                L2251.StubTechMineralCoef,
+    return_data(L2251.GlobalTechMineralCoef_final,
+                L2251.StubTechMineralCoef_final,
                 L2251.GlobalTechCost_h2,
                 L2251.StubTechCost_h2)
   } else {

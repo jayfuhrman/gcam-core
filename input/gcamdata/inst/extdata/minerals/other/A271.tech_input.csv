@@ -1,0 +1,19 @@
+# File: A271.tech_input.csv
+# Title: CMM other sector energy and non-energy-input names
+# Units: NA
+# Column types: ccccc
+# ----------
+supplysector,subsector,stub.technology,minicam.non.energy.input,minicam.energy.input
+steel_other,steel_other,steel_other,infrastructure cost,steel
+aluminium_other,aluminium_other,aluminium_other,infrastructure cost,aluminium
+copper_other ,copper_other ,copper_other ,infrastructure cost,copper
+silicon_other,silicon_other,silicon_other,infrastructure cost,silicon
+lithium_other,lithium_other,lithium_other,infrastructure cost,lithium
+graphite_other,graphite_other,graphite_other,infrastructure cost,graphite
+cobalt_other,cobalt_other,cobalt_other,infrastructure cost,cobalt
+nickel_other,nickel_other,nickel_other,infrastructure cost,nickel
+manganese_other,manganese_other,manganese_other,infrastructure cost,manganese
+neodymium_other,neodymium_other,neodymium_other,infrastructure cost,neodymium
+tellurium_other,tellurium_other,tellurium_other,infrastructure cost,tellurium
+vanadium_other,vanadium_other,vanadium_other,infrastructure cost,vanadium
+platinum_other,platinum_other,platinum_other,infrastructure cost,platinum

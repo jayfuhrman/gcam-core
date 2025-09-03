@@ -18,7 +18,9 @@ module_energy_L2541.transportation_UCD_mineral <- function(command, ...) {
              FILE = "minerals/transport/A54.trn_annual_travel_data",
              "L254.StubTranTechTravel",
              "L254.StubTranTechLoadFactor",
-             "L254.StubTranTechCost"))
+             "L254.StubTranTechCost",
+             "L254.StubTranTechOutput",
+             "L254.StubTechProd_nonmotor_PassThrusector"))
   } else if(command == driver.DECLARE_OUTPUTS) {
     return(c("L2541.trn_globaltech_mineral_curcoef_final",
              "L2541.trn_globaltech_mineral_coef_final",
@@ -37,6 +39,9 @@ module_energy_L2541.transportation_UCD_mineral <- function(command, ...) {
     L254.StubTranTechTravel <- get_data(all_data, "L254.StubTranTechTravel", strip_attributes = TRUE)
     L254.StubTranTechLoadFactor <- get_data(all_data, "L254.StubTranTechLoadFactor", strip_attributes = TRUE)
     L254.StubTranTechCost <- get_data(all_data, "L254.StubTranTechCost", strip_attributes = TRUE)
+    L254.StubTranTechOutput <- get_data(all_data, "L254.StubTranTechOutput", strip_attributes = TRUE)
+    L254.StubTechProd_nonmotor_PassThrusector <- get_data(all_data,"L254.StubTechProd_nonmotor_PassThrusector", strip_attributes = TRUE)
+
     # "person/vehicle and tonnes/vehicle"
 
     # Process...
@@ -100,7 +105,7 @@ module_energy_L2541.transportation_UCD_mineral <- function(command, ...) {
 
     # 1.2 Convert the mineral coefficient to current-coefficient--only apply input to the new vintage.
 
-    L2541.trn_globaltech_mineral_curcoef_final <-
+    L2541.trn_globaltech_mineral_curcoef <-
       A2541.trn_globaltech_mineral_coef_kg_vtk %>%
       select(region, supplysector, tranSubsector, stub.technology, minicam.energy.input, year, value, sce) %>%
       distinct() %>%
@@ -119,15 +124,15 @@ module_energy_L2541.transportation_UCD_mineral <- function(command, ...) {
     # this part is just to reverse the unit conversion for energy in C++ code, if that is updated, we need to remove this
     # 1055 is for BTU to J conversion, 1e12 is for MJ to EJ conversion (multiplying service output (Million tkm), that is why
     # J to MJ conversion is considered by default), 1e-3 is for kt to Mt material conversion.
-    L2541.trn_globaltech_mineral_curcoef_final %>%
+    L2541.trn_globaltech_mineral_curcoef %>%
       mutate(current.coef = current.coef * (1e12/1055) * 1e-3) ->
-      L2541.trn_globaltech_mineral_curcoef_final
+      L2541.trn_globaltech_mineral_curcoef_Units
 
 
     # 1.3 create a coefficent input and assign the value to 0,
     # this allows the model to input mineral coefficient to be 0 for all years, unless we input a non-zero current-coef.
     # This approach avoid unnecessary zero current-coef input.
-    L2541.trn_globaltech_mineral_coef_final <-
+    L2541.trn_globaltech_mineral_coef_0 <-
       A2541.trn_globaltech_mineral_coef_kg_vtk %>%
       select(region, pass.through.sector = supplysector, tranSubsector, stub.technology, minicam.energy.input, year, coefficient = value, sce) %>%
       mutate(coefficient = 0) %>%
@@ -197,6 +202,78 @@ module_energy_L2541.transportation_UCD_mineral <- function(command, ...) {
     #   mutate(input.cost.final = input.cost - mineral_cost,
     #          share = mineral_cost/input.cost)
 
+
+    #------------------------------------------------------------------------------------------------------------------
+
+    ## BY 7-7-2025: Regionalize demands
+    ## For minerals that are now traded, we need to differentiate mineral supply and demand
+    # Mineral supplies are named as: copper, lithium, nickel
+    # Mineral demands are named as: regional copper, regional lithium, regional nickel
+    L2541.trn_globaltech_mineral_curcoef_regMineralInputs <- regionalize_mineral_inputs(L2541.trn_globaltech_mineral_curcoef_Units)
+    L2541.trn_globaltech_mineral_coef_regMineralInputs <- regionalize_mineral_inputs(L2541.trn_globaltech_mineral_coef_0)
+
+    # First, bind together the calibration values associated with all technologies
+    # This includes:
+    # Many technologies from L254.StubTranTechCalInput
+    # Cycle from L254.StubTranTechOutput
+    # get in units of vkm by dividing by load factor
+    L2541.StubTranTechOutput_vkm <- L254.StubTranTechOutput %>%
+      filter(sce == "CORE") %>%
+      mutate(output = output/loadFactor) %>%
+      rename(pass.through.sector = supplysector,
+             calOutputValue = output) %>%
+      select(-loadFactor, -calibrated.value, -coefficient, -minicam.energy.input, -sce) %>%
+      bind_rows(L254.StubTechProd_nonmotor_PassThrusector)
+
+
+    L2541.NewInvestment_Trn <- L2541.StubTranTechOutput_vkm %>%
+      rename(output = calOutputValue) %>%
+      group_by(region, pass.through.sector, tranSubsector, stub.technology) %>%
+      arrange(year) %>%
+      mutate(lag_output = lag(output),
+             new_investment = output - lag_output,
+             new_investment = pmax(new_investment, 0),
+             new_investment = if_else((is.na(new_investment) & !is.na(output)), output, new_investment)) %>%
+      ungroup() %>%
+      select(-sce)
+
+    L2541.trn_globaltech_mineral_curcoef_modified <- L2541.NewInvestment_Trn  %>%
+      # Join in the mineral intensity coefficient
+      # Using LJ as it is not a 1-to-1 mapping
+      left_join(filter(L2541.trn_globaltech_mineral_curcoef_regMineralInputs, year %in% MODEL_BASE_YEARS, sce == "CORE"),
+                by = c("region", "pass.through.sector", "tranSubsector", "stub.technology", "year")) %>%
+      # adjust the mineral intensities by the ratio between the incremental service demand and the original service demand
+      mutate(current.coef_new = if_else(output == 0, 0, current.coef * (new_investment / output))) %>%
+      # replace the current coef with the incremental current coef
+      mutate(current.coef = current.coef_new) %>%
+      select(LEVEL2_DATA_NAMES[["PassThruStubTranTechMineralCurCoef"]])
+
+    # Use modified coefficients where they exist, else default to the original coefficients.
+    # modified coefficients only exist for technologies with StubTechProd calibrated values in base years.
+    L2541.trn_globaltech_mineral_curcoef_modMI <- L2541.trn_globaltech_mineral_curcoef_regMineralInputs %>%
+      left_join(L2541.trn_globaltech_mineral_curcoef_modified, by = c("region", "pass.through.sector", "tranSubsector", "stub.technology", "year",
+                                                                           "minicam.energy.input", "model.year"),
+                suffix = c(".original", ".new")) %>%
+      mutate(current.coef = if_else(is.na(current.coef.new), current.coef.original, current.coef.new)) %>%
+      select(LEVEL2_DATA_NAMES[["PassThruStubTranTechMineralCurCoef"]], sce)
+
+    ##BY 8-19-2025 Annualize mineral intensities
+    # By default GCAM output reports the mineral demand associated with new investment for each full period (e.g. 5-years)
+    # We want to view annual mineral demand, and therefore we have previously divided output by 5
+    # However, to balance calibration, we now need to do this step internally
+
+    L2541.trn_globaltech_mineral_curcoef_final <- L2541.trn_globaltech_mineral_curcoef_modMI  %>%
+      group_by(region, pass.through.sector, tranSubsector, stub.technology, minicam.energy.input, sce) %>%
+      arrange(year) %>%
+      mutate(years_elapsed = if_else(is.na(lag(year)), 1, year - lag(year)),
+             current.coef  = current.coef / years_elapsed) %>%
+      ungroup() %>%
+      select(-years_elapsed)
+
+    L2541.trn_globaltech_mineral_coef_final <-  L2541.trn_globaltech_mineral_coef_regMineralInputs
+
+
+    #------------------------------------------------------------------------------------------------------------------
 
     L2541.trn_globaltech_mineral_curcoef_final %>%
       add_title("transport sector technology mineral intensity") %>%

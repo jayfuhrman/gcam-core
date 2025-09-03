@@ -1,0 +1,36 @@
+# File: A271.cmm_sector_retire.csv
+# Title: Transportation technology retirement parameters. Only applies to vintaged technologies
+# Units: Years for lifetime and half.life; Unitless for steepness
+# Source: Documented in JIRA issue https://jira.pnnl.gov/jira/browse/JGCRI-358?src=confmacro
+# Comments: maximum lifetime of cohort. If no retirement function is used; the entire cohort is retired in this number of years
+# half.life: number of years at which 50% of the cohort is retired; using the s-curve-shutdown-decider retirement function
+# steepness: shape parameter used by the s-curve-shutdown-decider retirement function
+# Column types: cccciinnn
+# ----------
+supplysector,subsector,technology,year,lifetime,half.life,steepness,median.shutdown.point,profit.shutdown.steepness
+steel_other,steel_other,steel_other,final-calibration-year,10,5,0.1,-0.1,6
+aluminium_other,aluminium_other,aluminium_other,final-calibration-year,10,5,0.1,-0.1,6
+copper_other ,copper_other ,copper_other ,final-calibration-year,10,5,0.1,-0.1,6
+silicon_other,silicon_other,silicon_other,final-calibration-year,10,5,0.1,-0.1,6
+lithium_other,lithium_other,lithium_other,final-calibration-year,10,5,0.1,-0.1,6
+graphite_other,graphite_other,graphite_other,final-calibration-year,10,5,0.1,-0.1,6
+cobalt_other,cobalt_other,cobalt_other,final-calibration-year,10,5,0.1,-0.1,6
+nickel_other,nickel_other,nickel_other,final-calibration-year,10,5,0.1,-0.1,6
+manganese_other,manganese_other,manganese_other,final-calibration-year,10,5,0.1,-0.1,6
+neodymium_other,neodymium_other,neodymium_other,final-calibration-year,10,5,0.1,-0.1,6
+tellurium_other,tellurium_other,tellurium_other,final-calibration-year,10,5,0.1,-0.1,6
+vanadium_other,vanadium_other,vanadium_other,final-calibration-year,10,5,0.1,-0.1,6
+platinum_other,platinum_other,platinum_other,final-calibration-year,10,5,0.1,-0.1,6
+steel_other,steel_other,steel_other,initial-future-year,10,5,0.1,-0.1,6
+aluminium_other,aluminium_other,aluminium_other,initial-future-year,10,5,0.1,-0.1,6
+copper_other ,copper_other ,copper_other ,initial-future-year,10,5,0.1,-0.1,6
+silicon_other,silicon_other,silicon_other,initial-future-year,10,5,0.1,-0.1,6
+lithium_other,lithium_other,lithium_other,initial-future-year,10,5,0.1,-0.1,6
+graphite_other,graphite_other,graphite_other,initial-future-year,10,5,0.1,-0.1,6
+cobalt_other,cobalt_other,cobalt_other,initial-future-year,10,5,0.1,-0.1,6
+nickel_other,nickel_other,nickel_other,initial-future-year,10,5,0.1,-0.1,6
+manganese_other,manganese_other,manganese_other,initial-future-year,10,5,0.1,-0.1,6
+neodymium_other,neodymium_other,neodymium_other,initial-future-year,10,5,0.1,-0.1,6
+tellurium_other,tellurium_other,tellurium_other,initial-future-year,10,5,0.1,-0.1,6
+vanadium_other,vanadium_other,vanadium_other,initial-future-year,10,5,0.1,-0.1,6
+platinum_other,platinum_other,platinum_other,initial-future-year,10,5,0.1,-0.1,6

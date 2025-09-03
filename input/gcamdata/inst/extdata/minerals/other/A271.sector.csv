@@ -1,0 +1,19 @@
+# File: A271.sector.csv
+# Title: Municipal water demand sector information (units and logit exponents)
+# Units: Unitless
+# Column types: ccccic 
+# ----------
+supplysector,output.unit,input.unit,price.unit,logit.exponent,logit.type
+steel_other,Mt,Mt,1975$/Mt,0,
+aluminium_other,Mt,Mt,1975$/Mt,0,
+copper_other,Mt,Mt,1975$/Mt,0,
+silicon_other,Mt,Mt,1975$/Mt,0,
+lithium_other,Mt,Mt,1975$/Mt,0,
+graphite_other,Mt,Mt,1975$/Mt,0,
+cobalt_other,Mt,Mt,1975$/Mt,0,
+nickel_other,Mt,Mt,1975$/Mt,0,
+manganese_other,Mt,Mt,1975$/Mt,0,
+neodymium_other,Mt,Mt,1975$/Mt,0,
+tellurium_other,Mt,Mt,1975$/Mt,0,
+vanadium_other,Mt,Mt,1975$/Mt,0,
+platinum_other,Mt,Mt,1975$/Mt,0,

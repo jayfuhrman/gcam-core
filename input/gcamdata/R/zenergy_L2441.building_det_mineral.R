@@ -11,7 +11,7 @@
 #' the generated outputs:  \code{L2441.GenericBaseServiceMaterials}, \code{L2441.SupplysectorMaterials},
 #' \code{L2441.SubsectorLogitMaterials}, \code{L2441.SubsectorShrwtMaterials}, \code{L2441.SubsectorShrwtFlltMaterials},
 #' \code{L2441.SubsectorInterpMaterials}, \code{L2441.SubsectorInterpToMaterials}, \code{L2441.TechCalOutputMaterials}, \code{L2441.TechShrwtMaterials},
-#' \code{L2441.TechCoefMaterials}, \code{L2441.TechLifetimeMaterials}, \code{L2441.TechSCurveMaterials}, \code{L2441.TechProfitShutdownMaterials}
+#' \code{L2441.TechCoefMaterials_final}, \code{L2441.TechLifetimeMaterials}, \code{L2441.TechSCurveMaterials}, \code{L2441.TechProfitShutdownMaterials}
 #' @details Creates level2 material services and coefficient data for the building sector.
 #' @importFrom assertthat assert_that
 #' @importFrom dplyr bind_rows distinct filter if_else group_by left_join mutate select semi_join summarise
@@ -40,7 +40,7 @@ module_energy_L2441.building_det_mineral <- function(command, ...) {
              "L2441.SubsectorInterpToMaterials",
              "L2441.TechCalOutputMaterials",
              "L2441.TechShrwtMaterials",
-             "L2441.TechCoefMaterials",
+             "L2441.TechCoefMaterials_final",
              "L2441.TechLifetimeMaterials",
              "L2441.TechSCurveMaterials",
              "L2441.TechProfitShutdownMaterials"))
@@ -186,8 +186,10 @@ module_energy_L2441.building_det_mineral <- function(command, ...) {
       repeat_add_columns(tibble(year = MODEL_YEARS)) %>%
       filter(year >= max(MODEL_BASE_YEARS)) %>%
       select(LEVEL2_DATA_NAMES[["TechSCurve"]]) %>%
-      #BY 1-24-2025: for 2015 vintages, halve the half life
-      mutate(half.life = if_else(year == 2015, half.life/2, half.life))
+      #BY 1-24-2025: for 2015 vintages, halve the half life --
+      #YQ 04-21-2025: updated half.life and steepness in 2015 to smooth out the retirement of 2015 vintage, so that mineral demand in 2020 has not sudden spike.
+      mutate(half.life = if_else(year == 2015, half.life*0.667, half.life),
+             steepness = if_else(year == 2015, 0.1, steepness))
 
     L2441.TechProfitShutdownMaterials <- A44.bld_materials_mean_lifetime_vintage_reg %>%
       rename(supplysector = sector) %>%
@@ -251,6 +253,58 @@ module_energy_L2441.building_det_mineral <- function(command, ...) {
         # only keep the info for the subsectors that exist in TechCalOutput
         semi_join(L2441.TechCalOutputMaterials, by = c("region", "supplysector", "subsector"))
     }
+
+    #------------------------------------------------------------------------------------------------------------------
+
+    ## BY 7-7-2025: Regionalize demands
+    ## For minerals that are now traded, we need to differentiate mineral supply and demand
+    # Mineral supplies are named as: copper, lithium, nickel
+    # Mineral demands are named as: regional copper, regional lithium, regional nickel
+    L2441.TechCoefMaterials_regMineralInputs <- regionalize_mineral_inputs(L2441.TechCoefMaterials)
+
+
+    ## BY 7-28-2025: Modify mineral intensities in the base years such that we would have the equivalent mineral demands if we
+    # had the service demand representing solely the new investment (i.e. if base years were vintaged)
+
+    # First, calculate the "new investment" in each base year.
+    # We assume a depreciation rate of 5% annually.
+    L2441.NewInvestment_Materials <- L2441.TechCalOutputMaterials %>%
+      rename(output = calOutputValue) %>%
+      group_by(region, supplysector, subsector, technology) %>%
+      arrange(year) %>%
+      mutate(lag_output = lag(output),
+             new_investment = output - lag_output,
+             new_investment = pmax(new_investment, 0),
+             new_investment = if_else((is.na(new_investment) & !is.na(output)), output, new_investment)) %>%
+      ungroup()
+
+
+    L2441.TechCoefMaterials_modified <- L2441.NewInvestment_Materials %>%
+      # Join in the mineral intensity coefficient
+      # Using LJ as it is not a 1-to-1 mapping
+      left_join(filter(L2441.TechCoefMaterials_regMineralInputs, year %in% MODEL_BASE_YEARS),
+                by = c("region", "supplysector", "subsector", "technology", "year")) %>%
+      # adjust the mineral intensities by the ratio between the incremental service demand and the original service demand
+      mutate(current.coef_new = if_else(output == 0, 0, current.coef * (new_investment / output))) %>%
+      # replace the current coef with the incremental current coef
+      mutate(current.coef = current.coef_new) %>%
+      select(LEVEL2_DATA_NAMES[["RegionalTechMineralCurCoef"]])
+
+    L2441.TechCoefMaterials_modMI <- bind_rows(L2441.TechCoefMaterials_modified,
+                                               filter(L2441.TechCoefMaterials_regMineralInputs, !(year %in% MODEL_BASE_YEARS)))
+
+    ##BY 8-19-2025 Annualize mineral intensities
+    # By default GCAM output reports the mineral demand associated with new investment for each full period (e.g. 5-years)
+    # We want to view annual mineral demand, and therefore we have previously divided output by 5
+    # However, to balance calibration, we now need to do this step internally
+
+    L2441.TechCoefMaterials_final <- L2441.TechCoefMaterials_modMI  %>%
+      group_by(region, supplysector, subsector, technology, minicam.energy.input) %>%
+      arrange(year) %>%
+      mutate(years_elapsed = if_else(is.na(lag(year)), 1, year - lag(year)),
+             current.coef  = current.coef / years_elapsed) %>%
+      ungroup() %>%
+      select(-years_elapsed)
 
     #===================================================
 
@@ -337,13 +391,13 @@ module_energy_L2441.building_det_mineral <- function(command, ...) {
       same_precursors_as(L2441.TechCalOutputMaterials)  ->
       L2441.TechShrwtMaterials
 
-    L2441.TechCoefMaterials %>%
+    L2441.TechCoefMaterials_final %>%
       add_title("Materials technologies material coefficients") %>%
       add_units("none") %>%
       add_comments("Material coefficients (by building sub-type)") %>%
       same_precursors_as(L2441.TechCalOutputMaterials) %>%
       add_precursors("minerals/buildings/A44.bld_materials_intensity_reg") ->
-      L2441.TechCoefMaterials
+      L2441.TechCoefMaterials_final
 
     L2441.TechLifetimeMaterials %>%
       add_title("Materials technologies lifetime") %>%
@@ -372,7 +426,7 @@ module_energy_L2441.building_det_mineral <- function(command, ...) {
     return_data(L2441.GenericBaseServiceMaterials, L2441.SupplysectorMaterials,
     L2441.SubsectorLogitMaterials, L2441.SubsectorShrwtMaterials, L2441.SubsectorShrwtFlltMaterials,
     L2441.SubsectorInterpMaterials, L2441.SubsectorInterpToMaterials, L2441.TechCalOutputMaterials, L2441.TechShrwtMaterials,
-    L2441.TechCoefMaterials, L2441.TechLifetimeMaterials, L2441.TechSCurveMaterials, L2441.TechProfitShutdownMaterials
+    L2441.TechCoefMaterials_final, L2441.TechLifetimeMaterials, L2441.TechSCurveMaterials, L2441.TechProfitShutdownMaterials
     )
 
   } else {

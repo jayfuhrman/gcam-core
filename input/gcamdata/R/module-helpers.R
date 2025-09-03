@@ -1440,3 +1440,25 @@ replace_outlier_EFs <- function(df, to_group, names, ef_col_name) {
 
   return (noBCOC)
 }
+
+
+#' regionalize_mineral_inputs
+#'
+#' Helper function to pre-pend "regional" to mineral inputs that are traded.
+#' Mineral demands (on the consumption side; imports and domestic)
+#' that are traded must be labeled as "regional {mineral_name}" to be differentiated
+#' from their corresponding mineral supplies (on the production side) which just have the mineral name.
+#'
+#' @param df Base tibble to start from that contains minicam.energy.input of minerals
+#' @param to_group Character vector indicating the set of traded minerals
+#' @importFrom dplyr filter anti_join rename mutate group_by_at select summarize ungroup bind_rows
+#' @return tibble with the relevan regionalized mineral inputs.
+regionalize_mineral_inputs <- function(df, names = energy.TRADED_MINERAL) {
+
+  df %>%
+    mutate(minicam.energy.input = if_else(minicam.energy.input %in% energy.TRADED_MINERAL,
+                                          paste("regional", minicam.energy.input),
+                                          minicam.energy.input)) -> reg_df
+
+  return (reg_df)
+}

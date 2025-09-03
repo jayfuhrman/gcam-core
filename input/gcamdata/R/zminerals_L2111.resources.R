@@ -9,12 +9,9 @@
 #' @return Depends on \code{command}: either a vector of required inputs,
 #' a vector of output names, or (if \code{command} is "MAKE") all
 #' the generated outputs: \code{L2111.Rsrc}, \code{L2111.UnlimitRsrc}, \code{L2111.RsrcPrice}, \code{L2111.UnlimitRsrcPrice}, \code{L2111.SubresourcePriceAdder},
-#' \code{L2111.RsrcCalProd}, \code{L2111.ReserveCalReserve}, \code{L2111.RsrcCurves_minerals},
+#' \code{L2111.RsrcCalProd}, \code{L2111.ReserveCalReserve}, \code{L2111.RsrcCurves_minerals}, \code{L2111.mineral_regions}
 #' \code{L2111.ResSubresourceProdLifetime}, \code{L2111.ResReserveTechLifetime}, \code{L2111.ResReserveTechDeclinePhase},
 #' \code{L2111.ResReserveTechProfitShutdown}, \code{L2111.ResReserveTechInvestmentInput}, \code{L2111.ResTechShrwt},
-#' \code{L2111.Supplysector_dyn}, \code{L2111.SubsectorLogit_dyn}, \code{L2111.SubsectorShrwtFllt_dyn},
-#' \code{L2111.StubTech_dyn}, \code{L2111.GlobalTechCoef_dyn}, \code{L2111.GlobalTechShrwt_dyn},
-#' \code{L2111.StubTechEfficiency_dyn}, \code{L2111.TechPMult_dyn}
 #' @details Set up data tables for mineral supply curves
 #' @importFrom assertthat assert_that
 #' @importFrom dplyr arrange bind_rows filter if_else group_by left_join mutate select summarise
@@ -30,13 +27,11 @@ if(command == driver.DECLARE_INPUTS) {
            FILE = "minerals/supply/A10.mineral_ResReserveTechDeclinePhase",
            FILE = "minerals/supply/A10.mineral_ResReserveTechLifetime",
            FILE = "minerals/supply/A10.mineral_ResReserveTechProfitShutdown",
-           FILE = "minerals/supply/A10.sector_mineral_supply_dynamic",
-           FILE = "minerals/supply/A10.subsector_mineral_supply_dynamic",
-           FILE = "minerals/supply/A10.tech_coef_mineral_supply_dynamic",
-           FILE = "minerals/supply/A10.tech_shrwt_mineral_supply_dynamic",
-           "L1111.mineral_production_R_Y_hist",
+          # FILE = "minerals/other/A271.cmm_historical_demand_all",
+           "L1111.mineral_production_R_Yb",
            "L1111.mineral_AnnProdLimit_R_Y",
-           "L1111.mineral_ResSupplyCurves_R_Y",
+           "L1111.mineral_AnnResourceLimit_R_Y",
+           "L1111.ResSupplyCurves_PricePoints",
            "L1111.mineral_AvgProdLifetime"))
 } else if(command == driver.DECLARE_OUTPUTS) {
   return(c("L2111.Rsrc",
@@ -47,20 +42,13 @@ if(command == driver.DECLARE_INPUTS) {
            "L2111.RsrcCalProd",
            "L2111.ReserveCalReserve",
            "L2111.RsrcCurves_minerals",
+           "L2111.mineral_regions",
            "L2111.ResSubresourceProdLifetime",
            "L2111.ResReserveTechLifetime",
            "L2111.ResReserveTechDeclinePhase",
            "L2111.ResReserveTechProfitShutdown",
            "L2111.ResReserveTechInvestmentInput",
-           "L2111.ResTechShrwt",
-           "L2111.Supplysector_dyn",
-           "L2111.SubsectorLogit_dyn",
-           "L2111.SubsectorShrwtFllt_dyn",
-           "L2111.StubTech_dyn",
-           "L2111.GlobalTechCoef_dyn",
-           "L2111.GlobalTechShrwt_dyn",
-           "L2111.StubTechEfficiency_dyn",
-           "L2111.TechPMult_dyn"))
+           "L2111.ResTechShrwt"))
 } else if(command == driver.MAKE) {
 
   all_data <- list(...)[[1]]
@@ -75,12 +63,10 @@ if(command == driver.DECLARE_INPUTS) {
   A10.mineral_ResReserveTechDeclinePhase <- get_data(all_data, "minerals/supply/A10.mineral_ResReserveTechDeclinePhase", strip_attributes = TRUE)
   A10.mineral_ResReserveTechLifetime <- get_data(all_data, "minerals/supply/A10.mineral_ResReserveTechLifetime", strip_attributes = TRUE)
   A10.mineral_ResReserveTechProfitShutdown <- get_data(all_data, "minerals/supply/A10.mineral_ResReserveTechProfitShutdown", strip_attributes = TRUE)
-  A10.sector_mineral_supply_dynamic <- get_data(all_data, "minerals/supply/A10.sector_mineral_supply_dynamic", strip_attributes = TRUE)
-  A10.subsector_mineral_supply_dynamic <- get_data(all_data, "minerals/supply/A10.subsector_mineral_supply_dynamic", strip_attributes = TRUE)
-  A10.tech_coef_mineral_supply_dynamic <- get_data(all_data, "minerals/supply/A10.tech_coef_mineral_supply_dynamic", strip_attributes = TRUE)
-  A10.tech_shrwt_mineral_supply_dynamic <- get_data(all_data, "minerals/supply/A10.tech_shrwt_mineral_supply_dynamic", strip_attributes = TRUE)
 
-  L1111.mineral_production_R_Y_hist <- get_data(all_data, "L1111.mineral_production_R_Y_hist", strip_attributes = TRUE) %>%
+ # A271.cmm_historical_demand_all <- get_data(all_data, "minerals/other/A271.cmm_historical_demand_all", strip_attributes = TRUE)
+
+  L1111.mineral_production_R_Yb <- get_data(all_data, "L1111.mineral_production_R_Yb", strip_attributes = TRUE) %>%
     mutate(resource = case_when(Mineral == "Cu" ~ "copper",
                                 Mineral == "Li" ~ "lithium",
                                 Mineral == "Ni" ~ "nickel"))
@@ -88,7 +74,11 @@ if(command == driver.DECLARE_INPUTS) {
     mutate(resource = case_when(Mineral == "Cu" ~ "copper",
                                 Mineral == "Li" ~ "lithium",
                                 Mineral == "Ni" ~ "nickel"))
-  L1111.mineral_ResSupplyCurves_R_Y <- get_data(all_data, "L1111.mineral_ResSupplyCurves_R_Y", strip_attributes = TRUE) %>%
+  L1111.mineral_AnnResourceLimit_R_Y <- get_data(all_data, "L1111.mineral_AnnResourceLimit_R_Y", strip_attributes = TRUE) %>%
+    mutate(resource = case_when(Mineral == "Cu" ~ "copper",
+                                Mineral == "Li" ~ "lithium",
+                                Mineral == "Ni" ~ "nickel"))
+  L1111.ResSupplyCurves_PricePoints <- get_data(all_data, "L1111.ResSupplyCurves_PricePoints", strip_attributes = TRUE) %>%
     mutate(resource = case_when(Mineral == "Cu" ~ "copper",
                                 Mineral == "Li" ~ "lithium",
                                 Mineral == "Ni" ~ "nickel"))
@@ -105,82 +95,232 @@ if(command == driver.DECLARE_INPUTS) {
     stop("No calibrated prices for resources in final historical year")
   }
 
-  # ===================================================
+   # ===================================================
   # ------- MINERAL RESOURCE RESERVE ADDITIONS
+  # Taken from zenergy_L210.Resources (fossil resources),
+  # we are modeling minerals with the similar resource-reserve approach
+  # Use Pralit's function:
+
   # Kind of a level 1.5 we are going to calculate / update historical energy
   # but the years we choose as the model base years matter
-
   GCAM_timesteps <- diff(MODEL_BASE_YEARS)
   start.year.timestep <- modeltime.PERIOD0_TIMESTEP
   model_year_timesteps <- tibble(year = MODEL_BASE_YEARS, timestep = c(start.year.timestep, GCAM_timesteps))
 
-  # a pipelne helper function to help back calculate new additions to reserve
+  # a pipeline helper function to help back calculate new additions to reserve
   # from historical production
-  lag_prod_helper <- function(year, value, year_operate, final_year) {
-    ret <- value
-    for(i in seq_along(year)) {
-      if(i == 1) {
+  lag_prod_helper <- function(data) {
+    data %>%
+      arrange(year_operate, year) %>%
+      mutate(max.annual.prod = 0,
+             annual.prod = 0,
+             reserve = 0,
+             cumul.prod = 0) ->
+      data_proc
+
+
+    # operate each model base year one at a time
+    for(year_i in MODEL_BASE_YEARS) {
+      curr_slice <- data_proc[data_proc$year_operate == year_i, ]
+      if(year_i == MODEL_BASE_YEARS[1]) {
         # first year assume all production in this vintage
-        ret[i] <- value[i]
-      } else if( year_operate[i] > final_year[i]) {
-        if(year_operate[i -1] >= final_year[i]) {
-          # retired
-          ret[i] <- 0
-        } else {
-          # final timestep that is operating so we must adjust the production
-          # by the number of years into the timestep it should have operated
-          # incase lifetime and timesteps do not neatly overlap
-          ret[i] <- ret[i - 1] * (year_operate[i] - final_year[i]) / (year_operate[i] - year_operate[i-1])
-        }
-      } else if(year_operate[i] > year[i]) {
-        # assume a vintage that as already invested continues at full
-        # capacity
-        ret[i] <- ret[i -1]
+        curr_slice %>%
+          mutate(max.annual.prod = value,
+                 annual.prod = value,
+                 reserve = annual.prod * lifetime,
+                 cumul.prod = annual.prod * timestep) ->
+          curr_slice
       } else {
-        # to determine new investment we take the difference between
-        # what the total should be and subtract off production from
-        # previous vintages that are still operating
-        ret[i] <- 0
-        ret[i] <- pmax(value[i] - sum(ret[year_operate == year[i]]), 0)
+        # pull out the new vintage slice
+        curr_slice %>%
+          filter(year == year_operate) ->
+          new_inv_slice
+        # grab the annual production in this year and the timestep which will be needed
+        # to calculate production from existing vintages as well
+        curr_demand <- new_inv_slice %>% pull(value)
+        curr_timestep = new_inv_slice %>% pull(timestep)
+        # calculate production from existing vintages first
+        prev_slice %>%
+          mutate(remain = reserve - cumul.prod,
+                 # save previous production so as to be able to linearly adjust depletion
+                 prev.annual.prod = annual.prod,
+                 # the max annual production may need to get scaled down if this reserve is about
+                 # to run out in this timestep
+                 max.annual.prod = pmin(max.annual.prod,
+                                        pmax((remain - curr_timestep * prev.annual.prod) * 2.0 / curr_timestep + prev.annual.prod, 0.0)),
+                 # calculate the production short fall which if positive will drive new  investment
+                 supply.shortfall = curr_demand - sum(max.annual.prod),
+                 # if the short fall is negative we have over capacity so annual production will need
+                 # to scale down from the max
+                 annual.prod = if_else(supply.shortfall >= 0, max.annual.prod,
+                                       max.annual.prod * (curr_demand / sum(max.annual.prod)))) ->
+          prev_slice
+        # use the shortfall to set the new vintage production and reserves
+        new_prod <- pmax(unique(prev_slice$supply.shortfall), 0.0)
+        new_inv_slice %>%
+          mutate(max.annual.prod = new_prod,
+                 annual.prod = new_prod,
+                 reserve = annual.prod * lifetime,
+                 cumul.prod = annual.prod * timestep) ->
+          new_inv_slice
+        # update previous vintage values in the current "slice"
+        curr_slice %>%
+          filter(year != year_operate) %>%
+          mutate(annual.prod = prev_slice$annual.prod,
+                 # update cumulative depletion assuming linear change from previous production to current production
+                 cumul.prod = prev_slice$cumul.prod + prev_slice$prev.annual.prod * timestep + 0.5 * ( annual.prod - prev_slice$prev.annual.prod) * timestep,
+                 # copy forward the rest
+                 max.annual.prod = prev_slice$max.annual.prod,
+                 reserve = prev_slice$reserve) %>%
+          # add back new investment
+          bind_rows(new_inv_slice) ->
+          curr_slice
       }
+      # set the current "slice" back into the original DF
+      prev_slice = curr_slice
+      data_proc[data_proc$year_operate == year_i, ] = curr_slice
     }
-    ret
+
+    # ultimately we just need the new vintage reserves
+    data_proc %>%
+      filter(year == year_operate) %>%
+     select(year, value = reserve)
   }
 
   # Back calculate reserve additions to be exactly enough given our historical production
   # and assumed production lifetime.  Note production lifetimes may not cover the entire
-  # historical period making the calculation a bit more tricky.  We use the lag_prod_helper
-  # to help project forward production by each historical vintage so we can take this into
-  # account.
-  L2111.mineral_Reserve_Mt_R_Yh <- L1111.mineral_production_R_Y_hist %>%
+  # historical period and production may dip below capacity making the calculation a bit more
+  # tricky.  We use the lag_prod_helper to help project forward production by each historical
+  # vintage so we can take this into account.
+  # Note: because we are back calculating this our choice of MODEL_BASE_YEARS matters, which is
+  # why this is Level2 processing.
+
+  L2111.mineral_production_R_Yb <- L1111.mineral_production_R_Yb %>%
     filter(Year %in% MODEL_BASE_YEARS) %>%
+    rename(year = Year) %>%
     # Use LJ because there are some regions with NAs
     left_join(L1111.mineral_AvgProdLifetime, by = c("Mineral", "resource", "region")) %>%
     # omit NAs for now. These are regions with no future resources but very tiny historical production.
-    na.omit() %>%
-    mutate(Lifetime = round(Lifetime, digits = 0)) %>%
-    left_join_error_no_match(model_year_timesteps, by = c("Year" = "year")) %>%
-    repeat_add_columns(tibble(year_operate = MODEL_BASE_YEARS)) %>%
-    mutate(final_year = pmin(MODEL_BASE_YEARS[length(MODEL_BASE_YEARS)], (Year - timestep + Lifetime))) %>%
-    filter(year_operate >= Year - timestep + 1) %>%
-    group_by(region, Mineral) %>%
-    mutate(value = lag_prod_helper(Year, value, year_operate, final_year)) %>%
-    ungroup() %>%
-    filter(Year == year_operate) %>%
-    mutate(value = value * Lifetime,
-           year = Year,
-           technology = resource) %>%
-    select(-Lifetime, -timestep, -year_operate, -Year, -Mineral, -resource, -Units)
+    na.omit()
 
+  L2111.mineral_Reserve_kt_R_Yh <- L2111.mineral_production_R_Yb %>%
+      mutate(lifetime = round(Lifetime, digits = 0)) %>%
+      rename(technology = resource) %>%
+      select(-Mineral, - Lifetime) %>%
+      repeat_add_columns(tibble(year_operate = MODEL_BASE_YEARS)) %>%
+      left_join_error_no_match(model_year_timesteps, by = c("year_operate" = "year")) %>%
+      filter(year_operate >= year) %>%
+      tidyr::nest(data = -c(region, technology)) %>%
+      mutate(data = lapply(data, lag_prod_helper)) %>%
+      tidyr::unnest(cols = data) %>%
+      mutate(value = if_else(is.na(value), 0, value))
 
-  ReserveTotal_Mt_R_F <- L2111.mineral_Reserve_Mt_R_Yh %>%
+  ReserveTotal_kt_R_F <- L2111.mineral_Reserve_kt_R_Yh %>%
     group_by(region, technology) %>%
     summarize(value = sum(value)) %>%
     ungroup()
 
 
+  # CUMULATIVE RESOURCE SUPPLY CURVES ---------------------------------------
+
+  # Put together the price-quantity pairs that comprise the resource supply curves
+  L2111.mineral_ResSupplyCurves_R_Y <- L1111.mineral_AnnResourceLimit_R_Y %>%
+    # get Q10, Q50, Q90 (based on 10th, 50th, 90th percentile of total resources)
+    mutate(Q10 = Resource * 0.1,
+           Q50 = Resource * 0.5,
+           Q90 = Resource * 0.9,
+           Q100 = Resource) %>%
+    tidyr::pivot_longer(cols = c(`Q10`, `Q50`, `Q90`, `Q100`), names_to = "percentile", values_to = "Q", values_drop_na = TRUE) %>%
+    mutate(percentile = gsub("Q", "", percentile)) %>%
+    # There are a couple of NA price values, so use left_join
+    left_join(L1111.ResSupplyCurves_PricePoints, by = c("Mineral", "resource", "region", "percentile")) %>%
+    # omit NA rows
+    na.omit() %>%
+    select(resource, region, Year, Units, Q, P, percentile)
+
+# TIME EVOLVING SUPPLY CURVE ----------------------------------------------
+
+# to create time-evolving supply curves, we will treat each additional resource capacity
+# that becomes available over time as its own technology. This will be like having "vintaged" resource capacity
+
+  # Calculate the incremental new quantity that becomes available each year:
+  ## START IN BASE YEAR - CHECK WITH PRALIT???
+  L2111.mineral_incrementResSupplyCurves_R_Y <- L2111.mineral_ResSupplyCurves_R_Y %>%
+    filter(Year >= max(MODEL_BASE_YEARS)) %>%
+    mutate(percentile = as.numeric(percentile)) %>%
+    arrange(resource, region, Units, P, percentile, Year) %>%
+    group_by(resource, region, Units, P, percentile) %>%
+    mutate(incr_Q = Q - lag(Q, default = 0)) %>%
+    ungroup()
+
+  #Assemble the table with each subresource, grade, available, and extractioncost
+  L2111.RsrcCurves_minerals_main <- L2111.mineral_incrementResSupplyCurves_R_Y %>%
+    mutate(subresource = paste0(resource, "_", Year)) %>%
+    arrange(region, resource, subresource, percentile) %>%
+    group_by(region, resource, subresource) %>%
+    mutate(grade = paste0("grade ", row_number())) %>%
+    ungroup() %>%
+    mutate(available = incr_Q,
+           extractioncost = P) %>%
+    select(region, resource, subresource, grade, available, extractioncost) %>%
+  # For grades that have the same cost, collapse them into a single grade
+    group_by(region, resource, subresource, extractioncost) %>%
+    summarise(available = sum(available),
+              grade = first(grade),
+              .groups = "drop") %>%
+    arrange(region, resource, subresource, grade)
+
+
+  # We need to add a "grade" below the grade 1 called "grade 0" in the first subresource year
+  # This will cover all of the production in historical years and will be available at cost 0
+
+  # First calculate total historical production by linearly interpolating between base year cal.production
+  L2111.RsrcCurves_minerals_grade_historical <- ReserveTotal_kt_R_F %>%
+    mutate(resource = technology,
+           subresource = paste0(resource, "_", MODEL_FINAL_BASE_YEAR),
+           grade = "grade 0",
+           available = value,
+           extractioncost = 0) %>%
+    select(region, resource, subresource, grade, available, extractioncost)
+
+  # bind historical grade in with the main supply curve grades
+  L2111.RsrcCurves_minerals_main_grade_historical <- bind_rows(L2111.RsrcCurves_minerals_main,
+                                                               L2111.RsrcCurves_minerals_grade_historical)
+
+  # We need to add a grade above the final grade, with available 0 and cost higher than the final grade cost
+  L2111.RsrcCurves_minerals_final_grade <- L2111.RsrcCurves_minerals_main_grade_historical %>%
+    group_by(region, resource, subresource) %>%
+    filter(row_number() == n()) %>% # last row per group
+    mutate(grade = paste0("grade ", as.numeric(gsub("grade ", "", grade))+1),
+           available = 0,
+           extractioncost = (extractioncost+0.1) * 1.1) %>% # arbitrary, just need the cost to be higher than the final grade cost
+    ungroup()
+
+
+  # bind all of the grades together for final-output
+  L2111.RsrcCurves_minerals <- bind_rows(L2111.RsrcCurves_minerals_main_grade_historical,
+                                         L2111.RsrcCurves_minerals_final_grade) %>%
+    arrange(region, resource, subresource, grade) %>%
+    # convert to the final units needed in the xml
+      #available: Mt
+      #extractioncost: 1975$/kg
+    mutate(available = available/1000, #from kt to Mt
+           extractioncost = (extractioncost/1000)*gdp_deflator(1975, base_year = 2020)) %>% #from 2020$/t to 1975$/kg
+    group_by(region, resource, subresource, grade) %>%
+    # Keep only the row with lowest extraction cost for each group with same grade
+    dplyr::slice_min(order_by = extractioncost, n = 1, with_ties = FALSE) %>%
+    ungroup()
+    ##final-output
+
   # ===================================================
   # LEVEL2 TABLES
+
+  # Make a generic table that lists region/mineral resource combinations that exist
+  # We will use this to filter out combinations for which supply curve data does not exist
+  # Also, write this out so we can use this to filter in the trade chunk.
+  L2111.mineral_regions <- L2111.RsrcCurves_minerals %>%
+    select(region, resource) %>%
+    distinct() ##final-output
 
   # A. Output unit, price unit, market
   L2111.mineral_rsrc_info <- A10.mineral_rsrc_info %>%
@@ -188,7 +328,6 @@ if(command == driver.DECLARE_INPUTS) {
     repeat_add_columns(select(GCAM_region_names, region)) %>%
     # Reset regional markets to the names of the specific regions
     mutate(market = if_else(market == "regional", region, market))
-    # TO-DO: filter to only the regions that have supply curves for that particular mineral.
 
   # Currently, copper, lithium and nickel will be treated as depletable resources.
   # All other minerals are still unlimited resources (FOR NOW)
@@ -197,20 +336,24 @@ if(command == driver.DECLARE_INPUTS) {
   L2111.Rsrc <- L2111.mineral_rsrc_info %>%
     filter(resource_type == "resource") %>%
     select(region, resource = resource, output.unit = `output-unit`, price.unit = `price-unit`, market) %>%
-    distinct()
+    distinct() %>%
+    # filter to only the regions that have supply curves for that particular mineral.
+    semi_join(L2111.mineral_regions, by = c("region", "resource"))##final-output
 
   # L2111.UnlimitRsrc: output unit, price unit, and market for unlimited resources
   L2111.UnlimitRsrc <- L2111.mineral_rsrc_info %>%
     filter(resource_type == "unlimited-resource") %>%
     select(region, unlimited.resource = resource, output.unit = `output-unit`, price.unit = `price-unit`, market) %>%
-    distinct()
+    distinct() ##final-output
 
   # L2111.RsrcPrice: historical prices for depletable resources
   # For now, assuming uniform calibration prices across all regions
   L2111.RsrcPrice <- L2111.mineral_rsrc_info %>%
     filter(resource_type == "resource",
            year %in% MODEL_BASE_YEARS) %>%
-    select(region, resource = resource, year, price = value)
+    select(region, resource = resource, year, price = value) %>%
+    # filter to only the regions that have supply curves for that particular mineral.
+    semi_join(L2111.mineral_regions, by = c("region", "resource")) ##final-output
 
   # L2111.UnlimitRsrcPrice: prices for unlimited resources
   # update the mineral price by multiplying the fixed-charge-rate (assumed to be 0.13). The mineral cost is considered part of the capital cost,
@@ -220,7 +363,7 @@ if(command == driver.DECLARE_INPUTS) {
     filter(resource_type == "unlimited-resource", resource %in% energy.RSRC_MINERAL,
            year %in% MODEL_BASE_YEARS) %>%
     mutate(price = value * 0.13) %>%
-    select(region, unlimited.resource = resource, year, price)
+    select(region, unlimited.resource = resource, year, price) ##final-output
 
 
   # B. Tech change
@@ -228,83 +371,89 @@ if(command == driver.DECLARE_INPUTS) {
 
   # C. Calibrated production (depletable resources only)
   # L2111.RsrcCalProd: calibrated production of depletable resources
-  # NOTE: Assuming only one calibrated subresource per depletable resource
-  L2111.RsrcCalProd <- L1111.mineral_production_R_Y_hist %>%
-    filter(Year %in% MODEL_BASE_YEARS) %>%
-    mutate(resource_type = "resource",
-           subresource = resource,
-           subresource_type = "subresource") %>%
+  # NOTE: Assuming all calibrated production goes in the final model base year for now.
+  L2111.RsrcCalProd <- L2111.mineral_production_R_Yb %>%
+    filter(year %in% MODEL_BASE_YEARS) %>%
+    mutate(resource = resource,
+           subresource = paste0(resource, "_", max(MODEL_BASE_YEARS))) %>%
     mutate(cal.production = round(value, energy.DIGITS_CALPRODUCTION)) %>%
-    select(region, resource, subresource, year= Year, cal.production)
+    select(region, resource, subresource, year, cal.production) %>%
+    # Convert to Mt for final-output
+    mutate(cal.production = cal.production/1000)  #kt to Mt
+  ##final-output
 
-  L2111.ReserveCalReserve <- L2111.mineral_Reserve_Mt_R_Yh %>%
-    rename(cal.reserve = value) %>%
+  # # Compare with demand-side (GLOBAL TOTALS)
+  # Supply_Mt <- L2111.RsrcCalProd %>%
+  #   group_by(resource, year) %>%
+  #   dplyr::summarise(value = sum(cal.production)) %>%
+  #   spread(key = year, value = value)
+  #
+  # Demand_Mt <- A271.cmm_historical_demand_all %>%
+  #   filter(resource %in% c("copper", "lithium", "nickel"))
+  #
+
+  L2111.ReserveCalReserve <- L2111.mineral_Reserve_kt_R_Yh %>%
+    filter(year %in% MODEL_BASE_YEARS) %>%
     mutate(resource = technology,
-           resource_type = "resource",
-           subresource = resource,
-           subresource_type = "subresource") %>%
-    select(region, resource, reserve.subresource = technology, year, cal.reserve)
-
+           reserve.subresource = paste0(resource, "_", max(MODEL_BASE_YEARS))) %>%
+    rename(cal.reserve = value) %>%
+    select(region, resource, reserve.subresource, year, cal.reserve) %>%
+    # Convert to Mt for final-output
+    mutate(cal.reserve = cal.reserve/1000)  #kt to Mt
+  ##final-output
 
   # D. Resource supply curves
   # L2111.RsrcCurves_mineral: supply curves of fossil resources
-
-  # first, make sure supply curve table format is correct
-  # Note still have "Year" column here
-  L2111.mineral_ResSupplyCurves_R_Y <- L1111.mineral_ResSupplyCurves_R_Y %>%
-    mutate(grade = case_when(percentile == 10 ~ "grade 1",
-                             percentile == 50 ~ "grade 2",
-                             percentile == 90 ~ "grade 3",
-                             percentile == 100 ~ "grade 4"),
-           subresource = resource,
-           available = Q,
-           extractioncost = P) %>%
-    select(region, resource, subresource, Year, grade, available, extractioncost)
-
-  # We need to calculate "efficiency" parameter (table for Step E), which reflects what fraction of eventual supply curve is available in each year.
-  # Thus 2100 (or the max model future year) "efficiency" would be 1
-  L2111.mineral_ResSupplyCurves_R_2100 <- L2111.mineral_ResSupplyCurves_R_Y %>%
-    filter(Year == max(MODEL_FUTURE_YEARS)) %>%
-    select(region, resource, subresource, Year, grade, available)
-
-  L2111.RsrcCurves_minerals_Efficiency_calc <- L2111.mineral_ResSupplyCurves_R_Y %>%
-    left_join_error_no_match(L2111.mineral_ResSupplyCurves_R_2100,
-                             by = c("region", "resource", "subresource", "grade"), suffix = c("", ".final")) %>%
-    mutate(efficiency = available/available.final)
-
-  # The supply curve itself will be based on 2100 supply curve
-  L2111.RsrcCurves_minerals <- L2111.mineral_ResSupplyCurves_R_Y %>%
-    filter(Year == max(MODEL_FUTURE_YEARS)) %>%
-    mutate(available = round(available, energy.DIGITS_RESOURCE)) %>%
-    select(region, resource, subresource, grade, available, extractioncost)
-
+  # See  L2111.RsrcCurves_minerals above
 
   # E. Other resource-reserve assumptions
   # L2111.ResSubresourceProdLifetime : we have regionally differentiated average production lifetime
   L2111.ResSubresourceProdLifetime <- L1111.mineral_AvgProdLifetime %>%
-    mutate(reserve.subresource = resource,
+    repeat_add_columns(tibble(year = c(MODEL_FINAL_BASE_YEAR, MODEL_FUTURE_YEARS))) %>%
+    mutate(reserve.subresource = paste0(resource, "_", year),
            avg.prod.lifetime = Lifetime) %>%
-    select(LEVEL2_DATA_NAMES[["ResSubresourceProdLifetime"]])
+    select(LEVEL2_DATA_NAMES[["ResSubresourceProdLifetime"]]) %>%
+    # filter to only the regions that have supply curves for that particular mineral.
+    semi_join(L2111.mineral_regions, by = c("region", "resource")) ##final-output
 
   L2111.SubresourcePriceAdder <- A10.mineral_SubresourcePriceAdder %>%
     repeat_add_columns(GCAM_region_names) %>%
     rename(price.adder = value) %>%
-    select(LEVEL2_DATA_NAMES[["SubresourcePriceAdder"]])
+    repeat_add_columns(tibble(vintage = c(MODEL_FINAL_BASE_YEAR, MODEL_FUTURE_YEARS))) %>%
+    mutate(subresource = paste0(resource, "_", vintage)) %>%
+    select(LEVEL2_DATA_NAMES[["SubresourcePriceAdder"]]) %>%
+    # filter to only the regions that have supply curves for that particular mineral.
+    semi_join(L2111.mineral_regions, by = c("region", "resource")) ##final-output
 
   L2111.ResReserveTechLifetime <- A10.mineral_ResReserveTechLifetime %>%
     repeat_add_columns(GCAM_region_names) %>%
+    repeat_add_columns(tibble(vintage = c(MODEL_FINAL_BASE_YEAR, MODEL_FUTURE_YEARS))) %>%
+    mutate(reserve.subresource = paste0(resource, "_", vintage),
+           resource.reserve.technology = reserve.subresource) %>%
     repeat_add_columns(tibble(year = MODEL_YEARS)) %>%
-    select(LEVEL2_DATA_NAMES[["ResReserveTechLifetime"]])
+    select(LEVEL2_DATA_NAMES[["ResReserveTechLifetime"]]) %>%
+    # filter to only the regions that have supply curves for that particular mineral.
+    semi_join(L2111.mineral_regions, by = c("region", "resource")) ##final-output
 
   L2111.ResReserveTechDeclinePhase <- A10.mineral_ResReserveTechDeclinePhase %>%
     repeat_add_columns(GCAM_region_names) %>%
+    repeat_add_columns(tibble(vintage = c(MODEL_FINAL_BASE_YEAR, MODEL_FUTURE_YEARS))) %>%
+    mutate(reserve.subresource = paste0(resource, "_", vintage),
+           resource.reserve.technology = reserve.subresource) %>%
     repeat_add_columns(tibble(year = MODEL_YEARS)) %>%
-    select(LEVEL2_DATA_NAMES[["ResReserveTechDeclinePhase"]])
+    select(LEVEL2_DATA_NAMES[["ResReserveTechDeclinePhase"]]) %>%
+    # filter to only the regions that have supply curves for that particular mineral.
+    semi_join(L2111.mineral_regions, by = c("region", "resource")) ##final-output
 
   L2111.ResReserveTechProfitShutdown <- A10.mineral_ResReserveTechProfitShutdown %>%
     repeat_add_columns(GCAM_region_names) %>%
+    repeat_add_columns(tibble(vintage = c(MODEL_FINAL_BASE_YEAR, MODEL_FUTURE_YEARS))) %>%
+    mutate(reserve.subresource = paste0(resource, "_", vintage),
+           resource.reserve.technology = reserve.subresource) %>%
     repeat_add_columns(tibble(year = MODEL_YEARS)) %>%
-    select(LEVEL2_DATA_NAMES[["ResReserveTechProfitShutdown"]])
+    select(LEVEL2_DATA_NAMES[["ResReserveTechProfitShutdown"]]) %>%
+    # filter to only the regions that have supply curves for that particular mineral.
+    semi_join(L2111.mineral_regions, by = c("region", "resource")) ##final-output
 
   L2111.ResReserveTechInvestmentInput <- L2111.ResSubresourceProdLifetime %>%
     mutate(resource.reserve.technology = reserve.subresource,
@@ -312,106 +461,36 @@ if(command == driver.DECLARE_INPUTS) {
            FCR = (socioeconomics.DEFAULT_INTEREST_RATE * (1+socioeconomics.DEFAULT_INTEREST_RATE)^invest_lifetime) / ((1+socioeconomics.DEFAULT_INTEREST_RATE)^invest_lifetime -1),
            capital.coef = socioeconomics.RESOURCE_CAPITAL_RATIO / FCR,
            minicam.non.energy.input = "investment-cost",
-           tracking.market = "capital") %>%
+           tracking.market = "capital",
+           vintage = as.integer(str_extract(reserve.subresource, "\\d{4}"))) %>%
     repeat_add_columns(tibble(year = MODEL_YEARS)) %>%
-    select(LEVEL2_DATA_NAMES[["ResReserveTechInvestmentInput"]])
+    select(LEVEL2_DATA_NAMES[["ResReserveTechInvestmentInput"]]) %>%
+    # filter to only the regions that have supply curves for that particular mineral.
+    semi_join(L2111.mineral_regions, by = c("region", "resource")) ##final-output
+
 
   # We need to make sure we have at least a shell technology for ALL resources
   # and so we will just use the share weight table to facilitate doing that.
+  # For base years, shareweight is set to 1 if there is a production value for the given year
+  # For future years, shareweight is set to 1 after the vintage year
   L2111.ResTechShrwt <- A10.mineral_subrsrc_info %>%
     repeat_add_columns(GCAM_region_names) %>%
+    repeat_add_columns(tibble(vintage = c(MODEL_FINAL_BASE_YEAR, MODEL_FUTURE_YEARS))) %>%
+    mutate(subresource = paste0(resource, "_", vintage)) %>%
+    # need to write all vintages out to all years, and then remove the irrelevant ones
     repeat_add_columns(tibble(year = MODEL_YEARS)) %>%
     left_join(L2111.RsrcCalProd %>%
                 mutate(prod_value = as.double(cal.production)),
               by = c("region", "resource", "subresource", "year")) %>%
     mutate(prod_value = if_else(is.na(prod_value), 0, prod_value),
            technology = subresource,
-           share.weight = if_else(year > MODEL_FINAL_BASE_YEAR | prod_value > 0, 1, 0)) %>%
+           share.weight = if_else((year > MODEL_FINAL_BASE_YEAR | prod_value > 0)
+                                  & (year >= vintage | vintage == MODEL_FINAL_BASE_YEAR), 1, 0)) %>%
     filter(year %in% MODEL_YEARS) %>%
-    select(LEVEL2_DATA_NAMES[["ResTechShrwt"]])
+    select(LEVEL2_DATA_NAMES[["ResTechShrwt"]])  %>%
+    # filter to only the regions that have supply curves for that particular mineral.
+    semi_join(L2111.mineral_regions, by = c("region", "resource")) ##final-output
 
-
-# DYNAMIC SUPPLY CURVE SECTOR ---------------------------------------------
-
-  # F. "Dynamic capacity" supplysector / subsector / technology information
-  # Efficiency is set in a supplysector ("dynamic capacity") which takes minicam.energy.input from the resource
-
-  # SUPPLYSECTOR INFO
-  # L2111.Supplysector_dyn
-  L2111.Supplysector_dyn <- A10.sector_mineral_supply_dynamic %>%
-    write_to_all_regions(c(LEVEL2_DATA_NAMES[["Supplysector"]], LOGIT_TYPE_COLNAME), GCAM_region_names)
-
-  # SUBSECTOR INFO
-  # L2111.SubsectorLogit_dyn
-  L2111.SubsectorLogit_dyn <- A10.subsector_mineral_supply_dynamic %>%
-    write_to_all_regions(c(LEVEL2_DATA_NAMES[["SubsectorLogit"]], LOGIT_TYPE_COLNAME), GCAM_region_names)
-
-  # L2111.SubsectorShrwtFllt_dyn
-  L2111.SubsectorShrwtFllt_dyn <- A10.subsector_mineral_supply_dynamic %>%
-    write_to_all_regions(c(LEVEL2_DATA_NAMES[["SubsectorShrwtFllt"]], LOGIT_TYPE_COLNAME), GCAM_region_names)
-
-  # TECHNOLOGY INFO
-  # L2111.GlobalTechShrwt_dyn
-  L2111.GlobalTechShrwt_dyn <- A10.tech_shrwt_mineral_supply_dynamic %>%
-    gather_years %>%
-    # Expand table to include all model base and future years
-    complete(year = c(year, MODEL_YEARS), nesting(supplysector, subsector, technology)) %>%
-    # Extrapolate to fill out values for all years
-    # Rule 2 is used so years outside of min-max range are assigned values from closest data, as opposed to NAs
-    mutate(share.weight = approx_fun(year, value, rule = 2)) %>%
-    filter(year %in% MODEL_YEARS) %>% # This will drop 1971
-    # Assign the columns "sector.name" and "subsector.name", consistent with the location info of a global technology
-    select(sector.name = supplysector, subsector.name = subsector, technology, year, share.weight)
-
-  # L2111.GlobalTechCoef_dyn
-  L2111.GlobalTechCoef_dyn <- A10.tech_coef_mineral_supply_dynamic %>%
-    gather_years %>%
-    # Expand table to include all model base and future years
-    complete(year = c(year, MODEL_YEARS), nesting(supplysector, subsector, technology, minicam.energy.input)) %>%
-    # Extrapolate to fill out values for all years
-    # Rule 2 is used so years outside of min-max range are assigned values from closest data, as opposed to NAs
-    group_by(supplysector, subsector, technology, minicam.energy.input) %>%
-    mutate(coefficient = approx_fun(year, value, rule = 2)) %>%
-    ungroup() %>%
-    filter(year %in% MODEL_YEARS) %>% # This will drop 1971
-    # Assign the columns "sector.name" and "subsector.name", consistent with the location info of a global technology
-    select(sector.name = supplysector, subsector.name = subsector, technology, year, minicam.energy.input, coefficient)
-
-  # L2111.StubTech_dyn
-  L2111.StubTech_dyn <- A10.tech_shrwt_mineral_supply_dynamic %>%
-    write_to_all_regions(LEVEL2_DATA_NAMES[["Tech"]], GCAM_region_names) %>%
-    rename(stub.technology = technology) %>%
-    select(LEVEL2_DATA_NAMES[["StubTech"]])
-
-  # L2111.StubTechEfficiency_dyn
-  L2111.StubTechEfficiency_dyn <- L2111.RsrcCurves_minerals_Efficiency_calc %>%
-    mutate(supplysector = paste(resource, "dynamic-capacity"),
-           subsector = paste(resource, "dynamic-capacity"),
-           stub.technology = paste(resource, "dynamic-capacity"),
-           minicam.energy.input = resource,
-           year = Year,
-           market.name = region,
-           efficiency = round(efficiency, digits = 10)) %>%
-    select(c(LEVEL2_DATA_NAMES[['StubTechEff']])) %>%
-    distinct()
-
-  # L2111.TechPMult_dyn
-  L2111.TechPMult_dyn <- L2111.RsrcCurves_minerals_Efficiency_calc %>%
-    mutate(supplysector = paste(resource, "dynamic-capacity"),
-           subsector = paste(resource, "dynamic-capacity"),
-           technology = paste(resource, "dynamic-capacity"),
-           minicam.energy.input = resource,
-           year = Year,
-           market.name = region,
-           # pMultiplier is set to the same value as the efficiency
-           efficiency = round(efficiency, digits = 10),
-           pMult = round(efficiency, digits = 10)) %>%
-    select(c(LEVEL2_DATA_NAMES[['TechPmult']])) %>%
-    distinct()
-
-
-
-  # TBD - do we need maxSubResource?
 
   # ===================================================
   # Set up annual production limit constraint as a policy portfolio standard (this will be in a separate XML)
@@ -426,12 +505,26 @@ if(command == driver.DECLARE_INPUTS) {
     add_precursors("common/GCAM_region_names", "minerals/supply/A10.mineral_rsrc_info") ->
     L2111.Rsrc
 
+  L2111.UnlimitRsrc %>%
+    add_title("Market information for unlimited mineral resources") %>%
+    add_units("NA") %>%
+    add_comments("A10.mineral_rsrc_info written to all regions") %>%
+    add_precursors("common/GCAM_region_names", "minerals/supply/A10.mineral_rsrc_info") ->
+    L2111.UnlimitRsrc
+
   L2111.RsrcPrice %>%
     add_title("Historical prices for depletable mineral resources") %>%
     add_units("1975$/kg for minerals") %>%
     add_comments("A10.mineral_rsrc_info written to all regions") %>%
     same_precursors_as(L2111.Rsrc) ->
     L2111.RsrcPrice
+
+  L2111.UnlimitRsrcPrice %>%
+    add_title("Historical prices for depletable mineral resources") %>%
+    add_units("1975$/kg for minerals") %>%
+    add_comments("A10.mineral_rsrc_info written to all regions") %>%
+    same_precursors_as(L2111.UnlimitRsrc) ->
+    L2111.UnlimitRsrcPrice
 
   L2111.SubresourcePriceAdder %>%
     add_title("Adjust calibration price adders in future model years") %>%
@@ -443,8 +536,8 @@ if(command == driver.DECLARE_INPUTS) {
   L2111.RsrcCalProd %>%
     add_title("Calibrated production of depletable mineral resources") %>%
     add_units("Mt/yr") %>%
-    add_comments("Data from L1111.mineral_production_R_Y_hist") %>%
-    add_precursors("L1111.mineral_production_R_Y_hist", "common/GCAM_region_names") ->
+    add_comments("Data from L1111.mineral_production_R_Yb") %>%
+    add_precursors("L1111.mineral_production_R_Yb", "common/GCAM_region_names") ->
     L2111.RsrcCalProd
 
   L2111.ReserveCalReserve %>%
@@ -452,16 +545,22 @@ if(command == driver.DECLARE_INPUTS) {
     add_units("Mt cumulative") %>%
     add_comments("Calibrated reserve additions in each model year from which") %>%
     add_comments("the vintage will produce from for the assumed lifetime") %>%
-    add_precursors("L1111.mineral_production_R_Y_hist", "common/GCAM_region_names") ->
+    add_precursors("L1111.mineral_production_R_Yb", "common/GCAM_region_names") ->
     L2111.ReserveCalReserve
 
   L2111.RsrcCurves_minerals %>%
     add_title("Supply curves of minerals resources") %>%
     add_units("available: Mt; extractioncost: 1975$/kg") %>%
     add_comments("Data from L111.RsrcCurves_EJ_R_Ffos") %>%
-    add_precursors("L1111.mineral_ResSupplyCurves_R_Y", "L1111.mineral_production_R_Y_hist", "common/GCAM_region_names") ->
+    add_precursors("L1111.ResSupplyCurves_PricePoints", "L1111.mineral_production_R_Yb", "common/GCAM_region_names") ->
     L2111.RsrcCurves_minerals
 
+  L2111.mineral_regions %>%
+    add_title("Set of regions/mineral resource combinations that exist") %>%
+    add_units("NA") %>%
+    add_comments("NA") %>%
+    same_precursors_as("L2111.RsrcCurves_minerals") ->
+    L2111.mineral_regions
 
   L2111.ResSubresourceProdLifetime %>%
     add_title("Average production lifetime for reserve subresource") %>%
@@ -511,61 +610,6 @@ if(command == driver.DECLARE_INPUTS) {
     add_precursors("common/GCAM_region_names", "minerals/supply/A10.mineral_subrsrc_info") ->
     L2111.ResTechShrwt
 
-  L2111.Supplysector_dyn %>%
-    add_title("Dynamic minerals supply sector information") %>%
-    add_units("Output, input, and price units are as listed; exponent is unitless") %>%
-    add_comments("Dynamic minerals supply sector information was expanded to include GCAM region names") %>%
-    add_precursors("common/GCAM_region_names", "minerals/supply/A10.sector_mineral_supply_dynamic") ->
-    L2111.Supplysector_dyn
-
-  L2111.SubsectorLogit_dyn %>%
-    add_title("Subsector logit exponents of dynamic minerals supply sector") %>%
-    add_units("Unitless") %>%
-    add_comments("Table on subsector logit exponents was expanded to include GCAM region names") %>%
-    add_precursors("common/GCAM_region_names", "minerals/supply/A10.subsector_mineral_supply_dynamic") ->
-    L2111.SubsectorLogit_dyn
-
-  L2111.SubsectorShrwtFllt_dyn %>%
-    add_title("Subsector shareweights of dynamic minerals supply sectors") %>%
-    add_units("Unitless") %>%
-    add_comments("Table on subsector shareweights was expanded to include GCAM region names") %>%
-    add_precursors("common/GCAM_region_names", "minerals/supply/A10.subsector_mineral_supply_dynamic") ->
-    L2111.SubsectorShrwtFllt_dyn
-
-  L2111.StubTech_dyn %>%
-    add_title("Identification of stub technologies of dynamic minerals supply sectors") %>%
-    add_units("Not Applicable") %>%
-    add_comments("Technology list in the global shareweight table for dynamic minerals supply was expanded to include GCAM regions") %>%
-    add_precursors("common/GCAM_region_names", "minerals/supply/A10.tech_shrwt_mineral_supply_dynamic") ->
-    L2111.StubTech_dyn
-
-  L2111.GlobalTechCoef_dyn %>%
-    add_title("Dynamic minerals supply global technology coefficients across base model years") %>%
-    add_units("Unitless") %>%
-    add_comments("Global technology coefficients were interpolated across all base model years") %>%
-    add_precursors("minerals/supply/A10.tech_coef_mineral_supply_dynamic") ->
-    L2111.GlobalTechCoef_dyn
-
-  L2111.GlobalTechShrwt_dyn %>%
-    add_title("Shareweights of carbon storage technologies across base model years") %>%
-    add_units("Unitless") %>%
-    add_comments("Shareweights of global technologies were interpolated across all base model years") %>%
-    add_precursors("minerals/supply/A10.tech_shrwt_mineral_supply_dynamic") ->
-    L2111.GlobalTechShrwt_dyn
-
-  L2111.StubTechEfficiency_dyn %>%
-    add_title("Dynamic minerals supply efficiencies") %>%
-    add_units("Unitless") %>%
-    add_comments("Regionally calibrated scaling limits for minerals relative to maximum regional resources") %>%
-    add_precursors("L1111.mineral_ResSupplyCurves_R_Y", "common/GCAM_region_names") ->
-    L2111.StubTechEfficiency_dyn
-
-  L2111.TechPMult_dyn %>%
-    add_title("Dynamic minerals supply price multiplier") %>%
-    add_units("Unitless") %>%
-    add_comments("pMultiplier scales down costs by the same factor as the efficiency parameter in order to make supply curves have same slope as original.") %>%
-    same_precursors_as(L2111.StubTechEfficiency_dyn)->
-    L2111.TechPMult_dyn
 
   return_data(L2111.Rsrc,
               L2111.UnlimitRsrc,
@@ -575,20 +619,13 @@ if(command == driver.DECLARE_INPUTS) {
               L2111.RsrcCalProd,
               L2111.ReserveCalReserve,
               L2111.RsrcCurves_minerals,
+              L2111.mineral_regions,
               L2111.ResSubresourceProdLifetime,
               L2111.ResReserveTechLifetime,
               L2111.ResReserveTechDeclinePhase,
               L2111.ResReserveTechProfitShutdown,
               L2111.ResReserveTechInvestmentInput,
-              L2111.ResTechShrwt,
-              L2111.Supplysector_dyn,
-              L2111.SubsectorLogit_dyn,
-              L2111.SubsectorShrwtFllt_dyn,
-              L2111.StubTech_dyn,
-              L2111.GlobalTechCoef_dyn,
-              L2111.GlobalTechShrwt_dyn,
-              L2111.StubTechEfficiency_dyn,
-              L2111.TechPMult_dyn)
+              L2111.ResTechShrwt)
 } else {
   stop("Unknown command")
 }
