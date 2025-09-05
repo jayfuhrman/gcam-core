@@ -1,16 +1,16 @@
 # Copyright 2019 Battelle Memorial Institute; see the LICENSE file.
 
-#' module_energy_en_transformation_xml
+#' module_energy_xml_detailed_refining
 #'
-#' Construct XML data structure for \code{en_transformation.xml}.
+#' Construct XML data structure for \code{detailed_refining.xml}.
 #'
 #' @param command API command to execute
 #' @param ... other optional parameters, depending on command
 #' @return Depends on \code{command}: either a vector of required inputs,
 #' a vector of output names, or (if \code{command} is "MAKE") all
-#' the generated outputs: \code{en_transformation.xml}. The corresponding file in the
+#' the generated outputs: \code{detailed_refining.xml}. The corresponding file in the
 #' original data system was \code{batch_en_transformation.xml.R} (energy XML).
-#' @importFrom dplyr filter mutate select rename
+#' @importFrom dplyr filter mutate select rename if_else
 module_energy_detailed_refining_xml <- function(command, ...) {
   if(command == driver.DECLARE_INPUTS) {
     return(c("L2221.Supplysector_en",
@@ -88,7 +88,8 @@ module_energy_detailed_refining_xml <- function(command, ...) {
       select(LEVEL2_DATA_NAMES[["GlobalTechInputPMult"]])
 
     L2221.StubTechSecondaryOutput <- get_data(all_data,"L2221.StubTechSecondaryOutput")
-    L2221.StubTechCost <- get_data(all_data, "L2221.StubTechCost")
+    L2221.StubTechCost <- get_data(all_data, "L2221.StubTechCost") %>%
+      mutate(input.cost = if_else(region == "Ukraine" & year %in% MODEL_FUTURE_YEARS, input.cost + 1.75, input.cost))
 
 
     # ===================================================
