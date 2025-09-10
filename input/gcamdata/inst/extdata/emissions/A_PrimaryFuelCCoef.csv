@@ -24,8 +24,52 @@ delivered gas,14.2,0
 crude oil,19.6,0
 regional oil,19.6,0
 refining,19.6,0
+Residual_FuelOil,19.6,0
+Residual_FuelOil_crude oil,19.6,0
+Residual_FuelOil_biomass,19.6,0
+Residual_FuelOil_coal,19.6,0
+Residual_FuelOil_natural gas,19.6,0
+Distillate_FuelOil,19.6,0
+Distillate_FuelOil_crude oil,19.6,0
+Distillate_FuelOil_biomassOil,19.6,0
+Distillate_FuelOil_coal,19.6,0
+Distillate_FuelOil_natural gas,19.6,0
+Gasoline,19.6,0
+Gasoline_crude oil,19.6,0
+Gasoline_corn,19.6,0
+Gasoline_sugar,19.6,0
+Gasoline_biomass,19.6,0
+Gasoline_coal,19.6,0
+Gasoline_natural gas,19.6,0
+LPG,19.6,0
+LPG_crude oil,19.6,0
+LPG_biomass,19.6,0
+LPG_coal,19.6,0
+LPG_natural gas,19.6,0
+Jet_Kerosene,19.6,0
+Jet_Kerosene_crude oil,19.6,0
+Jet_Kerosene_biomass,19.6,0
+Jet_Kerosene_coal,19.6,0
+Jet_Kerosene_natural gas,19.6,0
+Heavy_Residual,19.6,0
+Heavy_Residual_crude oil,19.6,0
+Heavy_Residual_biomass,19.6,0
+Heavy_Residual_coal,19.6,0
+Heavy_Residual_natural gas,19.6,0
+Other,19.6,0
+Other_crude oil,19.6,0
+Other_biomass,19.6,0
+Other_coal,19.6,0
+Other_natural gas,19.6,0
 refined liquids industrial,19.6,0
 refined liquids enduse,19.6,0
+refined liquids lpg,19.6,0
+refined liquids gasoline,19.6,0
+refined liquids jet_kerosene,19.6,0
+refined liquids distillate_fueloil,19.6,0
+refined liquids residual_fueloil,19.6,0
+refined liquids heavy_residual,19.6,0
+refined liquids other,19.6,0
 limestone,0.08,0
 unconventional oil upscaling,1.5,0
 regional industrial_roundwood,0,0
