@@ -6,10 +6,10 @@
 # Column types: ccccinc
 # ----------
 supplysector,output.unit,input.unit,price.unit,traded,logit.exponent,logit.type
-traded Distillate_FuelOil,EJ,EJ,1975$/GJ,1,-6,
-traded Residual_FuelOil,EJ,EJ,1975$/GJ,1,-6,
-traded Gasoline,EJ,EJ,1975$/GJ,1,-6,
-traded Heavy_Residual,EJ,EJ,1975$/GJ,1,-6,
-traded Jet_Kerosene,EJ,EJ,1975$/GJ,1,-6,
-traded LPG,EJ,EJ,1975$/GJ,1,-6,
-traded Other,EJ,EJ,1975$/GJ,1,-6,
+traded Distillate_FuelOil,EJ,EJ,1975$/GJ,1,-3,
+traded Residual_FuelOil,EJ,EJ,1975$/GJ,1,-3,
+traded Gasoline,EJ,EJ,1975$/GJ,1,-3,
+traded Heavy_Residual,EJ,EJ,1975$/GJ,1,-3,
+traded Jet_Kerosene,EJ,EJ,1975$/GJ,1,-3,
+traded LPG,EJ,EJ,1975$/GJ,1,-3,
+traded Other,EJ,EJ,1975$/GJ,1,-3,
