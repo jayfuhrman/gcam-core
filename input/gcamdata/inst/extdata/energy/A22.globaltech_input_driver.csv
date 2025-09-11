@@ -5,19 +5,33 @@
 # Column types: cccc
 # ----------
 supplysector,subsector,technology,input.name
-refining,biomass liquids,biodiesel,regional biomassOil
-refining,biomass liquids,cellulosic ethanol,regional biomass
-refining,biomass liquids,cellulosic ethanol CCS level 1,regional biomass
-refining,biomass liquids,cellulosic ethanol CCS level 2,regional biomass
-refining,biomass liquids,corn ethanol,regional corn for ethanol
-refining,biomass liquids,FT biofuels,regional biomass
-refining,biomass liquids,FT biofuels CCS level 1,regional biomass
-refining,biomass liquids,FT biofuels CCS level 2,regional biomass
-refining,biomass liquids,sugar cane ethanol,regional sugar for ethanol
-refining,coal to liquids,coal to liquids,regional coal
-refining,coal to liquids,coal to liquids CCS level 1,regional coal
-refining,coal to liquids,coal to liquids CCS level 2,regional coal
-refining,gas to liquids,gas to liquids,regional natural gas
-refining,oil refining,oil refining,regional oil
-refining,biomass liquids,BTL with hydrogen,H2 industrial
-refining,biomass liquids,BTL with hydrogen,regional biomass
+refining,biorefining,biodiesel,regional biomassOil
+refining,biorefining,cellulosic ethanol,regional biomass
+refining,biorefining,corn ethanol,regional corn for ethanol
+refining,biorefining,sugar cane ethanol,regional sugar for ethanol
+refining,biorefining,Residual_FuelOil,regional biomass
+refining,biorefining,Jet_Kerosene,regional biomass
+refining,biorefining,LPG,regional biomass
+refining,biorefining,Heavy_Residual,regional biomass
+refining,biorefining,Other,regional biomass
+refining,ctl,Distillate_FuelOil,regional coal
+refining,ctl,Residual_FuelOil,regional coal
+refining,ctl,Gasoline,regional coal
+refining,ctl,Jet_Kerosene,regional coal
+refining,ctl,LPG,regional coal
+refining,ctl,Heavy_Residual,regional coal
+refining,ctl,Other,regional coal
+refining,gtl,Distillate_FuelOil,regional natural gas
+refining,gtl,Residual_FuelOil,regional natural gas
+refining,gtl,Gasoline,regional natural gas
+refining,gtl,Jet_Kerosene,regional natural gas
+refining,gtl,LPG,regional natural gas
+refining,gtl,Heavy_Residual,regional natural gas
+refining,gtl,Other,regional natural gas
+refining,crude oil refining,high Distillate_FuelOil,regional oil
+refining,crude oil refining,high Residual_FuelOil,regional oil
+refining,crude oil refining,high Gasoline,regional oil
+refining,crude oil refining,high LPG,regional oil
+refining,crude oil refining,high Jet_Kerosene,regional oil
+refining,crude oil refining,high Heavy_Residual,regional oil
+refining,crude oil refining,high Other,regional oil

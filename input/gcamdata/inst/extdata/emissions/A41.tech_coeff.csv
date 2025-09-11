@@ -6,19 +6,29 @@
 # Column types: cccnnnnnnnncci 
 # ----------
 supplysector,subsector,stub.technology,SO2,NOx,CO,CH4,N2O,BC,OC,NMVOC,exception,exception_tech,may.be.historic
-refining,coal to liquids,coal to liquids,0.01,0.01,0.01,,0.0001,,,0.0001,CH4,coal (conv pul),1
-refining,coal to liquids,coal to liquids CCS level 1,0.01,0.01,0.01,,0.0001,,,0.0001,CH4,coal (conv pul),
-refining,coal to liquids,coal to liquids CCS level 2,0.01,0.01,0.01,,0.0001,,,0.0001,CH4,coal (conv pul),
-refining,gas to liquids,gas to liquids,0.01,0.01,0.01,,0.0001,,,0.0001,CH4,gas (steam/CT),1
-refining,biomass liquids,cellulosic ethanol,0.01,0.01,0.01,0.001,0.0001,,,0.0001,,,1
-refining,biomass liquids,cellulosic ethanol CCS level 1,0.01,0.01,0.01,0.001,0.0001,,,0.0001,,,
-refining,biomass liquids,cellulosic ethanol CCS level 2,0.01,0.01,0.01,0.001,0.0001,,,0.0001,,,
-refining,biomass liquids,FT biofuels,0.01,0.01,0.01,0.001,0.0001,,,0.0001,,,
-refining,biomass liquids,FT biofuels CCS level 1,0.01,0.01,0.01,0.001,0.0001,,,0.0001,,,
-refining,biomass liquids,FT biofuels CCS level 2,0.01,0.01,0.01,0.001,0.0001,,,0.0001,,,
-refining,biomass liquids,corn ethanol,0.01,0.01,0.01,,0.0001,,,0.0001,,,1
-refining,biomass liquids,sugar cane ethanol,0.01,0.01,0.01,,0.0001,,,0.0001,,,1
-refining,biomass liquids,biodiesel,0.01,0.01,0.01,,0.0001,,,0.0001,,,1
+refining,ctl,Distillate_FuelOil,0.01,0.01,0.01,,0.0001,,,0.0001,CH4,coal (conv pul),1
+refining,ctl,Residual_FuelOil,0.01,0.01,0.01,,0.0001,,,0.0001,CH4,coal (conv pul),1
+refining,ctl,Gasoline,0.01,0.01,0.01,,0.0001,,,0.0001,CH4,coal (conv pul),1
+refining,ctl,Jet_Kerosene,0.01,0.01,0.01,,0.0001,,,0.0001,CH4,coal (conv pul),1
+refining,ctl,LPG,0.01,0.01,0.01,,0.0001,,,0.0001,CH4,coal (conv pul),1
+refining,ctl,Heavy_Residual,0.01,0.01,0.01,,0.0001,,,0.0001,CH4,coal (conv pul),1
+refining,ctl,Other,0.01,0.01,0.01,,0.0001,,,0.0001,CH4,coal (conv pul),1
+refining,gtl,Distillate_FuelOil,0.01,0.01,0.01,,0.0001,,,0.0001,CH4,gas (steam/CT),1
+refining,gtl,Residual_FuelOil,0.01,0.01,0.01,,0.0001,,,0.0001,CH4,gas (steam/CT),1
+refining,gtl,Gasoline,0.01,0.01,0.01,,0.0001,,,0.0001,CH4,gas (steam/CT),1
+refining,gtl,Jet_Kerosene,0.01,0.01,0.01,,0.0001,,,0.0001,CH4,gas (steam/CT),1
+refining,gtl,LPG,0.01,0.01,0.01,,0.0001,,,0.0001,CH4,gas (steam/CT),1
+refining,gtl,Heavy_Residual,0.01,0.01,0.01,,0.0001,,,0.0001,CH4,gas (steam/CT),1
+refining,gtl,Other,0.01,0.01,0.01,,0.0001,,,0.0001,CH4,gas (steam/CT),1
+refining,biorefining,cellulosic ethanol,0.01,0.01,0.01,0.001,0.0001,,,0.0001,,,1
+refining,biorefining,corn ethanol,0.01,0.01,0.01,,0.0001,,,0.0001,,,1
+refining,biorefining,sugar cane ethanol,0.01,0.01,0.01,,0.0001,,,0.0001,,,1
+refining,biorefining,biodiesel,0.01,0.01,0.01,,0.0001,,,0.0001,,,1
+refining,biorefining,Residual_FuelOil,0.01,0.01,0.01,0.001,0.0001,,,0.0001,,,
+refining,biorefining,Jet_Kerosene,0.01,0.01,0.01,0.001,0.0001,,,0.0001,,,
+refining,biorefining,LPG,0.01,0.01,0.01,0.001,0.0001,,,0.0001,,,
+refining,biorefining,Heavy_Residual,0.01,0.01,0.01,0.001,0.0001,,,0.0001,,,
+refining,biorefining,Other,0.01,0.01,0.01,0.001,0.0001,,,0.0001,,,
 electricity,coal,coal (conv pul CCS),0.001,0.03,,0.0005,0.0001,4.07E-07,1.00E-05,0.0001,CO,gas (steam/CT),
 electricity,coal,coal (IGCC),0.001,0.03,,0.0005,0.0001,4.07E-07,1.00E-05,0.0001,CO,gas (steam/CT),
 electricity,coal,coal (IGCC CCS),0.001,0.03,,0.0005,0.0001,4.07E-07,1.00E-05,0.0001,CO,gas (steam/CT),
