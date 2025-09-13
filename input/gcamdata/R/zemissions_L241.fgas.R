@@ -20,8 +20,6 @@ module_emissions_L241.fgas <- function(command, ...) {
     return(c(FILE = "common/GCAM_region_names",
              FILE = "emissions/A_regions",
              FILE = "emissions/FUT_EMISS_GV",
-             FILE = "emissions/kigali_phasedown_schedules",
-             FILE = "common/GCAM_region_names_Montreal_Protocol",
              "L141.hfc_R_S_T_Yh",
              "L141.hfc_ef_R_cooling_Yh",
              "L142.pfc_R_S_T_Yh"))
@@ -29,8 +27,7 @@ module_emissions_L241.fgas <- function(command, ...) {
     return(c("L241.hfc_all",
              "L241.pfc_all",
              "L241.hfc_future",
-             "L241.fgas_all_units",
-             "L241.hfc_future_kigali"))
+             "L241.fgas_all_units"))
   } else if(command == driver.MAKE) {
 
     all_data <- list(...)[[1]]
@@ -202,7 +199,14 @@ module_emissions_L241.fgas <- function(command, ...) {
       bind_rows(L241.hfc_cool_ef_update_filtered) %>%
       mutate(emiss.coeff = round(value, emissions.DIGITS_EMISSIONS),
              year = as.numeric(year)) %>%
-      select(region, supplysector, subsector, stub.technology, year, Non.CO2, emiss.coeff) ->
+      select(region, supplysector, subsector, stub.technology, year, Non.CO2, emiss.coeff) %>%
+      group_by(region, supplysector, subsector, stub.technology, Non.CO2) %>%
+      tidyr::complete(year = min(MODEL_FUTURE_YEARS)) %>%
+      mutate(emiss.coeff = approx_fun(year, emiss.coeff)) %>%
+      ungroup() %>%
+      # note: we actually allow some base year rows in the "future" table because we
+      # need to include some emissions factors for some missing regions
+      filter(year %in% MODEL_YEARS) ->
       L241.hfc_future
 
     # Now subset only the relevant technologies and gases (i.e., drop ones whose values are zero in all years).
@@ -230,47 +234,16 @@ module_emissions_L241.fgas <- function(command, ...) {
       mutate(emissions.unit = emissions.F_GAS_UNITS) ->
       L241.fgas_all_units
 
-    kigali_phasedown_schedules <- get_data(all_data, "emissions/kigali_phasedown_schedules")
-    GCAM_region_names_Montreal_Protocol <- get_data(all_data, "common/GCAM_region_names_Montreal_Protocol")
-
-    kigali_phasedown_schedules_long <- kigali_phasedown_schedules %>%
-      right_join(GCAM_region_names_Montreal_Protocol,by = c("Kigali_Amendment_Party")) %>%
-      gather_years
-
-    L241.hfc_future_kigali <- L241.hfc_future %>%
-      complete(year = c(year, MODEL_FUTURE_YEARS),nesting(region,supplysector,subsector,stub.technology,Non.CO2)) %>%
-      group_by(Non.CO2,region,stub.technology,subsector,supplysector) %>%
-      mutate(emiss.coeff = approx_fun(year, emiss.coeff, rule = 2)) %>%
-      ungroup() %>%
-      filter(year >= 2015)
-
-    L241.hfc_future_kigali_other <- L241.hfc_all %>%
-      complete(year = c(year, MODEL_FUTURE_YEARS),nesting(region,supplysector,subsector,stub.technology,Non.CO2)) %>%
-      rename(emiss.coeff = input.emissions) %>%
-      group_by(Non.CO2,region,stub.technology,subsector,supplysector) %>%
-      mutate(emiss.coeff = approx_fun(year, emiss.coeff, rule = 2)) %>%
-      ungroup() %>%
-      filter(year > 2015) %>%
-      anti_join(L241.hfc_future_kigali, by = c("region","supplysector","subsector","stub.technology","year","Non.CO2")) %>%
-      select(year,region,supplysector,subsector,stub.technology,Non.CO2,emiss.coeff)
-
-    L241.hfc_future_kigali <- bind_rows(L241.hfc_future_kigali,L241.hfc_future_kigali_other) %>%
-      left_join(kigali_phasedown_schedules_long %>%
-                  rename(pct_phasedown = value), by = c("region","year")) %>%
-      mutate(emiss.coeff = emiss.coeff * pct_phasedown) %>%
-      filter(!is.na(emiss.coeff)) %>%
-      anti_join(L241.hfc_all,by = c("region","supplysector","subsector","stub.technology","year","Non.CO2")) %>%
-      bind_rows(L241.hfc_future %>% filter(year == 2015))
-
     # ===================================================
 
-    L241.hfc_future_kigali%>%
-      add_title("Future HFC emission factors under compliance with Kigali Amendment to the Montreal Protocol") %>%
-      add_units("Gg") %>%
-      add_comments("HFC phasedowns under Kigali are approximated by scaling the emissions factors by phasedown schedule. Note that this ignores stock turnover effects") %>%
-      add_precursors("emissions/kigali_phasedown_schedules", "common/GCAM_region_names_Montreal_Protocol") ->
-      L241.hfc_future_kigali
+    # A temporary fix for JGCRI-506
+    L241.hfc_all %>%
+      filter(year <= 2015) ->
+      L241.hfc_all
 
+    L241.pfc_all %>%
+      filter(year <= 2015) ->
+      L241.pfc_all
 
     L241.hfc_all %>%
       add_title("HFC gas emission input table") %>%
@@ -313,7 +286,7 @@ module_emissions_L241.fgas <- function(command, ...) {
                      "L141.hfc_ef_R_cooling_Yh") ->
       L241.fgas_all_units
 
-    return_data(L241.hfc_all, L241.pfc_all, L241.hfc_future, L241.fgas_all_units,L241.hfc_future_kigali)
+    return_data(L241.hfc_all, L241.pfc_all, L241.hfc_future, L241.fgas_all_units)
 
   } else {
     stop("Unknown command")
