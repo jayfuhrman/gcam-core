@@ -24,7 +24,7 @@ module_aglu_L100.AgMIP3_EL2_Dietary_Pathways <- function(command, ...) {
       FILE = "aglu/AgMIP/Diet_3C_Ref",
       FILE = "aglu/AgMIP/Diet_3C_Ref_allyr",
       "L100.AgMIP_EL2_intake_targets_foodgroup_r",
-      "FAO_Food_Macronutrient_All_2010_2019",
+      "FAO_Food_Macronutrient_All",
       "L101.CropMeat_Food_Pcal_R_C_Y",
       "L101.Pop_thous_R_Yh",
       "L101.Pop_thous_SSP_R_Yfut",
@@ -64,7 +64,7 @@ module_aglu_L100.AgMIP3_EL2_Dietary_Pathways <- function(command, ...) {
 
 
     # Will only use NEC from here
-    FAO_Food_Macronutrient_All_2010_2019 %>%
+    FAO_Food_Macronutrient_All %>%
       filter(year %in% aglu.MODEL_MACRONUTRIENT_YEARS) %>%
       # Aggregate to region and GCAM commodity
       dplyr::group_by_at(vars(GCAM_region_ID, GCAM_commodity, year, macronutrient)) %>%

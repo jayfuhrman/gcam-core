@@ -20,7 +20,7 @@ module_aglu_L100.AgMIP2_Food_Waste_Pathways <- function(command, ...) {
     c(FILE = "common/GCAM_region_names",
       #FILE = "common/iso_GCAM_regID",
       FILE = "aglu/AgMIP/GCAM_AgMIP_food_group_mapping",
-      "FAO_Food_Macronutrient_All_2010_2019",
+      "FAO_Food_Macronutrient_All",
       "L101.Pop_thous_SSP_R_Yfut",
       "L201.Pop_SSP2",
       "L102.gdp_mil90usd_Scen_R_Y",
@@ -56,7 +56,7 @@ module_aglu_L100.AgMIP2_Food_Waste_Pathways <- function(command, ...) {
 
     # using the gcamdata data (2020)
     ## Derive waste shares based on GCAM-FAO 2020 vs. Marco S. data ----
-    FAO_Food_Macronutrient_All_2010_2019 %>%
+    FAO_Food_Macronutrient_All %>%
       #filter(year %in% aglu.MODEL_MACRONUTRIENT_YEARS) %>%
       filter(year == 2020) %>%
       # Aggregate to region and GCAM commodity

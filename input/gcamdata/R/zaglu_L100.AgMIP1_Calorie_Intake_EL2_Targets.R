@@ -71,14 +71,14 @@ module_aglu_L100.AgMIP1_Calorie_Intake_EL2_Targets <- function(command, ...) {
     ## Join 2020 population to aggregate to GCAM region ----
     # 2020 population should be the same across SSPs
     L100.Pop_thous_SSP_ctry_Yfut %>%
-      filter(year == 2020, scenario == "SSP2") %>%
+      filter(year == 2022, scenario == "SSP2") %>%
       left_join_error_no_match(
         iso_GCAM_regID %>% distinct(iso, GCAM_region_ID), by = "iso") %>%
       select(-scenario, -year) %>% rename(weight = value) ->
-      L100.Pop_2020
+      L100.Pop_2022
 
     AgMIP_foodgrouptargets1 %>%
-      left_join(L100.Pop_2020, by = "iso") %>%
+      left_join(L100.Pop_2022, by = "iso") %>%
       # remove agg regions or small ones
       filter(!is.na(GCAM_region_ID)) %>%
       group_by_at(vars(-iso, -weight, -value)) %>%
