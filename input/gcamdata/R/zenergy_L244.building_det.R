@@ -841,8 +841,8 @@ module_energy_L244.building_det <- function(command, ...) {
     # This makes that the fuel-technology mix for each service can vary across groups.
     # We create the "add.cg" ("add consumer groups") function to make this process automatic for the different files
 
-    cons.groups <- unique(A44.gcam_consumer_resid$gcam.consumer)
-    n.cons.groups <- as.numeric(length(unique(A44.gcam_consumer_resid$gcam.consumer)))
+    cons.groups <- unique(L244.gcam_consumer_resid$gcam.consumer)
+    n.cons.groups <- as.numeric(length(unique(L244.gcam_consumer_resid$gcam.consumer)))
 
     add.cg<-function(df){
       df.res <- df %>% filter(grepl("resid", supplysector))
