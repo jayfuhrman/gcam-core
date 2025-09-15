@@ -20,7 +20,7 @@ module_energy_L271.other_sector_mineral <- function(command, ...) {
              FILE = "minerals/other/A271.sector.csv",
              FILE = "minerals/other/A271.tech_input.csv",
              FILE = "minerals/other/A271.demand.csv",
-             "L201.Pop_gSSP2",
+             "L201.Pop_SSP2",
              "L2111.RsrcCalProd"))
   } else if(command == driver.DECLARE_OUTPUTS) {
     return(c("L271.Supplysector_mineral_other_sector",
@@ -52,7 +52,7 @@ module_energy_L271.other_sector_mineral <- function(command, ...) {
     A271.sector <- get_data(all_data, "minerals/other/A271.sector.csv",strip_attributes = TRUE)
     A271.tech_input <- get_data(all_data, "minerals/other/A271.tech_input.csv",strip_attributes = TRUE)
     A271.demand <- get_data(all_data, "minerals/other/A271.demand.csv",strip_attributes = TRUE)
-    L201.Pop_gSSP2 <- get_data(all_data, "L201.Pop_gSSP2",strip_attributes = TRUE)
+    L201.Pop_SSP2 <- get_data(all_data, "L201.Pop_SSP2",strip_attributes = TRUE)
     L2111.RsrcCalProd <- get_data(all_data, "L2111.RsrcCalProd", strip_attributes = TRUE)
 
     A271.sector %>%
@@ -184,7 +184,7 @@ module_energy_L271.other_sector_mineral <- function(command, ...) {
       mutate(value = if_else(value < 0, 0, value))
 
     A271.pop_region_share <-
-      L201.Pop_gSSP2 %>%
+      L201.Pop_SSP2 %>%
       filter(year %in% c(seq(1975, 2015, 5))) %>%
       group_by(year) %>%
       mutate(share = totalPop/sum(totalPop)) %>%
@@ -375,7 +375,7 @@ module_energy_L271.other_sector_mineral <- function(command, ...) {
       add_units("None") %>%
       add_precursors("minerals/other/A271.cmm_historical_demand_all.csv",
                      "minerals/other/A271.cmm_historical_demand_sector.csv",
-                     "L201.Pop_gSSP2") %>%
+                     "L201.Pop_SSP2") %>%
       add_legacy_name("L271.regional_cmm_historical_demand_other_sector") %>%
       add_comments("mineral demand in other sector in historical year by region") ->
       L271.regional_cmm_historical_demand_other_sector
