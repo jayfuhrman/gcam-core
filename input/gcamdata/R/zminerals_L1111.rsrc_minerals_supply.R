@@ -188,8 +188,8 @@ if(command == driver.DECLARE_INPUTS) {
 
   L1111.mineral_production_R_Yb <- L1111.mineral_production_R_Y_hist %>%
     # filter to GCAM model base years and the first model future year
-    filter(Year %in% c(MODEL_BASE_YEARS, 2020)) %>%
-    complete(Mineral, region = GCAM_region_names$region, Units, Year = c(MODEL_BASE_YEARS, 2020)) %>%
+    filter(Year %in% c(MODEL_BASE_YEARS)) %>%
+    complete(Mineral, region = GCAM_region_names$region, Units, Year = c(MODEL_BASE_YEARS)) %>%
     mutate(value = if_else(is.na(value), 0, value)) ##final-output
 
 
@@ -209,36 +209,36 @@ if(command == driver.DECLARE_INPUTS) {
 
   #OLD SUPPLY CURVE DATA
   # First, aggregate data (all variables to the GCAM 32 region level)
-  L1111.All_data_reg_OLD <- Mineral_supply_curve_data %>%
-    mutate(Country = gsub("Dem. Rep. Congo", "Congo, the Democratic Republic of the", Country),
-           Country = gsub("Iran", "Iran, Islamic Republic of", Country),
-           Country = gsub("Laos", "Lao Peoples Democratic Republic", Country),
-           Country = gsub("Rep. Of the Congo", "Congo", Country),
-           Country = gsub("Russia", "Russian Federation", Country),
-           Country = gsub("Tanzania", "Tanzania, United Republic of", Country),
-           Country = gsub("USA", "United States of America", Country),
-           Country = gsub("Vietnam", "Viet Nam", Country),
-           Country = gsub("Bosnia & Herzegovina", "Bosnia and Herzegovina", Country),
-           Country = gsub("Czechia", "Czech Republic", Country),
-           Country = gsub("South Korea", "Korea, Republic of", Country),
-           Country = gsub("Cote d'Ivoire", "Cote dIvoire", Country)) %>%
-    left_join(iso_GCAM_regID, by = c("Country" = "country_name")) %>%
-    group_by(GCAM_region_ID, Mineral, Stage) %>%
-    summarise(Capacity = sum(Capacity),
-              Resource = sum(Resource),
-              # Should cost be the weighted average cost based on resource or capacity?
-              # I think resource, because this will be used for the cumulative supply curve, based on resources
-              # Let's revisit this assumption later
-              P10 = sum(P10 * Resource)/sum(Resource),
-              P50 = sum(P50 * Resource)/sum(Resource),
-              P90 = sum(P90 * Resource)/sum(Resource)) %>%
-    ungroup() %>%
-    left_join(GCAM_region_names, by = c("GCAM_region_ID")) %>%
-    select(Mineral, region, Stage, Capacity, Resource, P10, P50, P90) %>%
-    # calculate "lifetime" (years) if reserve were to be produced at capacity until exhausted
-    mutate(Lifetime = Resource / Capacity) %>%
-    ##NOTE: For lithium, some resources are "NA" while there is still capacity for production in that region. For now, omit these rows.
-    na.omit()
+  # L1111.All_data_reg_OLD <- Mineral_supply_curve_data %>%
+  #   mutate(Country = gsub("Dem. Rep. Congo", "Congo, the Democratic Republic of the", Country),
+  #          Country = gsub("Iran", "Iran, Islamic Republic of", Country),
+  #          Country = gsub("Laos", "Lao Peoples Democratic Republic", Country),
+  #          Country = gsub("Rep. Of the Congo", "Congo", Country),
+  #          Country = gsub("Russia", "Russian Federation", Country),
+  #          Country = gsub("Tanzania", "Tanzania, United Republic of", Country),
+  #          Country = gsub("USA", "United States of America", Country),
+  #          Country = gsub("Vietnam", "Viet Nam", Country),
+  #          Country = gsub("Bosnia & Herzegovina", "Bosnia and Herzegovina", Country),
+  #          Country = gsub("Czechia", "Czech Republic", Country),
+  #          Country = gsub("South Korea", "Korea, Republic of", Country),
+  #          Country = gsub("Cote d'Ivoire", "Cote dIvoire", Country)) %>%
+  #   left_join(iso_GCAM_regID, by = c("Country" = "country_name")) %>%
+  #   group_by(GCAM_region_ID, Mineral, Stage) %>%
+  #   summarise(Capacity = sum(Capacity),
+  #             Resource = sum(Resource),
+  #             # Should cost be the weighted average cost based on resource or capacity?
+  #             # I think resource, because this will be used for the cumulative supply curve, based on resources
+  #             # Let's revisit this assumption later
+  #             P10 = sum(P10 * Resource)/sum(Resource),
+  #             P50 = sum(P50 * Resource)/sum(Resource),
+  #             P90 = sum(P90 * Resource)/sum(Resource)) %>%
+  #   ungroup() %>%
+  #   left_join(GCAM_region_names, by = c("GCAM_region_ID")) %>%
+  #   select(Mineral, region, Stage, Capacity, Resource, P10, P50, P90) %>%
+  #   # calculate "lifetime" (years) if reserve were to be produced at capacity until exhausted
+  #   mutate(Lifetime = Resource / Capacity) %>%
+  #   ##NOTE: For lithium, some resources are "NA" while there is still capacity for production in that region. For now, omit these rows.
+  #   na.omit()
 
   # Calculate price points based on Karan's data.
   # Assumptions:
@@ -323,8 +323,8 @@ if(command == driver.DECLARE_INPUTS) {
              TransitionRate = if_else(StageNum == 1, 0, TransitionRate)) %>%
       arrange(StageNum, Mineral, region) %>%
       select(Mineral, region, StageNum, AvgYears, Capacity, TransitionRate) %>%
-      # Supply curve data is based on a 2023 snapshot. But for now, we will treat it as 2020.
-      mutate(Year = 2020)
+      # Supply curve data is based on a 2023 snapshot. But for now, we will treat it as 2021 (BASE YEAR).
+      mutate(Year = 2021)
 
   # Recursive function to update the Capacity that is in each stage
     UpdateCapacity <- function(data, data_all) {
@@ -360,29 +360,29 @@ if(command == driver.DECLARE_INPUTS) {
     filter(StageNum == 1) %>%
     select(Mineral, region, Year, Capacity)
 
-   # Calculate the production growth rate relative to 2020
+   # Calculate the production growth rate relative to 2021
    AnnProdLimit_GrowthRate <- AnnProdLimit_AllYr %>%
-     mutate(R = Capacity/Capacity[Year == 2020])
+     mutate(R = Capacity/Capacity[Year == 2021])
 
-   # In cases where actual historical production in 2020 is larger than the production constraint,
-   # we want to set the constraint based on 2020 actual production
-   AnnProdLimit_check2020 <- L1111.mineral_production_R_Y_hist %>%
-     filter(Year == 2020) %>%
+   # In cases where actual historical production in 2021 is larger than the production constraint,
+   # we want to set the constraint based on 2021 actual production
+   AnnProdLimit_check2021 <- L1111.mineral_production_R_Y_hist %>%
+     filter(Year == 2021) %>%
      select(-Year) %>%
-     rename(Prod2020 = value) %>%
+     rename(Prod2021 = value) %>%
      left_join(AnnProdLimit_GrowthRate, by = c("Mineral", "region")) %>%
-     filter(Year == 2020) %>%
-     mutate(Reset_Capacity = if_else(Prod2020 > Capacity, 1, 0)) %>%
-     select(Mineral, region, Prod2020, Reset_Capacity)
+     filter(Year == 2021) %>%
+     mutate(Reset_Capacity = if_else(Prod2021 > Capacity, 1, 0)) %>%
+     select(Mineral, region, Prod2021, Reset_Capacity)
 
-   AnnProdLimit_adj <- AnnProdLimit_check2020 %>%
+   AnnProdLimit_adj <- AnnProdLimit_check2021 %>%
      right_join(AnnProdLimit_GrowthRate, by = c("Mineral", "region")) %>%
-     mutate(Prod2020 = if_else(is.na(Prod2020), 0, Prod2020)) %>%
+     mutate(Prod2021 = if_else(is.na(Prod2021), 0, Prod2021)) %>%
      group_by(Mineral, region, Year) %>%
-     mutate(Capacity_adj = if_else(Reset_Capacity == 1, R*Prod2020, Capacity),
-            Capacity_adj = if_else(is.na(Capacity_adj), max(Prod2020, Capacity), Capacity_adj),
-            Capacity_adj = if_else(is.nan(Capacity_adj), max(Prod2020, Capacity), Capacity_adj),
-            Capacity_adj = if_else(is.infinite(Capacity_adj),  max(Prod2020, Capacity), Capacity_adj)) %>%
+     mutate(Capacity_adj = if_else(Reset_Capacity == 1, R*Prod2021, Capacity),
+            Capacity_adj = if_else(is.na(Capacity_adj), max(Prod2021, Capacity), Capacity_adj),
+            Capacity_adj = if_else(is.nan(Capacity_adj), max(Prod2021, Capacity), Capacity_adj),
+            Capacity_adj = if_else(is.infinite(Capacity_adj),  max(Prod2021, Capacity), Capacity_adj)) %>%
      select(Mineral, region, Year, Capacity_adj) %>%
      ungroup()
 
@@ -452,8 +452,8 @@ if(command == driver.DECLARE_INPUTS) {
             TransitionRate = if_else(StageNum == 1, 0, TransitionRate)) %>%
      arrange(StageNum, Mineral, region) %>%
      select(Mineral, region, StageNum, AvgYears, Resource, TransitionRate) %>%
-     # set Initial Year as 2020
-     mutate(Year = 2020)
+     # set Initial Year as 2021
+     mutate(Year = 2021)
 
    # Recursive function to update the Resource that is in each stage
    UpdateResource <- function(data, data_all) {
@@ -570,7 +570,8 @@ if(command == driver.DECLARE_INPUTS) {
     add_comments("Using mine-level data to generate mineral resource annual production limits at the GCAM-region level. Linearly extrapolate for 2045 onward.") %>%
     add_precursors("common/iso_GCAM_regID",
                    "common/GCAM_region_names",
-                   "minerals/supply/Mineral_supply_curve_data") ->
+                   "minerals/supply/Mineral_supply_curve_data",
+                   "minerals/supply/All_minerals_GCAM_reg_supply_data") ->
     L1111.mineral_AnnProdLimit_R_Y
 
   L1111.mineral_AnnResourceLimit_R_Y %>%
@@ -579,7 +580,8 @@ if(command == driver.DECLARE_INPUTS) {
     add_comments("Using mine-level data to generate mineral resource annual resource limits at the GCAM-region level.") %>%
     add_precursors("common/iso_GCAM_regID",
                    "common/GCAM_region_names",
-                   "minerals/supply/Mineral_supply_curve_data") ->
+                   "minerals/supply/Mineral_supply_curve_data",
+                   "minerals/supply/All_minerals_GCAM_reg_supply_data") ->
     L1111.mineral_AnnResourceLimit_R_Y
 
   L1111.ResSupplyCurves_PricePoints %>%
@@ -588,7 +590,8 @@ if(command == driver.DECLARE_INPUTS) {
     add_comments("Price points are time-invariant. These will be combined with resources (quantity) in level2 to form supply curves.") %>%
     add_precursors("common/iso_GCAM_regID",
                    "common/GCAM_region_names",
-                   "minerals/supply/Mineral_supply_curve_data") ->
+                   "minerals/supply/Mineral_supply_curve_data",
+                   "minerals/supply/All_minerals_GCAM_reg_supply_data") ->
     L1111.ResSupplyCurves_PricePoints
 
   L1111.mineral_AvgProdLifetime %>%
@@ -597,7 +600,8 @@ if(command == driver.DECLARE_INPUTS) {
     add_comments("Calculated based on ratio of resources to capacity across all stages in the initial year. Use values only up to the median lifetime, any values above are reset to median.") %>%
     add_precursors("common/iso_GCAM_regID",
                    "common/GCAM_region_names",
-                   "minerals/supply/Mineral_supply_curve_data") ->
+                   "minerals/supply/Mineral_supply_curve_data",
+                   "minerals/supply/All_minerals_GCAM_reg_supply_data") ->
     L1111.mineral_AvgProdLifetime
 
 
