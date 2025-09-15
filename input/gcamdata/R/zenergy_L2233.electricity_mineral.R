@@ -873,14 +873,14 @@ module_energy_L2233.electricity_mineral <- function(command, ...) {
     #  for pv and wind (no storage)
     L2233.GlobalIntTechMineral_elecSupplySector <-
       L2233.GlobalElecMineral_elecSupplySector %>%
-      semi_join(A23.globalinttech, by = c("sector.name" = "supplysector", "subsector.name" = "subsector", "technology")) %>%
+      semi_join(A23.globalinttech, by = c("sector.name" = "supplysector", "subsector.name" = "subsector", "technology" = "intermittent.technology")) %>%
       rename(intermittent.technology = technology)
     # --OUTPUT--
 
     #  for pv and wind with storage
     L2233.GlobalTechMineral_elecSupplySector <-
       L2233.GlobalElecMineral_elecSupplySector %>%
-      anti_join(A23.globalinttech, by = c("sector.name" = "supplysector", "subsector.name" = "subsector", "technology"))
+      anti_join(A23.globalinttech, by = c("sector.name" = "supplysector", "subsector.name" = "subsector", "technology" = "intermittent.technology"))
     # --OUTPUT--
 
     #------------------------------------------------------------------------------------------------------------------

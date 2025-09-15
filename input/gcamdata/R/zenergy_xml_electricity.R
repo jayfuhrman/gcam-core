@@ -111,7 +111,7 @@ module_energy_electricity_xml <- function(command, ...) {
     # ===================================================
 
     # Rename columns to match header information.
-    # L223.PrimaryRenewKeywordInt_elec <- rename(L223.PrimaryRenewKeywordInt_elec, technology = intermittent.technology)
+     L223.PrimaryRenewKeywordInt_elec <- rename(L223.PrimaryRenewKeywordInt_elec, technology = intermittent.technology)
     L223.StubTechFixOut_elec <- rename(L223.StubTechFixOut_elec, subs.share.weight = subsector.share.weight, tech.share.weight = share.weight)
     L223.StubTechProd_elec   <- rename(L223.StubTechProd_elec, tech.share.weight = share.weight)
 
