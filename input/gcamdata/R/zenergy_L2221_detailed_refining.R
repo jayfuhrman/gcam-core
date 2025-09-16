@@ -32,7 +32,7 @@ module_energy_L2221.refining <- function(command, ...) {
              FILE = "energy/A221.globaltech_secout",
              FILE = "energy/A221.rsrc_info",
              FILE = "energy/A221.stubtech_regional_output",
-             FILE = "energy/A221.stubtech_margin",
+             FILE = "energy/A221.stubtech_cost_adjust",
              FILE = "energy/calibrated_techs_refining",
              FILE = "energy/refining_mapping",
              "LB1092.GCAM_REG_LIQUIDS_PROD_agg",
@@ -107,7 +107,7 @@ module_energy_L2221.refining <- function(command, ...) {
     A221.globaltech_OMfixed <- get_data(all_data, "L1221.globaltech_OMfixed", strip_attributes = TRUE)
     A221.globaltech_margin <-  get_data(all_data, "L1221.globaltech_margin", strip_attributes = TRUE)
     A221.stubtech_regional_output <- get_data(all_data, "energy/A221.stubtech_regional_output", strip_attributes = TRUE)
-    A221.stubtech_margin <- get_data(all_data, "energy/A221.stubtech_margin", strip_attributes = TRUE)
+    A221.stubtech_cost_adjust <- get_data(all_data, "energy/A221.stubtech_cost_adjust", strip_attributes = TRUE)
     LB1092.GCAM_REG_LIQUIDS_PROD_agg <- get_data(all_data,"LB1092.GCAM_REG_LIQUIDS_PROD_agg", strip_attributes = TRUE)
     LB1092.GCAM_BIO_LIQUIDS_PROD_agg <- get_data(all_data,"LB1092.GCAM_BIO_LIQUIDS_PROD_agg", strip_attributes = TRUE)
     LB1092.GCAM_CTL_GTL_LIQUIDS_PROD_agg <- get_data(all_data,"LB1092.GCAM_CTL_GTL_LIQUIDS_PROD_agg", strip_attributes = TRUE)
@@ -344,8 +344,7 @@ module_energy_L2221.refining <- function(command, ...) {
     # Add regional cost variation based on what was required to meet a normal
     # profit rate in history
     # TODO: this is a temporary troubleshooting read-in file
-    profit_rate_components <- read.csv("A221.stubtech_cost_adjust.csv")   # TODO: need to adjust feed EJ
-    profit_rate_calcs <- profit_rate_components %>%
+    profit_rate_calcs <- A221.stubtech_cost_adjust %>%
       left_join(L2221.ProdPrice, by = c("region", "resource", "year")) %>%
       mutate(technology = if_else(sector == "crude oil refining", paste("high", technology) , technology)) %>%
       left_join(non_en_cost, by = c("sector" = "subsector.name", "technology", "year")) %>%
@@ -918,7 +917,7 @@ module_energy_L2221.refining <- function(command, ...) {
       add_units("1975$/GJ") %>%
       add_comments("Regional cost adjustments for technologies in the refining sector") %>%
       add_legacy_name("L2221.StubTechCost") %>%
-      add_precursors("energy/A221.stubtech_margin") ->  # TODO: using A221.stubtech_cost_adjust but need to move to correct file structure w header etc
+      add_precursors("energy/A221.stubtech_cost_adjust") ->
     L2221.StubTechCost
 
     L2221.PortfolioStdConstraint %>%
