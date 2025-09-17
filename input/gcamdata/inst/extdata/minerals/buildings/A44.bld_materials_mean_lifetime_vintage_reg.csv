@@ -19,7 +19,7 @@ GCAM_region_ID,region,sector,lifetime,Deetman_reg,half.life,steepness,median.shu
 11,China,resid materials,120,China,60,0.05,-0.5,6
 12,EU-12,resid materials,120,Eastern Europe,60,0.05,-0.5,6
 13,EU-15,resid materials,120,Western Europe,60,0.05,-0.5,6
-14,Europe_Eastern,resid materials,120,Eastern Europe,60,0.05,-0.5,6
+14,Ukraine,resid materials,120,Eastern Europe,60,0.05,-0.5,6
 15,Europe_Non_EU,resid materials,120,Eastern Europe,60,0.05,-0.5,6
 16,European Free Trade Association,resid materials,120,Western Europe,60,0.05,-0.5,6
 17,India,resid materials,120,Global,60,0.05,-0.5,6
@@ -51,7 +51,7 @@ GCAM_region_ID,region,sector,lifetime,Deetman_reg,half.life,steepness,median.shu
 11,China,comm materials,90,Global,45,0.05,-0.5,6
 12,EU-12,comm materials,90,Global,45,0.05,-0.5,6
 13,EU-15,comm materials,90,Global,45,0.05,-0.5,6
-14,Europe_Eastern,comm materials,90,Global,45,0.05,-0.5,6
+14,Ukraine,comm materials,90,Global,45,0.05,-0.5,6
 15,Europe_Non_EU,comm materials,90,Global,45,0.05,-0.5,6
 16,European Free Trade Association,comm materials,90,Global,45,0.05,-0.5,6
 17,India,comm materials,90,Global,45,0.05,-0.5,6
