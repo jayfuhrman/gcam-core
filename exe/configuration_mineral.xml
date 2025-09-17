@@ -10,7 +10,6 @@
 		<Value write-output="1" append-scenario-name="1" name="xmlDebugFileName">debug.xml</Value>
 		<Value write-output="1" append-scenario-name="0" name="climatFileName">gas.emk</Value>
 		<Value write-output="1" append-scenario-name="1" name="costCurvesOutputFileName">cost_curves.xml</Value>
-		<Value write-output="1" append-scenario-name="0" name="batchCSVOutputFile">batch-csv-out.csv</Value>
 		<Value write-output="0" append-scenario-name="0" name="supplyDemandOutputFileName">SDCurves.csv</Value>
 		<Value write-output="0" append-scenario-name="0" name="flow-graph">gcam-flow-graph.dot</Value>
 		<Value write-output="0" append-scenario-name="0" name="dependencyGraphName">DependencyGraph.dot</Value>
@@ -18,7 +17,7 @@
 	</Files>
 	<ScenarioComponents>
         <Value name = "climate">../input/gcamdata/xml/hector.xml</Value>
-		<Value name = "socioeconomics">../input/gcamdata/xml/socioeconomics_gSSP2.xml</Value>
+		<Value name = "socioeconomics">../input/gcamdata/xml/socioeconomics_CORE.xml</Value>
 		<Value name = "resources_energy">../input/gcamdata/xml/resources.xml</Value>
 <!--Minerals supply-->
 		<Value name = "resources_minerals">../input/gcamdata/xml/minerals_resources.xml</Value>
@@ -33,21 +32,21 @@
 <!--Electricity T&D minerals demand-->
 		<Value name = "elec_td_mineral">../input/gcamdata/xml/elect_td_mineral.xml</Value>
 		<Value name = "other_industry">../input/gcamdata/xml/other_industry.xml</Value>
-		<Value name = "industry_income_elas">../input/gcamdata/xml/other_industry_incelas_gssp2.xml</Value>
+		<Value name = "industry_income_elas">../input/gcamdata/xml/other_industry_incelas_ssp2.xml</Value>
  		<Value name = "iron_steel">../input/gcamdata/xml/iron_steel.xml</Value>
-		<Value name = "iron_steel_income_elas">../input/gcamdata/xml/iron_steel_incelas_gssp2.xml</Value>   
+		<Value name = "iron_steel_income_elas">../input/gcamdata/xml/iron_steel_incelas_ssp2.xml</Value>   
 		<Value name = "iron_steel trade">../input/gcamdata/xml/iron_steel_trade.xml</Value>
  		<Value name = "Off_road">../input/gcamdata/xml/Off_road.xml</Value>
-		<Value name = "Off_road_income_elas">../input/gcamdata/xml/Off_road_incelas_gssp2.xml</Value>  
+		<Value name = "Off_road_income_elas">../input/gcamdata/xml/Off_road_incelas_ssp2.xml</Value>  
  		<Value name = "chemical">../input/gcamdata/xml/chemical.xml</Value>
-		<Value name = "chemical_income_elas">../input/gcamdata/xml/chemical_incelas_gssp2.xml</Value>   
+		<Value name = "chemical_income_elas">../input/gcamdata/xml/chemical_incelas_ssp2.xml</Value>   
  		<Value name = "aluminum">../input/gcamdata/xml/aluminum.xml</Value>
-		<Value name = "aluminum_income_elas">../input/gcamdata/xml/aluminum_incelas_gssp2.xml</Value> 
+		<Value name = "aluminum_income_elas">../input/gcamdata/xml/aluminum_incelas_ssp2.xml</Value> 
  		<Value name = "paper">../input/gcamdata/xml/paper.xml</Value>
-		<Value name = "paper_income_elas">../input/gcamdata/xml/paper_incelas_gssp2.xml</Value> 
+		<Value name = "paper_income_elas">../input/gcamdata/xml/paper_incelas_ssp2.xml</Value> 
 		<Value name = "food_processing">../input/gcamdata/xml/food_processing.xml</Value> 
 		<Value name = "cement">../input/gcamdata/xml/cement.xml</Value>
-		<Value name = "cement_income_elas">../input/gcamdata/xml/cement_incelas_gssp2.xml</Value>
+		<Value name = "cement_income_elas">../input/gcamdata/xml/cement_incelas_ssp2.xml</Value>
 		<Value name = "fertilizer_energy">../input/gcamdata/xml/en_Fert.xml</Value>
 		<Value name = "hddcdd">../input/gcamdata/xml/HDDCDD_constdd_no_GCM.xml</Value>
 <!--Building minerals demand-->
@@ -63,7 +62,6 @@
 
 <!--Other minerals demand-->
 		<Value name = "other">../input/gcamdata/xml/mineral_demand_other_sector.xml</Value>
-
 
 		<Value name = "ag_base">../input/gcamdata/xml/ag_For_Past_bio_base_IRR_MGMT.xml</Value>
 		<Value name = "ag_cost">../input/gcamdata/xml/ag_cost_IRR_MGMT.xml</Value>
@@ -127,7 +125,7 @@
 		
 	</ScenarioComponents>
 	<Strings>
-		<Value name="scenarioName">Reference_Mineral_08202025</Value>
+		<Value name="scenarioName">Ref_NoElecGen_09152025</Value>
 		<Value name="debug-region">USA</Value>
 		<Value name="MAGICC-input-dir">../input/magicc/inputs</Value>
 		<Value name="MAGICC-output-dir">../output</Value>
@@ -152,7 +150,6 @@
 		<Value name="numPointsForSD">21</Value>
 		<Value name="numPointsForCO2CostCurve">5</Value>
 		<Value name="carbon-output-start-year">1705</Value>
-		<Value name="climateOutputInterval">5</Value>
 		<Value name="parallel-grain-size">50</Value>
 		<Value name="stop-period">-1</Value>
 		<Value name="stop-year">-1</Value>
