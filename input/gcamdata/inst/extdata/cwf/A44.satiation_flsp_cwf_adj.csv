@@ -1,11 +1,16 @@
 # File: A44.satiation_flsp_cwf_adj.csv
 # Title: CWF adjustments to assumed satiation levels of commercial floorspace; either match the values for a certain SSP or apply an adjustment fraction to the default values
 # Units: unitless fraction for adj_frac
-# Column types: ccn
+# Column types: ccnc
 # ----------
-region.class,match_SSP,adj_frac
-A,,0.85
-B,SSP4,
-C,SSP4,
-D,SSP4,
-E,SSP4,
+region.class,match_SSP,adj_frac,scenario
+A,,0.85,cwf
+B,SSP4,,cwf
+C,SSP4,,cwf
+D,SSP4,,cwf
+E,SSP4,,cwf
+A,,0.85,cwf-LED
+B,,0.85,cwf-LED
+C,,0.85,cwf-LED
+D,,0.85,cwf-LED
+E,,0.85,cwf-LED

@@ -3,19 +3,34 @@
 # Units: Fraction
 # Column types: cccccnnn
 # ----------
-supplysector,subsector,technology,minicam.energy.input,secondary.output,2020,2050,2100
-other industrial energy use,biomass,biomass,delivered biomass,,1,1.1,1.2
-other industrial energy use,biomass,biomass cogen,delivered biomass,electricity,1,1.1,1.2
-other industrial energy use,coal,coal,delivered coal,,1,1.1,1.2
-other industrial energy use,coal,coal cogen,delivered coal,electricity,1,1.1,1.2
-other industrial energy use,district heat,district heat,district heat,,1,1.1,1.2
-other industrial energy use,electricity,electricity,elect_td_ind,,1,1.1,1.2
-other industrial energy use,gas,gas,wholesale gas,,1,1.1,1.2
-other industrial energy use,gas,gas cogen,wholesale gas,electricity,1,1.1,1.2
-other industrial energy use,hydrogen,hydrogen,H2 industrial,,1,1.1,1.2
-other industrial energy use,hydrogen,hydrogen cogen,H2 wholesale delivery,electricity,1,1.1,1.2
-other industrial energy use,refined liquids,refined liquids,refined liquids industrial,,1,1.1,1.2
-other industrial energy use,refined liquids,refined liquids cogen,refined liquids industrial,electricity,1,1.1,1.2
-other industrial feedstocks,coal,coal,delivered coal,,1,1.05,1.1
-other industrial feedstocks,gas,gas,wholesale gas,,1,1.05,1.1
-other industrial feedstocks,refined liquids,refined liquids,refined liquids industrial,,1,1.05,1.1
+supplysector,subsector,technology,minicam.energy.input,secondary.output,2020,2050,2100,scenario
+other industrial energy use,biomass,biomass,delivered biomass,,1,1.1,1.2,cwf
+other industrial energy use,biomass,biomass cogen,delivered biomass,electricity,1,1.1,1.2,cwf
+other industrial energy use,biomass,biomass,delivered biomass,,1,1.1,1.2,cwf
+other industrial energy use,biomass,biomass cogen,delivered biomass,electricity,1,1.1,1.2,cwf
+other industrial energy use,district heat,district heat,district heat,,1,1.1,1.2,cwf
+other industrial energy use,electricity,electricity,elect_td_ind,,1,1.1,1.2,cwf
+other industrial energy use,gas,gas,wholesale gas,,1,1.1,1.2,cwf
+other industrial energy use,gas,gas cogen,wholesale gas,electricity,1,1.1,1.2,cwf
+other industrial energy use,hydrogen,hydrogen,H2 industrial,,1,1.1,1.2,cwf
+other industrial energy use,hydrogen,hydrogen cogen,H2 wholesale delivery,electricity,1,1.1,1.2,cwf
+other industrial energy use,refined liquids,refined liquids,refined liquids industrial,,1,1.1,1.2,cwf
+other industrial energy use,refined liquids,refined liquids cogen,refined liquids industrial,electricity,1,1.1,1.2,cwf
+other industrial feedstocks,coal,coal,delivered coal,,1,1.05,1.1,cwf
+other industrial feedstocks,gas,gas,wholesale gas,,1,1.05,1.1,cwf
+other industrial feedstocks,refined liquids,refined liquids,refined liquids industrial,,1,1.05,1.1,cwf
+other industrial energy use,biomass,biomass,delivered biomass,,1,1.2,1.3,cwf-LED
+other industrial energy use,biomass,biomass cogen,delivered biomass,electricity,1,1.2,1.3,cwf-LED
+other industrial energy use,biomass,biomass,delivered biomass,,1,1.2,1.3,cwf-LED
+other industrial energy use,biomass,biomass cogen,delivered biomass,electricity,1,1.2,1.3,cwf-LED
+other industrial energy use,district heat,district heat,district heat,,1,1.2,1.3,cwf-LED
+other industrial energy use,electricity,electricity,elect_td_ind,,1,1.2,1.3,cwf-LED
+other industrial energy use,gas,gas,wholesale gas,,1,1.2,1.3,cwf-LED
+other industrial energy use,gas,gas cogen,wholesale gas,electricity,1,1.2,1.3,cwf-LED
+other industrial energy use,hydrogen,hydrogen,H2 industrial,,1,1.2,1.3,cwf-LED
+other industrial energy use,hydrogen,hydrogen cogen,H2 wholesale delivery,electricity,1,1.2,1.3,cwf-LED
+other industrial energy use,refined liquids,refined liquids,refined liquids industrial,,1,1.2,1.3,cwf-LED
+other industrial energy use,refined liquids,refined liquids cogen,refined liquids industrial,electricity,1,1.2,1.3,cwf-LED
+other industrial feedstocks,coal,coal,delivered coal,,1,1.05,1.1,cwf-LED
+other industrial feedstocks,gas,gas,wholesale gas,,1,1.05,1.1,cwf-LED
+other industrial feedstocks,refined liquids,refined liquids,refined liquids industrial,,1,1.05,1.1,cwf-LED

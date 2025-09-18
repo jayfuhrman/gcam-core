@@ -295,7 +295,7 @@ module_energy_L244.building_det_cwf <- function(command, ...) {
       # either replace with SSP value or the original value times the adjustment factor
       mutate(satiation.level = case_when(!is.na(match_SSP) ~ satiation.level.SSP,
                                          !is.na(adj_frac) ~ satiation.level * adj_frac)) %>%
-      dplyr::select(region.class, sector, satiation.level)
+      dplyr::select(region.class, sector, satiation.level,scenario)
 
 
     L244.Satiation_flsp_cwf <- write_to_all_regions(A44.gcam_consumer, c("region", "gcam.consumer", "nodeInput", "building.node.input"), # replace with LEVEL2_DATA_NAMES[["BldNodes]]
@@ -305,8 +305,8 @@ module_energy_L244.building_det_cwf <- function(command, ...) {
                                by = "region") %>%
       # Residential floorspace does not use the satiation demand function, so filter the commercial floorspace
       filter(!grepl("resid",gcam.consumer)) %>%
-      left_join_error_no_match(L244.Satiation_flsp_class_cwf, by = c("region.class", "gcam.consumer" = "sector")) %>%
-      select(LEVEL2_DATA_NAMES[["Satiation_flsp"]])
+      left_join(L244.Satiation_flsp_class_cwf, by = c("region.class", "gcam.consumer" = "sector")) %>%
+      select(LEVEL2_DATA_NAMES[["Satiation_flsp"]],scenario)
 
 
     # L244.GlobalTechShrwt_bld_cwf_H2_scenarios: Default shareweights for global building technologies for CWF hydrogen scenarios
@@ -445,7 +445,8 @@ module_energy_L244.building_det_cwf <- function(command, ...) {
       add_comments("Computed offline based on data from RECS and IEA with CWF adjustments") %>%
       add_legacy_name("L244.GompFnParam") %>%
       add_precursors("common/GCAM_region_names",
-					 "L244.GompFnParam") ->
+					 "L244.GompFnParam",
+					 "A44.res_unadj_sat_cwf_adj") ->
       L244.GompFnParam_cwf
 
     L244.GlobalTechShrwt_bld_cwf_H2_scenarios %>%

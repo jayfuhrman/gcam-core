@@ -1,37 +1,68 @@
 # File: A324.globaltech_eff_cwf_adj.csv
 # Title: CWF adjustments to off road default efficiencies (multiplied by defaults to obtain CWF values)
 # Units: Fraction
-# Column types: ccccnnn
+# Column types: ccccnnnc
 # ----------
-supplysector,subsector,technology,minicam.energy.input,2020,2050,2100
-agricultural energy use,mobile,refined liquids,refined liquids industrial,1,1.1,1.2
-agricultural energy use,mobile,electricity,elect_td_ind,1,1.1,1.2
-agricultural energy use,mobile,hydrogen,H2 MHDV,1,1.1,1.2
-mining energy use,mobile,refined liquids,refined liquids industrial,1,1.1,1.2
-mining energy use,mobile,electricity,elect_td_ind,1,1.1,1.2
-mining energy use,mobile,hydrogen,H2 MHDV,1,1.1,1.2
-construction energy use,mobile,refined liquids,refined liquids industrial,1,1.1,1.2
-construction energy use,mobile,electricity,elect_td_ind,1,1.1,1.2
-construction energy use,mobile,hydrogen,H2 MHDV,1,1.1,1.2
-construction feedstocks,refined liquids,refined liquids,refined liquids industrial,1,1.05,1.1
-agricultural energy use,stationary,refined liquids,refined liquids industrial,1,1.1,1.2
-agricultural energy use,stationary,gas,wholesale gas,1,1.1,1.2
-agricultural energy use,stationary,biomass,delivered biomass,1,1.1,1.2
-agricultural energy use,stationary,electricity,elect_td_ind,1,1.1,1.2
-agricultural energy use,stationary,hydrogen,H2 wholesale delivery,1,1.1,1.2
-agricultural energy use,stationary,coal,delivered coal,1,1.1,1.2
-agricultural energy use,stationary,heat,district heat,1,1.1,1.2
-mining energy use,stationary,refined liquids,refined liquids industrial,1,1.1,1.2
-mining energy use,stationary,gas,wholesale gas,1,1.1,1.2
-mining energy use,stationary,biomass,delivered biomass,1,1.1,1.2
-mining energy use,stationary,electricity,elect_td_ind,1,1.1,1.2
-mining energy use,stationary,hydrogen,H2 wholesale delivery,1,1.1,1.2
-mining energy use,stationary,coal,delivered coal,1,1.1,1.2
-mining energy use,stationary,heat,district heat,1,1.1,1.2
-construction energy use,stationary,refined liquids,refined liquids industrial,1,1.1,1.2
-construction energy use,stationary,gas,wholesale gas,1,1.1,1.2
-construction energy use,stationary,biomass,delivered biomass,1,1.1,1.2
-construction energy use,stationary,electricity,elect_td_ind,1,1.1,1.2
-construction energy use,stationary,hydrogen,H2 wholesale delivery,1,1.1,1.2
-construction energy use,stationary,coal,delivered coal,1,1.1,1.2
-construction energy use,stationary,heat,district heat,1,1.1,1.2
+supplysector,subsector,technology,minicam.energy.input,2020,2050,2100,scenario
+agricultural energy use,mobile,refined liquids,refined liquids industrial,1,1.1,1.2,cwf
+agricultural energy use,mobile,electricity,elect_td_ind,1,1.1,1.2,cwf
+agricultural energy use,mobile,hydrogen,H2 MHDV,1,1.1,1.2,cwf
+mining energy use,mobile,refined liquids,refined liquids industrial,1,1.1,1.2,cwf
+mining energy use,mobile,electricity,elect_td_ind,1,1.1,1.2,cwf
+mining energy use,mobile,hydrogen,H2 MHDV,1,1.1,1.2,cwf
+construction energy use,mobile,refined liquids,refined liquids industrial,1,1.1,1.2,cwf
+construction energy use,mobile,electricity,elect_td_ind,1,1.1,1.2,cwf
+construction energy use,mobile,hydrogen,H2 MHDV,1,1.1,1.2,cwf
+construction feedstocks,refined liquids,refined liquids,refined liquids industrial,1,1.05,1.1,cwf
+agricultural energy use,stationary,refined liquids,refined liquids industrial,1,1.1,1.2,cwf
+agricultural energy use,stationary,gas,wholesale gas,1,1.1,1.2,cwf
+agricultural energy use,stationary,biomass,delivered biomass,1,1.1,1.2,cwf
+agricultural energy use,stationary,electricity,elect_td_ind,1,1.1,1.2,cwf
+agricultural energy use,stationary,hydrogen,H2 wholesale delivery,1,1.1,1.2,cwf
+agricultural energy use,stationary,coal,delivered coal,1,1.1,1.2,cwf
+agricultural energy use,stationary,heat,district heat,1,1.1,1.2,cwf
+mining energy use,stationary,refined liquids,refined liquids industrial,1,1.1,1.2,cwf
+mining energy use,stationary,gas,wholesale gas,1,1.1,1.2,cwf
+mining energy use,stationary,biomass,delivered biomass,1,1.1,1.2,cwf
+mining energy use,stationary,electricity,elect_td_ind,1,1.1,1.2,cwf
+mining energy use,stationary,hydrogen,H2 wholesale delivery,1,1.1,1.2,cwf
+mining energy use,stationary,coal,delivered coal,1,1.1,1.2,cwf
+mining energy use,stationary,heat,district heat,1,1.1,1.2,cwf
+construction energy use,stationary,refined liquids,refined liquids industrial,1,1.1,1.2,cwf
+construction energy use,stationary,gas,wholesale gas,1,1.1,1.2,cwf
+construction energy use,stationary,biomass,delivered biomass,1,1.1,1.2,cwf
+construction energy use,stationary,electricity,elect_td_ind,1,1.1,1.2,cwf
+construction energy use,stationary,hydrogen,H2 wholesale delivery,1,1.1,1.2,cwf
+construction energy use,stationary,coal,delivered coal,1,1.1,1.2,cwf
+construction energy use,stationary,heat,district heat,1,1.1,1.2,cwf
+agricultural energy use,mobile,refined liquids,refined liquids industrial,1,1.2,1.3,cwf-LED
+agricultural energy use,mobile,electricity,elect_td_ind,1,1.2,1.3,cwf-LED
+agricultural energy use,mobile,hydrogen,H2 MHDV,1,1.2,1.3,cwf-LED
+mining energy use,mobile,refined liquids,refined liquids industrial,1,1.2,1.3,cwf-LED
+mining energy use,mobile,electricity,elect_td_ind,1,1.2,1.3,cwf-LED
+mining energy use,mobile,hydrogen,H2 MHDV,1,1.2,1.3,cwf-LED
+construction energy use,mobile,refined liquids,refined liquids industrial,1,1.2,1.3,cwf-LED
+construction energy use,mobile,electricity,elect_td_ind,1,1.2,1.3,cwf-LED
+construction energy use,mobile,hydrogen,H2 MHDV,1,1.2,1.3,cwf-LED
+construction feedstocks,refined liquids,refined liquids,refined liquids industrial,1,1.05,1.1,cwf-LED
+agricultural energy use,stationary,refined liquids,refined liquids industrial,1,1.2,1.3,cwf-LED
+agricultural energy use,stationary,gas,wholesale gas,1,1.2,1.3,cwf-LED
+agricultural energy use,stationary,biomass,delivered biomass,1,1.2,1.3,cwf-LED
+agricultural energy use,stationary,electricity,elect_td_ind,1,1.2,1.3,cwf-LED
+agricultural energy use,stationary,hydrogen,H2 wholesale delivery,1,1.2,1.3,cwf-LED
+agricultural energy use,stationary,coal,delivered coal,1,1.2,1.3,cwf-LED
+agricultural energy use,stationary,heat,district heat,1,1.2,1.3,cwf-LED
+mining energy use,stationary,refined liquids,refined liquids industrial,1,1.2,1.3,cwf-LED
+mining energy use,stationary,gas,wholesale gas,1,1.2,1.3,cwf-LED
+mining energy use,stationary,biomass,delivered biomass,1,1.2,1.3,cwf-LED
+mining energy use,stationary,electricity,elect_td_ind,1,1.2,1.3,cwf-LED
+mining energy use,stationary,hydrogen,H2 wholesale delivery,1,1.2,1.3,cwf-LED
+mining energy use,stationary,coal,delivered coal,1,1.2,1.3,cwf-LED
+mining energy use,stationary,heat,district heat,1,1.2,1.3,cwf-LED
+construction energy use,stationary,refined liquids,refined liquids industrial,1,1.2,1.3,cwf-LED
+construction energy use,stationary,gas,wholesale gas,1,1.2,1.3,cwf-LED
+construction energy use,stationary,biomass,delivered biomass,1,1.2,1.3,cwf-LED
+construction energy use,stationary,electricity,elect_td_ind,1,1.2,1.3,cwf-LED
+construction energy use,stationary,hydrogen,H2 wholesale delivery,1,1.2,1.3,cwf-LED
+construction energy use,stationary,coal,delivered coal,1,1.2,1.3,cwf-LED
+construction energy use,stationary,heat,district heat,1,1.2,1.3,cwf-LED

@@ -1,7 +1,8 @@
 # File: A44.res_unadj_sat_cwf_adj.csv
 # Title: CWF adjustments to residential buildings unadjusted saturation values
 # Units: unitless fraction
-# Column types: n
+# Column types: nc
 # ----------
-adj_frac
-0.75
+adj_frac,scenario
+0.75,cwf
+0.65,cwf-LED
