@@ -286,7 +286,7 @@
                 </subsector>
             </supplysector>
         </region>
-        <region name="Europe_Eastern">
+        <region name="Ukraine">
             <unlimited-resource name="biochar storage">
                 <output-unit>MtC</output-unit>
                 <price-unit>1990$/tC</price-unit>
