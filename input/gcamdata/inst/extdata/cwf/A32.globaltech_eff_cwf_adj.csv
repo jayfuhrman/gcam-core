@@ -1,7 +1,7 @@
 # File: A32.globaltech_eff_cwf_adj.csv
 # Title: CWF adjustments to industry default efficiencies (multiplied by defaults to obtain CWF values)
 # Units: Fraction
-# Column types: cccccnnn
+# Column types: cccccnnnc
 # ----------
 supplysector,subsector,technology,minicam.energy.input,secondary.output,2020,2050,2100,scenario
 other industrial energy use,biomass,biomass,delivered biomass,,1,1.1,1.2,cwf
