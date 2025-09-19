@@ -8,67 +8,67 @@ supplysector,tranSubsector,tranTechnology,apply.to,from.year,to.year,interpolati
 trn_aviation_intl_pass,International Aviation,Liquids,share-weight,final-calibration-year,end-year,fixed,CORE
 trn_aviation_intl_pass,International Aviation,BEV,share-weight,2030,2100,s-curve,CORE
 trn_aviation_intl_pass,International Aviation,Hydrogen,share-weight,2030,2100,s-curve,CORE
-trn_bus_bev_pass,bus_bev,bus_bev (NMC111),share-weight,2020,2050,s-curve,CORE
-trn_bus_bev_pass,bus_bev,bus_bev (LFP),share-weight,2020,2050,s-curve,CORE
-trn_bus_bev_pass,bus_bev,bus_bev (Na_ion),share-weight,2020,2035,s-curve,CORE
-trn_bus_bev_pass,bus_bev,bus_bev (LFP_si),share-weight,2020,2035,s-curve,CORE
-trn_bus_bev_pass,bus_bev,bus_bev (NMC811_si),share-weight,2020,2035,s-curve,CORE
+trn_bus_bev_pass,bus_bev,bus_bev (NMC111),share-weight,final-calibration-year,2050,s-curve,CORE
+trn_bus_bev_pass,bus_bev,bus_bev (LFP),share-weight,final-calibration-year,2050,s-curve,CORE
+trn_bus_bev_pass,bus_bev,bus_bev (Na_ion),share-weight,final-calibration-year,2035,s-curve,CORE
+trn_bus_bev_pass,bus_bev,bus_bev (LFP_si),share-weight,final-calibration-year,2035,s-curve,CORE
+trn_bus_bev_pass,bus_bev,bus_bev (NMC811_si),share-weight,final-calibration-year,2035,s-curve,CORE
 trn_bus_bev_pass,bus_bev,bus_bev (LFP_ssb),share-weight,2030,2040,s-curve,CORE
 trn_bus_bev_pass,bus_bev,bus_bev (NMC811_ssb),share-weight,2030,2040,s-curve,CORE
 trn_dom_ship_pass,Domestic Ship,Liquids,share-weight,final-calibration-year,end-year,fixed,CORE
 trn_dom_ship_pass,Domestic Ship,BEV,share-weight,2030,2075,s-curve,CORE
 trn_dom_ship_pass,Domestic Ship,FCEV,share-weight,2030,2075,s-curve,CORE
 trn_dom_ship_pass,Domestic Ship,Hybrid Liquids,share-weight,final-calibration-year,2050,s-curve,CORE
-trn_fret_rail_pass,Freight Rail,Coal,share-weight,final-calibration-year,2020,linear,CORE
+trn_fret_rail_pass,Freight Rail,Coal,share-weight,final-calibration-year,end-year,fixed,CORE
 trn_fret_rail_pass,Freight Rail,Electric,share-weight,final-calibration-year,end-year,fixed,CORE
 trn_fret_rail_pass,Freight Rail,Liquids,share-weight,final-calibration-year,end-year,fixed,CORE
-trn_fret_rail_pass,Freight Rail,BEV,share-weight,2020,2050,s-curve,CORE
-trn_fret_rail_pass,Freight Rail,FCEV,share-weight,2020,2050,s-curve,CORE
-trn_fret_rail_pass,Freight Rail,Hybrid Liquids,share-weight,2020,2050,s-curve,CORE
-trn_fret_road_ht_bev_pass,fret_road_ht_bev,h_truck_bev (NMC111),share-weight,2020,2050,s-curve,CORE
-trn_fret_road_ht_bev_pass,fret_road_ht_bev,h_truck_bev (NMC622),share-weight,2020,2050,s-curve,CORE
-trn_fret_road_ht_bev_pass,fret_road_ht_bev,h_truck_bev (NMC811),share-weight,2020,2050,s-curve,CORE
-trn_fret_road_ht_bev_pass,fret_road_ht_bev,h_truck_bev (NCA),share-weight,2020,2050,s-curve,CORE
-trn_fret_road_ht_bev_pass,fret_road_ht_bev,h_truck_bev (LFP),share-weight,2020,2050,s-curve,CORE
-trn_fret_road_ht_bev_pass,fret_road_ht_bev,h_truck_bev (Na_ion),share-weight,2020,2035,s-curve,CORE
-trn_fret_road_ht_bev_pass,fret_road_ht_bev,h_truck_bev (LFP_si),share-weight,2020,2035,s-curve,CORE
-trn_fret_road_ht_bev_pass,fret_road_ht_bev,h_truck_bev (NMC811_si),share-weight,2020,2035,s-curve,CORE
+trn_fret_rail_pass,Freight Rail,BEV,share-weight,final-calibration-year,2050,s-curve,CORE
+trn_fret_rail_pass,Freight Rail,FCEV,share-weight,final-calibration-year,2050,s-curve,CORE
+trn_fret_rail_pass,Freight Rail,Hybrid Liquids,share-weight,final-calibration-year,2050,s-curve,CORE
+trn_fret_road_ht_bev_pass,fret_road_ht_bev,h_truck_bev (NMC111),share-weight,final-calibration-year,2050,s-curve,CORE
+trn_fret_road_ht_bev_pass,fret_road_ht_bev,h_truck_bev (NMC622),share-weight,final-calibration-year,2050,s-curve,CORE
+trn_fret_road_ht_bev_pass,fret_road_ht_bev,h_truck_bev (NMC811),share-weight,final-calibration-year,2050,s-curve,CORE
+trn_fret_road_ht_bev_pass,fret_road_ht_bev,h_truck_bev (NCA),share-weight,final-calibration-year,2050,s-curve,CORE
+trn_fret_road_ht_bev_pass,fret_road_ht_bev,h_truck_bev (LFP),share-weight,final-calibration-year,2050,s-curve,CORE
+trn_fret_road_ht_bev_pass,fret_road_ht_bev,h_truck_bev (Na_ion),share-weight,final-calibration-year,2035,s-curve,CORE
+trn_fret_road_ht_bev_pass,fret_road_ht_bev,h_truck_bev (LFP_si),share-weight,final-calibration-year,2035,s-curve,CORE
+trn_fret_road_ht_bev_pass,fret_road_ht_bev,h_truck_bev (NMC811_si),share-weight,final-calibration-year,2035,s-curve,CORE
 trn_fret_road_ht_bev_pass,fret_road_ht_bev,h_truck_bev (LFP_ssb),share-weight,2030,2040,s-curve,CORE
 trn_fret_road_ht_bev_pass,fret_road_ht_bev,h_truck_bev (NMC811_ssb),share-weight,2030,2040,s-curve,CORE
-trn_fret_road_mt_bev_pass,fret_road_mt_bev,m_truck_bev (NMC111),share-weight,2020,2050,s-curve,CORE
-trn_fret_road_mt_bev_pass,fret_road_mt_bev,m_truck_bev (NMC622),share-weight,2020,2050,s-curve,CORE
-trn_fret_road_mt_bev_pass,fret_road_mt_bev,m_truck_bev (NMC811),share-weight,2020,2050,s-curve,CORE
-trn_fret_road_mt_bev_pass,fret_road_mt_bev,m_truck_bev (NCA),share-weight,2020,2050,s-curve,CORE
-trn_fret_road_mt_bev_pass,fret_road_mt_bev,m_truck_bev (LFP),share-weight,2020,2050,s-curve,CORE
-trn_fret_road_mt_bev_pass,fret_road_mt_bev,m_truck_bev (Na_ion),share-weight,2020,2035,s-curve,CORE
-trn_fret_road_mt_bev_pass,fret_road_mt_bev,m_truck_bev (LFP_si),share-weight,2020,2035,s-curve,CORE
-trn_fret_road_mt_bev_pass,fret_road_mt_bev,m_truck_bev (NMC811_si),share-weight,2020,2035,s-curve,CORE
+trn_fret_road_mt_bev_pass,fret_road_mt_bev,m_truck_bev (NMC111),share-weight,final-calibration-year,2050,s-curve,CORE
+trn_fret_road_mt_bev_pass,fret_road_mt_bev,m_truck_bev (NMC622),share-weight,final-calibration-year,2050,s-curve,CORE
+trn_fret_road_mt_bev_pass,fret_road_mt_bev,m_truck_bev (NMC811),share-weight,final-calibration-year,2050,s-curve,CORE
+trn_fret_road_mt_bev_pass,fret_road_mt_bev,m_truck_bev (NCA),share-weight,final-calibration-year,2050,s-curve,CORE
+trn_fret_road_mt_bev_pass,fret_road_mt_bev,m_truck_bev (LFP),share-weight,final-calibration-year,2050,s-curve,CORE
+trn_fret_road_mt_bev_pass,fret_road_mt_bev,m_truck_bev (Na_ion),share-weight,final-calibration-year,2035,s-curve,CORE
+trn_fret_road_mt_bev_pass,fret_road_mt_bev,m_truck_bev (LFP_si),share-weight,final-calibration-year,2035,s-curve,CORE
+trn_fret_road_mt_bev_pass,fret_road_mt_bev,m_truck_bev (NMC811_si),share-weight,final-calibration-year,2035,s-curve,CORE
 trn_fret_road_mt_bev_pass,fret_road_mt_bev,m_truck_bev (LFP_ssb),share-weight,2030,2040,s-curve,CORE
 trn_fret_road_mt_bev_pass,fret_road_mt_bev,m_truck_bev (NMC811_ssb),share-weight,2030,2040,s-curve,CORE
-trn_fret_road_lt_bev_pass,fret_road_lt_bev,l_truck_bev (NMC111),share-weight,2020,2050,s-curve,CORE
-trn_fret_road_lt_bev_pass,fret_road_lt_bev,l_truck_bev (NMC622),share-weight,2020,2050,s-curve,CORE
-trn_fret_road_lt_bev_pass,fret_road_lt_bev,l_truck_bev (NMC811),share-weight,2020,2050,s-curve,CORE
-trn_fret_road_lt_bev_pass,fret_road_lt_bev,l_truck_bev (NCA),share-weight,2020,2050,s-curve,CORE
-trn_fret_road_lt_bev_pass,fret_road_lt_bev,l_truck_bev (LFP),share-weight,2020,2050,s-curve,CORE
-trn_fret_road_lt_bev_pass,fret_road_lt_bev,l_truck_bev (Na_ion),share-weight,2020,2035,s-curve,CORE
-trn_fret_road_lt_bev_pass,fret_road_lt_bev,l_truck_bev (LFP_si),share-weight,2020,2035,s-curve,CORE
-trn_fret_road_lt_bev_pass,fret_road_lt_bev,l_truck_bev (NMC811_si),share-weight,2020,2035,s-curve,CORE
+trn_fret_road_lt_bev_pass,fret_road_lt_bev,l_truck_bev (NMC111),share-weight,final-calibration-year,2050,s-curve,CORE
+trn_fret_road_lt_bev_pass,fret_road_lt_bev,l_truck_bev (NMC622),share-weight,final-calibration-year,2050,s-curve,CORE
+trn_fret_road_lt_bev_pass,fret_road_lt_bev,l_truck_bev (NMC811),share-weight,final-calibration-year,2050,s-curve,CORE
+trn_fret_road_lt_bev_pass,fret_road_lt_bev,l_truck_bev (NCA),share-weight,final-calibration-year,2050,s-curve,CORE
+trn_fret_road_lt_bev_pass,fret_road_lt_bev,l_truck_bev (LFP),share-weight,final-calibration-year,2050,s-curve,CORE
+trn_fret_road_lt_bev_pass,fret_road_lt_bev,l_truck_bev (Na_ion),share-weight,final-calibration-year,2035,s-curve,CORE
+trn_fret_road_lt_bev_pass,fret_road_lt_bev,l_truck_bev (LFP_si),share-weight,final-calibration-year,2035,s-curve,CORE
+trn_fret_road_lt_bev_pass,fret_road_lt_bev,l_truck_bev (NMC811_si),share-weight,final-calibration-year,2035,s-curve,CORE
 trn_fret_road_lt_bev_pass,fret_road_lt_bev,l_truck_bev (LFP_ssb),share-weight,2030,2040,s-curve,CORE
 trn_fret_road_lt_bev_pass,fret_road_lt_bev,l_truck_bev (NMC811_ssb),share-weight,2030,2040,s-curve,CORE
 trn_fret_road_pass,Light truck,Liquids,share-weight,final-calibration-year,end-year,fixed,CORE
 trn_fret_road_pass,Light truck,NG,share-weight,final-calibration-year,end-year,fixed,CORE
 trn_fret_road_pass,Light truck,Hybrid Liquids,share-weight,final-calibration-year,2030,s-curve,CORE
-trn_fret_road_pass,Light truck,FCEV,share-weight,2020,2050,s-curve,CORE
+trn_fret_road_pass,Light truck,FCEV,share-weight,final-calibration-year,2050,s-curve,CORE
 trn_fret_road_pass,Light truck,light_truck_bev_pass,share-weight,final-calibration-year,2050,s-curve,CORE
 trn_fret_road_pass,Medium truck,Liquids,share-weight,final-calibration-year,end-year,fixed,CORE
 trn_fret_road_pass,Medium truck,NG,share-weight,final-calibration-year,end-year,fixed,CORE
 trn_fret_road_pass,Medium truck,Hybrid Liquids,share-weight,final-calibration-year,2030,s-curve,CORE
-trn_fret_road_pass,Medium truck,FCEV,share-weight,2020,2050,s-curve,CORE
+trn_fret_road_pass,Medium truck,FCEV,share-weight,final-calibration-year,2050,s-curve,CORE
 trn_fret_road_pass,Medium truck,medium_truck_bev_pass,share-weight,final-calibration-year,2050,s-curve,CORE
 trn_fret_road_pass,Heavy truck,Liquids,share-weight,final-calibration-year,end-year,fixed,CORE
 trn_fret_road_pass,Heavy truck,NG,share-weight,final-calibration-year,end-year,fixed,CORE
 trn_fret_road_pass,Heavy truck,Hybrid Liquids,share-weight,final-calibration-year,2030,s-curve,CORE
-trn_fret_road_pass,Heavy truck,FCEV,share-weight,2020,2050,s-curve,CORE
+trn_fret_road_pass,Heavy truck,FCEV,share-weight,final-calibration-year,2050,s-curve,CORE
 trn_fret_road_pass,Heavy truck,heavy_truck_bev_pass,share-weight,final-calibration-year,2050,s-curve,CORE
 trn_pasg_aviation_dom_pass,Domestic Aviation,Liquids,share-weight,final-calibration-year,end-year,fixed,CORE
 trn_pasg_aviation_dom_pass,Domestic Aviation,BEV,share-weight,2030,2100,s-curve,CORE
@@ -76,59 +76,59 @@ trn_pasg_aviation_dom_pass,Domestic Aviation,Hydrogen,share-weight,2030,2100,s-c
 trn_pasg_cycle_pass,Cycle,Cycle,share-weight,final-calibration-year,end-year,fixed,CORE
 trn_pasg_rail_pass,Passenger Rail,Electric,share-weight,final-calibration-year,end-year,fixed,CORE
 trn_pasg_rail_pass,Passenger Rail,Liquids,share-weight,final-calibration-year,end-year,fixed,CORE
-trn_pasg_road_bus_pass,Bus,Liquids,share-weight,final-calibration-year,2020,linear,CORE
+trn_pasg_road_bus_pass,Bus,Liquids,share-weight,final-calibration-year,end-year,fixed,CORE
 trn_pasg_road_bus_pass,Bus,NG,share-weight,final-calibration-year,end-year,fixed,CORE
 trn_pasg_road_bus_pass,Bus,Hybrid Liquids,share-weight,final-calibration-year,2030,s-curve,CORE
-trn_pasg_road_bus_pass,Bus,FCEV,share-weight,2020,2050,s-curve,CORE
+trn_pasg_road_bus_pass,Bus,FCEV,share-weight,final-calibration-year,2050,s-curve,CORE
 trn_pasg_road_bus_pass,Bus,bus_bev_pass,share-weight,final-calibration-year,2050,s-curve,CORE
 trn_pasg_road_ldv_2_3W_pass,2W and 3W,Liquids,share-weight,final-calibration-year,end-year,fixed,CORE
 trn_pasg_road_ldv_2_3W_pass,2W and 3W,NG,share-weight,final-calibration-year,end-year,fixed,CORE
 trn_pasg_road_ldv_2_3W_pass,2W and 3W,LA-BEV,share-weight,final-calibration-year,2050,linear,CORE
-trn_pasg_road_ldv_2_3W_pass,2W and 3W,BEV,share-weight,2020,2030,s-curve,CORE
-trn_pasg_road_ldv_4W_lc_bev_pass,minicar_bev,minicar_bev (NMC111),share-weight,2020,2050,linear,CORE
-trn_pasg_road_ldv_4W_lc_bev_pass,minicar_bev,minicar_bev (NMC622),share-weight,2020,2050,linear,CORE
-trn_pasg_road_ldv_4W_lc_bev_pass,minicar_bev,minicar_bev (NMC811),share-weight,2020,2050,linear,CORE
-trn_pasg_road_ldv_4W_lc_bev_pass,minicar_bev,minicar_bev (NCA),share-weight,2020,2050,linear,CORE
-trn_pasg_road_ldv_4W_lc_bev_pass,minicar_bev,minicar_bev (LFP),share-weight,2020,2050,linear,CORE
-trn_pasg_road_ldv_4W_lc_bev_pass,minicar_bev,minicar_bev (Na_ion),share-weight,2020,2035,s-curve,CORE
-trn_pasg_road_ldv_4W_lc_bev_pass,minicar_bev,minicar_bev (LFP_si),share-weight,2020,2035,s-curve,CORE
-trn_pasg_road_ldv_4W_lc_bev_pass,minicar_bev,minicar_bev (NMC811_si),share-weight,2020,2035,s-curve,CORE
+trn_pasg_road_ldv_2_3W_pass,2W and 3W,BEV,share-weight,final-calibration-year,2030,s-curve,CORE
+trn_pasg_road_ldv_4W_lc_bev_pass,minicar_bev,minicar_bev (NMC111),share-weight,final-calibration-year,2050,linear,CORE
+trn_pasg_road_ldv_4W_lc_bev_pass,minicar_bev,minicar_bev (NMC622),share-weight,final-calibration-year,2050,linear,CORE
+trn_pasg_road_ldv_4W_lc_bev_pass,minicar_bev,minicar_bev (NMC811),share-weight,final-calibration-year,2050,linear,CORE
+trn_pasg_road_ldv_4W_lc_bev_pass,minicar_bev,minicar_bev (NCA),share-weight,final-calibration-year,2050,linear,CORE
+trn_pasg_road_ldv_4W_lc_bev_pass,minicar_bev,minicar_bev (LFP),share-weight,final-calibration-year,2050,linear,CORE
+trn_pasg_road_ldv_4W_lc_bev_pass,minicar_bev,minicar_bev (Na_ion),share-weight,final-calibration-year,2035,s-curve,CORE
+trn_pasg_road_ldv_4W_lc_bev_pass,minicar_bev,minicar_bev (LFP_si),share-weight,final-calibration-year,2035,s-curve,CORE
+trn_pasg_road_ldv_4W_lc_bev_pass,minicar_bev,minicar_bev (NMC811_si),share-weight,final-calibration-year,2035,s-curve,CORE
 trn_pasg_road_ldv_4W_lc_bev_pass,minicar_bev,minicar_bev (LFP_ssb),share-weight,2030,2040,s-curve,CORE
 trn_pasg_road_ldv_4W_lc_bev_pass,minicar_bev,minicar_bev (NMC811_ssb),share-weight,2030,2040,s-curve,CORE
-trn_pasg_road_ldv_4W_mc_bev_pass,car_bev,car_bev (NMC111),share-weight,2020,2050,linear,CORE
-trn_pasg_road_ldv_4W_mc_bev_pass,car_bev,car_bev (NMC622),share-weight,2020,2050,linear,CORE
-trn_pasg_road_ldv_4W_mc_bev_pass,car_bev,car_bev (NMC811),share-weight,2020,2050,linear,CORE
-trn_pasg_road_ldv_4W_mc_bev_pass,car_bev,car_bev (NCA),share-weight,2020,2050,linear,CORE
-trn_pasg_road_ldv_4W_mc_bev_pass,car_bev,car_bev (LFP),share-weight,2020,2050,linear,CORE
-trn_pasg_road_ldv_4W_mc_bev_pass,car_bev,car_bev (Na_ion),share-weight,2020,2035,s-curve,CORE
-trn_pasg_road_ldv_4W_mc_bev_pass,car_bev,car_bev (LFP_si),share-weight,2020,2035,s-curve,CORE
-trn_pasg_road_ldv_4W_mc_bev_pass,car_bev,car_bev (NMC811_si),share-weight,2020,2035,s-curve,CORE
+trn_pasg_road_ldv_4W_mc_bev_pass,car_bev,car_bev (NMC111),share-weight,final-calibration-year,2050,linear,CORE
+trn_pasg_road_ldv_4W_mc_bev_pass,car_bev,car_bev (NMC622),share-weight,final-calibration-year,2050,linear,CORE
+trn_pasg_road_ldv_4W_mc_bev_pass,car_bev,car_bev (NMC811),share-weight,final-calibration-year,2050,linear,CORE
+trn_pasg_road_ldv_4W_mc_bev_pass,car_bev,car_bev (NCA),share-weight,final-calibration-year,2050,linear,CORE
+trn_pasg_road_ldv_4W_mc_bev_pass,car_bev,car_bev (LFP),share-weight,final-calibration-year,2050,linear,CORE
+trn_pasg_road_ldv_4W_mc_bev_pass,car_bev,car_bev (Na_ion),share-weight,final-calibration-year,2035,s-curve,CORE
+trn_pasg_road_ldv_4W_mc_bev_pass,car_bev,car_bev (LFP_si),share-weight,final-calibration-year,2035,s-curve,CORE
+trn_pasg_road_ldv_4W_mc_bev_pass,car_bev,car_bev (NMC811_si),share-weight,final-calibration-year,2035,s-curve,CORE
 trn_pasg_road_ldv_4W_mc_bev_pass,car_bev,car_bev (LFP_ssb),share-weight,2030,2040,s-curve,CORE
 trn_pasg_road_ldv_4W_mc_bev_pass,car_bev,car_bev (NMC811_ssb),share-weight,2030,2040,s-curve,CORE
-trn_pasg_road_ldv_4W_hc_bev_pass,largecar_bev,largecar_bev (NMC111),share-weight,2020,2050,linear,CORE
-trn_pasg_road_ldv_4W_hc_bev_pass,largecar_bev,largecar_bev (NMC622),share-weight,2020,2050,linear,CORE
-trn_pasg_road_ldv_4W_hc_bev_pass,largecar_bev,largecar_bev (NMC811),share-weight,2020,2050,linear,CORE
-trn_pasg_road_ldv_4W_hc_bev_pass,largecar_bev,largecar_bev (NCA),share-weight,2020,2050,linear,CORE
-trn_pasg_road_ldv_4W_hc_bev_pass,largecar_bev,largecar_bev (LFP),share-weight,2020,2050,linear,CORE
-trn_pasg_road_ldv_4W_hc_bev_pass,largecar_bev,largecar_bev (Na_ion),share-weight,2020,2035,s-curve,CORE
-trn_pasg_road_ldv_4W_hc_bev_pass,largecar_bev,largecar_bev (LFP_si),share-weight,2020,2035,s-curve,CORE
-trn_pasg_road_ldv_4W_hc_bev_pass,largecar_bev,largecar_bev (NMC811_si),share-weight,2020,2035,s-curve,CORE
+trn_pasg_road_ldv_4W_hc_bev_pass,largecar_bev,largecar_bev (NMC111),share-weight,final-calibration-year,2050,linear,CORE
+trn_pasg_road_ldv_4W_hc_bev_pass,largecar_bev,largecar_bev (NMC622),share-weight,final-calibration-year,2050,linear,CORE
+trn_pasg_road_ldv_4W_hc_bev_pass,largecar_bev,largecar_bev (NMC811),share-weight,final-calibration-year,2050,linear,CORE
+trn_pasg_road_ldv_4W_hc_bev_pass,largecar_bev,largecar_bev (NCA),share-weight,final-calibration-year,2050,linear,CORE
+trn_pasg_road_ldv_4W_hc_bev_pass,largecar_bev,largecar_bev (LFP),share-weight,final-calibration-year,2050,linear,CORE
+trn_pasg_road_ldv_4W_hc_bev_pass,largecar_bev,largecar_bev (Na_ion),share-weight,final-calibration-year,2035,s-curve,CORE
+trn_pasg_road_ldv_4W_hc_bev_pass,largecar_bev,largecar_bev (LFP_si),share-weight,final-calibration-year,2035,s-curve,CORE
+trn_pasg_road_ldv_4W_hc_bev_pass,largecar_bev,largecar_bev (NMC811_si),share-weight,final-calibration-year,2035,s-curve,CORE
 trn_pasg_road_ldv_4W_hc_bev_pass,largecar_bev,largecar_bev (LFP_ssb),share-weight,2030,2040,s-curve,CORE
 trn_pasg_road_ldv_4W_hc_bev_pass,largecar_bev,largecar_bev (NMC811_ssb),share-weight,2030,2040,s-curve,CORE
 trn_pasg_road_ldv_4w_pass,Car,Hybrid Liquids,share-weight,final-calibration-year,2030,s-curve,CORE
 trn_pasg_road_ldv_4w_pass,Car,Liquids,share-weight,final-calibration-year,end-year,fixed,CORE
 trn_pasg_road_ldv_4w_pass,Car,NG,share-weight,final-calibration-year,end-year,fixed,CORE
-trn_pasg_road_ldv_4w_pass,Car,FCEV,share-weight,2020,2030,s-curve,CORE
+trn_pasg_road_ldv_4w_pass,Car,FCEV,share-weight,final-calibration-year,2030,s-curve,CORE
 trn_pasg_road_ldv_4w_pass,Car,car_bev_pass,share-weight,final-calibration-year,2030,s-curve,CORE
 trn_pasg_road_ldv_4w_pass,Large Car and Truck,Hybrid Liquids,share-weight,final-calibration-year,2030,s-curve,CORE
 trn_pasg_road_ldv_4w_pass,Large Car and Truck,Liquids,share-weight,final-calibration-year,end-year,fixed,CORE
 trn_pasg_road_ldv_4w_pass,Large Car and Truck,NG,share-weight,final-calibration-year,end-year,fixed,CORE
-trn_pasg_road_ldv_4w_pass,Large Car and Truck,FCEV,share-weight,2020,2030,s-curve,CORE
+trn_pasg_road_ldv_4w_pass,Large Car and Truck,FCEV,share-weight,final-calibration-year,2030,s-curve,CORE
 trn_pasg_road_ldv_4w_pass,Large Car and Truck,large_car_bev_pass,share-weight,final-calibration-year,2030,s-curve,CORE
 trn_pasg_road_ldv_4w_pass,Mini Car,Hybrid Liquids,share-weight,final-calibration-year,2030,s-curve,CORE
 trn_pasg_road_ldv_4w_pass,Mini Car,Liquids,share-weight,final-calibration-year,end-year,fixed,CORE
 trn_pasg_road_ldv_4w_pass,Mini Car,NG,share-weight,final-calibration-year,end-year,fixed,CORE
-trn_pasg_road_ldv_4w_pass,Mini Car,FCEV,share-weight,2020,2030,s-curve,CORE
+trn_pasg_road_ldv_4w_pass,Mini Car,FCEV,share-weight,final-calibration-year,2030,s-curve,CORE
 trn_pasg_road_ldv_4w_pass,Mini Car,mini_car_bev_pass,share-weight,final-calibration-year,2030,s-curve,CORE
 trn_passenger,Walk,Walk,share-weight,final-calibration-year,end-year,fixed,CORE
 trn_ship_intl_pass,International Ship,BEV,share-weight,2030,2075,s-curve,CORE
