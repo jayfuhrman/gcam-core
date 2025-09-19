@@ -157,10 +157,10 @@ module_energy_L2326.aluminum_cwf <- function(command, ...) {
     # get adjustments
     A326.globaltech_coef_cwf_adj %>%
       gather_years %>%
-      complete(nesting(supplysector, subsector, technology, minicam.energy.input, secondary.output),
+      complete(nesting(supplysector, subsector, technology, minicam.energy.input, secondary.output, scenario),
                year = c(year, MODEL_BASE_YEARS, MODEL_FUTURE_YEARS)) %>%
-      arrange(supplysector, subsector, technology, minicam.energy.input, secondary.output, year) %>%
-      group_by(supplysector, subsector, technology, minicam.energy.input, secondary.output) %>%
+      arrange(supplysector, subsector, technology, minicam.energy.input, secondary.output, scenario, year) %>%
+      group_by(supplysector, subsector, technology, minicam.energy.input, secondary.output, scenario) %>%
       mutate(coefficient_adj = approx_fun(year, value, rule = 2)) %>%
       ungroup %>%
       filter(year %in% c(MODEL_BASE_YEARS, MODEL_FUTURE_YEARS)) %>%
@@ -171,9 +171,9 @@ module_energy_L2326.aluminum_cwf <- function(command, ...) {
 
     # apply adjustments to global tech coefficients
     L2326.GlobalTechCoef_aluminum %>%
-      left_join_error_no_match(L2326.globaltech_coef_cwf_adj %>% dplyr::select(-secondary.output)) %>%
+      left_join(L2326.globaltech_coef_cwf_adj %>% dplyr::select(-secondary.output)) %>%
       mutate(coefficient = round(coefficient * coefficient_adj, energy.DIGITS_COEFFICIENT)) %>%
-      select(LEVEL2_DATA_NAMES[["GlobalTechCoef"]]) ->
+      select(LEVEL2_DATA_NAMES[["GlobalTechCoef"]], scenario) ->
       L2326.GlobalTechCoef_aluminum_cwf
 
     # STUB TECH COEF: L2326.StubTechCoef_aluminum_cwf
@@ -203,10 +203,11 @@ module_energy_L2326.aluminum_cwf <- function(command, ...) {
       # apply CWF adjustments
       left_join(L2326.globaltech_coef_cwf_adj %>%
                   rename(supplysector = sector.name, subsector = subsector.name, stub.technology = technology) %>%
-                  dplyr::select(-secondary.output)) %>%
+                  dplyr::select(-secondary.output),
+                by = c("supplysector","subsector","stub.technology","minicam.energy.input","year")) %>%
       mutate(coefficient = round(coefficient * coefficient_adj, energy.DIGITS_COEFFICIENT)) %>%
       filter(year %in% MODEL_YEARS) %>% # drop the terminal coef year if it's outside of the model years
-      select(LEVEL2_DATA_NAMES[["StubTechCoef"]]) ->
+      select(LEVEL2_DATA_NAMES[["StubTechCoef"]], scenario) ->
       L2326.StubTechCoef_aluminum_cwf
 
 

@@ -18,8 +18,8 @@ module_energy_iron_steel_cwf_xml <- function(command, ...) {
              "L2323.GlobalTechShrwt_iron_steel_cwf_H2_scenarios"))
   } else if(command == driver.DECLARE_OUTPUTS) {
     return(c(XML = "iron_steel_cwf.xml",
+             XML = "iron_steel_cwf_LED.xml",
              XML = "iron_steel_cwf_low_H2.xml",
-             # XML = "iron_steel_cwf_med_H2.xml",
              XML = "iron_steel_cwf_high_H2.xml"))
   } else if(command == driver.MAKE) {
 
@@ -39,12 +39,17 @@ module_energy_iron_steel_cwf_xml <- function(command, ...) {
 
     create_xml("iron_steel_cwf.xml") %>%
       add_xml_data(L2323.GlobalTechShrwt_iron_steel_cwf, "GlobalTechShrwt") %>%
-      add_xml_data(L2323.GlobalTechCoef_iron_steel_cwf, "GlobalTechCoef") %>% # CWF version
-      add_xml_data(L2323.StubTechCoef_iron_steel_cwf, "StubTechCoef") %>% # CWF version
+      add_xml_data(L2323.GlobalTechCoef_iron_steel_cwf %>% filter(scenario == 'cwf'), "GlobalTechCoef") %>% # CWF version
+      add_xml_data(L2323.StubTechCoef_iron_steel_cwf %>% filter(scenario == 'cwf'), "StubTechCoef") %>% # CWF version
       add_precursors("L2323.GlobalTechShrwt_iron_steel_cwf",
                      "L2323.GlobalTechCoef_iron_steel_cwf",
                      "L2323.StubTechCoef_iron_steel_cwf") ->
       iron_steel_cwf.xml
+
+    create_xml("iron_steel_cwf_LED.xml") %>%
+      add_xml_data(L2323.GlobalTechCoef_iron_steel_cwf %>% filter(scenario == 'cwf-LED'), "GlobalTechCoef") %>% # CWF version
+      add_xml_data(L2323.StubTechCoef_iron_steel_cwf %>% filter(scenario == 'cwf-LED'), "StubTechCoef") ->
+      iron_steel_cwf_LED.xml
 
     # create the CWF high/medium/low hydrogen XMLs
     for (i in c("cwf_low_H2",
@@ -63,8 +68,8 @@ module_energy_iron_steel_cwf_xml <- function(command, ...) {
     }
 
     return_data(iron_steel_cwf.xml,
+                iron_steel_cwf_LED.xml,
                 iron_steel_cwf_low_H2.xml,
-                # iron_steel_cwf_med_H2.xml,
                 iron_steel_cwf_high_H2.xml)
   } else {
     stop("Unknown command")

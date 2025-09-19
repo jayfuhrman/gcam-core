@@ -20,6 +20,7 @@ module_energy_Off_road_cwf_xml <- function(command, ...) {
 			        "L2324.GlobalTechInterp_Off_road_cwf_H2_scenarios"))
   } else if(command == driver.DECLARE_OUTPUTS) {
     return(c(XML = "Off_road_cwf.xml",
+             XML = "Off_road_cwf_LED.xml",
              XML = "Off_road_cwf_low_H2.xml",
              XML = "Off_road_cwf_med_H2.xml",
              XML = "Off_road_cwf_high_H2.xml"))
@@ -44,11 +45,15 @@ module_energy_Off_road_cwf_xml <- function(command, ...) {
     create_xml("Off_road_cwf.xml") %>%
       add_xml_data(L2324.GlobalTechInterp_Off_road_cwf, "GlobalTechInterp") %>%
       add_xml_data(L2324.GlobalTechShrwt_Off_road_cwf, "GlobalTechShrwt") %>%
-      add_xml_data(L2324.GlobalTechEff_Off_road_cwf, "GlobalTechEff") %>% # CWF version
+      add_xml_data(L2324.GlobalTechEff_Off_road_cwf %>% filter(scenario == 'cwf'), "GlobalTechEff") %>% # CWF version
       add_precursors("L2324.GlobalTechInterp_Off_road_cwf",
                      "L2324.GlobalTechShrwt_Off_road_cwf",
                      "L2324.GlobalTechEff_Off_road_cwf") ->
       Off_road_cwf.xml
+
+    create_xml("Off_road_cwf_LED.xml") %>%
+      add_xml_data(L2324.GlobalTechEff_Off_road_cwf %>% filter(scenario == 'cwf-LED'), "GlobalTechEff") -> # CWF LED version
+      Off_road_cwf_LED.xml
 
     # create the CWF high/medium/low hydrogen XMLs
     for (i in c("cwf_low_H2", "cwf_med_H2", "cwf_high_H2")) {
@@ -70,7 +75,7 @@ module_energy_Off_road_cwf_xml <- function(command, ...) {
         assign(xml_name, ., envir = curr_env)
     }
 
-    return_data(Off_road_cwf.xml, Off_road_cwf_low_H2.xml, Off_road_cwf_med_H2.xml, Off_road_cwf_high_H2.xml)
+    return_data(Off_road_cwf.xml, Off_road_cwf_LED.xml, Off_road_cwf_low_H2.xml, Off_road_cwf_med_H2.xml, Off_road_cwf_high_H2.xml)
   } else {
     stop("Unknown command")
   }

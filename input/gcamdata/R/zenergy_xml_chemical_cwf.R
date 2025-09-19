@@ -21,8 +21,8 @@ module_energy_chemical_cwf_xml <- function(command, ...) {
              "L2325.GlobalTechShrwt_chemical_cwf_H2_scenarios"))
   } else if(command == driver.DECLARE_OUTPUTS) {
     return(c(XML = "chemical_cwf.xml",
+             XML = "chemical_cwf_LED.xml",
              XML = "chemical_cwf_low_H2.xml",
-             # XML = "chemical_cwf_med_H2.xml",
              XML = "chemical_cwf_high_H2.xml"))
   } else if(command == driver.MAKE) {
 
@@ -44,13 +44,17 @@ module_energy_chemical_cwf_xml <- function(command, ...) {
 
     # Produce outputs
     create_xml("chemical_cwf.xml") %>%
-      add_xml_data(L2325.GlobalTechEff_chemical_cwf, "GlobalTechEff") %>% # CWF version
+      add_xml_data(L2325.GlobalTechEff_chemical_cwf %>% filter(scenario == 'cwf'), "GlobalTechEff") %>% # CWF version
       add_xml_data(L2325.SubsectorShrwtFllt_chemical_cwf, "SubsectorShrwtFllt") %>% # CWF version
       add_xml_data(L2325.SubsectorInterp_chemical_cwf, "SubsectorInterp") %>% # CWF version
       add_xml_data(L2325.GlobalTechShrwt_chemical_cwf, "GlobalTechShrwt") %>% # CWF version
       add_precursors("L2325.GlobalTechEff_chemical_cwf", "L2325.SubsectorShrwtFllt_chemical_cwf",
                      "L2325.SubsectorInterp_chemical_cwf", "L2325.GlobalTechShrwt_chemical_cwf") ->
       chemical_cwf.xml
+
+    create_xml("chemical_cwf_LED.xml") %>%
+      add_xml_data(L2325.GlobalTechEff_chemical_cwf %>% filter(scenario == 'cwf-LED'), "GlobalTechEff") -> # CWF LED version
+      chemical_cwf_LED.xml
 
     # create the CWF high/medium/low hydrogen XMLs
     for (i in c("cwf_low_H2",
@@ -81,8 +85,8 @@ module_energy_chemical_cwf_xml <- function(command, ...) {
     }
 
     return_data(chemical_cwf.xml,
+                chemical_cwf_LED.xml,
                 chemical_cwf_low_H2.xml,
-                # chemical_cwf_med_H2.xml,
                 chemical_cwf_high_H2.xml)
   } else {
     stop("Unknown command")

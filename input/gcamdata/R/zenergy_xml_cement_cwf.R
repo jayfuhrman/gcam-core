@@ -21,6 +21,7 @@ module_energy_cement_cwf_xml <- function(command, ...) {
              "L2321.SubsectorInterp_cement_cwf_H2_scenarios"))
   } else if(command == driver.DECLARE_OUTPUTS) {
     return(c(XML = "cement_cwf.xml",
+             XML = "cement_cwf_LED.xml",
              XML = "cement_all_CCS_post2030.xml",
              XML = "cement_cwf_low_H2.xml",
              # XML = "cement_cwf_med_H2.xml",
@@ -50,7 +51,7 @@ module_energy_cement_cwf_xml <- function(command, ...) {
 
     # Produce outputs
     create_xml("cement_cwf.xml") %>%
-      add_xml_data(L2321.GlobalTechCoef_cement_cwf, "GlobalTechCoef") %>% # CWF version
+      add_xml_data(L2321.GlobalTechCoef_cement_cwf %>% filter(scenario == 'cwf'), "GlobalTechCoef") %>% # CWF version
       add_xml_data(L2321.StubTechCoef_cement_cwf, "StubTechCoef") %>% # CWF version
       add_xml_data(L2321.SubsectorShrwtFllt_cement_cwf, "SubsectorShrwtFllt") %>% # CWF version
       add_xml_data(L2321.SubsectorInterp_cement_cwf, "SubsectorInterp") %>% # CWF version
@@ -59,6 +60,10 @@ module_energy_cement_cwf_xml <- function(command, ...) {
                      "L2321.SubsectorShrwtFllt_cement_cwf",
                      "L2321.SubsectorInterp_cement_cwf") ->
       cement_cwf.xml
+
+    create_xml("cement_cwf_LED.xml") %>%
+      add_xml_data(L2321.GlobalTechCoef_cement_cwf %>% filter(scenario == 'cwf-LED'), "GlobalTechCoef") ->
+      cement_cwf_LED.xml
 
     # create the CWF high/medium/low hydrogen XMLs
     for (i in c("cwf_low_H2",
@@ -91,6 +96,7 @@ module_energy_cement_cwf_xml <- function(command, ...) {
       cement_all_CCS_post2030.xml
 
     return_data(cement_cwf.xml,
+                cement_cwf_LED.xml,
                 cement_all_CCS_post2030.xml,
                 cement_cwf_low_H2.xml,
                 # cement_cwf_med_H2.xml,
