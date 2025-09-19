@@ -10,7 +10,7 @@ Africa_Eastern,resid materials,apartments rural,1975,0.046264119
 Africa_Eastern,resid materials,apartments urban,1975,0.013366246
 Africa_Eastern,resid materials,detached rural,1975,0.759957241
 Africa_Eastern,resid materials,detached urban,1975,0.037456887
-Africa_Eastern,comm materials,govern commercial,1975,0.913579415
+Africa_Eastern,comm materials,others commercial,1975,0.913579415
 Africa_Eastern,resid materials,high-rise rural,1975,0.033010501
 Africa_Eastern,resid materials,high-rise urban,1975,0.019209948
 Africa_Eastern,comm materials,hotels commercial,1975,0.044879502
@@ -22,7 +22,7 @@ Africa_Northern,resid materials,apartments rural,1975,0.03316225
 Africa_Northern,resid materials,apartments urban,1975,0.050638678
 Africa_Northern,resid materials,detached rural,1975,0.54473948
 Africa_Northern,resid materials,detached urban,1975,0.141907258
-Africa_Northern,comm materials,govern commercial,1975,0.897464643
+Africa_Northern,comm materials,others commercial,1975,0.897464643
 Africa_Northern,resid materials,high-rise rural,1975,0.023662019
 Africa_Northern,resid materials,high-rise urban,1975,0.072777832
 Africa_Northern,comm materials,hotels commercial,1975,0.048270244
@@ -34,7 +34,7 @@ Africa_Southern,resid materials,apartments rural,1975,0.045754284
 Africa_Southern,resid materials,apartments urban,1975,0.014816634
 Africa_Southern,resid materials,detached rural,1975,0.751582436
 Africa_Southern,resid materials,detached urban,1975,0.041521382
-Africa_Southern,comm materials,govern commercial,1975,0.909810187
+Africa_Southern,comm materials,others commercial,1975,0.909810187
 Africa_Southern,resid materials,high-rise rural,1975,0.032646722
 Africa_Southern,resid materials,high-rise urban,1975,0.021294444
 Africa_Southern,comm materials,hotels commercial,1975,0.045719289
@@ -46,7 +46,7 @@ Africa_Western,resid materials,apartments rural,1975,0.041271897
 Africa_Western,resid materials,apartments urban,1975,0.033020496
 Africa_Western,resid materials,detached rural,1975,0.677952531
 Africa_Western,resid materials,detached urban,1975,0.04884832
-Africa_Western,comm materials,govern commercial,1975,0.909509184
+Africa_Western,comm materials,others commercial,1975,0.909509184
 Africa_Western,resid materials,high-rise rural,1975,0.029448436
 Africa_Western,resid materials,high-rise urban,1975,0.05027982
 Africa_Western,comm materials,hotels commercial,1975,0.045784938
@@ -58,7 +58,7 @@ Argentina,resid materials,apartments rural,1975,0.020786488
 Argentina,resid materials,apartments urban,1975,0.104760478
 Argentina,resid materials,detached rural,1975,0.341449101
 Argentina,resid materials,detached urban,1975,0.191338391
-Argentina,comm materials,govern commercial,1975,0.86271126
+Argentina,comm materials,others commercial,1975,0.86271126
 Argentina,resid materials,high-rise rural,1975,0.014831632
 Argentina,resid materials,high-rise urban,1975,0.14851604
 Argentina,comm materials,hotels commercial,1975,0.054244743
@@ -70,7 +70,7 @@ Australia_NZ,resid materials,apartments rural,1975,0.006937233
 Australia_NZ,resid materials,apartments urban,1975,0.128048899
 Australia_NZ,resid materials,detached rural,1975,0.215569334
 Australia_NZ,resid materials,detached urban,1975,0.181935703
-Australia_NZ,comm materials,govern commercial,1975,0.711645182
+Australia_NZ,comm materials,others commercial,1975,0.711645182
 Australia_NZ,resid materials,high-rise rural,1975,0
 Australia_NZ,resid materials,high-rise urban,1975,0.022018081
 Australia_NZ,comm materials,hotels commercial,1975,0.070400496
@@ -82,7 +82,7 @@ Brazil,resid materials,apartments rural,1975,0.024302214
 Brazil,resid materials,apartments urban,1975,0.078257227
 Brazil,resid materials,detached rural,1975,0.39920016
 Brazil,resid materials,detached urban,1975,0.265225412
-Brazil,comm materials,govern commercial,1975,0.871796359
+Brazil,comm materials,others commercial,1975,0.871796359
 Brazil,resid materials,high-rise rural,1975,0.017340182
 Brazil,resid materials,high-rise urban,1975,0.049903595
 Brazil,comm materials,hotels commercial,1975,0.052809092
@@ -94,7 +94,7 @@ Canada,resid materials,apartments rural,1975,0.014887976
 Canada,resid materials,apartments urban,1975,0.089142692
 Canada,resid materials,detached rural,1975,0.244557244
 Canada,resid materials,detached urban,1975,0.311774014
-Canada,comm materials,govern commercial,1975,0.66196478
+Canada,comm materials,others commercial,1975,0.66196478
 Canada,resid materials,high-rise rural,1975,0.01062291
 Canada,resid materials,high-rise urban,1975,0.15914999
 Canada,comm materials,hotels commercial,1975,0.074108765
@@ -106,7 +106,7 @@ Central America and Caribbean,resid materials,apartments rural,1975,0.031857719
 Central America and Caribbean,resid materials,apartments urban,1975,0.054349832
 Central America and Caribbean,resid materials,detached rural,1975,0.523310611
 Central America and Caribbean,resid materials,detached urban,1975,0.152307205
-Central America and Caribbean,comm materials,govern commercial,1975,0.860487864
+Central America and Caribbean,comm materials,others commercial,1975,0.860487864
 Central America and Caribbean,resid materials,high-rise rural,1975,0.022731207
 Central America and Caribbean,resid materials,high-rise urban,1975,0.078111496
 Central America and Caribbean,comm materials,hotels commercial,1975,0.054580005
@@ -118,7 +118,7 @@ Central Asia,resid materials,apartments rural,1975,0.029204486
 Central Asia,resid materials,apartments urban,1975,0.061975705
 Central Asia,resid materials,detached rural,1975,0.480154225
 Central Asia,resid materials,detached urban,1975,0.173085716
-Central Asia,comm materials,govern commercial,1975,0.89357825
+Central Asia,comm materials,others commercial,1975,0.89357825
 Central Asia,resid materials,high-rise rural,1975,0.020838064
 Central Asia,resid materials,high-rise urban,1975,0.088865722
 Central Asia,comm materials,hotels commercial,1975,0.048696881
@@ -130,7 +130,7 @@ China,resid materials,apartments rural,1975,0.04167081
 China,resid materials,apartments urban,1975,0.034733063
 China,resid materials,detached rural,1975,0.729989621
 China,resid materials,detached urban,1975,0.034281664
-China,comm materials,govern commercial,1975,0.917095939
+China,comm materials,others commercial,1975,0.917095939
 China,resid materials,high-rise rural,1975,0.02973307
 China,resid materials,high-rise urban,1975,0.02800752
 China,comm materials,hotels commercial,1975,0.044068197
@@ -142,7 +142,7 @@ Colombia,resid materials,apartments rural,1975,0.020782894
 Colombia,resid materials,apartments urban,1975,0.104772954
 Colombia,resid materials,detached rural,1975,0.341390072
 Colombia,resid materials,detached urban,1975,0.191361177
-Colombia,comm materials,govern commercial,1975,0.862709644
+Colombia,comm materials,others commercial,1975,0.862709644
 Colombia,resid materials,high-rise rural,1975,0.014829067
 Colombia,resid materials,high-rise urban,1975,0.148533726
 Colombia,comm materials,hotels commercial,1975,0.054244989
@@ -154,7 +154,7 @@ EU-12,resid materials,apartments rural,1975,0.019165039
 EU-12,resid materials,apartments urban,1975,0.046012622
 EU-12,resid materials,detached rural,1975,0.466685578
 EU-12,resid materials,detached urban,1975,0.109840124
-EU-12,comm materials,govern commercial,1975,0.875834992
+EU-12,comm materials,others commercial,1975,0.875834992
 EU-12,resid materials,high-rise rural,1975,0.040207394
 EU-12,resid materials,high-rise urban,1975,0.248456922
 EU-12,comm materials,hotels commercial,1975,0.052074618
@@ -166,7 +166,7 @@ EU-15,resid materials,apartments rural,1975,0.025734892
 EU-15,resid materials,apartments urban,1975,0.163693028
 EU-15,resid materials,detached rural,1975,0.249777662
 EU-15,resid materials,detached urban,1975,0.133677962
-EU-15,comm materials,govern commercial,1975,0.722796816
+EU-15,comm materials,others commercial,1975,0.722796816
 EU-15,resid materials,high-rise rural,1975,0.013261755
 EU-15,resid materials,high-rise urban,1975,0.182946795
 EU-15,comm materials,hotels commercial,1975,0.069500637
@@ -178,7 +178,7 @@ Europe_Non_EU,resid materials,apartments rural,1975,0.028587805
 Europe_Non_EU,resid materials,apartments urban,1975,0.052525123
 Europe_Non_EU,resid materials,detached rural,1975,0.498684861
 Europe_Non_EU,resid materials,detached urban,1975,0.125733984
-Europe_Non_EU,comm materials,govern commercial,1975,0.865356234
+Europe_Non_EU,comm materials,others commercial,1975,0.865356234
 Europe_Non_EU,resid materials,high-rise rural,1975,0.026768324
 Europe_Non_EU,resid materials,high-rise urban,1975,0.151041026
 Europe_Non_EU,comm materials,hotels commercial,1975,0.052916722
@@ -190,7 +190,7 @@ European Free Trade Association,resid materials,apartments rural,1975,0.02573451
 European Free Trade Association,resid materials,apartments urban,1975,0.163694357
 European Free Trade Association,resid materials,detached rural,1975,0.249773952
 European Free Trade Association,resid materials,detached urban,1975,0.133679047
-European Free Trade Association,comm materials,govern commercial,1975,0.722779835
+European Free Trade Association,comm materials,others commercial,1975,0.722779835
 European Free Trade Association,resid materials,high-rise rural,1975,0.013261558
 European Free Trade Association,resid materials,high-rise urban,1975,0.18294828
 European Free Trade Association,comm materials,hotels commercial,1975,0.069502046
@@ -202,7 +202,7 @@ India,resid materials,apartments rural,1975,0.043172896
 India,resid materials,apartments urban,1975,0.012865778
 India,resid materials,detached rural,1975,0.701056695
 India,resid materials,detached urban,1975,0.039848746
-India,comm materials,govern commercial,1975,0.914705882
+India,comm materials,others commercial,1975,0.914705882
 India,resid materials,high-rise rural,1975,0.030804843
 India,resid materials,high-rise urban,1975,0.047238543
 India,comm materials,hotels commercial,1975,0.044623143
@@ -214,7 +214,7 @@ Indonesia,resid materials,apartments rural,1975,0.043792805
 Indonesia,resid materials,apartments urban,1975,0.02346251
 Indonesia,resid materials,detached rural,1975,0.719362216
 Indonesia,resid materials,detached urban,1975,0.055499889
-Indonesia,comm materials,govern commercial,1975,0.913951972
+Indonesia,comm materials,others commercial,1975,0.913951972
 Indonesia,resid materials,high-rise rural,1975,0.031247162
 Indonesia,resid materials,high-rise urban,1975,0.02282389
 Indonesia,comm materials,hotels commercial,1975,0.044795328
@@ -226,7 +226,7 @@ Japan,resid materials,apartments rural,1975,0.031795537
 Japan,resid materials,apartments urban,1975,0.116956138
 Japan,resid materials,detached rural,1975,0.468458982
 Japan,resid materials,detached urban,1975,0.26860924
-Japan,comm materials,govern commercial,1975,0.755097212
+Japan,comm materials,others commercial,1975,0.755097212
 Japan,resid materials,high-rise rural,1975,0.004861465
 Japan,resid materials,high-rise urban,1975,0.089634376
 Japan,comm materials,hotels commercial,1975,0.066712945
@@ -238,7 +238,7 @@ Mexico,resid materials,apartments rural,1975,0.023003616
 Mexico,resid materials,apartments urban,1975,0.079538143
 Mexico,resid materials,detached rural,1975,0.377868749
 Mexico,resid materials,detached urban,1975,0.222893649
-Mexico,comm materials,govern commercial,1975,0.834049053
+Mexico,comm materials,others commercial,1975,0.834049053
 Mexico,resid materials,high-rise rural,1975,0.016413603
 Mexico,resid materials,high-rise urban,1975,0.1143121
 Mexico,comm materials,hotels commercial,1975,0.058240744
@@ -250,7 +250,7 @@ Middle East,resid materials,apartments rural,1975,0.029733209
 Middle East,resid materials,apartments urban,1975,0.04688337
 Middle East,resid materials,detached rural,1975,0.488412361
 Middle East,resid materials,detached urban,1975,0.222742754
-Middle East,comm materials,govern commercial,1975,0.874272729
+Middle East,comm materials,others commercial,1975,0.874272729
 Middle East,resid materials,high-rise rural,1975,0.021215321
 Middle East,resid materials,high-rise urban,1975,0.068229825
 Middle East,comm materials,hotels commercial,1975,0.052398007
@@ -262,7 +262,7 @@ Pakistan,resid materials,apartments rural,1975,0.124992158
 Pakistan,resid materials,apartments urban,1975,0.017898042
 Pakistan,resid materials,detached rural,1975,0.477103872
 Pakistan,resid materials,detached urban,1975,0.050156562
-Pakistan,comm materials,govern commercial,1975,0.913873642
+Pakistan,comm materials,others commercial,1975,0.913873642
 Pakistan,resid materials,high-rise rural,1975,0.089184745
 Pakistan,resid materials,high-rise urban,1975,0.025723038
 Pakistan,comm materials,hotels commercial,1975,0.044813294
@@ -274,7 +274,7 @@ Russia,resid materials,apartments rural,1975,0.021648998
 Russia,resid materials,apartments urban,1975,0.083391785
 Russia,resid materials,detached rural,1975,0.355617125
 Russia,resid materials,detached urban,1975,0.233692899
-Russia,comm materials,govern commercial,1975,0.867679762
+Russia,comm materials,others commercial,1975,0.867679762
 Russia,resid materials,high-rise rural,1975,0.015447052
 Russia,resid materials,high-rise urban,1975,0.119850548
 Russia,comm materials,hotels commercial,1975,0.05347229
@@ -286,7 +286,7 @@ South Africa,resid materials,apartments rural,1975,0.030025409
 South Africa,resid materials,apartments urban,1975,0.041871497
 South Africa,resid materials,detached rural,1975,0.493212173
 South Africa,resid materials,detached urban,1975,0.097700159
-South Africa,comm materials,govern commercial,1975,0.839683143
+South Africa,comm materials,others commercial,1975,0.839683143
 South Africa,resid materials,high-rise rural,1975,0.021423812
 South Africa,resid materials,high-rise urban,1975,0.125956092
 South Africa,comm materials,hotels commercial,1975,0.057510673
@@ -298,7 +298,7 @@ South America_Northern,resid materials,apartments rural,1975,0.020779551
 South America_Northern,resid materials,apartments urban,1975,0.104784561
 South America_Northern,resid materials,detached rural,1975,0.341335152
 South America_Northern,resid materials,detached urban,1975,0.191382376
-South America_Northern,comm materials,govern commercial,1975,0.862708224
+South America_Northern,comm materials,others commercial,1975,0.862708224
 South America_Northern,resid materials,high-rise rural,1975,0.014826682
 South America_Northern,resid materials,high-rise urban,1975,0.148550181
 South America_Northern,comm materials,hotels commercial,1975,0.054245205
@@ -310,7 +310,7 @@ South America_Southern,resid materials,apartments rural,1975,0.020783098
 South America_Southern,resid materials,apartments urban,1975,0.104772246
 South America_Southern,resid materials,detached rural,1975,0.34139342
 South America_Southern,resid materials,detached urban,1975,0.191359884
-South America_Southern,comm materials,govern commercial,1975,0.862709745
+South America_Southern,comm materials,others commercial,1975,0.862709745
 South America_Southern,resid materials,high-rise rural,1975,0.014829213
 South America_Southern,resid materials,high-rise urban,1975,0.148532723
 South America_Southern,comm materials,hotels commercial,1975,0.054244974
@@ -322,7 +322,7 @@ South Asia,resid materials,apartments rural,1975,0.124997395
 South Asia,resid materials,apartments urban,1975,0.017892716
 South Asia,resid materials,detached rural,1975,0.477123865
 South Asia,resid materials,detached urban,1975,0.050141639
-South Asia,comm materials,govern commercial,1975,0.913873759
+South Asia,comm materials,others commercial,1975,0.913873759
 South Asia,resid materials,high-rise rural,1975,0.089188482
 South Asia,resid materials,high-rise urban,1975,0.025715385
 South Asia,comm materials,hotels commercial,1975,0.044813268
@@ -334,7 +334,7 @@ South Korea,resid materials,apartments rural,1975,0.02976327
 South Korea,resid materials,apartments urban,1975,0.037412268
 South Korea,resid materials,detached rural,1975,0.488906159
 South Korea,resid materials,detached urban,1975,0.183803214
-South Korea,comm materials,govern commercial,1975,0.897118353
+South Korea,comm materials,others commercial,1975,0.897118353
 South Korea,resid materials,high-rise rural,1975,0.02123677
 South Korea,resid materials,high-rise urban,1975,0.086016433
 South Korea,comm materials,hotels commercial,1975,0.048336274
@@ -346,7 +346,7 @@ Southeast Asia,resid materials,apartments rural,1975,0.039080462
 Southeast Asia,resid materials,apartments urban,1975,0.030025816
 Southeast Asia,resid materials,detached rural,1975,0.643097013
 Southeast Asia,resid materials,detached urban,1975,0.093332162
-Southeast Asia,comm materials,govern commercial,1975,0.905034831
+Southeast Asia,comm materials,others commercial,1975,0.905034831
 Southeast Asia,resid materials,high-rise rural,1975,0.027829165
 Southeast Asia,resid materials,high-rise urban,1975,0.046111062
 Southeast Asia,comm materials,hotels commercial,1975,0.046356752
@@ -358,7 +358,7 @@ Taiwan,resid materials,apartments rural,1975,0.04167081
 Taiwan,resid materials,apartments urban,1975,0.034733059
 Taiwan,resid materials,detached rural,1975,0.729989634
 Taiwan,resid materials,detached urban,1975,0.03428166
-Taiwan,comm materials,govern commercial,1975,0.917096046
+Taiwan,comm materials,others commercial,1975,0.917096046
 Taiwan,resid materials,high-rise rural,1975,0.02973307
 Taiwan,resid materials,high-rise urban,1975,0.028007517
 Taiwan,comm materials,hotels commercial,1975,0.044068172
@@ -370,7 +370,7 @@ USA,resid materials,apartments rural,1975,0.005300769
 USA,resid materials,apartments urban,1975,0.037144008
 USA,resid materials,detached rural,1975,0.305433884
 USA,resid materials,detached urban,1975,0.54012669
-USA,comm materials,govern commercial,1975,0.621482624
+USA,comm materials,others commercial,1975,0.621482624
 USA,resid materials,high-rise rural,1975,0.001607123
 USA,resid materials,high-rise urban,1975,0.058422673
 USA,comm materials,hotels commercial,1975,0.076883967
@@ -382,7 +382,7 @@ Ukraine,resid materials,apartments rural,1975,0.026778772
 Ukraine,resid materials,apartments urban,1975,0.068798512
 Ukraine,resid materials,detached rural,1975,0.439881323
 Ukraine,resid materials,detached urban,1975,0.192797451
-Ukraine,comm materials,govern commercial,1975,0.893302092
+Ukraine,comm materials,others commercial,1975,0.893302092
 Ukraine,resid materials,high-rise rural,1975,0.019107263
 Ukraine,resid materials,high-rise urban,1975,0.098877117
 Ukraine,comm materials,hotels commercial,1975,0.049069956
@@ -394,7 +394,7 @@ Africa_Eastern,resid materials,apartments rural,1990,0.044256983
 Africa_Eastern,resid materials,apartments urban,1990,0.019076183
 Africa_Eastern,resid materials,detached rural,1990,0.726987029
 Africa_Eastern,resid materials,detached urban,1990,0.053458126
-Africa_Eastern,comm materials,govern commercial,1990,0.913533903
+Africa_Eastern,comm materials,others commercial,1990,0.913533903
 Africa_Eastern,resid materials,high-rise rural,1990,0.031578363
 Africa_Eastern,resid materials,high-rise urban,1990,0.027416262
 Africa_Eastern,comm materials,hotels commercial,1990,0.044890158
@@ -406,7 +406,7 @@ Africa_Northern,resid materials,apartments rural,1990,0.030081051
 Africa_Northern,resid materials,apartments urban,1990,0.059404129
 Africa_Northern,resid materials,detached rural,1990,0.494126183
 Africa_Northern,resid materials,detached urban,1990,0.166471112
-Africa_Northern,comm materials,govern commercial,1990,0.886704805
+Africa_Northern,comm materials,others commercial,1990,0.886704805
 Africa_Northern,resid materials,high-rise rural,1990,0.021463514
 Africa_Northern,resid materials,high-rise urban,1990,0.085375525
 Africa_Northern,comm materials,hotels commercial,1990,0.050286718
@@ -418,7 +418,7 @@ Africa_Southern,resid materials,apartments rural,1990,0.041681877
 Africa_Southern,resid materials,apartments urban,1990,0.02640189
 Africa_Southern,resid materials,detached rural,1990,0.684687073
 Africa_Southern,resid materials,detached urban,1990,0.073987315
-Africa_Southern,comm materials,govern commercial,1990,0.91095092
+Africa_Southern,comm materials,others commercial,1990,0.91095092
 Africa_Southern,resid materials,high-rise rural,1990,0.029740967
 Africa_Southern,resid materials,high-rise urban,1990,0.037944757
 Africa_Southern,comm materials,hotels commercial,1990,0.045468519
@@ -430,7 +430,7 @@ Africa_Western,resid materials,apartments rural,1990,0.037868109
 Africa_Western,resid materials,apartments urban,1990,0.044618732
 Africa_Western,resid materials,detached rural,1990,0.622040239
 Africa_Western,resid materials,detached urban,1990,0.066005977
-Africa_Western,comm materials,govern commercial,1990,0.910375678
+Africa_Western,comm materials,others commercial,1990,0.910375678
 Africa_Western,resid materials,high-rise rural,1990,0.027019757
 Africa_Western,resid materials,high-rise urban,1990,0.067940282
 Africa_Western,comm materials,hotels commercial,1990,0.045595369
@@ -442,7 +442,7 @@ Argentina,resid materials,apartments rural,1990,0.016238576
 Argentina,resid materials,apartments urban,1990,0.120549189
 Argentina,resid materials,detached rural,1990,0.266742851
 Argentina,resid materials,detached urban,1990,0.220175472
-Argentina,comm materials,govern commercial,1990,0.859044086
+Argentina,comm materials,others commercial,1990,0.859044086
 Argentina,resid materials,high-rise rural,1990,0.011586593
 Argentina,resid materials,high-rise urban,1990,0.170899259
 Argentina,comm materials,hotels commercial,1990,0.054789248
@@ -454,7 +454,7 @@ Australia_NZ,resid materials,apartments rural,1990,0.006911734
 Australia_NZ,resid materials,apartments urban,1990,0.128192887
 Australia_NZ,resid materials,detached rural,1990,0.214776972
 Australia_NZ,resid materials,detached urban,1990,0.182140285
-Australia_NZ,comm materials,govern commercial,1990,0.638218747
+Australia_NZ,comm materials,others commercial,1990,0.638218747
 Australia_NZ,resid materials,high-rise rural,1990,0
 Australia_NZ,resid materials,high-rise urban,1990,0.022042839
 Australia_NZ,comm materials,hotels commercial,1990,0.075758921
@@ -466,7 +466,7 @@ Brazil,resid materials,apartments rural,1990,0.016830379
 Brazil,resid materials,apartments urban,1990,0.100189606
 Brazil,resid materials,detached rural,1990,0.276464114
 Brazil,resid materials,detached urban,1990,0.339557515
-Brazil,comm materials,govern commercial,1990,0.852634227
+Brazil,comm materials,others commercial,1990,0.852634227
 Brazil,resid materials,high-rise rural,1990,0.012008858
 Brazil,resid materials,high-rise urban,1990,0.063889582
 Brazil,comm materials,hotels commercial,1990,0.05572112
@@ -478,7 +478,7 @@ Canada,resid materials,apartments rural,1990,0.014377
 Canada,resid materials,apartments urban,1990,0.090405349
 Canada,resid materials,detached rural,1990,0.236163689
 Canada,resid materials,detached urban,1990,0.31619012
-Canada,comm materials,govern commercial,1990,0.557888264
+Canada,comm materials,others commercial,1990,0.557888264
 Canada,resid materials,high-rise rural,1990,0.010258316
 Canada,resid materials,high-rise urban,1990,0.161404261
 Canada,comm materials,hotels commercial,1990,0.081305929
@@ -490,7 +490,7 @@ Central America and Caribbean,resid materials,apartments rural,1990,0.028643358
 Central America and Caribbean,resid materials,apartments urban,1990,0.063494104
 Central America and Caribbean,resid materials,detached rural,1990,0.470509929
 Central America and Caribbean,resid materials,detached urban,1990,0.17793265
-Central America and Caribbean,comm materials,govern commercial,1990,0.848137436
+Central America and Caribbean,comm materials,others commercial,1990,0.848137436
 Central America and Caribbean,resid materials,high-rise rural,1990,0.020437687
 Central America and Caribbean,resid materials,high-rise urban,1990,0.091253631
 Central America and Caribbean,comm materials,hotels commercial,1990,0.056362846
@@ -502,7 +502,7 @@ Central Asia,resid materials,apartments rural,1990,0.02787265
 Central Asia,resid materials,apartments urban,1990,0.066007749
 Central Asia,resid materials,detached rural,1990,0.458699027
 Central Asia,resid materials,detached urban,1990,0.183096161
-Central Asia,comm materials,govern commercial,1990,0.876048122
+Central Asia,comm materials,others commercial,1990,0.876048122
 Central Asia,resid materials,high-rise rural,1990,0.019887769
 Central Asia,resid materials,high-rise urban,1990,0.094212728
 Central Asia,comm materials,hotels commercial,1990,0.051612758
@@ -514,7 +514,7 @@ China,resid materials,apartments rural,1990,0.038524228
 China,resid materials,apartments urban,1990,0.051276477
 China,resid materials,detached rural,1990,0.674867771
 China,resid materials,detached urban,1990,0.050610077
-China,comm materials,govern commercial,1990,0.909397652
+China,comm materials,others commercial,1990,0.909397652
 China,resid materials,high-rise rural,1990,0.027487912
 China,resid materials,high-rise urban,1990,0.041347547
 China,comm materials,hotels commercial,1990,0.045808004
@@ -526,7 +526,7 @@ Colombia,resid materials,apartments rural,1990,0.016235348
 Colombia,resid materials,apartments urban,1990,0.120560393
 Colombia,resid materials,detached rural,1990,0.266689836
 Colombia,resid materials,detached urban,1990,0.220195937
-Colombia,comm materials,govern commercial,1990,0.859069724
+Colombia,comm materials,others commercial,1990,0.859069724
 Colombia,resid materials,high-rise rural,1990,0.01158429
 Colombia,resid materials,high-rise urban,1990,0.170915144
 Colombia,comm materials,hotels commercial,1990,0.054785432
@@ -538,7 +538,7 @@ EU-12,resid materials,apartments rural,1990,0.016438418
 EU-12,resid materials,apartments urban,1990,0.054282136
 EU-12,resid materials,detached rural,1990,0.400118121
 EU-12,resid materials,detached urban,1990,0.129671682
-EU-12,comm materials,govern commercial,1990,0.844862377
+EU-12,comm materials,others commercial,1990,0.844862377
 EU-12,resid materials,high-rise rural,1990,0.034468495
 EU-12,resid materials,high-rise urban,1990,0.293357823
 EU-12,comm materials,hotels commercial,1990,0.056653187
@@ -550,7 +550,7 @@ EU-15,resid materials,apartments rural,1990,0.023776924
 EU-15,resid materials,apartments urban,1990,0.170500109
 EU-15,resid materials,detached rural,1990,0.230774025
 EU-15,resid materials,detached urban,1990,0.139236884
-EU-15,comm materials,govern commercial,1990,0.608311713
+EU-15,comm materials,others commercial,1990,0.608311713
 EU-15,resid materials,high-rise rural,1990,0.012252772
 EU-15,resid materials,high-rise urban,1990,0.190554532
 EU-15,comm materials,hotels commercial,1990,0.077796947
@@ -562,7 +562,7 @@ Europe_Non_EU,resid materials,apartments rural,1990,0.022811289
 Europe_Non_EU,resid materials,apartments urban,1990,0.067810948
 Europe_Non_EU,resid materials,detached rural,1990,0.39490631
 Europe_Non_EU,resid materials,detached urban,1990,0.166650841
-Europe_Non_EU,comm materials,govern commercial,1990,0.820510665
+Europe_Non_EU,comm materials,others commercial,1990,0.820510665
 Europe_Non_EU,resid materials,high-rise rural,1990,0.021068217
 Europe_Non_EU,resid materials,high-rise urban,1990,0.194610416
 Europe_Non_EU,comm materials,hotels commercial,1990,0.058399091
@@ -574,7 +574,7 @@ European Free Trade Association,resid materials,apartments rural,1990,0.02377622
 European Free Trade Association,resid materials,apartments urban,1990,0.17050255
 European Free Trade Association,resid materials,detached rural,1990,0.230767211
 European Free Trade Association,resid materials,detached urban,1990,0.139238877
-European Free Trade Association,comm materials,govern commercial,1990,0.608239203
+European Free Trade Association,comm materials,others commercial,1990,0.608239203
 European Free Trade Association,resid materials,high-rise rural,1990,0.01225241
 European Free Trade Association,resid materials,high-rise urban,1990,0.19055726
 European Free Trade Association,comm materials,hotels commercial,1990,0.077801871
@@ -586,7 +586,7 @@ India,resid materials,apartments rural,1990,0.041265446
 India,resid materials,apartments urban,1990,0.015828557
 India,resid materials,detached rural,1990,0.670082856
 India,resid materials,detached urban,1990,0.049025261
-India,comm materials,govern commercial,1990,0.911807876
+India,comm materials,others commercial,1990,0.911807876
 India,resid materials,high-rise rural,1990,0.029443834
 India,resid materials,high-rise urban,1990,0.058116807
 India,comm materials,hotels commercial,1990,0.045278197
@@ -598,7 +598,7 @@ Indonesia,resid materials,apartments rural,1990,0.039358366
 Indonesia,resid materials,apartments urban,1990,0.037973868
 Indonesia,resid materials,detached rural,1990,0.646519935
 Indonesia,resid materials,detached urban,1990,0.089826088
-Indonesia,comm materials,govern commercial,1990,0.907318489
+Indonesia,comm materials,others commercial,1990,0.907318489
 Indonesia,resid materials,high-rise rural,1990,0.028083089
 Indonesia,resid materials,high-rise urban,1990,0.036940267
 Indonesia,comm materials,hotels commercial,1990,0.046256589
@@ -610,7 +610,7 @@ Japan,resid materials,apartments rural,1990,0.027427162
 Japan,resid materials,apartments urban,1990,0.133918625
 Japan,resid materials,detached rural,1990,0.404097609
 Japan,resid materials,detached urban,1990,0.307566415
-Japan,comm materials,govern commercial,1990,0.616312999
+Japan,comm materials,others commercial,1990,0.616312999
 Japan,resid materials,high-rise rural,1990,0.004193551
 Japan,resid materials,high-rise urban,1990,0.102634309
 Japan,comm materials,hotels commercial,1990,0.077251977
@@ -622,7 +622,7 @@ Mexico,resid materials,apartments rural,1990,0.017889823
 Mexico,resid materials,apartments urban,1990,0.094085954
 Mexico,resid materials,detached rural,1990,0.293867059
 Mexico,resid materials,detached urban,1990,0.263661695
-Mexico,comm materials,govern commercial,1990,0.800231663
+Mexico,comm materials,others commercial,1990,0.800231663
 Mexico,resid materials,high-rise rural,1990,0.012764795
 Mexico,resid materials,high-rise urban,1990,0.135220192
 Mexico,comm materials,hotels commercial,1990,0.062210758
@@ -634,7 +634,7 @@ Middle East,resid materials,apartments rural,1990,0.024085972
 Middle East,resid materials,apartments urban,1990,0.059354847
 Middle East,resid materials,detached rural,1990,0.395648059
 Middle East,resid materials,detached urban,1990,0.281994702
-Middle East,comm materials,govern commercial,1990,0.842549452
+Middle East,comm materials,others commercial,1990,0.842549452
 Middle East,resid materials,high-rise rural,1990,0.017185889
 Middle East,resid materials,high-rise urban,1990,0.086379686
 Middle East,comm materials,hotels commercial,1990,0.057115832
@@ -646,7 +646,7 @@ Pakistan,resid materials,apartments rural,1990,0.117209792
 Pakistan,resid materials,apartments urban,1990,0.025810477
 Pakistan,resid materials,detached rural,1990,0.447398034
 Pakistan,resid materials,detached urban,1990,0.072329969
-Pakistan,comm materials,govern commercial,1990,0.91087723
+Pakistan,comm materials,others commercial,1990,0.91087723
 Pakistan,resid materials,high-rise rural,1990,0.08363185
 Pakistan,resid materials,high-rise urban,1990,0.037094779
 Pakistan,comm materials,hotels commercial,1990,0.045484829
@@ -658,7 +658,7 @@ Russia,resid materials,apartments rural,1990,0.017429139
 Russia,resid materials,apartments urban,1990,0.095396518
 Russia,resid materials,detached rural,1990,0.28629963
 Russia,resid materials,detached urban,1990,0.267334351
-Russia,comm materials,govern commercial,1990,0.83839267
+Russia,comm materials,others commercial,1990,0.83839267
 Russia,resid materials,high-rise rural,1990,0.012436087
 Russia,resid materials,high-rise urban,1990,0.137103731
 Russia,comm materials,hotels commercial,1990,0.057677963
@@ -670,7 +670,7 @@ South Africa,resid materials,apartments rural,1990,0.028483363
 South Africa,resid materials,apartments urban,1990,0.04495538
 South Africa,resid materials,detached rural,1990,0.467881767
 South Africa,resid materials,detached urban,1990,0.104895887
-South Africa,comm materials,govern commercial,1990,0.841904024
+South Africa,comm materials,others commercial,1990,0.841904024
 South Africa,resid materials,high-rise rural,1990,0.020323527
 South Africa,resid materials,high-rise urban,1990,0.135232901
 South Africa,comm materials,hotels commercial,1990,0.057212974
@@ -682,7 +682,7 @@ South America_Northern,resid materials,apartments rural,1990,0.016234018
 South America_Northern,resid materials,apartments urban,1990,0.120565012
 South America_Northern,resid materials,detached rural,1990,0.266667982
 South America_Northern,resid materials,detached urban,1990,0.220204372
-South America_Northern,comm materials,govern commercial,1990,0.859080534
+South America_Northern,comm materials,others commercial,1990,0.859080534
 South America_Northern,resid materials,high-rise rural,1990,0.011583341
 South America_Northern,resid materials,high-rise urban,1990,0.170921691
 South America_Northern,comm materials,hotels commercial,1990,0.054783823
@@ -694,7 +694,7 @@ South America_Southern,resid materials,apartments rural,1990,0.016235607
 South America_Southern,resid materials,apartments urban,1990,0.120559495
 South America_Southern,resid materials,detached rural,1990,0.266694085
 South America_Southern,resid materials,detached urban,1990,0.220194297
-South America_Southern,comm materials,govern commercial,1990,0.859067756
+South America_Southern,comm materials,others commercial,1990,0.859067756
 South America_Southern,resid materials,high-rise rural,1990,0.011584474
 South America_Southern,resid materials,high-rise urban,1990,0.170913871
 South America_Southern,comm materials,hotels commercial,1990,0.054785725
@@ -706,7 +706,7 @@ South Asia,resid materials,apartments rural,1990,0.117221182
 South Asia,resid materials,apartments urban,1990,0.025798896
 South Asia,resid materials,detached rural,1990,0.447441512
 South Asia,resid materials,detached urban,1990,0.072297516
-South Asia,comm materials,govern commercial,1990,0.910881966
+South Asia,comm materials,others commercial,1990,0.910881966
 South Asia,resid materials,high-rise rural,1990,0.083639978
 South Asia,resid materials,high-rise urban,1990,0.037078135
 South Asia,comm materials,hotels commercial,1990,0.045483783
@@ -718,7 +718,7 @@ South Korea,resid materials,apartments rural,1990,0.020141149
 South Korea,resid materials,apartments urban,1990,0.054393269
 South Korea,resid materials,detached rural,1990,0.330848446
 South Korea,resid materials,detached urban,1990,0.267229395
-South Korea,comm materials,govern commercial,1990,0.853647471
+South Korea,comm materials,others commercial,1990,0.853647471
 South Korea,resid materials,high-rise rural,1990,0.014371168
 South Korea,resid materials,high-rise urban,1990,0.12505831
 South Korea,comm materials,hotels commercial,1990,0.055551443
@@ -730,7 +730,7 @@ Southeast Asia,resid materials,apartments rural,1990,0.03533095
 Southeast Asia,resid materials,apartments urban,1990,0.038866802
 Southeast Asia,resid materials,detached rural,1990,0.581764416
 Southeast Asia,resid materials,detached urban,1990,0.123488583
-Southeast Asia,comm materials,govern commercial,1990,0.889137033
+Southeast Asia,comm materials,others commercial,1990,0.889137033
 Southeast Asia,resid materials,high-rise rural,1990,0.0251412
 Southeast Asia,resid materials,high-rise urban,1990,0.060833116
 Southeast Asia,comm materials,hotels commercial,1990,0.049121302
@@ -742,7 +742,7 @@ Taiwan,resid materials,apartments rural,1990,0.038528217
 Taiwan,resid materials,apartments urban,1990,0.051255505
 Taiwan,resid materials,detached rural,1990,0.674937649
 Taiwan,resid materials,detached urban,1990,0.050589377
-Taiwan,comm materials,govern commercial,1990,0.909408128
+Taiwan,comm materials,others commercial,1990,0.909408128
 Taiwan,resid materials,high-rise rural,1990,0.027490758
 Taiwan,resid materials,high-rise urban,1990,0.041330636
 Taiwan,comm materials,hotels commercial,1990,0.045805719
@@ -754,7 +754,7 @@ USA,resid materials,apartments rural,1990,0.004981776
 USA,resid materials,apartments urban,1990,0.037990711
 USA,resid materials,detached rural,1990,0.289839051
 USA,resid materials,detached urban,1990,0.553260137
-USA,comm materials,govern commercial,1990,0.510238624
+USA,comm materials,others commercial,1990,0.510238624
 USA,resid materials,high-rise rural,1990,0.00148266
 USA,resid materials,high-rise urban,1990,0.059763917
 USA,comm materials,hotels commercial,1990,0.085151444
@@ -766,7 +766,7 @@ Ukraine,resid materials,apartments rural,1990,0.021335722
 Ukraine,resid materials,apartments urban,1990,0.084282999
 Ukraine,resid materials,detached rural,1990,0.350471093
 Ukraine,resid materials,detached urban,1990,0.236190392
-Ukraine,comm materials,govern commercial,1990,0.879676427
+Ukraine,comm materials,others commercial,1990,0.879676427
 Ukraine,resid materials,high-rise rural,1990,0.015223523
 Ukraine,resid materials,high-rise urban,1990,0.121131399
 Ukraine,comm materials,hotels commercial,1990,0.051515294
@@ -778,7 +778,7 @@ Africa_Eastern,resid materials,apartments rural,2005,0.042260502
 Africa_Eastern,resid materials,apartments urban,2005,0.024755809
 Africa_Eastern,resid materials,detached rural,2005,0.694191847
 Africa_Eastern,resid materials,detached urban,2005,0.069374419
-Africa_Eastern,comm materials,govern commercial,2005,0.9121352
+Africa_Eastern,comm materials,others commercial,2005,0.9121352
 Africa_Eastern,resid materials,high-rise rural,2005,0.030153829
 Africa_Eastern,resid materials,high-rise urban,2005,0.035579011
 Africa_Eastern,comm materials,hotels commercial,2005,0.045205119
@@ -790,7 +790,7 @@ Africa_Northern,resid materials,apartments rural,2005,0.02792165
 Africa_Northern,resid materials,apartments urban,2005,0.065547233
 Africa_Northern,resid materials,detached rural,2005,0.458654794
 Africa_Northern,resid materials,detached urban,2005,0.183686233
-Africa_Northern,comm materials,govern commercial,2005,0.880376043
+Africa_Northern,comm materials,others commercial,2005,0.880376043
 Africa_Northern,resid materials,high-rise rural,2005,0.019922732
 Africa_Northern,resid materials,high-rise urban,2005,0.094204384
 Africa_Northern,comm materials,hotels commercial,2005,0.051396079
@@ -802,7 +802,7 @@ Africa_Southern,resid materials,apartments rural,2005,0.038104655
 Africa_Southern,resid materials,apartments urban,2005,0.036578437
 Africa_Southern,resid materials,detached rural,2005,0.625925856
 Africa_Southern,resid materials,detached urban,2005,0.102505551
-Africa_Southern,comm materials,govern commercial,2005,0.90997452
+Africa_Southern,comm materials,others commercial,2005,0.90997452
 Africa_Southern,resid materials,high-rise rural,2005,0.027188537
 Africa_Southern,resid materials,high-rise urban,2005,0.052570474
 Africa_Southern,comm materials,hotels commercial,2005,0.045683294
@@ -814,7 +814,7 @@ Africa_Western,resid materials,apartments rural,2005,0.034213463
 Africa_Western,resid materials,apartments urban,2005,0.057071756
 Africa_Western,resid materials,detached rural,2005,0.56200722
 Africa_Western,resid materials,detached urban,2005,0.084428151
-Africa_Western,comm materials,govern commercial,2005,0.911858051
+Africa_Western,comm materials,others commercial,2005,0.911858051
 Africa_Western,resid materials,high-rise rural,2005,0.024412084
 Africa_Western,resid materials,high-rise urban,2005,0.086902317
 Africa_Western,comm materials,hotels commercial,2005,0.045267112
@@ -826,7 +826,7 @@ Argentina,resid materials,apartments rural,2005,0.012774936
 Argentina,resid materials,apartments urban,2005,0.132573695
 Argentina,resid materials,detached rural,2005,0.209847404
 Argentina,resid materials,detached urban,2005,0.242137472
-Argentina,comm materials,govern commercial,2005,0.836223873
+Argentina,comm materials,others commercial,2005,0.836223873
 Argentina,resid materials,high-rise rural,2005,0.009115207
 Argentina,resid materials,high-rise urban,2005,0.18794607
 Argentina,comm materials,hotels commercial,2005,0.057955584
@@ -838,7 +838,7 @@ Australia_NZ,resid materials,apartments rural,2005,0.006140082
 Australia_NZ,resid materials,apartments urban,2005,0.132550244
 Australia_NZ,resid materials,detached rural,2005,0.190798464
 Australia_NZ,resid materials,detached urban,2005,0.188331348
-Australia_NZ,comm materials,govern commercial,2005,0.54491231
+Australia_NZ,comm materials,others commercial,2005,0.54491231
 Australia_NZ,resid materials,high-rise rural,2005,0
 Australia_NZ,resid materials,high-rise urban,2005,0.022792089
 Australia_NZ,comm materials,hotels commercial,2005,0.082277284
@@ -850,7 +850,7 @@ Brazil,resid materials,apartments rural,2005,0.010449101
 Brazil,resid materials,apartments urban,2005,0.11892083
 Brazil,resid materials,detached rural,2005,0.171642087
 Brazil,resid materials,detached urban,2005,0.403040428
-Brazil,comm materials,govern commercial,2005,0.811678599
+Brazil,comm materials,others commercial,2005,0.811678599
 Brazil,resid materials,high-rise rural,2005,0.007455671
 Brazil,resid materials,high-rise urban,2005,0.075834236
 Brazil,comm materials,hotels commercial,2005,0.060965511
@@ -862,7 +862,7 @@ Canada,resid materials,apartments rural,2005,0.012363414
 Canada,resid materials,apartments urban,2005,0.095381051
 Canada,resid materials,detached rural,2005,0.203087534
 Canada,resid materials,detached urban,2005,0.333592498
-Canada,comm materials,govern commercial,2005,0.492997157
+Canada,comm materials,others commercial,2005,0.492997157
 Canada,resid materials,high-rise rural,2005,0.008821577
 Canada,resid materials,high-rise urban,2005,0.170287581
 Canada,comm materials,hotels commercial,2005,0.086802329
@@ -874,7 +874,7 @@ Central America and Caribbean,resid materials,apartments rural,2005,0.024504805
 Central America and Caribbean,resid materials,apartments urban,2005,0.075267536
 Central America and Caribbean,resid materials,detached rural,2005,0.402528007
 Central America and Caribbean,resid materials,detached urban,2005,0.210925916
-Central America and Caribbean,comm materials,govern commercial,2005,0.824672412
+Central America and Caribbean,comm materials,others commercial,2005,0.824672412
 Central America and Caribbean,resid materials,high-rise rural,2005,0.017484735
 Central America and Caribbean,resid materials,high-rise urban,2005,0.108174389
 Central America and Caribbean,comm materials,hotels commercial,2005,0.059423241
@@ -886,7 +886,7 @@ Central Asia,resid materials,apartments rural,2005,0.029479348
 Central Asia,resid materials,apartments urban,2005,0.062659081
 Central Asia,resid materials,detached rural,2005,0.485954976
 Central Asia,resid materials,detached urban,2005,0.168008374
-Central Asia,comm materials,govern commercial,2005,0.858355551
+Central Asia,comm materials,others commercial,2005,0.858355551
 Central Asia,resid materials,high-rise rural,2005,0.021034184
 Central Asia,resid materials,high-rise urban,2005,0.087418005
 Central Asia,comm materials,hotels commercial,2005,0.05408133
@@ -898,7 +898,7 @@ China,resid materials,apartments rural,2005,0.032050216
 China,resid materials,apartments urban,2005,0.085314126
 China,resid materials,detached rural,2005,0.561455984
 China,resid materials,detached urban,2005,0.084205365
-China,comm materials,govern commercial,2005,0.884292242
+China,comm materials,others commercial,2005,0.884292242
 China,resid materials,high-rise rural,2005,0.022868558
 China,resid materials,high-rise urban,2005,0.06879431
 China,comm materials,hotels commercial,2005,0.050707062
@@ -910,7 +910,7 @@ Colombia,resid materials,apartments rural,2005,0.01277319
 Colombia,resid materials,apartments urban,2005,0.132579758
 Colombia,resid materials,detached rural,2005,0.209818712
 Colombia,resid materials,detached urban,2005,0.242148547
-Colombia,comm materials,govern commercial,2005,0.836233978
+Colombia,comm materials,others commercial,2005,0.836233978
 Colombia,resid materials,high-rise rural,2005,0.009113961
 Colombia,resid materials,high-rise urban,2005,0.187954666
 Colombia,comm materials,hotels commercial,2005,0.057954318
@@ -922,7 +922,7 @@ EU-12,resid materials,apartments rural,2005,0.01584838
 EU-12,resid materials,apartments urban,2005,0.056223826
 EU-12,resid materials,detached rural,2005,0.38546868
 EU-12,resid materials,detached urban,2005,0.133991754
-EU-12,comm materials,govern commercial,2005,0.755233728
+EU-12,comm materials,others commercial,2005,0.755233728
 EU-12,resid materials,high-rise rural,2005,0.033200202
 EU-12,resid materials,high-rise urban,2005,0.302983397
 EU-12,comm materials,hotels commercial,2005,0.066649515
@@ -934,7 +934,7 @@ EU-15,resid materials,apartments rural,2005,0.0218188
 EU-15,resid materials,apartments urban,2005,0.177307735
 EU-15,resid materials,detached rural,2005,0.211768867
 EU-15,resid materials,detached urban,2005,0.14479625
-EU-15,comm materials,govern commercial,2005,0.506163223
+EU-15,comm materials,others commercial,2005,0.506163223
 EU-15,resid materials,high-rise rural,2005,0.011243707
 EU-15,resid materials,high-rise urban,2005,0.19816288
 EU-15,comm materials,hotels commercial,2005,0.085508439
@@ -946,7 +946,7 @@ Europe_Non_EU,resid materials,apartments rural,2005,0.019512548
 Europe_Non_EU,resid materials,apartments urban,2005,0.075287653
 Europe_Non_EU,resid materials,detached rural,2005,0.336013059
 Europe_Non_EU,resid materials,detached urban,2005,0.190457019
-Europe_Non_EU,comm materials,govern commercial,2005,0.762718331
+Europe_Non_EU,comm materials,others commercial,2005,0.762718331
 Europe_Non_EU,resid materials,high-rise rural,2005,0.017622128
 Europe_Non_EU,resid materials,high-rise urban,2005,0.219512471
 Europe_Non_EU,comm materials,hotels commercial,2005,0.065063531
@@ -958,7 +958,7 @@ European Free Trade Association,resid materials,apartments rural,2005,0.02181818
 European Free Trade Association,resid materials,apartments urban,2005,0.177309878
 European Free Trade Association,resid materials,detached rural,2005,0.211762884
 European Free Trade Association,resid materials,detached urban,2005,0.144798
-European Free Trade Association,comm materials,govern commercial,2005,0.506152286
+European Free Trade Association,comm materials,others commercial,2005,0.506152286
 European Free Trade Association,resid materials,high-rise rural,2005,0.011243389
 European Free Trade Association,resid materials,high-rise urban,2005,0.198165275
 European Free Trade Association,comm materials,hotels commercial,2005,0.085509457
@@ -970,7 +970,7 @@ India,resid materials,apartments rural,2005,0.03981828
 India,resid materials,apartments urban,2005,0.018076392
 India,resid materials,detached rural,2005,0.646583265
 India,resid materials,detached urban,2005,0.055987405
-India,comm materials,govern commercial,2005,0.903167276
+India,comm materials,others commercial,2005,0.903167276
 India,resid materials,high-rise rural,2005,0.028411248
 India,resid materials,high-rise urban,2005,0.066370054
 India,comm materials,hotels commercial,2005,0.047125314
@@ -982,7 +982,7 @@ Indonesia,resid materials,apartments rural,2005,0.033105084
 Indonesia,resid materials,apartments urban,2005,0.05843725
 Indonesia,resid materials,detached rural,2005,0.543800436
 Indonesia,resid materials,detached urban,2005,0.138231627
-Indonesia,comm materials,govern commercial,2005,0.900379271
+Indonesia,comm materials,others commercial,2005,0.900379271
 Indonesia,resid materials,high-rise rural,2005,0.02362123
 Indonesia,resid materials,high-rise urban,2005,0.056846662
 Indonesia,comm materials,hotels commercial,2005,0.047690575
@@ -994,7 +994,7 @@ Japan,resid materials,apartments rural,2005,0.025033295
 Japan,resid materials,apartments urban,2005,0.14321406
 Japan,resid materials,detached rural,2005,0.368827606
 Japan,resid materials,detached urban,2005,0.328914928
-Japan,comm materials,govern commercial,2005,0.520616181
+Japan,comm materials,others commercial,2005,0.520616181
 Japan,resid materials,high-rise rural,2005,0.003827534
 Japan,resid materials,high-rise urban,2005,0.109758266
 Japan,comm materials,hotels commercial,2005,0.084220164
@@ -1006,7 +1006,7 @@ Mexico,resid materials,apartments rural,2005,0.014851948
 Mexico,resid materials,apartments urban,2005,0.102728157
 Mexico,resid materials,detached rural,2005,0.24396542
 Mexico,resid materials,detached urban,2005,0.287880165
-Mexico,comm materials,govern commercial,2005,0.751979717
+Mexico,comm materials,others commercial,2005,0.751979717
 Mexico,resid materials,high-rise rural,2005,0.010597202
 Mexico,resid materials,high-rise urban,2005,0.147640752
 Mexico,comm materials,hotels commercial,2005,0.067009649
@@ -1018,7 +1018,7 @@ Middle East,resid materials,apartments rural,2005,0.020763829
 Middle East,resid materials,apartments urban,2005,0.066691537
 Middle East,resid materials,detached rural,2005,0.341076899
 Middle East,resid materials,detached urban,2005,0.316851295
-Middle East,comm materials,govern commercial,2005,0.837124216
+Middle East,comm materials,others commercial,2005,0.837124216
 Middle East,resid materials,high-rise rural,2005,0.014815464
 Middle East,resid materials,high-rise urban,2005,0.097056843
 Middle East,comm materials,hotels commercial,2005,0.057848367
@@ -1030,7 +1030,7 @@ Pakistan,resid materials,apartments rural,2005,0.111726424
 Pakistan,resid materials,apartments urban,2005,0.031385491
 Pakistan,resid materials,detached rural,2005,0.426467633
 Pakistan,resid materials,detached urban,2005,0.087953104
-Pakistan,comm materials,govern commercial,2005,0.906864319
+Pakistan,comm materials,others commercial,2005,0.906864319
 Pakistan,resid materials,high-rise rural,2005,0.079719343
 Pakistan,resid materials,high-rise urban,2005,0.04510718
 Pakistan,comm materials,hotels commercial,2005,0.046353717
@@ -1042,7 +1042,7 @@ Russia,resid materials,apartments rural,2005,0.017458027
 Russia,resid materials,apartments urban,2005,0.095314337
 Russia,resid materials,detached rural,2005,0.286774154
 Russia,resid materials,detached urban,2005,0.267104053
-Russia,comm materials,govern commercial,2005,0.804002533
+Russia,comm materials,others commercial,2005,0.804002533
 Russia,resid materials,high-rise rural,2005,0.012456699
 Russia,resid materials,high-rise urban,2005,0.136985622
 Russia,comm materials,hotels commercial,2005,0.061801222
@@ -1054,7 +1054,7 @@ South Africa,resid materials,apartments rural,2005,0.024603226
 South Africa,resid materials,apartments urban,2005,0.05271513
 South Africa,resid materials,detached rural,2005,0.404144717
 South Africa,resid materials,detached urban,2005,0.12300197
-South Africa,comm materials,govern commercial,2005,0.817121584
+South Africa,comm materials,others commercial,2005,0.817121584
 South Africa,resid materials,high-rise rural,2005,0.017554961
 South Africa,resid materials,high-rise urban,2005,0.158575458
 South Africa,comm materials,hotels commercial,2005,0.060319408
@@ -1066,7 +1066,7 @@ South America_Northern,resid materials,apartments rural,2005,0.012772229
 South America_Northern,resid materials,apartments urban,2005,0.132583094
 South America_Northern,resid materials,detached rural,2005,0.209802928
 South America_Northern,resid materials,detached urban,2005,0.24215464
-South America_Northern,comm materials,govern commercial,2005,0.836238074
+South America_Northern,comm materials,others commercial,2005,0.836238074
 South America_Northern,resid materials,high-rise rural,2005,0.009113275
 South America_Northern,resid materials,high-rise urban,2005,0.187959395
 South America_Northern,comm materials,hotels commercial,2005,0.057953811
@@ -1078,7 +1078,7 @@ South America_Southern,resid materials,apartments rural,2005,0.012774188
 South America_Southern,resid materials,apartments urban,2005,0.132576293
 South America_Southern,resid materials,detached rural,2005,0.209835111
 South America_Southern,resid materials,detached urban,2005,0.242142217
-South America_Southern,comm materials,govern commercial,2005,0.836228986
+South America_Southern,comm materials,others commercial,2005,0.836228986
 South America_Southern,resid materials,high-rise rural,2005,0.009114673
 South America_Southern,resid materials,high-rise urban,2005,0.187949753
 South America_Southern,comm materials,hotels commercial,2005,0.05795494
@@ -1090,7 +1090,7 @@ South Asia,resid materials,apartments rural,2005,0.111728557
 South Asia,resid materials,apartments urban,2005,0.031383322
 South Asia,resid materials,detached rural,2005,0.426475774
 South Asia,resid materials,detached urban,2005,0.087947027
-South Asia,comm materials,govern commercial,2005,0.906867551
+South Asia,comm materials,others commercial,2005,0.906867551
 South Asia,resid materials,high-rise rural,2005,0.079720865
 South Asia,resid materials,high-rise urban,2005,0.045104064
 South Asia,comm materials,hotels commercial,2005,0.04635303
@@ -1102,7 +1102,7 @@ South Korea,resid materials,apartments rural,2005,0.016051402
 South Korea,resid materials,apartments urban,2005,0.061610804
 South Korea,resid materials,detached rural,2005,0.263668247
 South Korea,resid materials,detached urban,2005,0.302688515
-South Korea,comm materials,govern commercial,2005,0.728201961
+South Korea,comm materials,others commercial,2005,0.728201961
 South Korea,resid materials,high-rise rural,2005,0.01145304
 South Korea,resid materials,high-rise urban,2005,0.141652509
 South Korea,comm materials,hotels commercial,2005,0.069056628
@@ -1114,7 +1114,7 @@ Southeast Asia,resid materials,apartments rural,2005,0.032275673
 Southeast Asia,resid materials,apartments urban,2005,0.046300064
 Southeast Asia,resid materials,detached rural,2005,0.531524088
 Southeast Asia,resid materials,detached urban,2005,0.14804172
-Southeast Asia,comm materials,govern commercial,2005,0.844738104
+Southeast Asia,comm materials,others commercial,2005,0.844738104
 Southeast Asia,resid materials,high-rise rural,2005,0.022963764
 Southeast Asia,resid materials,high-rise urban,2005,0.072936029
 Southeast Asia,comm materials,hotels commercial,2005,0.055167571
@@ -1126,7 +1126,7 @@ Taiwan,resid materials,apartments rural,2005,0.032051568
 Taiwan,resid materials,apartments urban,2005,0.085307022
 Taiwan,resid materials,detached rural,2005,0.561479654
 Taiwan,resid materials,detached urban,2005,0.084198354
-Taiwan,comm materials,govern commercial,2005,0.884297993
+Taiwan,comm materials,others commercial,2005,0.884297993
 Taiwan,resid materials,high-rise rural,2005,0.022869522
 Taiwan,resid materials,high-rise urban,2005,0.068788582
 Taiwan,comm materials,hotels commercial,2005,0.050706051
@@ -1138,7 +1138,7 @@ USA,resid materials,apartments rural,2005,0.003981556
 USA,resid materials,apartments urban,2005,0.041238858
 USA,resid materials,detached rural,2005,0.232032675
 USA,resid materials,detached urban,2005,0.600809282
-USA,comm materials,govern commercial,2005,0.44231149
+USA,comm materials,others commercial,2005,0.44231149
 USA,resid materials,high-rise rural,2005,0.001181129
 USA,resid materials,high-rise urban,2005,0.064876485
 USA,comm materials,hotels commercial,2005,0.093922055
@@ -1150,7 +1150,7 @@ Ukraine,resid materials,apartments rural,2005,0.020058626
 Ukraine,resid materials,apartments urban,2005,0.087916106
 Ukraine,resid materials,detached rural,2005,0.329492881
 Ukraine,resid materials,detached urban,2005,0.246371624
-Ukraine,comm materials,govern commercial,2005,0.871700395
+Ukraine,comm materials,others commercial,2005,0.871700395
 Ukraine,resid materials,high-rise rural,2005,0.014312285
 Ukraine,resid materials,high-rise urban,2005,0.126352894
 Ukraine,comm materials,hotels commercial,2005,0.052800638
@@ -1162,7 +1162,7 @@ Africa_Eastern,resid materials,apartments rural,2010,0.041597531
 Africa_Eastern,resid materials,apartments urban,2010,0.02664184
 Africa_Eastern,resid materials,detached rural,2010,0.683301563
 Africa_Eastern,resid materials,detached urban,2010,0.074659737
-Africa_Eastern,comm materials,govern commercial,2010,0.910283172
+Africa_Eastern,comm materials,others commercial,2010,0.910283172
 Africa_Eastern,resid materials,high-rise rural,2010,0.029680784
 Africa_Eastern,resid materials,high-rise urban,2010,0.038289612
 Africa_Eastern,comm materials,hotels commercial,2010,0.045615174
@@ -1174,7 +1174,7 @@ Africa_Northern,resid materials,apartments rural,2010,0.027157962
 Africa_Northern,resid materials,apartments urban,2010,0.067719785
 Africa_Northern,resid materials,detached rural,2010,0.446110085
 Africa_Northern,resid materials,detached urban,2010,0.189774483
-Africa_Northern,comm materials,govern commercial,2010,0.871099193
+Africa_Northern,comm materials,others commercial,2010,0.871099193
 Africa_Northern,resid materials,high-rise rural,2010,0.019377823
 Africa_Northern,resid materials,high-rise urban,2010,0.097326773
 Africa_Northern,comm materials,hotels commercial,2010,0.05292561
@@ -1186,7 +1186,7 @@ Africa_Southern,resid materials,apartments rural,2010,0.036872967
 Africa_Southern,resid materials,apartments urban,2010,0.040082366
 Africa_Southern,resid materials,detached rural,2010,0.605693534
 Africa_Southern,resid materials,detached urban,2010,0.112324785
-Africa_Southern,comm materials,govern commercial,2010,0.908122663
+Africa_Southern,comm materials,others commercial,2010,0.908122663
 Africa_Southern,resid materials,high-rise rural,2010,0.0263097
 Africa_Southern,resid materials,high-rise urban,2010,0.057606316
 Africa_Southern,comm materials,hotels commercial,2010,0.046084761
@@ -1198,7 +1198,7 @@ Africa_Western,resid materials,apartments rural,2010,0.032758468
 Africa_Western,resid materials,apartments urban,2010,0.062029578
 Africa_Western,resid materials,detached rural,2010,0.538106758
 Africa_Western,resid materials,detached urban,2010,0.091762423
-Africa_Western,comm materials,govern commercial,2010,0.910644539
+Africa_Western,comm materials,others commercial,2010,0.910644539
 Africa_Western,resid materials,high-rise rural,2010,0.023373912
 Africa_Western,resid materials,high-rise urban,2010,0.09445152
 Africa_Western,comm materials,hotels commercial,2010,0.0455355
@@ -1210,7 +1210,7 @@ Argentina,resid materials,apartments rural,2010,0.011793546
 Argentina,resid materials,apartments urban,2010,0.135980728
 Argentina,resid materials,detached rural,2010,0.1937266
 Argentina,resid materials,detached urban,2010,0.248360204
-Argentina,comm materials,govern commercial,2010,0.816655077
+Argentina,comm materials,others commercial,2010,0.816655077
 Argentina,resid materials,high-rise rural,2010,0.008414963
 Argentina,resid materials,high-rise urban,2010,0.192776127
 Argentina,comm materials,hotels commercial,2010,0.060375499
@@ -1222,7 +1222,7 @@ Australia_NZ,resid materials,apartments rural,2010,0.005834145
 Australia_NZ,resid materials,apartments urban,2010,0.134277805
 Australia_NZ,resid materials,detached rural,2010,0.181291704
 Australia_NZ,resid materials,detached urban,2010,0.190785918
-Australia_NZ,comm materials,govern commercial,2010,0.524340506
+Australia_NZ,comm materials,others commercial,2010,0.524340506
 Australia_NZ,resid materials,high-rise rural,2010,0
 Australia_NZ,resid materials,high-rise urban,2010,0.023089145
 Australia_NZ,comm materials,hotels commercial,2010,0.083900004
@@ -1234,7 +1234,7 @@ Brazil,resid materials,apartments rural,2010,0.008844529
 Brazil,resid materials,apartments urban,2010,0.123630794
 Brazil,resid materials,detached rural,2010,0.145284601
 Brazil,resid materials,detached urban,2010,0.419003199
-Brazil,comm materials,govern commercial,2010,0.788409911
+Brazil,comm materials,others commercial,2010,0.788409911
 Brazil,resid materials,high-rise rural,2010,0.006310773
 Brazil,resid materials,high-rise urban,2010,0.078837717
 Brazil,comm materials,hotels commercial,2010,0.063491761
@@ -1246,7 +1246,7 @@ Canada,resid materials,apartments rural,2010,0.012045086
 Canada,resid materials,apartments urban,2010,0.09616766
 Canada,resid materials,detached rural,2010,0.197858522
 Canada,resid materials,detached urban,2010,0.336343641
-Canada,comm materials,govern commercial,2010,0.480479845
+Canada,comm materials,others commercial,2010,0.480479845
 Canada,resid materials,high-rise rural,2010,0.008594443
 Canada,resid materials,high-rise urban,2010,0.171691946
 Canada,comm materials,hotels commercial,2010,0.088165259
@@ -1258,7 +1258,7 @@ Central America and Caribbean,resid materials,apartments rural,2010,0.023244241
 Central America and Caribbean,resid materials,apartments urban,2010,0.078853612
 Central America and Caribbean,resid materials,detached rural,2010,0.381821359
 Central America and Caribbean,resid materials,detached urban,2010,0.220975352
-Central America and Caribbean,comm materials,govern commercial,2010,0.81199789
+Central America and Caribbean,comm materials,others commercial,2010,0.81199789
 Central America and Caribbean,resid materials,high-rise rural,2010,0.016585294
 Central America and Caribbean,resid materials,high-rise urban,2010,0.113328292
 Central America and Caribbean,comm materials,hotels commercial,2010,0.060929617
@@ -1270,7 +1270,7 @@ Central Asia,resid materials,apartments rural,2010,0.029201118
 Central Asia,resid materials,apartments urban,2010,0.064180406
 Central Asia,resid materials,detached rural,2010,0.481627968
 Central Asia,resid materials,detached urban,2010,0.169032707
-Central Asia,comm materials,govern commercial,2010,0.831661229
+Central Asia,comm materials,others commercial,2010,0.831661229
 Central Asia,resid materials,high-rise rural,2010,0.020835662
 Central Asia,resid materials,high-rise urban,2010,0.088478914
 Central Asia,comm materials,hotels commercial,2010,0.057472379
@@ -1282,7 +1282,7 @@ China,resid materials,apartments rural,2010,0.029570992
 China,resid materials,apartments urban,2010,0.098348856
 China,resid materials,detached rural,2010,0.5180249
 China,resid materials,detached urban,2010,0.097070693
-China,comm materials,govern commercial,2010,0.858243781
+China,comm materials,others commercial,2010,0.858243781
 China,resid materials,high-rise rural,2010,0.021099575
 China,resid materials,high-rise urban,2010,0.079305058
 China,comm materials,hotels commercial,2010,0.054867664
@@ -1294,7 +1294,7 @@ Colombia,resid materials,apartments rural,2010,0.011792977
 Colombia,resid materials,apartments urban,2010,0.135982702
 Colombia,resid materials,detached rural,2010,0.193717259
 Colombia,resid materials,detached urban,2010,0.248363809
-Colombia,comm materials,govern commercial,2010,0.816640409
+Colombia,comm materials,others commercial,2010,0.816640409
 Colombia,resid materials,high-rise rural,2010,0.008414557
 Colombia,resid materials,high-rise urban,2010,0.192778926
 Colombia,comm materials,hotels commercial,2010,0.060377244
@@ -1306,7 +1306,7 @@ EU-12,resid materials,apartments rural,2010,0.015544354
 EU-12,resid materials,apartments urban,2010,0.057096464
 EU-12,resid materials,detached rural,2010,0.378231645
 EU-12,resid materials,detached urban,2010,0.136162687
-EU-12,comm materials,govern commercial,2010,0.711627452
+EU-12,comm materials,others commercial,2010,0.711627452
 EU-12,resid materials,high-rise rural,2010,0.032580337
 EU-12,resid materials,high-rise urban,2010,0.307934805
 EU-12,comm materials,hotels commercial,2010,0.070398724
@@ -1318,7 +1318,7 @@ EU-15,resid materials,apartments rural,2010,0.020740715
 EU-15,resid materials,apartments urban,2010,0.181055814
 EU-15,resid materials,detached rural,2010,0.201305187
 EU-15,resid materials,detached urban,2010,0.147857074
-EU-15,comm materials,govern commercial,2010,0.490465225
+EU-15,comm materials,others commercial,2010,0.490465225
 EU-15,resid materials,high-rise rural,2010,0.010688146
 EU-15,resid materials,high-rise urban,2010,0.202351811
 EU-15,comm materials,hotels commercial,2010,0.087060707
@@ -1330,7 +1330,7 @@ Europe_Non_EU,resid materials,apartments rural,2010,0.018438549
 Europe_Non_EU,resid materials,apartments urban,2010,0.07736944
 Europe_Non_EU,resid materials,detached rural,2010,0.318460442
 Europe_Non_EU,resid materials,detached urban,2010,0.198616531
-Europe_Non_EU,comm materials,govern commercial,2010,0.73705687
+Europe_Non_EU,comm materials,others commercial,2010,0.73705687
 Europe_Non_EU,resid materials,high-rise rural,2010,0.016676482
 Europe_Non_EU,resid materials,high-rise urban,2010,0.226310358
 Europe_Non_EU,comm materials,hotels commercial,2010,0.067809157
@@ -1342,7 +1342,7 @@ European Free Trade Association,resid materials,apartments rural,2010,0.02073798
 European Free Trade Association,resid materials,apartments urban,2010,0.181065293
 European Free Trade Association,resid materials,detached rural,2010,0.201278722
 European Free Trade Association,resid materials,detached urban,2010,0.147864815
-European Free Trade Association,comm materials,govern commercial,2010,0.490462413
+European Free Trade Association,comm materials,others commercial,2010,0.490462413
 European Free Trade Association,resid materials,high-rise rural,2010,0.010686741
 European Free Trade Association,resid materials,high-rise urban,2010,0.202362406
 European Free Trade Association,comm materials,hotels commercial,2010,0.087060994
@@ -1354,7 +1354,7 @@ India,resid materials,apartments rural,2010,0.0392709
 India,resid materials,apartments urban,2010,0.01892662
 India,resid materials,detached rural,2010,0.637694703
 India,resid materials,detached urban,2010,0.05862079
-India,comm materials,govern commercial,2010,0.896123316
+India,comm materials,others commercial,2010,0.896123316
 India,resid materials,high-rise rural,2010,0.028020679
 India,resid materials,high-rise urban,2010,0.069491789
 India,comm materials,hotels commercial,2010,0.048527356
@@ -1366,7 +1366,7 @@ Indonesia,resid materials,apartments rural,2010,0.032579381
 Indonesia,resid materials,apartments urban,2010,0.060157573
 Indonesia,resid materials,detached rural,2010,0.535164978
 Indonesia,resid materials,detached urban,2010,0.142301
-Indonesia,comm materials,govern commercial,2010,0.894783403
+Indonesia,comm materials,others commercial,2010,0.894783403
 Indonesia,resid materials,high-rise rural,2010,0.023246129
 Indonesia,resid materials,high-rise urban,2010,0.05852016
 Indonesia,comm materials,hotels commercial,2010,0.048786657
@@ -1378,7 +1378,7 @@ Japan,resid materials,apartments rural,2010,0.024473411
 Japan,resid materials,apartments urban,2010,0.145388103
 Japan,resid materials,detached rural,2010,0.360578559
 Japan,resid materials,detached urban,2010,0.333907978
-Japan,comm materials,govern commercial,2010,0.502717791
+Japan,comm materials,others commercial,2010,0.502717791
 Japan,resid materials,high-rise rural,2010,0.003741929
 Japan,resid materials,high-rise urban,2010,0.111424437
 Japan,comm materials,hotels commercial,2010,0.085830474
@@ -1390,7 +1390,7 @@ Mexico,resid materials,apartments rural,2010,0.013943368
 Mexico,resid materials,apartments urban,2010,0.105312903
 Mexico,resid materials,detached rural,2010,0.229040631
 Mexico,resid materials,detached urban,2010,0.295123524
-Mexico,comm materials,govern commercial,2010,0.749664515
+Mexico,comm materials,others commercial,2010,0.749664515
 Mexico,resid materials,high-rise rural,2010,0.00994891
 Mexico,resid materials,high-rise urban,2010,0.151355545
 Mexico,comm materials,hotels commercial,2010,0.067223871
@@ -1402,7 +1402,7 @@ Middle East,resid materials,apartments rural,2010,0.019652434
 Middle East,resid materials,apartments urban,2010,0.069145966
 Middle East,resid materials,detached rural,2010,0.322820571
 Middle East,resid materials,detached urban,2010,0.328512279
-Middle East,comm materials,govern commercial,2010,0.8278877
+Middle East,comm materials,others commercial,2010,0.8278877
 Middle East,resid materials,high-rise rural,2010,0.014022458
 Middle East,resid materials,high-rise urban,2010,0.100628797
 Middle East,comm materials,hotels commercial,2010,0.0590216
@@ -1414,7 +1414,7 @@ Pakistan,resid materials,apartments rural,2010,0.109589194
 Pakistan,resid materials,apartments urban,2010,0.033558441
 Pakistan,resid materials,detached rural,2010,0.418309675
 Pakistan,resid materials,detached urban,2010,0.09404247
-Pakistan,comm materials,govern commercial,2010,0.903814478
+Pakistan,comm materials,others commercial,2010,0.903814478
 Pakistan,resid materials,high-rise rural,2010,0.078194381
 Pakistan,resid materials,high-rise urban,2010,0.048230141
 Pakistan,comm materials,hotels commercial,2010,0.04699351
@@ -1426,7 +1426,7 @@ Russia,resid materials,apartments rural,2010,0.017496548
 Russia,resid materials,apartments urban,2010,0.095204751
 Russia,resid materials,detached rural,2010,0.287406923
 Russia,resid materials,detached urban,2010,0.266796955
-Russia,comm materials,govern commercial,2010,0.761460536
+Russia,comm materials,others commercial,2010,0.761460536
 Russia,resid materials,high-rise rural,2010,0.012484185
 Russia,resid materials,high-rise urban,2010,0.136828125
 Russia,comm materials,hotels commercial,2010,0.066137197
@@ -1438,7 +1438,7 @@ South Africa,resid materials,apartments rural,2010,0.023310566
 South Africa,resid materials,apartments urban,2010,0.055300275
 South Africa,resid materials,detached rural,2010,0.382910848
 South Africa,resid materials,detached urban,2010,0.129033975
-South Africa,comm materials,govern commercial,2010,0.794193261
+South Africa,comm materials,others commercial,2010,0.794193261
 South Africa,resid materials,high-rise rural,2010,0.016632618
 South Africa,resid materials,high-rise urban,2010,0.166351983
 South Africa,comm materials,hotels commercial,2010,0.062894756
@@ -1450,7 +1450,7 @@ South America_Northern,resid materials,apartments rural,2010,0.011792143
 South America_Northern,resid materials,apartments urban,2010,0.135985599
 South America_Northern,resid materials,detached rural,2010,0.193703552
 South America_Northern,resid materials,detached urban,2010,0.2483691
-South America_Northern,comm materials,govern commercial,2010,0.816619437
+South America_Northern,comm materials,others commercial,2010,0.816619437
 South America_Northern,resid materials,high-rise rural,2010,0.008413962
 South America_Northern,resid materials,high-rise urban,2010,0.192783033
 South America_Northern,comm materials,hotels commercial,2010,0.060379736
@@ -1462,7 +1462,7 @@ South America_Southern,resid materials,apartments rural,2010,0.01179324
 South America_Southern,resid materials,apartments urban,2010,0.135981788
 South America_Southern,resid materials,detached rural,2010,0.193721584
 South America_Southern,resid materials,detached urban,2010,0.24836214
-South America_Southern,comm materials,govern commercial,2010,0.816647382
+South America_Southern,comm materials,others commercial,2010,0.816647382
 South America_Southern,resid materials,high-rise rural,2010,0.008414745
 South America_Southern,resid materials,high-rise urban,2010,0.19277763
 South America_Southern,comm materials,hotels commercial,2010,0.060376413
@@ -1474,7 +1474,7 @@ South Asia,resid materials,apartments rural,2010,0.109598944
 South Asia,resid materials,apartments urban,2010,0.033548528
 South Asia,resid materials,detached rural,2010,0.418346892
 South Asia,resid materials,detached urban,2010,0.09401469
-South Asia,comm materials,govern commercial,2010,0.903822995
+South Asia,comm materials,others commercial,2010,0.903822995
 South Asia,resid materials,high-rise rural,2010,0.078201338
 South Asia,resid materials,high-rise urban,2010,0.048215894
 South Asia,comm materials,hotels commercial,2010,0.046991748
@@ -1486,7 +1486,7 @@ South Korea,resid materials,apartments rural,2010,0.015346593
 South Korea,resid materials,apartments urban,2010,0.062854643
 South Korea,resid materials,detached rural,2010,0.252090701
 South Korea,resid materials,detached urban,2010,0.308799387
-South Korea,comm materials,govern commercial,2010,0.686928275
+South Korea,comm materials,others commercial,2010,0.686928275
 South Korea,resid materials,high-rise rural,2010,0.010950143
 South Korea,resid materials,high-rise urban,2010,0.144512281
 South Korea,comm materials,hotels commercial,2010,0.07229881
@@ -1498,7 +1498,7 @@ Southeast Asia,resid materials,apartments rural,2010,0.031299125
 Southeast Asia,resid materials,apartments urban,2010,0.049069758
 Southeast Asia,resid materials,detached rural,2010,0.515410656
 Southeast Asia,resid materials,detached urban,2010,0.155613266
-Southeast Asia,comm materials,govern commercial,2010,0.827690246
+Southeast Asia,comm materials,others commercial,2010,0.827690246
 Southeast Asia,resid materials,high-rise rural,2010,0.022270491
 Southeast Asia,resid materials,high-rise urban,2010,0.076852632
 Southeast Asia,comm materials,hotels commercial,2010,0.057141747
@@ -1510,7 +1510,7 @@ Taiwan,resid materials,apartments rural,2010,0.029574595
 Taiwan,resid materials,apartments urban,2010,0.09832991
 Taiwan,resid materials,detached rural,2010,0.518088029
 Taiwan,resid materials,detached urban,2010,0.097051993
-Taiwan,comm materials,govern commercial,2010,0.858306013
+Taiwan,comm materials,others commercial,2010,0.858306013
 Taiwan,resid materials,high-rise rural,2010,0.021102146
 Taiwan,resid materials,high-rise urban,2010,0.07928978
 Taiwan,comm materials,hotels commercial,2010,0.054858435
@@ -1522,7 +1522,7 @@ USA,resid materials,apartments rural,2010,0.003673801
 USA,resid materials,apartments urban,2010,0.042255788
 USA,resid materials,detached rural,2010,0.214029051
 USA,resid materials,detached urban,2010,0.615582008
-USA,comm materials,govern commercial,2010,0.437698685
+USA,comm materials,others commercial,2010,0.437698685
 USA,resid materials,high-rise rural,2010,0.001090517
 USA,resid materials,high-rise urban,2010,0.066475811
 USA,comm materials,hotels commercial,2010,0.094873198
@@ -1534,7 +1534,7 @@ Ukraine,resid materials,apartments rural,2010,0.019379832
 Ukraine,resid materials,apartments urban,2010,0.089847151
 Ukraine,resid materials,detached rural,2010,0.318342679
 Ukraine,resid materials,detached urban,2010,0.251783087
-Ukraine,comm materials,govern commercial,2010,0.851019206
+Ukraine,comm materials,others commercial,2010,0.851019206
 Ukraine,resid materials,high-rise rural,2010,0.013827951
 Ukraine,resid materials,high-rise urban,2010,0.129128189
 Ukraine,comm materials,hotels commercial,2010,0.055950737
@@ -1546,7 +1546,7 @@ Africa_Eastern,resid materials,apartments rural,2015,0.04068444
 Africa_Eastern,resid materials,apartments urban,2015,0.029239418
 Africa_Eastern,resid materials,detached rural,2015,0.668302673
 Africa_Eastern,resid materials,detached urban,2015,0.08193906
-Africa_Eastern,comm materials,govern commercial,2015,0.909027443
+Africa_Eastern,comm materials,others commercial,2015,0.909027443
 Africa_Eastern,resid materials,high-rise rural,2015,0.029029272
 Africa_Eastern,resid materials,high-rise urban,2015,0.042022848
 Africa_Eastern,comm materials,hotels commercial,2015,0.04588916
@@ -1558,7 +1558,7 @@ Africa_Northern,resid materials,apartments rural,2015,0.025981085
 Africa_Northern,resid materials,apartments urban,2015,0.071067786
 Africa_Northern,resid materials,detached rural,2015,0.426778123
 Africa_Northern,resid materials,detached urban,2015,0.19915675
-Africa_Northern,comm materials,govern commercial,2015,0.865953135
+Africa_Northern,comm materials,others commercial,2015,0.865953135
 Africa_Northern,resid materials,high-rise rural,2015,0.018538095
 Africa_Northern,resid materials,high-rise urban,2015,0.102138515
 Africa_Northern,comm materials,hotels commercial,2015,0.053745319
@@ -1570,7 +1570,7 @@ Africa_Southern,resid materials,apartments rural,2015,0.035549241
 Africa_Southern,resid materials,apartments urban,2015,0.043848125
 Africa_Southern,resid materials,detached rural,2015,0.58394936
 Africa_Southern,resid materials,detached urban,2015,0.122877757
-Africa_Southern,comm materials,govern commercial,2015,0.905238906
+Africa_Southern,comm materials,others commercial,2015,0.905238906
 Africa_Southern,resid materials,high-rise rural,2015,0.025365191
 Africa_Southern,resid materials,high-rise urban,2015,0.06301846
 Africa_Southern,comm materials,hotels commercial,2015,0.046696617
@@ -1582,7 +1582,7 @@ Africa_Western,resid materials,apartments rural,2015,0.031242176
 Africa_Western,resid materials,apartments urban,2015,0.067196268
 Africa_Western,resid materials,detached rural,2015,0.513199393
 Africa_Western,resid materials,detached urban,2015,0.09940568
-Africa_Western,comm materials,govern commercial,2015,0.908356908
+Africa_Western,comm materials,others commercial,2015,0.908356908
 Africa_Western,resid materials,high-rise rural,2015,0.022292003
 Africa_Western,resid materials,high-rise urban,2015,0.102318762
 Africa_Western,comm materials,hotels commercial,2015,0.046034374
@@ -1594,7 +1594,7 @@ Argentina,resid materials,apartments rural,2015,0.010884065
 Argentina,resid materials,apartments urban,2015,0.139138118
 Argentina,resid materials,detached rural,2015,0.178787015
 Argentina,resid materials,detached urban,2015,0.254126977
-Argentina,comm materials,govern commercial,2015,0.791382344
+Argentina,comm materials,others commercial,2015,0.791382344
 Argentina,resid materials,high-rise rural,2015,0.007766028
 Argentina,resid materials,high-rise urban,2015,0.197252272
 Argentina,comm materials,hotels commercial,2015,0.06318756
@@ -1606,7 +1606,7 @@ Australia_NZ,resid materials,apartments rural,2015,0.00550175
 Australia_NZ,resid materials,apartments urban,2015,0.136154772
 Australia_NZ,resid materials,detached rural,2015,0.170962765
 Australia_NZ,resid materials,detached urban,2015,0.19345277
-Australia_NZ,comm materials,govern commercial,2015,0.507938653
+Australia_NZ,comm materials,others commercial,2015,0.507938653
 Australia_NZ,resid materials,high-rise rural,2015,0
 Australia_NZ,resid materials,high-rise urban,2015,0.02341189
 Australia_NZ,comm materials,hotels commercial,2015,0.085339736
@@ -1618,7 +1618,7 @@ Brazil,resid materials,apartments rural,2015,0.007886323
 Brazil,resid materials,apartments urban,2015,0.126443457
 Brazil,resid materials,detached rural,2015,0.129544628
 Brazil,resid materials,detached urban,2015,0.428535731
-Brazil,comm materials,govern commercial,2015,0.768934941
+Brazil,comm materials,others commercial,2015,0.768934941
 Brazil,resid materials,high-rise rural,2015,0.005627071
 Brazil,resid materials,high-rise urban,2015,0.080631315
 Brazil,comm materials,hotels commercial,2015,0.065444229
@@ -1630,7 +1630,7 @@ Canada,resid materials,apartments rural,2015,0.011336258
 Canada,resid materials,apartments urban,2015,0.097919221
 Canada,resid materials,detached rural,2015,0.186214962
 Canada,resid materials,detached urban,2015,0.342469674
-Canada,comm materials,govern commercial,2015,0.471009539
+Canada,comm materials,others commercial,2015,0.471009539
 Canada,resid materials,high-rise rural,2015,0.008088678
 Canada,resid materials,high-rise urban,2015,0.174819077
 Canada,comm materials,hotels commercial,2015,0.089328509
@@ -1642,7 +1642,7 @@ Central America and Caribbean,resid materials,apartments rural,2015,0.021982314
 Central America and Caribbean,resid materials,apartments urban,2015,0.082443563
 Central America and Caribbean,resid materials,detached rural,2015,0.361092328
 Central America and Caribbean,resid materials,detached urban,2015,0.231035651
-Central America and Caribbean,comm materials,govern commercial,2015,0.805906812
+Central America and Caribbean,comm materials,others commercial,2015,0.805906812
 Central America and Caribbean,resid materials,high-rise rural,2015,0.015684881
 Central America and Caribbean,resid materials,high-rise urban,2015,0.118487765
 Central America and Caribbean,comm materials,hotels commercial,2015,0.061619885
@@ -1654,7 +1654,7 @@ Central Asia,resid materials,apartments rural,2015,0.028207606
 Central Asia,resid materials,apartments urban,2015,0.067822044
 Central Asia,resid materials,detached rural,2015,0.465563727
 Central Asia,resid materials,detached urban,2015,0.175629512
-Central Asia,comm materials,govern commercial,2015,0.809874401
+Central Asia,comm materials,others commercial,2015,0.809874401
 Central Asia,resid materials,high-rise rural,2015,0.020126768
 Central Asia,resid materials,high-rise urban,2015,0.092458771
 Central Asia,comm materials,hotels commercial,2015,0.060085801
@@ -1666,7 +1666,7 @@ China,resid materials,apartments rural,2015,0.027655898
 China,resid materials,apartments urban,2015,0.108417619
 China,resid materials,detached rural,2015,0.484476274
 China,resid materials,detached urban,2015,0.1070086
-China,comm materials,govern commercial,2015,0.821155283
+China,comm materials,others commercial,2015,0.821155283
 China,resid materials,high-rise rural,2015,0.019733112
 China,resid materials,high-rise urban,2015,0.087424154
 China,comm materials,hotels commercial,2015,0.059813436
@@ -1678,7 +1678,7 @@ Colombia,resid materials,apartments rural,2015,0.010884236
 Colombia,resid materials,apartments urban,2015,0.139137522
 Colombia,resid materials,detached rural,2015,0.178789835
 Colombia,resid materials,detached urban,2015,0.254125889
-Colombia,comm materials,govern commercial,2015,0.791386306
+Colombia,comm materials,others commercial,2015,0.791386306
 Colombia,resid materials,high-rise rural,2015,0.00776615
 Colombia,resid materials,high-rise urban,2015,0.197251427
 Colombia,comm materials,hotels commercial,2015,0.063187145
@@ -1690,7 +1690,7 @@ EU-12,resid materials,apartments rural,2015,0.014830481
 EU-12,resid materials,apartments urban,2015,0.059274602
 EU-12,resid materials,detached rural,2015,0.360850696
 EU-12,resid materials,detached urban,2015,0.141337309
-EU-12,comm materials,govern commercial,2015,0.694660685
+EU-12,comm materials,others commercial,2015,0.694660685
 EU-12,resid materials,high-rise rural,2015,0.031082932
 EU-12,resid materials,high-rise urban,2015,0.31962813
 EU-12,comm materials,hotels commercial,2015,0.071722934
@@ -1702,7 +1702,7 @@ EU-15,resid materials,apartments rural,2015,0.019438258
 EU-15,resid materials,apartments urban,2015,0.185583941
 EU-15,resid materials,detached rural,2015,0.188663809
 EU-15,resid materials,detached urban,2015,0.151554915
-EU-15,comm materials,govern commercial,2015,0.48725891
+EU-15,comm materials,others commercial,2015,0.48725891
 EU-15,resid materials,high-rise rural,2015,0.010016962
 EU-15,resid materials,high-rise urban,2015,0.207412542
 EU-15,comm materials,hotels commercial,2015,0.087402504
@@ -1714,7 +1714,7 @@ Europe_Non_EU,resid materials,apartments rural,2015,0.017485515
 Europe_Non_EU,resid materials,apartments urban,2015,0.079443809
 Europe_Non_EU,resid materials,detached rural,2015,0.301062794
 Europe_Non_EU,resid materials,detached urban,2015,0.206048149
-Europe_Non_EU,comm materials,govern commercial,2015,0.718206457
+Europe_Non_EU,comm materials,others commercial,2015,0.718206457
 Europe_Non_EU,resid materials,high-rise rural,2015,0.015550917
 Europe_Non_EU,resid materials,high-rise urban,2015,0.233587029
 Europe_Non_EU,comm materials,hotels commercial,2015,0.069583946
@@ -1726,7 +1726,7 @@ European Free Trade Association,resid materials,apartments rural,2015,0.01943328
 European Free Trade Association,resid materials,apartments urban,2015,0.185601225
 European Free Trade Association,resid materials,detached rural,2015,0.188615556
 European Free Trade Association,resid materials,detached urban,2015,0.15156903
-European Free Trade Association,comm materials,govern commercial,2015,0.4872443
+European Free Trade Association,comm materials,others commercial,2015,0.4872443
 European Free Trade Association,resid materials,high-rise rural,2015,0.0100144
 European Free Trade Association,resid materials,high-rise urban,2015,0.207431859
 European Free Trade Association,comm materials,hotels commercial,2015,0.087404106
@@ -1738,7 +1738,7 @@ India,resid materials,apartments rural,2015,0.038233585
 India,resid materials,apartments urban,2015,0.020537847
 India,resid materials,detached rural,2015,0.620850421
 India,resid materials,detached urban,2015,0.063611188
-India,comm materials,govern commercial,2015,0.886910875
+India,comm materials,others commercial,2015,0.886910875
 India,resid materials,high-rise rural,2015,0.027280532
 India,resid materials,high-rise urban,2015,0.075407638
 India,comm materials,hotels commercial,2015,0.05024415
@@ -1750,7 +1750,7 @@ Indonesia,resid materials,apartments rural,2015,0.031404279
 Indonesia,resid materials,apartments urban,2015,0.064003001
 Indonesia,resid materials,detached rural,2015,0.51586218
 Indonesia,resid materials,detached urban,2015,0.151397251
-Indonesia,comm materials,govern commercial,2015,0.886149714
+Indonesia,comm materials,others commercial,2015,0.886149714
 Indonesia,resid materials,high-rise rural,2015,0.022407667
 Indonesia,resid materials,high-rise urban,2015,0.062260921
 Indonesia,comm materials,hotels commercial,2015,0.050381073
@@ -1762,7 +1762,7 @@ Japan,resid materials,apartments rural,2015,0.023440983
 Japan,resid materials,apartments urban,2015,0.14939704
 Japan,resid materials,detached rural,2015,0.345367303
 Japan,resid materials,detached urban,2015,0.343115171
-Japan,comm materials,govern commercial,2015,0.492319181
+Japan,comm materials,others commercial,2015,0.492319181
 Japan,resid materials,high-rise rural,2015,0.003584073
 Japan,resid materials,high-rise urban,2015,0.114496859
 Japan,comm materials,hotels commercial,2015,0.086870515
@@ -1774,7 +1774,7 @@ Mexico,resid materials,apartments rural,2015,0.012972185
 Mexico,resid materials,apartments urban,2015,0.10807574
 Mexico,resid materials,detached rural,2015,0.21308751
 Mexico,resid materials,detached urban,2015,0.302865959
-Mexico,comm materials,govern commercial,2015,0.731351447
+Mexico,comm materials,others commercial,2015,0.731351447
 Mexico,resid materials,high-rise rural,2015,0.009255949
 Mexico,resid materials,high-rise urban,2015,0.15532629
 Mexico,comm materials,hotels commercial,2015,0.068805376
@@ -1786,7 +1786,7 @@ Middle East,resid materials,apartments rural,2015,0.018522526
 Middle East,resid materials,apartments urban,2015,0.071641277
 Middle East,resid materials,detached rural,2015,0.30426015
 Middle East,resid materials,detached urban,2015,0.340367498
-Middle East,comm materials,govern commercial,2015,0.811990798
+Middle East,comm materials,others commercial,2015,0.811990798
 Middle East,resid materials,high-rise rural,2015,0.013216243
 Middle East,resid materials,high-rise urban,2015,0.104260248
 Middle East,comm materials,hotels commercial,2015,0.060926902
@@ -1798,7 +1798,7 @@ Pakistan,resid materials,apartments rural,2015,0.106423588
 Pakistan,resid materials,apartments urban,2015,0.036776955
 Pakistan,resid materials,detached rural,2015,0.406226334
 Pakistan,resid materials,detached urban,2015,0.10306187
-Pakistan,comm materials,govern commercial,2015,0.901016566
+Pakistan,comm materials,others commercial,2015,0.901016566
 Pakistan,resid materials,high-rise rural,2015,0.075935649
 Pakistan,resid materials,high-rise urban,2015,0.052855785
 Pakistan,comm materials,hotels commercial,2015,0.047564452
@@ -1810,7 +1810,7 @@ Russia,resid materials,apartments rural,2015,0.016738236
 Russia,resid materials,apartments urban,2015,0.097362012
 Russia,resid materials,detached rural,2015,0.274950512
 Russia,resid materials,detached urban,2015,0.272842352
-Russia,comm materials,govern commercial,2015,0.730000726
+Russia,comm materials,others commercial,2015,0.730000726
 Russia,resid materials,high-rise rural,2015,0.011943111
 Russia,resid materials,high-rise urban,2015,0.139928536
 Russia,comm materials,hotels commercial,2015,0.068908814
@@ -1822,7 +1822,7 @@ South Africa,resid materials,apartments rural,2015,0.021879169
 South Africa,resid materials,apartments urban,2015,0.058162875
 South Africa,resid materials,detached rural,2015,0.359398015
 South Africa,resid materials,detached urban,2015,0.135713376
-South Africa,comm materials,govern commercial,2015,0.777780481
+South Africa,comm materials,others commercial,2015,0.777780481
 South Africa,resid materials,high-rise rural,2015,0.015611284
 South Africa,resid materials,high-rise urban,2015,0.174963138
 South Africa,comm materials,hotels commercial,2015,0.064579124
@@ -1834,7 +1834,7 @@ South America_Northern,resid materials,apartments rural,2015,0.010883512
 South America_Northern,resid materials,apartments urban,2015,0.139140037
 South America_Northern,resid materials,detached rural,2015,0.178777938
 South America_Northern,resid materials,detached urban,2015,0.254130481
-South America_Northern,comm materials,govern commercial,2015,0.791368838
+South America_Northern,comm materials,others commercial,2015,0.791368838
 South America_Northern,resid materials,high-rise rural,2015,0.007765633
 South America_Northern,resid materials,high-rise urban,2015,0.197254992
 South America_Northern,comm materials,hotels commercial,2015,0.063188986
@@ -1846,7 +1846,7 @@ South America_Southern,resid materials,apartments rural,2015,0.010883497
 South America_Southern,resid materials,apartments urban,2015,0.139140089
 South America_Southern,resid materials,detached rural,2015,0.178777692
 South America_Southern,resid materials,detached urban,2015,0.254130576
-South America_Southern,comm materials,govern commercial,2015,0.791368711
+South America_Southern,comm materials,others commercial,2015,0.791368711
 South America_Southern,resid materials,high-rise rural,2015,0.007765623
 South America_Southern,resid materials,high-rise urban,2015,0.197255065
 South America_Southern,comm materials,hotels commercial,2015,0.063188993
@@ -1858,7 +1858,7 @@ South Asia,resid materials,apartments rural,2015,0.106425318
 South Asia,resid materials,apartments urban,2015,0.036775197
 South Asia,resid materials,detached rural,2015,0.406232937
 South Asia,resid materials,detached urban,2015,0.103056942
-South Asia,comm materials,govern commercial,2015,0.901018098
+South Asia,comm materials,others commercial,2015,0.901018098
 South Asia,resid materials,high-rise rural,2015,0.075936883
 South Asia,resid materials,high-rise urban,2015,0.052853257
 South Asia,comm materials,hotels commercial,2015,0.047564142
@@ -1870,7 +1870,7 @@ South Korea,resid materials,apartments rural,2015,0.014412377
 South Korea,resid materials,apartments urban,2015,0.064503336
 South Korea,resid materials,detached rural,2015,0.236744806
 South Korea,resid materials,detached urban,2015,0.316899273
-South Korea,comm materials,govern commercial,2015,0.65311918
+South Korea,comm materials,others commercial,2015,0.65311918
 South Korea,resid materials,high-rise rural,2015,0.010283558
 South Korea,resid materials,high-rise urban,2015,0.148302875
 South Korea,comm materials,hotels commercial,2015,0.074729609
@@ -1882,7 +1882,7 @@ Southeast Asia,resid materials,apartments rural,2015,0.030177645
 Southeast Asia,resid materials,apartments urban,2015,0.052346589
 Southeast Asia,resid materials,detached rural,2015,0.496867568
 Southeast Asia,resid materials,detached urban,2015,0.16430396
-Southeast Asia,comm materials,govern commercial,2015,0.812605131
+Southeast Asia,comm materials,others commercial,2015,0.812605131
 Southeast Asia,resid materials,high-rise rural,2015,0.021476189
 Southeast Asia,resid materials,high-rise urban,2015,0.081431876
 Southeast Asia,comm materials,hotels commercial,2015,0.058947599
@@ -1894,7 +1894,7 @@ Taiwan,resid materials,apartments rural,2015,0.027657915
 Taiwan,resid materials,apartments urban,2015,0.108407013
 Taiwan,resid materials,detached rural,2015,0.484511612
 Taiwan,resid materials,detached urban,2015,0.106998132
-Taiwan,comm materials,govern commercial,2015,0.821198585
+Taiwan,comm materials,others commercial,2015,0.821198585
 Taiwan,resid materials,high-rise rural,2015,0.019734551
 Taiwan,resid materials,high-rise urban,2015,0.087415602
 Taiwan,comm materials,hotels commercial,2015,0.059808213
@@ -1906,7 +1906,7 @@ USA,resid materials,apartments rural,2015,0.003383896
 USA,resid materials,apartments urban,2015,0.043184274
 USA,resid materials,detached rural,2015,0.197350835
 USA,resid materials,detached urban,2015,0.629342474
-USA,comm materials,govern commercial,2015,0.434262499
+USA,comm materials,others commercial,2015,0.434262499
 USA,resid materials,high-rise rural,2015,0.00100236
 USA,resid materials,high-rise urban,2015,0.067939191
 USA,comm materials,hotels commercial,2015,0.095622178
@@ -1918,7 +1918,7 @@ Ukraine,resid materials,apartments rural,2015,0.018406051
 Ukraine,resid materials,apartments urban,2015,0.092617381
 Ukraine,resid materials,detached rural,2015,0.302346866
 Ukraine,resid materials,detached urban,2015,0.259546241
-Ukraine,comm materials,govern commercial,2015,0.845674169
+Ukraine,comm materials,others commercial,2015,0.845674169
 Ukraine,resid materials,high-rise rural,2015,0.013133135
 Ukraine,resid materials,high-rise urban,2015,0.133109561
 Ukraine,comm materials,hotels commercial,2015,0.056703111
@@ -1930,7 +1930,7 @@ Africa_Eastern,resid materials,apartments rural,2021,0.039417503
 Africa_Eastern,resid materials,apartments urban,2021,0.032843622
 Africa_Eastern,resid materials,detached rural,2021,0.64749135
 Africa_Eastern,resid materials,detached urban,2021,0.092039297
-Africa_Eastern,comm materials,govern commercial,2021,0.906209803
+Africa_Eastern,comm materials,others commercial,2021,0.906209803
 Africa_Eastern,resid materials,high-rise rural,2021,0.028125284
 Africa_Eastern,resid materials,high-rise urban,2021,0.047202804
 Africa_Eastern,comm materials,hotels commercial,2021,0.046491382
@@ -1942,7 +1942,7 @@ Africa_Northern,resid materials,apartments rural,2021,0.024250755
 Africa_Northern,resid materials,apartments urban,2021,0.07599026
 Africa_Northern,resid materials,detached rural,2021,0.398354867
 Africa_Northern,resid materials,detached urban,2021,0.212951242
-Africa_Northern,comm materials,govern commercial,2021,0.849680531
+Africa_Northern,comm materials,others commercial,2021,0.849680531
 Africa_Northern,resid materials,high-rise rural,2021,0.017303465
 Africa_Northern,resid materials,high-rise urban,2021,0.109213087
 Africa_Northern,comm materials,hotels commercial,2021,0.056136373
@@ -1954,7 +1954,7 @@ Africa_Southern,resid materials,apartments rural,2021,0.033868778
 Africa_Southern,resid materials,apartments urban,2021,0.048628737
 Africa_Southern,resid materials,detached rural,2021,0.556345245
 Africa_Southern,resid materials,detached urban,2021,0.1362747
-Africa_Southern,comm materials,govern commercial,2021,0.900714787
+Africa_Southern,comm materials,others commercial,2021,0.900714787
 Africa_Southern,resid materials,high-rise rural,2021,0.024166143
 Africa_Southern,resid materials,high-rise urban,2021,0.069889147
 Africa_Southern,comm materials,hotels commercial,2021,0.047624798
@@ -1966,7 +1966,7 @@ Africa_Western,resid materials,apartments rural,2021,0.029402257
 Africa_Western,resid materials,apartments urban,2021,0.073465699
 Africa_Western,resid materials,detached rural,2021,0.482975982
 Africa_Western,resid materials,detached urban,2021,0.108680258
-Africa_Western,comm materials,govern commercial,2021,0.904395133
+Africa_Western,comm materials,others commercial,2021,0.904395133
 Africa_Western,resid materials,high-rise rural,2021,0.020979179
 Africa_Western,resid materials,high-rise urban,2021,0.111865132
 Africa_Western,comm materials,hotels commercial,2021,0.04687219
@@ -1978,7 +1978,7 @@ Argentina,resid materials,apartments rural,2021,0.009811016
 Argentina,resid materials,apartments urban,2021,0.142863357
 Argentina,resid materials,detached rural,2021,0.161160586
 Argentina,resid materials,detached urban,2021,0.260930889
-Argentina,comm materials,govern commercial,2021,0.759781468
+Argentina,comm materials,others commercial,2021,0.759781468
 Argentina,resid materials,high-rise rural,2021,0.007000383
 Argentina,resid materials,high-rise urban,2021,0.20253344
 Argentina,comm materials,hotels commercial,2021,0.06629492
@@ -1990,7 +1990,7 @@ Australia_NZ,resid materials,apartments rural,2021,0.00507707
 Australia_NZ,resid materials,apartments urban,2021,0.138552851
 Australia_NZ,resid materials,detached rural,2021,0.157766151
 Australia_NZ,resid materials,detached urban,2021,0.196860032
-Australia_NZ,comm materials,govern commercial,2021,0.488065307
+Australia_NZ,comm materials,others commercial,2021,0.488065307
 Australia_NZ,resid materials,high-rise rural,2021,0
 Australia_NZ,resid materials,high-rise urban,2021,0.023824241
 Australia_NZ,comm materials,hotels commercial,2021,0.087324317
@@ -2002,7 +2002,7 @@ Brazil,resid materials,apartments rural,2021,0.007073806
 Brazil,resid materials,apartments urban,2021,0.128828469
 Brazil,resid materials,detached rural,2021,0.116197831
 Brazil,resid materials,detached urban,2021,0.436618894
-Brazil,comm materials,govern commercial,2021,0.74089874
+Brazil,comm materials,others commercial,2021,0.74089874
 Brazil,resid materials,high-rise rural,2021,0.005047322
 Brazil,resid materials,high-rise urban,2021,0.082152205
 Brazil,comm materials,hotels commercial,2021,0.067985406
@@ -2014,7 +2014,7 @@ Canada,resid materials,apartments rural,2021,0.010145939
 Canada,resid materials,apartments urban,2021,0.100860576
 Canada,resid materials,detached rural,2021,0.166662203
 Canada,resid materials,detached urban,2021,0.35275698
-Canada,comm materials,govern commercial,2021,0.453447328
+Canada,comm materials,others commercial,2021,0.453447328
 Canada,resid materials,high-rise rural,2021,0.007239358
 Canada,resid materials,high-rise urban,2021,0.180070395
 Canada,comm materials,hotels commercial,2021,0.091868222
@@ -2026,7 +2026,7 @@ Central America and Caribbean,resid materials,apartments rural,2021,0.020421489
 Central America and Caribbean,resid materials,apartments urban,2021,0.086883826
 Central America and Caribbean,resid materials,detached rural,2021,0.335453447
 Central America and Caribbean,resid materials,detached urban,2021,0.243478818
-Central America and Caribbean,comm materials,govern commercial,2021,0.780513646
+Central America and Caribbean,comm materials,others commercial,2021,0.780513646
 Central America and Caribbean,resid materials,high-rise rural,2021,0.014571196
 Central America and Caribbean,resid materials,high-rise urban,2021,0.124869304
 Central America and Caribbean,comm materials,hotels commercial,2021,0.064299543
@@ -2038,7 +2038,7 @@ Central Asia,resid materials,apartments rural,2021,0.026440354
 Central Asia,resid materials,apartments urban,2021,0.073496326
 Central Asia,resid materials,detached rural,2021,0.436500554
 Central Asia,resid materials,detached urban,2021,0.188813283
-Central Asia,comm materials,govern commercial,2021,0.771381673
+Central Asia,comm materials,others commercial,2021,0.771381673
 Central Asia,resid materials,high-rise rural,2021,0.018865794
 Central Asia,resid materials,high-rise urban,2021,0.099669491
 Central Asia,comm materials,hotels commercial,2021,0.064130755
@@ -2050,7 +2050,7 @@ China,resid materials,apartments rural,2021,0.025416586
 China,resid materials,apartments urban,2021,0.120190987
 China,resid materials,detached rural,2021,0.445247987
 China,resid materials,detached urban,2021,0.118628958
-China,comm materials,govern commercial,2021,0.752009062
+China,comm materials,others commercial,2021,0.752009062
 China,resid materials,high-rise rural,2021,0.018135312
 China,resid materials,high-rise urban,2021,0.096917784
 China,comm materials,hotels commercial,2021,0.06695315
@@ -2062,7 +2062,7 @@ Colombia,resid materials,apartments rural,2021,0.009807856
 Colombia,resid materials,apartments urban,2021,0.142874326
 Colombia,resid materials,detached rural,2021,0.161108681
 Colombia,resid materials,detached urban,2021,0.260950925
-Colombia,comm materials,govern commercial,2021,0.759675377
+Colombia,comm materials,others commercial,2021,0.759675377
 Colombia,resid materials,high-rise rural,2021,0.006998128
 Colombia,resid materials,high-rise urban,2021,0.202548991
 Colombia,comm materials,hotels commercial,2021,0.066304766
@@ -2074,7 +2074,7 @@ EU-12,resid materials,apartments rural,2021,0.013676038
 EU-12,resid materials,apartments urban,2021,0.062842929
 EU-12,resid materials,detached rural,2021,0.332637655
 EU-12,resid materials,detached urban,2021,0.149723348
-EU-12,comm materials,govern commercial,2021,0.655042275
+EU-12,comm materials,others commercial,2021,0.655042275
 EU-12,resid materials,high-rise rural,2021,0.028650011
 EU-12,resid materials,high-rise urban,2021,0.338535836
 EU-12,comm materials,hotels commercial,2021,0.074610604
@@ -2086,7 +2086,7 @@ EU-15,resid materials,apartments rural,2021,0.017705321
 EU-15,resid materials,apartments urban,2021,0.19160868
 EU-15,resid materials,detached rural,2021,0.17184427
 EU-15,resid materials,detached urban,2021,0.156474947
-EU-15,comm materials,govern commercial,2021,0.473254402
+EU-15,comm materials,others commercial,2021,0.473254402
 EU-15,resid materials,high-rise rural,2021,0.009123941
 EU-15,resid materials,high-rise urban,2021,0.214145918
 EU-15,comm materials,hotels commercial,2021,0.089045549
@@ -2098,7 +2098,7 @@ Europe_Non_EU,resid materials,apartments rural,2021,0.01643527
 Europe_Non_EU,resid materials,apartments urban,2021,0.081902459
 Europe_Non_EU,resid materials,detached rural,2021,0.282084873
 Europe_Non_EU,resid materials,detached urban,2021,0.213684874
-Europe_Non_EU,comm materials,govern commercial,2021,0.682686951
+Europe_Non_EU,comm materials,others commercial,2021,0.682686951
 Europe_Non_EU,resid materials,high-rise rural,2021,0.014389929
 Europe_Non_EU,resid materials,high-rise urban,2021,0.242060373
 Europe_Non_EU,comm materials,hotels commercial,2021,0.072515974
@@ -2110,7 +2110,7 @@ European Free Trade Association,resid materials,apartments rural,2021,0.01770273
 European Free Trade Association,resid materials,apartments urban,2021,0.191617669
 European Free Trade Association,resid materials,detached rural,2021,0.171819176
 European Free Trade Association,resid materials,detached urban,2021,0.156482287
-European Free Trade Association,comm materials,govern commercial,2021,0.473230281
+European Free Trade Association,comm materials,others commercial,2021,0.473230281
 European Free Trade Association,resid materials,high-rise rural,2021,0.009122609
 European Free Trade Association,resid materials,high-rise urban,2021,0.214155964
 European Free Trade Association,comm materials,hotels commercial,2021,0.089048575
@@ -2122,7 +2122,7 @@ India,resid materials,apartments rural,2021,0.036620955
 India,resid materials,apartments urban,2021,0.023042692
 India,resid materials,detached rural,2021,0.594663964
 India,resid materials,detached urban,2021,0.071369362
-India,comm materials,govern commercial,2021,0.87091342
+India,comm materials,others commercial,2021,0.87091342
 India,resid materials,high-rise rural,2021,0.026129883
 India,resid materials,high-rise urban,2021,0.084604535
 India,comm materials,hotels commercial,2021,0.05295319
@@ -2134,7 +2134,7 @@ Indonesia,resid materials,apartments rural,2021,0.029503366
 Indonesia,resid materials,apartments urban,2021,0.070223594
 Indonesia,resid materials,detached rural,2021,0.484636835
 Indonesia,resid materials,detached urban,2021,0.166111883
-Indonesia,comm materials,govern commercial,2021,0.870006847
+Indonesia,comm materials,others commercial,2021,0.870006847
 Indonesia,resid materials,high-rise rural,2021,0.021051322
 Indonesia,resid materials,high-rise urban,2021,0.068312197
 Indonesia,comm materials,hotels commercial,2021,0.053097795
@@ -2146,7 +2146,7 @@ Japan,resid materials,apartments rural,2021,0.021848243
 Japan,resid materials,apartments urban,2021,0.155581682
 Japan,resid materials,detached rural,2021,0.321900696
 Japan,resid materials,detached urban,2021,0.35731923
-Japan,comm materials,govern commercial,2021,0.476956789
+Japan,comm materials,others commercial,2021,0.476956789
 Japan,resid materials,high-rise rural,2021,0.003340547
 Japan,resid materials,high-rise urban,2021,0.119236726
 Japan,comm materials,hotels commercial,2021,0.088588728
@@ -2158,7 +2158,7 @@ Mexico,resid materials,apartments rural,2021,0.011757629
 Mexico,resid materials,apartments urban,2021,0.111530931
 Mexico,resid materials,detached rural,2021,0.193136612
 Mexico,resid materials,detached urban,2021,0.312548611
-Mexico,comm materials,govern commercial,2021,0.701627011
+Mexico,comm materials,others commercial,2021,0.701627011
 Mexico,resid materials,high-rise rural,2021,0.008389336
 Mexico,resid materials,high-rise urban,2021,0.160292086
 Mexico,comm materials,hotels commercial,2021,0.071188711
@@ -2170,7 +2170,7 @@ Middle East,resid materials,apartments rural,2021,0.01715036
 Middle East,resid materials,apartments urban,2021,0.074671599
 Middle East,resid materials,detached rural,2021,0.281720267
 Middle East,resid materials,detached urban,2021,0.354764545
-Middle East,comm materials,govern commercial,2021,0.780855567
+Middle East,comm materials,others commercial,2021,0.780855567
 Middle East,resid materials,high-rise rural,2021,0.012237171
 Middle East,resid materials,high-rise urban,2021,0.108670304
 Middle East,comm materials,hotels commercial,2021,0.064261592
@@ -2182,7 +2182,7 @@ Pakistan,resid materials,apartments rural,2021,0.101854416
 Pakistan,resid materials,apartments urban,2021,0.041422494
 Pakistan,resid materials,detached rural,2021,0.388785482
 Pakistan,resid materials,detached urban,2021,0.116080292
-Pakistan,comm materials,govern commercial,2021,0.89579679
+Pakistan,comm materials,others commercial,2021,0.89579679
 Pakistan,resid materials,high-rise rural,2021,0.072675441
 Pakistan,resid materials,high-rise urban,2021,0.059532346
 Pakistan,comm materials,hotels commercial,2021,0.048593329
@@ -2194,7 +2194,7 @@ Russia,resid materials,apartments rural,2021,0.015310792
 Russia,resid materials,apartments urban,2021,0.101422829
 Russia,resid materials,detached rural,2021,0.251502623
 Russia,resid materials,detached urban,2021,0.284222178
-Russia,comm materials,govern commercial,2021,0.676642588
+Russia,comm materials,others commercial,2021,0.676642588
 Russia,resid materials,high-rise rural,2021,0.010924598
 Russia,resid materials,high-rise urban,2021,0.145764736
 Russia,comm materials,hotels commercial,2021,0.07304733
@@ -2206,7 +2206,7 @@ South Africa,resid materials,apartments rural,2021,0.020065978
 South Africa,resid materials,apartments urban,2021,0.06178901
 South Africa,resid materials,detached rural,2021,0.329613658
 South Africa,resid materials,detached urban,2021,0.144174358
-South Africa,comm materials,govern commercial,2021,0.746514529
+South Africa,comm materials,others commercial,2021,0.746514529
 South Africa,resid materials,high-rise rural,2021,0.014317532
 South Africa,resid materials,high-rise urban,2021,0.185871127
 South Africa,comm materials,hotels commercial,2021,0.067492412
@@ -2218,7 +2218,7 @@ South America_Northern,resid materials,apartments rural,2021,0.009820126
 South America_Northern,resid materials,apartments urban,2021,0.142831729
 South America_Northern,resid materials,detached rural,2021,0.161310234
 South America_Northern,resid materials,detached urban,2021,0.260873124
-South America_Northern,comm materials,govern commercial,2021,0.760086881
+South America_Northern,comm materials,others commercial,2021,0.760086881
 South America_Northern,resid materials,high-rise rural,2021,0.007006883
 South America_Northern,resid materials,high-rise urban,2021,0.202488603
 South America_Northern,comm materials,hotels commercial,2021,0.06626656
@@ -2230,7 +2230,7 @@ South America_Southern,resid materials,apartments rural,2021,0.00980825
 South America_Southern,resid materials,apartments urban,2021,0.142872958
 South America_Southern,resid materials,detached rural,2021,0.161115153
 South America_Southern,resid materials,detached urban,2021,0.260948426
-South America_Southern,comm materials,govern commercial,2021,0.759688529
+South America_Southern,comm materials,others commercial,2021,0.759688529
 South America_Southern,resid materials,high-rise rural,2021,0.006998409
 South America_Southern,resid materials,high-rise urban,2021,0.202547052
 South America_Southern,comm materials,hotels commercial,2021,0.066303543
@@ -2242,7 +2242,7 @@ South Asia,resid materials,apartments rural,2021,0.101858848
 South Asia,resid materials,apartments urban,2021,0.041417988
 South Asia,resid materials,detached rural,2021,0.3888024
 South Asia,resid materials,detached urban,2021,0.116067664
-South Asia,comm materials,govern commercial,2021,0.895802788
+South Asia,comm materials,others commercial,2021,0.895802788
 South Asia,resid materials,high-rise rural,2021,0.072678603
 South Asia,resid materials,high-rise urban,2021,0.05952587
 South Asia,comm materials,hotels commercial,2021,0.048592172
@@ -2254,7 +2254,7 @@ South Korea,resid materials,apartments rural,2021,0.013115838
 South Korea,resid materials,apartments urban,2021,0.066791452
 South Korea,resid materials,detached rural,2021,0.215447221
 South Korea,resid materials,detached urban,2021,0.328140586
-South Korea,comm materials,govern commercial,2021,0.603147609
+South Korea,comm materials,others commercial,2021,0.603147609
 South Korea,resid materials,high-rise rural,2021,0.009358448
 South Korea,resid materials,high-rise urban,2021,0.153563597
 South Korea,comm materials,hotels commercial,2021,0.07814763
@@ -2266,7 +2266,7 @@ Southeast Asia,resid materials,apartments rural,2021,0.02857443
 Southeast Asia,resid materials,apartments urban,2021,0.056780077
 Southeast Asia,resid materials,detached rural,2021,0.470362195
 Southeast Asia,resid materials,detached urban,2021,0.176978686
-Southeast Asia,comm materials,govern commercial,2021,0.788887928
+Southeast Asia,comm materials,others commercial,2021,0.788887928
 Southeast Asia,resid materials,high-rise rural,2021,0.020340547
 Southeast Asia,resid materials,high-rise urban,2021,0.088029168
 Southeast Asia,comm materials,hotels commercial,2021,0.061627225
@@ -2278,7 +2278,7 @@ Taiwan,resid materials,apartments rural,2021,0.025417115
 Taiwan,resid materials,apartments urban,2021,0.120188204
 Taiwan,resid materials,detached rural,2021,0.445257258
 Taiwan,resid materials,detached urban,2021,0.118626212
-Taiwan,comm materials,govern commercial,2021,0.752026789
+Taiwan,comm materials,others commercial,2021,0.752026789
 Taiwan,resid materials,high-rise rural,2021,0.018135689
 Taiwan,resid materials,high-rise urban,2021,0.09691554
 Taiwan,comm materials,hotels commercial,2021,0.066951499
@@ -2290,7 +2290,7 @@ USA,resid materials,apartments rural,2021,0.003049307
 USA,resid materials,apartments urban,2021,0.044260106
 USA,resid materials,detached rural,2021,0.178040039
 USA,resid materials,detached urban,2021,0.645267668
-USA,comm materials,govern commercial,2021,0.42166218
+USA,comm materials,others commercial,2021,0.42166218
 USA,resid materials,high-rise rural,2021,0.000901231
 USA,resid materials,high-rise urban,2021,0.069634584
 USA,comm materials,hotels commercial,2021,0.098982058
@@ -2302,7 +2302,7 @@ Ukraine,resid materials,apartments rural,2021,0.017095531
 Ukraine,resid materials,apartments urban,2021,0.096345573
 Ukraine,resid materials,detached rural,2021,0.280819616
 Ukraine,resid materials,detached urban,2021,0.269993934
-Ukraine,comm materials,govern commercial,2021,0.828715235
+Ukraine,comm materials,others commercial,2021,0.828715235
 Ukraine,resid materials,high-rise rural,2021,0.01219805
 Ukraine,resid materials,high-rise urban,2021,0.138467711
 Ukraine,comm materials,hotels commercial,2021,0.058913369

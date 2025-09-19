@@ -19,7 +19,7 @@ GCAM_region_ID,region,sector,lifetime,Deetman_reg,half.life,steepness,median.shu
 11,China,resid materials,40,China,20,0.2,-0.5,6
 12,EU-12,resid materials,80,Eastern Europe,40,0.2,-0.5,6
 13,EU-15,resid materials,65,Western Europe,32.5,0.2,-0.5,6
-14,Europe_Eastern,resid materials,80,Eastern Europe,40,0.2,-0.5,6
+14,Ukraine,resid materials,80,Eastern Europe,40,0.2,-0.5,6
 15,Europe_Non_EU,resid materials,80,Eastern Europe,40,0.2,-0.5,6
 16,European Free Trade Association,resid materials,65,Western Europe,32.5,0.2,-0.5,6
 17,India,resid materials,60,Global,30,0.2,-0.5,6
