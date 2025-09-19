@@ -14,9 +14,11 @@ module_minerals_resources_xml <- function(command, ...) {
 
   MODULE_INPUTS <-
     c("L2111.Rsrc",
-      "L2111.UnlimitRsrc",
+      "L2111.UnlimitRsrc_constrSupply",
+      "L2111.UnlimitRsrc_unlimitSupply",
       "L2111.RsrcPrice",
-      "L2111.UnlimitRsrcPrice",
+      "L2111.UnlimitRsrcPrice_constrSupply",
+      "L2111.UnlimitRsrcPrice_unlimitSupply",
       "L2111.SubresourcePriceAdder",
       "L2111.RsrcCalProd",
       "L2111.ReserveCalReserve",
@@ -30,7 +32,8 @@ module_minerals_resources_xml <- function(command, ...) {
     )
 
   MODULE_OUTPUTS <-
-    c(XML = "minerals_resources.xml")
+    c(XML = "minerals_resources_constrained.xml",
+      XML = "minerals_resources_unlimited.xml")
 
   if(command == driver.DECLARE_INPUTS) {
     return(MODULE_INPUTS)
@@ -47,9 +50,9 @@ module_minerals_resources_xml <- function(command, ...) {
     # ===================================================
 
     # Produce outputs
-    create_xml("minerals_resources.xml") %>%
+    create_xml("minerals_resources_constrained.xml") %>%
       add_xml_data(L2111.Rsrc, "Rsrc") %>%
-      add_xml_data(L2111.UnlimitRsrc, "UnlimitRsrc") %>%
+      add_xml_data(L2111.UnlimitRsrc_constrSupply, "UnlimitRsrc") %>%
       add_node_equiv_xml("resource") %>%
       add_node_equiv_xml("subresource") %>%
       add_node_equiv_xml("technology") %>%
@@ -61,14 +64,14 @@ module_minerals_resources_xml <- function(command, ...) {
       add_xml_data(L2111.ResReserveTechDeclinePhase, "ResReserveTechDeclinePhase") %>%
       add_xml_data(L2111.ResReserveTechProfitShutdown, "ResReserveTechProfitShutdown") %>%
      # add_xml_data(L2111.RsrcPrice, "RsrcPrice") %>%
-      add_xml_data(L2111.UnlimitRsrcPrice, "UnlimitRsrcPrice") %>%
+      add_xml_data(L2111.UnlimitRsrcPrice_constrSupply, "UnlimitRsrcPrice") %>%
       add_xml_data(L2111.RsrcCalProd, "RsrcCalProd") %>%
       add_xml_data(L2111.RsrcCurves_minerals, "RsrcCurves") %>%
       add_xml_data(L2111.ResTechShrwt, "ResTechShrwt") %>%
       add_precursors("L2111.Rsrc",
-                   "L2111.UnlimitRsrc",
+                   "L2111.UnlimitRsrc_constrSupply",
                    "L2111.RsrcPrice",
-                   "L2111.UnlimitRsrcPrice",
+                   "L2111.UnlimitRsrcPrice_constr_Supply",
                    "L2111.SubresourcePriceAdder",
                    "L2111.RsrcCalProd",
                    "L2111.ReserveCalReserve",
@@ -79,10 +82,19 @@ module_minerals_resources_xml <- function(command, ...) {
                    "L2111.ResReserveTechProfitShutdown",
                    "L2111.ResReserveTechInvestmentInput",
                    "L2111.ResTechShrwt") ->
-      minerals_resources.xml
+      minerals_resources_constrained.xml
+
+    create_xml("minerals_resources_unlimited.xml") %>%
+      add_xml_data(L2111.UnlimitRsrc_unlimitSupply, "UnlimitRsrc") %>%
+      add_xml_data(L2111.UnlimitRsrcPrice_unlimitSupply, "UnlimitRsrcPrice") %>%
+      add_precursors("L2111.UnlimitRsrc_unlimitSupply",
+                     "L2111.UnlimitRsrcPrice_unlimitSupply") ->
+      minerals_resources_unlimited.xml
 
 
-  return_data(minerals_resources.xml)
+
+  return_data(minerals_resources_constrained.xml,
+              minerals_resources_unlimited.xml)
 } else {
   stop("Unknown command")
 }

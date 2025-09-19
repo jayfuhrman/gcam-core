@@ -8,7 +8,8 @@
 #' @param ... other optional parameters, depending on command
 #' @return Depends on \code{command}: either a vector of required inputs,
 #' a vector of output names, or (if \code{command} is "MAKE") all
-#' the generated outputs: \code{L2111.Rsrc}, \code{L2111.UnlimitRsrc}, \code{L2111.RsrcPrice}, \code{L2111.UnlimitRsrcPrice}, \code{L2111.SubresourcePriceAdder},
+#' the generated outputs: \code{L2111.Rsrc}, \code{L2111.UnlimitRsrc_constrSupply}, \code{L2111.UnlimitRsrc_unlimitSupply},
+#' \code{L2111.RsrcPrice}, \code{L2111.UnlimitRsrcPrice_constrSupply}, \code{L2111.UnlimitRsrcPrice_unlimitSupply}, \code{L2111.SubresourcePriceAdder},
 #' \code{L2111.RsrcCalProd}, \code{L2111.ReserveCalReserve}, \code{L2111.RsrcCurves_minerals}, \code{L2111.mineral_regions}
 #' \code{L2111.ResSubresourceProdLifetime}, \code{L2111.ResReserveTechLifetime}, \code{L2111.ResReserveTechDeclinePhase},
 #' \code{L2111.ResReserveTechProfitShutdown}, \code{L2111.ResReserveTechInvestmentInput}, \code{L2111.ResTechShrwt},
@@ -35,9 +36,11 @@ if(command == driver.DECLARE_INPUTS) {
            "L1111.mineral_AvgProdLifetime"))
 } else if(command == driver.DECLARE_OUTPUTS) {
   return(c("L2111.Rsrc",
-           "L2111.UnlimitRsrc",
+           "L2111.UnlimitRsrc_constrSupply",
+           "L2111.UnlimitRsrc_unlimitSupply",
            "L2111.RsrcPrice",
-           "L2111.UnlimitRsrcPrice",
+           "L2111.UnlimitRsrcPrice_constrSupply",
+           "L2111.UnlimitRsrcPrice_unlimitSupply",
            "L2111.SubresourcePriceAdder",
            "L2111.RsrcCalProd",
            "L2111.ReserveCalReserve",
@@ -341,10 +344,23 @@ if(command == driver.DECLARE_INPUTS) {
     semi_join(L2111.mineral_regions, by = c("region", "resource"))##final-output
 
   # L2111.UnlimitRsrc: output unit, price unit, and market for unlimited resources
-  L2111.UnlimitRsrc <- L2111.mineral_rsrc_info %>%
+  # in the version with constrained supply for some minerals
+  L2111.UnlimitRsrc_constrSupply <- L2111.mineral_rsrc_info %>%
     filter(resource_type == "unlimited-resource") %>%
     select(region, unlimited.resource = resource, output.unit = `output-unit`, price.unit = `price-unit`, market) %>%
     distinct() ##final-output
+
+  # in the version with unlimited supply for all minerals
+  L2111.UnlimitRsrc_unlimitSupply <- L2111.mineral_rsrc_info %>%
+    # in this version, all resources are unlimited resources
+    mutate(resource_type = "unlimited-resource") %>%
+    select(region, unlimited.resource = resource, output.unit = `output-unit`, price.unit = `price-unit`, market) %>%
+    distinct() %>%
+    # for resources in energy.TRADED_MINERAL, we need to label them as "regional"
+    # to match the minicam.energy.input in the end-use demand sectors
+    mutate(unlimited.resource = if_else(unlimited.resource %in% energy.TRADED_MINERAL,
+                                          paste("regional", unlimited.resource),
+                                          unlimited.resource))     ##final-output
 
   # L2111.RsrcPrice: historical prices for depletable resources
   # For now, assuming uniform calibration prices across all regions
@@ -356,15 +372,24 @@ if(command == driver.DECLARE_INPUTS) {
     semi_join(L2111.mineral_regions, by = c("region", "resource")) ##final-output
 
   # L2111.UnlimitRsrcPrice: prices for unlimited resources
-  # update the mineral price by multiplying the fixed-charge-rate (assumed to be 0.13). The mineral cost is considered part of the capital cost,
-  # so the mineral prices are multiplied by the fixed-charge-rate to get the annuity, which will later be used for calculating technology levelized
-  # cost.
-  L2111.UnlimitRsrcPrice <- L2111.mineral_rsrc_info %>%
+  # in the version with constrained supply for some minerals
+  L2111.UnlimitRsrcPrice_constrSupply <- L2111.mineral_rsrc_info %>%
     filter(resource_type == "unlimited-resource", resource %in% energy.RSRC_MINERAL,
            year %in% MODEL_BASE_YEARS) %>%
-    mutate(price = value * 0.13) %>%
+    mutate(price = value) %>%
     select(region, unlimited.resource = resource, year, price) ##final-output
 
+  # in the version with unlimited supply for all minerals
+  L2111.UnlimitRsrcPrice_unlimitSupply <- L2111.mineral_rsrc_info %>%
+    filter(resource %in% energy.RSRC_MINERAL, year %in% MODEL_BASE_YEARS) %>%
+    mutate(resource_type = "unlimited-resource") %>%
+    mutate(price = value) %>%
+    select(region, unlimited.resource = resource, year, price) %>%
+    # for resources in energy.TRADED_MINERAL, we need to label them as "regional"
+    # to match the minicam.energy.input in the end-use demand sectors
+    mutate(unlimited.resource = if_else(unlimited.resource %in% energy.TRADED_MINERAL,
+                                        paste("regional", unlimited.resource),
+                                        unlimited.resource))     ##final-output
 
   # B. Tech change
   # NO TECH CHANGE FOR NOW, REVISIT LATER
@@ -505,12 +530,19 @@ if(command == driver.DECLARE_INPUTS) {
     add_precursors("common/GCAM_region_names", "minerals/supply/A10.mineral_rsrc_info") ->
     L2111.Rsrc
 
-  L2111.UnlimitRsrc %>%
+  L2111.UnlimitRsrc_constrSupply %>%
     add_title("Market information for unlimited mineral resources") %>%
     add_units("NA") %>%
     add_comments("A10.mineral_rsrc_info written to all regions") %>%
     add_precursors("common/GCAM_region_names", "minerals/supply/A10.mineral_rsrc_info") ->
-    L2111.UnlimitRsrc
+    L2111.UnlimitRsrc_constrSupply
+
+  L2111.UnlimitRsrc_unlimitSupply %>%
+    add_title("Market information for unlimited mineral resources") %>%
+    add_units("NA") %>%
+    add_comments("A10.mineral_rsrc_info written to all regions") %>%
+    add_precursors("common/GCAM_region_names", "minerals/supply/A10.mineral_rsrc_info") ->
+    L2111.UnlimitRsrc_unlimitSupply
 
   L2111.RsrcPrice %>%
     add_title("Historical prices for depletable mineral resources") %>%
@@ -519,12 +551,19 @@ if(command == driver.DECLARE_INPUTS) {
     same_precursors_as(L2111.Rsrc) ->
     L2111.RsrcPrice
 
-  L2111.UnlimitRsrcPrice %>%
+  L2111.UnlimitRsrcPrice_constrSupply %>%
     add_title("Historical prices for depletable mineral resources") %>%
     add_units("1975$/kg for minerals") %>%
     add_comments("A10.mineral_rsrc_info written to all regions") %>%
-    same_precursors_as(L2111.UnlimitRsrc) ->
-    L2111.UnlimitRsrcPrice
+    same_precursors_as(L2111.UnlimitRsrc_constrSupply) ->
+    L2111.UnlimitRsrcPrice_constrSupply
+
+  L2111.UnlimitRsrcPrice_unlimitSupply %>%
+    add_title("Historical prices for depletable mineral resources") %>%
+    add_units("1975$/kg for minerals") %>%
+    add_comments("A10.mineral_rsrc_info written to all regions") %>%
+    same_precursors_as(L2111.UnlimitRsrc_unlimitSupply) ->
+    L2111.UnlimitRsrcPrice_unlimitSupply
 
   L2111.SubresourcePriceAdder %>%
     add_title("Adjust calibration price adders in future model years") %>%
@@ -612,9 +651,11 @@ if(command == driver.DECLARE_INPUTS) {
 
 
   return_data(L2111.Rsrc,
-              L2111.UnlimitRsrc,
+              L2111.UnlimitRsrc_constrSupply,
+              L2111.UnlimitRsrc_unlimitSupply,
               L2111.RsrcPrice,
-              L2111.UnlimitRsrcPrice,
+              L2111.UnlimitRsrcPrice_constrSupply,
+              L2111.UnlimitRsrcPrice_unlimitSupply,
               L2111.SubresourcePriceAdder,
               L2111.RsrcCalProd,
               L2111.ReserveCalReserve,

@@ -20,9 +20,9 @@
 		<Value name = "socioeconomics">../input/gcamdata/xml/socioeconomics_CORE.xml</Value>
 		<Value name = "resources_energy">../input/gcamdata/xml/resources.xml</Value>
 <!--Minerals supply-->
-		<Value name = "resources_minerals">../input/gcamdata/xml/minerals_resources.xml</Value>
-<!--Minerals trade-->
-		<Value name = "minerals_trade">../input/gcamdata/xml/minerals_trade.xml</Value>
+		<Value name = "resources_minerals">../input/gcamdata/xml/minerals_resources_unlimited.xml</Value>
+<!--Minerals trade (No trade in the unlimited supply case)-->
+		<!--Value name = "minerals_trade">../input/gcamdata/xml/minerals_trade.xml</Value-->
 		<Value name = "energy_supply">../input/gcamdata/xml/en_supply.xml</Value>
 		<Value name = "energy_transformation">../input/gcamdata/xml/en_transformation.xml</Value>
 <!--Electricity generation minerals demand-->
