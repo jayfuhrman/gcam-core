@@ -18,6 +18,7 @@
 #' \code{L2233.Regionaltech_mineral_coef_constance_final}, \code{L2233.Regionaltech_mineral_coef_reduction_final},
 #' \code{L2233.Globaltech_mineral_coef_constance_final}, \code{L2233.Globaltech_mineral_coef_reduction_final},
 #' \code{L2233.Regional_Globaltech_mineral_coef_constance_Yb},\code{L2233.Regional_Globaltech_mineral_coef_reduction_Yb},
+#' \code{L2233.Regionaltech_mineral_PMult}, \code{L2233.Globaltech_mineral_PMult}, \code{L2233.Regional_Globaltech_mineral_Yb_PMult},
 #' \code{L2233.GlobalTechCapital_elec_subtype}, \code{L2233.StubTechCapFac_mineral_pv_wind},
 #' \code{L2233.Regionaltech_mineral_coef_constance_final}, \code{L2233.GlobalTechCapital_elecPassthru_no_pv_wind},
 #' \code{L2233.GlobalIntTechMineral_elecSupplySector}, \code{L2233.GlobalTechMineral_elecSupplySector},
@@ -87,6 +88,9 @@ module_energy_L2233.electricity_mineral <- function(command, ...) {
              "L2233.Globaltech_mineral_coef_reduction_final",
              "L2233.Regional_Globaltech_mineral_coef_constance_Yb",
              "L2233.Regional_Globaltech_mineral_coef_reduction_Yb",
+             "L2233.Regionaltech_mineral_PMult",
+             "L2233.Globaltech_mineral_PMult",
+             "L2233.Regional_Globaltech_mineral_Yb_PMult",
              # "L2233.GlobalTechCapital_elec_subtype",
              "L2233.GlobalTechCapital_elec_subtype_pv_wind",
              "L2233.GlobalTechCapital_elec_subtype_pv_wind_storage",
@@ -1081,6 +1085,36 @@ module_energy_L2233.electricity_mineral <- function(command, ...) {
     ungroup() %>%
     select(-years_elapsed)
 
+  #BY 9-8-2025: Add price multipliers for the mineral component of cost
+  # price multiplier is equivalent to 0.13 * the number of years elapsed because new additions are tracked on a timestep basis
+  # 0.13 is the fixed-charge-rate. The mineral cost is considered part of the capital cost,
+  # so the mineral cost are multiplied by the fixed-charge-rate to get the annuity, which will later be used for calculating technology levelized
+  # cost.
+  L2233.Regionaltech_mineral_PMult <- L2233.Regionaltech_mineral_coef_constance_final %>%
+    group_by(region, supplysector, subsector, stub.technology, minicam.energy.input, model.year) %>%
+    arrange(year) %>%
+    mutate(price.unit.conversion = 0.13*if_else(is.na(lag(year)), 1, year - lag(year))) %>%
+    ungroup() %>%
+    select(LEVEL2_DATA_NAMES[["StubCaloriePriceConv"]]) %>%
+    distinct()
+
+  L2233.Globaltech_mineral_PMult <- L2233.Globaltech_mineral_coef_constance_final %>%
+    group_by(sector.name, subsector.name, technology, minicam.energy.input, model.year) %>%
+    arrange(year) %>%
+    mutate(price.unit.conversion = 0.13*if_else(is.na(lag(year)), 1, year - lag(year))) %>%
+    ungroup() %>%
+    select(LEVEL2_DATA_NAMES[["GlobalTechInputPMult"]]) %>%
+    distinct()
+
+  L2233.Regional_Globaltech_mineral_Yb_PMult <- L2233.Regional_Globaltech_mineral_coef_constance_Yb %>%
+    group_by(region, supplysector, subsector, stub.technology, minicam.energy.input, model.year) %>%
+    arrange(year) %>%
+    mutate(price.unit.conversion = 0.13*if_else(is.na(lag(year)), 1, year - lag(year))) %>%
+    ungroup() %>%
+    select(LEVEL2_DATA_NAMES[["StubCaloriePriceConv"]]) %>%
+    distinct()
+
+
     ## ===================================================================
     ## Section 3 -- Produce outputs, add appropriate flags and comments
     ## ===================================================================
@@ -1285,6 +1319,25 @@ module_energy_L2233.electricity_mineral <- function(command, ...) {
       same_precursors_as("L2233.Regionaltech_mineral_coef_reduction_final") ->
       L2233.Regional_Globaltech_mineral_coef_reduction_Yb
 
+    # Price multiplier
+    L2233.Regionaltech_mineral_PMult %>%
+      add_title("Mineral price unit conversion for generation technologies (wind and solar with and without storage) -- in the regional database") %>%
+      add_comments("Mineral price unit conversion for generation technologies (wind and solar with and without storage) -- in the regional database") %>%
+      same_precursors_as("L2233.Regionaltech_mineral_coef_constance_final") ->
+      L2233.Regionaltech_mineral_PMult
+
+    L2233.Globaltech_mineral_PMult %>%
+      add_title("Mineral price unit conversion for other non-solar and non-wind generation technologies -- in the global database") %>%
+      add_comments("Mineral price unit conversion for other non-solar and non-wind generation technologies -- in the global database") %>%
+      same_precursors_as("L2233.Globaltech_mineral_coef_constance_final") ->
+      L2233.Globaltech_mineral_PMult
+
+    L2233.Regional_Globaltech_mineral_Yb_PMult %>%
+      add_title("Mineral price unit conversion for other non-solar and non-wind generation technologies -- in the regional database (for base years, recalculated)") %>%
+      add_comments("Mineral price unit conversion for other non-solar and non-wind generation technologies -- in the regional database") %>%
+      same_precursors_as("L2233.Regionaltech_mineral_coef_reduction_final") ->
+      L2233.Regional_Globaltech_mineral_Yb_PMult
+
     # Mon-mineral capital cost -- pv and wind subtypes
     L2233.GlobalTechCapital_elec_subtype_pv_wind %>%
       add_title("Non-mineral capital cost for electricity generation technology (solar pv and wind with and without storage at subtype level)") %>%
@@ -1397,6 +1450,9 @@ module_energy_L2233.electricity_mineral <- function(command, ...) {
                 L2233.Globaltech_mineral_coef_reduction_final,
                 L2233.Regional_Globaltech_mineral_coef_constance_Yb,
                 L2233.Regional_Globaltech_mineral_coef_reduction_Yb,
+                L2233.Regionaltech_mineral_PMult,
+                L2233.Globaltech_mineral_PMult,
+                L2233.Regional_Globaltech_mineral_Yb_PMult,
                 # L2233.GlobalTechCapital_elec_subtype,
                 L2233.GlobalTechCapital_elec_subtype_pv_wind,
                 L2233.GlobalTechCapital_elec_subtype_pv_wind_storage,
