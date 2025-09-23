@@ -268,6 +268,8 @@ TechCost, world/+{name}region, region/+{name}supplysector, supplysector/+{name}s
 
 TechPmult, world/+{name}region, region/+{name}supplysector, supplysector/+{name}subsector, subsector/+{name}technology, technology/+{year}period, period/+pMultiplier, scenario, scenario/world
 
+TechPriceUnitConv, world/+{name}region, region/+{name}supplysector, supplysector/+{name}subsector, subsector/+{name}technology, technology/+{year}period, period/+price-unit-conversion, scenario, scenario/world
+
 TechCapital, world/+{name}region, region/+{name}supplysector, supplysector/+{name}subsector, subsector/+{name}technology, technology/+{year}period, period/+{name}input-capital, input-capital/+capital-overnight, input-capital/+fixed-charge-rate, input-capital/+capacity-factor, scenario, scenario/world, period/{name=CO2}CO2
 
 TechShrwt, world/+{name}region, region/+{name}supplysector, supplysector/+{name}subsector, subsector/+{name}technology, technology/+{year}period, period/+share-weight, scenario, scenario/world, period/{name=CO2}CO2
@@ -574,6 +576,9 @@ PassThruStubTranTechCost, world/+{name}region, region/+{name}pass-through-sector
 PassThruStubTranTechCoef, world/+{name}region, region/+{name}pass-through-sector, pass-through-sector/+{name}tranSubsector, tranSubsector/+{name}stub-technology, stub-technology/+{year}period, period/+{name}minicam-energy-input, minicam-energy-input/+coefficient, minicam-energy-input/+market-name, scenario, scenario/world
 
 PassThruStubTranTechProd, world/+{name}region, region/+{name}pass-through-sector, pass-through-sector/+{name}tranSubsector, tranSubsector/+{name}stub-technology, stub-technology/+{year}period, CalDataOutput/+calOutputValue, period/CalDataOutput, scenario, scenario/world
+
+PassThruStubTranTechPriceUnitConv, world/+{name}region, region/+{name}pass-through-sector, pass-through-sector/+{name}tranSubsector, tranSubsector/+{name}stub-technology, stub-technology/+{year}period, period/+{name}minicam-energy-input, minicam-energy-input/+price-unit-conversion, scenario, scenario/world
+
 
 
 #####, FINAL DEMAND

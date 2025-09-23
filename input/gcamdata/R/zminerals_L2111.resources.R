@@ -309,6 +309,9 @@ if(command == driver.DECLARE_INPUTS) {
       #extractioncost: 1975$/kg
     mutate(available = available/1000, #from kt to Mt
            extractioncost = (extractioncost/1000)*gdp_deflator(1975, base_year = 2020)) %>% #from 2020$/t to 1975$/kg
+    # For lithium only, we need to convert the cost from $/kg Li2CO3 to $/kg Li-equivalent (based on molecular weight) to match input prices
+    # Li share in Li2CO3 is 0.189
+    mutate(extractioncost = if_else(resource == "lithium", extractioncost/0.189, extractioncost)) %>%
     group_by(region, resource, subresource, grade) %>%
     # Keep only the row with lowest extraction cost for each group with same grade
     dplyr::slice_min(order_by = extractioncost, n = 1, with_ties = FALSE) %>%

@@ -10,7 +10,7 @@
 #' either a vector of required inputs,
 #' a vector of output names, or (if \code{command} is "MAKE") all
 #' the generated outputs: #' \code{L2251.StubTechMineralCoef_final}, \code{L2251.GlobalTechMineralCoef_final},
-#' \code{L2251.GlobalTechCost_h2}, \code{L2251.StubTechCost_h2}
+#' \code{L2251.GlobalTechCost_h2}, \code{L2251.StubTechCost_h2},  \code{L2251.GlobalTechMineralPMult}, \code{L2251.StubTechMineralPMult},
 #' @details Mineral inputs required for hydrogen production technologies.
 #' @author BY Feb 2024
 #' @importFrom tibble tibble
@@ -27,6 +27,8 @@ module_energy_L2251.hydrogen_mineral <- function(command, ...) {
   } else if(command == driver.DECLARE_OUTPUTS) {
     return(c("L2251.StubTechMineralCoef_final",
              "L2251.GlobalTechMineralCoef_final",
+             "L2251.GlobalTechMineralPMult",
+             "L2251.StubTechMineralPMult",
              "L2251.GlobalTechCost_h2",
              "L2251.StubTechCost_h2"))
   } else if(command == driver.MAKE) {
@@ -291,6 +293,28 @@ module_energy_L2251.hydrogen_mineral <- function(command, ...) {
       ungroup() %>%
       select(-years_elapsed)
 
+    #BY 9-8-2025: Add price multipliers for the mineral component of cost
+    # price multiplier is equivalent to 0.13 * the number of years elapsed because new additions are tracked on a timestep basis
+    # 0.13 is the fixed-charge-rate. The mineral cost is considered part of the capital cost,
+    # so the mineral cost are multiplied by the fixed-charge-rate to get the annuity, which will later be used for calculating technology levelized
+    # cost.
+    L2251.GlobalTechMineralPMult <- L2251.GlobalTechMineralCoef_final %>%
+      group_by(sector.name, subsector.name, technology, minicam.energy.input, model.year) %>%
+      arrange(year) %>%
+      mutate(price.unit.conversion = 0.13*if_else(is.na(lag(year)), 1, year - lag(year))) %>%
+      ungroup() %>%
+      select(LEVEL2_DATA_NAMES[["GlobalTechInputPMult"]]) %>%
+      distinct()
+
+    L2251.StubTechMineralPMult <- L2251.StubTechMineralCoef_final %>%
+      group_by(region, supplysector, subsector, stub.technology, minicam.energy.input) %>%
+      arrange(year) %>%
+      mutate(price.unit.conversion = 0.13*if_else(is.na(lag(year)), 1, year - lag(year))) %>%
+      ungroup() %>%
+      select(LEVEL2_DATA_NAMES[["StubCaloriePriceConv"]]) %>%
+      distinct()
+
+
     ## ===================================================================
     ## Section 3 -- Produce outputs, add appropriate flags and comments
     ## ===================================================================
@@ -310,6 +334,22 @@ module_energy_L2251.hydrogen_mineral <- function(command, ...) {
                      "L223.StubTechCapFactor_elec") ->
       L2251.StubTechMineralCoef_final
 
+    L2251.GlobalTechMineralPMult %>%
+      add_title("Mineral price unit conversion for non-solar and non-wind H2 production technologies") %>%
+      add_units("Mt/EJ") %>%
+      add_comments("Mineral intensity for most H2 production techs (except solar and wind) are globally specified") %>%
+      add_precursors("minerals/supply/A10.mineral_rsrc_info", "minerals/h2/H2.globaltech_mineral_coef_kg_kw_long",
+                     "minerals/h2/H2A.globaltech_capFactor") ->
+      L2251.GlobalTechMineralPMult
+
+    L2251.StubTechMineralPMult %>%
+      add_title("Mineral price unit conversion for solar and wind electrolysis H2 production technologies") %>%
+      add_units("Mt/EJ") %>%
+      add_comments("Mineral intensity for solar and wind electrolysis techs are regionally specified (Stub tech)") %>%
+      add_precursors("minerals/supply/A10.mineral_rsrc_info", "minerals/h2/H2.globaltech_mineral_coef_kg_kw_long",
+                     "L223.StubTechCapFactor_elec") ->
+      L2251.StubTechMineralPMult
+
     L2251.GlobalTechCost_h2 %>%
       add_title("Non-mineral non-energy cost for non-solar and non-wind H2 production technologies") %>%
       add_units("$1975/GJ H2") %>%
@@ -328,6 +368,8 @@ module_energy_L2251.hydrogen_mineral <- function(command, ...) {
 
     return_data(L2251.GlobalTechMineralCoef_final,
                 L2251.StubTechMineralCoef_final,
+                L2251.GlobalTechMineralPMult,
+                L2251.StubTechMineralPMult,
                 L2251.GlobalTechCost_h2,
                 L2251.StubTechCost_h2)
   } else {

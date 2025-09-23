@@ -306,6 +306,19 @@ module_energy_L2441.building_det_mineral <- function(command, ...) {
       ungroup() %>%
       select(-years_elapsed)
 
+    #BY 9-8-2025: Add price multipliers for the mineral component of cost
+    # price multiplier is equivalent to 0.13 * the number of years elapsed because new additions are tracked on a timestep basis
+    # 0.13 is the fixed-charge-rate. The mineral cost is considered part of the capital cost,
+    # so the mineral cost are multiplied by the fixed-charge-rate to get the annuity, which will later be used for calculating technology levelized
+    # cost.
+    L2441.TechPMultMaterials  <- L2441.TechCoefMaterials_final %>%
+      group_by(region, supplysector, subsector, technology, minicam.energy.input) %>%
+      arrange(year) %>%
+      mutate(price.unit.conversion = 0.13*if_else(is.na(lag(year)), 1, year - lag(year))) %>%
+      ungroup() %>%
+      select(LEVEL2_DATA_NAMES[["TechPriceUnitConv"]]) %>%
+      distinct()
+
     #===================================================
 
     L2441.GenericBaseServiceMaterials %>%
@@ -399,6 +412,13 @@ module_energy_L2441.building_det_mineral <- function(command, ...) {
       add_precursors("minerals/buildings/A44.bld_materials_intensity_reg") ->
       L2441.TechCoefMaterials_final
 
+    L2441.TechPMultMaterials %>%
+      add_title("Materials price unit conversion") %>%
+      add_units("none") %>%
+      add_comments("Materials price unit conversion") %>%
+      same_precursors_as(L2441.TechCoefMaterials_final)  ->
+      L2441.TechPMultMaterials
+
     L2441.TechLifetimeMaterials %>%
       add_title("Materials technologies lifetime") %>%
       add_units("none") %>%
@@ -426,7 +446,7 @@ module_energy_L2441.building_det_mineral <- function(command, ...) {
     return_data(L2441.GenericBaseServiceMaterials, L2441.SupplysectorMaterials,
     L2441.SubsectorLogitMaterials, L2441.SubsectorShrwtMaterials, L2441.SubsectorShrwtFlltMaterials,
     L2441.SubsectorInterpMaterials, L2441.SubsectorInterpToMaterials, L2441.TechCalOutputMaterials, L2441.TechShrwtMaterials,
-    L2441.TechCoefMaterials_final, L2441.TechLifetimeMaterials, L2441.TechSCurveMaterials, L2441.TechProfitShutdownMaterials
+    L2441.TechCoefMaterials_final, L2441.TechPMultMaterials, L2441.TechLifetimeMaterials, L2441.TechSCurveMaterials, L2441.TechProfitShutdownMaterials
     )
 
   } else {

@@ -18,6 +18,7 @@ module_energy_transportation_UCD_CORE_mineral_xml <- function(command, ...) {
   if(command == driver.DECLARE_INPUTS) {
     return(c("L2541.trn_globaltech_mineral_curcoef_final",
              "L2541.trn_globaltech_mineral_coef_final",
+             "L2541.trn_globaltech_mineral_Pmult",
              "L2541.StubTranTechCost_no_mineral_cost"))
   } else if(command == driver.DECLARE_OUTPUTS) {
 
@@ -35,6 +36,7 @@ module_energy_transportation_UCD_CORE_mineral_xml <- function(command, ...) {
     # Load required inputs
     L2541.trn_globaltech_mineral_coef_final <- get_data(all_data, "L2541.trn_globaltech_mineral_coef_final")
     L2541.trn_globaltech_mineral_curcoef_final <- get_data(all_data, "L2541.trn_globaltech_mineral_curcoef_final")
+    L2541.trn_globaltech_mineral_Pmult <- get_data(all_data, "L2541.trn_globaltech_mineral_Pmult")
     L2541.StubTranTechCost_no_mineral_cost <- get_data(all_data, "L2541.StubTranTechCost_no_mineral_cost")
 
     # ===================================================
@@ -58,6 +60,7 @@ module_energy_transportation_UCD_CORE_mineral_xml <- function(command, ...) {
       #Read SSP specific data
       L2541.trn_globaltech_mineral_coef_final_SSP <- L2541.trn_globaltech_mineral_coef_final %>%  filter(sce== i)
       L2541.trn_globaltech_mineral_curcoef_final_SSP <- L2541.trn_globaltech_mineral_curcoef_final %>%  filter(sce== i)
+      L2541.trn_globaltech_mineral_Pmult_SSP <- L2541.trn_globaltech_mineral_Pmult %>% filter(sce==i)
       L2541.StubTranTechCost_no_mineral_cost_SSP <- L2541.StubTranTechCost_no_mineral_cost %>%  filter(sce== i)
       if (i != "CORE"){
         L2541.StubTranTechCost_no_mineral_cost_SSP <-
@@ -67,6 +70,8 @@ module_energy_transportation_UCD_CORE_mineral_xml <- function(command, ...) {
       create_xml(xml_name) %>%
         add_xml_data(L2541.trn_globaltech_mineral_coef_final_SSP, "PassThruStubTranTechMineralCoef") %>%
         add_xml_data(L2541.trn_globaltech_mineral_curcoef_final_SSP, "PassThruStubTranTechMineralCurCoef") %>%
+        add_xml_data(L2541.trn_globaltech_mineral_Pmult_SSP, "PassThruStubTranTechPriceUnitConv") %>%
+
         add_xml_data(L2541.StubTranTechCost_no_mineral_cost_SSP, "PassThruStubTranTechCost") %>%
         add_precursors("L2541.trn_globaltech_mineral_coef_final",
                        "L2541.trn_globaltech_mineral_curcoef_final",

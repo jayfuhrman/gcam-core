@@ -148,6 +148,7 @@ generate_level2_data_names <- function() {
   level2_data_names[["TechEff"]] <- c(level2_data_names[["TechYr"]], "minicam.energy.input", "efficiency", "market.name")
   level2_data_names[["TechCost"]] <- c(level2_data_names[["TechYr"]], "minicam.non.energy.input", "input.cost")
   level2_data_names[["TechPmult"]] <- c(level2_data_names[["TechYr"]], "pMult")
+  level2_data_names[["TechPriceUnitConv"]] <- c(level2_data_names[["TechYr"]], "price.unit.conversion")
   level2_data_names[["CarbonCapture"]] <- c(level2_data_names[["TechYr"]], "storage.market", "remove.fraction")
   level2_data_names[["ImportTech"]] <- c(level2_data_names[["TechYr"]]) #indicates a renewable input; nothing is specified in the table however
   level2_data_names[["TechCapital"]] <- c(level2_data_names[["TechYr"]], "input.capital", "capital.overnight", "fixed.charge.rate")
@@ -317,6 +318,7 @@ generate_level2_data_names <- function() {
   level2_data_names[["PassThruStubTranTechCost"]] <- c("region", "pass.through.sector", "tranSubsector", "stub.technology", "year", "minicam.non.energy.input", "input.cost")
   level2_data_names[["PassThruStubTranTechCoef"]] <- c("region", "pass.through.sector", "tranSubsector", "stub.technology", "year", "minicam.energy.input", "coefficient", "market.name")
   level2_data_names[["PassThruStubTranTechProd"]] <- c("region", "pass.through.sector", "tranSubsector", "stub.technology", "year", "calOutputValue")
+  level2_data_names[["PassThruStubTranTechPriceUnitConv"]] <- c("region", "pass.through.sector", "tranSubsector", "stub.technology", "year", "minicam.energy.input", "price.unit.conversion")
 
   # Agricultural sectors, subsectors, and technologies
   level2_data_names[["AgSupplySector"]] <- c("region", "AgSupplySector", "output.unit", "input.unit", "price.unit", "calPrice", "market", "logit.year.fillout", "logit.exponent")

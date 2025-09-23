@@ -9,7 +9,7 @@
 #' @param ... other optional parameters, depending on command
 #' @return Depends on \code{command}: either a vector of required inputs,
 #' a vector of output names, or (if \code{command} is "MAKE") all
-#' the generated outputs: \code{L2261.StubTechCost_elect_td}, \code{L2261.StubTechCoef_elect_td_mineral_final},
+#' the generated outputs: \code{L2261.StubTechCost_elect_td}, \code{L2261.StubTechCoef_elect_td_mineral_final}, \code{L2261.StubTechMineralPMult}
 #' \code{L2261.StubTechLifetime_elect_td},\code{L2261.StubTechSCurve_elect_td}, \code{L2261.StubTechProfitShutdown_elect_td}
 #' @details Prepares Level 2 data on electricity T&D sector for the generation of elect_td_mineral.xml.
 #' Creates global technology database info--cost, shareweight, logit, efficiencies, and interpolations--and regional values where applicable for transmission and distribution.
@@ -28,6 +28,7 @@ module_energy_L2261.elect_td_mineral <- function(command, ...) {
   } else if(command == driver.DECLARE_OUTPUTS) {
     return(c("L2261.StubTechCost_elect_td",
              "L2261.StubTechCoef_elect_td_mineral_final",
+             "L2261.StubTechMineralPMult",
              "L2261.StubTechLifetime_elect_td",
              "L2261.StubTechSCurve_elect_td",
              "L2261.StubTechProfitShutdown_elect_td"))
@@ -156,6 +157,19 @@ module_energy_L2261.elect_td_mineral <- function(command, ...) {
       ungroup() %>%
       select(-years_elapsed)
 
+    #BY 9-8-2025: Add price multipliers for the mineral component of cost
+    # price multiplier is equivalent to 0.13 * the number of years elapsed because new additions are tracked on a timestep basis
+    # 0.13 is the fixed-charge-rate. The mineral cost is considered part of the capital cost,
+    # so the mineral cost are multiplied by the fixed-charge-rate to get the annuity, which will later be used for calculating technology levelized
+    # cost.
+    L2261.StubTechMineralPMult <- L2261.StubTechCoef_elect_td_mineral_final %>%
+      group_by(region, supplysector, subsector, stub.technology, minicam.energy.input) %>%
+      arrange(year) %>%
+      mutate(price.unit.conversion = 0.13*if_else(is.na(lag(year)), 1, year - lag(year))) %>%
+      ungroup() %>%
+      select(LEVEL2_DATA_NAMES[["StubCaloriePriceConv"]]) %>%
+      distinct()
+
     # ===================================================
     L2261.StubTechCost_elect_td  %>%
       add_title("Regional-specific non-mineral non-energy cost for elect_td technologies") %>%
@@ -172,6 +186,15 @@ module_energy_L2261.elect_td_mineral <- function(command, ...) {
                      "common/GCAM_region_names",
                      "L126.out_EJ_R_electd_F_Yh") ->
       L2261.StubTechCoef_elect_td_mineral_final
+
+    L2261.StubTechMineralPMult  %>%
+      add_title("Mineral price unit conversion for elect_td technologies") %>%
+      add_units("NA") %>%
+      add_comments("Mineral price unit conversion for elect_td technologies") %>%
+      add_precursors("minerals/td/A26.td_mineral_coef_Mt_EJ",
+                     "common/GCAM_region_names",
+                     "L126.out_EJ_R_electd_F_Yh") ->
+      L2261.StubTechMineralPMult
 
     L2261.StubTechLifetime_elect_td %>%
       add_title("Lifetimes for elect_td technologies") %>%
@@ -196,6 +219,7 @@ module_energy_L2261.elect_td_mineral <- function(command, ...) {
 
     return_data(L2261.StubTechCost_elect_td,
                 L2261.StubTechCoef_elect_td_mineral_final,
+                L2261.StubTechMineralPMult,
                 L2261.StubTechLifetime_elect_td,
                 L2261.StubTechSCurve_elect_td,
                 L2261.StubTechProfitShutdown_elect_td)

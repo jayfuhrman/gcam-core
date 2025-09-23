@@ -32,7 +32,9 @@ module_energy_hydrogen_xml <- function(command, ...) {
               "L2251.StubTechMineralCoef_final",
               "L2251.GlobalTechMineralCoef_final",
               "L2251.GlobalTechCost_h2",
-              "L2251.StubTechCost_h2"))
+              "L2251.StubTechCost_h2",
+              "L2251.GlobalTechMineralPMult",
+              "L2251.StubTechMineralPMult"))
   } else if(command == driver.DECLARE_OUTPUTS) {
     return(c(XML = "hydrogen.xml"))
   } else if(command == driver.MAKE) {
@@ -62,6 +64,8 @@ module_energy_hydrogen_xml <- function(command, ...) {
     L2251.GlobalTechMineralCoef_final <- get_data(all_data, "L2251.GlobalTechMineralCoef_final")
     L2251.GlobalTechCost_h2 <- get_data(all_data, "L2251.GlobalTechCost_h2")
     L2251.StubTechCost_h2 <- get_data(all_data, "L2251.StubTechCost_h2")
+    L2251.GlobalTechMineralPMult <- get_data(all_data, "L2251.GlobalTechMineralPMult")
+    L2251.StubTechMineralPMult <- get_data(all_data, "L2251.StubTechMineralPMult")
     # ===================================================
 
     # Produce outputs
@@ -91,6 +95,8 @@ module_energy_hydrogen_xml <- function(command, ...) {
       add_xml_data(L225.OutputEmissCoeff_h2, "OutputEmissCoeff") %>%
       add_xml_data(L2251.StubTechMineralCoef_final, "RegionalStubTechMineralCurCoef") %>%
       add_xml_data(L2251.GlobalTechMineralCoef_final, "GlobalTechMineralCurCoefAllYr") %>%
+      add_xml_data(L2251.StubTechMineralPMult, "StubCaloriePriceConv") %>%
+      add_xml_data(L2251.GlobalTechMineralPMult, "GlobalTechInputPMult") %>%
       add_precursors("L225.Supplysector_h2",
                      "L225.SectorUseTrialMarket_h2",
                      "L225.SubsectorLogit_h2",
@@ -111,7 +117,9 @@ module_energy_hydrogen_xml <- function(command, ...) {
                      "L2251.StubTechMineralCoef_final",
                      "L2251.GlobalTechMineralCoef_final",
                      "L2251.GlobalTechCost_h2",
-                     "L2251.StubTechCost_h2") ->
+                     "L2251.StubTechCost_h2",
+                     "L2251.GlobalTechMineralPMult",
+                     "L2251.StubTechMineralPMult") ->
       hydrogen.xml
 
     return_data(hydrogen.xml)

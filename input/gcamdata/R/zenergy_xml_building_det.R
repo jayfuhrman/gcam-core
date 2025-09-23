@@ -68,6 +68,7 @@ module_energy_building_det_xml <- function(command, ...) {
              "L2441.TechCalOutputMaterials",
              "L2441.TechShrwtMaterials",
              "L2441.TechCoefMaterials_final",
+             "L2441.TechPMultMaterials",
              "L2441.TechLifetimeMaterials",
              "L2441.TechSCurveMaterials",
              "L2441.TechProfitShutdownMaterials"))
@@ -135,6 +136,7 @@ module_energy_building_det_xml <- function(command, ...) {
     L2441.TechCalOutputMaterials <- get_data(all_data, "L2441.TechCalOutputMaterials", strip_attributes = TRUE)
     L2441.TechShrwtMaterials <- get_data(all_data, "L2441.TechShrwtMaterials", strip_attributes = TRUE)
     L2441.TechCoefMaterials_final <- get_data(all_data, "L2441.TechCoefMaterials_final", strip_attributes = TRUE)
+    L2441.TechPMultMaterials <- get_data(all_data, "L2441.TechPMultMaterials", strip_attributes = TRUE)
 
     L2441.TechLifetimeMaterials <- get_data(all_data, "L2441.TechLifetimeMaterials", strip_attributes = TRUE)
     L2441.TechSCurveMaterials <- get_data(all_data, "L2441.TechSCurveMaterials", strip_attributes = TRUE)
@@ -192,6 +194,7 @@ module_energy_building_det_xml <- function(command, ...) {
       add_xml_data(L2441.TechCalOutputMaterials, "Production") %>%
       add_xml_data(L2441.TechShrwtMaterials, "TechShrwt") %>%
       add_xml_data(L2441.TechCoefMaterials_final, "RegionalTechMineralCurCoef") %>%
+      add_xml_data(L2441.TechPMultMaterials, "TechPriceUnitConv") %>%
       add_xml_data(L2441.TechLifetimeMaterials, "TechLifetime") %>%
       add_xml_data(L2441.TechSCurveMaterials, "TechSCurve") %>%
       add_xml_data(L2441.TechProfitShutdownMaterials, "TechProfitShutdown") %>%
@@ -224,6 +227,7 @@ module_energy_building_det_xml <- function(command, ...) {
                      "L2441.SubsectorInterpToMaterials",
                      "L2441.TechCalOutputMaterials",
                      "L2441.TechCoefMaterials_final",
+                     "TechPriceUnitConv",
                      "L2441.TechShrwtMaterials",
                      "L2441.TechLifetimeMaterials",
                      "L2441.TechSCurveMaterials",

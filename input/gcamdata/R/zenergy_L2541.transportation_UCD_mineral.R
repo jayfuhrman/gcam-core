@@ -24,6 +24,7 @@ module_energy_L2541.transportation_UCD_mineral <- function(command, ...) {
   } else if(command == driver.DECLARE_OUTPUTS) {
     return(c("L2541.trn_globaltech_mineral_curcoef_final",
              "L2541.trn_globaltech_mineral_coef_final",
+             "L2541.trn_globaltech_mineral_Pmult",
              "L2541.StubTranTechCost_no_mineral_cost"))  # input produced by another chunk
   } else if(command == driver.MAKE) {
 
@@ -272,7 +273,18 @@ module_energy_L2541.transportation_UCD_mineral <- function(command, ...) {
 
     L2541.trn_globaltech_mineral_coef_final <-  L2541.trn_globaltech_mineral_coef_regMineralInputs
 
-
+    #BY 9-8-2025: Add price multipliers for the mineral component of cost
+    # price multiplier is equivalent to 0.13 * the number of years elapsed because new additions are tracked on a timestep basis
+    # 0.13 is the fixed-charge-rate. The mineral cost is considered part of the capital cost,
+    # so the mineral cost are multiplied by the fixed-charge-rate to get the annuity, which will later be used for calculating technology levelized
+    # cost.
+    L2541.trn_globaltech_mineral_Pmult <- L2541.trn_globaltech_mineral_curcoef_final %>%
+      group_by(region, pass.through.sector, tranSubsector, stub.technology, minicam.energy.input, sce) %>%
+      arrange(year) %>%
+      mutate(price.unit.conversion = 0.13*if_else(is.na(lag(year)), 1, year - lag(year))) %>%
+      ungroup() %>%
+      select(LEVEL2_DATA_NAMES[["PassThruStubTranTechPriceUnitConv"]], sce) %>%
+      distinct()
     #------------------------------------------------------------------------------------------------------------------
 
     L2541.trn_globaltech_mineral_curcoef_final %>%
@@ -293,6 +305,15 @@ module_energy_L2541.transportation_UCD_mineral <- function(command, ...) {
       add_comments("This dataset are just all zero value, which is used to set all current coef as 0 by default. This avoid the unnecessary 0 current coef input") ->
       L2541.trn_globaltech_mineral_coef_final
 
+    L2541.trn_globaltech_mineral_Pmult %>%
+      add_title("transport sector technology price unit conversion") %>%
+      add_units("kg/vkm") %>%
+      add_precursors("common/GCAM_region_names", "L254.StubTranTechLoadFactor", "minerals/transport/A54.trn_annual_travel_data",
+                     "minerals/transport/A54.trn_globaltech_mineral_coef") %>%
+      add_legacy_name("L2541.trn_globaltech_mineral_coef_final") %>%
+      add_comments("transport sector technology price unit conversion") ->
+      L2541.trn_globaltech_mineral_Pmult
+
     L2541.StubTranTechCost_no_mineral_cost %>%
       add_title("TranTechnology costs of transport sector (excluding material cost)") %>%
       add_units("$1990USD/vkm") %>%
@@ -305,6 +326,7 @@ module_energy_L2541.transportation_UCD_mineral <- function(command, ...) {
 
     return_data(L2541.trn_globaltech_mineral_curcoef_final,
                 L2541.trn_globaltech_mineral_coef_final,
+                L2541.trn_globaltech_mineral_Pmult,
                 L2541.StubTranTechCost_no_mineral_cost)
   } else {
     stop("Unknown command")
