@@ -231,6 +231,7 @@ module_energy_building_det_xml <- function(command, ...) {
                      "L2441.TechShrwtMaterials",
                      "L2441.TechLifetimeMaterials",
                      "L2441.TechSCurveMaterials",
+                     "L2441.TechPMultMaterials",
                      "L2441.TechProfitShutdownMaterials") ->   building_det.xml
 
     # Some data inputs may not actually contain data. If so, do not add_xml_data.

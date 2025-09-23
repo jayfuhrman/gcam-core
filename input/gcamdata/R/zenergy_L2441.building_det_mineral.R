@@ -43,6 +43,7 @@ module_energy_L2441.building_det_mineral <- function(command, ...) {
              "L2441.TechCoefMaterials_final",
              "L2441.TechLifetimeMaterials",
              "L2441.TechSCurveMaterials",
+             "L2441.TechPMultMaterials",
              "L2441.TechProfitShutdownMaterials"))
   } else if(command == driver.MAKE) {
 
