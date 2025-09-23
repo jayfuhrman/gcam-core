@@ -4,7 +4,7 @@
 # Units: Unitless
 # Column types: cccnnnnnnnnnnnc
 # ----------
-supplysector,tranSubsector,tranTechnology,1971,2010,2015,2020,2025,2030,2035,2040,2050,2075,2100,sce
+supplysector,tranSubsector,tranTechnology,1971,2010,2015,2021,2025,2030,2035,2040,2050,2075,2100,sce
 trn_aviation_intl_pass,International Aviation,Liquids,1,1,1,1,1,1,1,1,1,1,1,CORE
 trn_aviation_intl_pass,International Aviation,BEV,0,0,0,0,0,0,0,0,0,0,0.1,CORE
 trn_aviation_intl_pass,International Aviation,Hydrogen,0,0,0,0,0,0,0,0,0,0,1,CORE

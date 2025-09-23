@@ -5,7 +5,7 @@
 # Comments: add later
 # Column types: cccnnn
 # ----------
-supplysector,subsector,stub.technology,2020,2040,2100
+supplysector,subsector,stub.technology,2021,2040,2100
 trn_fret_road_ht_bev_pass,fret_road_ht_bev,h_truck_bev (LMO),1,1,1
 trn_fret_road_ht_bev_pass,fret_road_ht_bev,h_truck_bev (NMC111),1,1,1
 trn_fret_road_ht_bev_pass,fret_road_ht_bev,h_truck_bev (NMC622),1,1,1
