@@ -5,10 +5,10 @@
 # Column types: ccccccc
 # ----------
 supplysector,tranSubsector,apply.to,from.year,to.year,to.value,interpolation.function
-trn_fret_road_lt_bev_pass,fret_road_lt_bev,share-weight,final-calibration-year,end-year,,fixed
-trn_fret_road_mt_bev_pass,fret_road_mt_bev,share-weight,final-calibration-year,end-year,,fixed
-trn_fret_road_ht_bev_pass,fret_road_ht_bev,share-weight,final-calibration-year,end-year,,fixed
-trn_bus_bev_pass,bus_bev,share-weight,final-calibration-year,end-year,,fixed
-trn_pasg_road_ldv_4W_mc_bev_pass,car_bev,share-weight,final-calibration-year,end-year,,fixed
-trn_pasg_road_ldv_4W_hc_bev_pass,largecar_bev,share-weight,final-calibration-year,end-year,,fixed
-trn_pasg_road_ldv_4W_lc_bev_pass,minicar_bev,share-weight,final-calibration-year,end-year,,fixed
+trn_fret_road_lt_bev_pass,fret_road_lt_bev,share-weight,initial-future-year,end-year,,fixed
+trn_fret_road_mt_bev_pass,fret_road_mt_bev,share-weight,initial-future-year,end-year,,fixed
+trn_fret_road_ht_bev_pass,fret_road_ht_bev,share-weight,initial-future-year,end-year,,fixed
+trn_bus_bev_pass,bus_bev,share-weight,initial-future-year,end-year,,fixed
+trn_pasg_road_ldv_4W_mc_bev_pass,car_bev,share-weight,initial-future-year,end-year,,fixed
+trn_pasg_road_ldv_4W_hc_bev_pass,largecar_bev,share-weight,initial-future-year,end-year,,fixed
+trn_pasg_road_ldv_4W_lc_bev_pass,minicar_bev,share-weight,initial-future-year,end-year,,fixed

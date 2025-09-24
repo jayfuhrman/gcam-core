@@ -5,10 +5,10 @@
 # Column types: ccccn
 # ----------
 supplysector,tranSubsector,year.fillout,year,share.weight
-trn_fret_road_lt_bev_pass,fret_road_lt_bev,start-year,,1
-trn_fret_road_mt_bev_pass,fret_road_mt_bev,start-year,,1
-trn_fret_road_ht_bev_pass,fret_road_ht_bev,start-year,,1
-trn_bus_bev_pass,bus_bev,start-year,,1
-trn_pasg_road_ldv_4W_mc_bev_pass,car_bev,start-year,,1
-trn_pasg_road_ldv_4W_hc_bev_pass,largecar_bev,start-year,,1
-trn_pasg_road_ldv_4W_lc_bev_pass,minicar_bev,start-year,,1
+trn_fret_road_lt_bev_pass,fret_road_lt_bev,initial-future-year,,1
+trn_fret_road_mt_bev_pass,fret_road_mt_bev,initial-future-year,,1
+trn_fret_road_ht_bev_pass,fret_road_ht_bev,initial-future-year,,1
+trn_bus_bev_pass,bus_bev,initial-future-year,,1
+trn_pasg_road_ldv_4W_mc_bev_pass,car_bev,initial-future-year,,1
+trn_pasg_road_ldv_4W_hc_bev_pass,largecar_bev,initial-future-year,,1
+trn_pasg_road_ldv_4W_lc_bev_pass,minicar_bev,initial-future-year,,1
