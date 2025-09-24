@@ -215,8 +215,8 @@ module_energy_L2541.transportation_UCD_mineral <- function(command, ...) {
 
     # First, bind together the calibration values associated with all technologies
     # This includes:
-    # Many technologies from L254.StubTranTechCalInput
-    # Cycle from L254.StubTranTechOutput
+    # Many technologies from L254.StubTranTechOutput
+    # Cycle from L254.StubTechProd_nonmotor_PassThrusector
     # get in units of vkm by dividing by load factor
     L2541.StubTranTechOutput_vkm <- L254.StubTranTechOutput %>%
       filter(sce == "CORE") %>%
