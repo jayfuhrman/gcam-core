@@ -24,18 +24,21 @@
 module_energy_L2327.paper.cwf <- function(command, ...) {
 
   if(command == driver.DECLARE_INPUTS) {
-    return(c(FILE = "cwf/A327.globaltech_coef_cwf",
-             FILE = "energy/A23.chp_elecratio"))
+    return(c(FILE = "cwf/A327.globaltech_coef_cwf_adj",
+             "L2327.GlobalTechCoef_paper",
+             "L2327.StubTechCoef_paper"))
   } else if(command == driver.DECLARE_OUTPUTS) {
     return(c("L2327.GlobalTechCoef_paper_cwf",
-             "L2327.GlobalTechSecOut_paper_cwf"))
+             "L2327.StubTechCoef_paper_cwf"))
   } else if(command == driver.MAKE) {
 
     all_data <- list(...)[[1]]
 
     # Load required inputs
-    A327.globaltech_coef_cwf <- get_data(all_data, "cwf/A327.globaltech_coef_cwf", strip_attributes = TRUE)
-    A23.chp_elecratio  <- get_data(all_data, "energy/A23.chp_elecratio", strip_attributes = TRUE)
+    A327.globaltech_coef_cwf_adj <- get_data(all_data, "cwf/A327.globaltech_coef_cwf_adj", strip_attributes = TRUE)
+    L2327.GlobalTechCoef_paper <- get_data(all_data, "L2327.GlobalTechCoef_paper", strip_attributes = TRUE)
+    L2327.StubTechCoef_paper <- get_data(all_data,"L2327.StubTechCoef_paper",strip_attributes = TRUE)
+
     # ===================================================
     # 0. Give binding for variable names used in pipeline
     has_district_heat <- year <- value <- GCAM_region_ID <- sector <- fuel <- year.fillout <- to.value <-
@@ -48,50 +51,37 @@ module_energy_L2327.paper.cwf <- function(command, ...) {
 
     # ===================================================
 
-    A327.globaltech_coef_cwf %>%
-      gather_years(value_col = "coefficient") %>%
-      complete(nesting(supplysector, subsector, technology, minicam.energy.input, secondary.output),
-               year = c(year, MODEL_BASE_YEARS, MODEL_FUTURE_YEARS)) %>%
-      arrange(supplysector, subsector, technology, minicam.energy.input, secondary.output, year) %>%
-      group_by(supplysector, subsector, technology, minicam.energy.input, secondary.output) %>%
-      mutate(coefficient = approx_fun(year, coefficient, rule = 1),
-             coefficient = round(coefficient, energy.DIGITS_EFFICIENCY)) %>%
+    A327.globaltech_coef_cwf_adj %>%
+      gather_years(value_col = "coefficient_adj") %>%
+      complete(nesting(supplysector, subsector, technology, minicam.energy.input, scenario), year = c(year, MODEL_BASE_YEARS, MODEL_FUTURE_YEARS)) %>%
+      arrange(supplysector, subsector, technology, minicam.energy.input, scenario, year) %>%
+      group_by(supplysector, subsector, technology, minicam.energy.input, scenario) %>%
+      mutate(coefficient_adj = approx_fun(year, coefficient_adj, rule = 2)) %>%
       ungroup %>%
       filter(year %in% c(MODEL_BASE_YEARS, MODEL_FUTURE_YEARS)) %>%
       # Assign the columns "sector.name" and "subsector.name", consistent with the location info of a global technology
       rename(sector.name = supplysector,
              subsector.name = subsector) ->
-      L2327.globaltech_coef.long # intermediate tibble
+      L2327.globaltech_coef_cwf_adj # intermediate tibble
 
-    L2327.globaltech_coef.long %>%
-      select(LEVEL2_DATA_NAMES[["GlobalTechCoef"]]) ->
+    # apply to the original global tech coefficients
+    L2327.GlobalTechCoef_paper %>%
+      left_join(L2327.globaltech_coef_cwf_adj) %>%
+      mutate(coefficient = round(coefficient * coefficient_adj, energy.DIGITS_COEFFICIENT)) %>%
+      select(LEVEL2_DATA_NAMES[["GlobalTechCoef"]], secondary.output, scenario) ->
       L2327.GlobalTechCoef_paper_cwf
 
-    # Secondary outputs of cogen technologies: these are input as a ratio
-    # L2327.GlobalTechSecOut_ind: Secondary output ratios of paper cogeneration technologies
-    A327.globaltech_coef_cwf %>%
-      gather_years(value_col = "coefficient") %>%
-      complete(nesting(supplysector, subsector, technology, minicam.energy.input, secondary.output),
-               year = c(year, MODEL_BASE_YEARS, MODEL_FUTURE_YEARS)) %>%
-      arrange(supplysector, subsector, technology, minicam.energy.input, secondary.output, year) %>%
-      group_by(supplysector, subsector, technology, minicam.energy.input, secondary.output) %>%
-      mutate(coefficient = approx_fun(year, coefficient, rule = 1),
-             coefficient = round(coefficient, energy.DIGITS_EFFICIENCY)) %>%
-      filter(year %in% c(MODEL_BASE_YEARS, MODEL_FUTURE_YEARS)) %>%
-      filter(!is.na(secondary.output)) %>%
-      left_join_error_no_match(A23.chp_elecratio, by = c("subsector" = "fuel")) %>%
-      mutate(output.ratio = elec_ratio * coefficient,
-             output.ratio = round(output.ratio, energy.DIGITS_EFFICIENCY)) %>%
-      # NOTE: holding the output ratio constant over time in future periods
-      left_join_error_no_match(select(filter(., year == max(MODEL_BASE_YEARS)), -coefficient, -elec_ratio),
-                               by = c("supplysector", "subsector", "technology", "minicam.energy.input", "secondary.output")) %>%
-      mutate(output.ratio = if_else(year.x %in% MODEL_BASE_YEARS, output.ratio.x, output.ratio.y)) %>%
-      ungroup %>%
-      rename(year = year.x,
-             sector.name = supplysector,
-             subsector.name = subsector) %>%
-      select(LEVEL2_DATA_NAMES[["GlobalTechSecOut"]]) ->
-      L2327.GlobalTechSecOut_paper_cwf
+
+    L2327.StubTechCoef_paper %>%
+      # apply CWF adjustments
+      left_join(L2327.globaltech_coef_cwf_adj %>%
+                  rename(supplysector = sector.name, subsector = subsector.name, stub.technology = technology) %>%
+                  dplyr::select(-secondary.output),
+                by = c("supplysector","subsector","stub.technology","minicam.energy.input","year")) %>%
+      mutate(coefficient = round(coefficient * coefficient_adj, energy.DIGITS_COEFFICIENT)) %>%
+      filter(year %in% MODEL_YEARS) %>% # drop the terminal coef year if it's outside of the model years
+      select(LEVEL2_DATA_NAMES[["StubTechCoef"]], scenario) ->
+      L2327.StubTechCoef_paper_cwf
 
 
     # =======================================================
@@ -102,19 +92,19 @@ module_energy_L2327.paper.cwf <- function(command, ...) {
       add_units("Unitless") %>%
       add_comments("For paper sector, the energy use coefficients from A327.globaltech_coef are interpolated into all model years") %>%
       add_legacy_name("L2327.GlobalTechCoef_paper_cwf") %>%
-      add_precursors("cwf/A327.globaltech_coef_cwf") ->
+      add_precursors("cwf/A327.globaltech_coef_cwf", "L2327.GlobalTechCoef_paper") ->
       L2327.GlobalTechCoef_paper_cwf
 
 
-    L2327.GlobalTechSecOut_paper_cwf %>%
-      add_title("Secondary output ratios of paper cogeneration technologies") %>%
-      add_units("Unitless") %>%
-      add_comments("Secondary output ratios are calculated as electricity ratio (Assumed CHP electricity output per unit fuel input) over efficiency") %>%
-      add_legacy_name("L2327.GlobalTechSecOut_paper") %>%
-      add_precursors("energy/A23.chp_elecratio", "cwf/A327.globaltech_coef_cwf") ->
-      L2327.GlobalTechSecOut_paper_cwf
+    L2327.StubTechCoef_paper_cwf %>%
+      add_title("region-specific coefficients of aluminum production technologies") %>%
+      add_units("unitless") %>%
+      add_comments("Coefficients from literature wirh CWF adjustments") %>%
+      add_legacy_name("L2327.StubTechCoef_paper_cwf") %>%
+      add_precursors("cwf/A327.globaltech_coef_cwf", "L2327.StubTechCoef_paper") ->
+      L2327.StubTechCoef_paper_cwf
 
-    return_data(L2327.GlobalTechCoef_paper_cwf,L2327.GlobalTechSecOut_paper_cwf)
+    return_data(L2327.GlobalTechCoef_paper_cwf, L2327.StubTechCoef_paper_cwf)
 
   } else {
     stop("Unknown command")

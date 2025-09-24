@@ -4,7 +4,7 @@
 # Units: Fraction
 # Column types: ccccnnnc
 # ----------
-supplysector,subsector,technology,minicam.energy.input,2020,2050,2100,scenario
+supplysector,subsector,technology,minicam.energy.input,2025,2050,2100,scenario
 cement,cement,cement,process heat cement,1,0.9,0.8,cwf
 cement,cement,cement,elect_td_ind,1,0.9,0.8,cwf
 cement,cement,cement,limestone,1,0.6,0.6,cwf

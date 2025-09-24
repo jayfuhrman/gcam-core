@@ -13,27 +13,34 @@
 module_energy_paper_cwf_xml <- function(command, ...) {
   if(command == driver.DECLARE_INPUTS) {
     return(c("L2327.GlobalTechCoef_paper_cwf",
-             "L2327.GlobalTechSecOut_paper_cwf"))
+             "L2327.StubTechCoef_paper_cwf"))
   } else if(command == driver.DECLARE_OUTPUTS) {
-    return(c(XML = "paper_cwf.xml"))
+    return(c(XML = "paper_cwf.xml",
+             XML = "paper_cwf_LED.xml"))
   } else if(command == driver.MAKE) {
 
     all_data <- list(...)[[1]]
 
     # Load required inputs
     L2327.GlobalTechCoef_paper_cwf <- get_data(all_data, "L2327.GlobalTechCoef_paper_cwf")
-    L2327.GlobalTechSecOut_paper_cwf <- get_data(all_data, "L2327.GlobalTechSecOut_paper_cwf")
+    L2327.StubTechCoef_paper_cwf <- get_data(all_data, "L2327.StubTechCoef_paper_cwf")
 
     # ===================================================
 
     # Produce outputs
     create_xml("paper_cwf.xml") %>%
-      add_xml_data(L2327.GlobalTechCoef_paper_cwf, "GlobalTechCoef") %>%
-      add_xml_data(L2327.GlobalTechSecOut_paper_cwf, "GlobalTechSecOut") %>%
-      add_precursors("L2327.GlobalTechCoef_paper_cwf","L2327.GlobalTechSecOut_paper_cwf") ->
+      add_xml_data(L2327.GlobalTechCoef_paper_cwf %>% filter(scenario == 'cwf'), "GlobalTechCoef") %>%
+      add_xml_data(L2327.StubTechCoef_paper_cwf %>% filter(scenario == 'cwf'), "StubTechCoef") %>%
+      add_precursors("L2327.GlobalTechCoef_paper_cwf","L2327.StubTechCoef_paper_cwf") ->
       paper_cwf.xml
 
-    return_data(paper_cwf.xml)
+    create_xml("paper_cwf_LED.xml") %>%
+      add_xml_data(L2327.GlobalTechCoef_paper_cwf %>% filter(scenario == 'cwf-LED'), "GlobalTechCoef") %>%
+      add_xml_data(L2327.StubTechCoef_paper_cwf %>% filter(scenario == 'cwf-LED'), "StubTechCoef") %>%
+      add_precursors("L2327.GlobalTechCoef_paper_cwf","L2327.StubTechCoef_paper_cwf") ->
+      paper_cwf_LED.xml
+
+    return_data(paper_cwf.xml,paper_cwf_LED.xml)
   } else {
     stop("Unknown command")
   }
