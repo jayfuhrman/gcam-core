@@ -48,7 +48,7 @@ module_aglu_ag_an_demand_input_xml <- function(command, ...) {
   MODULE_OUTPUTS <-
     c(XML = "ag_an_demand_input_NonFood.xml",
       XML = "ag_an_demand_input_Food_Static.xml",
-      XML = "ag_an_demand_input_Food_Intake_SSP1.xml",
+      XML = "ag_an_demand_input_Food_Intake_SSP1.xml", # Same as CWF Low Ambition
       XML = "ag_an_demand_input_Food_Intake_SSP2.xml",
       XML = "ag_an_demand_input_Food_Intake_SSP3.xml",
       XML = "ag_an_demand_input_Food_Intake_SSP4.xml",

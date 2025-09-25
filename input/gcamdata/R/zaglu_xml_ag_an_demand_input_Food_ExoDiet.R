@@ -32,10 +32,16 @@ module_aglu_ag_an_demand_input_Food_ExoDiet_xml <- function(command, ...) {
       "L109.an_ALL_Mt_R_C_Y",
       # food proc linkage moved from module_energy_food_processing_xml
       "L2328.StubCalorieContent",
-      "L2328.StubCaloriePriceConv")
+      "L2328.StubCaloriePriceConv",
+      "L100.AgMIP_FoodWaste_Share_Pathway_SSP")
 
   MODULE_OUTPUTS <-
-    c(XML = "ag_an_demand_input_Food_ExoDiet_SSP1_VLLO.xml",
+    c(
+      # CWF pathways
+      XML = "ag_an_demand_input_FoodExoDiet_SSP1_CWFMed_RegHet.xml",
+      XML = "ag_an_demand_input_FoodExoDiet_SSP1_CWFHigh_2050.xml",
+      # ScenarioMIP pathways
+      XML = "ag_an_demand_input_Food_ExoDiet_SSP1_VLLO.xml",
       XML = "ag_an_demand_input_Food_ExoDiet_SSP1_VLHO.xml",
       XML = "ag_an_demand_input_Food_ExoDiet_SSP2_VLLO.xml",
       XML = "ag_an_demand_input_Food_ExoDiet_SSP2_VLHO.xml")
@@ -52,6 +58,23 @@ module_aglu_ag_an_demand_input_Food_ExoDiet_xml <- function(command, ...) {
     get_data_list(all_data, MODULE_INPUTS, strip_attributes = TRUE)
     cur_env <- environment()
 
+    # ===================================================
+
+    #Region income groups
+    REG_low_lowermiddle_income <- c("Africa_Eastern", "Pakistan", "Africa_Southern",
+                                    "South Asia", "Africa_Western", "India",
+                                    "Ukraine", "Africa_Northern", "South America_Northern",
+                                    "Southeast Asia", "Indonesia")
+
+    REG_uppermiddle_income <- c("Central America and Caribbean", "Central Asia",
+                                "South Africa", "South America_Southern", "Colombia",
+                                "China", "Argentina", "Mexico", "Middle East", "Brazil",
+                                "Russia")
+
+    REG_high_income <- c("Europe_Non_EU", "EU-12", "Taiwan", "South Korea", "EU-15", "Japan",
+                         "Canada", "USA", "Australia_NZ", "European Free Trade Association")
+
+    # ===================================================
 
     # Note that we will calculate total Pcal by food group, which will be exogenously driven
     # by population and "income elasticity" to meet EL2 targets.
@@ -247,6 +270,81 @@ module_aglu_ag_an_demand_input_Food_ExoDiet_xml <- function(command, ...) {
     #"GCAM_TargetEL2" will be set to a future year with linear interpolations in-between
     # Note that target is defined based on kcal/ca/d so no SSP differentiation
 
+    # Static pathway
+    GCAM_AgMIP_Supply_Intake_base4_Static <-
+      GCAM_AgMIP_Supply_Intake_base4 %>%
+      mutate(measure = case_when(measure == "GCAM_intake_2021" ~ 2021,
+                                 measure == "GCAM_intake_2025" ~ 2025)) %>%
+      arrange(GCAM_region_ID, region, supplysector, measure)
+
+
+    # EL2 2050: Interpolate diet linearly to 2050
+    GCAM_AgMIP_Supply_Intake_base4 %>%
+      filter(supplysector != "NEC") %>%
+      distinct(GCAM_region_ID, supplysector) %>%
+      repeat_add_columns(tibble(year = c(2021,2025))) %>%
+      left_join(select(GCAM_AgMIP_Supply_Intake_base4_Static, -region),
+                by = c("GCAM_region_ID", "supplysector", "year" = "measure")) %>%
+      group_by_at(vars(-year, -value)) %>%
+      mutate(value = approx_fun(year, value)) %>%
+      ungroup() ->
+      GCAM_AgMIP_Supply_Intake_base5_Static
+
+    # Adding post-2025 as 2025
+    GCAM_AgMIP_Supply_Intake_base5_Static %>%
+      bind_rows(
+        GCAM_AgMIP_Supply_Intake_base5_Static %>%
+          filter(year == 2025) %>% select(-year) %>%
+          repeat_add_columns(tibble(year = seq(2030, 2100,5)))
+      ) ->
+      GCAM_AgMIP_Supply_Intake_base6_Static
+
+    ## Need to define SSP scenario here ----
+    GCAM_AgMIP_Supply_Intake_base6_Static %>%
+      repeat_add_columns(tibble(scenario = c("SSP1", "SSP2"))) %>%
+      arrange(scenario)->
+      GCAM_Intake_kcal_Scenario_Static_SSP
+
+
+
+    # * Scenario CWF High Ambition ----
+    # For CWF High Ambition, we will use 2025 - 2050 linear path and constant after that
+
+    GCAM_AgMIP_Supply_Intake_base4_EL2_2050 <-
+      GCAM_AgMIP_Supply_Intake_base4 %>%
+      mutate(measure = case_when(measure == "GCAM_intake_2021" ~ 2021,
+                                 measure == "GCAM_intake_2025" ~ 2025,
+                                 measure == "GCAM_TargetEL2" ~ 2050)) %>%
+      arrange(GCAM_region_ID, region, supplysector, measure)
+
+
+    # EL2 2050: Interpolate diet linearly to 2050
+    GCAM_AgMIP_Supply_Intake_base4 %>%
+      filter(supplysector != "NEC") %>%
+      distinct(GCAM_region_ID, supplysector) %>%
+      repeat_add_columns(tibble(year = c(2021,seq(2025, 2050,5)))) %>%
+      left_join(select(GCAM_AgMIP_Supply_Intake_base4_EL2_2050, -region),
+                by = c("GCAM_region_ID", "supplysector", "year" = "measure")) %>%
+      group_by_at(vars(-year, -value)) %>%
+      mutate(value = approx_fun(year, value)) %>%
+      ungroup() ->
+      GCAM_AgMIP_Supply_Intake_base5_EL2_2050
+
+    # Adding post-2050 as 2050
+    GCAM_AgMIP_Supply_Intake_base5_EL2_2050 %>%
+      bind_rows(
+        GCAM_AgMIP_Supply_Intake_base5_EL2_2050 %>%
+          filter(year == 2050) %>% select(-year) %>%
+          repeat_add_columns(tibble(year = seq(2055, 2100,5)))
+      ) ->
+      GCAM_AgMIP_Supply_Intake_base6_EL2_2050
+
+    ## Need to define SSP scenario here ----
+    GCAM_AgMIP_Supply_Intake_base6_EL2_2050 %>%
+      repeat_add_columns(tibble(scenario = c("SSP1", "SSP2"))) %>%
+      arrange(scenario)->
+      GCAM_Intake_kcal_Scenario_2025_2050_SSP
+
     # * Scenario VLLO ----
     # For VLLO, we will use 2025 - 2070 linear path and constant after that
 
@@ -287,6 +385,7 @@ module_aglu_ag_an_demand_input_Food_ExoDiet_xml <- function(command, ...) {
 
 
     # * Scenario VLHO ----
+    # * CWF Medium Ambition uses 2100 convergence for some regions (Reg Het)
     # For VLHO, we will use 2025 - 2100 linear path and constant after that
 
     GCAM_AgMIP_Supply_Intake_base4_EL2_2100 <-
@@ -341,6 +440,79 @@ module_aglu_ag_an_demand_input_Food_ExoDiet_xml <- function(command, ...) {
       POPGDP_SSPs
 
     # derive income elasticity required
+    ## Static
+    GCAM_Intake_kcal_Scenario_Static_SSP %>%
+      left_join(POPGDP_SSPs %>%
+                  select(scenario, GCAM_region_ID, year, totalPop, GDP),
+                by = c("GCAM_region_ID", "year", "scenario")) %>%
+      mutate(Pcal = value * 365 * totalPop/10^9) %>%
+      group_by(scenario, GCAM_region_ID, supplysector) %>%
+      arrange(scenario, GCAM_region_ID, supplysector, year) %>%
+      mutate(Lag_GDP = lag(GDP),
+             LogDiffGDP = log(GDP/lag(GDP)),
+             LogDiffPcal = log(Pcal/lag(Pcal)),
+             income.elasticity = LogDiffPcal / LogDiffGDP) %>%
+      ungroup() %>%
+      left_join_error_no_match(GCAM_region_names, by = "GCAM_region_ID") %>%
+      # update names to new final demand
+      mutate(energy.final.demand = as.character(supplysector),
+             energy.final.demand = if_else(energy.final.demand == "Staples",
+                                           energy.final.demand, paste0("NonStaples_", energy.final.demand)),
+             energy.final.demand = paste0("FoodDemand_", energy.final.demand)) ->
+      L101.CropMeat_Food_Pcal_R_C_Y_IntakePathways_Static_SSP
+
+    L101.CropMeat_Food_Pcal_R_C_Y_IntakePathways_Static_SSP %>%
+      filter(year >= min(MODEL_FUTURE_YEARS)) %>%
+      select(scenario, region, energy.final.demand, year, income.elasticity) %>%
+      # Taiwan and South American North has constant pc GDP after 2050 per our assumptions
+      # this led to inf in income elasticity
+      mutate(income.elasticity = replace(income.elasticity, is.infinite(income.elasticity), 0)) ->
+      L100.IncomeElasticity_Food_ExoDiet_Static_SSP
+
+    assertthat::assert_that(
+      L100.IncomeElasticity_Food_ExoDiet_Static_SSP %>%
+        filter(is.na(income.elasticity)) %>%
+        nrow() == 0 )
+
+    # *income elasticity needed done for Static ----
+
+    ## Scenario CWF High Ambition
+    GCAM_Intake_kcal_Scenario_2025_2050_SSP %>%
+      left_join(POPGDP_SSPs %>%
+                  select(scenario, GCAM_region_ID, year, totalPop, GDP),
+                by = c("GCAM_region_ID", "year", "scenario")) %>%
+      mutate(Pcal = value * 365 * totalPop/10^9) %>%
+      group_by(scenario, GCAM_region_ID, supplysector) %>%
+      arrange(scenario, GCAM_region_ID, supplysector, year) %>%
+      mutate(Lag_GDP = lag(GDP),
+             LogDiffGDP = log(GDP/lag(GDP)),
+             LogDiffPcal = log(Pcal/lag(Pcal)),
+             income.elasticity = LogDiffPcal / LogDiffGDP) %>%
+      ungroup() %>%
+      left_join_error_no_match(GCAM_region_names, by = "GCAM_region_ID") %>%
+      # update names to new final demand
+      mutate(energy.final.demand = as.character(supplysector),
+             energy.final.demand = if_else(energy.final.demand == "Staples",
+                                           energy.final.demand, paste0("NonStaples_", energy.final.demand)),
+             energy.final.demand = paste0("FoodDemand_", energy.final.demand)) ->
+      L101.CropMeat_Food_Pcal_R_C_Y_IntakePathways_2025_2050_SSP
+
+    L101.CropMeat_Food_Pcal_R_C_Y_IntakePathways_2025_2050_SSP %>%
+      filter(year >= min(MODEL_FUTURE_YEARS)) %>%
+      select(scenario, region, energy.final.demand, year, income.elasticity) %>%
+      # Taiwan and South American North has constant pc GDP after 2050 per our assumptions
+      # this led to inf in income elasticity
+      mutate(income.elasticity = replace(income.elasticity, is.infinite(income.elasticity), 0)) ->
+      L100.IncomeElasticity_Food_ExoDiet_2025_2050_SSP
+
+    assertthat::assert_that(
+      L100.IncomeElasticity_Food_ExoDiet_2025_2050_SSP %>%
+        filter(is.na(income.elasticity)) %>%
+        nrow() == 0 )
+
+    # *income elasticity needed done for CWF High Ambition ----
+
+
     ## Scenario VLLO
     GCAM_Intake_kcal_Scenario_VLLO_2025_2070_SSP %>%
       left_join(POPGDP_SSPs %>%
@@ -378,7 +550,7 @@ module_aglu_ag_an_demand_input_Food_ExoDiet_xml <- function(command, ...) {
     # *income elasticity needed done for VLLO ----
 
 
-    ## Scenario VLLO
+    ## Scenario VLHO
     GCAM_Intake_kcal_Scenario_VLHO_2025_2100_SSP %>%
       left_join(POPGDP_SSPs %>%
                   select(scenario, GCAM_region_ID, year, totalPop, GDP),
@@ -413,6 +585,24 @@ module_aglu_ag_an_demand_input_Food_ExoDiet_xml <- function(command, ...) {
         nrow() == 0 )
 
     # *income elasticity needed done for VLHO ----
+
+    #Regional heterogeneity income elasticity
+    # Low/lower-middle income regions: static
+    # Upper-middle income regions: converge to EL2 by 2100
+    # High income regions: converge to EL2 by 2050
+    L100.IncomeElasticity_Food_ExoDiet_Static_SSP_low_income <- L100.IncomeElasticity_Food_ExoDiet_Static_SSP %>%
+      filter(region %in% REG_low_lowermiddle_income)
+
+    L100.IncomeElasticity_Food_ExoDiet_VLHO_2025_2100_SSP_middle_income <- L100.IncomeElasticity_Food_ExoDiet_VLHO_2025_2100_SSP %>%
+      filter(region %in% REG_uppermiddle_income)
+
+    L100.IncomeElasticity_Food_ExoDiet_2025_2050_SSP_high_income <- L100.IncomeElasticity_Food_ExoDiet_2025_2050_SSP %>%
+      filter(region %in% REG_high_income)
+
+    L100.IncomeElasticity_Food_ExoDiet_reg_het <- bind_rows(L100.IncomeElasticity_Food_ExoDiet_Static_SSP_low_income,
+                                                            L100.IncomeElasticity_Food_ExoDiet_VLHO_2025_2100_SSP_middle_income,
+                                                            L100.IncomeElasticity_Food_ExoDiet_2025_2050_SSP_high_income)
+
 
     # Step 2. repeat module_aglu_L203.ag_an_demand_input here ----
 
@@ -562,6 +752,92 @@ module_aglu_ag_an_demand_input_Food_ExoDiet_xml <- function(command, ...) {
     # efficiency values here in 2021 should match those in L203.StubCalorieContent
     # only the supplysector group is different
 
+    # adding waste pathways ----
+    # NOTE: only doing SSP1 which is what is needed for CWF pathways
+  L203.StubCalorieContent_Food_ExoDiet %>%
+      left_join(
+       L100.AgMIP_FoodWaste_Share_Pathway_SSP %>% filter(scenario == "SSP1") %>%
+          transmute(region, subsector = GCAM_commodity, year, WasteShare) %>%
+          mutate(NonWasteShare = (1 - WasteShare) ) %>%
+          group_by(region, subsector) %>%
+          # 2015 was the model base year when efficiency was defined
+          mutate(WasteScaler = NonWasteShare / NonWasteShare[year == 2015]) %>%
+          ungroup %>% select(-WasteShare, -NonWasteShare),
+        by = c("region", "subsector", "year")
+      ) %>%
+      replace_na(list(WasteScaler = 1)) %>%
+      mutate(efficiency = WasteScaler * efficiency) %>%
+      select(names(L203.StubCalorieContent_Food_ExoDiet)) ->
+      L203.StubCalorieContent_Food_ExoDiet_WasteTrend
+
+    L203.StubCalorieContent_Food_ExoDiet %>%
+      left_join(
+        L100.AgMIP_FoodWaste_Share_Pathway_SSP %>% filter(scenario == "SSP1") %>%
+          transmute(region, subsector = GCAM_commodity, year, WasteShare = StaticWaste) %>%
+          mutate(NonWasteShare = (1 - WasteShare) ) %>%
+          group_by(region, subsector) %>%
+          # 2015 was the model base year when efficiency was defined
+          mutate(WasteScaler = NonWasteShare / NonWasteShare[year == 2015]) %>%
+          ungroup %>% select(-WasteShare, -NonWasteShare),
+        by = c("region", "subsector", "year")
+      ) %>%
+      replace_na(list(WasteScaler = 1)) %>%
+      mutate(efficiency = WasteScaler * efficiency) %>%
+      select(names(L203.StubCalorieContent_Food_ExoDiet)) ->
+      L203.StubCalorieContent_Food_ExoDiet_StaticWaste
+
+
+    L203.StubCalorieContent_Food_ExoDiet %>%
+      left_join(
+        L100.AgMIP_FoodWaste_Share_Pathway_SSP %>% filter(scenario == "SSP1") %>%
+          transmute(region, subsector = GCAM_commodity, year, WasteShare = HalfWaste2050) %>%
+          mutate(NonWasteShare = (1 - WasteShare) ) %>%
+          group_by(region, subsector) %>%
+          # 2015 was the model base year when efficiency was defined
+          mutate(WasteScaler = NonWasteShare / NonWasteShare[year == 2015]) %>%
+          ungroup %>% select(-WasteShare, -NonWasteShare),
+        by = c("region", "subsector", "year")
+      ) %>%
+      replace_na(list(WasteScaler = 1)) %>%
+      mutate(efficiency = WasteScaler * efficiency) %>%
+      select(names(L203.StubCalorieContent_Food_ExoDiet)) ->
+      L203.StubCalorieContent_Food_ExoDiet_HalfWaste2050
+
+    L203.StubCalorieContent_Food_ExoDiet %>%
+      left_join(
+        L100.AgMIP_FoodWaste_Share_Pathway_SSP %>% filter(scenario == "SSP1") %>%
+          transmute(region, subsector = GCAM_commodity, year, WasteShare = HalfWaste2100) %>%
+          mutate(NonWasteShare = (1 - WasteShare) ) %>%
+          group_by(region, subsector) %>%
+          # 2015 was the model base year when efficiency was defined
+          mutate(WasteScaler = NonWasteShare / NonWasteShare[year == 2015]) %>%
+          ungroup %>% select(-WasteShare, -NonWasteShare),
+        by = c("region", "subsector", "year")
+      ) %>%
+      replace_na(list(WasteScaler = 1)) %>%
+      mutate(efficiency = WasteScaler * efficiency) %>%
+      select(names(L203.StubCalorieContent_Food_ExoDiet)) ->
+      L203.StubCalorieContent_Food_ExoDiet_HalfWaste2100
+
+
+    #Regional heterogeneity
+    # Low/lower-middle income regions: static waste reduction
+    # Upper-middle income regions: halve waste by 2100
+    # High income regions: halve waste by 2050
+    L203.StubCalorieContent_Food_ExoDiet_StaticWaste_low_income <-  L203.StubCalorieContent_Food_ExoDiet_StaticWaste %>%
+      filter(region %in% REG_low_lowermiddle_income)
+
+    L203.StubCalorieContent_Food_ExoDiet_HalfWaste2100_middle_income <- L203.StubCalorieContent_Food_ExoDiet_HalfWaste2100 %>%
+      filter(region %in% REG_uppermiddle_income)
+
+    L203.StubCalorieContent_Food_ExoDiet_HalfWaste2100_high_income <- L203.StubCalorieContent_Food_ExoDiet_HalfWaste2050 %>%
+      filter(region %in% REG_high_income)
+
+    L203.StubCalorieContent_Food_ExoDiet_reg_het <- bind_rows(L203.StubCalorieContent_Food_ExoDiet_StaticWaste_low_income,
+                                                              L203.StubCalorieContent_Food_ExoDiet_HalfWaste2100_middle_income,
+                                                              L203.StubCalorieContent_Food_ExoDiet_HalfWaste2100_high_income)
+
+
     ## FINAL DEMANDS ----
 
     ### Base service exo food ----
@@ -608,6 +884,65 @@ module_aglu_ag_an_demand_input_Food_ExoDiet_xml <- function(command, ...) {
     # Note that PerCapitaBased is turned off so that future changes in diet will be pure income elast. driven
     # also 2025 was based on BAU
 
+    ## SSP1 CWF High Ambition (SSP1 only)
+    # 2050 convergence to EL2
+    # 2050 halve waste relative to BAU levels
+    ## update L203.IncomeElasticity_Food_ExoDiet
+    L203.IncomeElasticity_Food_ExoDiet_updated <-
+      L100.IncomeElasticity_Food_ExoDiet_2025_2050_SSP %>%
+      filter(scenario == "SSP1") %>% select(-scenario)
+
+    create_xml("ag_an_demand_input_FoodExoDiet_SSP1_CWFHigh_2050.xml") %>%
+      add_logit_tables_xml(L203.Supplysector_demand_Food_ExoDiet, "Supplysector") %>%
+      add_logit_tables_xml_generate_levels(L203.SubsectorAll_demand_Food_ExoDiet,
+                                           "SubsectorLogit","subsector","nesting-subsector",1,FALSE) %>%
+      add_xml_data_generate_levels(L203.StubTech_demand_Food_ExoDiet, "StubTech","subsector","nesting-subsector",1,FALSE) %>%
+      add_xml_data_generate_levels(L203.StubTechProd_food_Food_ExoDiet, "StubTechProd", "subsector","nesting-subsector",1,FALSE) %>%
+      add_xml_data_generate_levels(L203.StubCalorieContent_Food_ExoDiet_HalfWaste2050, "StubCalorieContent", "subsector","nesting-subsector",1,FALSE) %>%
+      add_node_equiv_xml("subsector") %>%
+      add_logit_tables_xml(L203.NestingSubsectorAll_demand_Food_ExoDiet, "SubsectorAll", "SubsectorLogit") %>%
+      add_xml_data(L203.GlobalTechCoef_demand_Food_ExoDiet, "GlobalTechCoef") %>%
+      add_xml_data(L203.GlobalTechShrwt_demand_Food_ExoDiet, "GlobalTechShrwt") %>%
+      # commented here and above as it is an empty table
+      #add_xml_data(L203.GlobalTechInterp_demand_Food_ExoDiet, "GlobalTechInterp") %>%
+      add_xml_data(L203.IncomeElasticity_Food_ExoDiet_updated, "IncomeElasticity") %>%
+      add_xml_data(L203.PriceElasticity_Food_ExoDiet, "PriceElasticity") %>%
+      add_xml_data(L203.PerCapitaBased_Food_ExoDiet, "PerCapitaBased") %>%
+      add_xml_data(L203.BaseService_Food_ExoDiet, "BaseService") %>%
+      add_xml_data_generate_levels(L2328.StubCalorieContent_Food_ExoDiet, "StubCalorieContent", "subsector","nesting-subsector",1,FALSE) %>%
+      add_xml_data_generate_levels(L2328.StubCaloriePriceConv_Food_ExoDiet, "StubCaloriePriceConv", "subsector","nesting-subsector",1,FALSE) %>%
+      add_precursors(MODULE_INPUTS) ->
+      ag_an_demand_input_FoodExoDiet_SSP1_CWFHigh_2050.xml
+
+    ## SSP1 CWF Medium Ambition (SSP1 only)
+    # Regional Heterogeneity
+    ## update L203.IncomeElasticity_Food_ExoDiet
+    L203.IncomeElasticity_Food_ExoDiet_updated <-
+      L100.IncomeElasticity_Food_ExoDiet_reg_het %>%
+      filter(scenario == "SSP1") %>% select(-scenario)
+
+    create_xml("ag_an_demand_input_FoodExoDiet_SSP1_CWFMed_RegHet.xml") %>%
+      add_logit_tables_xml(L203.Supplysector_demand_Food_ExoDiet, "Supplysector") %>%
+      add_logit_tables_xml_generate_levels(L203.SubsectorAll_demand_Food_ExoDiet,
+                                           "SubsectorLogit","subsector","nesting-subsector",1,FALSE) %>%
+      add_xml_data_generate_levels(L203.StubTech_demand_Food_ExoDiet, "StubTech","subsector","nesting-subsector",1,FALSE) %>%
+      add_xml_data_generate_levels(L203.StubTechProd_food_Food_ExoDiet, "StubTechProd", "subsector","nesting-subsector",1,FALSE) %>%
+      add_xml_data_generate_levels(L203.StubCalorieContent_Food_ExoDiet_reg_het, "StubCalorieContent", "subsector","nesting-subsector",1,FALSE) %>%
+      add_node_equiv_xml("subsector") %>%
+      add_logit_tables_xml(L203.NestingSubsectorAll_demand_Food_ExoDiet, "SubsectorAll", "SubsectorLogit") %>%
+      add_xml_data(L203.GlobalTechCoef_demand_Food_ExoDiet, "GlobalTechCoef") %>%
+      add_xml_data(L203.GlobalTechShrwt_demand_Food_ExoDiet, "GlobalTechShrwt") %>%
+      # commented here and above as it is an empty table
+      #add_xml_data(L203.GlobalTechInterp_demand_Food_ExoDiet, "GlobalTechInterp") %>%
+      add_xml_data(L203.IncomeElasticity_Food_ExoDiet_updated, "IncomeElasticity") %>%
+      add_xml_data(L203.PriceElasticity_Food_ExoDiet, "PriceElasticity") %>%
+      add_xml_data(L203.PerCapitaBased_Food_ExoDiet, "PerCapitaBased") %>%
+      add_xml_data(L203.BaseService_Food_ExoDiet, "BaseService") %>%
+      add_xml_data_generate_levels(L2328.StubCalorieContent_Food_ExoDiet, "StubCalorieContent", "subsector","nesting-subsector",1,FALSE) %>%
+      add_xml_data_generate_levels(L2328.StubCaloriePriceConv_Food_ExoDiet, "StubCaloriePriceConv", "subsector","nesting-subsector",1,FALSE) %>%
+      add_precursors(MODULE_INPUTS) ->
+      ag_an_demand_input_FoodExoDiet_SSP1_CWFMed_RegHet.xml
+
     ## SSP1 VLLO ----
 
     for (ssp in paste0("SSP", 1:2)) {
@@ -624,6 +959,7 @@ module_aglu_ag_an_demand_input_Food_ExoDiet_xml <- function(command, ...) {
                      L203.IncomeElasticity_Food_ExoDiet %>%
                        distinct(region, energy.final.demand, year)) %>% nrow ==0
     )
+
 
     ### Produce outputs ----
 

@@ -465,7 +465,7 @@ module_aglu_L100.FAO_SUA_connection <- function(command, ...) {
 
     ## 6.2.1 Map aggregated waste sectors back to GCAM sectors and update SSP1 ----
     # Note that the scenarios are currently purely differentiated by pc GDP
-    # We will update SSP1 to have lower waste, e.g., converging to 25% by 2070
+    # We will update SSP1 to have lower waste, e.g., converging to 25% by 2070 (commented out for now)
 
     GCAM_AgMIP_food_group_mapping %>%
       select(GCAM_commodity = GCAM_food_commodities, WasteSector) %>%
@@ -488,19 +488,46 @@ module_aglu_L100.FAO_SUA_connection <- function(command, ...) {
           filter(year > 2025) %>%
           group_by(GCAM_region_ID, GCAM_commodity) %>%
           mutate(SSP1_LowWaste = pmin(SSP1, SSP2, SSP3, SSP4, SSP5)) %>%
-          mutate(SSP1_LowWaste = if_else(year >= 2070 & SSP1_LowWaste[year ==2070] > 0.25,
-                                         0.25, SSP1_LowWaste),
-                 SSP1_LowWaste = if_else(year < 2070 & SSP1_LowWaste[year ==2070] == 0.25,
-                                         NA_real_, SSP1_LowWaste ) ) %>% ungroup
+          # mutate(SSP1_LowWaste = if_else(year >= 2070 & SSP1_LowWaste[year ==2070] > 0.25,
+          #                                0.25, SSP1_LowWaste),
+          #        SSP1_LowWaste = if_else(year < 2070 & SSP1_LowWaste[year ==2070] == 0.25,
+          #                                NA_real_, SSP1_LowWaste ) ) %>%
+        ungroup
       ) %>%
       group_by(GCAM_region_ID, GCAM_commodity) %>%
       mutate(SSP1_LowWaste = approx_fun(year, SSP1_LowWaste)) %>%
       ungroup() %>%
       select(-SSP1) %>%
       rename(SSP1 = SSP1_LowWaste) %>%
-      gather(scenario, WasteShare, -GCAM_region_ID, -year, -GCAM_commodity) ->
-      L100.AgMIP_FoodWaste_Share_Pathway_SSP
+      gather(scenario, WasteShare, -GCAM_region_ID, -year, -GCAM_commodity) %>%
 
+    # Add multiple waste reduction pathways
+      # create template for waste scenarios
+      mutate(HalfWaste2050 = WasteShare,
+             HalfWaste2100 = WasteShare,
+             StaticWaste = WasteShare) %>%
+      group_by(scenario, GCAM_region_ID, GCAM_commodity) %>%
+      # Note that 2025 should be the same across scenarios!
+      # Half Waste 2050
+      mutate(HalfWaste2050 = if_else(year == 2050, 0.5 * HalfWaste2050, HalfWaste2050),
+             HalfWaste2050 = if_else(year >= 2050, HalfWaste2050[year == 2050], HalfWaste2050),
+             HalfWaste2050 = if_else(year %in% 2026:2049, NA_real_, HalfWaste2050) ) %>%
+      # linear decrease by 2050 from 2025
+      mutate(HalfWaste2050 = approx_fun(year, HalfWaste2050)) %>%
+
+      #Half Waste 2100
+      mutate(HalfWaste2100 = if_else(year == 2100, 0.5 * HalfWaste2100, HalfWaste2100),
+             HalfWaste2100 = if_else(year >= 2100, HalfWaste2100[year == 2100], HalfWaste2100),
+             HalfWaste2100 = if_else(year %in% 2026:2099, NA_real_, HalfWaste2100) ) %>%
+      # linear decrease by 2100 from 2025
+      mutate(HalfWaste2100 = approx_fun(year, HalfWaste2100)) %>%
+
+      # Static Waste
+      mutate(StaticWaste  = if_else(year == 2100, StaticWaste[year == 2025], StaticWaste),
+             StaticWaste = if_else(year %in% 2026:2099, NA_real_, StaticWaste) ) %>%
+      mutate(StaticWaste = approx_fun(year, StaticWaste)) %>%
+      ungroup() ->
+      L100.AgMIP_FoodWaste_Share_Pathway_SSP
 
     ### 6.2.2 Food waste model  ----
 
