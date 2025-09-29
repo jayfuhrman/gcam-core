@@ -1069,7 +1069,7 @@ module_energy_L2233.electricity_mineral <- function(command, ...) {
       ungroup() %>%
       select(-years_elapsed)
 
-  L2233.Regional_Globaltech_mineral_coef_constance_Yb <- L2233.Regional_Globaltech_mineral_coef_constance_Yb_modMI %>%
+    L2233.Regional_Globaltech_mineral_coef_constance_Yb <- L2233.Regional_Globaltech_mineral_coef_constance_Yb_modMI %>%
       group_by(region, supplysector, subsector, stub.technology, minicam.energy.input, model.year) %>%
       arrange(year) %>%
       mutate(years_elapsed = if_else(is.na(lag(year)), 1, year - lag(year)),
@@ -1077,13 +1077,13 @@ module_energy_L2233.electricity_mineral <- function(command, ...) {
       ungroup() %>%
       select(-years_elapsed)
 
-  L2233.Regional_Globaltech_mineral_coef_reduction_Yb <- L2233.Regional_Globaltech_mineral_coef_reduction_Yb_modMI %>%
-    group_by(region, supplysector, subsector, stub.technology, minicam.energy.input, model.year) %>%
-    arrange(year) %>%
-    mutate(years_elapsed = if_else(is.na(lag(year)), 1, year - lag(year)),
-           current.coef  = current.coef / years_elapsed) %>%
-    ungroup() %>%
-    select(-years_elapsed)
+    L2233.Regional_Globaltech_mineral_coef_reduction_Yb <- L2233.Regional_Globaltech_mineral_coef_reduction_Yb_modMI %>%
+      group_by(region, supplysector, subsector, stub.technology, minicam.energy.input, model.year) %>%
+      arrange(year) %>%
+      mutate(years_elapsed = if_else(is.na(lag(year)), 1, year - lag(year)),
+             current.coef  = current.coef / years_elapsed) %>%
+      ungroup() %>%
+      select(-years_elapsed)
 
   #BY 9-8-2025: Add price multipliers for the mineral component of cost
   # price multiplier is equivalent to 0.13 * the number of years elapsed because new additions are tracked on a timestep basis
