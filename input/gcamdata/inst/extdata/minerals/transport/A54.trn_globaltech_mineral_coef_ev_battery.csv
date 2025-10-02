@@ -1,0 +1,132 @@
+# File: A54.trn_globaltech_mineral_coef_ev_battery.csv
+# Title: EV batteryy sector technology mineral use intensity (only the battery part)
+# Units: kg/veh for different technologies
+# Description: this dataset defines the mineral use intensity for battery of different EV technology (used for battery replacement assumption)
+# Comment:
+# Column types: ccccnnnnnnnnnnnnn
+# ----------
+supplysector,subsector,technology,unit,steel,aluminium,copper,silicon,graphite,lithium,cobalt,nickel,manganese,neodymium,tellurium,vanadium,platinum
+trn_aviation_intl_pass,International Aviation,Liquids,kg/seat-km travel,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_aviation_intl_pass,International Aviation,BEV,kg/seat-km travel,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_aviation_intl_pass,International Aviation,Hydrogen,kg/seat-km travel,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_ship_intl_pass,International Ship,Liquids,kg/ton-km,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_ship_intl_pass,International Ship,BEV,kg/ton-km,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_ship_intl_pass,International Ship,FCEV,kg/ton-km,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_ship_intl_pass,International Ship,Hybrid Liquids,kg/ton-km,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_dom_ship_pass,Domestic Ship,BEV,kg/ton-km,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_dom_ship_pass,Domestic Ship,FCEV,kg/ton-km,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_dom_ship_pass,Domestic Ship,Hybrid Liquids,kg/ton-km,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_dom_ship_pass,Domestic Ship,Liquids,kg/ton-km,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_fret_rail_pass,Freight Rail,BEV,kg/ton-km,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_fret_rail_pass,Freight Rail,Coal,kg/ton-km,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_fret_rail_pass,Freight Rail,Electric,kg/ton-km,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_fret_rail_pass,Freight Rail,FCEV,kg/ton-km,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_fret_rail_pass,Freight Rail,Hybrid Liquids,kg/ton-km,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_fret_rail_pass,Freight Rail,Liquids,kg/ton-km,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_fret_road_pass,Heavy truck,Liquids,kg/vehicle,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_fret_road_pass,Heavy truck,NG,kg/vehicle,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_fret_road_pass,Heavy truck,FCEV,kg/vehicle,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_fret_road_pass,Heavy truck,Hybrid Liquids,kg/vehicle,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_fret_road_ht_bev_pass,fret_road_ht_bev,h_truck_bev (NMC111),kg/vehicle,0.00E+00,1.01E+03,6.24E+02,0.00E+00,8.00E+02,1.04E+02,3.12E+02,3.12E+02,2.96E+02,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_fret_road_ht_bev_pass,fret_road_ht_bev,h_truck_bev (NMC622),kg/vehicle,0.00E+00,1.01E+03,6.24E+02,0.00E+00,7.84E+02,9.60E+01,1.68E+02,5.12E+02,1.60E+02,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_fret_road_ht_bev_pass,fret_road_ht_bev,h_truck_bev (NMC811),kg/vehicle,0.00E+00,1.01E+03,6.24E+02,0.00E+00,7.76E+02,1.12E+02,8.00E+01,6.24E+02,7.20E+01,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_fret_road_ht_bev_pass,fret_road_ht_bev,h_truck_bev (NCA),kg/vehicle,0.00E+00,1.01E+03,6.17E+02,0.00E+00,7.76E+02,8.00E+01,1.04E+02,5.44E+02,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_fret_road_ht_bev_pass,fret_road_ht_bev,h_truck_bev (LFP),kg/vehicle,6.48E+02,1.25E+03,7.24E+02,0.00E+00,8.72E+02,8.00E+01,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_fret_road_ht_bev_pass,fret_road_ht_bev,h_truck_bev (Na_ion),kg/vehicle,0.00E+00,1.91E+03,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,3.20E+02,4.80E+02,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_fret_road_ht_bev_pass,fret_road_ht_bev,h_truck_bev (LFP_si),kg/vehicle,6.48E+02,1.25E+03,7.24E+02,4.00E+01,3.84E+02,8.00E+01,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_fret_road_ht_bev_pass,fret_road_ht_bev,h_truck_bev (NMC811_si),kg/vehicle,0.00E+00,1.01E+03,6.24E+02,4.00E+01,3.43E+02,1.16E+02,8.00E+01,6.24E+02,7.20E+01,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_fret_road_ht_bev_pass,fret_road_ht_bev,h_truck_bev (LFP_ssb),kg/vehicle,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_fret_road_ht_bev_pass,fret_road_ht_bev,h_truck_bev (NMC811_ssb),kg/vehicle,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_fret_road_pass,Medium truck,Liquids,kg/vehicle,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_fret_road_pass,Medium truck,NG,kg/vehicle,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_fret_road_pass,Medium truck,FCEV,kg/vehicle,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_fret_road_pass,Medium truck,Hybrid Liquids,kg/vehicle,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_fret_road_mt_bev_pass,fret_road_mt_bev,m_truck_bev (NMC111),kg/vehicle,0.00E+00,5.67E+02,3.51E+02,0.00E+00,4.50E+02,5.85E+01,1.76E+02,1.76E+02,1.67E+02,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_fret_road_mt_bev_pass,fret_road_mt_bev,m_truck_bev (NMC622),kg/vehicle,0.00E+00,5.67E+02,3.51E+02,0.00E+00,4.41E+02,5.40E+01,9.45E+01,2.88E+02,9.00E+01,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_fret_road_mt_bev_pass,fret_road_mt_bev,m_truck_bev (NMC811),kg/vehicle,0.00E+00,5.67E+02,3.51E+02,0.00E+00,4.37E+02,6.30E+01,4.50E+01,3.51E+02,4.05E+01,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_fret_road_mt_bev_pass,fret_road_mt_bev,m_truck_bev (NCA),kg/vehicle,0.00E+00,5.69E+02,3.47E+02,0.00E+00,4.37E+02,4.50E+01,5.85E+01,3.06E+02,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_fret_road_mt_bev_pass,fret_road_mt_bev,m_truck_bev (LFP),kg/vehicle,3.65E+02,7.04E+02,4.07E+02,0.00E+00,4.91E+02,4.50E+01,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_fret_road_mt_bev_pass,fret_road_mt_bev,m_truck_bev (Na_ion),kg/vehicle,0.00E+00,1.07E+03,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,1.80E+02,2.70E+02,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_fret_road_mt_bev_pass,fret_road_mt_bev,m_truck_bev (LFP_si),kg/vehicle,3.65E+02,7.04E+02,4.07E+02,2.25E+01,2.16E+02,4.50E+01,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_fret_road_mt_bev_pass,fret_road_mt_bev,m_truck_bev (NMC811_si),kg/vehicle,0.00E+00,5.67E+02,3.51E+02,2.25E+01,1.93E+02,6.50E+01,4.50E+01,3.51E+02,4.05E+01,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_fret_road_mt_bev_pass,fret_road_mt_bev,m_truck_bev (LFP_ssb),kg/vehicle,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_fret_road_mt_bev_pass,fret_road_mt_bev,m_truck_bev (NMC811_ssb),kg/vehicle,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_fret_road_pass,Light truck,Liquids,kg/vehicle,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_fret_road_pass,Light truck,NG,kg/vehicle,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_fret_road_pass,Light truck,FCEV,kg/vehicle,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_fret_road_pass,Light truck,Hybrid Liquids,kg/vehicle,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_fret_road_lt_bev_pass,fret_road_lt_bev,l_truck_bev (NMC111),kg/vehicle,0.00E+00,1.26E+02,7.80E+01,0.00E+00,1.00E+02,1.30E+01,3.90E+01,3.90E+01,3.70E+01,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_fret_road_lt_bev_pass,fret_road_lt_bev,l_truck_bev (NMC622),kg/vehicle,0.00E+00,1.26E+02,7.80E+01,0.00E+00,9.80E+01,1.20E+01,2.10E+01,6.40E+01,2.00E+01,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_fret_road_lt_bev_pass,fret_road_lt_bev,l_truck_bev (NMC811),kg/vehicle,0.00E+00,1.26E+02,7.80E+01,0.00E+00,9.70E+01,1.40E+01,1.00E+01,7.80E+01,9.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_fret_road_lt_bev_pass,fret_road_lt_bev,l_truck_bev (NCA),kg/vehicle,0.00E+00,1.27E+02,7.72E+01,0.00E+00,9.70E+01,1.00E+01,1.30E+01,6.80E+01,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_fret_road_lt_bev_pass,fret_road_lt_bev,l_truck_bev (LFP),kg/vehicle,8.10E+01,1.57E+02,9.05E+01,0.00E+00,1.09E+02,1.00E+01,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_fret_road_lt_bev_pass,fret_road_lt_bev,l_truck_bev (Na_ion),kg/vehicle,0.00E+00,2.38E+02,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,4.00E+01,6.00E+01,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_fret_road_lt_bev_pass,fret_road_lt_bev,l_truck_bev (LFP_si),kg/vehicle,8.10E+01,1.57E+02,9.05E+01,5.00E+00,4.80E+01,1.00E+01,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_fret_road_lt_bev_pass,fret_road_lt_bev,l_truck_bev (NMC811_si),kg/vehicle,0.00E+00,1.26E+02,7.80E+01,5.00E+00,4.29E+01,1.44E+01,1.00E+01,7.80E+01,9.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_fret_road_lt_bev_pass,fret_road_lt_bev,l_truck_bev (LFP_ssb),kg/vehicle,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_fret_road_lt_bev_pass,fret_road_lt_bev,l_truck_bev (NMC811_ssb),kg/vehicle,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_pasg_cycle_pass,Cycle,Cycle,kg/vehicle,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_pasg_aviation_dom_pass,Domestic Aviation,Liquids,kg/seat-km travel,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_pasg_aviation_dom_pass,Domestic Aviation,BEV,kg/seat-km travel,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_pasg_aviation_dom_pass,Domestic Aviation,Hydrogen,kg/seat-km travel,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_pasg_hsr_pass,HSR,Electric,kg/seat-km travel,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_pasg_rail_pass,Passenger Rail,Electric,kg/pass-km,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_pasg_rail_pass,Passenger Rail,Liquids,kg/pass-km,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_passenger,Walk,Walk,kg/pass-km,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_pasg_road_ldv_2_3W_pass,2W and 3W,Liquids,kg/vehicle,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_pasg_road_ldv_2_3W_pass,2W and 3W,NG,kg/vehicle,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_pasg_road_ldv_2_3W_pass,2W and 3W,BEV,kg/vehicle,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_pasg_road_ldv_2_3W_pass,2W and 3W,LA-BEV,kg/vehicle,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_pasg_road_bus_pass,Bus,Liquids,kg/vehicle,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_pasg_road_bus_pass,Bus,NG,kg/vehicle,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_pasg_road_bus_pass,Bus,FCEV,kg/vehicle,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_pasg_road_bus_pass,Bus,Hybrid Liquids,kg/vehicle,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_bus_bev_pass,bus_bev,bus_bev (NMC111),kg/vehicle,0.00E+00,3.15E+02,1.95E+02,0.00E+00,2.50E+02,3.25E+01,9.75E+01,9.75E+01,9.25E+01,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_bus_bev_pass,bus_bev,bus_bev (LFP),kg/vehicle,2.03E+02,3.91E+02,2.26E+02,0.00E+00,2.73E+02,2.50E+01,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_bus_bev_pass,bus_bev,bus_bev (Na_ion),kg/vehicle,0.00E+00,5.96E+02,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,1.00E+02,1.50E+02,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_bus_bev_pass,bus_bev,bus_bev (LFP_si),kg/vehicle,2.03E+02,3.91E+02,2.26E+02,1.25E+01,1.20E+02,2.50E+01,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_bus_bev_pass,bus_bev,bus_bev (NMC811_si),kg/vehicle,0.00E+00,3.15E+02,1.95E+02,1.25E+01,1.08E+02,3.50E+01,2.50E+01,1.95E+02,2.25E+01,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_bus_bev_pass,bus_bev,bus_bev (LFP_ssb),kg/vehicle,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_bus_bev_pass,bus_bev,bus_bev (NMC811_ssb),kg/vehicle,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_pasg_road_ldv_4w_pass,Mini Car,FCEV,kg/vehicle,0.00E+00,2.56E-01,0.00E+00,0.00E+00,1.42E+00,1.36E-01,3.85E-01,3.83E-01,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_pasg_road_ldv_4w_pass,Mini Car,Hybrid Liquids,kg/vehicle,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,3.41E-03,4.36E-02,1.23E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_pasg_road_ldv_4w_pass,Mini Car,Liquids,kg/vehicle,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,3.41E-03,4.36E-02,1.23E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_pasg_road_ldv_4w_pass,Mini Car,NG,kg/vehicle,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,3.41E-03,4.36E-02,1.23E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_pasg_road_ldv_4W_lc_bev_pass,minicar_bev,minicar_bev (NMC111),kg/vehicle,0.00E+00,4.96E+01,3.07E+01,0.00E+00,3.94E+01,5.15E+00,1.54E+01,1.54E+01,1.46E+01,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_pasg_road_ldv_4W_lc_bev_pass,minicar_bev,minicar_bev (NMC622),kg/vehicle,0.00E+00,4.96E+01,3.07E+01,0.00E+00,3.86E+01,4.73E+00,8.30E+00,2.52E+01,7.88E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_pasg_road_ldv_4W_lc_bev_pass,minicar_bev,minicar_bev (NMC811),kg/vehicle,0.00E+00,4.96E+01,3.07E+01,0.00E+00,3.82E+01,5.51E+00,3.94E+00,3.07E+01,3.57E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_pasg_road_ldv_4W_lc_bev_pass,minicar_bev,minicar_bev (NCA),kg/vehicle,0.00E+00,4.98E+01,3.04E+01,0.00E+00,3.82E+01,3.94E+00,5.15E+00,2.68E+01,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_pasg_road_ldv_4W_lc_bev_pass,minicar_bev,minicar_bev (LFP),kg/vehicle,3.19E+01,6.17E+01,3.57E+01,0.00E+00,4.30E+01,3.94E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_pasg_road_ldv_4W_lc_bev_pass,minicar_bev,minicar_bev (Na_ion),kg/vehicle,0.00E+00,9.38E+01,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,1.58E+01,2.36E+01,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_pasg_road_ldv_4W_lc_bev_pass,minicar_bev,minicar_bev (LFP_si),kg/vehicle,3.19E+01,6.17E+01,3.57E+01,2.59E+00,1.89E+01,3.94E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_pasg_road_ldv_4W_lc_bev_pass,minicar_bev,minicar_bev (NMC811_si),kg/vehicle,0.00E+00,4.96E+01,3.07E+01,2.59E+00,1.70E+01,5.51E+00,3.94E+00,3.07E+01,3.57E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_pasg_road_ldv_4W_lc_bev_pass,minicar_bev,minicar_bev (LFP_ssb),kg/vehicle,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_pasg_road_ldv_4W_lc_bev_pass,minicar_bev,minicar_bev (NMC811_ssb),kg/vehicle,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_pasg_road_ldv_4w_pass,Car,FCEV,kg/vehicle,0.00E+00,3.76E-01,0.00E+00,0.00E+00,2.08E+00,2.00E-01,5.64E-01,5.62E-01,5.26E-01,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_pasg_road_ldv_4w_pass,Car,Hybrid Liquids,kg/vehicle,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,5.00E-03,6.40E-02,1.80E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_pasg_road_ldv_4w_pass,Car,Liquids,kg/vehicle,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,5.00E-03,6.40E-02,1.80E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_pasg_road_ldv_4w_pass,Car,NG,kg/vehicle,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,5.00E-03,6.40E-02,1.80E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_pasg_road_ldv_4W_mc_bev_pass,car_bev,car_bev (NMC111),kg/vehicle,0.00E+00,9.45E+01,5.85E+01,0.00E+00,7.50E+01,9.80E+00,2.93E+01,2.93E+01,2.78E+01,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_pasg_road_ldv_4W_mc_bev_pass,car_bev,car_bev (NMC622),kg/vehicle,0.00E+00,9.45E+01,5.85E+01,0.00E+00,7.35E+01,9.00E+00,1.58E+01,4.80E+01,1.50E+01,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_pasg_road_ldv_4W_mc_bev_pass,car_bev,car_bev (NMC811),kg/vehicle,0.00E+00,9.45E+01,5.85E+01,0.00E+00,7.28E+01,1.05E+01,7.50E+00,5.85E+01,6.80E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_pasg_road_ldv_4W_mc_bev_pass,car_bev,car_bev (NCA),kg/vehicle,0.00E+00,9.49E+01,5.79E+01,0.00E+00,7.28E+01,7.50E+00,9.80E+00,5.10E+01,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_pasg_road_ldv_4W_mc_bev_pass,car_bev,car_bev (LFP),kg/vehicle,6.08E+01,1.17E+02,6.79E+01,0.00E+00,8.18E+01,7.50E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_pasg_road_ldv_4W_mc_bev_pass,car_bev,car_bev (Na_ion),kg/vehicle,0.00E+00,1.79E+02,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,3.00E+01,4.50E+01,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_pasg_road_ldv_4W_mc_bev_pass,car_bev,car_bev (LFP_si),kg/vehicle,6.08E+01,1.17E+02,6.79E+01,3.80E+00,3.60E+01,7.50E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_pasg_road_ldv_4W_mc_bev_pass,car_bev,car_bev (NMC811_si),kg/vehicle,0.00E+00,9.45E+01,5.85E+01,3.80E+00,3.23E+01,1.05E+01,7.50E+00,5.85E+01,6.80E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_pasg_road_ldv_4W_mc_bev_pass,car_bev,car_bev (LFP_ssb),kg/vehicle,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_pasg_road_ldv_4W_mc_bev_pass,car_bev,car_bev (NMC811_ssb),kg/vehicle,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_pasg_road_ldv_4w_pass,Large Car and Truck,FCEV,kg/vehicle,0.00E+00,5.01E-01,0.00E+00,0.00E+00,2.78E+00,2.67E-01,7.52E-01,7.49E-01,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_pasg_road_ldv_4w_pass,Large Car and Truck,Hybrid Liquids,kg/vehicle,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,6.67E-03,8.53E-02,2.40E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_pasg_road_ldv_4w_pass,Large Car and Truck,Liquids,kg/vehicle,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,6.67E-03,8.53E-02,2.40E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_pasg_road_ldv_4w_pass,Large Car and Truck,NG,kg/vehicle,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,6.67E-03,8.53E-02,2.40E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_pasg_road_ldv_4W_hc_bev_pass,largecar_bev,largecar_bev (NMC111),kg/vehicle,0.00E+00,1.44E+02,8.90E+01,0.00E+00,1.14E+02,1.49E+01,4.46E+01,4.46E+01,4.23E+01,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_pasg_road_ldv_4W_hc_bev_pass,largecar_bev,largecar_bev (NMC622),kg/vehicle,0.00E+00,1.44E+02,8.90E+01,0.00E+00,1.12E+02,1.37E+01,2.40E+01,7.31E+01,2.28E+01,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_pasg_road_ldv_4W_hc_bev_pass,largecar_bev,largecar_bev (NMC811),kg/vehicle,0.00E+00,1.44E+02,8.90E+01,0.00E+00,1.11E+02,1.60E+01,1.14E+01,8.90E+01,1.03E+01,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_pasg_road_ldv_4W_hc_bev_pass,largecar_bev,largecar_bev (NCA),kg/vehicle,0.00E+00,1.44E+02,8.81E+01,0.00E+00,1.11E+02,1.14E+01,1.49E+01,7.76E+01,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_pasg_road_ldv_4W_hc_bev_pass,largecar_bev,largecar_bev (LFP),kg/vehicle,9.25E+01,1.79E+02,1.03E+02,0.00E+00,1.24E+02,1.14E+01,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_pasg_road_ldv_4W_hc_bev_pass,largecar_bev,largecar_bev (Na_ion),kg/vehicle,0.00E+00,2.72E+02,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,4.57E+01,6.85E+01,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_pasg_road_ldv_4W_hc_bev_pass,largecar_bev,largecar_bev (LFP_si),kg/vehicle,9.25E+01,1.79E+02,1.03E+02,5.07E+00,5.48E+01,1.14E+01,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_pasg_road_ldv_4W_hc_bev_pass,largecar_bev,largecar_bev (NMC811_si),kg/vehicle,0.00E+00,1.44E+02,8.90E+01,5.07E+00,4.92E+01,1.60E+01,1.14E+01,8.90E+01,1.03E+01,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_pasg_road_ldv_4W_hc_bev_pass,largecar_bev,largecar_bev (LFP_ssb),kg/vehicle,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00
+trn_pasg_road_ldv_4W_hc_bev_pass,largecar_bev,largecar_bev (NMC811_ssb),kg/vehicle,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00,0.00E+00

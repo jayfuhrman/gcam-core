@@ -15,6 +15,7 @@ module_energy_L2541.transportation_UCD_mineral <- function(command, ...) {
     return(c(FILE = "common/GCAM_region_names",
              FILE = "minerals/supply/A10.mineral_rsrc_info",
              FILE = "minerals/transport/A54.trn_globaltech_mineral_coef",
+             FILE = "minerals/transport/A54.trn_globaltech_mineral_coef_ev_battery",
              FILE = "minerals/transport/A54.trn_annual_travel_data",
              "L254.StubTranTechTravel",
              "L254.StubTranTechLoadFactor",
@@ -36,6 +37,7 @@ module_energy_L2541.transportation_UCD_mineral <- function(command, ...) {
     GCAM_region_names <- get_data(all_data, "common/GCAM_region_names", strip_attributes = TRUE)
     A10.mineral_rsrc_info <- get_data(all_data, "minerals/supply/A10.mineral_rsrc_info", strip_attributes = TRUE)
     A54.trn_globaltech_mineral_coef <- get_data(all_data, "minerals/transport/A54.trn_globaltech_mineral_coef", strip_attributes = TRUE)
+    A54.trn_globaltech_mineral_coef_ev_battery <- get_data(all_data, "minerals/transport/A54.trn_globaltech_mineral_coef_ev_battery", strip_attributes = TRUE)
     A54.trn_annual_travel_data <- get_data(all_data, "minerals/transport/A54.trn_annual_travel_data", strip_attributes = TRUE)
     L254.StubTranTechTravel <- get_data(all_data, "L254.StubTranTechTravel", strip_attributes = TRUE)
     L254.StubTranTechLoadFactor <- get_data(all_data, "L254.StubTranTechLoadFactor", strip_attributes = TRUE)
@@ -53,6 +55,15 @@ module_energy_L2541.transportation_UCD_mineral <- function(command, ...) {
     # 1.1 make the intensity data unit consistent to be kg/veh-km travel.
     A2541.trn_globaltech_mineral_coef_kg_veh <-
       A54.trn_globaltech_mineral_coef %>%
+      # select(-unit) %>%
+      gather(key = minicam.energy.input, value = value, 5:last_col()) %>%
+      filter(value != 0) %>%
+      repeat_add_columns(tibble(year = c(MODEL_BASE_YEARS, MODEL_FUTURE_YEARS))) %>%
+      write_to_all_regions(c("region", "supplysector", "subsector", "technology", "year", "unit", "minicam.energy.input", "value"),
+                           GCAM_region_names = GCAM_region_names)
+
+    A2541.trn_globaltech_mineral_coef_kg_veh_ev_battery <-
+      A54.trn_globaltech_mineral_coef_ev_battery %>%
       # select(-unit) %>%
       gather(key = minicam.energy.input, value = value, 5:last_col()) %>%
       filter(value != 0) %>%
@@ -90,6 +101,21 @@ module_energy_L2541.transportation_UCD_mineral <- function(command, ...) {
       # Ideally, we will have travel distance data at different scenarios, for now, we just use the same data for all scenarios.
       repeat_add_columns(tibble(sce = c("CORE", "SSP1", "SSP3", "SSP5")))
 
+    A2541.trn_globaltech_mineral_coef_kg_per_travel_part2_ev_battery <-
+      A2541.trn_globaltech_mineral_coef_kg_veh_ev_battery %>%
+      filter(unit %in% c("kg/vehicle")) %>%
+      # rename(tranSubsector = subsector, stub.technology = technology) %>%
+      left_join(A54.trn_annual_travel_data %>%
+                  gather(key = year, value = value, 6:last_col()) %>%
+                  mutate(year = as.numeric(year)) %>%
+                  rename(annual_travel = value),
+                by = c("supplysector", "subsector", "technology", "year")) %>%
+      mutate(value = value / annual_travel,
+             unit.x = "kg/vkt") %>%
+      select(region, supplysector, tranSubsector = subsector, stub.technology = technology, year, unit = unit.x, minicam.energy.input, value) %>%
+      # Ideally, we will have travel distance data at different scenarios, for now, we just use the same data for all scenarios.
+      repeat_add_columns(tibble(sce = c("CORE", "SSP1", "SSP3", "SSP5")))
+
     A2541.trn_globaltech_mineral_coef_kg_vtk <-
       A2541.trn_globaltech_mineral_coef_kg_per_travel_part1 %>%
       rbind(A2541.trn_globaltech_mineral_coef_kg_per_travel_part2) %>%
@@ -103,6 +129,16 @@ module_energy_L2541.transportation_UCD_mineral <- function(command, ...) {
               filter(stub.technology == "Cycle") %>%
               mutate(model.year = year))
 
+    # this step is to account for battery replacement at the 15th years after the EV is deployed.
+    # with the exception for 2005 and 2021, the replacement year will occur at 2021, and 2035 respectively, to align with the gcam years.
+    A2541.trn_globaltech_mineral_coef_kg_vtk_ev_battery <-
+      A2541.trn_globaltech_mineral_coef_kg_per_travel_part2_ev_battery %>%
+      mutate(model.year = if_else(year == 2005, year + 16, year + 15),
+             model.year = if_else(year == 2021, year + 14, model.year)) %>%
+      semi_join(L254.StubTranTechCost %>%
+                  ungroup() %>%
+                  select(-minicam.non.energy.input, -input.cost, -sce) %>%
+                  unique(), by = c("region", "supplysector", "tranSubsector", "stub.technology", "year"))
 
     # 1.2 Convert the mineral coefficient to current-coefficient--only apply input to the new vintage.
 
@@ -123,12 +159,21 @@ module_energy_L2541.transportation_UCD_mineral <- function(command, ...) {
     # Produce outputs, add appropriate flags and comments
     # 1 BTU = 0.00105506 MJ
     # this part is just to reverse the unit conversion for energy in C++ code, if that is updated, we need to remove this
-    # 1055 is for BTU to J conversion, 1e12 is for MJ to EJ conversion (multiplying service output (Million tkm), that is why
+    # In the model, GCAM treat transport sector energy input coefficient as BTU/veh-km, the model output in energy use is EJ, so there is
+    # a hard coded unit conversion in the C++ code to convert BTU to EJ. Here we need reverse that process.
+    # therefore, 1055 is for BTU to J conversion, 1e12 is for MJ to EJ conversion (multiplying service output (Million tkm), that is why
     # J to MJ conversion is considered by default), 1e-3 is for kt to Mt material conversion.
-    L2541.trn_globaltech_mineral_curcoef %>%
-      mutate(current.coef = current.coef * (1e12/1055) * 1e-3) ->
-      L2541.trn_globaltech_mineral_curcoef_Units
 
+    L2541.trn_globaltech_mineral_curcoef %>%
+      #This unit conversion reserve does not apply for cycle. For some reason, the minicam-energy-input is not subject to the BTU to EJ conversion in GCAM
+      filter(stub.technology != "Cycle") %>%
+      rbind(A2541.trn_globaltech_mineral_coef_kg_vtk_ev_battery %>%
+              select(region, pass.through.sector = supplysector, tranSubsector, stub.technology, year, minicam.energy.input, model.year, current.coef = value, sce)) %>%
+      mutate(current.coef = current.coef * (1e12/1055) * 1e-3) %>%
+      # here we add the material intensity of cycle back
+      rbind(L2541.trn_globaltech_mineral_curcoef %>%
+              filter(stub.technology == "Cycle")) ->
+      L2541.trn_globaltech_mineral_curcoef_Units
 
     # 1.3 create a coefficent input and assign the value to 0,
     # this allows the model to input mineral coefficient to be 0 for all years, unless we input a non-zero current-coef.
@@ -139,8 +184,6 @@ module_energy_L2541.transportation_UCD_mineral <- function(command, ...) {
       mutate(coefficient = 0) %>%
       distinct()
       # --OUTPUT--
-
-
 
     #  2. Mineral cost calcuation, subtract mineral cost from tech non-energy cost
     #  2.1. Calculate the mineral costs based on the mineral price information
@@ -263,13 +306,26 @@ module_energy_L2541.transportation_UCD_mineral <- function(command, ...) {
     # We want to view annual mineral demand, and therefore we have previously divided output by 5
     # However, to balance calibration, we now need to do this step internally
 
-    L2541.trn_globaltech_mineral_curcoef_final <- L2541.trn_globaltech_mineral_curcoef_modMI  %>%
+    L2541.trn_globaltech_mineral_curcoef_vehicle <- L2541.trn_globaltech_mineral_curcoef_modMI %>%
+      filter(year == model.year) %>%
       group_by(region, pass.through.sector, tranSubsector, stub.technology, minicam.energy.input, sce) %>%
       arrange(year) %>%
       mutate(years_elapsed = if_else(is.na(lag(year)), 1, year - lag(year)),
              current.coef  = current.coef / years_elapsed) %>%
       ungroup() %>%
       select(-years_elapsed)
+
+    L2541.trn_globaltech_mineral_curcoef_final_battery <- L2541.trn_globaltech_mineral_curcoef_modMI %>%
+      filter(year != model.year) %>%
+      group_by(region, pass.through.sector, tranSubsector, stub.technology, minicam.energy.input, sce) %>%
+      arrange(year) %>%
+      mutate(years_elapsed = if_else(is.na(lag(year)), 1, year - lag(year)),
+             current.coef  = current.coef / years_elapsed) %>%
+      ungroup() %>%
+      select(-years_elapsed)
+
+    L2541.trn_globaltech_mineral_curcoef_final <- L2541.trn_globaltech_mineral_curcoef_vehicle %>%
+      rbind(L2541.trn_globaltech_mineral_curcoef_final_battery)
 
     L2541.trn_globaltech_mineral_coef_final <-  L2541.trn_globaltech_mineral_coef_regMineralInputs
 
@@ -278,20 +334,34 @@ module_energy_L2541.transportation_UCD_mineral <- function(command, ...) {
     # 0.13 is the fixed-charge-rate. The mineral cost is considered part of the capital cost,
     # so the mineral cost are multiplied by the fixed-charge-rate to get the annuity, which will later be used for calculating technology levelized
     # cost.
-    L2541.trn_globaltech_mineral_Pmult <- L2541.trn_globaltech_mineral_curcoef_final %>%
+    L2541.trn_globaltech_mineral_vehicle_Pmult <- L2541.trn_globaltech_mineral_curcoef_vehicle %>%
       group_by(region, pass.through.sector, tranSubsector, stub.technology, minicam.energy.input, sce) %>%
       arrange(year) %>%
       mutate(price.unit.conversion = 0.13*if_else(is.na(lag(year)), 1, year - lag(year))) %>%
       ungroup() %>%
       select(LEVEL2_DATA_NAMES[["PassThruStubTranTechPriceUnitConv"]], sce) %>%
       distinct()
-    #------------------------------------------------------------------------------------------------------------------
+
+    L2541.trn_globaltech_mineral_battery_Pmult <- L2541.trn_globaltech_mineral_curcoef_final_battery %>%
+      group_by(region, pass.through.sector, tranSubsector, stub.technology, minicam.energy.input, sce) %>%
+      arrange(year) %>%
+      mutate(price.unit.conversion = 0.13*if_else(is.na(lag(year)), 1, year - lag(year))) %>%
+      ungroup() %>%
+      select(LEVEL2_DATA_NAMES[["PassThruStubTranTechPriceUnitConv"]], sce) %>%
+      distinct()
+
+    L2541.trn_globaltech_mineral_Pmult <-
+      L2541.trn_globaltech_mineral_vehicle_Pmult %>%
+      rbind(L2541.trn_globaltech_mineral_battery_Pmult)
+
+        #------------------------------------------------------------------------------------------------------------------
 
     L2541.trn_globaltech_mineral_curcoef_final %>%
       add_title("transport sector technology mineral intensity") %>%
       add_units("kg/vkm") %>%
       add_precursors("common/GCAM_region_names", "L254.StubTranTechLoadFactor", "minerals/transport/A54.trn_annual_travel_data",
-                     "minerals/transport/A54.trn_globaltech_mineral_coef") %>%
+                     "minerals/transport/A54.trn_globaltech_mineral_coef",
+                     "minerals/transport/A54.trn_globaltech_mineral_coef_ev_battery") %>%
       add_legacy_name("L2541.trn_globaltech_mineral_curcoef_final") %>%
       add_comments("This dataset includes mineral intensity data for transport sector technologies") ->
       L2541.trn_globaltech_mineral_curcoef_final
@@ -300,7 +370,8 @@ module_energy_L2541.transportation_UCD_mineral <- function(command, ...) {
       add_title("transport sector technology coefficient") %>%
       add_units("kg/vkm") %>%
       add_precursors("common/GCAM_region_names", "L254.StubTranTechLoadFactor", "minerals/transport/A54.trn_annual_travel_data",
-                     "minerals/transport/A54.trn_globaltech_mineral_coef") %>%
+                     "minerals/transport/A54.trn_globaltech_mineral_coef",
+                     "minerals/transport/A54.trn_globaltech_mineral_coef_ev_battery") %>%
       add_legacy_name("L2541.trn_globaltech_mineral_coef_final") %>%
       add_comments("This dataset are just all zero value, which is used to set all current coef as 0 by default. This avoid the unnecessary 0 current coef input") ->
       L2541.trn_globaltech_mineral_coef_final
@@ -309,7 +380,8 @@ module_energy_L2541.transportation_UCD_mineral <- function(command, ...) {
       add_title("transport sector technology price unit conversion") %>%
       add_units("kg/vkm") %>%
       add_precursors("common/GCAM_region_names", "L254.StubTranTechLoadFactor", "minerals/transport/A54.trn_annual_travel_data",
-                     "minerals/transport/A54.trn_globaltech_mineral_coef") %>%
+                     "minerals/transport/A54.trn_globaltech_mineral_coef",
+                     "minerals/transport/A54.trn_globaltech_mineral_coef_ev_battery") %>%
       add_legacy_name("L2541.trn_globaltech_mineral_coef_final") %>%
       add_comments("transport sector technology price unit conversion") ->
       L2541.trn_globaltech_mineral_Pmult
