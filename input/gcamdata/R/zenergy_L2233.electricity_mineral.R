@@ -78,16 +78,12 @@ module_energy_L2233.electricity_mineral <- function(command, ...) {
              "L2233.StubTechProd_mineral_pv_wind",
              "L2233.StubTechShrwt_mineral_other_pv_wind",
 
-             #"L2233.StubTechProd_mineral_after_2015",
              "L2233.StubTechShrwt_mineral_pv_wind_future",
              "L2233.StubTechInterpTo_mineral_pv_wind_tech",
              "L2233.StubTechCapFac_mineral_pv_wind",
              "L2233.Regionaltech_mineral_coef_constance_final",
-             "L2233.Regionaltech_mineral_coef_reduction_final",
              "L2233.Globaltech_mineral_coef_constance_final",
-             "L2233.Globaltech_mineral_coef_reduction_final",
              "L2233.Regional_Globaltech_mineral_coef_constance_Yb",
-             "L2233.Regional_Globaltech_mineral_coef_reduction_Yb",
              "L2233.Regionaltech_mineral_PMult",
              "L2233.Globaltech_mineral_PMult",
              "L2233.Regional_Globaltech_mineral_Yb_PMult",
@@ -186,39 +182,46 @@ module_energy_L2233.electricity_mineral <- function(command, ...) {
     #   Compile information about share.weight, and year.fillout, interpolation rules information at the subsector level,
     #   The information remains the same as defined in existing supplysector of pv, wind technologies.
     L2233.SubsectorShrwtFllt_elec_mineral <-
-      elec_tech_mineral_map %>%
-      select(supplysector = from.supplysector, subsector = from.subsector, to.supplysector, to.subsector) %>%
-      unique() %>%
-      right_join(L223.SubsectorShrwtFllt_elec %>% filter(subsector %in% c("wind", "solar", "rooftop_pv")),
-                 by = c("supplysector", "subsector")) %>%
+      L223.SubsectorShrwtFllt_elec %>%
+      filter(subsector %in% c("wind", "solar", "rooftop_pv")) %>%
+      left_join(elec_tech_mineral_map %>%
+                  select(supplysector = from.supplysector, subsector = from.subsector, to.supplysector, to.subsector) %>%
+                  unique(),
+                by = c("supplysector", "subsector"),
+                relationship = "many-to-many") %>%
       select(region, supplysector = to.supplysector, subsector = to.subsector, year.fillout, share.weight)
     # --OUTPUT--
 
     #   share weight interpolation rule
     L2233.SubsectorInterp_elec_mineral <-
-      elec_tech_mineral_map %>%
-      select(supplysector = from.supplysector, subsector = from.subsector, to.supplysector, to.subsector) %>%
-      right_join(L223.SubsectorInterp_elec %>% filter(subsector %in% c("wind", "solar", "rooftop_pv")),
-                 by = c("supplysector", "subsector")) %>%
+      L223.SubsectorInterp_elec %>%
+      filter(subsector %in% c("wind", "solar", "rooftop_pv")) %>%
+      left_join(elec_tech_mineral_map %>%
+                  select(supplysector = from.supplysector, subsector = from.subsector, to.supplysector, to.subsector),
+                by = c("supplysector", "subsector"),
+                relationship = "many-to-many") %>%
       select(region, supplysector = to.supplysector, subsector = to.subsector, apply.to, from.year, to.year, interpolation.function) %>%
       unique()
     # --OUTPUT--
 
     # share weight interpolation rule for rooftop_pv tech only which has the to.value information.
     L2233.SubsectorInterpTo_elec_mineral <-
-      elec_tech_mineral_map %>%
-      select(supplysector = from.supplysector, subsector = from.subsector, to.supplysector, to.subsector) %>%
-      right_join(L223.SubsectorInterpTo_elec %>% filter(subsector %in% c("wind", "solar", "rooftop_pv")),
-                 by = c("supplysector", "subsector")) %>%
+      L223.SubsectorInterpTo_elec %>% filter(subsector %in% c("wind", "solar", "rooftop_pv")) %>%
+      left_join(elec_tech_mineral_map %>%
+                  select(supplysector = from.supplysector, subsector = from.subsector, to.supplysector, to.subsector),
+                by = c("supplysector", "subsector"),
+                relationship = "many-to-many") %>%
       select(region, supplysector = to.supplysector, subsector = to.subsector, apply.to, from.year, to.year, to.value, interpolation.function) %>%
       unique()
     # --OUTPUT--
 
     # 2100 share weight information
     L2233.SubsectorShrwt_elec_mineral <-
-      elec_tech_mineral_map %>%
-      select(supplysector = from.supplysector, subsector = from.subsector, to.supplysector, to.subsector) %>%
-      right_join(L223.SubsectorShrwt_renew %>% filter(subsector %in% c("wind", "solar", "rooftop_pv")), by = c("supplysector", "subsector")) %>%
+      L223.SubsectorShrwt_renew %>% filter(subsector %in% c("wind", "solar", "rooftop_pv")) %>%
+      left_join(elec_tech_mineral_map %>%
+                  select(supplysector = from.supplysector, subsector = from.subsector, to.supplysector, to.subsector),
+                by = c("supplysector", "subsector"),
+                relationship = "many-to-many") %>%
       select(region, supplysector = to.supplysector, subsector = to.subsector, year, share.weight) %>%
       #filter(!supplysector %in% c("mineral_csp_supsec", "mineral_csp_storage_supsec")) %>%
       unique()
@@ -256,7 +259,8 @@ module_energy_L2233.electricity_mineral <- function(command, ...) {
              tech.share.weight = if_else(calOutputValue > 0, 1, 0)) %>%
       select(LEVEL2_DATA_NAMES[["StubTechProd"]]) %>%
       right_join(elec_tech_mineral_map,
-                 by = c("supplysector" = "from.supplysector", "subsector" = "from.subsector", "stub.technology" = "from.technology")) %>%
+                 by = c("supplysector" = "from.supplysector", "subsector" = "from.subsector", "stub.technology" = "from.technology"),
+                 relationship = "many-to-many") %>%
       # Here we remove pv_storage, rooftop_pv, offshore_wind, and wind_storage, which does not have historical calibration values.
       filter(to.supplysector %in% c("pv_mineral", "wind_mineral")) %>%
       left_join(A23.globaltech_subtype_calibration %>%
@@ -294,7 +298,7 @@ module_energy_L2233.electricity_mineral <- function(command, ...) {
 
     # the historical (1975-2015) calibration numbers and shareweight for other pv and wind (rooftop_pv, offshore wind, pv and wind with storage)
     # subtype technologies (These are more advanced technologies, so their historical numbers are set to be 0)
-    L2233.StubTechShrwt_mineral_other_pv_wind <-
+    L2233.StubTechShrwt_mineral_other_pv_wind_raw <-
       elec_tech_mineral_map %>%
       filter(from.technology %in% c("PV_storage", "wind_offshore", "wind_storage", "rooftop_pv")) %>%
       select(supplysector = to.supplysector, subsector = to.subsector, stub.technology = to.technology) %>%
@@ -307,14 +311,14 @@ module_energy_L2233.electricity_mineral <- function(command, ...) {
 
 
     L2233.SubsecShrwt_mineral_other_pv_wind <-
-      L2233.StubTechShrwt_mineral_other_pv_wind %>%
+      L2233.StubTechShrwt_mineral_other_pv_wind_raw %>%
       select(region, supplysector, subsector, year, share.weight = subs.share.weight) %>%
       unique()
 
     # --OUTPUT--
 
     L2233.StubTechShrwt_mineral_other_pv_wind <-
-      L2233.StubTechShrwt_mineral_other_pv_wind %>%
+      L2233.StubTechShrwt_mineral_other_pv_wind_raw %>%
       select(region, supplysector, subsector, stub.technology, year, share.weight = tech.share.weight) %>%
       unique()
 
@@ -322,7 +326,7 @@ module_energy_L2233.electricity_mineral <- function(command, ...) {
 
 
 
-    # Technology level shareweights and interpolation rules after 2015 (future, 2020-2100)
+    # Technology level shareweights and interpolation rules after base tear (future until 2100)
     L2233.StubTech_mineral_pv_wind_tech <-
       L2233.StubTechShrwt_mineral_pv_wind %>%
       rbind(L2233.StubTechShrwt_mineral_other_pv_wind) %>%
@@ -336,17 +340,17 @@ module_energy_L2233.electricity_mineral <- function(command, ...) {
     #          share.weight = 1)
 
     L2233.StubTechShrwt_mineral_pv_wind_future <-
-      L2233.StubTech_mineral_pv_wind_tech %>%
-      left_join(A23.globaltech_subtype_shrwt %>% gather_years(),
-                by = c("supplysector", "subsector", "stub.technology")) %>%
+      A23.globaltech_subtype_shrwt %>%
+      gather_years() %>%
+      write_to_all_regions(c("region", "supplysector", "subsector", "stub.technology", "year", "value"),
+                           GCAM_region_names = GCAM_region_names) %>%
       rename(share.weight = value)
-
     # --OUTPUT--
 
     L2233.StubTechInterpTo_mineral_pv_wind_tech <-
-      L2233.StubTech_mineral_pv_wind_tech %>%
-      left_join(A23.globaltech_subtype_interp_to,
-                by = c("supplysector", "subsector", "stub.technology"))
+      A23.globaltech_subtype_interp_to %>%
+      write_to_all_regions(c("region", "supplysector", "subsector", "stub.technology", "apply.to", "from.year", "to.year", "to.value", "interpolation.function"),
+                           GCAM_region_names = GCAM_region_names)
     # --OUTPUT--
 
 
@@ -355,127 +359,34 @@ module_energy_L2233.electricity_mineral <- function(command, ...) {
 
     ##  2.2 process the mineral use intensity data
 
-    #   2.2.1 This step is expand the mineral intensity data to all the model year (1975 -- 2100), may consider the change of mineral intensity overtime
-    #   For generation technologies, here all the numbers are based on kg/kW, assuming these intensity numbers are based on 2015
-    L2233.globaltech_mineral_coef_2015 <-
+    #   2.2.1 This step is expand the mineral intensity data to all the model year (1975 -- 2100), The unit is kg/kw.
+    #   For generation technologies, here all the numbers are based on kg/kW, assuming these intensity numbers are based on base-year, and remain constant
+    #   over time. We can also consider the change of mineral intensity overtime in different scenarios if needed, but in the default model version, we just
+    #   consider constant mineral intensity over time.
+    L2233.globaltech_mineral_coef <-
       A23.globaltech_mineral_coef_kg_kw %>%
-      gather(key = minicam.energy.input, value = y2015, 4:last_col()) %>%
-      filter(!is.na(y2015))
-
-
-    # here we input this coef change ratio to project future change of mineral intensity, we assume constant mineral use intensity throughout
-    # 2100 (coef change ratio being 1), The unit is kg/kw.
-    L2233.globaltech_mineral_coef_constance <-
-      L2233.globaltech_mineral_coef_2015 %>%
-      left_join(A23.globaltech_mineral_coef_ratio_constance %>%
-                  gather(key = minicam.energy.input, value = value, 4:last_col()) %>%
-                  filter(!is.na(value)),
-                by = c("supplysector", "subsector", "technology", "minicam.energy.input")) %>%
-      mutate(y2050 = y2015 * value,
-             y1975 = y2015,
-             y2100 = y2050) %>%
-      select(supplysector, subsector, technology, minicam.energy.input, '1975' = y1975, '2015' = y2015, '2050' = y2050, '2100' = y2100) %>%
-      gather_years %>%
-      complete(nesting(supplysector, subsector, technology, minicam.energy.input), year = c(MODEL_BASE_YEARS, MODEL_FUTURE_YEARS)) %>%
-      arrange(supplysector, subsector, technology, minicam.energy.input, year) %>%
-      group_by(supplysector, subsector, technology, minicam.energy.input) %>%
-      mutate(value = approx_fun(year, value, rule = 1),
-             value = round(value, energy.DIGITS_COST)) %>%
-      ungroup
-
-    # here we input this coef change ratio to project future change of mineral intensity, we assume mineral use intensity reduce overtime until
-    # 2050 and then remain constant until 2100 (coef change ratio being <1), The unit is kg/kw.
-    L2233.globaltech_mineral_coef_reduction <-
-      L2233.globaltech_mineral_coef_2015 %>%
-      left_join(A23.globaltech_mineral_coef_ratio_reduction %>%
-                  gather(key = minicam.energy.input, value = value, 4:last_col()),
-                by = c("supplysector", "subsector", "technology", "minicam.energy.input")) %>%
-      # assume mineral use intensity change during 2015 -- 2050, and then remain constant after 2050.
-      mutate(y2050 = y2015 * value,
-             y1975 = y2015,
-             y2100 = y2050) %>%
-      select(supplysector, subsector, technology, minicam.energy.input, '1975' = y1975, '2015' = y2015, '2050' = y2050, '2100' = y2100) %>%
-      gather_years %>%
-      complete(nesting(supplysector, subsector, technology, minicam.energy.input), year = c(MODEL_BASE_YEARS, MODEL_FUTURE_YEARS)) %>%
-      arrange(supplysector, subsector, technology, minicam.energy.input, year) %>%
-      group_by(supplysector, subsector, technology, minicam.energy.input) %>%
-      mutate(value = approx_fun(year, value, rule = 1),
-             value = round(value, energy.DIGITS_COST)) %>%
-      ungroup
+      gather(key = minicam.energy.input, value = value, 4:last_col()) %>%
+      filter(!is.na(value)) %>%
+      repeat_add_columns(tibble::tibble(year = c(MODEL_BASE_YEARS, MODEL_FUTURE_YEARS)))
 
     #   Same data processing for storage technologies, here all the numbers are based on kg/kWh
-    L2233.globaltech_storage_mineral_coef_2015 <-
-      A23.globaltech_storage_mineral_coef_kg_kwh %>%
-      gather(key = minicam.energy.input, value = y2015, 4:last_col()) %>%
-      filter(!is.na(y2015))
-
-    # assume constant mineral use intensity over time
-    L2233.globaltech_storage_mineral_coef_constance <-
-      L2233.globaltech_storage_mineral_coef_2015 %>%
-      left_join(A23.globaltech_storage_mineral_coef_ratio_constance %>%
-                  gather(key = minicam.energy.input, value = value, 4:last_col()) %>%
-                  filter(!is.na(value)),
-                by = c("supplysector", "subsector", "technology", "minicam.energy.input")) %>%
-      mutate(y2050 = y2015 * value,
-             y1975 = y2015,
-             y2100 = y2050) %>%
-      select(supplysector, subsector, technology, minicam.energy.input, '1975' = y1975, '2015' = y2015, '2050' = y2050, '2100' = y2100) %>%
-      gather_years %>%
-      complete(nesting(supplysector, subsector, technology, minicam.energy.input), year = c(MODEL_BASE_YEARS, MODEL_FUTURE_YEARS)) %>%
-      arrange(supplysector, subsector, technology, minicam.energy.input, year) %>%
-      group_by(supplysector, subsector, technology, minicam.energy.input) %>%
-      mutate(value = approx_fun(year, value, rule = 1),
-             value = round(value, energy.DIGITS_COST)) %>%
-      ungroup
-
-    L2233.globaltech_storage_mineral_coef_reduction <-
-      L2233.globaltech_storage_mineral_coef_2015 %>%
-      left_join(A23.globaltech_storage_mineral_coef_ratio_reduction %>%
-                  gather(key = minicam.energy.input, value = value, 4:last_col()) %>%
-                  filter(!is.na(value)),
-                by = c("supplysector", "subsector", "technology", "minicam.energy.input")) %>%
-      mutate(y2050 = y2015 * value,
-             y1975 = y2015,
-             y2100 = y2050) %>%
-      select(supplysector, subsector, technology, minicam.energy.input, '1975' = y1975, '2015' = y2015, '2050' = y2050, '2100' = y2100) %>%
-      gather_years %>%
-      complete(nesting(supplysector, subsector, technology, minicam.energy.input), year = c(MODEL_BASE_YEARS, MODEL_FUTURE_YEARS)) %>%
-      arrange(supplysector, subsector, technology, minicam.energy.input, year) %>%
-      group_by(supplysector, subsector, technology, minicam.energy.input) %>%
-      mutate(value = approx_fun(year, value, rule = 1),
-             value = round(value, energy.DIGITS_COST)) %>%
-      ungroup
-
-
-    ##  2.2.2 Convert the mineral coefficient from kg/kW to Mt/EJ (generation technologies) and from kg/kWh to Mt/EJ (for storage technologies).
-    #   need to do this by different group of technologies
-
-    # L223.StubTechCapFactor_elec
-    # L2233.GlobalIntTechCapFac_elec_cool
-    # L2233.GlobalTechCapFac_elec_cool
-    # L2233.StubTechCapFactor_elec_cool
-
-    # combines the mineral_coef_constance and mineral_coef_reduction for further processing
-    L2233.globaltech_mineral_coef <-
-      L2233.globaltech_mineral_coef_constance %>%
-      left_join(L2233.globaltech_mineral_coef_reduction,
-                by = c("supplysector", "subsector", "technology", "minicam.energy.input", "year")) %>%
-      rename(value_constance = value.x, value_reduction = value.y)
-
     L2233.globaltech_storage_mineral_coef <-
-      L2233.globaltech_storage_mineral_coef_constance %>%
-      left_join(L2233.globaltech_storage_mineral_coef_reduction,
-                by = c("supplysector", "subsector", "technology", "minicam.energy.input", "year")) %>%
-      rename(value_constance = value.x, value_reduction = value.y)
+      A23.globaltech_storage_mineral_coef_kg_kwh %>%
+      gather(key = minicam.energy.input, value = value, 4:last_col()) %>%
+      filter(!is.na(value)) %>%
+      repeat_add_columns(tibble::tibble(year = c(MODEL_BASE_YEARS, MODEL_FUTURE_YEARS)))
+
 
     # Group 1: for pv, pv_storage, wind, offshore_wind, wind_storage, rooftop_pv (only generation technology, no storage).
     # This group will be processed using regional capacity factor, and the output will be added to regional database
     #------------------------------------------------------------------------------------------------------------------
 
     L2233.RegionalTechCapFac_pv_wind <-
-      L223.StubTechCapFactor_elec %>% filter(!stub.technology %in% c("CSP", "CSP_storage")) %>%
+      L223.StubTechCapFactor_elec %>%
+      filter(!stub.technology %in% c("CSP", "CSP_storage")) %>%
       left_join(elec_tech_mineral_map,
-                by = c("supplysector" = "from.supplysector", "subsector" = "from.subsector", "stub.technology" = "from.technology"))
+                by = c("supplysector" = "from.supplysector", "subsector" = "from.subsector", "stub.technology" = "from.technology"),
+                relationship = "many-to-many")
 
     L2233.StubTechCapFac_mineral_pv_wind <-
       L2233.RegionalTechCapFac_pv_wind %>%
@@ -486,15 +397,13 @@ module_energy_L2233.electricity_mineral <- function(command, ...) {
     L2233.Regionaltech_mineral_coef_pv_wind_Mt_EJ <-
       L2233.globaltech_mineral_coef %>%
       right_join(L2233.RegionalTechCapFac_pv_wind,
-                 by = c("supplysector" = "to.supplysector", "subsector" = "to.subsector", "technology" = "to.technology", "year")) %>%
-      select(region, supplysector, subsector, technology, year, capacity.factor, minicam.energy.input, value_constance, value_reduction) %>%
-      mutate(mineral_intensity_Mt_kW_con = value_constance * CONV_KG_T * CONV_T_MT,
-             mineral_intensity_Mt_kWh_con = mineral_intensity_Mt_kW_con/(8760 * capacity.factor),
-             mineral_intensity_Mt_EJ_con = mineral_intensity_Mt_kWh_con / (CONV_KWH_GJ * CONV_GJ_EJ),
-             mineral_intensity_Mt_kW_red = value_reduction * CONV_KG_T * CONV_T_MT,
-             mineral_intensity_Mt_kWh_red = mineral_intensity_Mt_kW_red/(8760 * capacity.factor),
-             mineral_intensity_Mt_EJ_red = mineral_intensity_Mt_kWh_red / (CONV_KWH_GJ * CONV_GJ_EJ)) %>%
-      select(region, supplysector, subsector, technology, minicam.energy.input, year, value_constance = mineral_intensity_Mt_EJ_con, value_reduction = mineral_intensity_Mt_EJ_red) %>%
+                 by = c("supplysector" = "to.supplysector", "subsector" = "to.subsector", "technology" = "to.technology", "year"),
+                 relationship = "many-to-many") %>%
+      select(region, supplysector, subsector, technology, year, capacity.factor, minicam.energy.input, value) %>%
+      mutate(mineral_intensity_Mt_kW = value * CONV_KG_T * CONV_T_MT,
+             mineral_intensity_Mt_kWh = mineral_intensity_Mt_kW/(8760 * capacity.factor),
+             mineral_intensity_Mt_EJ = mineral_intensity_Mt_kWh / (CONV_KWH_GJ * CONV_GJ_EJ)) %>%
+      select(region, supplysector, subsector, technology, minicam.energy.input, year, value = mineral_intensity_Mt_EJ) %>%
       mutate(model.year = year)
 
     # adjust the mineral intensity for rooftop_pv, this is because rooftop PV is assumed to have 5 year life time in GCAM, but actually the lifefime
@@ -506,8 +415,7 @@ module_energy_L2233.electricity_mineral <- function(command, ...) {
     L2233.Regionaltech_mineral_coef_pv_wind_Mt_EJ <-
       L2233.Regionaltech_mineral_coef_pv_wind_Mt_EJ %>%
       filter(subsector %in% c("rooftop_pv_mineral")) %>%
-      mutate(value_constance = value_constance * 0.135,
-             value_reduction = value_reduction * 0.135) %>%
+      mutate(value = value * 0.135) %>%
       rbind(L2233.Regionaltech_mineral_coef_pv_wind_Mt_EJ %>%
               filter(!subsector %in% c("rooftop_pv_mineral")))
 
@@ -524,25 +432,26 @@ module_energy_L2233.electricity_mineral <- function(command, ...) {
                    select(region, supplysector, subsector, technology) %>%
                    unique() %>%
                    filter(supplysector %in% c("pv_storage_mineral", "wind_storage_mineral")),
-                 by = c("supplysector", "subsector", "technology")) %>%
-      mutate(mineral_intensity_Mt_kWh_con = value_constance * CONV_KG_T * CONV_T_MT,
-             mineral_intensity_MT_kWh_day_con = mineral_intensity_Mt_kWh_con/365, ## assuming one charge and discharge per day
-             mineral_intensity_Mt_EJ_con = mineral_intensity_MT_kWh_day_con / (CONV_KWH_GJ * CONV_GJ_EJ),
-
-             mineral_intensity_Mt_kWh_red = value_reduction * CONV_KG_T * CONV_T_MT,
-             mineral_intensity_MT_kWh_day_red = mineral_intensity_Mt_kWh_red/365, ## assuming one charge and discharge per day
-             mineral_intensity_Mt_EJ_red = mineral_intensity_MT_kWh_day_red / (CONV_KWH_GJ * CONV_GJ_EJ)) %>%
-      select(region, supplysector, subsector, technology, minicam.energy.input, year, value_constance = mineral_intensity_Mt_EJ_con, value_reduction = mineral_intensity_Mt_EJ_red) %>%
+                 by = c("supplysector", "subsector", "technology"),
+                 relationship = "many-to-many") %>%
+      mutate(mineral_intensity_Mt_kWh = value * CONV_KG_T * CONV_T_MT,
+             mineral_intensity_MT_kWh_day = mineral_intensity_Mt_kWh/365, ## assuming one charge and discharge per day
+             mineral_intensity_Mt_EJ = mineral_intensity_MT_kWh_day / (CONV_KWH_GJ * CONV_GJ_EJ)) %>%
+      select(region, supplysector, subsector, technology, minicam.energy.input, year, value = mineral_intensity_Mt_EJ) %>%
       mutate(model.year = year)
 
-    # consider the battery replacement at the 15 year, so we need to input non-zero mineral intensity value when model.year = model.year + 15
+    # consider the battery replacement at the 15 year, so we need to input non-zero mineral intensity value when model.year = model.year + 15,
+    # with the exception for 2005 and 2021, the replacement year will occur at 2021, and 2035 respectively, to align with the gcam years.
     L2233.Regionaltech_mineral_coef_battery_Mt_EJ_replacement <-
       L2233.Regionaltech_mineral_coef_battery_Mt_EJ %>%
-      mutate(model.year = model.year + 15) %>%
+      mutate(model.year = if_else(year == 2005, year + 16, year + 15),
+             model.year = if_else(year == 2021, year + 14, model.year)) %>%
+      # mutate(model.year = model.year + 15) %>%
       select(region, supplysector, subsector, technology, minicam.energy.input, year, model.year) %>%
       left_join(L2233.Regionaltech_mineral_coef_battery_Mt_EJ,
-                by = c("region", "supplysector", "subsector", "technology", "minicam.energy.input", "model.year" = "year")) %>%
-      select(region, supplysector, subsector, technology, minicam.energy.input, year, model.year, value_constance, value_reduction) %>%
+                by = c("region", "supplysector", "subsector", "technology", "minicam.energy.input", "model.year" = "year"),
+                relationship = "many-to-many") %>%
+      select(region, supplysector, subsector, technology, minicam.energy.input, year, model.year, value) %>%
       filter(model.year <= 2100)
 
 
@@ -552,22 +461,20 @@ module_energy_L2233.electricity_mineral <- function(command, ...) {
 
     L2233.RegionalTechCapFactor_csp_cool <-
       L2233.StubTechCapFactor_elec_cool %>%
-      left_join(elec_tech_water_map %>% select(from.supplysector, from.subsector, from.technology, to.supplysector, to.subsector, to.technology),
+      left_join(elec_tech_water_map %>%
+                  select(from.supplysector, from.subsector, from.technology, to.supplysector, to.subsector, to.technology),
                 by = c("supplysector" = "to.supplysector", "subsector" = "to.subsector", "stub.technology" = "to.technology"))
 
     L2233.Regionaltech_mineral_coef_csp_cool_Mt_EJ <-
       L2233.globaltech_mineral_coef %>%
       right_join(L2233.RegionalTechCapFactor_csp_cool,
-                 by = c("supplysector" = "from.supplysector", "subsector" = "from.subsector", "technology" = "from.technology", "year")) %>%
-      select(region, supplysector = supplysector.y, subsector = subsector.y, technology = stub.technology, year, capacity.factor, minicam.energy.input, value_constance, value_reduction) %>%
-      mutate(mineral_intensity_Mt_kW_con = value_constance * CONV_KG_T * CONV_T_MT,
-             mineral_intensity_Mt_kWh_con = mineral_intensity_Mt_kW_con/(8760 * capacity.factor),
-             mineral_intensity_Mt_EJ_con = mineral_intensity_Mt_kWh_con / (CONV_KWH_GJ * CONV_GJ_EJ),
-
-             mineral_intensity_Mt_kW_red = value_reduction * CONV_KG_T * CONV_T_MT,
-             mineral_intensity_Mt_kWh_red = mineral_intensity_Mt_kW_red/(8760 * capacity.factor),
-             mineral_intensity_Mt_EJ_red = mineral_intensity_Mt_kWh_red / (CONV_KWH_GJ * CONV_GJ_EJ)) %>%
-      select(region, supplysector, subsector, technology, minicam.energy.input, year, value_constance = mineral_intensity_Mt_EJ_con, value_reduction = mineral_intensity_Mt_EJ_red) %>%
+                 by = c("supplysector" = "from.supplysector", "subsector" = "from.subsector", "technology" = "from.technology", "year"),
+                 relationship = "many-to-many") %>%
+      select(region, supplysector = supplysector.y, subsector = subsector.y, technology = stub.technology, year, capacity.factor, minicam.energy.input, value) %>%
+      mutate(mineral_intensity_Mt_kW = value * CONV_KG_T * CONV_T_MT,
+             mineral_intensity_Mt_kWh = mineral_intensity_Mt_kW/(8760 * capacity.factor),
+             mineral_intensity_Mt_EJ = mineral_intensity_Mt_kWh / (CONV_KWH_GJ * CONV_GJ_EJ)) %>%
+      select(region, supplysector, subsector, technology, minicam.energy.input, year, value = mineral_intensity_Mt_EJ) %>%
       mutate(model.year = year)
 
 
@@ -592,23 +499,20 @@ module_energy_L2233.electricity_mineral <- function(command, ...) {
     L2233.globaltech_mineral_coef_Mt_EJ <-
       L2233.globaltech_mineral_coef %>%
       right_join(L2233.GlobalTechCapFac_elec_cool_all,
-                 by = c("supplysector" = "from.supplysector", "subsector" = "from.subsector", "technology" = "from.technology", "year")) %>%
-      select(supplysector = sector.name, subsector = subsector.name, technology = technology.y, year, capacity.factor, minicam.energy.input, value_constance, value_reduction) %>%
-      mutate(mineral_intensity_Mt_kW_con = value_constance * CONV_KG_T * CONV_T_MT,
-             mineral_intensity_Mt_kWh_con = mineral_intensity_Mt_kW_con/(8760 * capacity.factor),
-             mineral_intensity_Mt_EJ_con = mineral_intensity_Mt_kWh_con / (CONV_KWH_GJ * CONV_GJ_EJ),
-             mineral_intensity_Mt_kW_red = value_reduction * CONV_KG_T * CONV_T_MT,
-             mineral_intensity_Mt_kWh_red = mineral_intensity_Mt_kW_red/(8760 * capacity.factor),
-             mineral_intensity_Mt_EJ_red = mineral_intensity_Mt_kWh_red / (CONV_KWH_GJ * CONV_GJ_EJ)) %>%
-      select(supplysector, subsector, technology, minicam.energy.input, year, value_constance = mineral_intensity_Mt_EJ_con, value_reduction = mineral_intensity_Mt_EJ_red) %>%
+                 by = c("supplysector" = "from.supplysector", "subsector" = "from.subsector", "technology" = "from.technology", "year"),
+                 relationship = "many-to-many") %>%
+      select(supplysector = sector.name, subsector = subsector.name, technology = technology.y, year, capacity.factor, minicam.energy.input, value) %>%
+      mutate(mineral_intensity_Mt_kW = value * CONV_KG_T * CONV_T_MT,
+             mineral_intensity_Mt_kWh = mineral_intensity_Mt_kW/(8760 * capacity.factor),
+             mineral_intensity_Mt_EJ = mineral_intensity_Mt_kWh / (CONV_KWH_GJ * CONV_GJ_EJ)) %>%
+      select(supplysector, subsector, technology, minicam.energy.input, year, value = mineral_intensity_Mt_EJ) %>%
       mutate(model.year = year)
 
     # adjust for hydro -- same idea as the rooftop pv (again this factor may need to be adjusted later.)
     L2233.globaltech_mineral_coef_Mt_EJ <-
       L2233.globaltech_mineral_coef_Mt_EJ %>%
       filter(subsector %in% c("hydro")) %>%
-      mutate(value_constance = value_constance * 0.025,
-             value_reduction = value_reduction * 0.025) %>%
+      mutate(value = value * 0.025) %>%
       rbind(L2233.globaltech_mineral_coef_Mt_EJ %>%
               filter(!subsector %in% c("hydro")))
 
@@ -623,82 +527,39 @@ module_energy_L2233.electricity_mineral <- function(command, ...) {
       rbind(L2233.Regionaltech_mineral_coef_battery_Mt_EJ) %>%
       rbind(L2233.Regionaltech_mineral_coef_battery_Mt_EJ_replacement) %>%
       group_by(region, supplysector, subsector, technology, minicam.energy.input, year, model.year) %>%
-      summarise(value_constance = sum(value_constance, na.rm = TRUE),
-                value_reduction = sum(value_reduction, na.rm = TRUE)) %>%
+      summarise(value = sum(value, na.rm = TRUE)) %>%
       ungroup
 
     #curr-coef being written for all years
-    L2233.Regionaltech_mineral_coef_final <-
+    L2233.Regionaltech_mineral_coef_all <-
       L2233.Regionaltech_mineral_coef_Mt_EJ_combine %>%
       select(region, supplysector, subsector, technology, minicam.energy.input, year) %>%
       unique() %>%
       repeat_add_columns(tibble(model.year = MODEL_YEARS)) %>%
       left_join(L2233.Regionaltech_mineral_coef_Mt_EJ_combine,
                 by = c("region", "supplysector", "subsector", "technology", "minicam.energy.input", "year", "model.year")) %>%
-      mutate(value_constance = if_else(is.na(value_constance), 0, value_constance),
-             value_reduction = if_else(is.na(value_reduction), 0, value_reduction))
+      mutate(value = if_else(is.na(value), 0, value))
 
-    L2233.Regionaltech_mineral_coef_constance <-
-      L2233.Regionaltech_mineral_coef_final %>%
-      select(region, supplysector, subsector, stub.technology = technology, year, minicam.energy.input, model.year, current.coef = value_constance) %>%
+    L2233.Regionaltech_mineral_coef <-
+      L2233.Regionaltech_mineral_coef_all %>%
+      select(region, supplysector, subsector, stub.technology = technology, year, minicam.energy.input, model.year, current.coef = value) %>%
       unique() %>% # --OUTPUT-- unit based on Mt/EJ
       select(LEVEL2_DATA_NAMES[["RegionalStubTechMineralCurCoefAllYr"]])# --OUTPUT-- unit based on Mt/EJ
 
-    L2233.Regionaltech_mineral_coef_reduction <-
-      L2233.Regionaltech_mineral_coef_final %>%
-      select(region, supplysector, subsector, stub.technology = technology, year, minicam.energy.input, model.year, current.coef = value_reduction) %>%
-      unique() %>%
-      select(LEVEL2_DATA_NAMES[["RegionalStubTechMineralCurCoefAllYr"]])# --OUTPUT-- unit based on Mt/EJ
-
-
     #curr-coef being written for all years
     ## Mineral intensity data of technologies being included in the global database
-    L2233.Globaltech_mineral_coef_final <-
+    L2233.Globaltech_mineral_coef <-
       L2233.globaltech_mineral_coef_Mt_EJ %>%
       select(supplysector, subsector, technology, minicam.energy.input, year) %>%
       unique() %>%
       repeat_add_columns(tibble(model.year = MODEL_YEARS)) %>%
-      left_join(L2233.globaltech_mineral_coef_Mt_EJ, by = c("supplysector", "subsector", "technology", "minicam.energy.input", "year", "model.year")) %>%
-      mutate(value_constance = if_else(is.na(value_constance), 0, value_constance),
-             value_reduction = if_else(is.na(value_reduction), 0, value_reduction))
-
-    L2233.Globaltech_mineral_coef_constance <-
-      L2233.Globaltech_mineral_coef_final %>%
-      select(sector.name = supplysector, subsector.name = subsector, technology, year, minicam.energy.input, model.year, current.coef = value_constance) %>%
+      left_join(L2233.globaltech_mineral_coef_Mt_EJ,
+                by = c("supplysector", "subsector", "technology", "minicam.energy.input", "year", "model.year")) %>%
+      mutate(value = if_else(is.na(value), 0, value)) %>%
+      select(sector.name = supplysector, subsector.name = subsector, technology, year, minicam.energy.input, model.year, current.coef = value) %>%
       unique() %>%
       select(LEVEL2_DATA_NAMES[["GlobalTechMineralCurCoefAllYr"]])
     # --OUTPUT-- unit based on Mt/EJ
-
-    L2233.Globaltech_mineral_coef_reduction <-
-      L2233.Globaltech_mineral_coef_final %>%
-      select(sector.name = supplysector, subsector.name = subsector, technology, year, minicam.energy.input, model.year, current.coef = value_reduction) %>%
-      unique() %>%
-      select(LEVEL2_DATA_NAMES[["GlobalTechMineralCurCoefAllYr"]])# --OUTPUT-- unit based on Mt/EJ
-
-
-
-    # #BY 11-14-2024: coefficient = 0 still having issues.
-    # ## Mineral intensity data of technologies being included in the global database
-    # L2233.Globaltech_mineral_coef_final <-
-    #   L2233.globaltech_mineral_coef_Mt_EJ
-    #
-    #
-    # L2233.Globaltech_mineral_coef_constance_final <-
-    #   L2233.Globaltech_mineral_coef_final %>%
-    #   select(sector.name = supplysector, subsector.name = subsector, technology, year, minicam.energy.input, model.year, current.coef = value_constance) %>%
-    #   unique() %>%
-    #   # coefficient = 0 sets current.coef to 0 in all years except the model year.
-    #   mutate(coefficient = 0) %>%
-    #   select(LEVEL2_DATA_NAMES[["GlobalTechMineralCurCoef"]])
-    # # --OUTPUT-- unit based on Mt/EJ
-    #
-    # L2233.Globaltech_mineral_coef_reduction_final <-
-    #   L2233.Globaltech_mineral_coef_final %>%
-    #   select(sector.name = supplysector, subsector.name = subsector, technology, year, minicam.energy.input, model.year, current.coef = value_reduction) %>%
-    #   unique() %>%
-    #   # coefficient = 0 sets current.coef to 0 in all years except the model year.
-    #   mutate(coefficient = 0) %>%
-    #   select(LEVEL2_DATA_NAMES[["GlobalTechMineralCurCoef"]])# --OUTPUT-- unit based on Mt/EJ
 
     # End of mineral intensity data processing
     #------------------------------------------------------------------------------------------------------------------
@@ -724,7 +585,7 @@ module_energy_L2233.electricity_mineral <- function(command, ...) {
     L2233.globaltech_mineral_cost <-
       L2233.globaltech_mineral_coef %>%
       left_join(A10.mineral_price, by = c("minicam.energy.input" = "resource", "year")) %>%
-      mutate(mineral_cost = value_constance * mineral_price) %>%
+      mutate(mineral_cost = value * mineral_price) %>%
       select(supplysector, subsector, technology, minicam.energy.input, year, mineral_cost)
 
 
@@ -732,7 +593,7 @@ module_energy_L2233.electricity_mineral <- function(command, ...) {
     L2233.globaltech_storage_mineral_cost <-
       L2233.globaltech_storage_mineral_coef %>%
       left_join(A10.mineral_price, by = c("minicam.energy.input" = "resource", "year")) %>%
-      mutate(mineral_cost_kwh = value_constance * mineral_price, # After this step, the unit becomes $/kWh ($/kg * kg/kWh)
+      mutate(mineral_cost_kwh = value * mineral_price, # After this step, the unit becomes $/kWh ($/kg * kg/kWh)
              # assuming 8 hour battery storage duration (here the unit becomes, $/kw = $/kWh * 8h)
              mineral_cost_8kwh = mineral_cost_kwh * 8,
              # considering replacement in 15th year
@@ -763,7 +624,7 @@ module_energy_L2233.electricity_mineral <- function(command, ...) {
       rename(sector.name = supplysector, subsector.name = subsector,
              capital.overnight.all = value, input.capital = `input-capital`) %>%
       left_join(L2233.globaltech_mineral_cost_combine %>%
-                  filter(year %in% c(1975, 1990, 2005, 2010, 2015)) %>%
+                  filter(year %in% c(MODEL_BASE_YEARS)) %>%
                   mutate(year = if_else(year == 1975, 1971, year)),
                 by = c("sector.name" = "supplysector", "subsector.name" = "subsector", "technology", "year")) %>%
       # only substract mineral cost for the early year, and the capital cost (no mineral cost) component will follow the cost reduction projection.
@@ -817,44 +678,6 @@ module_energy_L2233.electricity_mineral <- function(command, ...) {
       select(LEVEL2_DATA_NAMES[["GlobalTechCapital"]])  #--OUTPUT--
 
 
-    # L2233.GlobalTech_mineral_cost_share_subtype_output <-
-    #   A23.globaltech_subtype_capital %>%
-    #   gather_years() %>%
-    #   rename(sector.name = supplysector, subsector.name = subsector, capital.overnight.all = value, input.capital = `input-capital`) %>%
-    #   filter(year %in% c(2015)) %>%
-    #   left_join(L2233.globaltech_mineral_cost_combine_w_mineral %>% filter(year %in% c(2015)),
-    #             by = c("sector.name" = "supplysector", "subsector.name" = "subsector", "technology", "year")) %>%
-    #   mutate(mineral_cost_share = mineral_cost/capital.overnight.all) %>%
-    #   select(sector.name, subsector.name, technology, minicam.energy.input, capital.overnight.all, mineral_cost, mineral_cost_share)
-    #
-    # L2233.GlobalTech_mineral_cost_share_elecPassthru_output <-
-    #   L2233.GlobalTechCapital_elecPassthru %>%
-    #   filter(!technology %in% c("wind_storage", "PV_storage"),
-    #          year %in% c(2015)) %>%
-    #   left_join(L2233.globaltech_mineral_cost_combine_w_mineral %>% filter(year %in% c(2015)),
-    #             by = c("sector.name" = "supplysector", "subsector.name" = "subsector", "technology", "year")) %>%
-    #   mutate(mineral_cost_share = mineral_cost/capital.overnight) %>%
-    #   select(sector.name, subsector.name, technology, minicam.energy.input, capital.overnight.all = capital.overnight, mineral_cost, mineral_cost_share)
-    #
-    # L2233.GlobalTech_mineral_cost_share_output <-
-    #   L2233.GlobalTech_mineral_cost_share_subtype_output %>%
-    #   rbind(L2233.GlobalTech_mineral_cost_share_elecPassthru_output)
-    #
-    # writexl::write_xlsx(L2233.GlobalTech_mineral_cost_share_output, "L2233.GlobalTech_mineral_cost_share_output.xlsx")
-
-    # tech_capital_cost_2020 <-
-    #   A23.globaltech_subtype_capital %>%
-    #   gather_years() %>%
-    #   rename(sector.name = supplysector, subsector.name = subsector, capital.overnight.all = value, input.capital = `input-capital`) %>%
-    #   spread(key = "year", value = "capital.overnight.all") %>%
-    #   fill_exp_decay_extrapolate(MODEL_YEARS) %>%
-    #   rename(capital.overnight = value) %>%
-    #   mutate(capital.overnight = round(capital.overnight, energy.DIGITS_CAPITAL)) %>%
-    #   rbind(L2233.GlobalTechCapital_elecPassthru) %>%
-    #   filter(year == 2020)
-    # writexl::write_xlsx(tech_capital_cost_2020, "tech_capital_cost_2020.xlsx")
-
-
     #  End of mineral cost calculation
     #------------------------------------------------------------------------------------------------------------------
 
@@ -877,33 +700,37 @@ module_energy_L2233.electricity_mineral <- function(command, ...) {
     #  for pv and wind (no storage)
     L2233.GlobalIntTechMineral_elecSupplySector <-
       L2233.GlobalElecMineral_elecSupplySector %>%
-      semi_join(A23.globalinttech, by = c("sector.name" = "supplysector", "subsector.name" = "subsector", "technology" = "intermittent.technology")) %>%
-      rename(intermittent.technology = technology)
+      semi_join(A23.globalinttech,
+                by = c("sector.name" = "supplysector", "subsector.name" = "subsector", "technology" = "intermittent.technology"))
+      # rename(intermittent.technology = technology)
     # --OUTPUT--
 
     #  for pv and wind with storage
     L2233.GlobalTechMineral_elecSupplySector <-
       L2233.GlobalElecMineral_elecSupplySector %>%
-      anti_join(A23.globalinttech, by = c("sector.name" = "supplysector", "subsector.name" = "subsector", "technology" = "intermittent.technology"))
+      anti_join(A23.globalinttech,
+                by = c("sector.name" = "supplysector", "subsector.name" = "subsector", "technology" = "intermittent.technology"))
     # --OUTPUT--
 
     #------------------------------------------------------------------------------------------------------------------
-
-
 
     ## 2.5   Add the Lifetime of subtype technologies in the new supplysector -- in Global database
 
     L2233.GlobalTechLifetimeMineral_elec <-
       L223.GlobalTechLifetime_elec %>%
       filter(technology %in% c("PV_storage", "wind_storage")) %>%
-      left_join(elec_tech_mineral_map, by = c("sector.name" = "from.supplysector", "subsector.name" = "from.subsector", "technology" = "from.technology")) %>%
+      left_join(elec_tech_mineral_map,
+                by = c("sector.name" = "from.supplysector", "subsector.name" = "from.subsector", "technology" = "from.technology"),
+                relationship = "many-to-many") %>%
       select(sector.name = to.supplysector, subsector.name = to.subsector, technology = to.technology, year, lifetime)
     # --OUTPUT--
 
     L2233.GlobalIntTechLifetimeMineral_elec <-
       L223.GlobalIntTechLifetime_elec %>%
       filter(intermittent.technology %in% c("PV", "wind", "wind_offshore")) %>%
-      left_join(elec_tech_mineral_map, by = c("sector.name" = "from.supplysector", "subsector.name" = "from.subsector", "intermittent.technology" = "from.technology")) %>%
+      left_join(elec_tech_mineral_map,
+                by = c("sector.name" = "from.supplysector", "subsector.name" = "from.subsector", "intermittent.technology" = "from.technology"),
+                relationship = "many-to-many") %>%
       select(sector.name = to.supplysector, subsector.name = to.subsector, intermittent.technology = to.technology, year, lifetime)
     # --OUTPUT--
 
@@ -923,10 +750,10 @@ module_energy_L2233.electricity_mineral <- function(command, ...) {
     ## For minerals that are now traded, we need to differentiate mineral supply and demand
     # Mineral supplies are named as: copper, lithium, nickel
     # Mineral demands are named as: regional copper, regional lithium, regional nickel
-    L2233.Regionaltech_mineral_coef_constance_regMineralInputs <- regionalize_mineral_inputs(L2233.Regionaltech_mineral_coef_constance)
-    L2233.Regionaltech_mineral_coef_reduction_regMineralInputs <- regionalize_mineral_inputs(L2233.Regionaltech_mineral_coef_reduction)
-    L2233.Globaltech_mineral_coef_constance_regMineralInputs <- regionalize_mineral_inputs(L2233.Globaltech_mineral_coef_constance)
-    L2233.Globaltech_mineral_coef_reduction_regMineralInputs <- regionalize_mineral_inputs(L2233.Globaltech_mineral_coef_reduction)
+    L2233.Regionaltech_mineral_coef_constance_regMineralInputs <- regionalize_mineral_inputs(L2233.Regionaltech_mineral_coef)
+    # L2233.Regionaltech_mineral_coef_reduction_regMineralInputs <- regionalize_mineral_inputs(L2233.Regionaltech_mineral_coef_reduction)
+    L2233.Globaltech_mineral_coef_constance_regMineralInputs <- regionalize_mineral_inputs(L2233.Globaltech_mineral_coef)
+    # L2233.Globaltech_mineral_coef_reduction_regMineralInputs <- regionalize_mineral_inputs(L2233.Globaltech_mineral_coef_reduction)
 
     ## BY 7-28-2025: Modify mineral intensities in the base years such that we would have the equivalent mineral demands if we
     # had the service demand representing solely the new investment (i.e. if base years were vintaged)
@@ -965,16 +792,6 @@ module_energy_L2233.electricity_mineral <- function(command, ...) {
       mutate(current.coef = current.coef_new) %>%
       select(LEVEL2_DATA_NAMES[["RegionalStubTechMineralCurCoefAllYr"]])
 
-    L2233.Regionaltech_mineral_coef_reduction_modified <- L2233.NewInvestment_pv_wind  %>%
-      # Join in the mineral intensity coefficient
-      # Using LJ as it is not a 1-to-1 mapping
-      left_join(filter(L2233.Regionaltech_mineral_coef_reduction_regMineralInputs, year %in% MODEL_BASE_YEARS),
-                by = c("region", "supplysector", "subsector", "stub.technology", "year")) %>%
-      # adjust the mineral intensities by the ratio between the incremental service demand and the original service demand
-      mutate(current.coef_new = if_else(output == 0, 0, current.coef * (new_investment / output))) %>%
-      # replace the current coef with the incremental current coef
-      mutate(current.coef = current.coef_new) %>%
-      select(LEVEL2_DATA_NAMES[["RegionalStubTechMineralCurCoefAllYr"]])
 
     # Use modified coefficients where they exist, else default to the original coefficients.
     # modified coefficients only exist for technologies with StubTechProd calibrated values in base years.
@@ -985,15 +802,6 @@ module_energy_L2233.electricity_mineral <- function(command, ...) {
       mutate(current.coef = if_else(is.na(current.coef.new), current.coef.original, current.coef.new)) %>%
 
       select(LEVEL2_DATA_NAMES[["RegionalStubTechMineralCurCoefAllYr"]])
-
-    L2233.Regionaltech_mineral_coef_reduction_modMI <- L2233.Regionaltech_mineral_coef_reduction_regMineralInputs %>%
-      left_join(L2233.Regionaltech_mineral_coef_reduction_modified, by = c("region", "supplysector", "subsector", "stub.technology", "year",
-                                                                           "minicam.energy.input", "model.year"),
-                suffix = c(".original", ".new")) %>%
-      mutate(current.coef = if_else(is.na(current.coef.new), current.coef.original, current.coef.new)) %>%
-      select(LEVEL2_DATA_NAMES[["RegionalStubTechMineralCurCoefAllYr"]])
-
-
 
     #GLOBALTECH (all other technologies) -> REGIONALTECH FOR BASE YEARS
     # Historical mineral coefficients will have to be specified by region, since they depend on new investments, which vary by region.
@@ -1013,19 +821,8 @@ module_energy_L2233.electricity_mineral <- function(command, ...) {
       # Join in the mineral intensity coefficient
       # Using LJ as it is not a 1-to-1 mapping
       left_join(filter(L2233.Globaltech_mineral_coef_constance_regMineralInputs, year %in% MODEL_BASE_YEARS),
-                by = c("supplysector" = "sector.name", "subsector" = "subsector.name", "stub.technology" = "technology", "year")) %>%
-      filter(!is.na(current.coef)) %>%
-      # adjust the mineral intensities by the ratio between the incremental service demand and the original service demand
-      mutate(current.coef_new = if_else(output == 0, 0, current.coef * (new_investment / output))) %>%
-      # replace the current coef with the incremental current coef
-      mutate(current.coef = current.coef_new) %>%
-      select(LEVEL2_DATA_NAMES[["RegionalStubTechMineralCurCoefAllYr"]])
-
-    L2233.Regional_Globaltech_mineral_coef_reduction_Yb_modMI <- L2233.NewInvestment_elec_cool %>%
-      # Join in the mineral intensity coefficient
-      # Using LJ as it is not a 1-to-1 mapping
-      left_join(filter(L2233.Globaltech_mineral_coef_reduction_regMineralInputs, year %in% MODEL_BASE_YEARS),
-                by = c("supplysector" = "sector.name", "subsector" = "subsector.name", "stub.technology" = "technology", "year")) %>%
+                by = c("supplysector" = "sector.name", "subsector" = "subsector.name", "stub.technology" = "technology", "year"),
+                relationship = "many-to-many") %>%
       filter(!is.na(current.coef)) %>%
       # adjust the mineral intensities by the ratio between the incremental service demand and the original service demand
       mutate(current.coef_new = if_else(output == 0, 0, current.coef * (new_investment / output))) %>%
@@ -1045,14 +842,6 @@ module_energy_L2233.electricity_mineral <- function(command, ...) {
       ungroup() %>%
       select(-years_elapsed)
 
-    L2233.Regionaltech_mineral_coef_reduction_final <- L2233.Regionaltech_mineral_coef_reduction_modMI %>%
-      group_by(region, supplysector, subsector, stub.technology, minicam.energy.input, model.year) %>%
-      arrange(year) %>%
-      mutate(years_elapsed = if_else(is.na(lag(year)), 1, year - lag(year)),
-             current.coef  = current.coef / years_elapsed) %>%
-      ungroup() %>%
-      select(-years_elapsed)
-
     L2233.Globaltech_mineral_coef_constance_final <- L2233.Globaltech_mineral_coef_constance_regMineralInputs %>%
       group_by(sector.name, subsector.name, technology, minicam.energy.input, model.year) %>%
       arrange(year) %>%
@@ -1061,23 +850,7 @@ module_energy_L2233.electricity_mineral <- function(command, ...) {
       ungroup() %>%
       select(-years_elapsed)
 
-    L2233.Globaltech_mineral_coef_reduction_final <- L2233.Globaltech_mineral_coef_reduction_regMineralInputs %>%
-      group_by(sector.name, subsector.name, technology, minicam.energy.input, model.year) %>%
-      arrange(year) %>%
-      mutate(years_elapsed = if_else(is.na(lag(year)), 1, year - lag(year)),
-             current.coef  = current.coef / years_elapsed) %>%
-      ungroup() %>%
-      select(-years_elapsed)
-
     L2233.Regional_Globaltech_mineral_coef_constance_Yb <- L2233.Regional_Globaltech_mineral_coef_constance_Yb_modMI %>%
-      group_by(region, supplysector, subsector, stub.technology, minicam.energy.input, model.year) %>%
-      arrange(year) %>%
-      mutate(years_elapsed = if_else(is.na(lag(year)), 1, year - lag(year)),
-             current.coef  = current.coef / years_elapsed) %>%
-      ungroup() %>%
-      select(-years_elapsed)
-
-    L2233.Regional_Globaltech_mineral_coef_reduction_Yb <- L2233.Regional_Globaltech_mineral_coef_reduction_Yb_modMI %>%
       group_by(region, supplysector, subsector, stub.technology, minicam.energy.input, model.year) %>%
       arrange(year) %>%
       mutate(years_elapsed = if_else(is.na(lag(year)), 1, year - lag(year)),
@@ -1264,20 +1037,6 @@ module_energy_L2233.electricity_mineral <- function(command, ...) {
                      "L2233.StubTechProd_elec_cool") ->
       L2233.Regionaltech_mineral_coef_constance_final
 
-    L2233.Regionaltech_mineral_coef_reduction_final %>%
-      add_title("Mineral intensity data for generation technologies (wind and solar with and without storage) -- in the regional database") %>%
-      add_units("kg/EJ") %>%
-      add_comments("Mineral intensity data for generation technologies (wind and solar with and without storage) -- in the regional database") %>%
-      add_legacy_name("L2233.Regionaltech_mineral_coef_reduction_final") %>%
-      add_precursors("minerals/electricity/A23.globaltech_mineral_coef_kg_kw", "minerals/electricity/A23.globaltech_mineral_coef_ratio_constance",
-                     "minerals/electricity/A23.globaltech_mineral_coef_ratio_reduction",
-                     "minerals/electricity/A23.globaltech_storage_mineral_coef_kg_kwh", "minerals/electricity/A23.globaltech_storage_mineral_coef_ratio_constance",
-                     "minerals/electricity/A23.globaltech_storage_mineral_coef_ratio_reduction",
-                     "minerals/electricity/elec_tech_mineral_map", "water/elec_tech_water_map",
-                     "L223.StubTechCapFactor_elec", "L2233.StubTechCapFactor_elec_cool", "L2233.GlobalTechCapFac_elec_cool",
-                     "L2233.StubTechProd_elec_cool") ->
-      L2233.Regionaltech_mineral_coef_reduction_final
-
     # Mineral intensity -- global database
     L2233.Globaltech_mineral_coef_constance_final %>%
       add_title("Mineral intensity data for other non-solar and non-wind generation technologies -- in the global database") %>%
@@ -1292,32 +1051,12 @@ module_energy_L2233.electricity_mineral <- function(command, ...) {
                      "L223.StubTechCapFactor_elec", "L2233.StubTechCapFactor_elec_cool", "L2233.GlobalTechCapFac_elec_cool") ->
       L2233.Globaltech_mineral_coef_constance_final
 
-    L2233.Globaltech_mineral_coef_reduction_final %>%
-      add_title("Mineral intensity data for other non-solar and non-wind generation technologies -- in the global database") %>%
-      add_units("kg/EJ") %>%
-      add_comments("Mineral intensity data for other non-solar and non-wind generation technologies -- in the global database") %>%
-      add_legacy_name("L2233.Globaltech_mineral_coef_reduction_final") %>%
-      add_precursors("minerals/electricity/A23.globaltech_mineral_coef_kg_kw", "minerals/electricity/A23.globaltech_mineral_coef_ratio_constance",
-                     "minerals/electricity/A23.globaltech_mineral_coef_ratio_reduction",
-                     "minerals/electricity/A23.globaltech_storage_mineral_coef_kg_kwh", "minerals/electricity/A23.globaltech_storage_mineral_coef_ratio_constance",
-                     "minerals/electricity/A23.globaltech_storage_mineral_coef_ratio_reduction",
-                     "minerals/electricity/elec_tech_mineral_map", "water/elec_tech_water_map",
-                     "L223.StubTechCapFactor_elec", "L2233.StubTechCapFactor_elec_cool", "L2233.GlobalTechCapFac_elec_cool") ->
-      L2233.Globaltech_mineral_coef_reduction_final
-
     L2233.Regional_Globaltech_mineral_coef_constance_Yb %>%
       add_title("Mineral intensity data for other non-solar and non-wind generation technologies -- in the regional database (for base years, recalculated)") %>%
       add_units("kg/EJ") %>%
       add_comments("These will overwrite the globaltech database mineral intensity values for base years") %>%
       same_precursors_as("L2233.Regionaltech_mineral_coef_reduction_final") ->
       L2233.Regional_Globaltech_mineral_coef_constance_Yb
-
-    L2233.Regional_Globaltech_mineral_coef_reduction_Yb %>%
-      add_title("Mineral intensity data for other non-solar and non-wind generation technologies -- in the regional database (for base years, recalculated)") %>%
-      add_units("kg/EJ") %>%
-      add_comments("These will overwrite the globaltech database mineral intensity values for base years") %>%
-      same_precursors_as("L2233.Regionaltech_mineral_coef_reduction_final") ->
-      L2233.Regional_Globaltech_mineral_coef_reduction_Yb
 
     # Price multiplier
     L2233.Regionaltech_mineral_PMult %>%
@@ -1440,16 +1179,12 @@ module_energy_L2233.electricity_mineral <- function(command, ...) {
                 L2233.StubTechShrwt_mineral_pv_wind,
                 L2233.StubTechProd_mineral_pv_wind,
                 L2233.StubTechShrwt_mineral_other_pv_wind,
-                #L2233.StubTechProd_mineral_after_2015,
                 L2233.StubTechShrwt_mineral_pv_wind_future,
                 L2233.StubTechInterpTo_mineral_pv_wind_tech,
                 L2233.StubTechCapFac_mineral_pv_wind,
                 L2233.Regionaltech_mineral_coef_constance_final,
-                L2233.Regionaltech_mineral_coef_reduction_final,
                 L2233.Globaltech_mineral_coef_constance_final,
-                L2233.Globaltech_mineral_coef_reduction_final,
                 L2233.Regional_Globaltech_mineral_coef_constance_Yb,
-                L2233.Regional_Globaltech_mineral_coef_reduction_Yb,
                 L2233.Regionaltech_mineral_PMult,
                 L2233.Globaltech_mineral_PMult,
                 L2233.Regional_Globaltech_mineral_Yb_PMult,

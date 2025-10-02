@@ -5,12 +5,12 @@
 # Comment: add later
 # Column types: cccnnnnn
 # ----------
-supplysector,subsector,technology,1975,1990,2005,2010,2015
-pv_mineral,pv_mineral,pv_mineral (c-Si),1.00,0.73,0.95,0.87,0.93
-pv_mineral,pv_mineral,pv_mineral (CdTe),0.00,0.00,0.01,0.08,0.04
-pv_mineral,pv_mineral,pv_mineral (CIGS),0.00,0.00,0.00,0.02,0.02
-pv_mineral,pv_mineral,pv_mineral (a-Si),0.00,0.27,0.04,0.03,0.01
-wind_mineral,wind_mineral,wind_mineral (DD-EESG),0.08,0.08,0.08,0.08,0.07
-wind_mineral,wind_mineral,wind_mineral (DD-PMSG),0.11,0.11,0.11,0.11,0.15
-wind_mineral,wind_mineral,wind_mineral (GB-PMSG),0.02,0.02,0.02,0.02,0.03
-wind_mineral,wind_mineral,wind_mineral (GB-DFIG),0.79,0.79,0.79,0.79,0.76
+supplysector,subsector,technology,1975,1990,2005,2010,2015,2021
+pv_mineral,pv_mineral,pv_mineral (c-Si),1,0.73,0.95,0.87,0.93,0.95
+pv_mineral,pv_mineral,pv_mineral (CdTe),0,0,0.01,0.08,0.04,0.04
+pv_mineral,pv_mineral,pv_mineral (CIGS),0,0,0,0.02,0.02,0.01
+pv_mineral,pv_mineral,pv_mineral (a-Si),0,0.27,0.04,0.03,0.01,0
+wind_mineral,wind_mineral,wind_mineral (DD-EESG),0.08,0.08,0.08,0.08,0.07,0.06
+wind_mineral,wind_mineral,wind_mineral (DD-PMSG),0.11,0.11,0.11,0.11,0.15,0.18
+wind_mineral,wind_mineral,wind_mineral (GB-PMSG),0.02,0.02,0.02,0.02,0.03,0.04
+wind_mineral,wind_mineral,wind_mineral (GB-DFIG),0.79,0.79,0.79,0.79,0.76,0.72

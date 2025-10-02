@@ -96,15 +96,12 @@ module_water_electricity_water_xml <- function(command, ...) {
       "L2233.StubTechShrwt_mineral_pv_wind_future",
       "L2233.StubTechInterpTo_mineral_pv_wind_tech",
       "L2233.StubTechCapFac_mineral_pv_wind",
-      "L2233.Regionaltech_mineral_coef_constance_final",
-      "L2233.Regionaltech_mineral_coef_reduction_final",
-      "L2233.Globaltech_mineral_coef_constance_final",
-      "L2233.Globaltech_mineral_coef_reduction_final",
-      "L2233.Regional_Globaltech_mineral_coef_constance_Yb",
-      "L2233.Regional_Globaltech_mineral_coef_reduction_Yb",
-      "L2233.Regionaltech_mineral_PMult",
-      "L2233.Globaltech_mineral_PMult",
-      "L2233.Regional_Globaltech_mineral_Yb_PMult",
+      # "L2233.Regionaltech_mineral_coef_constance_final",
+      # "L2233.Globaltech_mineral_coef_constance_final",
+      # "L2233.Regional_Globaltech_mineral_coef_constance_Yb",
+      # "L2233.Regionaltech_mineral_PMult",
+      # "L2233.Globaltech_mineral_PMult",
+      # "L2233.Regional_Globaltech_mineral_Yb_PMult",
       "L2233.GlobalTechCapital_elec_subtype_pv_wind",
       "L2233.GlobalTechCapital_elec_subtype_pv_wind_storage",
       "L2233.GlobalTechCapital_elecPassthru_no_pv_wind",
@@ -141,7 +138,7 @@ module_water_electricity_water_xml <- function(command, ...) {
     L2233.GlobalIntPassThruTechShrwt_elec_cool    <- rename(L2233.GlobalIntPassThruTechShrwt_elec_cool,  `pass.through.technology` = technology)
     L2233.GlobalPassThruTechShrwt_elec_cool <- rename(L2233.GlobalPassThruTechShrwt_elec_cool,  `pass.through.technology` = technology)
     L2233.GlobalIntTechCapFac_elec_cool   <- rename(L2233.GlobalIntTechCapFac_elec_cool,  `intermittent.technology` = technology)
-    L2233.GlobalIntTechLifetime_CSP       <- rename(L2233.GlobalIntTechLifetime_CSP, `intermittent.technology` = technology )
+    L2233.GlobalIntTechLifetime_CSP       <- rename(L2233.GlobalIntTechLifetime_CSP, `intermittent.technology` = technology)
     L2233.GlobalIntTechValueFactor_elec_cool_CSP   <- rename(L2233.GlobalIntTechValueFactor_elec_cool_CSP,  `intermittent.technology` = technology)
     L2233.GlobalIntTechBackup_elec_cool_CSP   <- rename(L2233.GlobalIntTechBackup_elec_cool_CSP,  `backup.intermittent.technology` = technology)
 
@@ -242,15 +239,15 @@ module_water_electricity_water_xml <- function(command, ...) {
       add_xml_data(L2233.StubTechShrwt_mineral_pv_wind_future, "StubTechShrwt") %>%
       add_xml_data(L2233.StubTechInterpTo_mineral_pv_wind_tech, "StubTechInterpTo") %>%
       add_xml_data(L2233.StubTechCapFac_mineral_pv_wind, "StubTechCapFactor") %>%
-      add_xml_data(L2233.Regionaltech_mineral_coef_constance_final, "RegionalStubTechMineralCurCoefAllYr") %>%
-      add_xml_data(L2233.Globaltech_mineral_coef_constance_final, "GlobalTechMineralCurCoefAllYr") %>%
-      add_xml_data(L2233.Regional_Globaltech_mineral_coef_constance_Yb, "RegionalStubTechMineralCurCoefAllYr") %>%
-      add_xml_data(L2233.Regionaltech_mineral_PMult, "StubCaloriePriceConv") %>%
-      add_xml_data(L2233.Globaltech_mineral_PMult, "GlobalTechInputPMult") %>%
-      add_xml_data(L2233.Regional_Globaltech_mineral_Yb_PMult, "StubCaloriePriceConv") %>%
+      # add_xml_data(L2233.Regionaltech_mineral_coef_constance_final, "RegionalStubTechMineralCurCoefAllYr") %>%
+      # add_xml_data(L2233.Globaltech_mineral_coef_constance_final, "GlobalTechMineralCurCoefAllYr") %>%
+      # add_xml_data(L2233.Regional_Globaltech_mineral_coef_constance_Yb, "RegionalStubTechMineralCurCoefAllYr") %>%
+      # add_xml_data(L2233.Regionaltech_mineral_PMult, "StubCaloriePriceConv") %>%
+      # add_xml_data(L2233.Globaltech_mineral_PMult, "GlobalTechInputPMult") %>%
+      # add_xml_data(L2233.Regional_Globaltech_mineral_Yb_PMult, "StubCaloriePriceConv") %>%
       add_xml_data(L2233.GlobalTechCapital_elec_subtype_pv_wind, "GlobalIntTechCapital") %>%
       add_xml_data(L2233.GlobalTechCapital_elec_subtype_pv_wind_storage, "GlobalTechCapital") %>%
-      add_xml_data(L2233.GlobalIntTechMineral_elecSupplySector, "GlobalIntTechEffNoFlag") %>%
+      add_xml_data(L2233.GlobalIntTechMineral_elecSupplySector, "GlobalTechEff") %>%
       add_xml_data(L2233.GlobalTechMineral_elecSupplySector, "GlobalTechEff") %>%
       add_xml_data(L2233.GlobalTechLifetimeMineral_elec, "GlobalTechLifetime") %>%
       add_xml_data(L2233.GlobalIntTechLifetimeMineral_elec, "GlobalIntTechLifetime") %>%

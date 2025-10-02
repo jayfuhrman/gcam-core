@@ -5,52 +5,52 @@
 # Comment: add later
 # Column types: ccccncnnnnnnn
 # ----------
-supplysector,subsector,technology,input-capital,fixed.charge.rate,improvement.shadow.technology,improvement.max,improvement.rate,1971,1990,2005,2010,2015
-pv_mineral,pv_mineral,pv_mineral (c-Si),capital,0.13,,0.16,0.12,666.5,666.5,666.5,666.5,666.5
-pv_mineral,pv_mineral,pv_mineral (CdTe),capital,0.13,,0.16,0.12,515,515,515,515,515
-pv_mineral,pv_mineral,pv_mineral (CIGS),capital,0.13,,0.16,0.12,676.6,676.6,676.6,676.6,676.6
-pv_mineral,pv_mineral,pv_mineral (a-Si),capital,0.13,,0.16,0.12,1333,1333,1333,1333,1333
-rooftop_pv_mineral,rooftop_pv_mineral,rooftop_pv_mineral (c-Si),capital,0.1,,0.15,0.13,1082.6,1082.6,1082.6,1082.6,1082.6
-rooftop_pv_mineral,rooftop_pv_mineral,rooftop_pv_mineral (CdTe),capital,0.1,,0.15,0.13,836.6,836.6,836.6,836.6,836.6
-rooftop_pv_mineral,rooftop_pv_mineral,rooftop_pv_mineral (CIGS),capital,0.1,,0.15,0.13,1099,1099,1099,1099,1099
-rooftop_pv_mineral,rooftop_pv_mineral,rooftop_pv_mineral (a-Si),capital,0.1,,0.15,0.13,2165.2,2165.2,2165.2,2165.2,2165.2
-pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (c-Si) (LFP),capital,0.13,,0.14,0.09,1716.8,1716.8,1716.8,1716.8,1716.8
-pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (CdTe) (LFP),capital,0.13,,0.14,0.09,1565.3,1565.3,1565.3,1565.3,1565.3
-pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (CIGS) (LFP),capital,0.13,,0.14,0.09,1726.9,1726.9,1726.9,1726.9,1726.9
-pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (a-Si) (LFP),capital,0.13,,0.14,0.09,2383.3,2383.3,2383.3,2383.3,2383.3
-pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (c-Si) (NMC532),capital,0.13,,0.14,0.09,1906.2,1906.2,1906.2,1906.2,1906.2
-pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (CdTe) (NMC532),capital,0.13,,0.14,0.09,1754.7,1754.7,1754.7,1754.7,1754.7
-pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (CIGS) (NMC532),capital,0.13,,0.14,0.09,1916.3,1916.3,1916.3,1916.3,1916.3
-pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (a-Si) (NMC532),capital,0.13,,0.14,0.09,2572.7,2572.7,2572.7,2572.7,2572.7
-pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (c-Si) (NMC811),capital,0.13,,0.14,0.09,1902.7,1902.7,1902.7,1902.7,1902.7
-pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (CdTe) (NMC811),capital,0.13,,0.14,0.09,1751.2,1751.2,1751.2,1751.2,1751.2
-pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (CIGS) (NMC811),capital,0.13,,0.14,0.09,1912.8,1912.8,1912.8,1912.8,1912.8
-pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (a-Si) (NMC811),capital,0.13,,0.14,0.09,2569.2,2569.2,2569.2,2569.2,2569.2
-pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (c-Si) (VRFB),capital,0.13,,0.14,0.09,1942.8,1942.8,1942.8,1942.8,1942.8
-pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (CdTe) (VRFB),capital,0.13,,0.14,0.09,1791.3,1791.3,1791.3,1791.3,1791.3
-pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (CIGS) (VRFB),capital,0.13,,0.14,0.09,1952.9,1952.9,1952.9,1952.9,1952.9
-pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (a-Si) (VRFB),capital,0.13,,0.14,0.09,2609.3,2609.3,2609.3,2609.3,2609.3
-wind_mineral,wind_mineral,wind_mineral (DD-EESG),capital,0.13,,0.47,0.06,507,507,507,507,507
-wind_mineral,wind_mineral,wind_mineral (DD-PMSG),capital,0.13,,0.47,0.06,474.7,474.7,474.7,474.7,474.7
-wind_mineral,wind_mineral,wind_mineral (GB-PMSG),capital,0.13,,0.47,0.06,451,451,451,451,451
-wind_mineral,wind_mineral,wind_mineral (GB-DFIG),capital,0.13,,0.47,0.06,440,440,440,440,440
-wind_offshore_mineral,wind_offshore_mineral,wind_offshore_mineral (DD-EESG),capital,0.13,,0.17,0.07,1256.5,1256.5,1256.5,1256.5,1256.5
-wind_offshore_mineral,wind_offshore_mineral,wind_offshore_mineral (DD-PMSG),capital,0.13,,0.17,0.07,1176.4,1176.4,1176.4,1176.4,1176.4
-wind_offshore_mineral,wind_offshore_mineral,wind_offshore_mineral (GB-PMSG),capital,0.13,,0.17,0.07,1117.6,1117.6,1117.6,1117.6,1117.6
-wind_offshore_mineral,wind_offshore_mineral,wind_offshore_mineral (GB-DFIG),capital,0.13,,0.17,0.07,1090.3,1090.3,1090.3,1090.3,1090.3
-wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (DD-EESG) (LFP),capital,0.13,,0.2,0.07,1557.3,1557.3,1557.3,1557.3,1557.3
-wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (DD-PMSG) (LFP),capital,0.13,,0.2,0.07,1525,1525,1525,1525,1525
-wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (GB-PMSG) (LFP),capital,0.13,,0.2,0.07,1501.3,1501.3,1501.3,1501.3,1501.3
-wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (GB-DFIG) (LFP),capital,0.13,,0.2,0.07,1490.3,1490.3,1490.3,1490.3,1490.3
-wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (DD-EESG) (NMC532),capital,0.13,,0.2,0.07,1746.7,1746.7,1746.7,1746.7,1746.7
-wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (DD-PMSG) (NMC532),capital,0.13,,0.2,0.07,1714.4,1714.4,1714.4,1714.4,1714.4
-wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (GB-PMSG) (NMC532),capital,0.13,,0.2,0.07,1690.7,1690.7,1690.7,1690.7,1690.7
-wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (GB-DFIG) (NMC532),capital,0.13,,0.2,0.07,1679.7,1679.7,1679.7,1679.7,1679.7
-wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (DD-EESG) (NMC811),capital,0.13,,0.2,0.07,1743.2,1743.2,1743.2,1743.2,1743.2
-wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (DD-PMSG) (NMC811),capital,0.13,,0.2,0.07,1710.9,1710.9,1710.9,1710.9,1710.9
-wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (GB-PMSG) (NMC811),capital,0.13,,0.2,0.07,1687.2,1687.2,1687.2,1687.2,1687.2
-wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (GB-DFIG) (NMC811),capital,0.13,,0.2,0.07,1676.2,1676.2,1676.2,1676.2,1676.2
-wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (DD-EESG) (VRFB),capital,0.13,,0.2,0.07,1783.3,1783.3,1783.3,1783.3,1783.3
-wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (DD-PMSG) (VRFB),capital,0.13,,0.2,0.07,1751,1751,1751,1751,1751
-wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (GB-PMSG) (VRFB),capital,0.13,,0.2,0.07,1727.3,1727.3,1727.3,1727.3,1727.3
-wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (GB-DFIG) (VRFB),capital,0.13,,0.2,0.07,1716.3,1716.3,1716.3,1716.3,1716.3
+supplysector,subsector,technology,input-capital,fixed.charge.rate,improvement.shadow.technology,improvement.max,improvement.rate,1971,1990,2005,2010,2015,final-calibration-year
+pv_mineral,pv_mineral,pv_mineral (c-Si),capital,0.13,,0.16,0.12,666.5,666.5,666.5,666.5,666.5,666.5
+pv_mineral,pv_mineral,pv_mineral (CdTe),capital,0.13,,0.16,0.12,515,515,515,515,515,515
+pv_mineral,pv_mineral,pv_mineral (CIGS),capital,0.13,,0.16,0.12,676.6,676.6,676.6,676.6,676.6,676.6
+pv_mineral,pv_mineral,pv_mineral (a-Si),capital,0.13,,0.16,0.12,1333,1333,1333,1333,1333,1333
+rooftop_pv_mineral,rooftop_pv_mineral,rooftop_pv_mineral (c-Si),capital,0.1,,0.15,0.13,1082.6,1082.6,1082.6,1082.6,1082.6,1082.6
+rooftop_pv_mineral,rooftop_pv_mineral,rooftop_pv_mineral (CdTe),capital,0.1,,0.15,0.13,836.6,836.6,836.6,836.6,836.6,836.6
+rooftop_pv_mineral,rooftop_pv_mineral,rooftop_pv_mineral (CIGS),capital,0.1,,0.15,0.13,1099,1099,1099,1099,1099,1099
+rooftop_pv_mineral,rooftop_pv_mineral,rooftop_pv_mineral (a-Si),capital,0.1,,0.15,0.13,2165.2,2165.2,2165.2,2165.2,2165.2,2165.2
+pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (c-Si) (LFP),capital,0.13,,0.14,0.09,1716.8,1716.8,1716.8,1716.8,1716.8,1716.8
+pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (CdTe) (LFP),capital,0.13,,0.14,0.09,1565.3,1565.3,1565.3,1565.3,1565.3,1565.3
+pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (CIGS) (LFP),capital,0.13,,0.14,0.09,1726.9,1726.9,1726.9,1726.9,1726.9,1726.9
+pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (a-Si) (LFP),capital,0.13,,0.14,0.09,2383.3,2383.3,2383.3,2383.3,2383.3,2383.3
+pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (c-Si) (NMC532),capital,0.13,,0.14,0.09,1906.2,1906.2,1906.2,1906.2,1906.2,1906.2
+pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (CdTe) (NMC532),capital,0.13,,0.14,0.09,1754.7,1754.7,1754.7,1754.7,1754.7,1754.7
+pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (CIGS) (NMC532),capital,0.13,,0.14,0.09,1916.3,1916.3,1916.3,1916.3,1916.3,1916.3
+pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (a-Si) (NMC532),capital,0.13,,0.14,0.09,2572.7,2572.7,2572.7,2572.7,2572.7,2572.7
+pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (c-Si) (NMC811),capital,0.13,,0.14,0.09,1902.7,1902.7,1902.7,1902.7,1902.7,1902.7
+pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (CdTe) (NMC811),capital,0.13,,0.14,0.09,1751.2,1751.2,1751.2,1751.2,1751.2,1751.2
+pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (CIGS) (NMC811),capital,0.13,,0.14,0.09,1912.8,1912.8,1912.8,1912.8,1912.8,1912.8
+pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (a-Si) (NMC811),capital,0.13,,0.14,0.09,2569.2,2569.2,2569.2,2569.2,2569.2,2569.2
+pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (c-Si) (VRFB),capital,0.13,,0.14,0.09,1942.8,1942.8,1942.8,1942.8,1942.8,1942.8
+pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (CdTe) (VRFB),capital,0.13,,0.14,0.09,1791.3,1791.3,1791.3,1791.3,1791.3,1791.3
+pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (CIGS) (VRFB),capital,0.13,,0.14,0.09,1952.9,1952.9,1952.9,1952.9,1952.9,1952.9
+pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (a-Si) (VRFB),capital,0.13,,0.14,0.09,2609.3,2609.3,2609.3,2609.3,2609.3,2609.3
+wind_mineral,wind_mineral,wind_mineral (DD-EESG),capital,0.13,,0.47,0.06,507,507,507,507,507,507
+wind_mineral,wind_mineral,wind_mineral (DD-PMSG),capital,0.13,,0.47,0.06,474.7,474.7,474.7,474.7,474.7,474.7
+wind_mineral,wind_mineral,wind_mineral (GB-PMSG),capital,0.13,,0.47,0.06,451,451,451,451,451,451
+wind_mineral,wind_mineral,wind_mineral (GB-DFIG),capital,0.13,,0.47,0.06,440,440,440,440,440,440
+wind_offshore_mineral,wind_offshore_mineral,wind_offshore_mineral (DD-EESG),capital,0.13,,0.17,0.07,1256.5,1256.5,1256.5,1256.5,1256.5,1256.5
+wind_offshore_mineral,wind_offshore_mineral,wind_offshore_mineral (DD-PMSG),capital,0.13,,0.17,0.07,1176.4,1176.4,1176.4,1176.4,1176.4,1176.4
+wind_offshore_mineral,wind_offshore_mineral,wind_offshore_mineral (GB-PMSG),capital,0.13,,0.17,0.07,1117.6,1117.6,1117.6,1117.6,1117.6,1117.6
+wind_offshore_mineral,wind_offshore_mineral,wind_offshore_mineral (GB-DFIG),capital,0.13,,0.17,0.07,1090.3,1090.3,1090.3,1090.3,1090.3,1090.3
+wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (DD-EESG) (LFP),capital,0.13,,0.2,0.07,1557.3,1557.3,1557.3,1557.3,1557.3,1557.3
+wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (DD-PMSG) (LFP),capital,0.13,,0.2,0.07,1525,1525,1525,1525,1525,1525
+wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (GB-PMSG) (LFP),capital,0.13,,0.2,0.07,1501.3,1501.3,1501.3,1501.3,1501.3,1501.3
+wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (GB-DFIG) (LFP),capital,0.13,,0.2,0.07,1490.3,1490.3,1490.3,1490.3,1490.3,1490.3
+wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (DD-EESG) (NMC532),capital,0.13,,0.2,0.07,1746.7,1746.7,1746.7,1746.7,1746.7,1746.7
+wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (DD-PMSG) (NMC532),capital,0.13,,0.2,0.07,1714.4,1714.4,1714.4,1714.4,1714.4,1714.4
+wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (GB-PMSG) (NMC532),capital,0.13,,0.2,0.07,1690.7,1690.7,1690.7,1690.7,1690.7,1690.7
+wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (GB-DFIG) (NMC532),capital,0.13,,0.2,0.07,1679.7,1679.7,1679.7,1679.7,1679.7,1679.7
+wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (DD-EESG) (NMC811),capital,0.13,,0.2,0.07,1743.2,1743.2,1743.2,1743.2,1743.2,1743.2
+wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (DD-PMSG) (NMC811),capital,0.13,,0.2,0.07,1710.9,1710.9,1710.9,1710.9,1710.9,1710.9
+wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (GB-PMSG) (NMC811),capital,0.13,,0.2,0.07,1687.2,1687.2,1687.2,1687.2,1687.2,1687.2
+wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (GB-DFIG) (NMC811),capital,0.13,,0.2,0.07,1676.2,1676.2,1676.2,1676.2,1676.2,1676.2
+wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (DD-EESG) (VRFB),capital,0.13,,0.2,0.07,1783.3,1783.3,1783.3,1783.3,1783.3,1783.3
+wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (DD-PMSG) (VRFB),capital,0.13,,0.2,0.07,1751,1751,1751,1751,1751,1751
+wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (GB-PMSG) (VRFB),capital,0.13,,0.2,0.07,1727.3,1727.3,1727.3,1727.3,1727.3,1727.3
+wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (GB-DFIG) (VRFB),capital,0.13,,0.2,0.07,1716.3,1716.3,1716.3,1716.3,1716.3,1716.3

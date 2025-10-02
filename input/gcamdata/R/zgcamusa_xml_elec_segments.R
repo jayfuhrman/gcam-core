@@ -189,7 +189,9 @@ module_gcamusa_elec_segments_xml <- function(command, ...) {
     L2234.PassThroughTech_elecS_grid_USA <- rename(L2234.PassThroughTech_elecS_grid_USA, pass.through.technology = technology)
     # NOTE:  below is an issue with LEVEL2_DATA_NAMES... PrimaryRenewKeywordInt name should be intermittent.technology,
     # as the table is for intermittent technologies and the old DS MI header name is intermittent.technology
-    L2234.PrimaryRenewKeywordInt_elecS_USA <- rename(L2234.PrimaryRenewKeywordInt_elecS_USA, technology = intermittent.technology)
+    # YQ 10-01-2025 -- I have updated the LEVEL2_DATA_NAMES... PrimaryRenewKeywordInt name to be intermittent.technology,
+    # so we don't need the following rename process.
+    # L2234.PrimaryRenewKeywordInt_elecS_USA <- rename(L2234.PrimaryRenewKeywordInt_elecS_USA, technology = intermittent.technology)
 
     # Function to fix GlobalTech / GlobalIntTech sector & subsector names, which is a recurring issue
     fix_global_tech_names <- function(data){

@@ -399,7 +399,7 @@ module_energy_L113.atb_cost <- function(command, ...) {
       ungroup %>%
       # join is intended to duplicate rows - some GCAM tech costs are composites of multiple ATB techs
       # LJENM throws an error, left_join is used
-      left_join(atb_gcam_mapping, by = c("tech_type", "tech_detail")) %>%
+      left_join(atb_gcam_mapping, by = c("tech_type", "tech_detail"), relationship = "many-to-many") %>%
       # not every technology requires a shadow technology to compute costs from the ATB data set
       # LJENM errors because of NAs (not all techs are in RHS), NAs are dealt with below, left_join is used
       left_join(L113.cost_shadow_ratio, by = c("technology", "year", "input", "case")) %>%

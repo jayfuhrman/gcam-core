@@ -25,8 +25,9 @@
 		<!--Value name = "minerals_trade">../input/gcamdata/xml/minerals_trade.xml</Value-->
 		<Value name = "energy_supply">../input/gcamdata/xml/en_supply.xml</Value>
 		<Value name = "energy_transformation">../input/gcamdata/xml/en_transformation.xml</Value>
-<!--Electricity generation minerals demand-->
 		<Value name = "elec_water_base">../input/gcamdata/xml/electricity_water.xml</Value>
+<!--Electricity generation minerals demand-->
+		<Value name = "elec_water_mineral">../input/gcamdata/xml/electricity_mineral.xml</Value>
 		<Value name = "heat">../input/gcamdata/xml/heat.xml</Value>
 		<Value name = "energy_distribution">../input/gcamdata/xml/en_distribution.xml</Value>
 <!--Electricity T&D minerals demand-->
