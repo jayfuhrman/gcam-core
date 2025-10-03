@@ -11,7 +11,8 @@
 #' the generated outputs:  \code{L2441.GenericBaseServiceMaterials}, \code{L2441.SupplysectorMaterials},
 #' \code{L2441.SubsectorLogitMaterials}, \code{L2441.SubsectorShrwtMaterials}, \code{L2441.SubsectorShrwtFlltMaterials},
 #' \code{L2441.SubsectorInterpMaterials}, \code{L2441.SubsectorInterpToMaterials}, \code{L2441.TechCalOutputMaterials}, \code{L2441.TechShrwtMaterials},
-#' \code{L2441.TechCoefMaterials_final}, \code{L2441.TechLifetimeMaterials}, \code{L2441.TechSCurveMaterials}, \code{L2441.TechProfitShutdownMaterials}
+#' \code{L2441.TechCoefMaterials_final}, \code{L2441.TechLifetimeMaterials}, \code{L2441.TechSCurveMaterials}, \code{L2441.TechProfitShutdownMaterials},
+#' \code{L2441.GlobalBldMaterialDemand_Yb}
 #' @details Creates level2 material services and coefficient data for the building sector.
 #' @importFrom assertthat assert_that
 #' @importFrom dplyr bind_rows distinct filter if_else group_by left_join mutate select semi_join summarise
@@ -44,7 +45,8 @@ module_energy_L2441.building_det_mineral <- function(command, ...) {
              "L2441.TechLifetimeMaterials",
              "L2441.TechSCurveMaterials",
              "L2441.TechPMultMaterials",
-             "L2441.TechProfitShutdownMaterials"))
+             "L2441.TechProfitShutdownMaterials",
+             "L2441.GlobalBldMaterialDemand_Yb"))
   } else if(command == driver.MAKE) {
 
 
@@ -320,6 +322,16 @@ module_energy_L2441.building_det_mineral <- function(command, ...) {
       select(LEVEL2_DATA_NAMES[["TechPriceUnitConv"]]) %>%
       distinct()
 
+    # Write out global buildings material demand for base years
+    # This will be used in calculation of demand for other sector.
+    L2441.GlobalBldMaterialDemand_Yb <- L2441.TechCoefMaterials_final %>%
+      filter(year %in% MODEL_BASE_YEARS) %>%
+      left_join(L2441.TechCalOutputMaterials, by = c("region", "supplysector", "subsector", "technology", "year")) %>%
+      mutate(demand = calOutputValue * current.coef) %>%
+      group_by(minicam.energy.input, year) %>%
+      dplyr::summarise(demand = sum(demand)) %>%
+      ungroup()
+
     #===================================================
 
     L2441.GenericBaseServiceMaterials %>%
@@ -444,10 +456,18 @@ module_energy_L2441.building_det_mineral <- function(command, ...) {
       add_precursors("minerals/buildings/A44.bld_materials_mean_lifetime_vintage_reg") ->
       L2441.TechProfitShutdownMaterials
 
+    L2441.GlobalBldMaterialDemand_Yb %>%
+      add_title("Global buildings material demand for base years") %>%
+      add_units("Mt") %>%
+      add_comments("Global buildings material demand for base years") %>%
+      same_precursors_as(L2441.TechCoefMaterials_final)  ->
+      L2441.GlobalBldMaterialDemand_Yb
+
     return_data(L2441.GenericBaseServiceMaterials, L2441.SupplysectorMaterials,
     L2441.SubsectorLogitMaterials, L2441.SubsectorShrwtMaterials, L2441.SubsectorShrwtFlltMaterials,
     L2441.SubsectorInterpMaterials, L2441.SubsectorInterpToMaterials, L2441.TechCalOutputMaterials, L2441.TechShrwtMaterials,
-    L2441.TechCoefMaterials_final, L2441.TechPMultMaterials, L2441.TechLifetimeMaterials, L2441.TechSCurveMaterials, L2441.TechProfitShutdownMaterials
+    L2441.TechCoefMaterials_final, L2441.TechPMultMaterials, L2441.TechLifetimeMaterials, L2441.TechSCurveMaterials, L2441.TechProfitShutdownMaterials,
+    L2441.GlobalBldMaterialDemand_Yb
     )
 
   } else {
