@@ -39,12 +39,12 @@ module_aglu_ag_an_demand_input_Food_ExoDiet_xml <- function(command, ...) {
     c(
       # CWF pathways
       XML = "ag_an_demand_input_FoodExoDiet_SSP1_CWFMed_RegHet.xml",
-      XML = "ag_an_demand_input_FoodExoDiet_SSP1_CWFHigh_2050.xml",
+      XML = "ag_an_demand_input_FoodExoDiet_SSP1_CWFHigh_2050.xml")
       # ScenarioMIP pathways
-      XML = "ag_an_demand_input_Food_ExoDiet_SSP1_VLLO.xml",
-      XML = "ag_an_demand_input_Food_ExoDiet_SSP1_VLHO.xml",
-      XML = "ag_an_demand_input_Food_ExoDiet_SSP2_VLLO.xml",
-      XML = "ag_an_demand_input_Food_ExoDiet_SSP2_VLHO.xml")
+    #  XML = "ag_an_demand_input_Food_ExoDiet_SSP1_VLLO.xml",
+    #  XML = "ag_an_demand_input_Food_ExoDiet_SSP1_VLHO.xml",
+    #  XML = "ag_an_demand_input_Food_ExoDiet_SSP2_VLLO.xml",
+    #  XML = "ag_an_demand_input_Food_ExoDiet_SSP2_VLHO.xml")
 
   if(command == driver.DECLARE_INPUTS) {
     return(MODULE_INPUTS)
@@ -960,101 +960,101 @@ module_aglu_ag_an_demand_input_Food_ExoDiet_xml <- function(command, ...) {
       add_precursors(MODULE_INPUTS) ->
       ag_an_demand_input_FoodExoDiet_SSP1_CWFMed_RegHet.xml
 
-    ## SSP1 VLLO ----
-
-    for (ssp in paste0("SSP", 1:2)) {
-
-    ## update L203.IncomeElasticity_Food_ExoDiet
-    L203.IncomeElasticity_Food_ExoDiet_updated <-
-      L100.IncomeElasticity_Food_ExoDiet_VLLO_2025_2070_SSP %>%
-      filter(scenario == ssp) %>% select(-scenario)
-
-    # assure sector names are the identical
-    assertthat::assert_that(
-      dplyr::setdiff(L203.IncomeElasticity_Food_ExoDiet_updated %>%
-                       distinct(region, energy.final.demand, year),
-                     L203.IncomeElasticity_Food_ExoDiet %>%
-                       distinct(region, energy.final.demand, year)) %>% nrow ==0
-    )
-
-
-    ### Produce outputs ----
-
-    create_xml(paste0("ag_an_demand_input_Food_ExoDiet_",ssp,"_VLLO.xml")) %>%
-      add_logit_tables_xml(L203.Supplysector_demand_Food_ExoDiet, "Supplysector") %>%
-      add_logit_tables_xml_generate_levels(L203.SubsectorAll_demand_Food_ExoDiet,
-                                           "SubsectorLogit","subsector","nesting-subsector",1,FALSE) %>%
-      add_xml_data_generate_levels(L203.StubTech_demand_Food_ExoDiet, "StubTech","subsector","nesting-subsector",1,FALSE) %>%
-      add_xml_data_generate_levels(L203.StubTechProd_food_Food_ExoDiet, "StubTechProd", "subsector","nesting-subsector",1,FALSE) %>%
-      add_xml_data_generate_levels(L203.StubCalorieContent_Food_ExoDiet, "StubCalorieContent", "subsector","nesting-subsector",1,FALSE) %>%
-      add_node_equiv_xml("subsector") %>%
-      add_logit_tables_xml(L203.NestingSubsectorAll_demand_Food_ExoDiet, "SubsectorAll", "SubsectorLogit") %>%
-      add_xml_data(L203.GlobalTechCoef_demand_Food_ExoDiet, "GlobalTechCoef") %>%
-      add_xml_data(L203.GlobalTechShrwt_demand_Food_ExoDiet, "GlobalTechShrwt") %>%
-      # commented here and above as it is an empty table
-      #add_xml_data(L203.GlobalTechInterp_demand_Food_ExoDiet, "GlobalTechInterp") %>%
-      add_xml_data(L203.IncomeElasticity_Food_ExoDiet_updated, "IncomeElasticity") %>%
-      add_xml_data(L203.PriceElasticity_Food_ExoDiet, "PriceElasticity") %>%
-      add_xml_data(L203.PerCapitaBased_Food_ExoDiet, "PerCapitaBased") %>%
-      add_xml_data(L203.BaseService_Food_ExoDiet, "BaseService") %>%
-      add_xml_data_generate_levels(L2328.StubCalorieContent_Food_ExoDiet, "StubCalorieContent", "subsector","nesting-subsector",1,FALSE) %>%
-      add_xml_data_generate_levels(L2328.StubCaloriePriceConv_Food_ExoDiet, "StubCaloriePriceConv", "subsector","nesting-subsector",1,FALSE) %>%
-      add_precursors(MODULE_INPUTS) ->
-      ag_an_demand_input_Food_ExoDiet_SSPs
-
-    assign(paste0("ag_an_demand_input_Food_ExoDiet_",ssp,"_VLLO.xml"),
-           value = ag_an_demand_input_Food_ExoDiet_SSPs, envir = cur_env )
-
-
-    }
-
-
-    ## SSP1 VLHO ----
-
-    for (ssp in paste0("SSP", 1:2)) {
-
-      ## update L203.IncomeElasticity_Food_ExoDiet
-      L203.IncomeElasticity_Food_ExoDiet_updated <-
-        L100.IncomeElasticity_Food_ExoDiet_VLHO_2025_2100_SSP %>%
-        filter(scenario == ssp) %>% select(-scenario)
-
-      # assure sector names are the identical
-      assertthat::assert_that(
-        dplyr::setdiff(L203.IncomeElasticity_Food_ExoDiet_updated %>%
-                         distinct(region, energy.final.demand, year),
-                       L203.IncomeElasticity_Food_ExoDiet %>%
-                         distinct(region, energy.final.demand, year)) %>% nrow ==0
-      )
-
-      ### Produce outputs ----
-
-      create_xml(paste0("ag_an_demand_input_Food_ExoDiet_",ssp,"_VLHO.xml")) %>%
-        add_logit_tables_xml(L203.Supplysector_demand_Food_ExoDiet, "Supplysector") %>%
-        add_logit_tables_xml_generate_levels(L203.SubsectorAll_demand_Food_ExoDiet,
-                                             "SubsectorLogit","subsector","nesting-subsector",1,FALSE) %>%
-        add_xml_data_generate_levels(L203.StubTech_demand_Food_ExoDiet, "StubTech","subsector","nesting-subsector",1,FALSE) %>%
-        add_xml_data_generate_levels(L203.StubTechProd_food_Food_ExoDiet, "StubTechProd", "subsector","nesting-subsector",1,FALSE) %>%
-        add_xml_data_generate_levels(L203.StubCalorieContent_Food_ExoDiet, "StubCalorieContent", "subsector","nesting-subsector",1,FALSE) %>%
-        add_node_equiv_xml("subsector") %>%
-        add_logit_tables_xml(L203.NestingSubsectorAll_demand_Food_ExoDiet, "SubsectorAll", "SubsectorLogit") %>%
-        add_xml_data(L203.GlobalTechCoef_demand_Food_ExoDiet, "GlobalTechCoef") %>%
-        add_xml_data(L203.GlobalTechShrwt_demand_Food_ExoDiet, "GlobalTechShrwt") %>%
-        # commented here and above as it is an empty table
-        #add_xml_data(L203.GlobalTechInterp_demand_Food_ExoDiet, "GlobalTechInterp") %>%
-        add_xml_data(L203.IncomeElasticity_Food_ExoDiet_updated, "IncomeElasticity") %>%
-        add_xml_data(L203.PriceElasticity_Food_ExoDiet, "PriceElasticity") %>%
-        add_xml_data(L203.PerCapitaBased_Food_ExoDiet, "PerCapitaBased") %>%
-        add_xml_data(L203.BaseService_Food_ExoDiet, "BaseService") %>%
-        add_xml_data_generate_levels(L2328.StubCalorieContent_Food_ExoDiet, "StubCalorieContent", "subsector","nesting-subsector",1,FALSE) %>%
-        add_xml_data_generate_levels(L2328.StubCaloriePriceConv_Food_ExoDiet, "StubCaloriePriceConv", "subsector","nesting-subsector",1,FALSE) %>%
-        add_precursors(MODULE_INPUTS) ->
-        ag_an_demand_input_Food_ExoDiet_SSPs
-
-      assign(paste0("ag_an_demand_input_Food_ExoDiet_",ssp,"_VLHO.xml"),
-             value = ag_an_demand_input_Food_ExoDiet_SSPs, envir = cur_env )
-
-    }
-
+    # ## SSP1 VLLO ----
+    #
+    # for (ssp in paste0("SSP", 1:2)) {
+    #
+    # ## update L203.IncomeElasticity_Food_ExoDiet
+    # L203.IncomeElasticity_Food_ExoDiet_updated <-
+    #   L100.IncomeElasticity_Food_ExoDiet_VLLO_2025_2070_SSP %>%
+    #   filter(scenario == ssp) %>% select(-scenario)
+    #
+    # # assure sector names are the identical
+    # assertthat::assert_that(
+    #   dplyr::setdiff(L203.IncomeElasticity_Food_ExoDiet_updated %>%
+    #                    distinct(region, energy.final.demand, year),
+    #                  L203.IncomeElasticity_Food_ExoDiet %>%
+    #                    distinct(region, energy.final.demand, year)) %>% nrow ==0
+    # )
+    #
+    #
+    # ### Produce outputs ----
+    #
+    # create_xml(paste0("ag_an_demand_input_Food_ExoDiet_",ssp,"_VLLO.xml")) %>%
+    #   add_logit_tables_xml(L203.Supplysector_demand_Food_ExoDiet, "Supplysector") %>%
+    #   add_logit_tables_xml_generate_levels(L203.SubsectorAll_demand_Food_ExoDiet,
+    #                                        "SubsectorLogit","subsector","nesting-subsector",1,FALSE) %>%
+    #   add_xml_data_generate_levels(L203.StubTech_demand_Food_ExoDiet, "StubTech","subsector","nesting-subsector",1,FALSE) %>%
+    #   add_xml_data_generate_levels(L203.StubTechProd_food_Food_ExoDiet, "StubTechProd", "subsector","nesting-subsector",1,FALSE) %>%
+    #   add_xml_data_generate_levels(L203.StubCalorieContent_Food_ExoDiet, "StubCalorieContent", "subsector","nesting-subsector",1,FALSE) %>%
+    #   add_node_equiv_xml("subsector") %>%
+    #   add_logit_tables_xml(L203.NestingSubsectorAll_demand_Food_ExoDiet, "SubsectorAll", "SubsectorLogit") %>%
+    #   add_xml_data(L203.GlobalTechCoef_demand_Food_ExoDiet, "GlobalTechCoef") %>%
+    #   add_xml_data(L203.GlobalTechShrwt_demand_Food_ExoDiet, "GlobalTechShrwt") %>%
+    #   # commented here and above as it is an empty table
+    #   #add_xml_data(L203.GlobalTechInterp_demand_Food_ExoDiet, "GlobalTechInterp") %>%
+    #   add_xml_data(L203.IncomeElasticity_Food_ExoDiet_updated, "IncomeElasticity") %>%
+    #   add_xml_data(L203.PriceElasticity_Food_ExoDiet, "PriceElasticity") %>%
+    #   add_xml_data(L203.PerCapitaBased_Food_ExoDiet, "PerCapitaBased") %>%
+    #   add_xml_data(L203.BaseService_Food_ExoDiet, "BaseService") %>%
+    #   add_xml_data_generate_levels(L2328.StubCalorieContent_Food_ExoDiet, "StubCalorieContent", "subsector","nesting-subsector",1,FALSE) %>%
+    #   add_xml_data_generate_levels(L2328.StubCaloriePriceConv_Food_ExoDiet, "StubCaloriePriceConv", "subsector","nesting-subsector",1,FALSE) %>%
+    #   add_precursors(MODULE_INPUTS) ->
+    #   ag_an_demand_input_Food_ExoDiet_SSPs
+    #
+    # assign(paste0("ag_an_demand_input_Food_ExoDiet_",ssp,"_VLLO.xml"),
+    #        value = ag_an_demand_input_Food_ExoDiet_SSPs, envir = cur_env )
+    #
+    #
+    # }
+    #
+    #
+    # ## SSP1 VLHO ----
+    #
+    # for (ssp in paste0("SSP", 1:2)) {
+    #
+    #   ## update L203.IncomeElasticity_Food_ExoDiet
+    #   L203.IncomeElasticity_Food_ExoDiet_updated <-
+    #     L100.IncomeElasticity_Food_ExoDiet_VLHO_2025_2100_SSP %>%
+    #     filter(scenario == ssp) %>% select(-scenario)
+    #
+    #   # assure sector names are the identical
+    #   assertthat::assert_that(
+    #     dplyr::setdiff(L203.IncomeElasticity_Food_ExoDiet_updated %>%
+    #                      distinct(region, energy.final.demand, year),
+    #                    L203.IncomeElasticity_Food_ExoDiet %>%
+    #                      distinct(region, energy.final.demand, year)) %>% nrow ==0
+    #   )
+    #
+    #   ### Produce outputs ----
+    #
+    #   create_xml(paste0("ag_an_demand_input_Food_ExoDiet_",ssp,"_VLHO.xml")) %>%
+    #     add_logit_tables_xml(L203.Supplysector_demand_Food_ExoDiet, "Supplysector") %>%
+    #     add_logit_tables_xml_generate_levels(L203.SubsectorAll_demand_Food_ExoDiet,
+    #                                          "SubsectorLogit","subsector","nesting-subsector",1,FALSE) %>%
+    #     add_xml_data_generate_levels(L203.StubTech_demand_Food_ExoDiet, "StubTech","subsector","nesting-subsector",1,FALSE) %>%
+    #     add_xml_data_generate_levels(L203.StubTechProd_food_Food_ExoDiet, "StubTechProd", "subsector","nesting-subsector",1,FALSE) %>%
+    #     add_xml_data_generate_levels(L203.StubCalorieContent_Food_ExoDiet, "StubCalorieContent", "subsector","nesting-subsector",1,FALSE) %>%
+    #     add_node_equiv_xml("subsector") %>%
+    #     add_logit_tables_xml(L203.NestingSubsectorAll_demand_Food_ExoDiet, "SubsectorAll", "SubsectorLogit") %>%
+    #     add_xml_data(L203.GlobalTechCoef_demand_Food_ExoDiet, "GlobalTechCoef") %>%
+    #     add_xml_data(L203.GlobalTechShrwt_demand_Food_ExoDiet, "GlobalTechShrwt") %>%
+    #     # commented here and above as it is an empty table
+    #     #add_xml_data(L203.GlobalTechInterp_demand_Food_ExoDiet, "GlobalTechInterp") %>%
+    #     add_xml_data(L203.IncomeElasticity_Food_ExoDiet_updated, "IncomeElasticity") %>%
+    #     add_xml_data(L203.PriceElasticity_Food_ExoDiet, "PriceElasticity") %>%
+    #     add_xml_data(L203.PerCapitaBased_Food_ExoDiet, "PerCapitaBased") %>%
+    #     add_xml_data(L203.BaseService_Food_ExoDiet, "BaseService") %>%
+    #     add_xml_data_generate_levels(L2328.StubCalorieContent_Food_ExoDiet, "StubCalorieContent", "subsector","nesting-subsector",1,FALSE) %>%
+    #     add_xml_data_generate_levels(L2328.StubCaloriePriceConv_Food_ExoDiet, "StubCaloriePriceConv", "subsector","nesting-subsector",1,FALSE) %>%
+    #     add_precursors(MODULE_INPUTS) ->
+    #     ag_an_demand_input_Food_ExoDiet_SSPs
+    #
+    #   assign(paste0("ag_an_demand_input_Food_ExoDiet_",ssp,"_VLHO.xml"),
+    #          value = ag_an_demand_input_Food_ExoDiet_SSPs, envir = cur_env )
+    #
+    # }
+    #
 
 
     # Done ----
