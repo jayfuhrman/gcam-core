@@ -26,6 +26,7 @@ module_energy_L2541.transportation_UCD_mineral <- function(command, ...) {
     return(c("L2541.trn_globaltech_mineral_curcoef_final",
              "L2541.trn_globaltech_mineral_coef_final",
              "L2541.trn_globaltech_mineral_Pmult",
+             "L2541.GlobalTrnMaterialDemand_Yb",
              "L2541.StubTranTechCost_no_mineral_cost"))  # input produced by another chunk
   } else if(command == driver.MAKE) {
 
@@ -354,6 +355,18 @@ module_energy_L2541.transportation_UCD_mineral <- function(command, ...) {
       L2541.trn_globaltech_mineral_vehicle_Pmult %>%
       rbind(L2541.trn_globaltech_mineral_battery_Pmult)
 
+    # Write out global buildings material demand for base years
+    # This will be used in calculation of demand for other sector.
+    L2541.GlobalTrnMaterialDemand_Yb <- L2541.trn_globaltech_mineral_curcoef_final %>%
+      filter(year %in% MODEL_BASE_YEARS) %>%
+      left_join(select(L2541.StubTranTechOutput_vkm, -sce), by = c("region", "pass.through.sector", "tranSubsector", "stub.technology", "year")) %>%
+      mutate(demand = calOutputValue * current.coef) %>%
+      group_by(minicam.energy.input, year, sce) %>%
+      dplyr::summarise(demand = sum(demand)) %>%
+      ungroup() %>%
+      # There are issues with other SSPs!!
+      filter(sce == "CORE")
+
         #------------------------------------------------------------------------------------------------------------------
 
     L2541.trn_globaltech_mineral_curcoef_final %>%
@@ -396,10 +409,18 @@ module_energy_L2541.transportation_UCD_mineral <- function(command, ...) {
       add_comments("This dataset includes TranTechnology costs of transport sector (excluding material cost)") ->
       L2541.StubTranTechCost_no_mineral_cost
 
+    L2541.GlobalTrnMaterialDemand_Yb %>%
+      add_title("Global transportation material demand for base years") %>%
+      add_units("Mt") %>%
+      add_comments("Global transportation material demand for base years") %>%
+      same_precursors_as(L2541.trn_globaltech_mineral_curcoef_final)  ->
+      L2541.GlobalTrnMaterialDemand_Yb
+
     return_data(L2541.trn_globaltech_mineral_curcoef_final,
                 L2541.trn_globaltech_mineral_coef_final,
                 L2541.trn_globaltech_mineral_Pmult,
-                L2541.StubTranTechCost_no_mineral_cost)
+                L2541.StubTranTechCost_no_mineral_cost,
+                L2541.GlobalTrnMaterialDemand_Yb)
   } else {
     stop("Unknown command")
   }

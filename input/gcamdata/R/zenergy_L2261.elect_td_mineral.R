@@ -10,7 +10,7 @@
 #' @return Depends on \code{command}: either a vector of required inputs,
 #' a vector of output names, or (if \code{command} is "MAKE") all
 #' the generated outputs: \code{L2261.StubTechCost_elect_td}, \code{L2261.StubTechCoef_elect_td_mineral_final}, \code{L2261.StubTechMineralPMult}
-#' \code{L2261.StubTechLifetime_elect_td},\code{L2261.StubTechSCurve_elect_td}, \code{L2261.StubTechProfitShutdown_elect_td}
+#' \code{L2261.StubTechLifetime_elect_td},\code{L2261.StubTechSCurve_elect_td}, \code{L2261.StubTechProfitShutdown_elect_td}, \code{ L2261.GlobalTDMaterialDemand_Yb}
 #' @details Prepares Level 2 data on electricity T&D sector for the generation of elect_td_mineral.xml.
 #' Creates global technology database info--cost, shareweight, logit, efficiencies, and interpolations--and regional values where applicable for transmission and distribution.
 #' @importFrom assertthat assert_that
@@ -31,7 +31,8 @@ module_energy_L2261.elect_td_mineral <- function(command, ...) {
              "L2261.StubTechMineralPMult",
              "L2261.StubTechLifetime_elect_td",
              "L2261.StubTechSCurve_elect_td",
-             "L2261.StubTechProfitShutdown_elect_td"))
+             "L2261.StubTechProfitShutdown_elect_td",
+             "L2261.GlobalTDMaterialDemand_Yb"))
   } else if(command == driver.MAKE) {
 
     # Silence global variable package check
@@ -170,6 +171,21 @@ module_energy_L2261.elect_td_mineral <- function(command, ...) {
       select(LEVEL2_DATA_NAMES[["StubCaloriePriceConv"]]) %>%
       distinct()
 
+
+    L2261.GlobalTDMaterialDemand_Yb <- L2261.StubTechCoef_elect_td_mineral_final %>%
+      filter(year %in% MODEL_BASE_YEARS) %>%
+      # mineral coefficients are the same across elect_td_bld, elect_td_ind, elect_td_trn
+      # so we can just multiply a single mineral coefficient by the elect_td output
+      select(-supplysector, -subsector, -stub.technology) %>%
+      distinct() %>%
+      left_join_error_no_match(GCAM_region_names, by = c("region")) %>%
+      left_join_error_no_match(L126.out_EJ_R_electd_F_Yh, by = c("GCAM_region_ID",  "year")) %>%
+      mutate(demand = value * current.coef) %>%
+      group_by(minicam.energy.input, year) %>%
+      dplyr::summarise(demand = sum(demand)) %>%
+      ungroup()
+
+
     # ===================================================
     L2261.StubTechCost_elect_td  %>%
       add_title("Regional-specific non-mineral non-energy cost for elect_td technologies") %>%
@@ -217,12 +233,20 @@ module_energy_L2261.elect_td_mineral <- function(command, ...) {
       add_precursors("minerals/td/A26.td_technology_vintage") ->
       L2261.StubTechProfitShutdown_elect_td
 
+    L2261.GlobalTDMaterialDemand_Yb %>%
+      add_title("Global T&D material demand for base years") %>%
+      add_units("Mt") %>%
+      add_comments("Global T&D material demand for base years") %>%
+      same_precursors_as(L2261.StubTechCoef_elect_td_mineral_final)  ->
+      L2261.GlobalTDMaterialDemand_Yb
+
     return_data(L2261.StubTechCost_elect_td,
                 L2261.StubTechCoef_elect_td_mineral_final,
                 L2261.StubTechMineralPMult,
                 L2261.StubTechLifetime_elect_td,
                 L2261.StubTechSCurve_elect_td,
-                L2261.StubTechProfitShutdown_elect_td)
+                L2261.StubTechProfitShutdown_elect_td,
+                L2261.GlobalTDMaterialDemand_Yb)
   } else {
     stop("Unknown command")
   }
