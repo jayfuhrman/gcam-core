@@ -21,7 +21,11 @@ module_energy_L271.other_sector_mineral <- function(command, ...) {
              FILE = "minerals/other/A271.tech_input.csv",
              FILE = "minerals/other/A271.demand.csv",
              "L201.Pop_SSP2",
-             "L2111.RsrcCalProd"))
+             "L2111.RsrcCalProd",
+             "L2233.GlobalPowerMaterialDemand_Yb",
+             "L2261.GlobalTDMaterialDemand_Yb",
+             "L2541.GlobalTrnMaterialDemand_Yb",
+             "L2441.GlobalBldMaterialDemand_Yb"))
   } else if(command == driver.DECLARE_OUTPUTS) {
     return(c("L271.Supplysector_mineral_other_sector",
              "L271.SubsectorLogit_mineral_other_sector",
@@ -46,7 +50,7 @@ module_energy_L271.other_sector_mineral <- function(command, ...) {
     # Load data
     GCAM_region_names <- get_data(all_data, "common/GCAM_region_names",strip_attributes = TRUE)
     A271.cmm_historical_demand_all <- get_data(all_data, "minerals/other/A271.cmm_historical_demand_all.csv",strip_attributes = TRUE)
-    ## NOTE THIS SECTORAL DEMAND CURRENTLY COMES FROM OUTPUT, WE WILL WANT TO CALCULATE THIS DIRECTLY FROM WITHIN GCAMDATA
+    ## NOTE THIS SECTORAL DEMAND CURRENTLY COMES FROM OUTPUT, WE NOW INSTEAD CALCULATE THIS DIRECTLY FROM WITHIN GCAMDATA
     A271.cmm_historical_demand_sector <- get_data(all_data, "minerals/other/A271.cmm_historical_demand_sector.csv", strip_attributes = TRUE)
     A271.cmm_sector_retire <- get_data(all_data, "minerals/other/A271.cmm_sector_retire.csv",strip_attributes = TRUE)
     A271.sector <- get_data(all_data, "minerals/other/A271.sector.csv",strip_attributes = TRUE)
@@ -54,6 +58,13 @@ module_energy_L271.other_sector_mineral <- function(command, ...) {
     A271.demand <- get_data(all_data, "minerals/other/A271.demand.csv",strip_attributes = TRUE)
     L201.Pop_SSP2 <- get_data(all_data, "L201.Pop_SSP2",strip_attributes = TRUE)
     L2111.RsrcCalProd <- get_data(all_data, "L2111.RsrcCalProd", strip_attributes = TRUE)
+
+    L2233.GlobalPowerMaterialDemand_Yb <- get_data(all_data, "L2233.GlobalPowerMaterialDemand_Yb", strip_attributes = TRUE) %>% mutate(sector = "Electricity generation")
+    L2261.GlobalTDMaterialDemand_Yb <- get_data(all_data, "L2261.GlobalTDMaterialDemand_Yb", strip_attributes = TRUE) %>% mutate(sector = "Electricity T&D")
+    L2541.GlobalTrnMaterialDemand_Yb <- get_data(all_data, "L2541.GlobalTrnMaterialDemand_Yb", strip_attributes = TRUE) %>% mutate(sector = "Transportation") %>%
+      # scenario doesn't matter for base year demands, which should not vary by SSP
+      select(-sce)
+    L2441.GlobalBldMaterialDemand_Yb <- get_data(all_data, "L2441.GlobalBldMaterialDemand_Yb", strip_attributes = TRUE) %>% mutate(sector = "Buildings")
 
     A271.sector %>%
       left_join_error_no_match(A271.tech_input, by = "supplysector") %>%
@@ -157,6 +168,18 @@ module_energy_L271.other_sector_mineral <- function(command, ...) {
       mutate(`1975` = `1990`*0.6) %>%
       filter(! (resource %in% energy.TRADED_MINERAL)) %>%
       bind_rows(A271.cmm_historical_demand_all_Rsrc_adj)
+
+    # Prepare the energy sector historical demand data
+    # This is calculated by summing up the demands from all of the sectors
+    # Hydrogen production is only deployed in future years, and therefore does not have any base-year demands
+    L271.cmm_historical_demand_sector <- bind_rows(L2233.GlobalPowerMaterialDemand_Yb,
+                                                   L2261.GlobalTDMaterialDemand_Yb,
+                                                   L2541.GlobalTrnMaterialDemand_Yb,
+                                                   L2441.GlobalBldMaterialDemand_Yb) %>%
+      group_by(minicam.energy.input, year) %>%
+      dplyr::summarise(value = sum(demand)) %>%
+      pivot_wider(names_from = "year", values_from = "value")
+
 
     # Prepare the energy sector demand data for joining
     A271.cmm_historical_demand_sector_long <- A271.cmm_historical_demand_sector %>%
