@@ -23,7 +23,7 @@
 #' \code{L2233.Regionaltech_mineral_coef_constance_final}, \code{L2233.GlobalTechCapital_elecPassthru_no_pv_wind},
 #' \code{L2233.GlobalIntTechMineral_elecSupplySector}, \code{L2233.GlobalTechMineral_elecSupplySector},
 #' \code{L2233.GlobalTechLifetimeMineral_elec}, \code{L2233.GlobalIntTechLifetimeMineral_elec},
-#' \code{L2233.GlobalIntTechLifetime_CSP}, \code{L2233.GlobalTechLifetime_elec_cool_no_pv_wind},
+#' \code{L2233.GlobalIntTechLifetime_CSP}, \code{L2233.GlobalTechLifetime_elec_cool_no_pv_wind}, \code{L2233.GlobalPowerMaterialDemand_Yb}
 #' @author YQ 2023
 #' @importFrom tibble tibble
 #' @importFrom dplyr filter mutate select
@@ -96,7 +96,8 @@ module_energy_L2233.electricity_mineral <- function(command, ...) {
              "L2233.GlobalTechLifetimeMineral_elec",
              "L2233.GlobalIntTechLifetimeMineral_elec",
              "L2233.GlobalIntTechLifetime_CSP",
-             "L2233.GlobalTechLifetime_elec_cool_no_pv_wind"
+             "L2233.GlobalTechLifetime_elec_cool_no_pv_wind",
+             "L2233.GlobalPowerMaterialDemand_Yb"
              ))
   } else if(command == driver.MAKE) {
 
@@ -888,6 +889,37 @@ module_energy_L2233.electricity_mineral <- function(command, ...) {
     distinct()
 
 
+  # Write out global power sector material demand for base years
+  L2233.GlobalPowerMaterialDemand_Yb_cool <-
+    L2233.Regional_Globaltech_mineral_coef_constance_Yb %>%
+    filter(year %in% MODEL_BASE_YEARS) %>%
+    left_join(L2233.StubTechProd_elec_cool,
+              by = c("region", "supplysector", "subsector", "stub.technology", "year")) %>%
+    mutate(demand = calOutputValue * current.coef) %>%
+    group_by(minicam.energy.input, year) %>%
+    dplyr::summarise(demand = sum(demand)) %>%
+    ungroup()
+
+  L2233.GlobalPowerMaterialDemand_Yb_solar_wind <-
+    L2233.Regionaltech_mineral_coef_constance_final %>%
+    filter(year %in% MODEL_BASE_YEARS) %>%
+    left_join(L2233.StubTechProd_solar_wind,
+              by = c("region", "supplysector", "subsector", "stub.technology", "year")) %>%
+    mutate(demand = calOutputValue * current.coef) %>%
+    group_by(minicam.energy.input, year) %>%
+    dplyr::summarise(demand = sum(demand, na.rm = TRUE)) %>%
+    ungroup()
+
+  L2233.GlobalPowerMaterialDemand_Yb <-
+    L2233.GlobalPowerMaterialDemand_Yb_cool %>%
+    rbind(L2233.GlobalPowerMaterialDemand_Yb_solar_wind) %>%
+    group_by(minicam.energy.input, year) %>%
+    dplyr::summarise(demand = sum(demand, na.rm = TRUE)) %>%
+    ungroup()
+
+  # -- Output --
+
+
     ## ===================================================================
     ## Section 3 -- Produce outputs, add appropriate flags and comments
     ## ===================================================================
@@ -1166,6 +1198,25 @@ module_energy_L2233.electricity_mineral <- function(command, ...) {
       add_precursors("L2233.GlobalTechLifetime_elec_cool") ->
       L2233.GlobalTechLifetime_elec_cool_no_pv_wind
 
+    L2233.GlobalPowerMaterialDemand_Yb %>%
+      add_title("Global power sector material demand for base years") %>%
+      add_units("Mt") %>%
+      add_legacy_name("L2233.GlobalPowerMaterialDemand_Yb") %>%
+      add_comments("Global power sector material demand for base years") %>%
+      add_precursors("L2233.StubTechProd_elec_cool",
+                         "L1231.out_EJ_R_elec_F_tech_Yh",
+                         "common/GCAM_region_names",
+                         "energy/calibrated_techs",
+                         "minerals/electricity/elec_tech_mineral_map",
+                         "minerals/electricity/A23.globaltech_subtype_calibration",
+                         "minerals/electricity/A23.globaltech_mineral_coef_kg_kw",
+                         "minerals/electricity/A23.globaltech_storage_mineral_coef_kg_kwh",
+                         "water/elec_tech_water_map",
+                         "L223.StubTechCapFactor_elec",
+                         "L2233.StubTechCapFactor_elec_cool",
+                         "L2233.GlobalTechCapFac_elec_cool")  ->
+      L2233.GlobalPowerMaterialDemand_Yb
+
 
     return_data(L2233.Sector_elec_mineral,
                 L2233.PassThruSector_elec_mineral,
@@ -1197,7 +1248,8 @@ module_energy_L2233.electricity_mineral <- function(command, ...) {
                 L2233.GlobalTechLifetimeMineral_elec,
                 L2233.GlobalIntTechLifetimeMineral_elec,
                 L2233.GlobalIntTechLifetime_CSP,
-                L2233.GlobalTechLifetime_elec_cool_no_pv_wind
+                L2233.GlobalTechLifetime_elec_cool_no_pv_wind,
+                L2233.GlobalPowerMaterialDemand_Yb
     )
   } else {
     stop("Unknown command")
