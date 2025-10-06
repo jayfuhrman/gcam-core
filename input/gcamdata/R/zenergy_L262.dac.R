@@ -190,7 +190,8 @@ module_energy_L262.dac <- function(command, ...) {
     A62.globaltech_shrwt <- get_data(all_data, "energy/A62.globaltech_shrwt")%>% gather_years
     A62.globaltech_shrwt_EMF <- get_data(all_data, "energy/A62.globaltech_shrwt_EMF")%>% gather_years
 
-    A62.ew_calibration <- get_data(all_data, "energy/A62.ew_calibration")%>% gather_years
+    A62.ew_calibration <- get_data(all_data, "energy/A62.ew_calibration") %>%
+      mutate(year = MODEL_FINAL_BASE_YEAR) %>% gather_years
 
 
     # ===================================================
@@ -305,6 +306,10 @@ module_energy_L262.dac <- function(command, ...) {
              subsector.name = subsector) %>%
       select(LEVEL2_DATA_NAMES[["GlobalTechCoef"]],'scenario') ->
       L262.GlobalTechCoef_dac
+
+    # Stoichiometric H2 requirements for efuel liquids ======================================
+    efuels_H2_coef <- 1.190969444 #https://doi.org/10.1021/es500191g SI Figure S13
+    #Units: GJ H2/GJ refined liquids
 
     H2_elec_for_efuels <- L225.GlobalTechCoef_h2 %>%
       filter(sector.name == 'H2 central production',

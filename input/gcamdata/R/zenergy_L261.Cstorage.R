@@ -233,12 +233,17 @@ module_energy_L261.Cstorage <- function(command, ...) {
       select(region, renewresource = resource, sub.renewable.resource = subresource, grade, available, extractioncost)
     #construct a supply curve based on fractions from NETL's saline storage cost model for the U.S. and then apply these fractions to max CO2 injectivity based on O&G volumetric flow rates
 
-    k_rapid = 0.24
-    k_slow = 0.032
+    k_rapid = 0.24 #shale gas growth in USA (EIA)
+    k_med = 0.183 #flue gas desulphurization
+    k_slow = 0.032 #gas pipeline growth rate from HATCH database
 
     CStorageCurvesDynamic_slow_growth <- L261.CStorageCurvesDynamic %>%
       mutate(scenario = 'slow growth rate',
              k = k_slow)
+
+    CStorageCurvesDynamic_med_growth <- L261.CStorageCurvesDynamic %>%
+      mutate(scenario = 'medium growth rate',
+             k = k_med)
 
     CStorageCurvesDynamic_rapid_growth <- L261.CStorageCurvesDynamic %>%
       mutate(scenario = 'rapid growth rate',
@@ -252,7 +257,8 @@ module_energy_L261.Cstorage <- function(command, ...) {
 
 
     L261.CStorageCurvesDynamic <- bind_rows(CStorageCurvesDynamic_slow_growth,
-                                            CStorageCurvesDynamic_rapid_growth)
+                                            CStorageCurvesDynamic_rapid_growth,
+                                            CStorageCurvesDynamic_med_growth)
 
     ## Calculate an efficiency parameter equal to how much of each region's implied storage capacity is expected to be consumed by planned + operational projects by 2030
     calibrated_eff_2030 <- IEA_data %>%

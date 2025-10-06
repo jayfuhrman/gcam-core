@@ -286,7 +286,7 @@
                 </subsector>
             </supplysector>
         </region>
-        <region name="Europe_Eastern">
+        <region name="Ukraine">
             <unlimited-resource name="biochar storage">
                 <output-unit>MtC</output-unit>
                 <price-unit>1990$/tC</price-unit>
@@ -757,7 +757,7 @@
                         </minicam-non-energy-input>
                         <share-weight>1</share-weight>
                     </period>
-                    <period year="2020">
+                    <period year="2021">
                         <minicam-energy-input name="biochar storage">
                             <coefficient>1</coefficient>
                         </minicam-energy-input>

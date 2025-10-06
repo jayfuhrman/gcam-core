@@ -544,6 +544,7 @@ energy.UCD_EN_YEAR                <- 2005        # UCD transportation year to us
 energy.WIND.BASE.COST.YEAR        <- 2005        # Base cost year for wind, used in capacity factor calculations
 energy.H2A_CURRENT_YEAR           <- 2020        # Year of H2A "current" assumptions
 energy.FUEL_PRICES_MEAN_PERIOD    <- 5           # number of years used for calculating moving average for annual fossil fuel prices
+energy.H2A_CURRENT_YEAR <- 2021
 
 energy.ELEC_USE_BACKUP <- FALSE # constant for switching to old approach to variable renewable integration
                                 # FALSE (default) uses new value factor approach
