@@ -72,21 +72,22 @@ module_energy_L2541.transportation_UCD_mineral <- function(command, ...) {
       write_to_all_regions(c("region", "supplysector", "subsector", "technology", "year", "unit", "minicam.energy.input", "value"),
                            GCAM_region_names = GCAM_region_names)
 
-    unique(A2541.trn_globaltech_mineral_coef_kg_veh$unit)
-
-    # unique(A2541.trn_globaltech_mineral_coef_kg_per_travel_part1$sce)
-
+    # for tech whose mineral intensity was reported as "kg/seat-km travel", "kg/ton-km", "kg/pass-km", we convert all of them to "kg/vehicle km travel (kg/vkt)"
+    # by multiplying the loadFactor.
     A2541.trn_globaltech_mineral_coef_kg_per_travel_part1 <-
       A2541.trn_globaltech_mineral_coef_kg_veh %>%
       filter(unit %in% c("kg/seat-km travel", "kg/ton-km", "kg/pass-km")) %>%
       rename(tranSubsector = subsector, stub.technology = technology) %>%
       right_join(L254.StubTranTechLoadFactor,
-                by = c("region", "supplysector", "tranSubsector", "stub.technology", "year")) %>%
+                by = c("region", "supplysector", "tranSubsector", "stub.technology", "year"),
+                relationship = "many-to-many") %>%
       mutate(value = value * loadFactor,
              unit = "kg/vkt") %>%
       select(-loadFactor) %>%
       na.omit()
 
+    # for tech whose mineral intensity was reported as "kg/vehicle", we convert all of them to "kg/vehicle km travel (kg/vkt)"
+    # by dividing by annual travel distance (km/vehicle).
     A2541.trn_globaltech_mineral_coef_kg_per_travel_part2 <-
       A2541.trn_globaltech_mineral_coef_kg_veh %>%
       filter(unit %in% c("kg/vehicle")) %>%
@@ -141,8 +142,7 @@ module_energy_L2541.transportation_UCD_mineral <- function(command, ...) {
                   select(-minicam.non.energy.input, -input.cost, -sce) %>%
                   unique(), by = c("region", "supplysector", "tranSubsector", "stub.technology", "year"))
 
-    # 1.2 Convert the mineral coefficient to current-coefficient--only apply input to the new vintage.
-
+    # 1.2 Convert the mineral coefficient to current-coefficient--only apply input to the new vintage, unit is kg/v km travel
     L2541.trn_globaltech_mineral_curcoef <-
       A2541.trn_globaltech_mineral_coef_kg_vtk %>%
       select(region, supplysector, tranSubsector, stub.technology, minicam.energy.input, year, value, sce) %>%
@@ -155,22 +155,21 @@ module_energy_L2541.transportation_UCD_mineral <- function(command, ...) {
       select(region, pass.through.sector = supplysector, tranSubsector, stub.technology, year, minicam.energy.input, model.year, current.coef = value.y, sce) %>%
       filter(current.coef != 0) %>%
       distinct()
-    # --OUTPUT-- unit based on kg/vkm
 
     # Produce outputs, add appropriate flags and comments
-    # 1 BTU = 0.00105506 MJ
-    # this part is just to reverse the unit conversion for energy in C++ code, if that is updated, we need to remove this
+    # this part is just to reverse the unit conversion for energy in C++ code, if that C++ unit conversion is removed, we need to get rid of this.
     # In the model, GCAM treat transport sector energy input coefficient as BTU/veh-km, the model output in energy use is EJ, so there is
-    # a hard coded unit conversion in the C++ code to convert BTU to EJ. Here we need reverse that process.
-    # therefore, 1055 is for BTU to J conversion, 1e12 is for MJ to EJ conversion (multiplying service output (Million tkm), that is why
-    # J to MJ conversion is considered by default), 1e-3 is for kt to Mt material conversion.
-
+    # a hard coded unit conversion in the C++ code to convert BTU to EJ (1.055 e-15 (EJ/btu)). Here we need reverse that process here.
     L2541.trn_globaltech_mineral_curcoef %>%
       #This unit conversion reserve does not apply for cycle. For some reason, the minicam-energy-input is not subject to the BTU to EJ conversion in GCAM
       filter(stub.technology != "Cycle") %>%
       rbind(A2541.trn_globaltech_mineral_coef_kg_vtk_ev_battery %>%
               select(region, pass.through.sector = supplysector, tranSubsector, stub.technology, year, minicam.energy.input, model.year, current.coef = value, sce)) %>%
-      mutate(current.coef = current.coef * (1e12/1055) * 1e-3) %>%
+      # current.coef is based on kg/vehicle travel km,
+      # 1e15/1.055 is to reverse the BTU to EJ conversion in C++,
+      # 1e-6 is to reverse the km to million km multiplication,
+      # 1e-3 is for kt to Mt material conversion (NOTE: still need to check why I use kt to Mt, rather than kg to Mt).
+      mutate(current.coef = current.coef * (1e15/1.055) * 1e-6 * 1e-3) %>%
       # here we add the material intensity of cycle back
       rbind(L2541.trn_globaltech_mineral_curcoef %>%
               filter(stub.technology == "Cycle")) ->
@@ -262,6 +261,7 @@ module_energy_L2541.transportation_UCD_mineral <- function(command, ...) {
     # Many technologies from L254.StubTranTechOutput
     # Cycle from L254.StubTechProd_nonmotor_PassThrusector
     # get in units of vkm by dividing by load factor
+    # YQ Note -- I think the unit of L2541.StubTranTechOutput_vkm is million km travel
     L2541.StubTranTechOutput_vkm <- L254.StubTranTechOutput %>%
       filter(sce == "CORE") %>%
       mutate(output = output/loadFactor) %>%
@@ -357,10 +357,14 @@ module_energy_L2541.transportation_UCD_mineral <- function(command, ...) {
 
     # Write out global buildings material demand for base years
     # This will be used in calculation of demand for other sector.
-    L2541.GlobalTrnMaterialDemand_Yb <- L2541.trn_globaltech_mineral_curcoef_final %>%
-      filter(year %in% MODEL_BASE_YEARS) %>%
-      left_join(select(L2541.StubTranTechOutput_vkm, -sce), by = c("region", "pass.through.sector", "tranSubsector", "stub.technology", "year")) %>%
-      mutate(demand = calOutputValue * current.coef) %>%
+    L2541.GlobalTrnMaterialDemand_Yb <-
+      L2541.trn_globaltech_mineral_curcoef_final %>%
+      filter(year %in% MODEL_BASE_YEARS,
+             year == model.year) %>%
+      left_join(select(L2541.StubTranTechOutput_vkm, -sce),
+                by = c("region", "pass.through.sector", "tranSubsector", "stub.technology", "year")) %>%
+      # Here we reverse the unit conversion of BTU to EJ and km to million km multiplication
+      mutate(demand = calOutputValue * current.coef * (1.055/1e15) * 1e6) %>%
       group_by(minicam.energy.input, year, sce) %>%
       dplyr::summarise(demand = sum(demand)) %>%
       ungroup() %>%
