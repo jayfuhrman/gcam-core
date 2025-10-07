@@ -154,7 +154,7 @@ module_energy_L271.other_sector_mineral <- function(command, ...) {
     ## BY 7-23-2025: for minerals that have supply curves, we need to adjust all demand such that
     ## total global supply = total global demand (for now)
     A271.cmm_historical_demand_all_Rsrc_adj <- L2111.RsrcCalProd %>%
-      filter(year %in% c(MODEL_BASE_YEARS, 2020)) %>%
+      filter(year %in% c(MODEL_BASE_YEARS)) %>%
       mutate(unit = "Mt",
              resource = paste("regional",resource)) %>%
       group_by(resource, unit, year) %>%
@@ -184,7 +184,7 @@ module_energy_L271.other_sector_mineral <- function(command, ...) {
     # Prepare the energy sector demand data for joining
     A271.cmm_historical_demand_sector_long <- A271.cmm_historical_demand_sector %>%
       # we don't have 1975 data, so we just assume 1975 demand = 1990 demand * 0.6
-      mutate(`1975` = `1990`*0.6) %>%
+      #mutate(`1975` = `1990`*0.6) %>%
       tidyr::pivot_longer(cols = -c(input),
                           names_to = "year",
                           values_to = "value") %>%
@@ -208,7 +208,7 @@ module_energy_L271.other_sector_mineral <- function(command, ...) {
 
     A271.pop_region_share <-
       L201.Pop_SSP2 %>%
-      filter(year %in% c(seq(1975, 2015, 5))) %>%
+      filter(year %in% MODEL_BASE_YEARS) %>%
       group_by(year) %>%
       mutate(share = totalPop/sum(totalPop)) %>%
       select(-totalPop) %>%
