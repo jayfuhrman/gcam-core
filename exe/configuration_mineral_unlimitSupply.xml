@@ -126,7 +126,7 @@
 		
 	</ScenarioComponents>
 	<Strings>
-		<Value name="scenarioName">Ref_NoElecGen_09192025</Value>
+		<Value name="scenarioName">Ref_UnlimitSupply_10072025</Value>
 		<Value name="debug-region">USA</Value>
 		<Value name="MAGICC-input-dir">../input/magicc/inputs</Value>
 		<Value name="MAGICC-output-dir">../output</Value>
