@@ -413,6 +413,8 @@ module_energy_building_det_cwf_xml <- function(command, ...) {
       add_xml_data(L244.StubTechEff_bld_cwf, "StubTechEff") %>% # CWF version
       add_xml_data(L244.StubTechIntGainOutputRatio_cwf, "StubTechIntGainOutputRatio") %>% # CWF version
       add_xml_data(L244.globaltech_shrwt_cwf_no_H2_building, "GlobalTechShrwt") %>% # CWF version
+      add_xml_data(L244.DeleteSupplysector, "DeleteSupplysector") %>%
+      add_xml_data(L244.DeleteSubsector_cwf, "DeleteSubsector") %>%
       add_precursors("L244.FinalEnergyKeyword_bld", "L244.Supplysector_bld", "L244.SubsectorLogit_bld",
                      "L244.ShellConductance_bld_cwf",
                      "L244.StubTechEff_bld_cwf", "L244.StubTechIntGainOutputRatio_cwf",
@@ -465,8 +467,12 @@ module_energy_building_det_cwf_xml <- function(command, ...) {
     }
 
     create_xml("building_det_cwf_LED.xml") %>%
+      add_logit_tables_xml(L244.Supplysector_bld, "Supplysector") %>%
+      add_logit_tables_xml(L244.SubsectorLogit_bld, "SubsectorLogit") %>%
       add_xml_data(L244.Satiation_flsp_cwf %>% filter(scenario == 'cwf-LED'), "Satiation_flsp") %>% # CWF version
-      add_xml_data(L244.GompFnParam_cwf %>% filter(scenario == 'cwf-LED'), "GompFnParam") -> # CWF version
+      add_xml_data(L244.GompFnParam_cwf %>% filter(scenario == 'cwf-LED'), "GompFnParam") %>%
+      add_xml_data(L244.DeleteSupplysector, "DeleteSupplysector") %>%
+      add_xml_data(L244.DeleteSubsector_cwf, "DeleteSubsector") -> # CWF version
       building_det_cwf_LED.xml
 
 
