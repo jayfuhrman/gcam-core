@@ -175,10 +175,17 @@ module_energy_L271.other_sector_mineral <- function(command, ...) {
     L271.cmm_historical_demand_sector <- bind_rows(L2233.GlobalPowerMaterialDemand_Yb,
                                                    L2261.GlobalTDMaterialDemand_Yb,
                                                    L2541.GlobalTrnMaterialDemand_Yb,
-                                                   L2441.GlobalBldMaterialDemand_Yb) %>%
+                                                   L2441.GlobalBldMaterialDemand_Yb)
+
+    L271.cmm_historical_demand_sector_total <- L271.cmm_historical_demand_sector %>%
       group_by(minicam.energy.input, year) %>%
       dplyr::summarise(value = sum(demand)) %>%
-      pivot_wider(names_from = "year", values_from = "value")
+      pivot_wider(names_from = "year", values_from = "value") %>%
+      rename(input = minicam.energy.input) %>%
+      tidyr::pivot_longer(cols = -c(input),
+                          names_to = "year",
+                          values_to = "value") %>%
+      mutate(year = as.numeric(year))
 
 
     # Prepare the energy sector demand data for joining
@@ -196,7 +203,8 @@ module_energy_L271.other_sector_mineral <- function(command, ...) {
       gather_years() %>%
       filter(year != 2020) %>%
       rename(annual_total_demand = value) %>%
-      left_join(A271.cmm_historical_demand_sector_long, by = c("resource" = "input", "year")) %>%
+      #left_join(A271.cmm_historical_demand_sector_long, by = c("resource" = "input", "year")) %>%
+      left_join(L271.cmm_historical_demand_sector_total, by = c("resource" = "input", "year")) %>%
       rename(sector_demand = value) %>%
       # BY 7-23-2025: for now, we will remove any loss rate, so that supply and demand balance.
       mutate(value = (annual_total_demand - sector_demand)) %>%
