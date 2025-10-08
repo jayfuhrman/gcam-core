@@ -172,7 +172,8 @@ module_energy_L2541.transportation_UCD_mineral <- function(command, ...) {
       mutate(current.coef = current.coef * (1e15/1.055) * 1e-6 * 1e-3) %>%
       # here we add the material intensity of cycle back
       rbind(L2541.trn_globaltech_mineral_curcoef %>%
-              filter(stub.technology == "Cycle")) ->
+              filter(stub.technology == "Cycle") %>%
+              mutate(current.coef = current.coef * 1e-3)) ->
       L2541.trn_globaltech_mineral_curcoef_Units
 
     # 1.3 create a coefficent input and assign the value to 0,
