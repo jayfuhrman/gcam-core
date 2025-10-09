@@ -16,23 +16,16 @@
 #' @importFrom tidyr nesting
 #' @author RC May 2017
 module_aglu_L171.LC_R_Cropland_Yh_GLU_irr <- function(command, ...) {
-
-  MODULE_INPUTS <-
-    c("L122.LC_bm2_R_HarvCropLand_C_Yh_GLU",
-      "L161.ag_irrProd_Mt_R_C_Y_GLU",
-      "L161.ag_rfdProd_Mt_R_C_Y_GLU",
-      "L161.ag_irrHA_frac_R_C_GLU")
-
-  MODULE_OUTPUTS <-
-    c("L171.LC_bm2_R_irrHarvCropLand_C_Yh_GLU",
-      "L171.LC_bm2_R_rfdHarvCropLand_C_Yh_GLU",
-      "L171.ag_irrEcYield_kgm2_R_C_Y_GLU",
-      "L171.ag_rfdEcYield_kgm2_R_C_Y_GLU")
-
   if(command == driver.DECLARE_INPUTS) {
-    return(MODULE_INPUTS)
+    return(c("L122.LC_bm2_R_HarvCropLand_C_Yh_GLU",
+              "L161.ag_irrProd_Mt_R_C_Y_GLU",
+              "L161.ag_rfdProd_Mt_R_C_Y_GLU",
+              "L161.ag_irrHA_frac_R_C_GLU"))
   } else if(command == driver.DECLARE_OUTPUTS) {
-    return(MODULE_OUTPUTS)
+    return(c("L171.LC_bm2_R_irrHarvCropLand_C_Yh_GLU",
+             "L171.LC_bm2_R_rfdHarvCropLand_C_Yh_GLU",
+             "L171.ag_irrEcYield_kgm2_R_C_Y_GLU",
+             "L171.ag_rfdEcYield_kgm2_R_C_Y_GLU"))
   } else if(command == driver.MAKE) {
 
     year <- value <- GCAM_region_ID <- GCAM_commodity <- GLU <- irrHA_frac <-
@@ -41,8 +34,11 @@ module_aglu_L171.LC_R_Cropland_Yh_GLU_irr <- function(command, ...) {
 
     all_data <- list(...)[[1]]
 
-    # Load required inputs ----
-    get_data_list(all_data, MODULE_INPUTS, strip_attributes = TRUE)
+    # Load required inputs
+    L122.LC_bm2_R_HarvCropLand_C_Yh_GLU <- get_data(all_data, "L122.LC_bm2_R_HarvCropLand_C_Yh_GLU", strip_attributes = TRUE)
+    L161.ag_irrProd_Mt_R_C_Y_GLU <- get_data(all_data, "L161.ag_irrProd_Mt_R_C_Y_GLU", strip_attributes = TRUE)
+    L161.ag_rfdProd_Mt_R_C_Y_GLU <- get_data(all_data, "L161.ag_rfdProd_Mt_R_C_Y_GLU", strip_attributes = TRUE)
+    L161.ag_irrHA_frac_R_C_GLU <- get_data(all_data, "L161.ag_irrHA_frac_R_C_GLU", strip_attributes = TRUE)
 
     # First, calculate the share of irrigated vs. rainfed cropland in the base year by GCAM region, commodity and GLU.
     L161.ag_irrHA_frac_R_C_GLU %>%
@@ -134,7 +130,7 @@ module_aglu_L171.LC_R_Cropland_Yh_GLU_irr <- function(command, ...) {
       add_precursors("L161.ag_rfdProd_Mt_R_C_Y_GLU") ->
       L171.ag_rfdEcYield_kgm2_R_C_Y_GLU
 
-    return_data(MODULE_OUTPUTS)
+    return_data(L171.LC_bm2_R_irrHarvCropLand_C_Yh_GLU, L171.LC_bm2_R_rfdHarvCropLand_C_Yh_GLU, L171.ag_irrEcYield_kgm2_R_C_Y_GLU, L171.ag_rfdEcYield_kgm2_R_C_Y_GLU)
   } else {
     stop("Unknown command")
   }

@@ -133,7 +133,7 @@ module_energy_L125.hydrogen <- function(command, ...) {
 
      # D. Calculate improvement for costs and convert Units from H2A ($/kg, GJ/kg) to GCAM (1975$/GJ, GJ/GJ)
     H2A_prod_cost %>%
-       rename(`2021`=`2015`) %>% #to allow improvement calculation below to work
+       rename(`2021`=`2020`) %>% #to allow improvement calculation below to work
        mutate( improvement_to_2040 =  ( 1 - (`2040` / `2021` ) ) ) %>%   # Improvement (or cost decline) % between the two H2A years
        mutate( max_improvement = round( improvement_to_2040 + 0.1, 2 ) ) %>% # Allow for and additional 10% decline in non-energy costs
       select(-notes)%>%
@@ -145,7 +145,7 @@ module_energy_L125.hydrogen <- function(command, ...) {
              units="$1975/GJ H2")-> H2A_prod_cost_conv
 
     H2A_prod_coef %>%
-      rename(`2021` = `2015`) %>% #to allow improvement to 2040 calcs below to work
+      rename(`2021` = `2020`) %>% #to allow improvement to 2040 calcs below to work
       select(-notes)%>%
       gather_years()%>%
       mutate(value = if_else(units == "GJ hydrogen output / GJ input", value ^ -1, #convert efficiency to coef
