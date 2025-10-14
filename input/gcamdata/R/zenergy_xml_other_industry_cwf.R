@@ -18,12 +18,14 @@ module_energy_other_industry_cwf_xml <- function(command, ...) {
              "L232.SubsectorShrwtFllt_ind_cwf",
              "L232.GlobalTechEff_ind_cwf",
              "L232.SubsectorShrwtFllt_ind_cwf_H2_scenarios",
-             "L232.SubsectorInterp_ind_cwf_H2_scenarios"))
+             "L232.SubsectorInterp_ind_cwf_H2_scenarios",
+             "L232.IncomeElasticity_ind_cwf"))
   } else if(command == driver.DECLARE_OUTPUTS) {
     return(c(XML = "other_industry_cwf.xml",
              XML = "other_industry_cwf_LED.xml",
              XML = "other_industry_cwf_low_H2.xml",
-             XML = "other_industry_cwf_high_H2.xml"))
+             XML = "other_industry_cwf_high_H2.xml",
+             XML = "other_industry_incelas_cwf.xml"))
   } else if(command == driver.MAKE) {
 
     all_data <- list(...)[[1]]
@@ -77,12 +79,21 @@ module_energy_other_industry_cwf_xml <- function(command, ...) {
         add_precursors("L232.SubsectorInterp_ind_cwf_H2_scenarios",
                        "L232.SubsectorShrwtFllt_ind_cwf_H2_scenarios") %>%
         assign(xml_name, ., envir = curr_env)
+
+      L232.IncomeElasticity_ind_cwf <- get_data(all_data, 'L232.IncomeElasticity_ind_cwf') %>%
+        filter(year > MODEL_FINAL_BASE_YEAR)
+
+      create_xml("other_industry_incelas_cwf.xml") %>%
+        add_xml_data(L232.IncomeElasticity_ind_cwf, "IncomeElasticity") %>%
+        add_precursors("L232.IncomeElasticity_ind_cwf") ->
+        other_industry_incelas_cwf.xml
     }
 
     return_data(other_industry_cwf.xml,
                 other_industry_cwf_LED.xml,
                 other_industry_cwf_low_H2.xml,
-                other_industry_cwf_high_H2.xml)
+                other_industry_cwf_high_H2.xml,
+                other_industry_incelas_cwf.xml)
   } else {
     stop("Unknown command")
   }

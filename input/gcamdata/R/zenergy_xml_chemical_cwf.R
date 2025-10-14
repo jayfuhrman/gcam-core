@@ -18,12 +18,14 @@ module_energy_chemical_cwf_xml <- function(command, ...) {
              "L2325.GlobalTechShrwt_chemical_cwf",
              "L2325.SubsectorShrwtFllt_chemical_cwf_H2_scenarios",
              "L2325.SubsectorInterp_chemical_cwf_H2_scenarios",
-             "L2325.GlobalTechShrwt_chemical_cwf_H2_scenarios"))
+             "L2325.GlobalTechShrwt_chemical_cwf_H2_scenarios",
+             FILE = "cwf/A325.incelas_cwf"))
   } else if(command == driver.DECLARE_OUTPUTS) {
     return(c(XML = "chemical_cwf.xml",
              XML = "chemical_cwf_LED.xml",
              XML = "chemical_cwf_low_H2.xml",
-             XML = "chemical_cwf_high_H2.xml"))
+             XML = "chemical_cwf_high_H2.xml",
+             XML = "chemical_incelas_cwf.xml"))
   } else if(command == driver.MAKE) {
 
     all_data <- list(...)[[1]]
@@ -84,10 +86,21 @@ module_energy_chemical_cwf_xml <- function(command, ...) {
         assign(xml_name, ., envir = curr_env)
     }
 
+    L2325.chemical_incelas_cwf <- get_data(all_data, 'cwf/A325.incelas_cwf') %>%
+      gather_years() %>%
+      rename(energy.final.demand = `energy-final-demand`,
+             income.elasticity = value)
+
+    create_xml("chemical_incelas_cwf.xml") %>%
+      add_xml_data(L2325.chemical_incelas_cwf, "IncomeElasticity") %>%
+      add_precursors("L2325.chemical_incelas_cwf") ->
+      chemical_incelas_cwf.xml
+
     return_data(chemical_cwf.xml,
                 chemical_cwf_LED.xml,
                 chemical_cwf_low_H2.xml,
-                chemical_cwf_high_H2.xml)
+                chemical_cwf_high_H2.xml,
+                chemical_incelas_cwf.xml)
   } else {
     stop("Unknown command")
   }

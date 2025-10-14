@@ -17,13 +17,15 @@ module_energy_Off_road_cwf_xml <- function(command, ...) {
              "L2324.GlobalTechShrwt_Off_road_cwf",
 			        "L2324.GlobalTechEff_Off_road_cwf",
 			        "L2324.GlobalTechShrwt_Off_road_cwf_H2_scenarios",
-			        "L2324.GlobalTechInterp_Off_road_cwf_H2_scenarios"))
+			        "L2324.GlobalTechInterp_Off_road_cwf_H2_scenarios",
+			        FILE = 'cwf/A324.incelas_cwf'))
   } else if(command == driver.DECLARE_OUTPUTS) {
     return(c(XML = "Off_road_cwf.xml",
              XML = "Off_road_cwf_LED.xml",
              XML = "Off_road_cwf_low_H2.xml",
              XML = "Off_road_cwf_med_H2.xml",
-             XML = "Off_road_cwf_high_H2.xml"))
+             XML = "Off_road_cwf_high_H2.xml",
+             XML = "Off_road_incelas_cwf.xml"))
   } else if(command == driver.MAKE) {
 
     all_data <- list(...)[[1]]
@@ -75,7 +77,19 @@ module_energy_Off_road_cwf_xml <- function(command, ...) {
         assign(xml_name, ., envir = curr_env)
     }
 
-    return_data(Off_road_cwf.xml, Off_road_cwf_LED.xml, Off_road_cwf_low_H2.xml, Off_road_cwf_med_H2.xml, Off_road_cwf_high_H2.xml)
+    L2324.Off_road_incelas_cwf <- get_data(all_data, 'cwf/A324.incelas_cwf') %>%
+      gather_years() %>%
+      filter(year > MODEL_FINAL_BASE_YEAR) %>%
+      rename(energy.final.demand = `energy-final-demand`,
+             income.elasticity = value)
+
+    create_xml("Off_road_incelas_cwf.xml") %>%
+      add_xml_data(L2324.Off_road_incelas_cwf, "IncomeElasticity") %>%
+      add_precursors("L2324.Off_road_incelas_cwf") ->
+      Off_road_incelas_cwf.xml
+
+    return_data(Off_road_cwf.xml, Off_road_cwf_LED.xml, Off_road_cwf_low_H2.xml, Off_road_cwf_med_H2.xml, Off_road_cwf_high_H2.xml,
+                Off_road_incelas_cwf.xml)
   } else {
     stop("Unknown command")
   }

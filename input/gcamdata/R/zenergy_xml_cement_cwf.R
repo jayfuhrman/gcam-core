@@ -18,15 +18,16 @@ module_energy_cement_cwf_xml <- function(command, ...) {
              "L2321.SubsectorShrwtFllt_cement_cwf",
              "L2321.SubsectorInterp_cement_cwf",
              "L2321.SubsectorShrwtFllt_cement_cwf_H2_scenarios",
-             "L2321.SubsectorInterp_cement_cwf_H2_scenarios"))
+             "L2321.SubsectorInterp_cement_cwf_H2_scenarios",
+             "L2321.IncomeElasticity_cement_cwf"))
   } else if(command == driver.DECLARE_OUTPUTS) {
     return(c(XML = "cement_cwf.xml",
              XML = "cement_cwf_LED.xml",
              XML = "cement_all_CCS_post2030.xml",
              XML = "cement_cwf_low_H2.xml",
              # XML = "cement_cwf_med_H2.xml",
-             XML = "cement_cwf_high_H2.xml"
-             ))
+             XML = "cement_cwf_high_H2.xml",
+             XML = "cement_incelas_cwf.xml"))
   } else if(command == driver.MAKE) {
 
     all_data <- list(...)[[1]]
@@ -95,12 +96,20 @@ module_energy_cement_cwf_xml <- function(command, ...) {
       add_precursors('L2321.GlobalTechShrwt_cement') ->
       cement_all_CCS_post2030.xml
 
+    L2321.IncomeElasticity_cement_cwf <- get_data(all_data, 'L2321.IncomeElasticity_cement_cwf') %>%
+      filter(year > MODEL_FINAL_BASE_YEAR)
+
+    create_xml("cement_incelas_cwf.xml") %>%
+      add_xml_data(L2321.IncomeElasticity_cement_cwf, "IncomeElasticity") %>%
+      add_precursors("L2321.IncomeElasticity_cement_cwf") ->
+      cement_incelas_cwf.xml
+
     return_data(cement_cwf.xml,
                 cement_cwf_LED.xml,
                 cement_all_CCS_post2030.xml,
                 cement_cwf_low_H2.xml,
-                # cement_cwf_med_H2.xml,
-                cement_cwf_high_H2.xml)
+                cement_cwf_high_H2.xml,
+                cement_incelas_cwf.xml)
 
   } else {
     stop("Unknown command")
