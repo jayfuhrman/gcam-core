@@ -12,6 +12,6 @@ Distillate_FuelOil,Distillate_FuelOil,share-weight,final-calibration-year,end-ye
 Residual_FuelOil,Residual_FuelOil,share-weight,final-calibration-year,end-year,1,s-curve,0
 Gasoline,Gasoline,share-weight,final-calibration-year,end-year,1,s-curve,0
 LPG,LPG,share-weight,final-calibration-year,end-year,1,s-curve,0
-Heavy_Residual,Heavy_Residual,share-weight,final-calibration-year,end-year,1,s-curve,0
+PetCoke,PetCoke,share-weight,final-calibration-year,end-year,1,s-curve,0
 Jet_Kerosene,Jet_Kerosene,share-weight,final-calibration-year,end-year,1,s-curve,0
 Other,Other,share-weight,final-calibration-year,end-year,1,s-curve,0

@@ -5,7 +5,7 @@
 # Source: Table 16.2 in the Springer Handbook of Petroleum Technology; Individual assays
 # Column types: ccnnnnnnn
 # ----------
-region,crude.type,LPG,Gasoline,Jet_Kerosene,Distillate_FuelOil,Residual_FuelOil,Heavy_Residual,Other
+region,crude.type,LPG,Gasoline,Jet_Kerosene,Distillate_FuelOil,Residual_FuelOil,PetCoke,Other
 Africa_Eastern,WTI-Cushing,.03,.24,.15,.25,.33,0,0
 Africa_Northern,Roncador Heavy,,,,,,,
 Africa_Southern,Roncador Heavy,,,,,,,

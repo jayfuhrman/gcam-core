@@ -10,21 +10,21 @@ refining,biorefining,Residual_FuelOil,OM-var,,,,,,,,,
 refining,biorefining,corn ethanol,OM-var,,,,,,,,,
 refining,biorefining,sugar cane ethanol,OM-var,,,,,,,,,
 refining,biorefining,cellulosic ethanol,OM-var,,,,,,,,,
-refining,biorefining,Heavy_Residual,OM-var,,,,,,,,,
+refining,biorefining,biochar,OM-var,,,,,,,,,
 refining,biorefining,Jet_Kerosene,OM-var,,,,,,,,,
 refining,biorefining,LPG,OM-var,,,,,,,,,
 refining,biorefining,Other,OM-var,,,,,,,,,
 refining,ctl,Distillate_FuelOil,OM-var,,,,,,,,,
 refining,ctl,Residual_FuelOil,OM-var,,,,,,,,,
 refining,ctl,Gasoline,OM-var,,,,,,,,,
-refining,ctl,Heavy_Residual,OM-var,,,,,,,,,
+refining,ctl,PetCoke,OM-var,,,,,,,,,
 refining,ctl,Jet_Kerosene,OM-var,,,,,,,,,
 refining,ctl,LPG,OM-var,,,,,,,,,
 refining,ctl,Other,OM-var,,,,,,,,,
 refining,gtl,Distillate_FuelOil,OM-var,,,,,,,,,
 refining,gtl,Residual_FuelOil,OM-var,,,,,,,,,
 refining,gtl,Gasoline,OM-var,,,,,,,,,
-refining,gtl,Heavy_Residual,OM-var,,,,,,,,,
+refining,gtl,PetCoke,OM-var,,,,,,,,,
 refining,gtl,Jet_Kerosene,OM-var,,,,,,,,,
 refining,gtl,LPG,OM-var,,,,,,,,,
 refining,gtl,Other,OM-var,,,,,,,,,
@@ -33,5 +33,5 @@ refining,crude oil refining,high Residual_FuelOil,OM-var,,,,,1,1,1,1,1
 refining,crude oil refining,high Gasoline,OM-var,,,,,1,1,1,1,1
 refining,crude oil refining,high LPG,OM-var,,,,,1,1,1,1,1
 refining,crude oil refining,high Jet_Kerosene,OM-var,,,,,1,1,1,1,1
-refining,crude oil refining,high Heavy_Residual,OM-var,,,,,1,1,1,1,1
+refining,crude oil refining,high PetCoke,OM-var,,,,,1,1,1,1,1
 refining,crude oil refining,high Other,OM-var,,,,,1,1,1,1,1

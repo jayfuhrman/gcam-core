@@ -17,7 +17,7 @@ Fuel oil,Residual_FuelOil,0.955,0.96,1.017,0.96
 Naphtha,Other,1.051,1.075,1.032,1.075
 White spirit & SBP,Other,1.041,1.027,1.027,1.027
 Lubricants,Other,1.003,1.003,1.025,1.003
-Bitumen,Heavy_Residual,0.931,0.955,0.927,0.931
+Bitumen,Residual_FuelOil,0.931,0.955,0.927,0.931
 Paraffin waxes,Other,0.955,0.955,0.955,0.955
-Petroleum coke,Heavy_Residual,0.764,0.764,0.807,0.764
+Petroleum coke,PetCoke,0.764,0.764,0.807,0.764
 Other oil products,Other,0.955,0.955,0.955,0.955

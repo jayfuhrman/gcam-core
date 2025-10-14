@@ -194,7 +194,7 @@ module_energy_L1221.refining_cost <- function(command, ...) {
     placeholder_gtl <- LFMM_cost_bbl %>%
       filter(subsector == "gtl") %>%
       slice(rep(1, 3)) %>%
-      mutate(product = c("Gasoline", "Heavy_Residual", "Residual_FuelOil"),
+      mutate(product = c("Gasoline", "PetCoke", "Residual_FuelOil"),
              technology = product,
              capital = capital * MULTIPLIER,
              om_var = om_var * MULTIPLIER)
@@ -202,7 +202,7 @@ module_energy_L1221.refining_cost <- function(command, ...) {
     placeholder_ctl <- LFMM_cost_bbl %>%
       filter(subsector == "ctl") %>%
       slice(rep(1, 4)) %>%
-      mutate(product = c("LPG", "Gasoline", "Heavy_Residual", "Residual_FuelOil"),
+      mutate(product = c("LPG", "Gasoline", "PetCoke", "Residual_FuelOil"),
              technology = product,
              capital = capital * MULTIPLIER,
              om_var = om_var * MULTIPLIER)

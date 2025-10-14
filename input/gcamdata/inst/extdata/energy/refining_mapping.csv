@@ -12,13 +12,13 @@ refining,biorefining,cellulosic ethanol,Gasoline,Gasoline,biomass
 refining,biorefining,Jet_Kerosene,Jet_Kerosene,Jet_Kerosene,biomass
 refining,biorefining,LPG,LPG,LPG,biomass
 refining,biorefining,Other,Other,Other,biomass
-refining,biorefining,Heavy_Residual,Heavy_Residual,Heavy_Residual,biomass
+refining,biorefining,biochar,PetCoke,PetCoke,biomass
 refining,crude oil refining,high Distillate_FuelOil,Distillate_FuelOil,Distillate_FuelOil,crude oil
 refining,crude oil refining,high Residual_FuelOil,Residual_FuelOil,Residual_FuelOil,crude oil
 refining,crude oil refining,high Gasoline,Gasoline,Gasoline,crude oil
 refining,crude oil refining,high LPG,LPG,LPG,crude oil
 refining,crude oil refining,high Jet_Kerosene,Jet_Kerosene,Jet_Kerosene,crude oil
-refining,crude oil refining,high Heavy_Residual,Heavy_Residual,Heavy_Residual,crude oil
+refining,crude oil refining,high PetCoke,PetCoke,PetCoke,crude oil
 refining,crude oil refining,high Other,Other,Other,crude oil
 refining,ctl,Distillate_FuelOil,Distillate_FuelOil,Distillate_FuelOil,coal
 refining,ctl,Residual_FuelOil,Residual_FuelOil,Residual_FuelOil,coal
@@ -26,11 +26,11 @@ refining,ctl,Gasoline,Gasoline,Gasoline,coal
 refining,ctl,Jet_Kerosene,Jet_Kerosene,Jet_Kerosene,coal
 refining,ctl,LPG,LPG,LPG,coal
 refining,ctl,Other,Other,Other,coal
-refining,ctl,Heavy_Residual,Heavy_Residual,Heavy_Residual,coal
+refining,ctl,PetCoke,PetCoke,PetCoke,coal
 refining,gtl,Distillate_FuelOil,Distillate_FuelOil,Distillate_FuelOil,natural gas
 refining,gtl,Residual_FuelOil,Residual_FuelOil,Residual_FuelOil,natural gas
 refining,gtl,Gasoline,Gasoline,Gasoline,natural gas
 refining,gtl,Jet_Kerosene,Jet_Kerosene,Jet_Kerosene,natural gas
 refining,gtl,LPG,LPG,LPG,natural gas
 refining,gtl,Other,Other,Other,natural gas
-refining,gtl,Heavy_Residual,Heavy_Residual,Heavy_Residual,natural gas
+refining,gtl,PetCoke,PetCoke,PetCoke,natural gas

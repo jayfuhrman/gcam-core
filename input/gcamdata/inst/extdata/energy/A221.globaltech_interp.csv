@@ -13,27 +13,27 @@ refining,biorefining,cellulosic ethanol,share-weight,final-calibration-year,2075
 refining,biorefining,Jet_Kerosene,share-weight,final-calibration-year,2075,linear
 refining,biorefining,LPG,share-weight,final-calibration-year,2075,linear
 refining,biorefining,Other,share-weight,final-calibration-year,2075,linear
-refining,biorefining,Heavy_Residual,share-weight,final-calibration-year,2075,linear
+refining,biorefining,biochar,share-weight,final-calibration-year,2075,linear
 refining,ctl,Distillate_FuelOil,share-weight,final-calibration-year,2075,s-curve
 refining,ctl,Residual_FuelOil,share-weight,final-calibration-year,2075,s-curve
 refining,ctl,Gasoline,share-weight,final-calibration-year,2075,s-curve
 refining,ctl,Jet_Kerosene,share-weight,final-calibration-year,2075,s-curve
 refining,ctl,LPG,share-weight,final-calibration-year,2075,s-curve
 refining,ctl,Other,share-weight,final-calibration-year,2075,s-curve
-refining,ctl,Heavy_Residual,share-weight,final-calibration-year,2075,s-curve
+refining,ctl,PetCoke,share-weight,final-calibration-year,2075,fixed
 refining,gtl,Distillate_FuelOil,share-weight,final-calibration-year,2075,s-curve
 refining,gtl,Residual_FuelOil,share-weight,final-calibration-year,2075,s-curve
 refining,gtl,Gasoline,share-weight,final-calibration-year,2075,s-curve
 refining,gtl,Jet_Kerosene,share-weight,final-calibration-year,2075,s-curve
 refining,gtl,LPG,share-weight,final-calibration-year,2075,s-curve
 refining,gtl,Other,share-weight,final-calibration-year,2075,s-curve
-refining,gtl,Heavy_Residual,share-weight,final-calibration-year,2075,s-curve
+refining,gtl,PetCoke,share-weight,final-calibration-year,2075,fixed
 refining,crude oil refining,high Distillate_FuelOil,share-weight,final-calibration-year,2075,linear
 refining,crude oil refining,high Residual_FuelOil,share-weight,final-calibration-year,2075,linear
 refining,crude oil refining,high Gasoline,share-weight,final-calibration-year,2075,linear
 refining,crude oil refining,high LPG,share-weight,final-calibration-year,2075,linear
 refining,crude oil refining,high Jet_Kerosene,share-weight,final-calibration-year,2075,linear
-refining,crude oil refining,high Heavy_Residual,share-weight,final-calibration-year,2075,linear
+refining,crude oil refining,high PetCoke,share-weight,final-calibration-year,2075,linear
 refining,crude oil refining,high Other,share-weight,final-calibration-year,2075,linear
 Distillate_FuelOil,Distillate_FuelOil,biomassOil,share-weight,final-calibration-year,2075,s-curve
 Distillate_FuelOil,Distillate_FuelOil,crude oil,share-weight,final-calibration-year,2075,s-curve
@@ -50,10 +50,10 @@ LPG,LPG,biomass,share-weight,final-calibration-year,2075,s-curve
 LPG,LPG,crude oil,share-weight,final-calibration-year,2075,s-curve
 LPG,LPG,coal,share-weight,final-calibration-year,2075,s-curve
 LPG,LPG,natural gas,share-weight,final-calibration-year,2075,s-curve
-Heavy_Residual,Heavy_Residual,biomass,share-weight,final-calibration-year,2075,s-curve
-Heavy_Residual,Heavy_Residual,crude oil,share-weight,final-calibration-year,2075,s-curve
-Heavy_Residual,Heavy_Residual,coal,share-weight,final-calibration-year,2075,s-curve
-Heavy_Residual,Heavy_Residual,natural gas,share-weight,final-calibration-year,2075,s-curve
+PetCoke,PetCoke,biomass,share-weight,final-calibration-year,2075,s-curve
+PetCoke,PetCoke,crude oil,share-weight,final-calibration-year,2075,s-curve
+PetCoke,PetCoke,coal,share-weight,final-calibration-year,2075,s-curve
+PetCoke,PetCoke,natural gas,share-weight,final-calibration-year,2075,s-curve
 Jet_Kerosene,Jet_Kerosene,biomass,share-weight,final-calibration-year,2075,s-curve
 Jet_Kerosene,Jet_Kerosene,crude oil,share-weight,final-calibration-year,2075,s-curve
 Jet_Kerosene,Jet_Kerosene,coal,share-weight,final-calibration-year,2075,s-curve

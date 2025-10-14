@@ -10,21 +10,21 @@ refining,biorefining,Residual_FuelOil,capital,,,,,,,,,
 refining,biorefining,corn ethanol,capital,,,,,,,,,
 refining,biorefining,sugar cane ethanol,capital,,,,,,,,,
 refining,biorefining,cellulosic ethanol,capital,,,,,,,,,
-refining,biorefining,Heavy_Residual,capital,,,,,,,,,
+refining,biorefining,biochar,capital,,,,,,,,,
 refining,biorefining,Jet_Kerosene,capital,,,,,,,,,
 refining,biorefining,LPG,capital,,,,,,,,,
 refining,biorefining,Other,capital,,,,,,,,,
 refining,ctl,Distillate_FuelOil,capital,,,,,,,,,
 refining,ctl,Residual_FuelOil,capital,,,,,,,,,
 refining,ctl,Gasoline,capital,,,,,,,,,
-refining,ctl,Heavy_Residual,capital,,,,,,,,,
+refining,ctl,PetCoke,capital,,,,,,,,,
 refining,ctl,Jet_Kerosene,capital,,,,,,,,,
 refining,ctl,LPG,capital,,,,,,,,,
 refining,ctl,Other,capital,,,,,,,,,
 refining,gtl,Distillate_FuelOil,capital,,,,,,,,,
 refining,gtl,Residual_FuelOil,capital,,,,,,,,,
 refining,gtl,Gasoline,capital,,,,,,,,,
-refining,gtl,Heavy_Residual,capital,,,,,,,,,
+refining,gtl,PetCoke,capital,,,,,,,,,
 refining,gtl,Jet_Kerosene,capital,,,,,,,,,
 refining,gtl,LPG,capital,,,,,,,,,
 refining,gtl,Other,capital,,,,,,,,,
@@ -33,5 +33,5 @@ refining,crude oil refining,high Residual_FuelOil,capital,,,,,8,8,8,8,8
 refining,crude oil refining,high Gasoline,capital,,,,,8,8,8,8,8
 refining,crude oil refining,high LPG,capital,,,,,8,8,8,8,8
 refining,crude oil refining,high Jet_Kerosene,capital,,,,,8,8,8,8,8
-refining,crude oil refining,high Heavy_Residual,capital,,,,,8,8,8,8,8
+refining,crude oil refining,high PetCoke,capital,,,,,8,8,8,8,8
 refining,crude oil refining,high Other,capital,,,,,8,8,8,8,8

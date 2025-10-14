@@ -10,21 +10,21 @@ refining,biorefining,Residual_FuelOil,OM-fixed,,,,,,,,,
 refining,biorefining,corn ethanol,OM-fixed,,,,,,,,,
 refining,biorefining,sugar cane ethanol,OM-fixed,,,,,,,,,
 refining,biorefining,cellulosic ethanol,OM-fixed,,,,,,,,,
-refining,biorefining,Heavy_Residual,OM-fixed,,,,,,,,,
+refining,biorefining,biochar,OM-fixed,,,,,,,,,
 refining,biorefining,Jet_Kerosene,OM-fixed,,,,,,,,,
 refining,biorefining,LPG,OM-fixed,,,,,,,,,
 refining,biorefining,Other,OM-fixed,,,,,,,,,
 refining,ctl,Distillate_FuelOil,OM-fixed,,,,,,,,,
 refining,ctl,Residual_FuelOil,OM-fixed,,,,,,,,,
 refining,ctl,Gasoline,OM-fixed,,,,,,,,,
-refining,ctl,Heavy_Residual,OM-fixed,,,,,,,,,
+refining,ctl,PetCoke,OM-fixed,,,,,,,,,
 refining,ctl,Jet_Kerosene,OM-fixed,,,,,,,,,
 refining,ctl,LPG,OM-fixed,,,,,,,,,
 refining,ctl,Other,OM-fixed,,,,,,,,,
 refining,gtl,Distillate_FuelOil,OM-fixed,,,,,,,,,
 refining,gtl,Residual_FuelOil,OM-fixed,,,,,,,,,
 refining,gtl,Gasoline,OM-fixed,,,,,,,,,
-refining,gtl,Heavy_Residual,OM-fixed,,,,,,,,,
+refining,gtl,PetCoke,OM-fixed,,,,,,,,,
 refining,gtl,Jet_Kerosene,OM-fixed,,,,,,,,,
 refining,gtl,LPG,OM-fixed,,,,,,,,,
 refining,gtl,Other,OM-fixed,,,,,,,,,
@@ -33,5 +33,5 @@ refining,crude oil refining,high Residual_FuelOil,OM-fixed,,,,,3,3,3,3,3
 refining,crude oil refining,high Gasoline,OM-fixed,,,,,3,3,3,3,3
 refining,crude oil refining,high LPG,OM-fixed,,,,,3,3,3,3,3
 refining,crude oil refining,high Jet_Kerosene,OM-fixed,,,,,3,3,3,3,3
-refining,crude oil refining,high Heavy_Residual,OM-fixed,,,,,3,3,3,3,3
+refining,crude oil refining,high PetCoke,OM-fixed,,,,,3,3,3,3,3
 refining,crude oil refining,high Other,OM-fixed,,,,,3,3,3,3,3

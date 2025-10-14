@@ -14,7 +14,7 @@ Distillate_FuelOil,gas,Distillate_FuelOil,Distillate_FuelOil,gas,wholesale gas,o
 LPG,biomass,LPG,LPG,biomass,regional biomass,output,LPG_biomass
 Jet_Kerosene,biomass,Jet_Kerosene,Jet_Kerosene,biomass,regional biomass,output,Jet_Kerosene_biomass
 Residual_FuelOil,biomass,Residual_FuelOil,Residual_FuelOil,biomass,regional biomass,output,Residual_FuelOil_biomass
-Heavy_Residual,biomass,Heavy_Residual,Heavy_Residual,biomass,regional biomass,output,Heavy_Residual_biomass
+PetCoke,biomass,PetCoke,PetCoke,biomass,regional biomass,output,PetCoke_biomass
 Other,biomass,Other,Other,biomass,regional biomass,output,Other_biomass
 biorefining,corn,refining,biorefining,biorefining,regional corn for ethanol,output,
 biorefining,sugar,refining,biorefining,biorefining,regional sugar for ethanol,output,
@@ -28,7 +28,7 @@ Gasoline,natural gas,Gasoline,Gasoline,natural gas,regional natural gas,output,G
 Jet_Kerosene,natural gas,Jet_Kerosene,Jet_Kerosene,natural gas,regional natural gas,output,Jet_Kerosene_natural gas
 Distillate_FuelOil,natural gas,Distillate_FuelOil,Distillate_FuelOil,natural gas,regional natural gas,output,Distillate_FuelOil_natural gas
 Residual_FuelOil,natural gas,Residual_FuelOil,Residual_FuelOil,natural gas,regional natural gas,output,Residual_FuelOil_natural gas
-Heavy_Residual,natural gas,Heavy_Residual,Heavy_Residual,natural gas,regional natural gas,output,Heavy_Residual_natural gas
+PetCoke,natural gas,PetCoke,PetCoke,natural gas,regional natural gas,output,PetCoke_natural gas
 Other,natural gas,Other,Other,natural gas,regional natural gas,output,Other_natural gas
 ctl,coal,refining,ctl,ctl,regional coal,output,
 LPG,coal,LPG,LPG,coal,regional coal,output,LPG_coal
@@ -36,7 +36,7 @@ Gasoline,coal,Gasoline,Gasoline,coal,regional coal,output,Gasoline_coal
 Jet_Kerosene,coal,Jet_Kerosene,Jet_Kerosene,coal,regional coal,output,Jet_Kerosene_coal
 Distillate_FuelOil,coal,Distillate_FuelOil,Distillate_FuelOil,coal,regional coal,output,Distillate_FuelOil_coal
 Residual_FuelOil,coal,Residual_FuelOil,Residual_FuelOil,coal,regional coal,output,Residual_FuelOil_coal
-Heavy_Residual,coal,Heavy_Residual,Heavy_Residual,coal,regional coal,output,Heavy_Residual_coal
+PetCoke,coal,PetCoke,PetCoke,coal,regional coal,output,PetCoke_coal
 Other,coal,Other,Other,coal,regional coal,output,Other_coal
 oil refining,oil,refining,crude oil refining,crude oil refining,regional oil,output,
 oil refining,gas,refining,crude oil refining,crude oil refining,wholesale gas,output,
@@ -56,9 +56,9 @@ Distillate_FuelOil,electricity,Distillate_FuelOil,Distillate_FuelOil,electricity
 Residual_FuelOil,oil,Residual_FuelOil,Residual_FuelOil,crude oil,regional oil,output,Residual_FuelOil_crude oil
 Residual_FuelOil,gas,Residual_FuelOil,Residual_FuelOil,gas,wholesale gas,output,Residual_FuelOil_crude oil
 Residual_FuelOil,electricity,Residual_FuelOil,Residual_FuelOil,electricity,elect_td_ind,output,Residual_FuelOil_crude oil
-Heavy_Residual,oil,Heavy_Residual,Heavy_Residual,crude oil,regional oil,output,Heavy_Residual_crude oil
-Heavy_Residual,gas,Heavy_Residual,Heavy_Residual,gas,wholesale gas,output,Heavy_Residual_crude oil
-Heavy_Residual,electricity,Heavy_Residual,Heavy_Residual,electricity,elect_td_ind,output,Heavy_Residual_crude oil
+PetCoke,oil,PetCoke,PetCoke,crude oil,regional oil,output,PetCoke_crude oil
+PetCoke,gas,PetCoke,PetCoke,gas,wholesale gas,output,PetCoke_crude oil
+PetCoke,electricity,PetCoke,PetCoke,electricity,elect_td_ind,output,PetCoke_crude oil
 Other,oil,Other,Other,crude oil,regional oil,output,Other_crude oil
 Other,gas,Other,Other,gas,wholesale gas,output,Other_crude oil
 Other,electricity,Other,Other,electricity,elect_td_ind,output,Other_crude oil
@@ -77,9 +77,9 @@ high Distillate_FuelOil,electricity,refining,crude oil refining,high Distillate_
 high Residual_FuelOil,oil,refining,crude oil refining,high Residual_FuelOil,regional oil,output,
 high Residual_FuelOil,gas,refining,crude oil refining,high Residual_FuelOil,wholesale gas,output,
 high Residual_FuelOil,electricity,refining,crude oil refining,high Residual_FuelOil,elect_td_ind,output,
-high Heavy_Residual,oil,refining,crude oil refining,high Heavy_Residual,regional oil,output,
-high Heavy_Residual,gas,refining,crude oil refining,high Heavy_Residual,wholesale gas,output,
-high Heavy_Residual,electricity,refining,crude oil refining,high Heavy_Residual,elect_td_ind,output,
+high PetCoke,oil,refining,crude oil refining,high PetCoke,regional oil,output,
+high PetCoke,gas,refining,crude oil refining,high PetCoke,wholesale gas,output,
+high PetCoke,electricity,refining,crude oil refining,high PetCoke,elect_td_ind,output,
 high Other,oil,refining,crude oil refining,high Other,regional oil,output,
 high Other,gas,refining,crude oil refining,high Other,wholesale gas,output,
 high Other,electricity,refining,crude oil refining,high Other,elect_td_ind,output,

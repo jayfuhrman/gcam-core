@@ -12,8 +12,8 @@ regional Residual_FuelOil,domestic Residual_FuelOil,domestic Residual_FuelOil,Re
 regional Residual_FuelOil,imported Residual_FuelOil,imported Residual_FuelOil,traded Residual_FuelOil,1,0,1,USA
 regional Gasoline,domestic Gasoline,domestic Gasoline,Gasoline,1,0,1,regional
 regional Gasoline,imported Gasoline,imported Gasoline,traded Gasoline,1,0,1,USA
-regional Heavy_Residual,domestic Heavy_Residual,domestic Heavy_Residual,Heavy_Residual,1,0,1,regional
-regional Heavy_Residual,imported Heavy_Residual,imported Heavy_Residual,traded Heavy_Residual,1,0,1,USA
+regional PetCoke,domestic PetCoke,domestic PetCoke,PetCoke,1,0,1,regional
+regional PetCoke,imported PetCoke,imported PetCoke,traded PetCoke,1,0,1,USA
 regional Jet_Kerosene,domestic Jet_Kerosene,domestic Jet_Kerosene,Jet_Kerosene,1,0,1,regional
 regional Jet_Kerosene,imported Jet_Kerosene,imported Jet_Kerosene,traded Jet_Kerosene,1,0,1,USA
 regional LPG,domestic LPG,domestic LPG,LPG,1,0,1,regional

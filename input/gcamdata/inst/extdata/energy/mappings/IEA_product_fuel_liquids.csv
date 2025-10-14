@@ -25,9 +25,9 @@ Fuel oil,Residual_FuelOil
 Naphtha,Other
 White spirit & SBP,Other
 Lubricants,Other
-Bitumen,Heavy_Residual
+Bitumen,Residual_FuelOil
 Paraffin waxes,Other
-Petroleum coke,Heavy_Residual
+Petroleum coke,PetCoke
 Other oil products,Other
 Biogasoline,Gasoline
 Biodiesels,Distillate_FuelOil

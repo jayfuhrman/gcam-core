@@ -11,14 +11,14 @@ refining,ctl,Residual_FuelOil,0.01,0.01,0.01,,0.0001,,,0.0001,CH4,coal (conv pul
 refining,ctl,Gasoline,0.01,0.01,0.01,,0.0001,,,0.0001,CH4,coal (conv pul),1
 refining,ctl,Jet_Kerosene,0.01,0.01,0.01,,0.0001,,,0.0001,CH4,coal (conv pul),1
 refining,ctl,LPG,0.01,0.01,0.01,,0.0001,,,0.0001,CH4,coal (conv pul),1
-refining,ctl,Heavy_Residual,0.01,0.01,0.01,,0.0001,,,0.0001,CH4,coal (conv pul),1
+refining,ctl,PetCoke,0.01,0.01,0.01,,0.0001,,,0.0001,CH4,coal (conv pul),1
 refining,ctl,Other,0.01,0.01,0.01,,0.0001,,,0.0001,CH4,coal (conv pul),1
 refining,gtl,Distillate_FuelOil,0.01,0.01,0.01,,0.0001,,,0.0001,CH4,gas (steam/CT),1
 refining,gtl,Residual_FuelOil,0.01,0.01,0.01,,0.0001,,,0.0001,CH4,gas (steam/CT),1
 refining,gtl,Gasoline,0.01,0.01,0.01,,0.0001,,,0.0001,CH4,gas (steam/CT),1
 refining,gtl,Jet_Kerosene,0.01,0.01,0.01,,0.0001,,,0.0001,CH4,gas (steam/CT),1
 refining,gtl,LPG,0.01,0.01,0.01,,0.0001,,,0.0001,CH4,gas (steam/CT),1
-refining,gtl,Heavy_Residual,0.01,0.01,0.01,,0.0001,,,0.0001,CH4,gas (steam/CT),1
+refining,gtl,PetCoke,0.01,0.01,0.01,,0.0001,,,0.0001,CH4,gas (steam/CT),1
 refining,gtl,Other,0.01,0.01,0.01,,0.0001,,,0.0001,CH4,gas (steam/CT),1
 refining,biorefining,cellulosic ethanol,0.01,0.01,0.01,0.001,0.0001,,,0.0001,,,1
 refining,biorefining,corn ethanol,0.01,0.01,0.01,,0.0001,,,0.0001,,,1
@@ -27,7 +27,7 @@ refining,biorefining,biodiesel,0.01,0.01,0.01,,0.0001,,,0.0001,,,1
 refining,biorefining,Residual_FuelOil,0.01,0.01,0.01,0.001,0.0001,,,0.0001,,,
 refining,biorefining,Jet_Kerosene,0.01,0.01,0.01,0.001,0.0001,,,0.0001,,,
 refining,biorefining,LPG,0.01,0.01,0.01,0.001,0.0001,,,0.0001,,,
-refining,biorefining,Heavy_Residual,0.01,0.01,0.01,0.001,0.0001,,,0.0001,,,
+refining,biorefining,biochar,0.01,0.01,0.01,0.001,0.0001,,,0.0001,,,
 refining,biorefining,Other,0.01,0.01,0.01,0.001,0.0001,,,0.0001,,,
 electricity,coal,coal (conv pul CCS),0.001,0.03,,0.0005,0.0001,4.07E-07,1.00E-05,0.0001,CO,gas (steam/CT),
 electricity,coal,coal (IGCC),0.001,0.03,,0.0005,0.0001,4.07E-07,1.00E-05,0.0001,CO,gas (steam/CT),

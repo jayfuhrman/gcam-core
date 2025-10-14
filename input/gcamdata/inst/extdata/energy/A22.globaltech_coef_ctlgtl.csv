@@ -10,12 +10,12 @@ gtl,gas,Jet_Kerosene,0.23
 gtl,gas,Other,0.15
 gtl,gas,LPG,0.01
 gtl,gas,Gasoline,0.09
-gtl,gas,Heavy_Residual,0
+gtl,gas,PetCoke,0
 gtl,gas,Residual_FuelOil,0
 ctl,coal,Distillate_FuelOil,0.51
 ctl,coal,Jet_Kerosene,0.21
 ctl,coal,Gasoline,0.28
 ctl,coal,Other,0
-ctl,coal,Heavy_Residual,0
+ctl,coal,PetCoke,0
 ctl,coal,Residual_FuelOil,0
 ctl,coal,LPG,0

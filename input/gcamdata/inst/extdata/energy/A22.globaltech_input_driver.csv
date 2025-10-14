@@ -12,26 +12,26 @@ refining,biorefining,sugar cane ethanol,regional sugar for ethanol
 refining,biorefining,Residual_FuelOil,regional biomass
 refining,biorefining,Jet_Kerosene,regional biomass
 refining,biorefining,LPG,regional biomass
-refining,biorefining,Heavy_Residual,regional biomass
+refining,biorefining,biochar,regional biomass
 refining,biorefining,Other,regional biomass
 refining,ctl,Distillate_FuelOil,regional coal
 refining,ctl,Residual_FuelOil,regional coal
 refining,ctl,Gasoline,regional coal
 refining,ctl,Jet_Kerosene,regional coal
 refining,ctl,LPG,regional coal
-refining,ctl,Heavy_Residual,regional coal
+refining,ctl,PetCoke,regional coal
 refining,ctl,Other,regional coal
 refining,gtl,Distillate_FuelOil,regional natural gas
 refining,gtl,Residual_FuelOil,regional natural gas
 refining,gtl,Gasoline,regional natural gas
 refining,gtl,Jet_Kerosene,regional natural gas
 refining,gtl,LPG,regional natural gas
-refining,gtl,Heavy_Residual,regional natural gas
+refining,gtl,PetCoke,regional natural gas
 refining,gtl,Other,regional natural gas
 refining,crude oil refining,high Distillate_FuelOil,regional oil
 refining,crude oil refining,high Residual_FuelOil,regional oil
 refining,crude oil refining,high Gasoline,regional oil
 refining,crude oil refining,high LPG,regional oil
 refining,crude oil refining,high Jet_Kerosene,regional oil
-refining,crude oil refining,high Heavy_Residual,regional oil
+refining,crude oil refining,high PetCoke,regional oil
 refining,crude oil refining,high Other,regional oil

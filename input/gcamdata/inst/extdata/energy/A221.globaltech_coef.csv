@@ -14,42 +14,42 @@ refining,biorefining,sugar cane ethanol,regional sugar for ethanol,1,1,1
 refining,biorefining,cellulosic ethanol,regional biomass,2.057,2.057,1.771
 refining,biorefining,Jet_Kerosene,regional biomass,1.961,1.961,1.739
 refining,biorefining,LPG,regional biomass,1.961,1.961,1.739
-refining,biorefining,Heavy_Residual,regional biomass,1.961,1.961,1.739
+refining,biorefining,biochar,regional biomass,1.961,1.961,1.739
 refining,biorefining,Other,regional biomass,1.961,1.961,1.739
 refining,ctl,Distillate_FuelOil,regional coal,2.112,2.112,1.959
 refining,ctl,Residual_FuelOil,regional coal,2.112,2.112,1.959
 refining,ctl,Gasoline,regional coal,2.112,2.112,1.959
 refining,ctl,Jet_Kerosene,regional coal,2.112,2.112,1.959
 refining,ctl,LPG,regional coal,2.112,2.112,1.959
-refining,ctl,Heavy_Residual,regional coal,2.112,2.112,1.959
+refining,ctl,PetCoke,regional coal,2.112,2.112,1.959
 refining,ctl,Other,regional coal,2.112,2.112,1.959
 refining,gtl,Distillate_FuelOil,regional natural gas,1.654,1.654,1.534
 refining,gtl,Residual_FuelOil,regional natural gas,1.654,1.654,1.534
 refining,gtl,Gasoline,regional natural gas,1.654,1.654,1.534
 refining,gtl,Jet_Kerosene,regional natural gas,1.654,1.654,1.534
 refining,gtl,LPG,regional natural gas,1.654,1.654,1.534
-refining,gtl,Heavy_Residual,regional natural gas,1.654,1.654,1.534
+refining,gtl,PetCoke,regional natural gas,1.654,1.654,1.534
 refining,gtl,Other,regional natural gas,1.654,1.654,1.534
 refining,crude oil refining,high Distillate_FuelOil,regional oil,1.055,1.055,1.02
 refining,crude oil refining,high Residual_FuelOil,regional oil,1.055,1.055,1.02
 refining,crude oil refining,high Gasoline,regional oil,1.055,1.055,1.02
 refining,crude oil refining,high LPG,regional oil,1.055,1.055,1.02
 refining,crude oil refining,high Jet_Kerosene,regional oil,1.055,1.055,1.02
-refining,crude oil refining,high Heavy_Residual,regional oil,1.055,1.055,1.02
+refining,crude oil refining,high PetCoke,regional oil,1.055,1.055,1.02
 refining,crude oil refining,high Other,regional oil,1.055,1.055,1.02
 refining,crude oil refining,high Distillate_FuelOil,elect_td_ind,0.005,0.005,0.005
 refining,crude oil refining,high Residual_FuelOil,elect_td_ind,0.005,0.005,0.005
 refining,crude oil refining,high Gasoline,elect_td_ind,0.005,0.005,0.005
 refining,crude oil refining,high LPG,elect_td_ind,0.005,0.005,0.005
 refining,crude oil refining,high Jet_Kerosene,elect_td_ind,0.005,0.005,0.005
-refining,crude oil refining,high Heavy_Residual,elect_td_ind,0.005,0.005,0.005
+refining,crude oil refining,high PetCoke,elect_td_ind,0.005,0.005,0.005
 refining,crude oil refining,high Other,elect_td_ind,0.005,0.005,0.005
 refining,crude oil refining,high Distillate_FuelOil,wholesale gas,0.018,0.018,0.018
 refining,crude oil refining,high Residual_FuelOil,wholesale gas,0.018,0.018,0.018
 refining,crude oil refining,high Gasoline,wholesale gas,0.018,0.018,0.018
 refining,crude oil refining,high LPG,wholesale gas,0.018,0.018,0.018
 refining,crude oil refining,high Jet_Kerosene,wholesale gas,0.018,0.018,0.018
-refining,crude oil refining,high Heavy_Residual,wholesale gas,0.018,0.018,0.018
+refining,crude oil refining,high PetCoke,wholesale gas,0.018,0.018,0.018
 refining,crude oil refining,high Other,wholesale gas,0.018,0.018,0.018
 Distillate_FuelOil,Distillate_FuelOil,biomassOil,refining,1,1,1
 Distillate_FuelOil,Distillate_FuelOil,biomassOil,Distillate_FuelOil_biomassOil,1,1,1
@@ -87,14 +87,14 @@ LPG,LPG,coal,refining,1,1,1
 LPG,LPG,coal,LPG_coal,1,1,1
 LPG,LPG,natural gas,refining,1,1,1
 LPG,LPG,natural gas,LPG_natural gas,1,1,1
-Heavy_Residual,Heavy_Residual,biomass,refining,1,1,1
-Heavy_Residual,Heavy_Residual,biomass,Heavy_Residual_biomass,1,1,1
-Heavy_Residual,Heavy_Residual,crude oil,refining,1,1,1
-Heavy_Residual,Heavy_Residual,crude oil,Heavy_Residual_crude oil,1,1,1
-Heavy_Residual,Heavy_Residual,coal,refining,1,1,1
-Heavy_Residual,Heavy_Residual,coal,Heavy_Residual_coal,1,1,1
-Heavy_Residual,Heavy_Residual,natural gas,refining,1,1,1
-Heavy_Residual,Heavy_Residual,natural gas,Heavy_Residual_natural gas,1,1,1
+PetCoke,PetCoke,biomass,refining,1,1,1
+PetCoke,PetCoke,biomass,PetCoke_biomass,1,1,1
+PetCoke,PetCoke,crude oil,refining,1,1,1
+PetCoke,PetCoke,crude oil,PetCoke_crude oil,1,1,1
+PetCoke,PetCoke,coal,refining,1,1,1
+PetCoke,PetCoke,coal,PetCoke_coal,1,1,1
+PetCoke,PetCoke,natural gas,refining,1,1,1
+PetCoke,PetCoke,natural gas,PetCoke_natural gas,1,1,1
 Jet_Kerosene,Jet_Kerosene,biomass,refining,1,1,1
 Jet_Kerosene,Jet_Kerosene,biomass,Jet_Kerosene_biomass,1,1,1
 Jet_Kerosene,Jet_Kerosene,crude oil,refining,1,1,1

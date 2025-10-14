@@ -20,7 +20,7 @@ refined liquids enduse,refined liquids enduse,refined liquids gasoline,regional 
 refined liquids enduse,refined liquids enduse,refined liquids distillate_fueloil,regional Distillate_FuelOil,1,1,1
 refined liquids enduse,refined liquids enduse,refined liquids residual_fueloil,regional Residual_FuelOil,1,1,1
 refined liquids enduse,refined liquids enduse,refined liquids lpg,regional LPG,1,1,1
-refined liquids enduse,refined liquids enduse,refined liquids heavy_residual,regional Heavy_Residual,1,1,1
+refined liquids enduse,refined liquids enduse,refined liquids petcoke,regional PetCoke,1,1,1
 refined liquids enduse,refined liquids enduse,refined liquids jet_kerosene,regional Jet_Kerosene,1,1,1
 refined liquids enduse,refined liquids enduse,refined liquids other,regional Other,1,1,1
 refined liquids enduse,refined liquids enduse,refined liquids feedstock,regional oil,1,1,1
@@ -28,7 +28,7 @@ refined liquids industrial,refined liquids industrial,refined liquids gasoline,r
 refined liquids industrial,refined liquids industrial,refined liquids distillate_fueloil,regional Distillate_FuelOil,1,1,1
 refined liquids industrial,refined liquids industrial,refined liquids residual_fueloil,regional Residual_FuelOil,1,1,1
 refined liquids industrial,refined liquids industrial,refined liquids lpg,regional LPG,1,1,1
-refined liquids industrial,refined liquids industrial,refined liquids heavy_residual,regional Heavy_Residual,1,1,1
+refined liquids industrial,refined liquids industrial,refined liquids petcoke,regional PetCoke,1,1,1
 refined liquids industrial,refined liquids industrial,refined liquids jet_kerosene,regional Jet_Kerosene,1,1,1
 refined liquids industrial,refined liquids industrial,refined liquids other,regional Other,1,1,1
 refined liquids industrial,refined liquids industrial,refined liquids feedstock,regional oil,1,1,1

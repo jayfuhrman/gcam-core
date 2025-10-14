@@ -19,7 +19,7 @@ refined liquids enduse,refined liquids enduse,refined liquids gasoline,share-wei
 refined liquids enduse,refined liquids enduse,refined liquids distillate_fueloil,share-weight,final-calibration-year,end-year,fixed
 refined liquids enduse,refined liquids enduse,refined liquids residual_fueloil,share-weight,final-calibration-year,end-year,fixed
 refined liquids enduse,refined liquids enduse,refined liquids lpg,share-weight,final-calibration-year,end-year,fixed
-refined liquids enduse,refined liquids enduse,refined liquids heavy_residual,share-weight,final-calibration-year,end-year,fixed
+refined liquids enduse,refined liquids enduse,refined liquids petcoke,share-weight,final-calibration-year,end-year,fixed
 refined liquids enduse,refined liquids enduse,refined liquids jet_kerosene,share-weight,final-calibration-year,end-year,fixed
 refined liquids enduse,refined liquids enduse,refined liquids other,share-weight,final-calibration-year,end-year,fixed
 refined liquids enduse,refined liquids enduse,refined liquids feedstock,share-weight,final-calibration-year,end-year,fixed
@@ -27,7 +27,7 @@ refined liquids industrial,refined liquids industrial,refined liquids gasoline,s
 refined liquids industrial,refined liquids industrial,refined liquids distillate_fueloil,share-weight,final-calibration-year,end-year,fixed
 refined liquids industrial,refined liquids industrial,refined liquids residual_fueloil,share-weight,final-calibration-year,end-year,fixed
 refined liquids industrial,refined liquids industrial,refined liquids lpg,share-weight,final-calibration-year,end-year,fixed
-refined liquids industrial,refined liquids industrial,refined liquids heavy_residual,share-weight,final-calibration-year,end-year,fixed
+refined liquids industrial,refined liquids industrial,refined liquids petcoke,share-weight,final-calibration-year,end-year,fixed
 refined liquids industrial,refined liquids industrial,refined liquids jet_kerosene,share-weight,final-calibration-year,end-year,fixed
 refined liquids industrial,refined liquids industrial,refined liquids other,share-weight,final-calibration-year,end-year,fixed
 refined liquids industrial,refined liquids industrial,refined liquids feedstock,share-weight,final-calibration-year,end-year,fixed

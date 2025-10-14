@@ -12,8 +12,8 @@ regional Residual_FuelOil,domestic Residual_FuelOil,-6,start-year,1,share-weight
 regional Residual_FuelOil,imported Residual_FuelOil,-6,start-year,1,share-weight,final-calibration-year,2300,1,s-curve,absolute-cost-logit
 regional Gasoline,domestic Gasoline,-6,start-year,1,share-weight,final-calibration-year,2300,1,s-curve,absolute-cost-logit
 regional Gasoline,imported Gasoline,-6,start-year,1,share-weight,final-calibration-year,2300,1,s-curve,absolute-cost-logit
-regional Heavy_Residual,domestic Heavy_Residual,-6,start-year,1,share-weight,final-calibration-year,2300,1,s-curve,absolute-cost-logit
-regional Heavy_Residual,imported Heavy_Residual,-6,start-year,1,share-weight,final-calibration-year,2300,1,s-curve,absolute-cost-logit
+regional PetCoke,domestic PetCoke,-6,start-year,1,share-weight,final-calibration-year,2300,1,s-curve,absolute-cost-logit
+regional PetCoke,imported PetCoke,-6,start-year,1,share-weight,final-calibration-year,2300,1,s-curve,absolute-cost-logit
 regional Jet_Kerosene,domestic Jet_Kerosene,-6,start-year,1,share-weight,final-calibration-year,2300,1,s-curve,absolute-cost-logit
 regional Jet_Kerosene,imported Jet_Kerosene,-6,start-year,1,share-weight,final-calibration-year,2300,1,s-curve,absolute-cost-logit
 regional LPG,domestic LPG,-6,start-year,1,share-weight,final-calibration-year,2300,1,s-curve,absolute-cost-logit

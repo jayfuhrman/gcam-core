@@ -518,9 +518,9 @@ module_energy_L1093.refined_liquids_GrossTrade <- function(command, ...){
 
     # Subtract total non_crude_liquids production from total liquids production
     crude_liquids_production <- total_liquids_production %>%
-      rename(total=value)%>%
-      left_join(non_crude_liquids,by=c("year","fuel","region"))%>%
-      mutate(value=total-value)%>%
+      rename(total = value)%>%
+      left_join(non_crude_liquids,by = c("year","fuel","region"))%>%
+      mutate(value = total - replace_na(value, 0))%>%
       select(-total)
 
     # Calculate regional crude oil to refined liquids IO coefficients

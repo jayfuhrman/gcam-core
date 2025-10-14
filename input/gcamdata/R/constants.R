@@ -547,8 +547,8 @@ energy.DEFAULT_ELECTRIC_EFFICIENCY <- 0.33
 
 energy.ELECTRICITY_INPUT_FUELS <- c("biomass", "coal", "gas", "refined liquids")
 energy.RSRC_FUELS              <- c("coal", "gas", "refined liquids")
-energy.REFINED_LIQUIDS <- c("Distillate_FuelOil","Heavy_Residual","Gasoline","LPG",
-                            "Residual_FuelOil","Jet_Kerosene","Other")
+energy.REFINED_LIQUIDS <- c("Distillate_FuelOil","Gasoline","LPG",
+                            "Residual_FuelOil","Jet_Kerosene","Other", "PetCoke")
 energy.REFINED_LIQUIDS_AGG <- c("refined liquids","refined biofuels_ethanol","refined biofuels_FT")
 energy.REFINING_TRADE_TRANSFER <- c("imports","exports","transfers")
 energy.LIQUIDS_ENDUSE_SECTORS <- c("in_bld_comm","in_bld_resid","in_trn_domestic air","in_trn_domestic ship",

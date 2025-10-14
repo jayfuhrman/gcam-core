@@ -9,7 +9,7 @@ supplysector,subsector,logit.exponent,year.fillout,share.weight,apply.to,from.ye
 traded Distillate_FuelOil,traded Distillate_FuelOil,-6,start-year,1,share-weight,final-calibration-year,2300,1,s-curve,1,absolute-cost-logit
 traded Residual_FuelOil,traded Residual_FuelOil,-6,start-year,1,share-weight,final-calibration-year,2300,1,s-curve,1,absolute-cost-logit
 traded Gasoline,traded Gasoline,-6,start-year,1,share-weight,final-calibration-year,2300,1,s-curve,1,absolute-cost-logit
-traded Heavy_Residual,traded Heavy_Residual,-6,start-year,1,share-weight,final-calibration-year,2300,1,s-curve,1,absolute-cost-logit
+traded PetCoke,traded PetCoke,-6,start-year,1,share-weight,final-calibration-year,2300,1,s-curve,1,absolute-cost-logit
 traded Jet_Kerosene,traded Jet_Kerosene,-6,start-year,1,share-weight,final-calibration-year,2300,1,s-curve,1,absolute-cost-logit
 traded LPG,traded LPG,-6,start-year,1,share-weight,final-calibration-year,2300,1,s-curve,1,absolute-cost-logit
 traded Other,traded Other,-6,start-year,1,share-weight,final-calibration-year,2300,1,s-curve,1,absolute-cost-logit

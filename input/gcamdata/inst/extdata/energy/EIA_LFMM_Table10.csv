@@ -2,7 +2,7 @@
 # Title: Non-petroleum fuel technology characteristics for the year 2025
 # Units: basis 2022$; see header columns
 # Source: Based on EIA Assumptions to NEMS LFMM for AEO2023. 
-# Comments: LPG and Heavy_Residual bio-analogues not present in the LFMM so were 
+# Comments: LPG and Coke bio-analogues not present in the LFMM so were 
 #   assumed to be similar to BTL and pyrolysis process costs.
 # Column types: ccccccnnnnnn
 # ----------
@@ -19,7 +19,7 @@ HEFA sustainable aviation fuel/NERD,50% SAF; 50% Renewable Diesel,Jet_Kerosene,,
 Pyrolysis,60% DFO; 40% Gasoline,Residual_FuelOil,biomass,biorefining,Residual_FuelOil,5200,420400,90,12,73,7
 Biomass-to-liquids (BTL),22% DFO; 46% Jet; 32% Gasoline,Other,biomass,biorefining,Other,6000,474700,85,12,78,8
 Biomass-to-liquids (BTL),Assume as BTL byproduct,LPG,biomass,biorefining,LPG,6000,474700,85,12,78,8
-Pyrolysis,Assume as pyrolysis downstream product,Heavy_Residual,biomass,biorefining,Heavy_Residual,5200,420400,90,12,73,7
+Pyrolysis,Assume as pyrolysis downstream product,PetCoke,biomass,biorefining,biochar,5200,420400,90,12,73,7
 FT GTL,52% dist; 23% kero; 24.5% naphtha; .5% LPG,Distillate_FuelOil,natural gas,gtl,Distillate_FuelOil,24000,209300,85,12,36,10
 FT GTL,52% dist; 23% kero; 24.5% naphtha; .5% LPG,Jet_Kerosene,natural gas,gtl,Jet_Kerosene,24000,209300,85,12,36,10
 FT GTL,52% dist; 23% kero; 24.5% naphtha; .5% LPG,Other,natural gas,gtl,Other,24000,209300,85,12,36,10
