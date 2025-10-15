@@ -3137,7 +3137,7 @@ module_energy_L244.building_det <- function(command, ...) {
         add_units("Unitless") %>%
         add_comments("A44.subsector_shrwt written to all regions") %>%
         add_legacy_name("L244.SubsectorShrwtFllt_bld_low_fossil") %>%
-        add_precursors("energy/A44.subsector_shrwt_low_fossil", "common/GCAM_region_names", "L144.end_use_eff")  ->
+        add_precursors("cwf/A44.subsector_shrwt_low_fossil", "common/GCAM_region_names", "L144.end_use_eff")  ->
         L244.SubsectorShrwtFllt_bld_low_fossil
     } else {
       missing_data() %>%
@@ -3164,7 +3164,7 @@ module_energy_L244.building_det <- function(command, ...) {
         add_units("NA") %>%
         add_comments("A44.subsector_interp written to all regions") %>%
         add_legacy_name("L244.SubsectorInterp_bld") %>%
-        add_precursors("energy/A44.subsector_interp_low_fossil", "common/GCAM_region_names", "L144.end_use_eff")  ->
+        add_precursors("cwf/A44.subsector_interp_low_fossil", "common/GCAM_region_names", "L144.end_use_eff")  ->
         L244.SubsectorInterp_bld_low_fossil
     } else {
       missing_data() %>%
@@ -3191,7 +3191,7 @@ module_energy_L244.building_det <- function(command, ...) {
         add_units("NA") %>%
         add_comments("A44.subsector_interp written to all regions") %>%
         add_legacy_name("L244.SubsectorInterpTo_bld_low_fossil") %>%
-        add_precursors("energy/A44.subsector_interp_low_fossil", "common/GCAM_region_names", "L144.end_use_eff")  ->
+        add_precursors("cwf/A44.subsector_interp_low_fossil", "common/GCAM_region_names", "L144.end_use_eff")  ->
         L244.SubsectorInterpTo_bld_low_fossil
     } else {
       missing_data() %>%
