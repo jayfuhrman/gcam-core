@@ -3,7 +3,7 @@
 # Units: kg/kW for different technologies
 # Description: this dataset defines the mineral use intensity for different generation technologies
 # Comment:
-# Column types: cccnnnnnnnn
+# Column types: cccnnnnnnnnnnnn
 # ----------
 supplysector,subsector,technology,steel,aluminium,silicon,copper,graphite,lithium,cobalt,nickel,manganese,neodymium,tellurium,vanadium
 pv_mineral,pv_mineral,pv_mineral (c-Si),78,19,2.93,4.9,,,,0.001,,,,

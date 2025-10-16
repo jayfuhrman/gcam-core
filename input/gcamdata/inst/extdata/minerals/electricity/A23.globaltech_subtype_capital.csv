@@ -3,7 +3,7 @@
 # Units: 1975$US/kW for different technologies
 # Description: this is just fake data for now and will update later
 # Comment: add later
-# Column types: ccccncnnnnnnn
+# Column types: ccccncnnnnnnnn
 # ----------
 supplysector,subsector,technology,input-capital,fixed.charge.rate,improvement.shadow.technology,improvement.max,improvement.rate,1971,1990,2005,2010,2015,final-calibration-year
 pv_mineral,pv_mineral,pv_mineral (c-Si),capital,0.13,,0.16,0.12,666.5,666.5,666.5,666.5,666.5,666.5

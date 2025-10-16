@@ -3,7 +3,7 @@
 # Units: unitless
 # Description: this is just fake data for now
 # Comment: this dataset defines the mineral use intensity reduction in terms of percentage
-# Column types: cccnnnnnnnn
+# Column types: cccnnnnnnnnnnnn
 # ----------
 supplysector,subsector,technology,steel,aluminium,silicon,copper,graphite,lithium,cobalt,nickel,manganese,neodymium,tellurium,vanadium
 pv_mineral,pv_mineral,pv_mineral (c-Si),0.7,0.7,0.292,0.292,,,,0.7,,,,

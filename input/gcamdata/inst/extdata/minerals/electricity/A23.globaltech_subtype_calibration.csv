@@ -3,7 +3,7 @@
 # Units: %
 # Description: this dataset defines renewable wind and solar historical market share at the global level which are used to calculate their calibrated generation
 # Comment: add later
-# Column types: cccnnnnn
+# Column types: cccnnnnnn
 # ----------
 supplysector,subsector,technology,1975,1990,2005,2010,2015,2021
 pv_mineral,pv_mineral,pv_mineral (c-Si),1,0.73,0.95,0.87,0.93,0.95

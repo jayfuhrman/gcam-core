@@ -3,7 +3,7 @@
 # Units: kg/kWh storage capacity for different technologies
 # Description: this dataset defines the mineral use intensity for different different battery storage technologies
 # Comment:
-# Column types: cccnnnnnnnn
+# Column types: cccnnnnnnnnnnnn
 # ----------
 supplysector,subsector,technology,steel,aluminium,silicon,copper,graphite,lithium,cobalt,nickel,manganese,neodymium,tellurium,vanadium
 pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (c-Si) (LFP),1.180,0.420,,0.420,1.090,0.100,,,,,,

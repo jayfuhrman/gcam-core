@@ -2,7 +2,7 @@
 # Title: global total CMM historical demand
 # Units: Mt
 # Source: Historical mineral production data spreadsheet, USGS Mineral Commodity Summaries for most minerals. Liu et al. 2022 https://pubs.acs.org/doi/10.1021/acs.est.2c02247?goto=supporting-info for Neodymium. Neodymium data only available through 2020 (2021 copied from 2020).
-# Column types: ccnnnnn
+# Column types: ccnnnnnnn
 # ----------
 resource,unit,1975,1990,2005,2010,2015,2020,2021
 steel,Mt,,726,1110,1405,1625,1795,1925
