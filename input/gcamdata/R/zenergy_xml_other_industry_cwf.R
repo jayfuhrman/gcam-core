@@ -18,13 +18,14 @@ module_energy_other_industry_cwf_xml <- function(command, ...) {
              "L232.SubsectorShrwtFllt_ind_cwf",
              "L232.GlobalTechEff_ind_cwf",
              "L232.SubsectorShrwtFllt_ind_cwf_H2_scenarios",
-             "L232.SubsectorInterp_ind_cwf_H2_scenarios"))
+             "L232.SubsectorInterp_ind_cwf_H2_scenarios",
+             "L232.IncomeElasticity_ind_cwf"))
   } else if(command == driver.DECLARE_OUTPUTS) {
     return(c(XML = "other_industry_cwf.xml",
-             # XML = "other_industry_cwf_low_fossil.xml",
+             XML = "other_industry_cwf_LED.xml",
              XML = "other_industry_cwf_low_H2.xml",
-             # XML = "other_industry_cwf_med_H2.xml",
-             XML = "other_industry_cwf_high_H2.xml"))
+             XML = "other_industry_cwf_high_H2.xml",
+             XML = "other_industry_incelas_cwf.xml"))
   } else if(command == driver.MAKE) {
 
     all_data <- list(...)[[1]]
@@ -46,7 +47,7 @@ module_energy_other_industry_cwf_xml <- function(command, ...) {
     # combine the previous cwf (which only update GlobalTechEff) and low_fossil scenario (which updates shrwts)
 
     create_xml("other_industry_cwf.xml") %>%
-      add_xml_data(L232.GlobalTechEff_ind_cwf, "GlobalTechEff") %>% # CWF version
+      add_xml_data(L232.GlobalTechEff_ind_cwf %>% filter(scenario == "cwf"), "GlobalTechEff") %>% # CWF version
       add_xml_data(L232.SubsectorShrwtFllt_ind_cwf, "SubsectorShrwtFllt") %>% # CWF version
       add_xml_data(L232.SubsectorInterp_ind_cwf, "SubsectorInterp") %>% # CWF version
       add_precursors("L232.GlobalTechEff_ind_cwf",
@@ -54,12 +55,9 @@ module_energy_other_industry_cwf_xml <- function(command, ...) {
                      "L232.SubsectorShrwtFllt_ind_cwf") ->
       other_industry_cwf.xml
 
-    # create_xml("other_industry_cwf_low_fossil.xml") %>%
-    #   add_xml_data(L232.SubsectorShrwtFllt_ind_low_fossil, "SubsectorShrwtFllt") %>%
-    #   add_xml_data(L232.SubsectorInterp_ind_low_fossil, "SubsectorInterp") %>%
-    #   add_precursors("L232.SubsectorInterp_ind_low_fossil",
-    #                  "L232.SubsectorShrwtFllt_ind_low_fossil") ->
-    #   other_industry_cwf_low_fossil.xml
+    create_xml("other_industry_cwf_LED.xml") %>%
+      add_xml_data(L232.GlobalTechEff_ind_cwf %>% filter(scenario == "cwf-LED"), "GlobalTechEff") -> # Additional efficiency improvements for CWF scenario
+      other_industry_cwf_LED.xml
 
     # create the CWF high/medium/low hydrogen XMLs
     for (i in c("cwf_low_H2",
@@ -81,13 +79,21 @@ module_energy_other_industry_cwf_xml <- function(command, ...) {
         add_precursors("L232.SubsectorInterp_ind_cwf_H2_scenarios",
                        "L232.SubsectorShrwtFllt_ind_cwf_H2_scenarios") %>%
         assign(xml_name, ., envir = curr_env)
+
+      L232.IncomeElasticity_ind_cwf <- get_data(all_data, 'L232.IncomeElasticity_ind_cwf') %>%
+        filter(year > MODEL_FINAL_BASE_YEAR)
+
+      create_xml("other_industry_incelas_cwf.xml") %>%
+        add_xml_data(L232.IncomeElasticity_ind_cwf, "IncomeElasticity") %>%
+        add_precursors("L232.IncomeElasticity_ind_cwf") ->
+        other_industry_incelas_cwf.xml
     }
 
     return_data(other_industry_cwf.xml,
-                # other_industry_cwf_low_fossil.xml,
+                other_industry_cwf_LED.xml,
                 other_industry_cwf_low_H2.xml,
-                # other_industry_cwf_med_H2.xml,
-                other_industry_cwf_high_H2.xml)
+                other_industry_cwf_high_H2.xml,
+                other_industry_incelas_cwf.xml)
   } else {
     stop("Unknown command")
   }

@@ -33,9 +33,7 @@ module_water_electricity_water_cwf_xml <- function(command, ...) {
     # Load required inputs
 
     L2233.GlobalTechLifetime_elec_cool <- get_data(all_data, "L2233.GlobalTechLifetime_elec_cool") #
-
     L2233.GlobalTechSCurve_elec_cool <- get_data(all_data, "L2233.GlobalTechSCurve_elec_cool") #
-
     L223.SubsectorShrwt_renew_cwf <- get_data(all_data, "L223.SubsectorShrwt_renew_cwf")
     L223.SubsectorInterp_elec_cwf <- get_data(all_data, "L223.SubsectorInterp_elec_cwf")
     L223.SubsectorShrwt_nuc_cwf <- get_data(all_data, "L223.SubsectorShrwt_nuc_cwf")

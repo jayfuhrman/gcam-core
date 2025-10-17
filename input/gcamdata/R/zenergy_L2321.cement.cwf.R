@@ -88,9 +88,9 @@ module_energy_L2321.cement_cwf <- function(command, ...) {
     # get coefficient adjustments
     A321.globaltech_coef_cwf_adj %>%
       gather_years(value_col = "coefficient_adj") %>%
-      complete(nesting(supplysector, subsector, technology, minicam.energy.input), year = c(year, MODEL_BASE_YEARS, MODEL_FUTURE_YEARS)) %>%
-      arrange(supplysector, subsector, technology, minicam.energy.input, year) %>%
-      group_by(supplysector, subsector, technology, minicam.energy.input) %>%
+      complete(nesting(supplysector, subsector, technology, minicam.energy.input, scenario), year = c(year, MODEL_BASE_YEARS, MODEL_FUTURE_YEARS)) %>%
+      arrange(supplysector, subsector, technology, minicam.energy.input, scenario, year) %>%
+      group_by(supplysector, subsector, technology, minicam.energy.input, scenario) %>%
       mutate(coefficient_adj = approx_fun(year, coefficient_adj, rule = 2)) %>%
       ungroup %>%
       filter(year %in% c(MODEL_BASE_YEARS, MODEL_FUTURE_YEARS)) %>%
@@ -101,9 +101,9 @@ module_energy_L2321.cement_cwf <- function(command, ...) {
 
     # apply to the original global tech coefficients
     L2321.GlobalTechCoef_cement %>%
-      left_join_error_no_match(L2321.globaltech_coef_cwf_adj) %>%
+      left_join(L2321.globaltech_coef_cwf_adj) %>%
       mutate(coefficient = round(coefficient * coefficient_adj, energy.DIGITS_COEFFICIENT)) %>%
-      select(LEVEL2_DATA_NAMES[["GlobalTechCoef"]]) ->
+      select(LEVEL2_DATA_NAMES[["GlobalTechCoef"]], scenario) ->
       L2321.GlobalTechCoef_cement_cwf
 
     # STUB TECH COEFFICIENT: L2321.StubTechCoef_cement_cwf

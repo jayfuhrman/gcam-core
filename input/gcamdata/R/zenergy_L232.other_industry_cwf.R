@@ -126,10 +126,10 @@ module_energy_L232.other_industry_cwf <- function(command, ...) {
     # get efficiency adjustments
     A32.globaltech_eff_cwf_adj %>%
       gather_years(value_col = "efficiency_adj") %>%
-      complete(nesting(supplysector, subsector, technology, minicam.energy.input, secondary.output),
+      complete(nesting(supplysector, subsector, technology, minicam.energy.input, secondary.output, scenario),
                year = c(year, MODEL_BASE_YEARS, MODEL_FUTURE_YEARS)) %>%
-      arrange(supplysector, subsector, technology, minicam.energy.input, secondary.output, year) %>%
-      group_by(supplysector, subsector, technology, minicam.energy.input, secondary.output) %>%
+      arrange(supplysector, subsector, technology, minicam.energy.input, secondary.output, year, scenario) %>%
+      group_by(supplysector, subsector, technology, minicam.energy.input, secondary.output, scenario) %>%
       mutate(efficiency_adj = approx_fun(year, efficiency_adj, rule = 2)) %>%
       ungroup %>%
       filter(year %in% c(MODEL_BASE_YEARS, MODEL_FUTURE_YEARS)) %>%
@@ -141,9 +141,9 @@ module_energy_L232.other_industry_cwf <- function(command, ...) {
 
     # apply to the original global tech efficiencies
     L232.GlobalTechEff_ind %>%
-      left_join_error_no_match(L232.globaltech_eff_cwf_adj) %>%
+      left_join(L232.globaltech_eff_cwf_adj, by = c("sector.name","subsector.name","technology","minicam.energy.input","year")) %>%
       mutate(efficiency = round(efficiency * efficiency_adj, energy.DIGITS_EFFICIENCY)) %>%
-      select(LEVEL2_DATA_NAMES[["GlobalTechEff"]]) ->
+      select(LEVEL2_DATA_NAMES[["GlobalTechEff"]], scenario) ->
       L232.GlobalTechEff_ind_cwf
 
     # note we don't need to adjust L232.GlobalTechSecOut_ind since it carries over historical data into future

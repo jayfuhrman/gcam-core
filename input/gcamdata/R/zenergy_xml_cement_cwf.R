@@ -1,6 +1,6 @@
 # Copyright 2019 Battelle Memorial Institute; see the LICENSE file.
 
-#' module_energy_cement_xml
+#' module_energy_cement_cwf_xml
 #'
 #' Construct XML data structure for \code{cement.xml}.
 #'
@@ -18,28 +18,29 @@ module_energy_cement_cwf_xml <- function(command, ...) {
              "L2321.SubsectorShrwtFllt_cement_cwf",
              "L2321.SubsectorInterp_cement_cwf",
              "L2321.SubsectorShrwtFllt_cement_cwf_H2_scenarios",
-             "L2321.SubsectorInterp_cement_cwf_H2_scenarios"))
+             "L2321.SubsectorInterp_cement_cwf_H2_scenarios",
+             "L2321.IncomeElasticity_cement_cwf"))
   } else if(command == driver.DECLARE_OUTPUTS) {
     return(c(XML = "cement_cwf.xml",
+             XML = "cement_cwf_LED.xml",
              XML = "cement_all_CCS_post2030.xml",
              XML = "cement_cwf_low_H2.xml",
              # XML = "cement_cwf_med_H2.xml",
-             XML = "cement_cwf_high_H2.xml"
-             ))
+             XML = "cement_cwf_high_H2.xml",
+             XML = "cement_incelas_cwf.xml"))
   } else if(command == driver.MAKE) {
 
     all_data <- list(...)[[1]]
 
     # Load required inputs
-    L2321.GlobalTechShrwt_cement <- get_data(all_data, "L2321.GlobalTechShrwt_cement")
     L2321.GlobalTechCoef_cement_cwf <- get_data(all_data, "L2321.GlobalTechCoef_cement_cwf")
     L2321.StubTechCoef_cement_cwf <- get_data(all_data, "L2321.StubTechCoef_cement_cwf")
-
+    L2321.GlobalTechShrwt_cement <- get_data(all_data, "L2321.GlobalTechShrwt_cement")
     L2321.SubsectorShrwtFllt_cement_cwf <- get_data(all_data, "L2321.SubsectorShrwtFllt_cement_cwf")
     L2321.SubsectorInterp_cement_cwf <- get_data(all_data, "L2321.SubsectorInterp_cement_cwf")
-
     L2321.SubsectorShrwtFllt_cement_cwf_H2_scenarios <- get_data(all_data, "L2321.SubsectorShrwtFllt_cement_cwf_H2_scenarios")
     L2321.SubsectorInterp_cement_cwf_H2_scenarios <- get_data(all_data, "L2321.SubsectorInterp_cement_cwf_H2_scenarios")
+    L2321.IncomeElasticity_cement_cwf <- get_data(all_data, 'L2321.IncomeElasticity_cement_cwf') %>% filter(year > MODEL_FINAL_BASE_YEAR)
     # ===================================================
 
     cement_cwf_low_H2.xml <-
@@ -50,7 +51,7 @@ module_energy_cement_cwf_xml <- function(command, ...) {
 
     # Produce outputs
     create_xml("cement_cwf.xml") %>%
-      add_xml_data(L2321.GlobalTechCoef_cement_cwf, "GlobalTechCoef") %>% # CWF version
+      add_xml_data(L2321.GlobalTechCoef_cement_cwf %>% filter(scenario == 'cwf'), "GlobalTechCoef") %>% # CWF version
       add_xml_data(L2321.StubTechCoef_cement_cwf, "StubTechCoef") %>% # CWF version
       add_xml_data(L2321.SubsectorShrwtFllt_cement_cwf, "SubsectorShrwtFllt") %>% # CWF version
       add_xml_data(L2321.SubsectorInterp_cement_cwf, "SubsectorInterp") %>% # CWF version
@@ -59,6 +60,10 @@ module_energy_cement_cwf_xml <- function(command, ...) {
                      "L2321.SubsectorShrwtFllt_cement_cwf",
                      "L2321.SubsectorInterp_cement_cwf") ->
       cement_cwf.xml
+
+    create_xml("cement_cwf_LED.xml") %>%
+      add_xml_data(L2321.GlobalTechCoef_cement_cwf %>% filter(scenario == 'cwf-LED'), "GlobalTechCoef") ->
+      cement_cwf_LED.xml
 
     # create the CWF high/medium/low hydrogen XMLs
     for (i in c("cwf_low_H2",
@@ -90,11 +95,17 @@ module_energy_cement_cwf_xml <- function(command, ...) {
       add_precursors('L2321.GlobalTechShrwt_cement') ->
       cement_all_CCS_post2030.xml
 
+    create_xml("cement_incelas_cwf.xml") %>%
+      add_xml_data(L2321.IncomeElasticity_cement_cwf, "IncomeElasticity") %>%
+      add_precursors("L2321.IncomeElasticity_cement_cwf") ->
+      cement_incelas_cwf.xml
+
     return_data(cement_cwf.xml,
+                cement_cwf_LED.xml,
                 cement_all_CCS_post2030.xml,
                 cement_cwf_low_H2.xml,
-                # cement_cwf_med_H2.xml,
-                cement_cwf_high_H2.xml)
+                cement_cwf_high_H2.xml,
+                cement_incelas_cwf.xml)
 
   } else {
     stop("Unknown command")

@@ -82,9 +82,9 @@ module_energy_L2323.iron_steel_cwf <- function(command, ...) {
     # get adjustments
     A323.globaltech_coef_cwf_adj %>%
       gather_years %>%
-      complete(nesting(supplysector, subsector, technology, minicam.energy.input), year = c(year, MODEL_BASE_YEARS, MODEL_FUTURE_YEARS)) %>%
-      arrange(supplysector, subsector, technology, minicam.energy.input, year) %>%
-      group_by(supplysector, subsector, technology, minicam.energy.input) %>%
+      complete(nesting(supplysector, subsector, technology, minicam.energy.input, scenario), year = c(year, MODEL_BASE_YEARS, MODEL_FUTURE_YEARS)) %>%
+      arrange(supplysector, subsector, technology, minicam.energy.input, scenario, year) %>%
+      group_by(supplysector, subsector, technology, minicam.energy.input, scenario) %>%
       mutate(coefficient_adj = approx_fun(year, value, rule = 2)) %>%
       ungroup %>%
       filter(year %in% c(MODEL_BASE_YEARS, MODEL_FUTURE_YEARS)) %>%
@@ -95,9 +95,9 @@ module_energy_L2323.iron_steel_cwf <- function(command, ...) {
 
     # apply adjustments to global tech coefficients
     L2323.GlobalTechCoef_iron_steel %>%
-      left_join_error_no_match(L2323.globaltech_coef_cwf_adj) %>%
+      left_join(L2323.globaltech_coef_cwf_adj) %>%
       mutate(coefficient = round(coefficient * coefficient_adj, energy.DIGITS_COEFFICIENT)) %>%
-      select(LEVEL2_DATA_NAMES[["GlobalTechCoef"]]) ->
+      select(LEVEL2_DATA_NAMES[["GlobalTechCoef"]], scenario) ->
       L2323.GlobalTechCoef_iron_steel_cwf
 
     # STUB TECH COEF: L2323.StubTechCoef_iron_steel_cwf
@@ -123,10 +123,10 @@ module_energy_L2323.iron_steel_cwf <- function(command, ...) {
       ungroup() %>%
       # apply CWF adjustments
       left_join(L2323.globaltech_coef_cwf_adj %>%
-                  rename(supplysector = sector.name, subsector = subsector.name, stub.technology = technology)) %>%
+                  rename(supplysector = sector.name, subsector = subsector.name, stub.technology = technology), by = c("supplysector","subsector","stub.technology","minicam.energy.input","year")) %>%
       mutate(coefficient = round(coefficient * coefficient_adj, energy.DIGITS_COEFFICIENT)) %>%
       filter(year %in% MODEL_YEARS) %>% # drop the terminal coef year if it's outside of the model years
-      select(LEVEL2_DATA_NAMES[["StubTechCoef"]]) ->
+      select(LEVEL2_DATA_NAMES[["StubTechCoef"]],scenario) ->
       L2323.StubTechCoef_iron_steel_cwf
 
     A323.globaltech_shrwt_cwf %>%

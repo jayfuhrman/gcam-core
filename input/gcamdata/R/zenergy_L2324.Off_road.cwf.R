@@ -88,10 +88,10 @@ module_energy_L2324.Off_road_cwf <- function(command, ...) {
     # get efficiency adjustments
     A324.globaltech_eff_cwf_adj %>%
       gather_years(value_col = "efficiency_adj") %>%
-      complete(nesting(supplysector, subsector, technology, minicam.energy.input),
+      complete(nesting(supplysector, subsector, technology, minicam.energy.input, scenario),
                year = c(year, MODEL_BASE_YEARS, MODEL_FUTURE_YEARS)) %>%
-      arrange(supplysector, subsector, technology, minicam.energy.input,  year) %>%
-      group_by(supplysector, subsector, technology, minicam.energy.input) %>%
+      arrange(supplysector, subsector, technology, minicam.energy.input,  scenario, year) %>%
+      group_by(supplysector, subsector, technology, minicam.energy.input, scenario) %>%
       mutate(efficiency_adj = approx_fun(year, efficiency_adj, rule = 2)) %>%
       ungroup %>%
       filter(year %in% c(MODEL_BASE_YEARS, MODEL_FUTURE_YEARS)) %>%
@@ -102,9 +102,9 @@ module_energy_L2324.Off_road_cwf <- function(command, ...) {
 
     # apply to the original global tech efficiencies
     L2324.GlobalTechEff_Off_road %>%
-      left_join_error_no_match(L2324.globaltech_eff_cwf_adj, by = c('sector.name','subsector.name','technology','minicam.energy.input','year')) %>%
+      left_join(L2324.globaltech_eff_cwf_adj, by = c('sector.name','subsector.name','technology','minicam.energy.input','year')) %>%
       mutate(efficiency = round(efficiency * efficiency_adj, energy.DIGITS_EFFICIENCY)) %>%
-      select(LEVEL2_DATA_NAMES[["GlobalTechEff"]]) ->
+      select(LEVEL2_DATA_NAMES[["GlobalTechEff"]], scenario) ->
       L2324.GlobalTechEff_Off_road_cwf
 
     # HYDROGEN SCENARIOS, global tech share weights and interpolation rules
