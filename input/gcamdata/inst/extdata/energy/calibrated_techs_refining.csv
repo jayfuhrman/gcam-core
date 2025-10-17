@@ -1,85 +1,85 @@
 # File: calibrated_techs_refining.csv
 # Title: Mapping from calibrated intermediate sectors and fuels to supplysector / subsector / technology / input in GCAM
 # Units: n/a
-# Column types: cccccccc
+# Column types: ccccccccc
 # ----------
-sector,fuel,supplysector,subsector,technology,minicam.energy.input,calibration,secondary.output
-Gasoline,corn,Gasoline,Gasoline,corn,regional corn for ethanol,output,Gasoline_corn
-Gasoline,gas,Gasoline,Gasoline,gas,wholesale gas,output,Gasoline_corn
-Gasoline,electricity,Gasoline,Gasoline,electricity,elect_td_ind,output,Gasoline_corn
-Gasoline,sugar,Gasoline,Gasoline,sugar,regional sugar for ethanol,output,Gasoline_sugar
-Gasoline,biomass,Gasoline,Gasoline,biomass,regional biomass,output,Gasoline_biomass
-Distillate_FuelOil,biomassOil,Distillate_FuelOil,Distillate_FuelOil,biomassOil,regional biomassOil,output,Distillate_FuelOil_biomassOil
-Distillate_FuelOil,gas,Distillate_FuelOil,Distillate_FuelOil,gas,wholesale gas,output,Distillate_FuelOil_biomassOil
-LPG,biomass,LPG,LPG,biomass,regional biomass,output,LPG_biomass
-Jet_Kerosene,biomass,Jet_Kerosene,Jet_Kerosene,biomass,regional biomass,output,Jet_Kerosene_biomass
-Residual_FuelOil,biomass,Residual_FuelOil,Residual_FuelOil,biomass,regional biomass,output,Residual_FuelOil_biomass
-PetCoke,biomass,PetCoke,PetCoke,biomass,regional biomass,output,PetCoke_biomass
-Other,biomass,Other,Other,biomass,regional biomass,output,Other_biomass
-biorefining,corn,refining,biorefining,biorefining,regional corn for ethanol,output,
-biorefining,sugar,refining,biorefining,biorefining,regional sugar for ethanol,output,
-biorefining,biomass,refining,biorefining,biorefining,regional biomass,output,
-biorefining,biomassOil,refining,biorefining,biorefining,regional biomassOil,output,
-biorefining,gas,refining,biorefining,biorefining,wholesale gas,output,
-biorefining,electricity,refining,biorefining,biorefining,elect_td_ind,output,
-gtl,natural gas,refining,gtl,gtl,regional natural gas,output,
-LPG,natural gas,LPG,LPG,natural gas,regional natural gas,output,LPG_natural gas
-Gasoline,natural gas,Gasoline,Gasoline,natural gas,regional natural gas,output,Gasoline_natural gas
-Jet_Kerosene,natural gas,Jet_Kerosene,Jet_Kerosene,natural gas,regional natural gas,output,Jet_Kerosene_natural gas
-Distillate_FuelOil,natural gas,Distillate_FuelOil,Distillate_FuelOil,natural gas,regional natural gas,output,Distillate_FuelOil_natural gas
-Residual_FuelOil,natural gas,Residual_FuelOil,Residual_FuelOil,natural gas,regional natural gas,output,Residual_FuelOil_natural gas
-PetCoke,natural gas,PetCoke,PetCoke,natural gas,regional natural gas,output,PetCoke_natural gas
-Other,natural gas,Other,Other,natural gas,regional natural gas,output,Other_natural gas
-ctl,coal,refining,ctl,ctl,regional coal,output,
-LPG,coal,LPG,LPG,coal,regional coal,output,LPG_coal
-Gasoline,coal,Gasoline,Gasoline,coal,regional coal,output,Gasoline_coal
-Jet_Kerosene,coal,Jet_Kerosene,Jet_Kerosene,coal,regional coal,output,Jet_Kerosene_coal
-Distillate_FuelOil,coal,Distillate_FuelOil,Distillate_FuelOil,coal,regional coal,output,Distillate_FuelOil_coal
-Residual_FuelOil,coal,Residual_FuelOil,Residual_FuelOil,coal,regional coal,output,Residual_FuelOil_coal
-PetCoke,coal,PetCoke,PetCoke,coal,regional coal,output,PetCoke_coal
-Other,coal,Other,Other,coal,regional coal,output,Other_coal
-oil refining,oil,refining,crude oil refining,crude oil refining,regional oil,output,
-oil refining,gas,refining,crude oil refining,crude oil refining,wholesale gas,output,
-oil refining,electricity,refining,crude oil refining,crude oil refining,elect_td_ind,output,
-LPG,oil,LPG,LPG,crude oil,regional oil,output,LPG_crude oil
-LPG,gas,LPG,LPG,gas,wholesale gas,output,LPG_crude oil
-LPG,electricity,LPG,LPG,electricity,elect_td_ind,output,LPG_crude oil
-Gasoline,oil,Gasoline,Gasoline,crude oil,regional oil,output,Gasoline_crude oil
-Gasoline,gas,Gasoline,Gasoline,gas,wholesale gas,output,Gasoline_crude oil
-Gasoline,electricity,Gasoline,Gasoline,electricity,elect_td_ind,output,Gasoline_crude oil
-Jet_Kerosene,oil,Jet_Kerosene,Jet_Kerosene,crude oil,regional oil,output,Jet_Kerosene_crude oil
-Jet_Kerosene,gas,Jet_Kerosene,Jet_Kerosene,gas,wholesale gas,output,Jet_Kerosene_crude oil
-Jet_Kerosene,electricity,Jet_Kerosene,Jet_Kerosene,electricity,elect_td_ind,output,Jet_Kerosene_crude oil
-Distillate_FuelOil,oil,Distillate_FuelOil,Distillate_FuelOil,crude oil,regional oil,output,Distillate_FuelOil_crude oil
-Distillate_FuelOil,gas,Distillate_FuelOil,Distillate_FuelOil,gas,wholesale gas,output,Distillate_FuelOil_crude oil
-Distillate_FuelOil,electricity,Distillate_FuelOil,Distillate_FuelOil,electricity,elect_td_ind,output,Distillate_FuelOil_crude oil
-Residual_FuelOil,oil,Residual_FuelOil,Residual_FuelOil,crude oil,regional oil,output,Residual_FuelOil_crude oil
-Residual_FuelOil,gas,Residual_FuelOil,Residual_FuelOil,gas,wholesale gas,output,Residual_FuelOil_crude oil
-Residual_FuelOil,electricity,Residual_FuelOil,Residual_FuelOil,electricity,elect_td_ind,output,Residual_FuelOil_crude oil
-PetCoke,oil,PetCoke,PetCoke,crude oil,regional oil,output,PetCoke_crude oil
-PetCoke,gas,PetCoke,PetCoke,gas,wholesale gas,output,PetCoke_crude oil
-PetCoke,electricity,PetCoke,PetCoke,electricity,elect_td_ind,output,PetCoke_crude oil
-Other,oil,Other,Other,crude oil,regional oil,output,Other_crude oil
-Other,gas,Other,Other,gas,wholesale gas,output,Other_crude oil
-Other,electricity,Other,Other,electricity,elect_td_ind,output,Other_crude oil
-high LPG,oil,refining,crude oil refining,high LPG,regional oil,output,
-high LPG,gas,refining,crude oil refining,high LPG,wholesale gas,output,
-high LPG,electricity,refining,crude oil refining,high LPG,elect_td_ind,output,
-high Gasoline,oil,refining,crude oil refining,high Gasoline,regional oil,output,
-high Gasoline,gas,refining,crude oil refining,high Gasoline,wholesale gas,output,
-high Gasoline,electricity,refining,crude oil refining,high Gasoline,elect_td_ind,output,
-high Jet_Kerosene,oil,refining,crude oil refining,high Jet_Kerosene,regional oil,output,
-high Jet_Kerosene,gas,refining,crude oil refining,high Jet_Kerosene,wholesale gas,output,
-high Jet_Kerosene,electricity,refining,crude oil refining,high Jet_Kerosene,elect_td_ind,output,
-high Distillate_FuelOil,oil,refining,crude oil refining,high Distillate_FuelOil,regional oil,output,
-high Distillate_FuelOil,gas,refining,crude oil refining,high Distillate_FuelOil,wholesale gas,output,
-high Distillate_FuelOil,electricity,refining,crude oil refining,high Distillate_FuelOil,elect_td_ind,output,
-high Residual_FuelOil,oil,refining,crude oil refining,high Residual_FuelOil,regional oil,output,
-high Residual_FuelOil,gas,refining,crude oil refining,high Residual_FuelOil,wholesale gas,output,
-high Residual_FuelOil,electricity,refining,crude oil refining,high Residual_FuelOil,elect_td_ind,output,
-high PetCoke,oil,refining,crude oil refining,high PetCoke,regional oil,output,
-high PetCoke,gas,refining,crude oil refining,high PetCoke,wholesale gas,output,
-high PetCoke,electricity,refining,crude oil refining,high PetCoke,elect_td_ind,output,
-high Other,oil,refining,crude oil refining,high Other,regional oil,output,
-high Other,gas,refining,crude oil refining,high Other,wholesale gas,output,
-high Other,electricity,refining,crude oil refining,high Other,elect_td_ind,output,
+sector,fuel,supplysector,subsector,input,technology,minicam.energy.input,secondary.output
+refining,Gasoline,refining,biorefining,corn,corn ethanol,regional corn for ethanol,Gasoline_corn
+refining,Gasoline,refining,biorefining,sugar,sugar cane ethanol,regional sugar for ethanol,Gasoline_sugar
+refining,Distillate_FuelOil,refining,biorefining,biomassOil,biodiesel,regional biomassOil,Distillate_FuelOil_biomassOil
+refining,LPG,refining,gtl,natural gas,LPG,regional natural gas,LPG_natural gas
+refining,Gasoline,refining,gtl,natural gas,Gasoline,regional natural gas,Gasoline_natural gas
+refining,Jet_Kerosene,refining,gtl,natural gas,Jet_Kerosene,regional natural gas,Jet_Kerosene_natural gas
+refining,Distillate_FuelOil,refining,gtl,natural gas,Distillate_FuelOil,regional natural gas,Distillate_FuelOil_natural gas
+refining,Residual_FuelOil,refining,gtl,natural gas,Residual_FuelOil,regional natural gas,Residual_FuelOil_natural gas
+refining,PetCoke,refining,gtl,natural gas,PetCoke,regional natural gas,PetCoke_natural gas
+refining,Other,refining,gtl,natural gas,Other,regional natural gas,Other_natural gas
+refining,LPG,refining,ctl,coal,LPG,regional coal,LPG_coal
+refining,Gasoline,refining,ctl,coal,Gasoline,regional coal,Gasoline_coal
+refining,Jet_Kerosene,refining,ctl,coal,Jet_Kerosene,regional coal,Jet_Kerosene_coal
+refining,Distillate_FuelOil,refining,ctl,coal,Distillate_FuelOil,regional coal,Distillate_FuelOil_coal
+refining,Residual_FuelOil,refining,ctl,coal,Residual_FuelOil,regional coal,Residual_FuelOil_coal
+refining,PetCoke,refining,ctl,coal,PetCoke,regional coal,PetCoke_coal
+refining,Other,refining,ctl,coal,Other,regional coal,Other_coal
+refining,LPG,refining,crude oil refining,crude oil,LPG,regional oil,LPG_crude oil
+refining,Gasoline,refining,crude oil refining,crude oil,Gasoline,regional oil,Gasoline_crude oil
+refining,Jet_Kerosene,refining,crude oil refining,crude oil,Jet_Kerosene,regional oil,Jet_Kerosene_crude oil
+refining,Distillate_FuelOil,refining,crude oil refining,crude oil,Distillate_FuelOil,regional oil,Distillate_FuelOil_crude oil
+refining,Residual_FuelOil,refining,crude oil refining,crude oil,Residual_FuelOil,regional oil,Residual_FuelOil_crude oil
+refining,PetCoke,refining,crude oil refining,crude oil,PetCoke,regional oil,PetCoke_crude oil
+refining,Other,refining,crude oil refining,crude oil,Other,regional oil,Other_crude oil
+biorefining,corn,refining,Gasoline,corn,corn ethanol,regional corn for ethanol,
+biorefining,sugar,refining,Gasoline,sugar,sugar cane ethanol,regional sugar for ethanol,
+biorefining,biomass oil,refining,Distillate_FuelOil,biomassOil,biodiesel,regional biomassOil,
+gtl,natural gas,refining,gtl,gtl,gtl,regional natural gas,
+ctl,coal,refining,ctl,ctl,ctl,regional coal,
+oil refining,oil,refining,crude oil refining,crude oil,crude oil refining,regional oil,
+oil refining,gas,refining,crude oil refining,gas,crude oil refining,wholesale gas,
+oil refining,electricity,refining,crude oil refining,electricity,crude oil refining,elect_td_ind,
+Gasoline,corn,Gasoline,Gasoline,corn,corn ethanol,regional corn for ethanol,Gasoline_corn
+Gasoline,gas,Gasoline,Gasoline,corn,corn ethanol,wholesale gas,Gasoline_corn
+Gasoline,electricity,Gasoline,Gasoline,corn,corn ethanol,elect_td_ind,Gasoline_corn
+Gasoline,sugar,Gasoline,Gasoline,sugar,sugar cane ethanol,regional sugar for ethanol,Gasoline_sugar
+Gasoline,biomass,Gasoline,Gasoline,biomass,cellulosic ethanol,regional biomass,Gasoline_biomass
+Distillate_FuelOil,biomassOil,Distillate_FuelOil,Distillate_FuelOil,biomassOil,biodiesel,regional biomassOil,Distillate_FuelOil_biomassOil
+Distillate_FuelOil,gas,Distillate_FuelOil,Distillate_FuelOil,biomassOil,biodiesel,wholesale gas,Distillate_FuelOil_biomassOil
+LPG,biomass,LPG,LPG,biomass,LPG,regional biomass,LPG_biomass
+Jet_Kerosene,biomass,Jet_Kerosene,Jet_Kerosene,biomass,Jet_Kerosene,regional biomass,Jet_Kerosene_biomass
+Residual_FuelOil,biomass,Residual_FuelOil,Residual_FuelOil,biomass,Residual_FuelOil,regional biomass,Residual_FuelOil_biomass
+PetCoke,biomass,PetCoke,PetCoke,biomass,biochar,regional biomass,PetCoke_biomass
+Other,biomass,Other,Other,biomass,Other,regional biomass,Other_biomass
+LPG,natural gas,LPG,LPG,natural gas,LPG,regional natural gas,LPG_natural gas
+Gasoline,natural gas,Gasoline,Gasoline,natural gas,Gasoline,regional natural gas,Gasoline_natural gas
+Jet_Kerosene,natural gas,Jet_Kerosene,Jet_Kerosene,natural gas,Jet_Kerosene,regional natural gas,Jet_Kerosene_natural gas
+Distillate_FuelOil,natural gas,Distillate_FuelOil,Distillate_FuelOil,natural gas,Distillate_FuelOil,regional natural gas,Distillate_FuelOil_natural gas
+Residual_FuelOil,natural gas,Residual_FuelOil,Residual_FuelOil,natural gas,Residual_FuelOil,regional natural gas,Residual_FuelOil_natural gas
+PetCoke,natural gas,PetCoke,PetCoke,natural gas,PetCoke,regional natural gas,PetCoke_natural gas
+Other,natural gas,Other,Other,natural gas,Other,regional natural gas,Other_natural gas
+LPG,coal,LPG,LPG,coal,LPG,regional coal,LPG_coal
+Gasoline,coal,Gasoline,Gasoline,coal,Gasoline,regional coal,Gasoline_coal
+Jet_Kerosene,coal,Jet_Kerosene,Jet_Kerosene,coal,Jet_Kerosene,regional coal,Jet_Kerosene_coal
+Distillate_FuelOil,coal,Distillate_FuelOil,Distillate_FuelOil,coal,Distillate_FuelOil,regional coal,Distillate_FuelOil_coal
+Residual_FuelOil,coal,Residual_FuelOil,Residual_FuelOil,coal,Residual_FuelOil,regional coal,Residual_FuelOil_coal
+PetCoke,coal,PetCoke,PetCoke,coal,PetCoke,regional coal,PetCoke_coal
+Other,coal,Other,Other,coal,Other,regional coal,Other_coal
+LPG,crude oil,LPG,LPG,crude oil,high LPG,regional oil,LPG_crude oil
+LPG,gas,LPG,LPG,crude oil,high LPG,wholesale gas,LPG_crude oil
+LPG,electricity,LPG,LPG,crude oil,high LPG,elect_td_ind,LPG_crude oil
+Gasoline,crude oil,Gasoline,Gasoline,crude oil,high Gasoline,regional oil,Gasoline_crude oil
+Gasoline,gas,Gasoline,Gasoline,crude oil,high Gasoline,wholesale gas,Gasoline_crude oil
+Gasoline,electricity,Gasoline,Gasoline,crude oil,high Gasoline,elect_td_ind,Gasoline_crude oil
+Jet_Kerosene,crude oil,Jet_Kerosene,Jet_Kerosene,crude oil,high Jet_Kerosene,regional oil,Jet_Kerosene_crude oil
+Jet_Kerosene,gas,Jet_Kerosene,Jet_Kerosene,crude oil,high Jet_Kerosene,wholesale gas,Jet_Kerosene_crude oil
+Jet_Kerosene,electricity,Jet_Kerosene,Jet_Kerosene,crude oil,high Jet_Kerosene,elect_td_ind,Jet_Kerosene_crude oil
+Distillate_FuelOil,crude oil,Distillate_FuelOil,Distillate_FuelOil,crude oil,high Distillate_FuelOil,regional oil,Distillate_FuelOil_crude oil
+Distillate_FuelOil,gas,Distillate_FuelOil,Distillate_FuelOil,crude oil,high Distillate_FuelOil,wholesale gas,Distillate_FuelOil_crude oil
+Distillate_FuelOil,electricity,Distillate_FuelOil,Distillate_FuelOil,crude oil,high Distillate_FuelOil,elect_td_ind,Distillate_FuelOil_crude oil
+Residual_FuelOil,crude oil,Residual_FuelOil,Residual_FuelOil,crude oil,high Residual_FuelOil,regional oil,Residual_FuelOil_crude oil
+Residual_FuelOil,gas,Residual_FuelOil,Residual_FuelOil,crude oil,high Residual_FuelOil,wholesale gas,Residual_FuelOil_crude oil
+Residual_FuelOil,electricity,Residual_FuelOil,Residual_FuelOil,crude oil,high Residual_FuelOil,elect_td_ind,Residual_FuelOil_crude oil
+PetCoke,crude oil,PetCoke,PetCoke,crude oil,high PetCoke,regional oil,PetCoke_crude oil
+PetCoke,gas,PetCoke,PetCoke,crude oil,high PetCoke,wholesale gas,PetCoke_crude oil
+PetCoke,electricity,PetCoke,PetCoke,crude oil,high PetCoke,elect_td_ind,PetCoke_crude oil
+Other,crude oil,Other,Other,crude oil,high Other,regional oil,Other_crude oil
+Other,gas,Other,Other,crude oil,high Other,wholesale gas,Other_crude oil
+Other,electricity,Other,Other,crude oil,high Other,elect_td_ind,Other_crude oil

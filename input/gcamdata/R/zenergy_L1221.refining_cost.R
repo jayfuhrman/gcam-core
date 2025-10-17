@@ -322,8 +322,7 @@ module_energy_L1221.refining_cost <- function(command, ...) {
         "energy/EIA_FRS_Stats",
         "energy/EIA_FRS_Opex",
         "energy/EIA_FRS_PPE",
-        "energy/EIA_FRS_Sales",
-        "energy/calibrated_techs_refining"
+        "energy/EIA_FRS_Sales"
       ) -> L1221.globaltech_margin
 
     return_data(
