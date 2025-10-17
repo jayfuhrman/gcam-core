@@ -1,0 +1,73 @@
+﻿# File: A10.mineral_ann_prod_constraint_mkt.csv
+# Title: Linked markets for annual production constraint
+# Units: NA
+# Source: NA
+# Column types: cccc
+# ----------
+supplysector,subsector,technology,market
+traded copper,Africa_Eastern traded copper,Africa_Eastern traded copper,global
+traded copper,Africa_Northern traded copper,Africa_Northern traded copper,global
+traded copper,Africa_Southern traded copper,Africa_Southern traded copper,global
+traded copper,Africa_Western traded copper,Africa_Western traded copper,global
+traded copper,Argentina traded copper,Argentina traded copper,global
+traded copper,Australia_NZ traded copper,Australia_NZ traded copper,global
+traded copper,Brazil traded copper,Brazil traded copper,global
+traded copper,Canada traded copper,Canada traded copper,global
+traded copper,Central America and Caribbean traded copper,Central America and Caribbean traded copper,global
+traded copper,Central Asia traded copper,Central Asia traded copper,global
+traded copper,China traded copper,China traded copper,global
+traded copper,Colombia traded copper,Colombia traded copper,global
+traded copper,EU-12 traded copper,EU-12 traded copper,global
+traded copper,EU-15 traded copper,EU-15 traded copper,global
+traded copper,Europe_Non_EU traded copper,Europe_Non_EU traded copper,global
+traded copper,European Free Trade Association traded copper,European Free Trade Association traded copper,global
+traded copper,India traded copper,India traded copper,global
+traded copper,Indonesia traded copper,Indonesia traded copper,global
+traded copper,Japan traded copper,Japan traded copper,global
+traded copper,Mexico traded copper,Mexico traded copper,global
+traded copper,Middle East traded copper,Middle East traded copper,global
+traded copper,Pakistan traded copper,Pakistan traded copper,global
+traded copper,Russia traded copper,Russia traded copper,global
+traded copper,South Africa traded copper,South Africa traded copper,global
+traded copper,South America_Southern traded copper,South America_Southern traded copper,global
+traded copper,South Korea traded copper,South Korea traded copper,global
+traded copper,Southeast Asia traded copper,Southeast Asia traded copper,global
+traded copper,USA traded copper,USA traded copper,global
+traded copper,South Asia traded copper,South Asia traded copper,global
+traded lithium,Africa_Southern traded lithium,Africa_Southern traded lithium,global
+traded lithium,Argentina traded lithium,Argentina traded lithium,global
+traded lithium,Australia_NZ traded lithium,Australia_NZ traded lithium,global
+traded lithium,Brazil traded lithium,Brazil traded lithium,global
+traded lithium,Canada traded lithium,Canada traded lithium,global
+traded lithium,China traded lithium,China traded lithium,global
+traded lithium,EU-15 traded lithium,EU-15 traded lithium,global
+traded lithium,South America_Southern traded lithium,South America_Southern traded lithium,global
+traded lithium,Africa_Eastern traded lithium,Africa_Eastern traded lithium,global
+traded lithium,Africa_Western traded lithium,Africa_Western traded lithium,global
+traded lithium,Central Asia traded lithium,Central Asia traded lithium,global
+traded lithium,Europe_Non_EU traded lithium,Europe_Non_EU traded lithium,global
+traded lithium,India traded lithium,India traded lithium,global
+traded lithium,Mexico traded lithium,Mexico traded lithium,global
+traded lithium,South Africa traded lithium,South Africa traded lithium,global
+traded lithium,South America_Northern traded lithium,South America_Northern traded lithium,global
+traded lithium,South Asia traded lithium,South Asia traded lithium,global
+traded lithium,South Korea traded lithium,South Korea traded lithium,global
+traded lithium,Southeast Asia traded lithium,Southeast Asia traded lithium,global
+traded lithium,USA traded lithium,USA traded lithium,global
+traded nickel,Africa_Eastern traded nickel,Africa_Eastern traded nickel,global
+traded nickel,Africa_Southern traded nickel,Africa_Southern traded nickel,global
+traded nickel,Australia_NZ traded nickel,Australia_NZ traded nickel,global
+traded nickel,Brazil traded nickel,Brazil traded nickel,global
+traded nickel,Canada traded nickel,Canada traded nickel,global
+traded nickel,Central America and Caribbean traded nickel,Central America and Caribbean traded nickel,global
+traded nickel,China traded nickel,China traded nickel,global
+traded nickel,Colombia traded nickel,Colombia traded nickel,global
+traded nickel,EU-15 traded nickel,EU-15 traded nickel,global
+traded nickel,Europe_Non_EU traded nickel,Europe_Non_EU traded nickel,global
+traded nickel,Indonesia traded nickel,Indonesia traded nickel,global
+traded nickel,Russia traded nickel,Russia traded nickel,global
+traded nickel,Southeast Asia traded nickel,Southeast Asia traded nickel,global
+traded nickel,USA traded nickel,USA traded nickel,global
+traded nickel,Africa_Western traded nickel,Africa_Western traded nickel,global
+traded nickel,Central Asia traded nickel,Central Asia traded nickel,global
+traded nickel,South America_Northern traded nickel,South America_Northern traded nickel,global

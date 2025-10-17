@@ -8,7 +8,7 @@
 #' @param ... other optional parameters, depending on command
 #' @return Depends on \code{command}: either a vector of required inputs,
 #' a vector of output names, or (if \code{command} is "MAKE") all
-#' the generated outputs: \code{minerals_trade.xml}. (minerals XML).
+#' the generated outputs: \code{minerals_trade.xml}, \code{minerals_annual_prod_constraint.xml}. (minerals XML).
 
 module_minerals_trade_xml <- function(command, ...) {
 
@@ -22,11 +22,14 @@ module_minerals_trade_xml <- function(command, ...) {
       "L2112.Supplysector_reg",
       "L2112.SubsectorAll_reg",
       "L2112.TechShrwt_reg",
-      "L2112.TechCoef_reg"
+      "L2112.TechCoef_reg",
+      "L2111.AnnProdConstraint_InputTax",
+      "L2111.AnnProdConstraint_PortfolioStdConstraint"
     )
 
   MODULE_OUTPUTS <-
-    c(XML = "minerals_trade.xml")
+    c(XML = "minerals_trade.xml",
+      XML = "minerals_annual_prod_constraint.xml")
 
   if(command == driver.DECLARE_INPUTS) {
     return(MODULE_INPUTS)
@@ -66,8 +69,14 @@ module_minerals_trade_xml <- function(command, ...) {
                      "L2112.TechCoef_reg") ->
       minerals_trade.xml
 
+    create_xml("minerals_annual_prod_constraint.xml") %>%
+      add_xml_data(L2111.AnnProdConstraint_InputTax, "InputTax") %>%
+      add_xml_data(L2111.AnnProdConstraint_PortfolioStdConstraint, "PortfolioStdConstraint") %>%
+      add_precursors("L2111.AnnProdConstraint_InputTax",
+                     "L2111.AnnProdConstraint_PortfolioStdConstraint") ->
+      minerals_annual_prod_constraint.xml
 
-  return_data(minerals_trade.xml)
+  return_data(minerals_trade.xml, minerals_annual_prod_constraint.xml)
 } else {
   stop("Unknown command")
 }

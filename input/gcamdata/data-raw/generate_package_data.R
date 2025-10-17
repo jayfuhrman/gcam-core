@@ -530,6 +530,7 @@ generate_level2_data_names <- function() {
   level2_data_names[["DeleteGDPControl"]] <-  c("region", "supplysector", "subsector", "stub.technology", "period", "Non.CO2", "gdp.control")
 
   # Policy
+  level2_data_names[["InputTax"]] <- c("region", "supplysector", "subsector", "technology", "year", "input.tax")
   level2_data_names[["PortfolioStd"]] <- c("region", "policy.portfolio.standard", "market", "policyType", "year", "constraint", "price.unit", "output.unit")
   level2_data_names[["PortfolioStdConstraint"]] <- c("region", "policy.portfolio.standard", "market", "policyType", "year", "constraint")
   level2_data_names[["PortfolioStdFixedTax"]] <- c("region", "policy.portfolio.standard", "year", "price")

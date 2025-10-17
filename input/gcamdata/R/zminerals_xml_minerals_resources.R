@@ -57,13 +57,13 @@ module_minerals_resources_xml <- function(command, ...) {
       add_node_equiv_xml("subresource") %>%
       add_node_equiv_xml("technology") %>%
       add_xml_data(L2111.ResSubresourceProdLifetime, "ResSubresourceProdLifetime") %>%
-     # add_xml_data(L2111.SubresourcePriceAdder, "SubresourcePriceAdder") %>%
+      add_xml_data(L2111.SubresourcePriceAdder, "SubresourcePriceAdder") %>%
       add_xml_data(L2111.ReserveCalReserve, "ReserveCalReserve") %>%
       add_xml_data(L2111.ResReserveTechLifetime, "ResReserveTechLifetime") %>%
       add_xml_data(L2111.ResReserveTechInvestmentInput, "ResReserveTechInvestmentInput") %>%
       add_xml_data(L2111.ResReserveTechDeclinePhase, "ResReserveTechDeclinePhase") %>%
       add_xml_data(L2111.ResReserveTechProfitShutdown, "ResReserveTechProfitShutdown") %>%
-     # add_xml_data(L2111.RsrcPrice, "RsrcPrice") %>%
+      add_xml_data(L2111.RsrcPrice, "RsrcPrice") %>%
       add_xml_data(L2111.UnlimitRsrcPrice_constrSupply, "UnlimitRsrcPrice") %>%
       add_xml_data(L2111.RsrcCalProd, "RsrcCalProd") %>%
       add_xml_data(L2111.RsrcCurves_minerals, "RsrcCurves") %>%

@@ -258,7 +258,11 @@ if(command == driver.DECLARE_INPUTS) {
     select(Mineral, region, P10, P50, P90) %>%
     # assume a very high cost for the resource limit (e.g. 3x the 90th percentile cost)
     mutate(P100 = P90*3) %>%
-    mutate(P50 = ifelse(P50 > P90, NA, P50)) %>%  # Set P_50 to NA if P_50 > P_90
+    # We want to have a strictly increasing supply curve
+    # The supply curve should not be flat, otherwise it is hard for the model to solve
+    mutate(P50 = ifelse(P50 >= P90, NA, P50), # Set P_50 to NA if P_50 >= P_90
+           P10 = ifelse(P10 >= P50, NA, P10),
+           P10 = ifelse(P10 >= P90, NA, P10)) %>%
     tidyr::pivot_longer(cols = c(`P10`, `P50`, `P90`, `P100`), names_to = "percentile", values_to = "P", values_drop_na = TRUE) %>%
     mutate(percentile = gsub("P", "", percentile)) %>%
     ungroup()
@@ -315,7 +319,8 @@ if(command == driver.DECLARE_INPUTS) {
     All_capacity_data_AvgYears <- bind_rows(Cu_capacity_data_AvgYears,
                                Ni_capacity_data_AvgYears,
                                Li_capacity_data_AvgYears) %>%
-
+             # TRY A CASE WITH SHORTER LEAD TIMES
+             #mutate(AvgYears = AvgYears/2) %>%
              # Calculate the transition rate = fraction moving to the next stage in a given year
              mutate(TransitionRate = 0.5/AvgYears,
              # In the case of what is already in production, it does not move to another stage,
@@ -388,7 +393,8 @@ if(command == driver.DECLARE_INPUTS) {
 
    # Filter to model years
    L1111.mineral_AnnProdLimit_R_Y <- AnnProdLimit_adj %>%
-     filter(Year %in% MODEL_YEARS)  ##final-output
+     filter(Year %in% MODEL_YEARS) %>%
+     mutate(Units = "kt/yr") ##final-output
 
 
 # ANNUAL TOTAL RESOURCES LIMIT (NEW METHOD) ---------------------------------------
@@ -444,7 +450,8 @@ if(command == driver.DECLARE_INPUTS) {
    All_resource_data_AvgYears <- bind_rows(Cu_resource_data_AvgYears,
                                            Ni_resource_data_AvgYears,
                                            Li_resource_data_AvgYears) %>%
-
+     # TRY A CASE WITH SHORTER LEAD TIMES
+     #mutate(AvgYears = AvgYears/2) %>%
      # Calculate the transition rate = fraction moving to the next stage in a given year
      mutate(TransitionRate = 0.5/AvgYears,
             # In the case of what is already in production, it does not move to another stage,

@@ -13,6 +13,7 @@
 #' \code{L2111.RsrcCalProd}, \code{L2111.ReserveCalReserve}, \code{L2111.RsrcCurves_minerals}, \code{L2111.mineral_regions}
 #' \code{L2111.ResSubresourceProdLifetime}, \code{L2111.ResReserveTechLifetime}, \code{L2111.ResReserveTechDeclinePhase},
 #' \code{L2111.ResReserveTechProfitShutdown}, \code{L2111.ResReserveTechInvestmentInput}, \code{L2111.ResTechShrwt},
+#' \code{L2111.AnnProdConstraint_InputTax},\code{L2111.AnnProdConstraint_PortfolioStdConstraint}
 #' @details Set up data tables for mineral supply curves
 #' @importFrom assertthat assert_that
 #' @importFrom dplyr arrange bind_rows filter if_else group_by left_join mutate select summarise
@@ -28,6 +29,7 @@ if(command == driver.DECLARE_INPUTS) {
            FILE = "minerals/supply/A10.mineral_ResReserveTechDeclinePhase",
            FILE = "minerals/supply/A10.mineral_ResReserveTechLifetime",
            FILE = "minerals/supply/A10.mineral_ResReserveTechProfitShutdown",
+           FILE = "minerals/supply/A10.mineral_ann_prod_constraint_mkt",
           # FILE = "minerals/other/A271.cmm_historical_demand_all",
            "L1111.mineral_production_R_Yb",
            "L1111.mineral_AnnProdLimit_R_Y",
@@ -51,7 +53,9 @@ if(command == driver.DECLARE_INPUTS) {
            "L2111.ResReserveTechDeclinePhase",
            "L2111.ResReserveTechProfitShutdown",
            "L2111.ResReserveTechInvestmentInput",
-           "L2111.ResTechShrwt"))
+           "L2111.ResTechShrwt",
+           "L2111.AnnProdConstraint_InputTax",
+           "L2111.AnnProdConstraint_PortfolioStdConstraint"))
 } else if(command == driver.MAKE) {
 
   all_data <- list(...)[[1]]
@@ -66,6 +70,7 @@ if(command == driver.DECLARE_INPUTS) {
   A10.mineral_ResReserveTechDeclinePhase <- get_data(all_data, "minerals/supply/A10.mineral_ResReserveTechDeclinePhase", strip_attributes = TRUE)
   A10.mineral_ResReserveTechLifetime <- get_data(all_data, "minerals/supply/A10.mineral_ResReserveTechLifetime", strip_attributes = TRUE)
   A10.mineral_ResReserveTechProfitShutdown <- get_data(all_data, "minerals/supply/A10.mineral_ResReserveTechProfitShutdown", strip_attributes = TRUE)
+  A10.mineral_ann_prod_constraint_mkt <- get_data(all_data, "minerals/supply/A10.mineral_ann_prod_constraint_mkt", strip_attributes = TRUE)
 
  # A271.cmm_historical_demand_all <- get_data(all_data, "minerals/other/A271.cmm_historical_demand_all", strip_attributes = TRUE)
 
@@ -224,40 +229,48 @@ if(command == driver.DECLARE_INPUTS) {
     ungroup()
 
 
-  # CUMULATIVE RESOURCE SUPPLY CURVES ---------------------------------------
+  # TIME EVOLVING SUPPLY CURVE ----------------------------------------------
 
-  # Put together the price-quantity pairs that comprise the resource supply curves
-  L2111.mineral_ResSupplyCurves_R_Y <- L1111.mineral_AnnResourceLimit_R_Y %>%
+  # TIME EVOLVING RESOURCE
+  # to create time-evolving supply curves, we will treat each additional resource capacity
+  # that becomes available over time as its own technology. This will be like having "vintaged" resource capacity
+
+  # 1. Calculate incremental new total resource available in each year
+  L2111.mineral_incrementRes_R_Y <- L1111.mineral_AnnResourceLimit_R_Y %>%
+    filter(Year >= max(MODEL_BASE_YEARS)) %>%
+    arrange(resource, region, Year, Units) %>%
+    group_by(resource, region) %>%
+    mutate(inc_Res = Resource - lag(Resource, default = 0)) %>%
+    ungroup() %>%
+    select(-Resource)
+
+  # 2. Calculate percentile quantity available in each year
+  L2111.mineral_ResSupplyCurves_fromOrigin <- L2111.mineral_incrementRes_R_Y %>%
     # get Q10, Q50, Q90 (based on 10th, 50th, 90th percentile of total resources)
-    mutate(Q10 = Resource * 0.1,
-           Q50 = Resource * 0.5,
-           Q90 = Resource * 0.9,
-           Q100 = Resource) %>%
+    mutate(Q10 = inc_Res * 0.1,
+           Q50 = inc_Res * 0.5,
+           Q90 = inc_Res * 0.9,
+           Q100 = inc_Res) %>%
     tidyr::pivot_longer(cols = c(`Q10`, `Q50`, `Q90`, `Q100`), names_to = "percentile", values_to = "Q", values_drop_na = TRUE) %>%
-    mutate(percentile = gsub("Q", "", percentile)) %>%
+    mutate(percentile = (gsub("Q", "", percentile))) %>%
+    # Put together the price-quantity pairs that comprise the resource supply curves
     # There are a couple of NA price values, so use left_join
     left_join(L1111.ResSupplyCurves_PricePoints, by = c("Mineral", "resource", "region", "percentile")) %>%
     # omit NA rows
     na.omit() %>%
-    select(resource, region, Year, Units, Q, P, percentile)
+    select(resource, region, Year, Units, Q, P, percentile) %>%
+    mutate(percentile = as.numeric(percentile))
 
-# TIME EVOLVING SUPPLY CURVE ----------------------------------------------
-
-# to create time-evolving supply curves, we will treat each additional resource capacity
-# that becomes available over time as its own technology. This will be like having "vintaged" resource capacity
-
-  # Calculate the incremental new quantity that becomes available each year:
-  ## START IN BASE YEAR - CHECK WITH PRALIT???
-  L2111.mineral_incrementResSupplyCurves_R_Y <- L2111.mineral_ResSupplyCurves_R_Y %>%
-    filter(Year >= max(MODEL_BASE_YEARS)) %>%
-    mutate(percentile = as.numeric(percentile)) %>%
-    arrange(resource, region, Units, P, percentile, Year) %>%
-    group_by(resource, region, Units, P, percentile) %>%
+  # 3. Calculate incremental quantity available in each percentile
+  L2111.mineral_ResSupplyCurves_R_Y <- L2111.mineral_ResSupplyCurves_fromOrigin %>%
+    # we need quantities (Q) to represent incremental quantities from the previous percentile, rather than from the origin
+    arrange(resource, region, Units, percentile, Year) %>%
+    group_by(resource, region, Units, Year) %>%
     mutate(incr_Q = Q - lag(Q, default = 0)) %>%
     ungroup()
 
   #Assemble the table with each subresource, grade, available, and extractioncost
-  L2111.RsrcCurves_minerals_main <- L2111.mineral_incrementResSupplyCurves_R_Y %>%
+  L2111.RsrcCurves_minerals_main <- L2111.mineral_ResSupplyCurves_R_Y %>%
     mutate(subresource = paste0(resource, "_", Year)) %>%
     arrange(region, resource, subresource, percentile) %>%
     group_by(region, resource, subresource) %>%
@@ -292,6 +305,7 @@ if(command == driver.DECLARE_INPUTS) {
 
   # We need to add a grade above the final grade, with available 0 and cost higher than the final grade cost
   L2111.RsrcCurves_minerals_final_grade <- L2111.RsrcCurves_minerals_main_grade_historical %>%
+    arrange(region, resource, subresource, grade) %>%
     group_by(region, resource, subresource) %>%
     filter(row_number() == n()) %>% # last row per group
     mutate(grade = paste0("grade ", as.numeric(gsub("grade ", "", grade))+1),
@@ -522,7 +536,34 @@ if(command == driver.DECLARE_INPUTS) {
 
   # ===================================================
   # Set up annual production limit constraint as a policy portfolio standard (this will be in a separate XML)
+  # Set this up on the traded resource coming from each region for now.
+  L2111.AnnProdConstraint <- L1111.mineral_AnnProdLimit_R_Y %>%
+    mutate(supplysector = paste("traded", resource),
+           subsector = paste(region, "traded", resource),
+           technology = subsector,
+           year = Year,
+           market = region,
+           input.tax = paste0(region, "_", resource, "_constraint"),
+           policy.portfolio.standard = input.tax,
+           region = "USA",
+           constraint = round(Capacity_adj/1000, energy.DIGITS_CALPRODUCTION),
+           policyType = "tax")
 
+  #Individual markets for each region seem to have a tough time solving.
+  # We will try grouped markets for the smaller producers
+  L2111.AnnProdConstraint_grouped_mkt <- L2111.AnnProdConstraint %>%
+    select(-market) %>%
+    left_join_error_no_match(A10.mineral_ann_prod_constraint_mkt, by = c("supplysector", "subsector", "technology")) %>%
+    group_by( supplysector, year, market) %>%
+    mutate(constraint = sum(constraint)) %>%
+    ungroup() %>%
+    filter(supplysector != "traded copper")
+
+  L2111.AnnProdConstraint_InputTax <- L2111.AnnProdConstraint_grouped_mkt %>%
+    select(LEVEL2_DATA_NAMES[["InputTax"]])
+
+  L2111.AnnProdConstraint_PortfolioStdConstraint <- L2111.AnnProdConstraint_grouped_mkt %>%
+    select(LEVEL2_DATA_NAMES[["PortfolioStdConstraint"]])
   # ===================================================
 
   # Produce outputs
@@ -652,6 +693,21 @@ if(command == driver.DECLARE_INPUTS) {
     add_precursors("common/GCAM_region_names", "minerals/supply/A10.mineral_subrsrc_info") ->
     L2111.ResTechShrwt
 
+  L2111.AnnProdConstraint_InputTax %>%
+    add_title("Annual production constraint input tax") %>%
+    add_units("NA") %>%
+    add_comments("Sets up the input tax (constraint name) in each region") %>%
+    add_precursors("L1111.mineral_AnnProdLimit_R_Y") ->
+    L2111.AnnProdConstraint_InputTax
+
+  L2111.AnnProdConstraint_PortfolioStdConstraint %>%
+    add_title("Annual production constraint policy portfolio standard") %>%
+    add_units("Mt/yr") %>%
+    add_comments("Sets up the policy portfolio standard constraint in each region") %>%
+    add_precursors("L1111.mineral_AnnProdLimit_R_Y",
+                   "minerals/supply/A10.mineral_ann_prod_constraint_mkt") ->
+    L2111.AnnProdConstraint_PortfolioStdConstraint
+
 
   return_data(L2111.Rsrc,
               L2111.UnlimitRsrc_constrSupply,
@@ -669,7 +725,9 @@ if(command == driver.DECLARE_INPUTS) {
               L2111.ResReserveTechDeclinePhase,
               L2111.ResReserveTechProfitShutdown,
               L2111.ResReserveTechInvestmentInput,
-              L2111.ResTechShrwt)
+              L2111.ResTechShrwt,
+              L2111.AnnProdConstraint_InputTax,
+              L2111.AnnProdConstraint_PortfolioStdConstraint)
 } else {
   stop("Unknown command")
 }
