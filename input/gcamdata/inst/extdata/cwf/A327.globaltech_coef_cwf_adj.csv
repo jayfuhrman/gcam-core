@@ -1,0 +1,32 @@
+# File: A327.globaltech_coef_cwf_adj.csv
+# Title: Paper and paperboard production for cwf scenario. Improving efficiency coefficients by 10% (linear increase from 2020 to 2050) and by 20% by 2100 relative to default coefficients.
+# Units: GJ per kg (EJ of energy per Mt of paper and paperboard) for paper and paperboard; unitless (EJ energy per EJ heat) for process heat.  
+# Column types: cccccnnnc
+# ----------
+supplysector,subsector,technology,minicam.energy.input,secondary.output,2025,2050,2100,scenario
+waste biomass for paper,biomass,biomass,regional woodpulp for energy,,1,0.9,0.8,cwf
+waste biomass for paper,biomass,biomass cogen,regional woodpulp for energy,electricity,1,0.9,0.8,cwf
+waste biomass for paper,biomass,biomass CCS,regional woodpulp for energy,,1,0.9,0.8,cwf
+process heat paper,gas,gas,wholesale gas,,1,0.9,0.8,cwf
+process heat paper,gas,gas cogen,wholesale gas,electricity,1,0.9,0.8,cwf
+process heat paper,refined liquids,refined liquids,refined liquids industrial,,1,0.9,0.8,cwf
+process heat paper,refined liquids,refined liquids cogen,refined liquids industrial,electricity,1,0.9,0.8,cwf
+process heat paper,heat,heat,district heat,,1,0.9,0.8,cwf
+process heat paper,coal,coal,delivered coal,,1,0.9,0.8,cwf
+process heat paper,coal,coal cogen,delivered coal,electricity,1,0.9,0.8,cwf
+process heat paper,electricity,electric boiler,elect_td_ind,,1,0.9,0.8,cwf
+process heat paper,electricity,electric heat pump,elect_td_ind,,1,0.9,0.8,cwf
+process heat paper,hydrogen,hydrogen,H2 industrial,,1,0.9,0.8,cwf
+waste biomass for paper,biomass,biomass,regional woodpulp for energy,,1,0.8,0.75,cwf-LED
+waste biomass for paper,biomass,biomass cogen,regional woodpulp for energy,electricity,1,0.8,0.75,cwf-LED
+waste biomass for paper,biomass,biomass CCS,regional woodpulp for energy,,1,0.8,0.75,cwf-LED
+process heat paper,gas,gas,wholesale gas,,1,0.8,0.75,cwf-LED
+process heat paper,gas,gas cogen,wholesale gas,electricity,1,0.8,0.75,cwf-LED
+process heat paper,refined liquids,refined liquids,refined liquids industrial,,1,0.8,0.75,cwf-LED
+process heat paper,refined liquids,refined liquids cogen,refined liquids industrial,electricity,1,0.8,0.75,cwf-LED
+process heat paper,heat,heat,district heat,,1,0.8,0.75,cwf-LED
+process heat paper,coal,coal,delivered coal,,1,0.8,0.75,cwf-LED
+process heat paper,coal,coal cogen,delivered coal,electricity,1,0.8,0.75,cwf-LED
+process heat paper,electricity,electric boiler,elect_td_ind,,1,0.8,0.75,cwf-LED
+process heat paper,electricity,electric heat pump,elect_td_ind,,1,0.8,0.75,cwf-LED
+process heat paper,hydrogen,hydrogen,H2 industrial,,1,0.8,0.75,cwf-LED

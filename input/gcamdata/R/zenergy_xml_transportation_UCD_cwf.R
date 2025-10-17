@@ -51,6 +51,7 @@ module_energy_transportation_cwf_xml <- function(command, ...) {
 
     return(c(XML = "transportation_UCD_cwf_low_H2.xml",
              XML = "transportation_cwf_high_en_demand.xml",
+             XML = "transportation_cwf_LED.xml",
              XML = "transportation_UCD_CWF_med.xml",
              XML = "transportation_UCD_CWF_high.xml",
              XML = "transportation_UCD_CWF_low.xml",
@@ -226,8 +227,14 @@ module_energy_transportation_cwf_xml <- function(command, ...) {
                      "L254.GlobalTranTechShrwt_cwf") ->
       transportation_cwf_high_en_demand.xml
 
+    create_xml("transportation_cwf_LED.xml") %>%
+      add_xml_data(L254.IncomeElasticity_trn_cwf %>% filter(sce == 'CWF-LED'), "IncomeElasticity") ->
+    transportation_cwf_LED.xml
+
+
     return_data(transportation_UCD_cwf_low_H2.xml,
                 transportation_cwf_high_en_demand.xml,
+                transportation_cwf_LED.xml,
                 transportation_UCD_CWF_med.xml,
                 transportation_UCD_CWF_high.xml,
                 transportation_UCD_CWF_low.xml,

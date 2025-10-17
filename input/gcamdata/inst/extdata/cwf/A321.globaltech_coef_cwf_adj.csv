@@ -2,22 +2,38 @@
 # Title: CWF adjustments to cement default coefficients (multiplied by defaults to obtain CWF values) - note no adjustments to process heat cement energy inputs. 
 # Comments Limestone inputs assume widespread adoption of cement manufacturing processes requiring lower CaO inputs including supplementary cementitious materials such as blast furnace slag + uncalcined limestone 
 # Units: Fraction
-# Column types: ccccnnn
+# Column types: ccccnnnc
 # ----------
-supplysector,subsector,technology,minicam.energy.input,2020,2050,2100
-cement,cement,cement,process heat cement,1,0.9,0.8
-cement,cement,cement,elect_td_ind,1,0.9,0.8
-cement,cement,cement,limestone,1,0.6,0.6
-cement,cement,cement CCS,process heat cement CCS,1,0.9,0.8
-cement,cement,cement CCS,elect_td_ind,1,0.9,0.8
-cement,cement,cement CCS,limestone,1,0.6,0.6
-process heat cement,biomass,biomass,delivered biomass,1,1,1
-process heat cement,coal,coal,delivered coal,1,1,1
-process heat cement,gas,gas,wholesale gas,1,1,1
-process heat cement,refined liquids,refined liquids,refined liquids industrial,1,1,1
-process heat cement,hydrogen,hydrogen,H2 industrial,1,1,1
-process heat cement CCS,biomass,biomass CCS,delivered biomass,1,1,1
-process heat cement CCS,coal,coal CCS,delivered coal,1,1,1
-process heat cement CCS,gas,gas CCS,wholesale gas,1,1,1
-process heat cement CCS,refined liquids,refined liquids CCS,refined liquids industrial,1,1,1
-process heat cement CCS,hydrogen,hydrogen,H2 industrial,1,1,1
+supplysector,subsector,technology,minicam.energy.input,2025,2050,2100,scenario
+cement,cement,cement,process heat cement,1,0.9,0.8,cwf
+cement,cement,cement,elect_td_ind,1,0.9,0.8,cwf
+cement,cement,cement,limestone,1,0.6,0.6,cwf
+cement,cement,cement CCS,process heat cement CCS,1,0.9,0.8,cwf
+cement,cement,cement CCS,elect_td_ind,1,0.9,0.8,cwf
+cement,cement,cement CCS,limestone,1,0.6,0.6,cwf
+process heat cement,biomass,biomass,delivered biomass,1,1,1,cwf
+process heat cement,coal,coal,delivered coal,1,1,1,cwf
+process heat cement,gas,gas,wholesale gas,1,1,1,cwf
+process heat cement,refined liquids,refined liquids,refined liquids industrial,1,1,1,cwf
+process heat cement,hydrogen,hydrogen,H2 industrial,1,1,1,cwf
+process heat cement CCS,biomass,biomass CCS,delivered biomass,1,1,1,cwf
+process heat cement CCS,coal,coal CCS,delivered coal,1,1,1,cwf
+process heat cement CCS,gas,gas CCS,wholesale gas,1,1,1,cwf
+process heat cement CCS,refined liquids,refined liquids CCS,refined liquids industrial,1,1,1,cwf
+process heat cement CCS,hydrogen,hydrogen,H2 industrial,1,1,1,cwf
+cement,cement,cement,process heat cement,1,0.8,0.75,cwf-LED
+cement,cement,cement,elect_td_ind,1,0.8,0.75,cwf-LED
+cement,cement,cement,limestone,1,0.6,0.6,cwf-LED
+cement,cement,cement CCS,process heat cement CCS,1,0.8,0.75,cwf-LED
+cement,cement,cement CCS,elect_td_ind,1,0.8,0.75,cwf-LED
+cement,cement,cement CCS,limestone,1,0.6,0.6,cwf-LED
+process heat cement,biomass,biomass,delivered biomass,1,1,1,cwf-LED
+process heat cement,coal,coal,delivered coal,1,1,1,cwf-LED
+process heat cement,gas,gas,wholesale gas,1,1,1,cwf-LED
+process heat cement,refined liquids,refined liquids,refined liquids industrial,1,1,1,cwf-LED
+process heat cement,hydrogen,hydrogen,H2 industrial,1,1,1,cwf-LED
+process heat cement CCS,biomass,biomass CCS,delivered biomass,1,1,1,cwf-LED
+process heat cement CCS,coal,coal CCS,delivered coal,1,1,1,cwf-LED
+process heat cement CCS,gas,gas CCS,wholesale gas,1,1,1,cwf-LED
+process heat cement CCS,refined liquids,refined liquids CCS,refined liquids industrial,1,1,1,cwf-LED
+process heat cement CCS,hydrogen,hydrogen,H2 industrial,1,1,1,cwf-LED

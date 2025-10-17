@@ -87,7 +87,8 @@ module_energy_building_det_cwf_xml <- function(command, ...) {
       ))
   } else if(command == driver.DECLARE_OUTPUTS) {
     return(c(XML = "building_det_cwf.xml",
-             XML = "building_det_cwf_high_en.xml"))
+             XML = "building_det_cwf_high_en.xml",
+             XML = "building_det_cwf_LED.xml"))
   } else if(command == driver.MAKE) {
 
     all_data <- list(...)[[1]]
@@ -300,8 +301,8 @@ module_energy_building_det_cwf_xml <- function(command, ...) {
       add_xml_data(L244.GlobalTechShrwt_bld, "GlobalTechShrwt") %>%
       add_xml_data(L244.ShellConductance_bld_cwf, "ShellConductance") %>% # CWF version
       add_xml_data(L244.SatiationAdder, "SatiationAdder") %>%
-      add_xml_data(L244.Satiation_flsp_cwf, "Satiation_flsp") %>% # CWF version
-      add_xml_data(L244.GompFnParam_cwf, "GompFnParam") %>% # CWF version
+      add_xml_data(L244.Satiation_flsp_cwf %>% filter(scenario == 'cwf'), "Satiation_flsp") %>% # CWF version
+      add_xml_data(L244.GompFnParam_cwf %>% filter(scenario == 'cwf'), "GompFnParam") %>% # CWF version
       add_xml_data(L244.StubTechEff_bld_cwf, "StubTechEff") %>% # CWF version
       add_xml_data(L244.StubTechIntGainOutputRatio_cwf, "StubTechIntGainOutputRatio") %>% # CWF version
       add_node_equiv_xml("input") %>%
@@ -463,8 +464,15 @@ module_energy_building_det_cwf_xml <- function(command, ...) {
         building_det_cwf_high_en.xml
     }
 
+    create_xml("building_det_cwf_LED.xml") %>%
+      add_xml_data(L244.Satiation_flsp_cwf %>% filter(scenario == 'cwf-LED'), "Satiation_flsp") %>% # CWF version
+      add_xml_data(L244.GompFnParam_cwf %>% filter(scenario == 'cwf-LED'), "GompFnParam") -> # CWF version
+      building_det_cwf_LED.xml
+
+
     return_data(building_det_cwf.xml,
-                building_det_cwf_high_en.xml)
+                building_det_cwf_high_en.xml,
+                building_det_cwf_LED.xml)
   } else {
     stop("Unknown command")
   }

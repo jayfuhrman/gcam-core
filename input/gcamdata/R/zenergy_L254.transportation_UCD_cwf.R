@@ -112,8 +112,8 @@ module_energy_L254.transportation_UCD_cwf <- function(command, ...) {
                   filter(sce == "SSP1") %>%
                   left_join(A54.demand_SSP1_cwf_adj) %>%
                   mutate(income.elasticity = income.elasticity * income.elasticity_adj,
-                         sce = "CWF") %>%
-                  dplyr::select(-income.elasticity_adj))
+                         sce = scenario) %>%
+                  dplyr::select(-income.elasticity_adj,-scenario))
 
     # L254.tranSubsectorVOTT_cwf: Value of time in transit parameterization, using SSP1 values but without subsetting
     # NOTE: These are currently considered time- and region-independent characteristics

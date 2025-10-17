@@ -1,25 +1,44 @@
 # File: A325.globaltech_eff_cwf_adj.csv
 # Title: CWF adjustments to chemical default efficiencies (multiplied by defaults to obtain CWF values)
 # Units: Fraction
-# Column types: cccccnnn
+# Column types: cccccnnnc
 # ----------
-supplysector,subsector,technology,minicam.energy.input,secondary.output,2020,2050,2100
-chemical energy use,refined liquids,refined liquids,refined liquids industrial,,1,1.1,1.2
-chemical energy use,refined liquids,refined liquids cogen,refined liquids industrial,electricity,1,1.1,1.2
-chemical energy use,refined liquids,refined liquids CCS,refined liquids industrial,,1,1.1,1.2
-chemical energy use,gas,gas,wholesale gas,,1,1.1,1.2
-chemical energy use,gas,gas cogen,wholesale gas,electricity,1,1.1,1.2
-chemical energy use,gas,gas CCS,wholesale gas,,1,1.1,1.2
-chemical energy use,biomass,biomass,delivered biomass,,1,1.1,1.2
-chemical energy use,biomass,biomass cogen,delivered biomass,electricity,1,1.1,1.2
-chemical energy use,biomass,biomass CCS,delivered biomass,,1,1.1,1.2
-chemical energy use,electricity,electricity,elect_td_ind,,1,1.1,1.2
-chemical energy use,hydrogen,hydrogen,H2 industrial,,1,1.1,1.2
-chemical energy use,hydrogen,hydrogen cogen,H2 wholesale delivery,electricity,1,1.1,1.2
-chemical energy use,coal,coal,delivered coal,,1,1.1,1.2
-chemical energy use,coal,coal cogen,delivered coal,electricity,1,1.1,1.2
-chemical energy use,coal,coal CCS,delivered coal,,1,1.1,1.2
-chemical energy use,heat,heat,district heat,,1,1.1,1.2
-chemical feedstocks,refined liquids,refined liquids,refined liquids industrial,,1,1.05,1.1
-chemical feedstocks,gas,gas,wholesale gas,,1,1.05,1.1
-chemical feedstocks,coal,coal,delivered coal,,1,1.05,1.1
+supplysector,subsector,technology,minicam.energy.input,secondary.output,2020,2050,2100,scenario
+chemical energy use,refined liquids,refined liquids,refined liquids industrial,,1,1.1,1.2,cwf
+chemical energy use,refined liquids,refined liquids cogen,refined liquids industrial,electricity,1,1.1,1.2,cwf
+chemical energy use,refined liquids,refined liquids CCS,refined liquids industrial,,1,1.1,1.2,cwf
+chemical energy use,gas,gas,wholesale gas,,1,1.1,1.2,cwf
+chemical energy use,gas,gas cogen,wholesale gas,electricity,1,1.1,1.2,cwf
+chemical energy use,gas,gas CCS,wholesale gas,,1,1.1,1.2,cwf
+chemical energy use,biomass,biomass,delivered biomass,,1,1.1,1.2,cwf
+chemical energy use,biomass,biomass cogen,delivered biomass,electricity,1,1.1,1.2,cwf
+chemical energy use,biomass,biomass CCS,delivered biomass,,1,1.1,1.2,cwf
+chemical energy use,electricity,electricity,elect_td_ind,,1,1.1,1.2,cwf
+chemical energy use,hydrogen,hydrogen,H2 industrial,,1,1.1,1.2,cwf
+chemical energy use,hydrogen,hydrogen cogen,H2 wholesale delivery,electricity,1,1.1,1.2,cwf
+chemical energy use,coal,coal,delivered coal,,1,1.1,1.2,cwf
+chemical energy use,coal,coal cogen,delivered coal,electricity,1,1.1,1.2,cwf
+chemical energy use,coal,coal CCS,delivered coal,,1,1.1,1.2,cwf
+chemical energy use,heat,heat,district heat,,1,1.1,1.2,cwf
+chemical feedstocks,refined liquids,refined liquids,refined liquids industrial,,1,1.05,1.1,cwf
+chemical feedstocks,gas,gas,wholesale gas,,1,1.05,1.1,cwf
+chemical feedstocks,coal,coal,delivered coal,,1,1.05,1.1,cwf
+chemical energy use,refined liquids,refined liquids,refined liquids industrial,,1,1.2,1.3,cwf-LED
+chemical energy use,refined liquids,refined liquids cogen,refined liquids industrial,electricity,1,1.2,1.3,cwf-LED
+chemical energy use,refined liquids,refined liquids CCS,refined liquids industrial,,1,1.2,1.3,cwf-LED
+chemical energy use,gas,gas,wholesale gas,,1,1.2,1.3,cwf-LED
+chemical energy use,gas,gas cogen,wholesale gas,electricity,1,1.2,1.3,cwf-LED
+chemical energy use,gas,gas CCS,wholesale gas,,1,1.2,1.3,cwf-LED
+chemical energy use,biomass,biomass,delivered biomass,,1,1.2,1.3,cwf-LED
+chemical energy use,biomass,biomass cogen,delivered biomass,electricity,1,1.2,1.3,cwf-LED
+chemical energy use,biomass,biomass CCS,delivered biomass,,1,1.2,1.3,cwf-LED
+chemical energy use,electricity,electricity,elect_td_ind,,1,1.2,1.3,cwf-LED
+chemical energy use,hydrogen,hydrogen,H2 industrial,,1,1.2,1.3,cwf-LED
+chemical energy use,hydrogen,hydrogen cogen,H2 wholesale delivery,electricity,1,1.2,1.3,cwf-LED
+chemical energy use,coal,coal,delivered coal,,1,1.2,1.3,cwf-LED
+chemical energy use,coal,coal cogen,delivered coal,electricity,1,1.2,1.3,cwf-LED
+chemical energy use,coal,coal CCS,delivered coal,,1,1.2,1.3,cwf-LED
+chemical energy use,heat,heat,district heat,,1,1.2,1.3,cwf-LED
+chemical feedstocks,refined liquids,refined liquids,refined liquids industrial,,1,1.05,1.1,cwf-LED
+chemical feedstocks,gas,gas,wholesale gas,,1,1.05,1.1,cwf-LED
+chemical feedstocks,coal,coal,delivered coal,,1,1.05,1.1,cwf-LED

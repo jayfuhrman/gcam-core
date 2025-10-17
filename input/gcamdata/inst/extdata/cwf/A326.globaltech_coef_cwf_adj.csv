@@ -1,21 +1,36 @@
 # File: A326.globaltech_coef_cwf_adj.csv
 # Title: CWF adjustments to aluminum default coefficients (multiplied by defaults to obtain CWF values) - note no adjustments to alumina input
 # Units:  alumina input is unitless (Mt alumina per Mt aluminum); all others are GJ per kg (EJ of energy per Mt of alumina/aluminum)
-# Column types: cccccnnn
+# Column types: cccccnnnc
 # ----------
-supplysector,subsector,technology,minicam.energy.input,secondary.output,2020,2050,2100
-alumina,refined liquids,refined liquids,refined liquids industrial,,1,0.9,0.8
-alumina,refined liquids,refined liquids cogen,refined liquids industrial,electricity,1,0.9,0.8
-alumina,refined liquids,refined liquids CCS,refined liquids industrial,,1,0.9,0.8
-alumina,gas,gas,wholesale gas,,1,0.9,0.8
-alumina,gas,gas cogen,wholesale gas,electricity,1,0.9,0.8
-alumina,gas,gas CCS,wholesale gas,,1,0.9,0.8
-alumina,biomass,biomass,delivered biomass,,1,0.9,0.8
-alumina,biomass,biomass cogen,delivered biomass,electricity,1,0.9,0.8
-alumina,biomass,biomass CCS,delivered biomass,,1,0.9,0.8
-alumina,heat,heat,district heat,,1,0.9,0.8
-alumina,coal,coal,delivered coal,,1,0.9,0.8
-alumina,coal,coal cogen,delivered coal,electricity,1,0.9,0.8
-alumina,coal,coal CCS,delivered coal,,1,0.9,0.8
-aluminum,electricity,electricity,elect_td_ind,,1,0.9,0.8
-aluminum,electricity,electricity,alumina,,1,1,1
+supplysector,subsector,technology,minicam.energy.input,secondary.output,2020,2050,2100,scenario
+alumina,refined liquids,refined liquids,refined liquids industrial,,1,0.9,0.8,cwf
+alumina,refined liquids,refined liquids cogen,refined liquids industrial,electricity,1,0.9,0.8,cwf
+alumina,refined liquids,refined liquids CCS,refined liquids industrial,,1,0.9,0.8,cwf
+alumina,gas,gas,wholesale gas,,1,0.9,0.8,cwf
+alumina,gas,gas cogen,wholesale gas,electricity,1,0.9,0.8,cwf
+alumina,gas,gas CCS,wholesale gas,,1,0.9,0.8,cwf
+alumina,biomass,biomass,delivered biomass,,1,0.9,0.8,cwf
+alumina,biomass,biomass cogen,delivered biomass,electricity,1,0.9,0.8,cwf
+alumina,biomass,biomass CCS,delivered biomass,,1,0.9,0.8,cwf
+alumina,heat,heat,district heat,,1,0.9,0.8,cwf
+alumina,coal,coal,delivered coal,,1,0.9,0.8,cwf
+alumina,coal,coal cogen,delivered coal,electricity,1,0.9,0.8,cwf
+alumina,coal,coal CCS,delivered coal,,1,0.9,0.8,cwf
+aluminum,electricity,electricity,elect_td_ind,,1,0.9,0.8,cwf
+aluminum,electricity,electricity,alumina,,1,1,1,cwf
+alumina,refined liquids,refined liquids,refined liquids industrial,,1,0.8,0.75,cwf-LED
+alumina,refined liquids,refined liquids cogen,refined liquids industrial,electricity,1,0.8,0.75,cwf-LED
+alumina,refined liquids,refined liquids CCS,refined liquids industrial,,1,0.8,0.75,cwf-LED
+alumina,gas,gas,wholesale gas,,1,0.8,0.75,cwf-LED
+alumina,gas,gas cogen,wholesale gas,electricity,1,0.8,0.75,cwf-LED
+alumina,gas,gas CCS,wholesale gas,,1,0.8,0.75,cwf-LED
+alumina,biomass,biomass,delivered biomass,,1,0.8,0.75,cwf-LED
+alumina,biomass,biomass cogen,delivered biomass,electricity,1,0.8,0.75,cwf-LED
+alumina,biomass,biomass CCS,delivered biomass,,1,0.8,0.75,cwf-LED
+alumina,heat,heat,district heat,,1,0.8,0.75,cwf-LED
+alumina,coal,coal,delivered coal,,1,0.8,0.75,cwf-LED
+alumina,coal,coal cogen,delivered coal,electricity,1,0.8,0.75,cwf-LED
+alumina,coal,coal CCS,delivered coal,,1,0.8,0.75,cwf-LED
+aluminum,electricity,electricity,elect_td_ind,,1,0.8,0.75,cwf-LED
+aluminum,electricity,electricity,alumina,,1,1,1,cwf-LED
