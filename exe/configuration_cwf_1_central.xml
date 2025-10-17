@@ -47,7 +47,7 @@
  	    	<Value name = "paper">../input/gcamdata/xml/paper.xml</Value>
  	    	<Value name = "paper_cwf">../input/gcamdata/xml/paper_cwf.xml</Value>
 	    	<Value name = "paper_income_elas">../input/gcamdata/xml/paper_incelas_ssp2.xml</Value> 
-			<Value name = "food_processing">../input/gcamdata/xml/food_processing_Food_ExoDiet.xml</Value> 
+			<Value name = "food_processing">../input/gcamdata/xml/food_processing.xml</Value> 
 			<Value name = "cement">../input/gcamdata/xml/cement.xml</Value>
 			<Value name = "cement_cwf">../input/gcamdata/xml/cement_cwf.xml</Value>
 			<Value name = "cement_income_elas">../input/gcamdata/xml/cement_incelas_cwf.xml</Value>
@@ -80,8 +80,7 @@
 
  <!--Ag Demand Updates-->
 			<Value name = "demand_nonfood">../input/gcamdata/xml/ag_an_demand_input_NonFood.xml</Value>
-		    <Value name = "demand_food">../input/gcamdata/xml/ag_an_demand_input_Food_ExoDiet_SSP1_RegHet_DietWaste.xml</Value>
-
+		    <Value name = "demand_food">../input/gcamdata/xml/ag_an_demand_input_FoodExoDiet_SSP1_CWFMed_RegHet.xml</Value>
 
 			<Value name = "demand_paper">../input/gcamdata/xml/paper_delete_ag_demand.xml</Value>
 
@@ -106,7 +105,7 @@
 
 			<Value name = "ind_urb_proc">../input/gcamdata/xml/ind_urb_processing_sectors.xml</Value>
 			<Value name = "nonco2_energy">../input/gcamdata/xml/all_energy_emissions.xml</Value>
-			<Value name = "nonco2_fgas">../input/gcamdata/xml/all_fgas_emissions_kigali.xml</Value>
+			<Value name = "nonco2_fgas">../input/gcamdata/xml/all_fgas_emissions.xml</Value>
 			<Value name = "nonco2_unmgd">../input/gcamdata/xml/all_unmgd_emissions.xml</Value>
 			<Value name = "nonco2_aglu">../input/gcamdata/xml/all_aglu_emissions_IRR_MGMT.xml</Value>
 			<Value name = "nonco2_aglu_prot">../input/gcamdata/xml/all_protected_unmgd_emissions.xml</Value>
