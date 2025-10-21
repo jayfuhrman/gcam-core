@@ -556,8 +556,7 @@ if(command == driver.DECLARE_INPUTS) {
     left_join_error_no_match(A10.mineral_ann_prod_constraint_mkt, by = c("supplysector", "subsector", "technology")) %>%
     group_by( supplysector, year, market) %>%
     mutate(constraint = sum(constraint)) %>%
-    ungroup() %>%
-    filter(supplysector != "traded copper")
+    ungroup()
 
   L2111.AnnProdConstraint_InputTax <- L2111.AnnProdConstraint_grouped_mkt %>%
     select(LEVEL2_DATA_NAMES[["InputTax"]])

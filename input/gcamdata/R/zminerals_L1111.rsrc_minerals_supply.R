@@ -321,6 +321,8 @@ if(command == driver.DECLARE_INPUTS) {
                                Li_capacity_data_AvgYears) %>%
              # TRY A CASE WITH SHORTER LEAD TIMES
              #mutate(AvgYears = AvgYears/2) %>%
+             # TRY A CASE WITH LONGER LEAD TIMES
+             #mutate(AvgYears = AvgYears*2) %>%
              # Calculate the transition rate = fraction moving to the next stage in a given year
              mutate(TransitionRate = 0.5/AvgYears,
              # In the case of what is already in production, it does not move to another stage,
@@ -452,6 +454,8 @@ if(command == driver.DECLARE_INPUTS) {
                                            Li_resource_data_AvgYears) %>%
      # TRY A CASE WITH SHORTER LEAD TIMES
      #mutate(AvgYears = AvgYears/2) %>%
+     # TRY A CASE WITH LONGER LEAD TIMES
+     #mutate(AvgYears = AvgYears*2) %>%
      # Calculate the transition rate = fraction moving to the next stage in a given year
      mutate(TransitionRate = 0.5/AvgYears,
             # In the case of what is already in production, it does not move to another stage,
