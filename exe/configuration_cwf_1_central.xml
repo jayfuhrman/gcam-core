@@ -196,8 +196,8 @@
 
             <!--Policy-->
 			<Value name = "constraint">../input/extra/developments_working/extra_CO2_constraint_tests/constraint_CO2_test.xml</Value>
-			<Value name="region_nz_adjust">../input/extra/proportional_tax_rate_cwf_1.xml</Value>
-			<Value name="luc_price">../input/extra/nature_cdr/global_uct_cwf_1.xml</Value>
+			<Value name="region_nz_adjust">../input/extra/proportional_tax_rate_cwf.xml</Value>
+			<Value name="luc_price">../input/extra/nature_cdr/global_uct_cwf.xml</Value>
 
 			<Value name="bio_neg_emiss_budget">../input/gcamdata/xml/negative_emissions_budget.xml</Value>
 		    <Value name="bio_neg_emiss_budget">../input/gcamdata/xml/negative_emissions_budget_min_price.xml</Value>
