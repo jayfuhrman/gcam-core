@@ -3,7 +3,7 @@
 # Units: Unitless (fraction improvement)
 # Column types: ccnnnnn
 # ----------
-supplysector,technology,1971,1990,2020,2025,2100
+supplysector,technology,1971,1990,2021,2025,2100
 resid,resid shell,1,1,1,1,1
 resid_d1,resid shell,1,1,1,1,1
 resid_d10,resid shell,1,1,1,1,1

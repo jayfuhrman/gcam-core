@@ -3,7 +3,7 @@
 # Units: Unitless
 # Column types: cccnnnnnnn
 # ----------
-supplysector,subsector,technology,1971,2010,2015,2020,2025,2030,2100
+supplysector,subsector,technology,1971,2010,2015,2021,2025,2030,2100
 H2 pipeline,H2 pipeline,H2 pipeline,1,1,1,0,0,0,0
 H2 wholesale delivery,H2 pipeline,H2 pipeline,1,1,1,0,0,0,0
 H2 LDV,H2 delivery,H2 pipeline,1,1,1,0,0,0,0

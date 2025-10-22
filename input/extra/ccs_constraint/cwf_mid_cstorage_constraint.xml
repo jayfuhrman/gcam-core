@@ -308,7 +308,7 @@
                 <constraint year="2100">3299.8</constraint>
             </policy-portfolio-standard>
         </region>
-        <region name="Europe_Eastern">
+        <region name="Ukraine">
             <policy-portfolio-standard name="cstorage_ceiling">
                 <market>global</market>
                 <policyType>tax</policyType>

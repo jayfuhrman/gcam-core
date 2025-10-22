@@ -3,7 +3,7 @@
 # Units: Fraction
 # Column types: cccccnnnc
 # ----------
-supplysector,subsector,technology,minicam.energy.input,secondary.output,2020,2050,2100,scenario
+supplysector,subsector,technology,minicam.energy.input,secondary.output,2025,2050,2100,scenario
 chemical energy use,refined liquids,refined liquids,refined liquids industrial,,1,1.1,1.2,cwf
 chemical energy use,refined liquids,refined liquids cogen,refined liquids industrial,electricity,1,1.1,1.2,cwf
 chemical energy use,refined liquids,refined liquids CCS,refined liquids industrial,,1,1.1,1.2,cwf

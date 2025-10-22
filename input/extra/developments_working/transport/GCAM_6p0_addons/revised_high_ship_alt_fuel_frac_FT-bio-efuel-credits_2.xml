@@ -3,11 +3,7 @@
         <global-technology-database>
             <location-info sector-name="refining" subsector-name="biomass liquids">
                 <technology name="FT biofuels">
-                    <period year="2020">
-                        <res-secondary-output name="FT-bio-efuel-credits">
-                            <output-ratio>1</output-ratio>
-                        </res-secondary-output>
-                    </period>
+
                     <period year="2025">
                         <res-secondary-output name="FT-bio-efuel-credits">
                             <output-ratio>1</output-ratio>
@@ -90,11 +86,7 @@
                     </period>
                 </technology>
                 <technology name="FT biofuels CCS level 1">
-                    <period year="2020">
-                        <res-secondary-output name="FT-bio-efuel-credits">
-                            <output-ratio>1</output-ratio>
-                        </res-secondary-output>
-                    </period>
+
                     <period year="2025">
                         <res-secondary-output name="FT-bio-efuel-credits">
                             <output-ratio>1</output-ratio>
@@ -177,11 +169,7 @@
                     </period>
                 </technology>
                 <technology name="FT biofuels CCS level 2">
-                    <period year="2020">
-                        <res-secondary-output name="FT-bio-efuel-credits">
-                            <output-ratio>1</output-ratio>
-                        </res-secondary-output>
-                    </period>
+
                     <period year="2025">
                         <res-secondary-output name="FT-bio-efuel-credits">
                             <output-ratio>1</output-ratio>
@@ -266,11 +254,7 @@
             </location-info>
             <location-info sector-name="refining" subsector-name="dac to liquids">
                 <technology name="industrial hydrogen">
-                    <period year="2020">
-                        <res-secondary-output name="FT-bio-efuel-credits">
-                            <output-ratio>1</output-ratio>
-                        </res-secondary-output>
-                    </period>
+
                     <period year="2025">
                         <res-secondary-output name="FT-bio-efuel-credits">
                             <output-ratio>1</output-ratio>
@@ -353,11 +337,7 @@
                     </period>
                 </technology>
                 <technology name="on-site electrolysis (grid electricity)">
-                    <period year="2020">
-                        <res-secondary-output name="FT-bio-efuel-credits">
-                            <output-ratio>1</output-ratio>
-                        </res-secondary-output>
-                    </period>
+
                     <period year="2025">
                         <res-secondary-output name="FT-bio-efuel-credits">
                             <output-ratio>1</output-ratio>
@@ -440,11 +420,7 @@
                     </period>
                 </technology>
                 <technology name="on-site electrolysis (solar)">
-                    <period year="2020">
-                        <res-secondary-output name="FT-bio-efuel-credits">
-                            <output-ratio>1</output-ratio>
-                        </res-secondary-output>
-                    </period>
+
                     <period year="2025">
                         <res-secondary-output name="FT-bio-efuel-credits">
                             <output-ratio>1</output-ratio>
@@ -527,11 +503,7 @@
                     </period>
                 </technology>
                 <technology name="on-site electrolysis (wind)">
-                    <period year="2020">
-                        <res-secondary-output name="FT-bio-efuel-credits">
-                            <output-ratio>1</output-ratio>
-                        </res-secondary-output>
-                    </period>
+
                     <period year="2025">
                         <res-secondary-output name="FT-bio-efuel-credits">
                             <output-ratio>1</output-ratio>
@@ -619,12 +591,7 @@
             <supplysector name="trn_freight">
                 <tranSubsector name="Domestic Ship">
                     <stub-technology name="Hybrid Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>USA</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -723,12 +690,7 @@
                         </period>
                     </stub-technology>
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>USA</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -831,12 +793,7 @@
             <supplysector name="trn_shipping_intl">
                 <tranSubsector name="International Ship">
                     <stub-technology name="Hybrid Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>USA</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -935,12 +892,7 @@
                         </period>
                     </stub-technology>
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>USA</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -1043,7 +995,7 @@
             <policy-portfolio-standard name="FT-bio-efuel-credits">
                 <market>global</market>
                 <policyType>RES</policyType>
-                <constraint year="2020">1</constraint>
+                
                 <price-unit>1975$/GJ</price-unit>
                 <output-unit>EJ</output-unit>
                 <constraint year="2025">1</constraint>
@@ -1068,12 +1020,7 @@
             <supplysector name="trn_freight">
                 <tranSubsector name="Domestic Ship">
                     <stub-technology name="Hybrid Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Africa_Eastern</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -1172,12 +1119,7 @@
                         </period>
                     </stub-technology>
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Africa_Eastern</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -1280,12 +1222,7 @@
             <supplysector name="trn_shipping_intl">
                 <tranSubsector name="International Ship">
                     <stub-technology name="Hybrid Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Africa_Eastern</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -1384,12 +1321,7 @@
                         </period>
                     </stub-technology>
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Africa_Eastern</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -1492,7 +1424,7 @@
             <policy-portfolio-standard name="FT-bio-efuel-credits">
                 <market>global</market>
                 <policyType>RES</policyType>
-                <constraint year="2020">1</constraint>
+                
                 <price-unit>1975$/GJ</price-unit>
                 <output-unit>EJ</output-unit>
                 <constraint year="2025">1</constraint>
@@ -1517,12 +1449,7 @@
             <supplysector name="trn_freight">
                 <tranSubsector name="Domestic Ship">
                     <stub-technology name="Hybrid Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Africa_Northern</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -1621,12 +1548,7 @@
                         </period>
                     </stub-technology>
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Africa_Northern</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -1729,12 +1651,7 @@
             <supplysector name="trn_shipping_intl">
                 <tranSubsector name="International Ship">
                     <stub-technology name="Hybrid Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Africa_Northern</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -1833,12 +1750,7 @@
                         </period>
                     </stub-technology>
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Africa_Northern</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -1941,7 +1853,7 @@
             <policy-portfolio-standard name="FT-bio-efuel-credits">
                 <market>global</market>
                 <policyType>RES</policyType>
-                <constraint year="2020">1</constraint>
+                
                 <price-unit>1975$/GJ</price-unit>
                 <output-unit>EJ</output-unit>
                 <constraint year="2025">1</constraint>
@@ -1966,12 +1878,7 @@
             <supplysector name="trn_freight">
                 <tranSubsector name="Domestic Ship">
                     <stub-technology name="Hybrid Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Africa_Southern</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -2070,12 +1977,7 @@
                         </period>
                     </stub-technology>
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Africa_Southern</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -2178,12 +2080,7 @@
             <supplysector name="trn_shipping_intl">
                 <tranSubsector name="International Ship">
                     <stub-technology name="Hybrid Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Africa_Southern</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -2282,12 +2179,7 @@
                         </period>
                     </stub-technology>
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Africa_Southern</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -2390,7 +2282,7 @@
             <policy-portfolio-standard name="FT-bio-efuel-credits">
                 <market>global</market>
                 <policyType>RES</policyType>
-                <constraint year="2020">1</constraint>
+                
                 <price-unit>1975$/GJ</price-unit>
                 <output-unit>EJ</output-unit>
                 <constraint year="2025">1</constraint>
@@ -2415,12 +2307,7 @@
             <supplysector name="trn_freight">
                 <tranSubsector name="Domestic Ship">
                     <stub-technology name="Hybrid Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Africa_Western</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -2519,12 +2406,7 @@
                         </period>
                     </stub-technology>
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Africa_Western</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -2627,12 +2509,7 @@
             <supplysector name="trn_shipping_intl">
                 <tranSubsector name="International Ship">
                     <stub-technology name="Hybrid Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Africa_Western</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -2731,12 +2608,7 @@
                         </period>
                     </stub-technology>
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Africa_Western</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -2839,7 +2711,7 @@
             <policy-portfolio-standard name="FT-bio-efuel-credits">
                 <market>global</market>
                 <policyType>RES</policyType>
-                <constraint year="2020">1</constraint>
+                
                 <price-unit>1975$/GJ</price-unit>
                 <output-unit>EJ</output-unit>
                 <constraint year="2025">1</constraint>
@@ -2864,12 +2736,7 @@
             <supplysector name="trn_freight">
                 <tranSubsector name="Domestic Ship">
                     <stub-technology name="Hybrid Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Australia_NZ</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -2968,12 +2835,7 @@
                         </period>
                     </stub-technology>
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Australia_NZ</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -3076,12 +2938,7 @@
             <supplysector name="trn_shipping_intl">
                 <tranSubsector name="International Ship">
                     <stub-technology name="Hybrid Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Australia_NZ</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -3180,12 +3037,7 @@
                         </period>
                     </stub-technology>
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Australia_NZ</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -3288,7 +3140,7 @@
             <policy-portfolio-standard name="FT-bio-efuel-credits">
                 <market>global</market>
                 <policyType>RES</policyType>
-                <constraint year="2020">1</constraint>
+                
                 <price-unit>1975$/GJ</price-unit>
                 <output-unit>EJ</output-unit>
                 <constraint year="2025">1</constraint>
@@ -3313,12 +3165,7 @@
             <supplysector name="trn_freight">
                 <tranSubsector name="Domestic Ship">
                     <stub-technology name="Hybrid Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Brazil</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -3417,12 +3264,7 @@
                         </period>
                     </stub-technology>
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Brazil</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -3525,12 +3367,7 @@
             <supplysector name="trn_shipping_intl">
                 <tranSubsector name="International Ship">
                     <stub-technology name="Hybrid Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Brazil</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -3629,12 +3466,7 @@
                         </period>
                     </stub-technology>
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Brazil</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -3737,7 +3569,7 @@
             <policy-portfolio-standard name="FT-bio-efuel-credits">
                 <market>global</market>
                 <policyType>RES</policyType>
-                <constraint year="2020">1</constraint>
+                
                 <price-unit>1975$/GJ</price-unit>
                 <output-unit>EJ</output-unit>
                 <constraint year="2025">1</constraint>
@@ -3762,12 +3594,7 @@
             <supplysector name="trn_freight">
                 <tranSubsector name="Domestic Ship">
                     <stub-technology name="Hybrid Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Canada</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -3866,12 +3693,7 @@
                         </period>
                     </stub-technology>
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Canada</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -3974,12 +3796,7 @@
             <supplysector name="trn_shipping_intl">
                 <tranSubsector name="International Ship">
                     <stub-technology name="Hybrid Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Canada</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -4078,12 +3895,7 @@
                         </period>
                     </stub-technology>
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Canada</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -4186,7 +3998,7 @@
             <policy-portfolio-standard name="FT-bio-efuel-credits">
                 <market>global</market>
                 <policyType>RES</policyType>
-                <constraint year="2020">1</constraint>
+                
                 <price-unit>1975$/GJ</price-unit>
                 <output-unit>EJ</output-unit>
                 <constraint year="2025">1</constraint>
@@ -4211,12 +4023,7 @@
             <supplysector name="trn_freight">
                 <tranSubsector name="Domestic Ship">
                     <stub-technology name="Hybrid Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Central America and Caribbean</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -4315,12 +4122,7 @@
                         </period>
                     </stub-technology>
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Central America and Caribbean</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -4423,12 +4225,7 @@
             <supplysector name="trn_shipping_intl">
                 <tranSubsector name="International Ship">
                     <stub-technology name="Hybrid Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Central America and Caribbean</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -4527,12 +4324,7 @@
                         </period>
                     </stub-technology>
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Central America and Caribbean</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -4635,7 +4427,7 @@
             <policy-portfolio-standard name="FT-bio-efuel-credits">
                 <market>global</market>
                 <policyType>RES</policyType>
-                <constraint year="2020">1</constraint>
+                
                 <price-unit>1975$/GJ</price-unit>
                 <output-unit>EJ</output-unit>
                 <constraint year="2025">1</constraint>
@@ -4660,12 +4452,7 @@
             <supplysector name="trn_freight">
                 <tranSubsector name="Domestic Ship">
                     <stub-technology name="Hybrid Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Central Asia</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -4764,12 +4551,7 @@
                         </period>
                     </stub-technology>
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Central Asia</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -4872,12 +4654,7 @@
             <supplysector name="trn_shipping_intl">
                 <tranSubsector name="International Ship">
                     <stub-technology name="Hybrid Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Central Asia</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -4976,12 +4753,7 @@
                         </period>
                     </stub-technology>
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Central Asia</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -5084,7 +4856,7 @@
             <policy-portfolio-standard name="FT-bio-efuel-credits">
                 <market>global</market>
                 <policyType>RES</policyType>
-                <constraint year="2020">1</constraint>
+                
                 <price-unit>1975$/GJ</price-unit>
                 <output-unit>EJ</output-unit>
                 <constraint year="2025">1</constraint>
@@ -5109,12 +4881,7 @@
             <supplysector name="trn_freight">
                 <tranSubsector name="Domestic Ship">
                     <stub-technology name="Hybrid Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>China</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -5213,12 +4980,7 @@
                         </period>
                     </stub-technology>
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>China</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -5321,12 +5083,7 @@
             <supplysector name="trn_shipping_intl">
                 <tranSubsector name="International Ship">
                     <stub-technology name="Hybrid Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>China</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -5425,12 +5182,7 @@
                         </period>
                     </stub-technology>
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>China</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -5533,7 +5285,7 @@
             <policy-portfolio-standard name="FT-bio-efuel-credits">
                 <market>global</market>
                 <policyType>RES</policyType>
-                <constraint year="2020">1</constraint>
+                
                 <price-unit>1975$/GJ</price-unit>
                 <output-unit>EJ</output-unit>
                 <constraint year="2025">1</constraint>
@@ -5558,12 +5310,7 @@
             <supplysector name="trn_freight">
                 <tranSubsector name="Domestic Ship">
                     <stub-technology name="Hybrid Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>EU-12</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -5662,12 +5409,7 @@
                         </period>
                     </stub-technology>
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>EU-12</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -5770,12 +5512,7 @@
             <supplysector name="trn_shipping_intl">
                 <tranSubsector name="International Ship">
                     <stub-technology name="Hybrid Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>EU-12</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -5874,12 +5611,7 @@
                         </period>
                     </stub-technology>
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>EU-12</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -5982,7 +5714,7 @@
             <policy-portfolio-standard name="FT-bio-efuel-credits">
                 <market>global</market>
                 <policyType>RES</policyType>
-                <constraint year="2020">1</constraint>
+                
                 <price-unit>1975$/GJ</price-unit>
                 <output-unit>EJ</output-unit>
                 <constraint year="2025">1</constraint>
@@ -6007,12 +5739,7 @@
             <supplysector name="trn_freight">
                 <tranSubsector name="Domestic Ship">
                     <stub-technology name="Hybrid Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>EU-15</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -6111,12 +5838,7 @@
                         </period>
                     </stub-technology>
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>EU-15</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -6219,12 +5941,7 @@
             <supplysector name="trn_shipping_intl">
                 <tranSubsector name="International Ship">
                     <stub-technology name="Hybrid Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>EU-15</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -6323,12 +6040,7 @@
                         </period>
                     </stub-technology>
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>EU-15</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -6431,7 +6143,7 @@
             <policy-portfolio-standard name="FT-bio-efuel-credits">
                 <market>global</market>
                 <policyType>RES</policyType>
-                <constraint year="2020">1</constraint>
+                
                 <price-unit>1975$/GJ</price-unit>
                 <output-unit>EJ</output-unit>
                 <constraint year="2025">1</constraint>
@@ -6452,214 +6164,204 @@
                 <constraint year="2100">1</constraint>
             </policy-portfolio-standard>
         </region>
-        <region name="Europe_Eastern">
+        <region name="Ukraine">
             <supplysector name="trn_freight">
                 <tranSubsector name="Domestic Ship">
                     <stub-technology name="Hybrid Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Europe_Eastern</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2030">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>25264.65138865</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2035">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>81698.3375933725</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2040">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>137572.251523245</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2045">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>192884.50527988</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2050">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>247635.0987378</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2055">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>247635.0987378</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2060">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>247635.0987378</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2065">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>247635.0987378</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2070">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>247635.0987378</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2075">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>247635.0987378</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2080">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>247635.0987378</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2085">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>247635.0987378</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2090">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>247635.0987378</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2095">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>247635.0987378</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2100">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>247635.0987378</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                     </stub-technology>
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Europe_Eastern</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2030">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>31580.81422871</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2035">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>102122.921991708</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2040">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>171965.31444312</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2045">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>241105.631544825</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2050">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>309543.8734223</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2055">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>308006.9582391</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2060">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>306470.0430559</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2065">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>304933.1278727</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2070">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>303419.0856762</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2075">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>301905.0435744</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2080">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>300391.0013779</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2085">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>298899.516274</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2090">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>297408.0312648</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2095">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>295916.5461609</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2100">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>295916.5461609</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                     </stub-technology>
@@ -6668,210 +6370,200 @@
             <supplysector name="trn_shipping_intl">
                 <tranSubsector name="International Ship">
                     <stub-technology name="Hybrid Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Europe_Eastern</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2030">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>157097.42444155</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2035">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>508006.165110795</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2040">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>855434.188397415</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2045">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>1199369.75959005</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2050">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>1539812.8786887</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2055">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>1539812.8786887</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2060">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>1539812.8786887</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2065">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>1539812.8786887</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2070">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>1539812.8786887</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2075">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>1539812.8786887</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2080">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>1539812.8786887</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2085">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>1539812.8786887</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2090">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>1539812.8786887</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2095">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>1539812.8786887</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2100">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>1539812.8786887</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                     </stub-technology>
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Europe_Eastern</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2030">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>196371.78062303</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2035">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>635007.706388477</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2040">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>1069292.73549675</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2045">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>1499212.19948756</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2050">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>1924766.0983609</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2055">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>1915209.3472602</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2060">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>1905652.5952116</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2065">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>1896095.8441109</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2070">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>1886681.4168911</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2075">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>1877266.9906192</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2080">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>1867852.5633994</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2085">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>1858578.4071756</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2090">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>1849304.2518997</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2095">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>1840030.0956759</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2100">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>1840030.0956759</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                     </stub-technology>
@@ -6880,7 +6572,7 @@
             <policy-portfolio-standard name="FT-bio-efuel-credits">
                 <market>global</market>
                 <policyType>RES</policyType>
-                <constraint year="2020">1</constraint>
+                
                 <price-unit>1975$/GJ</price-unit>
                 <output-unit>EJ</output-unit>
                 <constraint year="2025">1</constraint>
@@ -6905,12 +6597,7 @@
             <supplysector name="trn_freight">
                 <tranSubsector name="Domestic Ship">
                     <stub-technology name="Hybrid Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Europe_Non_EU</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -7009,12 +6696,7 @@
                         </period>
                     </stub-technology>
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Europe_Non_EU</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -7117,12 +6799,7 @@
             <supplysector name="trn_shipping_intl">
                 <tranSubsector name="International Ship">
                     <stub-technology name="Hybrid Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Europe_Non_EU</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -7221,12 +6898,7 @@
                         </period>
                     </stub-technology>
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Europe_Non_EU</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -7329,7 +7001,7 @@
             <policy-portfolio-standard name="FT-bio-efuel-credits">
                 <market>global</market>
                 <policyType>RES</policyType>
-                <constraint year="2020">1</constraint>
+                
                 <price-unit>1975$/GJ</price-unit>
                 <output-unit>EJ</output-unit>
                 <constraint year="2025">1</constraint>
@@ -7354,12 +7026,7 @@
             <supplysector name="trn_freight">
                 <tranSubsector name="Domestic Ship">
                     <stub-technology name="Hybrid Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>European Free Trade Association</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -7458,12 +7125,7 @@
                         </period>
                     </stub-technology>
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>European Free Trade Association</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -7566,12 +7228,7 @@
             <supplysector name="trn_shipping_intl">
                 <tranSubsector name="International Ship">
                     <stub-technology name="Hybrid Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>European Free Trade Association</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -7670,12 +7327,7 @@
                         </period>
                     </stub-technology>
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>European Free Trade Association</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -7778,7 +7430,7 @@
             <policy-portfolio-standard name="FT-bio-efuel-credits">
                 <market>global</market>
                 <policyType>RES</policyType>
-                <constraint year="2020">1</constraint>
+                
                 <price-unit>1975$/GJ</price-unit>
                 <output-unit>EJ</output-unit>
                 <constraint year="2025">1</constraint>
@@ -7803,12 +7455,7 @@
             <supplysector name="trn_freight">
                 <tranSubsector name="Domestic Ship">
                     <stub-technology name="Hybrid Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>India</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -7907,12 +7554,7 @@
                         </period>
                     </stub-technology>
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>India</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -8015,12 +7657,7 @@
             <supplysector name="trn_shipping_intl">
                 <tranSubsector name="International Ship">
                     <stub-technology name="Hybrid Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>India</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -8119,12 +7756,7 @@
                         </period>
                     </stub-technology>
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>India</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -8227,7 +7859,7 @@
             <policy-portfolio-standard name="FT-bio-efuel-credits">
                 <market>global</market>
                 <policyType>RES</policyType>
-                <constraint year="2020">1</constraint>
+                
                 <price-unit>1975$/GJ</price-unit>
                 <output-unit>EJ</output-unit>
                 <constraint year="2025">1</constraint>
@@ -8252,12 +7884,7 @@
             <supplysector name="trn_freight">
                 <tranSubsector name="Domestic Ship">
                     <stub-technology name="Hybrid Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Indonesia</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -8356,12 +7983,7 @@
                         </period>
                     </stub-technology>
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Indonesia</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -8464,12 +8086,7 @@
             <supplysector name="trn_shipping_intl">
                 <tranSubsector name="International Ship">
                     <stub-technology name="Hybrid Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Indonesia</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -8568,12 +8185,7 @@
                         </period>
                     </stub-technology>
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Indonesia</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -8676,7 +8288,7 @@
             <policy-portfolio-standard name="FT-bio-efuel-credits">
                 <market>global</market>
                 <policyType>RES</policyType>
-                <constraint year="2020">1</constraint>
+                
                 <price-unit>1975$/GJ</price-unit>
                 <output-unit>EJ</output-unit>
                 <constraint year="2025">1</constraint>
@@ -8701,12 +8313,7 @@
             <supplysector name="trn_freight">
                 <tranSubsector name="Domestic Ship">
                     <stub-technology name="Hybrid Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Japan</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -8805,12 +8412,7 @@
                         </period>
                     </stub-technology>
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Japan</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -8913,12 +8515,7 @@
             <supplysector name="trn_shipping_intl">
                 <tranSubsector name="International Ship">
                     <stub-technology name="Hybrid Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Japan</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -9017,12 +8614,7 @@
                         </period>
                     </stub-technology>
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Japan</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -9125,7 +8717,7 @@
             <policy-portfolio-standard name="FT-bio-efuel-credits">
                 <market>global</market>
                 <policyType>RES</policyType>
-                <constraint year="2020">1</constraint>
+                
                 <price-unit>1975$/GJ</price-unit>
                 <output-unit>EJ</output-unit>
                 <constraint year="2025">1</constraint>
@@ -9150,12 +8742,7 @@
             <supplysector name="trn_freight">
                 <tranSubsector name="Domestic Ship">
                     <stub-technology name="Hybrid Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Mexico</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -9254,12 +8841,7 @@
                         </period>
                     </stub-technology>
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Mexico</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -9362,12 +8944,7 @@
             <supplysector name="trn_shipping_intl">
                 <tranSubsector name="International Ship">
                     <stub-technology name="Hybrid Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Mexico</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -9466,12 +9043,7 @@
                         </period>
                     </stub-technology>
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Mexico</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -9574,7 +9146,7 @@
             <policy-portfolio-standard name="FT-bio-efuel-credits">
                 <market>global</market>
                 <policyType>RES</policyType>
-                <constraint year="2020">1</constraint>
+                
                 <price-unit>1975$/GJ</price-unit>
                 <output-unit>EJ</output-unit>
                 <constraint year="2025">1</constraint>
@@ -9599,12 +9171,7 @@
             <supplysector name="trn_freight">
                 <tranSubsector name="Domestic Ship">
                     <stub-technology name="Hybrid Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Middle East</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -9703,12 +9270,7 @@
                         </period>
                     </stub-technology>
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Middle East</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -9811,12 +9373,7 @@
             <supplysector name="trn_shipping_intl">
                 <tranSubsector name="International Ship">
                     <stub-technology name="Hybrid Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Middle East</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -9915,12 +9472,7 @@
                         </period>
                     </stub-technology>
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Middle East</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -10023,7 +9575,7 @@
             <policy-portfolio-standard name="FT-bio-efuel-credits">
                 <market>global</market>
                 <policyType>RES</policyType>
-                <constraint year="2020">1</constraint>
+                
                 <price-unit>1975$/GJ</price-unit>
                 <output-unit>EJ</output-unit>
                 <constraint year="2025">1</constraint>
@@ -10048,12 +9600,7 @@
             <supplysector name="trn_freight">
                 <tranSubsector name="Domestic Ship">
                     <stub-technology name="Hybrid Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Pakistan</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -10152,12 +9699,7 @@
                         </period>
                     </stub-technology>
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Pakistan</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -10260,12 +9802,7 @@
             <supplysector name="trn_shipping_intl">
                 <tranSubsector name="International Ship">
                     <stub-technology name="Hybrid Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Pakistan</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -10364,12 +9901,7 @@
                         </period>
                     </stub-technology>
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Pakistan</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -10472,7 +10004,7 @@
             <policy-portfolio-standard name="FT-bio-efuel-credits">
                 <market>global</market>
                 <policyType>RES</policyType>
-                <constraint year="2020">1</constraint>
+                
                 <price-unit>1975$/GJ</price-unit>
                 <output-unit>EJ</output-unit>
                 <constraint year="2025">1</constraint>
@@ -10497,12 +10029,7 @@
             <supplysector name="trn_freight">
                 <tranSubsector name="Domestic Ship">
                     <stub-technology name="Hybrid Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Russia</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -10601,12 +10128,7 @@
                         </period>
                     </stub-technology>
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Russia</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -10709,12 +10231,7 @@
             <supplysector name="trn_shipping_intl">
                 <tranSubsector name="International Ship">
                     <stub-technology name="Hybrid Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Russia</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -10813,12 +10330,7 @@
                         </period>
                     </stub-technology>
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Russia</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -10921,7 +10433,7 @@
             <policy-portfolio-standard name="FT-bio-efuel-credits">
                 <market>global</market>
                 <policyType>RES</policyType>
-                <constraint year="2020">1</constraint>
+                
                 <price-unit>1975$/GJ</price-unit>
                 <output-unit>EJ</output-unit>
                 <constraint year="2025">1</constraint>
@@ -10946,12 +10458,7 @@
             <supplysector name="trn_freight">
                 <tranSubsector name="Domestic Ship">
                     <stub-technology name="Hybrid Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>South Africa</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -11050,12 +10557,7 @@
                         </period>
                     </stub-technology>
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>South Africa</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -11158,12 +10660,7 @@
             <supplysector name="trn_shipping_intl">
                 <tranSubsector name="International Ship">
                     <stub-technology name="Hybrid Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>South Africa</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -11262,12 +10759,7 @@
                         </period>
                     </stub-technology>
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>South Africa</market-name>
-                            </minicam-energy-input>
-                        </period>
+    
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -11370,7 +10862,7 @@
             <policy-portfolio-standard name="FT-bio-efuel-credits">
                 <market>global</market>
                 <policyType>RES</policyType>
-                <constraint year="2020">1</constraint>
+                
                 <price-unit>1975$/GJ</price-unit>
                 <output-unit>EJ</output-unit>
                 <constraint year="2025">1</constraint>
@@ -11395,12 +10887,7 @@
             <supplysector name="trn_freight">
                 <tranSubsector name="Domestic Ship">
                     <stub-technology name="Hybrid Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>South America_Northern</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -11499,12 +10986,7 @@
                         </period>
                     </stub-technology>
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>South America_Northern</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -11607,12 +11089,7 @@
             <supplysector name="trn_shipping_intl">
                 <tranSubsector name="International Ship">
                     <stub-technology name="Hybrid Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>South America_Northern</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -11711,12 +11188,7 @@
                         </period>
                     </stub-technology>
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>South America_Northern</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -11819,7 +11291,7 @@
             <policy-portfolio-standard name="FT-bio-efuel-credits">
                 <market>global</market>
                 <policyType>RES</policyType>
-                <constraint year="2020">1</constraint>
+                
                 <price-unit>1975$/GJ</price-unit>
                 <output-unit>EJ</output-unit>
                 <constraint year="2025">1</constraint>
@@ -11844,12 +11316,7 @@
             <supplysector name="trn_freight">
                 <tranSubsector name="Domestic Ship">
                     <stub-technology name="Hybrid Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>South America_Southern</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -11948,12 +11415,7 @@
                         </period>
                     </stub-technology>
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>South America_Southern</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -12056,12 +11518,7 @@
             <supplysector name="trn_shipping_intl">
                 <tranSubsector name="International Ship">
                     <stub-technology name="Hybrid Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>South America_Southern</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -12160,12 +11617,7 @@
                         </period>
                     </stub-technology>
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>South America_Southern</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -12268,7 +11720,7 @@
             <policy-portfolio-standard name="FT-bio-efuel-credits">
                 <market>global</market>
                 <policyType>RES</policyType>
-                <constraint year="2020">1</constraint>
+                
                 <price-unit>1975$/GJ</price-unit>
                 <output-unit>EJ</output-unit>
                 <constraint year="2025">1</constraint>
@@ -12293,12 +11745,7 @@
             <supplysector name="trn_freight">
                 <tranSubsector name="Domestic Ship">
                     <stub-technology name="Hybrid Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>South Asia</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -12397,12 +11844,7 @@
                         </period>
                     </stub-technology>
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>South Asia</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -12505,12 +11947,7 @@
             <supplysector name="trn_shipping_intl">
                 <tranSubsector name="International Ship">
                     <stub-technology name="Hybrid Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>South Asia</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -12609,12 +12046,7 @@
                         </period>
                     </stub-technology>
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>South Asia</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -12717,7 +12149,7 @@
             <policy-portfolio-standard name="FT-bio-efuel-credits">
                 <market>global</market>
                 <policyType>RES</policyType>
-                <constraint year="2020">1</constraint>
+                
                 <price-unit>1975$/GJ</price-unit>
                 <output-unit>EJ</output-unit>
                 <constraint year="2025">1</constraint>
@@ -12742,12 +12174,7 @@
             <supplysector name="trn_freight">
                 <tranSubsector name="Domestic Ship">
                     <stub-technology name="Hybrid Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>South Korea</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -12846,12 +12273,7 @@
                         </period>
                     </stub-technology>
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>South Korea</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -12954,12 +12376,7 @@
             <supplysector name="trn_shipping_intl">
                 <tranSubsector name="International Ship">
                     <stub-technology name="Hybrid Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>South Korea</market-name>
-                            </minicam-energy-input>
-                        </period>
+   
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -13058,12 +12475,7 @@
                         </period>
                     </stub-technology>
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>South Korea</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -13166,7 +12578,7 @@
             <policy-portfolio-standard name="FT-bio-efuel-credits">
                 <market>global</market>
                 <policyType>RES</policyType>
-                <constraint year="2020">1</constraint>
+                
                 <price-unit>1975$/GJ</price-unit>
                 <output-unit>EJ</output-unit>
                 <constraint year="2025">1</constraint>
@@ -13191,12 +12603,7 @@
             <supplysector name="trn_freight">
                 <tranSubsector name="Domestic Ship">
                     <stub-technology name="Hybrid Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Southeast Asia</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -13295,12 +12702,7 @@
                         </period>
                     </stub-technology>
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Southeast Asia</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -13403,12 +12805,7 @@
             <supplysector name="trn_shipping_intl">
                 <tranSubsector name="International Ship">
                     <stub-technology name="Hybrid Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Southeast Asia</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -13507,12 +12904,7 @@
                         </period>
                     </stub-technology>
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Southeast Asia</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -13615,7 +13007,7 @@
             <policy-portfolio-standard name="FT-bio-efuel-credits">
                 <market>global</market>
                 <policyType>RES</policyType>
-                <constraint year="2020">1</constraint>
+                
                 <price-unit>1975$/GJ</price-unit>
                 <output-unit>EJ</output-unit>
                 <constraint year="2025">1</constraint>
@@ -13640,12 +13032,7 @@
             <supplysector name="trn_freight">
                 <tranSubsector name="Domestic Ship">
                     <stub-technology name="Hybrid Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Taiwan</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -13744,12 +13131,7 @@
                         </period>
                     </stub-technology>
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Taiwan</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -13852,12 +13234,7 @@
             <supplysector name="trn_shipping_intl">
                 <tranSubsector name="International Ship">
                     <stub-technology name="Hybrid Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Taiwan</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -13956,12 +13333,7 @@
                         </period>
                     </stub-technology>
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Taiwan</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -14064,7 +13436,7 @@
             <policy-portfolio-standard name="FT-bio-efuel-credits">
                 <market>global</market>
                 <policyType>RES</policyType>
-                <constraint year="2020">1</constraint>
+                
                 <price-unit>1975$/GJ</price-unit>
                 <output-unit>EJ</output-unit>
                 <constraint year="2025">1</constraint>
@@ -14089,12 +13461,7 @@
             <supplysector name="trn_freight">
                 <tranSubsector name="Domestic Ship">
                     <stub-technology name="Hybrid Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Argentina</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -14193,12 +13560,7 @@
                         </period>
                     </stub-technology>
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Argentina</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -14301,12 +13663,7 @@
             <supplysector name="trn_shipping_intl">
                 <tranSubsector name="International Ship">
                     <stub-technology name="Hybrid Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Argentina</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -14405,12 +13762,7 @@
                         </period>
                     </stub-technology>
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Argentina</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -14513,7 +13865,7 @@
             <policy-portfolio-standard name="FT-bio-efuel-credits">
                 <market>global</market>
                 <policyType>RES</policyType>
-                <constraint year="2020">1</constraint>
+                
                 <price-unit>1975$/GJ</price-unit>
                 <output-unit>EJ</output-unit>
                 <constraint year="2025">1</constraint>
@@ -14538,12 +13890,7 @@
             <supplysector name="trn_freight">
                 <tranSubsector name="Domestic Ship">
                     <stub-technology name="Hybrid Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Colombia</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -14642,12 +13989,7 @@
                         </period>
                     </stub-technology>
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Colombia</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -14750,12 +14092,7 @@
             <supplysector name="trn_shipping_intl">
                 <tranSubsector name="International Ship">
                     <stub-technology name="Hybrid Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Colombia</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -14854,12 +14191,7 @@
                         </period>
                     </stub-technology>
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Colombia</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -14962,7 +14294,7 @@
             <policy-portfolio-standard name="FT-bio-efuel-credits">
                 <market>global</market>
                 <policyType>RES</policyType>
-                <constraint year="2020">1</constraint>
+                
                 <price-unit>1975$/GJ</price-unit>
                 <output-unit>EJ</output-unit>
                 <constraint year="2025">1</constraint>

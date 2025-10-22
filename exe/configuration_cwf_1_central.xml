@@ -56,7 +56,7 @@
 			<Value name = "hddcdd">../input/gcamdata/xml/HDDCDD_constdd_no_GCM.xml</Value>
 			<!--CWF standard assumptions for buildings + coordinated fossil phase-out represented thru shareweight interp reaching zero by 2050-->
 			<Value name = "building">../input/gcamdata/xml/building_det.xml</Value>
-			<Value name = "building_cwf">../input/gcamdata/xml/building_det_cwf.xml</Value>
+			<!--Value name = "building_cwf">../input/gcamdata/xml/building_det_cwf.xml</Value-->
 			<Value name = "transportation">../input/gcamdata/xml/transportation_UCD_CORE.xml</Value>
 			<Value name = "transportation_CWF">../input/gcamdata/xml/transportation_UCD_CWF_high.xml</Value>
 			<Value name = "carbon_content">../input/gcamdata/xml/Ccoef.xml</Value>
@@ -77,13 +77,11 @@
 			<Value name = "land5">../input/gcamdata/xml/land_input_5_IRR_MGMT.xml</Value>
 			<Value name = "protected_land2">../input/gcamdata/xml/protected_land_input_2.xml</Value>
 			<Value name = "protected_land3">../input/gcamdata/xml/protected_land_input_3.xml</Value>
-
- <!--Ag Demand Updates-->
-			<Value name = "demand_nonfood">../input/gcamdata/xml/ag_an_demand_input_NonFood.xml</Value>
+            <!--Ag Demand Updates-->
+			<!--Value name = "demand_nonfood">../input/gcamdata/xml/ag_an_demand_input.xml</Value-->
+			<Value name = "demand_nonfood">../input/gcamdata/xml/ag_an_demand_input_NonFood.xml</Value-->
 		    <Value name = "demand_food">../input/gcamdata/xml/ag_an_demand_input_FoodExoDiet_SSP1_CWFMed_RegHet.xml</Value>
-
 			<Value name = "demand_paper">../input/gcamdata/xml/paper_delete_ag_demand.xml</Value>
-
 			<Value name = "bio_trade">../input/gcamdata/xml/bio_trade.xml</Value>
 			<Value name = "ag_trade">../input/gcamdata/xml/ag_trade.xml</Value>
 			<Value name = "ag_storage">../input/gcamdata/xml/ag_storage.xml</Value>
@@ -122,7 +120,6 @@
 	
     		<Value name = "bio_feedstock_limit">../input/gcamdata/xml/liquids_limits.xml</Value>
 			<Value name = "bio_elec_w_feed_limit">../input/gcamdata/xml/water_elec_liquids_limits.xml</Value>
-			<Value name = "bio_neg_emiss_budget">../input/gcamdata/xml/negative_emissions_budget.xml</Value>
 			<Value name = "bio_externality">../input/gcamdata/xml/bio_externality.xml</Value>
             <Value name = "gas_trade">../input/gcamdata/xml/gas_trade.xml</Value>
 
@@ -139,9 +136,10 @@
 			<Value name = "ag_water_biochar">../input/gcamdata/xml/biochar_ag_water_input_IRR_MGMT.xml</Value>
 			<Value name = "co_products_biochar">../input/gcamdata/xml/biochar_co_products.xml</Value>
 
+
+			<Value name = "solver">../input/solution/cal_broyden_config.xml</Value>
 			<Value name = "dac">../input/gcamdata/xml/dac_ssp1.xml</Value>
 			<Value name = "weathering">../input/gcamdata/xml/Weathering.xml</Value>
-			<Value name = "solver">../input/solution/cal_broyden_config.xml</Value>
 
 		    <!--additional CWF files-->
 
@@ -196,12 +194,10 @@
 			<Value name = "fossil-power-retirement">../input/gcamdata/xml/accelerated_fossil_retirement.xml</Value>
 			<Value name = "cement CCS">../input/gcamdata/xml/cement_all_CCS_post2030.xml</Value>
 
-			<Value name = "gas_trade">../input/gcamdata/xml/gas_trade.xml</Value>
-			
             <!--Policy-->
-			<Value name = "constraint">../input/extra/developments_working/extra_CO2_constraint_tests/constraint_CO2_test_20_yq.xml</Value>
-			<Value name="region_nz_adjust">../input/extra/proportional_tax_rate_cwf.xml</Value>
-			<Value name="luc_price">../input/extra/nature_cdr/global_uct_cwf.xml</Value>
+			<Value name = "constraint">../input/extra/developments_working/extra_CO2_constraint_tests/constraint_CO2_test.xml</Value>
+			<Value name="region_nz_adjust">../input/extra/proportional_tax_rate_cwf_1.xml</Value>
+			<Value name="luc_price">../input/extra/nature_cdr/global_uct_cwf_1.xml</Value>
 
 			<Value name="bio_neg_emiss_budget">../input/gcamdata/xml/negative_emissions_budget.xml</Value>
 		    <Value name="bio_neg_emiss_budget">../input/gcamdata/xml/negative_emissions_budget_min_price.xml</Value>

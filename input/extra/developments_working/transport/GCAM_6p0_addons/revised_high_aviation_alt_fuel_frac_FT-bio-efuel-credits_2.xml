@@ -3,11 +3,6 @@
         <global-technology-database>
             <location-info sector-name="refining" subsector-name="biomass liquids">
                 <technology name="FT biofuels">
-                    <period year="2020">
-                        <res-secondary-output name="FT-bio-efuel-credits">
-                            <output-ratio>1</output-ratio>
-                        </res-secondary-output>
-                    </period>
                     <period year="2025">
                         <res-secondary-output name="FT-bio-efuel-credits">
                             <output-ratio>1</output-ratio>
@@ -90,11 +85,6 @@
                     </period>
                 </technology>
                 <technology name="FT biofuels CCS level 1">
-                    <period year="2020">
-                        <res-secondary-output name="FT-bio-efuel-credits">
-                            <output-ratio>1</output-ratio>
-                        </res-secondary-output>
-                    </period>
                     <period year="2025">
                         <res-secondary-output name="FT-bio-efuel-credits">
                             <output-ratio>1</output-ratio>
@@ -177,11 +167,7 @@
                     </period>
                 </technology>
                 <technology name="FT biofuels CCS level 2">
-                    <period year="2020">
-                        <res-secondary-output name="FT-bio-efuel-credits">
-                            <output-ratio>1</output-ratio>
-                        </res-secondary-output>
-                    </period>
+
                     <period year="2025">
                         <res-secondary-output name="FT-bio-efuel-credits">
                             <output-ratio>1</output-ratio>
@@ -266,11 +252,7 @@
             </location-info>
             <location-info sector-name="refining" subsector-name="dac to liquids">
                 <technology name="industrial hydrogen">
-                    <period year="2020">
-                        <res-secondary-output name="FT-bio-efuel-credits">
-                            <output-ratio>1</output-ratio>
-                        </res-secondary-output>
-                    </period>
+
                     <period year="2025">
                         <res-secondary-output name="FT-bio-efuel-credits">
                             <output-ratio>1</output-ratio>
@@ -353,11 +335,7 @@
                     </period>
                 </technology>
                 <technology name="on-site electrolysis (grid electricity)">
-                    <period year="2020">
-                        <res-secondary-output name="FT-bio-efuel-credits">
-                            <output-ratio>1</output-ratio>
-                        </res-secondary-output>
-                    </period>
+
                     <period year="2025">
                         <res-secondary-output name="FT-bio-efuel-credits">
                             <output-ratio>1</output-ratio>
@@ -440,11 +418,7 @@
                     </period>
                 </technology>
                 <technology name="on-site electrolysis (solar)">
-                    <period year="2020">
-                        <res-secondary-output name="FT-bio-efuel-credits">
-                            <output-ratio>1</output-ratio>
-                        </res-secondary-output>
-                    </period>
+
                     <period year="2025">
                         <res-secondary-output name="FT-bio-efuel-credits">
                             <output-ratio>1</output-ratio>
@@ -527,11 +501,7 @@
                     </period>
                 </technology>
                 <technology name="on-site electrolysis (wind)">
-                    <period year="2020">
-                        <res-secondary-output name="FT-bio-efuel-credits">
-                            <output-ratio>1</output-ratio>
-                        </res-secondary-output>
-                    </period>
+
                     <period year="2025">
                         <res-secondary-output name="FT-bio-efuel-credits">
                             <output-ratio>1</output-ratio>
@@ -619,12 +589,7 @@
             <supplysector name="trn_pass">
                 <tranSubsector name="Domestic Aviation">
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>USA</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -727,12 +692,7 @@
             <supplysector name="trn_aviation_intl">
                 <tranSubsector name="International Aviation">
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>USA</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -835,7 +795,7 @@
             <policy-portfolio-standard name="FT-bio-efuel-credits">
                 <market>global</market>
                 <policyType>RES</policyType>
-                <constraint year="2020">1</constraint>
+
                 <price-unit>1975$/GJ</price-unit>
                 <output-unit>EJ</output-unit>
                 <constraint year="2025">1</constraint>
@@ -860,12 +820,7 @@
             <supplysector name="trn_pass">
                 <tranSubsector name="Domestic Aviation">
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Africa_Eastern</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -968,12 +923,7 @@
             <supplysector name="trn_aviation_intl">
                 <tranSubsector name="International Aviation">
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Africa_Eastern</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -1076,7 +1026,7 @@
             <policy-portfolio-standard name="FT-bio-efuel-credits">
                 <market>global</market>
                 <policyType>RES</policyType>
-                <constraint year="2020">1</constraint>
+
                 <price-unit>1975$/GJ</price-unit>
                 <output-unit>EJ</output-unit>
                 <constraint year="2025">1</constraint>
@@ -1101,12 +1051,7 @@
             <supplysector name="trn_pass">
                 <tranSubsector name="Domestic Aviation">
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Africa_Northern</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -1209,12 +1154,7 @@
             <supplysector name="trn_aviation_intl">
                 <tranSubsector name="International Aviation">
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Africa_Northern</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -1317,7 +1257,7 @@
             <policy-portfolio-standard name="FT-bio-efuel-credits">
                 <market>global</market>
                 <policyType>RES</policyType>
-                <constraint year="2020">1</constraint>
+
                 <price-unit>1975$/GJ</price-unit>
                 <output-unit>EJ</output-unit>
                 <constraint year="2025">1</constraint>
@@ -1342,12 +1282,7 @@
             <supplysector name="trn_pass">
                 <tranSubsector name="Domestic Aviation">
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Africa_Southern</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -1450,12 +1385,7 @@
             <supplysector name="trn_aviation_intl">
                 <tranSubsector name="International Aviation">
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Africa_Southern</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -1558,7 +1488,7 @@
             <policy-portfolio-standard name="FT-bio-efuel-credits">
                 <market>global</market>
                 <policyType>RES</policyType>
-                <constraint year="2020">1</constraint>
+
                 <price-unit>1975$/GJ</price-unit>
                 <output-unit>EJ</output-unit>
                 <constraint year="2025">1</constraint>
@@ -1583,12 +1513,7 @@
             <supplysector name="trn_pass">
                 <tranSubsector name="Domestic Aviation">
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Africa_Western</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -1691,12 +1616,7 @@
             <supplysector name="trn_aviation_intl">
                 <tranSubsector name="International Aviation">
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Africa_Western</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -1799,7 +1719,7 @@
             <policy-portfolio-standard name="FT-bio-efuel-credits">
                 <market>global</market>
                 <policyType>RES</policyType>
-                <constraint year="2020">1</constraint>
+
                 <price-unit>1975$/GJ</price-unit>
                 <output-unit>EJ</output-unit>
                 <constraint year="2025">1</constraint>
@@ -1824,12 +1744,7 @@
             <supplysector name="trn_pass">
                 <tranSubsector name="Domestic Aviation">
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Australia_NZ</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -1932,12 +1847,7 @@
             <supplysector name="trn_aviation_intl">
                 <tranSubsector name="International Aviation">
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Australia_NZ</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -2040,7 +1950,7 @@
             <policy-portfolio-standard name="FT-bio-efuel-credits">
                 <market>global</market>
                 <policyType>RES</policyType>
-                <constraint year="2020">1</constraint>
+
                 <price-unit>1975$/GJ</price-unit>
                 <output-unit>EJ</output-unit>
                 <constraint year="2025">1</constraint>
@@ -2065,12 +1975,7 @@
             <supplysector name="trn_pass">
                 <tranSubsector name="Domestic Aviation">
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Brazil</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -2173,12 +2078,7 @@
             <supplysector name="trn_aviation_intl">
                 <tranSubsector name="International Aviation">
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Brazil</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -2281,7 +2181,7 @@
             <policy-portfolio-standard name="FT-bio-efuel-credits">
                 <market>global</market>
                 <policyType>RES</policyType>
-                <constraint year="2020">1</constraint>
+
                 <price-unit>1975$/GJ</price-unit>
                 <output-unit>EJ</output-unit>
                 <constraint year="2025">1</constraint>
@@ -2306,12 +2206,7 @@
             <supplysector name="trn_pass">
                 <tranSubsector name="Domestic Aviation">
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Canada</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -2414,12 +2309,7 @@
             <supplysector name="trn_aviation_intl">
                 <tranSubsector name="International Aviation">
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Canada</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -2522,7 +2412,7 @@
             <policy-portfolio-standard name="FT-bio-efuel-credits">
                 <market>global</market>
                 <policyType>RES</policyType>
-                <constraint year="2020">1</constraint>
+
                 <price-unit>1975$/GJ</price-unit>
                 <output-unit>EJ</output-unit>
                 <constraint year="2025">1</constraint>
@@ -2547,12 +2437,7 @@
             <supplysector name="trn_pass">
                 <tranSubsector name="Domestic Aviation">
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Central America and Caribbean</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -2655,12 +2540,7 @@
             <supplysector name="trn_aviation_intl">
                 <tranSubsector name="International Aviation">
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Central America and Caribbean</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -2763,7 +2643,7 @@
             <policy-portfolio-standard name="FT-bio-efuel-credits">
                 <market>global</market>
                 <policyType>RES</policyType>
-                <constraint year="2020">1</constraint>
+
                 <price-unit>1975$/GJ</price-unit>
                 <output-unit>EJ</output-unit>
                 <constraint year="2025">1</constraint>
@@ -2788,12 +2668,7 @@
             <supplysector name="trn_pass">
                 <tranSubsector name="Domestic Aviation">
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Central Asia</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -2896,12 +2771,7 @@
             <supplysector name="trn_aviation_intl">
                 <tranSubsector name="International Aviation">
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Central Asia</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -3004,7 +2874,7 @@
             <policy-portfolio-standard name="FT-bio-efuel-credits">
                 <market>global</market>
                 <policyType>RES</policyType>
-                <constraint year="2020">1</constraint>
+
                 <price-unit>1975$/GJ</price-unit>
                 <output-unit>EJ</output-unit>
                 <constraint year="2025">1</constraint>
@@ -3029,12 +2899,7 @@
             <supplysector name="trn_pass">
                 <tranSubsector name="Domestic Aviation">
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>China</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -3137,12 +3002,7 @@
             <supplysector name="trn_aviation_intl">
                 <tranSubsector name="International Aviation">
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>China</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -3245,7 +3105,7 @@
             <policy-portfolio-standard name="FT-bio-efuel-credits">
                 <market>global</market>
                 <policyType>RES</policyType>
-                <constraint year="2020">1</constraint>
+
                 <price-unit>1975$/GJ</price-unit>
                 <output-unit>EJ</output-unit>
                 <constraint year="2025">1</constraint>
@@ -3270,12 +3130,7 @@
             <supplysector name="trn_pass">
                 <tranSubsector name="Domestic Aviation">
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>EU-12</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -3378,12 +3233,7 @@
             <supplysector name="trn_aviation_intl">
                 <tranSubsector name="International Aviation">
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>EU-12</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -3486,7 +3336,7 @@
             <policy-portfolio-standard name="FT-bio-efuel-credits">
                 <market>global</market>
                 <policyType>RES</policyType>
-                <constraint year="2020">1</constraint>
+
                 <price-unit>1975$/GJ</price-unit>
                 <output-unit>EJ</output-unit>
                 <constraint year="2025">1</constraint>
@@ -3511,12 +3361,7 @@
             <supplysector name="trn_pass">
                 <tranSubsector name="Domestic Aviation">
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>EU-15</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -3619,12 +3464,7 @@
             <supplysector name="trn_aviation_intl">
                 <tranSubsector name="International Aviation">
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>EU-15</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -3727,7 +3567,7 @@
             <policy-portfolio-standard name="FT-bio-efuel-credits">
                 <market>global</market>
                 <policyType>RES</policyType>
-                <constraint year="2020">1</constraint>
+
                 <price-unit>1975$/GJ</price-unit>
                 <output-unit>EJ</output-unit>
                 <constraint year="2025">1</constraint>
@@ -3748,110 +3588,105 @@
                 <constraint year="2100">1</constraint>
             </policy-portfolio-standard>
         </region>
-        <region name="Europe_Eastern">
+        <region name="Ukraine">
             <supplysector name="trn_pass">
                 <tranSubsector name="Domestic Aviation">
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Europe_Eastern</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2030">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>28134.43800082</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2035">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>86101.6711503975</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2040">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>145710.520408365</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2045">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>205319.369666332</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2050">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>264928.2189243</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2055">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>264928.2189243</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2060">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>264928.2189243</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2065">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>264928.2189243</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2070">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>264928.2189243</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2075">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>264928.2189243</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2080">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>264928.2189243</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2085">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>264928.2189243</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2090">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>264928.2189243</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2095">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>264928.2189243</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2100">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>264928.2189243</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                     </stub-technology>
@@ -3860,106 +3695,101 @@
             <supplysector name="trn_aviation_intl">
                 <tranSubsector name="International Aviation">
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Europe_Eastern</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2030">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>31545.78123469</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2035">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>96541.6480552225</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2040">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>163378.173631915</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2045">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>230214.699208607</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2050">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>297051.2247853</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2055">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>297051.2247853</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2060">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>297051.2247853</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2065">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>297051.2247853</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2070">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>297051.2247853</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2075">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>297051.2247853</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2080">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>297051.2247853</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2085">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>297051.2247853</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2090">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>297051.2247853</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2095">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>297051.2247853</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2100">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>297051.2247853</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                     </stub-technology>
@@ -3968,7 +3798,7 @@
             <policy-portfolio-standard name="FT-bio-efuel-credits">
                 <market>global</market>
                 <policyType>RES</policyType>
-                <constraint year="2020">1</constraint>
+
                 <price-unit>1975$/GJ</price-unit>
                 <output-unit>EJ</output-unit>
                 <constraint year="2025">1</constraint>
@@ -3993,12 +3823,7 @@
             <supplysector name="trn_pass">
                 <tranSubsector name="Domestic Aviation">
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Europe_Non_EU</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -4101,12 +3926,7 @@
             <supplysector name="trn_aviation_intl">
                 <tranSubsector name="International Aviation">
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Europe_Non_EU</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -4209,7 +4029,7 @@
             <policy-portfolio-standard name="FT-bio-efuel-credits">
                 <market>global</market>
                 <policyType>RES</policyType>
-                <constraint year="2020">1</constraint>
+
                 <price-unit>1975$/GJ</price-unit>
                 <output-unit>EJ</output-unit>
                 <constraint year="2025">1</constraint>
@@ -4234,12 +4054,7 @@
             <supplysector name="trn_pass">
                 <tranSubsector name="Domestic Aviation">
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>European Free Trade Association</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -4342,12 +4157,7 @@
             <supplysector name="trn_aviation_intl">
                 <tranSubsector name="International Aviation">
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>European Free Trade Association</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -4450,7 +4260,7 @@
             <policy-portfolio-standard name="FT-bio-efuel-credits">
                 <market>global</market>
                 <policyType>RES</policyType>
-                <constraint year="2020">1</constraint>
+
                 <price-unit>1975$/GJ</price-unit>
                 <output-unit>EJ</output-unit>
                 <constraint year="2025">1</constraint>
@@ -4475,12 +4285,7 @@
             <supplysector name="trn_pass">
                 <tranSubsector name="Domestic Aviation">
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>India</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -4583,12 +4388,7 @@
             <supplysector name="trn_aviation_intl">
                 <tranSubsector name="International Aviation">
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>India</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -4691,7 +4491,7 @@
             <policy-portfolio-standard name="FT-bio-efuel-credits">
                 <market>global</market>
                 <policyType>RES</policyType>
-                <constraint year="2020">1</constraint>
+
                 <price-unit>1975$/GJ</price-unit>
                 <output-unit>EJ</output-unit>
                 <constraint year="2025">1</constraint>
@@ -4716,12 +4516,7 @@
             <supplysector name="trn_pass">
                 <tranSubsector name="Domestic Aviation">
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Indonesia</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -4824,12 +4619,7 @@
             <supplysector name="trn_aviation_intl">
                 <tranSubsector name="International Aviation">
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Indonesia</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -4932,7 +4722,7 @@
             <policy-portfolio-standard name="FT-bio-efuel-credits">
                 <market>global</market>
                 <policyType>RES</policyType>
-                <constraint year="2020">1</constraint>
+
                 <price-unit>1975$/GJ</price-unit>
                 <output-unit>EJ</output-unit>
                 <constraint year="2025">1</constraint>
@@ -4957,12 +4747,7 @@
             <supplysector name="trn_pass">
                 <tranSubsector name="Domestic Aviation">
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Japan</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -5065,12 +4850,7 @@
             <supplysector name="trn_aviation_intl">
                 <tranSubsector name="International Aviation">
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Japan</market-name>
-                            </minicam-energy-input>
-                        </period>
+                        
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -5173,7 +4953,7 @@
             <policy-portfolio-standard name="FT-bio-efuel-credits">
                 <market>global</market>
                 <policyType>RES</policyType>
-                <constraint year="2020">1</constraint>
+
                 <price-unit>1975$/GJ</price-unit>
                 <output-unit>EJ</output-unit>
                 <constraint year="2025">1</constraint>
@@ -5198,12 +4978,7 @@
             <supplysector name="trn_pass">
                 <tranSubsector name="Domestic Aviation">
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Mexico</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -5306,12 +5081,7 @@
             <supplysector name="trn_aviation_intl">
                 <tranSubsector name="International Aviation">
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Mexico</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -5414,7 +5184,7 @@
             <policy-portfolio-standard name="FT-bio-efuel-credits">
                 <market>global</market>
                 <policyType>RES</policyType>
-                <constraint year="2020">1</constraint>
+
                 <price-unit>1975$/GJ</price-unit>
                 <output-unit>EJ</output-unit>
                 <constraint year="2025">1</constraint>
@@ -5439,12 +5209,7 @@
             <supplysector name="trn_pass">
                 <tranSubsector name="Domestic Aviation">
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Middle East</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -5547,12 +5312,7 @@
             <supplysector name="trn_aviation_intl">
                 <tranSubsector name="International Aviation">
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Middle East</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -5655,7 +5415,7 @@
             <policy-portfolio-standard name="FT-bio-efuel-credits">
                 <market>global</market>
                 <policyType>RES</policyType>
-                <constraint year="2020">1</constraint>
+
                 <price-unit>1975$/GJ</price-unit>
                 <output-unit>EJ</output-unit>
                 <constraint year="2025">1</constraint>
@@ -5680,12 +5440,7 @@
             <supplysector name="trn_pass">
                 <tranSubsector name="Domestic Aviation">
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Pakistan</market-name>
-                            </minicam-energy-input>
-                        </period>
+   
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -5788,12 +5543,7 @@
             <supplysector name="trn_aviation_intl">
                 <tranSubsector name="International Aviation">
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Pakistan</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -5896,7 +5646,7 @@
             <policy-portfolio-standard name="FT-bio-efuel-credits">
                 <market>global</market>
                 <policyType>RES</policyType>
-                <constraint year="2020">1</constraint>
+
                 <price-unit>1975$/GJ</price-unit>
                 <output-unit>EJ</output-unit>
                 <constraint year="2025">1</constraint>
@@ -5921,12 +5671,7 @@
             <supplysector name="trn_pass">
                 <tranSubsector name="Domestic Aviation">
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Russia</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -6029,12 +5774,7 @@
             <supplysector name="trn_aviation_intl">
                 <tranSubsector name="International Aviation">
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Russia</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -6137,7 +5877,7 @@
             <policy-portfolio-standard name="FT-bio-efuel-credits">
                 <market>global</market>
                 <policyType>RES</policyType>
-                <constraint year="2020">1</constraint>
+
                 <price-unit>1975$/GJ</price-unit>
                 <output-unit>EJ</output-unit>
                 <constraint year="2025">1</constraint>
@@ -6162,12 +5902,7 @@
             <supplysector name="trn_pass">
                 <tranSubsector name="Domestic Aviation">
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>South Africa</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -6270,12 +6005,7 @@
             <supplysector name="trn_aviation_intl">
                 <tranSubsector name="International Aviation">
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>South Africa</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -6378,7 +6108,7 @@
             <policy-portfolio-standard name="FT-bio-efuel-credits">
                 <market>global</market>
                 <policyType>RES</policyType>
-                <constraint year="2020">1</constraint>
+
                 <price-unit>1975$/GJ</price-unit>
                 <output-unit>EJ</output-unit>
                 <constraint year="2025">1</constraint>
@@ -6403,12 +6133,7 @@
             <supplysector name="trn_pass">
                 <tranSubsector name="Domestic Aviation">
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>South America_Northern</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -6511,12 +6236,7 @@
             <supplysector name="trn_aviation_intl">
                 <tranSubsector name="International Aviation">
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>South America_Northern</market-name>
-                            </minicam-energy-input>
-                        </period>
+      
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -6619,7 +6339,7 @@
             <policy-portfolio-standard name="FT-bio-efuel-credits">
                 <market>global</market>
                 <policyType>RES</policyType>
-                <constraint year="2020">1</constraint>
+
                 <price-unit>1975$/GJ</price-unit>
                 <output-unit>EJ</output-unit>
                 <constraint year="2025">1</constraint>
@@ -6644,12 +6364,7 @@
             <supplysector name="trn_pass">
                 <tranSubsector name="Domestic Aviation">
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>South America_Southern</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -6752,12 +6467,7 @@
             <supplysector name="trn_aviation_intl">
                 <tranSubsector name="International Aviation">
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>South America_Southern</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -6860,7 +6570,7 @@
             <policy-portfolio-standard name="FT-bio-efuel-credits">
                 <market>global</market>
                 <policyType>RES</policyType>
-                <constraint year="2020">1</constraint>
+
                 <price-unit>1975$/GJ</price-unit>
                 <output-unit>EJ</output-unit>
                 <constraint year="2025">1</constraint>
@@ -6885,12 +6595,6 @@
             <supplysector name="trn_pass">
                 <tranSubsector name="Domestic Aviation">
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>South Asia</market-name>
-                            </minicam-energy-input>
-                        </period>
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -6993,12 +6697,6 @@
             <supplysector name="trn_aviation_intl">
                 <tranSubsector name="International Aviation">
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>South Asia</market-name>
-                            </minicam-energy-input>
-                        </period>
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -7101,7 +6799,7 @@
             <policy-portfolio-standard name="FT-bio-efuel-credits">
                 <market>global</market>
                 <policyType>RES</policyType>
-                <constraint year="2020">1</constraint>
+
                 <price-unit>1975$/GJ</price-unit>
                 <output-unit>EJ</output-unit>
                 <constraint year="2025">1</constraint>
@@ -7126,12 +6824,7 @@
             <supplysector name="trn_pass">
                 <tranSubsector name="Domestic Aviation">
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>South Korea</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -7234,12 +6927,7 @@
             <supplysector name="trn_aviation_intl">
                 <tranSubsector name="International Aviation">
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>South Korea</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -7342,7 +7030,7 @@
             <policy-portfolio-standard name="FT-bio-efuel-credits">
                 <market>global</market>
                 <policyType>RES</policyType>
-                <constraint year="2020">1</constraint>
+
                 <price-unit>1975$/GJ</price-unit>
                 <output-unit>EJ</output-unit>
                 <constraint year="2025">1</constraint>
@@ -7367,12 +7055,7 @@
             <supplysector name="trn_pass">
                 <tranSubsector name="Domestic Aviation">
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Southeast Asia</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -7475,12 +7158,7 @@
             <supplysector name="trn_aviation_intl">
                 <tranSubsector name="International Aviation">
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Southeast Asia</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -7583,7 +7261,7 @@
             <policy-portfolio-standard name="FT-bio-efuel-credits">
                 <market>global</market>
                 <policyType>RES</policyType>
-                <constraint year="2020">1</constraint>
+
                 <price-unit>1975$/GJ</price-unit>
                 <output-unit>EJ</output-unit>
                 <constraint year="2025">1</constraint>
@@ -7608,12 +7286,7 @@
             <supplysector name="trn_pass">
                 <tranSubsector name="Domestic Aviation">
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Taiwan</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -7716,12 +7389,7 @@
             <supplysector name="trn_aviation_intl">
                 <tranSubsector name="International Aviation">
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Taiwan</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -7824,7 +7492,7 @@
             <policy-portfolio-standard name="FT-bio-efuel-credits">
                 <market>global</market>
                 <policyType>RES</policyType>
-                <constraint year="2020">1</constraint>
+
                 <price-unit>1975$/GJ</price-unit>
                 <output-unit>EJ</output-unit>
                 <constraint year="2025">1</constraint>
@@ -7849,12 +7517,7 @@
             <supplysector name="trn_pass">
                 <tranSubsector name="Domestic Aviation">
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Argentina</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -7957,12 +7620,7 @@
             <supplysector name="trn_aviation_intl">
                 <tranSubsector name="International Aviation">
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Argentina</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -8065,7 +7723,7 @@
             <policy-portfolio-standard name="FT-bio-efuel-credits">
                 <market>global</market>
                 <policyType>RES</policyType>
-                <constraint year="2020">1</constraint>
+
                 <price-unit>1975$/GJ</price-unit>
                 <output-unit>EJ</output-unit>
                 <constraint year="2025">1</constraint>
@@ -8090,12 +7748,7 @@
             <supplysector name="trn_pass">
                 <tranSubsector name="Domestic Aviation">
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Colombia</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -8198,12 +7851,7 @@
             <supplysector name="trn_aviation_intl">
                 <tranSubsector name="International Aviation">
                     <stub-technology name="Liquids">
-                        <period year="2020">
-                            <minicam-energy-input name="FT-bio-efuel-credits">
-                                <coefficient>0</coefficient>
-                                <market-name>Colombia</market-name>
-                            </minicam-energy-input>
-                        </period>
+
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
@@ -8306,7 +7954,7 @@
             <policy-portfolio-standard name="FT-bio-efuel-credits">
                 <market>global</market>
                 <policyType>RES</policyType>
-                <constraint year="2020">1</constraint>
+
                 <price-unit>1975$/GJ</price-unit>
                 <output-unit>EJ</output-unit>
                 <constraint year="2025">1</constraint>

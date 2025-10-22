@@ -5,8 +5,8 @@
 # ----------
 supplysector,subsector,apply.to,from.year,to.year,to.value,interpolation.function,scenario
 other industrial energy use,hydrogen,share-weight,start-year,final-calibration-year,,fixed,cwf_low_H2
-other industrial energy use,hydrogen,share-weight,final-calibration-year,2020,,linear,cwf_low_H2
-other industrial energy use,hydrogen,share-weight,2020,2100,,fixed,cwf_low_H2
+other industrial energy use,hydrogen,share-weight,final-calibration-year,2025,,linear,cwf_low_H2
+other industrial energy use,hydrogen,share-weight,2025,2100,,fixed,cwf_low_H2
 other industrial energy use,hydrogen,share-weight,start-year,final-calibration-year,,fixed,cwf_high_H2
-other industrial energy use,hydrogen,share-weight,final-calibration-year,2020,,linear,cwf_high_H2
-other industrial energy use,hydrogen,share-weight,2020,2100,,fixed,cwf_high_H2
+other industrial energy use,hydrogen,share-weight,final-calibration-year,2025,,linear,cwf_high_H2
+other industrial energy use,hydrogen,share-weight,2025,2100,,fixed,cwf_high_H2

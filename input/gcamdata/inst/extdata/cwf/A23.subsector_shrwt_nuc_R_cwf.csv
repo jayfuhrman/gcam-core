@@ -4,7 +4,7 @@
 # Source: CWF assumptions
 # Column types: cccnn
 # ----------
-region,supplysector,subsector,2020,2100
+region,supplysector,subsector,2025,2100
 Africa_Eastern,electricity,nuclear,0.25,0
 Africa_Northern,electricity,nuclear,0.25,0
 Africa_Southern,electricity,nuclear,0.25,0
@@ -19,7 +19,6 @@ China,electricity,nuclear,0.25,0
 Colombia,electricity,nuclear,0.25,0
 EU-12,electricity,nuclear,0.25,0
 EU-15,electricity,nuclear,0.25,0
-Europe_Eastern,electricity,nuclear,0.25,0
 Europe_Non_EU,electricity,nuclear,0.25,0
 European Free Trade Association,electricity,nuclear,0.25,0
 India,electricity,nuclear,0.25,0
@@ -36,4 +35,5 @@ South Asia,electricity,nuclear,0.25,0
 South Korea,electricity,nuclear,0.25,0
 Southeast Asia,electricity,nuclear,0.25,0
 Taiwan,electricity,nuclear,0.25,0
+Ukraine,electricity,nuclear,0.25,0
 USA,electricity,nuclear,0.25,0

@@ -308,7 +308,7 @@
                 <constraint year="2100">546.8</constraint>
             </policy-portfolio-standard>
         </region>
-        <region name="Europe_Eastern">
+        <region name="Ukraine">
             <policy-portfolio-standard name="ew_ceiling">
                 <market>global</market>
                 <policyType>tax</policyType>

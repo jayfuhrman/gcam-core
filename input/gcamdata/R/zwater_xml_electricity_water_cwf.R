@@ -1,6 +1,6 @@
 # Copyright 2019 Battelle Memorial Institute; see the LICENSE file.
 
-#' module_water_electricity_water_xml
+#' module_water_electricity_water_cwf_xml
 #'
 #' Construct XML data structure for \code{electricity_water.xml}.
 #'
@@ -91,7 +91,7 @@ module_water_electricity_water_cwf_xml <- function(command, ...) {
 
     L2233.GlobalTechSCurve_elec_cool %>%
       bind_rows(L2233.GlobalTechSCurve_elec_cool %>%
-                  mutate(year = 2020)) -> L2233.GlobalTechSCurve_elec_cool
+                  mutate(year = MODEL_FUTURE_YEARS[1])) -> L2233.GlobalTechSCurve_elec_cool
 
     L2233.GlobalTechLifetime_elec_cool <- L2233.GlobalTechLifetime_elec_cool %>%
       filter(sector.name %in% c('elec_coal (conv pul)',

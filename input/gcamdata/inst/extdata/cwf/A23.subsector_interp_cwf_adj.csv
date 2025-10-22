@@ -5,14 +5,11 @@
 # Column types: ccccic
 # ----------
 supplysector,subsector,apply.to,from.year,to.year,interpolation.function
-electricity,nuclear,share-weight,final-calibration-year,2020,linear
-electricity,nuclear,share-weight,2020,2100,linear
-electricity,wind,share-weight,final-calibration-year,2020,linear
-electricity,wind,share-weight,2020,2025,linear
+electricity,nuclear,share-weight,final-calibration-year,2025,linear
+electricity,nuclear,share-weight,2025,2100,linear
+electricity,wind,share-weight,final-calibration-year,2025,linear
 electricity,wind,share-weight,2025,2100,fixed
-electricity,solar,share-weight,final-calibration-year,2020,linear
-electricity,solar,share-weight,2020,2025,linear
+electricity,solar,share-weight,final-calibration-year,2025,linear
 electricity,solar,share-weight,2025,2100,fixed
-electricity,geothermal,share-weight,final-calibration-year,2020,linear
-electricity,geothermal,share-weight,2020,2025,linear
+electricity,geothermal,share-weight,final-calibration-year,2025,linear
 electricity,geothermal,share-weight,2025,2100,fixed

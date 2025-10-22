@@ -4,21 +4,21 @@
 # Column types: cccccccc
 # ----------
 supplysector,subsector,technology,apply.to,from.year,to.year,interpolation.function,scenario
-agricultural energy use,stationary,hydrogen,share-weight,final-calibration-year,2020,fixed,cwf_high_H2
-agricultural energy use,stationary,hydrogen,share-weight,2020,2050,linear,cwf_high_H2
+agricultural energy use,stationary,hydrogen,share-weight,final-calibration-year,2025,fixed,cwf_high_H2
+agricultural energy use,stationary,hydrogen,share-weight,2025,2050,linear,cwf_high_H2
 agricultural energy use,stationary,hydrogen,share-weight,2050,end-year,linear,cwf_high_H2
-construction energy use,stationary,hydrogen,share-weight,final-calibration-year,2020,fixed,cwf_high_H2
-construction energy use,stationary,hydrogen,share-weight,2020,2050,linear,cwf_high_H2
+construction energy use,stationary,hydrogen,share-weight,final-calibration-year,2025,fixed,cwf_high_H2
+construction energy use,stationary,hydrogen,share-weight,2025,2050,linear,cwf_high_H2
 construction energy use,stationary,hydrogen,share-weight,2050,end-year,linear,cwf_high_H2
-mining energy use,stationary,hydrogen,share-weight,final-calibration-year,2020,fixed,cwf_high_H2
-mining energy use,stationary,hydrogen,share-weight,2020,2050,linear,cwf_high_H2
+mining energy use,stationary,hydrogen,share-weight,final-calibration-year,2025,fixed,cwf_high_H2
+mining energy use,stationary,hydrogen,share-weight,2025,2050,linear,cwf_high_H2
 mining energy use,stationary,hydrogen,share-weight,2050,end-year,linear,cwf_high_H2
-agricultural energy use,stationary,hydrogen,share-weight,final-calibration-year,2020,fixed,cwf_low_H2
-agricultural energy use,stationary,hydrogen,share-weight,2020,2050,linear,cwf_low_H2
+agricultural energy use,stationary,hydrogen,share-weight,final-calibration-year,2025,fixed,cwf_low_H2
+agricultural energy use,stationary,hydrogen,share-weight,2025,2050,linear,cwf_low_H2
 agricultural energy use,stationary,hydrogen,share-weight,2050,end-year,linear,cwf_low_H2
-construction energy use,stationary,hydrogen,share-weight,final-calibration-year,2020,fixed,cwf_low_H2
-construction energy use,stationary,hydrogen,share-weight,2020,2050,linear,cwf_low_H2
+construction energy use,stationary,hydrogen,share-weight,final-calibration-year,2025,fixed,cwf_low_H2
+construction energy use,stationary,hydrogen,share-weight,2025,2050,linear,cwf_low_H2
 construction energy use,stationary,hydrogen,share-weight,2050,end-year,linear,cwf_low_H2
-mining energy use,stationary,hydrogen,share-weight,final-calibration-year,2020,fixed,cwf_low_H2
-mining energy use,stationary,hydrogen,share-weight,2020,2050,linear,cwf_low_H2
+mining energy use,stationary,hydrogen,share-weight,final-calibration-year,2025,fixed,cwf_low_H2
+mining energy use,stationary,hydrogen,share-weight,2025,2050,linear,cwf_low_H2
 mining energy use,stationary,hydrogen,share-weight,2050,end-year,linear,cwf_low_H2
