@@ -288,7 +288,8 @@ if(command == driver.DECLARE_INPUTS) {
 
 
   #First, Set average number of years to move through each stage based on lead times for that mineral (S&P data)
-
+  # From https://www.spglobal.com/market-intelligence/en/news-insights/research/from-6years-to-18years-the-increasing-trend-of-mine-lead-times
+  # April 2025 version.
     Li_capacity_data_AvgYears <- All_capacity_data_stages %>%
       filter(Mineral == "Li") %>%
       # assign the average number of years for each stage to be available
@@ -302,8 +303,8 @@ if(command == driver.DECLARE_INPUTS) {
       filter(Mineral == "Ni") %>%
       # assign the average number of years for each stage to be available
       mutate(AvgYears = case_when(StageNum == 1 ~ 0,
-                                  StageNum == 2 ~ 4.1,
-                                  StageNum == 3 ~ 2.5,
+                                  StageNum == 2 ~ 3.8,
+                                  StageNum == 3 ~ 3.2,
                                   StageNum == 4 ~ 4.4,
                                   StageNum == 5 ~ 7.2))
 
@@ -311,10 +312,10 @@ if(command == driver.DECLARE_INPUTS) {
       filter(Mineral == "Cu") %>%
       # assign the average number of years for each stage to be available
       mutate(AvgYears = case_when(StageNum == 1 ~ 0,
-                                  StageNum == 2 ~ 2.4,
-                                  StageNum == 3 ~ 1.6,
-                                  StageNum == 4 ~ 4.9,
-                                  StageNum == 5 ~ 7.9))
+                                  StageNum == 2 ~ 2.3,
+                                  StageNum == 3 ~ 2.6,
+                                  StageNum == 4 ~ 4.6,
+                                  StageNum == 5 ~ 7.6))
 
     All_capacity_data_AvgYears <- bind_rows(Cu_capacity_data_AvgYears,
                                Ni_capacity_data_AvgYears,
