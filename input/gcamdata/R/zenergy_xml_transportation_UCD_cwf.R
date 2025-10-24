@@ -181,7 +181,7 @@ module_energy_transportation_cwf_xml <- function(command, ...) {
                        "L254.StubTranTechCoef",
                        "L254.PerCapitaBased_trn",
                        "L254.PriceElasticity_trn",
-                       "L254.IncomeElasticity_trn",
+                       "L254.IncomeElasticity_trn_cwf",
                        "L254.StubTranTechInterpTo_ICEPhaseout")  %>%
         assign(xml_name, ., envir = curr_env)
 
