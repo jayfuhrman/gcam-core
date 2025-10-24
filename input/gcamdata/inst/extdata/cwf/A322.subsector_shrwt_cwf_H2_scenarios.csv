@@ -5,6 +5,8 @@
 # ----------
 supplysector,subsector,year.fillout,year,share.weight,scenario
 ammonia,hydrogen,start-year,,0,cwf_low_H2
+ammonia,hydrogen,2025,,0,cwf_low_H2
 ammonia,hydrogen,end-year,,1,cwf_low_H2
 ammonia,hydrogen,start-year,,0,cwf_high_H2
+ammonia,hydrogen,2025,,0,cwf_high_H2
 ammonia,hydrogen,2030,,1,cwf_high_H2

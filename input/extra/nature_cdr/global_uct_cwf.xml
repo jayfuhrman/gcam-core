@@ -6,7 +6,7 @@
                 <market>USA</market>
                 <linked-policy>CO2</linked-policy>
                 <price-adjust year="1975" fillout="1">0.0</price-adjust>
-                <price-adjust year="2025" fillout="1">0.005</price-adjust>
+                
                 <price-adjust year="2030" fillout="1">0.01</price-adjust>
                 <price-adjust year="2035" fillout="1">0.02</price-adjust>
                 <price-adjust year="2040" fillout="1">0.03</price-adjust>
@@ -34,7 +34,7 @@
                 <market>Africa_Eastern</market>
                 <linked-policy>CO2</linked-policy>
                  <price-adjust year="1975" fillout="1">0.0</price-adjust>
-                <price-adjust year="2025" fillout="1">0.005</price-adjust>
+                
                 <price-adjust year="2030" fillout="1">0.01</price-adjust>
                 <price-adjust year="2035" fillout="1">0.02</price-adjust>
                 <price-adjust year="2040" fillout="1">0.03</price-adjust>
@@ -62,7 +62,7 @@
                 <market>Africa_Northern</market>
                 <linked-policy>CO2</linked-policy>
                 <price-adjust year="1975" fillout="1">0.0</price-adjust>
-                <price-adjust year="2025" fillout="1">0.005</price-adjust>
+                
                 <price-adjust year="2030" fillout="1">0.01</price-adjust>
                 <price-adjust year="2035" fillout="1">0.02</price-adjust>
                 <price-adjust year="2040" fillout="1">0.03</price-adjust>
@@ -90,7 +90,7 @@
                 <market>Africa_Southern</market>
                 <linked-policy>CO2</linked-policy>
                  <price-adjust year="1975" fillout="1">0.0</price-adjust>
-                <price-adjust year="2025" fillout="1">0.005</price-adjust>
+                
                 <price-adjust year="2030" fillout="1">0.01</price-adjust>
                 <price-adjust year="2035" fillout="1">0.02</price-adjust>
                 <price-adjust year="2040" fillout="1">0.03</price-adjust>
@@ -118,7 +118,7 @@
                 <market>Africa_Western</market>
                 <linked-policy>CO2</linked-policy>
                 <price-adjust year="1975" fillout="1">0.0</price-adjust>
-                <price-adjust year="2025" fillout="1">0.005</price-adjust>
+                
                 <price-adjust year="2030" fillout="1">0.01</price-adjust>
                 <price-adjust year="2035" fillout="1">0.02</price-adjust>
                 <price-adjust year="2040" fillout="1">0.03</price-adjust>
@@ -146,7 +146,7 @@
                 <market>Australia_NZ</market>
                 <linked-policy>CO2</linked-policy>
                  <price-adjust year="1975" fillout="1">0.0</price-adjust>
-                <price-adjust year="2025" fillout="1">0.005</price-adjust>
+                
                 <price-adjust year="2030" fillout="1">0.01</price-adjust>
                 <price-adjust year="2035" fillout="1">0.02</price-adjust>
                 <price-adjust year="2040" fillout="1">0.03</price-adjust>
@@ -174,7 +174,7 @@
                 <market>Brazil</market>
                 <linked-policy>CO2</linked-policy>
                 <price-adjust year="1975" fillout="1">0.0</price-adjust>
-                <price-adjust year="2025" fillout="1">0.005</price-adjust>
+                
                 <price-adjust year="2030" fillout="1">0.01</price-adjust>
                 <price-adjust year="2035" fillout="1">0.02</price-adjust>
                 <price-adjust year="2040" fillout="1">0.03</price-adjust>
@@ -202,7 +202,7 @@
                 <market>Canada</market>
                 <linked-policy>CO2</linked-policy>
                 <price-adjust year="1975" fillout="1">0.0</price-adjust>
-                <price-adjust year="2025" fillout="1">0.005</price-adjust>
+                
                 <price-adjust year="2030" fillout="1">0.01</price-adjust>
                 <price-adjust year="2035" fillout="1">0.02</price-adjust>
                 <price-adjust year="2040" fillout="1">0.03</price-adjust>
@@ -230,7 +230,7 @@
                 <market>Central America and Caribbean</market>
                 <linked-policy>CO2</linked-policy>
                 <price-adjust year="1975" fillout="1">0.0</price-adjust>
-                <price-adjust year="2025" fillout="1">0.005</price-adjust>
+                
                 <price-adjust year="2030" fillout="1">0.01</price-adjust>
                 <price-adjust year="2035" fillout="1">0.02</price-adjust>
                 <price-adjust year="2040" fillout="1">0.03</price-adjust>
@@ -258,7 +258,7 @@
                 <market>Central Asia</market>
                 <linked-policy>CO2</linked-policy>
                <price-adjust year="1975" fillout="1">0.0</price-adjust>
-                <price-adjust year="2025" fillout="1">0.005</price-adjust>
+                
                 <price-adjust year="2030" fillout="1">0.01</price-adjust>
                 <price-adjust year="2035" fillout="1">0.02</price-adjust>
                 <price-adjust year="2040" fillout="1">0.03</price-adjust>
@@ -286,7 +286,7 @@
                 <market>China</market>
                 <linked-policy>CO2</linked-policy>
                 <price-adjust year="1975" fillout="1">0.0</price-adjust>
-                <price-adjust year="2025" fillout="1">0.005</price-adjust>
+                
                 <price-adjust year="2030" fillout="1">0.01</price-adjust>
                 <price-adjust year="2035" fillout="1">0.02</price-adjust>
                 <price-adjust year="2040" fillout="1">0.03</price-adjust>
@@ -314,7 +314,7 @@
                 <market>EU-12</market>
                 <linked-policy>CO2</linked-policy>
                 <price-adjust year="1975" fillout="1">0.0</price-adjust>
-                <price-adjust year="2025" fillout="1">0.005</price-adjust>
+                
                 <price-adjust year="2030" fillout="1">0.01</price-adjust>
                 <price-adjust year="2035" fillout="1">0.02</price-adjust>
                 <price-adjust year="2040" fillout="1">0.03</price-adjust>
@@ -342,7 +342,7 @@
                 <market>EU-15</market>
                 <linked-policy>CO2</linked-policy>
                 <price-adjust year="1975" fillout="1">0.0</price-adjust>
-                <price-adjust year="2025" fillout="1">0.005</price-adjust>
+                
                 <price-adjust year="2030" fillout="1">0.01</price-adjust>
                 <price-adjust year="2035" fillout="1">0.02</price-adjust>
                 <price-adjust year="2040" fillout="1">0.03</price-adjust>
@@ -370,7 +370,7 @@
                 <market>Ukraine</market>
                 <linked-policy>CO2</linked-policy>
                 <price-adjust year="1975" fillout="1">0.0</price-adjust>
-                <price-adjust year="2025" fillout="1">0.005</price-adjust>
+                
                 <price-adjust year="2030" fillout="1">0.01</price-adjust>
                 <price-adjust year="2035" fillout="1">0.02</price-adjust>
                 <price-adjust year="2040" fillout="1">0.03</price-adjust>
@@ -398,7 +398,7 @@
                 <market>Europe_Non_EU</market>
                 <linked-policy>CO2</linked-policy>
                 <price-adjust year="1975" fillout="1">0.0</price-adjust>
-                <price-adjust year="2025" fillout="1">0.005</price-adjust>
+                
                 <price-adjust year="2030" fillout="1">0.01</price-adjust>
                 <price-adjust year="2035" fillout="1">0.02</price-adjust>
                 <price-adjust year="2040" fillout="1">0.03</price-adjust>
@@ -426,7 +426,7 @@
                 <market>European Free Trade Association</market>
                 <linked-policy>CO2</linked-policy>
                 <price-adjust year="1975" fillout="1">0.0</price-adjust>
-                <price-adjust year="2025" fillout="1">0.005</price-adjust>
+                
                 <price-adjust year="2030" fillout="1">0.01</price-adjust>
                 <price-adjust year="2035" fillout="1">0.02</price-adjust>
                 <price-adjust year="2040" fillout="1">0.03</price-adjust>
@@ -454,7 +454,7 @@
                 <market>India</market>
                 <linked-policy>CO2</linked-policy>
                  <price-adjust year="1975" fillout="1">0.0</price-adjust>
-                <price-adjust year="2025" fillout="1">0.005</price-adjust>
+                
                 <price-adjust year="2030" fillout="1">0.01</price-adjust>
                 <price-adjust year="2035" fillout="1">0.02</price-adjust>
                 <price-adjust year="2040" fillout="1">0.03</price-adjust>
@@ -482,7 +482,7 @@
                 <market>Indonesia</market>
                 <linked-policy>CO2</linked-policy>
                 <price-adjust year="1975" fillout="1">0.0</price-adjust>
-                <price-adjust year="2025" fillout="1">0.005</price-adjust>
+                
                 <price-adjust year="2030" fillout="1">0.01</price-adjust>
                 <price-adjust year="2035" fillout="1">0.02</price-adjust>
                 <price-adjust year="2040" fillout="1">0.03</price-adjust>
@@ -510,7 +510,7 @@
                 <market>Japan</market>
                 <linked-policy>CO2</linked-policy>
                 <price-adjust year="1975" fillout="1">0.0</price-adjust>
-                <price-adjust year="2025" fillout="1">0.005</price-adjust>
+                
                 <price-adjust year="2030" fillout="1">0.01</price-adjust>
                 <price-adjust year="2035" fillout="1">0.02</price-adjust>
                 <price-adjust year="2040" fillout="1">0.03</price-adjust>
@@ -538,7 +538,7 @@
                 <market>Mexico</market>
                 <linked-policy>CO2</linked-policy>
                 <price-adjust year="1975" fillout="1">0.0</price-adjust>
-                <price-adjust year="2025" fillout="1">0.005</price-adjust>
+                
                 <price-adjust year="2030" fillout="1">0.01</price-adjust>
                 <price-adjust year="2035" fillout="1">0.02</price-adjust>
                 <price-adjust year="2040" fillout="1">0.03</price-adjust>
@@ -566,7 +566,7 @@
                 <market>Middle East</market>
                 <linked-policy>CO2</linked-policy>
                <price-adjust year="1975" fillout="1">0.0</price-adjust>
-                <price-adjust year="2025" fillout="1">0.005</price-adjust>
+                
                 <price-adjust year="2030" fillout="1">0.01</price-adjust>
                 <price-adjust year="2035" fillout="1">0.02</price-adjust>
                 <price-adjust year="2040" fillout="1">0.03</price-adjust>
@@ -594,7 +594,7 @@
                 <market>Pakistan</market>
                 <linked-policy>CO2</linked-policy>
                <price-adjust year="1975" fillout="1">0.0</price-adjust>
-                <price-adjust year="2025" fillout="1">0.005</price-adjust>
+                
                 <price-adjust year="2030" fillout="1">0.01</price-adjust>
                 <price-adjust year="2035" fillout="1">0.02</price-adjust>
                 <price-adjust year="2040" fillout="1">0.03</price-adjust>
@@ -622,7 +622,7 @@
                 <market>Russia</market>
                 <linked-policy>CO2</linked-policy>
                 <price-adjust year="1975" fillout="1">0.0</price-adjust>
-                <price-adjust year="2025" fillout="1">0.005</price-adjust>
+                
                 <price-adjust year="2030" fillout="1">0.01</price-adjust>
                 <price-adjust year="2035" fillout="1">0.02</price-adjust>
                 <price-adjust year="2040" fillout="1">0.03</price-adjust>
@@ -650,7 +650,7 @@
                 <market>South Africa</market>
                 <linked-policy>CO2</linked-policy>
                 <price-adjust year="1975" fillout="1">0.0</price-adjust>
-                <price-adjust year="2025" fillout="1">0.005</price-adjust>
+                
                 <price-adjust year="2030" fillout="1">0.01</price-adjust>
                 <price-adjust year="2035" fillout="1">0.02</price-adjust>
                 <price-adjust year="2040" fillout="1">0.03</price-adjust>
@@ -678,7 +678,7 @@
                 <market>South America_Northern</market>
                 <linked-policy>CO2</linked-policy>
                 <price-adjust year="1975" fillout="1">0.0</price-adjust>
-                <price-adjust year="2025" fillout="1">0.005</price-adjust>
+                
                 <price-adjust year="2030" fillout="1">0.01</price-adjust>
                 <price-adjust year="2035" fillout="1">0.02</price-adjust>
                 <price-adjust year="2040" fillout="1">0.03</price-adjust>
@@ -706,7 +706,7 @@
                 <market>South America_Southern</market>
                 <linked-policy>CO2</linked-policy>
                 <price-adjust year="1975" fillout="1">0.0</price-adjust>
-                <price-adjust year="2025" fillout="1">0.005</price-adjust>
+                
                 <price-adjust year="2030" fillout="1">0.01</price-adjust>
                 <price-adjust year="2035" fillout="1">0.02</price-adjust>
                 <price-adjust year="2040" fillout="1">0.03</price-adjust>
@@ -734,7 +734,7 @@
                 <market>South Asia</market>
                 <linked-policy>CO2</linked-policy>
                 <price-adjust year="1975" fillout="1">0.0</price-adjust>
-                <price-adjust year="2025" fillout="1">0.005</price-adjust>
+                
                 <price-adjust year="2030" fillout="1">0.01</price-adjust>
                 <price-adjust year="2035" fillout="1">0.02</price-adjust>
                 <price-adjust year="2040" fillout="1">0.03</price-adjust>
@@ -762,7 +762,7 @@
                 <market>South Korea</market>
                 <linked-policy>CO2</linked-policy>
                 <price-adjust year="1975" fillout="1">0.0</price-adjust>
-                <price-adjust year="2025" fillout="1">0.005</price-adjust>
+                
                 <price-adjust year="2030" fillout="1">0.01</price-adjust>
                 <price-adjust year="2035" fillout="1">0.02</price-adjust>
                 <price-adjust year="2040" fillout="1">0.03</price-adjust>
@@ -790,7 +790,7 @@
                 <market>Southeast Asia</market>
                 <linked-policy>CO2</linked-policy>
                 <price-adjust year="1975" fillout="1">0.0</price-adjust>
-                <price-adjust year="2025" fillout="1">0.005</price-adjust>
+                
                 <price-adjust year="2030" fillout="1">0.01</price-adjust>
                 <price-adjust year="2035" fillout="1">0.02</price-adjust>
                 <price-adjust year="2040" fillout="1">0.03</price-adjust>
@@ -818,7 +818,7 @@
                 <market>Taiwan</market>
                 <linked-policy>CO2</linked-policy>
                 <price-adjust year="1975" fillout="1">0.0</price-adjust>
-                <price-adjust year="2025" fillout="1">0.005</price-adjust>
+                
                 <price-adjust year="2030" fillout="1">0.01</price-adjust>
                 <price-adjust year="2035" fillout="1">0.02</price-adjust>
                 <price-adjust year="2040" fillout="1">0.03</price-adjust>
@@ -846,7 +846,7 @@
                 <market>Argentina</market>
                 <linked-policy>CO2</linked-policy>
                  <price-adjust year="1975" fillout="1">0.0</price-adjust>
-                <price-adjust year="2025" fillout="1">0.005</price-adjust>
+                
                 <price-adjust year="2030" fillout="1">0.01</price-adjust>
                 <price-adjust year="2035" fillout="1">0.02</price-adjust>
                 <price-adjust year="2040" fillout="1">0.03</price-adjust>
@@ -874,7 +874,7 @@
                 <market>Colombia</market>
                 <linked-policy>CO2</linked-policy>
                 <price-adjust year="1975" fillout="1">0.0</price-adjust>
-                <price-adjust year="2025" fillout="1">0.005</price-adjust>
+                
                 <price-adjust year="2030" fillout="1">0.01</price-adjust>
                 <price-adjust year="2035" fillout="1">0.02</price-adjust>
                 <price-adjust year="2040" fillout="1">0.03</price-adjust>
