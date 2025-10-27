@@ -16,6 +16,7 @@ module_water_electricity_water_cwf_xml <- function(command, ...) {
              "L223.SubsectorInterp_elec_cwf",
              "L223.SubsectorShrwt_nuc_cwf",
              "L223.SubsectorInterpTo_elec_cwf",
+             "L223.DeleteSubsectorInterp_elec_cwf",
              "L2233.GlobalIntTechBackup_elec_cool",
              "L2233.GlobalTechShrwt_elecPassthru_no_new_unabated_fossil",
              "L223.GlobalTechInterp_elec_no_new_unabated_fossil",
@@ -35,6 +36,7 @@ module_water_electricity_water_cwf_xml <- function(command, ...) {
     L2233.GlobalTechLifetime_elec_cool <- get_data(all_data, "L2233.GlobalTechLifetime_elec_cool") #
     L2233.GlobalTechSCurve_elec_cool <- get_data(all_data, "L2233.GlobalTechSCurve_elec_cool") #
     L223.SubsectorShrwt_renew_cwf <- get_data(all_data, "L223.SubsectorShrwt_renew_cwf")
+    L223.DeleteSubsectorInterp_elec_cwf <- get_data(all_data, "L223.DeleteSubsectorInterp_elec_cwf") #
     L223.SubsectorInterp_elec_cwf <- get_data(all_data, "L223.SubsectorInterp_elec_cwf")
     L223.SubsectorShrwt_nuc_cwf <- get_data(all_data, "L223.SubsectorShrwt_nuc_cwf")
     L223.SubsectorInterpTo_elec_cwf <- get_data(all_data, "L223.SubsectorInterpTo_elec_cwf")
@@ -51,11 +53,13 @@ module_water_electricity_water_cwf_xml <- function(command, ...) {
 
     # Produce outputs
     create_xml("electricity_water_cwf.xml") %>%
-      add_xml_data(L223.SubsectorInterp_elec_cwf, "SubsectorInterp") %>% # CWF version
+      add_xml_data(L223.DeleteSubsectorInterp_elec_cwf, "DeleteSubsectorInterpTo") %>% #First delete interp rules for the changes we want to change for CWF
+      #add_xml_data(L223.SubsectorShrwt_elec_cwf, "SubsectorShrwt") %>% # ...then add CWF version
       add_xml_data(L223.SubsectorInterpTo_elec_cwf, "SubsectorInterpTo") %>% # CWF version
-      add_xml_data(L223.SubsectorShrwt_nuc_cwf, "SubsectorShrwt") %>% # CWF version
-      add_xml_data(L223.SubsectorShrwt_renew_cwf, "SubsectorShrwt") %>% # CWF version
-      add_precursors("L223.SubsectorInterp_elec_cwf",
+      #add_xml_data(L223.SubsectorShrwt_nuc_cwf, "SubsectorShrwt") %>% # CWF version
+      #add_xml_data(L223.SubsectorShrwt_renew_cwf, "SubsectorShrwt") %>% # CWF version
+      add_precursors("L223.DeleteSubsectorInterp_elec_cwf",
+                     "L223.SubsectorInterp_elec_cwf",
                      "L223.SubsectorInterpTo_elec_cwf",
                      "L223.SubsectorShrwt_nuc_cwf",
                      "L223.SubsectorShrwt_renew_cwf") ->

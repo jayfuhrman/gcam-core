@@ -2,102 +2,199 @@
 # Title: Region-specific renewable electric subsector shareweights by region to adjust for CWF case. The years in this file need to match with years in the shareweight interpolation files (e.g. A23.subsector_interp_cwf_adj.csv)
 # Units: Unitless share-weights
 # Source: None (assumptions)
-# Column types: cccn
+# Column types: cccnnncc
 # ----------
-region,supplysector,subsector,2025
-Africa_Eastern,electricity,geothermal,1
-Africa_Northern,electricity,geothermal,1
-Africa_Southern,electricity,geothermal,1
-Africa_Western,electricity,geothermal,1
-Argentina,electricity,geothermal,1
-Australia_NZ,electricity,geothermal,1
-Brazil,electricity,geothermal,1
-Canada,electricity,geothermal,1
-Central America and Caribbean,electricity,geothermal,1
-Central Asia,electricity,geothermal,1
-China,electricity,geothermal,1
-Colombia,electricity,geothermal,1
-EU-12,electricity,geothermal,1
-EU-15,electricity,geothermal,1
-Ukraine,electricity,geothermal,1
-Europe_Non_EU,electricity,geothermal,1
-European Free Trade Association,electricity,geothermal,1
-India,electricity,geothermal,1
-Indonesia,electricity,geothermal,1
-Japan,electricity,geothermal,1
-Mexico,electricity,geothermal,1
-Middle East,electricity,geothermal,1
-Pakistan,electricity,geothermal,1
-Russia,electricity,geothermal,1
-South Africa,electricity,geothermal,1
-South America_Northern,electricity,geothermal,1
-South America_Southern,electricity,geothermal,1
-South Asia,electricity,geothermal,1
-South Korea,electricity,geothermal,0
-Southeast Asia,electricity,geothermal,1
-Taiwan,electricity,geothermal,1
-USA,electricity,geothermal,1
-Africa_Eastern,electricity,solar,1
-Africa_Northern,electricity,solar,1
-Africa_Southern,electricity,solar,1
-Africa_Western,electricity,solar,1
-Argentina,electricity,solar,1
-Australia_NZ,electricity,solar,1
-Brazil,electricity,solar,1
-Canada,electricity,solar,1
-Central America and Caribbean,electricity,solar,1
-Central Asia,electricity,solar,1
-China,electricity,solar,1
-Colombia,electricity,solar,1
-EU-12,electricity,solar,1
-EU-15,electricity,solar,1
-Ukraine,electricity,solar,1
-Europe_Non_EU,electricity,solar,1
-European Free Trade Association,electricity,solar,1
-India,electricity,solar,1
-Indonesia,electricity,solar,1
-Japan,electricity,solar,1
-Mexico,electricity,solar,1
-Middle East,electricity,solar,1
-Pakistan,electricity,solar,1
-Russia,electricity,solar,1
-South Africa,electricity,solar,1
-South America_Northern,electricity,solar,1
-South America_Southern,electricity,solar,1
-South Asia,electricity,solar,1
-South Korea,electricity,solar,1
-Southeast Asia,electricity,solar,1
-Taiwan,electricity,solar,1
-USA,electricity,solar,1
-Africa_Eastern,electricity,wind,1
-Africa_Northern,electricity,wind,1
-Africa_Southern,electricity,wind,1
-Africa_Western,electricity,wind,1
-Argentina,electricity,wind,1
-Australia_NZ,electricity,wind,1
-Brazil,electricity,wind,1
-Canada,electricity,wind,1
-Central America and Caribbean,electricity,wind,1
-Central Asia,electricity,wind,1
-China,electricity,wind,1
-Colombia,electricity,wind,1
-EU-12,electricity,wind,1
-EU-15,electricity,wind,1
-Ukraine,electricity,wind,1
-Europe_Non_EU,electricity,wind,1
-European Free Trade Association,electricity,wind,1
-India,electricity,wind,1
-Indonesia,electricity,wind,1
-Japan,electricity,wind,1
-Mexico,electricity,wind,1
-Middle East,electricity,wind,1
-Pakistan,electricity,wind,1
-Russia,electricity,wind,1
-South Africa,electricity,wind,1
-South America_Northern,electricity,wind,1
-South America_Southern,electricity,wind,1
-South Asia,electricity,wind,1
-South Korea,electricity,wind,1
-Southeast Asia,electricity,wind,1
-Taiwan,electricity,wind,1
-USA,electricity,wind,1
+region,supplysector,subsector,to.value,from.year,to.year,apply.to,interpolation.function
+Africa_Eastern,electricity,geothermal,1,2021,2025,share.weight,linear
+Africa_Northern,electricity,geothermal,1,2021,2025,share.weight,linear
+Africa_Southern,electricity,geothermal,1,2021,2025,share.weight,linear
+Africa_Western,electricity,geothermal,1,2021,2025,share.weight,linear
+Argentina,electricity,geothermal,1,2021,2025,share.weight,linear
+Australia_NZ,electricity,geothermal,1,2021,2025,share.weight,linear
+Brazil,electricity,geothermal,1,2021,2025,share.weight,linear
+Canada,electricity,geothermal,1,2021,2025,share.weight,linear
+Central America and Caribbean,electricity,geothermal,1,2021,2025,share.weight,linear
+Central Asia,electricity,geothermal,1,2021,2025,share.weight,linear
+China,electricity,geothermal,1,2021,2025,share.weight,linear
+Colombia,electricity,geothermal,1,2021,2025,share.weight,linear
+EU-12,electricity,geothermal,1,2021,2025,share.weight,linear
+EU-15,electricity,geothermal,1,2021,2025,share.weight,linear
+Ukraine,electricity,geothermal,1,2021,2025,share.weight,linear
+Europe_Non_EU,electricity,geothermal,1,2021,2025,share.weight,linear
+European Free Trade Association,electricity,geothermal,1,2021,2025,share.weight,linear
+India,electricity,geothermal,1,2021,2025,share.weight,linear
+Indonesia,electricity,geothermal,1,2021,2025,share.weight,linear
+Japan,electricity,geothermal,1,2021,2025,share.weight,linear
+Mexico,electricity,geothermal,1,2021,2025,share.weight,linear
+Middle East,electricity,geothermal,1,2021,2025,share.weight,linear
+Pakistan,electricity,geothermal,1,2021,2025,share.weight,linear
+Russia,electricity,geothermal,1,2021,2025,share.weight,linear
+South Africa,electricity,geothermal,1,2021,2025,share.weight,linear
+South America_Northern,electricity,geothermal,1,2021,2025,share.weight,linear
+South America_Southern,electricity,geothermal,1,2021,2025,share.weight,linear
+South Asia,electricity,geothermal,1,2021,2025,share.weight,linear
+South Korea,electricity,geothermal,0,2021,2025,share.weight,linear
+Southeast Asia,electricity,geothermal,1,2021,2025,share.weight,linear
+Taiwan,electricity,geothermal,1,2021,2025,share.weight,linear
+USA,electricity,geothermal,1,2021,2025,share.weight,linear
+Africa_Eastern,electricity,solar,1,2021,2025,share.weight,linear
+Africa_Northern,electricity,solar,1,2021,2025,share.weight,linear
+Africa_Southern,electricity,solar,1,2021,2025,share.weight,linear
+Africa_Western,electricity,solar,1,2021,2025,share.weight,linear
+Argentina,electricity,solar,1,2021,2025,share.weight,linear
+Australia_NZ,electricity,solar,1,2021,2025,share.weight,linear
+Brazil,electricity,solar,1,2021,2025,share.weight,linear
+Canada,electricity,solar,1,2021,2025,share.weight,linear
+Central America and Caribbean,electricity,solar,1,2021,2025,share.weight,linear
+Central Asia,electricity,solar,1,2021,2025,share.weight,linear
+China,electricity,solar,1,2021,2025,share.weight,linear
+Colombia,electricity,solar,1,2021,2025,share.weight,linear
+EU-12,electricity,solar,1,2021,2025,share.weight,linear
+EU-15,electricity,solar,1,2021,2025,share.weight,linear
+Ukraine,electricity,solar,1,2021,2025,share.weight,linear
+Europe_Non_EU,electricity,solar,1,2021,2025,share.weight,linear
+European Free Trade Association,electricity,solar,1,2021,2025,share.weight,linear
+India,electricity,solar,1,2021,2025,share.weight,linear
+Indonesia,electricity,solar,1,2021,2025,share.weight,linear
+Japan,electricity,solar,1,2021,2025,share.weight,linear
+Mexico,electricity,solar,1,2021,2025,share.weight,linear
+Middle East,electricity,solar,1,2021,2025,share.weight,linear
+Pakistan,electricity,solar,1,2021,2025,share.weight,linear
+Russia,electricity,solar,1,2021,2025,share.weight,linear
+South Africa,electricity,solar,1,2021,2025,share.weight,linear
+South America_Northern,electricity,solar,1,2021,2025,share.weight,linear
+South America_Southern,electricity,solar,1,2021,2025,share.weight,linear
+South Asia,electricity,solar,1,2021,2025,share.weight,linear
+South Korea,electricity,solar,1,2021,2025,share.weight,linear
+Southeast Asia,electricity,solar,1,2021,2025,share.weight,linear
+Taiwan,electricity,solar,1,2021,2025,share.weight,linear
+USA,electricity,solar,1,2021,2025,share.weight,linear
+Africa_Eastern,electricity,wind,1,2021,2025,share.weight,linear
+Africa_Northern,electricity,wind,1,2021,2025,share.weight,linear
+Africa_Southern,electricity,wind,1,2021,2025,share.weight,linear
+Africa_Western,electricity,wind,1,2021,2025,share.weight,linear
+Argentina,electricity,wind,1,2021,2025,share.weight,linear
+Australia_NZ,electricity,wind,1,2021,2025,share.weight,linear
+Brazil,electricity,wind,1,2021,2025,share.weight,linear
+Canada,electricity,wind,1,2021,2025,share.weight,linear
+Central America and Caribbean,electricity,wind,1,2021,2025,share.weight,linear
+Central Asia,electricity,wind,1,2021,2025,share.weight,linear
+China,electricity,wind,1,2021,2025,share.weight,linear
+Colombia,electricity,wind,1,2021,2025,share.weight,linear
+EU-12,electricity,wind,1,2021,2025,share.weight,linear
+EU-15,electricity,wind,1,2021,2025,share.weight,linear
+Ukraine,electricity,wind,1,2021,2025,share.weight,linear
+Europe_Non_EU,electricity,wind,1,2021,2025,share.weight,linear
+European Free Trade Association,electricity,wind,1,2021,2025,share.weight,linear
+India,electricity,wind,1,2021,2025,share.weight,linear
+Indonesia,electricity,wind,1,2021,2025,share.weight,linear
+Japan,electricity,wind,1,2021,2025,share.weight,linear
+Mexico,electricity,wind,1,2021,2025,share.weight,linear
+Middle East,electricity,wind,1,2021,2025,share.weight,linear
+Pakistan,electricity,wind,1,2021,2025,share.weight,linear
+Russia,electricity,wind,1,2021,2025,share.weight,linear
+South Africa,electricity,wind,1,2021,2025,share.weight,linear
+South America_Northern,electricity,wind,1,2021,2025,share.weight,linear
+South America_Southern,electricity,wind,1,2021,2025,share.weight,linear
+South Asia,electricity,wind,1,2021,2025,share.weight,linear
+South Korea,electricity,wind,1,2021,2025,share.weight,linear
+Southeast Asia,electricity,wind,1,2021,2025,share.weight,linear
+Taiwan,electricity,wind,1,2021,2025,share.weight,linear
+USA,electricity,wind,1,2021,2025,share.weight,linear
+Africa_Eastern,electricity,geothermal,1,2025,2100,share.weight,linear
+Africa_Northern,electricity,geothermal,1,2025,2100,share.weight,linear
+Africa_Southern,electricity,geothermal,1,2025,2100,share.weight,linear
+Africa_Western,electricity,geothermal,1,2025,2100,share.weight,linear
+Argentina,electricity,geothermal,1,2025,2100,share.weight,linear
+Australia_NZ,electricity,geothermal,1,2025,2100,share.weight,linear
+Brazil,electricity,geothermal,1,2025,2100,share.weight,linear
+Canada,electricity,geothermal,1,2025,2100,share.weight,linear
+Central America and Caribbean,electricity,geothermal,1,2025,2100,share.weight,linear
+Central Asia,electricity,geothermal,1,2025,2100,share.weight,linear
+China,electricity,geothermal,1,2025,2100,share.weight,linear
+Colombia,electricity,geothermal,1,2025,2100,share.weight,linear
+EU-12,electricity,geothermal,1,2025,2100,share.weight,linear
+EU-15,electricity,geothermal,1,2025,2100,share.weight,linear
+Ukraine,electricity,geothermal,1,2025,2100,share.weight,linear
+Europe_Non_EU,electricity,geothermal,1,2025,2100,share.weight,linear
+European Free Trade Association,electricity,geothermal,1,2025,2100,share.weight,linear
+India,electricity,geothermal,1,2025,2100,share.weight,linear
+Indonesia,electricity,geothermal,1,2025,2100,share.weight,linear
+Japan,electricity,geothermal,1,2025,2100,share.weight,linear
+Mexico,electricity,geothermal,1,2025,2100,share.weight,linear
+Middle East,electricity,geothermal,1,2025,2100,share.weight,linear
+Pakistan,electricity,geothermal,1,2025,2100,share.weight,linear
+Russia,electricity,geothermal,1,2025,2100,share.weight,linear
+South Africa,electricity,geothermal,1,2025,2100,share.weight,linear
+South America_Northern,electricity,geothermal,1,2025,2100,share.weight,linear
+South America_Southern,electricity,geothermal,1,2025,2100,share.weight,linear
+South Asia,electricity,geothermal,1,2025,2100,share.weight,linear
+South Korea,electricity,geothermal,0,2025,2100,share.weight,linear
+Southeast Asia,electricity,geothermal,1,2025,2100,share.weight,linear
+Taiwan,electricity,geothermal,1,2025,2100,share.weight,linear
+USA,electricity,geothermal,1,2025,2100,share.weight,linear
+Africa_Eastern,electricity,solar,1,2025,2100,share.weight,linear
+Africa_Northern,electricity,solar,1,2025,2100,share.weight,linear
+Africa_Southern,electricity,solar,1,2025,2100,share.weight,linear
+Africa_Western,electricity,solar,1,2025,2100,share.weight,linear
+Argentina,electricity,solar,1,2025,2100,share.weight,linear
+Australia_NZ,electricity,solar,1,2025,2100,share.weight,linear
+Brazil,electricity,solar,1,2025,2100,share.weight,linear
+Canada,electricity,solar,1,2025,2100,share.weight,linear
+Central America and Caribbean,electricity,solar,1,2025,2100,share.weight,linear
+Central Asia,electricity,solar,1,2025,2100,share.weight,linear
+China,electricity,solar,1,2025,2100,share.weight,linear
+Colombia,electricity,solar,1,2025,2100,share.weight,linear
+EU-12,electricity,solar,1,2025,2100,share.weight,linear
+EU-15,electricity,solar,1,2025,2100,share.weight,linear
+Ukraine,electricity,solar,1,2025,2100,share.weight,linear
+Europe_Non_EU,electricity,solar,1,2025,2100,share.weight,linear
+European Free Trade Association,electricity,solar,1,2025,2100,share.weight,linear
+India,electricity,solar,1,2025,2100,share.weight,linear
+Indonesia,electricity,solar,1,2025,2100,share.weight,linear
+Japan,electricity,solar,1,2025,2100,share.weight,linear
+Mexico,electricity,solar,1,2025,2100,share.weight,linear
+Middle East,electricity,solar,1,2025,2100,share.weight,linear
+Pakistan,electricity,solar,1,2025,2100,share.weight,linear
+Russia,electricity,solar,1,2025,2100,share.weight,linear
+South Africa,electricity,solar,1,2025,2100,share.weight,linear
+South America_Northern,electricity,solar,1,2025,2100,share.weight,linear
+South America_Southern,electricity,solar,1,2025,2100,share.weight,linear
+South Asia,electricity,solar,1,2025,2100,share.weight,linear
+South Korea,electricity,solar,1,2025,2100,share.weight,linear
+Southeast Asia,electricity,solar,1,2025,2100,share.weight,linear
+Taiwan,electricity,solar,1,2025,2100,share.weight,linear
+USA,electricity,solar,1,2025,2100,share.weight,linear
+Africa_Eastern,electricity,wind,1,2025,2100,share.weight,linear
+Africa_Northern,electricity,wind,1,2025,2100,share.weight,linear
+Africa_Southern,electricity,wind,1,2025,2100,share.weight,linear
+Africa_Western,electricity,wind,1,2025,2100,share.weight,linear
+Argentina,electricity,wind,1,2025,2100,share.weight,linear
+Australia_NZ,electricity,wind,1,2025,2100,share.weight,linear
+Brazil,electricity,wind,1,2025,2100,share.weight,linear
+Canada,electricity,wind,1,2025,2100,share.weight,linear
+Central America and Caribbean,electricity,wind,1,2025,2100,share.weight,linear
+Central Asia,electricity,wind,1,2025,2100,share.weight,linear
+China,electricity,wind,1,2025,2100,share.weight,linear
+Colombia,electricity,wind,1,2025,2100,share.weight,linear
+EU-12,electricity,wind,1,2025,2100,share.weight,linear
+EU-15,electricity,wind,1,2025,2100,share.weight,linear
+Ukraine,electricity,wind,1,2025,2100,share.weight,linear
+Europe_Non_EU,electricity,wind,1,2025,2100,share.weight,linear
+European Free Trade Association,electricity,wind,1,2025,2100,share.weight,linear
+India,electricity,wind,1,2025,2100,share.weight,linear
+Indonesia,electricity,wind,1,2025,2100,share.weight,linear
+Japan,electricity,wind,1,2025,2100,share.weight,linear
+Mexico,electricity,wind,1,2025,2100,share.weight,linear
+Middle East,electricity,wind,1,2025,2100,share.weight,linear
+Pakistan,electricity,wind,1,2025,2100,share.weight,linear
+Russia,electricity,wind,1,2025,2100,share.weight,linear
+South Africa,electricity,wind,1,2025,2100,share.weight,linear
+South America_Northern,electricity,wind,1,2025,2100,share.weight,linear
+South America_Southern,electricity,wind,1,2025,2100,share.weight,linear
+South Asia,electricity,wind,1,2025,2100,share.weight,linear
+South Korea,electricity,wind,1,2025,2100,share.weight,linear
+Southeast Asia,electricity,wind,1,2025,2100,share.weight,linear
+Taiwan,electricity,wind,1,2025,2100,share.weight,linear
+USA,electricity,wind,1,2025,2100,share.weight,linear
+
