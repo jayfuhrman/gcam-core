@@ -136,7 +136,9 @@ module_energy_building_det_cwf_xml <- function(command, ...) {
     L244.FuelPrefElast_bld <- get_data(all_data, "L244.FuelPrefElast_bld") %>% remove_coal_trad_bio(supplysector)
     L244.StubTech_bld <- get_data(all_data, "L244.StubTech_bld") %>% remove_coal_trad_bio(supplysector)
     L244.StubTechEff_bld <- get_data(all_data, "L244.StubTechEff_bld") %>% remove_coal_trad_bio(supplysector)
-    L244.StubTechCalInput_bld <- get_data(all_data, "L244.StubTechCalInput_bld") %>% remove_coal_trad_bio(supplysector)
+    L244.StubTechCalInput_bld <- get_data(all_data, "L244.StubTechCalInput_bld") %>% remove_coal_trad_bio(supplysector) %>%
+      mutate(subs.share.weight = if_else(calibrated.value == 0, 0, subs.share.weight),
+             tech.share.weight = if_else(calibrated.value == 0, 0, tech.share.weight))
     L244.StubTechIntGainOutputRatio <- get_data(all_data, "L244.StubTechIntGainOutputRatio") %>% remove_coal_trad_bio(supplysector)
     L244.GlobalTechShrwt_bld <- get_data(all_data, "L244.GlobalTechShrwt_bld") %>% remove_coal_trad_bio(sector.name)
     L244.GlobalTechCost_bld <- get_data(all_data, "L244.GlobalTechCost_bld") %>% remove_coal_trad_bio(sector.name)
