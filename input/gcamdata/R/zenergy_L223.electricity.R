@@ -78,12 +78,7 @@ module_energy_L223.electricity <- function(command, ...) {
              "L120.GridCost_offshore_wind",
              "L120.RegCapFactor_offshore_wind",
              "L1232.desalsecout_R_elec_F_tech",
-             "L102.gdp_mil90usd_GCAM3_ctry_Y",
-             FILE = "cwf/A23.subsector_shrwt_renew_R_cwf_adj",
-             FILE = "cwf/A23.subsector_interp_cwf_adj",
-             FILE = "cwf/A23.subsector_shrwt_nuc_R_cwf",
-             FILE = "cwf/A23.globaltech_shrwt_no_new_unabated_fossil",
-             FILE = "cwf/A23.globaltech_interp_no_new_unabated_fossil"))
+             "L102.gdp_mil90usd_GCAM3_ctry_Y"))
   } else if(command == driver.DECLARE_OUTPUTS) {
     return(c("L223.Supplysector_elec",
              "L223.ElecReserve",
@@ -144,14 +139,7 @@ module_energy_L223.electricity <- function(command, ...) {
              "L223.GlobalIntTechCapital_wind_low",
              "L223.GlobalTechCapital_geo_low",
              "L223.GlobalTechCapital_nuc_low",
-             "L223.GlobalTechCapital_bio_low",
-             "L223.SubsectorShrwt_renew_cwf",
-             "L223.DeleteSubsectorInterp_elec_cwf",
-             "L223.SubsectorInterp_elec_cwf",
-             "L223.SubsectorShrwt_nuc_cwf",
-             "L223.SubsectorInterpTo_elec_cwf",
-             "L223.GlobalTechShrwt_elec_no_new_unabated_fossil",
-             "L223.GlobalTechInterp_elec_no_new_unabated_fossil"))
+             "L223.GlobalTechCapital_bio_low"))
   } else if(command == driver.MAKE) {
 
     all_data <- list(...)[[1]]
@@ -205,12 +193,7 @@ module_energy_L223.electricity <- function(command, ...) {
     L1231.eff_R_elec_F_tech_Yh <- get_data(all_data, "L1231.eff_R_elec_F_tech_Yh")
     L1232.desalsecout_R_elec_F_tech <- get_data(all_data, "L1232.desalsecout_R_elec_F_tech", strip_attributes = TRUE)
     L102.gdp_mil90usd_GCAM3_ctry_Y <- get_data(all_data, "L102.gdp_mil90usd_GCAM3_ctry_Y")
-    #cwf addons
-    A23.subsector_shrwt_renew_R_cwf_adj <- get_data(all_data, "cwf/A23.subsector_shrwt_renew_R_cwf_adj")
-    A23.subsector_interp_cwf_adj <- get_data(all_data, "cwf/A23.subsector_interp_cwf_adj", strip_attributes = TRUE)
-    A23.subsector_shrwt_nuc_R_cwf <- get_data(all_data, "cwf/A23.subsector_shrwt_nuc_R_cwf", strip_attributes = TRUE)
-    A23.globaltech_shrwt_no_new_unabated_fossil <- get_data(all_data, "cwf/A23.globaltech_shrwt_no_new_unabated_fossil", strip_attributes = TRUE)
-    A23.globaltech_interp_no_new_unabated_fossil <- get_data(all_data, "cwf/A23.globaltech_interp_no_new_unabated_fossil", strip_attributes = TRUE)
+
     # ============================
     # 2a. Supplysector information
     # ============================
@@ -640,31 +623,6 @@ module_energy_L223.electricity <- function(command, ...) {
                                           "technology" = "intermittent.technology")) ->
       L223.GlobalTechShrwt_elec
 
-    #repeat for fossil phaseout version
-    A23.globaltech_shrwt_no_new_unabated_fossil %>%
-      gather_years(value_col = "share.weight") %>%
-      complete(nesting(supplysector, subsector, technology), year = c(year, MODEL_BASE_YEARS, MODEL_FUTURE_YEARS)) %>%
-      arrange(supplysector, year) %>%
-      group_by(supplysector, subsector, technology) %>%
-      mutate(share.weight = approx_fun(year, share.weight, rule = 1)) %>%
-      ungroup() %>%
-      filter(year %in% MODEL_YEARS) %>%
-      rename(sector.name = supplysector, subsector.name = subsector) ->
-      L223.GlobalTechShrwt_elec_all
-    # reorders columns to match expected model interface input
-    L223.GlobalTechShrwt_elec_all <- L223.GlobalTechShrwt_elec_all[c(LEVEL2_DATA_NAMES[["GlobalTechYr"]], "share.weight")]
-
-    # Subsets the intermittent technologies by checking it against the list in A23.globalinttech
-    L223.GlobalTechShrwt_elec_all %>%
-      semi_join(A23.globalinttech, by = c("sector.name" = "supplysector", "subsector.name" = "subsector", "technology" = "intermittent.technology")) %>%
-      rename(intermittent.technology = technology) ->
-      L223.GlobalIntTechShrwt_elec
-
-    # Subsets the non-intermittent technologies by checking against any not listed in A23.globalinttech
-    L223.GlobalTechShrwt_elec_all %>%
-      anti_join(A23.globalinttech, by = c("sector.name" = "supplysector", "subsector.name" = "subsector", "technology" = "intermittent.technology")) ->
-      L223.GlobalTechShrwt_elec_no_new_unabated_fossil
-
     # Interpolation rules for L223.GlobalTechInterp_elec
     # --------------------------------------------------
 
@@ -675,14 +633,6 @@ module_energy_L223.electricity <- function(command, ...) {
       # strips attributes from assumptions file
       mutate(sector.name = sector.name) ->
       L223.GlobalTechInterp_elec
-
-    #repeat for fossil phaseout version
-    A23.globaltech_interp_no_new_unabated_fossil %>%
-      set_years() %>%
-      rename(sector.name = supplysector, subsector.name = subsector) %>%
-      # strips attributes from assumptions file
-      mutate(sector.name = sector.name) ->
-      L223.GlobalTechInterp_elec_no_new_unabated_fossil
 
     # Keywords of primary renewable electric generation technologies
     # --------------------------------------------------------------
@@ -1160,48 +1110,6 @@ module_energy_L223.electricity <- function(command, ...) {
       select(LEVEL2_DATA_NAMES[["StubTechSecOut"]])
 
     # ===================================================
-    # CWF adjustments
-
-    # L223.DeleteSubsectorInterp_elec_cwf
-    # make adjustments to default SubsectorInter_elec - only keep values from the original
-    # that correspond to subsectors not specified in the CWF adjustment file
-    L223.DeleteSubsectorInterp_elec_cwf <- L223.SubsectorInterp_elec %>%
-      mutate(to.value = 1) %>%
-      bind_rows(L223.SubsectorInterpTo_elec %>% select(LEVEL2_DATA_NAMES[["DeleteSubsectorInterpTo"]]) %>%
-                  mutate(to.year = as.numeric(to.year))) %>%
-      filter(subsector %in% unique(A23.subsector_interp_cwf_adj$subsector))
-
-    # L223.SubsectorInterpTo_elec_cwf
-    # similarly only keep values for subsectors not adjusted by CWF changes, so these will not overwrite desired CWF changes
-    L223.SubsectorInterpTo_elec_cwf <- A23.subsector_interp_cwf_adj
-
-    # L223.SubsectorShrwt_renew_cwf
-    # make adjustments to the default values for subsectors specified in A23.subsector_shrwt_renew_R_cwf_adj
-    L223.SubsectorShrwt_renew_cwf <- A23.subsector_shrwt_renew_R_cwf_adj %>%
-      mutate(`2025` = to.value) %>%
-      gather_years(value_col = "share.weight")
-
-    # L223.SubsectorShrwt_nuc_cwf
-    # this just needs to be expanded, these are the final values for all regions
-    L223.SubsectorShrwt_nuc_cwf <- A23.subsector_shrwt_nuc_R_cwf %>%
-      gather_years(value_col = "share.weight")
-
-    L223.SubsectorShrwtInterp_nuc_cwf <- L223.SubsectorShrwt_nuc_cwf %>%
-      mutate(from.year = min(year),
-             to.year = max(year),
-             apply.to = "share.weight",
-             interpolation.function = "linear") %>%
-      distinct(region,supplysector,subsector,from.year,to.year,apply.to,interpolation.function)
-
-    L223.SubsectorInterp_elec_cwf <- L223.SubsectorInterp_elec %>%
-      filter(subsector %in% unique(A23.subsector_interp_cwf_adj$subsector)) %>%
-      select(LEVEL2_DATA_NAMES[["SubsectorInterp"]])
-
-    L223.SubsectorShrwt_renew_cwf  <- L223.SubsectorShrwt_renew_cwf %>%
-      #filter(from.year == MODEL_FINAL_BASE_YEAR) %>%
-      select(LEVEL2_DATA_NAMES[["SubsectorShrwt"]])
-
-    # ===================================================
 
     # Produce outputs
 
@@ -1406,14 +1314,6 @@ module_energy_L223.electricity <- function(command, ...) {
       add_precursors("energy/A23.globaltech_shrwt", "energy/A23.globalinttech") ->
       L223.GlobalTechShrwt_elec
 
-    L223.GlobalTechShrwt_elec_no_new_unabated_fossil %>%
-      add_title("Global shareweights for non-intermittent technologies for the electricity sector") %>%
-      add_units("unitless") %>%
-      add_comments("Interpolated from model assumptions in A23.globaltech_shrwt_no_new_unabated_fossil") %>%
-      add_legacy_name("L223.GlobalTechShrwt_elec_no_new_unabated_fossil") %>%
-      add_precursors("cwf/A23.globaltech_shrwt_no_new_unabated_fossil", "energy/A23.globalinttech") ->
-      L223.GlobalTechShrwt_elec_no_new_unabated_fossil
-
     L223.GlobalTechInterp_elec %>%
       add_title("Interpolation rules for electricity technologies") %>%
       add_units("unitless") %>%
@@ -1421,14 +1321,6 @@ module_energy_L223.electricity <- function(command, ...) {
       add_legacy_name("L223.GlobalTechInterp_elec") %>%
       add_precursors("energy/A23.globaltech_interp") ->
       L223.GlobalTechInterp_elec
-
-    L223.GlobalTechInterp_elec_no_new_unabated_fossil %>%
-      add_title("Interpolation rules for electricity technologies") %>%
-      add_units("unitless") %>%
-      add_comments("Model years applied to assumptions in A23.globaltech_interp_no_new_unabated_fossil") %>%
-      add_legacy_name("L223.GlobalTechInterp_elec_no_new_unabated_fossil") %>%
-      add_precursors("cwf/A23.globaltech_interp_no_new_unabated_fossil") ->
-      L223.GlobalTechInterp_elec_no_new_unabated_fossil
 
     L223.GlobalIntTechShrwt_elec %>%
       add_title("Global shareweights for intermittent technologies for the electricity sector") %>%
@@ -1780,39 +1672,6 @@ module_energy_L223.electricity <- function(command, ...) {
       add_precursors("L113.globaltech_capital_ATB_low") ->
       L223.GlobalTechCapital_bio_low
 
-    L223.SubsectorShrwt_renew_cwf %>%
-      add_title("Renewable electricity sector technology shareweights") %>%
-      add_units("unitless") %>%
-      add_comments("CWF assumptions") %>%
-      add_legacy_name("L223.SubsectorShrwt_renew") %>%
-      add_precursors("cwf/A23.subsector_shrwt_renew_R_cwf_adj", "energy/A23.subsector_shrwt_renew_R") ->
-      L223.SubsectorShrwt_renew_cwf
-
-    L223.DeleteSubsectorInterp_elec_cwf %>%
-      add_title("Regional interpolation rules using a to.year for electricity subsectors") %>%
-      add_units("unitless") %>%
-      add_comments("Global interpolation rules subset to those using a to.year, applied regionally, ") %>%
-      add_comments("and then replaced by regional interpolation rules where found in A23.subsector.interp_R, with CWF adjustments") %>%
-      add_legacy_name("L223.SubsectorInterp_elec") %>%
-      add_precursors("energy/A23.subsector_interp", "cwf/A23.subsector_interp_cwf_adj", "energy/A23.subsector_interp_R") ->
-      L223.DeleteSubsectorInterp_elec_cwf
-
-    L223.SubsectorInterpTo_elec_cwf %>%
-      add_title("Regional interpolation rules using a to.value for electricity subsectors") %>%
-      add_units("unitless") %>%
-      add_comments("Global interpolation rules subset to those using a to.value, applied regionally and then replaced by regional interpolation rules where found in A23.subsector_interp_R") %>%
-      add_comments("and then replaced by regional interpolation rules where found in A23.subsector.interp_R, with any that would override CWF adjustments removed") %>%
-      add_legacy_name("L223.SubsectorInterpTo_elec") %>%
-      add_precursors("energy/A23.subsector_interp", "cwf/A23.subsector_interp_cwf_adj", "energy/A23.subsector_interp_R") ->
-      L223.SubsectorInterpTo_elec_cwf
-
-    L223.SubsectorShrwt_nuc_cwf %>%
-      add_title("Subsector Shareweights for all regions for nuclear electricity technologies") %>%
-      add_units("unitless") %>%
-      add_comments("Assumptions in A23.subsector_shrwt_nuc_R_cwf are used to generate country-level shareweights, from CWF assumptions") %>%
-      add_legacy_name("L223.SubsectorShrwt_nuc") %>%
-      add_precursors("cwf/A23.subsector_shrwt_nuc_R_cwf") ->
-      L223.SubsectorShrwt_nuc_cwf
 
     return_data(L223.Supplysector_elec, L223.ElecReserve, L223.SectorUseTrialMarket_elec, L223.SubsectorLogit_elec, L223.SubsectorShrwt_elec,
      L223.SubsectorShrwtFllt_elec, L223.SubsectorShrwt_coal, L223.SubsectorShrwt_nuc, L223.SubsectorShrwt_renew,
@@ -1832,10 +1691,7 @@ module_energy_L223.electricity <- function(command, ...) {
         L223.GlobalIntTechCapital_wind_adv, L223.GlobalTechCapital_geo_adv, L223.GlobalTechCapital_nuc_adv,
         L223.GlobalTechCapital_sol_low, L223.GlobalIntTechCapital_sol_low, L223.GlobalTechCapital_wind_low,
         L223.GlobalIntTechCapital_wind_low, L223.GlobalTechCapital_geo_low, L223.GlobalTechCapital_nuc_low,
-        L223.GlobalTechCapital_bio_low, L223.SubsectorShrwt_renew_cwf, L223.DeleteSubsectorInterp_elec_cwf,
-     L223.SubsectorShrwt_nuc_cwf, L223.SubsectorInterpTo_elec_cwf,
-     L223.SubsectorInterp_elec_cwf,
-     L223.GlobalTechShrwt_elec_no_new_unabated_fossil,L223.GlobalTechInterp_elec_no_new_unabated_fossil)
+        L223.GlobalTechCapital_bio_low)
   } else {
     stop("Unknown command")
   }
