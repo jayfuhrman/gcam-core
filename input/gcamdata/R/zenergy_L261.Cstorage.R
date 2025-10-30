@@ -51,7 +51,8 @@ module_energy_L261.Cstorage <- function(command, ...) {
              FILE = "energy/A61.globaltech_losses",
              FILE = "energy/IEA_CCUS_Projects_Database_2023",
              "L111.Prod_EJ_R_F_Yh",
-             "L161.RsrcCurves_MtC_R"))
+             "L161.RsrcCurves_MtC_R",
+             "L254.StubTranTechCalInput"))
 
   } else if(command == driver.DECLARE_OUTPUTS) {
     return(c("L261.Rsrc",
@@ -83,7 +84,8 @@ module_energy_L261.Cstorage <- function(command, ...) {
              "L261.StubTechEff",
              "L261.TechPmult",
              "L261.OutputEmissCoeff_C",
-             "L261.DeleteNonCO2"))
+             "L261.DeleteNonCO2",
+             "L261.StubTechShrwt"))
   } else if(command == driver.MAKE) {
 
     all_data <- list(...)[[1]]
@@ -107,6 +109,8 @@ module_energy_L261.Cstorage <- function(command, ...) {
     A61.ResReserveTechProfitShutdown <- get_data(all_data, "energy/A61.ResReserveTechProfitShutdown", strip_attributes = TRUE)
     L111.Prod_EJ_R_F_Yh <- get_data(all_data, "L111.Prod_EJ_R_F_Yh", strip_attributes = TRUE)
     A61.Cstorage_curves_dynamic <- get_data(all_data, "energy/A61.Cstorage_curves_dynamic", strip_attributes = TRUE)
+
+    L254.StubTranTechCalInput <- get_data(all_data, "L254.StubTranTechCalInput")
 
     IEA_CCUS_Projects_Database_2023 <- get_data(all_data, "energy/IEA_CCUS_Projects_Database_2023")
 
@@ -568,6 +572,23 @@ module_energy_L261.Cstorage <- function(command, ...) {
       mutate(year.fillout = min(MODEL_BASE_YEARS),
              maxSubResource = 1) %>%
       select(LEVEL2_DATA_NAMES[["maxSubResource"]])
+
+
+    L261.StubTechShrwt <- L254.StubTranTechCalInput %>%
+      filter(year == MODEL_FINAL_BASE_YEAR,
+             sce == "CORE",
+             supplysector %in% L261.GlobalTechCoef_C$minicam.energy.input) %>%
+      group_by(region, supplysector, tranSubsector, year) %>%
+      summarize(value = sum(calibrated.value)) %>%
+      ungroup() %>%
+      filter(value == 0) %>%
+      select(-year) %>%
+      left_join(L261.GlobalTechCoef_C, by = c("supplysector" = "minicam.energy.input")) %>%
+      mutate(supplysector = sector.name, subsector = subsector.name, stub.technology = technology, share.weight = value) %>%
+      select(LEVEL2_DATA_NAMES[["StubTechShrwt"]])
+
+
+
     # ===================================================
 
     L261.Rsrc %>%
@@ -804,6 +825,13 @@ module_energy_L261.Cstorage <- function(command, ...) {
       same_precursors_as("L261.ResReserveTechDeclinePhase")
       L261.ResReserveTechInvestmentInput
 
+      L261.StubTechShrwt %>%
+        add_title("Zero out shareweights for transport sectors") %>%
+        add_units("NA") %>%
+        add_comments("NA") %>%
+        add_precursors("L254.StubTranTechCalInput") ->
+        L261.StubTechShrwt
+
 
     return_data(L261.Rsrc, L261.UnlimitRsrc, L261.RsrcCurves_C, L261.ResTechShrwt_C, L261.Supplysector_C, L261.SubsectorLogit_C, L261.SubsectorShrwtFllt_C, L261.StubTech_C, L261.GlobalTechCoef_C, L261.GlobalTechCost_C, L261.GlobalTechShrwt_C, L261.GlobalTechCost_C_High, L261.GlobalTechShrwt_C_nooffshore, L261.RsrcCurves_C_high, L261.RsrcCurves_C_low, L261.RsrcCurves_C_lowest,
                 L261.ResSubresourceProdLifetime, L261.ResReserveTechLifetime, L261.ResReserveTechDeclinePhase, L261.ResReserveTechProfitShutdown,
@@ -811,7 +839,8 @@ module_energy_L261.Cstorage <- function(command, ...) {
                 L261.CStorageCurvesDynamic,L261.DynamicCstorageRsrcMax,L261.DynamicRsrc,L261.DynamicResTechShrwt_C,L261.RsrcPrice,
                 L261.StubTechEff,
                 L261.TechPmult,
-                L261.OutputEmissCoeff_C,L261.DeleteNonCO2)
+                L261.OutputEmissCoeff_C,L261.DeleteNonCO2,
+                L261.StubTechShrwt)
   } else {
     stop("Unknown command")
   }
