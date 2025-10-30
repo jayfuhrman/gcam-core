@@ -33,7 +33,7 @@ module_energy_Cstorage_xml <- function(command, ...) {
               "L261.DynamicRsrc",
               "L261.DynamicResTechShrwt_C",
               "L261.RsrcPrice",
-              #"L261.OutputEmissCoeff_C",
+              "L261.StubTechShrwt",
               "L261.StubTechEff",
               "L261.TechPmult"))
   } else if(command == driver.DECLARE_OUTPUTS) {
@@ -67,7 +67,7 @@ module_energy_Cstorage_xml <- function(command, ...) {
     L261.DynamicRsrc <- get_data(all_data,"L261.DynamicRsrc")
     L261.DynamicResTechShrwt_C <- get_data(all_data,"L261.DynamicResTechShrwt_C")
     L261.RsrcPrice <- get_data(all_data,"L261.RsrcPrice")
-    #L261.OutputEmissCoeff_C <- get_data(all_data,"L261.OutputEmissCoeff_C")
+    L261.StubTechShrwt <- get_data(all_data,"L261.StubTechShrwt")
     L261.StubTechEff <- get_data(all_data,"L261.StubTechEff")
     L261.TechPmult <- get_data(all_data,"L261.TechPmult")
     #L261.DeleteNonCO2 <- get_data(all_data,"L261.DeleteNonCO2")
@@ -94,8 +94,10 @@ module_energy_Cstorage_xml <- function(command, ...) {
       add_xml_data(L261.GlobalTechCoef_C, "GlobalTechCoef") %>%
       add_xml_data(L261.GlobalTechCost_C, "GlobalTechCost") %>%
       add_xml_data(L261.GlobalTechShrwt_C, "GlobalTechShrwt") %>%
+      add_xml_data(L261.StubTechShrwt, "StubTechShrwt") %>%
       add_precursors("L261.Rsrc", "L261.UnlimitRsrc", "L261.RsrcCurves_C", "L261.ResTechShrwt_C", "L261.Supplysector_C", "L261.SubsectorLogit_C", "L261.SubsectorShrwtFllt_C", "L261.StubTech_C", "L261.GlobalTechCoef_C", "L261.GlobalTechCost_C", "L261.GlobalTechShrwt_C",
-                     "L261.ResSubresourceProdLifetime","L261.ResReserveTechLifetime","L261.ResReserveTechDeclinePhase","L261.ResReserveTechProfitShutdown","L261.ResReserveTechInvestmentInput") ->
+                     "L261.ResSubresourceProdLifetime","L261.ResReserveTechLifetime","L261.ResReserveTechDeclinePhase","L261.ResReserveTechProfitShutdown","L261.ResReserveTechInvestmentInput",
+                     "L261.StubTechShrwt") ->
       Cstorage.xml
 
 
