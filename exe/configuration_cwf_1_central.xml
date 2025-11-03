@@ -23,8 +23,6 @@
 			<Value name = "energy_supply">../input/gcamdata/xml/en_supply.xml</Value>
 			<Value name = "energy_transformation">../input/gcamdata/xml/en_transformation.xml</Value>
             <Value name = "elec_water_base">../input/gcamdata/xml/electricity_water.xml</Value>
-            <Value name = "elec_water_base_cwf">../input/gcamdata/xml/electricity_water_cwf.xml</Value>
-			<Value name = "elec_water_base_no_new_unabated_fossil">../input/gcamdata/xml/electricity_water_cwf_no_new_unabated_fossil.xml</Value>
 			<Value name = "heat">../input/gcamdata/xml/heat.xml</Value>
 			<Value name = "hydrogen">../input/gcamdata/xml/hydrogen.xml</Value>
 			<Value name = "energy_distribution">../input/gcamdata/xml/en_distribution.xml</Value>
@@ -46,7 +44,7 @@
 			<Value name = "aluminum_income_elas">../input/gcamdata/xml/aluminum_incelas_cwf.xml</Value> 
  	    	<Value name = "paper">../input/gcamdata/xml/paper.xml</Value>
  	    	<Value name = "paper_cwf">../input/gcamdata/xml/paper_cwf.xml</Value>
-	    	<Value name = "paper_income_elas">../input/gcamdata/xml/paper_incelas_ssp2.xml</Value> 
+	    	<Value name = "paper_income_elas">../input/gcamdata/xml/paper_incelas_ssp1.xml</Value> 
 			<Value name = "food_processing">../input/gcamdata/xml/food_processing.xml</Value> 
 			<Value name = "cement">../input/gcamdata/xml/cement.xml</Value>
 			<Value name = "cement_cwf">../input/gcamdata/xml/cement_cwf.xml</Value>
@@ -54,11 +52,9 @@
 			<Value name = "fertilizer_energy">../input/gcamdata/xml/en_Fert.xml</Value> 
 			<Value name = "fertilizer_energy_cwf">../input/gcamdata/xml/en_Fert_cwf.xml</Value> 
 			<Value name = "hddcdd">../input/gcamdata/xml/HDDCDD_constdd_no_GCM.xml</Value>
-			<!--CWF standard assumptions for buildings + coordinated fossil phase-out represented thru shareweight interp reaching zero by 2050-->
 			<Value name = "building">../input/gcamdata/xml/building_det.xml</Value>
-			<!--Value name = "building_cwf">../input/gcamdata/xml/building_det_cwf.xml</Value-->
 			<Value name = "transportation">../input/gcamdata/xml/transportation_UCD_CORE.xml</Value>
-			<Value name = "transportation_CWF">../input/gcamdata/xml/transportation_UCD_CWF_high.xml</Value>
+
 			<Value name = "carbon_content">../input/gcamdata/xml/Ccoef.xml</Value>
 			<Value name = "carbon_storage">../input/gcamdata/xml/Cstorage.xml</Value>
         	<Value name = "wind_update">../input/gcamdata/xml/onshore_wind.xml</Value>
@@ -78,7 +74,6 @@
 			<Value name = "protected_land2">../input/gcamdata/xml/protected_land_input_2.xml</Value>
 			<Value name = "protected_land3">../input/gcamdata/xml/protected_land_input_3.xml</Value>
             <!--Ag Demand Updates-->
-			<!--Value name = "demand_nonfood">../input/gcamdata/xml/ag_an_demand_input.xml</Value-->
 			<Value name = "demand_nonfood">../input/gcamdata/xml/ag_an_demand_input_NonFood.xml</Value-->
 		    <Value name = "demand_food">../input/gcamdata/xml/ag_an_demand_input_FoodExoDiet_SSP1_CWFMed_RegHet.xml</Value>
 			<Value name = "demand_paper">../input/gcamdata/xml/paper_delete_ag_demand.xml</Value>
@@ -138,10 +133,24 @@
 
 
 			<Value name = "solver">../input/solution/cal_broyden_config.xml</Value>
-			<Value name = "dac">../input/gcamdata/xml/dac_ssp1.xml</Value>
-			<Value name = "weathering">../input/gcamdata/xml/Weathering.xml</Value>
+			
 
 		    <!--additional CWF files-->
+			<!--electricity-->
+            <Value name = "elec_water_base_cwf">../input/gcamdata/xml/electricity_water_cwf.xml</Value>
+			<Value name = "elec_water_base_no_new_unabated_fossil">../input/gcamdata/xml/electricity_water_cwf_no_new_unabated_fossil.xml</Value>
+			<Value name = "fossil-power-retirement">../input/gcamdata/xml/accelerated_fossil_retirement.xml</Value>
+
+			<!--Buildings adjustments-->
+			<Value name = "building_cwf">../input/gcamdata/xml/building_det_cwf.xml</Value>
+			
+			<!--transport adjustments-->
+			<Value name = "transportation_CWF">../input/gcamdata/xml/transportation_UCD_CWF_high.xml</Value>
+
+			<!--transport alt fuels-->
+			<Value name = "high_ship">../input/extra/developments_working/transport/GCAM_6p0_addons/revised_high_ship_alt_fuel_frac_FT-bio-efuel-credits_2.xml</Value>
+			<Value name = "high_aviation">../input/extra/developments_working/transport/GCAM_6p0_addons/revised_high_aviation_alt_fuel_frac_FT-bio-efuel-credits_2.xml</Value>
+
 
 			<Value name="aglu">../input/gcamdata/xml/ag_prodchange_ssp1_IRR_MGMT.xml</Value> <!--use SSP1 ag productivity change-->
 
@@ -152,8 +161,17 @@
 			<Value name="geothermal">../input/gcamdata/xml/geo_tech_adv.xml</Value>
 			<Value name="nuclear">../input/gcamdata/xml/nuclear_low.xml</Value>
 
+
+			<Value name = "dac">../input/gcamdata/xml/dac_ssp1.xml</Value>
+			<Value name = "weathering">../input/gcamdata/xml/Weathering.xml</Value>
+			<!--weathering rate and growth limits -->
+			<Value name = "ew_growthlim">../input/gcamdata/xml/Weathering_med.xml</Value>
+
 			<Value name="ccs">../input/gcamdata/xml/ccs_supply_lowest.xml</Value>
 			<Value name="ccs">../input/gcamdata/xml/no_offshore_ccs.xml</Value>
+
+			<Value name = "cstorage_constraint">../input/extra/ccs_constraint/cwf_mid_cstorage_constraint.xml</Value>
+ 	 		<Value name = "cstorage_mkt">../input/extra/ccs_constraint/cstorage_ceiling_mkt.xml</Value>
 
 			<!--use some SSP1 values-->
 			<Value name="resource_extraction">../input/gcamdata/xml/resources_SSP1.xml</Value>
@@ -167,37 +185,26 @@
 			<Value name= "wwtrt">../input/gcamdata/xml/EFW_WWtrt_coefs_SSP1.xml</Value>
 
 
-			<!--transport alt fuels-->
-			<Value name = "high_ship">../input/extra/developments_working/transport/GCAM_6p0_addons/revised_high_ship_alt_fuel_frac_FT-bio-efuel-credits_2.xml</Value>
-			<Value name = "high_aviation">../input/extra/developments_working/transport/GCAM_6p0_addons/revised_high_aviation_alt_fuel_frac_FT-bio-efuel-credits_2.xml</Value>
-
 			<!-- MIN VIABLE CDR ADJUSTMENTS (electricity, buildings + industry are adjusted above)-->
 
 			<!--Constraints on bio + dedicated CDR are reduced by 25% from cwf flagship.  This reflects the proportional reduction in residual emissions from other industry + backup electricity and is intended to avoid other sectors increasing residual emissions in response-->
 			<Value name = "bio_constraint">../input/extra/bio_constraint/cwf_mid_bio_constraint.xml</Value>
  	 		<Value name = "bio_mkt">../input/extra/bio_constraint/bio_ceiling_mkt.xml</Value>
 
-			<!--carbon storage rate and growth limits -->
-			<Value name = "cstorage_rategrowth_lim">../input/gcamdata/xml/Cstorage_med.xml</Value>
 
-			<!--weathering rate and growth limits -->
-			<Value name = "ew_growthlim">../input/gcamdata/xml/Weathering_med.xml</Value>
 
 
 			<!--no gas H2 forecourt-->
 			<Value name = "hydrogen">../input/gcamdata/xml/hydrogen_no_gas_forecourt.xml</Value>
 
 			<!--Accelerate retirement of unabated fossil power (1/2 lifetime + halflife)-->
-			<Value name = "fossil-power-retirement">../input/gcamdata/xml/accelerated_fossil_retirement.xml</Value>
+			<!--Value name = "fossil-power-retirement">../input/gcamdata/xml/accelerated_fossil_retirement.xml</Value-->
 			<Value name = "cement CCS">../input/gcamdata/xml/cement_all_CCS_post2030.xml</Value>
 
             <!--Policy-->
-			<Value name = "constraint">../input/extra/developments_working/extra_CO2_constraint_tests/constraint_CO2_test.xml</Value>
+			<Value name = "constraint">../input/extra/developments_working/extra_CO2_constraint_tests/constraint_CO2_test_2025_update.xml</Value>
 			<Value name="region_nz_adjust">../input/extra/proportional_tax_rate_cwf.xml</Value>
 			<Value name="luc_price">../input/extra/nature_cdr/global_uct_cwf.xml</Value>
-
-			<Value name="bio_neg_emiss_budget">../input/gcamdata/xml/negative_emissions_budget.xml</Value>
-		    <Value name="bio_neg_emiss_budget">../input/gcamdata/xml/negative_emissions_budget_min_price.xml</Value>
 
 
 

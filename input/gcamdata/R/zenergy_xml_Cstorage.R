@@ -74,30 +74,21 @@ module_energy_Cstorage_xml <- function(command, ...) {
     # ===================================================
 
 
+    # Produce outputs
     create_xml("Cstorage.xml") %>%
       add_xml_data(L261.Rsrc, "Rsrc") %>%
       add_xml_data(L261.UnlimitRsrc, "UnlimitRsrc") %>%
-      #add_node_equiv_xml("resource") %>%
-      add_node_equiv_xml("subresource") %>%
-      add_node_equiv_xml("technology") %>%
-      add_xml_data(L261.ResSubresourceProdLifetime, "ResSubresourceProdLifetime") %>%
-      add_xml_data(L261.ResReserveTechDeclinePhase, "ResReserveTechDeclinePhase") %>%
-      add_xml_data(L261.ResReserveTechProfitShutdown, "ResReserveTechProfitShutdown") %>%
-      add_xml_data(L261.ResReserveTechLifetime, "ResReserveTechLifetime") %>%
-      add_xml_data(L261.ResReserveTechInvestmentInput, "ResReserveTechInvestmentInput") %>%
       add_xml_data(L261.RsrcCurves_C, "RsrcCurves") %>%
       add_xml_data(L261.ResTechShrwt_C, "ResTechShrwt") %>%
-      add_logit_tables_xml(L261.Supplysector_C, "Supplysector") %>%
-      add_logit_tables_xml(L261.SubsectorLogit_C, "SubsectorLogit") %>%
-      add_xml_data(L261.SubsectorShrwtFllt_C, "SubsectorShrwtFllt") %>%
-      add_xml_data(L261.StubTech_C, "StubTech") %>%
-      add_xml_data(L261.GlobalTechCoef_C, "GlobalTechCoef") %>%
-      add_xml_data(L261.GlobalTechCost_C, "GlobalTechCost") %>%
-      add_xml_data(L261.GlobalTechShrwt_C, "GlobalTechShrwt") %>%
-      add_xml_data(L261.StubTechShrwt, "StubTechShrwt") %>%
-      add_precursors("L261.Rsrc", "L261.UnlimitRsrc", "L261.RsrcCurves_C", "L261.ResTechShrwt_C", "L261.Supplysector_C", "L261.SubsectorLogit_C", "L261.SubsectorShrwtFllt_C", "L261.StubTech_C", "L261.GlobalTechCoef_C", "L261.GlobalTechCost_C", "L261.GlobalTechShrwt_C",
-                     "L261.ResSubresourceProdLifetime","L261.ResReserveTechLifetime","L261.ResReserveTechDeclinePhase","L261.ResReserveTechProfitShutdown","L261.ResReserveTechInvestmentInput",
-                     "L261.StubTechShrwt") ->
+      add_logit_tables_xml(L261.Supplysector_C %>% filter(supplysector == energy.CO2.STORAGE.MARKET), "Supplysector") %>%
+      add_logit_tables_xml(L261.SubsectorLogit_C %>% filter(supplysector == energy.CO2.STORAGE.MARKET), "SubsectorLogit") %>%
+      add_xml_data(L261.SubsectorShrwtFllt_C %>% filter(supplysector == energy.CO2.STORAGE.MARKET), "SubsectorShrwtFllt") %>%
+      add_xml_data(L261.StubTech_C %>% filter(supplysector == energy.CO2.STORAGE.MARKET), "StubTech") %>%
+      add_xml_data(L261.GlobalTechCoef_C %>% filter(sector.name == energy.CO2.STORAGE.MARKET,
+                                                    minicam.energy.input %in% c('offshore carbon-storage','onshore carbon-storage')), "GlobalTechCoef") %>%
+      add_xml_data(L261.GlobalTechCost_C %>% filter(sector.name == energy.CO2.STORAGE.MARKET), "GlobalTechCost") %>%
+      add_xml_data(L261.GlobalTechShrwt_C %>% filter(sector.name == energy.CO2.STORAGE.MARKET), "GlobalTechShrwt") %>%
+      add_precursors("L261.Rsrc", "L261.UnlimitRsrc", "L261.RsrcCurves_C", "L261.ResTechShrwt_C", "L261.Supplysector_C", "L261.SubsectorLogit_C", "L261.SubsectorShrwtFllt_C", "L261.StubTech_C", "L261.GlobalTechCoef_C", "L261.GlobalTechCost_C", "L261.GlobalTechShrwt_C") ->
       Cstorage.xml
 
 
