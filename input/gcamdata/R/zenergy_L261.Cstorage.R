@@ -554,7 +554,10 @@ module_energy_L261.Cstorage <- function(command, ...) {
       complete(year = c(year, MODEL_YEARS), nesting(supplysector, subsector, technology)) %>%
       # Extrapolate to fill out values for all years
       # Rule 2 is used so years outside of min-max range are assigned values from closest data, as opposed to NAs
+      group_by(supplysector, subsector, technology) %>%
+      arrange(year) %>%
       mutate(share.weight = approx_fun(year, value, rule = 2)) %>%
+      ungroup() %>%
       filter(year %in% MODEL_YEARS) %>% # This will drop 1971
       # Assign the columns "sector.name" and "subsector.name", consistent with the location info of a global technology
       select(sector.name = supplysector, subsector.name = subsector, technology, year, share.weight) ->
@@ -584,7 +587,7 @@ module_energy_L261.Cstorage <- function(command, ...) {
       filter(value == 0) %>%
       select(-year) %>%
       left_join(L261.GlobalTechCoef_C, by = c("supplysector" = "minicam.energy.input")) %>%
-      mutate(supplysector = sector.name, subsector = subsector.name, stub.technology = technology, share.weight = value) %>%
+      mutate(supplysector = sector.name, subsector = subsector.name, stub.technology = technology, share.weight = 0) %>%
       select(LEVEL2_DATA_NAMES[["StubTechShrwt"]])
 
 
