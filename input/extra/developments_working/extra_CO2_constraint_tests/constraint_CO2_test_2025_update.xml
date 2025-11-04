@@ -5,8 +5,8 @@
          <ghgpolicy name="CO2_TOTAL">
             <market>global</market>
 			<fixedTax year="2025">1</fixedTax>
-			<constraint year="2030">8500</constraint>
-			<constraint year="2035">6500</constraint>
+			<constraint year="2030">8758</constraint>
+			<constraint year="2035">6776</constraint>
 			<constraint year="2040">4514.77596028631</constraint>
 			<constraint year="2045">2665.93005678946</constraint>
 			<constraint year="2050">1574.20503923361</constraint>
