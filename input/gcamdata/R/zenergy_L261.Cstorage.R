@@ -313,7 +313,8 @@ module_energy_L261.Cstorage <- function(command, ...) {
              stub.technology = 'ccs dynamic-capacity',
              minicam.energy.input = 'carbon-storage dynamic',
              market.name = region) %>%
-      mutate(efficiency = if_else(efficiency == 0, 0.001,efficiency)) %>%
+      mutate(efficiency = if_else(efficiency == 0, 0.001,efficiency),
+             efficiency = round(efficiency,energy.DIGITS_EFFICIENCY)) %>%
       select(c('scenario',LEVEL2_DATA_NAMES[['StubTechEff']]))
 
     L261.TechPmult <- L261.StubTechEff %>%
