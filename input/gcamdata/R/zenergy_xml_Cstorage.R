@@ -78,6 +78,14 @@ module_energy_Cstorage_xml <- function(command, ...) {
     create_xml("Cstorage.xml") %>%
       add_xml_data(L261.Rsrc, "Rsrc") %>%
       add_xml_data(L261.UnlimitRsrc, "UnlimitRsrc") %>%
+      #add_node_equiv_xml("resource") %>%
+      add_node_equiv_xml("subresource") %>%
+      add_node_equiv_xml("technology") %>%
+      add_xml_data(L261.ResSubresourceProdLifetime, "ResSubresourceProdLifetime") %>%
+      add_xml_data(L261.ResReserveTechDeclinePhase, "ResReserveTechDeclinePhase") %>%
+      add_xml_data(L261.ResReserveTechProfitShutdown, "ResReserveTechProfitShutdown") %>%
+      add_xml_data(L261.ResReserveTechLifetime, "ResReserveTechLifetime") %>%
+      add_xml_data(L261.ResReserveTechInvestmentInput, "ResReserveTechInvestmentInput") %>%
       add_xml_data(L261.RsrcCurves_C, "RsrcCurves") %>%
       add_xml_data(L261.ResTechShrwt_C, "ResTechShrwt") %>%
       add_logit_tables_xml(L261.Supplysector_C %>% filter(supplysector == energy.CO2.STORAGE.MARKET), "Supplysector") %>%
