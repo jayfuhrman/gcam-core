@@ -169,13 +169,14 @@ module_energy_L263.Weathering <- function(command, ...) {
     # B
     # Supply curves of carbon storage resources
     # First, define number of decimal places
-    DIGITS_COST <- 1
+    #DIGITS_COST <- 1
 
     # L163.RsrcCurves_Mt reports carbon storage resource supply curves by GCAM region.
     L163.RsrcCurves_Mt %>%
       # Match in GCAM region names using region ID
       left_join_error_no_match(GCAM_region_names, by = "GCAM_region_ID") %>%
-      #mutate(available = round(available, DIGITS_COST)) %>%
+      mutate(available = round(available, energy.DIGITS_RESOURCE),
+             extractioncost = round(extractioncost,energy.DIGITS_COST)) %>%
       select(region, renewresource = resource, sub.renewable.resource = subresource, grade, available, extractioncost) ->
       L263.RsrcCurves_C # This is a final output table.
 
@@ -358,7 +359,8 @@ module_energy_L263.Weathering <- function(command, ...) {
              stub.technology = 'inorganic-surface-storage',
              minicam.energy.input = 'inorganic-surface-storage',
              market.name = region) %>%
-      mutate(efficiency = if_else(efficiency == 0, 0.01,efficiency)) %>%
+      mutate(efficiency = if_else(efficiency == 0, 0.01,efficiency),
+             efficiency = round(efficiency,energy.DIGITS_EFFICIENCY)) %>%
       #filter(scenario == 'rapid_growth_rate') %>%
       select(c(LEVEL2_DATA_NAMES[['StubTechEff']])) %>%
       ungroup() -> L263.StubTechEff
@@ -386,7 +388,8 @@ module_energy_L263.Weathering <- function(command, ...) {
       # Extrapolate to fill out values for all years
       # Rule 2 is used so years outside of min-max range are assigned values from closest data, as opposed to NAs
       group_by(supplysector, subsector, technology) %>%
-      mutate(input.cost = approx_fun(year, value, rule = 2)) %>%
+      mutate(input.cost = approx_fun(year, value, rule = 2),
+             input.cost = round(input.cost,energy.DIGITS_COST)) %>%
       filter(year %in% MODEL_YEARS) %>% # This will drop 1971
       # Assign the columns "sector.name" and "subsector.name", consistent with the location info of a global technology
       ungroup() %>%
