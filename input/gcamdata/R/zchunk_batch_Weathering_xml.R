@@ -89,6 +89,7 @@ module_energy_batch_Weathering_xml <- function(command, ...) {
       Weathering.xml
 
     create_xml("Weathering_high.xml") %>%
+      add_node_equiv_xml("technology") %>%
       add_xml_data(L263.StubTechEff %>%
                      filter(scenario == 'rapid_growth_rate'),"StubTechEff") %>%
       add_xml_data(L263.TechPmult %>%
@@ -97,6 +98,7 @@ module_energy_batch_Weathering_xml <- function(command, ...) {
       Weathering_high.xml
 
     create_xml("Weathering_med.xml") %>%
+      add_node_equiv_xml("technology") %>%
       add_xml_data(L263.StubTechEff %>%
                      filter(scenario == 'medium_growth_rate'),"StubTechEff") %>%
       add_xml_data(L263.TechPmult %>%
@@ -105,6 +107,7 @@ module_energy_batch_Weathering_xml <- function(command, ...) {
       Weathering_med.xml
 
     create_xml("Weathering_low.xml") %>%
+      add_node_equiv_xml("technology") %>%
       add_xml_data(L263.StubTechEff %>%
                      filter(scenario == 'slow_growth_rate'),"StubTechEff") %>%
       add_xml_data(L263.TechPmult %>%
