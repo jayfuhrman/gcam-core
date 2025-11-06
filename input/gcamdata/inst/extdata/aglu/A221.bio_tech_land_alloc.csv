@@ -1,11 +1,11 @@
 # File: A221.bio_tech_land_alloc.csv
 # Title: Biochar technology land allocation for 2020
 # Units: thous km2
-# Description: Model output from GCAM v5.3 run reference case for detailed land allocation in each region for biomass only
+# Description: Model output from GCAM v5.3 run reference case for detailed land allocation in each region for biomass only (2020)
 # Source: RGCAM output
 # Column types: cccnc
 # ----------
-scenario,region,LandLeaf,2020,Units
+scenario,region,LandLeaf,allocation,Units
 "1GCAM5p3_GCAM_REF_NoTax_LowEV_E10_DefAra_DefRef_DefTrade_DefCCScost,date=2021-10-2T11:59:18-08:00",Africa_Eastern,biomassGrass_AfrCstE_IRR_hi,0.00398889,thous km2
 "1GCAM5p3_GCAM_REF_NoTax_LowEV_E10_DefAra_DefRef_DefTrade_DefCCScost,date=2021-10-2T11:59:18-08:00",Africa_Eastern,biomassGrass_AfrCstE_IRR_lo,0.00405962,thous km2
 "1GCAM5p3_GCAM_REF_NoTax_LowEV_E10_DefAra_DefRef_DefTrade_DefCCScost,date=2021-10-2T11:59:18-08:00",Africa_Eastern,biomassGrass_AfrCstE_RFD_hi,0.374805,thous km2
