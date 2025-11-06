@@ -630,7 +630,7 @@ module_energy_L2221.biochar_demand_cropland <- function(command, ...) {
       mutate(suffix = "biochar") %>%
       rename(LandLeaf2 = LandLeaf) %>%
       unite("LandLeaf", c("LandLeaf2", "suffix"), sep="_", remove = FALSE) %>%
-      rename(allocation = `2020`) %>%
+      #rename(allocation = `initial-future-year`) %>%
       # Units are in thousand km2 and we need them in hectares
       # Then we assume certain biochar applicaiton rate named in the constant "biochar.rate"
       # This is expected to be the absolute maximum (total amount of land times "X" tons per hectare)
@@ -658,7 +658,7 @@ module_energy_L2221.biochar_demand_cropland <- function(command, ...) {
              grepl("_hi", technology)) %>%
       # Here we create the biochar suffix to add to the technologies
       mutate(suffix = "biochar") %>%
-      rename(production = `2020`) %>%
+      #rename(production = `initial-future-year`) %>%
       unite("AgProductionTechnology", c("technology", "suffix"), sep="_") %>%
       # We need to modify units, since fertilizer inputs to biomass are in kgN per GJ of biomass
       # since we are using the same format, we need to change units from EJ to GJ
@@ -684,7 +684,7 @@ module_energy_L2221.biochar_demand_cropland <- function(command, ...) {
       # Replace NaN from 0/0 with a 0
       mutate(coefficient = if_else(is.na(coefficient), 0, coefficient),
              coefficient_kg_GJ = if_else(is.na(coefficient_kg_GJ), 0, coefficient_kg_GJ),
-             year = 2021) %>%
+             year = min(MODEL_FUTURE_YEARS)) %>%
       # Replace INF with 0
       mutate(coefficient = if_else(is.infinite(coefficient), 0, coefficient),
              coefficient_kg_GJ = if_else(is.infinite(coefficient_kg_GJ), 0, coefficient_kg_GJ)) %>%

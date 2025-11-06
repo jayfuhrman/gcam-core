@@ -1,11 +1,11 @@
 # File: A221.bio_tech_prod.csv
 # Title: Biomass Agricultural Production by Tech
 # Units: EJ
-# Description: Agricultural production by technology for biomass crops globally as a model output from V5.3 reference case
+# Description: Agricultural production by technology for biomass crops globally as a model output from V5.3 reference case (for 2020)
 # Source: GCAM output
 # Column types: ccccccnc
 # ----------
-scenario,region,sector,subsector,output,technology,2020,Units
+scenario,region,sector,subsector,output,technology,production,Units
 "1GCAM5p3_GCAM_REF_NoTax_LowEV_E10_DefAra_DefRef_DefTrade_DefCCScost,date=2021-10-2T11:59:18-08:00",Africa_Eastern,biomass,biomassGrass_AfrCstE,biomass,biomassGrass_AfrCstE_IRR_hi,3.22E-05,EJ
 "1GCAM5p3_GCAM_REF_NoTax_LowEV_E10_DefAra_DefRef_DefTrade_DefCCScost,date=2021-10-2T11:59:18-08:00",Africa_Eastern,biomass,biomassGrass_AfrCstE,biomass,biomassGrass_AfrCstE_IRR_lo,2.19E-05,EJ
 "1GCAM5p3_GCAM_REF_NoTax_LowEV_E10_DefAra_DefRef_DefTrade_DefCCScost,date=2021-10-2T11:59:18-08:00",Africa_Eastern,biomass,biomassGrass_AfrCstE,biomass,biomassGrass_AfrCstE_RFD_hi,0.00212217,EJ
