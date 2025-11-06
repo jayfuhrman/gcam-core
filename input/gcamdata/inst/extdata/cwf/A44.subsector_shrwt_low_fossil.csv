@@ -41,7 +41,7 @@ resid others modern,refined liquids,start-year,,1
 resid others modern,refined liquids,2050,,0
 resid others modern,refined liquids,end-year,,0
 resid others TradBio,traditional biomass,start-year,,1
-resid others TradBio,traditional biomass,2050,,0
+resid others TradBio,traditional biomass,2050,,0.001
 resid others TradBio,traditional biomass,end-year,,0.001
 resid others modern,district heat,start-year,,1
 comm heating,biomass,start-year,,1
