@@ -5,21 +5,22 @@
          <ghgpolicy name="CO2_TOTAL">
             <market>global</market>
 			<fixedTax year="2025">1</fixedTax>
-			<constraint year="2030">8758</constraint>
-			<constraint year="2035">6776</constraint>
-			<constraint year="2040">4514.77596028631</constraint>
-			<constraint year="2045">2665.93005678946</constraint>
-			<constraint year="2050">1574.20503923361</constraint>
-			<constraint year="2055">929.552333617055</constraint>
-			<constraint year="2060">284.899628000499</constraint>
-			<constraint year="2065">-359.753077616056</constraint>
-			<constraint year="2070">-1183.22</constraint>
-			<constraint year="2075">-1450.39</constraint>
-			<constraint year="2080">-1725.73</constraint>
+			<fixedTax year="2030">10</fixedTax>
+			<constraint year="2035">6850</constraint>
+			<constraint year="2040">4515</constraint>
+			<constraint year="2045">2666</constraint>
+			<constraint year="2050">1574</constraint>
+			<constraint year="2055">930</constraint>
+			<constraint year="2060">285</constraint>
+			<constraint year="2065">-360</constraint>
+			<constraint year="2070">-1183</constraint>
+			<constraint year="2075">-1450</constraint>
+			<constraint year="2080">-1726</constraint>
 			<constraint year="2085">-2000</constraint>
-			<constraint year="2090">-2250.75</constraint>
-			<constraint year="2095">-2460.56</constraint>
-			<constraint year="2100">-2660.97</constraint>
+			<constraint year="2090">-2251</constraint>
+			<constraint year="2095">-2461</constraint>
+			<constraint year="2100">-2661</constraint>
+
 
 
 
