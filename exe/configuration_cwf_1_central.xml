@@ -161,17 +161,13 @@
 			<Value name="geothermal">../input/gcamdata/xml/geo_tech_adv.xml</Value>
 			<Value name="nuclear">../input/gcamdata/xml/nuclear_low.xml</Value>
 
+			<Value name="ccs">../input/gcamdata/xml/ccs_supply_lowest.xml</Value>
+			<Value name="ccs">../input/gcamdata/xml/no_offshore_ccs.xml</Value>
+			
 
 			<Value name = "dac">../input/gcamdata/xml/dac_ssp1.xml</Value>
 			<Value name = "weathering">../input/gcamdata/xml/Weathering.xml</Value>
-			<!--weathering rate and growth limits -->
-			<Value name = "ew_growthlim">../input/gcamdata/xml/Weathering_med.xml</Value>
 
-			<Value name="ccs">../input/gcamdata/xml/ccs_supply_lowest.xml</Value>
-			<Value name="ccs">../input/gcamdata/xml/no_offshore_ccs.xml</Value>
-
-			<Value name = "cstorage_constraint">../input/extra/ccs_constraint/cwf_mid_cstorage_constraint.xml</Value>
- 	 		<Value name = "cstorage_mkt">../input/extra/ccs_constraint/cstorage_ceiling_mkt.xml</Value>
 
 			<!--use some SSP1 values-->
 			<Value name="resource_extraction">../input/gcamdata/xml/resources_SSP1.xml</Value>
@@ -191,14 +187,18 @@
 			<Value name = "bio_constraint">../input/extra/bio_constraint/cwf_mid_bio_constraint.xml</Value>
  	 		<Value name = "bio_mkt">../input/extra/bio_constraint/bio_ceiling_mkt.xml</Value>
 
+			<!--carbon storage constraint -->
+	
+			<Value name = "cstorage_constraint">../input/extra/ccs_constraint/cwf_mid_cstorage_constraint.xml</Value>
+ 	 		<Value name = "cstorage_mkt">../input/extra/ccs_constraint/cstorage_ceiling_mkt.xml</Value>
 
-
+			<!--weathering rate and growth limits -->
+			<Value name = "ew_growthlim">../input/gcamdata/xml/Weathering_med.xml</Value>
 
 			<!--no gas H2 forecourt-->
 			<Value name = "hydrogen">../input/gcamdata/xml/hydrogen_no_gas_forecourt.xml</Value>
 
 			<!--Accelerate retirement of unabated fossil power (1/2 lifetime + halflife)-->
-			<!--Value name = "fossil-power-retirement">../input/gcamdata/xml/accelerated_fossil_retirement.xml</Value-->
 			<Value name = "cement CCS">../input/gcamdata/xml/cement_all_CCS_post2030.xml</Value>
 
             <!--Policy-->
