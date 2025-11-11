@@ -22,6 +22,7 @@ if(command == driver.DECLARE_INPUTS) {
            FILE = "common/GCAM_region_names",
            FILE = "minerals/supply/Mineral_supply_curve_data",
            FILE = "minerals/supply/All_minerals_GCAM_reg_supply_data",
+           FILE = "minerals/supply/SP_USGS_All_minerals_GCAM_reg_supply_data_6stages",
            FILE = "minerals/supply/historical_copper_production",
            FILE = "minerals/supply/historical_lithium_production",
            FILE = "minerals/supply/historical_nickel_production"))
@@ -38,8 +39,10 @@ if(command == driver.DECLARE_INPUTS) {
   # Load required inputs
   iso_GCAM_regID <- get_data(all_data, "common/iso_GCAM_regID")
   GCAM_region_names <-get_data(all_data, "common/GCAM_region_names")
-  All_minerals_GCAM_reg_supply_data <- get_data(all_data, "minerals/supply/All_minerals_GCAM_reg_supply_data")
-  Mineral_supply_curve_data <- get_data(all_data, "minerals/supply/Mineral_supply_curve_data")
+
+  SP_USGS_All_minerals_GCAM_reg_supply_data_6stages <- get_data(all_data, "minerals/supply/SP_USGS_All_minerals_GCAM_reg_supply_data_6stages") # October 2025 version
+  All_minerals_GCAM_reg_supply_data <- get_data(all_data, "minerals/supply/All_minerals_GCAM_reg_supply_data") # September 2025 version
+  Mineral_supply_curve_data <- get_data(all_data, "minerals/supply/Mineral_supply_curve_data") # March 2025 version
 
   #convert historical production data to kt to align with the supply curve data
   historical_copper_production <- get_data(all_data, "minerals/supply/historical_copper_production") %>%
@@ -196,18 +199,29 @@ if(command == driver.DECLARE_INPUTS) {
 # PROCESS SUPPLY CURVE DATA -----------------------------------------------
 
 
-  # UPDATED SUPPLY CURVE DATA
-  L1111.All_data_reg <- All_minerals_GCAM_reg_supply_data %>%
+  # UPDATED SUPPLY CURVE DATA (OCTOBER 2025)
+  L1111.All_data_reg <- SP_USGS_All_minerals_GCAM_reg_supply_data_6stages %>%
     mutate(Mineral = case_when(Resource == "Copper" ~ "Cu",
                                Resource == "Lithium" ~ "Li",
                                Resource == "Nickel" ~ "Ni")) %>%
     select(Mineral, region, Stage, Capacity = Production, Resource = Reserves, P10 = cost_10pct, P50 = cost_50pct, P90 = cost_90pct) %>%
     # calculate "lifetime" (years) if reserve were to be produced at capacity until exhausted
-    mutate(Lifetime = Resource / Capacity) %>%
+    #mutate(Lifetime = Resource / Capacity) %>%
     # For now, omitting rows in which there is production capacity but zero resources
     filter(Resource != 0)
 
-  #OLD SUPPLY CURVE DATA
+  #OLD SUPPLY CURVE DATA (SEPTEMBER 2025)
+  #L1111.All_data_reg <- All_minerals_GCAM_reg_supply_data %>%
+  #  mutate(Mineral = case_when(Resource == "Copper" ~ "Cu",
+  #                             Resource == "Lithium" ~ "Li",
+  #                             Resource == "Nickel" ~ "Ni")) %>%
+  #  select(Mineral, region, Stage, Capacity = Production, Resource = Reserves, P10 = cost_10pct, P50 = cost_50pct, P90 = cost_90pct) %>%
+  #  # calculate "lifetime" (years) if reserve were to be produced at capacity until exhausted
+  #  mutate(Lifetime = Resource / Capacity) %>%
+  #  # For now, omitting rows in which there is production capacity but zero resources
+  #  filter(Resource != 0)
+
+  #OLD SUPPLY CURVE DATA (MARCH 2025)
   # First, aggregate data (all variables to the GCAM 32 region level)
   # L1111.All_data_reg_OLD <- Mineral_supply_curve_data %>%
   #   mutate(Country = gsub("Dem. Rep. Congo", "Congo, the Democratic Republic of the", Country),
@@ -252,7 +266,8 @@ if(command == driver.DECLARE_INPUTS) {
                                 Stage == "Pre-Production" ~ 2,
                                 Stage == "Incentive" ~ 3,
                                 Stage == "Late Stage" ~ 4,
-                                Stage == "Early Stage" ~ 5)) %>%
+                                Stage == "Early Stage" ~ 5,
+                                Stage == "Discovery" ~ 6)) %>%
     group_by(Mineral, region) %>%
     filter(StageNum == min(StageNum)) %>%
     select(Mineral, region, P10, P50, P90) %>%
@@ -279,12 +294,13 @@ if(command == driver.DECLARE_INPUTS) {
                                 Stage == "Pre-Production" ~ 2,
                                 Stage == "Incentive" ~ 3,
                                 Stage == "Late Stage" ~ 4,
-                                Stage == "Early Stage" ~ 5)) %>%
+                                Stage == "Early Stage" ~ 5,
+                                Stage == "Discovery" ~ 6)) %>%
     select(-Stage) %>%
     spread(key = StageNum, value = Capacity) %>%
     # Fill in data tables with zero values if a region has no capacity in that stage
     mutate(across(where(is.numeric), ~replace_na(.x, 0))) %>%
-    gather(key = "StageNum", value = "Capacity", `1`, `2`, `3`, `4`, `5`)
+    gather(key = "StageNum", value = "Capacity", `1`, `2`, `3`, `4`, `5`, `6`)
 
 
   #First, Set average number of years to move through each stage based on lead times for that mineral (S&P data)
@@ -296,8 +312,10 @@ if(command == driver.DECLARE_INPUTS) {
       mutate(AvgYears = case_when(StageNum == 1 ~ 0,
                                   StageNum == 2 ~ 2,
                                   StageNum == 3 ~ 1.7,
-                                  StageNum == 4 ~ 5, #0.38 * 13 # REVISIT THIS LATER
-                                  StageNum == 5 ~ 8)) #0.62 * 13
+                                  StageNum == 4 ~ 4.3, #0.33 of 13 # REVISIT THIS LATER
+                                  StageNum == 5 ~ 4.3, #0.33 of 13 # REVISIT THIS LATER
+                                  StageNum == 6 ~ 4.3)) #0.33 of 13 # REVISIT THIS LATER
+
 
     Ni_capacity_data_AvgYears  <- All_capacity_data_stages %>%
       filter(Mineral == "Ni") %>%
@@ -305,8 +323,9 @@ if(command == driver.DECLARE_INPUTS) {
       mutate(AvgYears = case_when(StageNum == 1 ~ 0,
                                   StageNum == 2 ~ 3.8,
                                   StageNum == 3 ~ 3.2,
-                                  StageNum == 4 ~ 4.4,
-                                  StageNum == 5 ~ 7.2))
+                                  StageNum == 4 ~ 3.9, #0.33 of 11.6
+                                  StageNum == 5 ~ 3.9, #0.33 of 11.6
+                                  StageNum == 6 ~ 3.9)) #0.33 of 11.6
 
     Cu_capacity_data_AvgYears <- All_capacity_data_stages %>%
       filter(Mineral == "Cu") %>%
@@ -314,16 +333,17 @@ if(command == driver.DECLARE_INPUTS) {
       mutate(AvgYears = case_when(StageNum == 1 ~ 0,
                                   StageNum == 2 ~ 2.3,
                                   StageNum == 3 ~ 2.6,
-                                  StageNum == 4 ~ 4.6,
-                                  StageNum == 5 ~ 7.6))
+                                  StageNum == 4 ~ 4.1, #0.33 of 12.2
+                                  StageNum == 5 ~ 4.1, #0.33 of 12.2
+                                  StageNum == 6 ~ 4.1)) #0.33 of 12.2
 
     All_capacity_data_AvgYears <- bind_rows(Cu_capacity_data_AvgYears,
                                Ni_capacity_data_AvgYears,
                                Li_capacity_data_AvgYears) %>%
-             # TRY A CASE WITH SHORTER LEAD TIMES
-             #mutate(AvgYears = AvgYears/2) %>%
-             # TRY A CASE WITH LONGER LEAD TIMES
-             #mutate(AvgYears = AvgYears*2) %>%
+      # TRY A CASE WITH SHORTER LEAD TIMES
+      #mutate(AvgYears = AvgYears*(11.2/15.5)) %>% # 11.2 is the total lead time of the shortest country (Turkiye)
+      # TRY A CASE WITH LONGER LEAD TIMES
+      #mutate(AvgYears = AvgYears*(22.4/15.5)) %>% # 22.5 is the total lead time of the longest country (Philippines)
              # Calculate the transition rate = fraction moving to the next stage in a given year
              mutate(TransitionRate = 0.5/AvgYears,
              # In the case of what is already in production, it does not move to another stage,
@@ -364,6 +384,8 @@ if(command == driver.DECLARE_INPUTS) {
   # Adjust production constraint.
 
   #Get only "Production", which is the first stage
+  # Note that "Production" is an underestimate because we didn't include Production associated
+  # With USGS Reserves, we can update this.
   AnnProdLimit_AllYr <- All_capacity_data_AllYr %>%
     filter(StageNum == 1) %>%
     select(Mineral, region, Year, Capacity)
@@ -414,49 +436,54 @@ if(command == driver.DECLARE_INPUTS) {
                                  Stage == "Pre-Production" ~ 2,
                                  Stage == "Incentive" ~ 3,
                                  Stage == "Late Stage" ~ 4,
-                                 Stage == "Early Stage" ~ 5)) %>%
+                                 Stage == "Early Stage" ~ 5,
+                                 Stage == "Discovery" ~ 6)) %>%
      select(-Stage) %>%
      spread(key = StageNum, value = Resource) %>%
      # Fill in data tables with zero values if a region has no resource in that stage
      mutate(across(where(is.numeric), ~replace_na(.x, 0))) %>%
-     gather(key = "StageNum", value = "Resource", `1`, `2`, `3`, `4`, `5`)
+     gather(key = "StageNum", value = "Resource", `1`, `2`, `3`, `4`, `5`, `6`)
 
    #First, Set average number of years to move through each stage based on lead times for that mineral (S&P data)
-
+   # From https://www.spglobal.com/market-intelligence/en/news-insights/research/from-6years-to-18years-the-increasing-trend-of-mine-lead-times
+   # April 2025 version.
    Li_resource_data_AvgYears <- All_resource_data_stages %>%
      filter(Mineral == "Li") %>%
      # assign the average number of years for each stage to be available
      mutate(AvgYears = case_when(StageNum == 1 ~ 0,
                                  StageNum == 2 ~ 2,
                                  StageNum == 3 ~ 1.7,
-                                 StageNum == 4 ~ 5, #0.38 * 13 # REVISIT THIS LATER
-                                 StageNum == 5 ~ 8)) #0.62 * 13
+                                 StageNum == 4 ~ 4.3, #0.33 of 13 # REVISIT THIS LATER
+                                 StageNum == 5 ~ 4.3, #0.33 of 13 # REVISIT THIS LATER
+                                 StageNum == 6 ~ 4.3)) #0.33 of 13 # REVISIT THIS LATER
 
    Ni_resource_data_AvgYears  <- All_resource_data_stages %>%
      filter(Mineral == "Ni") %>%
      # assign the average number of years for each stage to be available
      mutate(AvgYears = case_when(StageNum == 1 ~ 0,
-                                 StageNum == 2 ~ 4.1,
-                                 StageNum == 3 ~ 2.5,
-                                 StageNum == 4 ~ 4.4,
-                                 StageNum == 5 ~ 7.2))
+                                 StageNum == 2 ~ 3.8,
+                                 StageNum == 3 ~ 3.2,
+                                 StageNum == 4 ~ 3.9, #0.33 of 11.6
+                                 StageNum == 5 ~ 3.9, #0.33 of 11.6
+                                 StageNum == 6 ~ 3.9)) #0.33 of 11.6
 
    Cu_resource_data_AvgYears <- All_resource_data_stages %>%
      filter(Mineral == "Cu") %>%
      # assign the average number of years for each stage to be available
      mutate(AvgYears = case_when(StageNum == 1 ~ 0,
-                                 StageNum == 2 ~ 2.4,
-                                 StageNum == 3 ~ 1.6,
-                                 StageNum == 4 ~ 4.9,
-                                 StageNum == 5 ~ 7.9))
+                                 StageNum == 2 ~ 2.3,
+                                 StageNum == 3 ~ 2.6,
+                                 StageNum == 4 ~ 4.1, #0.33 of 12.2
+                                 StageNum == 5 ~ 4.1, #0.33 of 12.2
+                                 StageNum == 6 ~ 4.1)) #0.33 of 12.2
 
    All_resource_data_AvgYears <- bind_rows(Cu_resource_data_AvgYears,
                                            Ni_resource_data_AvgYears,
                                            Li_resource_data_AvgYears) %>%
      # TRY A CASE WITH SHORTER LEAD TIMES
-     #mutate(AvgYears = AvgYears/2) %>%
+     #mutate(AvgYears = AvgYears*(11.2/15.5)) %>% # 11.2 is the total lead time of the shortest country (Turkiye)
      # TRY A CASE WITH LONGER LEAD TIMES
-     #mutate(AvgYears = AvgYears*2) %>%
+     #mutate(AvgYears = AvgYears*(22.4/15.5)) %>% # 22.5 is the total lead time of the longest country (Philippines)
      # Calculate the transition rate = fraction moving to the next stage in a given year
      mutate(TransitionRate = 0.5/AvgYears,
             # In the case of what is already in production, it does not move to another stage,
@@ -477,7 +504,10 @@ if(command == driver.DECLARE_INPUTS) {
        # Calculate the resource in each stage in the given year, based on previous stage resource and transition rate
        mutate(PrevStageResource = lead(Resource, default = 0),
               PrevTransitionRate = lead(TransitionRate, default = 0),
+              # DEFAULT ASSUMPTION: We do not add to resources beyond what has been allocated.
               Resource = Resource*(1-TransitionRate) + PrevStageResource*(PrevTransitionRate)) %>%
+              # STEADY-STATE ASSUMPTION: Resources in the final stage remain constant over time
+              #Resource = if_else(StageNum == max(StageNum), Resource, Resource*(1-TransitionRate) + PrevStageResource*(PrevTransitionRate))) %>%
        ungroup()
      yr <- data$Year[1]
      data_all <- bind_rows(data_all, data)
@@ -514,6 +544,8 @@ if(command == driver.DECLARE_INPUTS) {
    # For now, taking a simple approach for representing lifetime.
 
    # Lifetime calculated as sum of Resources across stages / Capacity across stages
+   # NOTE: Lifetime here will be an overestimate, because we do not have Capacity for some Regions/Stages
+   # However, lifetimes above the median will be overwritten, so this is probably ok.
   Lifetime_sumStage <- L1111.All_data_reg %>%
     group_by(Mineral, region) %>%
     dplyr::summarise(Capacity = sum(Capacity),
@@ -583,7 +615,8 @@ if(command == driver.DECLARE_INPUTS) {
     add_precursors("common/iso_GCAM_regID",
                    "common/GCAM_region_names",
                    "minerals/supply/Mineral_supply_curve_data",
-                   "minerals/supply/All_minerals_GCAM_reg_supply_data") ->
+                   "minerals/supply/All_minerals_GCAM_reg_supply_data",
+                   "minerals/supply/SP_USGS_All_minerals_GCAM_reg_supply_data_6stages") ->
     L1111.mineral_AnnProdLimit_R_Y
 
   L1111.mineral_AnnResourceLimit_R_Y %>%
@@ -593,7 +626,8 @@ if(command == driver.DECLARE_INPUTS) {
     add_precursors("common/iso_GCAM_regID",
                    "common/GCAM_region_names",
                    "minerals/supply/Mineral_supply_curve_data",
-                   "minerals/supply/All_minerals_GCAM_reg_supply_data") ->
+                   "minerals/supply/All_minerals_GCAM_reg_supply_data",
+                   "minerals/supply/SP_USGS_All_minerals_GCAM_reg_supply_data_6stages") ->
     L1111.mineral_AnnResourceLimit_R_Y
 
   L1111.ResSupplyCurves_PricePoints %>%
@@ -603,7 +637,8 @@ if(command == driver.DECLARE_INPUTS) {
     add_precursors("common/iso_GCAM_regID",
                    "common/GCAM_region_names",
                    "minerals/supply/Mineral_supply_curve_data",
-                   "minerals/supply/All_minerals_GCAM_reg_supply_data") ->
+                   "minerals/supply/All_minerals_GCAM_reg_supply_data",
+                   "minerals/supply/SP_USGS_All_minerals_GCAM_reg_supply_data_6stages") ->
     L1111.ResSupplyCurves_PricePoints
 
   L1111.mineral_AvgProdLifetime %>%
@@ -613,7 +648,8 @@ if(command == driver.DECLARE_INPUTS) {
     add_precursors("common/iso_GCAM_regID",
                    "common/GCAM_region_names",
                    "minerals/supply/Mineral_supply_curve_data",
-                   "minerals/supply/All_minerals_GCAM_reg_supply_data") ->
+                   "minerals/supply/All_minerals_GCAM_reg_supply_data",
+                   "minerals/supply/SP_USGS_All_minerals_GCAM_reg_supply_data_6stages") ->
     L1111.mineral_AvgProdLifetime
 
 

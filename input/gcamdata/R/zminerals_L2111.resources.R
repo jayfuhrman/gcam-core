@@ -553,7 +553,7 @@ if(command == driver.DECLARE_INPUTS) {
   # We will try grouped markets for the smaller producers
   L2111.AnnProdConstraint_grouped_mkt <- L2111.AnnProdConstraint %>%
     select(-market) %>%
-    left_join_error_no_match(A10.mineral_ann_prod_constraint_mkt, by = c("supplysector", "subsector", "technology")) %>%
+    left_join(A10.mineral_ann_prod_constraint_mkt, by = c("supplysector", "subsector", "technology")) %>%
     group_by( supplysector, year, market) %>%
     mutate(constraint = sum(constraint)) %>%
     ungroup()
