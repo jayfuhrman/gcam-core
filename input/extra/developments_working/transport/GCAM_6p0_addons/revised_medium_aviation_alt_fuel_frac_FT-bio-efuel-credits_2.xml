@@ -3748,110 +3748,110 @@
                 <constraint year="2100">1</constraint>
             </policy-portfolio-standard>
         </region>
-        <region name="Europe_Eastern">
+        <region name="Ukraine">
             <supplysector name="trn_pass">
                 <tranSubsector name="Domestic Aviation">
                     <stub-technology name="Liquids">
                         <period year="2020">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2030">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>14067.21900041</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2035">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>31224.439882418</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2040">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>49202.468818621</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2045">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>67180.497754824</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2050">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>85158.526691027</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2055">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>103136.55562723</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2060">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>121114.584563433</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2065">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>139092.613499636</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2070">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>157070.642435839</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2075">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>175048.671372042</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2080">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>193026.700308245</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2085">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>211004.729244448</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2090">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>228982.758180651</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2095">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>246960.787116854</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2100">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>264928.2189243</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                     </stub-technology>
@@ -3863,103 +3863,103 @@
                         <period year="2020">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2025">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>0</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2030">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>15772.890617345</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2035">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>35010.4573531955</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2040">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>55168.3534671259</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2045">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>75326.2495810564</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2050">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>95484.1456949868</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2055">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>115642.041808917</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2060">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>135799.937922848</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2065">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>155957.834036778</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2070">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>176115.730150709</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2075">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>196273.626264639</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2080">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>216431.52237857</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2085">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>236589.4184925</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2090">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>256747.31460643</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2095">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>276905.210720361</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                         <period year="2100">
                             <minicam-energy-input name="FT-bio-efuel-credits">
                                 <coefficient>297051.2247853</coefficient>
-                                <market-name>Europe_Eastern</market-name>
+                                <market-name>Ukraine</market-name>
                             </minicam-energy-input>
                         </period>
                     </stub-technology>
