@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BatchRunner xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="batch_runner.xsd">
+
+
+
+<ComponentSet name="policy">
+<FileSet name="_constraint_updated">
+            <!--Policy-->
+			<Value name = "constraint">../input/extra/developments_working/extra_CO2_constraint_tests/constraint_CO2_test_2025_update.xml</Value>
+			<Value name="region_nz_adjust">../input/extra/proportional_tax_rate_cwf.xml</Value>
+			<Value name="luc_price">../input/extra/nature_cdr/global_uct_cwf.xml</Value>
+</FileSet>
+
+
+</ComponentSet>
+
+<ComponentSet name="ensemble">
+
+	<FileSet name="central">
+	</FileSet>
+
+	<FileSet name="highERW">
+			<Value name = "ew_growthlim">../input/gcamdata/xml/Weathering_high.xml</Value>
+	</FileSet>
+
+	<FileSet name="lowERW">
+			<Value name = "ew_growthlim">../input/gcamdata/xml/Weathering_low.xml</Value>
+	</FileSet>
+
+
+	<FileSet name="highCCS">
+			<Value name = "cstorage_constraint">../input/extra/ccs_constraint/cwf_high_cstorage_constraint.xml</Value>
+ 	 		<Value name = "cstorage_mkt">../input/extra/ccs_constraint/cstorage_ceiling_mkt.xml</Value>
+	</FileSet>
+
+	<FileSet name="lowCCS">
+			<Value name = "cstorage_constraint">../input/extra/ccs_constraint/cwf_low_cstorage_constraint.xml</Value>
+ 	 		<Value name = "cstorage_mkt">../input/extra/ccs_constraint/cstorage_ceiling_mkt.xml</Value>
+	</FileSet>
+
+	<FileSet name="high_naturalCDR">
+			<Value name = "ew_growthlim">../input/extra/nature_cdr/global_uct_high-LUC-CDR.xml</Value>
+	</FileSet>
+
+	<FileSet name="low_naturalCDR">
+			<Value name = "ew_growthlim">../input/policy/global_ffict.xml</Value>
+	</FileSet>
+
+	<FileSet name="highBio">
+			<Value name = "bio_constraint">../input/extra/bio_constraint/cwf_high_bio_constraint.xml</Value>
+ 	 		<Value name = "bio_mkt">../input/extra/bio_constraint/bio_ceiling_mkt.xml</Value>
+	</FileSet>
+
+	<FileSet name="lowBio">
+			<Value name = "bio_constraint">../input/extra/bio_constraint/cwf_low_bio_constraint.xml</Value>
+ 	 		<Value name = "bio_mkt">../input/extra/bio_constraint/bio_ceiling_mkt.xml</Value>
+	</FileSet>
+
+	<FileSet name="lowH2">
+			<Value name = "trn_lowH2">../input/gcamdata/xml/transportation_UCD_cwf_low_H2.xml</Value>
+			<Value name = "iron_steel_lowH2">../input/gcamdata/xml/iron_steel_cwf_low_H2.xml</Value>
+			<Value name = "chemical_lowH2">../input/gcamdata/xml/chemical_cwf_low_H2.xml</Value>
+			<Value name = "other_industry_cwf_lowH2">../input/gcamdata/xml/other_industry_cwf_low_H2.xml</Value>
+			<Value name = "en_Fert_cwf_lowH2">../input/gcamdata/xml/en_Fert_cwf_low_H2.xml</Value>
+			<Value name = "Off_road_lowH2">../input/gcamdata/xml/Off_road_cwf_low_H2.xml</Value>
+			<Value name = "hydrogen_no_pipeline">../input/gcamdata/xml/hydrogen_no_pipeline.xml</Value>
+	</FileSet>
+
+	<FileSet name="highH2">
+			<Value name = "iron_steel_highH2">../input/gcamdata/xml/iron_steel_cwf_high_H2.xml</Value>
+			<Value name = "chemical_highH2">../input/gcamdata/xml/chemical_cwf_high_H2.xml</Value>
+			<Value name = "other_industry_cwf_highH2">../input/gcamdata/xml/other_industry_cwf_high_H2.xml</Value>
+			<Value name = "en_Fert_cwf_highH2">../input/gcamdata/xml/en_Fert_cwf_high_H2.xml</Value>
+			<Value name = "Off_road_highH2">../input/gcamdata/xml/Off_road_cwf_high_H2.xml</Value>
+	</FileSet>
+
+	<FileSet name="mid_transportDecarb">
+			<Value name = "transportation_CWF">../input/gcamdata/xml/transportation_UCD_CWF_med.xml</Value>
+ 	 		<Value name = "LCFS_ship">../input/extra/aviation_shipping/revised_medium_ship_alt_fuel_frac_FT-bio-efuel-credits_2.xml</Value>
+			<Value name = "LCFS_aviation">../input/extra/aviation_shipping/revised_medium_aviation_alt_fuel_frac_FT-bio-efuel-credits_2.xml</Value>
+	</FileSet>
+
+	<FileSet name="low_transportDecarb">
+			<Value name = "transportation_CWF">../input/gcamdata/xml/transportation_UCD_CWF_low.xml</Value>
+	</FileSet>
+
+	<FileSet name="low_Renewable">
+			<Value name="wind">../input/gcamdata/xml/wind_low.xml</Value>
+			<Value name="solar">../input/gcamdata/xml/solar_low.xml</Value>
+			<Value name="geothermal">../input/gcamdata/xml/geo_low.xml</Value>
+	</FileSet>
+
+	<FileSet name="med_Renewable">
+			<!--To run this scenario, comment out the following files from the main configuration_cwf.xml file or fileset as follows:-->
+			<!--Value name="wind">../input/gcamdata/xml/wind_adv.xml</Value>
+			<Value name="solar">../input/gcamdata/xml/solar_adv.xml</Value>
+			<Value name="geothermal">../input/gcamdata/xml/geo_adv.xml</Value>
+			<Value name="geothermal">../input/gcamdata/xml/geo_tech_adv.xml</Value-->
+	</FileSet>
+
+
+	<FileSet name="nuclear_high">
+			<Value name = "nuclear">../input/gcamdata/xml/nuclear_adv.xml</Value>
+	</FileSet>
+
+	<FileSet name="nuclear_med">
+			<!--To run this scenario, comment out the following files from the main configuration_cwf.xml file or fileset as follows:-->
+			<!--Value name="nuclear">../input/gcamdata/xml/nuclear_low.xml</Value-->
+	</FileSet>
+
+	<FileSet name="highEnDemand">
+			<Value name = "transportation_CWF">../input/gcamdata/xml/transportation_cwf_high_en_demand.xml</Value>
+			<Value name = "buildings_CWF">../input/gcamdata/xml/building_det_cwf_high_en.xml</Value>
+			<Value name = "population">../input/gcamdata/xml/socioeconomics_SSP2.xml</Value>
+			<Value name = "industry_income_elas">../input/gcamdata/xml/other_industry_incelas_ssp2.xml</Value>
+			<Value name = "iron_steel_income_elas">../input/gcamdata/xml/iron_steel_incelas_ssp2.xml</Value>   
+			<Value name = "Off_road_income_elas">../input/gcamdata/xml/Off_road_incelas_ssp2.xml</Value>  
+			<Value name = "chemical_income_elas">../input/gcamdata/xml/chemical_incelas_ssp2.xml</Value>   
+			<Value name = "aluminum_income_elas">../input/gcamdata/xml/aluminum_incelas_ssp2.xml</Value> 
+	    	<Value name = "paper_income_elas">../input/gcamdata/xml/paper_incelas_ssp2.xml</Value> 
+			<Value name = "cement_income_elas">../input/gcamdata/xml/cement_incelas_ssp2.xml</Value>
+	</FileSet>
+
+	<FileSet name="LowEnDemand">
+			<Value name = "transportation_CWF">../input/gcamdata/xml/transportation_cwf_LED.xml</Value>
+			<Value name = "buildings_CWF">../input/gcamdata/xml/building_det_cwf_LED.xml</Value>
+			<Value name = "population">../input/gcamdata/xml/socioeconomics_SSP2.xml</Value>
+			<Value name = "other_industry_cwf">../input/gcamdata/xml/other_industry_cwf_LED.xml</Value> <!--include assumptions of cwf_low_fossil-->
+ 			<Value name = "iron_steel_cwf">../input/gcamdata/xml/iron_steel_cwf_LED.xml</Value>
+ 			<Value name = "Off_road_cwf">../input/gcamdata/xml/Off_road_cwf_LED.xml</Value>
+ 			<Value name = "chemical_cwf">../input/gcamdata/xml/chemical_cwf_LED.xml</Value>
+ 			<Value name = "aluminum_cwf">../input/gcamdata/xml/aluminum_cwf_LED.xml</Value>
+			<Value name = "cement_cwf">../input/gcamdata/xml/cement_cwf_LED.xml</Value>
+	</FileSet>
+
+	<FileSet name="highDiet">
+				<Value name = "demand_food">../input/gcamdata/xml/ag_an_demand_input_FoodExoDiet_SSP1_CWFHigh_2050.xml</Value>
+	</FileSet>
+
+	<FileSet name="LowDiet">
+				<!--Note that for this scenario, the demand_food input file used in cwf_central scenario should be commented out as it is incompatible with this file-->
+				<Value name = "demand_food">../input/gcamdata/xml/ag_an_demand_input_Food_Static.xml</Value>
+	</FileSet>
+
+
+</ComponentSet>
+
+</BatchRunner>
+
+
