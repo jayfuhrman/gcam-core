@@ -36,10 +36,16 @@ module_energy_L200.MMRV <- function(command, ...) {
   if(command == driver.DECLARE_INPUTS) {
     return(c(FILE = "common/GCAM_region_names",
              FILE = "common/iso_GCAM_regID",
+             FILE = "energy/MMRV_cost_regionalised_high",
+             FILE = "energy/MMRV_cost_regionalised_mid",
+             FILE = "energy/MMRV_cost_regionalised_low",
              FILE = "energy/MMRV_cost_regionalised"
              ))
   } else if(command == driver.DECLARE_OUTPUTS) {
-    return(c(XML = "MMRV_cost_regionalised.xml"
+    return(c(XML = "MMRV_cost_regionalised_high.xml",
+             XML = "MMRV_cost_regionalised_mid.xml",
+             XML = "MMRV_cost_regionalised_low.xml",
+             XML = "MMRV_cost_regionalised.xml"
              ))
   } else if(command == driver.MAKE) {
 
@@ -49,6 +55,9 @@ module_energy_L200.MMRV <- function(command, ...) {
     GCAM_region_names <- get_data(all_data, "common/GCAM_region_names")
     iso_GCAM_regID <- get_data(all_data, "common/iso_GCAM_regID")
     MMRV_cost_regionalised <- get_data(all_data, "energy/MMRV_cost_regionalised")
+    MMRV_cost_regionalised_high <- get_data(all_data, "energy/MMRV_cost_regionalised_high")
+    MMRV_cost_regionalised_mid <- get_data(all_data, "energy/MMRV_cost_regionalised_mid")
+    MMRV_cost_regionalised_low <- get_data(all_data, "energy/MMRV_cost_regionalised_low")
 
     # ===================================================
 
@@ -72,7 +81,43 @@ module_energy_L200.MMRV <- function(command, ...) {
       add_precursors("energy/MMRV_cost_regionalised") ->
       MMRV_cost_regionalised.xml
 
-    return_data(MMRV_cost_regionalised.xml)
+    # MMRV_cost_regionalised reports MMRV costs in 1975$/kgC.
+    MMRV_cost_regionalised_high %>%
+      repeat_add_columns(tibble(year = MODEL_YEARS)) %>%
+      select(LEVEL2_DATA_NAMES[['StubTechCost']]) ->
+      L200.MMRV # This is a final output table.
+
+    create_xml("MMRV_cost_regionalised_high.xml") %>%
+      add_xml_data(L200.MMRV, "StubTechCost") %>%
+      add_precursors("energy/MMRV_cost_regionalised_high") ->
+      MMRV_cost_regionalised_high.xml
+
+    # MMRV_cost_regionalised reports MMRV costs in 1975$/kgC.
+    MMRV_cost_regionalised_mid %>%
+      repeat_add_columns(tibble(year = MODEL_YEARS)) %>%
+      select(LEVEL2_DATA_NAMES[['StubTechCost']]) ->
+      L200.MMRV # This is a final output table.
+
+    create_xml("MMRV_cost_regionalised_mid.xml") %>%
+      add_xml_data(L200.MMRV, "StubTechCost") %>%
+      add_precursors("energy/MMRV_cost_regionalised_mid") ->
+      MMRV_cost_regionalised_mid.xml
+
+    # MMRV_cost_regionalised reports MMRV costs in 1975$/kgC.
+    MMRV_cost_regionalised_low %>%
+      repeat_add_columns(tibble(year = MODEL_YEARS)) %>%
+      select(LEVEL2_DATA_NAMES[['StubTechCost']]) ->
+      L200.MMRV # This is a final output table.
+
+    create_xml("MMRV_cost_regionalised_low.xml") %>%
+      add_xml_data(L200.MMRV, "StubTechCost") %>%
+      add_precursors("energy/MMRV_cost_regionalised_low") ->
+      MMRV_cost_regionalised_low.xml
+
+    return_data(MMRV_cost_regionalised.xml,
+                MMRV_cost_regionalised_high.xml,
+                MMRV_cost_regionalised_mid.xml,
+                MMRV_cost_regionalised_low.xml)
   } else {
     stop("Unknown command")
   }

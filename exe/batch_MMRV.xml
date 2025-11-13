@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BatchRunner xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="batch_runner.xsd">
+
+
+
+
+
+
+
+<!--<ComponentSet name="policy">
+	
+	<FileSet name="Delayed_Transition">
+	           		<Value name = "policy_constraint_file">../input/policy/delayed_transition_global.xml</Value>
+                    <Value name = "policy_link_file">../input/policy/NDCs_global_link.xml</Value>
+	</FileSet>
+	
+</ComponentSet>-->
+
+<ComponentSet name="policy">
+	
+	<FileSet name="Cprice_25_5">
+					<!-- set up the near-term / long-term policy inputs -->
+					<Value name = "long-term-co2">../input/policy/carbon_tax_0.xml</Value>
+					<Value name = "near-term-co2">../input/policy/spa14_tax.xml</Value>
+					<Value name = "co2-link">../input/policy/2025_target_finder_phasein.xml</Value>
+					<Value name = "co2luc-link">../input/policy/global_uct_phasein_no_constraint.xml</Value>	           		
+					<Value name = "carbon_price">../input/policy/carbon_tax_25_5.xml</Value>
+	</FileSet>
+	
+</ComponentSet>
+
+<ComponentSet name="MMRV">
+	
+<!--	<FileSet name="High_MMRV_Cost">
+					<Value name = "carbon_storage">../input/gcamdata/xml/Cstorage_highMMRV.xml</Value>	
+					<Value name = "ccs">../input/gcamdata/xml/Cstorage_rapid_highMMRV.xml</Value>
+					<Value name = "MMRV_costs">../input/gcamdata/xml/MMRV_cost_regionalised_high.xml</Value>
+	</FileSet>
+
+	<FileSet name="Mid_MMRV_Cost">
+					<Value name = "carbon_storage">../input/gcamdata/xml/Cstorage_midMMRV.xml</Value>	
+					<Value name = "ccs">../input/gcamdata/xml/Cstorage_rapid_midMMRV.xml</Value>
+					<Value name = "MMRV_costs">../input/gcamdata/xml/MMRV_cost_regionalised_mid.xml</Value>
+	</FileSet>	
+-->
+	<FileSet name="Low_MMRV_Cost">
+					<Value name = "carbon_storage">../input/gcamdata/xml/Cstorage_lowMMRV.xml</Value>	
+					<!--Value name = "ccs">../input/gcamdata/xml/Cstorage_rapid_lowMMRV.xml</Value-->
+					<Value name = "ccs">../input/gcamdata/xml/Cstorage_rapid_lowMMRV_shrwtzero2020.xml</Value>
+					<Value name = "MMRV_costs">../input/gcamdata/xml/MMRV_cost_regionalised_low.xml</Value>
+	</FileSet>	
+
+<!--	<FileSet name="No_MMRV_Cost">
+					<Value name = "carbon_storage">../input/gcamdata/xml/Cstorage_noMMRV.xml</Value>	
+					<Value name = "ccs">../input/gcamdata/xml/Cstorage_rapid_noMMRV.xml</Value>
+	</FileSet>-->
+	
+</ComponentSet>
+
+</BatchRunner>
+
+
