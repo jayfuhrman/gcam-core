@@ -108,6 +108,10 @@
 			<!--Value name="nuclear">../input/gcamdata/xml/nuclear_low.xml</Value-->
 	</FileSet>
 
+	<FileSet name="nuclear_zero">
+			<Value name="nuclear">../input/gcamdata/xml/electricity_no_nuclear.xml</Value>
+	</FileSet>
+
 	<FileSet name="highEnDemand">
 			<Value name = "transportation_CWF">../input/gcamdata/xml/transportation_cwf_high_en_demand.xml</Value>
 			<Value name = "buildings_CWF">../input/gcamdata/xml/building_det_cwf_high_en.xml</Value>
