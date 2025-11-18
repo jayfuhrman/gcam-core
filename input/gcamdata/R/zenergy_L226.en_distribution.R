@@ -85,29 +85,20 @@ module_energy_L226.en_distribution <- function(command, ...) {
 
 
     #======================================================================================
-    # Calibrate detailed refined liquids by the defined groupings (enduse or industrial)
+    # Calibrate detailed refined liquids by the defined groupings (e.g. industrial)
     L126.in_EJ_R_Y_liq_tot <- L1093.en_bal_EJ_liquids_total %>%
-      rename(fuel=fuel_category,sector=type)
-
-    # Complete combinations
-    complete_combinations <- expand.grid(
-      region = unique(L126.in_EJ_R_Y_liq_tot$region),
-      year = unique(L126.in_EJ_R_Y_liq_tot$year),
-      fuel = unique(L126.in_EJ_R_Y_liq_tot$fuel),
-      sector = unique(L126.in_EJ_R_Y_liq_tot$sector))
-
-    # Include calibrated oil consumed outside the refining sector
-    L126.in_EJ_R_Y_liq_tot <- complete_combinations %>%
-      left_join(L126.in_EJ_R_Y_liq_tot,by=c("region","year","fuel","sector"))%>%
-      mutate(value = replace_na(value, 0)) %>%
+      rename(fuel = fuel_category, sector = type) %>%
       bind_rows(L121.in_EJ_R_TPES_liq_Yh %>%
-                  filter(fuel == "Feedstock") %>%
+                  filter(fuel == "Feedstock", year %in% MODEL_BASE_YEARS) %>%
                   left_join(GCAM_region_names, by = "GCAM_region_ID") %>%
-                  select(-GCAM_region_ID))     # add calibrated end use crude
-    L126.in_EJ_R_Y_liq_tot <- as_tibble(L126.in_EJ_R_Y_liq_tot)
+                  select(-GCAM_region_ID))  %>%   # add calibrated end use crude
+      # explicitly calibrate 0 for fuels that could have been consumed but weren't
+      complete(nesting(region, sector), fuel, year = MODEL_BASE_YEARS) %>%
+      arrange(region, year, sector, fuel, value) %>%
+      replace(., is.na(.), 0)
 
     L226.StubTechProd_liq <- L126.in_EJ_R_Y_liq_tot %>%
-      filter(year %in% c(MODEL_BASE_YEARS)) %>%
+      #filter(year %in% MODEL_BASE_YEARS) %>%  # already filter near top of L1093
       rename(supplysector = sector, stub.technology = fuel) %>%
       mutate(subsector = supplysector,
              stub.technology = paste("refined liquids", tolower(stub.technology)),

@@ -166,7 +166,7 @@ module_energy_L121.liquids <- function(command, ...) {
 
       # MEL 08/25: Use IEA refining input shares to calibrate regional crude
       # consumption. Separately track refining feed and end use consumption for
-      # downstream refined products calibration
+      # downstream refined products calibration. These values are negative or 0.
       ctl_gtl_outputs <- L1012.en_bal_EJ_R_Si_Fi_Yh %>%
         filter(sector %in% c("out_ctl", "out_gtl")) %>%
         group_by(GCAM_region_ID, year) %>%
@@ -176,7 +176,8 @@ module_energy_L121.liquids <- function(command, ...) {
       refining_feedstock <- L101.detailed_refined_liquids_EJ_R_Yh %>%
         # assume oil refining crude for energy not included in crude for feed receipts
         filter(sector %in% c("net_oil refining", "transfers"),
-               PRODUCT %in% c("Crude oil", "Natural gas liquids", "Other hydrocarbons",
+               PRODUCT %in% c("Crude/NGL/feedstocks (if no detail)", "Crude oil",
+                              "Natural gas liquids", "Other hydrocarbons",
                               "Refinery feedstocks", "Additives/blending components"),
                # assume transfers to feedstock (pos) are accounted for in net
                # refining, while transfers from (neg) are not
@@ -188,17 +189,18 @@ module_energy_L121.liquids <- function(command, ...) {
                fuel = "crude oil",
                year = as.numeric(year)) %>%
         group_by(GCAM_region_ID, year, sector, fuel) %>%
-        summarize(value = sum(value), .groups = "drop") %>%
+        summarise(value = sum(value), .groups = "drop") %>%
         # except some of those negative transfers are actually ctl/gtl outputs
         # and shouldn't be included in crude oil refining calcs
         left_join(ctl_gtl_outputs, by = c("GCAM_region_ID", "year")) %>%
         mutate(value = value + replace_na(ctlgtl_out, 0)) %>%
         select(-ctlgtl_out)
 
-      # Maintain industrial vs end use classification for later refined liquids
-      # calibrations
+      # Maintain industrial vs end use etc classification for later refined
+      # liquids calibrations
       direct_crude_cons <- L101.detailed_refined_liquids_EJ_R_Yh %>%
-        filter(PRODUCT %in% c("Crude oil", "Natural gas liquids", "Other hydrocarbons",
+        filter(PRODUCT %in% c("Crude/NGL/feedstocks (if no detail)", "Crude oil",
+                              "Natural gas liquids", "Other hydrocarbons",
                               "Refinery feedstocks", "Additives/blending components"),
                sector %in% c(energy.LIQUIDS_INDUSTRIAL_SECTORS,
                              energy.LIQUIDS_ENDUSE_SECTORS,
@@ -210,11 +212,12 @@ module_energy_L121.liquids <- function(command, ...) {
                year = as.numeric(year),
                fuel = "Feedstock",   # needs to be named differently for the join below
                subsector = sector,
-               sector = if_else(sector %in% energy.LIQUIDS_ENDUSE_SECTORS,
+               type = if_else(sector %in% energy.LIQUIDS_ENDUSE_SECTORS,
                                 "refined liquids enduse",
-                                "refined liquids industrial")) %>%
+                                "refined liquids industrial"),
+               sector = type) %>%
         group_by(GCAM_region_ID, year, sector, fuel) %>%
-        summarize(value = sum(value), .groups = "drop")
+        summarise(value = sum(value), .groups = "drop")
 
       # Calibrate combined regional oil consumption to expected GCAM global
       # value. Keep sector differentiation for use in downstream chunks
