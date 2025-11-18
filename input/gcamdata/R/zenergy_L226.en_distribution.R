@@ -33,8 +33,7 @@ module_energy_L226.en_distribution <- function(command, ...) {
              FILE = "energy/A26.globaltech_cost",
              FILE = "energy/A26.globaltech_shrwt",
              FILE = "energy/A26.globaltech_interp",
-             "L1093.en_bal_EJ_liquids_enduse_total",
-             "L1093.en_bal_EJ_liquids_industrial_total",
+             "L1093.en_bal_EJ_liquids_total",
              "L121.in_EJ_R_TPES_liq_Yh",
              "L126.IO_R_elecownuse_F_Yh",
              "L126.IO_R_electd_F_Yh",
@@ -81,15 +80,13 @@ module_energy_L226.en_distribution <- function(command, ...) {
     L126.IO_R_elecownuse_F_Yh <- get_data(all_data, "L126.IO_R_elecownuse_F_Yh", strip_attributes = TRUE)
     L126.IO_R_electd_F_Yh <- get_data(all_data, "L126.IO_R_electd_F_Yh")
     L126.IO_R_gaspipe_F_Yh <- get_data(all_data, "L126.IO_R_gaspipe_F_Yh")
-    L1093.en_bal_EJ_liquids_enduse_total <- get_data(all_data,"L1093.en_bal_EJ_liquids_enduse_total", strip_attributes = TRUE)
-    L1093.en_bal_EJ_liquids_industrial_total <- get_data(all_data,"L1093.en_bal_EJ_liquids_industrial_total", strip_attributes = TRUE)
+    L1093.en_bal_EJ_liquids_total <- get_data(all_data,"L1093.en_bal_EJ_liquids_total", strip_attributes = TRUE)
     L121.in_EJ_R_TPES_liq_Yh <- get_data(all_data, "L121.in_EJ_R_TPES_liq_Yh", strip_attributes = TRUE)
 
 
     #======================================================================================
     # Calibrate detailed refined liquids by the defined groupings (enduse or industrial)
-    L126.in_EJ_R_Y_liq_tot <- L1093.en_bal_EJ_liquids_enduse_total%>%
-      rbind(L1093.en_bal_EJ_liquids_industrial_total)%>%
+    L126.in_EJ_R_Y_liq_tot <- L1093.en_bal_EJ_liquids_total %>%
       rename(fuel=fuel_category,sector=type)
 
     # Complete combinations

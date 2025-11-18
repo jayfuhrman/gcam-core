@@ -2,7 +2,7 @@
 
 #' module_energy_L240.refined_liquids_trade
 #'
-#' Model input for regional and (globally) traded iron and steel
+#' Model input for regional and (globally) traded refined liquids products
 #'
 #' @param command API command to execute
 #' @param ... other optional parameters, depending on command
@@ -57,30 +57,31 @@ module_energy_L240.refined_liquids_trade <- function(command, ...) {
     A_liquids_TradedTechnology <- get_data(all_data, "energy/A_liquids_TradedTechnology", strip_attributes = TRUE)
     LB1092.Tradebalance_refined_liquids_EJ_R_Y <- get_data(all_data, "LB1092.Tradebalance_refined_liquids_EJ_R_Y")
 
-     # 1. TRADED SECTOR / SUBSECTOR / TECHNOLOGY")
+    # 1. TRADED SECTOR / SUBSECTOR / TECHNOLOGY")
     # L240A.Supplysector_tra: generic supplysector info for traded refined liquids
     # By convention, traded commodity information is contained within the USA region (could be within any)
     A_liquids_TradedSector$region <- gcam.USA_REGION
 
     # L240A.Supplysector_tra: generic supplysector info for traded refined liquids
-    L240A.Supplysector_tra <- mutate(A_liquids_TradedSector, logit.year.fillout = min(MODEL_BASE_YEARS)) %>%
+    L240A.Supplysector_tra <- A_liquids_TradedSector %>%
+      mutate(logit.year.fillout = min(MODEL_BASE_YEARS)) %>%
       select(c(LEVEL2_DATA_NAMES[["Supplysector"]], "logit.type"))
 
     # L240A.SectorUseTrialMarket_tra: Create solved markets for the traded sectors
-    L240A.SectorUseTrialMarket_tra <- select(A_liquids_TradedSector, region, supplysector) %>%
+    L240A.SectorUseTrialMarket_tra <- A_liquids_TradedSector %>%
+      select(region, supplysector) %>%
       mutate(use.trial.market = 1)
 
     # L240A.SubsectorAll_tra: generic subsector info for traded refined liquids
-    # Traded commodities have the region set to USA and the subsector gets the region name pre-pended
-    L240A.SubsectorAll_tra <- write_to_all_regions(A_liquids_TradedSubsector,
-                                                  c(LEVEL2_DATA_NAMES[["SubsectorAllTo"]], "logit.type"),
-                                                  GCAM_region_names,
-                                                  has_traded = TRUE)
-
+    # Traded commodities have the region set to USA and the subsector gets the
+    # region name pre-pended
+    L240A.SubsectorAll_tra <- A_liquids_TradedSubsector %>%
+      write_to_all_regions(c(LEVEL2_DATA_NAMES[["SubsectorAllTo"]], "logit.type"),
+                           GCAM_region_names, has_traded = TRUE)
 
     # Base technology-level table for several tables to be written out")
-    A_liquids_TradedTechnology_R_Y <- repeat_add_columns(A_liquids_TradedTechnology,
-                                                        tibble(year = MODEL_YEARS)) %>%
+    A_liquids_TradedTechnology_R_Y <- A_liquids_TradedTechnology %>%
+      repeat_add_columns(tibble(year = MODEL_YEARS)) %>%
       repeat_add_columns(GCAM_region_names) %>%
       mutate(subsector = paste(region, subsector, sep = " "),
              technology = subsector,
@@ -88,7 +89,8 @@ module_energy_L240.refined_liquids_trade <- function(command, ...) {
              region = gcam.USA_REGION)
 
     # L240A.TechShrwt_tra: Share-weights of traded technologies
-    L240A.TechShrwt_tra <- select(A_liquids_TradedTechnology_R_Y, LEVEL2_DATA_NAMES[["TechShrwt"]])
+    L240A.TechShrwt_tra <- A_liquids_TradedTechnology_R_Y %>%
+      select(LEVEL2_DATA_NAMES[["TechShrwt"]])
 
     # L240A.TechCost_tra: Costs of traded technologies
     L240A.TechCost_tra <- A_liquids_TradedTechnology_R_Y %>%
@@ -96,71 +98,76 @@ module_energy_L240.refined_liquids_trade <- function(command, ...) {
       select(LEVEL2_DATA_NAMES[["TechCost"]])
 
     # L240A.TechCoef_tra: Coefficient and market name of traded technologies
-    L240A.TechCoef_tra <- select(A_liquids_TradedTechnology_R_Y, LEVEL2_DATA_NAMES[["TechCoef"]])
+    L240A.TechCoef_tra <- A_liquids_TradedTechnology_R_Y %>%
+      select(LEVEL2_DATA_NAMES[["TechCoef"]])
 
 
     # L240A.Production_tra: Output (gross exports) of traded technologies
-    L240A.GrossExports_EJ_R_Y <- left_join_error_no_match(LB1092.Tradebalance_refined_liquids_EJ_R_Y %>%
-                                                           filter(metric=="Exports") %>%
-                                                           rename(GrossExp_EJ=value,region=GCAM_region),
-                                                         GCAM_region_names,
-                                                         by = "region") %>%
+    L240A.GrossExports_EJ_R_Y <- LB1092.Tradebalance_refined_liquids_EJ_R_Y %>%
+      filter(metric == "exports") %>%
+      rename(GrossExp_EJ = value, region = GCAM_region) %>%
+      left_join_error_no_match(GCAM_region_names, by = "region") %>%
       select(region, year, GrossExp_EJ,GCAM_mapping)
 
-    L240A.Production_tra <- filter(A_liquids_TradedTechnology_R_Y, year %in% MODEL_BASE_YEARS) %>%
+    L240A.Production_tra <- A_liquids_TradedTechnology_R_Y %>%
+      filter(year %in% MODEL_BASE_YEARS) %>%
       left_join(L240A.GrossExports_EJ_R_Y,
-                               by = c(market.name = "region", "year",minicam.energy.input="GCAM_mapping")) %>%
+                by = c("market.name" = "region", "year",
+                       "minicam.energy.input" = "GCAM_mapping")) %>%
       rename(calOutputValue = GrossExp_EJ) %>%
-      mutate(calOutputValue = ifelse(is.na(calOutputValue), 0, calOutputValue))%>%
-      mutate(calOutputValue = round(calOutputValue, energy.DIGITS_CALOUTPUT),
+      mutate(calOutputValue = round(replace_na(calOutputValue, 0),
+                                    energy.DIGITS_CALOUTPUT),
              share.weight.year = year,
              subs.share.weight = if_else(calOutputValue > 0, 1, 0),
-             tech.share.weight = subs.share.weight)%>%
+             tech.share.weight = subs.share.weight) %>%
       select(LEVEL2_DATA_NAMES[["Production"]])
 
     # PART 2: DOMESTIC SUPPLY SECTOR / SUBSECTOR / TECHNOLOGY")
     # L240A.Supplysector_reg: generic supplysector info for refined liquids
-    L240A.Supplysector_reg <- mutate(A_liquids_RegionalSector, logit.year.fillout = min(MODEL_BASE_YEARS)) %>%
+    L240A.Supplysector_reg <- A_liquids_RegionalSector %>%
+      mutate(logit.year.fillout = min(MODEL_BASE_YEARS)) %>%
       write_to_all_regions(c(LEVEL2_DATA_NAMES[["Supplysector"]], "logit.type"),
                            GCAM_region_names)
 
-    # L240A.SubsectorAll_reg: generic subsector info for regional refined liquids (competing domestic prod vs intl imports)
-    L240A.SubsectorAll_reg <- write_to_all_regions(A_liquids_RegionalSubsector,
-                                                  c(LEVEL2_DATA_NAMES[["SubsectorAllTo"]], "logit.type"),
-                                                  GCAM_region_names)
+    # L240A.SubsectorAll_reg: generic subsector info for regional refined
+    # liquids (competing domestic prod vs intl imports)
+    L240A.SubsectorAll_reg <- A_liquids_RegionalSubsector %>%
+      write_to_all_regions(c(LEVEL2_DATA_NAMES[["SubsectorAllTo"]], "logit.type"),
+                           GCAM_region_names)
 
     # Base technology-level table for several tables to be written out")
-    A_liquids_RegionalTechnology_R_Y <- repeat_add_columns(A_liquids_RegionalTechnology,
-                                                          tibble(year = MODEL_YEARS)) %>%
+    A_liquids_RegionalTechnology_R_Y <- A_liquids_RegionalTechnology %>%
+      repeat_add_columns(tibble(year = MODEL_YEARS)) %>%
       repeat_add_columns(GCAM_region_names["region"]) %>%
       mutate(market.name = if_else(market.name == "regional", region, market.name))
 
     # L240A.TechShrwt_tra: Share-weights of traded technologies
-    L240A.TechShrwt_reg <- select(A_liquids_RegionalTechnology_R_Y, LEVEL2_DATA_NAMES[["TechShrwt"]])
+    L240A.TechShrwt_reg <- A_liquids_RegionalTechnology_R_Y %>%
+      select(LEVEL2_DATA_NAMES[["TechShrwt"]])
 
     # L240A.TechCoef_reg: Coefficient and market name of traded technologies
-    L240A.TechCoef_reg <- select(A_liquids_RegionalTechnology_R_Y, LEVEL2_DATA_NAMES[["TechCoef"]])
+    L240A.TechCoef_reg <- A_liquids_RegionalTechnology_R_Y %>%
+      select(LEVEL2_DATA_NAMES[["TechCoef"]])
 
     # L240A.Production_reg_imp: Output (flow) of gross imports
     # Imports are equal to the gross imports calculated in LB1092
-    L240A.GrossImports_EJ_R_Y <- left_join_error_no_match(LB1092.Tradebalance_refined_liquids_EJ_R_Y %>%
-                                                           filter(metric=="Imports") %>%
-                                                           mutate(minicam.energy.input=GCAM_mapping)%>%
-                                                           rename(GrossImp_EJ=value,region=GCAM_region),
-                                                         GCAM_region_names,
-                                                         by = "region")%>%
-      left_join(select(A_liquids_TradedTechnology, supplysector, minicam.energy.input),
-                by = c("minicam.energy.input")) %>%
+    L240A.GrossImports_EJ_R_Y <- LB1092.Tradebalance_refined_liquids_EJ_R_Y %>%
+      filter(metric == "imports") %>%
+      mutate(minicam.energy.input = GCAM_mapping) %>%
+      rename(GrossImp_EJ = value, region = GCAM_region) %>%
+      left_join_error_no_match(GCAM_region_names, by = "region") %>%
+      left_join(A_liquids_TradedTechnology %>%
+                  select(supplysector, minicam.energy.input),
+                by = "minicam.energy.input") %>%
       select(region, supplysector, year, GrossImp_EJ)
 
     L240A.Production_reg_imp <- A_liquids_RegionalTechnology_R_Y %>%
-      filter(year %in% MODEL_BASE_YEARS,
-             grepl( "import", subsector)) %>%
+      filter(year %in% MODEL_BASE_YEARS, grepl("import", subsector)) %>%
       left_join(L240A.GrossImports_EJ_R_Y,
-                               by = c("region", minicam.energy.input = "supplysector", "year")) %>%
+                by = c("region", "minicam.energy.input" = "supplysector", "year")) %>%
       rename(calOutputValue = GrossImp_EJ) %>%
-      mutate(calOutputValue = ifelse(is.na(calOutputValue), 0, calOutputValue))%>%
-      mutate(calOutputValue = round(calOutputValue, energy.DIGITS_CALOUTPUT),
+      mutate(calOutputValue = round(replace_na(calOutputValue, 0),
+                                    energy.DIGITS_CALOUTPUT),
              share.weight.year = year,
              subs.share.weight = if_else(calOutputValue > 0, 1, 0),
              tech.share.weight = subs.share.weight) %>%
@@ -168,23 +175,21 @@ module_energy_L240.refined_liquids_trade <- function(command, ...) {
 
     # L240A.Production_reg_dom: Output (flow) of domestic
 
-    #### DOMESTIC TECHNOLOGY OUTPUT = iron and steel PRODUCTION - GROSS EXPORTS
-    L240A.DomSup_EJ_R_Y <- left_join_error_no_match(LB1092.Tradebalance_refined_liquids_EJ_R_Y %>%
-                                                     filter(metric=="domestic_supply") %>%
-                                                     mutate(minicam.energy.input=GCAM_mapping)%>%
-                                                     rename(DomSup_EJ=value,region=GCAM_region),
-                                                   GCAM_region_names,
-                                                   by = "region") %>%
+    #### DOMESTIC TECHNOLOGY OUTPUT = PRODUCTION - GROSS EXPORTS
+    L240A.DomSup_EJ_R_Y <- LB1092.Tradebalance_refined_liquids_EJ_R_Y %>%
+      filter(metric == "domestic_supply") %>%
+      mutate(minicam.energy.input = GCAM_mapping)%>%
+      rename(DomSup_EJ = value, region = GCAM_region) %>%
+      left_join_error_no_match(GCAM_region_names, by = "region") %>%
       select(region, minicam.energy.input, year, DomSup_EJ)
 
     L240A.Production_reg_dom <- A_liquids_RegionalTechnology_R_Y %>%
-      filter(year %in% MODEL_BASE_YEARS,
-             grepl( "domestic", subsector)) %>%
+      filter(year %in% MODEL_BASE_YEARS, grepl("domestic", subsector)) %>%
       left_join(L240A.DomSup_EJ_R_Y,
-                               by = c("region", "minicam.energy.input", "year")) %>%
+                by = c("region", "minicam.energy.input", "year")) %>%
       rename(calOutputValue = DomSup_EJ)%>%
-      mutate(calOutputValue = ifelse(is.na(calOutputValue), 0, calOutputValue),
-             calOutputValue = round(calOutputValue, energy.DIGITS_CALOUTPUT),
+      mutate(calOutputValue = round(replace_na(calOutputValue, 0),
+                                    energy.DIGITS_CALOUTPUT),
              share.weight.year = year,
              subs.share.weight = if_else(calOutputValue > 0, 1, 0),
              tech.share.weight = subs.share.weight) %>%
@@ -237,19 +242,22 @@ module_energy_L240.refined_liquids_trade <- function(command, ...) {
       add_units("Unitless IO") %>%
       add_comments("Pass-through; 1 unless some portion is assumed lost/spoiled in shipping") %>%
       add_precursors("common/GCAM_region_names",
-                     "energy/A_liquids_TradedTechnology") -> L240A.TechCoef_tra
+                     "energy/A_liquids_TradedTechnology") ->
+      L240A.TechCoef_tra
 
     L240A.Production_tra %>%
       add_title("Technology calibration for traded refined liquids") %>%
       add_units("EJ") %>%
       add_comments("Regional exports of refined liquids that are traded between GCAM regions") %>%
       add_precursors("common/GCAM_region_names",
-                     "LB1092.Tradebalance_refined_liquids_EJ_R_Y") -> L240A.Production_tra
+                     "LB1092.Tradebalance_refined_liquids_EJ_R_Y") ->
+      L240A.Production_tra
 
     L240A.Supplysector_reg %>%
       add_title("Supplysector info for regional refined liquids") %>%
       add_units("None") %>%
-      add_comments("These sectors are used for sharing between consumption of domestically produced refined liquids versus imports") %>%
+      add_comments("These sectors are used for sharing between consumption of
+                   domestically produced refined liquids versus imports") %>%
       add_precursors("common/GCAM_region_names",
                      "energy/A_liquids_RegionalSector") ->
       L240A.Supplysector_reg
