@@ -521,12 +521,6 @@ module_energy_L1093.refined_liquids_GrossTrade <- function(command, ...){
       select(region, year, fuel, value = production_reval) %>%
       mutate(value = round(value, energy.DIGITS_CALOUTPUT))
 
-    # Filter bioliquids production
-    # TODO: fix needing to not have the fuel values overwritten downstream in L2221
-    LB1092.GCAM_BIO_LIQUIDS_PROD_agg <- L122.out_EJ_R_refining_F_Yh %>%
-      filter(year %in% MODEL_BASE_YEARS,
-             sector %in% c("biodiesel", "corn ethanol", "sugar cane ethanol"))
-
     # Disaggregate CTL and GTL-based liquids production to individual products
     # such as Gasoline, Distillate_FuelOil, Jet_Kerosene, and Other
     LB1092.GCAM_CTL_GTL_LIQUIDS_PROD_agg <- L122.out_EJ_R_refining_F_Yh %>%
@@ -537,8 +531,6 @@ module_energy_L1093.refined_liquids_GrossTrade <- function(command, ...){
 
     # Calculate total biorefining and ctl/gtl production
     non_crude_liquids <- LB1092.GCAM_BIO_LIQUIDS_PROD_agg %>%
-      mutate(fuel = if_else(sector == "biodiesel",
-                            "Distillate_FuelOil", "Gasoline")) %>%
       bind_rows(LB1092.GCAM_CTL_GTL_LIQUIDS_PROD_agg) %>%
       left_join_error_no_match(GCAM_region_names, by = "GCAM_region_ID") %>%
       select(-GCAM_region_ID) %>%
