@@ -85,7 +85,8 @@ module_energy_L261.Cstorage <- function(command, ...) {
              "L261.TechPmult",
              "L261.OutputEmissCoeff_C",
              "L261.DeleteNonCO2",
-             "L261.StubTechShrwt"))
+             "L261.StubTechShrwt",
+             "L261.DeleteStubTech"))
   } else if(command == driver.MAKE) {
 
     all_data <- list(...)[[1]]
@@ -588,6 +589,11 @@ module_energy_L261.Cstorage <- function(command, ...) {
       mutate(supplysector = sector.name, subsector = subsector.name, stub.technology = technology, share.weight = value) %>%
       select(LEVEL2_DATA_NAMES[["StubTechShrwt"]])
 
+    L261.DeleteStubTech <- L261.StubTechShrwt %>%
+      select(region,supplysector) %>%
+      left_join(L261.GlobalTechCoef_C, by = c("supplysector" = "minicam.energy.input")) %>%
+      distinct(region,supplysector = sector.name,subsector = subsector.name,stub.technology = technology)
+
 
 
     # ===================================================
@@ -833,6 +839,12 @@ module_energy_L261.Cstorage <- function(command, ...) {
         add_precursors("L254.StubTranTechCalInput") ->
         L261.StubTechShrwt
 
+      L261.DeleteStubTech %>%
+        add_title("Delete technologies whos transport inputs have zero calibration values") %>%
+        add_units("NA") %>%
+        add_comments("NA") %>%
+        add_precursors("L254.StubTranTechCalInput") ->
+        L261.DeleteStubTech
 
     return_data(L261.Rsrc, L261.UnlimitRsrc, L261.RsrcCurves_C, L261.ResTechShrwt_C, L261.Supplysector_C, L261.SubsectorLogit_C, L261.SubsectorShrwtFllt_C, L261.StubTech_C, L261.GlobalTechCoef_C, L261.GlobalTechCost_C, L261.GlobalTechShrwt_C, L261.GlobalTechCost_C_High, L261.GlobalTechShrwt_C_nooffshore, L261.RsrcCurves_C_high, L261.RsrcCurves_C_low, L261.RsrcCurves_C_lowest,
                 L261.ResSubresourceProdLifetime, L261.ResReserveTechLifetime, L261.ResReserveTechDeclinePhase, L261.ResReserveTechProfitShutdown,
@@ -841,7 +853,7 @@ module_energy_L261.Cstorage <- function(command, ...) {
                 L261.StubTechEff,
                 L261.TechPmult,
                 L261.OutputEmissCoeff_C,L261.DeleteNonCO2,
-                L261.StubTechShrwt)
+                L261.StubTechShrwt,L261.DeleteStubTech)
   } else {
     stop("Unknown command")
   }

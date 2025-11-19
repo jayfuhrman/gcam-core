@@ -35,7 +35,8 @@ module_energy_Cstorage_xml <- function(command, ...) {
               "L261.RsrcPrice",
               "L261.StubTechShrwt",
               "L261.StubTechEff",
-              "L261.TechPmult"))
+              "L261.TechPmult",
+              "L261.DeleteStubTech"))
   } else if(command == driver.DECLARE_OUTPUTS) {
     return(c(XML = "Cstorage.xml",
              XML = "Cstorage_slow.xml",
@@ -70,6 +71,7 @@ module_energy_Cstorage_xml <- function(command, ...) {
     L261.StubTechShrwt <- get_data(all_data,"L261.StubTechShrwt")
     L261.StubTechEff <- get_data(all_data,"L261.StubTechEff")
     L261.TechPmult <- get_data(all_data,"L261.TechPmult")
+    L261.DeleteStubTech <- get_data(all_data, "L261.DeleteStubTech")
 
     # ===================================================
 
@@ -95,9 +97,10 @@ module_energy_Cstorage_xml <- function(command, ...) {
       add_xml_data(L261.GlobalTechCost_C, "GlobalTechCost") %>%
       add_xml_data(L261.GlobalTechShrwt_C, "GlobalTechShrwt") %>%
       add_xml_data(L261.StubTechShrwt, "StubTechShrwt") %>%
+      add_xml_data(L261.DeleteStubTech, "DeleteStubTech") %>%
       add_precursors("L261.Rsrc", "L261.UnlimitRsrc", "L261.RsrcCurves_C", "L261.ResTechShrwt_C", "L261.Supplysector_C", "L261.SubsectorLogit_C", "L261.SubsectorShrwtFllt_C", "L261.StubTech_C", "L261.GlobalTechCoef_C", "L261.GlobalTechCost_C", "L261.GlobalTechShrwt_C",
                      "L261.ResSubresourceProdLifetime","L261.ResReserveTechLifetime","L261.ResReserveTechDeclinePhase","L261.ResReserveTechProfitShutdown","L261.ResReserveTechInvestmentInput",
-                     "L261.StubTechShrwt") ->
+                     "L261.StubTechShrwt","L261.DeleteStubTech") ->
       Cstorage.xml
 
 
@@ -132,7 +135,7 @@ module_energy_Cstorage_xml <- function(command, ...) {
       add_xml_data(L261.TechPmult %>%
                      filter(scenario == 'slow growth rate'), "TechPmult") %>%
       add_xml_data(L261.StubTechShrwt, "StubTechShrwt") %>%
-      #add_xml_data(L261.OutputEmissCoeff_C, "OutputEmissCoeff") %>%
+      add_xml_data(L261.DeleteStubTech, "DeleteStubTech") %>%
       add_precursors("L261.Rsrc", "L261.UnlimitRsrc", "L261.RsrcCurves_C", "L261.ResTechShrwt_C", "L261.Supplysector_C", "L261.SubsectorLogit_C", "L261.SubsectorShrwtFllt_C", "L261.StubTech_C", "L261.GlobalTechCoef_C", "L261.GlobalTechCost_C", "L261.GlobalTechShrwt_C",
                      "L261.ResSubresourceProdLifetime","L261.ResReserveTechLifetime","L261.ResReserveTechDeclinePhase","L261.ResReserveTechProfitShutdown",
                      "L261.ResReserveTechInvestmentInput",
@@ -170,7 +173,7 @@ module_energy_Cstorage_xml <- function(command, ...) {
       add_xml_data(L261.TechPmult %>%
                      filter(scenario == 'medium growth rate'), "TechPmult") %>%
       add_xml_data(L261.StubTechShrwt, "StubTechShrwt") %>%
-      #add_xml_data(L261.OutputEmissCoeff_C, "OutputEmissCoeff") %>%
+      add_xml_data(L261.DeleteStubTech, "DeleteStubTech") %>%
       add_precursors("L261.Rsrc", "L261.UnlimitRsrc", "L261.RsrcCurves_C", "L261.ResTechShrwt_C", "L261.Supplysector_C", "L261.SubsectorLogit_C", "L261.SubsectorShrwtFllt_C", "L261.StubTech_C", "L261.GlobalTechCoef_C", "L261.GlobalTechCost_C", "L261.GlobalTechShrwt_C",
                      "L261.ResSubresourceProdLifetime","L261.ResReserveTechLifetime","L261.ResReserveTechDeclinePhase","L261.ResReserveTechProfitShutdown",
                      "L261.ResReserveTechInvestmentInput",
@@ -209,7 +212,7 @@ module_energy_Cstorage_xml <- function(command, ...) {
       add_xml_data(L261.TechPmult %>%
                      filter(scenario == 'rapid growth rate'), "TechPmult") %>%
       add_xml_data(L261.StubTechShrwt, "StubTechShrwt") %>%
-      #add_xml_data(L261.OutputEmissCoeff_C, "OutputEmissCoeff") %>%
+      add_xml_data(L261.DeleteStubTech, "DeleteStubTech") %>%
       add_precursors("L261.Rsrc", "L261.UnlimitRsrc", "L261.RsrcCurves_C", "L261.ResTechShrwt_C", "L261.Supplysector_C", "L261.SubsectorLogit_C", "L261.SubsectorShrwtFllt_C", "L261.StubTech_C", "L261.GlobalTechCoef_C", "L261.GlobalTechCost_C", "L261.GlobalTechShrwt_C",
                      "L261.ResSubresourceProdLifetime","L261.ResReserveTechLifetime","L261.ResReserveTechDeclinePhase","L261.ResReserveTechProfitShutdown",
                      "L261.ResReserveTechInvestmentInput",
