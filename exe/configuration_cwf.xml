@@ -136,6 +136,8 @@
 			
 
 		    <!--additional CWF files-->
+			<!--Phase down Fgas under Kigali Amendment-->
+			<Value name = "nonco2_fgas">../input/gcamdata/xml/all_fgas_emissions_kigali.xml</Value>
 			<!--electricity-->
             <Value name = "elec_water_base_cwf">../input/gcamdata/xml/electricity_water_cwf.xml</Value>
 			<Value name = "elec_water_base_no_new_unabated_fossil">../input/gcamdata/xml/electricity_water_cwf_no_new_unabated_fossil.xml</Value>
