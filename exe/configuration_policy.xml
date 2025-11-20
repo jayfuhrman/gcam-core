@@ -109,7 +109,17 @@
 
 		<Value name = "macro">../input/gcamdata/xml/socioeconomics_macro.xml</Value>
 
-        <Value name = "prune_ag">../input/gcamdata/xml/prune_empty_ag.xml</Value>
+        <!--Value name = "prune_ag">../input/gcamdata/xml/prune_empty_ag.xml</Value-->
+		<Value name = "energy_transformation_biochar">../input/gcamdata/xml/en_transformation_biochar.xml</Value>
+		<Value name = "carbon_storage_biochar">../input/extra/biochar/Cstorage_biochar.xml</Value>
+		<Value name = "biochar_ag_demand">../input/gcamdata/xml/biochar_ag_demand.xml</Value>
+		<Value name = "ag_base_biochar">../input/gcamdata/xml/biochar_ag_For_Past_bio_base_IRR_MGMT.xml</Value>
+		<Value name = "ag_cost_biochar">../input/gcamdata/xml/biochar_ag_cost_IRR_MGMT.xml</Value>
+		<Value name = "residue_bio_biochar">../input/gcamdata/xml/biochar_resbio_input_IRR_MGMT.xml</Value>
+		<Value name = "fertilizer_biochar">../input/gcamdata/xml/biochar_ag_Fert_IRR_MGMT.xml</Value>
+		<Value name = "land5_biochar">../input/gcamdata/xml/biochar_land_input_5_IRR_MGMT.xml</Value>
+		<Value name = "ag_water_biochar">../input/gcamdata/xml/biochar_ag_water_input_IRR_MGMT.xml</Value>
+		<Value name = "co_products_biochar">../input/gcamdata/xml/biochar_co_products.xml</Value>
 			
 		<Value name = "ccs">../input/gcamdata/xml/Cstorage_med.xml</Value>
 		
