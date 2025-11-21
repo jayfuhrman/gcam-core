@@ -174,19 +174,19 @@ module_energy_L261.Cstorage <- function(command, ...) {
 
     A61.ResReserveTechLifetime %>%
       repeat_add_columns(GCAM_region_names) %>%
-      repeat_add_columns(tibble(year = MODEL_YEARS)) %>%
+      repeat_add_columns(tibble(year = sort(c(MODEL_YEARS,2019,2020)))) %>%
       select(LEVEL2_DATA_NAMES[["ResReserveTechLifetime"]]) ->
       L261.ResReserveTechLifetime
 
     A61.ResReserveTechDeclinePhase %>%
       repeat_add_columns(GCAM_region_names) %>%
-      repeat_add_columns(tibble(year = MODEL_YEARS)) %>%
+      repeat_add_columns(tibble(year = sort(c(MODEL_YEARS,2019,2020)))) %>%
       select(LEVEL2_DATA_NAMES[["ResReserveTechDeclinePhase"]]) ->
       L261.ResReserveTechDeclinePhase
 
     A61.ResReserveTechProfitShutdown %>%
       repeat_add_columns(GCAM_region_names) %>%
-      repeat_add_columns(tibble(year = MODEL_YEARS)) %>%
+      repeat_add_columns(tibble(year = sort(c(MODEL_YEARS,2019,2020)))) %>%
       select(LEVEL2_DATA_NAMES[["ResReserveTechProfitShutdown"]]) ->
       L261.ResReserveTechProfitShutdown
 
@@ -261,7 +261,8 @@ module_energy_L261.Cstorage <- function(command, ...) {
 
     CStorageCurvesDynamic_med_growth <- L261.CStorageCurvesDynamic %>%
       mutate(scenario = 'medium growth rate',
-             k = k_med)
+             k = k_med,
+             available = available * 2)
 
     CStorageCurvesDynamic_rapid_growth <- L261.CStorageCurvesDynamic %>%
       mutate(scenario = 'rapid growth rate',
@@ -280,7 +281,7 @@ module_energy_L261.Cstorage <- function(command, ...) {
 
     ## Calculate an efficiency parameter equal to how much of each region's implied storage capacity is expected to be consumed by planned + operational projects by 2030
     calibrated_eff_2030 <- IEA_data %>%
-      filter(year %in% MODEL_YEARS) %>%
+      filter(year %in% sort(c(MODEL_YEARS,2019,2020))) %>%
       left_join(L261.CStorageCurvesDynamic, by = c('region')) %>%
       group_by(scenario,region) %>%
       mutate(capacity_MtCO2 = max(available) *  emissions.CONV_C_CO2) %>%
@@ -294,9 +295,9 @@ module_energy_L261.Cstorage <- function(command, ...) {
 
     # logistic fits for each region
     eff_post_2030 <- calibrated_eff_2030 %>%
-      filter(year %in% MODEL_YEARS,
+      filter(year %in% sort(c(MODEL_YEARS,2019,2020)),
              grade == 'grade 7') %>%
-      complete(year = c(year, MODEL_YEARS), nesting(region,scenario,k)) %>%
+      complete(year = c(year, sort(c(MODEL_YEARS,2019,2020))), nesting(region,scenario,k)) %>%
       group_by(scenario,region) %>%
       fill(efficiency, .direction = 'up') %>%
       mutate(C_2030 = efficiency[year == 2030],
@@ -331,7 +332,7 @@ module_energy_L261.Cstorage <- function(command, ...) {
     # A61.globaltech_secout %>%
     #   gather_years() %>%
     #   complete(nesting(supplysector, subsector, technology, fractional.secondary.output),
-    #            year = sort(unique(c(year, MODEL_YEARS)))) %>%
+    #            year = sort(unique(c(year, sort(c(MODEL_YEARS,2019,2020)))))) %>%
     #   write_to_all_regions(c('supplysector','subsector','technology','fractional.secondary.output','year','region'),
     #                        GCAM_region_names=GCAM_region_names) %>%
     #   group_by(supplysector, subsector, technology, fractional.secondary.output) %>%
@@ -377,9 +378,9 @@ module_energy_L261.Cstorage <- function(command, ...) {
       filter(resource_type == "renewresource") %>%
       mutate(year=1975) %>%
       gather_years %>%
-      complete(year = c(MODEL_YEARS), nesting(region, resource)) %>%
+      complete(year = c(sort(c(MODEL_YEARS,2019,2020))), nesting(region, resource)) %>%
       select(region, renewresource=resource, year)  %>%
-      filter(year %in% MODEL_BASE_YEARS) %>%
+      filter(year %in% c(MODEL_BASE_YEARS,2019,2020)) %>%
       mutate(price=0.001) ->
       L261.RsrcPrice
 
@@ -399,7 +400,7 @@ module_energy_L261.Cstorage <- function(command, ...) {
     L261.RsrcCurves_C %>%
       select(region, resource = resource, subresource) %>%
       distinct() %>%
-      repeat_add_columns(tibble(year = MODEL_YEARS)) %>%
+      repeat_add_columns(tibble(year = sort(c(MODEL_YEARS,2019,2020)))) %>%
       mutate(technology = subresource,
              share.weight = 1.0) %>%
       select(LEVEL2_DATA_NAMES[["ResTechShrwt"]]) ->
@@ -408,7 +409,7 @@ module_energy_L261.Cstorage <- function(command, ...) {
     L261.CStorageCurvesDynamic %>%
       select(region, resource = renewresource, subresource = sub.renewable.resource) %>%
       distinct() %>%
-      repeat_add_columns(tibble(year = MODEL_YEARS)) %>%
+      repeat_add_columns(tibble(year = sort(c(MODEL_YEARS,2019,2020)))) %>%
       mutate(technology = subresource,
              share.weight = 1.0) %>%
       select(LEVEL2_DATA_NAMES[["ResTechShrwt"]]) ->
@@ -483,20 +484,20 @@ module_energy_L261.Cstorage <- function(command, ...) {
     A61.globaltech_coef %>%
       gather_years %>%
       # Expand table to include all model base and future years
-      complete(year = c(year, MODEL_YEARS), nesting(supplysector, subsector, technology, minicam.energy.input)) %>%
+      complete(year = c(year, sort(c(MODEL_YEARS,2019,2020))), nesting(supplysector, subsector, technology, minicam.energy.input)) %>%
       # Extrapolate to fill out values for all years
       # Rule 2 is used so years outside of min-max range are assigned values from closest data, as opposed to NAs
       group_by(supplysector, subsector, technology, minicam.energy.input) %>%
       mutate(coefficient = approx_fun(year, value, rule = 2)) %>%
       ungroup() %>%
-      filter(year %in% MODEL_YEARS) %>% # This will drop 1971
+      filter(year %in% sort(c(MODEL_YEARS,2019,2020))) %>% # This will drop 1971
       # Assign the columns "sector.name" and "subsector.name", consistent with the location info of a global technology
       select(sector.name = supplysector, subsector.name = subsector, technology, year, minicam.energy.input, coefficient) ->
       L261.GlobalTechCoef_C
 
     # Adjustment to coefficients for losses
     L261.globaltech_losses <- gather_years(A61.globaltech_losses) %>%
-      complete(nesting(supplysector, subsector, technology, minicam.energy.input, Non.CO2), year = MODEL_YEARS) %>%
+      complete(nesting(supplysector, subsector, technology, minicam.energy.input, Non.CO2), year = sort(c(MODEL_YEARS,2019,2020))) %>%
       group_by(supplysector, subsector, technology, minicam.energy.input, Non.CO2) %>%
       mutate(multiplier = approx_fun(year, value, rule = 2)) %>%
       ungroup() %>%
@@ -528,13 +529,13 @@ module_energy_L261.Cstorage <- function(command, ...) {
     A61.globaltech_cost %>%
       gather_years %>%
       # Expand table to include all model base and future years
-      complete(year = c(year, MODEL_YEARS), nesting(supplysector, subsector, technology, minicam.non.energy.input)) %>%
+      complete(year = c(year, sort(c(MODEL_YEARS,2019,2020))), nesting(supplysector, subsector, technology, minicam.non.energy.input)) %>%
       # Extrapolate to fill out values for all years
       # Rule 2 is used so years outside of min-max range are assigned values from closest data, as opposed to NAs
       group_by(supplysector,subsector,technology,minicam.non.energy.input) %>%
       mutate(input.cost = approx_fun(year, value, rule = 2)) %>%
       ungroup() %>%
-      filter(year %in% MODEL_YEARS) %>% # This will drop 1971
+      filter(year %in% sort(c(MODEL_YEARS,2019,2020))) %>% # This will drop 1971
       # Assign the columns "sector.name" and "subsector.name", consistent with the location info of a global technology
       select(sector.name = supplysector, subsector.name = subsector, technology, year, minicam.non.energy.input, input.cost) ->
       L261.GlobalTechCost_C # This is a final output table.
@@ -553,11 +554,11 @@ module_energy_L261.Cstorage <- function(command, ...) {
     A61.globaltech_shrwt %>%
       gather_years %>%
       # Expand table to include all model base and future years
-      complete(year = c(year, MODEL_YEARS), nesting(supplysector, subsector, technology)) %>%
+      complete(year = c(year, sort(c(MODEL_YEARS,2019,2020))), nesting(supplysector, subsector, technology)) %>%
       # Extrapolate to fill out values for all years
       # Rule 2 is used so years outside of min-max range are assigned values from closest data, as opposed to NAs
       mutate(share.weight = approx_fun(year, value, rule = 2)) %>%
-      filter(year %in% MODEL_YEARS) %>% # This will drop 1971
+      filter(year %in% sort(c(MODEL_YEARS,2019,2020))) %>% # This will drop 1971
       # Assign the columns "sector.name" and "subsector.name", consistent with the location info of a global technology
       select(sector.name = supplysector, subsector.name = subsector, technology, year, share.weight) ->
       L261.GlobalTechShrwt_C # This is a final output table.
