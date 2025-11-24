@@ -49,7 +49,7 @@ module_energy_L261.Cstorage <- function(command, ...) {
              FILE = "energy/A61.ResReserveTechProfitShutdown",
              FILE = "energy/A61.Cstorage_curves_dynamic",
              FILE = "energy/A61.globaltech_losses",
-             FILE = "energy/IEA_CCUS_Projects_Database_2023",
+             FILE = "energy/IEA_CCUS_Projects_Database_2025",
              "L111.Prod_EJ_R_F_Yh",
              "L161.RsrcCurves_MtC_R",
              "L254.StubTranTechCalInput"))
@@ -113,18 +113,18 @@ module_energy_L261.Cstorage <- function(command, ...) {
 
     L254.StubTranTechCalInput <- get_data(all_data, "L254.StubTranTechCalInput")
 
-    IEA_CCUS_Projects_Database_2023 <- get_data(all_data, "energy/IEA_CCUS_Projects_Database_2023")
+    IEA_CCUS_Projects_Database <- get_data(all_data, "energy/IEA_CCUS_Projects_Database_2025")
 
-    IEA_data <- IEA_CCUS_Projects_Database_2023 %>%
+    IEA_data <- IEA_CCUS_Projects_Database %>%
       filter(`Project type` %in% c('Full chain','T&S','Storage'),
              !(`Project Status` %in% c('Suspended','Decommissioned')),
-             !is.na(`Announced capacity (high) (Mt CO2/yr)`)) %>%
+             !is.na(`Estimated capacity by IEA (Mt CO2/yr)`)) %>%
       group_by(Partners) %>%
       fill(Operation,.direction = 'downup') %>%
       ungroup() %>%
       filter(!is.na(`Operation`)) %>%
       group_by(Country,Operation,`Project Status`,`Fate of carbon`) %>%
-      summarize(value = sum(`Announced capacity (high) (Mt CO2/yr)`)) %>%
+      summarize(value = sum(`Estimated capacity by IEA (Mt CO2/yr)`)) %>%
       ungroup() %>%
       complete(Operation = c(1972:2035),nesting(Country,`Project Status`,`Fate of carbon`)) %>%
       mutate(value = if_else(is.na(value),0,value)) %>%
@@ -142,10 +142,17 @@ module_energy_L261.Cstorage <- function(command, ...) {
 
     IEA_data <- IEA_data %>%
       rename(country_name = Country) %>%
-      mutate(country_name = if_else(country_name == 'Korea','Korea, Republic of',
-                                    if_else(country_name == 'United States','United States of America',
+      mutate(country_name = if_else(str_detect(country_name,'Korea'),'Korea, Republic of',
+                                    if_else(str_detect(country_name,'United States'),'United States of America',
                                             if_else(country_name == "People's Republic of China",'China',
-                                                    if_else(country_name == "Norway (storage), Belgium, Denmark, France, Germany, Latvia, the Netherlands, Poland, Sweden / Switzerland",'Norway',country_name))))) %>%
+                                                    if_else(country_name == "Norway (storage), Belgium, Denmark, France, Germany, Latvia, the Netherlands, Poland, Sweden / Switzerland",'Norway',
+                                                            if_else(str_detect(country_name,'Australia'),'Australia',
+                                                                    if_else(str_detect(country_name,'Malaysia'),'Malaysia',
+                                                                            if_else(country_name == "Chinese Taipei",'Taiwan',
+                                                                                    if_else(country_name == "Lybia","Libyan Arab Jamahiriya",country_name)))))))),
+             country_name = if_else(grepl("-",country_name),
+                                    sub("-.*$", "", country_name),
+                                    country_name)) %>%
 
       full_join(iso_GCAM_regID,by = c('country_name')) %>%
       filter(!is.na(value),
@@ -154,7 +161,8 @@ module_energy_L261.Cstorage <- function(command, ...) {
       summarize(value = sum(value)) %>%
       ungroup() %>%
       complete(GCAM_region_ID = c(1:32),nesting(year)) %>%
-      left_join(GCAM_region_names, by = c('GCAM_region_ID'))
+      filter(!is.na(GCAM_region_ID)) %>%
+      left_join_error_no_match(GCAM_region_names, by = c('GCAM_region_ID'))
 
     # ===================================================
 
@@ -222,8 +230,8 @@ module_energy_L261.Cstorage <- function(command, ...) {
 
     Cstorage_curves_dynamic <- A61.Cstorage_curves_dynamic %>%
       repeat_add_columns(GCAM_region_names) %>%
-      rename(extractioncost = cost_2008USDtCO2) %>%
-      mutate(extractioncost = extractioncost * gdp_deflator(1990,2008) * emissions.CONV_C_CO2) %>%
+      rename(extractioncost = cost_2018USDtCO2) %>%
+      mutate(extractioncost = extractioncost * gdp_deflator(1990,2018) * emissions.CONV_C_CO2) %>%
       left_join_error_no_match(OG_fluid_extraction_volume,by = c('region'))
 
     USA_max_CCS_rate_NETL <- Cstorage_curves_dynamic %>%
@@ -291,6 +299,8 @@ module_energy_L261.Cstorage <- function(command, ...) {
                                     year <= MODEL_FINAL_BASE_YEAR ~ 0.001,
                                     efficiency > 1 ~ 1,
                                     TRUE~efficiency))
+
+    readr::write_csv(calibrated_eff_2030,'calibrated_eff_2030.csv')
 
     # logistic fits for each region
     eff_post_2030 <- calibrated_eff_2030 %>%
@@ -815,7 +825,7 @@ module_energy_L261.Cstorage <- function(command, ...) {
       add_title("CCS efficiencies calibrated to near-term") %>%
       add_units("Unitless") %>%
       add_comments("Regionally calibrated scaling limits for CCS relative to maximum regional injection rate") %>%
-      add_precursors("energy/IEA_CCUS_Projects_Database_2023","common/GCAM_region_names","common/iso_GCAM_regID") ->
+      add_precursors("energy/IEA_CCUS_Projects_Database","common/GCAM_region_names","common/iso_GCAM_regID") ->
       L261.StubTechEff
 
     L261.TechPmult %>%
