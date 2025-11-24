@@ -301,8 +301,6 @@ module_energy_L261.Cstorage <- function(command, ...) {
                                     efficiency > 1 ~ 1,
                                     TRUE~efficiency))
 
-    readr::write_csv(calibrated_eff_2030,'calibrated_eff_2030.csv')
-
     # logistic fits for each region
     eff_post_2030 <- calibrated_eff_2030 %>%
       filter(year %in% sort(c(MODEL_YEARS,2019,2020)),
