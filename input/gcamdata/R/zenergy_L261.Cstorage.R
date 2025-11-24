@@ -270,7 +270,7 @@ module_energy_L261.Cstorage <- function(command, ...) {
     CStorageCurvesDynamic_med_growth <- L261.CStorageCurvesDynamic %>%
       mutate(scenario = 'medium growth rate',
              k = k_med,
-             available = available * 2)
+             available = available * 4)
 
     CStorageCurvesDynamic_rapid_growth <- L261.CStorageCurvesDynamic %>%
       mutate(scenario = 'rapid growth rate',
