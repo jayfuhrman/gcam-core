@@ -12,28 +12,57 @@
 #' @importFrom dplyr filter if_else mutate select distinct coalesce across summarise left_join full_join group_by ungroup rename replace_na bind_rows
 #' @author Siddarth Durga, Maggie Liu (Jan 2025)
 module_energy_L1093.refined_liquids_GrossTrade <- function(command, ...){
+  MODULE_INPUTS <- c(
+    FILE = "common/GCAM_region_names",
+    FILE = "energy/A22.globaltech_coef_ctlgtl",
+    FILE = "energy/mappings/IEA_product_fuel_liquids",
+    FILE = "energy/mappings/Liquids_Trade_GCAM_regID",
+    #FILE = "energy/mappings/IEA_product_LHV",
+    FILE = "energy/mappings/liquids_mapping",
+    FILE = "energy/Resourcetradeearth_RefinedLiquids_2015",
+    "L121.in_EJ_R_TPES_liq_Yh",
+    "L122.in_EJ_R_refining_F_Yh",
+    "L122.out_EJ_R_refining_F_Yh",
+    "L101.detailed_refined_liquids_EJ_R_Yh",
+    "L1012.en_bal_EJ_R_Si_Fi_Yh",
+
+    # REFLIQ INDUSTRIAL
+    "L2326.StubTechCalInput_aluminum",
+    "L2321.StubTechCalInput_cement_heat",
+    "L2325.StubTechCalInput_chemical",
+    "L271.StubTechProd_desal",
+    "L271.GlobalTechCoef_desal",
+    "L223.StubTechCalInput_elec",
+    "L2322.StubTechProd_FertProd",
+    "L2322.GlobalTechCoef_Fert",
+    "L2322.StubTechCoef_Fert",
+    "L2328.StubTechCalInput_food_heat",
+    "L224.StubTechCalInput_heat",
+    "L232.StubTechCalInput_indenergy",
+    "L232.StubTechCalInput_indfeed",
+    "L2323.StubTechCoef_iron_steel",
+    "L2323.StubTechProd_iron_steel",
+    "L2324.StubTechCalInput_Off_road",
+    "L2327.StubTechCalInput_paper_heat",
+
+    # REFLIQ ENDUSE
+    "L254.StubTranTechCalInput",
+    "L242.StubTechCalInput_bld"
+  )
+
+  MODULE_OUTPUTS <- c(
+    "LB1092.Tradebalance_refined_liquids_EJ_R_Y",
+    "LB1092.GCAM_REG_LIQUIDS_PROD_agg",
+    "LB1092.GCAM_BIO_LIQUIDS_PROD_agg",
+    "LB1092.GCAM_CTL_GTL_LIQUIDS_PROD_agg",
+    "L1093.en_bal_EJ_liquids_total",
+    "L1093.IO_R_oilrefining_F_Yh"
+  )
+
   if(command == driver.DECLARE_INPUTS) {
-    return(c(FILE = "common/GCAM_region_names",
-             "L121.in_EJ_R_TPES_liq_Yh",
-             "L122.in_EJ_R_refining_F_Yh",
-             "L122.out_EJ_R_refining_F_Yh",
-             "L101.detailed_refined_liquids_EJ_R_Yh",
-             "L1012.en_bal_EJ_R_Si_Fi_Yh",
-             #"L132.in_EJ_R_inddeductions_F_Yh",
-             #"L132.in_EJ_R_indheat_F_Yh",
-             FILE = "energy/A22.globaltech_coef_ctlgtl",
-             FILE = "energy/mappings/IEA_product_fuel_liquids",
-             FILE = "energy/mappings/Liquids_Trade_GCAM_regID",
-             FILE = "energy/mappings/IEA_product_LHV",
-             FILE = "energy/mappings/liquids_mapping",
-             FILE = "energy/Resourcetradeearth-RefinedLiquids-2015"))
+    return(MODULE_INPUTS)
   } else if(command == driver.DECLARE_OUTPUTS) {
-    return(c("LB1092.Tradebalance_refined_liquids_EJ_R_Y",
-             "LB1092.GCAM_REG_LIQUIDS_PROD_agg",
-             "LB1092.GCAM_BIO_LIQUIDS_PROD_agg",
-             "LB1092.GCAM_CTL_GTL_LIQUIDS_PROD_agg",
-             "L1093.en_bal_EJ_liquids_total",
-             "L1093.IO_R_oilrefining_F_Yh"))
+    return(MODULE_OUTPUTS)
   } else if(command == driver.MAKE) {
 
     # Silence data-masked variable package check
@@ -43,28 +72,9 @@ module_energy_L1093.refined_liquids_GrossTrade <- function(command, ...){
       production.un <- . <- NULL
 
     all_data <- list(...)[[1]]
+    #all_data <- load_from_cache(MODULE_INPUTS)
+    get_data_list(all_data, MODULE_INPUTS, strip_attributes = TRUE)
 
-    # Load required inputs
-    GCAM_region_names <- get_data(all_data, "common/GCAM_region_names", strip_attributes = TRUE)
-    GCAM_region_iso_mapping <- get_data(all_data, "energy/mappings/Liquids_Trade_GCAM_regID", strip_attributes = TRUE)
-    IEA_product_fuel_liquids <- get_data(all_data,"energy/mappings/IEA_product_fuel_liquids", strip_attributes = TRUE)
-    L121.in_EJ_R_TPES_liq_Yh <- get_data(all_data, "L121.in_EJ_R_TPES_liq_Yh", strip_attributes = TRUE)
-    L122.out_EJ_R_refining_F_Yh <- get_data(all_data, "L122.out_EJ_R_refining_F_Yh", strip_attributes = TRUE)
-    L122.in_EJ_R_refining_F_Yh <-  get_data(all_data,"L122.in_EJ_R_refining_F_Yh", strip_attributes = TRUE)
-    #L132.in_EJ_R_indheat_F_Yh <- get_data(all_data, "L132.in_EJ_R_indheat_F_Yh", strip_attributes = TRUE)
-    #L132.in_EJ_R_inddeductions_F_Yh <- get_data(all_data, "L132.in_EJ_R_inddeductions_F_Yh", strip_attributes = TRUE)
-    L101.detailed_refined_liquids_EJ_R_Yh <- get_data(all_data, "L101.detailed_refined_liquids_EJ_R_Yh", strip_attributes = TRUE)
-    L1012.en_bal_EJ_R_Si_Fi_Yh <- get_data(all_data, "L1012.en_bal_EJ_R_Si_Fi_Yh", strip_attributes = TRUE)
-    convert_lhv <- get_data(all_data, "energy/mappings/IEA_product_LHV", strip_attributes = TRUE)
-    raw_liquids_trade <- get_data(all_data, "energy/Resourcetradeearth-RefinedLiquids-2015", strip_attributes = TRUE)
-    A22.globaltech_coef_ctlgtl <- get_data(all_data,"energy/A22.globaltech_coef_ctlgtl", strip_attributes = TRUE)
-    liquids_mapping <- get_data(all_data, "energy/mappings/liquids_mapping", strip_attributes = TRUE)
-
-    # TODO: liqsplit has taken 'inputs by tech', and filtered+grouped for inputs
-    # in the refined liquids enduse/industrial buckets; adder is the difference
-    # between the expected query output and L1012 'refined liquids enduse' consumption
-    liqsplit <- read.csv("liqsplit.csv") %>% rename(outputdb_cons = value)
-    baseline_db <- read.csv("baseline_db_cons_cmm.csv") %>% rename(outputdb_cons = value)
 
     #==========================================================================================
     # Estimate refined liquids production by product categories (e.g, Gasoline, DFO, RFO etc.)
@@ -103,94 +113,156 @@ module_energy_L1093.refined_liquids_GrossTrade <- function(command, ...){
 
 
     #===========================================================================
-    # Estimate refined liquids consumption by GCAM sector and overall
+    # Calculate refined liquids consumption by GCAM sector and overall
     #===========================================================================
+    # TODO: update this constant with a mapping file
+    REFLIQ_BUCKETS <- "refined liquids|industry feedstock|needle coke|refined biofuel"
 
-    # Estimate total refined liquids consumption by sector from
-    # L1012.en_bal_EJ_R_Si_Fi_Yh. Remember direct crude consumption is still
-    # within these values (both industrial and enduse)
-    L1093.en_bal_EJ_liquids_cons_sector <- L1012.en_bal_EJ_R_Si_Fi_Yh %>%
-      left_join_error_no_match(GCAM_region_names, by = "GCAM_region_ID") %>%
-      select(-GCAM_region_ID) %>%
-      filter(fuel %in% energy.REFINED_LIQUIDS_AGG,
-             year %in% MODEL_BASE_YEARS,
-             sector %in% c(energy.LIQUIDS_ENDUSE_SECTORS,
-                           energy.LIQUIDS_INDUSTRIAL_SECTORS,
-                           energy.LIQUIDS_EFW_SECTORS)) %>%
-      group_by(sector, year, region) %>%
-      summarise(value = sum(value), .groups = "drop") %>%
-      # TODO: use a mapping file instead
-      mutate(type = if_else(sector %in% energy.LIQUIDS_ENDUSE_SECTORS,
-                            "refined liquids enduse",
-                            "refined liquids industrial"))
+    # TODO: refactor all of this
+    # REFLIQ INDUSTRIAL
+    a_aluminum <- L2326.StubTechCalInput_aluminum %>%
+      filter(grepl(REFLIQ_BUCKETS, minicam.energy.input)) %>%
+      select(region, year, supplysector, subsector, minicam.energy.input, calibrated.value) %>%
+      group_by(region, year, minicam.energy.input) %>%
+      summarize(aluminum = sum(calibrated.value), .groups = "drop")
+    a_cement <- L2321.StubTechCalInput_cement_heat %>%
+      filter(grepl(REFLIQ_BUCKETS, minicam.energy.input)) %>%
+      select(region, year, supplysector, subsector, minicam.energy.input, calibrated.value)  %>%
+      group_by(region, year, minicam.energy.input) %>%
+      summarize(cement = sum(calibrated.value), .groups = "drop")
+    a_chem <- L2325.StubTechCalInput_chemical %>%
+      filter(grepl(REFLIQ_BUCKETS, minicam.energy.input)) %>%
+      select(region, year, supplysector, subsector, minicam.energy.input, calibrated.value)  %>%
+      group_by(region, year, minicam.energy.input) %>%
+      summarize(chem = sum(calibrated.value), .groups = "drop")
+    a_elec <- L223.StubTechCalInput_elec %>%
+      filter(grepl(REFLIQ_BUCKETS, minicam.energy.input)) %>%
+      select(region, year, supplysector, subsector, minicam.energy.input, calibrated.value)  %>%
+      group_by(region, year, minicam.energy.input) %>%
+      summarize(elec = sum(calibrated.value), .groups = "drop")
+    a_food <- L2328.StubTechCalInput_food_heat %>%
+      filter(grepl(REFLIQ_BUCKETS, minicam.energy.input)) %>%
+      select(region, year, supplysector, subsector, minicam.energy.input, calibrated.value) %>%
+      group_by(region, year, minicam.energy.input) %>%
+      summarize(food = sum(calibrated.value), .groups = "drop")
+    a_heat <- L224.StubTechCalInput_heat %>%
+      filter(grepl(REFLIQ_BUCKETS, minicam.energy.input)) %>%
+      select(region, year, supplysector, subsector, minicam.energy.input, calibrated.value) %>%
+      group_by(region, year, minicam.energy.input) %>%
+      summarize(heat = sum(calibrated.value), .groups = "drop")
+    a_offroad <- L2324.StubTechCalInput_Off_road %>%
+      filter(grepl(REFLIQ_BUCKETS, minicam.energy.input)) %>%
+      select(region, year, supplysector, subsector, minicam.energy.input, calibrated.value)  %>%
+      group_by(region, year, minicam.energy.input) %>%
+      summarize(offrd = sum(calibrated.value), .groups = "drop")
+    a_paper <- L2327.StubTechCalInput_paper_heat %>%
+      filter(grepl(REFLIQ_BUCKETS, minicam.energy.input)) %>%
+      select(region, year, supplysector, subsector, minicam.energy.input, calibrated.value) %>%
+      group_by(region, year, minicam.energy.input) %>%
+      summarize(paper = sum(calibrated.value), .groups = "drop")
+    a_indfeed <- L232.StubTechCalInput_indfeed %>%
+      filter(grepl(REFLIQ_BUCKETS, minicam.energy.input)) %>%
+      select(region, year, supplysector, subsector, minicam.energy.input, calibrated.value) %>%
+      group_by(region, year, minicam.energy.input) %>%
+      summarize(indfeed = sum(calibrated.value), .groups = "drop")
+    a_inden <- L232.StubTechCalInput_indenergy %>%
+      filter(grepl(REFLIQ_BUCKETS, minicam.energy.input)) %>%
+      select(region, year, supplysector, subsector, minicam.energy.input, calibrated.value) %>%
+      group_by(region, year, minicam.energy.input) %>%
+      summarize(inden = sum(calibrated.value), .groups = "drop")
+
+    # saved as a coef for irnstl, fert, desal so need to calc from production
+    irnstl_coef <- L2323.StubTechCoef_iron_steel %>%
+      filter(grepl(REFLIQ_BUCKETS, minicam.energy.input)) %>%
+      select(region, year, supplysector, subsector, stub.technology, minicam.energy.input, coefficient)
+    irnstl_prod <- L2323.StubTechProd_iron_steel %>%
+      select(region, year, supplysector, subsector, stub.technology, calOutputValue)
+    a_irnstl <- irnstl_prod %>%
+      left_join(irnstl_coef, by = c("region", "year", "supplysector", "subsector", "stub.technology")) %>%
+      mutate(calibrated.value = calOutputValue * coefficient) %>%
+      filter(calibrated.value > 0) %>%
+      select(region, year, supplysector, subsector, minicam.energy.input, calibrated.value) %>%
+      group_by(region, year, minicam.energy.input) %>%
+      summarize(irnstl = sum(calibrated.value), .groups = "drop")
+
+    fert_coef <- (L2322.StubTechCoef_Fert) %>%
+      filter(grepl(REFLIQ_BUCKETS, minicam.energy.input)) %>%
+      select(region, year, supplysector, subsector, stub.technology, minicam.energy.input, coefficient)
+    fert_prod <- L2322.StubTechProd_FertProd %>%
+      select(region, year, supplysector, subsector, stub.technology, calOutputValue)
+    a_fert <- fert_prod %>%
+      left_join(fert_coef, by = c("region", "year", "supplysector", "subsector", "stub.technology")) %>%
+      mutate(calibrated.value = calOutputValue * coefficient) %>%
+      filter(calibrated.value > 0) %>%
+      select(region, year, supplysector, subsector, minicam.energy.input, calibrated.value) %>%
+      group_by(region, year, minicam.energy.input) %>%
+      summarize(fert = sum(calibrated.value), .groups = "drop")
+
+    desal_coef <- (L271.GlobalTechCoef_desal) %>%
+      filter(grepl(REFLIQ_BUCKETS, minicam.energy.input)) %>%
+      select(year, supplysector = sector.name, subsector = subsector.name,
+             stub.technology = technology, minicam.energy.input, coefficient)
+    desal_prod <- L271.StubTechProd_desal %>%
+      select(region, year, supplysector, subsector, stub.technology, calOutputValue)
+    a_desal <- desal_prod %>%
+      left_join(desal_coef, by = c("year", "supplysector", "subsector", "stub.technology")) %>%
+      mutate(calibrated.value = calOutputValue * coefficient) %>%
+      filter(calibrated.value > 0) %>%
+      select(region, year, supplysector, subsector, minicam.energy.input, calibrated.value) %>%
+      group_by(region, year, minicam.energy.input) %>%
+      summarize(desal = sum(calibrated.value), .groups = "drop")
+
+    # REFLIQ ENDUSE
+    a_trn <- L254.StubTranTechCalInput %>%
+      filter(grepl(REFLIQ_BUCKETS, minicam.energy.input)) %>%
+      select(region, year, supplysector, tranSubsector, minicam.energy.input, calibrated.value) %>%
+      distinct() %>%
+      group_by(region, year, minicam.energy.input) %>%
+      summarize(trn = sum(calibrated.value), .groups = "drop")
+    a_bld <- L242.StubTechCalInput_bld %>%
+      filter(grepl(REFLIQ_BUCKETS, minicam.energy.input)) %>%
+      select(region, year, supplysector, subsector, minicam.energy.input, calibrated.value) %>%
+      distinct() %>%
+      group_by(region, year, minicam.energy.input) %>%
+      summarize(bld = sum(calibrated.value), .groups = "drop")
+
+    zL1093.en_bal_EJ_liquids_cons_ind <- a_chem %>%
+      left_join(a_cement, by = c("region", "year", "minicam.energy.input")) %>%
+      left_join(a_aluminum, by = c("region", "year", "minicam.energy.input")) %>%
+      left_join(a_elec, by = c("region", "year", "minicam.energy.input")) %>%
+      left_join(a_food, by = c("region", "year", "minicam.energy.input")) %>%
+      left_join(a_heat, by = c("region", "year", "minicam.energy.input")) %>%
+      left_join(a_inden, by = c("region", "year", "minicam.energy.input")) %>%
+      left_join(a_indfeed, by = c("region", "year", "minicam.energy.input")) %>%
+      left_join(a_offroad, by = c("region", "year", "minicam.energy.input")) %>%
+      left_join(a_paper, by = c("region", "year", "minicam.energy.input")) %>%
+      left_join(a_irnstl, by = c("region", "year", "minicam.energy.input")) %>%
+      left_join(a_desal, by = c("region", "year", "minicam.energy.input")) %>%
+      left_join(a_fert, by = c("region", "year", "minicam.energy.input")) %>%
+      replace(., is.na(.), 0) %>%
+      mutate(value = chem + cement + aluminum + elec + food + heat + inden +
+               indfeed + offrd + paper + irnstl + desal + fert) %>%
+      select(region, year, type = minicam.energy.input, value)
+
+    zL1093.en_bal_EJ_liquids_cons_end <- a_trn %>%
+      left_join_error_no_match(a_bld, by = c("region", "year", "minicam.energy.input")) %>%
+      mutate(value = trn + bld) %>%
+      select(region, year, type = minicam.energy.input, value)
+
+    zL1093.en_bal_EJ_liquids_cons_type <- zL1093.en_bal_EJ_liquids_cons_ind %>%
+      bind_rows(zL1093.en_bal_EJ_liquids_cons_end) %>%
+      arrange(region, year, type, value)
 
     # Also remove direct crude use when adjusting consumption values
     direct_crude <- L121.in_EJ_R_TPES_liq_Yh %>%
       left_join_error_no_match(GCAM_region_names, by = "GCAM_region_ID") %>%
       filter(fuel == "Feedstock", year %in% MODEL_BASE_YEARS) %>%
-      select(region, year, sector, direct_crude = value)
+      select(region, year, type = sector, direct_crude = value)
 
-    # # TODO: Most of the discrepancy comes from district heat, where some consumption
-    # # is relabeled from end use back to industrial in regions where there is
-    # # heat generation but no district heat. Need to find the rest
-    # dist_heat_adder <- L132.in_EJ_R_indheat_F_Yh %>%
-    #   left_join_error_no_match(GCAM_region_names, by = "GCAM_region_ID") %>%
-    #   filter(fuel %in% energy.REFINED_LIQUIDS_AGG,
-    #          year %in% MODEL_BASE_YEARS) %>%
-    #   mutate(type = "refined liquids industrial") %>%
-    #   bind_rows(L132.in_EJ_R_indheat_F_Yh %>%
-    #               left_join_error_no_match(GCAM_region_names, by = "GCAM_region_ID") %>%
-    #               filter(fuel %in% energy.REFINED_LIQUIDS_AGG,
-    #                      year %in% MODEL_BASE_YEARS) %>%
-    #               mutate(type = "refined liquids enduse",
-    #                      value = -value)) %>%
-    #   select(region, year, type, dist_heat = value)
-
-    # # Deductions identified in L132.industry. Only CHP has refined liquids
-    # chp_subtr <- L132.in_EJ_R_inddeductions_F_Yh %>%
-    #   left_join_error_no_match(GCAM_region_names, by = "GCAM_region_ID") %>%
-    #   filter(fuel %in% energy.REFINED_LIQUIDS_AGG,
-    #          year %in% MODEL_BASE_YEARS) %>%
-    #   mutate(type = "refined liquids enduse") %>%
-    #   bind_rows(L132.in_EJ_R_inddeductions_F_Yh %>%
-    #               left_join_error_no_match(GCAM_region_names, by = "GCAM_region_ID") %>%
-    #               filter(fuel %in% energy.REFINED_LIQUIDS_AGG,
-    #                      year %in% MODEL_BASE_YEARS) %>%
-    #               mutate(type = "refined liquids industrial",
-    #                      value = -value)) %>%
-    #   select(region, year, type, chp_subtr = value)
-
-    baseline <- baseline_db %>%
-      group_by(region, year, input) %>%
-      summarize(outputdb_cons = sum(outputdb_cons), .groups = "drop") %>%
-      rename(type = input)
-
-    consumption_adder <-L1093.en_bal_EJ_liquids_cons_sector %>%
-      filter(type == "refined liquids enduse") %>%
-      group_by(region, year, type) %>%
-      summarize(value = sum(value), .groups = "drop") %>%
-      left_join(liqsplit, by = c("region", "year", "type" = "input")) %>%
-      mutate(adder = if_else(year > 1975, outputdb_cons - value, 0)) %>%
-      select(year, region, type, adder)
-    consumption_adder <- bind_rows(consumption_adder, consumption_adder %>%
-                                     mutate(adder = -adder,
-                                            type = "refined liquids industrial"))
-
-    # Apply product consumption corrections by sector and type
-    L1093.en_bal_EJ_liquids_cons_type <- L1093.en_bal_EJ_liquids_cons_sector %>%
-      # Apply corrections for direct crude consumption and district heat
-      group_by(region, year, type) %>%
-      summarize(cons = sum(value), .groups = "drop") %>%
-      left_join_error_no_match(direct_crude,
-                               by = c("region", "year", "type" = "sector")) %>%
-      # sundry adjustments from the rest of the pipeline here. may not be necessary??
-      #left_join(dist_heat_adder, by = c("region", "year", "type")) %>%
-      #left_join(chp_subtr, by = c("region", "year", "type")) %>%
-      left_join(baseline, by = c("region", "year", "type")) %>%
-      left_join(consumption_adder, by = c("region", "year", "type")) %>%
-      replace(., is.na(.), 0) %>%
-      mutate(value = cons - direct_crude + adder,
-             diff = outputdb_cons - cons) %>%
+    # Apply corrections for direct crude consumption
+    L1093.en_bal_EJ_liquids_cons_type <- zL1093.en_bal_EJ_liquids_cons_type %>%
+      left_join_error_no_match(direct_crude, by = c("region", "year", "type")) %>%
+      mutate(value = value - direct_crude) %>%
       select(region, year, type, value)
 
 
@@ -269,7 +341,7 @@ module_energy_L1093.refined_liquids_GrossTrade <- function(command, ...){
     # ratio of intraregional trade to total trade for a region in order to remove
     # intraregional trade globally.
 
-    bilateral_trade <- raw_liquids_trade %>%
+    bilateral_trade <- Resourcetradeearth_RefinedLiquids_2015 %>%
       select(c(`Exporter ISO3`, Exporter, `Importer ISO3`, Importer, Year,
                `Weight (1000kg)`)) %>%
       filter(Year %in% MODEL_BASE_YEARS) %>%         # only 2015 in current set
@@ -278,7 +350,7 @@ module_energy_L1093.refined_liquids_GrossTrade <- function(command, ...){
       mutate(iso_ex = tolower(iso_ex), iso_imp = tolower(iso_imp))
 
     # relabel trade data imp and exp with gcam region names
-    gcam_regions <- GCAM_region_iso_mapping %>%
+    gcam_regions <- Liquids_Trade_GCAM_regID %>%
       left_join(GCAM_region_names, by = "GCAM_region_ID") %>%
       select(-region_GCAM3)
 
@@ -613,7 +685,7 @@ module_energy_L1093.refined_liquids_GrossTrade <- function(command, ...){
        add_comments("Determined from IEA energy balances data") %>%
        add_precursors("L122.out_EJ_R_refining_F_Yh",
                       "L101.detailed_refined_liquids_EJ_R_Yh",
-                      #"L132.in_EJ_R_indheat_F_Yh",
+                      "L132.in_EJ_R_indheat_F_Yh",
                       "L1012.en_bal_EJ_R_Si_Fi_Yh",
                       "common/GCAM_region_names") ->
        LB1092.Tradebalance_refined_liquids_EJ_R_Y
@@ -624,7 +696,7 @@ module_energy_L1093.refined_liquids_GrossTrade <- function(command, ...){
        add_comments("Determined from IEA energy balances data") %>%
        add_precursors("L122.out_EJ_R_refining_F_Yh",
                       "L101.detailed_refined_liquids_EJ_R_Yh",
-                      #"L132.in_EJ_R_indheat_F_Yh",
+                      "L132.in_EJ_R_indheat_F_Yh",
                       "L1012.en_bal_EJ_R_Si_Fi_Yh",
                       "common/GCAM_region_names") ->
        LB1092.GCAM_REG_LIQUIDS_PROD_agg
@@ -656,7 +728,7 @@ module_energy_L1093.refined_liquids_GrossTrade <- function(command, ...){
        add_comments("Determined from IEA energy balances data") %>%
        add_precursors("L122.out_EJ_R_refining_F_Yh",
                       "L101.detailed_refined_liquids_EJ_R_Yh",
-                      #"L132.in_EJ_R_indheat_F_Yh",
+                      "L132.in_EJ_R_indheat_F_Yh",
                       "L1012.en_bal_EJ_R_Si_Fi_Yh",
                       "common/GCAM_region_names") ->
        L1093.en_bal_EJ_liquids_total
@@ -668,7 +740,7 @@ module_energy_L1093.refined_liquids_GrossTrade <- function(command, ...){
        add_precursors("L122.out_EJ_R_refining_F_Yh",
                       "L101.detailed_refined_liquids_EJ_R_Yh",
                       "L1012.en_bal_EJ_R_Si_Fi_Yh",
-                      #"L132.in_EJ_R_indheat_F_Yh",
+                      "L132.in_EJ_R_indheat_F_Yh",
                       "L122.in_EJ_R_refining_F_Yh",
                       "common/GCAM_region_names") ->
        L1093.IO_R_oilrefining_F_Yh
