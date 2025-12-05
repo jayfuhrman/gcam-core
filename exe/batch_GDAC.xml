@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BatchRunner xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="batch_runner.xsd">
+
+
+
+
+
+
+
+<ComponentSet name="PolicySetup">
+<FileSet name="">
+			<Value name = "bio_constraint">../input/extra/bio_constraint/cwf_mid_bio_constraint.xml</Value>
+ 	 		<Value name = "bio_mkt">../input/extra/bio_constraint/bio_ceiling_mkt.xml</Value>
+
+        <!-- set up the near-term / long-term policy inputs -->
+		<Value name = "long-term-co2">../input/policy/carbon_tax_0.xml</Value>
+		<Value name = "near-term-co2">../input/policy/CO2_near-term.xml</Value>
+		<Value name = "co2-link">../input/policy/co2-link.xml</Value>
+		<!--Value name = "co2luc-link">../input/policy/global_uct_phasein_no_constraint.xml</Value-->
+
+                <!--Rate Limits on geological storage and weathering-->
+		<Value name = "ccs">../input/gcamdata/xml/Cstorage_rapid.xml</Value>
+		<Value name = "weathering">../input/gcamdata/xml/Weathering.xml</Value>
+		<!--Value name = "weathering">../input/gcamdata/xml/Weathering_high.xml</Value-->
+	</FileSet>
+</ComponentSet>
+
+
+<ComponentSet name="EmissionsConstraint">
+
+
+	<FileSet name="_cprice0">
+		<Value name = "long-term-co2">../input/policy/carbon_tax_nominal.xml</Value>
+		<Value name = "LUC-price-adj">../input/policy/global_uct_price_adj_0p1.xml</Value>
+	</FileSet>
+
+	<FileSet name="_cprice100">
+		<Value name = "long-term-co2">../input/policy/carbon_tax_100.xml</Value>
+		<Value name = "LUC-price-adj">../input/policy/global_uct_price_adj_0p1.xml</Value>
+	</FileSet>
+
+	<!--FileSet name="_cprice200">
+		<Value name = "long-term-co2">../input/policy/carbon_tax_200.xml</Value>
+		<Value name = "LUC-price-adj">../input/policy/global_uct_price_adj_0p1.xml</Value>
+	</FileSet>-->
+
+	<!--FileSet name="_cprice400">
+		<Value name = "long-term-co2">../input/policy/carbon_tax_400.xml</Value>
+		<Value name = "LUC-price-adj">../input/policy/global_uct_price_adj_0p1.xml</Value>
+	</FileSet>-->
+
+
+
+</ComponentSet>
+
+<ComponentSet name="GDAC">
+	
+	<FileSet name="GDAC_5pct_slip">
+					<Value name = "dac">../input/gcamdata/xml/dac_ssp1_5pct_slip.xml</Value>
+	</FileSet>	
+
+	<FileSet name="GDAC_10pct_slip">
+					<Value name = "dac">../input/gcamdata/xml/dac_ssp1_10pct_slip.xml</Value>
+	</FileSet>	
+
+	<FileSet name="GDAC_20pct_slip">
+					<Value name = "dac">../input/gcamdata/xml/dac_ssp1_20pct_slip.xml</Value>
+	</FileSet>	
+
+	<FileSet name="GDAC_53pct_slip">
+					<Value name = "dac">../input/gcamdata/xml/dac_ssp1_53pct_slip.xml</Value>
+	</FileSet>	
+	
+</ComponentSet>
+
+</BatchRunner>
+
+
