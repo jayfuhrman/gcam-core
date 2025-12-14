@@ -1,6 +1,6 @@
 # Copyright 2019 Battelle Memorial Institute; see the LICENSE file.
 
-#' module_energy_cement_xml
+#' module_energy_cement_cwf_xml
 #'
 #' Construct XML data structure for \code{cement.xml}.
 #'
@@ -33,15 +33,14 @@ module_energy_cement_cwf_xml <- function(command, ...) {
     all_data <- list(...)[[1]]
 
     # Load required inputs
-    L2321.GlobalTechShrwt_cement <- get_data(all_data, "L2321.GlobalTechShrwt_cement")
     L2321.GlobalTechCoef_cement_cwf <- get_data(all_data, "L2321.GlobalTechCoef_cement_cwf")
     L2321.StubTechCoef_cement_cwf <- get_data(all_data, "L2321.StubTechCoef_cement_cwf")
-
+    L2321.GlobalTechShrwt_cement <- get_data(all_data, "L2321.GlobalTechShrwt_cement")
     L2321.SubsectorShrwtFllt_cement_cwf <- get_data(all_data, "L2321.SubsectorShrwtFllt_cement_cwf")
     L2321.SubsectorInterp_cement_cwf <- get_data(all_data, "L2321.SubsectorInterp_cement_cwf")
-
     L2321.SubsectorShrwtFllt_cement_cwf_H2_scenarios <- get_data(all_data, "L2321.SubsectorShrwtFllt_cement_cwf_H2_scenarios")
     L2321.SubsectorInterp_cement_cwf_H2_scenarios <- get_data(all_data, "L2321.SubsectorInterp_cement_cwf_H2_scenarios")
+    L2321.IncomeElasticity_cement_cwf <- get_data(all_data, 'L2321.IncomeElasticity_cement_cwf') %>% filter(year > MODEL_FINAL_BASE_YEAR)
     # ===================================================
 
     cement_cwf_low_H2.xml <-
@@ -95,9 +94,6 @@ module_energy_cement_cwf_xml <- function(command, ...) {
       add_xml_data(L2321.GlobalTechShrwt_cement_cwf, "GlobalTechShrwt") %>%
       add_precursors('L2321.GlobalTechShrwt_cement') ->
       cement_all_CCS_post2030.xml
-
-    L2321.IncomeElasticity_cement_cwf <- get_data(all_data, 'L2321.IncomeElasticity_cement_cwf') %>%
-      filter(year > MODEL_FINAL_BASE_YEAR)
 
     create_xml("cement_incelas_cwf.xml") %>%
       add_xml_data(L2321.IncomeElasticity_cement_cwf, "IncomeElasticity") %>%

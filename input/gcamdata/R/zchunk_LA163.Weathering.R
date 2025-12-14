@@ -1,6 +1,6 @@
 # Copyright 2019 Battelle Memorial Institute; see the LICENSE file.
 
-#' module_energy_LA161.Cstorage
+#' module_energy_LA163.Weathering
 #'
 #' Build carbon storage supply curves by region.
 #'
@@ -47,6 +47,7 @@ module_energy_LA163.Weathering <- function(command, ...) {
       rename(extractioncost = cost) -> L163.RsrcCurves_Mt
 
 
+    unique(A63.rsrc_curves$region)
 
 
 #    AlkalineMaterial_Mt <- get_data(all_data, "energy/AlkalineMaterial_Mt") %>%

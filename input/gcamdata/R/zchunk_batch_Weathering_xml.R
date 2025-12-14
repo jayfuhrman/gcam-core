@@ -84,11 +84,11 @@ module_energy_batch_Weathering_xml <- function(command, ...) {
       add_xml_data(L263.GlobalTechInputPMult, "GlobalTechInputPMult") %>%
       add_xml_data(L263.GlobalTechSCurve, "GlobalTechSCurve") %>%
       add_xml_data(L263.GlobalTechProfitShutdown, "GlobalTechProfitShutdown") %>%
-      add_xml_data(L263.StubTechEff %>% mutate(efficiency = 1),"StubTechEff") %>%
-      add_xml_data(L263.TechPmult %>% mutate(pMult = 1),"TechPmult") %>%
+      add_xml_data(L263.StubTechEff %>%
+                     distinct(region,supplysector,subsector,stub.technology,year,minicam.energy.input,market.name) %>%
+                     mutate(efficiency = 1), "StubTechEff") %>%
       add_precursors("L263.Rsrc", "L263.RsrcCurves_C", "L263.ResTechShrwt_C", "L263.Supplysector_C", "L263.SubsectorLogit_C", "L263.SubsectorShrwtFllt_C", "L263.StubTech_C", "L263.GlobalTechCoef_C","L263.GlobalTechCost_C", "L263.GlobalTechShrwt_C","L263.RsrcPrice","L263.WeatheringRsrcMax","L263.GlobalTechCSeq","L263.SubsectorInterp",
-                     "L263.GlobalTechInputPMult","L263.GlobalTechProfitShutdown","L263.GlobalTechSCurve",
-                     "L263.StubTechEff","L263.TechPmult") ->
+                     "L263.GlobalTechInputPMult","L263.GlobalTechProfitShutdown","L263.GlobalTechSCurve", "L263.StubTechEff") ->
       Weathering.xml
 
     create_xml("Weathering_high.xml") %>%

@@ -7,4 +7,5 @@ supplysector,subsector,year.fillout,year,share.weight
 ammonia,coal,start-year,,0
 ammonia,gas,start-year,,0.5
 ammonia,hydrogen,start-year,,0
+ammonia,hydrogen,2025,,0
 ammonia,hydrogen,2050,,1

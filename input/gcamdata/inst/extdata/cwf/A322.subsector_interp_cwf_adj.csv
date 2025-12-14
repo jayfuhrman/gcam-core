@@ -4,8 +4,10 @@
 # Column types: ccccccc
 # ----------
 supplysector,subsector,apply.to,from.year,to.year,to.value,interpolation.function
-ammonia,coal,share-weight,final-calibration-year,2050,,linear
-ammonia,gas,share-weight,final-calibration-year,2050,,linear
-ammonia,hydrogen,share-weight,start-year,2025,,fixed
-ammonia,hydrogen,share-weight,2025,2050,,linear
+ammonia,coal,share-weight,final-calibration-year,initial-future-year,,linear
+ammonia,gas,share-weight,final-calibration-year,initial-future-year,,linear
+ammonia,coal,share-weight,initial-future-year,2050,,linear
+ammonia,gas,share-weight,initial-future-year,2050,,linear
+ammonia,hydrogen,share-weight,start-year,initial-future-year,,fixed
+ammonia,hydrogen,share-weight,initial-future-year,2050,,linear
 ammonia,hydrogen,share-weight,2050,end-year,,fixed

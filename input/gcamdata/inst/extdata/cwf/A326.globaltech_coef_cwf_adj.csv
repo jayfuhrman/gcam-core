@@ -3,7 +3,7 @@
 # Units:  alumina input is unitless (Mt alumina per Mt aluminum); all others are GJ per kg (EJ of energy per Mt of alumina/aluminum)
 # Column types: cccccnnnc
 # ----------
-supplysector,subsector,technology,minicam.energy.input,secondary.output,2020,2050,2100,scenario
+supplysector,subsector,technology,minicam.energy.input,secondary.output,2025,2050,2100,scenario
 alumina,refined liquids,refined liquids,refined liquids industrial,,1,0.9,0.8,cwf
 alumina,refined liquids,refined liquids cogen,refined liquids industrial,electricity,1,0.9,0.8,cwf
 alumina,refined liquids,refined liquids CCS,refined liquids industrial,,1,0.9,0.8,cwf

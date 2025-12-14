@@ -162,7 +162,8 @@ module_gcamusa_L261.carbon_storage <- function(command, ...) {
     L261.StubTech_C_USA %>%
       filter(supplysector == 'carbon-storage') %>%
       repeat_add_columns(tibble(year = MODEL_YEARS)) %>%
-      left_join_error_no_match(select(L261.GlobalTechCoef_C, -coefficient),
+      left_join_error_no_match(select(L261.GlobalTechCoef_C %>%
+                                        filter(minicam.energy.input %in% c('onshore carbon-storage','offshore carbon-storage')), -coefficient),
                                by = c("supplysector" = "sector.name", "subsector" = "subsector.name", "stub.technology" = "technology", "year")) %>%
       # Use the grid region markets
       left_join_error_no_match(select(states_subregions, state, market.name = grid_region), by = c("region" = "state")) %>%

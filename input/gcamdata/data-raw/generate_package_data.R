@@ -109,6 +109,7 @@ generate_level2_data_names <- function() {
   level2_data_names[["SubsectorInterp"]] <- c(level2_data_names[["Subsector"]], "apply.to", "from.year", "to.year", "interpolation.function")
   level2_data_names[["SubsectorInterpTo"]] <- c(level2_data_names[["Subsector"]], "apply.to", "from.year", "to.year", "to.value", "interpolation.function")
   level2_data_names[["DeleteSubsectorInterp"]] <- level2_data_names[["SubsectorInterp"]]
+  level2_data_names[["DeleteSubsectorInterpTo"]] <- level2_data_names[["SubsectorInterpTo"]]
   level2_data_names[["FuelPrefElast"]] <- c(level2_data_names[["Subsector"]], "year.fillout", "fuelprefElasticity")
   level2_data_names[["tranSubsectorFuelPref"]] <- c("region", "supplysector", "tranSubsector", "year.fillout", "fuelprefElasticity")
   level2_data_names[["tranSubsectorInterp"]] <- c("region", "supplysector", "tranSubsector", "apply.to", "from.year", "to.year", "interpolation.function")
@@ -310,10 +311,9 @@ generate_level2_data_names <- function() {
   level2_data_names[["AgResBioCurve"]] <- c("region", "AgSupplySector", "AgSupplySubsector", "AgProductionTechnology", "year", "residue.biomass.production", "price", "fract.harvested")
   level2_data_names[["ResBio"]] <- c(level2_data_names[["TechYr"]], "residue.biomass.production", "mass.conversion", "harvest.index", "eros.ctrl", "mass.to.energy", "water.content")
   level2_data_names[["ResBioCurve"]] <- c(level2_data_names[["TechYr"]], "residue.biomass.production", "price", "fract.harvested")
-  level2_data_names[["AgConstraint"]] <- c(level2_data_names[["AgTechYr"]], "input.tax", "coefficient")
   level2_data_names[["UnmgdTech"]] <- c("region", "AgSupplySector", "AgSupplySubsector", "UnmanagedLandTechnology")
   level2_data_names[["AgResBio"]] <- c(level2_data_names[["AgTechYr"]], "residue.biomass.production", "mass.conversion", "harvest.index", "eros.ctrl", "mass.to.energy", "water.content")
-  level2_data_names[["AgInputTax"]] <- c(level2_data_names[["AgTech"]], "input.tax", "coefficient")
+  level2_data_names[["AgInputTax"]] <- c(level2_data_names[["AgTechYr"]], "input.tax", "coefficient")
   level2_data_names[["ItemName"]] <- c("region", "AgSupplySector", "AgSupplySubsector", "UnmanagedLandTechnology", "year", "itemName")
 
   # Demands

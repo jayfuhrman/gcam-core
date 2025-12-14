@@ -1,5 +1,5 @@
 # File: A327.globaltech_coef_cwf_adj.csv
-# Title: Paper and paperboard production for cwf scenario. Improving efficiency coefficients by 10% (linear increase from 2020 to 2050) and by 20% by 2100 relative to default coefficients.
+# Title: Paper and paperboard production for cwf scenario. Improving efficiency coefficients by 10% (linear increase from 2025 to 2050) and by 20% by 2100 relative to default coefficients.
 # Units: GJ per kg (EJ of energy per Mt of paper and paperboard) for paper and paperboard; unitless (EJ energy per EJ heat) for process heat.  
 # Column types: cccccnnnc
 # ----------

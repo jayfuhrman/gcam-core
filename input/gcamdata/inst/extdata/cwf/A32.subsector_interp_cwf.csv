@@ -14,8 +14,8 @@ other industrial energy use,gas,share-weight,final-calibration-year,2025,,fixed
 other industrial energy use,gas,share-weight,2025,2050,,s-curve
 other industrial energy use,gas,share-weight,2050,end-year,,fixed
 other industrial energy use,hydrogen,share-weight,start-year,final-calibration-year,,fixed
-other industrial energy use,hydrogen,share-weight,final-calibration-year,2020,,linear
-other industrial energy use,hydrogen,share-weight,2020,2100,,fixed
+other industrial energy use,hydrogen,share-weight,final-calibration-year,2025,,linear
+other industrial energy use,hydrogen,share-weight,2025,2100,,fixed
 other industrial energy use,refined liquids,share-weight,final-calibration-year,2025,,fixed
 other industrial energy use,refined liquids,share-weight,2025,2050,,s-curve
 other industrial energy use,refined liquids,share-weight,2050,end-year,,fixed

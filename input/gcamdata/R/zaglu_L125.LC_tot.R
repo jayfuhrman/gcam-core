@@ -19,38 +19,40 @@
 #' @importFrom dplyr arrange bind_rows filter group_by lag mutate select summarise
 #' @author MC May 2017
 module_aglu_L125.LC_tot <- function(command, ...) {
-
-  MODULE_INPUTS <-
-    c("L120.LC_bm2_R_UrbanLand_Yh_GLU",
-      "L120.LC_bm2_R_Tundra_Yh_GLU",
-      "L120.LC_bm2_R_RckIceDsrt_Yh_GLU",
-      "L122.LC_bm2_R_HarvCropLand_Yh_GLU",
-      "L122.LC_bm2_R_OtherArableLand_Yh_GLU",
-      "L123.LC_bm2_R_MgdPast_Yh_GLU",
-      "L123.LC_bm2_R_MgdFor_Yh_GLU",
-      "L124.LC_bm2_R_Shrub_Yh_GLU_adj",
-      "L124.LC_bm2_R_Grass_Yh_GLU_adj",
-      "L124.LC_bm2_R_UnMgdPast_Yh_GLU_adj",
-      "L124.LC_bm2_R_UnMgdFor_Yh_GLU_adj",
-      "L120.LC_bm2_R_LT_Yh_GLU")
-
-  MODULE_OUTPUTS <-
-    c("L125.LC_bm2_R",
-      "L125.LC_bm2_R_GLU",
-      "L125.LC_bm2_R_LT_Yh_GLU")
-
   if(command == driver.DECLARE_INPUTS) {
-    return(MODULE_INPUTS)
+    return(c("L120.LC_bm2_R_UrbanLand_Yh_GLU",
+             "L120.LC_bm2_R_Tundra_Yh_GLU",
+             "L120.LC_bm2_R_RckIceDsrt_Yh_GLU",
+             "L122.LC_bm2_R_HarvCropLand_Yh_GLU",
+             "L122.LC_bm2_R_OtherArableLand_Yh_GLU",
+             "L123.LC_bm2_R_MgdPast_Yh_GLU",
+             "L123.LC_bm2_R_MgdFor_Yh_GLU",
+             "L124.LC_bm2_R_Shrub_Yh_GLU_adj",
+             "L124.LC_bm2_R_Grass_Yh_GLU_adj",
+             "L124.LC_bm2_R_UnMgdPast_Yh_GLU_adj",
+             "L124.LC_bm2_R_UnMgdFor_Yh_GLU_adj"))
   } else if(command == driver.DECLARE_OUTPUTS) {
-    return(MODULE_OUTPUTS)
+    return(c("L125.LC_bm2_R",
+             "L125.LC_bm2_R_GLU",
+             "L125.LC_bm2_R_LT_Yh_GLU"))
   } else if(command == driver.MAKE) {
 
     all_data <- list(...)[[1]]
 
     year <- value <- GCAM_region_ID <- Land_Type <- GLU <- LC_bm2 <- NULL   # silence package check notes
 
-    # Load required inputs ----
-    get_data_list(all_data, MODULE_INPUTS, strip_attributes = TRUE)
+    # Load required inputs
+    L120.LC_bm2_R_UrbanLand_Yh_GLU <- get_data(all_data, "L120.LC_bm2_R_UrbanLand_Yh_GLU")
+    L120.LC_bm2_R_Tundra_Yh_GLU <- get_data(all_data, "L120.LC_bm2_R_Tundra_Yh_GLU")
+    L120.LC_bm2_R_RckIceDsrt_Yh_GLU <- get_data(all_data, "L120.LC_bm2_R_RckIceDsrt_Yh_GLU")
+    L122.LC_bm2_R_HarvCropLand_Yh_GLU <- get_data(all_data, "L122.LC_bm2_R_HarvCropLand_Yh_GLU")
+    L122.LC_bm2_R_OtherArableLand_Yh_GLU <- get_data(all_data, "L122.LC_bm2_R_OtherArableLand_Yh_GLU")
+    L123.LC_bm2_R_MgdPast_Yh_GLU <- get_data(all_data, "L123.LC_bm2_R_MgdPast_Yh_GLU")
+    L123.LC_bm2_R_MgdFor_Yh_GLU <- get_data(all_data, "L123.LC_bm2_R_MgdFor_Yh_GLU")
+    L124.LC_bm2_R_Shrub_Yh_GLU_adj <- get_data(all_data, "L124.LC_bm2_R_Shrub_Yh_GLU_adj", strip_attributes = TRUE)
+    L124.LC_bm2_R_Grass_Yh_GLU_adj <- get_data(all_data, "L124.LC_bm2_R_Grass_Yh_GLU_adj")
+    L124.LC_bm2_R_UnMgdPast_Yh_GLU_adj <- get_data(all_data, "L124.LC_bm2_R_UnMgdPast_Yh_GLU_adj")
+    L124.LC_bm2_R_UnMgdFor_Yh_GLU_adj <- get_data(all_data, "L124.LC_bm2_R_UnMgdFor_Yh_GLU_adj")
 
 
     # -----------------------------------------------------------------------------
@@ -75,44 +77,21 @@ module_aglu_L125.LC_tot <- function(command, ...) {
       summarise(value = sum(value)) ->                      # Adding up total land area by region, year, and GLU
       L125.LC_bm2_R_Yh_GLU
 
-    L125.LC_bm2_R_LT_Yh_GLU %>%
-      filter(year %in% MODEL_BASE_YEARS) %>%
-      #filter(year == 2015) %>% #distinct(Land_Type) %>%
-      group_by(year, GCAM_region_ID, GLU) %>%
-      summarize(AreaNew = sum(value)) %>% ungroup() %>%
-      left_join_error_no_match(
-        L120.LC_bm2_R_LT_Yh_GLU %>% #filter(year == 2015) %>% #distinct(Land_Type)
-          group_by(year, GCAM_region_ID, GLU) %>%
-          summarize(AreaOld = sum(value)) %>% ungroup(),
-        by = c("year", "GCAM_region_ID", "GLU")
-      ) %>%
-      mutate(Diff = abs(AreaNew - AreaOld), PercDiff = Diff / AreaOld * 100) ->
-      L125.LC_bm2_R_LT_Yh_GLU_Check
-
-    assertthat::assert_that(
-      # GLU level area diff < 0.1 and percent diff < 0.1%
-      L125.LC_bm2_R_LT_Yh_GLU_Check %>% distinct(Diff) %>% pull %>% max < 0.1 &
-        L125.LC_bm2_R_LT_Yh_GLU_Check %>% distinct(PercDiff) %>% pull %>% max < 0.1
-    )
-
-
     # It's necessary to make sure the Land Cover changing rates are within certain tolerances
     # We don't do this under timeshift because the tolerance check fails...and it's not clear if that means anything or not
-
-    # remove this check as it is not necessary and the total land check is added above
-      UNDER_TIMESHIFT = T
     if(!UNDER_TIMESHIFT) {
       L125.LC_bm2_R_Yh_GLU %>%
         filter(year %in% aglu.AGLU_HISTORICAL_YEARS) %>%
         arrange(GCAM_region_ID, GLU, year) %>%
-        mutate(change_rate = value / lag(value),
-               change = value - lag(value)) ->          # calculate the rate of change
+        #when executing lag there is no value before 1971 so division/subtraction can't happen so fixed by using the first cell value (1971) to operate with itself
+        mutate(change_rate = value / lag(value, default = first(value)),
+               change = value - lag(value, default = first(value))) ->          # calculate the rate of change
         LC_check
 
       # Stop if the rate is outside of the tolerance boundaries
-      LC_check %>% filter(abs(change_rate - 1) > aglu.LAND_TOLERANCE) -> LC_check_out
-      if(nrow(LC_check_out) >0 ) {
-        print(na.omit(LC_check_out))
+      out <- abs(LC_check$change_rate - 1) > aglu.LAND_TOLERANCE
+      if(any(out, na.rm = TRUE)) {
+        print(na.omit(LC_check[out,]))
         stop("ERROR: Interannual fluctuation in global land cover exceeds tolerance threshold of ", aglu.LAND_TOLERANCE)
       }
     }
@@ -172,7 +151,7 @@ module_aglu_L125.LC_tot <- function(command, ...) {
       same_precursors_as(L125.LC_bm2_R) ->
       L125.LC_bm2_R_LT_Yh_GLU
 
-    return_data(MODULE_OUTPUTS)
+    return_data(L125.LC_bm2_R, L125.LC_bm2_R_GLU, L125.LC_bm2_R_LT_Yh_GLU)
   } else {
     stop("Unknown command")
   }

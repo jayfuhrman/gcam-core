@@ -5,4 +5,5 @@
 # Column types: ccccn 
 # ----------
 supplysector,subsector,year.fillout,year,share.weight
+biochar,biochar,final-calibration-year,,0
 biochar,biochar,initial-future-year,,1

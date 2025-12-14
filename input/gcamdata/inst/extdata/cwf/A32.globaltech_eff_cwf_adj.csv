@@ -3,7 +3,7 @@
 # Units: Fraction
 # Column types: cccccnnnc
 # ----------
-supplysector,subsector,technology,minicam.energy.input,secondary.output,2020,2050,2100,scenario
+supplysector,subsector,technology,minicam.energy.input,secondary.output,2025,2050,2100,scenario
 other industrial energy use,biomass,biomass,delivered biomass,,1,1.1,1.2,cwf
 other industrial energy use,biomass,biomass cogen,delivered biomass,electricity,1,1.1,1.2,cwf
 other industrial energy use,coal,coal,delivered coal,,1,1.1,1.2,cwf

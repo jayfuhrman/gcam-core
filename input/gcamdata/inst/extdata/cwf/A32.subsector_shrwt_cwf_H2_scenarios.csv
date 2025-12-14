@@ -5,6 +5,6 @@
 # ----------
 supplysector,subsector,year.fillout,year,share.weight,scenario
 other industrial energy use,hydrogen,start-year,,0,cwf_low_H2
-other industrial energy use,hydrogen,2020,,0.25,cwf_low_H2
+other industrial energy use,hydrogen,2025,,0.25,cwf_low_H2
 other industrial energy use,hydrogen,start-year,,0,cwf_high_H2
-other industrial energy use,hydrogen,2020,,1,cwf_high_H2
+other industrial energy use,hydrogen,2025,,1,cwf_high_H2

@@ -22,7 +22,6 @@
 #' @importFrom tidyr complete replace_na
 #' @author BBL August 2017
 module_aglu_L202.an_input <- function(command, ...) {
-
   MODULE_INPUTS <-
     c(FILE = "common/GCAM_region_names",
       FILE = "energy/A_regions",
@@ -484,14 +483,14 @@ module_aglu_L202.an_input <- function(command, ...) {
     # Calculate non-feed costs of animal production based on regional producer prices and feed costs
     # First, calculate the weighted average price across the different feed types (supplysectors)
     L202.StubTechProd_in %>%
-      filter(year == max(MODEL_BASE_YEARS)) %>%
+      filter(year == MODEL_FINAL_BASE_YEAR) %>%
       select(region, supplysector, subsector, stub.technology, calOutputValue) ->
       L202.ag_Feed_P_share_R_C
 
     # Use the producer prices of crops in each exporting region to calculate the global "traded" crop prices
     L202.ag_tradedP_C_75USDkg <- L109.ag_ALL_Mt_R_C_Y %>%
       select(GCAM_region_ID, GCAM_commodity, year, GrossExp_Mt, GrossImp_Mt) %>%
-      filter(year == max(MODEL_BASE_YEARS),
+      filter(year == MODEL_FINAL_BASE_YEAR,
              GCAM_commodity%in% aglu.TRADED_CROPS) %>%
       inner_join(L1321.ag_prP_R_C_75USDkg, by = c("GCAM_region_ID", "GCAM_commodity")) %>%
       mutate(Exp_wtd_price = GrossExp_Mt * value) %>%
@@ -503,7 +502,7 @@ module_aglu_L202.an_input <- function(command, ...) {
       select(GCAM_commodity, tradedP)
 
     # Calculate the share of domestic supply (i.e., total consumption) that is from imports
-    L202.ag_ImpShare_Mt_R_C_Y <- filter(L109.ag_ALL_Mt_R_C_Y, year == max(MODEL_BASE_YEARS)) %>%
+    L202.ag_ImpShare_Mt_R_C_Y <- filter(L109.ag_ALL_Mt_R_C_Y, year == MODEL_FINAL_BASE_YEAR) %>%
       select(GCAM_region_ID, GCAM_commodity, year, Supply_Mt, GrossExp_Mt, GrossImp_Mt) %>%
       mutate(ImpShare = if_else(is.na(GrossImp_Mt) | Supply_Mt == 0, 0, GrossImp_Mt / Supply_Mt)) %>%
       select(GCAM_region_ID, GCAM_commodity, ImpShare)
@@ -570,13 +569,13 @@ module_aglu_L202.an_input <- function(command, ...) {
     L233.TechCoef %>%
       filter(minicam.energy.input == "water_td_an_W") %>%
       mutate(watercost_an = water.DEFAULT_BASEYEAR_WATER_PRICE * coefficient) %>%
-      filter(year == max(MODEL_BASE_YEARS)) %>%
+      filter(year == MODEL_FINAL_BASE_YEAR) %>%
       select(region, GCAM_commodity = supplysector, system = subsector, feed = technology, watercost_an)->
       L202.an_WaterCost
 
     # Calculate the total cost of all inputs, for each animal commodity, first matching in the feed quantity and the price
     L202.an_Prod_Mt_R_C_Sys_Fd_Y.mlt %>%
-      filter(year == max(MODEL_BASE_YEARS),
+      filter(year == MODEL_FINAL_BASE_YEAR,
              !region %in% aglu.NO_AGLU_REGIONS) %>%
       rename(Prod_Mt = value) %>%
       left_join_error_no_match(select(L202.an_Feed_Mt_R_C_Sys_Fd_Y.mlt, GCAM_region_ID, GCAM_commodity, system, feed, year, Feed_Mt = value),
@@ -602,7 +601,7 @@ module_aglu_L202.an_input <- function(command, ...) {
     # Originally, we assume nonfeedcost if the same at the system level and it is
     # computed as the delta between price and feedcost (per output unit).
     # However, this could give us negative value at the tech level!
-    # The negative nonfeedcost may lead to negative price, causing solution
+    # The negative nonfeedcost may lead to negative price and causing solution
     # issues (at least higher iterations).
     # Our price data is from FAO; cost data from mostly FAO for FeedCrops but
     # our supply assumptions for other sources. There is also quality difference
@@ -613,7 +612,6 @@ module_aglu_L202.an_input <- function(command, ...) {
     # 2. set minimum value for nonfeedcost to zero for all tech except FeedCrops
     # 3. recalculate FeedCrops nonfeedcost to balance the value
     # 4. check and adjust nonfeedcost of FeedCrops tech to ensure the cost share is reasonable
-    # 5. phase out the negative nonfeedcost
 
 
     # Step 1
@@ -660,38 +658,13 @@ module_aglu_L202.an_input <- function(command, ...) {
 
     # Step 4 check and adjust nonfeedcost of FeedCrops tech to ensure the cost share is reasonable
     # set nonfeedcost >= -50% of feedcost (per unit of output)
-    # about 13 techs are adjusted but the production was small so won't affect output prices significantly
+    # about 30 techs are adjusted but the prodduction was small so won't affect output prices significantly
     L202.an_nonFeedCost_R_C_2 %>%
       mutate(feedcostperoutput = if_else(Prod_Mt == 0, 0, FeedCost_bilUSD / Prod_Mt),
              nonFeedCost_min = -feedcostperoutput * 0.5,
-             nonFeedCost = pmax(nonFeedCost, nonFeedCost_min) )%>%
-      select(region, supplysector = GCAM_commodity, subsector = system,
-             stub.technology = feed, nonFeedCost) ->
+             nonFeedCost = pmax(nonFeedCost, nonFeedCost_min) ) ->
       L202.an_nonFeedCost_R_C_3
 
-
-    # Step 5 Phase out negative nonFeedCost
-    # phase out negative nonFeedCost to zero till the last future year
-    # max(MODEL_FUTURE_YEARS) can be changed to other years
-    Zero_Cost_year <- max(MODEL_FUTURE_YEARS)
-    Zero_Cost_year <- 2050
-
-    L202.an_nonFeedCost_R_C_3 %>%
-      filter(nonFeedCost <0) %>%
-      repeat_add_columns(tibble(year = MODEL_YEARS)) %>%
-      # linear interpolation to 0 in the last year
-      mutate(nonFeedCost = if_else(year > MODEL_FINAL_BASE_YEAR, NA_real_, nonFeedCost),
-             nonFeedCost = if_else(year >= Zero_Cost_year, 0, nonFeedCost)) %>%
-      group_by_at(vars(-year, -nonFeedCost)) %>%
-      mutate(nonFeedCost = approx_fun(year, nonFeedCost, rule = 1)) %>%
-      ungroup() %>%
-      # bind rows with positive nonFeedCost
-      bind_rows(
-        L202.an_nonFeedCost_R_C_3 %>%
-          filter(nonFeedCost >=0) %>%
-          repeat_add_columns(tibble(year = MODEL_YEARS))
-      ) ->
-      L202.an_nonFeedCost_R_C_4
 
     A_an_technology %>%
       repeat_add_columns(tibble(year = MODEL_YEARS)) %>%
@@ -700,8 +673,10 @@ module_aglu_L202.an_input <- function(command, ...) {
       filter(!minicam.energy.input %in% c("regional industrial_roundwood")) %>%
       mutate(stub.technology = technology,
              minicam.non.energy.input = "non-feed") %>%
-      left_join_error_no_match(L202.an_nonFeedCost_R_C_4,
-                               by = c("supplysector", "subsector", "year", "region", "stub.technology")) %>%
+      left_join_error_no_match(L202.an_nonFeedCost_R_C_3 %>%
+                  select(region, supplysector = GCAM_commodity, subsector = system,
+                         stub.technology = feed, nonFeedCost),
+                  by = c("supplysector", "subsector", "region", "stub.technology")) %>%
       mutate(input.cost = round(nonFeedCost, aglu.DIGITS_CALPRICE)) %>%
       select(LEVEL2_DATA_NAMES[["StubTechCost"]]) ->
       L202.StubTechCost_an

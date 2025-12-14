@@ -9,9 +9,6 @@
             <linked-policy>CO2_TOTAL</linked-policy>
             <price-unit>1990$/tC</price-unit>
             <output-unit>MtC</output-unit>
-            <price-adjust year="2015">1</price-adjust>
-            <price-adjust year="2020">1</price-adjust>
-            <price-adjust year="2025">1</price-adjust>
             <price-adjust year="2030">1</price-adjust>
             <price-adjust year="2035">1</price-adjust>
             <price-adjust year="2040">1</price-adjust>
@@ -37,9 +34,7 @@
             <linked-policy>CO2_TOTAL</linked-policy>
             <price-unit>1990$/tC</price-unit>
             <output-unit>MtC</output-unit>
-            <price-adjust year="2015">1</price-adjust>
-            <price-adjust year="2020">1</price-adjust>
-            <price-adjust year="2025">1</price-adjust>
+
             <price-adjust year="2030">1</price-adjust>
             <price-adjust year="2035">1</price-adjust>
             <price-adjust year="2040">1</price-adjust>
@@ -65,9 +60,7 @@
             <linked-policy>CO2_TOTAL</linked-policy>
             <price-unit>1990$/tC</price-unit>
             <output-unit>MtC</output-unit>
-             <price-adjust year="2015">1</price-adjust>
-            <price-adjust year="2020">1</price-adjust>
-            <price-adjust year="2025">1</price-adjust>
+ 
             <price-adjust year="2030">1</price-adjust>
             <price-adjust year="2035">1</price-adjust>
             <price-adjust year="2040">1</price-adjust>
@@ -93,9 +86,7 @@
             <linked-policy>CO2_TOTAL</linked-policy>
             <price-unit>1990$/tC</price-unit>
             <output-unit>MtC</output-unit>
-            <price-adjust year="2015">1</price-adjust>
-            <price-adjust year="2020">1</price-adjust>
-            <price-adjust year="2025">1</price-adjust>
+
             <price-adjust year="2030">1</price-adjust>
             <price-adjust year="2035">1</price-adjust>
             <price-adjust year="2040">1</price-adjust>
@@ -121,9 +112,7 @@
             <linked-policy>CO2_TOTAL</linked-policy>
             <price-unit>1990$/tC</price-unit>
             <output-unit>MtC</output-unit>
-            <price-adjust year="2015">1</price-adjust>
-            <price-adjust year="2020">1</price-adjust>
-            <price-adjust year="2025">1</price-adjust>
+
             <price-adjust year="2030">1</price-adjust>
             <price-adjust year="2035">1</price-adjust>
             <price-adjust year="2040">1</price-adjust>
@@ -149,9 +138,7 @@
             <linked-policy>CO2_TOTAL</linked-policy>
             <price-unit>1990$/tC</price-unit>
             <output-unit>MtC</output-unit>
-            <price-adjust year="2015">1</price-adjust>
-            <price-adjust year="2020">1</price-adjust>
-            <price-adjust year="2025">1</price-adjust>
+
             <price-adjust year="2030">1</price-adjust>
             <price-adjust year="2035">1</price-adjust>
             <price-adjust year="2040">1</price-adjust>
@@ -177,9 +164,7 @@
             <linked-policy>CO2_TOTAL</linked-policy>
             <price-unit>1990$/tC</price-unit>
             <output-unit>MtC</output-unit>
-            <price-adjust year="2015">1</price-adjust>
-            <price-adjust year="2020">1</price-adjust>
-            <price-adjust year="2025">1</price-adjust>
+
             <price-adjust year="2030">1</price-adjust>
             <price-adjust year="2035">1</price-adjust>
             <price-adjust year="2040">1</price-adjust>
@@ -205,9 +190,7 @@
             <linked-policy>CO2_TOTAL</linked-policy>
             <price-unit>1990$/tC</price-unit>
             <output-unit>MtC</output-unit>
-            <price-adjust year="2015">1</price-adjust>
-            <price-adjust year="2020">1</price-adjust>
-            <price-adjust year="2025">1</price-adjust>
+            
             <price-adjust year="2030">1</price-adjust>
             <price-adjust year="2035">1</price-adjust>
             <price-adjust year="2040">1</price-adjust>
@@ -233,9 +216,7 @@
             <linked-policy>CO2_TOTAL</linked-policy>
             <price-unit>1990$/tC</price-unit>
             <output-unit>MtC</output-unit>
-            <price-adjust year="2015">1</price-adjust>
-            <price-adjust year="2020">1</price-adjust>
-            <price-adjust year="2025">1</price-adjust>
+            
             <price-adjust year="2030">1</price-adjust>
             <price-adjust year="2035">1</price-adjust>
             <price-adjust year="2040">1</price-adjust>
@@ -261,9 +242,7 @@
             <linked-policy>CO2_TOTAL</linked-policy>
             <price-unit>1990$/tC</price-unit>
             <output-unit>MtC</output-unit>
-           <price-adjust year="2015">1</price-adjust>
-            <price-adjust year="2020">1</price-adjust>
-            <price-adjust year="2025">1</price-adjust>
+            
             <price-adjust year="2030">1</price-adjust>
             <price-adjust year="2035">1</price-adjust>
             <price-adjust year="2040">1</price-adjust>
@@ -289,9 +268,7 @@
             <linked-policy>CO2_TOTAL</linked-policy>
             <price-unit>1990$/tC</price-unit>
             <output-unit>MtC</output-unit>
-            <price-adjust year="2015">1</price-adjust>
-            <price-adjust year="2020">0</price-adjust>
-            <price-adjust year="2025">1</price-adjust>
+          
             <price-adjust year="2030">1</price-adjust>
             <price-adjust year="2035">1</price-adjust>
             <price-adjust year="2040">1</price-adjust>
@@ -317,9 +294,7 @@
             <linked-policy>CO2_TOTAL</linked-policy>
             <price-unit>1990$/tC</price-unit>
             <output-unit>MtC</output-unit>
-            <price-adjust year="2015">1</price-adjust>
-            <price-adjust year="2020">1</price-adjust>
-            <price-adjust year="2025">1</price-adjust>
+            
             <price-adjust year="2030">1.2</price-adjust>
             <price-adjust year="2035">1.2</price-adjust>
             <price-adjust year="2040">1.2</price-adjust>
@@ -345,9 +320,7 @@
             <linked-policy>CO2_TOTAL</linked-policy>
             <price-unit>1990$/tC</price-unit>
             <output-unit>MtC</output-unit>
-            <price-adjust year="2015">1</price-adjust>
-            <price-adjust year="2020">0.7696</price-adjust>
-            <price-adjust year="2025">1</price-adjust>
+            
             <price-adjust year="2030">1.2</price-adjust>
             <price-adjust year="2035">1.2</price-adjust>
             <price-adjust year="2040">1.2</price-adjust>
@@ -365,17 +338,15 @@
             <price-adjust year="2100">1.2</price-adjust>
          </linked-ghg-policy>
       </region>
-      <region name="Europe_Eastern">
+      <region name="Ukraine">
          <linked-ghg-policy name="CO2">
             <price-adjust fillout="1" year="1975">0</price-adjust>
             <demand-adjust fillout="1" year="1975">1</demand-adjust>
-            <market>Europe_Eastern</market>
+            <market>Ukraine</market>
             <linked-policy>CO2_TOTAL</linked-policy>
             <price-unit>1990$/tC</price-unit>
             <output-unit>MtC</output-unit>
-           <price-adjust year="2015">1</price-adjust>
-            <price-adjust year="2020">1</price-adjust>
-            <price-adjust year="2025">1</price-adjust>
+            
             <price-adjust year="2030">1</price-adjust>
             <price-adjust year="2035">1</price-adjust>
             <price-adjust year="2040">1</price-adjust>
@@ -401,9 +372,7 @@
             <linked-policy>CO2_TOTAL</linked-policy>
             <price-unit>1990$/tC</price-unit>
             <output-unit>MtC</output-unit>
-            <price-adjust year="2015">1</price-adjust>
-            <price-adjust year="2020">1</price-adjust>
-            <price-adjust year="2025">1</price-adjust>
+
             <price-adjust year="2030">1</price-adjust>
             <price-adjust year="2035">1</price-adjust>
             <price-adjust year="2040">1</price-adjust>
@@ -429,9 +398,7 @@
             <linked-policy>CO2_TOTAL</linked-policy>
             <price-unit>1990$/tC</price-unit>
             <output-unit>MtC</output-unit>
-            <price-adjust year="2015">1</price-adjust>
-            <price-adjust year="2020">1</price-adjust>
-            <price-adjust year="2025">1</price-adjust>
+            
             <price-adjust year="2030">1</price-adjust>
             <price-adjust year="2035">1</price-adjust>
             <price-adjust year="2040">1</price-adjust>
@@ -457,9 +424,7 @@
             <linked-policy>CO2_TOTAL</linked-policy>
             <price-unit>1990$/tC</price-unit>
             <output-unit>MtC</output-unit>
-             <price-adjust year="2015">1</price-adjust>
-            <price-adjust year="2020">0.1765</price-adjust>
-            <price-adjust year="2025">1</price-adjust>
+            
             <price-adjust year="2030">1</price-adjust>
             <price-adjust year="2035">1</price-adjust>
             <price-adjust year="2040">1</price-adjust>
@@ -485,9 +450,7 @@
             <linked-policy>CO2_TOTAL</linked-policy>
             <price-unit>1990$/tC</price-unit>
             <output-unit>MtC</output-unit>
-            <price-adjust year="2015">1</price-adjust>
-            <price-adjust year="2020">1</price-adjust>
-            <price-adjust year="2025">1</price-adjust>
+            
             <price-adjust year="2030">1</price-adjust>
             <price-adjust year="2035">1</price-adjust>
             <price-adjust year="2040">1</price-adjust>
@@ -513,9 +476,7 @@
             <linked-policy>CO2_TOTAL</linked-policy>
             <price-unit>1990$/tC</price-unit>
             <output-unit>MtC</output-unit>
-            <price-adjust year="2015">1</price-adjust>
-            <price-adjust year="2020">0</price-adjust>
-            <price-adjust year="2025">1</price-adjust>
+          
             <price-adjust year="2030">1.1</price-adjust>
             <price-adjust year="2035">1.1</price-adjust>
             <price-adjust year="2040">1.1</price-adjust>
@@ -541,9 +502,7 @@
             <linked-policy>CO2_TOTAL</linked-policy>
             <price-unit>1990$/tC</price-unit>
             <output-unit>MtC</output-unit>
-             <price-adjust year="2015">1</price-adjust>
-            <price-adjust year="2020">1</price-adjust>
-            <price-adjust year="2025">1</price-adjust>
+ 
             <price-adjust year="2030">1</price-adjust>
             <price-adjust year="2035">1</price-adjust>
             <price-adjust year="2040">1</price-adjust>
@@ -569,9 +528,7 @@
             <linked-policy>CO2_TOTAL</linked-policy>
             <price-unit>1990$/tC</price-unit>
             <output-unit>MtC</output-unit>
-            <price-adjust year="2015">1</price-adjust>
-            <price-adjust year="2020">1</price-adjust>
-            <price-adjust year="2025">1</price-adjust>
+            
             <price-adjust year="2030">1</price-adjust>
             <price-adjust year="2035">1</price-adjust>
             <price-adjust year="2040">1</price-adjust>
@@ -597,9 +554,7 @@
             <linked-policy>CO2_TOTAL</linked-policy>
             <price-unit>1990$/tC</price-unit>
             <output-unit>MtC</output-unit>
-            <price-adjust year="2015">1</price-adjust>
-            <price-adjust year="2020">1</price-adjust>
-            <price-adjust year="2025">1</price-adjust>
+            
             <price-adjust year="2030">1</price-adjust>
             <price-adjust year="2035">1</price-adjust>
             <price-adjust year="2040">1</price-adjust>
@@ -625,9 +580,7 @@
             <linked-policy>CO2_TOTAL</linked-policy>
             <price-unit>1990$/tC</price-unit>
             <output-unit>MtC</output-unit>
-             <price-adjust year="2015">1</price-adjust>
-            <price-adjust year="2020">1</price-adjust>
-            <price-adjust year="2025">1</price-adjust>
+             
             <price-adjust year="2030">1</price-adjust>
             <price-adjust year="2035">1</price-adjust>
             <price-adjust year="2040">1</price-adjust>
@@ -653,9 +606,7 @@
             <linked-policy>CO2_TOTAL</linked-policy>
             <price-unit>1990$/tC</price-unit>
             <output-unit>MtC</output-unit>
-            <price-adjust year="2015">1</price-adjust>
-            <price-adjust year="2020">1</price-adjust>
-            <price-adjust year="2025">1</price-adjust>
+            
             <price-adjust year="2030">1.2</price-adjust>
             <price-adjust year="2035">1.2</price-adjust>
             <price-adjust year="2040">1.2</price-adjust>
@@ -681,9 +632,7 @@
             <linked-policy>CO2_TOTAL</linked-policy>
             <price-unit>1990$/tC</price-unit>
             <output-unit>MtC</output-unit>
-             <price-adjust year="2015">1</price-adjust>
-            <price-adjust year="2020">1</price-adjust>
-            <price-adjust year="2025">1</price-adjust>
+             
             <price-adjust year="2030">1</price-adjust>
             <price-adjust year="2035">1</price-adjust>
             <price-adjust year="2040">1</price-adjust>
@@ -709,9 +658,7 @@
             <linked-policy>CO2_TOTAL</linked-policy>
             <price-unit>1990$/tC</price-unit>
             <output-unit>MtC</output-unit>
-            <price-adjust year="2015">1</price-adjust>
-            <price-adjust year="2020">1</price-adjust>
-            <price-adjust year="2025">1</price-adjust>
+            
             <price-adjust year="2030">1</price-adjust>
             <price-adjust year="2035">1</price-adjust>
             <price-adjust year="2040">1</price-adjust>
@@ -737,9 +684,7 @@
             <linked-policy>CO2_TOTAL</linked-policy>
             <price-unit>1990$/tC</price-unit>
             <output-unit>MtC</output-unit>
-            <price-adjust year="2015">1</price-adjust>
-            <price-adjust year="2020">1</price-adjust>
-            <price-adjust year="2025">1</price-adjust>
+            
             <price-adjust year="2030">1</price-adjust>
             <price-adjust year="2035">1</price-adjust>
             <price-adjust year="2040">1</price-adjust>
@@ -765,9 +710,7 @@
             <linked-policy>CO2_TOTAL</linked-policy>
             <price-unit>1990$/tC</price-unit>
             <output-unit>MtC</output-unit>
-             <price-adjust year="2015">1</price-adjust>
-            <price-adjust year="2020">1</price-adjust>
-            <price-adjust year="2025">1</price-adjust>
+             
             <price-adjust year="2030">1.2</price-adjust>
             <price-adjust year="2035">1.2</price-adjust>
             <price-adjust year="2040">1.2</price-adjust>
@@ -793,9 +736,7 @@
             <linked-policy>CO2_TOTAL</linked-policy>
             <price-unit>1990$/tC</price-unit>
             <output-unit>MtC</output-unit>
-            <price-adjust year="2015">1</price-adjust>
-            <price-adjust year="2020">1</price-adjust>
-            <price-adjust year="2025">1</price-adjust>
+            
             <price-adjust year="2030">1</price-adjust>
             <price-adjust year="2035">1</price-adjust>
             <price-adjust year="2040">1</price-adjust>
@@ -821,9 +762,7 @@
             <linked-policy>CO2_TOTAL</linked-policy>
             <price-unit>1990$/tC</price-unit>
             <output-unit>MtC</output-unit>
-            <price-adjust year="2015">1</price-adjust>
-            <price-adjust year="2020">1</price-adjust>
-            <price-adjust year="2025">1</price-adjust>
+            
             <price-adjust year="2030">1</price-adjust>
             <price-adjust year="2035">1</price-adjust>
             <price-adjust year="2040">1</price-adjust>
@@ -849,9 +788,7 @@
             <linked-policy>CO2_TOTAL</linked-policy>
             <price-unit>1990$/tC</price-unit>
             <output-unit>MtC</output-unit>
-             <price-adjust year="2015">1</price-adjust>
-            <price-adjust year="2020">1</price-adjust>
-            <price-adjust year="2025">1</price-adjust>
+             
             <price-adjust year="2030">1</price-adjust>
             <price-adjust year="2035">1</price-adjust>
             <price-adjust year="2040">1</price-adjust>
@@ -877,9 +814,7 @@
             <linked-policy>CO2_TOTAL</linked-policy>
             <price-unit>1990$/tC</price-unit>
             <output-unit>MtC</output-unit>
-            <price-adjust year="2015">1</price-adjust>
-            <price-adjust year="2020">1</price-adjust>
-            <price-adjust year="2025">1</price-adjust>
+
             <price-adjust year="2030">1</price-adjust>
             <price-adjust year="2035">1</price-adjust>
             <price-adjust year="2040">1</price-adjust>

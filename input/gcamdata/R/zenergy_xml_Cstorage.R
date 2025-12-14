@@ -33,13 +33,13 @@ module_energy_Cstorage_xml <- function(command, ...) {
               "L261.DynamicRsrc",
               "L261.DynamicResTechShrwt_C",
               "L261.RsrcPrice",
-              "L261.OutputEmissCoeff_C",
+              "L261.StubTechShrwt",
               "L261.StubTechEff",
-              "L261.TechPmult",
-              "L261.DeleteNonCO2"))
+              "L261.TechPmult"))
   } else if(command == driver.DECLARE_OUTPUTS) {
     return(c(XML = "Cstorage.xml",
              XML = "Cstorage_slow.xml",
+             XML = "Cstorage_med.xml",
              XML = "Cstorage_rapid.xml"))
   } else if(command == driver.MAKE) {
 
@@ -67,35 +67,36 @@ module_energy_Cstorage_xml <- function(command, ...) {
     L261.DynamicRsrc <- get_data(all_data,"L261.DynamicRsrc")
     L261.DynamicResTechShrwt_C <- get_data(all_data,"L261.DynamicResTechShrwt_C")
     L261.RsrcPrice <- get_data(all_data,"L261.RsrcPrice")
-    L261.OutputEmissCoeff_C <- get_data(all_data,"L261.OutputEmissCoeff_C")
+    L261.StubTechShrwt <- get_data(all_data,"L261.StubTechShrwt")
     L261.StubTechEff <- get_data(all_data,"L261.StubTechEff")
     L261.TechPmult <- get_data(all_data,"L261.TechPmult")
-    L261.DeleteNonCO2 <- get_data(all_data,"L261.DeleteNonCO2")
+    #L261.DeleteNonCO2 <- get_data(all_data,"L261.DeleteNonCO2")
     # ===================================================
 
 
+    # Produce outputs
     create_xml("Cstorage.xml") %>%
       add_xml_data(L261.Rsrc, "Rsrc") %>%
       add_xml_data(L261.UnlimitRsrc, "UnlimitRsrc") %>%
       #add_node_equiv_xml("resource") %>%
       add_node_equiv_xml("subresource") %>%
       add_node_equiv_xml("technology") %>%
-      add_xml_data(L261.ResSubresourceProdLifetime, "ResSubresourceProdLifetime") %>%
-      add_xml_data(L261.ResReserveTechDeclinePhase, "ResReserveTechDeclinePhase") %>%
-      add_xml_data(L261.ResReserveTechProfitShutdown, "ResReserveTechProfitShutdown") %>%
-      add_xml_data(L261.ResReserveTechLifetime, "ResReserveTechLifetime") %>%
-      add_xml_data(L261.ResReserveTechInvestmentInput, "ResReserveTechInvestmentInput") %>%
+      #add_xml_data(L261.ResSubresourceProdLifetime, "ResSubresourceProdLifetime") %>%
+      #add_xml_data(L261.ResReserveTechDeclinePhase, "ResReserveTechDeclinePhase") %>%
+      #add_xml_data(L261.ResReserveTechProfitShutdown, "ResReserveTechProfitShutdown") %>%
+      #add_xml_data(L261.ResReserveTechLifetime, "ResReserveTechLifetime") %>%
+      #add_xml_data(L261.ResReserveTechInvestmentInput, "ResReserveTechInvestmentInput") %>%
       add_xml_data(L261.RsrcCurves_C, "RsrcCurves") %>%
       add_xml_data(L261.ResTechShrwt_C, "ResTechShrwt") %>%
-      add_logit_tables_xml(L261.Supplysector_C, "Supplysector") %>%
-      add_logit_tables_xml(L261.SubsectorLogit_C, "SubsectorLogit") %>%
-      add_xml_data(L261.SubsectorShrwtFllt_C, "SubsectorShrwtFllt") %>%
-      add_xml_data(L261.StubTech_C, "StubTech") %>%
-      add_xml_data(L261.GlobalTechCoef_C, "GlobalTechCoef") %>%
-      add_xml_data(L261.GlobalTechCost_C, "GlobalTechCost") %>%
-      add_xml_data(L261.GlobalTechShrwt_C, "GlobalTechShrwt") %>%
-      add_precursors("L261.Rsrc", "L261.UnlimitRsrc", "L261.RsrcCurves_C", "L261.ResTechShrwt_C", "L261.Supplysector_C", "L261.SubsectorLogit_C", "L261.SubsectorShrwtFllt_C", "L261.StubTech_C", "L261.GlobalTechCoef_C", "L261.GlobalTechCost_C", "L261.GlobalTechShrwt_C",
-                     "L261.ResSubresourceProdLifetime","L261.ResReserveTechLifetime","L261.ResReserveTechDeclinePhase","L261.ResReserveTechProfitShutdown","L261.ResReserveTechInvestmentInput") ->
+      add_logit_tables_xml(L261.Supplysector_C %>% filter(supplysector == energy.CO2.STORAGE.MARKET), "Supplysector") %>%
+      add_logit_tables_xml(L261.SubsectorLogit_C %>% filter(supplysector == energy.CO2.STORAGE.MARKET), "SubsectorLogit") %>%
+      add_xml_data(L261.SubsectorShrwtFllt_C %>% filter(supplysector == energy.CO2.STORAGE.MARKET), "SubsectorShrwtFllt") %>%
+      add_xml_data(L261.StubTech_C %>% filter(supplysector == energy.CO2.STORAGE.MARKET), "StubTech") %>%
+      add_xml_data(L261.GlobalTechCoef_C %>% filter(sector.name == energy.CO2.STORAGE.MARKET,
+                                                    minicam.energy.input %in% c('offshore carbon-storage','onshore carbon-storage')), "GlobalTechCoef") %>%
+      add_xml_data(L261.GlobalTechCost_C %>% filter(sector.name == energy.CO2.STORAGE.MARKET), "GlobalTechCost") %>%
+      add_xml_data(L261.GlobalTechShrwt_C %>% filter(sector.name == energy.CO2.STORAGE.MARKET), "GlobalTechShrwt") %>%
+      add_precursors("L261.Rsrc", "L261.UnlimitRsrc", "L261.RsrcCurves_C", "L261.ResTechShrwt_C", "L261.Supplysector_C", "L261.SubsectorLogit_C", "L261.SubsectorShrwtFllt_C", "L261.StubTech_C", "L261.GlobalTechCoef_C", "L261.GlobalTechCost_C", "L261.GlobalTechShrwt_C") ->
       Cstorage.xml
 
 
@@ -109,11 +110,11 @@ module_energy_Cstorage_xml <- function(command, ...) {
       add_node_equiv_xml("technology") %>%
       add_xml_data(L261.CStorageCurvesDynamic %>% filter(scenario == 'slow growth rate'), "GrdRenewRsrcCurves") %>%
       add_xml_data(L261.DynamicCstorageRsrcMax, "GrdRenewRsrcMax") %>%
-      add_xml_data(L261.ResSubresourceProdLifetime, "ResSubresourceProdLifetime") %>%
-      add_xml_data(L261.ResReserveTechDeclinePhase, "ResReserveTechDeclinePhase") %>%
-      add_xml_data(L261.ResReserveTechProfitShutdown, "ResReserveTechProfitShutdown") %>%
-      add_xml_data(L261.ResReserveTechLifetime, "ResReserveTechLifetime") %>%
-      add_xml_data(L261.ResReserveTechInvestmentInput, "ResReserveTechInvestmentInput") %>%
+      #add_xml_data(L261.ResSubresourceProdLifetime, "ResSubresourceProdLifetime") %>%
+      #add_xml_data(L261.ResReserveTechDeclinePhase, "ResReserveTechDeclinePhase") %>%
+      #add_xml_data(L261.ResReserveTechProfitShutdown, "ResReserveTechProfitShutdown") %>%
+      #add_xml_data(L261.ResReserveTechLifetime, "ResReserveTechLifetime") %>%
+      #add_xml_data(L261.ResReserveTechInvestmentInput, "ResReserveTechInvestmentInput") %>%
       add_xml_data(L261.RsrcCurves_C, "RsrcCurves") %>%
       add_xml_data(L261.ResTechShrwt_C, "ResTechShrwt") %>%
       add_xml_data(L261.DynamicResTechShrwt_C, "ResTechShrwt") %>%
@@ -129,17 +130,52 @@ module_energy_Cstorage_xml <- function(command, ...) {
                      filter(scenario == 'slow growth rate'), "StubTechEff") %>%
       add_xml_data(L261.TechPmult %>%
                      filter(scenario == 'slow growth rate'), "TechPmult") %>%
-      add_xml_data(L261.RsrcPrice, "RenewRsrcPrice") %>%
       #add_xml_data(L261.DeleteNonCO2, "DeleteNonCO2") %>%
       #add_xml_data(L261.OutputEmissCoeff_C, "OutputEmissCoeff") %>%
       add_precursors("L261.Rsrc", "L261.UnlimitRsrc", "L261.RsrcCurves_C", "L261.ResTechShrwt_C", "L261.Supplysector_C", "L261.SubsectorLogit_C", "L261.SubsectorShrwtFllt_C", "L261.StubTech_C", "L261.GlobalTechCoef_C", "L261.GlobalTechCost_C", "L261.GlobalTechShrwt_C",
                      "L261.ResSubresourceProdLifetime","L261.ResReserveTechLifetime","L261.ResReserveTechDeclinePhase","L261.ResReserveTechProfitShutdown",
                      "L261.ResReserveTechInvestmentInput",
                      "L261.CStorageCurvesDynamic","L261.DynamicCstorageRsrcMax","L261.DynamicRsrc","L261.DynamicResTechShrwt_C","L261.RsrcPrice",
-                     "L261.OutputEmissCoeff_C",
-                     "L261.StubTechEff","L261.TechPmult",
-                     "L261.DeleteNonCO2") ->
+                     "L261.StubTechEff","L261.TechPmult") ->
       Cstorage_slow.xml
+
+    create_xml("Cstorage_med.xml") %>%
+      add_xml_data(L261.Rsrc, "Rsrc") %>%
+      add_xml_data(L261.UnlimitRsrc, "UnlimitRsrc") %>%
+      add_xml_data(L261.DynamicRsrc, "RenewRsrc") %>%
+      add_node_equiv_xml("resource") %>%
+      add_node_equiv_xml("subresource") %>%
+      add_node_equiv_xml("technology") %>%
+      add_xml_data(L261.CStorageCurvesDynamic %>% filter(scenario == 'rapid growth rate'), "GrdRenewRsrcCurves") %>%
+      add_xml_data(L261.DynamicCstorageRsrcMax, "GrdRenewRsrcMax") %>%
+      #add_xml_data(L261.ResSubresourceProdLifetime, "ResSubresourceProdLifetime") %>%
+      #add_xml_data(L261.ResReserveTechDeclinePhase, "ResReserveTechDeclinePhase") %>%
+      #add_xml_data(L261.ResReserveTechProfitShutdown, "ResReserveTechProfitShutdown") %>%
+      #add_xml_data(L261.ResReserveTechLifetime, "ResReserveTechLifetime") %>%
+      #add_xml_data(L261.ResReserveTechInvestmentInput, "ResReserveTechInvestmentInput") %>%
+      add_xml_data(L261.RsrcCurves_C, "RsrcCurves") %>%
+      add_xml_data(L261.ResTechShrwt_C, "ResTechShrwt") %>%
+      add_xml_data(L261.DynamicResTechShrwt_C, "ResTechShrwt") %>%
+      add_logit_tables_xml(L261.Supplysector_C, "Supplysector") %>%
+      add_logit_tables_xml(L261.SubsectorLogit_C, "SubsectorLogit") %>%
+      add_xml_data(L261.SubsectorShrwtFllt_C, "SubsectorShrwtFllt") %>%
+      add_xml_data(L261.StubTech_C, "StubTech") %>%
+      add_xml_data(L261.GlobalTechCoef_C, "GlobalTechCoef") %>%
+      add_xml_data(L261.GlobalTechCost_C, "GlobalTechCost") %>%
+      add_xml_data(L261.GlobalTechShrwt_C, "GlobalTechShrwt") %>%
+      add_xml_data(L261.RsrcPrice, "RenewRsrcPrice") %>%
+      add_xml_data(L261.StubTechEff %>%
+                     filter(scenario == 'medium growth rate'), "StubTechEff") %>%
+      add_xml_data(L261.TechPmult %>%
+                     filter(scenario == 'medium growth rate'), "TechPmult") %>%
+      #add_xml_data(L261.DeleteNonCO2, "DeleteNonCO2") %>%
+      #add_xml_data(L261.OutputEmissCoeff_C, "OutputEmissCoeff") %>%
+      add_precursors("L261.Rsrc", "L261.UnlimitRsrc", "L261.RsrcCurves_C", "L261.ResTechShrwt_C", "L261.Supplysector_C", "L261.SubsectorLogit_C", "L261.SubsectorShrwtFllt_C", "L261.StubTech_C", "L261.GlobalTechCoef_C", "L261.GlobalTechCost_C", "L261.GlobalTechShrwt_C",
+                     "L261.ResSubresourceProdLifetime","L261.ResReserveTechLifetime","L261.ResReserveTechDeclinePhase","L261.ResReserveTechProfitShutdown",
+                     "L261.ResReserveTechInvestmentInput",
+                     "L261.CStorageCurvesDynamic","L261.DynamicCstorageRsrcMax","L261.DynamicRsrc","L261.DynamicResTechShrwt_C","L261.RsrcPrice",
+                     "L261.StubTechEff","L261.TechPmult") ->
+      Cstorage_med.xml
 
 
     create_xml("Cstorage_rapid.xml") %>%
@@ -151,11 +187,11 @@ module_energy_Cstorage_xml <- function(command, ...) {
       add_node_equiv_xml("technology") %>%
       add_xml_data(L261.CStorageCurvesDynamic %>% filter(scenario == 'rapid growth rate'), "GrdRenewRsrcCurves") %>%
       add_xml_data(L261.DynamicCstorageRsrcMax, "GrdRenewRsrcMax") %>%
-      add_xml_data(L261.ResSubresourceProdLifetime, "ResSubresourceProdLifetime") %>%
-      add_xml_data(L261.ResReserveTechDeclinePhase, "ResReserveTechDeclinePhase") %>%
-      add_xml_data(L261.ResReserveTechProfitShutdown, "ResReserveTechProfitShutdown") %>%
-      add_xml_data(L261.ResReserveTechLifetime, "ResReserveTechLifetime") %>%
-      add_xml_data(L261.ResReserveTechInvestmentInput, "ResReserveTechInvestmentInput") %>%
+      #add_xml_data(L261.ResSubresourceProdLifetime, "ResSubresourceProdLifetime") %>%
+      #add_xml_data(L261.ResReserveTechDeclinePhase, "ResReserveTechDeclinePhase") %>%
+      #add_xml_data(L261.ResReserveTechProfitShutdown, "ResReserveTechProfitShutdown") %>%
+      #add_xml_data(L261.ResReserveTechLifetime, "ResReserveTechLifetime") %>%
+      #add_xml_data(L261.ResReserveTechInvestmentInput, "ResReserveTechInvestmentInput") %>%
       add_xml_data(L261.RsrcCurves_C, "RsrcCurves") %>%
       add_xml_data(L261.ResTechShrwt_C, "ResTechShrwt") %>%
       add_xml_data(L261.DynamicResTechShrwt_C, "ResTechShrwt") %>%
@@ -177,13 +213,12 @@ module_energy_Cstorage_xml <- function(command, ...) {
                      "L261.ResSubresourceProdLifetime","L261.ResReserveTechLifetime","L261.ResReserveTechDeclinePhase","L261.ResReserveTechProfitShutdown",
                      "L261.ResReserveTechInvestmentInput",
                      "L261.CStorageCurvesDynamic","L261.DynamicCstorageRsrcMax","L261.DynamicRsrc","L261.DynamicResTechShrwt_C","L261.RsrcPrice",
-                     "L261.OutputEmissCoeff_C",
-                     "L261.StubTechEff","L261.TechPmult",
-                     "L261.DeleteNonCO2") ->
+                     "L261.StubTechEff","L261.TechPmult") ->
       Cstorage_rapid.xml
 
     return_data(Cstorage.xml,
                 Cstorage_slow.xml,
+                Cstorage_med.xml,
                 Cstorage_rapid.xml)
   } else {
     stop("Unknown command")

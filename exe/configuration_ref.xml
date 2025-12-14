@@ -10,7 +10,6 @@
 		<Value write-output="1" append-scenario-name="1" name="xmlDebugFileName">debug.xml</Value>
 		<Value write-output="1" append-scenario-name="0" name="climatFileName">gas.emk</Value>
 		<Value write-output="1" append-scenario-name="1" name="costCurvesOutputFileName">cost_curves.xml</Value>
-		<Value write-output="1" append-scenario-name="0" name="batchCSVOutputFile">batch-csv-out.csv</Value>
 		<Value write-output="0" append-scenario-name="0" name="supplyDemandOutputFileName">SDCurves.csv</Value>
 		<Value write-output="0" append-scenario-name="0" name="flow-graph">gcam-flow-graph.dot</Value>
 		<Value write-output="0" append-scenario-name="0" name="dependencyGraphName">DependencyGraph.dot</Value>
@@ -64,7 +63,8 @@
 		<Value name = "land5">../input/gcamdata/xml/land_input_5_IRR_MGMT.xml</Value>
 		<Value name = "protected_land2">../input/gcamdata/xml/protected_land_input_2.xml</Value>
 		<Value name = "protected_land3">../input/gcamdata/xml/protected_land_input_3.xml</Value>
-		<Value name = "demand">../input/gcamdata/xml/ag_an_demand_input.xml</Value>
+		<Value name = "demand_nonfood">../input/gcamdata/xml/ag_an_demand_input_NonFood.xml</Value>
+		<Value name = "demand_food">../input/gcamdata/xml/ag_an_demand_input_Food_Intake_SSP2.xml</Value>
 		<Value name = "demand_paper">../input/gcamdata/xml/paper_delete_ag_demand.xml</Value>
 		<Value name = "bio_trade">../input/gcamdata/xml/bio_trade.xml</Value>
 		<Value name = "ag_trade">../input/gcamdata/xml/ag_trade.xml</Value>
@@ -138,7 +138,6 @@
 		<Value name="numPointsForSD">21</Value>
 		<Value name="numPointsForCO2CostCurve">5</Value>
 		<Value name="carbon-output-start-year">1705</Value>
-		<Value name="climateOutputInterval">5</Value>
 		<Value name="parallel-grain-size">50</Value>
 		<Value name="stop-period">-1</Value>
 		<Value name="stop-year">-1</Value>

@@ -3,7 +3,7 @@
 # Units: Fraction
 # Column types: ccccnnnc
 # ----------
-supplysector,subsector,technology,minicam.energy.input,2020,2050,2100,scenario
+supplysector,subsector,technology,minicam.energy.input,2025,2050,2100,scenario
 iron and steel,BLASTFUR,Biomass-based,delivered biomass,1,0.9,0.8,cwf
 iron and steel,BLASTFUR,Biomass-based,refined liquids industrial,1,0.9,0.8,cwf
 iron and steel,BLASTFUR,Biomass-based,elect_td_ind,1,0.9,0.8,cwf

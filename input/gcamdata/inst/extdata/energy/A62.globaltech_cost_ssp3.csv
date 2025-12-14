@@ -3,7 +3,7 @@
 # Units: 1975$/kgC for dac, 1975$/GJ for process heat dac
 # Column types: ccccnnnn
 # ----------
-supplysector,subsector,technology,minicam.non.energy.input,1971,2020,2050,2100
+supplysector,subsector,technology,minicam.non.energy.input,1971,initial-future-year,2050,2100
 CO2 removal,dac,hightemp DAC NG,capital.overnight,1763,1763,1763,1763
 CO2 removal,dac,hightemp DAC NG,OM.fixed,76,76,76,76
 CO2 removal,dac,hightemp DAC NG,OM.var,0,0,0,0

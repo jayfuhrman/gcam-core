@@ -3,7 +3,7 @@
 # Units: Unitless
 # Column types: cccnnnnnnc
 # ----------
-supplysector,subsector,technology,1971,2019,2020,2050,2070,2100
+supplysector,subsector,technology,1971,2019,2025,2050,2070,2100
 chemical energy use,refined liquids,refined liquids,1,1,1,1,1,1
 chemical energy use,refined liquids,refined liquids cogen,0,0,0,0,0,0
 chemical energy use,refined liquids,refined liquids CCS,0,0,0,1,1,1

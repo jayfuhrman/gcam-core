@@ -61,29 +61,24 @@ module_energy_building_det_cwf_xml <- function(command, ...) {
       "L244.GenericBaseDens",
       "L244.ThermalBaseDens",
       "L244.DeleteGenericService",
-
-      "L244.DeleteSupplySector_cwf",
-
       "L201.en_pol_emissions",
       "L201.en_ghg_emissions",
-
       "L251.ssp15_ef",
-
       "L281.GlobalTechAccountOutputUseBasePrice_fd",
-
       "L244.HDDCDD_constdd_no_GCM",
 
-      "L244.SubsectorInterpTo_bld_low_fossil",
-              "L244.SubsectorInterp_bld_low_fossil",
-              "L244.SubsectorShrwtFllt_bld_low_fossil",
-              "L244.SubsectorShrwt_bld_low_fossil",
 
-              "L244.ShellConductance_bld_cwf",
-              "L244.StubTechEff_bld_cwf",
-              "L244.StubTechIntGainOutputRatio_cwf",
-              "L244.Satiation_flsp_cwf",
-              "L244.GompFnParam_cwf",
-              "L244.globaltech_shrwt_cwf_no_H2_building"
+      "L244.DeleteSupplySector_cwf",
+      "L244.SubsectorShrwt_bld_low_fossil",
+      "L244.SubsectorShrwtFllt_bld_low_fossil",
+      "L244.SubsectorInterp_bld_low_fossil",
+      "L244.SubsectorInterpTo_bld_low_fossil",
+      "L244.ShellConductance_bld_cwf",
+      "L244.StubTechEff_bld_cwf",
+      "L244.StubTechIntGainOutputRatio_cwf",
+      "L244.Satiation_flsp_cwf",
+      "L244.GompFnParam_cwf",
+      "L244.globaltech_shrwt_cwf_no_H2_building"
       ))
   } else if(command == driver.DECLARE_OUTPUTS) {
     return(c(XML = "building_det_cwf.xml",
@@ -141,7 +136,9 @@ module_energy_building_det_cwf_xml <- function(command, ...) {
     L244.FuelPrefElast_bld <- get_data(all_data, "L244.FuelPrefElast_bld") %>% remove_coal_trad_bio(supplysector)
     L244.StubTech_bld <- get_data(all_data, "L244.StubTech_bld") %>% remove_coal_trad_bio(supplysector)
     L244.StubTechEff_bld <- get_data(all_data, "L244.StubTechEff_bld") %>% remove_coal_trad_bio(supplysector)
-    L244.StubTechCalInput_bld <- get_data(all_data, "L244.StubTechCalInput_bld") %>% remove_coal_trad_bio(supplysector)
+    L244.StubTechCalInput_bld <- get_data(all_data, "L244.StubTechCalInput_bld") %>% remove_coal_trad_bio(supplysector) %>%
+      mutate(subs.share.weight = if_else(calibrated.value == 0, 0, subs.share.weight),
+             tech.share.weight = if_else(calibrated.value == 0, 0, tech.share.weight))
     L244.StubTechIntGainOutputRatio <- get_data(all_data, "L244.StubTechIntGainOutputRatio") %>% remove_coal_trad_bio(supplysector)
     L244.GlobalTechShrwt_bld <- get_data(all_data, "L244.GlobalTechShrwt_bld") %>% remove_coal_trad_bio(sector.name)
     L244.GlobalTechCost_bld <- get_data(all_data, "L244.GlobalTechCost_bld") %>% remove_coal_trad_bio(sector.name)

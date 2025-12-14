@@ -51,7 +51,8 @@ module_energy_L261.Cstorage <- function(command, ...) {
              FILE = "energy/A61.globaltech_losses",
              FILE = "energy/IEA_CCUS_Projects_Database_2023",
              "L111.Prod_EJ_R_F_Yh",
-             "L161.RsrcCurves_MtC_R"))
+             "L161.RsrcCurves_MtC_R",
+             "L254.StubTranTechCalInput"))
 
   } else if(command == driver.DECLARE_OUTPUTS) {
     return(c("L261.Rsrc",
@@ -83,7 +84,8 @@ module_energy_L261.Cstorage <- function(command, ...) {
              "L261.StubTechEff",
              "L261.TechPmult",
              "L261.OutputEmissCoeff_C",
-             "L261.DeleteNonCO2"))
+             "L261.DeleteNonCO2",
+             "L261.StubTechShrwt"))
   } else if(command == driver.MAKE) {
 
     all_data <- list(...)[[1]]
@@ -107,6 +109,8 @@ module_energy_L261.Cstorage <- function(command, ...) {
     A61.ResReserveTechProfitShutdown <- get_data(all_data, "energy/A61.ResReserveTechProfitShutdown", strip_attributes = TRUE)
     L111.Prod_EJ_R_F_Yh <- get_data(all_data, "L111.Prod_EJ_R_F_Yh", strip_attributes = TRUE)
     A61.Cstorage_curves_dynamic <- get_data(all_data, "energy/A61.Cstorage_curves_dynamic", strip_attributes = TRUE)
+
+    L254.StubTranTechCalInput <- get_data(all_data, "L254.StubTranTechCalInput")
 
     IEA_CCUS_Projects_Database_2023 <- get_data(all_data, "energy/IEA_CCUS_Projects_Database_2023")
 
@@ -230,15 +234,33 @@ module_energy_L261.Cstorage <- function(command, ...) {
       mutate(available = max_CO2_injection * fraction  * USA_max_CCS_rate_NETL / USA_OG_volume_MTCO2, #scale injectivity back to US NETL data.  The result will be a supply curve that exactly matches NETL for USA, with other regions scaled based on relative O&G peak production volumes
              available = round(available,energy.DIGITS_RESOURCE),
              extractioncost = round(extractioncost,energy.DIGITS_COST)) %>%
-      select(region, renewresource = resource, sub.renewable.resource = subresource, grade, available, extractioncost)
+      select(region, renewresource = resource, sub.renewable.resource = subresource, grade, available, extractioncost) %>%
+      group_by(region,renewresource,sub.renewable.resource) %>%
+      arrange(available, .by_group = TRUE) %>%
+      #Rounding was leading to some invalid grades at the top and bottom of supply curves in regions with very small supply.
+      #We identify those cases here and recalculate to ensure smooth monotonically increasing supply curves
+      mutate(prev = lag(available),
+             nxt = lead(available),
+             invalid_grade = available <= lag(available, default = first(available)),
+             invalid_grade = if_else(grade == "grade 0", FALSE, invalid_grade),
+             available = if_else((invalid_grade == TRUE & prev == 0), (prev + nxt / 2), available),
+             available = if_else((invalid_grade == TRUE & available == max(available)), available * 10, available),
+             available = round(available,energy.DIGITS_RESOURCE)) %>%
+      ungroup() %>%
+      select(LEVEL2_DATA_NAMES[["GrdRenewRsrcCurves"]])
     #construct a supply curve based on fractions from NETL's saline storage cost model for the U.S. and then apply these fractions to max CO2 injectivity based on O&G volumetric flow rates
 
-    k_rapid = 0.24
-    k_slow = 0.032
+    k_rapid = 0.24 #shale gas growth in USA (EIA)
+    k_med = 0.183 #flue gas desulphurization
+    k_slow = 0.032 #gas pipeline growth rate from HATCH database
 
     CStorageCurvesDynamic_slow_growth <- L261.CStorageCurvesDynamic %>%
       mutate(scenario = 'slow growth rate',
              k = k_slow)
+
+    CStorageCurvesDynamic_med_growth <- L261.CStorageCurvesDynamic %>%
+      mutate(scenario = 'medium growth rate',
+             k = k_med)
 
     CStorageCurvesDynamic_rapid_growth <- L261.CStorageCurvesDynamic %>%
       mutate(scenario = 'rapid growth rate',
@@ -252,7 +274,8 @@ module_energy_L261.Cstorage <- function(command, ...) {
 
 
     L261.CStorageCurvesDynamic <- bind_rows(CStorageCurvesDynamic_slow_growth,
-                                            CStorageCurvesDynamic_rapid_growth)
+                                            CStorageCurvesDynamic_rapid_growth,
+                                            CStorageCurvesDynamic_med_growth)
 
     ## Calculate an efficiency parameter equal to how much of each region's implied storage capacity is expected to be consumed by planned + operational projects by 2030
     calibrated_eff_2030 <- IEA_data %>%
@@ -290,7 +313,8 @@ module_energy_L261.Cstorage <- function(command, ...) {
              stub.technology = 'ccs dynamic-capacity',
              minicam.energy.input = 'carbon-storage dynamic',
              market.name = region) %>%
-      mutate(efficiency = if_else(efficiency == 0, 0.001,efficiency)) %>%
+      mutate(efficiency = if_else(efficiency == 0, 0.001,efficiency),
+             efficiency = round(efficiency,energy.DIGITS_EFFICIENCY)) %>%
       select(c('scenario',LEVEL2_DATA_NAMES[['StubTechEff']]))
 
     L261.TechPmult <- L261.StubTechEff %>%
@@ -531,7 +555,10 @@ module_energy_L261.Cstorage <- function(command, ...) {
       complete(year = c(year, MODEL_YEARS), nesting(supplysector, subsector, technology)) %>%
       # Extrapolate to fill out values for all years
       # Rule 2 is used so years outside of min-max range are assigned values from closest data, as opposed to NAs
+      group_by(supplysector, subsector, technology) %>%
+      arrange(year) %>%
       mutate(share.weight = approx_fun(year, value, rule = 2)) %>%
+      ungroup() %>%
       filter(year %in% MODEL_YEARS) %>% # This will drop 1971
       # Assign the columns "sector.name" and "subsector.name", consistent with the location info of a global technology
       select(sector.name = supplysector, subsector.name = subsector, technology, year, share.weight) ->
@@ -549,6 +576,23 @@ module_energy_L261.Cstorage <- function(command, ...) {
       mutate(year.fillout = min(MODEL_BASE_YEARS),
              maxSubResource = 1) %>%
       select(LEVEL2_DATA_NAMES[["maxSubResource"]])
+
+
+    L261.StubTechShrwt <- L254.StubTranTechCalInput %>%
+      filter(year == MODEL_FINAL_BASE_YEAR,
+             sce == "CORE",
+             supplysector %in% L261.GlobalTechCoef_C$minicam.energy.input) %>%
+      group_by(region, supplysector, tranSubsector, year) %>%
+      summarize(value = sum(calibrated.value)) %>%
+      ungroup() %>%
+      filter(value == 0) %>%
+      select(-year) %>%
+      left_join(L261.GlobalTechCoef_C, by = c("supplysector" = "minicam.energy.input")) %>%
+      mutate(supplysector = sector.name, subsector = subsector.name, stub.technology = technology, share.weight = 0) %>%
+      select(LEVEL2_DATA_NAMES[["StubTechShrwt"]])
+
+
+
     # ===================================================
 
     L261.Rsrc %>%
@@ -785,6 +829,13 @@ module_energy_L261.Cstorage <- function(command, ...) {
       same_precursors_as("L261.ResReserveTechDeclinePhase")
       L261.ResReserveTechInvestmentInput
 
+      L261.StubTechShrwt %>%
+        add_title("Zero out shareweights for transport sectors") %>%
+        add_units("NA") %>%
+        add_comments("NA") %>%
+        add_precursors("L254.StubTranTechCalInput") ->
+        L261.StubTechShrwt
+
 
     return_data(L261.Rsrc, L261.UnlimitRsrc, L261.RsrcCurves_C, L261.ResTechShrwt_C, L261.Supplysector_C, L261.SubsectorLogit_C, L261.SubsectorShrwtFllt_C, L261.StubTech_C, L261.GlobalTechCoef_C, L261.GlobalTechCost_C, L261.GlobalTechShrwt_C, L261.GlobalTechCost_C_High, L261.GlobalTechShrwt_C_nooffshore, L261.RsrcCurves_C_high, L261.RsrcCurves_C_low, L261.RsrcCurves_C_lowest,
                 L261.ResSubresourceProdLifetime, L261.ResReserveTechLifetime, L261.ResReserveTechDeclinePhase, L261.ResReserveTechProfitShutdown,
@@ -792,7 +843,8 @@ module_energy_L261.Cstorage <- function(command, ...) {
                 L261.CStorageCurvesDynamic,L261.DynamicCstorageRsrcMax,L261.DynamicRsrc,L261.DynamicResTechShrwt_C,L261.RsrcPrice,
                 L261.StubTechEff,
                 L261.TechPmult,
-                L261.OutputEmissCoeff_C,L261.DeleteNonCO2)
+                L261.OutputEmissCoeff_C,L261.DeleteNonCO2,
+                L261.StubTechShrwt)
   } else {
     stop("Unknown command")
   }
