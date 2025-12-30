@@ -825,7 +825,7 @@ module_energy_L261.Cstorage <- function(command, ...) {
       add_title("CCS efficiencies calibrated to near-term") %>%
       add_units("Unitless") %>%
       add_comments("Regionally calibrated scaling limits for CCS relative to maximum regional injection rate") %>%
-      add_precursors("energy/IEA_CCUS_Projects_Database","common/GCAM_region_names","common/iso_GCAM_regID") ->
+      add_precursors("energy/IEA_CCUS_Projects_Database_2025","common/GCAM_region_names","common/iso_GCAM_regID") ->
       L261.StubTechEff
 
     L261.TechPmult %>%
