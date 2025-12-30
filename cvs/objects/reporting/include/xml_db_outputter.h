@@ -303,7 +303,7 @@ private:
      */
     class SendToJavaIOSink : public boost::iostreams::sink {
     public:
-        SendToJavaIOSink( const JNIContainer* aJNIContainer, const int aBufferSize );
+        SendToJavaIOSink( const JNIContainer* aJNIContainer );
         virtual ~SendToJavaIOSink();
         
         // boost::iostreams::sink methods

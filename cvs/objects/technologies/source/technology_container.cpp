@@ -138,11 +138,10 @@ bool TechnologyContainer::hasTechnologyType( const string& aTechNodeName ) {
 }
 
 bool TechnologyContainer::XMLParse( rapidxml::xml_node<char>* & aNode) {
-
     string nodeName = XMLParseHelper::getNodeName(aNode);
     if( nodeName == Technology::getXMLVintageNameStatic() ) {
         rapidxml::xml_node<char>* parentNode = aNode->parent();
-        string techType = parentNode && parentNode->name_size() > 0 ? XMLParseHelper::getNodeName(parentNode) : (*mVintages.begin()).second->getXMLName();
+        string techType = parentNode ? XMLParseHelper::getNodeName(parentNode) : (*mVintages.begin()).second->getXMLName();
         using value_type = ITechnology*;
         using data_type = ITechnology;
         using FactoryType = Factory<ITechnology::SubClassFamilyVector>;
@@ -229,8 +228,6 @@ bool TechnologyContainer::XMLParse( rapidxml::xml_node<char>* & aNode) {
     else if( nodeName == InterpolationRule::getXMLNameStatic() ) {
         // just handle the interpolation rule clear
         map<string, string> attrs = XMLParseHelper::getAllAttrs(aNode);
-        // When user reads in another interpolation rule, previous rules will
-        // first be deleted.
         if( attrs["apply-to"] == "share-weight" && attrs["delete"] == "1" ) {
             clearInterpolationRules();
         }

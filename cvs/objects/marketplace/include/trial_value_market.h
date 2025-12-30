@@ -65,8 +65,6 @@ class TrialValueMarket: public Market {
 public:
     TrialValueMarket( const MarketContainer* aContainer );
     virtual IMarketType::Type getType() const;
-    
-    static const double DEFAULT_PRICE;
 
     virtual void initPrice();
     virtual void setPrice( const double priceIn );

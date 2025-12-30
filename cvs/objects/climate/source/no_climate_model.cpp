@@ -99,6 +99,10 @@ IClimateModel::runModelStatus NoClimateModel::runModel( const int aYear ) {
     return SUCCESS;
 }
 
+IClimateModel::runModelStatus NoClimateModel::runModel() {
+    return SUCCESS;
+}
+
 double NoClimateModel::getConcentration( const string& aGasName, const int aYear) const {
     return 0.0;
 }

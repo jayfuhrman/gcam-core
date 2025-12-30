@@ -166,9 +166,6 @@ public:
     virtual bool matchesInt( const int aIntToTest ) const {
         return false;
     }
-    virtual bool isExactMatch() const {
-        return false;
-    }
 };
 
 /*!
@@ -181,9 +178,6 @@ public:
     virtual ~StringEquals() {}
     virtual bool matchesString( const std::string& aStrToTest ) const {
         return mStr == aStrToTest;
-    }
-    virtual bool isExactMatch() const {
-        return true;
     }
 private:
     const std::string mStr;
@@ -216,9 +210,6 @@ public:
     virtual ~IntEquals() {}
     virtual bool matchesInt( const int aIntToTest ) const {
         return mInt == aIntToTest;
-    }
-    virtual bool isExactMatch() const {
-        return true;
     }
 private:
     const int mInt;
@@ -302,9 +293,6 @@ struct NoFilter {
     static bool matchesXMLAttr( const T* aContainer, const std::map<std::string, std::string>& aAttrs ) {
         return false;
     }
-    bool isExactMatch() const {
-        return false;
-    }
 };
 
 /*!
@@ -324,9 +312,6 @@ struct IndexFilter {
     const AMatchesValue* mMatcher;
     bool operator()( const int aIndex ) const {
         return mMatcher->matchesInt( aIndex );
-    }
-    bool isExactMatch() const {
-        return mMatcher->isExactMatch();
     }
 };
 
@@ -348,10 +333,6 @@ struct NamedFilter {
     const AMatchesValue* mMatcher;
     bool operator()( const INamed* aContainer ) const {
         return aContainer && mMatcher->matchesString( aContainer->getName() );
-    }
-    
-    bool isExactMatch() const {
-        return mMatcher->isExactMatch();
     }
     
     static const std::string& getXMLAttrKey() {
@@ -387,10 +368,6 @@ struct YearFilter {
     // specialization where the year has been converted for us
     bool operator()( const int aYear ) const {
         return mMatcher->matchesInt( aYear );
-    }
-    
-    bool isExactMatch() const {
-        return mMatcher->isExactMatch();
     }
     
     static const std::string& getXMLAttrKey() {
@@ -711,11 +688,6 @@ struct FilterStep {
                         // callback on this element of the array of container data.
                         aHandler.processData( *iter );
                     }
-                    // if the predicate would only produce exact matches then there is no
-                    // need to continue searching these containers and we can return
-                    if( filterPred.isExactMatch() ) {
-                        return;
-                    }
                 }
             }
         }
@@ -739,11 +711,6 @@ struct FilterStep {
                         // for the entire container so have GCAMFusion trigger the processData
                         // callback on this element of the array of container data.
                         aHandler.processData( *iter );
-                    }
-                    // if the predicate would only produce exact matches then there is no
-                    // need to continue searching these containers and we can return
-                    if( filterPred.isExactMatch() ) {
-                        return;
                     }
                 }
             }
@@ -815,11 +782,6 @@ struct FilterStep {
                         // callback on this element of the map of container data.
                         aHandler.processData( (*iter).second );
                     }
-                    // if the predicate would only produce exact matches then there is no
-                    // need to continue searching these containers and we can return
-                    if( filterPred.isExactMatch() ) {
-                        return;
-                    }
                 }
             }
         }
@@ -845,11 +807,6 @@ struct FilterStep {
                         // for the entire container so have GCAMFusion trigger the processData
                         // callback on this element of the map of container data.
                         aHandler.processData( (*iter).second );
-                    }
-                    // if the predicate would only produce exact matches then there is no
-                    // need to continue searching these containers and we can return
-                    if( filterPred.isExactMatch() ) {
-                        return;
                     }
                 }
                 ++index;
@@ -886,11 +843,6 @@ struct FilterStep {
                 const int year = GetIndexAsYear::convertIterToYear( aData.mData, iter );
                 if( filterPred( year ) ) {
                     aHandler.processData( *iter );
-                    // if the predicate would only produce exact matches then there is no
-                    // need to continue searching these containers and we can return
-                    if( filterPred.isExactMatch() ) {
-                        return;
-                    }
                 }
             }
         }
@@ -904,11 +856,6 @@ struct FilterStep {
                 int period = GetIndexAsPeriod::convertIndexToPeriod( aData.mData, index );
                 if( filterPred( period ) ) {
                     aHandler.processData( *iter );
-                    // if the predicate would only produce exact matches then there is no
-                    // need to continue searching these containers and we can return
-                    if( filterPred.isExactMatch() ) {
-                        return;
-                    }
                 }
                 ++index;
             }

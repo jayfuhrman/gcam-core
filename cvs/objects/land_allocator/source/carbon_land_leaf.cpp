@@ -47,7 +47,6 @@
 #include "marketplace/include/marketplace.h"
 #include "containers/include/iinfo.h"
 #include "util/base/include/configuration.h"
-#include "functions/include/function_utils.h"
 
 using namespace std;
 
@@ -119,7 +118,7 @@ void CarbonLandLeaf::setUnmanagedLandProfitRate( const gcamstr& aRegionName,
     // If a carbon price exists, calculate the subsidy
     if( carbonPrice != Marketplace::NO_MARKET_PRICE && carbonPrice > 0.0 ){
         // Carbon price is in 1990$, but land value is in 1975$ so we need to convert
-        const double dollar_conversion_75_90 = FunctionUtils::DEFLATOR_1990_PER_DEFLATOR_1975();
+        const double dollar_conversion_75_90 = 2.212;
         carbonPrice /= dollar_conversion_75_90;
 
         // With carbon content in Tg C/KHa, convert to $/KHa.

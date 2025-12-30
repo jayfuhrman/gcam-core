@@ -86,6 +86,8 @@ public:
     virtual double getEmissions( const std::string& aGasName,
                                  const int aYear ) const;
 
+    virtual IClimateModel::runModelStatus runModel();
+
     virtual IClimateModel::runModelStatus runModel( const int aYear );
     
     virtual double getConcentration( const std::string& aGasName,

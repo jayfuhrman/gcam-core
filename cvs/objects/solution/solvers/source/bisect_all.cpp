@@ -172,7 +172,6 @@ SolverComponent::ReturnCode BisectAll::solve( SolutionInfoSet& aSolutionSet, con
     
     if( aSolutionSet.getNumSolvable() == 0 ) {
         solverLog << "Exiting bisect all early due to empty solvable set." << endl;
-        bisectTimer.stop();
         return SUCCESS;
     }
     

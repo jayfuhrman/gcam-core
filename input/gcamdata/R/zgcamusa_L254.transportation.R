@@ -223,6 +223,7 @@ module_gcamusa_L254.transportation <- function(command, ...) {
     process_USA_to_states(L254.StubTranTechCost) -> L254.StubTranTechCost_USA
 
     L254.StubTranTechCoef %>%
+      mutate(coefficient = round(coefficient, digits = gcamusa.DIGITS_TRNUSA_DEFAULT)) %>%
       process_USA_to_states ->
       L254.StubTranTechCoef_USA
 
@@ -236,7 +237,7 @@ module_gcamusa_L254.transportation <- function(command, ...) {
     L154.in_EJ_state_trn_m_sz_tech_F %>%
       mutate(sce=paste0("CORE")) %>%
       filter(year %in% MODEL_BASE_YEARS) %>%
-      mutate(calibrated.value = value,
+      mutate(calibrated.value = round(value, digits = energy.DIGITS_CALOUTPUT),
              region = state) %>%
       left_join_keep_first_only(select(UCD_techs, UCD_sector, mode, size.class, UCD_technology, UCD_fuel,
                                       supplysector, tranSubsector, stub.technology = tranTechnology, minicam.energy.input),
@@ -266,9 +267,7 @@ module_gcamusa_L254.transportation <- function(command, ...) {
     # L254.StubTranTechProd_nonmotor_USA: service output of non-motorized transportation technologies
     L154.out_mpkm_state_trn_nonmotor_Yh %>%
       filter(year %in% MODEL_BASE_YEARS) %>%
-      # service is given as million pass-km
-      # we want service in billion pass-km so we need to divide by 10^3
-      mutate(calOutputValue = value * CONV_ONES_THOUS,
+      mutate(calOutputValue = round(value, digits = energy.DIGITS_MPKM),
              region = state, tranSubsector = mode) %>%
       left_join_error_no_match(A54.globaltech_nonmotor, by = "tranSubsector") %>%
       mutate(stub.technology = technology) %>%
@@ -292,13 +291,14 @@ module_gcamusa_L254.transportation <- function(command, ...) {
     # which have different parameters read in, and perform a bunch of hard-wired unit conversions between inputs and outputs.
 
     # First, need to calculate the service output for all tranTechnologies
-    # calInput * loadFactor / coef
+    # calInput * loadFactor * unit_conversion / (coef * unit conversion)
     L254.StubTranTechCalInput_USA %>%
       left_join_error_no_match(L254.StubTranTechLoadFactor_USA %>% filter(sce=="CORE"),
                                by = c("region", "supplysector", "tranSubsector", "stub.technology", "year","sce")) %>%
       left_join_error_no_match(L254.StubTranTechCoef_USA%>% filter(sce=="CORE"),
                                by = c("region", "supplysector", "tranSubsector", "stub.technology", "year", "minicam.energy.input","sce")) %>%
-      mutate(output = calibrated.value * loadFactor / coefficient)  ->
+      mutate(output = round(calibrated.value * loadFactor * CONV_EJ_GJ / (coefficient * CONV_BTU_KJ),
+                            digits = gcamusa.DIGITS_TRNUSA_DEFAULT))  ->
       L254.StubTranTechOutput_USA
 
     # The next step is to calculate the aggregated outputs by supplysector
@@ -511,7 +511,7 @@ module_gcamusa_L254.transportation <- function(command, ...) {
 
     L254.StubTranTechCost_USA %>%
       add_title("Costs of transportation stub technologies in the US states") %>%
-      add_units("$1975USD / vkm") %>%
+      add_units("$1990USD / vkm") %>%
       add_comments("The same USA region values are repeated for each state") %>%
       add_legacy_name("L254.StubTranTechCost_USA") %>%
       add_precursors("gcam-usa/states_subregions",
@@ -520,7 +520,7 @@ module_gcamusa_L254.transportation <- function(command, ...) {
 
     L254.StubTranTechCoef_USA %>%
       add_title("Coefficients of transportation stub technologies in the US states") %>%
-      add_units("EJ / billion vkm") %>%
+      add_units("BTU / vkm") %>%
       add_comments("The same USA region values are repeated for each state") %>%
       add_comments("Re-set electricity consumed at the state markets") %>%
       add_legacy_name("L254.StubTranTechCoef_USA") %>%
@@ -568,7 +568,7 @@ module_gcamusa_L254.transportation <- function(command, ...) {
 
     L254.StubTranTechProd_nonmotor_USA %>%
       add_title("Calibrated service output of non-motorized transportation technologies in the US states") %>%
-      add_units("Billion pass-km") %>%
+      add_units("Million pass-km") %>%
       add_comments("Not match shareweights to the calOutputValue because no region should ever have a zero here") %>%
       add_legacy_name("L254.StubTranTechProd_nonmotor_USA") %>%
       add_precursors("L154.out_mpkm_state_trn_nonmotor_Yh",
@@ -590,7 +590,7 @@ module_gcamusa_L254.transportation <- function(command, ...) {
 
     L254.BaseService_trn_USA %>%
       add_title("Base-year service output of transportation final demand") %>%
-      add_units("Billion pass-km and billion ton-km") %>%
+      add_units("Million pass-km and million ton-km") %>%
       add_comments("Service outputs of all motorized technologies are calculated as calInput * loadFactor / coefficient") %>%
       add_comments("Combine with service output of non-motorized transportation technologies") %>%
       add_legacy_name("L254.BaseService_trn_USA") %>%
@@ -604,7 +604,7 @@ module_gcamusa_L254.transportation <- function(command, ...) {
 
     L254.StubTranTechOutput_USA %>%
       add_title("service output for all tranTechnologies") %>%
-      add_units("Billion pass-km and billion ton-km") %>%
+      add_units("Million pass-km and million ton-km") %>%
       add_comments("Service outputs of all motorized technologies are calculated as calInput * loadFactor / coefficient") %>%
       add_legacy_name("L254.StubTranTechOutput_USA") %>%
       same_precursors_as("L254.StubTranTechCalInput_USA") %>%
