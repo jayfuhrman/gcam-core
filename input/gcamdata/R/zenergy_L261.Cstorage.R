@@ -839,7 +839,7 @@ module_energy_L261.Cstorage <- function(command, ...) {
       add_title("Placeholder values for capital tracking") %>%
       add_units("NA") %>%
       add_comments("NA") %>%
-      same_precursors_as("L261.ResReserveTechDeclinePhase")
+      same_precursors_as("L261.ResReserveTechDeclinePhase") ->
       L261.ResReserveTechInvestmentInput
 
       L261.StubTechShrwt %>%
