@@ -152,6 +152,7 @@
 			<Value name = "biochar_ag_demand">../input/gcamdata/xml/biochar_ag_demand.xml</Value>
 			<Value name = "ag_base_biochar">../input/gcamdata/xml/biochar_ag_For_Past_bio_base_IRR_MGMT.xml</Value>
 			<Value name = "ag_cost_biochar">../input/gcamdata/xml/biochar_ag_cost_IRR_MGMT.xml</Value>
+			<Value name = "biochar_ag_yields">../input/gcamdata/xml/biochar_ag_prodchange_ref_IRR_MGMT.xml</Value>
 			<Value name = "residue_bio_biochar">../input/gcamdata/xml/biochar_resbio_input_IRR_MGMT.xml</Value>
 			<Value name = "fertilizer_biochar">../input/gcamdata/xml/biochar_ag_Fert_IRR_MGMT.xml</Value>
 			<Value name = "land5_biochar">../input/gcamdata/xml/biochar_land_input_5_IRR_MGMT.xml</Value>
