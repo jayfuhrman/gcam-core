@@ -22,7 +22,7 @@ module_energy_cstorage_variations_xml <- function(command, ...) {
   # --- inputs ---
   vol_df_names  <- paste0("L263.cstorage_volume_", vol_combos$category, "_", vol_combos$locale)
   cost_df_names <- paste0("L263.cstorage_cost_", cost_combos$kind, "_", cost_combos$locale)
-  MODULE_INPUTS <- c(vol_df_names, cost_df_names)
+  MODULE_INPUTS <- c(vol_df_names, cost_df_names,"L261.ResTechShrwt_C")
 
   # --- outputs ---
   vol_fnames  <- paste0("cstorage_volume_", vol_combos$category, "_", vol_combos$locale, ".xml")
@@ -70,15 +70,23 @@ module_energy_cstorage_variations_xml <- function(command, ...) {
 
     all_data <- list(...)[[1]]
 
+    L261.ResTechShrwt_C <- get_data(all_data,"L261.ResTechShrwt_C") %>%
+      mutate(resource = "offshore carbon-storage",
+             subresource = resource,
+             technology = subresource)
+
     # --- build volume XMLs ---
     for(i in seq_along(vol_fnames)) {
       create_xml(vol_fnames[[i]]) %>%
+        add_node_equiv_xml("resource") %>%
         add_node_equiv_xml("subresource") %>%
         add_node_equiv_xml("technology") %>%
         add_xml_data(get_data(all_data, vol_df_names[[i]]), "RsrcCurvesAvail") %>%
-        add_node_equiv_xml("resource") %>%
-        add_node_equiv_xml("subresource") %>%
-        add_precursors(vol_df_names[[i]]) ->
+        #add_node_equiv_xml("resource") %>%
+        #add_node_equiv_xml("subresource") %>%
+        add_xml_data(L261.ResTechShrwt_C, "ResTechShrwt") %>%
+        add_precursors(vol_df_names[[i]],
+                       "L261.ResTechShrwt_C") ->
         x
       assign(vol_fnames[[i]], x)
     }
