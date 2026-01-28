@@ -73,6 +73,8 @@ generate_level2_data_names <- function() {
   level2_data_names[["RenewRsrcCalProd"]] <- c(level2_data_names[["SubRenewRsrc"]], "year", "cal.production")
   level2_data_names[["maxSubResource"]] <- c(level2_data_names[["SubRenewRsrc"]], "year.fillout", "maxSubResource") #only applicable for renewable resources
   level2_data_names[["RsrcCurves"]] <- c(level2_data_names[["SubRsrc"]], "grade", "available", "extractioncost")
+  level2_data_names[["RsrcCurvesExtCost"]] <- c(level2_data_names[["SubRsrc"]], "grade", "extractioncost")
+  level2_data_names[["RsrcCurvesAvail"]] <- c(level2_data_names[["SubRsrc"]], "grade", "available")
   level2_data_names[["RenewRsrcCurves"]] <- c(level2_data_names[["SubRenewRsrc"]], "grade", "available", "extractioncost")
   level2_data_names[["SmthRenewRsrcCurves"]] <- c(level2_data_names[["SmthRenewRsrc"]], "year.fillout", "maxSubResource", "mid.price", "curve.exponent")
   level2_data_names[["GrdRenewRsrcCurves"]] <- c("region", "renewresource", "sub.renewable.resource", "grade", "available", "extractioncost")

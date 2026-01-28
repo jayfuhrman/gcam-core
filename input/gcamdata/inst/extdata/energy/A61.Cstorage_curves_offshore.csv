@@ -1,0 +1,10 @@
+# File: A61.Cstorage_curves_offshore.csv
+# Title: Carbon storage resource supply curve points for offshore storage
+# Units: cost_2005USDtCO2: 2005$/tCO2
+# Column types: cccnn
+# ----------
+resource,subresource,grade,fraction,cost_2005USDtCO2
+offshore carbon-storage,offshore carbon-storage,grade 1,0,0
+offshore carbon-storage,offshore carbon-storage,grade 2,0.005,211
+offshore carbon-storage,offshore carbon-storage,grade 3,0.995,261
+offshore carbon-storage,offshore carbon-storage,grade 4,0,3500
