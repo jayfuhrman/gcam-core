@@ -124,12 +124,8 @@
 			<Value name="nuclear">../input/gcamdata/xml/nuclear_adv.xml</Value>
 			
 			<!-- CCS -->
+			<Value name="ccs_supply">../input/gcamdata/xml/ccs_supply_high.xml</Value>
 			<Value name = "ccs">../input/gcamdata/xml/Cstorage_rapid.xml</Value>
-			
-			<Value name = "Cstorage_resource_prudent_off">../input/gcamdata/xml/cstorage_volume_technical_potential_Offshore.xml</Value>
-        	<Value name = "Cstorage_resource_prudent_on">../input/gcamdata/xml/cstorage_volume_technical_potential_Onshore.xml</Value>
-        	<Value name = "Cstorage_cost_lowest_off">../input/gcamdata/xml/cstorage_cost_low_Offshore.xml</Value>
-        	<Value name = "Cstorage_cost_lowest_on">../input/gcamdata/xml/cstorage_cost_low_Onshore.xml</Value>
 			
 			<!-- FOSSIL -->
 			<Value name="resource_extraction">../input/gcamdata/xml/resources_SSP4.xml</Value>	
