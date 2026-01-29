@@ -22,7 +22,15 @@ module_energy_cstorage_variations_xml <- function(command, ...) {
   # --- inputs ---
   vol_df_names  <- paste0("L263.cstorage_volume_", vol_combos$category, "_", vol_combos$locale)
   cost_df_names <- paste0("L263.cstorage_cost_", cost_combos$kind, "_", cost_combos$locale)
-  MODULE_INPUTS <- c(vol_df_names, cost_df_names,"L261.ResTechShrwt_C")
+  MODULE_INPUTS <- c(vol_df_names, cost_df_names,
+                     "L261.Rsrc",
+                     "L261.ResTechShrwt_C",
+                     "L261.ResSubresourceProdLifetime",
+                     "L261.ResReserveTechLifetime",
+                     "L261.ResReserveTechDeclinePhase",
+                     "L261.ResReserveTechProfitShutdown",
+                     "L261.ResReserveTechInvestmentInput",
+                      FILE = "common/GCAM_region_names")
 
   # --- outputs ---
   vol_fnames  <- paste0("cstorage_volume_", vol_combos$category, "_", vol_combos$locale, ".xml")
@@ -70,10 +78,42 @@ module_energy_cstorage_variations_xml <- function(command, ...) {
 
     all_data <- list(...)[[1]]
 
+    GCAM_region_names <- get_data(all_data,"common/GCAM_region_names")
+
     L261.ResTechShrwt_C <- get_data(all_data,"L261.ResTechShrwt_C") %>%
       mutate(resource = "offshore carbon-storage",
              subresource = resource,
              technology = subresource)
+
+    L261.ResSubresourceProdLifetime <- get_data(all_data, "L261.ResSubresourceProdLifetime") %>%
+      mutate(resource = "offshore carbon-storage",
+             reserve.subresource = resource)
+
+    L261.ResReserveTechLifetime <- get_data(all_data, "L261.ResReserveTechLifetime") %>%
+      mutate(resource = "offshore carbon-storage",
+             reserve.subresource = resource,
+             resource.reserve.technology = reserve.subresource)
+
+    L261.ResReserveTechDeclinePhase <- get_data(all_data, "L261.ResReserveTechDeclinePhase") %>%
+      mutate(resource = "offshore carbon-storage",
+             reserve.subresource = resource,
+             resource.reserve.technology = reserve.subresource)
+
+    L261.ResReserveTechProfitShutdown <- get_data(all_data, "L261.ResReserveTechProfitShutdown") %>%
+      mutate(resource = "offshore carbon-storage",
+             reserve.subresource = resource,
+             resource.reserve.technology = reserve.subresource)
+
+    L261.ResReserveTechInvestmentInput <- get_data(all_data, "L261.ResReserveTechInvestmentInput") %>%
+      mutate(resource = "offshore carbon-storage",
+             reserve.subresource = resource,
+             resource.reserve.technology = reserve.subresource)
+
+    L261.DeleteUnlimitRsrc <- tibble(unlimited.resource = "offshore carbon-storage") %>%
+      write_to_all_regions(LEVEL2_DATA_NAMES[["DeleteUnlimitRsrc"]],GCAM_region_names)
+
+    L261.Rsrc <- get_data(all_data, "L261.Rsrc") %>%
+      mutate(resource = "offshore carbon-storage")
 
     # --- build volume XMLs ---
     for(i in seq_along(vol_fnames)) {
@@ -82,12 +122,31 @@ module_energy_cstorage_variations_xml <- function(command, ...) {
         add_node_equiv_xml("subresource") %>%
         add_node_equiv_xml("technology") %>%
         add_xml_data(get_data(all_data, vol_df_names[[i]]), "RsrcCurvesAvail") %>%
-        #add_node_equiv_xml("resource") %>%
-        #add_node_equiv_xml("subresource") %>%
-        add_xml_data(L261.ResTechShrwt_C, "ResTechShrwt") %>%
-        add_precursors(vol_df_names[[i]],
-                       "L261.ResTechShrwt_C") ->
+        add_precursors(vol_df_names[[i]]) ->
         x
+
+      if(str_detect(vol_fnames[[i]],"Offshore")){
+        x %>%
+          add_xml_data(L261.DeleteUnlimitRsrc,"DeleteUnlimitRsrc") %>%
+          add_xml_data(L261.Rsrc, "Rsrc") %>%
+          add_node_equiv_xml("subresource") %>%
+          add_node_equiv_xml("technology") %>%
+          add_xml_data(L261.ResSubresourceProdLifetime, "ResSubresourceProdLifetime") %>%
+          add_xml_data(L261.ResReserveTechDeclinePhase, "ResReserveTechDeclinePhase") %>%
+          add_xml_data(L261.ResReserveTechProfitShutdown, "ResReserveTechProfitShutdown") %>%
+          add_xml_data(L261.ResReserveTechLifetime, "ResReserveTechLifetime") %>%
+          add_xml_data(L261.ResReserveTechInvestmentInput, "ResReserveTechInvestmentInput") %>%
+          add_xml_data(L261.ResTechShrwt_C, "ResTechShrwt") %>%
+          add_precursors("L261.DeleteUnlimitRsrc",
+                         "ResSubresourceProdLifetime",
+                         "ResReserveTechDeclinePhase",
+                         "ResReserveTechProfitShutdown",
+                         "ResReserveTechLifetime",
+                         "ResReserveTechInvestmentInput",
+                         "L261.ResTechShrwt_C") ->
+          x
+      }
+
       assign(vol_fnames[[i]], x)
     }
 
