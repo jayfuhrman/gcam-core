@@ -107,9 +107,13 @@
 			<Value name="aglu">../input/gcamdata/xml/ag_prodchange_ssp5_IRR_MGMT.xml</Value>
 			
 			<!-- CCS -->
-			<Value name="ccs_supply">../input/gcamdata/xml/ccs_supply_high.xml</Value>
 			<Value name = "ccs">../input/gcamdata/xml/Cstorage_rapid.xml</Value>
 
+			<Value name = "Cstorage_resource_technical_off">../input/gcamdata/xml/cstorage_volume_technical_potential_Offshore.xml</Value>
+        	<Value name = "Cstorage_resource_technical_on">../input/gcamdata/xml/cstorage_volume_technical_potential_Onshore.xml</Value>
+        	<Value name = "Cstorage_cost_lowest_off">../input/gcamdata/xml/cstorage_cost_lowest_Offshore.xml</Value>
+        	<Value name = "Cstorage_cost_lowest_on">../input/gcamdata/xml/cstorage_cost_lowest_Onshore.xml</Value>
+			
 			<!-- FOSSIL -->
 			<Value name="resource_extraction">../input/gcamdata/xml/resources_SSP5.xml</Value>
 			

@@ -124,6 +124,11 @@
 			
 		<Value name = "ccs">../input/gcamdata/xml/Cstorage_med.xml</Value>
 
+		<Value name = "Cstorage_resource_prudent_off">../input/gcamdata/xml/cstorage_volume_prudent_potential_Offshore.xml</Value>
+        <Value name = "Cstorage_resource_prudent_on">../input/gcamdata/xml/cstorage_volume_prudent_potential_Onshore.xml</Value>
+        <Value name = "Cstorage_cost_default_off">../input/gcamdata/xml/cstorage_cost_default_Offshore.xml</Value>
+        <Value name = "Cstorage_cost_default_on">../input/gcamdata/xml/cstorage_cost_default_Onshore.xml</Value>
+		
 		<Value name = "dac">../input/gcamdata/xml/dac_ssp2.xml</Value>
 
 		<Value name = "weathering">../input/gcamdata/xml/Weathering.xml</Value>
