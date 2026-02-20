@@ -24,12 +24,3 @@ CO2 removal,dac,direct ocean capture (stand-alone),elect_td_ind,0.073597122,0.07
 desalinated water,direct ocean capture,direct ocean capture (co-located with desal),airCO2,0.052047189,0.052047189,0.052047189,0.052047189
 desalinated water,direct ocean capture,direct ocean capture (co-located with desal),elect_td_ind,0.044092416,0.022886223,0.015292276,0.007192416
 desalinated water,direct ocean capture,direct ocean capture (co-located with desal),seawater,2.5,2.5,2.5,2.5
-refining,dac to liquids,industrial hydrogen,H2 industrial,1.19,1.19,1.19,1.19
-refining,dac to liquids,industrial hydrogen,airCO2,19.6,19.6,19.6,19.6
-refining,dac to liquids,industrial hydrogen,elect_td_ind,0.43128624,0.43128624,0.36531264,0.36531264
-refining,dac to liquids,on-site electrolysis (wind),airCO2,19.6,19.6,19.6,19.6
-refining,dac to liquids,on-site electrolysis (wind),onshore wind resource,0.43128624,0.43128624,0.36531264,0.36531264
-refining,dac to liquids,on-site electrolysis (solar),airCO2,19.6,19.6,19.6,19.6
-refining,dac to liquids,on-site electrolysis (solar),global solar resource,0.43128624,0.43128624,0.36531264,0.36531264
-refining,dac to liquids,on-site electrolysis (grid electricity),airCO2,19.6,19.6,19.6,19.6
-refining,dac to liquids,on-site electrolysis (grid electricity),elect_td_ind,0.43128624,0.43128624,0.36531264,0.36531264

@@ -13,7 +13,3 @@ process heat dac,gas CCS,gas CCS,1,1,1,1,1
 airCO2,airCO2,airCO2,1,1,1,1,1
 CO2 removal,dac,direct ocean capture (stand-alone),1,1,1,1,1
 desalinated water,direct ocean capture,direct ocean capture (co-located with desal),0,0,0,1,1
-refining,dac to liquids,industrial hydrogen,1,1,1,1,1
-refining,dac to liquids,on-site electrolysis (wind),1,1,1,1,1
-refining,dac to liquids,on-site electrolysis (solar),1,1,1,1,1
-refining,dac to liquids,on-site electrolysis (grid electricity),1,1,1,1,1

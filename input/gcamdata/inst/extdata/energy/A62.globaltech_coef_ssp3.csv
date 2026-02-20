@@ -19,15 +19,6 @@ CO2 removal,dac,lowtemp DAC heatpump,airCO2,1,1,1,1
 CO2 removal,dac,lowtemp DAC geothermal,elec_geothermal,0.0066,0.0066,0.0066,0.0066
 CO2 removal,dac,lowtemp DAC geothermal,geothermal,0.019799998,0.019799998,0.019799998,0.019799998
 CO2 removal,dac,lowtemp DAC geothermal,airCO2,1,1,1,1
-refining,dac to liquids,industrial hydrogen,H2 industrial,1.19,1.19,1.19,1.19
-refining,dac to liquids,industrial hydrogen,airCO2,19.6,19.6,19.6,19.6
-refining,dac to liquids,industrial hydrogen,elect_td_ind,0.43128624,0.43128624,0.43128624,0.43128624
-refining,dac to liquids,on-site electrolysis (wind),airCO2,19.6,19.6,19.6,19.6
-refining,dac to liquids,on-site electrolysis (wind),onshore wind resource,0.43128624,0.43128624,0.43128624,0.43128624
-refining,dac to liquids,on-site electrolysis (solar),airCO2,19.6,19.6,19.6,19.6
-refining,dac to liquids,on-site electrolysis (solar),global solar resource,0.43128624,0.43128624,0.43128624,0.43128624
-refining,dac to liquids,on-site electrolysis (grid electricity),airCO2,19.6,19.6,19.6,19.6
-refining,dac to liquids,on-site electrolysis (grid electricity),elect_td_ind,0.43128624,0.43128624,0.43128624,0.43128624
 desalinated water,direct ocean capture,direct ocean capture (co-located with desal),airCO2,0.052047189,0.052047189,0.052047189,0.052047189
 desalinated water,direct ocean capture,direct ocean capture (co-located with desal),elect_td_ind,0.043251486,0.022045293,0.014451346,0.006351486
 desalinated water,direct ocean capture,direct ocean capture (co-located with desal),seawater,2.5,2.5,2.5,2.5

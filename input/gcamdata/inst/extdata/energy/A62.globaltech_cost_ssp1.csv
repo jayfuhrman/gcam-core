@@ -29,7 +29,3 @@ process heat dac,gas CCS,gas CCS,non-energy,0,0,0,0
 CO2 removal,dac,direct ocean capture (stand-alone),non-energy,1.635004398,1.635004398,1.635004398,1.635004398
 desalinated water,direct ocean capture,direct ocean capture (co-located with desal),desal only,0.38,0.38,0.38,0.38
 desalinated water,direct ocean capture,direct ocean capture (co-located with desal),carbon capture,0.023666136,0.023666136,0.023666136,0.023666136
-refining,dac to liquids,industrial hydrogen,non-energy,7.468525649,7.468525649,3.609858694,3.609858694
-refining,dac to liquids,on-site electrolysis (wind),non-energy,7.468525649,7.468525649,3.609858694,3.609858694
-refining,dac to liquids,on-site electrolysis (solar),non-energy,7.468525649,7.468525649,3.609858694,3.609858694
-refining,dac to liquids,on-site electrolysis (grid electricity),non-energy,7.468525649,7.468525649,3.609858694,3.609858694

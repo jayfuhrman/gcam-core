@@ -26,10 +26,6 @@ CO2 removal,dac,lowtemp DAC geothermal,fixed.charge.rate,0.13,0.13,0.13,0.13
 CO2 removal,dac,lowtemp DAC geothermal,cost.year,2015,2015,2015,2015
 CO2 removal,no CDR,no CDR,non-energy,0.001,0.001,0.001,0.001
 process heat dac,gas CCS,gas CCS,non-energy,0,0,0,0
-refining,dac to liquids,industrial hydrogen,non-energy,0.81322807,0.81322807,0.81322807,0.81322807
-refining,dac to liquids,on-site electrolysis (wind),non-energy,0.81322807,0.81322807,0.81322807,0.81322807
-refining,dac to liquids,on-site electrolysis (solar),non-energy,0.81322807,0.81322807,0.81322807,0.81322807
-refining,dac to liquids,on-site electrolysis (grid electricity),non-energy,0.81322807,0.81322807,0.81322807,0.81322807
 CO2 removal,dac,direct ocean capture (stand-alone),non-energy,1.635004398,1.635004398,1.635004398,1.635004398
 desalinated water,direct ocean capture,direct ocean capture (co-located with desal),desal only,0.38,0.38,0.38,0.38
 desalinated water,direct ocean capture,direct ocean capture (co-located with desal),carbon capture,0.023666136,0.023666136,0.023666136,0.023666136
