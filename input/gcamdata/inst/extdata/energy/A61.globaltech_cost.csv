@@ -1,7 +1,7 @@
 # File: A61.globaltech_cost.csv
 # Title: Carbon storage offshore storage cost
-# Units: 19990$/tC
 # Source: Onshore pipeline cost from NETL CO2 transport cost model (2023); doubled for offshore pipelines.  CO2 ship cost from Al Baroudi et al (2021).  CO2 truck costs from Meyers et al (2024).  Offshore CO2 storage cost only (i.e., excl. transport) from Schmelz et al 2020.
+# Units: 1990$/tC
 # Comments: Non-energy costs only.  Transportation + electricity input cost is calculated endogenously
 # Column types: ccccnnc 
 # ----------
