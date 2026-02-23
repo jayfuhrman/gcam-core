@@ -13,18 +13,12 @@
 #' @details The following tables pertaining to carbon storage properties are generated:
 #' \itemize{
 #'  \item{Carbon storage information}
-#'  \item{Unlimited carbon storage information}
-#'  \item{Supply curve of carbon storage resources}
-#'  \item{High supply curve of onshore carbon storage resources}
-#'  \item{Low supply curve of onshore carbon storage resources}
-#'  \item{Lowest supply curve of onshore carbon storage resources}
 #'  \item{Carbon storage sector information}
 #'  \item{Subsector logit exponents of carbon storage sector}
 #'  \item{Subsector shareweights of carbon storage sectors}
 #'  \item{Identification of stub technologies of carbon storage}
 #'  \item{Carbon storage global technology coefficients across base model years}
 #'  \item{Carbon storage global technology costs across base model years}
-#'  \item{Carbon storage global technology costs across base model years, high price scenario}
 #'  \item{Shareweights of carbon storage technologies across base model years}
 #'  \item{Shareweights of offshore carbon storage technologies}
 #' }
@@ -61,9 +55,6 @@ module_energy_L263.Weathering <- function(command, ...) {
              "L263.StubTechEff",
              "L263.GlobalTechCost_C",
              "L263.GlobalTechShrwt_C",
-             "L263.RsrcCurves_C_high",
-             "L263.RsrcCurves_C_low",
-             "L263.RsrcCurves_C_lowest",
              "L263.RsrcPrice",
              "L263.WeatheringRsrcMax",
              "L263.GlobalTechCSeq",
@@ -195,27 +186,6 @@ module_energy_L263.Weathering <- function(command, ...) {
       mutate(year.fillout = min(MODEL_BASE_YEARS),
              maxSubResource = 1) %>%
       select(LEVEL2_DATA_NAMES[["maxSubResource"]])
-
-
-    # Calculate three different supply curves of carbon storage resources: high, low, and lowest.
-    # Multiply the extraction cost by its respective multiplier below.
-    # Note that the multipliers were created for the SSPs and that high, low, and lowest is the level of CCS use and not cost.
-    HI_CCS_COST_MULT <- 0.8
-
-    LO_CCS_COST_MULT <- 3
-
-    LOWEST_CCS_COST_MULT <- 10
-
-    # Note that these will produce final output tables.
-    # High supply curves of carbon storage resources
-    L263.RsrcCurves_C_high <- mutate(L263.RsrcCurves_C, extractioncost = extractioncost * HI_CCS_COST_MULT)
-
-    # Low supply curves of carbon storage resources
-    L263.RsrcCurves_C_low <- mutate(L263.RsrcCurves_C, extractioncost = extractioncost * LO_CCS_COST_MULT)
-
-    # Lowest supply curves of carbon storage resources
-    L263.RsrcCurves_C_lowest <- mutate(L263.RsrcCurves_C, extractioncost = extractioncost * LOWEST_CCS_COST_MULT)
-
 
     # C
     # Carbon storage sector information
@@ -449,30 +419,6 @@ module_energy_L263.Weathering <- function(command, ...) {
       add_comments("Mostly just to provide a shell of a technology for the resource to use") %>%
       same_precursors_as(L263.RsrcCurves_C) ->
       L263.ResTechShrwt_C
-
-    L263.RsrcCurves_C_high %>%
-      add_title("High supply curve of onshore carbon storage resources") %>%
-      add_units("Available in MtCO2, Extraction Cost in 1990$/tCO2") %>%
-      add_comments("A multiplier (based on high level of CCS use) was applied to the extraction cost to generate a high supply curve") %>%
-      add_legacy_name("L263.RsrcCurves_C_high") %>%
-      add_precursors("common/GCAM_region_names", "L163.RsrcCurves_Mt") ->
-      L263.RsrcCurves_C_high
-
-    L263.RsrcCurves_C_low %>%
-      add_title("Low supply curve of onshore carbon storage resources") %>%
-      add_units("Available in MtCO2, Extraction Cost in 1990$/tCO2") %>%
-      add_comments("A multiplier (based on low level of CCS use) was applied to the extraction cost to generate a low supply curve") %>%
-      add_legacy_name("L263.RsrcCurves_C_low") %>%
-      add_precursors("common/GCAM_region_names", "L163.RsrcCurves_Mt") ->
-      L263.RsrcCurves_C_low
-
-    L263.RsrcCurves_C_lowest %>%
-      add_title("Lowest supply curve of onshore carbon storage resources") %>%
-      add_units("Available in MtCO2, Extraction Cost in 1990$/tCO2") %>%
-      add_comments("A multiplier (based on lowest level of CCS use) was applied to the extraction cost to generate a lowest supply curve") %>%
-      add_legacy_name("L263.RsrcCurves_C_lowest") %>%
-      add_precursors("common/GCAM_region_names", "L163.RsrcCurves_Mt") ->
-      L263.RsrcCurves_C_lowest
 
     L263.Supplysector_C %>%
       add_title("Carbon storage sector information") %>%
