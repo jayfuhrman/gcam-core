@@ -563,16 +563,18 @@ module_energy_L261.Cstorage <- function(command, ...) {
     # Shareweights of global technologies for energy transformation
     A61.globaltech_shrwt %>%
       gather_years %>%
+      group_by(supplysector, subsector, technology) %>%
       # Expand table to include all model base and future years
       complete(year = c(year, MODEL_YEARS), nesting(supplysector, subsector, technology)) %>%
       # Extrapolate to fill out values for all years
       # Rule 2 is used so years outside of min-max range are assigned values from closest data, as opposed to NAs
+      arrange(year, .by_group = TRUE) %>%
       mutate(share.weight = approx_fun(year, value, rule = 2)) %>%
+      ungroup() %>%
       filter(year %in% MODEL_YEARS) %>% # This will drop 1971
       # Assign the columns "sector.name" and "subsector.name", consistent with the location info of a global technology
       select(sector.name = supplysector, subsector.name = subsector, technology, year, share.weight) ->
       L261.GlobalTechShrwt_C # This is a final output table.
-    #bind_rows(L271.GlobalTechShrwt_desal) ->
 
     # Use zero shareweights for offshore storage
     L261.GlobalTechShrwt_C %>%
