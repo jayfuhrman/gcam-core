@@ -15,10 +15,9 @@ module_energy_L263.Cstorage_variations <- function(command, ...) {
   vol_combos <- expand.grid(locale=storage_locales, category=storage_categories)
   vol_df_names <- paste0("L263.cstorage_volume_", vol_combos$category, "_", vol_combos$locale)
 
-  # develop multipliers identical to L261.Cstorage
   cost_multipliers <- data.frame(
     multiplier = c("high", "default", "low", "lowest"),
-    value = c(10, 3, 1.0, 0.8)
+    value = c(10, 1.0, 0.5, 0.1)
   )
   cost_combos <- expand.grid(locale=storage_locales, kind=cost_multipliers$multiplier)
   cost_df_names <- paste0("L263.cstorage_cost_", cost_combos$kind, "_", cost_combos$locale)
