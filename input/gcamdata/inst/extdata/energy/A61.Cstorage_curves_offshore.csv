@@ -1,10 +1,10 @@
 # File: A61.Cstorage_curves_offshore.csv
-# Title: Carbon storage resource supply curve points for offshore storage.  Source: Grade 2 values (30% of cumulative capacity) from Smith et. al (2021) Fig 3.  Grade 3 value from Smith et. al (2021) Table 5 (upper bound cost of $88.9). Both converted from 2019 to 2005 USD . https://doi.org/10.1016/j.ijggc.2021.103367.
+# Title: Carbon storage resource supply curve points for offshore storage.  Source: Grade 2 values (30% of cumulative capacity) from Smith et. al (2021) Fig 3.  Grade 3 value from Smith et. al (2021) Table 5 (upper bound cost of $88.9). Both converted from 2019 to 2005 USD . Grade 4 = arbitrarily high cost while avoiding sharp corner at top of supply curve https://doi.org/10.1016/j.ijggc.2021.103367.
 # Units: cost_2005USDtCO2: 2005$/tCO2
 # Column types: cccnn
 # ----------
 resource,subresource,grade,fraction,cost_2005USDtCO2
 offshore carbon-storage,offshore carbon-storage,grade 1,0,0
 offshore carbon-storage,offshore carbon-storage,grade 2,0.3,9
-offshore carbon-storage,offshore carbon-storage,grade 3,0.7,70
-offshore carbon-storage,offshore carbon-storage,grade 4,0,3500
+offshore carbon-storage,offshore carbon-storage,grade 3,0.5,70
+offshore carbon-storage,offshore carbon-storage,grade 4,0.2,500
