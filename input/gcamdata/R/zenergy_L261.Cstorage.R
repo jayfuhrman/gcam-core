@@ -254,7 +254,7 @@ module_energy_L261.Cstorage <- function(command, ...) {
              invalid_grade = available <= lag(available, default = first(available)),
              invalid_grade = if_else(grade == "grade 0", FALSE, invalid_grade),
              available = if_else((invalid_grade == TRUE & prev == 0), (prev + nxt / 2), available),
-             available = if_else((invalid_grade == TRUE & available == max(available)), available * 10, available),
+             available = if_else((invalid_grade == TRUE & available == max(available)), available + 10 ^ (-energy.DIGITS_RESOURCE), available),
              available = round(available,energy.DIGITS_RESOURCE)) %>%
       ungroup() %>%
       select(LEVEL2_DATA_NAMES[["GrdRenewRsrcCurves"]])
