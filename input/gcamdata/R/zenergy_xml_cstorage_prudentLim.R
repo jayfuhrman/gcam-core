@@ -82,11 +82,6 @@ module_energy_cstorage_variations_xml <- function(command, ...) {
 
     L261.ResTechShrwt_C <- get_data(all_data,"L261.ResTechShrwt_C")
 
-    L261.ResTechShrwt_C_Offshore <- L261.ResTechShrwt_C %>%
-      mutate(resource = "offshore carbon-storage",
-                         subresource = resource,
-                         technology = subresource)
-
     L261.ResSubresourceProdLifetime <- get_data(all_data, "L261.ResSubresourceProdLifetime")
 
     L261.ResSubresourceProdLifetimeOffshore <- L261.ResSubresourceProdLifetime %>%
@@ -132,6 +127,18 @@ module_energy_cstorage_variations_xml <- function(command, ...) {
     # --- build volume XMLs ---
     for(i in seq_along(vol_fnames)) {
       if(str_detect(vol_fnames[[i]],"Onshore")){
+
+        #Shareweight zero for regions with zero potential and therefore infinite slope
+
+        ResTechShrwt_i <- get_data(all_data, vol_df_names[[i]]) %>%
+          group_by(region,resource,subresource) %>%
+          summarize(value = sum(available)) %>%
+          ungroup() %>%
+          mutate(share.weight = if_else(value == 0, 0, 1),
+                 technology = subresource) %>%
+          repeat_add_columns(tibble(year = MODEL_YEARS)) %>%
+          select(LEVEL2_DATA_NAMES[["ResTechShrwt"]])
+
         create_xml(vol_fnames[[i]]) %>%
           add_xml_data(L261.ResSubresourceProdLifetime, "ResSubresourceProdLifetime") %>%
           add_xml_data(L261.ResReserveTechDeclinePhase, "ResReserveTechDeclinePhase") %>%
@@ -142,7 +149,7 @@ module_energy_cstorage_variations_xml <- function(command, ...) {
           add_node_equiv_xml("subresource") %>%
           add_node_equiv_xml("technology") %>%
           add_xml_data(L261.Rsrc, "Rsrc") %>%
-          add_xml_data(L261.ResTechShrwt_C, "ResTechShrwt") %>%
+          add_xml_data(ResTechShrwt_i, "ResTechShrwt") %>%
           add_xml_data(get_data(all_data, vol_df_names[[i]]), "RsrcCurvesAvail") %>%
           add_precursors(vol_df_names[[i]],
                        "ResSubresourceProdLifetime",
@@ -158,6 +165,17 @@ module_energy_cstorage_variations_xml <- function(command, ...) {
       }
 
       else if(str_detect(vol_fnames[[i]],"Offshore")){
+
+        #Shareweight zero for regions with zero potential and therefore infinite slope
+        ResTechShrwt_i <- get_data(all_data, vol_df_names[[i]]) %>%
+          group_by(region,resource,subresource) %>%
+          summarize(value = sum(available)) %>%
+          ungroup() %>%
+          mutate(share.weight = if_else(value == 0, 0, 1),
+                 technology = subresource) %>%
+          repeat_add_columns(tibble(year = MODEL_YEARS)) %>%
+          select(LEVEL2_DATA_NAMES[["ResTechShrwt"]])
+
         create_xml(vol_fnames[[i]]) %>%
           add_xml_data(L261.DeleteUnlimitRsrc,"DeleteUnlimitRsrc") %>%
           add_xml_data(L261.ResSubresourceProdLifetimeOffshore, "ResSubresourceProdLifetime") %>%
@@ -169,7 +187,7 @@ module_energy_cstorage_variations_xml <- function(command, ...) {
           add_node_equiv_xml("subresource") %>%
           add_node_equiv_xml("technology") %>%
           add_xml_data(L261.RsrcOffshore, "Rsrc") %>%
-          add_xml_data(L261.ResTechShrwt_C_Offshore, "ResTechShrwt") %>%
+          add_xml_data(ResTechShrwt_i, "ResTechShrwt") %>%
           add_xml_data(get_data(all_data, vol_df_names[[i]]), "RsrcCurvesAvail") %>%
           add_precursors(vol_df_names[[i]],
                          "ResSubresourceProdLifetime",
