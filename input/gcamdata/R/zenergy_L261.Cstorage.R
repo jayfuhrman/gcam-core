@@ -301,8 +301,6 @@ module_energy_L261.Cstorage <- function(command, ...) {
                                     efficiency > 1 ~ 1,
                                     TRUE~efficiency))
 
-    readr::write_csv(calibrated_eff_2030,'calibrated_eff_2030.csv')
-
     # logistic fits for each region
     eff_post_2030 <- calibrated_eff_2030 %>%
       filter(year %in% MODEL_YEARS,
@@ -324,34 +322,25 @@ module_energy_L261.Cstorage <- function(command, ...) {
              subsector = 'ccs dynamic-capacity',
              stub.technology = 'ccs dynamic-capacity',
              minicam.energy.input = 'carbon-storage dynamic',
-             market.name = region) %>%
+             market.name = region)
+
+    StubTechShrwtZeroCurrentCapacity <- L261.StubTechEff %>%
+      filter(efficiency == 0) %>%
+      rename(share.weight = efficiency) %>%
+      distinct(region,supplysector,subsector,stub.technology) %>%
+      repeat_add_columns(tibble(year = MODEL_YEARS)) %>%
+      mutate(share.weight = if_else(year > 2025, 1, 0))
+
+    L261.StubTechEff %>%
       mutate(efficiency = round(efficiency,energy.DIGITS_EFFICIENCY),
              efficiency = if_else(efficiency == 0, 0.001,efficiency)) %>%
-      select(c('scenario',LEVEL2_DATA_NAMES[['StubTechEff']]))
+      select(c('scenario',LEVEL2_DATA_NAMES[['StubTechEff']])) -> L261.StubTechEff
 
     L261.TechPmult <- L261.StubTechEff %>%
       rename(technology = stub.technology,
              pMult = efficiency) %>%
       select(c('scenario',LEVEL2_DATA_NAMES[['TechPmult']]))
 
-    #desal_regions <- L203.TechShrwt_watertd %>%
-    #  filter(technology == 'desalinated water') %>%
-    #  distinct(region)
-
-    #allow CCS related desalination demand to produce desalinated water as coproduct
-    # A61.globaltech_secout %>%
-    #   gather_years() %>%
-    #   complete(nesting(supplysector, subsector, technology, fractional.secondary.output),
-    #            year = sort(unique(c(year, MODEL_YEARS)))) %>%
-    #   write_to_all_regions(c('supplysector','subsector','technology','fractional.secondary.output','year','region'),
-    #                        GCAM_region_names=GCAM_region_names) %>%
-    #   group_by(supplysector, subsector, technology, fractional.secondary.output) %>%
-    #   ungroup() %>%
-    #   mutate(output.ratio = if_else(region %in% desal_regions$region, 1, 0)) %>%
-    #   rename(secondary.output = fractional.secondary.output,
-    #          stub.technology = technology) %>%
-    #   filter(year %in% MODEL_FUTURE_YEARS) %>%
-    #   select(LEVEL2_DATA_NAMES[["StubTechSecOut"]]) -> L271.StubTechSecOut_desal_CCS
     # A
     # Create tables for carbon storage resource information
     # A61.rsrc_info provides carbon storage resource info (output unit, price unit, capacity factor, market, etc)
@@ -600,6 +589,7 @@ module_energy_L261.Cstorage <- function(command, ...) {
       select(-year) %>%
       left_join(L261.GlobalTechCoef_C, by = c("supplysector" = "minicam.energy.input")) %>%
       mutate(supplysector = sector.name, subsector = subsector.name, stub.technology = technology, share.weight = value) %>%
+      bind_rows(StubTechShrwtZeroCurrentCapacity) %>%
       select(LEVEL2_DATA_NAMES[["StubTechShrwt"]])
 
     L261.DeleteStubTech <- L261.StubTechShrwt %>%
