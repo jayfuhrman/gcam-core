@@ -441,7 +441,6 @@ module_energy_L261.Cstorage <- function(command, ...) {
       write_to_all_regions(c(LEVEL2_DATA_NAMES[["Supplysector"]], LOGIT_TYPE_COLNAME),
                            GCAM_region_names = GCAM_region_names) ->
       L261.Supplysector_C  # This is a final output table.
-    #bind_rows(L271.Supplysector_desal) ->
 
 
 
@@ -454,7 +453,6 @@ module_energy_L261.Cstorage <- function(command, ...) {
       write_to_all_regions(c(LEVEL2_DATA_NAMES[["SubsectorLogit"]], LOGIT_TYPE_COLNAME),
                            GCAM_region_names = GCAM_region_names) ->
       L261.SubsectorLogit_C # This is a final output table.
-    #bind_rows(L271.SubsectorLogit_desal) ->
 
 
     # Subsector shareweights of carbon storage sectors
@@ -463,7 +461,6 @@ module_energy_L261.Cstorage <- function(command, ...) {
       write_to_all_regions(c(LEVEL2_DATA_NAMES[["SubsectorShrwtFllt"]], LOGIT_TYPE_COLNAME),
                            GCAM_region_names = GCAM_region_names) ->
       L261.SubsectorShrwtFllt_C # This is a final output table.
-    #bind_rows(L271.SubsectorShrwtFllt_desal) ->
 
 
     # E
@@ -476,7 +473,6 @@ module_energy_L261.Cstorage <- function(command, ...) {
                            GCAM_region_names = GCAM_region_names) %>%
       select(region, supplysector, subsector, stub.technology = technology) ->
       L261.StubTech_C # This is a final output table.
-    #bind_rows(L271.StubTech_desal) ->
 
     # Energy inputs and coefficients of global technologies for carbon storage
     # A61.globaltech_coef reports carbon storage global technology coefficients
@@ -538,7 +534,6 @@ module_energy_L261.Cstorage <- function(command, ...) {
       # Assign the columns "sector.name" and "subsector.name", consistent with the location info of a global technology
       select(sector.name = supplysector, subsector.name = subsector, technology, year, minicam.non.energy.input, input.cost) ->
       L261.GlobalTechCost_C # This is a final output table.
-    #bind_rows(L271.GlobalTechCost_desal) ->
 
     # High costs of global technologies for carbon storage -- this prices out CCS
     L261.GlobalTechCost_C %>%
@@ -589,7 +584,6 @@ module_energy_L261.Cstorage <- function(command, ...) {
       select(-year) %>%
       left_join(L261.GlobalTechCoef_C, by = c("supplysector" = "minicam.energy.input")) %>%
       mutate(supplysector = sector.name, subsector = subsector.name, stub.technology = technology, share.weight = value) %>%
-      bind_rows(StubTechShrwtZeroCurrentCapacity) %>%
       select(LEVEL2_DATA_NAMES[["StubTechShrwt"]])
 
     L261.DeleteStubTech <- L261.StubTechShrwt %>%
@@ -597,7 +591,8 @@ module_energy_L261.Cstorage <- function(command, ...) {
       left_join(L261.GlobalTechCoef_C, by = c("supplysector" = "minicam.energy.input")) %>%
       distinct(region,supplysector = sector.name,subsector = subsector.name,stub.technology = technology)
 
-
+    L261.StubTechShrwt %>%
+      bind_rows(StubTechShrwtZeroCurrentCapacity) -> L261.StubTechShrwt
 
     # ===================================================
 
