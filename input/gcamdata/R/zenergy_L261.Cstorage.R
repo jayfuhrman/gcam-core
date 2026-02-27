@@ -322,16 +322,7 @@ module_energy_L261.Cstorage <- function(command, ...) {
              subsector = 'ccs dynamic-capacity',
              stub.technology = 'ccs dynamic-capacity',
              minicam.energy.input = 'carbon-storage dynamic',
-             market.name = region)
-
-    StubTechShrwtZeroCurrentCapacity <- L261.StubTechEff %>%
-      filter(efficiency == 0) %>%
-      rename(share.weight = efficiency) %>%
-      distinct(region,supplysector,subsector,stub.technology) %>%
-      repeat_add_columns(tibble(year = MODEL_YEARS)) %>%
-      mutate(share.weight = if_else(year > 2025, 1, 0))
-
-    L261.StubTechEff %>%
+             market.name = region) %>%
       mutate(efficiency = round(efficiency,energy.DIGITS_EFFICIENCY),
              efficiency = if_else(efficiency == 0, 0.001,efficiency)) %>%
       select(c('scenario',LEVEL2_DATA_NAMES[['StubTechEff']])) -> L261.StubTechEff
@@ -590,9 +581,6 @@ module_energy_L261.Cstorage <- function(command, ...) {
       select(region,supplysector) %>%
       left_join(L261.GlobalTechCoef_C, by = c("supplysector" = "minicam.energy.input")) %>%
       distinct(region,supplysector = sector.name,subsector = subsector.name,stub.technology = technology)
-
-    L261.StubTechShrwt %>%
-      bind_rows(StubTechShrwtZeroCurrentCapacity) -> L261.StubTechShrwt
 
     # ===================================================
 
