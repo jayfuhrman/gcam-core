@@ -134,7 +134,7 @@ module_energy_cstorage_variations_xml <- function(command, ...) {
           group_by(region,resource,subresource) %>%
           mutate(value = sum(available)) %>%
           ungroup() %>%
-          mutate(available = if_else(value == 0 & grade == "grade 2", (10 ^ -energy.DIGITS_RESOURCE), available),
+          mutate(available = if_else(value == 0 & grade != "grade 1", (10 ^ -energy.DIGITS_RESOURCE), available),
                  available = round(available,energy.DIGITS_RESOURCE))
 
         ResTechShrwt_i <- RsrcCurvesAvail_i %>%
@@ -177,7 +177,7 @@ module_energy_cstorage_variations_xml <- function(command, ...) {
           group_by(region,resource,subresource) %>%
           mutate(value = sum(available)) %>%
           ungroup() %>%
-          mutate(available = if_else(value == 0 & grade == "grade 2", (10 ^ -energy.DIGITS_RESOURCE), available),
+          mutate(available = if_else(value == 0 & grade != "grade 1", (10 ^ -energy.DIGITS_RESOURCE), available),
                  available = round(available,energy.DIGITS_RESOURCE))
 
 
