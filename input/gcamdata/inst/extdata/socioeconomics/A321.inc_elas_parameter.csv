@@ -1,0 +1,38 @@
+# File: A321.inc_elas_parameter.csv,,
+# Title: Cement demand income elasticity as a function of  per capita cement=a*exp(b/per-capita gdp),,
+# Units: pcgdp_90thousUSD: Thousand 1990$; inc_elas:unitless (% change in service demand / % change in income,,
+# Column types: cnn,,
+# ----------,,
+region,a,b
+Africa_Eastern,487,-3047
+Africa_Northern,487,-3047
+Africa_Southern,487,-3047
+Africa_Western,487,-3047
+Argentina,487,-3047
+Australia_NZ,487,-3047
+Brazil,487,-3047
+Canada,487,-3047
+Central America and Caribbean,487,-3047
+Central Asia,487,-3047
+China,487,-3047
+Colombia,487,-3047
+EU-12,487,-3047
+EU-15,487,-3047
+Europe_Eastern,487,-3047
+Europe_Non_EU,487,-3047
+European Free Trade Association,487,-3047
+India,487,-3047
+Indonesia,487,-3047
+Japan,487,-3047
+Mexico,487,-3047
+Middle East,487,-3047
+Pakistan,487,-3047
+Russia,487,-3047
+South Africa,487,-3047
+South America_Northern,487,-3047
+South America_Southern,487,-3047
+South Asia,487,-3047
+South Korea,487,-3047
+Southeast Asia,487,-3047
+Taiwan,487,-3047
+USA,487,-3047

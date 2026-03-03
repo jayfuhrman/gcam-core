@@ -1,0 +1,24 @@
+# File: A321.globaltech_cost.csv
+# Title: Cement default costs (note: CCS cost not included here; calculated in data processing)
+# Units: 1975$/kg for supplysector cement; 1975$/GJ for supplysector process heat cement
+# Column types: ccccnnnnnnn
+# ----------
+supplysector,subsector,technology,minicam.non.energy.input,1971,2020,2025,2030,2040,2050,2100
+process heat cement,biomass,biomass,non-energy,3.838199279,3.838199279,3.838199279,3.838199279,3.838199279,3.838199279,3.838199279
+process heat cement,biomass,biomass CCS,non-energy,6.827103624,6.827103624,6.827103624,6.827103624,6.827103624,6.827103624,6.827103624
+process heat cement,coal,coal,non-energy,1.873465138,1.873465138,1.873465138,1.873465138,1.873465138,1.873465138,1.873465138
+process heat cement,coal,coal CCS,non-energy,3.343408624,3.343408624,3.343408624,3.343408624,3.343408624,3.343408624,3.343408624
+process heat cement,gas,gas,non-energy,0.644353371,0.644353371,0.644353371,0.644353371,0.644353371,0.644353371,0.644353371
+process heat cement,gas,gas CCS,non-energy,1.159836068,1.159836068,1.159836068,1.159836068,1.159836068,1.159836068,1.159836068
+process heat cement,refined liquids,refined liquids,non-energy,0.504940759,0.504940759,0.504940759,0.504940759,0.504940759,0.504940759,0.504940759
+process heat cement,refined liquids,refined liquids CCS,non-energy,0.876392694,0.876392694,0.876392694,0.876392694,0.876392694,0.876392694,0.876392694
+process heat cement,hydrogen,hydrogen,non-energy,0.644353371,0.644353371,0.644353371,0.644353371,0.644353371,0.644353371,0.644353371
+clinker,clinker,clinker,non-energy,0.003,0.003,0.003,0.003,0.003,0.003,0.003
+cement,cement,cement,non-energy,0.0001,0.0001,0.0001,0.0001,0.0001,0.0001,0.0001
+cement,cement,cement SCMFA,non-energy,0.004,0.004,0.004,0.004,0.004,0.004,0.004
+cement,cement,cement SCMGBFS,non-energy,0.01,0.01,0.01,0.01,0.01,0.01,0.01
+cement,cement,cement SCMlime,non-energy,0.0002,0.0002,0.0002,0.0002,0.0002,0.0002,0.0002
+cement,cement,cement LC3,non-energy,0.0007,0.0007,0.0007,0.0007,0.0007,0.0007,0.0007
+cement,cement,cement CCS,non-energy,0.0051,0.0051,0.0051,0.0051,0.0051,0.0051,0.0051
+clinker,clinker,clinker silicateelec,non-energy,0.024,0.024,0.024,0.024,0.024,0.024,0.024
+cement,cement,cement silicatesol,non-energy,0.047,0.047,0.047,0.047,0.047,0.047,0.047

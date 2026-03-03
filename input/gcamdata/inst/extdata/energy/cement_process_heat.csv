@@ -1,0 +1,12 @@
+# File: cement_process_heat.csv
+# Title: Process heat efficiency by fuel
+# Units: N/A
+# Description: Energy coefficient in process heat
+# Source: Literature
+# Column types: cn
+# ----------
+fuel,eff
+biomass,0.79
+coal,0.75
+gas,0.89
+refined liquids,0.86

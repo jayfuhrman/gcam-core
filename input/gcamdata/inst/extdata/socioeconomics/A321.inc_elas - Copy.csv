@@ -1,0 +1,19 @@
+# File: A321.inc_elas.csv,
+# Title: cement demand income elasticity as a function of per-capita gdp,
+# Units: inc_elas:unitless (% change in service demand / % change in income),
+# Column types: nn ,
+# ----------,
+pcgdp_90thousUSD,inc_elas
+0,1.15
+3.63,1.14
+7.26,0.33
+10.89,0.2
+14.52,0.15
+18.15,0.12
+21.78,0.09
+25.41,0.07
+29.04,0.06
+32.66,0.05
+36.29,0.04
+39.92,0.02
+43.55,0

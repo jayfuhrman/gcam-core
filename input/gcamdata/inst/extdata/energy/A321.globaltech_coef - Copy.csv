@@ -1,0 +1,42 @@
+# File: A321.globaltech_coef.csv
+# Title: Cement production default coefficients
+# Units: limestone input is unitless (Mt limestone per Mt cement); all others are GJ per kg (EJ of energy per Mt of cement)
+# Column types: ccccnnnnnnnn
+# ----------
+supplysector,subsector,technology,minicam.energy.input,1971,2010,2020,2025,2030,2040,2050,2100
+cement,cement,cement,process heat cement,0.004,0.004,0.004,0.004,0.004,0.004,0.004,0.004
+cement,cement,cement,elect_td_ind,0.0043,0.0043,0.0043,0.0043,0.0043,0.0043,0.0043,0.0043
+cement,cement,cement,limestone,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5
+cement,cement,cement CCS,process heat cement,0.0063,0.0063,0.0063,0.0063,0.0063,0.0063,0.0063,0.0063
+cement,cement,cement CCS,elect_td_ind,0.0072,0.0072,0.0072,0.0072,0.0072,0.0072,0.0072,0.0072
+cement,cement,cement CCS,limestone,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5
+cement,cement,cement SCMFA,process heat cement,0.0028,0.0028,0.0028,0.0028,0.0028,0.0028,0.0028,0.0028
+cement,cement,cement SCMFA,elect_td_ind,0.0045,0.0045,0.0045,0.0045,0.0045,0.0045,0.0045,0.0045
+cement,cement,cement SCMFA,limestone,1.05,1.05,1.05,1.05,1.05,1.05,1.05,1.05
+cement,cement,cement SCMGBFS,process heat cement,0.002,0.002,0.002,0.002,0.002,0.002,0.002,0.002
+cement,cement,cement SCMGBFS,elect_td_ind,0.0045,0.0045,0.0045,0.0045,0.0045,0.0045,0.0045,0.0045
+cement,cement,cement SCMGBFS,limestone,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75
+cement,cement,cement SCMlime,process heat cement,0.0034,0.0034,0.0034,0.0034,0.0034,0.0034,0.0034,0.0034
+cement,cement,cement SCMlime,elect_td_ind,0.0043,0.0043,0.0043,0.0043,0.0043,0.0043,0.0043,0.0043
+cement,cement,cement SCMlime,limestone,1.28,1.28,1.28,1.28,1.28,1.28,1.28,1.28
+cement ,cement ,cement LC3,process heat cement,0.003,0.003,0.003,0.003,0.003,0.003,0.003,0.003
+cement ,cement ,cement LC3,elect_td_ind,0.0051,0.0051,0.0051,0.0051,0.0051,0.0051,0.0051,0.0051
+cement ,cement ,cement LC3,limestone,0.85,0.85,0.85,0.85,0.85,0.85,0.85,0.85
+cement,cement,cement silicatecarb,process heat cement,0.0028,0.0028,0.0028,0.0028,0.0028,0.0028,0.0028,0.0028
+cement,cement,cement silicatecarb,elect_td_ind,0.0048,0.0048,0.0048,0.0048,0.0048,0.0048,0.0048,0.0048
+cement,cement,cement silicatecarb,limestone,0.922,0.922,0.922,0,0,0,0,0
+cement,cement,cement silicateelec,process heat cement,0.0072,0.0072,0.0072,0.0072,0.0072,0.0072,0.0072,0.0072
+cement,cement,cement silicateelec,elect_td_ind,0.0063,0.0063,0.0063,0.0063,0.0063,0.0063,0.0063,0.0063
+cement,cement,cement silicateelec,limestone,1,1,1,1,1,1,1,1
+cement,cement,cement silicatesol,process heat cement,0.0043,0.0043,0.0043,0.0043,0.0043,0.0043,0.0043,0.0043
+cement,cement,cement silicatesol,elect_td_ind,0.0193,0.0193,0.0193,0.0193,0.0193,0.0193,0.0193,0.0193
+cement,cement,cement silicatesol,limestone,1,1,1,1,1,1,1,1
+process heat cement,biomass,biomass,delivered biomass,1.2658,1.2658,1.2658,1.2658,1.2658,1.2658,1.2658,1.2658
+process heat cement,biomass,biomass CCS,delivered biomass,1.6949,1.6949,1.6949,1.6949,1.6949,1.6949,1.6949,1.6949
+process heat cement,coal,coal,delivered coal,1.3333,1.3333,1.3333,1.3333,1.3333,1.3333,1.3333,1.3333
+process heat cement,coal,coal CCS,delivered coal,1.8182,1.8182,1.8182,1.8182,1.8182,1.8182,1.8182,1.8182
+process heat cement,gas,gas,wholesale gas,1.1236,1.1236,1.1236,1.1236,1.1236,1.1236,1.1236,1.1236
+process heat cement,gas,gas CCS,wholesale gas,1.4493,1.4493,1.4493,1.4493,1.4493,1.4493,1.4493,1.4493
+process heat cement,refined liquids,refined liquids,refined liquids industrial,1.1628,1.1628,1.1628,1.1628,1.1628,1.1628,1.1628,1.1628
+process heat cement,refined liquids,refined liquids CCS,refined liquids industrial,1.5152,1.5152,1.5152,1.5152,1.5152,1.5152,1.5152,1.5152
+process heat cement,hydrogen,hydrogen,H2 industrial,1.1236,1.1236,1.1236,1.1236,1.1236,1.1236,1.1236,1.1236

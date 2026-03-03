@@ -1,7 +1,12 @@
 # File: A321.globaltech_co2capture.csv
 # Title: Cement CO2 capture rates
 # Units: Unitless
-# Column types: cccnn 
+# Column types: cccnn
 # ----------
 supplysector,subsector,technology,1971,2100
-cement,cement,cement CCS,0.9,0.9
+cement,cement,cement CCS,0.85,0.85
+clinker,clinker,clinker CCS,0.85,0.85
+process heat cement ccs,refined liquids,refined liquids CCS,0.9,0.9
+process heat cement ccs,gas,gas CCS,0.9,0.9
+process heat cement ccs,biomass,biomass CCS,0.9,0.9
+process heat cement ccs,coal,coal CCS,0.9,0.9
