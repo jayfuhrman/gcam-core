@@ -44,7 +44,8 @@ tibble(db_scenario_name = c("GCAM_CORE", paste0("GCAM_SSP", 1:5))) %>%
          db_name = paste0("database_basexdb", db_scenario_name)) ->
   SCENARIO_DB_MAP
 # The Core "GCAM" scenario is really gSSP2
-SCENARIO_DB_MAP[SCENARIO_DB_MAP$ds_scenario_name == "CORE", c("db_scenario_name", "db_name")] <- list("db_scenario_name" = "GCAM", "db_name" = "database_basexdbGCAM")
+SCENARIO_DB_MAP[SCENARIO_DB_MAP$ds_scenario_name == "CORE", c("db_scenario_name", "db_name")] <-
+  list("db_scenario_name" = "GCAM", "db_name" = "database_basexdbGCAM")
 
 # The MI query which will be used to get the new productivity values
 PRODUCTIVITY_QUERY <-

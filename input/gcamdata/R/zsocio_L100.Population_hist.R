@@ -1,32 +1,28 @@
 # Copyright 2019 Battelle Memorial Institute; see the LICENSE file.
 
-#' module_socio_L100.Population_downscale_ctry
+#' module_socio_L100.Population_hist
 #'
-#'  Clean and interpolate both Maddison historical population data (1700-max(UN_HISTORICAL_YEARS)) and SSP population scenarios.
+#'  Clean and interpolate both Maddison historical population data (1700-max(UN_HISTORICAL_YEARS))
 #'
 #' @param command API command to execute
 #' @param ... other optional parameters, depending on command
 #' @return Depends on \code{command}: either a vector of required inputs,
 #' a vector of output names, or (if \code{command} is "MAKE") all
-#' the generated outputs: \code{L100.Pop_thous_ctry_Yh}, \code{L100.Pop_thous_SSP_ctry_Yfut}. The corresponding file in the
-#' original data system was \code{L100.Population_downscale_ctry.R} (socioeconomics level1).
-#' @details (1) Cleans Maddison historical population data and interpolates to country and year (1700-2010). (2) Cleans SSP population scenarios for smooth join with final base year population.
+#' the generated outputs: \code{L100.Pop_thous_ctry_Yh}
+#' @details (1) Cleans Maddison historical population data and interpolates to country and year (1700-2010).
 #' @importFrom assertthat assert_that
-#' @importFrom dplyr bind_rows filter full_join if_else group_by left_join mutate order_by select summarize
-#' @importFrom tidyr complete nesting replace_na
-#' @author STW May 2017
-module_socio_L100.Population_downscale_ctry <- function(command, ...) {
+#' @importFrom dplyr bind_rows filter full_join if_else group_by left_join mutate order_by select summarize bind_rows
+#' @importFrom tidyr complete nesting replace_na spread
+#' @author STW May 2017 XZ 2024
+module_socio_L100.Population_hist <- function(command, ...) {
 
   MODULE_INPUTS <-
     c(FILE = "socioeconomics/POP/iso_ctry_Maddison",
       FILE = "socioeconomics/POP/Maddison_population",
-      FILE = "socioeconomics/SSP/SSP_database_2024",
-      FILE = "socioeconomics/SSP/iso_SSP_regID",
       FILE = "socioeconomics/POP/UN_popTot")
 
   MODULE_OUTPUTS <-
-    c("L100.Pop_thous_ctry_Yh",
-      "L100.Pop_thous_SSP_ctry_Yfut")
+    c("L100.Pop_thous_ctry_Yh")
 
   if(command == driver.DECLARE_INPUTS) {
     return(MODULE_INPUTS)
@@ -36,15 +32,19 @@ module_socio_L100.Population_downscale_ctry <- function(command, ...) {
 
     ## silence package check.
     Country <- value <- Maddison_ctry <- year <- pop <- Downscale_from <- ratio <-
-      year.x <- iso <- pop_scale <- pop2 <- pop.x <- pop.y <- pop_allocate <- X1900 <-
+      iso <- pop_scale <- pop2 <- pop.x <- pop.y <- pop_allocate <- X1900 <-
       X1950 <- X1850 <- X1800 <- X1750 <- X1700 <- pop_ratio <- scg <-
       idn <- mne <- Scenario <- Region <- Sex <- Year <- Value <- MODEL <-
-      VARIABLE <- REGION <- SCENARIO <- UNIT <- scenario <- ratio_iso_ssp <- NULL
+      VARIABLE <- REGION <- SCENARIO <- UNIT <- scenario <- ratio_iso_ssp <-
+      year <- GCAM_region_ID <- . <- country_name <- year.y <- year.x <- NULL
 
     all_data <- list(...)[[1]]
 
     # Load required inputs ----
     get_data_list(all_data, MODULE_INPUTS, strip_attributes = TRUE)
+
+
+    # Historical population by country ----
 
     Maddison_population %>%
       select(-deleteme) %>%
@@ -54,10 +54,6 @@ module_socio_L100.Population_downscale_ctry <- function(command, ...) {
              !is.na(Country)) %>%
       mutate(year = as.integer(year)) ->
       Maddison_population
-
-    # ===================================================
-
-    ## (1) Historical population by country
 
     # First clean up Maddison raw data -- NOTE: Maddison data are used to develop population ratios relative to 1950 to combine with UN data from 1950 onward
     pop_thous_ctry_reg <- Maddison_population %>%
@@ -237,106 +233,31 @@ module_socio_L100.Population_downscale_ctry <- function(command, ...) {
 
     if ( dim(value_NAs)[1] != 0 ) {
       paste0("Warning: There are ", nrow(value_NAs), " NAs in the dataframe. These values will be interpolated or extrapolated.")
+
+      # Interpolate and/or extrapolate to fill NAs
+      # If there are no NAs, this will not do anything but change the dataframe name
+      L100.Pop_thous_ctry_UNpopYh_NAs %>%
+        group_by(iso) %>%
+        mutate(value = approx_fun(year, value, rule = 2)) %>%
+        ungroup() ->
+        L100.Pop_thous_ctry_Yh
+      # L100.Pop_thous_ctry_Yh (or L100.Pop_thous_ctry_UNpopYh) - NOTE: _popYh indicates data set is for historical(h), population(pop) years (Y).
+      # This distinction  is important because the population data is updated to a more recent year than the GCAM base year.
+      # Meaning the final Historical Year output will be a subset (out to the max base year) of the Historical Population Years
     }
 
-    # Interpolate and/or extrapolate to fill NAs
-    # If there are no NAs, this will not do anything but change the dataframe name
-    L100.Pop_thous_ctry_UNpopYh_NAs %>%
-      group_by(iso) %>%
-      mutate(value = approx_fun(year, value, rule = 2)) %>%
-      ungroup() ->
-      L100.Pop_thous_ctry_UNpopYh
-    # L100.Pop_thous_ctry_UNpopYh - NOTE: _popYh indicates data set is for historical(h), population(pop) years (Y).
-    # This distinction  is important because the population data is updated to a more recent year than the GCAM base year.
-    # Meaning the final Historical Year output will be a subset (out to the max base year) of the Historical Population Years
-
-    ## (2) SSP population projections by country
-
-    # First, extract the final historical population from UN
-    pop_final_hist <- filter(L100.Pop_thous_ctry_Yh, year == socioeconomics.FINAL_HIST_YEAR) %>%
-      rename(pop_final_hist = value) %>%
-      select(-year)
-
-    # Second, generate ratios of future population to base year for all SSPs. The ratios will be applied to the historical year populations so there are no jumps/inconsistencies.
-
-    # use the IIASA-WiC POP model from the SSP database; IIASA-WiC is the official SSP population data set
-    SSP_database_2024 %>%
-      # make variable names lower case
-      dplyr::rename_all(tolower) %>%
-      # remove aggregated regions
-      filter(!grepl("\\(|World", region)) %>%
-      filter(model == "IIASA-WiC POP 2023", variable == "Population") %>%
-      left_join_error_no_match(
-        iso_SSP_regID %>% distinct(iso, region = ssp_country_name),
-        by = "region") %>%
-      gather_years() ->
-      SSP_pop_0
-
-    # Using the Historical Reference scenario to fill history of SSPs
-    SSP_pop_0 %>%
-      filter(scenario != "Historical Reference") %>%
-      left_join(
-        SSP_pop_0 %>% filter(scenario == "Historical Reference") %>% select(-scenario) %>%
-          rename(hist = value),
-        by = c("model", "region", "variable", "unit", "iso", "year")
-      ) %>%
-      # new ssp data starts 2020 (socioeconomics.SSP_DB_BASEYEAR)
-      mutate(value = if_else(year < socioeconomics.SSP_DB_BASEYEAR, hist, value)) %>%
-      select(iso, scenario, year, pop = value) ->
-      L100.Pop_thous_SSP_ctry_Yfut_0
-
-    L100.Pop_thous_SSP_ctry_Yfut <-
-      L100.Pop_thous_SSP_ctry_Yfut_0 %>%
-      # need to have socioeconomics.SSP_DB_BASEYEAR in the data as the initial point for interpolation
-      # otherwise 2021:2024 could be the same with 2025 (rule = 2 below)
-      complete(nesting(scenario, iso),
-               year = c(socioeconomics.SSP_DB_BASEYEAR:max(FUTURE_YEARS))) %>%
-      filter(year %in% c(socioeconomics.SSP_DB_BASEYEAR:max(FUTURE_YEARS))) %>%
-      group_by(scenario, iso) %>%
-      # Data is in five year intervals, so interpolate so get data for the base-year before calculating ratios
-      mutate(pop = approx_fun(year, pop, rule = 2),
-             ratio_iso_ssp = pop / pop[year == socioeconomics.FINAL_HIST_YEAR]) %>%  # Calculate population ratios to final historical year (2010), no units
-      select(-pop) %>%
-      filter(year >= socioeconomics.FINAL_HIST_YEAR) %>%
-      # Third, project country population values using SSP ratios and final historical year populations.
-      # Not all countries in the UN data are in SSP data. Create complete tibble with all UN countries & SSP years.
-      ungroup() %>%
-      complete(scenario = unique(scenario),
-               year = unique(year),
-               iso = unique(L100.Pop_thous_ctry_Yh$iso)) %>%
-      # For these countries, the ratio will be set to 1 (per the old data system).
-      replace_na(list(ratio_iso_ssp = 1)) %>%
-      ## Note: In the old data system, Taiwan is in this category and has constant population. Issue has been opened to deal with this later. ##
-      right_join(pop_final_hist, by = "iso") %>% # Join with final historic period population
-      mutate(value = pop_final_hist * ratio_iso_ssp) %>%  # Units are 1000 persons (UN 2010 value is in thousands)
-      filter(year != socioeconomics.FINAL_HIST_YEAR) %>% # Keep only SSP future years
-      select(-pop_final_hist, -ratio_iso_ssp)
-
-
-
-    # ===================================================
-
-    # Produce outputs
+    # Produce outputs ----
     L100.Pop_thous_ctry_Yh %>%
       add_title("Population by country, 1700-2010") %>%
       add_units("thousand") %>%
       add_comments("Maddison population data cleaned to develop complete data for all years, (dis)aggregated to modern country boundaries") %>%
       add_legacy_name("L100.Pop_thous_ctry_Yh") %>%
-      add_precursors("socioeconomics/POP/iso_ctry_Maddison",
-                     "socioeconomics/POP/Maddison_population") ->
+      add_precursors(MODULE_INPUTS) ->
       L100.Pop_thous_ctry_Yh
 
-    L100.Pop_thous_SSP_ctry_Yfut %>%
-      add_title("SSP population projections by country, 2010-2100") %>%
-      add_units("thousand") %>%
-      add_comments("Future population calculated as final historical year (2010) population times ratio of SSP future years to SSP 2010") %>%
-      add_legacy_name("L100.Pop_thous_SSP_ctry_Yfut") %>%
-      add_precursors("socioeconomics/SSP/SSP_database_2024",
-                     "socioeconomics/SSP/iso_SSP_regID",
-                     "socioeconomics/POP/UN_popTot") ->
-      L100.Pop_thous_SSP_ctry_Yfut
 
     return_data(MODULE_OUTPUTS)
+
   } else {
     stop("Unknown command")
   }
