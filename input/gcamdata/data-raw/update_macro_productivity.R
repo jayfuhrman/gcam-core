@@ -38,7 +38,7 @@ library(readr)
 # - The scenario name in the DB
 # - The path and name of the database to find the scenario
 # And map that to the socioeconomic scenario names used in gcamdata
-tibble(db_scenario_name = c("GCAM_CORE", paste0("GCAM_SSP", 1:5), "GCAM3")) %>%
+tibble(db_scenario_name = c("GCAM_CORE", paste0("GCAM_SSP", 1:5))) %>%
   mutate(ds_scenario_name = gsub('GCAM_', '', db_scenario_name),
          db_path = "../../output",
          db_name = paste0("database_basexdb", db_scenario_name)) ->
