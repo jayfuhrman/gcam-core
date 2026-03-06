@@ -28,6 +28,7 @@ module_energy_cement_xml <- function(command, ...) {
              "L2321.GlobalTechSCurve_en",
              "L2321.GlobalTechProfitShutdown_en",
              "L2321.StubTechProd_cement",
+			       "L2321.GlobalTechCSeq_ind",
              "L2321.StubTechCalInput_cement_heat",
              "L2321.StubTechCoef_cement",
              "L2321.PerCapitaBased_cement",
@@ -61,7 +62,7 @@ module_energy_cement_xml <- function(command, ...) {
     L2321.PerCapitaBased_cement <- get_data(all_data, "L2321.PerCapitaBased_cement")
     L2321.BaseService_cement <- get_data(all_data, "L2321.BaseService_cement")
     L2321.PriceElasticity_cement <- get_data(all_data, "L2321.PriceElasticity_cement")
-
+    L2321.GlobalTechCSeq_ind <-  get_data(all_data, "L2321.GlobalTechCSeq_ind")
     # ===================================================
 
     # Produce outputs
@@ -88,6 +89,7 @@ module_energy_cement_xml <- function(command, ...) {
       add_xml_data(L2321.PerCapitaBased_cement, "PerCapitaBased") %>%
       add_xml_data(L2321.BaseService_cement, "BaseService") %>%
       add_xml_data(L2321.PriceElasticity_cement, "PriceElasticity") %>%
+      add_xml_data(L2321.GlobalTechCSeq_ind, "GlobalTechCSeq") %>%
       add_precursors("L2321.Supplysector_cement", "L2321.FinalEnergyKeyword_cement", "L2321.SubsectorLogit_cement",
                      # "L2321.SubsectorShrwt_cement",
                      "L2321.SubsectorShrwtFllt_cement",
@@ -96,7 +98,7 @@ module_energy_cement_xml <- function(command, ...) {
                      "L2321.StubTech_cement","L2321.GlobalTechSCurve_en", "L2321.GlobalTechProfitShutdown_en",
                      "L2321.GlobalTechShrwt_cement", "L2321.GlobalTechCoef_cement", "L2321.GlobalTechCost_cement",
                      "L2321.GlobalTechCapture_cement", "L2321.StubTechProd_cement", "L2321.StubTechCalInput_cement_heat",
-                     "L2321.StubTechCoef_cement", "L2321.PerCapitaBased_cement", "L2321.BaseService_cement",
+                     "L2321.StubTechCoef_cement", "L2321.PerCapitaBased_cement", "L2321.BaseService_cement", "L2321.GlobalTechCSeq_ind",
                      "L2321.PriceElasticity_cement", "L2321.GlobalTechTrackCapital_cement") ->
       cement.xml
 

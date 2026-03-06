@@ -38,6 +38,7 @@ module_energy_L2321.cement <- function(command, ...) {
       FILE = "energy/A321.demand",
       FILE = "energy/A321.globaltech_retirement",
       FILE = "socioeconomics/A321.inc_elas_output",
+      FILE = "energy/A321.nonenergy_Cseq",
       "L1321.out_Mt_R_cement_Yh",
       "L1321.IO_GJkg_R_cement_F_Yh",
       "L1321.in_EJ_R_cement_F_Y",
@@ -66,7 +67,8 @@ module_energy_L2321.cement <- function(command, ...) {
       "L2321.PerCapitaBased_cement",
       "L2321.BaseService_cement",
       "L2321.PriceElasticity_cement",
-      "L2321.IncomeElasticity_cement_Scen")
+      "L2321.IncomeElasticity_cement_Scen",
+      "L2321.GlobalTechCSeq_ind")
 
   if(command == driver.DECLARE_INPUTS) {
     return(MODULE_INPUTS)
@@ -193,6 +195,7 @@ module_energy_L2321.cement <- function(command, ...) {
       L2321.GlobalTechCost_cement # intermediate tibble
 
     # Note: adjusting non-energy costs of technologies with CCS to include CO2 capture costs
+    # update, CCS non-energy cost is now reflected in .csv file
     #       The additional CCS-related non-energy costs are not included in the global technology assessment.
     #       Calculate here in two steps:
     #       (1) calculate the additional CCS costs per unit of carbon produced in 1975$
@@ -229,11 +232,18 @@ module_energy_L2321.cement <- function(command, ...) {
       mutate(input.cost = round(input.cost, energy.DIGITS_COST)) ->
       L2321.GlobalTechCost_cement
 
+    A321.nonenergy_Cseq %>%
+      repeat_add_columns(tibble(year = c(MODEL_BASE_YEARS, MODEL_FUTURE_YEARS))) %>%
+      rename(sector.name = supplysector,
+             subsector.name = subsector) %>%
+      select(LEVEL2_DATA_NAMES[["GlobalTechCSeq"]]) ->
+      L2321.GlobalTechCSeq_ind
+
     FCR <- (socioeconomics.DEFAULT_INTEREST_RATE * (1+socioeconomics.DEFAULT_INTEREST_RATE)^socioeconomics.INDUSTRY_CAP_PAYMENTS) /
       ((1+socioeconomics.DEFAULT_INTEREST_RATE)^socioeconomics.INDUSTRY_CAP_PAYMENTS -1)
     L2321.GlobalTechCost_cement %>%
       # we need to track investments in "energy" only, cement is technically materials
-      filter(sector.name == "process heat cement") %>%
+      filter(sector.name == "process heat cement" | sector.name == "process heat cement ccs") %>%
       mutate(capital.coef = socioeconomics.INDUSTRY_CAPITAL_RATIO / FCR,
              tracking.market = socioeconomics.EN_CAPITAL_MARKET_NAME,
              # vintaging is active in cement so no need for depreciation
@@ -253,27 +263,34 @@ module_energy_L2321.cement <- function(command, ...) {
       filter(year %in% MODEL_BASE_YEARS) %>%
       mutate(calOutputValue = round(value, energy.DIGITS_CALOUTPUT)) %>%
       left_join_error_no_match(GCAM_region_names, by = "GCAM_region_ID") %>%
-      left_join_error_no_match(calibrated_techs_export, by = "sector") %>%
-      mutate(stub.technology = technology,
+      left_join_error_no_match(calibrated_techs_export, by = c("sector"="supplysector","subsector","technology")) %>%
+      mutate(supplysector = sector,
+			       stub.technology = technology,
              share.weight.year = year,
              subs.share.weight = if_else(calOutputValue > 0, 1, 0),
              tech.share.weight = subs.share.weight) %>%
-      select(LEVEL2_DATA_NAMES[["StubTechProd"]]) ->
+      arrange(region,supplysector,subsector,stub.technology,year) %>%
+      group_by(region,supplysector,subsector,stub.technology) %>%
+      fill(calOutputValue, subs.share.weight, tech.share.weight, .direction = "down") %>%
+      ungroup() %>%
+      select(LEVEL2_DATA_NAMES[["StubTechProd"]])  ->
       L2321.StubTechProd_cement
 
     # L2321.StubTechCoef_cement: region-specific coefficients of cement production technologies
     # Take this as a given in all years for which data is available
     calibrated_techs %>%
       select(sector, fuel, supplysector, subsector, technology, minicam.energy.input) %>%
-      distinct ->
+      distinct %>%
+      filter(!is.na(minicam.energy.input))->
       calibrated_techs_export # temporary tibble
 
     L1321.IO_GJkg_R_cement_F_Yh %>%
       filter(year %in% HISTORICAL_YEARS[HISTORICAL_YEARS %in% c(MODEL_BASE_YEARS, MODEL_FUTURE_YEARS)]) %>%
       mutate(coefficient = round(value, energy.DIGITS_COEFFICIENT)) %>%
       left_join_error_no_match(GCAM_region_names, by = "GCAM_region_ID") %>%
-      left_join_error_no_match(calibrated_techs_export, by = c("sector", "fuel")) %>%
-      mutate(stub.technology = technology,
+      left_join_error_no_match(calibrated_techs_export, by = c("sector"="supplysector", "subsector","technology","fuel")) %>%
+      mutate(supplysector = sector,
+			       stub.technology = technology,
              market.name = region) %>%
       select(LEVEL2_DATA_NAMES[["StubTechCoef"]]) ->
       L2321.StubTechCoef_cement
@@ -281,15 +298,17 @@ module_energy_L2321.cement <- function(command, ...) {
     # L2321.StubTechCalInput_cement_heat: calibrated cement production
     calibrated_techs %>%
       select(sector, fuel, supplysector, subsector, technology, minicam.energy.input) %>%
-      distinct ->
+      distinct %>%
+      filter(!is.na(minicam.energy.input))->
       calibrated_techs_export # temporary tibble
 
     L1321.in_EJ_R_cement_F_Y %>%
       filter(year %in% MODEL_BASE_YEARS) %>%
       mutate(calibrated.value = round(value, energy.DIGITS_CALOUTPUT)) %>%
       left_join_error_no_match(GCAM_region_names, by = "GCAM_region_ID") %>%
-      left_join_error_no_match(calibrated_techs_export, by = c("sector", "fuel")) %>%
+      left_join_error_no_match(calibrated_techs_export, by = c("sector"="supplysector", "subsector","technology","fuel")) %>%
       # This table should only be the technologies for producing heat - drop the electricity inputs to the cement production technology
+      rename(supplysector = sector) %>%
       filter(!(supplysector %in% L2321.StubTechCoef_cement[["supplysector"]])) %>%
       mutate(stub.technology = technology,
              share.weight.year = year,
@@ -305,8 +324,15 @@ module_energy_L2321.cement <- function(command, ...) {
 
     # L2321.BaseService_cement: base-year service output of cement
     L2321.StubTechProd_cement %>%
-      select(region, year, base.service = calOutputValue) %>%
-      mutate(energy.final.demand = A321.demand[["energy.final.demand"]]) ->
+      filter(supplysector == "cement") %>%
+      group_by(region,year,supplysector) %>%
+      summarise(base.service = sum(calOutputValue)) %>%
+      ungroup() %>%
+      select(region, year, base.service, energy.final.demand = supplysector) %>%
+      arrange(region, energy.final.demand, year) %>%
+      group_by(region, energy.final.demand) %>%
+      tidyr::fill(base.service, .direction = "down") %>%   # forward extrapolation
+      ungroup() ->
       L2321.BaseService_cement
 
 
@@ -524,6 +550,14 @@ module_energy_L2321.cement <- function(command, ...) {
       add_comments("Track capital investments for purposes of macro economic calculations") %>%
       same_precursors_as(L2321.GlobalTechCost_cement) ->
       L2321.GlobalTechTrackCapital_cement
+
+    L2321.GlobalTechCSeq_ind %>%
+      add_title("CO2 capture fractions from global electricity generation technologies") %>%
+      add_units("Unitless") %>%
+      add_comments("Remove fractions from A321.nonenergy_Cseq are expanded into all model years") %>%
+      add_legacy_name("L2321.GlobalTechCSeq_ind") %>%
+      add_precursors("energy/A321.nonenergy_Cseq") ->
+      L2321.GlobalTechCSeq_ind
 
     L2321.GlobalTechCapture_cement %>%
       add_title("CO2 capture fractions from global cement production technologies with CCS") %>%
