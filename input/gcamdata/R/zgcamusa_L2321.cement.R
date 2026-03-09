@@ -181,16 +181,22 @@ module_gcamusa_L2321.cement <- function(command, ...) {
     # input table.
     calibrated_techs %>%
       # We are only interested in the technology IDs where calibration = output.
-      filter(calibration == "output") %>%
-      select(sector, calibration, supplysector, subsector, technology) %>%
+      filter(calibration == "output",
+             supplysector %in% c("cement","clinker")) %>%
+      select(sector=supplysector, calibration, supplysector) %>%
       distinct ->
       calibrated_techs_cement_sector_info
 
     # Combine the cement sector information found above and the stub-technology calibrated
     # cement production into a single data frame.
     L2321.StubTechProd_cement_USA %>%
-      left_join_error_no_match(calibrated_techs_cement_sector_info, by = "sector") %>%
-      select(state, sector, calOutputValue, year, region, supplysector, subsector, technology) ->
+      arrange(state,sector,region,year) %>%
+      group_by(state,sector,region) %>%
+      fill(calOutputValue, .direction = "down") %>%
+      ungroup() %>%
+      left_join_error_no_match(calibrated_techs_cement_sector_info, by = c("sector")) %>%
+      rename(supplysector = sector) %>%
+      select(state, calOutputValue, year, region, supplysector, subsector, technology) ->
       L2321.StubTechProd_cement_USA
 
     # Add share weight information to the state cement production data frame and format.
@@ -210,7 +216,8 @@ module_gcamusa_L2321.cement <- function(command, ...) {
     # technology, and minicam.energy.input combinations. This data frame will be used to
     # add sector information to input-ouput coefficients for state cement production.
     calibrated_techs %>%
-      select(sector, fuel, supplysector, subsector, technology, minicam.energy.input) %>%
+      filter(supplysector %in% c("cement","clinker")) %>%
+      select(sector=supplysector, fuel) %>%
       distinct ->
       cement_production_technologies
 
@@ -246,9 +253,13 @@ module_gcamusa_L2321.cement <- function(command, ...) {
     # Combine the future global technology coefficients with the state energy input-output
     # coefficients by supplysector / subsector / technology / minicam.energy.input combinations.
     L2321.IO_GJkg_state_cement_F_Yh %>%
-      spread(year, value) %>%
-      left_join_error_no_match(L2321.globaltech_coef_yfut,
-                               by = c("supplysector", "subsector", "technology", "minicam.energy.input")) ->
+      pivot_wider(
+        names_from = year,
+        values_from = value,
+        values_fn = sum
+      ) %>%
+      left_join(L2321.globaltech_coef_yfut,
+                               by = c("sector"="supplysector")) ->
       IO_and_globaltech
 
     # Format the the data frame and round the number of digits.
@@ -271,7 +282,7 @@ module_gcamusa_L2321.cement <- function(command, ...) {
     # input-output data frame, add model years and minicam information in preparation
     # for the left join in the next step.
     L2321.StubTech_cement_USA  %>%
-      filter(supplysector %in% L2321.IO_GJkg_state_cement_F_Yh_complete$supplysector) %>%
+      filter(supplysector %in% L2321.IO_GJkg_state_cement_F_Yh_complete$sector) %>%
       repeat_add_columns(tibble(year = MODEL_YEARS)) %>%
       repeat_add_columns(minicam_to_add) ->
       L2321.StubTechCoef_cement_USA
@@ -280,8 +291,8 @@ module_gcamusa_L2321.cement <- function(command, ...) {
     # region / supplysector/ minicam.energy.input/ year.
     L2321.StubTechCoef_cement_USA %>%
       left_join(L2321.IO_GJkg_state_cement_F_Yh_complete %>%
-                  select(coefficient, region = state, supplysector, minicam.energy.input, year),
-                by =c("region", "supplysector", "minicam.energy.input", "year")) ->
+                  select(coefficient, region = state, sector, minicam.energy.input, year),
+                by =c("region", "supplysector" = "sector", "minicam.energy.input", "year")) ->
       L2321.StubTechCoef_cement_USA
 
     # Add market information: default is USA. replace for fuels with grid region level markets and state markets.
@@ -307,7 +318,11 @@ module_gcamusa_L2321.cement <- function(command, ...) {
     L1321.in_EJ_state_cement_F_Y %>%
       filter(year %in% MODEL_BASE_YEARS) %>%
       mutate(calibrated.value = signif(value, gcamusa.DIGITS_CALOUTPUT), region = state) %>%
-      select(-value)  ->
+      select(-value)  %>%
+      arrange(state,sector,subsector,technology,fuel,region,year) %>%
+      group_by(state,sector,subsector,technology,fuel,region) %>%
+      fill(calibrated.value, .direction = "down") %>%
+      ungroup() ->
       L2321.StubTechCalInput_cement_heat_USA
 
     # Add supplysector / subsector / technology / minicam.energy.input information
@@ -315,8 +330,10 @@ module_gcamusa_L2321.cement <- function(command, ...) {
     # data frame.
     L2321.StubTechCalInput_cement_heat_USA %>%
       left_join_error_no_match(calibrated_techs %>%
+                                 filter(sector %in% c("cement")) %>%
+                                 mutate(sector = supplysector) %>%
                                  select(sector, fuel, supplysector, subsector, technology, minicam.energy.input),
-                               by = c("sector", "fuel")) ->
+                               by = c("sector", "subsector","technology","fuel")) ->
       L2321.StubTechCalInput_cement_heat_USA
 
     # Since this table should only contain the technologies for producing heat, remove

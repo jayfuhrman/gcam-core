@@ -83,7 +83,7 @@ module_gcamusa_L1321.cement <- function(command, ...) {
       repeat_add_columns(tibble(state = state_list)) %>% # Expanding the table to the state-level
       left_join_error_no_match(Cement_share_state, by = "state") %>% # Adding the state share we calculated above
       mutate(value = value * value_share) %>% # Multiplying the national amount with the state share
-      select(state, sector, year, value) ->
+      select(state, sector, subsector, technology, year, value) ->
       L1321.out_Mt_state_cement_Yh
 
     # This section is downscaling the national input/output (IO) coefficients to the state level
@@ -104,7 +104,7 @@ module_gcamusa_L1321.cement <- function(command, ...) {
       repeat_add_columns(tibble(state = state_list)) %>%
       left_join_error_no_match(Cement_share_state, by = "state") %>%
       mutate(value = value_share * value) %>%
-      select(state, sector, fuel, year, value) ->
+      select(state, sector, subsector, technology, fuel, year, value) ->
       L1321.in_EJ_state_cement_F_Y
 
     # ===================================================
