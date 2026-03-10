@@ -58,7 +58,10 @@ module_gcamusa_L126.Gas_ElecTD <- function(command, ...) {
                                       L132.in_EJ_state_indchp_F, L132.in_EJ_state_indfeed_F,
                                       L132.in_EJ_state_indnochp_F, L1321.in_EJ_state_cement_F_Y,
                                       L1322.in_EJ_state_Fert_Yh, L142.in_EJ_state_bld_F,
-                                      L154.in_EJ_state_trn_F)
+                                      L154.in_EJ_state_trn_F) %>%
+      group_by(state,sector,fuel,year) %>%
+      summarize(value=sum(value)) %>%
+      ungroup()
 
     # Final energy by fuel
     L126.in_EJ_state_F <- L126.in_EJ_state_S_F %>%
@@ -71,10 +74,15 @@ module_gcamusa_L126.Gas_ElecTD <- function(command, ...) {
     L126.in_EJ_state_elec <- L126.in_EJ_state_F %>%
       filter(fuel == "electricity")
 
+
     # Deriving electricity T&D output as the sum of all tracked demands of electricity
     L126.out_EJ_state_td_elec <- L126.in_EJ_state_elec %>%
       mutate(sector = "elect_td") %>%
-      select(state, sector, fuel, year, value)
+      select(state, sector, fuel, year, value) %>%
+      arrange(state,sector,fuel,year) %>%
+      group_by(state,sector,fuel) %>%
+      fill(value, .direction = "down") %>%
+      ungroup()
 
     # Assigning all states the national average T&D coefficients from L126.IO_R_electd_F_Yh
     L126.in_EJ_state_td_elec <- L126.out_EJ_state_td_elec %>%
