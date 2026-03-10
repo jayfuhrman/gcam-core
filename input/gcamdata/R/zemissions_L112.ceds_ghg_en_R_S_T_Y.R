@@ -612,7 +612,7 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
 
     # Splits energy balances out for industry sector and maps to final GCAM sectors
     L101.in_EJ_R_en_Si_F_Yh %>%
-      left_join(calibrated_techs %>% bind_rows(calibrated_outresources) %>% select(-secondary.output), by = c("sector", "fuel", "technology")) %>%
+      left_join(calibrated_techs %>% bind_rows(calibrated_outresources) %>% select(-secondary.output,-subsector), by = c("sector", "fuel", "technology")) %>%
       # Replace subsector with fuel to preserve both in dataframe. Subsector will be added back later in L201
       mutate(subsector = if_else(sector == "iron and steel", fuel, subsector)) %>%
       rename(stub.technology = technology) %>%
@@ -622,7 +622,8 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
 
     # Splits energy balances out for building sector and maps to final GCAM sectors
     L101.in_EJ_R_en_Si_F_Yh %>% filter(grepl("resid",sector)) %>%
-      bind_rows(L101.in_EJ_R_en_Si_F_Yh %>% filter(grepl("comm",sector)) ) %>%
+      bind_rows(L101.in_EJ_R_en_Si_F_Yh %>% filter(grepl("comm",sector))) %>%
+      select(-subsector) %>%
       left_join_error_no_match(calibrated_techs_bld_det %>%
                   select(sector, fuel, service, supplysector, subsector, technology) %>%
                   rename(stub.technology = technology), by = c("sector" = "service", "fuel")) %>%

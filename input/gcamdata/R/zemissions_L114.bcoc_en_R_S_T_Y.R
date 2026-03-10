@@ -118,6 +118,7 @@ module_emissions_L114.bcoc_en_R_S_T_Y <- function(command, ...) {
     BCOC_scaled_emissions <- BCOC_unscaled_emissions %>%
       left_join_error_no_match(BCOC_emissions_scaler, by = c("GCAM_region_ID", "Non.CO2", "RCP_agg_sector")) %>%
       mutate(input.emissions = unscaled_emissions * scaler) %>%
+      select(-subsector) %>%
       # Join in the supplysector/subsector/technology from the mapping table
       left_join_keep_first_only(select(GCAM_sector_tech, sector, fuel, technology, supplysector, subsector, stub.technology),
                                 by = c("sector", "fuel", "technology")) %>%
@@ -129,6 +130,7 @@ module_emissions_L114.bcoc_en_R_S_T_Y <- function(command, ...) {
     # Compile energy consumption by the corresponding technologies in order to compute emissions coefficients
     BCOC_drivers_GCAMtech <- BCOC_drivers %>%
       filter(Non.CO2 == "BC") %>% # we only need one of the two
+      select(-subsector) %>%
       left_join_keep_first_only(select(GCAM_sector_tech, sector, fuel, technology, supplysector, subsector, stub.technology),
                                 by = c("sector", "fuel", "technology")) %>%
       group_by(GCAM_region_ID, supplysector, subsector, stub.technology) %>%
