@@ -269,9 +269,6 @@ module_energy_L2321.cement <- function(command, ...) {
              share.weight.year = year,
              subs.share.weight = if_else(calOutputValue > 0, 1, 0),
              tech.share.weight = subs.share.weight) %>%
-      arrange(region,supplysector,subsector,stub.technology,year) %>%
-      group_by(region,supplysector,subsector,stub.technology) %>%
-      fill(calOutputValue, subs.share.weight, tech.share.weight, .direction = "down") %>%
       ungroup() %>%
       select(LEVEL2_DATA_NAMES[["StubTechProd"]])  ->
       L2321.StubTechProd_cement
@@ -329,9 +326,6 @@ module_energy_L2321.cement <- function(command, ...) {
       summarise(base.service = sum(calOutputValue)) %>%
       ungroup() %>%
       select(region, year, base.service, energy.final.demand = supplysector) %>%
-      arrange(region, energy.final.demand, year) %>%
-      group_by(region, energy.final.demand) %>%
-      tidyr::fill(base.service, .direction = "down") %>%   # forward extrapolation
       ungroup() ->
       L2321.BaseService_cement
 

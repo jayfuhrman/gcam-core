@@ -232,6 +232,13 @@ module_energy_L1321.cement <- function(command, ...) {
       select(GCAM_region_ID, sector, year, value) %>%
       ungroup() -> L1321.out_Mt_R_cement_Yh
 
+    cement_mat_comp <- cement_mat_comp %>%
+      group_by(GCAM_region_ID) %>%
+      complete(year = MODEL_BASE_YEARS) %>%
+      fill(where(is.numeric), .direction = "down") %>%
+      ungroup() %>%
+      arrange(GCAM_region_ID,year)
+
     L1321.out_Mt_R_cement_Yh %>%
       mutate(subsector = "cement") %>%
       #left_join(cement_clinker_region, by = c("GCAM_region_ID", "year")) %>%
@@ -664,7 +671,7 @@ if(! length(ADDITIONAL_YEARS) ){
     L1321.out_Mt_R_cement_Yh %>%
       rename(output = value) %>%
       filter(sector == "cement") %>%
-      left_join(L1321.IO_GJkg_R_cement_F_Yh, by = c("GCAM_region_ID","year","sector","subsector","technology")) %>%
+      left_join(L1321.IO_GJkg_R_cement_F_Yh %>% filter(sector == "cement"), by = c("GCAM_region_ID","year","sector","subsector","technology")) %>%
       mutate(value = value*output) %>%
       select(-output) ->
       L1321.in_EJ_R_cement_F_Y_clinker
@@ -675,7 +682,8 @@ if(! length(ADDITIONAL_YEARS) ){
       bind_rows(L1321.in_EJ_R_cement_F_Y_heat_fuel) %>%
       bind_rows(L1321.in_Cement_Mt_R_limestone_Yh %>%
       mutate(sector = "clinker", subsector = "clinker", technology = "clinker", fuel = "limestone") %>%
-        rename(value = in.value)) ->
+        rename(value = in.value)) %>%
+      select(GCAM_region_ID,sector,subsector,technology,year,fuel,value) ->
       L1321.in_EJ_R_cement_F_Y
 
     # ---------------------------------------------------------------------------------------------------------------------
