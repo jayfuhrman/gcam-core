@@ -325,8 +325,7 @@ module_energy_L2321.cement <- function(command, ...) {
       group_by(region,year,supplysector) %>%
       summarise(base.service = sum(calOutputValue)) %>%
       ungroup() %>%
-      select(region, year, base.service, energy.final.demand = supplysector) %>%
-      ungroup() ->
+      select(region, year, base.service, energy.final.demand = supplysector) ->
       L2321.BaseService_cement
 
 
