@@ -221,13 +221,17 @@ module_energy_cstorage_variations_xml <- function(command, ...) {
 
     # --- build cost XMLs ---
     for(i in seq_along(cost_fnames)) {
+
+      RsrcCurvesExtCost_i <- get_data(all_data, cost_df_names[[i]])
+
       create_xml(cost_fnames[[i]]) %>%
         add_node_equiv_xml("subresource") %>%
         add_node_equiv_xml("technology") %>%
-        add_xml_data(get_data(all_data, cost_df_names[[i]]), "RsrcCurvesExtCost") %>%
+        add_xml_data(RsrcCurvesExtCost_i, "RsrcCurvesExtCost") %>%
         add_precursors(cost_df_names[[i]]) ->
         y
       assign(cost_fnames[[i]], y)
+
     }
 
     # return all outputs explicitly
