@@ -159,11 +159,12 @@ module_energy_cstorage_variations_xml <- function(command, ...) {
           add_xml_data(ResTechShrwt_i, "ResTechShrwt") %>%
           add_xml_data(RsrcCurvesAvail_i, "RsrcCurvesAvail") %>%
           add_precursors(vol_df_names[[i]],
-                       "ResSubresourceProdLifetime",
-                       "ResReserveTechDeclinePhase",
-                       "ResReserveTechProfitShutdown",
-                       "ResReserveTechLifetime",
-                       "ResReserveTechInvestmentInput",
+                       "common/GCAM_region_names",
+                       "L261.ResSubresourceProdLifetime",
+                       "L261.ResReserveTechDeclinePhase",
+                       "L261.ResReserveTechProfitShutdown",
+                       "L261.ResReserveTechLifetime",
+                       "L261.ResReserveTechInvestmentInput",
                        "L261.Rsrc",
                        "L261.ResTechShrwt_C") ->
         x
@@ -204,11 +205,12 @@ module_energy_cstorage_variations_xml <- function(command, ...) {
           add_xml_data(ResTechShrwt_i, "ResTechShrwt") %>%
           add_xml_data(RsrcCurvesAvail_i, "RsrcCurvesAvail") %>%
           add_precursors(vol_df_names[[i]],
-                         "ResSubresourceProdLifetime",
-                         "ResReserveTechDeclinePhase",
-                         "ResReserveTechProfitShutdown",
-                         "ResReserveTechLifetime",
-                         "ResReserveTechInvestmentInput",
+                         "common/GCAM_region_names",
+                         "L261.ResSubresourceProdLifetime",
+                         "L261.ResReserveTechDeclinePhase",
+                         "L261.ResReserveTechProfitShutdown",
+                         "L261.ResReserveTechLifetime",
+                         "L261.ResReserveTechInvestmentInput",
                          "L261.Rsrc",
                          "L261.ResTechShrwt_C") ->
           x
