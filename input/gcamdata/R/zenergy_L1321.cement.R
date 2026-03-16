@@ -234,10 +234,15 @@ module_energy_L1321.cement <- function(command, ...) {
 
     cement_mat_comp <- cement_mat_comp %>%
       group_by(GCAM_region_ID) %>%
-      complete(year = MODEL_BASE_YEARS) %>%
+      complete(year = c(min(year):max(MODEL_BASE_YEARS))) %>%
       fill(where(is.numeric), .direction = "down") %>%
       ungroup() %>%
       arrange(GCAM_region_ID,year)
+
+    # Guard against shares adding up to more or less than 1 due to rounding, which could cause calibration issues
+    share_cols <- setdiff(names(cement_mat_comp), c("GCAM_region_ID", "year"))
+
+    cement_mat_comp[share_cols] <- cement_mat_comp[share_cols] / rowSums(cement_mat_comp[share_cols])
 
     L1321.out_Mt_R_cement_Yh %>%
       mutate(subsector = "cement") %>%
@@ -258,10 +263,6 @@ module_energy_L1321.cement <- function(command, ...) {
 
     #calculate clinker production overtime by multiplying cement output with regional clinker ratio
     L1321.out_Mt_R_cement_Yh_2 %>%
-      arrange(GCAM_region_ID, technology, year) %>%
-      group_by(GCAM_region_ID, technology) %>%
-      tidyr::fill(value, .direction = "down") %>%   # forward extrapolation
-      ungroup() %>%
       mutate(value = ifelse(technology == "cement", value*0.95,
                             ifelse(technology == "cement SCMGBFS",value*0.3,
                                    ifelse(technology == "cement SCMFA",value*0.6,value*0.8)))) %>%
