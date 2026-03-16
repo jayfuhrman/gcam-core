@@ -3,7 +3,6 @@
 # Units: 1975$/kg for supplysector cement; 1975$/GJ for supplysector process heat cement
 # Column types: ccccnnnnnnn
 # ----------
-supplysector,subsector,technology,minicam.non.energy.input,1971,2020,2025,2030,2040,2050,2100
 supplysector,subsector,technology,minicam.non.energy.input,1971,2021,2025,2030,2040,2050,2100
 process heat cement,biomass,biomass,non-energy,3.838199279,3.838199279,3.838199279,3.838199279,3.838199279,3.838199279,3.838199279
 process heat cement,biomass,biomass CCS,non-energy,6.827103624,6.827103624,6.827103624,6.827103624,6.827103624,6.827103624,6.827103624

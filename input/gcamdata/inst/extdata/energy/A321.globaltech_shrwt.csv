@@ -3,7 +3,6 @@
 # Units: Unitless
 # Column types: cccnnnnnnn
 # ----------
-supplysector,subsector,technology,1971,2015,2020,2030,2040,2050,2100
 supplysector,subsector,technology,1971,2015,2021,2030,2040,2050,2100
 process heat cement,biomass,biomass,1,1,1,1,1,1,1
 process heat cement ccs,biomass,biomass CCS,1,1,1,1,1,1,1
