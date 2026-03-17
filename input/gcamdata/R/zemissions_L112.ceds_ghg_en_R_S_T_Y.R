@@ -615,7 +615,8 @@ module_emissions_L112.ceds_ghg_en_R_S_T_Y <- function(command, ...) {
     L101.in_EJ_R_en_Si_F_Yh %>%
       left_join(calibrated_techs %>% bind_rows(calibrated_outresources) %>% select(-secondary.output), by = c("sector", "fuel", "technology")) %>%
       # Replace subsector with fuel to preserve both in dataframe. Subsector will be added back later in L201
-      mutate(subsector = if_else(sector == "iron and steel", fuel, subsector)) %>%
+      mutate(subsector = if_else(sector %in% c("iron and steel","process heat cement"), fuel, subsector),
+             supplysector = if_else(sector == "process heat cement", sector, supplysector)) %>%
       rename(stub.technology = technology) %>%
       select(GCAM_region_ID, year, energy, supplysector, subsector, stub.technology) %>%
       na.omit() ->
