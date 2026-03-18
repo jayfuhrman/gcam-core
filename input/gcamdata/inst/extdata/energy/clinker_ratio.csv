@@ -1,0 +1,12 @@
+# File: clinker_ratio.csv
+# Title: Detailed Clinker Ratio
+# Units:unitless
+# Description: Clinker ratio by cement tech
+# Source:Kermeli et. al (2019) https://doi.org/10.1016/j.apenergy.2019.01.252
+# Column types: cnc
+# ----------
+technology,clinker.ratio,comment
+OPC,0.95,ordinary portland cement
+cement SCMGBFS,0.3,ground blast furnace slag
+cement SCMFA,0.6,fly ash
+cement SCMlime,0.8,supplementary uncalcined limestone

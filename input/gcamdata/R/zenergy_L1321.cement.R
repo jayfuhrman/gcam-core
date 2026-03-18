@@ -34,6 +34,7 @@ module_energy_L1321.cement <- function(command, ...) {
              FILE = "energy/cement_clinker_regional",
              FILE = "energy/cement_material_composition",
              FILE = "energy/cement_prod_reg",
+             FILE = "energy/clinker_ratio",
              "L102.CO2_Mt_R_F_Yh",
              "L123.in_EJ_R_elec_F_Yh",
              "L123.out_EJ_R_elec_F_Yh",
@@ -71,6 +72,7 @@ module_energy_L1321.cement <- function(command, ...) {
     cement_clinker_region <- get_data(all_data, "energy/cement_clinker_regional", strip_attributes = TRUE)
     cement_mat_comp <- get_data(all_data, "energy/cement_material_composition", strip_attributes = TRUE)
     cement_prod_reg <- get_data(all_data, "energy/cement_prod_reg", strip_attributes = TRUE)
+    clinker_ratio <- get_data(all_data, "energy/clinker_ratio")
     L102.CO2_Mt_R_F_Yh <- get_data(all_data, "L102.CO2_Mt_R_F_Yh", strip_attributes = TRUE)
     L123.in_EJ_R_elec_F_Yh <- get_data(all_data, "L123.in_EJ_R_elec_F_Yh", strip_attributes = TRUE)
     L123.out_EJ_R_elec_F_Yh <- get_data(all_data, "L123.out_EJ_R_elec_F_Yh", strip_attributes = TRUE)
@@ -261,9 +263,8 @@ module_energy_L1321.cement <- function(command, ...) {
 
     #calculate clinker production overtime by multiplying cement output with regional clinker ratio
     L1321.out_Mt_R_cement_Yh_2 %>%
-      mutate(value = ifelse(technology == "OPC", value*0.95,
-                            ifelse(technology == "cement SCMGBFS",value*0.3,
-                                   ifelse(technology == "cement SCMFA",value*0.6,value*0.8)))) %>%
+      left_join_error_no_match(clinker_ratio, by = "technology") %>%
+      mutate(value = value * clinker.ratio) %>%
       group_by(GCAM_region_ID,year)%>%
       summarise(value = sum(value)) %>%
       mutate(sector="clinker",
