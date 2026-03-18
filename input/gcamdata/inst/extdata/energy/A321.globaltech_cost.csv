@@ -21,7 +21,6 @@ clinker,clinker,clinker hybrid,non-energy,0.0417,0.0417,0.0417,0.0417,0.0417,0.0
 clinker,clinker,clinker electrochemical ccs,non-energy,0.0387,0.0387,0.0387,0.0387,0.0387,0.0387,0.0387
 clinker,clinker,clinker hybrid ccs,non-energy,0.0417,0.0417,0.0417,0.0417,0.0417,0.0417,0.0417
 cement,cement,cement,non-energy,0.0001,0.0001,0.0001,0.0001,0.0001,0.0001,0.0001
-cement,cement,cement CCS,non-energy,0.0323,0.0323,0.0323,0.0323,0.0323,0.0323,0.0323
 cement,cement,cement SCMFA,non-energy,0.004,0.004,0.004,0.004,0.004,0.004,0.004
 cement,cement,cement SCMGBFS,non-energy,0.01,0.01,0.01,0.01,0.01,0.01,0.01
 cement,cement,cement SCMlime,non-energy,0.0002,0.0002,0.0002,0.0002,0.0002,0.0002,0.0002

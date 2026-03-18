@@ -29,9 +29,6 @@ clinker,clinker,clinker electrochemical ccs,elect_td_ind,0.0038,0.0038,0.0038,0.
 clinker,clinker,clinker hybrid ccs,process heat cement ccs,0.014,0.014,0.014,0.014,0.014,0.014,0.014,0.014
 clinker,clinker,clinker hybrid ccs,elect_td_ind,0.0002,0.0002,0.0002,0.0002,0.0002,0.0002,0.0002,0.0002
 cement,cement,cement,clinker,0.95,0.95,0.95,0.95,0.95,0.95,0.95,0.95
-cement,cement,cement CCS,process heat cement ccs,0.006,0.006,0.006,0.006,0.0058,0.0054,0.005,0.005
-cement,cement,cement CCS,elect_td_ind,0.00047,0.00047,0.00047,0.00047,0.00045,0.00041,0.00036,0.00036
-cement,cement,cement CCS,limestone,1.57,1.57,1.57,1.57,1.57,1.57,1.57,1.57
 cement,cement,cement SCMFA,elect_td_ind,0.0002,0.0002,0.0002,0.0002,0.0002,0.0002,0.0002,0.0002
 cement,cement,cement SCMFA,clinker,0.6,0.6,0.6,0.6,0.6,0.6,0.6,0.6
 cement,cement,cement SCMGBFS,elect_td_ind,0.0003,0.0003,0.0003,0.0003,0.0003,0.0003,0.0003,0.0003

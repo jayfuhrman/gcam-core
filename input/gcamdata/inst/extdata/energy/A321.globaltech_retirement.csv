@@ -27,7 +27,6 @@ clinker,clinker,clinker hybrid,final-calibration-year,40,,20,0.3,-0.5,6
 clinker,clinker,clinker electrochemical ccs,final-calibration-year,40,,20,0.3,-0.5,6
 clinker,clinker,clinker hybrid ccs,final-calibration-year,40,,20,0.3,-0.5,6
 cement,cement,cement,final-calibration-year,40,,20,0.3,-0.5,6
-cement,cement,cement CCS,final-calibration-year,40,,20,0.3,-0.5,6
 cement,cement,cement SCMFA,final-calibration-year,40,,20,0.3,-0.5,6
 cement,cement,cement SCMGBFS,final-calibration-year,40,,20,0.3,-0.5,6
 cement,cement,cement SCMlime,final-calibration-year,40,,20,0.3,-0.5,6
@@ -54,7 +53,6 @@ clinker,clinker,clinker hybrid,initial-future-year,40,,20,0.3,-0.5,6
 clinker,clinker,clinker electrochemical ccs,initial-future-year,40,,20,0.3,-0.5,6
 clinker,clinker,clinker hybrid ccs,initial-future-year,40,,20,0.3,-0.5,6
 cement,cement,cement,initial-future-year,40,,20,0.3,-0.5,6
-cement,cement,cement CCS,initial-future-year,40,,20,0.3,-0.5,6
 cement,cement,cement SCMFA,initial-future-year,40,,20,0.3,-0.5,6
 cement,cement,cement SCMGBFS,initial-future-year,40,,20,0.3,-0.5,6
 cement,cement,cement SCMlime,initial-future-year,40,,20,0.3,-0.5,6
