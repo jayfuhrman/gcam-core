@@ -254,16 +254,14 @@ module_energy_L1321.cement <- function(command, ...) {
              SCM_LS = SCM_LS * value) %>%
       select(-value) %>%
       gather(key="technology",value="value",5:8) %>%
-      mutate(technology = ifelse(technology == "OPC", "cement",
+      mutate(technology = ifelse(technology == "OPC", "OPC",
                                  ifelse(technology == "SCM_GBFS", "cement SCMGBFS",
                                         ifelse(technology == "SCM_FA","cement SCMFA","cement SCMlime")))) ->
-      #mutate(subsector = ifelse(technology == "cement", "cement", "cement SCM"))
-      #mutate(subsector == "cement") ->
       L1321.out_Mt_R_cement_Yh_2
 
     #calculate clinker production overtime by multiplying cement output with regional clinker ratio
     L1321.out_Mt_R_cement_Yh_2 %>%
-      mutate(value = ifelse(technology == "cement", value*0.95,
+      mutate(value = ifelse(technology == "OPC", value*0.95,
                             ifelse(technology == "cement SCMGBFS",value*0.3,
                                    ifelse(technology == "cement SCMFA",value*0.6,value*0.8)))) %>%
       group_by(GCAM_region_ID,year)%>%
@@ -559,13 +557,13 @@ module_energy_L1321.cement <- function(command, ...) {
 
     L1321.out_Mt_R_cement_Yh_2 %>%
       mutate(fuel = "clinker",
-             value = ifelse(technology == "cement",0.95,
+             value = ifelse(technology == "OPC",0.95,
                             ifelse(technology == "cement SCMFA",0.6,
                                    ifelse(technology == "cement SCMGBFS",0.3,0.8)))) ->
       L1321.IO_Cement_GJkg_R_clinker_Yh
 
     L1321.out_Mt_R_cement_Yh_2 %>%
-      filter(technology != "cement") %>%
+      filter(technology != "OPC") %>%
       mutate(fuel = "electricity",
              value = ifelse(technology == "cement SCMGBFS",0.0003,
                             ifelse(technology == "cement SCMFA",0.0002,0.0001))) ->

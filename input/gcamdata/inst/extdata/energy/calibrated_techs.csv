@@ -61,7 +61,7 @@ industry_energy,refined liquids,other industrial energy use,refined liquids,refi
 cement,electricity,clinker,clinker,clinker,elect_td_ind,output,
 cement,process heat cement,clinker,clinker,clinker,process heat cement,output,
 cement,limestone,clinker,clinker,clinker,limestone,output,
-cement,clinker,cement,cement,cement,clinker,output,
+cement,clinker,cement,cement,OPC,clinker,output,
 cement,clinker,cement,cement,cement SCMFA,clinker,output,
 cement,electricity,cement,cement,cement SCMFA,elect_td_ind,output,
 cement,clinker,cement,cement,cement SCMGBFS,clinker,output,
