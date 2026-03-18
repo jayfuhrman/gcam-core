@@ -13,9 +13,11 @@ cement,cement,cement CCS,limestone,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5
 cement,cement,cement SCMFA,process heat cement,0.0028,0.0028,0.0028,0.0028,0.0028,0.0028,0.0028,0.0028
 cement,cement,cement SCMFA,elect_td_ind,0.0045,0.0045,0.0045,0.0045,0.0045,0.0045,0.0045,0.0045
 cement,cement,cement SCMFA,limestone,1.05,1.05,1.05,1.05,1.05,1.05,1.05,1.05
+cement,cement,cement SCMFA,flyash,0.35,0.35,0.35,0.35,0.35,0.35,0.35,0.35
 cement,cement,cement SCMGBFS,process heat cement,0.002,0.002,0.002,0.002,0.002,0.002,0.002,0.002
 cement,cement,cement SCMGBFS,elect_td_ind,0.0045,0.0045,0.0045,0.0045,0.0045,0.0045,0.0045,0.0045
 cement,cement,cement SCMGBFS,limestone,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75
+cement,cement,cement SCMGBFS,GBFSlag,0.65,0.65,0.65,0.65,0.65,0.65,0.65,0.65
 cement,cement,cement SCMlime,process heat cement,0.0034,0.0034,0.0034,0.0034,0.0034,0.0034,0.0034,0.0034
 cement,cement,cement SCMlime,elect_td_ind,0.0043,0.0043,0.0043,0.0043,0.0043,0.0043,0.0043,0.0043
 cement,cement,cement SCMlime,limestone,1.28,1.28,1.28,1.28,1.28,1.28,1.28,1.28

@@ -31,8 +31,10 @@ clinker,clinker,clinker hybrid ccs,elect_td_ind,0.0002,0.0002,0.0002,0.0002,0.00
 cement,cement,OPC,clinker,0.95,0.95,0.95,0.95,0.95,0.95,0.95,0.95
 cement,cement,cement SCMFA,elect_td_ind,0.0002,0.0002,0.0002,0.0002,0.0002,0.0002,0.0002,0.0002
 cement,cement,cement SCMFA,clinker,0.6,0.6,0.6,0.6,0.6,0.6,0.6,0.6
+cement,cement,cement SCMFA,flyash,0.35,0.35,0.35,0.35,0.35,0.35,0.35,0.35
 cement,cement,cement SCMGBFS,elect_td_ind,0.0003,0.0003,0.0003,0.0003,0.0003,0.0003,0.0003,0.0003
 cement,cement,cement SCMGBFS,clinker,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3
+cement,cement,cement SCMGBFS,GBFSlag,0.65,0.65,0.65,0.65,0.65,0.65,0.65,0.65
 cement,cement,cement SCMlime,elect_td_ind,0.0001,0.0001,0.0001,0.0001,0.0001,0.0001,0.0001,0.0001
 cement,cement,cement SCMlime,limestone,0.15,0.15,0.15,0.15,0.15,0.15,0.15,0.15
 cement,cement,cement SCMlime,clinker,0.8,0.8,0.8,0.8,0.8,0.8,0.8,0.8
