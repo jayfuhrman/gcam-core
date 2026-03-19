@@ -21,7 +21,8 @@ module_gcamusa_Cstorage_xml <- function(command, ...) {
              "L261.SubsectorShrwtFllt_C_USA",
              "L261.StubTech_C_USA",
              "L261.StubTechMarket_C_USA",
-             "L261.ResTechShrwt_C_USA"))
+             "L261.ResTechShrwt_C_USA",
+             "L261.DeleteSupplysector_C_USA"))
   } else if(command == driver.DECLARE_OUTPUTS) {
     return(c(XML = "Cstorage_USA.xml"))
   } else if(command == driver.MAKE) {
@@ -39,6 +40,7 @@ module_gcamusa_Cstorage_xml <- function(command, ...) {
     L261.StubTech_C_USA <- get_data(all_data, "L261.StubTech_C_USA")
     L261.StubTechMarket_C_USA <- get_data(all_data, "L261.StubTechMarket_C_USA")
     L261.ResTechShrwt_C_USA <- get_data(all_data, "L261.ResTechShrwt_C_USA")
+    L261.DeleteSupplysector_C_USA <- get_data(all_data, "L261.DeleteSupplysector_C_USA")
 
     # ===================================================
 
@@ -46,6 +48,7 @@ module_gcamusa_Cstorage_xml <- function(command, ...) {
     create_xml("Cstorage_USA.xml") %>%
       add_xml_data(L261.DeleteRsrc_USAC, "DeleteRsrc") %>%
       add_xml_data(L261.DeleteSubsector_USAC, "DeleteSubsector") %>%
+      add_xml_data(L261.DeleteSupplysector_C_USA, "DeleteSupplysector") %>%
       add_xml_data(L261.Rsrc_FERC, "Rsrc") %>%
       add_xml_data(L261.RsrcCurves_FERC, "RsrcCurves") %>%
       add_xml_data(L261.ResTechShrwt_C_USA, "ResTechShrwt") %>%
@@ -54,7 +57,8 @@ module_gcamusa_Cstorage_xml <- function(command, ...) {
       add_xml_data(L261.SubsectorShrwtFllt_C_USA, "SubsectorShrwtFllt") %>%
       add_xml_data(L261.StubTech_C_USA, "StubTech") %>%
       add_xml_data(L261.StubTechMarket_C_USA, "StubTechMarket") %>%
-      add_precursors("L261.DeleteRsrc_USAC", "L261.DeleteSubsector_USAC", "L261.Rsrc_FERC", "L261.RsrcCurves_FERC", "L261.Supplysector_C_USA", "L261.SubsectorLogit_C_USA", "L261.SubsectorShrwtFllt_C_USA", "L261.StubTech_C_USA", "L261.StubTechMarket_C_USA", "L261.ResTechShrwt_C_USA") ->
+      add_precursors("L261.DeleteRsrc_USAC", "L261.DeleteSubsector_USAC", "L261.Rsrc_FERC", "L261.RsrcCurves_FERC", "L261.Supplysector_C_USA", "L261.SubsectorLogit_C_USA", "L261.SubsectorShrwtFllt_C_USA", "L261.StubTech_C_USA", "L261.StubTechMarket_C_USA", "L261.ResTechShrwt_C_USA",
+                     "L261.DeleteSupplysector_C_USA") ->
       Cstorage_USA.xml
 
     return_data(Cstorage_USA.xml)

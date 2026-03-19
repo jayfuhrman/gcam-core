@@ -36,7 +36,8 @@ module_gcamusa_L261.carbon_storage <- function(command, ...) {
              "L261.SubsectorShrwtFllt_C_USA",
              "L261.StubTech_C_USA",
              "L261.StubTechMarket_C_USA",
-             "L261.ResTechShrwt_C_USA"))
+             "L261.ResTechShrwt_C_USA",
+             "L261.DeleteSupplysector_C_USA"))
   } else if(command == driver.MAKE) {
 
     all_data <- list(...)[[1]]
@@ -53,6 +54,11 @@ module_gcamusa_L261.carbon_storage <- function(command, ...) {
     L261.SubsectorShrwtFllt_C <- get_data(all_data, "L261.SubsectorShrwtFllt_C", strip_attributes = TRUE) %>% filter(supplysector == "carbon-storage")
     L261.StubTech_C <- get_data(all_data, "L261.StubTech_C", strip_attributes = TRUE) %>% filter(supplysector == "carbon-storage")
     L261.GlobalTechCoef_C <- get_data(all_data, "L261.GlobalTechCoef_C") %>% filter(minicam.energy.input %in% c("onshore carbon-storage", "offshore carbon-storage"))
+
+    L261.DeleteSupplysector_C_USA <- get_data(all_data, "L261.Supplysector_C", strip_attributes = TRUE) %>%
+      filter(supplysector != "carbon-storage",
+             region == "USA") %>%
+      select(LEVEL2_DATA_NAMES[["DeleteSupplysector"]])
 
     # Create a vector of FERC grid regions with non-zero storage curves
     # Will use this list to filter out FERC grid regions with zero storage below
@@ -270,10 +276,17 @@ module_gcamusa_L261.carbon_storage <- function(command, ...) {
       same_precursors_as(L261.RsrcCurves_FERC) ->
       L261.ResTechShrwt_C_USA
 
+    L261.DeleteSupplysector_C_USA %>%
+      add_title("Delete Cstorage sectors for USA which aren't yet downscaled to state level to avoid crashing") %>%
+      add_units("NA") %>%
+      add_comments("We will add these for state level in future development") %>%
+      same_precursors_as(L261.Supplysector_C_USA)
+
     return_data(L261.DeleteRsrc_USAC, L261.DeleteSubsector_USAC, L261.Rsrc_FERC,
                 L261.RsrcCurves_FERC, L261.Supplysector_C_USA, L261.SubsectorLogit_C_USA,
                 L261.SubsectorShrwtFllt_C_USA, L261.StubTech_C_USA, L261.StubTechMarket_C_USA,
-                L261.ResTechShrwt_C_USA)
+                L261.ResTechShrwt_C_USA,
+                L261.DeleteSupplysector_C_USA)
   } else {
     stop("Unknown command")
   }
