@@ -37,7 +37,8 @@ module_gcamusa_L261.carbon_storage <- function(command, ...) {
              "L261.StubTech_C_USA",
              "L261.StubTechMarket_C_USA",
              "L261.ResTechShrwt_C_USA",
-             "L261.DeleteSupplysector_C_USA"))
+             "L261.DeleteSupplysector_C_USA",
+             "L261.DeleteInput_C_USA"))
   } else if(command == driver.MAKE) {
 
     all_data <- list(...)[[1]]
@@ -59,6 +60,14 @@ module_gcamusa_L261.carbon_storage <- function(command, ...) {
       filter(supplysector != "carbon-storage",
              region == "USA") %>%
       select(LEVEL2_DATA_NAMES[["DeleteSupplysector"]])
+
+    L261.DeleteInput_C_USA <- get_data(all_data, "L261.GlobalTechCoef_C", strip_attributes = TRUE) %>%
+      filter(minicam.energy.input %in% L261.DeleteSupplysector_C_USA$supplysector,
+             !(sector.name %in% L261.DeleteSupplysector_C_USA$supplysector)) %>%
+      mutate(region = "USA") %>%
+      rename(supplysector = sector.name,
+             subsector = subsector.name) %>%
+      select(LEVEL2_DATA_NAMES[["DeleteInput"]])
 
     # Create a vector of FERC grid regions with non-zero storage curves
     # Will use this list to filter out FERC grid regions with zero storage below
@@ -280,13 +289,20 @@ module_gcamusa_L261.carbon_storage <- function(command, ...) {
       add_title("Delete Cstorage sectors for USA which aren't yet downscaled to state level to avoid crashing") %>%
       add_units("NA") %>%
       add_comments("We will add these for state level in future development") %>%
-      same_precursors_as(L261.Supplysector_C_USA)
+      same_precursors_as(L261.Supplysector_C_USA) -> L261.DeleteSupplysector_C_USA
+
+    L261.DeleteInput_C_USA %>%
+      add_title("Delete minicam.energy.inputs for USA which aren't yet downscaled to state level to avoid crashing") %>%
+      add_units("NA") %>%
+      add_comments("Delete minicam.energy.inputs for USA which aren't yet downscaled to state level to avoid crashing") %>%
+      same_precursors_as(L261.Supplysector_C_USA) -> L261.DeleteInput_C_USA
 
     return_data(L261.DeleteRsrc_USAC, L261.DeleteSubsector_USAC, L261.Rsrc_FERC,
                 L261.RsrcCurves_FERC, L261.Supplysector_C_USA, L261.SubsectorLogit_C_USA,
                 L261.SubsectorShrwtFllt_C_USA, L261.StubTech_C_USA, L261.StubTechMarket_C_USA,
                 L261.ResTechShrwt_C_USA,
-                L261.DeleteSupplysector_C_USA)
+                L261.DeleteSupplysector_C_USA,
+                L261.DeleteInput_C_USA)
   } else {
     stop("Unknown command")
   }
