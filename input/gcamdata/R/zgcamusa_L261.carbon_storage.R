@@ -48,11 +48,11 @@ module_gcamusa_L261.carbon_storage <- function(command, ...) {
     states_subregions <- get_data(all_data, "gcam-usa/states_subregions")
     L161.Cstorage_FERC <- get_data(all_data, "L161.Cstorage_FERC", strip_attributes = TRUE)
     L261.Rsrc <- get_data(all_data, "L261.Rsrc", strip_attributes = TRUE)
-    L261.Supplysector_C <- get_data(all_data, "L261.Supplysector_C", strip_attributes = TRUE)
-    L261.SubsectorLogit_C <- get_data(all_data, "L261.SubsectorLogit_C", strip_attributes = TRUE)
-    L261.SubsectorShrwtFllt_C <- get_data(all_data, "L261.SubsectorShrwtFllt_C", strip_attributes = TRUE)
-    L261.StubTech_C <- get_data(all_data, "L261.StubTech_C", strip_attributes = TRUE)
-    L261.GlobalTechCoef_C <- get_data(all_data, "L261.GlobalTechCoef_C")
+    L261.Supplysector_C <- get_data(all_data, "L261.Supplysector_C", strip_attributes = TRUE) %>% filter(supplysector == "carbon-storage")
+    L261.SubsectorLogit_C <- get_data(all_data, "L261.SubsectorLogit_C", strip_attributes = TRUE) %>% filter(supplysector == "carbon-storage")
+    L261.SubsectorShrwtFllt_C <- get_data(all_data, "L261.SubsectorShrwtFllt_C", strip_attributes = TRUE) %>% filter(supplysector == "carbon-storage")
+    L261.StubTech_C <- get_data(all_data, "L261.StubTech_C", strip_attributes = TRUE) %>% filter(supplysector == "carbon-storage")
+    L261.GlobalTechCoef_C <- get_data(all_data, "L261.GlobalTechCoef_C") %>% filter(minicam.energy.input %in% c("onshore carbon-storage", "offshore carbon-storage"))
 
     # Create a vector of FERC grid regions with non-zero storage curves
     # Will use this list to filter out FERC grid regions with zero storage below
