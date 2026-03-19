@@ -56,19 +56,6 @@ module_gcamusa_L261.carbon_storage <- function(command, ...) {
     L261.StubTech_C <- get_data(all_data, "L261.StubTech_C", strip_attributes = TRUE) %>% filter(supplysector == "carbon-storage")
     L261.GlobalTechCoef_C <- get_data(all_data, "L261.GlobalTechCoef_C") %>% filter(minicam.energy.input %in% c("onshore carbon-storage", "offshore carbon-storage"))
 
-    L261.DeleteSupplysector_C_USA <- get_data(all_data, "L261.Supplysector_C", strip_attributes = TRUE) %>%
-      filter(supplysector != "carbon-storage",
-             region == "USA") %>%
-      select(LEVEL2_DATA_NAMES[["DeleteSupplysector"]])
-
-    L261.DeleteInput_C_USA <- get_data(all_data, "L261.GlobalTechCoef_C", strip_attributes = TRUE) %>%
-      filter(minicam.energy.input %in% L261.DeleteSupplysector_C_USA$supplysector,
-             !(sector.name %in% L261.DeleteSupplysector_C_USA$supplysector)) %>%
-      mutate(region = "USA") %>%
-      rename(supplysector = sector.name,
-             subsector = subsector.name) %>%
-      select(LEVEL2_DATA_NAMES[["DeleteInput"]])
-
     # Create a vector of FERC grid regions with non-zero storage curves
     # Will use this list to filter out FERC grid regions with zero storage below
     L161.Cstorage_FERC %>%
@@ -188,6 +175,20 @@ module_gcamusa_L261.carbon_storage <- function(command, ...) {
              share.weight = 1.0) %>%
       select(LEVEL2_DATA_NAMES[["ResTechShrwt"]]) ->
       L261.ResTechShrwt_C_USA
+
+    L261.DeleteSupplysector_C_USA <- get_data(all_data, "L261.Supplysector_C", strip_attributes = TRUE) %>%
+      filter(supplysector != "carbon-storage",
+             region == "USA") %>%
+      select(LEVEL2_DATA_NAMES[["DeleteSupplysector"]])
+
+    L261.DeleteInput_C_USA <- get_data(all_data, "L261.GlobalTechCoef_C", strip_attributes = TRUE) %>%
+      filter(minicam.energy.input %in% L261.DeleteSupplysector_C_USA$supplysector,
+             !(sector.name %in% L261.DeleteSupplysector_C_USA$supplysector),
+             !(subsector.name %in% L261.DeleteSubsector_USAC$subsector)) %>%
+      mutate(region = "USA") %>%
+      rename(supplysector = sector.name,
+             subsector = subsector.name) %>%
+      select(LEVEL2_DATA_NAMES[["DeleteInput"]])
 
     # Produce outputs
     L261.DeleteRsrc_USAC %>%

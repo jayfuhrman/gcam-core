@@ -49,8 +49,8 @@ module_gcamusa_Cstorage_xml <- function(command, ...) {
     # Produce outputs
     create_xml("Cstorage_USA.xml") %>%
       add_xml_data(L261.DeleteRsrc_USAC, "DeleteRsrc") %>%
-      add_xml_data(L261.DeleteSubsector_USAC, "DeleteSubsector") %>%
       add_xml_data(L261.DeleteSupplysector_C_USA, "DeleteSupplysector") %>%
+      add_xml_data(L261.DeleteSubsector_USAC, "DeleteSubsector") %>%
       add_xml_data(L261.DeleteInput_C_USA, "DeleteInput") %>%
       add_xml_data(L261.Rsrc_FERC, "Rsrc") %>%
       add_xml_data(L261.RsrcCurves_FERC, "RsrcCurves") %>%
