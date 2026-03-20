@@ -2,6 +2,7 @@
 
 #' module_gcamusa_L261.carbon_storage
 #'
+#'
 #' Generates GCAM-USA input files of carbon storage resource supply curves, shareweights, technology coefficients and costs, and other carbon storage information.
 #'
 #' @param command API command to execute
@@ -25,7 +26,8 @@ module_gcamusa_L261.carbon_storage <- function(command, ...) {
              "L261.SubsectorLogit_C",
              "L261.SubsectorShrwtFllt_C",
              "L261.StubTech_C",
-             "L261.GlobalTechCoef_C"))
+             "L261.GlobalTechCoef_C",
+             "L261.StubTechEff"))
   } else if(command == driver.DECLARE_OUTPUTS) {
     return(c("L261.DeleteRsrc_USAC",
              "L261.DeleteSubsector_USAC",
@@ -50,11 +52,12 @@ module_gcamusa_L261.carbon_storage <- function(command, ...) {
     states_subregions <- get_data(all_data, "gcam-usa/states_subregions")
     L161.Cstorage_FERC <- get_data(all_data, "L161.Cstorage_FERC", strip_attributes = TRUE)
     L261.Rsrc <- get_data(all_data, "L261.Rsrc", strip_attributes = TRUE)
-    L261.Supplysector_C <- get_data(all_data, "L261.Supplysector_C", strip_attributes = TRUE) %>% filter(supplysector == "carbon-storage")
-    L261.SubsectorLogit_C <- get_data(all_data, "L261.SubsectorLogit_C", strip_attributes = TRUE) %>% filter(supplysector == "carbon-storage")
-    L261.SubsectorShrwtFllt_C <- get_data(all_data, "L261.SubsectorShrwtFllt_C", strip_attributes = TRUE) %>% filter(supplysector == "carbon-storage")
-    L261.StubTech_C <- get_data(all_data, "L261.StubTech_C", strip_attributes = TRUE) %>% filter(supplysector == "carbon-storage")
-    L261.GlobalTechCoef_C <- get_data(all_data, "L261.GlobalTechCoef_C") %>% filter(minicam.energy.input %in% c("onshore carbon-storage", "offshore carbon-storage"))
+    L261.Supplysector_C <- get_data(all_data, "L261.Supplysector_C", strip_attributes = TRUE)
+    L261.SubsectorLogit_C <- get_data(all_data, "L261.SubsectorLogit_C", strip_attributes = TRUE)
+    L261.SubsectorShrwtFllt_C <- get_data(all_data, "L261.SubsectorShrwtFllt_C", strip_attributes = TRUE)
+    L261.StubTech_C <- get_data(all_data, "L261.StubTech_C", strip_attributes = TRUE)
+    L261.GlobalTechCoef_C <- get_data(all_data, "L261.GlobalTechCoef_C")
+    L261.StubTechEff <- get_data(all_data, "L261.StubTechEff") %>% filter(region == gcam.USA_REGION)
 
     # Create a vector of FERC grid regions with non-zero storage curves
     # Will use this list to filter out FERC grid regions with zero storage below
@@ -117,7 +120,9 @@ module_gcamusa_L261.carbon_storage <- function(command, ...) {
     # L261.Supplysector_C_USA: supplysector information in the states
     L261.Supplysector_C %>%
       filter(region == gcam.USA_REGION) %>%
-      write_to_all_states(c(LEVEL2_DATA_NAMES[["Supplysector"]], LOGIT_TYPE_COLNAME)) ->
+      write_to_all_states(c(LEVEL2_DATA_NAMES[["Supplysector"]], LOGIT_TYPE_COLNAME)) %>%
+      filter(grepl("onshore|truck", supplysector) | (region %in% gcamusa.COASTAL_STATES & grepl("offshore|ship", supplysector)) | supplysector %in% c("carbon-storage","ccs dynamic-capacity","CO2 pipeline"),
+             !(str_detect(supplysector,"onshore|truck") & region %in% c("AK","HI"))) ->
       L261.Supplysector_C_USA
 
     # L261.SubsectorLogit_C_USA: subsector logit information in the states
@@ -127,8 +132,8 @@ module_gcamusa_L261.carbon_storage <- function(command, ...) {
       left_join_error_no_match(select(states_subregions, state, grid_region), by = c("region" = "state")) %>%
       # Drop the states where no carbon storage resources may exist at the grid level
       filter(!(paste(grid_region, subsector) %in% grid_Cstorage_nonexist),
-             # Drop offshore carbon storage for states without ocean coastline
-             grepl("onshore", subsector) | (region %in% gcamusa.COASTAL_STATES & grepl("offshore", subsector))) ->
+             grepl("onshore", subsector) | (region %in% gcamusa.COASTAL_STATES & grepl("offshore|ship", subsector)) | supplysector %in% c("ccs dynamic-capacity","CO2 truck","CO2 pipeline","onshore CO2 transport"),
+             !(str_detect(supplysector,"onshore|truck") & region %in% c("AK","HI"))) ->
       L261.SubsectorLogit_C_USA
 
     # L261.SubsectorShrwtFllt_C_USA: subsector shareweight information in the states
@@ -139,7 +144,8 @@ module_gcamusa_L261.carbon_storage <- function(command, ...) {
       # Drop the states where no carbon storage resources may exist at the grid level
       filter(!paste(grid_region, subsector) %in% grid_Cstorage_nonexist,
              # Drop offshore carbon storage for states without ocean coastline
-             grepl("onshore", subsector) | (region %in% gcamusa.COASTAL_STATES & grepl("offshore", subsector))) ->
+             grepl("onshore", subsector) | (region %in% gcamusa.COASTAL_STATES & grepl("offshore|ship", subsector)) | supplysector %in% c("ccs dynamic-capacity","CO2 truck","CO2 pipeline","onshore CO2 transport"),
+             !(str_detect(supplysector,"onshore|truck") & region %in% c("AK","HI"))) ->
       L261.SubsectorShrwtFllt_C_USA
 
     # L261.StubTech_C_USA: stub technology information for the states
@@ -150,21 +156,28 @@ module_gcamusa_L261.carbon_storage <- function(command, ...) {
       # Drop the states where no carbon storage resources may exist at the grid level
       filter(!paste(grid_region, stub.technology) %in% grid_Cstorage_nonexist,
              # Drop offshore carbon storage for states without ocean coastline
-             grepl("onshore", subsector) | (region %in% gcamusa.COASTAL_STATES & grepl("offshore", subsector))) %>%
+             grepl("onshore", subsector) | (region %in% gcamusa.COASTAL_STATES & grepl("offshore|ship", subsector)) | supplysector %in% c("ccs dynamic-capacity","CO2 truck","CO2 pipeline"),
+             !(str_detect(supplysector,"onshore|truck") & region %in% c("AK","HI"))) %>%
       select(one_of(c(LEVEL2_DATA_NAMES[["StubTech"]])))->
       L261.StubTech_C_USA
 
+    USA_CstorageMkts <- select(L261.GlobalTechCoef_C, -coefficient) %>%
+      rename(supplysector = sector.name, subsector = subsector.name ,stub.technology = technology) %>%
+      bind_rows(L261.StubTechEff) %>%
+      distinct(supplysector,subsector,stub.technology,year,minicam.energy.input)
+
     # L261.StubTechMarket_C_USA: stub technology market information for the states
     L261.StubTech_C_USA %>%
-      filter(supplysector == 'carbon-storage') %>%
       repeat_add_columns(tibble(year = MODEL_YEARS)) %>%
-      left_join_error_no_match(select(L261.GlobalTechCoef_C %>%
-                                        filter(minicam.energy.input %in% c('onshore carbon-storage','offshore carbon-storage')), -coefficient),
-                               by = c("supplysector" = "sector.name", "subsector" = "subsector.name", "stub.technology" = "technology", "year")) %>%
+      left_join(USA_CstorageMkts,
+                by = c("supplysector", "subsector", "stub.technology", "year")) %>%
+      select(-market.name) %>%
       # Use the grid region markets
       left_join_error_no_match(select(states_subregions, state, market.name = grid_region), by = c("region" = "state")) %>%
-      # Replace offshore carbon storage with the USA market
-      mutate(market.name = replace(market.name, !minicam.energy.input %in% L261.Rsrc_FERC$resource, gcam.USA_REGION)) ->
+      filter(!paste(market.name, stub.technology) %in% grid_Cstorage_nonexist) %>%
+      mutate(market.name = replace(market.name, !minicam.energy.input %in% c(L261.Rsrc_FERC$resource), gcam.USA_REGION),
+             market.name = if_else(supplysector %in% c("offshore CO2 transport","onshore CO2 transport","CO2 pipeline","CO2 truck","CO2 ship"), region, market.name),
+             market.name = if_else(minicam.energy.input %in% c("onshore CO2 transport"), region, market.name))  ->
       L261.StubTechMarket_C_USA
 
     L261.RsrcCurves_FERC %>%
@@ -177,18 +190,23 @@ module_gcamusa_L261.carbon_storage <- function(command, ...) {
       L261.ResTechShrwt_C_USA
 
     L261.DeleteSupplysector_C_USA <- get_data(all_data, "L261.Supplysector_C", strip_attributes = TRUE) %>%
-      filter(supplysector != "carbon-storage",
-             region == "USA") %>%
+      filter(region == gcam.USA_REGION) %>%
       select(LEVEL2_DATA_NAMES[["DeleteSupplysector"]])
 
-    L261.DeleteInput_C_USA <- get_data(all_data, "L261.GlobalTechCoef_C", strip_attributes = TRUE) %>%
-      filter(minicam.energy.input %in% L261.DeleteSupplysector_C_USA$supplysector,
-             !(sector.name %in% L261.DeleteSupplysector_C_USA$supplysector),
-             !(subsector.name %in% L261.DeleteSubsector_USAC$subsector)) %>%
-      mutate(region = "USA") %>%
+    StatesWithOnshore <- L261.StubTech_C_USA %>%
+      filter(subsector == "onshore carbon-storage") %>%
+      distinct(region)
+
+    L261.DeleteInput_C_USA <- L261.GlobalTechCoef_C %>%
+      filter(str_detect(minicam.energy.input,"elect_|trn_")) %>%
       rename(supplysector = sector.name,
              subsector = subsector.name) %>%
+      mutate(region = gcam.USA_REGION) %>%
       select(LEVEL2_DATA_NAMES[["DeleteInput"]])
+
+
+    L261.DeleteSupplysector_C_USA <- L261.DeleteSupplysector_C_USA %>%
+      filter(supplysector != "carbon-storage")
 
     # Produce outputs
     L261.DeleteRsrc_USAC %>%
@@ -293,7 +311,6 @@ module_gcamusa_L261.carbon_storage <- function(command, ...) {
       same_precursors_as(L261.Supplysector_C_USA) -> L261.DeleteSupplysector_C_USA
 
     L261.DeleteInput_C_USA %>%
-      add_title("Delete minicam.energy.inputs for USA which aren't yet downscaled to state level to avoid crashing") %>%
       add_units("NA") %>%
       add_comments("Delete minicam.energy.inputs for USA which aren't yet downscaled to state level to avoid crashing") %>%
       same_precursors_as(L261.Supplysector_C_USA) -> L261.DeleteInput_C_USA
