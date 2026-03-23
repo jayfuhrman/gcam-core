@@ -3,7 +3,7 @@
 # Units: Unitless
 # Column types: cccnnnnnn
 # ----------
-supplysector,subsector,technology,1971,2015,2019,2020,2050,2100
+supplysector,subsector,technology,1971,2015,2019,2025,2050,2100
 alumina,refined liquids,refined liquids,1,1,1,1,1,1
 alumina,refined liquids,refined liquids cogen,0,0,0,0,0,0
 alumina,refined liquids,refined liquids CCS,0,0,0,0,1,1
