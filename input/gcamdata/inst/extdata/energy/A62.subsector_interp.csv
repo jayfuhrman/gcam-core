@@ -4,9 +4,9 @@
 # Column types: ccccccc
 # ----------
 supplysector,subsector,apply.to,from.year,to.year,to.value,interpolation.function
-CO2 removal,dac,share-weight,2021,2050,,linear
+CO2 removal,dac,share-weight,2025,2050,,linear
 CO2 removal,dac,share-weight,2050,end-year,,fixed
 process heat dac,gas CCS,share-weight,final-calibration-year,end-year,,fixed
 CO2 removal,no CDR,share-weight,final-calibration-year,end-year,,fixed
-desalinated water,direct ocean capture,share-weight,2021,2050,,linear
+desalinated water,direct ocean capture,share-weight,2025,2050,,linear
 desalinated water,direct ocean capture,share-weight,2050,end-year,,fixed
