@@ -39,7 +39,6 @@ module_gcamusa_L261.carbon_storage <- function(command, ...) {
              "L261.StubTech_C_USA",
              "L261.StubTechMarket_C_USA",
              "L261.ResTechShrwt_C_USA",
-             "L261.DeleteSupplysector_C_USA",
              "L261.DeleteInput_C_USA"))
   } else if(command == driver.MAKE) {
 
@@ -189,10 +188,6 @@ module_gcamusa_L261.carbon_storage <- function(command, ...) {
       select(LEVEL2_DATA_NAMES[["ResTechShrwt"]]) ->
       L261.ResTechShrwt_C_USA
 
-    L261.DeleteSupplysector_C_USA <- get_data(all_data, "L261.Supplysector_C", strip_attributes = TRUE) %>%
-      filter(region == gcam.USA_REGION) %>%
-      select(LEVEL2_DATA_NAMES[["DeleteSupplysector"]])
-
     StatesWithOnshore <- L261.StubTech_C_USA %>%
       filter(subsector == "onshore carbon-storage") %>%
       distinct(region)
@@ -203,10 +198,6 @@ module_gcamusa_L261.carbon_storage <- function(command, ...) {
              subsector = subsector.name) %>%
       mutate(region = gcam.USA_REGION) %>%
       select(LEVEL2_DATA_NAMES[["DeleteInput"]])
-
-
-    L261.DeleteSupplysector_C_USA <- L261.DeleteSupplysector_C_USA %>%
-      filter(supplysector != "carbon-storage")
 
     # Produce outputs
     L261.DeleteRsrc_USAC %>%
@@ -304,12 +295,6 @@ module_gcamusa_L261.carbon_storage <- function(command, ...) {
       same_precursors_as(L261.RsrcCurves_FERC) ->
       L261.ResTechShrwt_C_USA
 
-    L261.DeleteSupplysector_C_USA %>%
-      add_title("Delete Cstorage sectors for USA which aren't yet downscaled to state level to avoid crashing") %>%
-      add_units("NA") %>%
-      add_comments("We will add these for state level in future development") %>%
-      same_precursors_as(L261.Supplysector_C_USA) -> L261.DeleteSupplysector_C_USA
-
     L261.DeleteInput_C_USA %>%
       add_units("NA") %>%
       add_comments("Delete minicam.energy.inputs for USA which aren't yet downscaled to state level to avoid crashing") %>%
@@ -319,7 +304,6 @@ module_gcamusa_L261.carbon_storage <- function(command, ...) {
                 L261.RsrcCurves_FERC, L261.Supplysector_C_USA, L261.SubsectorLogit_C_USA,
                 L261.SubsectorShrwtFllt_C_USA, L261.StubTech_C_USA, L261.StubTechMarket_C_USA,
                 L261.ResTechShrwt_C_USA,
-                L261.DeleteSupplysector_C_USA,
                 L261.DeleteInput_C_USA)
   } else {
     stop("Unknown command")
