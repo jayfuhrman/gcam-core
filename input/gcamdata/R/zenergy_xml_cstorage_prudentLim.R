@@ -30,6 +30,7 @@ module_energy_cstorage_variations_xml <- function(command, ...) {
                      "L261.ResReserveTechDeclinePhase",
                      "L261.ResReserveTechProfitShutdown",
                      "L261.ResReserveTechInvestmentInput",
+                     "L261.Supplysector_C",
                       FILE = "common/GCAM_region_names")
 
   # --- outputs ---
@@ -124,6 +125,11 @@ module_energy_cstorage_variations_xml <- function(command, ...) {
     L261.DeleteUnlimitRsrc <- tibble(unlimited.resource = "offshore carbon-storage") %>%
       write_to_all_regions(LEVEL2_DATA_NAMES[["DeleteUnlimitRsrc"]],GCAM_region_names)
 
+    base.value = 0.001
+
+    L261.Supplysector_C <- get_data(all_data, "L261.Supplysector_C") %>%
+      mutate(logit.exponent = logit.exponent * base.value)
+
     # --- build volume XMLs ---
     for(i in seq_along(vol_fnames)) {
       if(str_detect(vol_fnames[[i]],"Onshore")){
@@ -134,17 +140,26 @@ module_energy_cstorage_variations_xml <- function(command, ...) {
           group_by(region,resource,subresource) %>%
           mutate(value = sum(available)) %>%
           ungroup() %>%
-          mutate(available = if_else(value == 0 & !(grade %in% c("grade 1","grade 6")), (10 ^ -energy.DIGITS_RESOURCE), available),
+          mutate(available = if_else(value == 0 & !(grade %in% c("grade a1")), (10 ^ -energy.DIGITS_RESOURCE), available),
                  available = round(available,energy.DIGITS_RESOURCE))
 
         ResTechShrwt_i <- RsrcCurvesAvail_i %>%
           group_by(region,resource,subresource) %>%
           summarize(value = sum(available)) %>%
           ungroup() %>%
-          mutate(share.weight = if_else(value == 0, 0, 1),
+          mutate(share.weight = 1,
                  technology = subresource) %>%
           repeat_add_columns(tibble(year = MODEL_YEARS)) %>%
           select(LEVEL2_DATA_NAMES[["ResTechShrwt"]])
+
+        SubsectorShrwtFllt_i <- RsrcCurvesAvail_i %>%
+          group_by(region,resource,subresource) %>%
+          summarize(share.weight = sum(available) / 1000) %>%
+          ungroup() %>%
+          rename(subsector = subresource) %>%
+          mutate(supplysector = "carbon-storage",
+                 year.fillout = min(MODEL_BASE_YEARS)) %>%
+          select(LEVEL2_DATA_NAMES[["SubsectorShrwtFllt"]])
 
         create_xml(vol_fnames[[i]]) %>%
           add_xml_data(L261.ResSubresourceProdLifetime, "ResSubresourceProdLifetime") %>%
@@ -158,6 +173,8 @@ module_energy_cstorage_variations_xml <- function(command, ...) {
           add_xml_data(L261.Rsrc, "Rsrc") %>%
           add_xml_data(ResTechShrwt_i, "ResTechShrwt") %>%
           add_xml_data(RsrcCurvesAvail_i, "RsrcCurvesAvail") %>%
+          add_logit_tables_xml(L261.Supplysector_C,"Supplysector") %>%
+          add_xml_data(SubsectorShrwtFllt_i, "SubsectorShrwtFllt") %>%
           add_precursors(vol_df_names[[i]],
                        "common/GCAM_region_names",
                        "L261.ResSubresourceProdLifetime",
@@ -166,7 +183,8 @@ module_energy_cstorage_variations_xml <- function(command, ...) {
                        "L261.ResReserveTechLifetime",
                        "L261.ResReserveTechInvestmentInput",
                        "L261.Rsrc",
-                       "L261.ResTechShrwt_C") ->
+                       "L261.ResTechShrwt_C",
+                       "L261.Supplysector_C") ->
         x
 
         assign(vol_fnames[[i]], x)
@@ -175,10 +193,10 @@ module_energy_cstorage_variations_xml <- function(command, ...) {
       else if(str_detect(vol_fnames[[i]],"Offshore")){
 
         RsrcCurvesAvail_i <- get_data(all_data, vol_df_names[[i]]) %>%
-          group_by(region,resource,subresource) %>%
+          mutate(available = round(available,energy.DIGITS_RESOURCE)) %>%
           mutate(value = sum(available)) %>%
           ungroup() %>%
-          mutate(available = if_else(value == 0 & !(grade %in% c("grade 1","grade 4")), (10 ^ -energy.DIGITS_RESOURCE), available),
+          mutate(available = if_else(value == 0 & !(grade %in% c("grade a1")), (10 ^ -energy.DIGITS_RESOURCE), available),
                  available = round(available,energy.DIGITS_RESOURCE))
 
 
@@ -186,10 +204,20 @@ module_energy_cstorage_variations_xml <- function(command, ...) {
           group_by(region,resource,subresource) %>%
           summarize(value = sum(available)) %>%
           ungroup() %>%
-          mutate(share.weight = if_else(value == 0, 0, 1),
+          mutate(share.weight = 1,
                  technology = subresource) %>%
           repeat_add_columns(tibble(year = MODEL_YEARS)) %>%
           select(LEVEL2_DATA_NAMES[["ResTechShrwt"]])
+
+        SubsectorShrwtFllt_i <- RsrcCurvesAvail_i %>%
+          group_by(region,resource,subresource) %>%
+          summarize(share.weight = sum(available) / 1000) %>%
+          ungroup() %>%
+          rename(subsector = subresource) %>%
+          mutate(supplysector = "carbon-storage",
+                 year.fillout = min(MODEL_BASE_YEARS)) %>%
+          select(LEVEL2_DATA_NAMES[["SubsectorShrwtFllt"]])
+
 
         create_xml(vol_fnames[[i]]) %>%
           add_xml_data(L261.DeleteUnlimitRsrc,"DeleteUnlimitRsrc") %>%
@@ -204,6 +232,8 @@ module_energy_cstorage_variations_xml <- function(command, ...) {
           add_xml_data(L261.RsrcOffshore, "Rsrc") %>%
           add_xml_data(ResTechShrwt_i, "ResTechShrwt") %>%
           add_xml_data(RsrcCurvesAvail_i, "RsrcCurvesAvail") %>%
+          add_logit_tables_xml(L261.Supplysector_C,"Supplysector") %>%
+          add_xml_data(SubsectorShrwtFllt_i, "SubsectorShrwtFllt") %>%
           add_precursors(vol_df_names[[i]],
                          "common/GCAM_region_names",
                          "L261.ResSubresourceProdLifetime",
@@ -212,7 +242,8 @@ module_energy_cstorage_variations_xml <- function(command, ...) {
                          "L261.ResReserveTechLifetime",
                          "L261.ResReserveTechInvestmentInput",
                          "L261.Rsrc",
-                         "L261.ResTechShrwt_C") ->
+                         "L261.ResTechShrwt_C",
+                         "L261.Supplysector_C") ->
           x
 
         assign(vol_fnames[[i]], x)

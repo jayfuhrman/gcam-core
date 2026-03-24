@@ -1,10 +1,36 @@
-# File: A61.Cstorage_curves_offshore.csv
-# Title: Carbon storage resource supply curve points for offshore storage.  Source: Grade 2 values (30% of cumulative capacity) from Smith et. al (2021) Fig 3.  Grade 3 value from Smith et. al (2021) Table 5 (upper bound cost of $88.9). Both converted from 2019 to 2005 USD . Grade 4 = arbitrarily high cost while avoiding sharp corner at top of supply curve https://doi.org/10.1016/j.ijggc.2021.103367.
-# Units: cost_2005USDtCO2: 2005$/tCO2
+# File: A61.Cstorage_curves_Gidden.csv
+# Title: Carbon storage resource supply curve points for offshore storage.  For offshore we develop a Smooth quadratic beginning at storage cost only from Schmelz et al (2020) and terminating at upper bound cost of $88.9 from Smith et. al (2021) Table 5 .  Converted from 2019 to 2005 USD . After this we add some very costly buffer capacity to avoid sharp corners for the solver https://doi.org/10.1016/j.ijggc.2021.103367; https://doi.org/10.1098/rsfs.2019.0065.  For onshore we similarly develop a smooth quadratic such that 100% of capacity is available at $75 from original Dooley assumptions in A61.Cstorage_curves 
+# Units: 2005$/tCO2
 # Column types: cccnn
 # ----------
 resource,subresource,grade,fraction,cost_2005USDtCO2
-offshore carbon-storage,offshore carbon-storage,grade 1,0,0
-offshore carbon-storage,offshore carbon-storage,grade 2,0.3,9
-offshore carbon-storage,offshore carbon-storage,grade 3,0.5,70
-offshore carbon-storage,offshore carbon-storage,grade 4,0.2,500
+offshore carbon-storage,offshore carbon-storage,grade a1,0,51
+offshore carbon-storage,offshore carbon-storage,grade a2,0.1,52
+offshore carbon-storage,offshore carbon-storage,grade a3,0.1,55
+offshore carbon-storage,offshore carbon-storage,grade a4,0.1,59
+offshore carbon-storage,offshore carbon-storage,grade a5,0.1,65
+offshore carbon-storage,offshore carbon-storage,grade a6,0.1,73
+offshore carbon-storage,offshore carbon-storage,grade a7,0.1,82
+offshore carbon-storage,offshore carbon-storage,grade a8,0.1,93
+offshore carbon-storage,offshore carbon-storage,grade a9,0.1,106
+offshore carbon-storage,offshore carbon-storage,grade b1,0.1,120
+offshore carbon-storage,offshore carbon-storage,grade b2,0.1,136
+offshore carbon-storage,offshore carbon-storage,grade b3,0.1,169
+offshore carbon-storage,offshore carbon-storage,grade b4,0.1,298
+offshore carbon-storage,offshore carbon-storage,grade b5,0.1,815
+offshore carbon-storage,offshore carbon-storage,grade b6,0.1,2882
+onshore carbon-storage,onshore carbon-storage,grade a1,0,0
+onshore carbon-storage,onshore carbon-storage,grade a2,0.1,0.75
+onshore carbon-storage,onshore carbon-storage,grade a3,0.1,3
+onshore carbon-storage,onshore carbon-storage,grade a4,0.1,6.75
+onshore carbon-storage,onshore carbon-storage,grade a5,0.1,12
+onshore carbon-storage,onshore carbon-storage,grade a6,0.1,18.75
+onshore carbon-storage,onshore carbon-storage,grade a7,0.1,27
+onshore carbon-storage,onshore carbon-storage,grade a8,0.1,36.75
+onshore carbon-storage,onshore carbon-storage,grade a9,0.1,48
+onshore carbon-storage,onshore carbon-storage,grade b1,0.1,60.75
+onshore carbon-storage,onshore carbon-storage,grade b2,0.1,75
+onshore carbon-storage,onshore carbon-storage,grade b3,0.1,103.5
+onshore carbon-storage,onshore carbon-storage,grade b4,0.1,217.5
+onshore carbon-storage,onshore carbon-storage,grade b5,0.1,673.5
+onshore carbon-storage,onshore carbon-storage,grade b6,0.1,2497.5

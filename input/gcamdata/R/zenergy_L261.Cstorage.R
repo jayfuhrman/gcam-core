@@ -240,6 +240,34 @@ module_energy_L261.Cstorage <- function(command, ...) {
 
     USA_max_CCS_rate_NETL <- max(USA_max_CCS_rate_NETL$available_MtCO2_USA)
 
+
+    fix_invalid_grades <- function(x, eps) {
+      # x must already be ordered correctly (by grade)
+
+      invalid <- function(v) {
+        c(FALSE, v[-1] <= v[-length(v)])
+      }
+
+      iter <- 0
+      max_iter <- length(x) * 10  # safety guard
+
+      while (any(invalid(x))) {
+        idx <- which(invalid(x))
+
+        # bump invalid points just above previous value
+        x[idx] <- x[idx - 1] + eps
+
+        iter <- iter + 1
+        if (iter > max_iter) {
+          stop("Monotonic fix did not converge")
+        }
+      }
+
+      x
+    }
+
+    eps <- 10^(-energy.DIGITS_RESOURCE)
+
     L261.CStorageCurvesDynamic <- Cstorage_curves_dynamic %>%
       mutate(available = max_CO2_injection * fraction  * USA_max_CCS_rate_NETL / USA_OG_volume_MTCO2, #scale injectivity back to US NETL data.  The result will be a supply curve that exactly matches NETL for USA, with other regions scaled based on relative O&G peak production volumes
              available = round(available,energy.DIGITS_RESOURCE),
@@ -249,13 +277,8 @@ module_energy_L261.Cstorage <- function(command, ...) {
       arrange(available, .by_group = TRUE) %>%
       #Rounding was leading to some invalid grades at the top and bottom of supply curves in regions with very small supply.
       #We identify those cases here and recalculate to ensure smooth monotonically increasing supply curves
-      mutate(prev = lag(available),
-             nxt = lead(available),
-             invalid_grade = available <= lag(available, default = first(available)),
-             invalid_grade = if_else(grade == "grade 0", FALSE, invalid_grade),
-             available = if_else((invalid_grade == TRUE & prev == 0), (prev + nxt / 2), available),
-             available = if_else((invalid_grade == TRUE & available == max(available)), available + 10 ^ (-energy.DIGITS_RESOURCE), available),
-             available = round(available,energy.DIGITS_RESOURCE)) %>%
+      mutate(available = fix_invalid_grades(available, eps),
+             available = round(available, energy.DIGITS_RESOURCE)) %>%
       ungroup() %>%
       select(LEVEL2_DATA_NAMES[["GrdRenewRsrcCurves"]])
     #construct a supply curve based on fractions from NETL's saline storage cost model for the U.S. and then apply these fractions to max CO2 injectivity based on O&G volumetric flow rates
