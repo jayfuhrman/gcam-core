@@ -4,8 +4,7 @@ module_energy_L263.Cstorage_variations <- function(command, ...) {
   # --- inputs ---
   MODULE_INPUTS <-
     c(FILE = "common/GCAM_region_names", # mapping region ids to names
-      FILE = "energy/A61.Cstorage_curves", # for onshore supply curves
-      FILE = "energy/A61.Cstorage_curves_offshore", # for offshore curves
+      FILE = "energy/A61.Cstorage_curves_prudentLim", # for offshore curves
       "L161_Gidden2025_MtC_Totals")
 
   # --- outputs ---
@@ -101,14 +100,14 @@ module_energy_L263.Cstorage_variations <- function(command, ...) {
 
     # Load required inputs
     GCAM_region_names <- get_data(all_data, "common/GCAM_region_names")
-    A61.Cstorage_curves <- get_data(all_data, "energy/A61.Cstorage_curves")
-    A61.Cstorage_curves_offshore <- get_data(all_data, "energy/A61.Cstorage_curves_offshore")
+    #A61.Cstorage_curves <- get_data(all_data, "energy/A61.Cstorage_curves")
+    A61.Cstorage_curves_prudentLim <- get_data(all_data, "energy/A61.Cstorage_curves_prudentLim")
     L161_Gidden2025_MtC_Totals <- get_data(all_data, "L161_Gidden2025_MtC_Totals")
 
     # Create helper variables
     curve_data <- list(
-      Onshore = A61.Cstorage_curves,
-      Offshore = A61.Cstorage_curves_offshore
+      Onshore = A61.Cstorage_curves_prudentLim %>% filter(resource == "onshore carbon-storage"),
+      Offshore = A61.Cstorage_curves_prudentLim %>% filter(resource == "offshore carbon-storage")
     )
 
     # --- Produce outputs ---
@@ -116,7 +115,6 @@ module_energy_L263.Cstorage_variations <- function(command, ...) {
     for (locale in storage_locales) {
       vol_df = create_volume_df(L161_Gidden2025_MtC_Totals, curve_data, locale, GCAM_region_names)
       cost_df = create_cost_df(curve_data, locale, GCAM_region_names)
-      locale_precursor <- ifelse(locale == "Onshore", "energy/A61.Cstorage_curves", "energy/A61.Cstorage_curves_offshore")
       for (cat in storage_categories) { # volume
         df_name <- paste0("L263.cstorage_volume_", cat, "_", locale)
         title <- paste0("Supply curve volumes for ", locale, " storage of type: ", cat)
@@ -127,7 +125,7 @@ module_energy_L263.Cstorage_variations <- function(command, ...) {
           add_units("MtCO2") %>%
           add_comments("Volumes taken from Gidden et al 2025 mapped to GCAM regions") %>%
           add_legacy_name(df_name) %>%
-          add_precursors("common/GCAM_region_names", "L161_Gidden2025_MtC_Totals", locale_precursor) ->
+          add_precursors("common/GCAM_region_names", "L161_Gidden2025_MtC_Totals", "energy/A61.Cstorage_curves_prudentLim") ->
           x
         assign(df_name, x)
       }
@@ -141,7 +139,7 @@ module_energy_L263.Cstorage_variations <- function(command, ...) {
           add_units("1990$/tCO2") %>%
           add_comments("Costs based on A61 values with simple multiplier assumptions and mapped to GCAM regions") %>%
           add_legacy_name(df_name_cost) %>%
-          add_precursors("common/GCAM_region_names", locale_precursor) ->
+          add_precursors("common/GCAM_region_names", "energy/A61.Cstorage_curves_prudentLim") ->
           y
         assign(df_name_cost, y)
       }

@@ -1,5 +1,5 @@
-# File: A61.Cstorage_curves_Gidden.csv
-# Title: Carbon storage resource supply curve points for offshore storage.  For offshore we develop a Smooth quadratic beginning at storage cost only from Schmelz et al (2020) and terminating at upper bound cost of $88.9 from Smith et. al (2021) Table 5 .  Converted from 2019 to 2005 USD . After this we add some very costly buffer capacity to avoid sharp corners for the solver https://doi.org/10.1016/j.ijggc.2021.103367; https://doi.org/10.1098/rsfs.2019.0065.  For onshore we similarly develop a smooth quadratic such that 100% of capacity is available at $75 from original Dooley assumptions in A61.Cstorage_curves 
+# File: A61.Cstorage_curves_prudentLim.csv
+# Title: Carbon storage resource supply curve points for offshore and updated onshore storage.  For offshore we develop a Smooth quadratic beginning at storage cost only from Schmelz et al (2020) and terminating at upper bound cost of $88.9 from Smith et. al (2021) Table 5 .  Converted from 2019 to 2005 USD . After this we add some very costly buffer capacity to avoid sharp corners for the solver https://doi.org/10.1016/j.ijggc.2021.103367; https://doi.org/10.1098/rsfs.2019.0065.  For onshore we similarly develop a smooth quadratic such that 100% of capacity is available at $75 from original Dooley assumptions in A61.Cstorage_curves 
 # Units: 2005$/tCO2
 # Column types: cccnn
 # ----------
