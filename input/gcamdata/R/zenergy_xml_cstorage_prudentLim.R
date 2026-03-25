@@ -125,6 +125,9 @@ module_energy_cstorage_variations_xml <- function(command, ...) {
     L261.DeleteUnlimitRsrc <- tibble(unlimited.resource = "offshore carbon-storage") %>%
       write_to_all_regions(LEVEL2_DATA_NAMES[["DeleteUnlimitRsrc"]],GCAM_region_names)
 
+    L261.DeleteRsrc <- tibble(resource = "onshore carbon-storage") %>%
+      write_to_all_regions(LEVEL2_DATA_NAMES[["DeleteRsrc"]],GCAM_region_names)
+
     base.value = 0.001
 
     L261.Supplysector_C <- get_data(all_data, "L261.Supplysector_C") %>%
@@ -162,6 +165,7 @@ module_energy_cstorage_variations_xml <- function(command, ...) {
           select(LEVEL2_DATA_NAMES[["SubsectorShrwtFllt"]])
 
         create_xml(vol_fnames[[i]]) %>%
+          add_xml_data(L261.DeleteRsrc, "DeleteRsrc") %>%
           add_xml_data(L261.ResSubresourceProdLifetime, "ResSubresourceProdLifetime") %>%
           add_xml_data(L261.ResReserveTechDeclinePhase, "ResReserveTechDeclinePhase") %>%
           add_xml_data(L261.ResReserveTechProfitShutdown, "ResReserveTechProfitShutdown") %>%
