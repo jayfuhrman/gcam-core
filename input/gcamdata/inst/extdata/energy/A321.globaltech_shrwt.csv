@@ -25,8 +25,3 @@ cement,cement,cement SCMFA,1,1,1,1,1,1,1
 cement,cement,cement SCMGBFS,1,1,1,1,1,1,1
 cement,cement,cement SCMlime,1,1,1,1,1,1,1
 cement,cement,cement LC3,0,0,0,1,1,1,1
-cement,cement,cement electrochemical,0,0,0,0.5,1,1,1
-cement,cement,cement hybrid,0,0,0,0.5,1,1,1
-cement,cement,cement LC3 ccs,0,0,0,1,1,1,1
-cement,cement,cement electrochemical ccs,0,0,0,0.5,1,1,1
-cement,cement,cement hybrid ccs,0,0,0,0.5,1,1,1
