@@ -16,12 +16,11 @@ process heat cement,hydrogen,hydrogen,0,0,0,0.3,0.6,1,1
 process heat cement ccs,hydrogen,hydrogen,1,1,1,1,1,1,1
 clinker,clinker,clinker,1,1,1,1,1,1,1
 clinker,clinker,clinker CCS,0,0,0,0.5,1,1,1
-clinker,clinker,clinker electrochemical,0,0,0,0.5,1,1,1
-clinker,clinker,clinker hybrid,0,0,0,0.5,1,1,1
-clinker,clinker,clinker electrochemical ccs,0,0,0,0.5,1,1,1
-clinker,clinker,clinker hybrid ccs,0,0,0,0.5,1,1,1
 cement,cement,OPC,1,1,1,1,1,1,1
 cement,cement,cement SCMFA,1,1,1,1,1,1,1
 cement,cement,cement SCMGBFS,1,1,1,1,1,1,1
 cement,cement,cement SCMlime,1,1,1,1,1,1,1
 cement,cement,cement LC3,0,0,0,1,1,1,1
+cement,cement,cement silicate sol,0,0,0,0.5,1,1,1
+cement,cement,cement silicate elec,0,0,0,0.5,1,1,1
+cement,cement,cement silicate carb,0,0,0,0.5,1,1,1

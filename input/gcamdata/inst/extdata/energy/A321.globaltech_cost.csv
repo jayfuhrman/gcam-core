@@ -14,19 +14,12 @@ process heat cement,refined liquids,refined liquids,non-energy,0.505,0.505,0.505
 process heat cement ccs,refined liquids,refined liquids CCS,non-energy,0.876,0.876,0.876,0.876,0.876,0.876,0.876
 process heat cement,hydrogen,hydrogen,non-energy,0.644,0.644,0.644,0.644,0.644,0.644,0.644
 process heat cement ccs,hydrogen,hydrogen,non-energy,0.644,0.644,0.644,0.644,0.644,0.644,0.644
-clinker,clinker,clinker,non-energy,0.0147,0.0147,0.0147,0.0147,0.0147,0.0147,0.0147
+clinker,clinker,clinker,non-energy,0.018200893,0.018200893,0.018200893,0.018200893,0.018200893,0.018200893,0.018200893
 clinker,clinker,clinker CCS,non-energy,0.034,0.034,0.034,0.034,0.034,0.034,0.034
-clinker,clinker,clinker electrochemical,non-energy,0.0387,0.0387,0.0387,0.0387,0.0387,0.0387,0.0387
-clinker,clinker,clinker hybrid,non-energy,0.0417,0.0417,0.0417,0.0417,0.0417,0.0417,0.0417
-clinker,clinker,clinker electrochemical ccs,non-energy,0.0387,0.0387,0.0387,0.0387,0.0387,0.0387,0.0387
-clinker,clinker,clinker hybrid ccs,non-energy,0.0417,0.0417,0.0417,0.0417,0.0417,0.0417,0.0417
-cement,cement,OPC,non-energy,0.0001,0.0001,0.0001,0.0001,0.0001,0.0001,0.0001
-cement,cement,cement SCMFA,non-energy,0.004,0.004,0.004,0.004,0.004,0.004,0.004
-cement,cement,cement SCMGBFS,non-energy,0.01,0.01,0.01,0.01,0.01,0.01,0.01
-cement,cement,cement SCMlime,non-energy,0.0002,0.0002,0.0002,0.0002,0.0002,0.0002,0.0002
-cement,cement,cement LC3,non-energy,0.0007,0.0007,0.0007,0.0007,0.0007,0.0007,0.0007
-cement,cement,cement electrochemical,non-energy,0.037,0.037,0.037,0.037,0.037,0.037,0.037
-cement,cement,cement hybrid,non-energy,0.04,0.04,0.04,0.04,0.04,0.04,0.04
-cement,cement,cement LC3 ccs,non-energy,0.0007,0.0007,0.0007,0.0007,0.0007,0.0007,0.0007
-cement,cement,cement electrochemical ccs,non-energy,0.037,0.037,0.037,0.037,0.037,0.037,0.037
-cement,cement,cement hybrid ccs,non-energy,0.04,0.04,0.04,0.04,0.04,0.04,0.04
+cement,cement,cement SCMFA,non-energy,0.011078805,0.011078805,0.011078805,0.011078805,0.011078805,0.011078805,0.011078805
+cement,cement,cement SCMGBFS,non-energy,0.014507958,0.014507958,0.014507958,0.014507958,0.014507958,0.014507958,0.014507958
+cement,cement,cement SCMlime,non-energy,0.00027697,0.00027697,0.00027697,0.00027697,0.00027697,0.00027697,0.00027697
+cement,cement,cement LC3,non-energy,0.000490633,0.000490633,0.000490633,0.000490633,0.000490633,0.000490633,0.000490633
+cement,cement,cement silicate sol,non-energy,0.059086957,0.059086957,0.059086957,0.059086957,0.059086957,0.059086957,0.059086957
+cement,cement,cement silicate elec,non-energy,0.009496118,0.009496118,0.009496118,0.009496118,0.009496118,0.009496118,0.009496118
+cement,cement,cement silicate carb,non-energy,0.016463415,0.016463415,0.016463415,0.016463415,0.016463415,0.016463415,0.016463415
