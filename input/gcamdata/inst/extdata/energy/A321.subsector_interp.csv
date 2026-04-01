@@ -13,4 +13,3 @@ process heat cement,hydrogen,share-weight,initial-future-year,2050,,linear
 process heat cement,hydrogen,share-weight,initial-future-year,end-year,,fixed
 clinker,clinker,share-weight,start-year,end-year,,fixed
 cement,cement,share-weight,start-year,end-year,,fixed
-calcined clay,calcined clay,share-weight,start-year,end-year,,fixed
