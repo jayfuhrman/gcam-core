@@ -35,6 +35,7 @@ module_energy_L1321.cement <- function(command, ...) {
              FILE = "energy/cement_material_composition",
              FILE = "energy/cement_prod_reg",
              FILE = "energy/clinker_ratio",
+             FILE = "energy/A321.globaltech_coef",
              "L102.CO2_Mt_R_F_Yh",
              "L123.in_EJ_R_elec_F_Yh",
              "L123.out_EJ_R_elec_F_Yh",
@@ -73,6 +74,9 @@ module_energy_L1321.cement <- function(command, ...) {
     cement_mat_comp <- get_data(all_data, "energy/cement_material_composition", strip_attributes = TRUE)
     cement_prod_reg <- get_data(all_data, "energy/cement_prod_reg", strip_attributes = TRUE)
     clinker_ratio <- get_data(all_data, "energy/clinker_ratio")
+
+    A321.globaltech_coef <- get_data(all_data, "energy/A321.globaltech_coef")
+
     L102.CO2_Mt_R_F_Yh <- get_data(all_data, "L102.CO2_Mt_R_F_Yh", strip_attributes = TRUE)
     L123.in_EJ_R_elec_F_Yh <- get_data(all_data, "L123.in_EJ_R_elec_F_Yh", strip_attributes = TRUE)
     L123.out_EJ_R_elec_F_Yh <- get_data(all_data, "L123.out_EJ_R_elec_F_Yh", strip_attributes = TRUE)
@@ -556,18 +560,34 @@ module_energy_L1321.cement <- function(command, ...) {
       select(-ratio) ->
       L1321.IO_Cement_GJkg_R_heat_Yh
 
+    A321.globaltech_coef %>%
+      gather_years() %>%
+      complete(nesting(supplysector, subsector, minicam.energy.input, technology), year = c(year, MODEL_BASE_YEARS)) %>%
+      arrange(supplysector, subsector, minicam.energy.input, technology, year) %>%
+      group_by(supplysector, subsector, minicam.energy.input, technology) %>%
+      mutate(value = approx_fun(year, value), value = signif(value, energy.DIGITS_COEFFICIENT)) %>%
+      filter(year %in% MODEL_BASE_YEARS) %>%
+      ungroup %>%
+      rename(sector = supplysector, fuel = minicam.energy.input) -> L1321.globaltech_coef_hist
+
     L1321.out_Mt_R_cement_Yh_2 %>%
-      mutate(fuel = "clinker",
-             value = ifelse(technology == "OPC",0.95,
-                            ifelse(technology == "cement SCMFA",0.6,
-                                   ifelse(technology == "cement SCMGBFS",0.3,0.8)))) ->
+      mutate(fuel = "clinker") %>%
+      select(-value) %>%
+      left_join(L1321.globaltech_coef_hist %>% filter(technology %in% L1321.out_Mt_R_cement_Yh_2$technology,
+                                                      fuel == "clinker"),
+                by = c("sector","subsector","technology","year","fuel")) %>%
+      mutate(value = approx_fun(year, value)) ->
       L1321.IO_Cement_GJkg_R_clinker_Yh
 
     L1321.out_Mt_R_cement_Yh_2 %>%
       filter(technology != "OPC") %>%
-      mutate(fuel = "electricity",
-             value = ifelse(technology == "cement SCMGBFS",0.0003,
-                            ifelse(technology == "cement SCMFA",0.0002,0.0001))) ->
+      select(-value) %>%
+      mutate(fuel = "electricity") %>%
+      left_join(L1321.globaltech_coef_hist %>% filter(technology %in% L1321.out_Mt_R_cement_Yh_2$technology,
+                                                      fuel == "elect_td_ind") %>%
+                  mutate(fuel = "electricity"),
+                by = c("sector","subsector","technology","year","fuel")) %>%
+      mutate(value = approx_fun(year, value)) ->
       L1321.IO_Cement_GJkg_R_elec_Yh_2
 
     L1321.out_Mt_R_cement_Yh_2 %>%
@@ -847,7 +867,7 @@ if(! length(ADDITIONAL_YEARS) ){
       add_legacy_name("L1321.IO_GJkg_R_cement_F_Yh") %>%
       add_precursors("emissions/A_PrimaryFuelCCoef", "L102.CO2_Mt_R_F_Yh", "L123.in_EJ_R_elec_F_Yh", "L123.out_EJ_R_elec_F_Yh",
                      "energy/IEA_cement_elec_kwht","energy/IEA_cement_elec_kwht_update",
-                     "energy/IEA_cement_thermal_energy_GJt_clinker_global_trend", "energy/IEA_cement_TPE_GJt",  "common/iso_GCAM_regID") ->
+                     "energy/IEA_cement_thermal_energy_GJt_clinker_global_trend", "energy/IEA_cement_TPE_GJt",  "common/iso_GCAM_regID","energy/A321.globaltech_coef") ->
       L1321.IO_GJkg_R_cement_F_Yh
 
     L1321.in_EJ_R_cement_F_Y %>%
