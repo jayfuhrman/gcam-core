@@ -576,18 +576,21 @@ module_energy_L1321.cement <- function(command, ...) {
       left_join(L1321.globaltech_coef_hist %>% filter(technology %in% L1321.out_Mt_R_cement_Yh_2$technology,
                                                       fuel == "clinker"),
                 by = c("sector","subsector","technology","year","fuel")) %>%
-      mutate(value = approx_fun(year, value)) ->
+      group_by(GCAM_region_ID,sector,subsector,technology,fuel) %>%
+      mutate(value = approx_fun(year, value)) %>%
+      ungroup() ->
       L1321.IO_Cement_GJkg_R_clinker_Yh
 
     L1321.out_Mt_R_cement_Yh_2 %>%
-      filter(technology != "OPC") %>%
       select(-value) %>%
-      mutate(fuel = "electricity") %>%
+      mutate(fuel = "elect_td_ind") %>%
       left_join(L1321.globaltech_coef_hist %>% filter(technology %in% L1321.out_Mt_R_cement_Yh_2$technology,
-                                                      fuel == "elect_td_ind") %>%
-                  mutate(fuel = "electricity"),
+                                                      fuel == "elect_td_ind"),
                 by = c("sector","subsector","technology","year","fuel")) %>%
-      mutate(value = approx_fun(year, value)) ->
+      group_by(GCAM_region_ID,sector,subsector,technology,fuel) %>%
+      mutate(value = approx_fun(year, value),
+             fuel = "electricity") %>%
+      ungroup() ->
       L1321.IO_Cement_GJkg_R_elec_Yh_2
 
     L1321.out_Mt_R_cement_Yh_2 %>%

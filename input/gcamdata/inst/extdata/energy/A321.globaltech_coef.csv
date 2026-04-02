@@ -14,32 +14,33 @@ process heat cement,refined liquids,refined liquids,refined liquids industrial,1
 process heat cement ccs,refined liquids,refined liquids CCS,refined liquids industrial,1.5152,1.5152,1.5152,1.5152,1.5152,1.5152,1.5152,1.5152
 process heat cement,hydrogen,hydrogen,H2 industrial,1.1236,1.1236,1.1236,1.1236,1.1236,1.1236,1.1236,1.1236
 process heat cement ccs,hydrogen,hydrogen,H2 industrial,1.1236,1.1236,1.1236,1.1236,1.1236,1.1236,1.1236,1.1236
-clinker,clinker,clinker,process heat cement,0.004,0.004,0.004,0.004,0.0038,0.0034,0.003,0.003
-clinker,clinker,clinker,elect_td_ind,0.00043,0.00043,0.00043,0.00043,0.00041,0.00037,0.00032,0.00032
-clinker,clinker,clinker,limestone,1.65,1.65,1.65,1.65,1.65,1.65,1.65,1.65
-clinker,clinker,clinker CCS,process heat cement ccs,0.0063,0.0063,0.0063,0.0063,0.0061,0.0057,0.0053,0.0053
-clinker,clinker,clinker CCS,elect_td_ind,0.00049,0.00049,0.00049,0.00049,0.00047,0.00043,0.00038,0.00038
-clinker,clinker,clinker CCS,limestone,1.65,1.65,1.65,1.65,1.65,1.65,1.65,1.65
+clinker,clinker,clinker,process heat cement,0.0037715,0.0037715,0.0037715,0.0037715,0.0037715,0.0037715,0.0037715,0.0037715
+clinker,clinker,clinker,elect_td_ind,0.004296071,0.004296071,0.004296071,0.004296071,0.004296071,0.004296071,0.004296071,0.004296071
+clinker,clinker,clinker,limestone,1.578947368,1.578947368,1.578947368,1.578947368,1.578947368,1.578947368,1.578947368,1.578947368
+clinker,clinker,clinker CCS,process heat cement ccs,0.0059945,0.0059945,0.0059945,0.0059945,0.0059945,0.0059945,0.0059945,0.0059945
+clinker,clinker,clinker CCS,elect_td_ind,0.007185344,0.007185344,0.007185344,0.007185344,0.007185344,0.007185344,0.007185344,0.007185344
+clinker,clinker,clinker CCS,limestone,1.578947368,1.578947368,1.578947368,1.578947368,1.578947368,1.578947368,1.578947368,1.578947368
+cement,cement,OPC,elect_td_ind,0.000227,0.000227,0.000227,0.000227,0.000227,0.000227,0.000227,0.000227
 cement,cement,OPC,clinker,0.95,0.95,0.95,0.95,0.95,0.95,0.95,0.95
 cement,cement,OPC,gypsum,0.05,0.05,0.05,0.05,0.05,0.05,0.05,0.05
-cement,cement,cement SCMFA,elect_td_ind,0.0002,0.0002,0.0002,0.0002,0.0002,0.0002,0.0002,0.0002
-cement,cement,cement SCMFA,clinker,0.6,0.6,0.6,0.6,0.6,0.6,0.6,0.6
+cement,cement,cement SCMFA,elect_td_ind,0.0002265,0.0002265,0.0002265,0.0002265,0.0002265,0.0002265,0.0002265,0.0002265
+cement,cement,cement SCMFA,clinker,0.665,0.665,0.665,0.665,0.665,0.665,0.665,0.665
 cement,cement,cement SCMFA,flyash,0.285,0.285,0.285,0.285,0.285,0.285,0.285,0.285
 cement,cement,cement SCMFA,gypsum,0.05,0.05,0.05,0.05,0.05,0.05,0.05,0.05
-cement,cement,cement SCMGBFS,elect_td_ind,0.0003,0.0003,0.0003,0.0003,0.0003,0.0003,0.0003,0.0003
-cement,cement,cement SCMGBFS,clinker,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3
+cement,cement,cement SCMGBFS,elect_td_ind,0.0002265,0.0002265,0.0002265,0.0002265,0.0002265,0.0002265,0.0002265,0.0002265
+cement,cement,cement SCMGBFS,clinker,0.475,0.475,0.475,0.475,0.475,0.475,0.475,0.475
 cement,cement,cement SCMGBFS,GBFSlag,0.475,0.475,0.475,0.475,0.475,0.475,0.475,0.475
 cement,cement,cement SCMGBFS,gypsum,0.05,0.05,0.05,0.05,0.05,0.05,0.05,0.05
-cement,cement,cement SCMlime,elect_td_ind,0.0001,0.0001,0.0001,0.0001,0.0001,0.0001,0.0001,0.0001
-cement,cement,cement SCMlime,limestone,0.15,0.15,0.15,0.15,0.15,0.15,0.15,0.15
-cement,cement,cement SCMlime,clinker,0.8,0.8,0.8,0.8,0.8,0.8,0.8,0.8
+cement,cement,cement SCMlime,elect_td_ind,0.0002265,0.0002265,0.0002265,0.0002265,0.0002265,0.0002265,0.0002265,0.0002265
+cement,cement,cement SCMlime,limestone,0.225,0.225,0.225,0.225,0.225,0.225,0.225,0.225
+cement,cement,cement SCMlime,clinker,0.8075,0.8075,0.8075,0.8075,0.8075,0.8075,0.8075,0.8075
 cement,cement,cement SCMlime,gypsum,0.05,0.05,0.05,0.05,0.05,0.05,0.05,0.05
 cement ,cement,cement LC3,elect_td_ind,0.005106383,0.005106383,0.005106383,0.005106383,0.005106383,0.005106383,0.005106383,0.005106383
 cement ,cement,cement LC3,limestone,0.15,0.15,0.15,0.15,0.15,0.15,0.15,0.15
 cement ,cement,cement LC3,clinker,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5
 cement,cement,cement LC3,gypsum,0.05,0.05,0.05,0.05,0.05,0.05,0.05,0.05
-cement,cement,cement LC3,process heat cement,0.0009015,0.0009015,0.0009015,0.0009015,0.0009015,0.0009015,0.0009015,0.0009015
 cement,cement,cement LC3,calcined clay,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3
+cement,cement,cement LC3,process heat cement,0.0009015,0.0009015,0.0009015,0.0009015,0.0009015,0.0009015,0.0009015,0.0009015
 cement,cement,cement silicate sol,elect_td_ind,0.0194,0.0194,0.0194,0.0194,0.0194,0.0194,0.0194,0.0194
 cement,cement,cement silicate elec,elect_td_ind,0.0063,0.0063,0.0063,0.0063,0.0063,0.0063,0.0063,0.0063
 cement,cement,cement silicate carb,elect_td_ind,0.004768639,0.004768639,0.004768639,0.004768639,0.004768639,0.004768639,0.004768639,0.004768639
