@@ -752,7 +752,7 @@ if(! length(ADDITIONAL_YEARS) ){
 
       L1321.in_EJ_R_cement_F_Y %>%
         mutate(sector_orig = sector,
-               sector = if_else(sector %in% c("clinker","process heat cement"), "cement", sector)) %>%
+               sector = if_else(sector %in% c("clinker"), "cement", sector)) %>%
         filter(!(fuel %in% c("clinker","limestone"))) %>%
         group_by(GCAM_region_ID,sector,fuel,year) %>%
         mutate(tot.value = sum(value)) %>%
@@ -771,7 +771,7 @@ if(! length(ADDITIONAL_YEARS) ){
         #select(-value.new, -value.iea) %>%
         mutate(sector = sector_orig,
                value = if_else(is.na(value),0,value)) %>%
-        select(-sector_orig,-tot.value) %>%
+        select(-sector_orig) %>%
         unique %>%
         bind_rows(L1321.in_EJ_R_cement_F_Y %>%
                     filter(fuel %in% c("clinker","limestone"))) -> L1321.in_EJ_R_cement_F_Y_adj
@@ -787,7 +787,7 @@ if(! length(ADDITIONAL_YEARS) ){
 
       # reassign to adjusted IO coef and energy input datatables
       L1321.in_EJ_R_cement_F_Y <- L1321.in_EJ_R_cement_F_Y_adj %>%
-        select(-value.new, -value.iea,-adj_value,-scale_factor)
+        select(-value.new, -value.iea,-adj_value,-tot.value,-scale_factor)
 
       L1321.IO_GJkg_R_cement_F_Yh <- L1321.IO_GJkg_R_cement_F_Yh_adj %>%
         select(-scale_factor)
