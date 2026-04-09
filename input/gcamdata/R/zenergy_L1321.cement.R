@@ -730,7 +730,7 @@ if(! length(ADDITIONAL_YEARS) ){
     # ---------------------------------------------------------------------------------------------------------------------
     # Check calculated cement energy and compare to IEA non metallic energy use. If IEA is larger, then warn and replace.
     L1321.in_EJ_R_cement_F_Y %>%
-      mutate(sector = if_else(sector %in% c("clinker"), "cement", sector)) %>%
+      mutate(sector = if_else(sector %in% c("clinker","process heat cement"), "cement", sector)) %>%
       group_by(GCAM_region_ID, sector, fuel, year) %>%
       summarize(value = sum(value) ) %>%
       ungroup() %>%
@@ -773,7 +773,7 @@ if(! length(ADDITIONAL_YEARS) ){
       select(-sector_orig,-tot.value) %>%
       unique %>%
       bind_rows(L1321.in_EJ_R_cement_F_Y %>%
-                  filter(fuel %in% c("clinker","process heat cement"))) -> L1321.in_EJ_R_cement_F_Y_adj
+                    filter(fuel %in% c("clinker","limestone"))) -> L1321.in_EJ_R_cement_F_Y_adj
 
     # rename adjustment
     L1321.in_EJ_R_cement_F_Y <- L1321.in_EJ_R_cement_F_Y_adj
