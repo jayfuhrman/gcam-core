@@ -730,9 +730,9 @@ if(! length(ADDITIONAL_YEARS) ){
     # ---------------------------------------------------------------------------------------------------------------------
     # Check calculated cement energy and compare to IEA non metallic energy use. If IEA is larger, then warn and replace.
     L1321.in_EJ_R_cement_F_Y %>%
-      mutate(sector = if_else(sector == "clinker", "cement", sector)) %>%
-      group_by(GCAM_region_ID,sector,year,fuel) %>%
-      summarize(value = sum(value)) %>%
+      mutate(sector = if_else(sector %in% c("clinker"), "cement", sector)) %>%
+      group_by(GCAM_region_ID, sector, fuel, year) %>%
+      summarize(value = sum(value) ) %>%
       ungroup() %>%
       left_join( L101.en_bal_EJ_ctry_Si_Fi_Yh_full %>%
                    filter(sector == 'cement') %>%
@@ -752,9 +752,11 @@ if(! length(ADDITIONAL_YEARS) ){
     }
 
     L1321.in_EJ_R_cement_F_Y %>%
-      mutate(sector = if_else(sector == "clinker", "cement", sector)) %>%
-      group_by(GCAM_region_ID,sector,year,fuel) %>%
-      summarize(value = sum(value)) %>%
+      mutate(sector_orig = sector,
+             sector = if_else(sector %in% c("clinker","process heat cement"), "cement", sector)) %>%
+      filter(!(fuel %in% c("clinker","limestone"))) %>%
+      group_by(GCAM_region_ID,sector,fuel,year) %>%
+      mutate(tot.value = sum(value)) %>%
       ungroup() %>%
       left_join( L101.en_bal_EJ_ctry_Si_Fi_Yh_full %>%
                    filter(sector == 'cement') %>%
@@ -762,9 +764,16 @@ if(! length(ADDITIONAL_YEARS) ){
                    summarize(value = sum(value) ) ,
                  by = c("GCAM_region_ID", "year", "fuel", "sector"),
                  suffix = c(".new", ".iea") ) %>%
-      mutate(value = ifelse(value.new > value.iea, value.iea, value.new)) %>%
+      mutate(value.iea = if_else(is.na(value.iea),tot.value,value.iea),
+             #in cases where total fuel input into cement sector exceeds IEA, scale down the individual tech fuel inputs by the ratio of IEA to calculated total value for sector
+             value = ifelse(tot.value > value.iea, value.new * value.iea / tot.value, value.new)) %>%
       select(-value.new, -value.iea) %>%
-      unique  -> L1321.in_EJ_R_cement_F_Y_adj
+      mutate(sector = sector_orig,
+             value = if_else(is.na(value),0,value)) %>%
+      select(-sector_orig,-tot.value) %>%
+      unique %>%
+      bind_rows(L1321.in_EJ_R_cement_F_Y %>%
+                  filter(fuel %in% c("clinker","process heat cement"))) -> L1321.in_EJ_R_cement_F_Y_adj
 
     # rename adjustment
     L1321.in_EJ_R_cement_F_Y <- L1321.in_EJ_R_cement_F_Y_adj
