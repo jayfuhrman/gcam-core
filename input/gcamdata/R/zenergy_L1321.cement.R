@@ -731,6 +731,9 @@ if(! length(ADDITIONAL_YEARS) ){
     # Check calculated cement energy and compare to IEA non metallic energy use. If IEA is larger, then warn and replace.
     L1321.in_EJ_R_cement_F_Y %>%
       mutate(sector = if_else(sector == "clinker", "cement", sector)) %>%
+      group_by(GCAM_region_ID,sector,year,fuel) %>%
+      summarize(value = sum(value)) %>%
+      ungroup() %>%
       left_join( L101.en_bal_EJ_ctry_Si_Fi_Yh_full %>%
                    filter(sector == 'cement') %>%
                    group_by(GCAM_region_ID, sector, fuel, year) %>%
@@ -749,6 +752,10 @@ if(! length(ADDITIONAL_YEARS) ){
     }
 
     L1321.in_EJ_R_cement_F_Y %>%
+      mutate(sector = if_else(sector == "clinker", "cement", sector)) %>%
+      group_by(GCAM_region_ID,sector,year,fuel) %>%
+      summarize(value = sum(value)) %>%
+      ungroup() %>%
       left_join( L101.en_bal_EJ_ctry_Si_Fi_Yh_full %>%
                    filter(sector == 'cement') %>%
                    group_by(GCAM_region_ID, sector, fuel, year) %>%
@@ -760,7 +767,7 @@ if(! length(ADDITIONAL_YEARS) ){
       unique  -> L1321.in_EJ_R_cement_F_Y_adj
 
     # rename adjustment
-    L1321.in_EJ_R_cement_F_Y_adj <- L1321.in_EJ_R_cement_F_Y
+    L1321.in_EJ_R_cement_F_Y <- L1321.in_EJ_R_cement_F_Y_adj
 
     # ---------------------------------------------------------------------------------------------------------------------
     # Calculate remaining industrial energy use (input), subtracting cement production energy from energy balances
