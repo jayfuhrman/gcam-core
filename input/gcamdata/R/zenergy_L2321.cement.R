@@ -292,6 +292,17 @@ module_energy_L2321.cement <- function(command, ...) {
       select(LEVEL2_DATA_NAMES[["StubTechCoef"]]) ->
       L2321.StubTechCoef_cement
 
+    # Carry forward last historical year coefs to future years to avoid sharp discontinuities when jumping to globaltech values.
+    # We may want to add assumptions about future improvement rates in the future but for now we hold fixed.
+    L2321.StubTechCoef_cement_fut <- L2321.StubTechCoef_cement %>%
+      filter(year == MODEL_FINAL_BASE_YEAR) %>%
+      select(-year) %>%
+      group_by(region,supplysector,subsector,stub.technology,minicam.energy.input,market.name) %>%
+      repeat_add_columns(tibble(year = MODEL_FUTURE_YEARS))
+
+    L2321.StubTechCoef_cement <- L2321.StubTechCoef_cement %>%
+      bind_rows(L2321.StubTechCoef_cement_fut)
+
     # L2321.StubTechCalInput_cement_heat: calibrated cement production
     calibrated_techs %>%
       select(sector, fuel, supplysector, subsector, technology, minicam.energy.input) %>%
