@@ -20,20 +20,20 @@ clinker,clinker,clinker,limestone,1.578947368,1.578947368,1.578947368,1.57894736
 clinker,clinker,clinker CCS,process heat cement ccs,0.0059945,0.0059945,0.0059945,0.0059945,0.0059945,0.0059945,0.0059945,0.0059945
 clinker,clinker,clinker CCS,elect_td_ind,0.007185344,0.007185344,0.007185344,0.007185344,0.007185344,0.007185344,0.007185344,0.007185344
 clinker,clinker,clinker CCS,limestone,1.578947368,1.578947368,1.578947368,1.578947368,1.578947368,1.578947368,1.578947368,1.578947368
-cement,cement,OPC,elect_td_ind,0.000227,0.000227,0.000227,0.000227,0.000227,0.000227,0.000227,0.000227
+cement,cement,OPC,elect_td_ind,0.0002265,0.0002265,0.0002265,0.0002265,0.0002265,0.0002265,0.0002265,0.0002265
 cement,cement,OPC,clinker,0.95,0.95,0.95,0.95,0.95,0.95,0.95,0.95
 cement,cement,OPC,gypsum,0.05,0.05,0.05,0.05,0.05,0.05,0.05,0.05
 cement,cement,cement SCMFA,elect_td_ind,0.0002265,0.0002265,0.0002265,0.0002265,0.0002265,0.0002265,0.0002265,0.0002265
-cement,cement,cement SCMFA,clinker,0.665,0.665,0.665,0.665,0.665,0.665,0.665,0.665
-cement,cement,cement SCMFA,flyash,0.285,0.285,0.285,0.285,0.285,0.285,0.285,0.285
+cement,cement,cement SCMFA,clinker,0.55,0.55,0.55,0.55,0.55,0.55,0.55,0.55
+cement,cement,cement SCMFA,flyash,0.4,0.4,0.4,0.4,0.4,0.4,0.4,0.4
 cement,cement,cement SCMFA,gypsum,0.05,0.05,0.05,0.05,0.05,0.05,0.05,0.05
 cement,cement,cement SCMGBFS,elect_td_ind,0.0002265,0.0002265,0.0002265,0.0002265,0.0002265,0.0002265,0.0002265,0.0002265
-cement,cement,cement SCMGBFS,clinker,0.475,0.475,0.475,0.475,0.475,0.475,0.475,0.475
-cement,cement,cement SCMGBFS,GBFSlag,0.475,0.475,0.475,0.475,0.475,0.475,0.475,0.475
+cement,cement,cement SCMGBFS,clinker,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25
+cement,cement,cement SCMGBFS,GBFSlag,0.7,0.7,0.7,0.7,0.7,0.7,0.7,0.7
 cement,cement,cement SCMGBFS,gypsum,0.05,0.05,0.05,0.05,0.05,0.05,0.05,0.05
 cement,cement,cement SCMlime,elect_td_ind,0.0002265,0.0002265,0.0002265,0.0002265,0.0002265,0.0002265,0.0002265,0.0002265
-cement,cement,cement SCMlime,limestone,0.225,0.225,0.225,0.225,0.225,0.225,0.225,0.225
-cement,cement,cement SCMlime,clinker,0.8075,0.8075,0.8075,0.8075,0.8075,0.8075,0.8075,0.8075
+cement,cement,cement SCMlime,limestone,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1
+cement,cement,cement SCMlime,clinker,0.85,0.85,0.85,0.85,0.85,0.85,0.85,0.85
 cement,cement,cement SCMlime,gypsum,0.05,0.05,0.05,0.05,0.05,0.05,0.05,0.05
 cement ,cement,cement LC3,elect_td_ind,0.005106383,0.005106383,0.005106383,0.005106383,0.005106383,0.005106383,0.005106383,0.005106383
 cement ,cement,cement LC3,limestone,0.15,0.15,0.15,0.15,0.15,0.15,0.15,0.15

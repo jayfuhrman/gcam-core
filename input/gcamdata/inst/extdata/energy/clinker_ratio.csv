@@ -7,6 +7,6 @@
 # ----------
 technology,clinker.ratio,comment
 OPC,0.95,ordinary portland cement
-cement SCMGBFS,0.475,ground blast furnace slag
-cement SCMFA,0.665,fly ash
-cement SCMlime,0.8075,supplementary uncalcined limestone
+cement SCMGBFS,0.25,ground blast furnace slag
+cement SCMFA,0.55,fly ash
+cement SCMlime,0.85,supplementary uncalcined limestone
