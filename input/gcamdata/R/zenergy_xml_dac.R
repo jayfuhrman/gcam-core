@@ -39,7 +39,6 @@ module_energy_dac_xml <- function(command, ...) {
              "L262.GlobalTechProfitShutdown_dac_EMF",
              "L262.GlobalTechCapture_dac_EMF",
              "L262.StubTech_dac_EMF",
-             "L262.StubTechCost_dac",
              c(paste("L262.GlobalTechNonEnCost_dac", TECH_PARAMETRIZATION_INPUTS, sep = "_"))))
   } else if(command == driver.DECLARE_OUTPUTS) {
     return(c(XML = "dac_ssp1.xml",
@@ -71,7 +70,6 @@ module_energy_dac_xml <- function(command, ...) {
 
     L262.GlobalTechCoef_dac <- get_data(all_data, coef_name)
 
-    L262.StubTechCost_dac <- get_data(all_data, "L262.StubTechCost_dac")
     L262.GlobalTechCapture_dac <- get_data(all_data, "L262.GlobalTechCapture_dac")
     L262.StubTechProd_dac <- get_data(all_data, "L262.StubTechProd_dac")
     L262.PerCapitaBased_dac <- get_data(all_data, "L262.PerCapitaBased_dac")
@@ -142,14 +140,6 @@ module_energy_dac_xml <- function(command, ...) {
                      "L262.GlobalTechSCurve_dac",
                      "L262.GlobalTechProfitShutdown_dac") ->
       xmlobj
-
-      #Don't add dac to liquids stubtech costs to EMF input xmls for now
-      if(!grepl("EMF",sce, fixed=TRUE)) {
-        xmlobj <- xmlobj %>%
-          add_xml_data(L262.StubTechCost_dac %>%
-                         filter(scenario == sce) %>%
-                         select(-scenario), "StubTechCost")
-      }
 
     assign(xmlfn, xmlobj)
 

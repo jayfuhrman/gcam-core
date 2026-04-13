@@ -297,11 +297,11 @@ module_energy_L263.Weathering <- function(command, ...) {
       right_join(ERW_region_totals, by = c("GCAM_region_ID")) %>%
     # Calculate the project share of the regional available resource
       mutate(ratio = project_total/region_total, year = 2030) %>%
-      left_join(GCAM_region_names, by = c("GCAM_region_ID")) %>%
+      left_join_error_no_match(GCAM_region_names, by = c("GCAM_region_ID")) %>%
       select(region, ratio, year) %>%
       right_join(L263.StubTechEff, by = c("region","year")) %>%
-      mutate(ratio = ifelse(ratio >1, 1, ratio)) %>%
-      mutate(efficiency = case_when(year < 2030 ~ 0.01,
+      mutate(ratio = ifelse(ratio >1, 1, ratio),
+             efficiency = case_when(year < 2030 ~ 0.01,
                                     year == 2030 & !is.na(ratio) ~ ratio,
                                     year == 2030 & is.na(ratio) ~ 0.01,
                                     TRUE ~ ratio)) %>%
@@ -328,10 +328,9 @@ module_energy_L263.Weathering <- function(command, ...) {
              subsector = 'inorganic-surface-storage',
              stub.technology = 'inorganic-surface-storage',
              minicam.energy.input = 'inorganic-surface-storage',
-             market.name = region) %>%
-      mutate(efficiency = if_else(efficiency == 0, 0.01,efficiency),
+             market.name = region,
+             efficiency = if_else(efficiency == 0, 0.01,efficiency),
              efficiency = round(efficiency,energy.DIGITS_EFFICIENCY)) %>%
-      #filter(scenario == 'rapid_growth_rate') %>%
       select(c(LEVEL2_DATA_NAMES[['StubTechEff']])) %>%
       ungroup() -> L263.StubTechEff
 

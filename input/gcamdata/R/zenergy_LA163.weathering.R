@@ -46,53 +46,6 @@ module_energy_LA163.Weathering <- function(command, ...) {
       select(-region) %>%
       rename(extractioncost = cost) -> L163.RsrcCurves_Mt
 
-
-
-
-#    AlkalineMaterial_Mt <- get_data(all_data, "energy/AlkalineMaterial_Mt") %>%
-#      gather(variable, value, -region_GCAM3)
-
-#    AlkalineMaterial_Mt %>%
-#      group_by(region_GCAM3) %>%
-#      summarise(value = sum(value)) %>%
-#      ungroup() %>%
-      # Repeat by number of grades, and multiply by the fraction of the total resource assigned to each grade
-#      repeat_add_columns(tibble(grade = unique(A63.AlkalineMaterial_curves$grade))) %>%
-#      left_join_error_no_match(A63.AlkalineMaterial_curves, by = "grade") %>%
-#      mutate(available = value * fraction) -> L163.RsrcCurves_Mt
-
-    # Downscaling GCAM 3.0 carbon storage supply curves to countries on the basis of land area
-    # Calculate land cover shares of GCAM regions within region_GCAM3
-#    L163.LC_bm2_ctry <- Land_type_area_ha %>%
-#      filter(year == max(year)) %>%
-#      group_by(iso) %>%
-      # Total land per country
-#      summarise(value = sum(value * CONV_HA_BM2)) %>%
-#      ungroup() %>%
-      # Add in GCAM3 region and calculate shares of countries within region
-#      left_join_error_no_match(iso_GCAM_regID, by = "iso") %>%
-#      group_by(region_GCAM3) %>%
-#      mutate(share = value / sum(value)) %>%
-#      ungroup()
-
-    # Repeat by number of grades, and match in the available quantities
-#    L163.LC_bm2_ctry %>%
-#      repeat_add_columns(tibble(grade = unique(A63.AlkalineMaterial_curves$grade))) %>%
-#      left_join_error_no_match(L163.RsrcCurves_Mt, by = c("region_GCAM3","grade")) %>%
-      # The carbon storage quantities from the literature are in CO2; for GCAM we convert to C.
-      # Aggregate to GCAM 4 regions
-#      group_by(GCAM_region_ID, grade, cost_2005USDtCO2) %>%
-#      mutate(available = available * share / emissions.CONV_C_CO2) %>%
-#      summarise(available = sum(available)) %>%
-#      mutate(resource = unique(A63.AlkalineMaterial_curves$resource),
-#             subresource = unique(A63.AlkalineMaterial_curves$subresource),
-#             extractioncost = round(cost_2005USDtCO2 * emissions.CONV_C_CO2 / gdp_deflator(2005, 1975), energy.DIGITS_COST))%>%
-#      ungroup() -> L163.RsrcCurves_Mt
-
-
-
-    # Building carbon storage supply curves
-
     # Produce output
     L163.RsrcCurves_Mt  %>%
       #add_title("Silicate resource supply curves by GCAM region") %>%
