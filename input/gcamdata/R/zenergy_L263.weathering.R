@@ -30,6 +30,7 @@ module_energy_L263.Weathering <- function(command, ...) {
   if(command == driver.DECLARE_INPUTS) {
     return(c(FILE = "common/GCAM_region_names",
              FILE = "common/iso_GCAM_regID",
+             FILE = "energy/A63.rsrc_curves",
              FILE = "energy/A63.rsrc_info",
              FILE = "energy/A63.sector",
              FILE = "energy/A63.subsector_logit",
@@ -41,8 +42,7 @@ module_energy_L263.Weathering <- function(command, ...) {
              FILE = "energy/A63.nonenergy_Cseq",
              FILE = "energy/A63.subsector_interp",
              FILE = "energy/A63.globaltech_retirement",
-             FILE = "energy/ERW_project_data",
-             "L163.RsrcCurves_Mt"))
+             FILE = "energy/ERW_project_data"))
   } else if(command == driver.DECLARE_OUTPUTS) {
     return(c("L263.Rsrc",
              "L263.RsrcCurves_C",
@@ -70,6 +70,7 @@ module_energy_L263.Weathering <- function(command, ...) {
     # Load required inputs
     GCAM_region_names <- get_data(all_data, "common/GCAM_region_names")
     iso_GCAM_regID <- get_data(all_data, "common/iso_GCAM_regID")
+    A63.rsrc_curves <- get_data(all_data, "energy/A63.rsrc_curves", strip_attributes = TRUE)
     A63.rsrc_info <- get_data(all_data, "energy/A63.rsrc_info", strip_attributes = TRUE)
     A63.sector <- get_data(all_data, "energy/A63.sector", strip_attributes = TRUE)
     A63.subsector_logit <- get_data(all_data, "energy/A63.subsector_logit", strip_attributes = TRUE)
@@ -82,7 +83,7 @@ module_energy_L263.Weathering <- function(command, ...) {
     A63.subsector_interp <- get_data(all_data, "energy/A63.subsector_interp", strip_attributes = TRUE)
     A63.globaltech_retirement <- get_data(all_data, "energy/A63.globaltech_retirement", strip_attributes = TRUE)
     ERW_project_data <- get_data(all_data, "energy/ERW_project_data", strip_attributes = TRUE)
-    L163.RsrcCurves_Mt <- get_data(all_data, "L163.RsrcCurves_Mt", strip_attributes = TRUE)
+
 
     # ===================================================
 
@@ -159,12 +160,15 @@ module_energy_L263.Weathering <- function(command, ...) {
 
     # B
     # Supply curves of carbon storage resources
-    # First, define number of decimal places
-    #DIGITS_COST <- 1
 
-    # L163.RsrcCurves_Mt reports carbon storage resource supply curves by GCAM region.
-    L163.RsrcCurves_Mt %>%
+    # ERW resource supply curves by GCAM region.
+    A63.rsrc_curves %>%
+      left_join_error_no_match(GCAM_region_names, by = "region") %>%
+      select(-region) %>%
+      rename(extractioncost = cost) -> RsrcCurves_Mt
+
       # Match in GCAM region names using region ID
+    RsrcCurves_Mt %>%
       left_join_error_no_match(GCAM_region_names, by = "GCAM_region_ID") %>%
       mutate(available = round(available, energy.DIGITS_RESOURCE),
              extractioncost = round(extractioncost,energy.DIGITS_COST)) %>%
@@ -290,7 +294,7 @@ module_energy_L263.Weathering <- function(command, ...) {
 
     # Join with tech efficiency curves
     # Calculate the utilization ratio for each region based on resource curve peaks
-    L163.RsrcCurves_Mt %>%
+    RsrcCurves_Mt %>%
       group_by(GCAM_region_ID) %>%
       summarize(region_total = max(available)) %>%
       ungroup() %>%
@@ -409,7 +413,7 @@ module_energy_L263.Weathering <- function(command, ...) {
       add_units("Available in MtCO2, Extraction Cost in 1990$/tCO2") %>%
       add_comments("GCAM region names were added to the resource supply curves generated in level 1") %>%
       add_legacy_name("L263.RsrcCurves_C") %>%
-      add_precursors("common/GCAM_region_names", "L163.RsrcCurves_Mt") ->
+      add_precursors("common/GCAM_region_names", "energy/A63.rsrc_curves") ->
       L263.RsrcCurves_C
 
     L263.ResTechShrwt_C %>%
@@ -464,7 +468,7 @@ module_energy_L263.Weathering <- function(command, ...) {
       add_units("Unitless") %>%
       add_comments("Global technology coefficients were interpolated across all base model years") %>%
       add_legacy_name("L263.GlobalTechEff") %>%
-      add_precursors("energy/A63.globaltech_eff") ->
+      add_precursors("energy/A63.globaltech_eff","energy/ERW_project_data","common/iso_GCAM_regID") ->
       L263.StubTechEff
 
 
