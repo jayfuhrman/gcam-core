@@ -283,7 +283,7 @@ module_energy_L263.Weathering <- function(command, ...) {
       summarize(project_total = sum(`2030`)) %>%
       ungroup() -> ERW_region_totals
 
-    # Define growth parameter k (this will be a csv input at some point)
+    # Define growth parameters
     k_slow = 0.05
     k_med = 0.10
     k_fast = 0.2
