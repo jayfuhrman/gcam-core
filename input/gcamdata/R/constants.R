@@ -511,7 +511,7 @@ aglu.DIGITS_WATER_CONTENT <- 2
 
 km2.to.ha <- 100 # From  km2 to ha
 biochar.rate <- 20 # Assumed applicaiton rate of 10 tons of biochar per acre, in line with literature
-assumed.biochar.years <- max(MODEL_FUTURE_YEARS) - min(MODEL_FUTURE_YEARS) # biochar application begins in first projection period
+assumed.biochar.years <- 75 # biochar application begins in first projection period (2025)
 
 
 
