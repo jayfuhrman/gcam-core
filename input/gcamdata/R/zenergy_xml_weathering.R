@@ -9,7 +9,7 @@
 #' @return Depends on \code{command}: either a vector of required inputs,
 #' a vector of output names, or (if \code{command} is "MAKE") all
 #' the generated outputs: \code{Weathering.xml}.
-module_energy_batch_Weathering_xml <- function(command, ...) {
+module_energy_Weathering_xml <- function(command, ...) {
   if(command == driver.DECLARE_INPUTS) {
     return(c("L263.Rsrc",
               "L263.RsrcCurves_C",
