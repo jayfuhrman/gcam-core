@@ -1,11 +1,30 @@
+# Copyright 2019 Battelle Memorial Institute; see the LICENSE file.
 
+#' module_energy_L2611.Cstorage_variations
+#'
+#' Create carbon storage resource supply curves from Gidden et. al (2025)
+#' For offshore we scale the existing cumulative capacity for each region; for offshore we replace the unlimited resource with supply curves in each region
+#'
+#' @param command API command to execute
+#' @param ... other optional parameters, depending on command
+#' @return Depends on \code{command}: either a vector of required inputs,
+#' a vector of output names, or (if \code{command} is "MAKE") all
+#' the generated outputs
+#'  @author JF, CB and MG April 2026
 
-module_energy_L263.Cstorage_variations <- function(command, ...) {
+module_energy_L2611.Cstorage_variations <- function(command, ...) {
   # --- inputs ---
   MODULE_INPUTS <-
     c(FILE = "common/GCAM_region_names", # mapping region ids to names
       FILE = "energy/A61.Cstorage_curves_prudentLim", # for offshore curves
-      "L161_Gidden2025_MtC_Totals")
+      "L161_Gidden2025_MtC_Totals",
+
+      "L261.ResSubresourceProdLifetime",
+      "L261.ResReserveTechLifetime",
+      "L261.ResReserveTechDeclinePhase",
+      "L261.ResReserveTechProfitShutdown",
+      "L261.ResReserveTechInvestmentInput",
+      "L261.Rsrc")
 
   # --- outputs ---
   # different kinds of storage mapping to what is in L161_Gidden2025_MtC_Totals
@@ -93,7 +112,16 @@ module_energy_L263.Cstorage_variations <- function(command, ...) {
              "L263.cstorage_cost_low_Onshore",
              "L263.cstorage_cost_low_Offshore",
              "L263.cstorage_cost_lowest_Onshore",
-             "L263.cstorage_cost_lowest_Offshore"))
+             "L263.cstorage_cost_lowest_Offshore",
+
+             "L261.ResSubresourceProdLifetimeOffshore",
+             "L261.ResReserveTechLifetimeOffshore",
+             "L261.ResReserveTechDeclinePhaseOffshore",
+             "L261.ResReserveTechProfitShutdownOffshore",
+             "L261.ResReserveTechInvestmentInputOffshore",
+             "L261.RsrcOffshore",
+             "L261.DeleteUnlimitRsrc",
+             "L261.DeleteRsrc"))
   } else if(command == driver.MAKE) {
 
     all_data <- list(...)[[1]]
@@ -103,6 +131,58 @@ module_energy_L263.Cstorage_variations <- function(command, ...) {
     #A61.Cstorage_curves <- get_data(all_data, "energy/A61.Cstorage_curves")
     A61.Cstorage_curves_prudentLim <- get_data(all_data, "energy/A61.Cstorage_curves_prudentLim")
     L161_Gidden2025_MtC_Totals <- get_data(all_data, "L161_Gidden2025_MtC_Totals")
+
+
+    L261.ResSubresourceProdLifetime <- get_data(all_data,"L261.ResSubresourceProdLifetime", strip_attributes = TRUE)
+
+    L261.ResSubresourceProdLifetimeOffshore <- L261.ResSubresourceProdLifetime %>%
+      mutate(resource = "offshore carbon-storage",
+             reserve.subresource = resource) %>%
+      add_precursors("L261.ResSubresourceProdLifetime")
+
+    L261.ResReserveTechLifetime <- get_data(all_data,"L261.ResReserveTechLifetime", strip_attributes = TRUE)
+
+    L261.ResReserveTechLifetimeOffshore <- L261.ResReserveTechLifetime %>%
+      mutate(resource = "offshore carbon-storage",
+             reserve.subresource = resource,
+             resource.reserve.technology = reserve.subresource) %>%
+      add_precursors("L261.ResReserveTechLifetime")
+
+    L261.ResReserveTechDeclinePhase <- get_data(all_data, "L261.ResReserveTechDeclinePhase", strip_attributes = TRUE)
+
+    L261.ResReserveTechDeclinePhaseOffshore <-  L261.ResReserveTechDeclinePhase %>%
+      mutate(resource = "offshore carbon-storage",
+             reserve.subresource = resource,
+             resource.reserve.technology = reserve.subresource) %>%
+      add_precursors("L261.ResReserveTechDeclinePhase")
+
+    L261.ResReserveTechProfitShutdown <- get_data(all_data,"L261.ResReserveTechProfitShutdown", strip_attributes = TRUE)
+
+    L261.ResReserveTechProfitShutdownOffshore <- L261.ResReserveTechProfitShutdown %>%
+      mutate(resource = "offshore carbon-storage",
+             reserve.subresource = resource,
+             resource.reserve.technology = reserve.subresource) %>%
+      add_precursors("L261.ResReserveTechProfitShutdown")
+
+    L261.ResReserveTechInvestmentInput <- get_data(all_data,"L261.ResReserveTechInvestmentInput", strip_attributes = TRUE)
+
+    L261.ResReserveTechInvestmentInputOffshore <-  L261.ResReserveTechInvestmentInput %>%
+      mutate(resource = "offshore carbon-storage",
+             reserve.subresource = resource,
+             resource.reserve.technology = reserve.subresource) %>%
+      add_precursors("L261.ResReserveTechInvestmentInput")
+
+    L261.RsrcOffshore <- get_data(all_data, "L261.Rsrc", strip_attributes = TRUE) %>%
+      mutate(resource = "offshore carbon-storage") %>%
+      add_precursors("L261.Rsrc")
+
+    L261.DeleteUnlimitRsrc <- tibble(unlimited.resource = "offshore carbon-storage") %>%
+      write_to_all_regions(LEVEL2_DATA_NAMES[["DeleteUnlimitRsrc"]],GCAM_region_names) %>%
+      add_precursors("common/GCAM_region_names")
+
+    L261.DeleteRsrc <- tibble(resource = "onshore carbon-storage") %>%
+      write_to_all_regions(LEVEL2_DATA_NAMES[["DeleteRsrc"]],GCAM_region_names) %>%
+      add_precursors("common/GCAM_region_names")
 
     # Create helper variables
     curve_data <- list(
@@ -159,7 +239,18 @@ module_energy_L263.Cstorage_variations <- function(command, ...) {
                 L263.cstorage_cost_low_Onshore,
                 L263.cstorage_cost_low_Offshore,
                 L263.cstorage_cost_lowest_Onshore,
-                L263.cstorage_cost_lowest_Offshore)
+                L263.cstorage_cost_lowest_Offshore,
+
+                L261.ResSubresourceProdLifetimeOffshore,
+                L261.ResReserveTechLifetimeOffshore,
+                L261.ResReserveTechDeclinePhaseOffshore,
+                L261.ResReserveTechProfitShutdownOffshore,
+                L261.ResReserveTechInvestmentInputOffshore,
+
+
+                L261.RsrcOffshore,
+                L261.DeleteUnlimitRsrc,
+                L261.DeleteRsrc)
   } else {
     stop("Unknown command")
   }

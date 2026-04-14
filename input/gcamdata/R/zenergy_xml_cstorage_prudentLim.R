@@ -10,6 +10,7 @@
 #' @return Depends on \code{command}: either a vector of required inputs,
 #' a vector of output names, or (if \code{command} is "MAKE") all
 #' the generated outputs
+#' #'  @author JF, CB and MG April 2026
 module_energy_cstorage_variations_xml <- function(command, ...) {
 
   # --- combinations ---
@@ -24,12 +25,28 @@ module_energy_cstorage_variations_xml <- function(command, ...) {
   cost_df_names <- paste0("L263.cstorage_cost_", cost_combos$kind, "_", cost_combos$locale)
   MODULE_INPUTS <- c(vol_df_names, cost_df_names,
                      "L261.Rsrc",
+                     "L261.RsrcOffshore",
+
+                     "L261.DeleteUnlimitRsrc",
+                     "L261.DeleteRsrc",
+
                      "L261.ResTechShrwt_C",
+
                      "L261.ResSubresourceProdLifetime",
+                     "L261.ResSubresourceProdLifetimeOffshore",
+
                      "L261.ResReserveTechLifetime",
+                     "L261.ResReserveTechLifetimeOffshore",
+
                      "L261.ResReserveTechDeclinePhase",
+                     "L261.ResReserveTechDeclinePhaseOffshore",
+
                      "L261.ResReserveTechProfitShutdown",
+                     "L261.ResReserveTechProfitShutdownOffshore",
+
                      "L261.ResReserveTechInvestmentInput",
+                     "L261.ResReserveTechInvestmentInputOffshore",
+
                      "L261.Supplysector_C",
                       FILE = "common/GCAM_region_names")
 
@@ -79,54 +96,28 @@ module_energy_cstorage_variations_xml <- function(command, ...) {
 
     all_data <- list(...)[[1]]
 
-    GCAM_region_names <- get_data(all_data,"common/GCAM_region_names")
+    L261.Rsrc <- get_data(all_data,"L261.Rsrc")
+    L261.RsrcOffshore <- get_data(all_data, "L261.RsrcOffshore")
 
     L261.ResTechShrwt_C <- get_data(all_data,"L261.ResTechShrwt_C")
 
     L261.ResSubresourceProdLifetime <- get_data(all_data, "L261.ResSubresourceProdLifetime")
-
-    L261.ResSubresourceProdLifetimeOffshore <- L261.ResSubresourceProdLifetime %>%
-                  mutate(resource = "offshore carbon-storage",
-                         reserve.subresource = resource)
+    L261.ResSubresourceProdLifetimeOffshore <- get_data(all_data, "L261.ResSubresourceProdLifetimeOffshore")
 
     L261.ResReserveTechLifetime <- get_data(all_data, "L261.ResReserveTechLifetime")
-
-    L261.ResReserveTechLifetimeOffshore <- L261.ResReserveTechLifetime %>%
-                  mutate(resource = "offshore carbon-storage",
-                         reserve.subresource = resource,
-                         resource.reserve.technology = reserve.subresource)
+    L261.ResReserveTechLifetimeOffshore <- get_data(all_data, "L261.ResReserveTechLifetimeOffshore")
 
     L261.ResReserveTechDeclinePhase <- get_data(all_data, "L261.ResReserveTechDeclinePhase")
-
-    L261.ResReserveTechDeclinePhaseOffshore <-  L261.ResReserveTechDeclinePhase %>%
-                  mutate(resource = "offshore carbon-storage",
-                         reserve.subresource = resource,
-                         resource.reserve.technology = reserve.subresource)
+    L261.ResReserveTechDeclinePhaseOffshore <- get_data(all_data, "L261.ResReserveTechDeclinePhaseOffshore")
 
     L261.ResReserveTechProfitShutdown <- get_data(all_data, "L261.ResReserveTechProfitShutdown")
-
-    L261.ResReserveTechProfitShutdownOffshore <- L261.ResReserveTechProfitShutdown %>%
-      mutate(resource = "offshore carbon-storage",
-             reserve.subresource = resource,
-             resource.reserve.technology = reserve.subresource)
+    L261.ResReserveTechProfitShutdownOffshore <- get_data(all_data, "L261.ResReserveTechProfitShutdownOffshore")
 
     L261.ResReserveTechInvestmentInput <- get_data(all_data, "L261.ResReserveTechInvestmentInput")
+    L261.ResReserveTechInvestmentInputOffshore <- get_data(all_data, "L261.ResReserveTechInvestmentInputOffshore")
 
-    L261.ResReserveTechInvestmentInputOffshore <-  L261.ResReserveTechInvestmentInput %>%
-      mutate(resource = "offshore carbon-storage",
-             reserve.subresource = resource,
-             resource.reserve.technology = reserve.subresource)
-
-    L261.Rsrc <- get_data(all_data, "L261.Rsrc")
-
-    L261.RsrcOffshore <- L261.Rsrc %>%
-      mutate(resource = "offshore carbon-storage")
-
-    L261.DeleteUnlimitRsrc <- tibble(unlimited.resource = "offshore carbon-storage") %>%
-      write_to_all_regions(LEVEL2_DATA_NAMES[["DeleteUnlimitRsrc"]],GCAM_region_names)
-
-    L261.DeleteRsrc <- tibble(resource = "onshore carbon-storage") %>%
-      write_to_all_regions(LEVEL2_DATA_NAMES[["DeleteRsrc"]],GCAM_region_names)
+    L261.DeleteUnlimitRsrc <- get_data(all_data,"L261.DeleteUnlimitRsrc")
+    L261.DeleteRsrc <- get_data(all_data,"L261.DeleteRsrc")
 
     base.value = 0.001
 
@@ -240,14 +231,16 @@ module_energy_cstorage_variations_xml <- function(command, ...) {
           add_xml_data(SubsectorShrwtFllt_i, "SubsectorShrwtFllt") %>%
           add_precursors(vol_df_names[[i]],
                          "common/GCAM_region_names",
-                         "L261.ResSubresourceProdLifetime",
-                         "L261.ResReserveTechDeclinePhase",
-                         "L261.ResReserveTechProfitShutdown",
-                         "L261.ResReserveTechLifetime",
-                         "L261.ResReserveTechInvestmentInput",
-                         "L261.Rsrc",
+                         "L261.ResSubresourceProdLifetimeOffshore",
+                         "L261.ResReserveTechDeclinePhaseOffshore",
+                         "L261.ResReserveTechProfitShutdownOffshore",
+                         "L261.ResReserveTechLifetimeOffshore",
+                         "L261.ResReserveTechInvestmentInputOffshore",
+                         "L261.DeleteRsrc",
                          "L261.ResTechShrwt_C",
-                         "L261.Supplysector_C") ->
+                         "L261.Supplysector_C",
+                         "L261.RsrcOffshore",
+                         "L261.DeleteUnlimitRsrc") ->
           x
 
         assign(vol_fnames[[i]], x)
