@@ -13,92 +13,22 @@
 #'  @author JF, CB and MG April 2026
 
 module_energy_L2611.Cstorage_variations <- function(command, ...) {
-  # --- inputs ---
-  MODULE_INPUTS <-
-    c(FILE = "common/GCAM_region_names", # mapping region ids to names
-      FILE = "energy/A61.Cstorage_curves_prudentLim", # for offshore curves
-      "L161_Gidden2025_MtC_Totals",
 
-      "L261.ResSubresourceProdLifetime",
-      "L261.ResReserveTechLifetime",
-      "L261.ResReserveTechDeclinePhase",
-      "L261.ResReserveTechProfitShutdown",
-      "L261.ResReserveTechInvestmentInput",
-      "L261.Rsrc")
 
-  # --- outputs ---
-  # different kinds of storage mapping to what is in L161_Gidden2025_MtC_Totals
-  storage_locales <- c("Onshore", "Offshore")
-  storage_categories <- c("technical_potential", "prudent_potential", "current_oil_and_gas_potential")
-  vol_combos <- expand.grid(locale=storage_locales, category=storage_categories)
-  vol_df_names <- paste0("L263.cstorage_volume_", vol_combos$category, "_", vol_combos$locale)
-
-  cost_multipliers <- data.frame(
-    multiplier = c("high", "default", "low", "lowest"),
-    value = c(10, 1.0, 0.5, 0.1)
-  )
-  cost_combos <- expand.grid(locale=storage_locales, kind=cost_multipliers$multiplier)
-  cost_df_names <- paste0("L263.cstorage_cost_", cost_combos$kind, "_", cost_combos$locale)
-
-  # order is volume_kind_locale then cost_kind_locale
-  MODULE_OUTPUTS <- c(vol_df_names, cost_df_names)
-
-  # --- volumetric data function ---
-  create_volume_df <- function(data, curve_data, locale, regions) {
-    data %>%
-      # Filter data where storage_type matches `locale`
-      filter(storage_type == locale) %>%
-      # Melt the DataFrame (convert wide to long format)
-      pivot_longer(
-        cols = storage_categories, # Cande: changed from storage_kinds to storage_categories
-        names_to = "category",
-        values_to = "volume"
-      ) %>%
-      # Merge (join) with the curve_data for the given `locale`
-      # Equivalent to pandas merge(..., how='cross')
-      mutate(dummy_key = 1) %>% # Create a key for cross join
-      left_join(curve_data[[locale]] %>% mutate(dummy_key = 1), by = "dummy_key") %>%
-      select(-c(dummy_key)) %>% # Remove temporary column after cross join
-      # Merge with regions on GCAM_region_ID
-      left_join_error_no_match(regions, by = "GCAM_region_ID") %>%
-      # Create new column based on formula
-      mutate(available = round(fraction * volume, energy.DIGITS_COST)) %>% #Cande: changed DIGITS_COST to energy.DIGITS_COST
-      # Drop unnecessary columns
-      select(-c(storage_type, volume, fraction, GCAM_region_ID, cost_2005USDtCO2)) %>%
-      # Sort by specific columns
-      arrange(category, region, grade)
-  }
-
-  # --- cost data function ---
-  create_cost_df <- function(curve_data, locale, regions) {
-    factor <- emissions.CONV_C_CO2 / gdp_deflator(2005, 1990)
-
-    curve_data[[locale]] %>%
-      # Cross join with `regions`
-      mutate(dummy_key = 1) %>%
-      left_join(regions %>% mutate(dummy_key = 1), by = "dummy_key") %>%
-      select(-dummy_key) %>%  # Remove temporary key column
-
-      # Cross join with `multipliers`
-      mutate(dummy_key = 1) %>%
-      left_join(cost_multipliers %>% mutate(dummy_key = 1), by = "dummy_key") %>% #Cande changed this from multipliers to cost_multipliers
-      select(-dummy_key) %>%  # Remove temporary key column
-
-      # Compute extraction cost dynamically, similar to assign(lambda ...)
-      mutate(extractioncost = round(cost_2005USDtCO2 * value * factor, energy.DIGITS_COST)) %>%
-
-      # Drop unnecessary columns
-      select(-c(fraction, value, GCAM_region_ID, cost_2005USDtCO2)) %>%
-
-      # Sort by specified columns
-      arrange(multiplier, region, grade)
-  }
 
   # --- module body ---
   if(command == driver.DECLARE_INPUTS) {
-    return(MODULE_INPUTS)
+    return(c(FILE = "common/GCAM_region_names", # mapping region ids to names
+             FILE = "energy/A61.Cstorage_curves_prudentLim", # for offshore curves
+             "L161_Gidden2025_MtC_Totals",
+
+             "L261.ResSubresourceProdLifetime",
+             "L261.ResReserveTechLifetime",
+             "L261.ResReserveTechDeclinePhase",
+             "L261.ResReserveTechProfitShutdown",
+             "L261.ResReserveTechInvestmentInput",
+             "L261.Rsrc"))
   } else if(command == driver.DECLARE_OUTPUTS) {
-    #return(MODULE_OUTPUTS)
     return(c("L263.cstorage_volume_current_oil_and_gas_potential_Offshore",
              "L263.cstorage_volume_current_oil_and_gas_potential_Onshore",
              "L263.cstorage_volume_prudent_potential_Offshore",
@@ -189,6 +119,73 @@ module_energy_L2611.Cstorage_variations <- function(command, ...) {
       Onshore = A61.Cstorage_curves_prudentLim %>% filter(resource == "onshore carbon-storage"),
       Offshore = A61.Cstorage_curves_prudentLim %>% filter(resource == "offshore carbon-storage")
     )
+
+  # --- outputs ---
+  # different kinds of storage mapping to what is in L161_Gidden2025_MtC_Totals
+  storage_locales <- c("Onshore", "Offshore")
+  storage_categories <- c("technical_potential", "prudent_potential", "current_oil_and_gas_potential")
+  vol_combos <- expand.grid(locale=storage_locales, category=storage_categories)
+  vol_df_names <- paste0("L263.cstorage_volume_", vol_combos$category, "_", vol_combos$locale)
+
+  cost_multipliers <- data.frame(
+    multiplier = c("high", "default", "low", "lowest"),
+    value = c(10, 1.0, 0.5, 0.1)
+  )
+  cost_combos <- expand.grid(locale=storage_locales, kind=cost_multipliers$multiplier)
+  cost_df_names <- paste0("L263.cstorage_cost_", cost_combos$kind, "_", cost_combos$locale)
+
+
+
+  # --- volumetric data function ---
+  create_volume_df <- function(data, curve_data, locale, regions) {
+    data %>%
+      # Filter data where storage_type matches `locale`
+      filter(storage_type == locale) %>%
+      # Melt the DataFrame (convert wide to long format)
+      pivot_longer(
+        cols = storage_categories, # Cande: changed from storage_kinds to storage_categories
+        names_to = "category",
+        values_to = "volume"
+      ) %>%
+      # Merge (join) with the curve_data for the given `locale`
+      # Equivalent to pandas merge(..., how='cross')
+      mutate(dummy_key = 1) %>% # Create a key for cross join
+      left_join(curve_data[[locale]] %>% mutate(dummy_key = 1), by = "dummy_key") %>%
+      select(-c(dummy_key)) %>% # Remove temporary column after cross join
+      # Merge with regions on GCAM_region_ID
+      left_join_error_no_match(regions, by = "GCAM_region_ID") %>%
+      # Create new column based on formula
+      mutate(available = round(fraction * volume, energy.DIGITS_COST)) %>% #Cande: changed DIGITS_COST to energy.DIGITS_COST
+      # Drop unnecessary columns
+      select(-c(storage_type, volume, fraction, GCAM_region_ID, cost_2005USDtCO2)) %>%
+      # Sort by specific columns
+      arrange(category, region, grade)
+  }
+
+  # --- cost data function ---
+  create_cost_df <- function(curve_data, locale, regions) {
+    factor <- emissions.CONV_C_CO2 / gdp_deflator(2005, 1990)
+
+    curve_data[[locale]] %>%
+      # Cross join with `regions`
+      mutate(dummy_key = 1) %>%
+      left_join(regions %>% mutate(dummy_key = 1), by = "dummy_key") %>%
+      select(-dummy_key) %>%  # Remove temporary key column
+
+      # Cross join with `multipliers`
+      mutate(dummy_key = 1) %>%
+      left_join(cost_multipliers %>% mutate(dummy_key = 1), by = "dummy_key") %>% #Cande changed this from multipliers to cost_multipliers
+      select(-dummy_key) %>%  # Remove temporary key column
+
+      # Compute extraction cost dynamically, similar to assign(lambda ...)
+      mutate(extractioncost = round(cost_2005USDtCO2 * value * factor, energy.DIGITS_COST)) %>%
+
+      # Drop unnecessary columns
+      select(-c(fraction, value, GCAM_region_ID, cost_2005USDtCO2)) %>%
+
+      # Sort by specified columns
+      arrange(multiplier, region, grade)
+  }
 
     # --- Produce outputs ---
     # order is volume_kind_locale then cost_kind_locale
