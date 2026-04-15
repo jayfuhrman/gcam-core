@@ -39,7 +39,7 @@ cement ,cement,cement LC3,elect_td_ind,0.005106383,0.005106383,0.005106383,0.005
 cement ,cement,cement LC3,limestone,0.15,0.15,0.15,0.15,0.15,0.15,0.15,0.15
 cement ,cement,cement LC3,clinker,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5
 cement,cement,cement LC3,gypsum,0.05,0.05,0.05,0.05,0.05,0.05,0.05,0.05
-cement,cement,cement LC3,calcined clay,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3
+cement,cement,cement LC3,clay,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3
 cement,cement,cement LC3,process heat cement,0.0009015,0.0009015,0.0009015,0.0009015,0.0009015,0.0009015,0.0009015,0.0009015
 cement,cement,cement silicate sol,elect_td_ind,0.0194,0.0194,0.0194,0.0194,0.0194,0.0194,0.0194,0.0194
 cement,cement,cement silicate elec,elect_td_ind,0.0063,0.0063,0.0063,0.0063,0.0063,0.0063,0.0063,0.0063
