@@ -33,7 +33,11 @@ module_energy_cement_xml <- function(command, ...) {
              "L2321.StubTechCoef_cement",
              "L2321.PerCapitaBased_cement",
              "L2321.BaseService_cement",
-             "L2321.PriceElasticity_cement"))
+             "L2321.PriceElasticity_cement",
+
+			       "L2321.StubTechFractSecOut",
+			       "L2321.StubTechFractProd",
+			       "L2321.StubTechFractCalPrice"))
   } else if(command == driver.DECLARE_OUTPUTS) {
     return(c(XML = "cement.xml"))
   } else if(command == driver.MAKE) {
@@ -99,6 +103,10 @@ module_energy_cement_xml <- function(command, ...) {
     L2321.BaseService_cement <- get_data(all_data, "L2321.BaseService_cement") %>% process_heat_sector_combine(SINGLE_STACK_CCS)
     L2321.PriceElasticity_cement <- get_data(all_data, "L2321.PriceElasticity_cement") %>% process_heat_sector_combine(SINGLE_STACK_CCS)
     L2321.GlobalTechCSeq_ind <-  get_data(all_data, "L2321.GlobalTechCSeq_ind") %>% process_heat_sector_combine(SINGLE_STACK_CCS)
+
+    L2321.StubTechFractSecOut <- get_data(all_data, "L2321.StubTechFractSecOut")
+    L2321.StubTechFractProd <- get_data(all_data,"L2321.StubTechFractProd")
+    L2321.StubTechFractCalPrice <- get_data(all_data,"L2321.StubTechFractCalPrice")
     # ===================================================
 
     # Produce outputs
@@ -126,6 +134,11 @@ module_energy_cement_xml <- function(command, ...) {
       add_xml_data(L2321.BaseService_cement, "BaseService") %>%
       add_xml_data(L2321.PriceElasticity_cement, "PriceElasticity") %>%
       add_xml_data(L2321.GlobalTechCSeq_ind, "GlobalTechCSeq") %>%
+
+      add_xml_data(L2321.StubTechFractSecOut, "StubTechFractSecOut") %>%
+      add_xml_data(L2321.StubTechFractProd, "StubTechFractProd") %>%
+      add_xml_data(L2321.StubTechFractCalPrice, "StubTechFractCalPrice") %>%
+
       add_precursors("L2321.Supplysector_cement", "L2321.FinalEnergyKeyword_cement", "L2321.SubsectorLogit_cement",
                      # "L2321.SubsectorShrwt_cement",
                      "L2321.SubsectorShrwtFllt_cement",
@@ -135,7 +148,8 @@ module_energy_cement_xml <- function(command, ...) {
                      "L2321.GlobalTechShrwt_cement", "L2321.GlobalTechCoef_cement", "L2321.GlobalTechCost_cement",
                      "L2321.GlobalTechCapture_cement", "L2321.StubTechProd_cement", "L2321.StubTechCalInput_cement_heat",
                      "L2321.StubTechCoef_cement", "L2321.PerCapitaBased_cement", "L2321.BaseService_cement", "L2321.GlobalTechCSeq_ind",
-                     "L2321.PriceElasticity_cement", "L2321.GlobalTechTrackCapital_cement") ->
+                     "L2321.PriceElasticity_cement", "L2321.GlobalTechTrackCapital_cement",
+                     "L2321.StubTechFractSecOut","L2321.StubTechFractProd","L2321.StubTechFractCalPrice") ->
       cement.xml
 
     return_data(cement.xml)
