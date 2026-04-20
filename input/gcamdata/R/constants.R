@@ -511,7 +511,7 @@ aglu.DIGITS_WATER_CONTENT <- 2
 # Biochar constants ======================================================================
 
 km2.to.ha <- 100 # From  km2 to ha
-biochar.rate <- 20 # Assumed applicaiton rate of 10 tons of biochar per acre, in line with literature
+biochar.rate <- 10 # Assumed applicaiton rate of 10 tons of biochar per acre, in line with literature
 assumed.biochar.years <- 75 # biochar application begins in first projection period (2025)
 
 
