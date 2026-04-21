@@ -115,7 +115,7 @@
 		<Value name = "ag_water_biochar">../input/gcamdata/xml/biochar_ag_water_input_IRR_MGMT.xml</Value>
 		<Value name = "co_products_biochar">../input/gcamdata/xml/biochar_co_products.xml</Value>
 			
-		<Value name = "ccs">../input/gcamdata/xml/Cstorage_med.xml</Value>
+		<Value name = "ccs">../input/gcamdata/xml/CCS_medGrowth.xml</Value>
 
 		<Value name = "dac">../input/gcamdata/xml/dac_ssp2.xml</Value>
 

@@ -102,7 +102,7 @@
 			
 			<!-- CCS -->
 			<Value name="ccs_supply">../input/gcamdata/xml/ccs_supply_high.xml</Value>
-			<Value name = "ccs">../input/gcamdata/xml/Cstorage_rapid.xml</Value>
+			<Value name = "ccs">../input/gcamdata/xml/CCS_breakthruGrowth.xml</Value>
 
 			<!-- FOSSIL -->
 			<Value name="resource_extraction">../input/gcamdata/xml/resources_SSP5.xml</Value>

@@ -117,7 +117,7 @@
 						
 			<!-- CCS -->
 			<Value name="ccs_supply">../input/gcamdata/xml/ccs_supply_high.xml</Value>
-			<Value name = "ccs">../input/gcamdata/xml/Cstorage_rapid.xml</Value>
+			<Value name = "ccs">../input/gcamdata/xml/CCS_breakthruGrowth.xml</Value>
 			
 			<!-- FOSSIL -->
 			<Value name="resource_extraction">../input/gcamdata/xml/resources_SSP4.xml</Value>	
@@ -153,7 +153,7 @@
 			
 			<!-- CCS -->
 			<Value name="ccs_supply">../input/gcamdata/xml/ccs_supply_high.xml</Value>
-			<Value name = "ccs">../input/gcamdata/xml/Cstorage_rapid.xml</Value>
+			<Value name = "ccs">../input/gcamdata/xml/CCS_breakthruGrowth.xml</Value>
 			
 			<!-- FOSSIL -->
 			<Value name="resource_extraction">../input/gcamdata/xml/resources_SSP5.xml</Value>
@@ -202,7 +202,7 @@
 			
 			<!-- CCS -->
 			<Value name="ccs">../input/gcamdata/xml/ccs_supply_lowest.xml</Value>
-			<Value name = "ccs">../input/gcamdata/xml/Cstorage_slow.xml</Value>
+			<Value name = "ccs">../input/gcamdata/xml/CCS_slowGrowth.xml</Value>
 			
 			<!-- FOSSIL -->
 			<Value name="resource_extraction">../input/gcamdata/xml/resources_SSP1.xml</Value>
@@ -236,7 +236,7 @@
 			
 			<!-- CCS -->
 			<Value name="ccs">../input/gcamdata/xml/ccs_supply_low.xml</Value>
-			<Value name = "ccs">../input/gcamdata/xml/Cstorage_med.xml</Value>
+			<Value name = "ccs">../input/gcamdata/xml/CCS_medGrowth.xml</Value>
 			
 			<!-- FOSSIL -->
 			<Value name="resource_extraction">../input/gcamdata/xml/resources_SSP2.xml</Value>
@@ -293,7 +293,7 @@
 			
 			<!-- CCS -->
 			<Value name="ccs">../input/gcamdata/xml/ccs_supply_low.xml</Value>
-			<Value name = "ccs">../input/gcamdata/xml/Cstorage_slow.xml</Value>
+			<Value name = "ccs">../input/gcamdata/xml/CCS_slowGrowth.xml</Value>
 						
 			<!-- NON-CO2 -->
 			<Value name="nonco2">../input/gcamdata/xml/delete_gdp_control.xml</Value>

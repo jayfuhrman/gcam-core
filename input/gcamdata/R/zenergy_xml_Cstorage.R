@@ -39,9 +39,9 @@ module_energy_Cstorage_xml <- function(command, ...) {
               "L261.DeleteStubTech"))
   } else if(command == driver.DECLARE_OUTPUTS) {
     return(c(XML = "Cstorage.xml",
-             XML = "Cstorage_slow.xml",
-             XML = "Cstorage_med.xml",
-             XML = "Cstorage_rapid.xml"))
+             XML = "CCS_slowGrowth.xml",
+             XML = "CCS_medGrowth.xml",
+             XML = "CCS_breakthruGrowth.xml"))
   } else if(command == driver.MAKE) {
 
     all_data <- list(...)[[1]]
@@ -105,7 +105,7 @@ module_energy_Cstorage_xml <- function(command, ...) {
 
 
     # Produce outputs
-    create_xml("Cstorage_slow.xml") %>%
+    create_xml("CCS_slowGrowth.xml") %>%
       add_xml_data(L261.Rsrc, "Rsrc") %>%
       add_xml_data(L261.UnlimitRsrc, "UnlimitRsrc") %>%
       add_xml_data(L261.DynamicRsrc, "RenewRsrc") %>%
@@ -141,9 +141,9 @@ module_energy_Cstorage_xml <- function(command, ...) {
                      "L261.ResReserveTechInvestmentInput",
                      "L261.CStorageCurvesDynamic","L261.DynamicCstorageRsrcMax","L261.DynamicRsrc","L261.DynamicResTechShrwt_C","L261.RsrcPrice",
                      "L261.StubTechEff","L261.TechPmult") ->
-      Cstorage_slow.xml
+      CCS_slowGrowth.xml
 
-    create_xml("Cstorage_med.xml") %>%
+    create_xml("CCS_medGrowth.xml") %>%
       add_xml_data(L261.Rsrc, "Rsrc") %>%
       add_xml_data(L261.UnlimitRsrc, "UnlimitRsrc") %>%
       add_xml_data(L261.DynamicRsrc, "RenewRsrc") %>%
@@ -179,10 +179,10 @@ module_energy_Cstorage_xml <- function(command, ...) {
                      "L261.ResReserveTechInvestmentInput",
                      "L261.CStorageCurvesDynamic","L261.DynamicCstorageRsrcMax","L261.DynamicRsrc","L261.DynamicResTechShrwt_C","L261.RsrcPrice",
                      "L261.StubTechEff","L261.TechPmult") ->
-      Cstorage_med.xml
+      CCS_medGrowth.xml
 
 
-    create_xml("Cstorage_rapid.xml") %>%
+    create_xml("CCS_breakthruGrowth.xml") %>%
       add_xml_data(L261.Rsrc, "Rsrc") %>%
       add_xml_data(L261.UnlimitRsrc, "UnlimitRsrc") %>%
       add_xml_data(L261.DynamicRsrc, "RenewRsrc") %>%
@@ -218,12 +218,12 @@ module_energy_Cstorage_xml <- function(command, ...) {
                      "L261.ResReserveTechInvestmentInput",
                      "L261.CStorageCurvesDynamic","L261.DynamicCstorageRsrcMax","L261.DynamicRsrc","L261.DynamicResTechShrwt_C","L261.RsrcPrice",
                      "L261.StubTechEff","L261.TechPmult") ->
-      Cstorage_rapid.xml
+      CCS_breakthruGrowth.xml
 
     return_data(Cstorage.xml,
-                Cstorage_slow.xml,
-                Cstorage_med.xml,
-                Cstorage_rapid.xml)
+                CCS_slowGrowth.xml,
+                CCS_medGrowth.xml,
+                CCS_breakthruGrowth.xml)
   } else {
     stop("Unknown command")
   }

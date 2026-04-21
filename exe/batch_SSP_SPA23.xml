@@ -100,7 +100,7 @@
 			<!-- CCS -->
 			<Value name="ccs">../input/gcamdata/xml/ccs_supply_low.xml</Value>
 			<!--Value name="ccs">../input/gcamdata/xml/no_offshore_ccs.xml</Value-->
-			<Value name = "ccs">../input/gcamdata/xml/Cstorage_med.xml</Value>
+			<Value name = "ccs">../input/gcamdata/xml/CCS_medGrowth.xml</Value>
 
 			<!-- FOSSIL -->
 			<Value name="resource_extraction">../input/gcamdata/xml/resources_SSP2.xml</Value>
@@ -179,7 +179,7 @@
 			<Value name="bio_trade">../input/gcamdata/xml/ssp3_bio_trade.xml</Value>
 			
 			<!-- CCS -->
-			<Value name = "ccs">../input/gcamdata/xml/Cstorage_slow.xml</Value>
+			<Value name = "ccs">../input/gcamdata/xml/CCS_slowGrowth.xml</Value>
 
 			<Value name = "Cstorage_resource_prudent_off">../input/gcamdata/xml/cstorage_volume_current_oil_and_gas_potential_Offshore.xml</Value>
         	<Value name = "Cstorage_resource_prudent_on">../input/gcamdata/xml/cstorage_volume_current_oil_and_gas_potential_Onshore.xml</Value>

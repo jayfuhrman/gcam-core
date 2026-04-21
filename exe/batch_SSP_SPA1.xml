@@ -116,8 +116,7 @@
 			
 			<!-- CCS -->
 			<Value name="ccs">../input/gcamdata/xml/ccs_supply_lowest.xml</Value>
-			<!--Value name="ccs">../input/gcamdata/xml/no_offshore_ccs.xml</Value-->
-			<Value name = "ccs">../input/gcamdata/xml/Cstorage_slow.xml</Value>
+			<Value name = "ccs">../input/gcamdata/xml/CCS_slowGrowth.xml</Value>
 
 			<!-- FOSSIL -->
 			<Value name="resource_extraction">../input/gcamdata/xml/resources_SSP1.xml</Value>
