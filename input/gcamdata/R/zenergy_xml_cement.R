@@ -39,7 +39,10 @@ module_energy_cement_xml <- function(command, ...) {
 			       "L2321.StubTechFractProd",
 			       "L2321.StubTechFractCalPrice"))
   } else if(command == driver.DECLARE_OUTPUTS) {
-    return(c(XML = "cement.xml"))
+    return(c(XML = "cement.xml",
+             XML = "cement_noLC3.xml",
+             XML = "cement_noAdvChem.xml",
+             XML = "cement_noCCS.xml"))
   } else if(command == driver.MAKE) {
 
     all_data <- list(...)[[1]]
@@ -152,7 +155,29 @@ module_energy_cement_xml <- function(command, ...) {
                      "L2321.StubTechFractSecOut","L2321.StubTechFractProd","L2321.StubTechFractCalPrice") ->
       cement.xml
 
-    return_data(cement.xml)
+    create_xml("cement_noLC3.xml") %>%
+      add_xml_data(L2321.GlobalTechShrwt_cement %>% filter(technology %in% c("cement LC3",
+                                                                             "cement LC3 CCS")) %>%
+                     mutate(share.weight = 0), "GlobalTechShrwt") ->
+      cement_noLC3.xml
+
+    create_xml("cement_noAdvChem.xml") %>%
+      add_xml_data(L2321.GlobalTechShrwt_cement %>% filter(technology %in% c("cement silicate sol",
+                                                                             "cement silicate carb",
+                                                                             "cement silicate elec")) %>%
+                     mutate(share.weight = 0), "GlobalTechShrwt") ->
+      cement_noAdvChem.xml
+
+    create_xml("cement_noCCS.xml") %>%
+      add_xml_data(L2321.GlobalTechShrwt_cement %>% filter(str_detect(technology,"CCS")) %>%
+                     mutate(share.weight = 0), "GlobalTechShrwt") ->
+      cement_noCCS.xml
+
+
+    return_data(cement.xml,
+                cement_noLC3.xml,
+                cement_noAdvChem.xml,
+                cement_noCCS.xml)
   } else {
     stop("Unknown command")
   }
