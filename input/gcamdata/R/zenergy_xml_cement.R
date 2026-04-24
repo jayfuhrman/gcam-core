@@ -155,19 +155,17 @@ module_energy_cement_xml <- function(command, ...) {
                      "L2321.GlobalTechCapture_cement", "L2321.StubTechProd_cement", "L2321.StubTechCalInput_cement_heat",
                      "L2321.StubTechCoef_cement", "L2321.PerCapitaBased_cement", "L2321.BaseService_cement", "L2321.GlobalTechCSeq_ind",
                      "L2321.PriceElasticity_cement", "L2321.GlobalTechTrackCapital_cement",
+                     "L2321.StubTechInterp_cement",
                      "L2321.StubTechFractSecOut","L2321.StubTechFractProd","L2321.StubTechFractCalPrice") ->
       cement.xml
 
     create_xml("cement_noLC3.xml") %>%
-      add_xml_data(L2321.GlobalTechShrwt_cement %>% filter(technology %in% c("cement LC3",
-                                                                             "cement LC3 CCS")) %>%
+      add_xml_data(L2321.GlobalTechShrwt_cement %>% filter(str_detect(technology,"LC3")) %>%
                      mutate(share.weight = 0), "GlobalTechShrwt") ->
       cement_noLC3.xml
 
     create_xml("cement_noAdvChem.xml") %>%
-      add_xml_data(L2321.GlobalTechShrwt_cement %>% filter(technology %in% c("cement silicate sol",
-                                                                             "cement silicate carb",
-                                                                             "cement silicate elec")) %>%
+      add_xml_data(L2321.GlobalTechShrwt_cement %>% filter(str_detect(technology,"silicate")) %>%
                      mutate(share.weight = 0), "GlobalTechShrwt") ->
       cement_noAdvChem.xml
 
