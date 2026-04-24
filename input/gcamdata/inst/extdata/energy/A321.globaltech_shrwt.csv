@@ -21,10 +21,6 @@ cement,cement,cement SCMFA,1,1,1,1,1,1,1,1
 cement,cement,cement SCMGBFS,1,1,1,1,1,1,1,1
 cement,cement,cement SCMlime,1,1,1,1,1,1,1,1
 cement,cement,cement LC3,0,0,0,0,0.2,0.6,1,1
-cement,cement,cement LC3 CCS,0,0,0,0,0.2,0.6,1,1
 cement,cement,cement silicate sol,0,0,0,0,0.2,0.6,1,1
 cement,cement,cement silicate elec,0,0,0,0,0.2,0.6,1,1
 cement,cement,cement silicate carb,0,0,0,0,0.2,0.6,1,1
-cement,cement,cement silicate sol CCS,0,0,0,0,0.2,0.6,1,1
-cement,cement,cement silicate elec CCS,0,0,0,0,0.2,0.6,1,1
-cement,cement,cement silicate carb CCS,0,0,0,0,0.2,0.6,1,1
