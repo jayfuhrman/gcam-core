@@ -41,9 +41,21 @@ cement ,cement,cement LC3,clinker,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5
 cement,cement,cement LC3,gypsum,0.05,0.05,0.05,0.05,0.05,0.05,0.05,0.05
 cement,cement,cement LC3,clay,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3
 cement,cement,cement LC3,process heat cement,0.0009015,0.0009015,0.0009015,0.0009015,0.0009015,0.0009015,0.0009015,0.0009015
+cement,cement,cement LC3 CCS,elect_td_ind,0.00096,0.00096,0.00096,0.00096,0.00096,0.00096,0.00096,0.00096
+cement,cement,cement LC3 CCS,limestone,0.15,0.15,0.15,0.15,0.15,0.15,0.15,0.15
+cement,cement,cement LC3 CCS,clinker,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5
+cement,cement,cement LC3 CCS,gypsum,0.05,0.05,0.05,0.05,0.05,0.05,0.05,0.05
+cement,cement,cement LC3 CCS,clay,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3
+cement,cement,cement LC3 CCS,process heat cement ccs,0.0009015,0.0009015,0.0009015,0.0009015,0.0009015,0.0009015,0.0009015,0.0009015
 cement,cement,cement silicate sol,elect_td_ind,0.0194,0.0194,0.0194,0.0194,0.0194,0.0194,0.0194,0.0194
 cement,cement,cement silicate elec,elect_td_ind,0.0063,0.0063,0.0063,0.0063,0.0063,0.0063,0.0063,0.0063
 cement,cement,cement silicate carb,elect_td_ind,0.004768639,0.004768639,0.004768639,0.004768639,0.004768639,0.004768639,0.004768639,0.004768639
 cement,cement,cement silicate elec,process heat cement,0.0032,0.0032,0.0032,0.0032,0.0032,0.0032,0.0032,0.0032
 cement,cement,cement silicate carb,process heat cement,0.002779,0.002779,0.002779,0.002779,0.002779,0.002779,0.002779,0.002779
 cement,cement,cement silicate sol,process heat cement,0.0043,0.0043,0.0043,0.0043,0.0043,0.0043,0.0043,0.0043
+cement,cement,cement silicate sol CCS,elect_td_ind,0.0194,0.0194,0.0194,0.0194,0.0194,0.0194,0.0194,0.0194
+cement,cement,cement silicate elec CCS,elect_td_ind,0.0063,0.0063,0.0063,0.0063,0.0063,0.0063,0.0063,0.0063
+cement,cement,cement silicate carb CCS,elect_td_ind,0.004768639,0.004768639,0.004768639,0.004768639,0.004768639,0.004768639,0.004768639,0.004768639
+cement,cement,cement silicate elec CCS,process heat cement ccs,0.0032,0.0032,0.0032,0.0032,0.0032,0.0032,0.0032,0.0032
+cement,cement,cement silicate carb CCS,process heat cement ccs,0.002779,0.002779,0.002779,0.002779,0.002779,0.002779,0.002779,0.002779
+cement,cement,cement silicate sol CCS,process heat cement ccs,0.0043,0.0043,0.0043,0.0043,0.0043,0.0043,0.0043,0.0043
