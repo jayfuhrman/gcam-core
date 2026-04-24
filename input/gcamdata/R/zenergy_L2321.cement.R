@@ -77,7 +77,8 @@ module_energy_L2321.cement <- function(command, ...) {
 
       "L2321.StubTechFractSecOut",
       "L2321.StubTechFractProd",
-      "L2321.StubTechFractCalPrice")
+      "L2321.StubTechFractCalPrice",
+      "L2321.StubTechInterp_cement")
 
   if(command == driver.DECLARE_INPUTS) {
     return(MODULE_INPUTS)
@@ -281,6 +282,15 @@ module_energy_L2321.cement <- function(command, ...) {
       ungroup() %>%
       select(LEVEL2_DATA_NAMES[["StubTechProd"]])  ->
       L2321.StubTechProd_cement
+
+    L2321.StubTechInterp_cement <- L2321.StubTechProd_cement %>%
+      filter(year == MODEL_FINAL_BASE_YEAR) %>%
+      mutate(apply.to = "share-weight",
+             from.year = year,
+             to.year = max(MODEL_FUTURE_YEARS),
+             interpolation.function = "fixed") %>%
+      select(LEVEL2_DATA_NAMES[["StubTechInterp"]]) %>%
+      same_precursors_as(L2321.StubTechProd_cement)
 
     # L2321.StubTechCoef_cement: region-specific coefficients of cement production technologies
     # Take this as a given in all years for which data is available

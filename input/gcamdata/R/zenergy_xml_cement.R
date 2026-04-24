@@ -37,7 +37,8 @@ module_energy_cement_xml <- function(command, ...) {
 
 			       "L2321.StubTechFractSecOut",
 			       "L2321.StubTechFractProd",
-			       "L2321.StubTechFractCalPrice"))
+			       "L2321.StubTechFractCalPrice",
+			       "L2321.StubTechInterp_cement"))
   } else if(command == driver.DECLARE_OUTPUTS) {
     return(c(XML = "cement.xml",
              XML = "cement_noLC3.xml",
@@ -110,6 +111,7 @@ module_energy_cement_xml <- function(command, ...) {
     L2321.StubTechFractSecOut <- get_data(all_data, "L2321.StubTechFractSecOut")
     L2321.StubTechFractProd <- get_data(all_data,"L2321.StubTechFractProd")
     L2321.StubTechFractCalPrice <- get_data(all_data,"L2321.StubTechFractCalPrice")
+    L2321.StubTechInterp_cement <- get_data(all_data,"L2321.StubTechInterp_cement")
     # ===================================================
 
     # Produce outputs
@@ -133,6 +135,7 @@ module_energy_cement_xml <- function(command, ...) {
       add_xml_data(L2321.StubTechProd_cement, "StubTechProd") %>%
       add_xml_data(L2321.StubTechCalInput_cement_heat, "StubTechCalInput") %>%
       add_xml_data(L2321.StubTechCoef_cement, "StubTechCoef") %>%
+      add_xml_data(L2321.StubTechInterp_cement, "StubTechInterp") %>%
       add_xml_data(L2321.PerCapitaBased_cement, "PerCapitaBased") %>%
       add_xml_data(L2321.BaseService_cement, "BaseService") %>%
       add_xml_data(L2321.PriceElasticity_cement, "PriceElasticity") %>%
