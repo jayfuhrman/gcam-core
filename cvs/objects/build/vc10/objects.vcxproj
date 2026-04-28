@@ -60,19 +60,22 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v145</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release - LAPACK|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v145</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release - TBB|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v145</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <CharacterSet>MultiByte</CharacterSet>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v145</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release - LAPACK|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -102,11 +105,12 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v145</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <CharacterSet>MultiByte</CharacterSet>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v145</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Itanium'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -719,6 +723,7 @@
     <ClCompile Include="..\..\technologies\source\technology.cpp" />
     <ClCompile Include="..\..\technologies\source\technology_container.cpp" />
     <ClCompile Include="..\..\technologies\source\tran_technology.cpp" />
+    <ClCompile Include="..\..\technologies\source\zero_profit_output.cpp" />
     <ClCompile Include="..\..\technologies\source\unmanaged_land_technology.cpp" />
     <ClCompile Include="..\..\technologies\source\variable_production_state.cpp" />
     <ClCompile Include="..\..\technologies\source\vintage_production_state.cpp" />
@@ -754,7 +759,6 @@
     <ClCompile Include="..\..\util\curves\source\point_set_curve.cpp" />
     <ClCompile Include="..\..\util\curves\source\xy_data_point.cpp" />
     <ClCompile Include="..\..\consumers\source\consumer.cpp" />
-    <ClCompile Include="..\..\reporting\source\batch_csv_outputter.cpp" />
     <ClCompile Include="..\..\reporting\source\graph_printer.cpp" />
     <ClCompile Include="..\..\reporting\source\land_allocator_printer.cpp" />
     <ClCompile Include="..\..\reporting\source\xml_db_outputter.cpp" />
@@ -1076,7 +1080,6 @@
     <ClInclude Include="..\..\util\curves\include\point_set_curve.h" />
     <ClInclude Include="..\..\util\curves\include\xy_data_point.h" />
     <ClInclude Include="..\..\consumers\include\consumer.h" />
-    <ClInclude Include="..\..\reporting\include\batch_csv_outputter.h" />
     <ClInclude Include="..\..\reporting\include\graph_printer.h" />
     <ClInclude Include="..\..\reporting\include\xml_db_outputter.h" />
     <ClInclude Include="..\..\functions\include\aproduction_function.h" />

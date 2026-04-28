@@ -944,9 +944,6 @@
     <ClCompile Include="..\..\technologies\source\ag_storage_technology.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-	  <ClCompile Include="..\..\technologies\source\zero_profit_output.cpp">
-		  <Filter>Source Files\technology</Filter>
-	  </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\containers\include\batch_runner.h">
@@ -1918,8 +1915,5 @@
     <ClInclude Include="..\..\technologies\include\ag_storage_technology.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-	  <ClInclude Include="..\..\technologies\include\zero_profit_output.h">
-		  <Filter>Header Files\technologies</Filter>
-	  </ClInclude>
   </ItemGroup>
 </Project>
