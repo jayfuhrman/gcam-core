@@ -17,4 +17,7 @@ process heat cement,hydrogen,start-year,,0
 process heat cement,hydrogen,initial-future-year,,0
 process heat cement,hydrogen,2050,,1
 clinker,clinker,start-year,,1
+clinker,clinker CCS,start-year,,0
+clinker,clinker CCS,initial-future-year,,0
+clinker,clinker CCS,2050,,1
 cement,cement,start-year,,1

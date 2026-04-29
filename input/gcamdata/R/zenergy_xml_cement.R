@@ -170,7 +170,7 @@ module_energy_cement_xml <- function(command, ...) {
       cement_noAdvChem.xml
 
     create_xml("cement_noCCS.xml") %>%
-      add_xml_data(L2321.GlobalTechShrwt_cement %>% filter(str_detect(technology,"CCS")) %>%
+      add_xml_data(L2321.GlobalTechShrwt_cement %>% filter(str_detect(technology,"CCS") | str_detect(subsector.name,"CCS")) %>%
                      mutate(share.weight = 0), "GlobalTechShrwt") ->
       cement_noCCS.xml
 
