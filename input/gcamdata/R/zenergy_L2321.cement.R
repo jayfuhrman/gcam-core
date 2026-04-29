@@ -55,6 +55,7 @@ module_energy_L2321.cement <- function(command, ...) {
       "L2321.FinalEnergyKeyword_cement",
       "L2321.SubsectorLogit_cement",
       "L2321.SubsectorShrwtFllt_cement",
+      "L2321.SubsectorShrwt_cement",
       "L2321.SubsectorInterp_cement",
       "L2321.StubTech_cement",
       "L2321.GlobalTechShrwt_cement",
@@ -124,14 +125,27 @@ module_energy_L2321.cement <- function(command, ...) {
 
     # and L2321.SubsectorShrwtFllt_cement: Subsector shareweights of cement sector
     A321.subsector_shrwt %>%
-      filter(!is.na(year.fillout)) %>%
+      group_by(supplysector,subsector) %>%
+      mutate(count = n()) %>%
+      ungroup() -> A321.subsector_shrwt
+
+    A321.subsector_shrwt %>%
+      filter(!is.na(year.fillout),
+             count == 1) %>%
       write_to_all_regions(LEVEL2_DATA_NAMES[["SubsectorShrwtFllt"]], GCAM_region_names) ->
       L2321.SubsectorShrwtFllt_cement
 
+    A321.subsector_shrwt %>%
+      filter(!is.na(year.fillout),
+             count > 1) %>%
+      mutate(year = year.fillout) %>%
+      write_to_all_regions(LEVEL2_DATA_NAMES[["SubsectorShrwt"]], GCAM_region_names) ->
+      L2321.SubsectorShrwt_cement
+
     # L2321.SubsectorInterp_cement: Subsector shareweight interpolation of cement sector
     A321.subsector_interp %>%
-      filter(is.na(to.value)) %>%
-      write_to_all_regions(LEVEL2_DATA_NAMES[["SubsectorInterp"]], GCAM_region_names) ->
+      filter(!is.na(to.value)) %>%
+      write_to_all_regions(LEVEL2_DATA_NAMES[["SubsectorInterpTo"]], GCAM_region_names) ->
       L2321.SubsectorInterp_cement
 
     # 1c. Technology information
@@ -721,6 +735,12 @@ module_energy_L2321.cement <- function(command, ...) {
       add_legacy_name("L2321.SubsectorShrwtFllt_cement") %>%
       add_precursors("energy/A321.subsector_shrwt", "common/GCAM_region_names") ->
       L2321.SubsectorShrwtFllt_cement
+
+    L2321.SubsectorShrwt_cement %>%
+      add_title("Subsector shareweights of cement sector") %>%
+      add_units("unitless") %>%
+      add_comments("For cement sector, the subsector shareweights from A321.subsector_shrwt are expanded into all GCAM regions") %>%
+      same_precursors_as("L2321.SubsectorShrwtFllt_cement") -> L2321.SubsectorShrwt_cement
 
     L2321.SubsectorInterp_cement %>%
       add_title("Subsector shareweight interpolation of cement sector") %>%

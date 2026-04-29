@@ -15,7 +15,7 @@ module_energy_cement_xml <- function(command, ...) {
     return(c("L2321.Supplysector_cement",
              "L2321.FinalEnergyKeyword_cement",
              "L2321.SubsectorLogit_cement",
-             # "L2321.SubsectorShrwt_cement",
+             "L2321.SubsectorShrwt_cement",
              "L2321.SubsectorShrwtFllt_cement",
              "L2321.SubsectorInterp_cement",
              # "L2321.SubsectorInterpTo_cement",
@@ -88,7 +88,7 @@ module_energy_cement_xml <- function(command, ...) {
     L2321.Supplysector_cement <- get_data(all_data, "L2321.Supplysector_cement") %>% process_heat_sector_combine(SINGLE_STACK_CCS)
     L2321.FinalEnergyKeyword_cement <- get_data(all_data, "L2321.FinalEnergyKeyword_cement") %>% process_heat_sector_combine(SINGLE_STACK_CCS)
     L2321.SubsectorLogit_cement <- get_data(all_data, "L2321.SubsectorLogit_cement") %>% process_heat_sector_combine(SINGLE_STACK_CCS)
-    #    L2321.SubsectorShrwt_cement <- get_data(all_data, "L2321.SubsectorShrwt_cement") %>% process_heat_sector_combine(SINGLE_STACK_CCS)
+    L2321.SubsectorShrwt_cement <- get_data(all_data, "L2321.SubsectorShrwt_cement") %>% process_heat_sector_combine(SINGLE_STACK_CCS)
     L2321.SubsectorShrwtFllt_cement <- get_data(all_data, "L2321.SubsectorShrwtFllt_cement") %>% process_heat_sector_combine(SINGLE_STACK_CCS)
     L2321.SubsectorInterp_cement <- get_data(all_data, "L2321.SubsectorInterp_cement") %>% process_heat_sector_combine(SINGLE_STACK_CCS)
     #    L2321.SubsectorInterpTo_cement <- get_data(all_data, "L2321.SubsectorInterpTo_cement") %>% process_heat_sector_combine(SINGLE_STACK_CCS)
@@ -119,9 +119,9 @@ module_energy_cement_xml <- function(command, ...) {
       add_logit_tables_xml(L2321.Supplysector_cement, "Supplysector") %>%
       add_xml_data(L2321.FinalEnergyKeyword_cement, "FinalEnergyKeyword") %>%
       add_logit_tables_xml(L2321.SubsectorLogit_cement, "SubsectorLogit") %>%
-      #      add_xml_data(L2321.SubsectorShrwt_cement, "SubsectorShrwt") %>%
+      add_xml_data(L2321.SubsectorShrwt_cement, "SubsectorShrwt") %>%
       add_xml_data(L2321.SubsectorShrwtFllt_cement, "SubsectorShrwtFllt") %>%
-      add_xml_data(L2321.SubsectorInterp_cement, "SubsectorInterp") %>%
+      add_xml_data(L2321.SubsectorInterp_cement, "SubsectorInterpTo") %>%
       #      add_xml_data(L2321.SubsectorInterpTo_cement, "SubsectorInterpTo") %>%
       add_xml_data(L2321.StubTech_cement, "StubTech") %>%
       add_xml_data(L2321.GlobalTechShrwt_cement, "GlobalTechShrwt") %>%
