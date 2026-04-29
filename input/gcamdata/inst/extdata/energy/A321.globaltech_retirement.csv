@@ -22,6 +22,8 @@ process heat cement,hydrogen,hydrogen,final-calibration-year,67,,20,0.3,-0.5,6
 process heat cement ccs,hydrogen,hydrogen,final-calibration-year,67,,20,0.3,-0.5,6
 clinker,clinker,clinker,final-calibration-year,40,,20,0.3,-0.5,6
 clinker,clinker CCS,oxyfuel combustion,final-calibration-year,40,,20,0.3,-0.5,6
+clinker,clinker CCS,post-combustion capture,final-calibration-year,40,,20,0.3,-0.5,6
+clinker,clinker CCS,calciner capture,final-calibration-year,40,,20,0.3,-0.5,6
 cement,cement,OPC,final-calibration-year,40,,20,0.3,-0.5,6
 cement,cement,cement SCMFA,final-calibration-year,40,,20,0.3,-0.5,6
 cement,cement,cement SCMGBFS,final-calibration-year,40,,20,0.3,-0.5,6
@@ -42,6 +44,8 @@ process heat cement,hydrogen,hydrogen,initial-future-year,67,,20,0.3,-0.5,6
 process heat cement ccs,hydrogen,hydrogen,initial-future-year,67,,20,0.3,-0.5,6
 clinker,clinker,clinker,initial-future-year,40,,20,0.3,-0.5,6
 clinker,clinker CCS,oxyfuel combustion,initial-future-year,40,,20,0.3,-0.5,6
+clinker,clinker CCS,post-combustion capture,initial-future-year,40,,20,0.3,-0.5,6
+clinker,clinker CCS,calciner capture,initial-future-year,40,,20,0.3,-0.5,6
 cement,cement,OPC,initial-future-year,40,,20,0.3,-0.5,6
 cement,cement,cement SCMFA,initial-future-year,40,,20,0.3,-0.5,6
 cement,cement,cement SCMGBFS,initial-future-year,40,,20,0.3,-0.5,6

@@ -16,6 +16,8 @@ process heat cement,hydrogen,hydrogen,0,0,0,0,0.2,0.6,1,1
 process heat cement ccs,hydrogen,hydrogen,1,1,1,1,1,1,1,1
 clinker,clinker,clinker,1,1,1,1,1,1,1,1
 clinker,clinker CCS,oxyfuel combustion,1,1,1,1,1,1,1,1
+clinker,clinker CCS,post-combustion capture,1,1,1,1,1,1,1,1
+clinker,clinker CCS,calciner capture,1,1,1,1,1,1,1,1
 cement,cement,OPC,1,1,1,1,1,1,1,1
 cement,cement,cement SCMFA,1,1,1,1,1,1,1,1
 cement,cement,cement SCMGBFS,1,1,1,1,1,1,1,1

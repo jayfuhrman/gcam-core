@@ -4,7 +4,9 @@
 # Column types: cccnn
 # ----------
 supplysector,subsector,technology,1971,2100
-clinker,clinker CCS,oxyfuel combustion,0.9,0.9
+clinker,clinker CCS,oxyfuel combustion,0.95,0.95
+clinker,clinker CCS,post-combustion capture,0.85,0.85
+clinker,clinker CCS,calciner capture,0.9,0.9
 process heat cement ccs,refined liquids,refined liquids CCS,0.9,0.9
 process heat cement ccs,gas,gas CCS,0.9,0.9
 process heat cement ccs,biomass,biomass CCS,0.9,0.9
