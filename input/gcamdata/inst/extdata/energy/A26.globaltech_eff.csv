@@ -33,3 +33,11 @@ refined liquids industrial,refined liquids industrial,refined liquids jet_kerose
 refined liquids industrial,refined liquids industrial,refined liquids other,regional Other,1,1,1
 refined liquids industrial,refined liquids industrial,refined liquids feedstock,regional oil,1,1,1
 backup_electricity,hydrogen,hydrogen combustion turbine,H2 industrial,0.377,0.377,0.428
+refined liquids aviation,refined liquids aviation,refined liquids gasoline,regional Gasoline,1,1,1
+refined liquids aviation,refined liquids aviation,refined liquids distillate_fueloil,regional Distillate_FuelOil,1,1,1
+refined liquids aviation,refined liquids aviation,refined liquids residual_fueloil,regional Residual_FuelOil,1,1,1
+refined liquids aviation,refined liquids aviation,refined liquids lpg,regional LPG,1,1,1
+refined liquids aviation,refined liquids aviation,refined liquids petcoke,regional PetCoke,1,1,1
+refined liquids aviation,refined liquids aviation,refined liquids jet_kerosene,regional Jet_Kerosene,1,1,1
+refined liquids aviation,refined liquids aviation,refined liquids other,regional Other,1,1,1
+refined liquids aviation,refined liquids aviation,refined liquids feedstock,regional oil,1,1,1

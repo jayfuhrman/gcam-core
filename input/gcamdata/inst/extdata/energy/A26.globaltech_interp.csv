@@ -32,3 +32,11 @@ refined liquids industrial,refined liquids industrial,refined liquids jet_kerose
 refined liquids industrial,refined liquids industrial,refined liquids other,share-weight,final-calibration-year,end-year,fixed
 refined liquids industrial,refined liquids industrial,refined liquids feedstock,share-weight,final-calibration-year,end-year,fixed
 backup_electricity,hydrogen,hydrogen combustion turbine,share-weight,final-calibration-year,initial-future-year,fixed
+refined liquids aviation,refined liquids aviation,refined liquids gasoline,share-weight,final-calibration-year,end-year,fixed
+refined liquids aviation,refined liquids aviation,refined liquids distillate_fueloil,share-weight,final-calibration-year,end-year,fixed
+refined liquids aviation,refined liquids aviation,refined liquids residual_fueloil,share-weight,final-calibration-year,end-year,fixed
+refined liquids aviation,refined liquids aviation,refined liquids lpg,share-weight,final-calibration-year,end-year,fixed
+refined liquids aviation,refined liquids aviation,refined liquids petcoke,share-weight,final-calibration-year,end-year,fixed
+refined liquids aviation,refined liquids aviation,refined liquids jet_kerosene,share-weight,final-calibration-year,end-year,fixed
+refined liquids aviation,refined liquids aviation,refined liquids other,share-weight,final-calibration-year,end-year,fixed
+refined liquids aviation,refined liquids aviation,refined liquids feedstock,share-weight,final-calibration-year,end-year,fixed

@@ -244,9 +244,12 @@ module_energy_L1093.refined_liquids_GrossTrade <- function(command, ...){
                indfeed + offrd + paper + irnstl + desal + fert) %>%
       select(region, year, type = minicam.energy.input, value)
 
-    zL1093.en_bal_EJ_liquids_cons_end <- a_trn %>%
-      left_join_error_no_match(a_bld, by = c("region", "year", "minicam.energy.input")) %>%
-      mutate(value = trn + bld) %>%
+    zL1093.en_bal_EJ_liquids_cons_end <-
+      bind_rows(a_trn %>% rename(value = trn),
+                a_bld %>% rename(value = bld)) %>%
+      group_by(region,year,minicam.energy.input) %>%
+      summarize(value = sum(value)) %>%
+      ungroup() %>%
       select(region, year, type = minicam.energy.input, value)
 
     zL1093.en_bal_EJ_liquids_cons_type <- zL1093.en_bal_EJ_liquids_cons_ind %>%
@@ -261,8 +264,10 @@ module_energy_L1093.refined_liquids_GrossTrade <- function(command, ...){
 
     # Apply corrections for direct crude consumption
     L1093.en_bal_EJ_liquids_cons_type <- zL1093.en_bal_EJ_liquids_cons_type %>%
-      left_join_error_no_match(direct_crude, by = c("region", "year", "type")) %>%
-      mutate(value = value - direct_crude) %>%
+      bind_rows(direct_crude %>% mutate(value = -direct_crude)) %>%
+      group_by(region,year,type) %>%
+      summarize(value = sum(value))%>%
+      ungroup() %>%
       select(region, year, type, value)
 
 

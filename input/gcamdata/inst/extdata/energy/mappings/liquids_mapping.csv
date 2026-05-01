@@ -8,9 +8,9 @@
 sector,gcam_sector_name_old,type
 in_bld_comm,refined liquids enduse,refined liquids enduse
 in_bld_resid,refined liquids enduse,refined liquids enduse
-in_trn_domestic air,refined liquids enduse,refined liquids enduse
+in_trn_domestic air,refined liquids enduse,refined liquids aviation
 in_trn_domestic ship,refined liquids enduse,refined liquids enduse
-in_trn_international air,refined liquids enduse,refined liquids enduse
+in_trn_international air,refined liquids enduse,refined liquids aviation
 in_trn_international ship,refined liquids enduse,refined liquids enduse
 in_trn_rail,refined liquids enduse,refined liquids enduse
 in_trn_road,refined liquids enduse,refined liquids enduse

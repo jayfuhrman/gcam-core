@@ -19,3 +19,4 @@ refined liquids enduse,refined liquids enduse,share-weight,final-calibration-yea
 refined liquids industrial,refined liquids industrial,share-weight,final-calibration-year,end-year,,fixed
 backup_electricity,hydrogen,share-weight,final-calibration-year,initial-future-year,,linear
 backup_electricity,hydrogen,share-weight,initial-future-year,2030,,linear
+refined liquids aviation,refined liquids aviation,share-weight,final-calibration-year,end-year,,fixed
