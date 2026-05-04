@@ -188,7 +188,7 @@ void SubResource::initCalc( const string& aRegionName, const string& aResourceNa
     // flag on the market that this resource is fully calibrated.
     Marketplace* marketplace = scenario->getMarketplace();
     IInfo* productInfo = marketplace->getMarketInfo( aResourceName, aRegionName, aPeriod, false );
-    if( aPeriod <= finalCalPeriod && mCalProduction[ aPeriod ] > 0 && productInfo ) {
+    if( aPeriod <= finalCalPeriod && mCalProduction[ aPeriod ] >= 0.0 && productInfo ) {
         productInfo->setBoolean( "fully-calibrated", true );
     }
     
