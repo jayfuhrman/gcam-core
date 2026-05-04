@@ -20,3 +20,4 @@ refined liquids industrial,refined liquids industrial,share-weight,final-calibra
 backup_electricity,hydrogen,share-weight,final-calibration-year,initial-future-year,,linear
 backup_electricity,hydrogen,share-weight,initial-future-year,2030,,linear
 refined liquids aviation,refined liquids aviation,share-weight,final-calibration-year,end-year,,fixed
+refined liquids shipping,refined liquids shipping,share-weight,final-calibration-year,end-year,,fixed

@@ -40,3 +40,11 @@ refined liquids aviation,refined liquids aviation,refined liquids petcoke,share-
 refined liquids aviation,refined liquids aviation,refined liquids jet_kerosene,share-weight,final-calibration-year,end-year,fixed
 refined liquids aviation,refined liquids aviation,refined liquids other,share-weight,final-calibration-year,end-year,fixed
 refined liquids aviation,refined liquids aviation,refined liquids feedstock,share-weight,final-calibration-year,end-year,fixed
+refined liquids shipping,refined liquids shipping,refined liquids gasoline,share-weight,final-calibration-year,end-year,fixed
+refined liquids shipping,refined liquids shipping,refined liquids distillate_fueloil,share-weight,final-calibration-year,end-year,fixed
+refined liquids shipping,refined liquids shipping,refined liquids residual_fueloil,share-weight,final-calibration-year,end-year,fixed
+refined liquids shipping,refined liquids shipping,refined liquids lpg,share-weight,final-calibration-year,end-year,fixed
+refined liquids shipping,refined liquids shipping,refined liquids petcoke,share-weight,final-calibration-year,end-year,fixed
+refined liquids shipping,refined liquids shipping,refined liquids jet_kerosene,share-weight,final-calibration-year,end-year,fixed
+refined liquids shipping,refined liquids shipping,refined liquids other,share-weight,final-calibration-year,end-year,fixed
+refined liquids shipping,refined liquids shipping,refined liquids feedstock,share-weight,final-calibration-year,end-year,fixed
