@@ -124,52 +124,61 @@ module_energy_L1093.refined_liquids_GrossTrade <- function(command, ...){
       filter(grepl(REFLIQ_BUCKETS, minicam.energy.input)) %>%
       select(region, year, supplysector, subsector, minicam.energy.input, calibrated.value) %>%
       group_by(region, year, minicam.energy.input) %>%
-      summarize(aluminum = sum(calibrated.value), .groups = "drop")
+      summarize(value = sum(calibrated.value), .groups = "drop")
+
     a_cement <- L2321.StubTechCalInput_cement_heat %>%
       filter(grepl(REFLIQ_BUCKETS, minicam.energy.input)) %>%
       select(region, year, supplysector, subsector, minicam.energy.input, calibrated.value)  %>%
       group_by(region, year, minicam.energy.input) %>%
-      summarize(cement = sum(calibrated.value), .groups = "drop")
+      summarize(value = sum(calibrated.value), .groups = "drop")
+
     a_chem <- L2325.StubTechCalInput_chemical %>%
       filter(grepl(REFLIQ_BUCKETS, minicam.energy.input)) %>%
       select(region, year, supplysector, subsector, minicam.energy.input, calibrated.value)  %>%
       group_by(region, year, minicam.energy.input) %>%
-      summarize(chem = sum(calibrated.value), .groups = "drop")
+      summarize(value = sum(calibrated.value), .groups = "drop")
+
     a_elec <- L223.StubTechCalInput_elec %>%
       filter(grepl(REFLIQ_BUCKETS, minicam.energy.input)) %>%
       select(region, year, supplysector, subsector, minicam.energy.input, calibrated.value)  %>%
       group_by(region, year, minicam.energy.input) %>%
-      summarize(elec = sum(calibrated.value), .groups = "drop")
+      summarize(value = sum(calibrated.value), .groups = "drop")
+
     a_food <- L2328.StubTechCalInput_food_heat %>%
       filter(grepl(REFLIQ_BUCKETS, minicam.energy.input)) %>%
       select(region, year, supplysector, subsector, minicam.energy.input, calibrated.value) %>%
       group_by(region, year, minicam.energy.input) %>%
-      summarize(food = sum(calibrated.value), .groups = "drop")
+      summarize(value = sum(calibrated.value), .groups = "drop")
+
     a_heat <- L224.StubTechCalInput_heat %>%
       filter(grepl(REFLIQ_BUCKETS, minicam.energy.input)) %>%
       select(region, year, supplysector, subsector, minicam.energy.input, calibrated.value) %>%
       group_by(region, year, minicam.energy.input) %>%
-      summarize(heat = sum(calibrated.value), .groups = "drop")
+      summarize(value = sum(calibrated.value), .groups = "drop")
+
     a_offroad <- L2324.StubTechCalInput_Off_road %>%
       filter(grepl(REFLIQ_BUCKETS, minicam.energy.input)) %>%
       select(region, year, supplysector, subsector, minicam.energy.input, calibrated.value)  %>%
       group_by(region, year, minicam.energy.input) %>%
-      summarize(offrd = sum(calibrated.value), .groups = "drop")
+      summarize(value = sum(calibrated.value), .groups = "drop")
+
     a_paper <- L2327.StubTechCalInput_paper_heat %>%
       filter(grepl(REFLIQ_BUCKETS, minicam.energy.input)) %>%
       select(region, year, supplysector, subsector, minicam.energy.input, calibrated.value) %>%
       group_by(region, year, minicam.energy.input) %>%
-      summarize(paper = sum(calibrated.value), .groups = "drop")
+      summarize(value = sum(calibrated.value), .groups = "drop")
+
     a_indfeed <- L232.StubTechCalInput_indfeed %>%
       filter(grepl(REFLIQ_BUCKETS, minicam.energy.input)) %>%
       select(region, year, supplysector, subsector, minicam.energy.input, calibrated.value) %>%
       group_by(region, year, minicam.energy.input) %>%
-      summarize(indfeed = sum(calibrated.value), .groups = "drop")
+      summarize(value = sum(calibrated.value), .groups = "drop")
+
     a_inden <- L232.StubTechCalInput_indenergy %>%
       filter(grepl(REFLIQ_BUCKETS, minicam.energy.input)) %>%
       select(region, year, supplysector, subsector, minicam.energy.input, calibrated.value) %>%
       group_by(region, year, minicam.energy.input) %>%
-      summarize(inden = sum(calibrated.value), .groups = "drop")
+      summarize(value = sum(calibrated.value), .groups = "drop")
 
     # saved as a coef for irnstl, fert, desal so need to calc from production
     irnstl_coef <- L2323.StubTechCoef_iron_steel %>%
@@ -177,13 +186,14 @@ module_energy_L1093.refined_liquids_GrossTrade <- function(command, ...){
       select(region, year, supplysector, subsector, stub.technology, minicam.energy.input, coefficient)
     irnstl_prod <- L2323.StubTechProd_iron_steel %>%
       select(region, year, supplysector, subsector, stub.technology, calOutputValue)
+
     a_irnstl <- irnstl_prod %>%
       left_join(irnstl_coef, by = c("region", "year", "supplysector", "subsector", "stub.technology")) %>%
       mutate(calibrated.value = calOutputValue * coefficient) %>%
       filter(calibrated.value > 0) %>%
       select(region, year, supplysector, subsector, minicam.energy.input, calibrated.value) %>%
       group_by(region, year, minicam.energy.input) %>%
-      summarize(irnstl = sum(calibrated.value), .groups = "drop")
+      summarize(value = sum(calibrated.value), .groups = "drop")
 
     fert_coef <- (L2322.StubTechCoef_Fert) %>%
       filter(grepl(REFLIQ_BUCKETS, minicam.energy.input)) %>%
@@ -196,7 +206,7 @@ module_energy_L1093.refined_liquids_GrossTrade <- function(command, ...){
       filter(calibrated.value > 0) %>%
       select(region, year, supplysector, subsector, minicam.energy.input, calibrated.value) %>%
       group_by(region, year, minicam.energy.input) %>%
-      summarize(fert = sum(calibrated.value), .groups = "drop")
+      summarize(value = sum(calibrated.value), .groups = "drop")
 
     desal_coef <- (L271.GlobalTechCoef_desal) %>%
       filter(grepl(REFLIQ_BUCKETS, minicam.energy.input)) %>%
@@ -204,13 +214,14 @@ module_energy_L1093.refined_liquids_GrossTrade <- function(command, ...){
              stub.technology = technology, minicam.energy.input, coefficient)
     desal_prod <- L271.StubTechProd_desal %>%
       select(region, year, supplysector, subsector, stub.technology, calOutputValue)
+
     a_desal <- desal_prod %>%
       left_join(desal_coef, by = c("year", "supplysector", "subsector", "stub.technology")) %>%
       mutate(calibrated.value = calOutputValue * coefficient) %>%
       filter(calibrated.value > 0) %>%
       select(region, year, supplysector, subsector, minicam.energy.input, calibrated.value) %>%
       group_by(region, year, minicam.energy.input) %>%
-      summarize(desal = sum(calibrated.value), .groups = "drop")
+      summarize(value = sum(calibrated.value), .groups = "drop")
 
     # REFLIQ ENDUSE
     a_trn <- L254.StubTranTechCalInput %>%
@@ -218,35 +229,25 @@ module_energy_L1093.refined_liquids_GrossTrade <- function(command, ...){
       select(region, year, supplysector, tranSubsector, minicam.energy.input, calibrated.value) %>%
       distinct() %>%
       group_by(region, year, minicam.energy.input) %>%
-      summarize(trn = sum(calibrated.value), .groups = "drop")
+      summarize(value = sum(calibrated.value), .groups = "drop")
+
     a_bld <- L242.StubTechCalInput_bld %>%
       filter(grepl(REFLIQ_BUCKETS, minicam.energy.input)) %>%
       select(region, year, supplysector, subsector, minicam.energy.input, calibrated.value) %>%
       distinct() %>%
       group_by(region, year, minicam.energy.input) %>%
-      summarize(bld = sum(calibrated.value), .groups = "drop")
+      summarize(value = sum(calibrated.value), .groups = "drop")
 
     zL1093.en_bal_EJ_liquids_cons_ind <- a_chem %>%
-      left_join(a_cement, by = c("region", "year", "minicam.energy.input")) %>%
-      left_join(a_aluminum, by = c("region", "year", "minicam.energy.input")) %>%
-      left_join(a_elec, by = c("region", "year", "minicam.energy.input")) %>%
-      left_join(a_food, by = c("region", "year", "minicam.energy.input")) %>%
-      left_join(a_heat, by = c("region", "year", "minicam.energy.input")) %>%
-      left_join(a_inden, by = c("region", "year", "minicam.energy.input")) %>%
-      left_join(a_indfeed, by = c("region", "year", "minicam.energy.input")) %>%
-      left_join(a_offroad, by = c("region", "year", "minicam.energy.input")) %>%
-      left_join(a_paper, by = c("region", "year", "minicam.energy.input")) %>%
-      left_join(a_irnstl, by = c("region", "year", "minicam.energy.input")) %>%
-      left_join(a_desal, by = c("region", "year", "minicam.energy.input")) %>%
-      left_join(a_fert, by = c("region", "year", "minicam.energy.input")) %>%
+      bind_rows(a_cement,a_aluminum,a_elec,a_food,a_heat,a_inden,a_indfeed,a_offroad,a_paper,a_irnstl,a_desal,a_fert) %>%
+      group_by(region,year,minicam.energy.input) %>%
+      summarize(value = sum(value)) %>%
+      ungroup() %>%
       replace(., is.na(.), 0) %>%
-      mutate(value = chem + cement + aluminum + elec + food + heat + inden +
-               indfeed + offrd + paper + irnstl + desal + fert) %>%
       select(region, year, type = minicam.energy.input, value)
 
     zL1093.en_bal_EJ_liquids_cons_end <-
-      bind_rows(a_trn %>% rename(value = trn),
-                a_bld %>% rename(value = bld)) %>%
+      bind_rows(a_trn,a_bld) %>%
       group_by(region,year,minicam.energy.input) %>%
       summarize(value = sum(value)) %>%
       ungroup() %>%
@@ -286,15 +287,15 @@ module_energy_L1093.refined_liquids_GrossTrade <- function(command, ...){
     # calculate the shares by refined liquids fuel categories
     detailed_data_shares <- detailed_data %>%
       group_by(region, year, type) %>%
-      mutate(shares = value / sum(value),
-             shares = if_else(is.nan(shares), 0, shares)) %>%
+      mutate(total = sum(value, na.rm = TRUE),
+             shares = if_else(total > 0, value / total, NA_real_)) %>%
       ungroup()
 
     # Harmonized total refined liquids by type
     L1093.en_bal_EJ_liquids_total <- detailed_data_shares %>%
       left_join_error_no_match(L1093.en_bal_EJ_liquids_cons_type,
                                by = c("year", "region", "type")) %>%
-      mutate(value = shares * value.y, 0) %>%
+      mutate(value = shares * value.y) %>%
       select(region, year, fuel_category, value, type)
 
     # Harmonized total refined liquids by product
