@@ -78,3 +78,7 @@ xcuserdata
 input/gcamdata/inst/extdata/emissions/CEDS/desktop.ini
 output/
 ModelInterface/
+*.lnk
+*.basex
+*.basexhome
+*.bat
