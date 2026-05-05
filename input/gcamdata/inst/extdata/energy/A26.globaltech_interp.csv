@@ -56,3 +56,11 @@ refined liquids trn_road and rail,refined liquids trn_road and rail,refined liqu
 refined liquids trn_road and rail,refined liquids trn_road and rail,refined liquids jet_kerosene,share-weight,final-calibration-year,end-year,fixed
 refined liquids trn_road and rail,refined liquids trn_road and rail,refined liquids other,share-weight,final-calibration-year,end-year,fixed
 refined liquids trn_road and rail,refined liquids trn_road and rail,refined liquids feedstock,share-weight,final-calibration-year,end-year,fixed
+refined liquids buildings,refined liquids buildings,refined liquids gasoline,share-weight,final-calibration-year,end-year,fixed
+refined liquids buildings,refined liquids buildings,refined liquids distillate_fueloil,share-weight,final-calibration-year,end-year,fixed
+refined liquids buildings,refined liquids buildings,refined liquids residual_fueloil,share-weight,final-calibration-year,end-year,fixed
+refined liquids buildings,refined liquids buildings,refined liquids lpg,share-weight,final-calibration-year,end-year,fixed
+refined liquids buildings,refined liquids buildings,refined liquids petcoke,share-weight,final-calibration-year,end-year,fixed
+refined liquids buildings,refined liquids buildings,refined liquids jet_kerosene,share-weight,final-calibration-year,end-year,fixed
+refined liquids buildings,refined liquids buildings,refined liquids other,share-weight,final-calibration-year,end-year,fixed
+refined liquids buildings,refined liquids buildings,refined liquids feedstock,share-weight,final-calibration-year,end-year,fixed
