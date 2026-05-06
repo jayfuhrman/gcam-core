@@ -341,8 +341,8 @@ module_energy_L2324.Off_road <- function(command, ...) {
                             if_else(subsector == 'stationary' & fuel == 'refined liquids', value * (1 - energy.LIQUID_FUEL_MOBILE_FRAC), value))) -> L2324.in_EJ_R_Off_road_F_Y_tmp
 
     L2324.in_EJ_R_Off_road_F_Y_tmp %>%
-      left_join_error_no_match(distinct(select(A324.globaltech_eff, subsector, technology, minicam.energy.input)),
-                               by = c("subsector", "stub.technology" = "technology")) %>%
+      left_join_error_no_match(distinct(select(A324.globaltech_eff, supplysector, subsector, technology, minicam.energy.input)),
+                               by = c("supplysector", "subsector", "stub.technology" = "technology")) %>%
       mutate(calibrated.value = round(value, energy.DIGITS_CALOUTPUT),
              share.weight.year = year) ->
       L2324.StubTechCalInput_Off_road_tmp
