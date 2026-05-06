@@ -66,3 +66,11 @@ refined liquids buildings,refined liquids buildings,refined liquids petcoke,1,1,
 refined liquids buildings,refined liquids buildings,refined liquids jet_kerosene,1,1,1,1
 refined liquids buildings,refined liquids buildings,refined liquids other,1,1,0,0
 refined liquids buildings,refined liquids buildings,refined liquids feedstock,1,1,0,0
+refined liquids electricity,refined liquids electricity,refined liquids gasoline,1,1,1,1
+refined liquids electricity,refined liquids electricity,refined liquids distillate_fueloil,1,1,1,1
+refined liquids electricity,refined liquids electricity,refined liquids residual_fueloil,1,1,1,1
+refined liquids electricity,refined liquids electricity,refined liquids lpg,1,1,1,1
+refined liquids electricity,refined liquids electricity,refined liquids petcoke,1,1,1,1
+refined liquids electricity,refined liquids electricity,refined liquids jet_kerosene,1,1,1,1
+refined liquids electricity,refined liquids electricity,refined liquids other,1,1,1,1
+refined liquids electricity,refined liquids electricity,refined liquids feedstock,1,1,1,1

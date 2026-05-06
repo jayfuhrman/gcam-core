@@ -7,7 +7,7 @@ sector,fuel,supplysector,subsector,technology,minicam.energy.input,calibration,s
 electricity generation,coal,electricity,coal,coal (conv pul),regional coal,input,heat
 electricity generation,gas,electricity,gas,gas (steam/CT),wholesale gas,input,heat
 electricity generation,gas,electricity,gas,gas (CC),wholesale gas,input,
-electricity generation,refined liquids,electricity,refined liquids,refined liquids (steam/CT),refined liquids industrial,input,heat
+electricity generation,refined liquids,electricity,refined liquids,refined liquids (steam/CT),refined liquids electricity,input,heat
 electricity generation,biomass,electricity,biomass,biomass (conv),regional biomass,input,heat
 electricity generation,nuclear,electricity,nuclear,Gen_II_LWR,nuclearFuelGenII,output,
 electricity generation,hydro,electricity,hydro,hydro,,fixed output,

@@ -64,3 +64,11 @@ refined liquids buildings,refined liquids buildings,refined liquids petcoke,shar
 refined liquids buildings,refined liquids buildings,refined liquids jet_kerosene,share-weight,final-calibration-year,end-year,fixed
 refined liquids buildings,refined liquids buildings,refined liquids other,share-weight,final-calibration-year,end-year,fixed
 refined liquids buildings,refined liquids buildings,refined liquids feedstock,share-weight,final-calibration-year,end-year,fixed
+refined liquids electricity,refined liquids electricity,refined liquids gasoline,share-weight,final-calibration-year,end-year,fixed
+refined liquids electricity,refined liquids electricity,refined liquids distillate_fueloil,share-weight,final-calibration-year,end-year,fixed
+refined liquids electricity,refined liquids electricity,refined liquids residual_fueloil,share-weight,final-calibration-year,end-year,fixed
+refined liquids electricity,refined liquids electricity,refined liquids lpg,share-weight,final-calibration-year,end-year,fixed
+refined liquids electricity,refined liquids electricity,refined liquids petcoke,share-weight,final-calibration-year,end-year,fixed
+refined liquids electricity,refined liquids electricity,refined liquids jet_kerosene,share-weight,final-calibration-year,end-year,fixed
+refined liquids electricity,refined liquids electricity,refined liquids other,share-weight,final-calibration-year,end-year,fixed
+refined liquids electricity,refined liquids electricity,refined liquids feedstock,share-weight,final-calibration-year,end-year,fixed
