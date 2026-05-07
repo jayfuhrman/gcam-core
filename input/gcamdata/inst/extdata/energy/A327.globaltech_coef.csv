@@ -9,8 +9,8 @@ waste biomass for paper,biomass,biomass cogen,regional woodpulp for energy,elect
 waste biomass for paper,biomass,biomass CCS,regional woodpulp for energy,,1.93,1.93
 process heat paper,gas,gas,wholesale gas,,1.25,1.25
 process heat paper,gas,gas cogen,wholesale gas,electricity,1.67,1.67
-process heat paper,refined liquids,refined liquids,refined liquids industrial,,1.25,1.25
-process heat paper,refined liquids,refined liquids cogen,refined liquids industrial,electricity,1.67,1.67
+process heat paper,refined liquids,refined liquids,refined liquids process heat,,1.25,1.25
+process heat paper,refined liquids,refined liquids cogen,refined liquids process heat,electricity,1.67,1.67
 process heat paper,heat,heat,district heat,,1,1
 process heat paper,coal,coal,delivered coal,,1.25,1.25
 process heat paper,coal,coal cogen,delivered coal,electricity,1.67,1.67

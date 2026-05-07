@@ -25,3 +25,4 @@ refined liquids trn_road and rail,refined liquids trn_road and rail,share-weight
 refined liquids buildings,refined liquids buildings,share-weight,final-calibration-year,end-year,,fixed
 refined liquids electricity,refined liquids electricity,share-weight,final-calibration-year,end-year,,fixed
 refined liquids agriculture,refined liquids agriculture,share-weight,final-calibration-year,end-year,,fixed
+refined liquids process heat,refined liquids process heat,share-weight,final-calibration-year,end-year,,fixed
