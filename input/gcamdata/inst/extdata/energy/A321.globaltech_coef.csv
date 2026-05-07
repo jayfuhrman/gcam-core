@@ -13,5 +13,5 @@ cement,cement,cement CCS,limestone,1.5,1.5,1.5
 process heat cement,biomass,biomass,delivered biomass,1,1,1
 process heat cement,coal,coal,delivered coal,1,1,1
 process heat cement,gas,gas,wholesale gas,1,1,1
-process heat cement,refined liquids,refined liquids,refined liquids process heat,1,1,1
+process heat cement,refined liquids,refined liquids,refined liquids industrial,1,1,1
 process heat cement,hydrogen,hydrogen,H2 industrial,1,1,1

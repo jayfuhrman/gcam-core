@@ -64,7 +64,7 @@ cement,limestone,cement,cement,cement,limestone,output,
 cement,biomass,process heat cement,biomass,biomass,delivered biomass,input,
 cement,coal,process heat cement,coal,coal,delivered coal,input,
 cement,gas,process heat cement,gas,gas,wholesale gas,input,
-cement,refined liquids,process heat cement,refined liquids,refined liquids,refined liquids process heat,input,
+cement,refined liquids,process heat cement,refined liquids,refined liquids,refined liquids industrial,input,
 ammonia,gas,ammonia,gas,gas,wholesale gas,output,
 ammonia,coal,ammonia,coal,coal,delivered coal,output,
 ammonia,refined liquids,ammonia,refined liquids,refined liquids,refined liquids industrial,output,
@@ -169,8 +169,8 @@ food processing,biomass,process heat food processing,biomass,biomass,delivered b
 food processing,biomass cogen,process heat food processing,biomass,biomass cogen,delivered biomass,input,electricity
 food processing,gas,process heat food processing,gas,gas,wholesale gas,input,
 food processing,gas cogen,process heat food processing,gas,gas cogen,wholesale gas,input,electricity
-food processing,refined liquids,process heat food processing,refined liquids,refined liquids,refined liquids process heat,input,
-food processing,refined liquids cogen,process heat food processing,refined liquids,refined liquids cogen,refined liquids process heat,input,electricity
+food processing,refined liquids,process heat food processing,refined liquids,refined liquids,refined liquids industrial,input,
+food processing,refined liquids cogen,process heat food processing,refined liquids,refined liquids cogen,refined liquids industrial,input,electricity
 food processing,heat,process heat food processing,heat,heat,district heat,input,
 food processing,coal,process heat food processing,coal,coal,delivered coal,input,
 food processing,coal cogen,process heat food processing,coal,coal cogen,delivered coal,input,electricity
@@ -188,8 +188,8 @@ paper,biomass cogen,waste biomass for paper,biomass,biomass cogen,regional woodp
 paper,biomass CCS,waste biomass for paper,biomass,biomass CCS,regional woodpulp for energy,input,
 paper,gas,process heat paper,gas,gas,wholesale gas,input,
 paper,gas cogen,process heat paper,gas,gas cogen,wholesale gas,input,
-paper,refined liquids,process heat paper,refined liquids,refined liquids,refined liquids process heat,input,
-paper,refined liquids cogen,process heat paper,refined liquids,refined liquids cogen,refined liquids process heat,input,
+paper,refined liquids,process heat paper,refined liquids,refined liquids,refined liquids industrial,input,
+paper,refined liquids cogen,process heat paper,refined liquids,refined liquids cogen,refined liquids industrial,input,
 paper,heat,process heat paper,heat,heat,district heat,input,
 paper,coal,process heat paper,coal,coal,delivered coal,input,
 paper,coal cogen,process heat paper,coal,coal cogen,delivered coal,input,
