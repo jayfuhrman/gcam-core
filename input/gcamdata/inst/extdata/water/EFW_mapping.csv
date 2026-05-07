@@ -7,7 +7,7 @@
 # Column types: cccccccccci
 supplysector,subsector,technology,minicam.energy.input,sector,agg_sector,fuel,from.sector,from.sector.2,water.supplysector,apply.to.desal.water
 desalinated water,electricity,reverse osmosis,elect_td_ind,in_desalination,in_desalination,electricity,,,,
-desalinated water,refined liquids,distillation,refined liquids desalination,in_desalination,in_desalination,refined liquids,,,,
+desalinated water,refined liquids,distillation,refined liquids industrial,in_desalination,in_desalination,refined liquids,,,,
 desalinated water,gas,distillation,wholesale gas,in_desalination,in_desalination,gas,,,,
 irrigation water abstraction,electricity,electricity,elect_td_ind,in_irrigation,in_irrigation,electricity,in_industry_agriculture,in_bld_comm,water_td_irr,0
 industrial water abstraction,electricity,electricity,elect_td_ind,in_industry_water abstraction,in_industry_EFW,electricity,in_industry_general,,water_td_ind,0
