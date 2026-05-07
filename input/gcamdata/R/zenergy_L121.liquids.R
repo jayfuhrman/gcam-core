@@ -28,6 +28,7 @@ module_energy_L121.liquids <- function(command, ...) {
              FILE = "energy/mappings/IEA_product_rsrc",
              FILE = "energy/A21.unoil_demandshares",
              FILE = "energy/A21.globalrsrctech_coef",
+             FILE = "energy/mappings/liquids_mapping",
              "L100.IEA_en_bal_ctry_hist",
              "L1012.en_bal_EJ_R_Si_Fi_Yh",
              "L111.Prod_EJ_R_F_Yh",
@@ -66,6 +67,7 @@ module_energy_L121.liquids <- function(command, ...) {
       filter(minicam.energy.input == "regional natural gas") %>%
       gather_years(value_col = "gas_coef") %>%
       repeat_add_columns(tibble(region = c(iso_GCAM_regID$GCAM_region_ID)))
+    liquids_mapping <- get_data(all_data,"energy/mappings/liquids_mapping", strip_attributes = TRUE)
 
     # L100.IEA_en_bal_ctry_hist might be null (meaning the data system is running
     # without the proprietary IEA data files). If this is the case, we substitute
@@ -208,13 +210,11 @@ module_energy_L121.liquids <- function(command, ...) {
         # there are a handful of other negative consumptions from TPETCHEM,
         # TCOKEOVS, TNONSPEC for ref feedstocks and other hc; assume these are
         # accounted for as consumed in net refining and zero out here
+        left_join_error_no_match(liquids_mapping, by = c("sector")) %>%
         mutate(value = if_else(value < 0, 0, value),
                year = as.numeric(year),
                fuel = "Feedstock",   # needs to be named differently for the join below
                subsector = sector,
-               type = if_else(sector %in% energy.LIQUIDS_ENDUSE_SECTORS,
-                                "refined liquids enduse",
-                                "refined liquids industrial"),
                sector = type) %>%
         group_by(GCAM_region_ID, year, sector, fuel) %>%
         summarise(value = sum(value), .groups = "drop")
