@@ -49,14 +49,22 @@ refined liquids shipping,refined liquids shipping,refined liquids petcoke,region
 refined liquids shipping,refined liquids shipping,refined liquids jet_kerosene,regional Jet_Kerosene,1,1,1
 refined liquids shipping,refined liquids shipping,refined liquids other,regional Other,1,1,1
 refined liquids shipping,refined liquids shipping,refined liquids feedstock,regional oil,1,1,1
-refined liquids trn_road and rail,refined liquids trn_road and rail,refined liquids gasoline,regional Gasoline,1,1,1
-refined liquids trn_road and rail,refined liquids trn_road and rail,refined liquids distillate_fueloil,regional Distillate_FuelOil,1,1,1
-refined liquids trn_road and rail,refined liquids trn_road and rail,refined liquids residual_fueloil,regional Residual_FuelOil,1,1,1
-refined liquids trn_road and rail,refined liquids trn_road and rail,refined liquids lpg,regional LPG,1,1,1
-refined liquids trn_road and rail,refined liquids trn_road and rail,refined liquids petcoke,regional PetCoke,1,1,1
-refined liquids trn_road and rail,refined liquids trn_road and rail,refined liquids jet_kerosene,regional Jet_Kerosene,1,1,1
-refined liquids trn_road and rail,refined liquids trn_road and rail,refined liquids other,regional Other,1,1,1
-refined liquids trn_road and rail,refined liquids trn_road and rail,refined liquids feedstock,regional oil,1,1,1
+refined liquids trn_road,refined liquids trn_road,refined liquids gasoline,regional Gasoline,1,1,1
+refined liquids trn_road,refined liquids trn_road,refined liquids distillate_fueloil,regional Distillate_FuelOil,1,1,1
+refined liquids trn_road,refined liquids trn_road,refined liquids residual_fueloil,regional Residual_FuelOil,1,1,1
+refined liquids trn_road,refined liquids trn_road,refined liquids lpg,regional LPG,1,1,1
+refined liquids trn_road,refined liquids trn_road,refined liquids petcoke,regional PetCoke,1,1,1
+refined liquids trn_road,refined liquids trn_road,refined liquids jet_kerosene,regional Jet_Kerosene,1,1,1
+refined liquids trn_road,refined liquids trn_road,refined liquids other,regional Other,1,1,1
+refined liquids trn_road,refined liquids trn_road,refined liquids feedstock,regional oil,1,1,1
+refined liquids trn_rail,refined liquids trn_rail,refined liquids gasoline,regional Gasoline,1,1,1
+refined liquids trn_rail,refined liquids trn_rail,refined liquids distillate_fueloil,regional Distillate_FuelOil,1,1,1
+refined liquids trn_rail,refined liquids trn_rail,refined liquids residual_fueloil,regional Residual_FuelOil,1,1,1
+refined liquids trn_rail,refined liquids trn_rail,refined liquids lpg,regional LPG,1,1,1
+refined liquids trn_rail,refined liquids trn_rail,refined liquids petcoke,regional PetCoke,1,1,1
+refined liquids trn_rail,refined liquids trn_rail,refined liquids jet_kerosene,regional Jet_Kerosene,1,1,1
+refined liquids trn_rail,refined liquids trn_rail,refined liquids other,regional Other,1,1,1
+refined liquids trn_rail,refined liquids trn_rail,refined liquids feedstock,regional oil,1,1,1
 refined liquids buildings,refined liquids buildings,refined liquids gasoline,regional Gasoline,1,1,1
 refined liquids buildings,refined liquids buildings,refined liquids distillate_fueloil,regional Distillate_FuelOil,1,1,1
 refined liquids buildings,refined liquids buildings,refined liquids residual_fueloil,regional Residual_FuelOil,1,1,1
