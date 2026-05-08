@@ -15,11 +15,11 @@ trn_international ship,coal,transportation,coal,coal,delivered coal,input,trn_in
 trn_international ship,refined liquids,transportation,refined liquids,refined liquids,refined liquids shipping,input,trn_international ship
 trn_rail,coal,transportation,coal,coal,delivered coal,input,trn_road and rail
 trn_rail,electricity,transportation,electricity,electricity,elect_td_trn,input,trn_road and rail
-trn_rail,refined liquids,transportation,refined liquids,refined liquids,refined liquids trn_rail,input,trn_road and rail
+trn_rail,refined liquids,transportation,refined liquids,refined liquids,refined liquids trn_road and rail,input,trn_road and rail
 trn_road,electricity,transportation,electricity,electricity,elect_td_trn,input,trn_road and rail
 trn_road,gas,transportation,gas,gas,delivered gas,input,trn_road and rail
-trn_road,refined liquids,transportation,refined liquids,refined liquids,refined liquids trn_road,input,trn_road and rail
+trn_road,refined liquids,transportation,refined liquids,refined liquids,refined liquids trn_road and rail,input,trn_road and rail
 trn_unspecified,coal,transportation,coal,coal,delivered coal,input,trn_road and rail
 trn_unspecified,electricity,transportation,electricity,electricity,elect_td_trn,input,trn_road and rail
 trn_unspecified,gas,transportation,gas,gas,delivered gas,input,trn_road and rail
-trn_unspecified,refined liquids,transportation,refined liquids,refined liquids,refined liquids trn_road,input,trn_road and rail
+trn_unspecified,refined liquids,transportation,refined liquids,refined liquids,refined liquids trn_road and rail,input,trn_road and rail

@@ -24,8 +24,7 @@ refined liquids enduse,refined liquids
 refined liquids industrial,refined liquids
 refined liquids aviation,refined liquids
 refined liquids shipping,refined liquids
-refined liquids trn_road,refined liquids
-refined liquids trn_rail,refined liquids
+refined liquids trn_road and rail,refined liquids
 refined liquids buildings,refined liquids
 refined liquids electricity,refined liquids
 refined liquids agriculture,refined liquids
