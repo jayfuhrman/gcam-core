@@ -289,7 +289,7 @@ module_energy_L242.building_agg <- function(command, ...) {
 
     L242.in_EJ_R_bld_F_Yh %>%
       select(LEVEL2_DATA_NAMES[["StubTechYr"]], "value") %>%
-      left_join(A42.globaltech_eff, by = c("supplysector", "subsector", "stub.technology" = "technology")) %>%
+      left_join_error_no_match(A42.globaltech_eff, by = c("supplysector", "subsector", "stub.technology" = "technology")) %>%
       mutate(value = round(value, digits = DIGITS_CALOUTPUT),
              share.weight.year = year) %>%
       group_by(region, supplysector, subsector, stub.technology, minicam.energy.input, share.weight.year, year) %>%

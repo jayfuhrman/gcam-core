@@ -6,8 +6,8 @@
 # Column types: ccc 
 # ----------
 sector,gcam_sector_name_old,type
-in_bld_comm,refined liquids enduse,refined liquids comm buildings
-in_bld_resid,refined liquids enduse,refined liquids resid buildings
+in_bld_comm,refined liquids enduse,refined liquids buildings
+in_bld_resid,refined liquids enduse,refined liquids buildings
 in_trn_domestic air,refined liquids enduse,refined liquids aviation
 in_trn_domestic ship,refined liquids enduse,refined liquids shipping
 in_trn_international air,refined liquids enduse,refined liquids aviation

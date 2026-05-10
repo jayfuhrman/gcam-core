@@ -22,8 +22,7 @@ backup_electricity,hydrogen,share-weight,initial-future-year,2030,,linear
 refined liquids aviation,refined liquids aviation,share-weight,final-calibration-year,end-year,,fixed
 refined liquids shipping,refined liquids shipping,share-weight,final-calibration-year,end-year,,fixed
 refined liquids trn_road and rail,refined liquids trn_road and rail,share-weight,final-calibration-year,end-year,,fixed
-refined liquids resid buildings,refined liquids resid buildings,share-weight,final-calibration-year,end-year,,fixed
-refined liquids comm buildings,refined liquids comm buildings,share-weight,final-calibration-year,end-year,,fixed
+refined liquids buildings,refined liquids buildings,share-weight,final-calibration-year,end-year,,fixed
 refined liquids electricity,refined liquids electricity,share-weight,final-calibration-year,end-year,,fixed
 refined liquids agriculture,refined liquids agriculture,share-weight,final-calibration-year,end-year,,fixed
 refined liquids industrial feedstocks,refined liquids industrial feedstocks,share-weight,final-calibration-year,end-year,,fixed
