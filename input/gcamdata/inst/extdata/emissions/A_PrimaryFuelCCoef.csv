@@ -23,7 +23,7 @@ wholesale gas,14.2,0
 delivered gas,14.2,0
 crude oil,19.6,0
 regional oil,19.6,0
-refining,19.6,0
+refining,0,0
 Residual_FuelOil,19.6,0
 Residual_FuelOil_crude oil,19.6,0
 Residual_FuelOil_biomass,19.6,0
@@ -63,13 +63,6 @@ Other_coal,19.6,0
 Other_natural gas,19.6,0
 refined liquids industrial,19.6,0
 refined liquids enduse,19.6,0
-refined liquids lpg,19.6,0
-refined liquids gasoline,19.6,0
-refined liquids jet_kerosene,19.6,0
-refined liquids distillate_fueloil,19.6,0
-refined liquids residual_fueloil,19.6,0
-refined liquids petcoke,19.6,0
-refined liquids other,19.6,0
 limestone,0.08,0
 unconventional oil upscaling,1.5,0
 regional industrial_roundwood,0,0
@@ -78,3 +71,17 @@ regional woodpulp,0,0
 NonFoodDemand_sawnwood,0,0
 NonFoodDemand_woodpulp,0,0
 regional woodpulp for energy,23,0
+regional Distillate_FuelOil,19.6,0
+regional Residual_FuelOil,19.6,0
+regional Gasoline,19.6,0
+regional PetCoke,19.6,0
+regional Jet_Kerosene,19.6,0
+regional LPG,19.6,0
+regional Other,19.6,0
+refined liquids aviation,19.6,0
+refined liquids shipping,19.6,0
+refined liquids trn_road and rail,19.6,0
+refined liquids buildings,19.6,0
+refined liquids electricity,19.6,0
+refined liquids agriculture,19.6,0
+refined liquids industrial feedstocks,19.6,0
