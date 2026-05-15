@@ -325,7 +325,7 @@ module_energy_L2221.refining <- function(command, ...) {
     product_EJ <- L1221.refiningFuelsOutputsEJCombined %>%
       # only use techs that produced in history
       filter(value > 0) %>%
-      left_join(calibrated_techs_refining %>%
+      left_join_error_no_match(calibrated_techs_refining %>%
                   filter(sector == "refining") %>%
                   select(subsector, fuel, technology, input,
                          resource = secondary.output),
