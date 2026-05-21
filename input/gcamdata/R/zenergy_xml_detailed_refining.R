@@ -91,6 +91,11 @@ module_energy_detailed_refining_xml <- function(command, ...) {
     L2221.StubTechCost <- get_data(all_data, "L2221.StubTechCost") %>%
       mutate(input.cost = if_else(region == "Ukraine" & year %in% MODEL_FUTURE_YEARS, input.cost + 1.75, input.cost))
 
+    L2221.SubsectorInterp <- L2221.SubsectorInterpTo_en %>%
+      filter(subsector %in% c("ctl","gtl","crude oil refining")) %>%
+      mutate(interpolation.function = "fixed") %>%
+      select(LEVEL2_DATA_NAMES[["SubsectorInterp"]])
+
 
     # ===================================================
 
@@ -109,8 +114,8 @@ module_energy_detailed_refining_xml <- function(command, ...) {
       add_xml_data(L2221.ProfitRateSubsector, "ProfitRateSubsector") %>%
       add_node_equiv_xml("subsector") %>%
       add_logit_tables_xml(L2221.SubsectorLogit_en, "SubsectorLogit") %>%
-      #add_xml_data(L2221.SubsectorShrwtFllt_en, "SubsectorShrwtFllt") %>%
-      add_xml_data(L2221.SubsectorInterpTo_en, "SubsectorInterpTo") %>%
+      add_xml_data(L2221.SubsectorInterpTo_en %>% filter(!subsector %in% c("ctl","gtl","crude oil refining")), "SubsectorInterpTo") %>%
+      add_xml_data(L2221.SubsectorInterp, "SubsectorInterp") %>%
       add_xml_data(L2221.GlobalTechCoef_en %>%
                      filter(sector.name == 'refining') %>%
                      rename(profit.rate.technology = technology) %>%
