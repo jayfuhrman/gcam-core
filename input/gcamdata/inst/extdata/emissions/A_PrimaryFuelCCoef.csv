@@ -80,7 +80,8 @@ regional LPG,19.6,0
 regional Other,19.6,0
 refined liquids aviation,19.6,0
 refined liquids shipping,19.6,0
-refined liquids trn_road and rail,19.6,0
+refined liquids trn_road,19.6,0
+refined liquids trn_rail,19.6,0
 refined liquids buildings,19.6,0
 refined liquids electricity,19.6,0
 refined liquids agriculture,19.6,0

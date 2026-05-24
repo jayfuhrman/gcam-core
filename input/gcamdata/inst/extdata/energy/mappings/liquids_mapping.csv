@@ -12,9 +12,9 @@ in_trn_domestic air,refined liquids enduse,refined liquids aviation
 in_trn_domestic ship,refined liquids enduse,refined liquids shipping
 in_trn_international air,refined liquids enduse,refined liquids aviation
 in_trn_international ship,refined liquids enduse,refined liquids shipping
-in_trn_rail,refined liquids enduse,refined liquids trn_road and rail
-in_trn_road,refined liquids enduse,refined liquids trn_road and rail
-in_trn_unspecified,refined liquids enduse,refined liquids trn_road and rail
+in_trn_rail,refined liquids enduse,refined liquids trn_rail
+in_trn_road,refined liquids enduse,refined liquids trn_road
+in_trn_unspecified,refined liquids enduse,refined liquids trn_road
 in_industry_agriculture,refined liquids industrial,refined liquids agriculture
 in_electricity generation,refined liquids industrial,refined liquids electricity
 in_industry_chp,refined liquids industrial,refined liquids industrial

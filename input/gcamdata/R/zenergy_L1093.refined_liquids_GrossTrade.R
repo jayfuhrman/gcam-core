@@ -279,7 +279,7 @@ module_energy_L1093.refined_liquids_GrossTrade <- function(command, ...){
     # TODO: also need to split out calibration for needle coke here
     # filter sectors and aggregate them by region, year, and fuel category
     detailed_data <- L1093.detailed_refined_liquids_EJ_R_Yh %>%
-      filter(sector %in% liquids_mapping$sector, value != 0) %>%
+      filter(sector %in% liquids_mapping$sector) %>%
       left_join_error_no_match(liquids_mapping, by = "sector") %>%
       group_by(region, year, fuel_category, type) %>%
       summarise(value = sum(value), .groups = "drop")
@@ -288,7 +288,7 @@ module_energy_L1093.refined_liquids_GrossTrade <- function(command, ...){
     detailed_data_shares <- detailed_data %>%
       group_by(region, year, type) %>%
       mutate(total = sum(value, na.rm = TRUE),
-             shares = if_else(total > 0, value / total, NA_real_)) %>%
+             shares = if_else(total > 0, value / total, 1)) %>%
       ungroup()
 
     # Harmonized total refined liquids by type
