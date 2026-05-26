@@ -35,6 +35,7 @@ module_energy_L2221.refining <- function(command, ...) {
       FILE = "energy/A221.stubtech_regional_output",
       FILE = "energy/calibrated_techs_refining",
       FILE = "energy/refining_mapping",
+      FILE = "energy/refining_feed_prices_hist",
       "LB1092.GCAM_REG_LIQUIDS_PROD_agg",
       "LB1092.GCAM_BIO_LIQUIDS_PROD_agg",
       "LB1092.GCAM_CTL_GTL_LIQUIDS_PROD_agg",
@@ -363,7 +364,7 @@ module_energy_L2221.refining <- function(command, ...) {
       mutate(feed.EJ = product.EJ * coefficient)
 
     # TODO: unit costs for each energy input from output db, better way?
-    feed_prices <- read.csv("feed_prices_hist.csv", check.names = FALSE) %>%
+    feed_prices <- refining_feed_prices_hist %>%
       as_tibble() %>%
       mutate(`1975` = `1990`) %>%
       select(region, sector, `1975`, `1990`, `2005`, `2010`, `2015`, `2021`) %>%

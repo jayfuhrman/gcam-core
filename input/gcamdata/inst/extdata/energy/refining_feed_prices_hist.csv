@@ -1,4 +1,11 @@
-﻿region,sector,1990,2005,2010,2015,2021
+﻿# File: refining_feed_prices_hist.csv
+# Title: refining input prices
+# Units: $1975/GJ
+# Comments: prices of refinery inputs
+# Source: GCAM output data
+# Column types: ccnnnnn
+# ----------
+region,sector,1990,2005,2010,2015,2021
 Africa_Eastern,wholesale gas,0,0,6.70184,8.64623,5.06509
 Africa_Northern,wholesale gas,1.5291,1.66027,2.90305,2.92153,1.79664
 Africa_Southern,wholesale gas,1.50065,1.62522,2.85661,2.88087,1.7278
