@@ -27,7 +27,7 @@ module_energy_detailed_refining_xml <- function(command, ...) {
              "L2221.GlobalTechShrwt",
              "L2221.GlobalTechShutdown",
              "L2221.Rsrc",
-             "L2221.SubsectorShrwt",
+             "L2221.RsrcCal",
              "L2221.RsrcPrice",
              "L2221.StubTechProd",
              "L2221.PortfolioStdConstraint",
@@ -39,7 +39,7 @@ module_energy_detailed_refining_xml <- function(command, ...) {
              "L2221.SectorZeroProfitMarketName",
              "L2221.StubTechSecondaryOutput",
              "L2221.StubTech_en",
-             "L2221.StubTechShrwt",
+             #"L2221.StubTechShrwt",
              "L2221.StubTechCost",
              "L2221.StubTechTrackCapital_en",
              "L2221.StubTechCoef_refining"))
@@ -54,7 +54,7 @@ module_energy_detailed_refining_xml <- function(command, ...) {
 
     # Load required inputs
     L2221.Supplysector_en <- get_data(all_data, "L2221.Supplysector_en")
-    L2221.SubsectorShrwt <- get_data(all_data,"L2221.SubsectorShrwt") %>% filter(resource != "Gasoline_crude oil")
+    L2221.RsrcCal <- get_data(all_data,"L2221.RsrcCal") %>% filter(resource != "Gasoline_crude oil")
     L2221.ProfitRateSector <- get_data(all_data,"L2221.ProfitRateSector")
     L2221.ProfitRateSubsector <- get_data(all_data,"L2221.ProfitRateSubsector")
     L2221.SubsectorLogit_en <- get_data(all_data, "L2221.SubsectorLogit_en")
@@ -78,7 +78,7 @@ module_energy_detailed_refining_xml <- function(command, ...) {
     L2221.GlobalTechShutdown <- get_data(all_data,"L2221.GlobalTechShutdown")
     L2221.GlobalTechLifetime_en <- get_data(all_data, "L2221.GlobalTechLifetime_en")
     L2221.StubTech_en <- get_data(all_data, "L2221.StubTech_en")
-    L2221.StubTechShrwt <- get_data(all_data, "L2221.StubTechShrwt")
+    #L2221.StubTechShrwt <- get_data(all_data, "L2221.StubTechShrwt")
     L2221.StubTechCoef_refining <- get_data(all_data, "L2221.StubTechCoef_refining")
     L2221.StubTechTrackCapital_en <- get_data(all_data, "L2221.StubTechTrackCapital_en")
 
@@ -124,9 +124,9 @@ module_energy_detailed_refining_xml <- function(command, ...) {
       add_xml_data(L2221.GlobalTechFractSecOut_en, "GlobalTechSecOut") %>%
       add_xml_data(L2221.GlobalTechResSecOut_en, "GlobalTechRESSecOut") %>%
       add_xml_data(L2221.StubTech_en, "StubTech") %>%
-      add_xml_data(L2221.StubTechShrwt, "StubTechProd") %>%
+      #add_xml_data(L2221.StubTechShrwt, "StubTechProd") %>%
       add_xml_data(L2221.StubTechCost, "TechCost") %>%
-      add_xml_data(L2221.SubsectorShrwt, "RsrcCal") %>%
+      add_xml_data(L2221.RsrcCal, "RsrcCal") %>%
       add_xml_data(L2221.StubTechSecondaryOutput, "StubTechSecOut") %>%
       add_xml_data(L2221.GlobalTechZeroProfitOut_en, "GlobalTechZeroProfitOut") %>%
       add_xml_data(L2221.GlobalTechInterp, "GlobalTechInterpTo") %>%
@@ -155,7 +155,7 @@ module_energy_detailed_refining_xml <- function(command, ...) {
                      "L2221.GlobalTechInterp",
                      "L2221.Rsrc",
                      "L2221.RsrcPrice",
-                     "L2221.SubsectorShrwt",
+                     "L2221.RsrcCal",
                      "L2221.PortfolioStdConstraint",
                      "L2221.PortfolioStdFixedTax",
                      "L2221.GlobalTechSCurve",

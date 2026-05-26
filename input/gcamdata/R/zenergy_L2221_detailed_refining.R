@@ -67,12 +67,12 @@ module_energy_L2221.refining <- function(command, ...) {
       "L2221.StubTechProd",
       "L2221.GlobalTechSCurve",
       "L2221.GlobalTechLifetime_en",
-      "L2221.StubTechShrwt",
+      #"L2221.StubTechShrwt",
       "L2221.GlobalTechProfitShutdown",
       "L2221.GlobalTechShutdown",
       "L2221.SectorZeroProfitMarketName",
       "L2221.StubTechSecondaryOutput",
-      "L2221.SubsectorShrwt",
+      "L2221.RsrcCal",
       "L2221.StubTechCost",
       "L2221.StubTechTrackCapital_en",
       "L2221.StubTech_en")
@@ -506,7 +506,7 @@ module_energy_L2221.refining <- function(command, ...) {
 # Calibrated Production ---------------------------------------------------
 
     # Complete region, year, subsector, output, input combinations
-    L2221.StubTechProd <- calibrated_techs_refining %>%
+    L2221.StubTechProd_fuels <- calibrated_techs_refining %>%
       select(supplysector, subsector, technology, input) %>%
       filter(supplysector %in% energy.REFINED_LIQUIDS) %>%
       distinct() %>%
@@ -537,7 +537,7 @@ module_energy_L2221.refining <- function(command, ...) {
       select(LEVEL2_DATA_NAMES[["StubTechProd"]], "share.weight")
 
     # Add stub.tech share weights for refining technologies
-    L2221.StubTechShrwt <- L2221.StubTechProd %>%
+    L2221.StubTechProd_refining <- L2221.StubTechProd_fuels %>%
       left_join_error_no_match(
         refining_mapping,
         by = c("supplysector", "subsector", "stub.technology")) %>%
@@ -552,9 +552,35 @@ module_energy_L2221.refining <- function(command, ...) {
       set_subsector_shrwt() %>%
       select(LEVEL2_DATA_NAMES[["StubTechProd"]], "share.weight")
 
+    L2221.StubTechProd <- bind_rows(L2221.StubTechProd_fuels,
+                                    L2221.StubTechProd_refining)
+
+    zL2221.StubTechCoef_refining <- L2221.GlobalTechCoef_en %>%
+      filter(year %in% MODEL_BASE_YEARS) %>%
+      rename(supplysector = sector.name,
+             subsector = subsector.name,
+             stub.technology = technology) %>%
+      write_to_all_regions(LEVEL2_DATA_NAMES[["StubTechCoef"]],
+                           GCAM_region_names = GCAM_region_names) %>%
+      bind_rows(L2221.StubTechCoef_refining %>% filter(year %in% MODEL_BASE_YEARS))
+
+    zL2221.StubTechProd <- L2221.StubTechProd
+
+    zL2221.StubTechProdCalInput <- zL2221.StubTechProd %>%
+      left_join(zL2221.StubTechCoef_refining, by = c("region","supplysector","subsector","stub.technology","year")) %>%
+      mutate(CalInputValue = calOutputValue * coefficient) %>%
+      group_by(region,year,minicam.energy.input) %>%
+      summarize(CalInputValue = sum(CalInputValue)) %>%
+      ungroup()
+
+    zL2221.StubTechProdCalOutput <- zL2221.StubTechProd %>%
+      group_by(region,year,supplysector) %>%
+      summarize(calOutputValue = sum(calOutputValue)) %>%
+      ungroup()
+
     # Set resources to 'fully-calibrated' to reduce solution issues in history
     # TODO: rename this output to something more obvious
-    L2221.SubsectorShrwt <- L2221.rsrc_info %>%
+    L2221.RsrcCal <- L2221.rsrc_info %>%
       distinct(region, resource) %>%
       mutate(fully.calibrated = 1) %>%
       select(LEVEL2_DATA_NAMES[["RsrcCal"]])
@@ -607,6 +633,29 @@ module_energy_L2221.refining <- function(command, ...) {
       ungroup() %>%
       filter(!is.na(output.ratio)) %>%
       select(LEVEL2_DATA_NAMES[["StubTechSecOut"]])
+
+    zL2221.GlobalTechSecondaryOutputCombined <-
+      bind_rows(L2221.GlobalTechFractSecOut_en %>%
+                  rename(supplysector = sector.name,
+                         subsector = subsector.name,
+                         stub.technology = technology),
+                L2221.GlobalTechResSecOut_en %>%
+                         rename(supplysector = sector.name,
+                         subsector = subsector.name,
+                         stub.technology = technology,
+                        secondary.output = res.secondary.output)) %>%
+      filter(year %in% MODEL_BASE_YEARS)
+
+    zL221.CalOutputRefining <- L2221.StubTechProd %>% left_join(zL2221.GlobalTechSecondaryOutputCombined) %>%
+      mutate(CalSecOutputValue = calOutputValue * output.ratio) %>%
+      group_by(region,year,secondary.output) %>%
+      summarize(calOutputValue = sum(CalSecOutputValue))
+
+    zIO_sumcheck <- zL221.CalOutputRefining %>%
+      rename(supplysector = secondary.output) %>%
+      bind_rows(zL2221.StubTechProdCalOutput) %>%
+      left_join(zL2221.StubTechProdCalInput, by = c("region","year","supplysector" = "minicam.energy.input")) %>%
+      mutate(diff = calOutputValue - CalInputValue)
 
 
 # Retirement Functions ----------------------------------------------------
@@ -937,21 +986,21 @@ module_energy_L2221.refining <- function(command, ...) {
       add_precursors("energy/A221.globaltech_shrwt") ->
       L2221.StubTech_en
 
-    L2221.StubTechShrwt %>%
-      add_title("Stub technology information for refining sector") %>%
-      add_units("NA") %>%
-      add_comments("For refined liquids commodities, the stub technology information is expanded into all GCAM regions") %>%
-      add_legacy_name("L2221.StubTechShrwt") %>%
-      add_precursors("energy/refining_mapping","energy/A221.globaltech_shrwt") ->
-      L2221.StubTechShrwt
+    # L2221.StubTechShrwt %>%
+    #   add_title("Stub technology information for refining sector") %>%
+    #   add_units("NA") %>%
+    #   add_comments("For refined liquids commodities, the stub technology information is expanded into all GCAM regions") %>%
+    #   add_legacy_name("L2221.StubTechShrwt") %>%
+    #   add_precursors("energy/refining_mapping","energy/A221.globaltech_shrwt") ->
+    #   L2221.StubTechShrwt
 
-    L2221.SubsectorShrwt %>%
+    L2221.RsrcCal %>%
       add_title("Subsector information for refining sector") %>%
       add_units("NA") %>%
       add_comments("For refined liquids commodities, the stub technology information is expanded into all GCAM regions") %>%
-      add_legacy_name("L2221.SubsectorShrwt") %>%
+      add_legacy_name("L2221.RsrcCal") %>%
       add_precursors("energy/refining_mapping","energy/A221.globaltech_shrwt") ->
-      L2221.SubsectorShrwt
+      L2221.RsrcCal
 
     L2221.GlobalTechInterp %>%
       add_title("Global technology interpolation information for refining sector") %>%
@@ -1026,7 +1075,7 @@ module_energy_L2221.refining <- function(command, ...) {
     return_data(L2221.Supplysector_en,
                 L2221.ProfitRateSector,
                 L2221.ProfitRateSubsector,
-                L2221.StubTechShrwt,
+                #L2221.StubTechShrwt,
                 L2221.SubsectorLogit_en,
                 L2221.SubsectorShrwtFllt_en,
                 L2221.SubsectorInterpTo_en,
@@ -1043,7 +1092,7 @@ module_energy_L2221.refining <- function(command, ...) {
                 L2221.PortfolioStdConstraint,
                 L2221.PortfolioStdFixedTax,
                 L2221.StubTechProd,
-                L2221.SubsectorShrwt,
+                L2221.RsrcCal,
                 L2221.GlobalTechSCurve,
                 L2221.GlobalTechProfitShutdown,
                 L2221.GlobalTechShutdown,
