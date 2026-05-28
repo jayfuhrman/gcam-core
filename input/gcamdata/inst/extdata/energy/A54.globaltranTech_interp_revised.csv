@@ -62,3 +62,11 @@ trn_freight,Domestic Ship,Hybrid Liquids,share-weight,final-calibration-year,205
 trn_shipping_intl,International Ship,BEV,share-weight,2030,2075,s-curve,CORE
 trn_shipping_intl,International Ship,FCEV,share-weight,2030,2075,s-curve,CORE
 trn_shipping_intl,International Ship,Hybrid Liquids,share-weight,final-calibration-year,2050,s-curve,CORE
+trn_pass_road,Bus,BEV,share-weight,initial-future-year,2050,s-curve,High EV
+trn_pass_road_LDV,2W and 3W,BEV,share-weight,initial-future-year,2030,s-curve,High EV
+trn_pass_road_LDV_4W,Car,BEV,share-weight,initial-future-year,2030,s-curve,High EV
+trn_pass_road_LDV_4W,Large Car and Truck,BEV,share-weight,initial-future-year,2030,s-curve,High EV
+trn_pass_road_LDV_4W,Mini Car,BEV,share-weight,initial-future-year,2030,s-curve,High EV
+trn_freight_road,Light truck,BEV,share-weight,initial-future-year,2050,s-curve,High EV
+trn_freight_road,Medium truck,BEV,share-weight,initial-future-year,2050,s-curve,High EV
+trn_freight_road,Heavy truck,BEV,share-weight,initial-future-year,2050,s-curve,High EV
