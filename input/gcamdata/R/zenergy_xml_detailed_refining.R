@@ -42,9 +42,14 @@ module_energy_detailed_refining_xml <- function(command, ...) {
              #"L2221.StubTechShrwt",
              "L2221.StubTechCost",
              "L2221.StubTechTrackCapital_en",
-             "L2221.StubTechCoef_refining"))
+             "L2221.StubTechCoef_refining",
+
+             "L226.TechResSecOutCredit",
+             "L226.StubTechCoefInputCredit",
+             "L226.PortfolioStdConstraint"))
   } else if(command == driver.DECLARE_OUTPUTS) {
-    return(c(XML = "detailed_refining.xml"))
+    return(c(XML = "detailed_refining.xml",
+             XML = "USA_ethanol_RFS.xml"))
   } else if(command == driver.MAKE) {
 
     all_data <- list(...)[[1]]
@@ -81,6 +86,10 @@ module_energy_detailed_refining_xml <- function(command, ...) {
     #L2221.StubTechShrwt <- get_data(all_data, "L2221.StubTechShrwt")
     L2221.StubTechCoef_refining <- get_data(all_data, "L2221.StubTechCoef_refining")
     L2221.StubTechTrackCapital_en <- get_data(all_data, "L2221.StubTechTrackCapital_en")
+
+    L226.TechResSecOutCredit <- get_data(all_data, "L226.TechResSecOutCredit")
+    L226.StubTechCoefInputCredit <- get_data(all_data, "L226.StubTechCoefInputCredit")
+    L226.PortfolioStdConstraint <- get_data(all_data, "L226.PortfolioStdConstraint")
 
     L2221.GlobalTechInputPmult <- L2221.GlobalTechCoef_en %>%
       filter(minicam.energy.input == 'refining') %>%
@@ -169,7 +178,16 @@ module_energy_detailed_refining_xml <- function(command, ...) {
                      "L2221.StubTechSecondaryOutput") ->
       detailed_refining.xml
 
-    return_data(detailed_refining.xml)
+    create_xml("USA_ethanol_RFS.xml") %>%
+      add_xml_data(L226.TechResSecOutCredit, "TechRESSecOut") %>%
+      add_xml_data(L226.StubTechCoefInputCredit, "StubTechCoef") %>%
+      add_xml_data(L226.PortfolioStdConstraint, "PortfolioStdConstraint") %>%
+      add_precursors("L226.TechResSecOutCredit",
+                     "L226.StubTechCoefInputCredit",
+                     "L226.PortfolioStdConstraint") -> USA_ethanol_RFS.xml
+
+    return_data(detailed_refining.xml,
+                USA_ethanol_RFS.xml)
   } else {
     stop("Unknown command")
   }

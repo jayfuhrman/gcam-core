@@ -37,7 +37,8 @@ module_energy_L226.en_distribution <- function(command, ...) {
              "L121.in_EJ_R_TPES_liq_Yh",
              "L126.IO_R_elecownuse_F_Yh",
              "L126.IO_R_electd_F_Yh",
-             "L126.IO_R_gaspipe_F_Yh"))
+             "L126.IO_R_gaspipe_F_Yh",
+             "L2221.GlobalTechResSecOut_en"))
   } else if(command == driver.DECLARE_OUTPUTS) {
     return(c("L226.Supplysector_en",
              "L226.SubsectorLogit_en",
@@ -54,7 +55,10 @@ module_energy_L226.en_distribution <- function(command, ...) {
              "L226.StubTechCoef_electd",
              "L226.StubTechCoef_gaspipe",
              "L226.StubTechProd_liq",
-             "L226.GlobalTechInterp_liq"))
+             "L226.GlobalTechInterp_liq",
+             "L226.TechResSecOutCredit",
+             "L226.StubTechCoefInputCredit",
+             "L226.PortfolioStdConstraint"))
   } else if(command == driver.MAKE) {
 
     # Silence global variable package check
@@ -82,6 +86,8 @@ module_energy_L226.en_distribution <- function(command, ...) {
     L126.IO_R_gaspipe_F_Yh <- get_data(all_data, "L126.IO_R_gaspipe_F_Yh")
     L1093.en_bal_EJ_liquids_total <- get_data(all_data,"L1093.en_bal_EJ_liquids_total", strip_attributes = TRUE)
     L121.in_EJ_R_TPES_liq_Yh <- get_data(all_data, "L121.in_EJ_R_TPES_liq_Yh", strip_attributes = TRUE)
+
+    L2221.GlobalTechResSecOut_en <- get_data(all_data, "L2221.GlobalTechResSecOut_en", strip_attributes = TRUE)
 
 
     #======================================================================================
@@ -348,6 +354,41 @@ module_energy_L226.en_distribution <- function(command, ...) {
       rename(coefficient = value, stub.technology = technology) ->
       L226.StubTechCoef_gaspipe
 
+    L226.TechResSecOutCredit <- L2221.GlobalTechResSecOut_en %>%
+      filter(str_detect(technology,"ethanol"),
+             year >= MODEL_FINAL_BASE_YEAR) %>%
+      rename(supplysector = sector.name,
+             subsector = subsector.name) %>%
+      mutate(res.secondary.output = "ethanol_credit",
+             region = "USA") %>%
+      same_precursors_as("L2221.GlobalTechResSecOut_en") %>%
+      select(LEVEL2_DATA_NAMES[["TechRESSecOut"]])
+
+    L226.StubTechCoefInputCredit <- L226.GlobalTechEff_en %>%
+      filter(sector.name == "refined liquids trn_road",
+             technology == "refined liquids gasoline",
+             year >= MODEL_FINAL_BASE_YEAR) %>%
+      rename(supplysector = sector.name,
+             subsector = subsector.name,
+             stub.technology = technology,
+             coefficient = efficiency) %>%
+      mutate(region = "USA",
+             market.name = region,
+             coefficient = 0.15,
+             minicam.energy.input = "ethanol_credit") %>%
+      same_precursors_as("L226.GlobalTechEff_en") %>%
+      select(LEVEL2_DATA_NAMES[["StubTechCoef"]])
+
+
+    L226.PortfolioStdConstraint <- L226.StubTechCoefInputCredit %>%
+      filter(year >= 2030) %>%
+      mutate(market = region,
+             policy.portfolio.standard = minicam.energy.input,
+             constraint = 1,
+             policyType = "RES") %>%
+      same_precursors_as("L226.StubTechCoefInputCredit") %>%
+      select(LEVEL2_DATA_NAMES[["PortfolioStdConstraint"]])
+
     # ===================================================
 
     # Produce outputs
@@ -519,7 +560,8 @@ module_energy_L226.en_distribution <- function(command, ...) {
                 L226.StubTech_en, L226.GlobalTechEff_en, L226.GlobalTechCost_en,
                 L226.GlobalTechTrackCapital_en, L226.GlobalTechShrwt_en,
                 L226.StubTechCoef_elecownuse, L226.StubTechCoef_electd,
-                L226.StubTechCoef_gaspipe,L226.StubTechProd_liq, L226.GlobalTechInterp_liq)
+                L226.StubTechCoef_gaspipe,L226.StubTechProd_liq, L226.GlobalTechInterp_liq,
+                L226.TechResSecOutCredit,L226.StubTechCoefInputCredit,L226.PortfolioStdConstraint)
   } else {
     stop("Unknown command")
   }
