@@ -43,13 +43,19 @@ module_energy_L2321.cement <- function(command, ...) {
       "L1321.IO_GJkg_R_cement_F_Yh",
       "L1321.in_EJ_R_cement_F_Y",
       "L101.Pop_thous_R_Yh",
-      "L102.pcgdp_thous90USD_Scen_R_Y")
+      "L102.pcgdp_thous90USD_Scen_R_Y",
+
+      "L2323.StubTechProd_iron_steel",
+      "L2233.StubTechProd_elecPassthru",
+      "L2233.GlobalTechEff_elecPassthru",
+      "L223.GlobalTechEff_elec")
 
   MODULE_OUTPUTS <-
     c("L2321.Supplysector_cement",
       "L2321.FinalEnergyKeyword_cement",
       "L2321.SubsectorLogit_cement",
       "L2321.SubsectorShrwtFllt_cement",
+      "L2321.SubsectorShrwt_cement",
       "L2321.SubsectorInterp_cement",
       "L2321.StubTech_cement",
       "L2321.GlobalTechShrwt_cement",
@@ -68,7 +74,12 @@ module_energy_L2321.cement <- function(command, ...) {
       "L2321.BaseService_cement",
       "L2321.PriceElasticity_cement",
       "L2321.IncomeElasticity_cement_Scen",
-      "L2321.GlobalTechCSeq_ind")
+      "L2321.GlobalTechCSeq_ind",
+
+      "L2321.StubTechFractSecOut",
+      "L2321.StubTechFractProd",
+      "L2321.StubTechFractCalPrice",
+      "L2321.StubTechInterp_cement")
 
   if(command == driver.DECLARE_INPUTS) {
     return(MODULE_INPUTS)
@@ -114,14 +125,27 @@ module_energy_L2321.cement <- function(command, ...) {
 
     # and L2321.SubsectorShrwtFllt_cement: Subsector shareweights of cement sector
     A321.subsector_shrwt %>%
-      filter(!is.na(year.fillout)) %>%
+      group_by(supplysector,subsector) %>%
+      mutate(count = n()) %>%
+      ungroup() -> A321.subsector_shrwt
+
+    A321.subsector_shrwt %>%
+      filter(!is.na(year.fillout),
+             count == 1) %>%
       write_to_all_regions(LEVEL2_DATA_NAMES[["SubsectorShrwtFllt"]], GCAM_region_names) ->
       L2321.SubsectorShrwtFllt_cement
 
+    A321.subsector_shrwt %>%
+      filter(!is.na(year.fillout),
+             count > 1) %>%
+      mutate(year = year.fillout) %>%
+      write_to_all_regions(LEVEL2_DATA_NAMES[["SubsectorShrwt"]], GCAM_region_names) ->
+      L2321.SubsectorShrwt_cement
+
     # L2321.SubsectorInterp_cement: Subsector shareweight interpolation of cement sector
     A321.subsector_interp %>%
-      filter(is.na(to.value)) %>%
-      write_to_all_regions(LEVEL2_DATA_NAMES[["SubsectorInterp"]], GCAM_region_names) ->
+      filter(!is.na(to.value)) %>%
+      write_to_all_regions(LEVEL2_DATA_NAMES[["SubsectorInterpTo"]], GCAM_region_names) ->
       L2321.SubsectorInterp_cement
 
     # 1c. Technology information
@@ -273,6 +297,15 @@ module_energy_L2321.cement <- function(command, ...) {
       select(LEVEL2_DATA_NAMES[["StubTechProd"]])  ->
       L2321.StubTechProd_cement
 
+    L2321.StubTechInterp_cement <- L2321.StubTechProd_cement %>%
+      filter(year == MODEL_FINAL_BASE_YEAR) %>%
+      mutate(apply.to = "share-weight",
+             from.year = year,
+             to.year = max(MODEL_FUTURE_YEARS),
+             interpolation.function = "fixed") %>%
+      select(LEVEL2_DATA_NAMES[["StubTechInterp"]]) %>%
+      same_precursors_as(L2321.StubTechProd_cement)
+
     # L2321.StubTechCoef_cement: region-specific coefficients of cement production technologies
     # Take this as a given in all years for which data is available
     calibrated_techs %>%
@@ -291,6 +324,17 @@ module_energy_L2321.cement <- function(command, ...) {
              market.name = region) %>%
       select(LEVEL2_DATA_NAMES[["StubTechCoef"]]) ->
       L2321.StubTechCoef_cement
+
+    # Carry forward last historical year coefs to future years to avoid sharp discontinuities when jumping to globaltech values.
+    # We may want to add assumptions about future improvement rates in the future but for now we hold fixed.
+    L2321.StubTechCoef_cement_fut <- L2321.StubTechCoef_cement %>%
+      filter(year == MODEL_FINAL_BASE_YEAR) %>%
+      select(-year) %>%
+      group_by(region,supplysector,subsector,stub.technology,minicam.energy.input,market.name) %>%
+      repeat_add_columns(tibble(year = MODEL_FUTURE_YEARS))
+
+    L2321.StubTechCoef_cement <- L2321.StubTechCoef_cement %>%
+      bind_rows(L2321.StubTechCoef_cement_fut)
 
     # L2321.StubTechCalInput_cement_heat: calibrated cement production
     calibrated_techs %>%
@@ -451,6 +495,201 @@ module_energy_L2321.cement <- function(command, ...) {
       mutate(energy.final.demand = A321.demand[["energy.final.demand"]]) ->
       L2321.IncomeElasticity_cement_Scen # intermediate tibble
 
+
+    #create markets for waste GBFS and fly ash used in cement production
+
+    GBFS_price <- 0.017905458 # $1975/kg; replace with A10 resource value
+    FA_price <- 0.003442343 # $1975/kg; replace with A10 resource value
+
+    L2323.StubTechProd_iron_steel %>% filter(str_detect(subsector,"BLASTFUR")) %>%
+      group_by(region,supplysector,subsector,year) %>%
+      summarize(calOutputValue = sum(calOutputValue)) %>%
+      ungroup() -> blastfurnace_prod
+
+    L2323.StubTechProd_iron_steel %>% filter(str_detect(subsector,"BLASTFUR")) %>%
+      distinct(stub.technology) -> blastfur_techs
+
+
+    GBFS_input_cement <- L2321.StubTechProd_cement %>%
+      filter(stub.technology == "cement SCMGBFS") %>%
+      left_join_error_no_match(L2321.GlobalTechCoef_cement %>%
+                                 rename(stub.technology = technology,
+                                        supplysector = sector.name,
+                                        subsector = subsector.name) %>%
+                                 filter(minicam.energy.input == "GBFSlag",
+                                        year %in% c(MODEL_BASE_YEARS)), by = c("supplysector","subsector","stub.technology","year")) %>%
+      mutate(GBFS_input = calOutputValue * coefficient) %>%
+      select(region,year,GBFS_input)
+
+
+   blastfurnace_prod %>%
+      left_join_error_no_match(GBFS_input_cement, by = c("region","year")) %>%
+      mutate(output.ratio = GBFS_input / calOutputValue) %>%
+      group_by(year) %>%
+      mutate(output.ratio = if_else(calOutputValue == 0,0,output.ratio), # first set NAN output ratios to zero so they don't mess up weighted sum
+             output.ratio = if_else(calOutputValue == 0, sum(calOutputValue * output.ratio) / sum(calOutputValue), output.ratio),
+             fractional.secondary.output = "GBFSlag") %>%
+     ungroup() -> L2321.StubTechFractSecOut_GBFS_hist
+
+   L2321.StubTechFractSecOut_GBFS_hist %>%
+      ungroup() %>%
+      repeat_add_columns(tibble(stub.technology = unique(blastfur_techs$stub.technology))) %>%
+      select(LEVEL2_DATA_NAMES[["StubTechFractSecOut"]]) %>%
+      complete(nesting(region, supplysector, subsector, stub.technology,fractional.secondary.output),
+               year = c(unique(year), MODEL_FUTURE_YEARS)) %>%
+     group_by(region, supplysector, subsector, stub.technology,fractional.secondary.output) %>%
+     mutate(output.ratio = approx_fun(year, output.ratio, rule = 2)) %>%
+     ungroup() -> L2321.StubTechFractSecOut_GBFS
+
+   GBFS_Baseyear_outputRatio <- L2321.StubTechFractSecOut_GBFS_hist %>%
+     filter(year == MODEL_FINAL_BASE_YEAR) %>%
+     distinct(region, subsector, .keep_all = TRUE) %>%
+     summarize(output.ratio = sum(calOutputValue * output.ratio) / sum(calOutputValue))
+
+   GBFS_outputRatio_fut <- GBFS_Baseyear_outputRatio[[1]]
+
+   #Set future GBFS secondary out
+   L2321.StubTechFractSecOut_GBFS <- L2321.StubTechFractSecOut_GBFS %>%
+     mutate(output.ratio = if_else(year > MODEL_FINAL_BASE_YEAR,GBFS_outputRatio_fut, output.ratio))
+
+   L2321.StubTechFractProd_GBFS <- L2321.StubTechFractSecOut_GBFS %>%
+     repeat_add_columns(tibble(fraction.produced = c(0,1))) %>%
+     mutate(price = if_else(fraction.produced == 0, 0, GBFS_price)) %>%
+     select(LEVEL2_DATA_NAMES[["StubTechFractProd"]]) %>%
+     add_precursors("L2323.StubTechProd_iron_steel")
+
+
+   L2321.StubTechFractCalPrice_GBFS <- L2321.StubTechFractSecOut_GBFS %>%
+     mutate(calPrice = GBFS_price) %>%
+     filter(year %in% c(MODEL_BASE_YEARS)) %>%
+     select(LEVEL2_DATA_NAMES[["StubTechFractCalPrice"]]) %>%
+     add_precursors("L2323.StubTechProd_iron_steel")
+
+
+   no_blastfur_prod_region_years <- blastfurnace_prod %>%
+     filter(calOutputValue == 0) %>%
+     select(region,year,calOutputValue)
+
+   L2321.StubTechCoef_GBFS <- L2321.GlobalTechCoef_cement %>%
+     rename(supplysector = sector.name,
+            subsector = subsector.name,
+            stub.technology = technology) %>%
+     filter(minicam.energy.input == "GBFSlag") %>%
+     write_to_all_regions(LEVEL2_DATA_NAMES[["StubTechCoef"]], GCAM_region_names) %>%
+     left_join(no_blastfur_prod_region_years, by = c("region","year")) %>%
+     mutate(minicam.energy.input = if_else(!is.na(calOutputValue) & calOutputValue == 0, "GBFSlag calibration", "GBFSlag")) %>%
+     select(LEVEL2_DATA_NAMES[["StubTechCoef"]])
+
+
+   #Fly Ash Calibration
+
+   L2233.StubTechProd_elecPassthru %>%
+     filter(subsector == "coal") -> coal_elec
+
+   FA_input_cement <- L2321.StubTechProd_cement %>%
+     filter(stub.technology == "cement SCMFA") %>%
+     left_join_error_no_match(L2321.GlobalTechCoef_cement %>%
+                                rename(stub.technology = technology,
+                                       supplysector = sector.name,
+                                       subsector = subsector.name) %>%
+                                filter(minicam.energy.input == "flyash",
+                                       year %in% c(MODEL_BASE_YEARS)), by = c("supplysector","subsector","stub.technology","year")) %>%
+     mutate(FA_input = calOutputValue * coefficient) %>%
+     select(region,year,FA_input)
+
+   coal_elec %>%
+     left_join_error_no_match(FA_input_cement, by = c("region","year")) %>%
+     mutate(output.ratio = FA_input / calOutputValue) %>%
+     group_by(year) %>%
+     mutate(output.ratio = if_else(calOutputValue == 0,0,output.ratio), # first set NAN output ratios to zero so they don't mess up weighted sum
+            output.ratio = if_else(calOutputValue == 0, sum(calOutputValue * output.ratio) / sum(calOutputValue), output.ratio),
+            fractional.secondary.output = "flyash") %>%
+     ungroup() -> L2321.StubTechFractSecOut_FA_hist
+
+   coal_elec_techs <- L2233.GlobalTechEff_elecPassthru %>%
+     filter(subsector.name == "coal") %>%
+     distinct(technology)
+
+   L2321.StubTechFractSecOut_FA_hist %>%
+     select(-stub.technology) %>%
+     repeat_add_columns(tibble(stub.technology = unique(coal_elec_techs$technology))) %>%
+     select(LEVEL2_DATA_NAMES[["StubTechFractSecOut"]]) %>%
+     complete(nesting(region, supplysector, subsector, stub.technology,fractional.secondary.output),
+              year = c(unique(year), MODEL_FUTURE_YEARS)) %>%
+     group_by(region, supplysector, subsector, stub.technology,fractional.secondary.output) %>%
+     mutate(output.ratio = approx_fun(year, output.ratio, rule = 2)) %>%
+     ungroup() %>%
+     add_precursors("L2233.StubTechProd_elecPassthru","L2233.GlobalTechEff_elecPassthru") -> L2321.StubTechFractSecOut_FA
+
+   FA_Baseyear_outputRatio <- L2321.StubTechFractSecOut_FA_hist %>%
+     filter(year == MODEL_FINAL_BASE_YEAR) %>%
+     distinct(region, subsector, .keep_all = TRUE) %>%
+     summarize(output.ratio = sum(calOutputValue * output.ratio) / sum(calOutputValue))
+
+   FA_outputRatio_fut <- FA_Baseyear_outputRatio[[1]]
+
+
+   L2321.StubTechFractSecOut_FA <- L2321.StubTechFractSecOut_FA %>%
+     mutate(output.ratio = if_else(year > MODEL_FINAL_BASE_YEAR,FA_outputRatio_fut, output.ratio)) %>%
+     left_join(L2233.GlobalTechEff_elecPassthru %>% filter(subsector.name == "coal"),
+                              by = c("supplysector" = "sector.name","subsector" = "subsector.name", "stub.technology" = "technology","year")) %>%
+     select(-efficiency) %>%
+     mutate(minicam.energy.input = stringr::str_replace(minicam.energy.input, "elec_", "")) %>%
+     distinct(region, supplysector, subsector, stub.technology, year, .keep_all = TRUE) %>%
+     left_join(L223.GlobalTechEff_elec %>%
+                 filter(subsector.name == "coal") %>%
+                 select(technology,year,efficiency),
+               by = c("minicam.energy.input" = "technology","year")) %>%
+     group_by(region,supplysector,subsector) %>%
+     # More efficient power plants in the future will use less coal and correspondingly produce less fly ash
+     # However, efficiency losses for CCS would imply more coal use and therefore more fly ash production.
+     # Therefore we scale future output.ratio by efficiency relative to final base year conventional coal
+     mutate(output.ratio = if_else(year <= MODEL_FINAL_BASE_YEAR, output.ratio, output.ratio * efficiency[year == MODEL_FINAL_BASE_YEAR & stub.technology == "coal (conv pul)"] / efficiency)) %>%
+     ungroup() %>%
+     add_precursors("L223.GlobalTechEff_elec")
+
+   L2321.StubTechFractProd_FA <- L2321.StubTechFractSecOut_FA %>%
+     repeat_add_columns(tibble(fraction.produced = c(0,1))) %>%
+     mutate(price = if_else(fraction.produced == 0, 0, FA_price)) %>%
+     select(LEVEL2_DATA_NAMES[["StubTechFractProd"]]) %>%
+     add_precursors("L2233.StubTechProd_elecPassthru")
+
+
+   L2321.StubTechFractCalPrice_FA <- L2321.StubTechFractSecOut_FA %>%
+     mutate(calPrice = FA_price) %>%
+     filter(year %in% c(MODEL_BASE_YEARS)) %>%
+     select(LEVEL2_DATA_NAMES[["StubTechFractCalPrice"]]) %>%
+     add_precursors("L2233.StubTechProd_elecPassthru")
+
+
+   no_coal_elec_region_years <- coal_elec %>%
+     filter(calOutputValue == 0) %>%
+     select(region,year,calOutputValue)
+
+   L2321.StubTechCoef_FA <- L2321.GlobalTechCoef_cement %>%
+     rename(supplysector = sector.name,
+            subsector = subsector.name,
+            stub.technology = technology) %>%
+     filter(minicam.energy.input == "flyash") %>%
+     write_to_all_regions(LEVEL2_DATA_NAMES[["StubTechCoef"]], GCAM_region_names) %>%
+     left_join(no_coal_elec_region_years, by = c("region","year")) %>%
+     mutate(minicam.energy.input = if_else(!is.na(calOutputValue) & calOutputValue == 0, "flyash calibration", "flyash")) %>%
+     select(LEVEL2_DATA_NAMES[["StubTechCoef"]])
+
+
+  # remove flyash and GBFS from globaltech database and replace with stubtechs so we don't cause issues in cases where we need the respective calibration resources
+
+   L2321.GlobalTechCoef_cement <- L2321.GlobalTechCoef_cement %>%
+     filter(!(minicam.energy.input %in% c("GBFSlag","flyash")))
+
+   L2321.StubTechCoef_cement <- L2321.StubTechCoef_cement %>%
+     bind_rows(L2321.StubTechCoef_GBFS, L2321.StubTechCoef_FA)
+
+   L2321.StubTechFractSecOut <- bind_rows(L2321.StubTechFractSecOut_GBFS,L2321.StubTechFractSecOut_FA) %>%
+     add_precursors("L2323.StubTechProd_iron_steel","L2233.StubTechProd_elecPassthru")
+   L2321.StubTechFractCalPrice <- bind_rows(L2321.StubTechFractCalPrice_GBFS,L2321.StubTechFractCalPrice_FA)
+   L2321.StubTechFractProd <- bind_rows(L2321.StubTechFractProd_GBFS,L2321.StubTechFractProd_FA)
+
     # ===================================================
     # Produce outputs
 
@@ -496,6 +735,12 @@ module_energy_L2321.cement <- function(command, ...) {
       add_legacy_name("L2321.SubsectorShrwtFllt_cement") %>%
       add_precursors("energy/A321.subsector_shrwt", "common/GCAM_region_names") ->
       L2321.SubsectorShrwtFllt_cement
+
+    L2321.SubsectorShrwt_cement %>%
+      add_title("Subsector shareweights of cement sector") %>%
+      add_units("unitless") %>%
+      add_comments("For cement sector, the subsector shareweights from A321.subsector_shrwt are expanded into all GCAM regions") %>%
+      same_precursors_as("L2321.SubsectorShrwtFllt_cement") -> L2321.SubsectorShrwt_cement
 
     L2321.SubsectorInterp_cement %>%
       add_title("Subsector shareweight interpolation of cement sector") %>%

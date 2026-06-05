@@ -34,6 +34,7 @@ module_energy_L1321.cement <- function(command, ...) {
              FILE = "energy/cement_clinker_regional",
              FILE = "energy/cement_material_composition",
              FILE = "energy/cement_prod_reg",
+             FILE = "energy/clinker_ratio",
              "L102.CO2_Mt_R_F_Yh",
              "L123.in_EJ_R_elec_F_Yh",
              "L123.out_EJ_R_elec_F_Yh",
@@ -71,6 +72,8 @@ module_energy_L1321.cement <- function(command, ...) {
     cement_clinker_region <- get_data(all_data, "energy/cement_clinker_regional", strip_attributes = TRUE)
     cement_mat_comp <- get_data(all_data, "energy/cement_material_composition", strip_attributes = TRUE)
     cement_prod_reg <- get_data(all_data, "energy/cement_prod_reg", strip_attributes = TRUE)
+    clinker_ratio <- get_data(all_data, "energy/clinker_ratio")
+
     L102.CO2_Mt_R_F_Yh <- get_data(all_data, "L102.CO2_Mt_R_F_Yh", strip_attributes = TRUE)
     L123.in_EJ_R_elec_F_Yh <- get_data(all_data, "L123.in_EJ_R_elec_F_Yh", strip_attributes = TRUE)
     L123.out_EJ_R_elec_F_Yh <- get_data(all_data, "L123.out_EJ_R_elec_F_Yh", strip_attributes = TRUE)
@@ -261,9 +264,8 @@ module_energy_L1321.cement <- function(command, ...) {
 
     #calculate clinker production overtime by multiplying cement output with regional clinker ratio
     L1321.out_Mt_R_cement_Yh_2 %>%
-      mutate(value = ifelse(technology == "OPC", value*0.95,
-                            ifelse(technology == "cement SCMGBFS",value*0.3,
-                                   ifelse(technology == "cement SCMFA",value*0.6,value*0.8)))) %>%
+      left_join_error_no_match(clinker_ratio, by = "technology") %>%
+      mutate(value = value * clinker.ratio) %>%
       group_by(GCAM_region_ID,year)%>%
       summarise(value = sum(value)) %>%
       mutate(sector="clinker",
@@ -530,18 +532,40 @@ module_energy_L1321.cement <- function(command, ...) {
         bind_rows(L1321.Cement_ALL_R_Yh_base) ->
         L1321.IO_Cement_GJkg_R_ALL_Yh }
 
+    elec_for_clinker_ratio <- 0.25
+    # Source: https://api.ecra-online.org/fileadmin/files/tp/ECRA_Technology_Papers_2022.pdf
+    # "In the case of dry processing, the total electrical power consumption can be apportioned as
+    # follows: About 2% for raw material extraction, 25% for raw material preparation and grinding,
+    # 25% for clinker production plus an additional 3% for fuel grinding, 43% for cement grinding
+    # and 3% for packing and loading."
+
     # Assign sector and fuel names for heat and electricity data
     L1321.IO_Cement_GJkg_R_ALL_Yh %>%
       select(GCAM_region_ID, year, elec_GJkg) %>%
       mutate(sector = "cement", fuel = "electricity") %>%
       rename(value = elec_GJkg) %>%
       left_join(cement_clinker_region, by = c("GCAM_region_ID","year")) %>%
-      mutate(value = value / ratio,
+      # allocate portion of electricity use to clinker production,
+      # then divide by regional clinker ratio to get energy per unit clinker
+      mutate(value = value * elec_for_clinker_ratio / ratio,
              sector = "clinker",
              subsector = "clinker",
              technology = "clinker") %>%
       select(-ratio)->
-      L1321.IO_Cement_GJkg_R_elec_Yh
+      L1321.IO_Clinker_GJkg_R_elec_Yh
+
+    L1321.IO_Cement_GJkg_R_ALL_Yh %>%
+      select(GCAM_region_ID, year, elec_GJkg) %>%
+      mutate(sector = "cement", fuel = "electricity") %>%
+      rename(value = elec_GJkg) %>%
+      left_join(cement_clinker_region, by = c("GCAM_region_ID","year")) %>%
+      # allocate remainder of cement non-clinker electricity use for all historical techs to ensure energy balancing
+      mutate(value = value * (1 - elec_for_clinker_ratio),
+             sector = "cement",
+             subsector = "cement") %>%
+      select(-ratio) %>%
+      repeat_add_columns(tibble(technology = c("OPC", "cement SCMlime", "cement SCMGBFS", "cement SCMFA"))) ->
+      L1321.IO_cement_GJkg_R_aux_elec_Yh
 
     L1321.IO_Cement_GJkg_R_ALL_Yh %>%
       select(GCAM_region_ID, year, heat_GJkg) %>%
@@ -553,32 +577,26 @@ module_energy_L1321.cement <- function(command, ...) {
              subsector = "clinker",
              technology = "clinker") %>%
       select(-ratio) ->
-      L1321.IO_Cement_GJkg_R_heat_Yh
+      L1321.IO_Clinker_GJkg_R_heat_Yh
 
     L1321.out_Mt_R_cement_Yh_2 %>%
-      mutate(fuel = "clinker",
-             value = ifelse(technology == "OPC",0.95,
-                            ifelse(technology == "cement SCMFA",0.6,
-                                   ifelse(technology == "cement SCMGBFS",0.3,0.8)))) ->
-      L1321.IO_Cement_GJkg_R_clinker_Yh
-
-    L1321.out_Mt_R_cement_Yh_2 %>%
-      filter(technology != "OPC") %>%
-      mutate(fuel = "electricity",
-             value = ifelse(technology == "cement SCMGBFS",0.0003,
-                            ifelse(technology == "cement SCMFA",0.0002,0.0001))) ->
-      L1321.IO_Cement_GJkg_R_elec_Yh_2
+      mutate(fuel = "clinker") %>%
+      select(-value) %>%
+      left_join_error_no_match(clinker_ratio, by = c("technology")) %>%
+      rename(value = clinker.ratio) ->
+      L1321.IO_Cement_kg_R_clinker_Yh
 
     L1321.out_Mt_R_cement_Yh_2 %>%
       filter(technology == "cement SCMlime") %>%
       mutate(fuel = "limestone",
              value = 0.15) ->
       L1321.IO_Cement_GJkg_R_limestone_Yh_2
+
     # Compile electricity, heat, and limestone IO coefficients in L1321.IO_GJkg_R_cement_F_Yh
-    L1321.IO_Cement_GJkg_R_elec_Yh %>%
-      bind_rows(L1321.IO_Cement_GJkg_R_elec_Yh_2) %>%
-      bind_rows(L1321.IO_Cement_GJkg_R_heat_Yh %>% mutate(fuel = "process heat cement")) %>%
-      bind_rows(L1321.IO_Cement_GJkg_R_clinker_Yh) %>%
+    L1321.IO_Clinker_GJkg_R_elec_Yh %>%
+      bind_rows(L1321.IO_cement_GJkg_R_aux_elec_Yh) %>%
+      bind_rows(L1321.IO_Clinker_GJkg_R_heat_Yh %>% mutate(fuel = "process heat cement")) %>%
+      bind_rows(L1321.IO_Cement_kg_R_clinker_Yh) %>%
       bind_rows(L1321.IO_Cement_R_limestone_Yh) %>%
       bind_rows(L1321.IO_Cement_GJkg_R_limestone_Yh_2) ->
       L1321.IO_GJkg_R_cement_F_Yh
@@ -636,7 +654,7 @@ if(! length(ADDITIONAL_YEARS) ){
       filter(sector == "clinker") %>%
       select(-sector,-subsector,-technology) %>%
       rename(output = value) %>%
-      left_join(L1321.IO_Cement_GJkg_R_heat_Yh, by = c("GCAM_region_ID","year")) %>%
+      left_join(L1321.IO_Clinker_GJkg_R_heat_Yh, by = c("GCAM_region_ID","year")) %>%
       mutate(value = value * output,
              fuel = "process heat cement") %>% #this is the amount of heat needed
       select(-output) ->
@@ -648,7 +666,7 @@ if(! length(ADDITIONAL_YEARS) ){
       filter(sector == "clinker") %>%
       select(-sector,-subsector,-technology) %>%
       rename(output = value) %>%
-      left_join(L1321.IO_Cement_GJkg_R_elec_Yh, by = c("GCAM_region_ID","year")) %>%
+      left_join(L1321.IO_Clinker_GJkg_R_elec_Yh, by = c("GCAM_region_ID","year")) %>%
       mutate(value = value * output) %>%
       select(-output) ->
       L1321.in_EJ_R_cement_F_Y_elec
@@ -712,6 +730,10 @@ if(! length(ADDITIONAL_YEARS) ){
     # ---------------------------------------------------------------------------------------------------------------------
     # Check calculated cement energy and compare to IEA non metallic energy use. If IEA is larger, then warn and replace.
     L1321.in_EJ_R_cement_F_Y %>%
+      mutate(sector = if_else(sector %in% c("clinker"), "cement", sector)) %>%
+      group_by(GCAM_region_ID, sector, fuel, year) %>%
+      summarize(value = sum(value) ) %>%
+      ungroup() %>%
       left_join( L101.en_bal_EJ_ctry_Si_Fi_Yh_full %>%
                    filter(sector == 'cement') %>%
                    group_by(GCAM_region_ID, sector, fuel, year) %>%
@@ -727,21 +749,49 @@ if(! length(ADDITIONAL_YEARS) ){
     if( nrow(L1321.in_EJ_R_cement_adjustment_warning)){
       warning("module_energy_L1321.cement.R: Estimated cement energy is larger than IEA non metallic mineral energy in ", nrow(L1321.in_EJ_R_cement_adjustment_warning), " rows.
       Replaced with IEA non metallic energy estimate. Replaced rows in L1321.in_EJ_R_cement_adjustment_warning.")
+
+      L1321.in_EJ_R_cement_F_Y %>%
+        mutate(sector_orig = sector,
+               sector = if_else(sector %in% c("clinker"), "cement", sector)) %>%
+        filter(!(fuel %in% c("clinker","limestone"))) %>%
+        group_by(GCAM_region_ID,sector,fuel,year) %>%
+        mutate(tot.value = sum(value)) %>%
+        ungroup() %>%
+        left_join( L101.en_bal_EJ_ctry_Si_Fi_Yh_full %>%
+                     filter(sector == 'cement') %>%
+                     group_by(GCAM_region_ID, sector, fuel, year) %>%
+                     summarize(value = sum(value) ) ,
+                   by = c("GCAM_region_ID", "year", "fuel", "sector"),
+                   suffix = c(".new", ".iea") ) %>%
+        mutate(value.iea = if_else(is.na(value.iea),tot.value,value.iea),
+               #in cases where total fuel input into cement sector exceeds IEA, scale down the individual tech fuel inputs by the ratio of IEA to calculated total value for sector
+               scale_factor = value.iea / tot.value,
+               value = ifelse(tot.value > value.iea, value.new * scale_factor, value.new),
+               adj_value = ifelse(tot.value > value.iea, 1, 0)) %>%
+        #select(-value.new, -value.iea) %>%
+        mutate(sector = sector_orig,
+               value = if_else(is.na(value),0,value)) %>%
+        select(-sector_orig) %>%
+        unique %>%
+        bind_rows(L1321.in_EJ_R_cement_F_Y %>%
+                    filter(fuel %in% c("clinker","limestone"))) -> L1321.in_EJ_R_cement_F_Y_adj
+
+      coefs_to_adj <- L1321.in_EJ_R_cement_F_Y_adj %>%
+        filter(!(fuel %in% c("clinker","limestone"))) %>%
+        filter(adj_value == 1) %>%
+        select(GCAM_region_ID,year,sector,subsector,technology,fuel,scale_factor)
+
+      L1321.IO_GJkg_R_cement_F_Yh %>%
+        left_join(coefs_to_adj, by = c("GCAM_region_ID","year","sector","subsector","technology","fuel")) %>%
+        mutate(value = if_else(is.na(scale_factor), value, value * scale_factor)) -> L1321.IO_GJkg_R_cement_F_Yh_adj
+
+      # reassign to adjusted IO coef and energy input datatables
+      L1321.in_EJ_R_cement_F_Y <- L1321.in_EJ_R_cement_F_Y_adj %>%
+        select(-value.new, -value.iea,-adj_value,-tot.value,-scale_factor)
+
+      L1321.IO_GJkg_R_cement_F_Yh <- L1321.IO_GJkg_R_cement_F_Yh_adj %>%
+        select(-scale_factor)
     }
-
-    L1321.in_EJ_R_cement_F_Y %>%
-      left_join( L101.en_bal_EJ_ctry_Si_Fi_Yh_full %>%
-                   filter(sector == 'cement') %>%
-                   group_by(GCAM_region_ID, sector, fuel, year) %>%
-                   summarize(value = sum(value) ) ,
-                 by = c("GCAM_region_ID", "year", "fuel", "sector"),
-                 suffix = c(".new", ".iea") ) %>%
-      mutate(value = ifelse(value.new > value.iea, value.iea, value.new)) %>%
-      select(-value.new, -value.iea) %>%
-      unique  -> L1321.in_EJ_R_cement_F_Y_adj
-
-    # rename adjustment
-    L1321.in_EJ_R_cement_F_Y_adj <- L1321.in_EJ_R_cement_F_Y
 
     # ---------------------------------------------------------------------------------------------------------------------
     # Calculate remaining industrial energy use (input), subtracting cement production energy from energy balances

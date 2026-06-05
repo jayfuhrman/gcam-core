@@ -5,28 +5,23 @@
 # ----------
 supplysector,subsector,technology,minicam.non.energy.input,1971,2021,2025,2030,2040,2050,2100
 process heat cement,biomass,biomass,non-energy,3.84,3.84,3.84,3.84,3.84,3.84,3.84
-process heat cement ccs,biomass,biomass CCS,non-energy,6.83,6.83,6.83,6.83,6.83,6.83,6.83
+process heat cement ccs,biomass,biomass CCS,non-energy,3.84,3.84,3.84,3.84,3.84,3.84,3.84
 process heat cement,coal,coal,non-energy,1.87,1.87,1.87,1.87,1.87,1.87,1.87
-process heat cement ccs,coal,coal CCS,non-energy,3.34,3.34,3.34,3.34,3.34,3.34,3.34
+process heat cement ccs,coal,coal CCS,non-energy,1.87,1.87,1.87,1.87,1.87,1.87,1.87
 process heat cement,gas,gas,non-energy,0.64,0.64,0.64,0.64,0.64,0.64,0.64
-process heat cement ccs,gas,gas CCS,non-energy,1.16,1.16,1.16,1.16,1.16,1.16,1.16
+process heat cement ccs,gas,gas CCS,non-energy,0.64,0.64,0.64,0.64,0.64,0.64,0.64
 process heat cement,refined liquids,refined liquids,non-energy,0.505,0.505,0.505,0.505,0.505,0.505,0.505
-process heat cement ccs,refined liquids,refined liquids CCS,non-energy,0.876,0.876,0.876,0.876,0.876,0.876,0.876
+process heat cement ccs,refined liquids,refined liquids CCS,non-energy,0.505,0.505,0.505,0.505,0.505,0.505,0.505
 process heat cement,hydrogen,hydrogen,non-energy,0.644,0.644,0.644,0.644,0.644,0.644,0.644
 process heat cement ccs,hydrogen,hydrogen,non-energy,0.644,0.644,0.644,0.644,0.644,0.644,0.644
-clinker,clinker,clinker,non-energy,0.0147,0.0147,0.0147,0.0147,0.0147,0.0147,0.0147
-clinker,clinker,clinker CCS,non-energy,0.034,0.034,0.034,0.034,0.034,0.034,0.034
-clinker,clinker,clinker electrochemical,non-energy,0.0387,0.0387,0.0387,0.0387,0.0387,0.0387,0.0387
-clinker,clinker,clinker hybrid,non-energy,0.0417,0.0417,0.0417,0.0417,0.0417,0.0417,0.0417
-clinker,clinker,clinker electrochemical ccs,non-energy,0.0387,0.0387,0.0387,0.0387,0.0387,0.0387,0.0387
-clinker,clinker,clinker hybrid ccs,non-energy,0.0417,0.0417,0.0417,0.0417,0.0417,0.0417,0.0417
-cement,cement,OPC,non-energy,0.0001,0.0001,0.0001,0.0001,0.0001,0.0001,0.0001
-cement,cement,cement SCMFA,non-energy,0.004,0.004,0.004,0.004,0.004,0.004,0.004
-cement,cement,cement SCMGBFS,non-energy,0.01,0.01,0.01,0.01,0.01,0.01,0.01
-cement,cement,cement SCMlime,non-energy,0.0002,0.0002,0.0002,0.0002,0.0002,0.0002,0.0002
-cement,cement,cement LC3,non-energy,0.0007,0.0007,0.0007,0.0007,0.0007,0.0007,0.0007
-cement,cement,cement electrochemical,non-energy,0.037,0.037,0.037,0.037,0.037,0.037,0.037
-cement,cement,cement hybrid,non-energy,0.04,0.04,0.04,0.04,0.04,0.04,0.04
-cement,cement,cement LC3 ccs,non-energy,0.0007,0.0007,0.0007,0.0007,0.0007,0.0007,0.0007
-cement,cement,cement electrochemical ccs,non-energy,0.037,0.037,0.037,0.037,0.037,0.037,0.037
-cement,cement,cement hybrid ccs,non-energy,0.04,0.04,0.04,0.04,0.04,0.04,0.04
+clinker,clinker,clinker,non-energy,0.003136218,0.003136218,0.003136218,0.003136218,0.003136218,0.003136218,0.003136218
+clinker,clinker CCS,calciner capture,non-energy,0.012206281,0.012206281,0.012206281,0.012206281,0.012206281,0.012206281,0.012206281
+clinker,clinker CCS,oxyfuel combustion,non-energy,0.017117666,0.017117666,0.017117666,0.017117666,0.017117666,0.017117666,0.017117666
+clinker,clinker CCS,post-combustion capture,non-energy,0.013585449,0.013585449,0.013585449,0.013585449,0.013585449,0.013585449,0.013585449
+cement,cement,OPC,non-energy,0.005197806,0.000430257,0.000430257,0.000430257,0.000430257,0.000430257,0.000430257
+cement,cement,cement SCMFA,non-energy,0.002110248,0.008111531,0.008111531,0.008111531,0.008111531,0.008111531,0.008111531
+cement,cement,cement SCMGBFS,non-energy,0.004705507,0.002174347,0.002174347,0.002174347,0.002174347,0.002174347,0.002174347
+cement,cement,cement SCMlime,non-energy,0.002254141,0.002254141,0.002254141,0.002254141,0.002254141,0.002254141,0.002254141
+cement,cement,cement LC3,non-energy,0.005414439,0.00104576,0.00104576,0.00104576,0.00104576,0.00104576,0.00104576
+cement,cement,silicate,non-energy,0.015826864,0.015826864,0.015826864,0.015826864,0.015826864,0.015826864,0.015826864
+cement,cement,electrochemical,non-energy,0.015826864,0.015826864,0.015826864,0.015826864,0.015826864,0.015826864,0.015826864

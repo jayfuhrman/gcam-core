@@ -76,3 +76,11 @@ xcuserdata
 *.xcuserstate
 .Rproj.user
 input/gcamdata/inst/extdata/emissions/CEDS/desktop.ini
+exe/.basex
+exe/.basexhome
+exe/configuration..xml
+exe/configuration.xml
+exe/configuration_test.xml
+exe/refining_breakout_zeroProfit - Shortcut.lnk
+exe/run-gcam..bat
+exe/run-model-interface - Shortcut.lnk
