@@ -1,0 +1,264 @@
+﻿# File: refining_feed_prices_hist.csv
+# Title: refining input prices
+# Units: $1975/GJ
+# Comments: prices of refinery inputs
+# Source: GCAM output data
+# Column types: ccnnnnn
+# ----------
+region,sector,1990,2005,2010,2015,2021
+Africa_Eastern,wholesale gas,0,0,6.70184,8.64623,5.06509
+Africa_Northern,wholesale gas,1.5291,1.66027,2.90305,2.92153,1.79664
+Africa_Southern,wholesale gas,1.50065,1.62522,2.85661,2.88087,1.7278
+Africa_Western,wholesale gas,1.65813,1.62522,2.86931,2.88087,1.72701
+Argentina,wholesale gas,1.60442,1.69803,3.04288,3.10915,1.91751
+Australia_NZ,wholesale gas,1.53155,1.72797,2.96766,2.99271,1.84794
+Brazil,wholesale gas,1.50509,1.75967,3.09061,3.14842,2.06306
+Canada,wholesale gas,1.59373,1.8838,3.0525,3.04079,2.0289
+Central America and Caribbean,wholesale gas,1.4991,1.67161,2.93773,2.96075,1.97249
+Central Asia,wholesale gas,1.56402,1.74827,3.04549,3.08971,1.84236
+China,wholesale gas,2.19322,2.79123,3.51159,3.41607,2.37103
+Colombia,wholesale gas,1.49644,1.62577,2.91668,2.93927,1.85699
+EU-12,wholesale gas,1.67442,1.87591,3.17565,3.28503,2.11431
+EU-15,wholesale gas,1.66473,1.85727,3.19083,3.37467,2.32382
+Europe_Non_EU,wholesale gas,1.78976,1.92824,3.19264,3.26334,2.18045
+European Free Trade Association,wholesale gas,1.58794,1.71872,2.93492,2.98984,2.07052
+India,wholesale gas,1.52333,1.91127,3.04852,3.33538,2.41907
+Indonesia,wholesale gas,1.5294,1.68761,3.16583,2.89941,1.83256
+Japan,wholesale gas,2.04981,2.14013,3.37264,3.41705,2.24886
+Mexico,wholesale gas,1.50083,1.68363,2.94788,3.00005,1.81754
+Middle East,wholesale gas,1.52333,1.62852,2.85963,2.88434,1.73216
+Pakistan,wholesale gas,1.50438,1.6582,3.02165,3.14261,1.95551
+Russia,wholesale gas,1.68175,1.82955,3.17063,3.16097,1.85277
+South Africa,wholesale gas,5.5024,5.28402,3.97419,3.86896,2.78641
+South America_Northern,wholesale gas,1.49655,1.65871,3.14621,3.18322,1.95742
+South America_Southern,wholesale gas,1.55913,1.62791,2.86274,2.93288,1.92891
+South Asia,wholesale gas,1.5863,1.70578,2.95571,3.02201,1.82247
+South Korea,wholesale gas,2.08851,2.17227,3.41792,3.45507,2.2836
+Southeast Asia,wholesale gas,2.04712,1.65558,2.91043,3.00003,1.94613
+Taiwan,wholesale gas,1.66137,2.14767,3.3867,3.42207,2.25918
+USA,wholesale gas,1.58795,1.77288,3.00085,3.00378,1.83759
+Ukraine,wholesale gas,1.65359,1.87888,3.23452,3.20684,1.98744
+Africa_Eastern,regional sugar for ethanol,10.183,10.1066,9.51269,9.33917,9.18461
+Africa_Northern,regional sugar for ethanol,11.4891,11.3459,10.2942,9.99921,9.82534
+Africa_Southern,regional sugar for ethanol,12.1685,12.0808,11.5292,9.65188,11.3666
+Africa_Western,regional sugar for ethanol,9.24222,8.90932,8.17566,8.39149,8.27243
+Argentina,regional sugar for ethanol,15.7833,15.7774,15.6933,15.7346,15.7189
+Australia_NZ,regional sugar for ethanol,4.80492,4.79574,4.89904,5.09128,4.94336
+Brazil,regional sugar for ethanol,2.85423,2.85437,2.85551,2.85588,2.85534
+Canada,regional sugar for ethanol,7.18334,6.79166,6.71003,7.25065,6.98156
+Central America and Caribbean,regional sugar for ethanol,7.86349,7.84788,7.82032,7.83792,7.79332
+Central Asia,regional sugar for ethanol,7.22101,6.91933,6.79916,7.23147,7.02964
+China,regional sugar for ethanol,68.7821,68.8376,65.4886,61.166,56.7086
+Colombia,regional sugar for ethanol,0,14.1348,13.9588,13.9329,13.8053
+EU-12,regional sugar for ethanol,0,5.14247,5.36405,6.93008,5.48973
+EU-15,regional sugar for ethanol,0,5.58545,5.68937,6.42508,5.75915
+Europe_Non_EU,regional sugar for ethanol,0,0,0,5.69953,5.61775
+European Free Trade Association,regional sugar for ethanol,7.96548,7.69432,7.45569,7.60348,7.37542
+India,regional sugar for ethanol,2.3892,2.39465,2.46649,2.53164,2.45215
+Indonesia,regional sugar for ethanol,0,0,0,0,0
+Japan,regional sugar for ethanol,17.1706,17.2689,13.3044,12.795,12.3567
+Mexico,regional sugar for ethanol,5.86118,5.83016,5.86411,5.86264,5.84544
+Middle East,regional sugar for ethanol,10.9673,10.6364,9.35043,9.52506,9.40587
+Pakistan,regional sugar for ethanol,6.41349,6.40679,6.41442,6.42057,6.42409
+Russia,regional sugar for ethanol,6.9717,6.90928,6.86055,6.9765,6.93349
+South Africa,regional sugar for ethanol,6.3527,6.34916,6.36757,6.57194,6.48729
+South America_Northern,regional sugar for ethanol,0,0,0,0,0
+South America_Southern,regional sugar for ethanol,7.40186,7.37781,7.30631,7.38224,7.35063
+South Asia,regional sugar for ethanol,7.12146,7.05746,6.96121,7.19721,7.06391
+South Korea,regional sugar for ethanol,7.33925,7.33925,7.03279,7.31671,7.1618
+Southeast Asia,regional sugar for ethanol,0,5.54324,5.5887,5.71091,5.70526
+Taiwan,regional sugar for ethanol,0,0,11.4383,10.4525,0
+USA,regional sugar for ethanol,7.8636,7.8236,7.65356,7.75962,7.69795
+Ukraine,regional sugar for ethanol,6.87746,6.86887,6.86423,6.88175,6.87835
+Africa_Eastern,regional oil,1.60051,1.96337,3.86197,4.64839,2.71524
+Africa_Northern,regional oil,1.45051,1.96339,3.86201,4.60199,2.62606
+Africa_Southern,regional oil,1.4505,1.96334,3.86193,4.60183,2.60416
+Africa_Western,regional oil,1.45051,1.96336,3.86196,4.60186,2.60861
+Argentina,regional oil,1.45052,1.96339,3.86202,4.60707,2.60207
+Australia_NZ,regional oil,1.47726,2.03444,3.93304,4.7008,2.74794
+Brazil,regional oil,1.51684,1.97379,3.86197,4.60187,2.61287
+Canada,regional oil,1.45049,1.96332,3.86191,4.60181,2.64307
+Central America and Caribbean,regional oil,1.55808,2.06836,3.97626,4.72504,2.74988
+Central Asia,regional oil,1.48994,1.96343,3.86196,4.60187,2.60332
+China,regional oil,1.4505,2.03408,3.94541,4.69697,2.70868
+Colombia,regional oil,1.45051,1.96335,3.86196,4.60188,2.60351
+EU-12,regional oil,1.58114,2.09354,3.99776,4.73829,2.74342
+EU-15,regional oil,1.56907,2.08543,3.98809,4.73236,2.73814
+Europe_Non_EU,regional oil,1.57824,2.09562,3.99218,4.73357,2.7502
+European Free Trade Association,regional oil,1.4505,1.96334,3.86193,4.60182,2.67818
+India,regional oil,1.51225,2.06822,3.97121,4.72165,2.72741
+Indonesia,regional oil,1.45049,1.99206,3.90292,4.67561,2.7249
+Japan,regional oil,1.60074,2.1135,4.01193,4.75177,2.75084
+Mexico,regional oil,1.45054,1.96343,3.86203,4.60208,2.6015
+Middle East,regional oil,1.4505,1.96337,3.86194,4.60183,2.60767
+Pakistan,regional oil,1.56316,2.0819,3.98636,4.72479,2.73679
+Russia,regional oil,1.4507,1.96334,3.86194,4.60185,2.60091
+South Africa,regional oil,1.60052,2.10801,4.0093,4.74999,2.75098
+South America_Northern,regional oil,1.45054,1.96344,3.86209,4.6021,2.60293
+South America_Southern,regional oil,1.45052,1.96339,3.89166,4.63238,2.74612
+South Asia,regional oil,1.52464,2.05318,3.9642,4.72073,2.74812
+South Korea,regional oil,1.6005,2.11262,4.01099,4.75107,2.75023
+Southeast Asia,regional oil,1.51039,2.03334,3.94888,4.69726,2.73053
+Taiwan,regional oil,1.59953,2.11325,4.0119,4.75181,2.74909
+USA,regional oil,1.52022,2.06376,3.94938,4.64763,2.63218
+Ukraine,regional oil,1.58848,2.06942,3.97178,4.71318,2.74942
+Africa_Eastern,regional natural gas,0,0,2.65524,2.68795,1.54021
+Africa_Northern,regional natural gas,1.29644,1.42522,2.65524,2.68087,1.56835
+Africa_Southern,regional natural gas,1.30065,1.42522,2.65524,2.68087,1.52751
+Africa_Western,regional natural gas,1.29932,1.42522,2.65524,2.68087,1.5268
+Argentina,regional natural gas,1.33623,1.42522,2.67749,2.76048,1.58575
+Australia_NZ,regional natural gas,1.29644,1.42522,2.65524,2.68087,1.52799
+Brazil,regional natural gas,1.29644,1.53557,2.76743,2.79688,1.67536
+Canada,regional natural gas,1.29644,1.42522,2.65524,2.68087,1.55071
+Central America and Caribbean,regional natural gas,1.29822,1.42522,2.65524,2.68087,1.69484
+Central Asia,regional natural gas,1.29644,1.42522,2.65524,2.68087,1.53734
+China,regional natural gas,1.29644,1.42522,2.7411,2.7791,1.69172
+Colombia,regional natural gas,1.29644,1.42577,2.65524,2.68087,1.63568
+EU-12,regional natural gas,1.40241,1.55376,2.79067,2.82195,1.7057
+EU-15,regional natural gas,1.40734,1.56273,2.83177,2.8768,1.79745
+Europe_Non_EU,regional natural gas,1.56199,1.70105,2.94588,2.98681,1.85996
+European Free Trade Association,regional natural gas,1.29644,1.42522,2.65524,2.68087,1.68446
+India,regional natural gas,1.32333,1.53138,2.67833,2.93067,1.80557
+Indonesia,regional natural gas,1.29644,1.42522,2.65524,2.68087,1.54044
+Japan,regional natural gas,1.82021,1.93822,3.1725,3.2167,2.04878
+Mexico,regional natural gas,1.30083,1.48121,2.7445,2.79548,1.61298
+Middle East,regional natural gas,1.29644,1.42522,2.65524,2.68087,1.52922
+Pakistan,regional natural gas,1.29644,1.42801,2.65524,2.76141,1.65488
+Russia,regional natural gas,1.29644,1.42522,2.65524,2.68087,1.52429
+South Africa,regional natural gas,1.30493,1.61892,3.01589,3.10738,2.04753
+South America_Northern,regional natural gas,1.29644,1.45871,2.6795,2.69893,1.52392
+South America_Southern,regional natural gas,1.29644,1.42522,2.65524,2.68087,1.6749
+South Asia,regional natural gas,1.30132,1.42522,2.65524,2.68087,1.52361
+South Korea,regional natural gas,1.84229,1.95109,3.18568,3.22712,2.05809
+Southeast Asia,regional natural gas,1.29644,1.42522,2.65524,2.68087,1.5873
+Taiwan,regional natural gas,1.46137,1.93372,3.18277,3.22009,2.05626
+USA,regional natural gas,1.30465,1.46029,2.67704,2.68389,1.53293
+Ukraine,regional natural gas,1.41337,1.54061,2.75597,2.75569,1.58675
+Africa_Eastern,regional corn for ethanol,0,0,5.89895,5.95806,5.94406
+Africa_Northern,regional corn for ethanol,0,0,0,5.05806,5.2541
+Africa_Southern,regional corn for ethanol,0,0,0,4.69432,4.72228
+Africa_Western,regional corn for ethanol,0,0,0,5.51599,5.5197
+Argentina,regional corn for ethanol,0,0,7.90039,7.90225,7.9024
+Australia_NZ,regional corn for ethanol,0,7.06389,6.22796,6.15391,6.28689
+Brazil,regional corn for ethanol,5.63883,5.635,5.63425,5.64865,5.67239
+Canada,regional corn for ethanol,0,4.26014,4.33352,4.39182,4.4564
+Central America and Caribbean,regional corn for ethanol,6.85879,7.08458,6.95844,6.98515,7.1814
+Central Asia,regional corn for ethanol,0,0,0,0,3.8019
+China,regional corn for ethanol,0,8.03005,7.99796,7.96921,7.83048
+Colombia,regional corn for ethanol,12.9852,10.1044,9.6066,8.9219,8.73224
+EU-12,regional corn for ethanol,0,4.46263,4.48206,4.4914,4.55951
+EU-15,regional corn for ethanol,0,5.06528,5.00069,4.98705,5.0912
+Europe_Non_EU,regional corn for ethanol,0,0,0,4.20305,4.31069
+European Free Trade Association,regional corn for ethanol,0,6.06857,4.7417,4.69832,5.18922
+India,regional corn for ethanol,0,1.92619,1.92867,1.9829,2.67574
+Indonesia,regional corn for ethanol,9.77071,9.66291,9.57388,9.47566,9.62889
+Japan,regional corn for ethanol,0,0,4.61905,4.64596,4.93109
+Mexico,regional corn for ethanol,0,0,0,0,0
+Middle East,regional corn for ethanol,0,0,0,0,0
+Pakistan,regional corn for ethanol,0,0,0,0,0
+Russia,regional corn for ethanol,0,0,0,0,0
+South Africa,regional corn for ethanol,0,0,0,0,0
+South America_Northern,regional corn for ethanol,16.7972,17.5469,14.2663,13.8567,14.2497
+South America_Southern,regional corn for ethanol,5.72369,5.64119,5.61913,5.56567,5.61102
+South Asia,regional corn for ethanol,0,0,0,0,0
+South Korea,regional corn for ethanol,0,0,0,0,0
+Southeast Asia,regional corn for ethanol,8.18455,8.17556,8.13787,7.96556,7.99529
+Taiwan,regional corn for ethanol,7.1559,7.49768,7.30051,7.35539,7.62485
+USA,regional corn for ethanol,0,4.26349,4.26352,4.26506,4.26615
+Ukraine,regional corn for ethanol,0,0,0,4.84397,4.84833
+Africa_Eastern,regional coal,0.741245,0.663821,1.05085,0.911028,0.869449
+Africa_Northern,regional coal,0.729963,0.665364,1.05654,0.912682,0.87183
+Africa_Southern,regional coal,0.60184,0.516041,0.906536,0.762672,0.723651
+Africa_Western,regional coal,0.68906,0.613232,0.974081,0.805602,0.788072
+Argentina,regional coal,0.721208,0.664044,1.05217,0.910498,0.870488
+Australia_NZ,regional coal,0.597358,0.516042,0.906536,0.762676,0.721994
+Brazil,regional coal,0.717894,0.637323,1.03506,0.891945,0.850676
+Canada,regional coal,0.597357,0.516039,0.906534,0.76267,0.763383
+Central America and Caribbean,regional coal,0.745928,0.665811,1.05634,0.912615,0.871787
+Central Asia,regional coal,0.597383,0.516048,0.906538,0.762675,0.723415
+China,regional coal,0.597358,0.517264,0.911603,0.774136,0.730827
+Colombia,regional coal,0.597359,0.516042,0.906538,0.762676,0.722847
+EU-12,regional coal,0.597365,0.516044,0.916352,0.766269,0.754896
+EU-15,regional coal,0.644016,0.605409,0.998995,0.86403,0.830066
+Europe_Non_EU,regional coal,0.633891,0.569577,0.959814,0.834539,0.795518
+European Free Trade Association,regional coal,0.723874,0.521627,0.906535,0.80092,0.871195
+India,regional coal,0.597548,0.531678,0.942461,0.806159,0.764591
+Indonesia,regional coal,0.597357,0.516039,0.906534,0.762669,0.738809
+Japan,regional coal,0.739206,0.66519,1.0558,0.911764,0.871271
+Mexico,regional coal,0.613026,0.579933,0.97051,0.851282,0.868384
+Middle East,regional coal,0.719643,0.649223,1.04488,0.9003,0.87082
+Pakistan,regional coal,0.666156,0.591479,1.00824,0.861422,0.838971
+Russia,regional coal,0.601378,0.516041,0.906537,0.762673,0.7392
+South Africa,regional coal,0.59736,0.516045,0.906541,0.762679,0.724532
+South America_Northern,regional coal,0.597362,0.516049,0.906549,0.762695,0.846375
+South America_Southern,regional coal,0.662956,0.653678,1.04789,0.885889,0.871692
+South Asia,regional coal,0.733877,0.642337,0.994801,0.876644,0.866561
+South Korea,regional coal,0.704775,0.662481,1.0546,0.911249,0.870977
+Southeast Asia,regional coal,0.613298,0.525945,0.939634,0.815611,0.813569
+Taiwan,regional coal,0.743466,0.666041,1.05654,0.912673,0.87177
+USA,regional coal,0.597365,0.516068,0.906564,0.762697,0.732942
+Ukraine,regional coal,0.597363,0.524906,0.926276,0.812448,0.819711
+Africa_Eastern,regional biomassOil,0,0,0,0,0
+Africa_Northern,regional biomassOil,0,0,0,0,0
+Africa_Southern,regional biomassOil,0,0,0,0,0
+Africa_Western,regional biomassOil,0,0,0,0,0
+Argentina,regional biomassOil,0,0,10.7134,10.7925,9.78294
+Australia_NZ,regional biomassOil,0,0,6.39074,6.29114,6.32064
+Brazil,regional biomassOil,0,0,9.88874,9.91049,10.9605
+Canada,regional biomassOil,0,0,6.34061,6.30421,6.32965
+Central America and Caribbean,regional biomassOil,0,0,4.233,0,0
+Central Asia,regional biomassOil,0,0,0,0,0
+China,regional biomassOil,0,12.0546,10.1556,8.31018,7.50738
+Colombia,regional biomassOil,0,0,6.80493,6.23439,6.24234
+EU-12,regional biomassOil,0,6.95051,6.77283,6.64121,6.61751
+EU-15,regional biomassOil,9.25022,9.03852,9.0036,8.82522,8.71848
+Europe_Non_EU,regional biomassOil,0,0,7.22008,7.01727,7.00917
+European Free Trade Association,regional biomassOil,0,8.04462,6.34921,6.21352,6.23335
+India,regional biomassOil,0,0,4.70249,5.98201,6.80113
+Indonesia,regional biomassOil,0,0,3.56343,3.55883,3.55851
+Japan,regional biomassOil,0,0,11.2103,10.7098,10.3457
+Mexico,regional biomassOil,0,0,0,0,0
+Middle East,regional biomassOil,0,0,0,0,0
+Pakistan,regional biomassOil,0,0,0,0,0
+Russia,regional biomassOil,0,0,0,0,0
+South Africa,regional biomassOil,0,0,0,0,0
+South America_Northern,regional biomassOil,0,0,0,0,0
+South America_Southern,regional biomassOil,0,0,6.31661,5.87246,6.58134
+South Asia,regional biomassOil,0,0,0,0,0
+South Korea,regional biomassOil,0,12.6503,12.8465,11.2974,10.9868
+Southeast Asia,regional biomassOil,0,0,6.16521,6.12559,6.07286
+Taiwan,regional biomassOil,0,0,0,0,0
+USA,regional biomassOil,0,10.3199,10.3254,10.3568,10.4023
+Ukraine,regional biomassOil,0,0,0,0,0
+Africa_Eastern,elect_td_ind,11.3335,14.8309,16.0864,14.2864,13.0029
+Africa_Northern,elect_td_ind,9.63832,9.17358,11.4327,11.5275,8.77388
+Africa_Southern,elect_td_ind,9.51168,10.8167,16.4253,14.1072,10.8566
+Africa_Western,elect_td_ind,9.66273,10.241,13.8601,12.7707,9.51786
+Argentina,elect_td_ind,10.6126,9.32862,11.9597,10.7658,8.58821
+Australia_NZ,elect_td_ind,7.97775,7.87893,9.58388,9.09206,8.29198
+Brazil,elect_td_ind,10.9221,10.4245,12.1794,10.9316,9.31517
+Canada,elect_td_ind,9.0282,8.70205,10.2786,10.3045,9.67466
+Central America and Caribbean,elect_td_ind,9.87625,9.69074,12.575,11.3123,11.6888
+Central Asia,elect_td_ind,9.56862,10.4,14.1773,12.4484,8.73282
+China,elect_td_ind,8.6629,8.27582,9.18339,8.83775,8.59205
+Colombia,elect_td_ind,10.0771,8.73553,12.0301,10.2808,8.73955
+EU-12,elect_td_ind,10.0897,9.53161,10.7203,10.1809,9.77247
+EU-15,elect_td_ind,9.30302,9.18712,10.4998,10.4397,10.1275
+Europe_Non_EU,elect_td_ind,9.52637,8.91131,11.0057,10.3957,8.90243
+European Free Trade Association,elect_td_ind,10.6421,10.6057,11.0561,11.2345,10.7137
+India,elect_td_ind,10.221,10.5423,12.0802,10.5434,10.1264
+Indonesia,elect_td_ind,9.71748,10.4067,11.7133,9.80279,9.44027
+Japan,elect_td_ind,8.80117,9.03549,10.2285,9.30074,8.80703
+Mexico,elect_td_ind,8.73351,9.36716,11.8076,10.4193,8.10101
+Middle East,elect_td_ind,8.81743,10.1006,13.4913,11.3161,8.99067
+Pakistan,elect_td_ind,9.77106,9.81799,12.8248,11.4257,8.97235
+Russia,elect_td_ind,10.2224,10.1961,12.3605,12.2986,9.97821
+South Africa,elect_td_ind,8.215,7.99775,9.5452,8.93472,9.11539
+South America_Northern,elect_td_ind,10.0761,12.881,15.6579,17.517,15.9791
+South America_Southern,elect_td_ind,8.94545,9.14254,12.0648,10.3493,8.78611
+South Asia,elect_td_ind,10.2613,9.95496,13.3431,12.9057,9.39969
+South Korea,elect_td_ind,9.77836,9.1076,9.95905,9.48535,8.88703
+Southeast Asia,elect_td_ind,9.19063,8.15438,10.5743,9.7959,8.58977
+Taiwan,elect_td_ind,9.24312,8.61912,10.1744,9.88809,8.38587
+USA,elect_td_ind,8.97719,8.42063,9.69971,9.52838,8.44391
+Ukraine,elect_td_ind,9.25099,10.8629,11.5495,11.4239,11.4133
