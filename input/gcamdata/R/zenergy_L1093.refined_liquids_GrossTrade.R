@@ -282,13 +282,26 @@ module_energy_L1093.refined_liquids_GrossTrade <- function(command, ...){
       filter(sector %in% liquids_mapping$sector) %>%
       left_join_error_no_match(liquids_mapping, by = "sector") %>%
       group_by(region, year, fuel_category, type) %>%
-      summarise(value = sum(value), .groups = "drop")
+      summarise(value = sum(value), .groups = "drop") %>%
+      group_by(region, year, type) %>%
+      complete(fuel_category = sort(unique(L1093.detailed_refined_liquids_EJ_R_Yh$fuel_category)),
+               fill = list(value = 0)) %>%
+      ungroup()
 
     # calculate the shares by refined liquids fuel categories
     detailed_data_shares <- detailed_data %>%
+      group_by(year, type) %>%
+      mutate(global_fuel_total_type = sum(value, na.rm = TRUE)) %>%
+      ungroup() %>%
+      group_by(year,type,fuel_category) %>%
+      mutate(global_share  = sum(value, na.rm = TRUE) / global_fuel_total_type) %>%
+      ungroup() %>%
       group_by(region, year, type) %>%
+      # in cases where there is a zero value in the energy distribution refined liquids sector, but not the end use sectors that are consuming it,
+      # we instead calculate a global share in each year which we apply instead to avoid issues with non-zero demand but zero supply, and
+      # ensuring that all shares sum to exactly 1
       mutate(total = sum(value, na.rm = TRUE),
-             shares = if_else(total > 0, value / total, 1)) %>%
+             shares = if_else(total > 0, value / total, global_share)) %>%
       ungroup()
 
     # Harmonized total refined liquids by type
