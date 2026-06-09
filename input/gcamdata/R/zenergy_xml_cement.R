@@ -43,7 +43,8 @@ module_energy_cement_xml <- function(command, ...) {
     return(c(XML = "cement.xml",
              XML = "cement_noLC3.xml",
              XML = "cement_noAdvChem.xml",
-             XML = "cement_noCCS.xml"))
+             XML = "cement_noCCS.xml",
+             XML = "cement_noBECCS.xml"))
   } else if(command == driver.MAKE) {
 
     all_data <- list(...)[[1]]
@@ -165,7 +166,7 @@ module_energy_cement_xml <- function(command, ...) {
       cement_noLC3.xml
 
     create_xml("cement_noAdvChem.xml") %>%
-      add_xml_data(L2321.GlobalTechShrwt_cement %>% filter(str_detect(technology,"silicate")) %>%
+      add_xml_data(L2321.GlobalTechShrwt_cement %>% filter(str_detect(technology,"silicate|electrochemical")) %>%
                      mutate(share.weight = 0), "GlobalTechShrwt") ->
       cement_noAdvChem.xml
 
@@ -174,11 +175,17 @@ module_energy_cement_xml <- function(command, ...) {
                      mutate(share.weight = 0), "GlobalTechShrwt") ->
       cement_noCCS.xml
 
+    create_xml("cement_noBECCS.xml") %>%
+      add_xml_data(L2321.GlobalTechShrwt_cement %>% filter(str_detect(technology,"biomass CCS")) %>%
+                     mutate(share.weight = 0), "GlobalTechShrwt") ->
+      cement_noBECCS.xml
+
 
     return_data(cement.xml,
                 cement_noLC3.xml,
                 cement_noAdvChem.xml,
-                cement_noCCS.xml)
+                cement_noCCS.xml,
+                cement_noBECCS.xml)
   } else {
     stop("Unknown command")
   }
