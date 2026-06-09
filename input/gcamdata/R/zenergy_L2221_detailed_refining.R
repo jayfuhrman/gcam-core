@@ -555,29 +555,6 @@ module_energy_L2221.refining <- function(command, ...) {
     L2221.StubTechProd <- bind_rows(L2221.StubTechProd_fuels,
                                     L2221.StubTechProd_refining)
 
-    zL2221.StubTechCoef_refining <- L2221.GlobalTechCoef_en %>%
-      filter(year %in% MODEL_BASE_YEARS) %>%
-      rename(supplysector = sector.name,
-             subsector = subsector.name,
-             stub.technology = technology) %>%
-      write_to_all_regions(LEVEL2_DATA_NAMES[["StubTechCoef"]],
-                           GCAM_region_names = GCAM_region_names) %>%
-      bind_rows(L2221.StubTechCoef_refining %>% filter(year %in% MODEL_BASE_YEARS))
-
-    zL2221.StubTechProd <- L2221.StubTechProd
-
-    zL2221.StubTechProdCalInput <- zL2221.StubTechProd %>%
-      left_join(zL2221.StubTechCoef_refining, by = c("region","supplysector","subsector","stub.technology","year")) %>%
-      mutate(CalInputValue = calOutputValue * coefficient) %>%
-      group_by(region,year,minicam.energy.input) %>%
-      summarize(CalInputValue = sum(CalInputValue)) %>%
-      ungroup()
-
-    zL2221.StubTechProdCalOutput <- zL2221.StubTechProd %>%
-      group_by(region,year,supplysector) %>%
-      summarize(calOutputValue = sum(calOutputValue)) %>%
-      ungroup()
-
     # Set resources to 'fully-calibrated' to reduce solution issues in history
     # TODO: rename this output to something more obvious
     L2221.RsrcCal <- L2221.rsrc_info %>%
@@ -633,30 +610,6 @@ module_energy_L2221.refining <- function(command, ...) {
       ungroup() %>%
       filter(!is.na(output.ratio)) %>%
       select(LEVEL2_DATA_NAMES[["StubTechSecOut"]])
-
-    zL2221.GlobalTechSecondaryOutputCombined <-
-      bind_rows(L2221.GlobalTechFractSecOut_en %>%
-                  rename(supplysector = sector.name,
-                         subsector = subsector.name,
-                         stub.technology = technology),
-                L2221.GlobalTechResSecOut_en %>%
-                         rename(supplysector = sector.name,
-                         subsector = subsector.name,
-                         stub.technology = technology,
-                        secondary.output = res.secondary.output)) %>%
-      filter(year %in% MODEL_BASE_YEARS)
-
-    zL221.CalOutputRefining <- L2221.StubTechProd %>% left_join(zL2221.GlobalTechSecondaryOutputCombined) %>%
-      mutate(CalSecOutputValue = calOutputValue * output.ratio) %>%
-      group_by(region,year,secondary.output) %>%
-      summarize(calOutputValue = sum(CalSecOutputValue))
-
-    zIO_sumcheck <- zL221.CalOutputRefining %>%
-      rename(supplysector = secondary.output) %>%
-      bind_rows(zL2221.StubTechProdCalOutput) %>%
-      left_join(zL2221.StubTechProdCalInput, by = c("region","year","supplysector" = "minicam.energy.input")) %>%
-      mutate(diff = calOutputValue - CalInputValue)
-
 
 # Retirement Functions ----------------------------------------------------
 

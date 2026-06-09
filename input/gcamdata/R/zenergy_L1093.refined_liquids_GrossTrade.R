@@ -284,6 +284,7 @@ module_energy_L1093.refined_liquids_GrossTrade <- function(command, ...){
       group_by(region, year, fuel_category, type) %>%
       summarise(value = sum(value), .groups = "drop") %>%
       group_by(region, year, type) %>%
+      # Ensure each aggregation fuel sector has a full set of fuels
       complete(fuel_category = sort(unique(L1093.detailed_refined_liquids_EJ_R_Yh$fuel_category)),
                fill = list(value = 0)) %>%
       ungroup()
