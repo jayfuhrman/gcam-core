@@ -5,8 +5,6 @@
 # Column types: ccccccncc
 # ----------
 supplysector,tranSubsector,stub.technology,apply.to,from.year,to.year,to.value,interpolation.function
-trn_freight,Freight Rail,Hybrid Liquids,share-weight,2021,2025,0,fixed
-trn_freight,Freight Rail,Liquids,share-weight,2021,2025,0,fixed
 trn_freight_road,Heavy truck,Hybrid Liquids,share-weight,2021,2025,0,fixed
 trn_freight_road,Heavy truck,Liquids,share-weight,2021,2025,0,fixed
 trn_freight_road,Heavy truck,NG,share-weight,2021,2025,0,fixed
@@ -16,7 +14,6 @@ trn_freight_road,Light truck,NG,share-weight,2021,2025,0,fixed
 trn_freight_road,Medium truck,Hybrid Liquids,share-weight,2021,2025,0,fixed
 trn_freight_road,Medium truck,Liquids,share-weight,2021,2025,0,fixed
 trn_freight_road,Medium truck,NG,share-weight,2021,2025,0,fixed
-trn_pass,Passenger Rail,Liquids,share-weight,2021,2025,0,fixed
 trn_pass_road,Bus,Hybrid Liquids,share-weight,2021,2025,0,fixed
 trn_pass_road,Bus,Liquids,share-weight,2021,2025,0,fixed
 trn_pass_road,Bus,NG,share-weight,2021,2025,0,fixed
@@ -31,8 +28,6 @@ trn_pass_road_LDV_4W,Large Car and Truck,NG,share-weight,2021,2025,0,fixed
 trn_pass_road_LDV_4W,Mini Car,Hybrid Liquids,share-weight,2021,2025,0,fixed
 trn_pass_road_LDV_4W,Mini Car,Liquids,share-weight,2021,2025,0,fixed
 trn_pass_road_LDV_4W,Mini Car,NG,share-weight,2021,2025,0,fixed
-trn_freight,Freight Rail,Hybrid Liquids,share-weight,2025,2050,0,s-curve
-trn_freight,Freight Rail,Liquids,share-weight,2025,2050,0,s-curve
 trn_freight_road,Heavy truck,Hybrid Liquids,share-weight,2025,2050,0,s-curve
 trn_freight_road,Heavy truck,Liquids,share-weight,2025,2050,0,s-curve
 trn_freight_road,Heavy truck,NG,share-weight,2025,2050,0,s-curve
@@ -42,7 +37,6 @@ trn_freight_road,Light truck,NG,share-weight,2025,2050,0,s-curve
 trn_freight_road,Medium truck,Hybrid Liquids,share-weight,2025,2050,0,s-curve
 trn_freight_road,Medium truck,Liquids,share-weight,2025,2050,0,s-curve
 trn_freight_road,Medium truck,NG,share-weight,2025,2050,0,s-curve
-trn_pass,Passenger Rail,Liquids,share-weight,2025,2050,0,s-curve
 trn_pass_road,Bus,Hybrid Liquids,share-weight,2025,2050,0,s-curve
 trn_pass_road,Bus,Liquids,share-weight,2025,2050,0,s-curve
 trn_pass_road,Bus,NG,share-weight,2025,2050,0,s-curve
@@ -57,8 +51,6 @@ trn_pass_road_LDV_4W,Large Car and Truck,NG,share-weight,2025,2050,0,s-curve
 trn_pass_road_LDV_4W,Mini Car,Hybrid Liquids,share-weight,2025,2050,0,s-curve
 trn_pass_road_LDV_4W,Mini Car,Liquids,share-weight,2025,2050,0,s-curve
 trn_pass_road_LDV_4W,Mini Car,NG,share-weight,2025,2050,0,s-curve
-trn_freight,Freight Rail,Hybrid Liquids,share-weight,2050,2100,0,fixed
-trn_freight,Freight Rail,Liquids,share-weight,2050,2100,0,fixed
 trn_freight_road,Heavy truck,Hybrid Liquids,share-weight,2050,2100,0,fixed
 trn_freight_road,Heavy truck,Liquids,share-weight,2050,2100,0,fixed
 trn_freight_road,Heavy truck,NG,share-weight,2050,2100,0,fixed
@@ -68,7 +60,6 @@ trn_freight_road,Light truck,NG,share-weight,2050,2100,0,fixed
 trn_freight_road,Medium truck,Hybrid Liquids,share-weight,2050,2100,0,fixed
 trn_freight_road,Medium truck,Liquids,share-weight,2050,2100,0,fixed
 trn_freight_road,Medium truck,NG,share-weight,2050,2100,0,fixed
-trn_pass,Passenger Rail,Liquids,share-weight,2050,2100,0,fixed
 trn_pass_road,Bus,Hybrid Liquids,share-weight,2050,2100,0,fixed
 trn_pass_road,Bus,Liquids,share-weight,2050,2100,0,fixed
 trn_pass_road,Bus,NG,share-weight,2050,2100,0,fixed

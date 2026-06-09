@@ -4,8 +4,6 @@
 # Column types: cccnnc
 # ----------
 supplysector,tranSubsector,stub.technology,2050,2100
-trn_freight,Freight Rail,Hybrid Liquids,0,0
-trn_freight,Freight Rail,Liquids,0,0
 trn_freight_road,Heavy truck,Hybrid Liquids,0,0
 trn_freight_road,Heavy truck,Liquids,0,0
 trn_freight_road,Heavy truck,NG,0,0
@@ -15,7 +13,6 @@ trn_freight_road,Light truck,NG,0,0
 trn_freight_road,Medium truck,Hybrid Liquids,0,0
 trn_freight_road,Medium truck,Liquids,0,0
 trn_freight_road,Medium truck,NG,0,0
-trn_pass,Passenger Rail,Liquids,0,0
 trn_pass_road,Bus,Hybrid Liquids,0,0
 trn_pass_road,Bus,Liquids,0,0
 trn_pass_road,Bus,NG,0,0
