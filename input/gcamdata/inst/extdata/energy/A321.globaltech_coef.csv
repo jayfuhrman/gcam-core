@@ -51,5 +51,7 @@ cement,cement,silicate,elect_td_ind,0.001,0.001,0.001,0.001,0.001,0.001,0.001,0.
 cement,cement,electrochemical,elect_td_ind,0.005,0.005,0.005,0.005,0.005,0.005,0.005,0.005
 cement,cement,silicate,process heat cement,0.005,0.005,0.005,0.005,0.005,0.005,0.005,0.005
 cement,cement,electrochemical,process heat cement,0,0,0,0,0,0,0,0
-cement,cement,silicate,silicate rock,1,1,1,1,1,1,1,1
-cement,cement,electrochemical,silicate rock,1,1,1,1,1,1,1,1
+cement,cement,silicate,silicate rock,0.95,0.95,0.95,0.95,0.95,0.95,0.95,0.95
+cement,cement,electrochemical,silicate rock,0.95,0.95,0.95,0.95,0.95,0.95,0.95,0.95
+cement,cement,silicate,gypsum,0.05,0.05,0.05,0.05,0.05,0.05,0.05,0.05
+cement,cement,electrochemical,gypsum,0.05,0.05,0.05,0.05,0.05,0.05,0.05,0.05
