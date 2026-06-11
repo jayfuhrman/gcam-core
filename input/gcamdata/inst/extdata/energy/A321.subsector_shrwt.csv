@@ -21,3 +21,12 @@ clinker,clinker CCS,start-year,,0
 clinker,clinker CCS,initial-future-year,,0
 clinker,clinker CCS,2050,,1
 cement,cement,start-year,,1
+cement,cement LC3,start-year,,0
+cement,cement LC3,initial-future-year,,0
+cement,cement LC3,2050,,1
+cement,silicate,start-year,,0
+cement,silicate,initial-future-year,,0
+cement,silicate,2050,,1
+cement,electrochemical,start-year,,0
+cement,electrochemical,initial-future-year,,0
+cement,electrochemical,2050,,1

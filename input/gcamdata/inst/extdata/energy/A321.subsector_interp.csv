@@ -16,3 +16,12 @@ clinker,clinker CCS,share-weight,start-year,initial-future-year,0,fixed
 clinker,clinker CCS,share-weight,initial-future-year,2050,1,linear
 clinker,clinker CCS,share-weight,2050,end-year,1,fixed
 cement,cement,share-weight,start-year,end-year,,fixed
+cement,cement LC3,share-weight,start-year,initial-future-year,0,fixed
+cement,cement LC3,share-weight,initial-future-year,2050,1,linear
+cement,cement LC3,share-weight,2050,end-year,1,fixed
+cement,silicate,share-weight,start-year,initial-future-year,0,fixed
+cement,silicate,share-weight,initial-future-year,2050,1,linear
+cement,silicate,share-weight,2050,end-year,1,fixed
+cement,electrochemical,share-weight,start-year,initial-future-year,0,fixed
+cement,electrochemical,share-weight,initial-future-year,2050,1,linear
+cement,electrochemical,share-weight,2050,end-year,1,fixed

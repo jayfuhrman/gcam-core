@@ -15,13 +15,15 @@ process heat cement ccs,refined liquids,refined liquids CCS,1,1,1,1,1,1,1,1
 process heat cement,hydrogen,hydrogen,0,0,0,0,0.2,0.6,1,1
 process heat cement ccs,hydrogen,hydrogen,1,1,1,1,1,1,1,1
 clinker,clinker,clinker,1,1,1,1,1,1,1,1
-clinker,clinker CCS,oxyfuel combustion,1,1,1,1,1,1,1,1
-clinker,clinker CCS,post-combustion capture,1,1,1,1,1,1,1,1
-clinker,clinker CCS,calciner capture,1,1,1,1,1,1,1,1
+clinker,clinker CCS,oxyfuel combustion,0,0,0,0,0.2,0.6,1,1
+clinker,clinker CCS,post-combustion capture,0,0,0,0,0.2,0.6,1,1
+clinker,clinker CCS,calciner capture,0,0,0,0,0.2,0.6,1,1
 cement,cement,OPC,1,1,1,1,1,1,1,1
 cement,cement,cement SCMFA,1,1,1,1,1,1,1,1
 cement,cement,cement SCMGBFS,1,1,1,1,1,1,1,1
 cement,cement,cement SCMlime,1,1,1,1,1,1,1,1
-cement,cement,cement LC3,0,0,0,0,0.2,0.6,1,1
-cement,cement,silicate,0,0,0,0,0.2,0.6,1,1
-cement,cement,electrochemical,0,0,0,0,0.2,0.6,1,1
+cement,cement LC3,cement LC3,0,0,0,0,0.2,0.6,1,1
+cement,silicate,silicate,0,0,0,0,0.2,0.6,1,1
+cement,electrochemical,electrochemical,0,0,0,0,0.2,0.6,1,1
+cement,cement LC3,cement LC3 CCS,0,0,0,0,0.2,0.6,1,1
+cement,silicate,silicate CCS,0,0,0,0,0.2,0.6,1,1
