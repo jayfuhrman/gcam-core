@@ -226,18 +226,18 @@ module_energy_L1221.refining_cost <- function(command, ...) {
       )
 
     A1221.alt_refining_capital <- A221.globaltech_capital %>%
-      filter(subsector %in% c("biorefining", "ctl", "gtl")) %>%
+      filter(subsector %in% c("biorefining 1st gen", "biorefining 2nd gen", "ctl", "gtl")) %>%
       left_join(altcost, by = c("supplysector", "subsector", "technology")) %>%
       select(-c(om_var, om_fixed, value), value = capital)
 
     A1221.alt_refining_OMfixed <- A221.globaltech_OMfixed %>%
-      filter(subsector %in% c("biorefining", "ctl", "gtl")) %>%
+      filter(subsector %in% c("biorefining 1st gen", "biorefining 2nd gen", "ctl", "gtl")) %>%
       left_join(altcost, by = c("supplysector", "subsector", "technology")) %>%
       select(-c(om_var, capital, value)) %>%
       rename(value = om_fixed)
 
     A1221.alt_refining_OMvar <- A221.globaltech_OMvar %>%
-      filter(subsector %in% c("biorefining", "ctl", "gtl")) %>%
+      filter(subsector %in% c("biorefining 1st gen", "biorefining 2nd gen", "ctl", "gtl")) %>%
       left_join(altcost, by = c("supplysector", "subsector", "technology")) %>%
       select(-c(om_fixed, capital, value)) %>%
       rename(value = om_var)

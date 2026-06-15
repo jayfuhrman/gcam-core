@@ -4,15 +4,15 @@
 # Column types: cccccnnnnn
 # ----------
 sec.output.type,supplysector,subsector,technology,fractional.secondary.output,1971,2015,2021,2025,2100
-res-secondary-output,refining,biorefining,LPG,LPG_biomass,1,1,1,1,1
-res-secondary-output,refining,biorefining,corn ethanol,Gasoline_corn,1,1,1,1,1
-res-secondary-output,refining,biorefining,sugar cane ethanol,Gasoline_sugar,1,1,1,1,1
-res-secondary-output,refining,biorefining,cellulosic ethanol,Gasoline_biomass,1,1,1,1,1
-res-secondary-output,refining,biorefining,Jet_Kerosene,Jet_Kerosene_biomass,1,1,1,1,1
-res-secondary-output,refining,biorefining,biodiesel,Distillate_FuelOil_biomassOil,1,1,1,1,1
-res-secondary-output,refining,biorefining,Residual_FuelOil,Residual_FuelOil_biomass,1,1,1,1,1
-res-secondary-output,refining,biorefining,biochar,PetCoke_biomass,1,1,1,1,1
-res-secondary-output,refining,biorefining,Other,Other_biomass,1,1,1,1,1
+res-secondary-output,refining,biorefining 2nd gen,LPG,LPG_biomass,1,1,1,1,1
+res-secondary-output,refining,biorefining 1st gen,corn ethanol,Gasoline_corn,1,1,1,1,1
+res-secondary-output,refining,biorefining 1st gen,sugar cane ethanol,Gasoline_sugar,1,1,1,1,1
+res-secondary-output,refining,biorefining 2nd gen,cellulosic ethanol,Gasoline_biomass,1,1,1,1,1
+res-secondary-output,refining,biorefining 2nd gen,Jet_Kerosene,Jet_Kerosene_biomass,1,1,1,1,1
+res-secondary-output,refining,biorefining 1st gen,biodiesel,Distillate_FuelOil_biomassOil,1,1,1,1,1
+res-secondary-output,refining,biorefining 2nd gen,Residual_FuelOil,Residual_FuelOil_biomass,1,1,1,1,1
+res-secondary-output,refining,biorefining 2nd gen,biochar,PetCoke_biomass,1,1,1,1,1
+res-secondary-output,refining,biorefining 2nd gen,Other,Other_biomass,1,1,1,1,1
 res-secondary-output,refining,ctl,LPG,LPG_coal,1,1,1,1,1
 res-secondary-output,refining,ctl,Gasoline,Gasoline_coal,1,1,1,1,1
 res-secondary-output,refining,ctl,Jet_Kerosene,Jet_Kerosene_coal,1,1,1,1,1

@@ -5,15 +5,15 @@
 # Column types: cccnnnnnn 
 # ----------
 supplysector,subsector,technology,1971,2015,2021,2025,2050,2100
-refining,biorefining,biodiesel,1,1,1,1,1,1
-refining,biorefining,Residual_FuelOil,1,1,1,1,1,1
-refining,biorefining,corn ethanol,1,1,1,1,1,1
-refining,biorefining,sugar cane ethanol,1,1,1,1,1,1
-refining,biorefining,cellulosic ethanol,1,1,1,1,1,1
-refining,biorefining,Jet_Kerosene,1,1,1,1,1,1
-refining,biorefining,LPG,1,1,1,1,1,1
-refining,biorefining,Other,1,1,1,1,1,1
-refining,biorefining,biochar,1,1,1,1,1,1
+refining,biorefining 1st gen,biodiesel,1,1,1,1,1,1
+refining,biorefining 2nd gen,Residual_FuelOil,1,1,1,1,1,1
+refining,biorefining 1st gen,corn ethanol,1,1,1,1,1,1
+refining,biorefining 1st gen,sugar cane ethanol,1,1,1,1,1,1
+refining,biorefining 2nd gen,cellulosic ethanol,1,1,1,1,1,1
+refining,biorefining 2nd gen,Jet_Kerosene,1,1,1,1,1,1
+refining,biorefining 2nd gen,LPG,1,1,1,1,1,1
+refining,biorefining 2nd gen,Other,1,1,1,1,1,1
+refining,biorefining 2nd gen,biochar,1,1,1,1,1,1
 refining,crude oil refining,high Distillate_FuelOil,1,1,1,1,1,1
 refining,crude oil refining,high Gasoline,1,1,1,1,1,1
 refining,crude oil refining,high LPG,1,1,1,1,1,1

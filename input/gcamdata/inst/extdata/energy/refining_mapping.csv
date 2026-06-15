@@ -4,15 +4,15 @@
 # Column types: cccccc
 # ----------
 supplysector_1,subsector_2,stub.technology_1,supplysector,subsector,stub.technology
-refining,biorefining,biodiesel,Distillate_FuelOil,Distillate_FuelOil,biomassOil
-refining,biorefining,Residual_FuelOil,Residual_FuelOil,Residual_FuelOil,biomass
-refining,biorefining,corn ethanol,Gasoline,Gasoline,corn
-refining,biorefining,sugar cane ethanol,Gasoline,Gasoline,sugar
-refining,biorefining,cellulosic ethanol,Gasoline,Gasoline,biomass
-refining,biorefining,Jet_Kerosene,Jet_Kerosene,Jet_Kerosene,biomass
-refining,biorefining,LPG,LPG,LPG,biomass
-refining,biorefining,Other,Other,Other,biomass
-refining,biorefining,biochar,PetCoke,PetCoke,biomass
+refining,biorefining 1st gen,biodiesel,Distillate_FuelOil,Distillate_FuelOil,biomassOil
+refining,biorefining 2nd gen,Residual_FuelOil,Residual_FuelOil,Residual_FuelOil,biomass
+refining,biorefining 1st gen,corn ethanol,Gasoline,Gasoline,corn
+refining,biorefining 1st gen,sugar cane ethanol,Gasoline,Gasoline,sugar
+refining,biorefining 2nd gen,cellulosic ethanol,Gasoline,Gasoline,biomass
+refining,biorefining 2nd gen,Jet_Kerosene,Jet_Kerosene,Jet_Kerosene,biomass
+refining,biorefining 2nd gen,LPG,LPG,LPG,biomass
+refining,biorefining 2nd gen,Other,Other,Other,biomass
+refining,biorefining 2nd gen,biochar,PetCoke,PetCoke,biomass
 refining,crude oil refining,high Distillate_FuelOil,Distillate_FuelOil,Distillate_FuelOil,crude oil
 refining,crude oil refining,high Residual_FuelOil,Residual_FuelOil,Residual_FuelOil,crude oil
 refining,crude oil refining,high Gasoline,Gasoline,Gasoline,crude oil

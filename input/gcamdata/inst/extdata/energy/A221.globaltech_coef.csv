@@ -4,18 +4,18 @@
 # Column types: ccccnnn 
 # ----------
 supplysector,subsector,technology,minicam.energy.input,1971,2021,2100
-refining,biorefining,biodiesel,regional biomassOil,1.0309,1.0309,1.03
-refining,biorefining,biodiesel,wholesale gas,0.05767,0.05767,0.06
-refining,biorefining,Residual_FuelOil,regional biomass,1.961,1.961,1.739
-refining,biorefining,corn ethanol,regional corn for ethanol,1,1,1
-refining,biorefining,corn ethanol,wholesale gas,0.318,0.318,0.318
-refining,biorefining,corn ethanol,elect_td_ind,0.026,0.026,0.026
-refining,biorefining,sugar cane ethanol,regional sugar for ethanol,1,1,1
-refining,biorefining,cellulosic ethanol,regional biomass,2.057,2.057,1.771
-refining,biorefining,Jet_Kerosene,regional biomass,1.961,1.961,1.739
-refining,biorefining,LPG,regional biomass,1.961,1.961,1.739
-refining,biorefining,biochar,regional biomass,1.961,1.961,1.739
-refining,biorefining,Other,regional biomass,1.961,1.961,1.739
+refining,biorefining 1st gen,biodiesel,regional biomassOil,1.0309,1.0309,1.03
+refining,biorefining 1st gen,biodiesel,wholesale gas,0.05767,0.05767,0.06
+refining,biorefining 2nd gen,Residual_FuelOil,regional biomass,1.961,1.961,1.739
+refining,biorefining 1st gen,corn ethanol,regional corn for ethanol,1,1,1
+refining,biorefining 1st gen,corn ethanol,wholesale gas,0.318,0.318,0.318
+refining,biorefining 1st gen,corn ethanol,elect_td_ind,0.026,0.026,0.026
+refining,biorefining 1st gen,sugar cane ethanol,regional sugar for ethanol,1,1,1
+refining,biorefining 2nd gen,cellulosic ethanol,regional biomass,2.057,2.057,1.771
+refining,biorefining 2nd gen,Jet_Kerosene,regional biomass,1.961,1.961,1.739
+refining,biorefining 2nd gen,LPG,regional biomass,1.961,1.961,1.739
+refining,biorefining 2nd gen,biochar,regional biomass,1.961,1.961,1.739
+refining,biorefining 2nd gen,Other,regional biomass,1.961,1.961,1.739
 refining,ctl,Distillate_FuelOil,regional coal,2.112,2.112,1.959
 refining,ctl,Residual_FuelOil,regional coal,2.112,2.112,1.959
 refining,ctl,Gasoline,regional coal,2.112,2.112,1.959

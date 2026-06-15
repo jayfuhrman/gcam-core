@@ -101,7 +101,7 @@ module_energy_detailed_refining_xml <- function(command, ...) {
       mutate(input.cost = if_else(region == "Ukraine" & year %in% MODEL_FUTURE_YEARS, input.cost + 1.75, input.cost))
 
     L2221.SubsectorInterp <- L2221.SubsectorInterpTo_en %>%
-      filter(subsector %in% c("ctl","gtl","crude oil refining")) %>%
+      filter(subsector %in% c("ctl","gtl","crude oil refining","biorefining 1st gen")) %>%
       mutate(interpolation.function = "fixed") %>%
       select(LEVEL2_DATA_NAMES[["SubsectorInterp"]])
 

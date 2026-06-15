@@ -10,63 +10,63 @@
 # Column types: ccccininni
 # ----------
 supplysector,subsector,technology,year,lifetime,shutdown.rate,half.life,steepness,median.shutdown.point,profit.shutdown.steepness
-refining,biorefining,biodiesel,final-calibration-year,35,,25,.6,-0.9,4
-refining,biorefining,Residual_FuelOil,final-calibration-year,35,,25,.6,-0.1,4
-refining,biorefining,cellulosic ethanol,final-calibration-year,35,,25,.6,-0.5,4
-refining,biorefining,corn ethanol,final-calibration-year,35,,25,.6,-0.5,4
-refining,biorefining,sugar cane ethanol,final-calibration-year,35,,25,.6,-0.5,4
-refining,biorefining,Jet_Kerosene,final-calibration-year,35,,25,.6,-0.1,4
-refining,biorefining,LPG,final-calibration-year,35,,25,.6,-0.1,4
-refining,biorefining,biochar,final-calibration-year,35,,25,.6,-0.1,4
-refining,biorefining,Other,final-calibration-year,35,,25,.6,-0.1,4
-refining,ctl,Distillate_FuelOil,final-calibration-year,45,,25,.6,-0.1,4
-refining,ctl,Residual_FuelOil,final-calibration-year,45,,25,.6,-0.1,4
-refining,ctl,Gasoline,final-calibration-year,45,,25,.6,-0.1,4
-refining,ctl,Jet_Kerosene,final-calibration-year,45,,25,.6,-0.1,4
-refining,ctl,LPG,final-calibration-year,45,,25,.6,-0.1,4
-refining,ctl,PetCoke,final-calibration-year,45,,25,.6,-0.1,4
-refining,ctl,Other,final-calibration-year,45,,25,.6,-0.1,4
-refining,gtl,Distillate_FuelOil,final-calibration-year,45,,25,.6,-0.1,4
-refining,gtl,Residual_FuelOil,final-calibration-year,45,,25,.6,-0.1,4
-refining,gtl,Gasoline,final-calibration-year,45,,25,.6,-0.1,4
-refining,gtl,Jet_Kerosene,final-calibration-year,45,,25,.6,-0.1,4
-refining,gtl,LPG,final-calibration-year,45,,25,.6,-0.1,4
-refining,gtl,PetCoke,final-calibration-year,45,,25,.6,-0.1,4
-refining,gtl,Other,final-calibration-year,45,,25,.6,-0.1,4
-refining,crude oil refining,high Distillate_FuelOil,final-calibration-year,60,,25,.6,-0.1,4
-refining,crude oil refining,high Residual_FuelOil,final-calibration-year,60,,25,.6,-0.1,4
-refining,crude oil refining,high Gasoline,final-calibration-year,60,,25,.6,-0.1,4
-refining,crude oil refining,high LPG,final-calibration-year,60,,25,.6,-0.1,4
-refining,crude oil refining,high Jet_Kerosene,final-calibration-year,60,,25,.6,-0.1,4
-refining,crude oil refining,high PetCoke,final-calibration-year,60,,25,.6,-0.1,4
-refining,crude oil refining,high Other,final-calibration-year,60,,25,.6,-0.1,4
-refining,biorefining,biodiesel,initial-future-year,35,,25,.6,-0.9,4
-refining,biorefining,Residual_FuelOil,initial-future-year,35,,25,.6,-0.1,4
-refining,biorefining,cellulosic ethanol,initial-future-year,35,,25,.6,-0.5,4
-refining,biorefining,corn ethanol,initial-future-year,35,,25,.6,-0.5,4
-refining,biorefining,sugar cane ethanol,initial-future-year,35,,25,.6,-0.5,4
-refining,biorefining,Jet_Kerosene,initial-future-year,35,,25,.6,-0.1,4
-refining,biorefining,LPG,initial-future-year,35,,25,.6,-0.1,4
-refining,biorefining,biochar,initial-future-year,35,,25,.6,-0.1,4
-refining,biorefining,Other,initial-future-year,35,,25,.6,-0.1,4
-refining,ctl,Distillate_FuelOil,initial-future-year,45,,25,.6,-0.1,4
-refining,ctl,Residual_FuelOil,initial-future-year,45,,25,.6,-0.1,4
-refining,ctl,Gasoline,initial-future-year,45,,25,.6,-0.1,4
-refining,ctl,Jet_Kerosene,initial-future-year,45,,25,.6,-0.1,4
-refining,ctl,LPG,initial-future-year,45,,25,.6,-0.1,4
-refining,ctl,PetCoke,initial-future-year,45,,25,.6,-0.1,4
-refining,ctl,Other,initial-future-year,45,,25,.6,-0.1,4
-refining,gtl,Distillate_FuelOil,initial-future-year,45,,25,.6,-0.1,4
-refining,gtl,Residual_FuelOil,initial-future-year,45,,25,.6,-0.1,4
-refining,gtl,Gasoline,initial-future-year,45,,25,.6,-0.1,4
-refining,gtl,Jet_Kerosene,initial-future-year,45,,25,.6,-0.1,4
-refining,gtl,LPG,initial-future-year,45,,25,.6,-0.1,4
-refining,gtl,PetCoke,initial-future-year,45,,25,.6,-0.1,4
-refining,gtl,Other,initial-future-year,45,,25,.6,-0.1,4
-refining,crude oil refining,high Distillate_FuelOil,initial-future-year,60,,25,.6,-0.1,4
-refining,crude oil refining,high Residual_FuelOil,initial-future-year,60,,25,.6,-0.1,4
-refining,crude oil refining,high Gasoline,initial-future-year,60,,25,.6,-0.1,4
-refining,crude oil refining,high LPG,initial-future-year,60,,25,.6,-0.1,4
-refining,crude oil refining,high Jet_Kerosene,initial-future-year,60,,25,.6,-0.1,4
-refining,crude oil refining,high PetCoke,initial-future-year,60,,25,.6,-0.1,4
-refining,crude oil refining,high Other,initial-future-year,60,,25,.6,-0.1,4
+refining,biorefining 1st gen,biodiesel,final-calibration-year,35,,25,0.6,-0.9,4
+refining,biorefining 2nd gen,Residual_FuelOil,final-calibration-year,35,,25,0.6,-0.1,4
+refining,biorefining 2nd gen,cellulosic ethanol,final-calibration-year,35,,25,0.6,-0.5,4
+refining,biorefining 1st gen,corn ethanol,final-calibration-year,35,,25,0.6,-0.5,4
+refining,biorefining 1st gen,sugar cane ethanol,final-calibration-year,35,,25,0.6,-0.5,4
+refining,biorefining 2nd gen,Jet_Kerosene,final-calibration-year,35,,25,0.6,-0.1,4
+refining,biorefining 2nd gen,LPG,final-calibration-year,35,,25,0.6,-0.1,4
+refining,biorefining 2nd gen,biochar,final-calibration-year,35,,25,0.6,-0.1,4
+refining,biorefining 2nd gen,Other,final-calibration-year,35,,25,0.6,-0.1,4
+refining,ctl,Distillate_FuelOil,final-calibration-year,45,,25,0.6,-0.1,4
+refining,ctl,Residual_FuelOil,final-calibration-year,45,,25,0.6,-0.1,4
+refining,ctl,Gasoline,final-calibration-year,45,,25,0.6,-0.1,4
+refining,ctl,Jet_Kerosene,final-calibration-year,45,,25,0.6,-0.1,4
+refining,ctl,LPG,final-calibration-year,45,,25,0.6,-0.1,4
+refining,ctl,PetCoke,final-calibration-year,45,,25,0.6,-0.1,4
+refining,ctl,Other,final-calibration-year,45,,25,0.6,-0.1,4
+refining,gtl,Distillate_FuelOil,final-calibration-year,45,,25,0.6,-0.1,4
+refining,gtl,Residual_FuelOil,final-calibration-year,45,,25,0.6,-0.1,4
+refining,gtl,Gasoline,final-calibration-year,45,,25,0.6,-0.1,4
+refining,gtl,Jet_Kerosene,final-calibration-year,45,,25,0.6,-0.1,4
+refining,gtl,LPG,final-calibration-year,45,,25,0.6,-0.1,4
+refining,gtl,PetCoke,final-calibration-year,45,,25,0.6,-0.1,4
+refining,gtl,Other,final-calibration-year,45,,25,0.6,-0.1,4
+refining,crude oil refining,high Distillate_FuelOil,final-calibration-year,60,,25,0.6,-0.1,4
+refining,crude oil refining,high Residual_FuelOil,final-calibration-year,60,,25,0.6,-0.1,4
+refining,crude oil refining,high Gasoline,final-calibration-year,60,,25,0.6,-0.1,4
+refining,crude oil refining,high LPG,final-calibration-year,60,,25,0.6,-0.1,4
+refining,crude oil refining,high Jet_Kerosene,final-calibration-year,60,,25,0.6,-0.1,4
+refining,crude oil refining,high PetCoke,final-calibration-year,60,,25,0.6,-0.1,4
+refining,crude oil refining,high Other,final-calibration-year,60,,25,0.6,-0.1,4
+refining,biorefining 1st gen,biodiesel,initial-future-year,35,,25,0.6,-0.9,4
+refining,biorefining 2nd gen,Residual_FuelOil,initial-future-year,35,,25,0.6,-0.1,4
+refining,biorefining 2nd gen,cellulosic ethanol,initial-future-year,35,,25,0.6,-0.5,4
+refining,biorefining 1st gen,corn ethanol,initial-future-year,35,,25,0.6,-0.5,4
+refining,biorefining 1st gen,sugar cane ethanol,initial-future-year,35,,25,0.6,-0.5,4
+refining,biorefining 2nd gen,Jet_Kerosene,initial-future-year,35,,25,0.6,-0.1,4
+refining,biorefining 2nd gen,LPG,initial-future-year,35,,25,0.6,-0.1,4
+refining,biorefining 2nd gen,biochar,initial-future-year,35,,25,0.6,-0.1,4
+refining,biorefining 2nd gen,Other,initial-future-year,35,,25,0.6,-0.1,4
+refining,ctl,Distillate_FuelOil,initial-future-year,45,,25,0.6,-0.1,4
+refining,ctl,Residual_FuelOil,initial-future-year,45,,25,0.6,-0.1,4
+refining,ctl,Gasoline,initial-future-year,45,,25,0.6,-0.1,4
+refining,ctl,Jet_Kerosene,initial-future-year,45,,25,0.6,-0.1,4
+refining,ctl,LPG,initial-future-year,45,,25,0.6,-0.1,4
+refining,ctl,PetCoke,initial-future-year,45,,25,0.6,-0.1,4
+refining,ctl,Other,initial-future-year,45,,25,0.6,-0.1,4
+refining,gtl,Distillate_FuelOil,initial-future-year,45,,25,0.6,-0.1,4
+refining,gtl,Residual_FuelOil,initial-future-year,45,,25,0.6,-0.1,4
+refining,gtl,Gasoline,initial-future-year,45,,25,0.6,-0.1,4
+refining,gtl,Jet_Kerosene,initial-future-year,45,,25,0.6,-0.1,4
+refining,gtl,LPG,initial-future-year,45,,25,0.6,-0.1,4
+refining,gtl,PetCoke,initial-future-year,45,,25,0.6,-0.1,4
+refining,gtl,Other,initial-future-year,45,,25,0.6,-0.1,4
+refining,crude oil refining,high Distillate_FuelOil,initial-future-year,60,,25,0.6,-0.1,4
+refining,crude oil refining,high Residual_FuelOil,initial-future-year,60,,25,0.6,-0.1,4
+refining,crude oil refining,high Gasoline,initial-future-year,60,,25,0.6,-0.1,4
+refining,crude oil refining,high LPG,initial-future-year,60,,25,0.6,-0.1,4
+refining,crude oil refining,high Jet_Kerosene,initial-future-year,60,,25,0.6,-0.1,4
+refining,crude oil refining,high PetCoke,initial-future-year,60,,25,0.6,-0.1,4
+refining,crude oil refining,high Other,initial-future-year,60,,25,0.6,-0.1,4

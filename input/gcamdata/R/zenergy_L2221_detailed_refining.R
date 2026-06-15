@@ -115,7 +115,7 @@ module_energy_L2221.refining <- function(command, ...) {
       rename(technology = sector, output = fuel) %>%
       left_join_error_no_match(
         calibrated_techs_refining %>%
-          filter(sector == "biorefining") %>%
+          filter(sector == "biorefining 1st gen") %>%
           select(output = subsector, subsector = sector, input, technology),
         by = c("output", "technology")) %>%
       left_join_error_no_match(GCAM_region_names, by = "GCAM_region_ID") %>%

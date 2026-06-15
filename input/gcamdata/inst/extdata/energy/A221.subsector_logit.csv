@@ -6,7 +6,8 @@
 # ----------
 supplysector,subsector,logit.exponent,traded,logit.type
 refining,crude oil refining,-6,0,
-refining,biorefining,-6,0,
+refining,biorefining 1st gen,-6,0,
+refining,biorefining 2nd gen,-6,0,
 refining,ctl,-6,0,
 refining,gtl,-6,0,
 Distillate_FuelOil,Distillate_FuelOil,-3,0,absolute-cost-logit

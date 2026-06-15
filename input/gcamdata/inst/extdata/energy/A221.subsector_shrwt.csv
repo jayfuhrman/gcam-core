@@ -6,7 +6,8 @@
 # ----------
 supplysector,subsector,year.fillout,year,traded,share.weight
 refining,crude oil refining,start-year,,0,1
-refining,biorefining,start-year,,0,1
+refining,biorefining 1st gen,start-year,,0,1
+refining,biorefining 2nd gen,start-year,,0,1
 refining,ctl,start-year,,0,1
 refining,gtl,start-year,,0,1
 Distillate_FuelOil,Distillate_FuelOil,start-year,,0,1

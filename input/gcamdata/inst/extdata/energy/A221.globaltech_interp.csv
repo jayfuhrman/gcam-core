@@ -5,15 +5,15 @@
 # Column types: ccccccc 
 # ----------
 supplysector,subsector,technology,apply.to,from.year,to.year,interpolation.function
-refining,biorefining,biodiesel,share-weight,final-calibration-year,2075,linear
-refining,biorefining,Residual_FuelOil,share-weight,final-calibration-year,2075,s-curve
-refining,biorefining,corn ethanol,share-weight,final-calibration-year,2075,linear
-refining,biorefining,sugar cane ethanol,share-weight,final-calibration-year,2075,linear
-refining,biorefining,cellulosic ethanol,share-weight,final-calibration-year,2075,linear
-refining,biorefining,Jet_Kerosene,share-weight,final-calibration-year,2075,linear
-refining,biorefining,LPG,share-weight,final-calibration-year,2075,s-curve
-refining,biorefining,Other,share-weight,final-calibration-year,2075,s-curve
-refining,biorefining,biochar,share-weight,final-calibration-year,2075,s-curve
+refining,biorefining 1st gen,biodiesel,share-weight,final-calibration-year,2075,linear
+refining,biorefining 2nd gen,Residual_FuelOil,share-weight,final-calibration-year,2075,s-curve
+refining,biorefining 1st gen,corn ethanol,share-weight,final-calibration-year,2075,linear
+refining,biorefining 1st gen,sugar cane ethanol,share-weight,final-calibration-year,2075,linear
+refining,biorefining 2nd gen,cellulosic ethanol,share-weight,final-calibration-year,2075,linear
+refining,biorefining 2nd gen,Jet_Kerosene,share-weight,final-calibration-year,2075,linear
+refining,biorefining 2nd gen,LPG,share-weight,final-calibration-year,2075,s-curve
+refining,biorefining 2nd gen,Other,share-weight,final-calibration-year,2075,s-curve
+refining,biorefining 2nd gen,biochar,share-weight,final-calibration-year,2075,s-curve
 refining,ctl,Distillate_FuelOil,share-weight,final-calibration-year,2075,s-curve
 refining,ctl,Residual_FuelOil,share-weight,final-calibration-year,2075,s-curve
 refining,ctl,Gasoline,share-weight,final-calibration-year,2075,s-curve

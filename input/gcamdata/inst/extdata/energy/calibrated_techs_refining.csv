@@ -4,9 +4,9 @@
 # Column types: ccccccccc
 # ----------
 sector,fuel,supplysector,subsector,input,technology,minicam.energy.input,secondary.output
-refining,Gasoline,refining,biorefining,corn,corn ethanol,regional corn for ethanol,Gasoline_corn
-refining,Gasoline,refining,biorefining,sugar,sugar cane ethanol,regional sugar for ethanol,Gasoline_sugar
-refining,Distillate_FuelOil,refining,biorefining,biomassOil,biodiesel,regional biomassOil,Distillate_FuelOil_biomassOil
+refining,Gasoline,refining,biorefining 1st gen,corn,corn ethanol,regional corn for ethanol,Gasoline_corn
+refining,Gasoline,refining,biorefining 1st gen,sugar,sugar cane ethanol,regional sugar for ethanol,Gasoline_sugar
+refining,Distillate_FuelOil,refining,biorefining 1st gen,biomassOil,biodiesel,regional biomassOil,Distillate_FuelOil_biomassOil
 refining,LPG,refining,gtl,natural gas,LPG,regional natural gas,LPG_natural gas
 refining,Gasoline,refining,gtl,natural gas,Gasoline,regional natural gas,Gasoline_natural gas
 refining,Jet_Kerosene,refining,gtl,natural gas,Jet_Kerosene,regional natural gas,Jet_Kerosene_natural gas
@@ -28,9 +28,9 @@ refining,Distillate_FuelOil,refining,crude oil refining,crude oil,Distillate_Fue
 refining,Residual_FuelOil,refining,crude oil refining,crude oil,Residual_FuelOil,regional oil,Residual_FuelOil_crude oil
 refining,PetCoke,refining,crude oil refining,crude oil,PetCoke,regional oil,PetCoke_crude oil
 refining,Other,refining,crude oil refining,crude oil,Other,regional oil,Other_crude oil
-biorefining,corn,refining,Gasoline,corn,corn ethanol,regional corn for ethanol,
-biorefining,sugar,refining,Gasoline,sugar,sugar cane ethanol,regional sugar for ethanol,
-biorefining,biomass oil,refining,Distillate_FuelOil,biomassOil,biodiesel,regional biomassOil,
+biorefining 1st gen,corn,refining,Gasoline,corn,corn ethanol,regional corn for ethanol,
+biorefining 1st gen,sugar,refining,Gasoline,sugar,sugar cane ethanol,regional sugar for ethanol,
+biorefining 1st gen,biomass oil,refining,Distillate_FuelOil,biomassOil,biodiesel,regional biomassOil,
 gtl,natural gas,refining,gtl,gtl,gtl,regional natural gas,
 ctl,coal,refining,ctl,ctl,ctl,regional coal,
 oil refining,oil,refining,crude oil refining,crude oil,crude oil refining,regional oil,
