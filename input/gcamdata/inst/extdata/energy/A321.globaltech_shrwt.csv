@@ -13,7 +13,6 @@ process heat cement ccs,gas,gas CCS,1,1,1,1,1,1,1,1
 process heat cement,refined liquids,refined liquids,1,1,1,1,1,1,1,1
 process heat cement ccs,refined liquids,refined liquids CCS,1,1,1,1,1,1,1,1
 process heat cement,hydrogen,hydrogen,0,0,0,0,0.2,0.6,1,1
-process heat cement ccs,hydrogen,hydrogen,1,1,1,1,1,1,1,1
 clinker,clinker,clinker,1,1,1,1,1,1,1,1
 clinker,clinker CCS,oxyfuel combustion,0,0,0,0,0.2,0.6,1,1
 clinker,clinker CCS,post-combustion capture,0,0,0,0,0.2,0.6,1,1
