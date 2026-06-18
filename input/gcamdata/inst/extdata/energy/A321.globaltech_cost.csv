@@ -14,7 +14,6 @@ process heat cement,refined liquids,refined liquids,non-energy,0.505,0.505,0.505
 process heat cement ccs,refined liquids,refined liquids CCS,non-energy,0.505,0.505,0.505,0.505,0.505,0.505,0.505
 process heat cement,hydrogen,hydrogen,non-energy,0.644,0.644,0.644,0.644,0.644,0.644,0.644
 clinker,clinker,clinker,non-energy,0.003136218,0.003136218,0.003136218,0.003136218,0.003136218,0.003136218,0.003136218
-clinker,clinker,clinker high efficiency kiln,non-energy,0.00344984,0.00344984,0.00344984,0.00344984,0.00344984,0.00344984,0.00344984
 clinker,clinker CCS,calciner capture,non-energy,0.012206281,0.012206281,0.012206281,0.012206281,0.012206281,0.012206281,0.012206281
 clinker,clinker CCS,oxyfuel combustion,non-energy,0.017117666,0.017117666,0.017117666,0.017117666,0.017117666,0.017117666,0.017117666
 clinker,clinker CCS,post-combustion capture,non-energy,0.013585449,0.013585449,0.013585449,0.013585449,0.013585449,0.013585449,0.013585449
