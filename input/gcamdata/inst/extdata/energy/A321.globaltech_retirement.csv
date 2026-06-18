@@ -20,6 +20,7 @@ process heat cement,refined liquids,refined liquids,final-calibration-year,67,,2
 process heat cement ccs,refined liquids,refined liquids CCS,final-calibration-year,67,,20,0.3,-0.5,6
 process heat cement,hydrogen,hydrogen,final-calibration-year,67,,20,0.3,-0.5,6
 clinker,clinker,clinker,final-calibration-year,40,,20,0.3,-0.5,6
+clinker,clinker,clinker high efficiency kiln,final-calibration-year,40,,20,0.3,-0.5,6
 clinker,clinker CCS,oxyfuel combustion,final-calibration-year,40,,20,0.3,-0.5,6
 clinker,clinker CCS,post-combustion capture,final-calibration-year,40,,20,0.3,-0.5,6
 clinker,clinker CCS,calciner capture,final-calibration-year,40,,20,0.3,-0.5,6
@@ -40,6 +41,7 @@ process heat cement,refined liquids,refined liquids,initial-future-year,67,,20,0
 process heat cement ccs,refined liquids,refined liquids CCS,initial-future-year,67,,20,0.3,-0.5,6
 process heat cement,hydrogen,hydrogen,initial-future-year,67,,20,0.3,-0.5,6
 clinker,clinker,clinker,initial-future-year,40,,20,0.3,-0.5,6
+clinker,clinker,clinker high efficiency kiln,initial-future-year,40,,20,0.3,-0.5,6
 clinker,clinker CCS,oxyfuel combustion,initial-future-year,40,,20,0.3,-0.5,6
 clinker,clinker CCS,post-combustion capture,initial-future-year,40,,20,0.3,-0.5,6
 clinker,clinker CCS,calciner capture,initial-future-year,40,,20,0.3,-0.5,6
