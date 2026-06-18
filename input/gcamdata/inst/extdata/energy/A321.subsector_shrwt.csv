@@ -12,7 +12,6 @@ process heat cement ccs,biomass,start-year,,1
 process heat cement ccs,coal,start-year,,1
 process heat cement ccs,gas,start-year,,1
 process heat cement ccs,refined liquids,start-year,,1
-process heat cement ccs,hydrogen,start-year,,1
 process heat cement,hydrogen,start-year,,0
 process heat cement,hydrogen,initial-future-year,,0
 process heat cement,hydrogen,2050,,1
