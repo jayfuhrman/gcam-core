@@ -22,7 +22,8 @@ module_energy_turn_off_ccs_xml <- function(command, ...) {
              "L2325.GlobalTechCapture_chemical",
              'L2326.GlobalTechCapture_aluminum',
              "L2327.GlobalTechCapture_paper",
-             "L262.GlobalTechCapture_dac"))
+             "L262.GlobalTechCapture_dac",
+             "L2321.GlobalTechShrwt_cement"))
   } else if(command == driver.DECLARE_OUTPUTS) {
     return(c(XML = "turn_off_ccs.xml"))
   } else if(command == driver.MAKE) {
@@ -42,6 +43,8 @@ module_energy_turn_off_ccs_xml <- function(command, ...) {
     L2326.GlobalTechCapture_aluminum <- get_data(all_data, "L2326.GlobalTechCapture_aluminum")
     L2327.GlobalTechCapture_paper <- get_data(all_data, "L2327.GlobalTechCapture_paper")
     L262.GlobalTechCapture_dac <- get_data(all_data, "L262.GlobalTechCapture_dac")
+    L2321.GlobalTechShrwt_cement <- get_data(all_data, "L2321.GlobalTechShrwt_cement")
+
 
     # Get all CCS technologies for each region in one dataframe
     CCS_Techs <- bind_rows(L222.GlobalTechCapture_en, L223.GlobalTechCapture_elec,
@@ -50,6 +53,9 @@ module_energy_turn_off_ccs_xml <- function(command, ...) {
                            L2325.GlobalTechCapture_chemical, L2326.GlobalTechCapture_aluminum,
                            L2327.GlobalTechCapture_paper, L262.GlobalTechCapture_dac) %>%
       select(sector.name, subsector.name, technology) %>%
+      bind_rows(L2321.GlobalTechShrwt_cement %>%
+                select(sector.name, subsector.name, technology) %>%
+                filter(technology == "cement LC3 CCS")) %>%
       unique() %>%
       rename(supplysector = sector.name,
              subsector = subsector.name,
