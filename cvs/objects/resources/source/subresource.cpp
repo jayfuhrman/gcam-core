@@ -90,7 +90,7 @@ SubResource::~SubResource() {
 * \author Josh Lurz, Sonny Kim
 * \warning markets are not necessarily set when completeInit is called
 */
-void SubResource::completeInit( const gcamstr& aRegionName, const gcamstr& aResourceName,
+void SubResource::completeInit( const std::string& aRegionName, const std::string& aResourceName,
                                 const IInfo* aResourceInfo ) {
     mSubresourceInfo.reset( InfoFactory::constructInfo( aResourceInfo, mName ) ); 
     // update the available resource for period 0
@@ -168,7 +168,7 @@ void SubResource::completeInit( const gcamstr& aRegionName, const gcamstr& aReso
 * \param aResourceName Resource name.
 * \param aPeriod Model aPeriod
 */
-void SubResource::initCalc( const gcamstr& aRegionName, const gcamstr& aResourceName,
+void SubResource::initCalc( const string& aRegionName, const string& aResourceName,
                             const IInfo* aResourceInfo, const int aPeriod )
 {
     // call grade initializations
@@ -189,21 +189,20 @@ void SubResource::initCalc( const gcamstr& aRegionName, const gcamstr& aResource
     Marketplace* marketplace = scenario->getMarketplace();
     IInfo* productInfo = marketplace->getMarketInfo( aResourceName, aRegionName, aPeriod, false );
     if( aPeriod <= finalCalPeriod && mCalProduction[ aPeriod ] >= 0.0 && productInfo ) {
-        productInfo->setBoolean( gcamstr("fully-calibrated"), true );
+        productInfo->setBoolean( "fully-calibrated", true );
     }
     
     // Note we have to reset the CO2coefficient for the resource to zero before
     // the technology / output calls initCalc to avoid undesriable carbon accounting
     // (positive carbon in the output but no inputs = negative emissions).
     // we will then reset the value to what it was before after the call
-    gcamstr CO2CoefKey("CO2coefficient");
-    double resCCoef = productInfo ? productInfo->getDouble( CO2CoefKey, false ) : 0;
+    double resCCoef = productInfo ? productInfo->getDouble( "CO2coefficient", false ) : 0;
     if( productInfo ) {
-        productInfo->setDouble( CO2CoefKey, 0.0 );
+        productInfo->setDouble( "CO2coefficient", 0.0 );
     }
     mTechnology->initCalc( aRegionName, aResourceName, aResourceInfo, 0, aPeriod );
     if( productInfo ) {
-        productInfo->setDouble( CO2CoefKey, resCCoef );
+        productInfo->setDouble( "CO2coefficient", resCCoef );
     }
     
     // calculate total extraction cost for each grade
@@ -228,7 +227,7 @@ void SubResource::initCalc( const gcamstr& aRegionName, const gcamstr& aResource
 * \param aResourceName Resource name.
 * \param period Model aPeriod
 */
-void SubResource::postCalc( const gcamstr& aRegionName, const gcamstr& aResourceName, const int aPeriod ) {
+void SubResource::postCalc( const string& aRegionName, const string& aResourceName, const int aPeriod ) {
 
     // Available is the total resource (stock) initialized in initCalc and
     // is the initial amount at the beginning of the period.
@@ -251,7 +250,7 @@ void SubResource::postCalc( const gcamstr& aRegionName, const gcamstr& aResource
     // (to accommodate global markets) but this can be problematic when target
     // in which case the amount depleted will vary between dispatches
     IInfo* marketInfo = scenario->getMarketplace()->getMarketInfo( aResourceName, aRegionName, aPeriod, true );
-    const gcamstr LOWER_BOUND_KEY("lower-bound-supply-price");
+    const string LOWER_BOUND_KEY = "lower-bound-supply-price";
     marketInfo->setDouble(LOWER_BOUND_KEY, util::getLargeNumber());
 }
 
@@ -307,11 +306,11 @@ const std::string& SubResource::getXMLNameStatic() {
 }
 
 //! return SubResource name
-const gcamstr& SubResource::getName() const {
+const std::string& SubResource::getName() const {
     return mName;
 }
 
-void SubResource::cumulsupply( const gcamstr& aRegionName, const gcamstr& aResourceName,
+void SubResource::cumulsupply( const string& aRegionName, const string& aResourceName,
                                double aPrice, int aPeriod )
 {
     // Always calculate the effective price
@@ -382,7 +381,7 @@ void SubResource::updateAvailable( const int aPeriod ){
 //! calculate annual supply
 /*! Takes into account short-term capacity limits.
 Note that cumulsupply() must be called before calling this function. */
-void SubResource::annualsupply( const gcamstr& aRegionName, const gcamstr& aResourceName,
+void SubResource::annualsupply( const string& aRegionName, const string& aResourceName,
                                 int aPeriod, double aPrice )
 {
     const Modeltime* modeltime = scenario->getModeltime();
