@@ -6,14 +6,11 @@
 # ----------
 supplysector,subsector,technology,minicam.non.energy.input,1971,1990,2005,2010,2015,2021,2025,2050,2100
 refining,biorefining 1st gen,biodiesel,OM-var,,,,,,,,,
-refining,biorefining 2nd gen,Residual_FuelOil,OM-var,,,,,,,,,
+refining,biorefining 2nd gen,FT biofuels,OM-var,,,,,,,,,
 refining,biorefining 1st gen,corn ethanol,OM-var,,,,,,,,,
 refining,biorefining 1st gen,sugar cane ethanol,OM-var,,,,,,,,,
 refining,biorefining 2nd gen,cellulosic ethanol,OM-var,,,,,,,,,
-refining,biorefining 2nd gen,biochar,OM-var,,,,,,,,,
-refining,biorefining 2nd gen,Jet_Kerosene,OM-var,,,,,,,,,
-refining,biorefining 2nd gen,LPG,OM-var,,,,,,,,,
-refining,biorefining 2nd gen,Other,OM-var,,,,,,,,,
+refining,biorefining 2nd gen,pyrolysis,OM-var,,,,,,,,,
 refining,ctl,Distillate_FuelOil,OM-var,,,,,,,,,
 refining,ctl,Residual_FuelOil,OM-var,,,,,,,,,
 refining,ctl,Gasoline,OM-var,,,,,,,,,

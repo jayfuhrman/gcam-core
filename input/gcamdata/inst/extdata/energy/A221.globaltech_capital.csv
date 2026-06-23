@@ -6,14 +6,11 @@
 # ----------
 supplysector,subsector,technology,minicam.non.energy.input,1971,1990,2005,2010,2015,2021,2025,2050,2100
 refining,biorefining 1st gen,biodiesel,capital,,,,,,,,,
-refining,biorefining 2nd gen,Residual_FuelOil,capital,,,,,,,,,
+refining,biorefining 2nd gen,FT biofuels,capital,,,,,,,,,
 refining,biorefining 1st gen,corn ethanol,capital,,,,,,,,,
 refining,biorefining 1st gen,sugar cane ethanol,capital,,,,,,,,,
 refining,biorefining 2nd gen,cellulosic ethanol,capital,,,,,,,,,
-refining,biorefining 2nd gen,biochar,capital,,,,,,,,,
-refining,biorefining 2nd gen,Jet_Kerosene,capital,,,,,,,,,
-refining,biorefining 2nd gen,LPG,capital,,,,,,,,,
-refining,biorefining 2nd gen,Other,capital,,,,,,,,,
+refining,biorefining 2nd gen,pyrolysis,capital,,,,,,,,,
 refining,ctl,Distillate_FuelOil,capital,,,,,,,,,
 refining,ctl,Residual_FuelOil,capital,,,,,,,,,
 refining,ctl,Gasoline,capital,,,,,,,,,

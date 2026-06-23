@@ -4,15 +4,22 @@
 # Column types: cccccnnnnn
 # ----------
 sec.output.type,supplysector,subsector,technology,fractional.secondary.output,1971,2015,2021,2025,2100
-res-secondary-output,refining,biorefining 2nd gen,LPG,LPG_biomass,1,1,1,1,1
 res-secondary-output,refining,biorefining 1st gen,corn ethanol,Gasoline_corn,1,1,1,1,1
 res-secondary-output,refining,biorefining 1st gen,sugar cane ethanol,Gasoline_sugar,1,1,1,1,1
-res-secondary-output,refining,biorefining 2nd gen,cellulosic ethanol,Gasoline_biomass,1,1,1,1,1
-res-secondary-output,refining,biorefining 2nd gen,Jet_Kerosene,Jet_Kerosene_biomass,1,1,1,1,1
 res-secondary-output,refining,biorefining 1st gen,biodiesel,Distillate_FuelOil_biomassOil,1,1,1,1,1
-res-secondary-output,refining,biorefining 2nd gen,Residual_FuelOil,Residual_FuelOil_biomass,1,1,1,1,1
-res-secondary-output,refining,biorefining 2nd gen,biochar,PetCoke_biomass,1,1,1,1,1
-res-secondary-output,refining,biorefining 2nd gen,Other,Other_biomass,1,1,1,1,1
+res-secondary-output,refining,biorefining 2nd gen,cellulosic ethanol,Gasoline_biomass,1,1,1,1,1
+res-secondary-output,refining,biorefining 2nd gen,FT biofuels,Jet_Kerosene_biomass,0.35,0.35,0.35,0.35,0.35
+res-secondary-output,refining,biorefining 2nd gen,FT biofuels,LPG_biomass,0.05,0.05,0.05,0.05,0.05
+res-secondary-output,refining,biorefining 2nd gen,FT biofuels,Residual_FuelOil_biomass,0.02,0.02,0.02,0.02,0.02
+res-secondary-output,refining,biorefining 2nd gen,FT biofuels,Distillate_FuelOil_biomassOil,0.45,0.45,0.45,0.45,0.45
+res-secondary-output,refining,biorefining 2nd gen,FT biofuels,Gasoline_biomass,0.12,0.12,0.12,0.12,0.12
+res-secondary-output,refining,biorefining 2nd gen,FT biofuels,Other_biomass,0.01,0.01,0.01,0.01,0.01
+res-secondary-output,refining,biorefining 2nd gen,pyrolysis,LPG_biomass,0.05,0.05,0.05,0.05,0.05
+res-secondary-output,refining,biorefining 2nd gen,pyrolysis,Residual_FuelOil_biomass,0.1,0.1,0.1,0.1,0.1
+res-secondary-output,refining,biorefining 2nd gen,pyrolysis,Distillate_FuelOil_biomassOil,0.45,0.45,0.45,0.45,0.45
+res-secondary-output,refining,biorefining 2nd gen,pyrolysis,PetCoke_biomass,0.15,0.15,0.15,0.15,0.15
+res-secondary-output,refining,biorefining 2nd gen,pyrolysis,Gasoline_biomass,0.2,0.2,0.2,0.2,0.2
+res-secondary-output,refining,biorefining 2nd gen,pyrolysis,Other_biomass,0.05,0.05,0.05,0.05,0.05
 res-secondary-output,refining,ctl,LPG,LPG_coal,1,1,1,1,1
 res-secondary-output,refining,ctl,Gasoline,Gasoline_coal,1,1,1,1,1
 res-secondary-output,refining,ctl,Jet_Kerosene,Jet_Kerosene_coal,1,1,1,1,1

@@ -545,10 +545,13 @@ module_energy_L2221.refining <- function(command, ...) {
       rename(supplysector = supplysector_1,
              subsector = subsector_2,
              stub.technology = stub.technology_1) %>%
-      mutate(calOutputValue = round(calOutputValue, energy.DIGITS_CALOUTPUT),
+      mutate(stub.technology = if_else(subsector == "biorefining 2nd gen" & stub.technology == "Jet_Kerosene","FT biofuels", stub.technology),
+             stub.technology = if_else(subsector == "biorefining 2nd gen" & !stub.technology %in% c("FT biofuels","cellulosic ethanol"),"pyrolysis", stub.technology),
+             calOutputValue = round(calOutputValue, energy.DIGITS_CALOUTPUT),
              share.weight.year = year,
              share.weight = if_else(calOutputValue > 0, 1, 0),
              tech.share.weight = share.weight) %>%
+      distinct(region,supplysector,subsector,stub.technology, tech.share.weight, year, .keep_all = TRUE) %>%
       set_subsector_shrwt() %>%
       select(LEVEL2_DATA_NAMES[["StubTechProd"]], "share.weight")
 
