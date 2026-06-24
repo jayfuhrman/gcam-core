@@ -29,3 +29,6 @@ cement,silicate,2050,,1
 cement,electrochemical,start-year,,0
 cement,electrochemical,initial-future-year,,0
 cement,electrochemical,2050,,1
+cement,carbonated,start-year,,0
+cement,carbonated,initial-future-year,,0
+cement,carbonated,2050,,1

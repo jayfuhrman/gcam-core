@@ -329,7 +329,7 @@ module_energy_L2321.cement <- function(command, ...) {
     # We may want to add assumptions about future improvement rates in the future but for now we hold fixed.
     L2321.StubTechCoef_cement_fut <- L2321.StubTechCoef_cement %>%
       filter(year == MODEL_FINAL_BASE_YEAR,
-             minicam.energy.input != "process heat cement") %>%
+             !minicam.energy.input %in% c("process heat cement","elect_td_ind")) %>%
       select(-year) %>%
       group_by(region,supplysector,subsector,stub.technology,minicam.energy.input,market.name) %>%
       repeat_add_columns(tibble(year = MODEL_FUTURE_YEARS))

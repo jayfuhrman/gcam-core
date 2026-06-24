@@ -25,3 +25,6 @@ cement,silicate,share-weight,2050,end-year,1,fixed
 cement,electrochemical,share-weight,start-year,initial-future-year,0,fixed
 cement,electrochemical,share-weight,initial-future-year,2050,1,linear
 cement,electrochemical,share-weight,2050,end-year,1,fixed
+cement,carbonated,share-weight,start-year,initial-future-year,0,fixed
+cement,carbonated,share-weight,initial-future-year,2050,1,linear
+cement,carbonated,share-weight,2050,end-year,1,fixed

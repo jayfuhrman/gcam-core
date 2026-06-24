@@ -14,7 +14,7 @@ process heat cement,refined liquids,refined liquids,refined liquids industrial,1
 process heat cement ccs,refined liquids,refined liquids CCS,refined liquids industrial,1.1628,1.1628,1.1628,1.1628,1.1628,1.1628,1.1628,1.1628
 process heat cement,hydrogen,hydrogen,H2 industrial,1.1236,1.1236,1.1236,1.1236,1.1236,1.1236,1.1236,1.1236
 clinker,clinker,clinker,process heat cement,0.0037715,0.0037715,0.0037715,0.0037715,0.0037715,0.0037715,0.0037715,0.0037715
-clinker,clinker,clinker,elect_td_ind, 0.0000988 , 0.0000988 , 0.0000988 , 0.0000988 , 0.0000988 , 0.0000988 , 0.0000988 , 0.0000988 
+clinker,clinker,clinker,elect_td_ind,0.0000988,0.0000988,0.0000988,0.0000988,0.0000988,0.0000988,0.0000988,0.0000988
 clinker,clinker,clinker,limestone,1.578947368,1.578947368,1.578947368,1.578947368,1.578947368,1.578947368,1.578947368,1.578947368
 clinker,clinker,clinker high efficiency kiln,process heat cement,0.002963329,0.002963329,0.002963329,0.002963329,0.002963329,0.002963329,0.002963329,0.002963329
 clinker,clinker,clinker high efficiency kiln,elect_td_ind,0.0000889,0.0000889,0.0000889,0.0000889,0.0000889,0.0000889,0.0000889,0.0000889
@@ -66,3 +66,11 @@ cement,silicate,silicate CCS,elect_td_ind,0.001,0.001,0.001,0.001,0.001,0.001,0.
 cement,silicate,silicate CCS,gypsum,0.05,0.05,0.05,0.05,0.05,0.05,0.05,0.05
 cement,silicate,silicate CCS,silicate rock,3.166666667,3.166666667,3.166666667,3.166666667,3.166666667,3.166666667,3.166666667,3.166666667
 cement,silicate,silicate CCS,process heat cement ccs,0.005,0.005,0.005,0.005,0.005,0.005,0.005,0.005
+cement,carbonated,carbonated,process heat cement,0.0018,0.0018,0.0018,0.0018,0.0018,0.0018,0.0018,0.0018
+cement,carbonated,carbonated,limestone,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5
+cement,carbonated,carbonated,clinker,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5
+cement,carbonated,carbonated,elect_td_ind,0.0005,0.0005,0.0005,0.0005,0.0005,0.0005,0.0005,0.0005
+cement,carbonated,carbonated CCS,process heat cement ccs,0.0018,0.0018,0.0018,0.0018,0.0018,0.0018,0.0018,0.0018
+cement,carbonated,carbonated CCS,limestone,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5
+cement,carbonated,carbonated CCS,clinker,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5
+cement,carbonated,carbonated CCS,elect_td_ind,0.0005,0.0005,0.0005,0.0005,0.0005,0.0005,0.0005,0.0005

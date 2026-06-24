@@ -56,3 +56,5 @@ cement,cement LC3,cement LC3 CCS,final-calibration-year,40,,20,0.3,-0.5,6
 cement,silicate,silicate CCS,final-calibration-year,40,,20,0.3,-0.5,6
 cement,cement LC3,cement LC3 CCS,initial-future-year,40,,20,0.3,-0.5,6
 cement,silicate,silicate CCS,initial-future-year,40,,20,0.3,-0.5,6
+cement,carbonated,carbonated,final-calibration-year,40,,20,0.3,-0.5,6
+cement,carbonated,carbonated CCS,initial-future-year,40,,20,0.3,-0.5,6
