@@ -84,3 +84,4 @@ exe/configuration_test.xml
 exe/refining_breakout_zeroProfit - Shortcut.lnk
 exe/run-gcam..bat
 exe/run-model-interface - Shortcut.lnk
+output/
