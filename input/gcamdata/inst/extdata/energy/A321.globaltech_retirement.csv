@@ -31,6 +31,8 @@ cement,cement,cement SCMlime,final-calibration-year,40,,20,0.3,-0.5,6
 cement,cement LC3,cement LC3,final-calibration-year,40,,20,0.3,-0.5,6
 cement,silicate,silicate,final-calibration-year,40,,20,0.3,-0.5,6
 cement,electrochemical,electrochemical,final-calibration-year,40,,20,0.3,-0.5,6
+cement,electrochemical,carbonated,final-calibration-year,40,,20,0.3,-0.5,6
+cement,electrochemical,carbonated CCS,final-calibration-year,40,,20,0.3,-0.5,6
 process heat cement,biomass,biomass,initial-future-year,67,,20,0.3,-0.5,6
 process heat cement ccs,biomass,biomass CCS,initial-future-year,67,,20,0.3,-0.5,6
 process heat cement,coal,coal,initial-future-year,67,,20,0.3,-0.5,6
@@ -56,5 +58,5 @@ cement,cement LC3,cement LC3 CCS,final-calibration-year,40,,20,0.3,-0.5,6
 cement,silicate,silicate CCS,final-calibration-year,40,,20,0.3,-0.5,6
 cement,cement LC3,cement LC3 CCS,initial-future-year,40,,20,0.3,-0.5,6
 cement,silicate,silicate CCS,initial-future-year,40,,20,0.3,-0.5,6
-cement,carbonated,carbonated,final-calibration-year,40,,20,0.3,-0.5,6
+cement,carbonated,carbonated,initial-future-year,40,,20,0.3,-0.5,6
 cement,carbonated,carbonated CCS,initial-future-year,40,,20,0.3,-0.5,6
