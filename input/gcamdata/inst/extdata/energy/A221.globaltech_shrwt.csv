@@ -7,9 +7,13 @@
 supplysector,subsector,technology,1971,2015,2021,2025,2050,2100
 refining,biorefining 1st gen,biodiesel,1,1,1,1,1,1
 refining,biorefining 2nd gen,FT biofuels,1,1,1,1,1,1
+refining,biorefining 2nd gen,FT biofuels CCS level 1,0,0,0,0,1,1
+refining,biorefining 2nd gen,FT biofuels CCS level 2,0,0,0,0,1,1
 refining,biorefining 1st gen,corn ethanol,1,1,1,1,1,1
 refining,biorefining 1st gen,sugar cane ethanol,1,1,1,1,1,1
 refining,biorefining 2nd gen,cellulosic ethanol,1,1,1,1,1,1
+refining,biorefining 2nd gen,cellulosic ethanol CCS level 1,0,0,0,0,1,1
+refining,biorefining 2nd gen,cellulosic ethanol CCS level 2,0,0,0,0,1,1
 refining,biorefining 2nd gen,pyrolysis,1,1,1,1,1,1
 refining,crude oil refining,high Distillate_FuelOil,1,1,1,1,1,1
 refining,crude oil refining,high Gasoline,1,1,1,1,1,1

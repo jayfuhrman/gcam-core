@@ -7,11 +7,15 @@ supplysector,subsector,technology,minicam.energy.input,1971,2021,2100
 refining,biorefining 1st gen,biodiesel,regional biomassOil,1.0309,1.0309,1.03
 refining,biorefining 1st gen,biodiesel,wholesale gas,0.05767,0.05767,0.06
 refining,biorefining 2nd gen,cellulosic ethanol,regional biomass,2.057,2.057,1.771
+refining,biorefining 2nd gen,cellulosic ethanol CCS level 1,regional biomass,2.139,2.139,1.842
+refining,biorefining 2nd gen,cellulosic ethanol CCS level 2,regional biomass,2.263,2.263,1.948
 refining,biorefining 1st gen,corn ethanol,regional corn for ethanol,1,1,1
 refining,biorefining 1st gen,corn ethanol,wholesale gas,0.318,0.318,0.318
 refining,biorefining 1st gen,corn ethanol,elect_td_ind,0.026,0.026,0.026
 refining,biorefining 1st gen,sugar cane ethanol,regional sugar for ethanol,1,1,1
 refining,biorefining 2nd gen,FT biofuels,regional biomass,1.961,1.961,1.739
+refining,biorefining 2nd gen,FT biofuels CCS level 1,regional biomass,2.039,2.039,1.809
+refining,biorefining 2nd gen,FT biofuels CCS level 2,regional biomass,2.157,2.157,1.913
 refining,biorefining 2nd gen,pyrolysis,regional biomass,1.961,1.961,1.739
 refining,ctl,Distillate_FuelOil,regional coal,2.112,2.112,1.959
 refining,ctl,Residual_FuelOil,regional coal,2.112,2.112,1.959

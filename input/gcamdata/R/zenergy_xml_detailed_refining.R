@@ -37,6 +37,7 @@ module_energy_detailed_refining_xml <- function(command, ...) {
              "L2221.GlobalTechLifetime_en",
              "L2221.GlobalTechProfitShutdown",
              "L2221.SectorZeroProfitMarketName",
+             "L2221.GlobalTechCapture",
              "L2221.StubTechSecondaryOutput",
              "L2221.StubTech_en",
              #"L2221.StubTechShrwt",
@@ -86,6 +87,7 @@ module_energy_detailed_refining_xml <- function(command, ...) {
     #L2221.StubTechShrwt <- get_data(all_data, "L2221.StubTechShrwt")
     L2221.StubTechCoef_refining <- get_data(all_data, "L2221.StubTechCoef_refining")
     L2221.StubTechTrackCapital_en <- get_data(all_data, "L2221.StubTechTrackCapital_en")
+    L2221.GlobalTechCapture <- get_data(all_data, "L2221.GlobalTechCapture")
 
     L226.TechResSecOutCredit <- get_data(all_data, "L226.TechResSecOutCredit")
     L226.StubTechCoefInputCredit <- get_data(all_data, "L226.StubTechCoefInputCredit")
@@ -132,6 +134,7 @@ module_energy_detailed_refining_xml <- function(command, ...) {
       add_xml_data(L2221.GlobalTechInputPmult, "GlobalTechInputPMult") %>%
       add_xml_data(L2221.GlobalTechFractSecOut_en, "GlobalTechSecOut") %>%
       add_xml_data(L2221.GlobalTechResSecOut_en, "GlobalTechRESSecOut") %>%
+      add_xml_data(L2221.GlobalTechCapture, "GlobalTechCapture") %>%
       add_xml_data(L2221.StubTech_en, "StubTech") %>%
       #add_xml_data(L2221.StubTechShrwt, "StubTechProd") %>%
       add_xml_data(L2221.StubTechCost, "TechCost") %>%
@@ -175,7 +178,8 @@ module_energy_detailed_refining_xml <- function(command, ...) {
                      "L2221.StubTechCoef_refining",
                      "L2221.StubTechCost",
                      #"L2221.StubTechTrackCapital_en",
-                     "L2221.StubTechSecondaryOutput") ->
+                     "L2221.StubTechSecondaryOutput",
+                     "L2221.GlobalTechCapture") ->
       detailed_refining.xml
 
     create_xml("USA_ethanol_RFS.xml") %>%

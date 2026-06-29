@@ -12,7 +12,11 @@
 supplysector,subsector,technology,year,lifetime,shutdown.rate,half.life,steepness,median.shutdown.point,profit.shutdown.steepness
 refining,biorefining 1st gen,biodiesel,final-calibration-year,35,,25,0.6,-0.9,4
 refining,biorefining 2nd gen,FT biofuels,final-calibration-year,35,,25,0.6,-0.1,4
+refining,biorefining 2nd gen,FT biofuels CCS level 1,final-calibration-year,35,,25,0.6,-0.1,4
+refining,biorefining 2nd gen,FT biofuels CCS level 2,final-calibration-year,35,,25,0.6,-0.1,4
 refining,biorefining 2nd gen,cellulosic ethanol,final-calibration-year,35,,25,0.6,-0.5,4
+refining,biorefining 2nd gen,cellulosic ethanol CCS level 1,final-calibration-year,35,,25,0.6,-0.5,4
+refining,biorefining 2nd gen,cellulosic ethanol CCS level 2,final-calibration-year,35,,25,0.6,-0.5,4
 refining,biorefining 1st gen,corn ethanol,final-calibration-year,35,,25,0.6,-0.5,4
 refining,biorefining 1st gen,sugar cane ethanol,final-calibration-year,35,,25,0.6,-0.5,4
 refining,biorefining 2nd gen,pyrolysis,final-calibration-year,35,,25,0.6,-0.1,4
@@ -39,7 +43,11 @@ refining,crude oil refining,high PetCoke,final-calibration-year,60,,25,0.6,-0.1,
 refining,crude oil refining,high Other,final-calibration-year,60,,25,0.6,-0.1,4
 refining,biorefining 1st gen,biodiesel,initial-future-year,35,,25,0.6,-0.9,4
 refining,biorefining 2nd gen,FT biofuels,initial-future-year,35,,25,0.6,-0.1,4
+refining,biorefining 2nd gen,FT biofuels CCS level 1,initial-future-year,35,,25,0.6,-0.1,4
+refining,biorefining 2nd gen,FT biofuels CCS level 2,initial-future-year,35,,25,0.6,-0.1,4
 refining,biorefining 2nd gen,cellulosic ethanol,initial-future-year,35,,25,0.6,-0.5,4
+refining,biorefining 2nd gen,cellulosic ethanol CCS level 1,initial-future-year,35,,25,0.6,-0.1,4
+refining,biorefining 2nd gen,cellulosic ethanol CCS level 2,initial-future-year,35,,25,0.6,-0.1,4
 refining,biorefining 1st gen,corn ethanol,initial-future-year,35,,25,0.6,-0.5,4
 refining,biorefining 1st gen,sugar cane ethanol,initial-future-year,35,,25,0.6,-0.5,4
 refining,biorefining 2nd gen,pyrolysis,initial-future-year,35,,25,0.6,-0.1,4

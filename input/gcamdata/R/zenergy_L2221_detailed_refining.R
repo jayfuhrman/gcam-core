@@ -43,7 +43,9 @@ module_energy_L2221.refining <- function(command, ...) {
       "L1221.globaltech_capital",
       "L1221.globaltech_OMfixed",
       "L1221.globaltech_OMvar",
-      "L1221.globaltech_margin")
+      "L1221.globaltech_margin",
+      "L222.GlobalTechCapture_en",
+      "L222.GlobalTechCost_en")
 
   MODULE_OUTPUTS <-
     c("L2221.Supplysector_en",
@@ -75,7 +77,8 @@ module_energy_L2221.refining <- function(command, ...) {
       "L2221.RsrcCal",
       "L2221.StubTechCost",
       "L2221.StubTechTrackCapital_en",
-      "L2221.StubTech_en")
+      "L2221.StubTech_en",
+      "L2221.GlobalTechCapture")
 
   if(command == driver.DECLARE_INPUTS) {
     return(MODULE_INPUTS)
@@ -316,6 +319,37 @@ module_energy_L2221.refining <- function(command, ...) {
       rename(sector.name = supplysector, subsector.name = subsector) %>%
       select(LEVEL2_DATA_NAMES[["GlobalTechCost"]])
 
+    CCS_cost_ratios <- L222.GlobalTechCost_en %>%
+      filter(str_detect(technology, "^FT biofuels|^cellulosic ethanol")) %>%
+      mutate(
+        CCS = str_extract(technology, "CCS\\s*level\\s*\\d+"),
+        CCS = replace_na(CCS, "no CCS"),
+        technology = stringr::str_remove(technology, "\\s*CCS\\s*level\\s*\\d+\\s*$") |> stringr::str_trim()
+      ) %>%
+      group_by(sector.name,subsector.name,technology,year) %>%
+      mutate(NE_cost_ratio = input.cost / input.cost[CCS == "no CCS"]) %>%
+      ungroup() %>%
+      select(-input.cost,-subsector.name,-minicam.non.energy.input)
+
+    L2221.GlobalTechCost_CCS <- L2221.GlobalTechCost_en %>%
+      filter(str_detect(technology, "^FT biofuels|^cellulosic ethanol")) %>%
+      left_join(CCS_cost_ratios, by = c("sector.name","technology","year")) %>%
+      mutate(input.cost = input.cost * NE_cost_ratio,
+             technology = paste0(technology," ", CCS)) %>%
+      filter(!str_detect(technology,"no CCS")) %>%
+      select(LEVEL2_DATA_NAMES[["GlobalTechCost"]])
+
+    L2221.GlobalTechCost_en <- bind_rows(L2221.GlobalTechCost_en,L2221.GlobalTechCost_CCS)
+
+
+    L2221.GlobalTechCapture <- L222.GlobalTechCapture_en %>%
+      filter(sector.name == "refining",
+             technology %in% L2221.GlobalTechCost_en$technology) %>%
+      mutate(subsector.name = if_else(subsector.name == "biomass liquids","biorefining 2nd gen",
+                                      if_else(subsector.name == "coal to liquids", "ctl",
+                                              if_else(subsector.name == "gas to liquids","gtl",NA_character_)))) %>%
+      add_precursors("L222.GlobalTechCapture_en")
+
     L2221.ProdPrice <- L2221.rsrc_info %>%
       filter(year %in% MODEL_BASE_YEARS) %>%
       select(region, resource, resource.type, year, price = value)
@@ -555,8 +589,23 @@ module_energy_L2221.refining <- function(command, ...) {
       set_subsector_shrwt() %>%
       select(LEVEL2_DATA_NAMES[["StubTechProd"]], "share.weight")
 
+    L221.StubTechProd_CCS <- tibble(supplysector = c("refining"),
+                                    subsector = c("biorefining 2nd gen"),
+                                    stub.technology = c("FT biofuels CCS level 1","FT biofuels CCS level 2",
+                                                   "cellulosic ethanol CCS level 1", "cellulosic ethanol CCS level 2")) %>%
+      repeat_add_columns(tibble(year = MODEL_BASE_YEARS)) %>%
+      mutate(calOutputValue = 0,
+             share.weight = 0,
+             subs.share.weight = 0,
+             tech.share.weight = 0,
+             share.weight.year = 0) %>%
+      write_to_all_regions(c(LEVEL2_DATA_NAMES[["StubTechProd"]], "share.weight"),
+                           has_traded = FALSE,
+                           GCAM_region_names = GCAM_region_names)
+
     L2221.StubTechProd <- bind_rows(L2221.StubTechProd_fuels,
-                                    L2221.StubTechProd_refining)
+                                    L2221.StubTechProd_refining) %>%
+      bind_rows(L221.StubTechProd_CCS)
 
     # Set resources to 'fully-calibrated' to reduce solution issues in history
     # TODO: rename this output to something more obvious
@@ -825,7 +874,8 @@ module_energy_L2221.refining <- function(command, ...) {
       add_units("1975$/GJ for supplysector refining technologies") %>%
       add_comments("For refining sector, the non-energy costs of global refined liquids manufacturing technologies") %>%
       add_legacy_name("L2221.GlobalTechCost_en") %>%
-      add_precursors("L1221.globaltech_capital", "L1221.globaltech_OMvar", "L1221.globaltech_OMfixed", "L1221.globaltech_margin") ->
+      add_precursors("L1221.globaltech_capital", "L1221.globaltech_OMvar", "L1221.globaltech_OMfixed", "L1221.globaltech_margin",
+                     "L222.GlobalTechCost_en") ->
       L2221.GlobalTechCost_en
 
     L2221.GlobalTechFractSecOut_en %>%
@@ -1057,7 +1107,8 @@ module_energy_L2221.refining <- function(command, ...) {
                 L2221.StubTechSecondaryOutput,
                 L2221.StubTechCost,
                 L2221.StubTechTrackCapital_en,
-                L2221.StubTech_en)
+                L2221.StubTech_en,
+                L2221.GlobalTechCapture)
   } else {
     stop("Unknown command")
   }
