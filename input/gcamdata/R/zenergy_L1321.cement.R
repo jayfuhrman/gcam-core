@@ -676,7 +676,7 @@ if(! length(ADDITIONAL_YEARS) ){
       select(-fuel) %>%
       left_join(share, by = c("GCAM_region_ID","year")) %>%
       mutate(value = value * share) %>%
-      select(-share)
+      select(-share) %>%
       mutate(sector = "process heat cement",
              subsector = fuel,
              technology = fuel) ->
