@@ -844,8 +844,10 @@ if(! length(ADDITIONAL_YEARS) ){
     L1321.cement_adj_neg %>%
       # STEEL DECARONBONIZATION MODIFICATION: add korea excess coal to biomass
       bind_rows(korea_coal_neg_en) %>%
-      mutate(fuel = "biomass") %>%
-      group_by(GCAM_region_ID, sector, fuel, year) %>%
+      mutate(fuel = "biomass",
+             subsector = "biomass",
+             technology = "biomass") %>%
+      group_by(GCAM_region_ID, sector, subsector, technology, fuel, year) %>%
       summarise(value = sum(value) * -1) %>%
       ungroup() ->
       L1321.cement_adj_pos
