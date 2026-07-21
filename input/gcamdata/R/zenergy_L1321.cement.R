@@ -676,13 +676,10 @@ if(! length(ADDITIONAL_YEARS) ){
       select(-fuel) %>%
       left_join(share, by = c("GCAM_region_ID","year")) %>%
       mutate(value = value * share) %>%
-      select(-share) %>%
-      left_join(cement_process_heat, by = "fuel") %>%
-      mutate(value = value / eff,
-             sector = "process heat cement",
+      select(-share)
+      mutate(sector = "process heat cement",
              subsector = fuel,
-             technology = fuel) %>%
-      select(-eff) ->
+             technology = fuel) ->
       L1321.in_EJ_R_cement_F_Y_heat_fuel
 
     L1321.out_Mt_R_cement_Yh %>%
@@ -847,10 +844,7 @@ if(! length(ADDITIONAL_YEARS) ){
     L1321.cement_adj_neg %>%
       # STEEL DECARONBONIZATION MODIFICATION: add korea excess coal to biomass
       bind_rows(korea_coal_neg_en) %>%
-      left_join(cement_process_heat, by = fuel) %>%
-      mutate(value = value * eff) %>%
       mutate(value = value / 0.79) %>% #adj for difference between fossil and biomass eff
-      select(-eff) %>%
       mutate(fuel = "biomass",
              subsector = "biomass",
              technology = "biomass") %>%
