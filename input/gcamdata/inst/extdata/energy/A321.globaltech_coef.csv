@@ -5,14 +5,14 @@
 # ----------
 supplysector,subsector,technology,minicam.energy.input,1971,2010,2021,2025,2030,2040,2050,2100
 process heat cement,biomass,biomass,delivered biomass,1,1,1,1,1,1,1,1
-process heat cement ccs,biomass,biomass CCS,delivered biomass,1.2658,1.2658,1.2658,1.2658,1.2658,1.2658,1.2658,1.2658
+process heat cement ccs,biomass,biomass CCS,delivered biomass,1,1,1,1,1,1,1,1
 process heat cement,coal,coal,delivered coal,1,1,1,1,1,1,1,1
-process heat cement ccs,coal,coal CCS,delivered coal,1.3333,1.3333,1.3333,1.3333,1.3333,1.3333,1.3333,1.3333
+process heat cement ccs,coal,coal CCS,delivered coal,1,1,1,1,1,1,1,1
 process heat cement,gas,gas,wholesale gas,1,1,1,1,1,1,1,1
-process heat cement ccs,gas,gas CCS,wholesale gas,1.1236,1.1236,1.1236,1.1236,1.1236,1.1236,1.1236,1.1236
+process heat cement ccs,gas,gas CCS,wholesale gas,1,1,1,1,1,1,1,1
 process heat cement,refined liquids,refined liquids,refined liquids industrial,1,1,1,1,1,1,1,1
-process heat cement ccs,refined liquids,refined liquids CCS,refined liquids industrial,1.1628,1.1628,1.1628,1.1628,1.1628,1.1628,1.1628,1.1628
-process heat cement,hydrogen,hydrogen,H2 industrial,1.1236,1.1236,1.1236,1.1236,1.1236,1.1236,1.1236,1.1236
+process heat cement ccs,refined liquids,refined liquids CCS,refined liquids industrial,1,1,1,1,1,1,1,1
+process heat cement,hydrogen,hydrogen,H2 industrial,1,1,1,1,1,1,1,1
 clinker,clinker,clinker,process heat cement,0.0037715,0.0037715,0.0037715,0.0037715,0.0037715,0.0037715,0.0037715,0.0037715
 clinker,clinker,clinker,elect_td_ind,0.0000988,0.0000988,0.0000988,0.0000988,0.0000988,0.0000988,0.0000988,0.0000988
 clinker,clinker,clinker,limestone,1.578947368,1.578947368,1.578947368,1.578947368,1.578947368,1.578947368,1.578947368,1.578947368
@@ -54,7 +54,7 @@ cement,cement LC3,cement LC3 CCS,limestone,0.15,0.15,0.15,0.15,0.15,0.15,0.15,0.
 cement,cement LC3,cement LC3 CCS,clinker,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5
 cement,cement LC3,cement LC3 CCS,gypsum,0.05,0.05,0.05,0.05,0.05,0.05,0.05,0.05
 cement,cement LC3,cement LC3 CCS,clay,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3
-cement,cement LC3,cement LC3 CCS,process heat cement ccs,0.0009015,0.0009015,0.0009015,0.0009015,0.0009015,0.0009015,0.0009015,0.0009015
+cement,cement LC3,cement LC3 CCS,process heat cement ccs,0.001126875,0.001126875,0.001126875,0.001126875,0.001126875,0.001126875,0.001126875,0.001126875
 cement,electrochemical,electrochemical,elect_td_ind,0.005,0.005,0.005,0.005,0.005,0.005,0.005,0.005
 cement,electrochemical,electrochemical,gypsum,0.05,0.05,0.05,0.05,0.05,0.05,0.05,0.05
 cement,electrochemical,electrochemical,silicate rock,3.166666667,3.166666667,3.166666667,3.166666667,3.166666667,3.166666667,3.166666667,3.166666667
@@ -65,12 +65,12 @@ cement,silicate,silicate,process heat cement,0.005,0.005,0.005,0.005,0.005,0.005
 cement,silicate,silicate CCS,elect_td_ind,0.001,0.001,0.001,0.001,0.001,0.001,0.001,0.001
 cement,silicate,silicate CCS,gypsum,0.05,0.05,0.05,0.05,0.05,0.05,0.05,0.05
 cement,silicate,silicate CCS,silicate rock,3.166666667,3.166666667,3.166666667,3.166666667,3.166666667,3.166666667,3.166666667,3.166666667
-cement,silicate,silicate CCS,process heat cement ccs,0.005,0.005,0.005,0.005,0.005,0.005,0.005,0.005
+cement,silicate,silicate CCS,process heat cement ccs,0.00625,0.00625,0.00625,0.00625,0.00625,0.00625,0.00625,0.00625
 cement,carbonated,carbonated,process heat cement,0.0018,0.0018,0.0018,0.0018,0.0018,0.0018,0.0018,0.0018
 cement,carbonated,carbonated,limestone,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5
 cement,carbonated,carbonated,clinker,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5
 cement,carbonated,carbonated,elect_td_ind,0.0005,0.0005,0.0005,0.0005,0.0005,0.0005,0.0005,0.0005
-cement,carbonated,carbonated CCS,process heat cement ccs,0.0018,0.0018,0.0018,0.0018,0.0018,0.0018,0.0018,0.0018
+cement,carbonated,carbonated CCS,process heat cement ccs,0.00225,0.00225,0.00225,0.00225,0.00225,0.00225,0.00225,0.00225
 cement,carbonated,carbonated CCS,limestone,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5
 cement,carbonated,carbonated CCS,clinker,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5
 cement,carbonated,carbonated CCS,elect_td_ind,0.0005,0.0005,0.0005,0.0005,0.0005,0.0005,0.0005,0.0005
