@@ -844,7 +844,6 @@ if(! length(ADDITIONAL_YEARS) ){
     L1321.cement_adj_neg %>%
       # STEEL DECARONBONIZATION MODIFICATION: add korea excess coal to biomass
       bind_rows(korea_coal_neg_en) %>%
-      mutate(value = value / 0.79) %>% #adj for difference between fossil and biomass eff
       mutate(fuel = "biomass",
              subsector = "biomass",
              technology = "biomass") %>%
