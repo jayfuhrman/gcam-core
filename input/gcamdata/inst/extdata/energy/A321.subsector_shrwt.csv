@@ -23,12 +23,12 @@ cement,cement,start-year,,1
 cement,cement LC3,start-year,,0
 cement,cement LC3,initial-future-year,,0
 cement,cement LC3,2050,,1
-cement,silicate,start-year,,0
-cement,silicate,initial-future-year,,0
-cement,silicate,2050,,1
+cement,thermochemical,start-year,,0
+cement,thermochemical,initial-future-year,,0
+cement,thermochemical,2050,,1
 cement,electrochemical,start-year,,0
 cement,electrochemical,initial-future-year,,0
 cement,electrochemical,2050,,1
-cement,carbonated,start-year,,0
-cement,carbonated,initial-future-year,,0
-cement,carbonated,2050,,1
+cement,carbonatable,start-year,,0
+cement,carbonatable,initial-future-year,,0
+cement,carbonatable,2050,,1

@@ -19,12 +19,12 @@ cement,cement,share-weight,start-year,end-year,,fixed
 cement,cement LC3,share-weight,start-year,initial-future-year,0,fixed
 cement,cement LC3,share-weight,initial-future-year,2050,1,linear
 cement,cement LC3,share-weight,2050,end-year,1,fixed
-cement,silicate,share-weight,start-year,initial-future-year,0,fixed
-cement,silicate,share-weight,initial-future-year,2050,1,linear
-cement,silicate,share-weight,2050,end-year,1,fixed
+cement,thermochemical,share-weight,start-year,initial-future-year,0,fixed
+cement,thermochemical,share-weight,initial-future-year,2050,1,linear
+cement,thermochemical,share-weight,2050,end-year,1,fixed
 cement,electrochemical,share-weight,start-year,initial-future-year,0,fixed
 cement,electrochemical,share-weight,initial-future-year,2050,1,linear
 cement,electrochemical,share-weight,2050,end-year,1,fixed
-cement,carbonated,share-weight,start-year,initial-future-year,0,fixed
-cement,carbonated,share-weight,initial-future-year,2050,1,linear
-cement,carbonated,share-weight,2050,end-year,1,fixed
+cement,carbonatable,share-weight,start-year,initial-future-year,0,fixed
+cement,carbonatable,share-weight,initial-future-year,2050,1,linear
+cement,carbonatable,share-weight,2050,end-year,1,fixed

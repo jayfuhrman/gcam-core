@@ -23,9 +23,9 @@ cement,cement,cement SCMFA,1,1,1,1,1,1,1,1
 cement,cement,cement SCMGBFS,1,1,1,1,1,1,1,1
 cement,cement,cement SCMlime,1,1,1,1,1,1,1,1
 cement,cement LC3,cement LC3,0,0,0,0,0.2,0.6,1,1
-cement,silicate,silicate,0,0,0,0,0.2,0.6,1,1
+cement,thermochemical,thermochemical,0,0,0,0,0.2,0.6,1,1
 cement,electrochemical,electrochemical,0,0,0,0,0.2,0.6,1,1
 cement,cement LC3,cement LC3 CCS,0,0,0,0,0.2,0.6,1,1
-cement,silicate,silicate CCS,0,0,0,0,0.2,0.6,1,1
-cement,carbonated,carbonated,0,0,0,0,0.2,0.6,1,1
-cement,carbonated,carbonated CCS,0,0,0,0,0.2,0.6,1,1
+cement,thermochemical,thermochemical CCS,0,0,0,0,0.2,0.6,1,1
+cement,carbonatable,carbonatable,0,0,0,0,0.2,0.6,1,1
+cement,carbonatable,carbonatable CCS,0,0,0,0,0.2,0.6,1,1

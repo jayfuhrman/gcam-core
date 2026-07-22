@@ -166,7 +166,7 @@ module_energy_cement_xml <- function(command, ...) {
       cement_noLC3.xml
 
     create_xml("cement_noAdvChem.xml") %>%
-      add_xml_data(L2321.GlobalTechShrwt_cement %>% filter(str_detect(technology,"silicate|electrochemical|carbonated")) %>%
+      add_xml_data(L2321.GlobalTechShrwt_cement %>% filter(str_detect(technology,"thermochemical|electrochemical|carbonatable")) %>%
                      mutate(share.weight = 0), "GlobalTechShrwt") ->
       cement_noAdvChem.xml
 

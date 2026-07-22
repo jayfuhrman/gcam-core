@@ -8,5 +8,5 @@ supplysector,subsector,technology,remove.fraction,target.gas
 cement,cement,cement SCMlime,1,CO2
 cement,cement LC3,cement LC3,1,CO2
 cement,cement LC3,cement LC3 CCS,1,CO2
-cement,carbonated,carbonated,1,CO2
-cement,carbonated,carbonated CCS,1,CO2
+cement,carbonatable,carbonatable,1,CO2
+cement,carbonatable,carbonatable CCS,1,CO2
