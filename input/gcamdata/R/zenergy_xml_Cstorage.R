@@ -89,13 +89,13 @@ module_energy_Cstorage_xml <- function(command, ...) {
       add_xml_data(L261.ResReserveTechInvestmentInput, "ResReserveTechInvestmentInput") %>%
       add_xml_data(L261.RsrcCurves_C, "RsrcCurves") %>%
       add_xml_data(L261.ResTechShrwt_C, "ResTechShrwt") %>%
-      add_logit_tables_xml(L261.Supplysector_C, "Supplysector") %>%
-      add_logit_tables_xml(L261.SubsectorLogit_C, "SubsectorLogit") %>%
-      add_xml_data(L261.SubsectorShrwtFllt_C, "SubsectorShrwtFllt") %>%
-      add_xml_data(L261.StubTech_C, "StubTech") %>%
-      add_xml_data(L261.GlobalTechCoef_C, "GlobalTechCoef") %>%
+      add_logit_tables_xml(L261.Supplysector_C %>% filter(supplysector != "ccs dynamic-capacity"), "Supplysector") %>%
+      add_logit_tables_xml(L261.SubsectorLogit_C %>% filter(supplysector != "ccs dynamic-capacity"), "SubsectorLogit") %>%
+      add_xml_data(L261.SubsectorShrwtFllt_C %>% filter(supplysector != "ccs dynamic-capacity"), "SubsectorShrwtFllt") %>%
+      add_xml_data(L261.StubTech_C %>% filter(supplysector != "ccs dynamic-capacity"), "StubTech") %>%
+      add_xml_data(L261.GlobalTechCoef_C %>% filter(minicam.energy.input != "ccs dynamic-capacity"), "GlobalTechCoef") %>%
       add_xml_data(L261.GlobalTechCost_C, "GlobalTechCost") %>%
-      add_xml_data(L261.GlobalTechShrwt_C, "GlobalTechShrwt") %>%
+      add_xml_data(L261.GlobalTechShrwt_C %>% filter(sector.name != "ccs dynamic-capacity"), "GlobalTechShrwt") %>%
       add_xml_data(L261.StubTechShrwt, "StubTechShrwt") %>%
       add_xml_data(L261.DeleteStubTech, "DeleteStubTech") %>%
       add_precursors("L261.Rsrc", "L261.UnlimitRsrc", "L261.RsrcCurves_C", "L261.ResTechShrwt_C", "L261.Supplysector_C", "L261.SubsectorLogit_C", "L261.SubsectorShrwtFllt_C", "L261.StubTech_C", "L261.GlobalTechCoef_C", "L261.GlobalTechCost_C", "L261.GlobalTechShrwt_C",
