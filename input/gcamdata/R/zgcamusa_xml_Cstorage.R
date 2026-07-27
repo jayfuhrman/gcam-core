@@ -34,11 +34,12 @@ module_gcamusa_Cstorage_xml <- function(command, ...) {
     L261.DeleteSubsector_USAC <- get_data(all_data, "L261.DeleteSubsector_USAC")
     L261.Rsrc_FERC <- get_data(all_data, "L261.Rsrc_FERC")
     L261.RsrcCurves_FERC <- get_data(all_data, "L261.RsrcCurves_FERC")
-    L261.Supplysector_C_USA <- get_data(all_data, "L261.Supplysector_C_USA")
-    L261.SubsectorLogit_C_USA <- get_data(all_data, "L261.SubsectorLogit_C_USA")
-    L261.SubsectorShrwtFllt_C_USA <- get_data(all_data, "L261.SubsectorShrwtFllt_C_USA")
-    L261.StubTech_C_USA <- get_data(all_data, "L261.StubTech_C_USA")
-    L261.StubTechMarket_C_USA <- get_data(all_data, "L261.StubTechMarket_C_USA")
+    L261.Supplysector_C_USA <- get_data(all_data, "L261.Supplysector_C_USA") %>% filter(supplysector != "ccs dynamic-capacity")
+    L261.SubsectorLogit_C_USA <- get_data(all_data, "L261.SubsectorLogit_C_USA") %>% filter(supplysector != "ccs dynamic-capacity")
+    L261.SubsectorShrwtFllt_C_USA <- get_data(all_data, "L261.SubsectorShrwtFllt_C_USA") %>% filter(supplysector != "ccs dynamic-capacity")
+    L261.StubTech_C_USA <- get_data(all_data, "L261.StubTech_C_USA") %>% filter(supplysector != "ccs dynamic-capacity")
+    L261.StubTechMarket_C_USA <- get_data(all_data, "L261.StubTechMarket_C_USA") %>% filter(supplysector != "ccs dynamic-capacity",
+                                                                                            minicam.energy.input != "ccs dynamic-capacity")
     L261.ResTechShrwt_C_USA <- get_data(all_data, "L261.ResTechShrwt_C_USA")
     L261.DeleteInput_C_USA <- get_data(all_data, "L261.DeleteInput_C_USA")
 
