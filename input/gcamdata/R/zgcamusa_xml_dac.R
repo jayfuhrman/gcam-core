@@ -46,15 +46,16 @@ module_gcamusa_dac_xml <- function(command, ...) {
     # Load required inputs
     L262.DeleteSupplysector_USAdac <- get_data(all_data, "L262.DeleteSupplysector_USAdac")
     L262.FinalEnergyKeyword_dac_USA <- get_data(all_data, "L262.FinalEnergyKeyword_dac_USA")
-    L262.SubsectorLogit_dac_USA <- get_data(all_data, "L262.SubsectorLogit_dac_USA")
-    L262.SubsectorShrwtFllt_dac_USA <- get_data(all_data, "L262.SubsectorShrwtFllt_dac_USA")
-    L262.SubsectorInterp_dac_USA <- get_data(all_data, "L262.SubsectorInterp_dac_USA")
-    L262.StubTech_dac_USA <- get_data(all_data, "L262.StubTech_dac_USA")
+    L262.SubsectorLogit_dac_USA <- get_data(all_data, "L262.SubsectorLogit_dac_USA") %>% filter(supplysector != "desalinated water")
+    L262.SubsectorShrwtFllt_dac_USA <- get_data(all_data, "L262.SubsectorShrwtFllt_dac_USA") %>% filter(supplysector != "desalinated water")
+    L262.SubsectorInterp_dac_USA <- get_data(all_data, "L262.SubsectorInterp_dac_USA") %>% filter(supplysector != "desalinated water")
+    L262.StubTech_dac_USA <- get_data(all_data, "L262.StubTech_dac_USA") %>% filter(supplysector != "desalinated water",
+                                                                                    stub.technology != "lowtemp DAC geothermal")
     L262.PerCapitaBased_dac_USA <- get_data(all_data, "L262.PerCapitaBased_dac_USA")
     L262.PriceElasticity_dac_USA <- get_data(all_data, "L262.PriceElasticity_dac_USA")
     L262.DeleteFinalDemand_USAdac <- get_data(all_data, "L262.DeleteFinalDemand_USAdac")
-    L262.Supplysector_dac_USA <- get_data(all_data, "L262.Supplysector_dac_USA")
-    L262.StubTechProd_dac_USA <- get_data(all_data, "L262.StubTechProd_dac_USA")
+    L262.Supplysector_dac_USA <- get_data(all_data, "L262.Supplysector_dac_USA") %>% filter(supplysector != "desalinated water")
+    L262.StubTechProd_dac_USA <- get_data(all_data, "L262.StubTechProd_dac_USA") %>% filter(supplysector != "desalinated water")
     L262.BaseService_dac_USA <- get_data(all_data, "L262.BaseService_dac_USA")
     L262.CarbonCoef_dac_USA <- get_data(all_data, "L262.CarbonCoef_dac_USA")
 
@@ -62,7 +63,8 @@ module_gcamusa_dac_xml <- function(command, ...) {
     for(sce in TECH_PARAMETRIZATION_INPUTS){
 
       coef_name <- paste0("L262.StubTechCoef_dac_USA_",tolower(sce))
-      L262.StubTechCoef_dac_USA <- get_data(all_data, coef_name)
+      L262.StubTechCoef_dac_USA <- get_data(all_data, coef_name) %>% filter(supplysector != "desalinated water",
+                                                                            stub.technology != "lowtemp DAC geothermal")
 
       # ===================================================
 

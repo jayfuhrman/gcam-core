@@ -95,7 +95,9 @@ module_gcamusa_L262.dac <- function(command, ...) {
 
     L262.Supplysector_dac %>%
       filter(region == gcam.USA_REGION) %>%
-      select(region, supplysector) ->
+      select(region, supplysector) %>%
+      bind_rows(tibble(region = gcam.USA_REGION,
+                       supplysector = "desalinated water"))->
       L262.DeleteSupplysector_USAdac
 
 
