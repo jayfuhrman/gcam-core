@@ -41,6 +41,7 @@
 		<Value name = "transportation">../input/gcamdata/xml/transportation_UCD_CORE.xml</Value>
 		<Value name = "carbon_content">../input/gcamdata/xml/Ccoef.xml</Value>
 		<Value name = "carbon_storage">../input/gcamdata/xml/Cstorage.xml</Value>
+		<Value name = "ccs">../input/gcamdata/xml/ccs_phase_in.xml</Value>
 
 
 		<Value name = "ag_base">../input/gcamdata/xml/ag_For_Past_bio_base_IRR_MGMT.xml</Value>
@@ -115,8 +116,6 @@
 		<Value name = "ag_water_biochar">../input/gcamdata/xml/biochar_ag_water_input_IRR_MGMT.xml</Value>
 		<Value name = "co_products_biochar">../input/gcamdata/xml/biochar_co_products.xml</Value>
 			
-		<Value name = "ccs">../input/gcamdata/xml/CCS_medGrowth.xml</Value>
-
 		<Value name = "dac">../input/gcamdata/xml/dac_ssp2.xml</Value>
 
 		<Value name = "weathering">../input/gcamdata/xml/Weathering.xml</Value>

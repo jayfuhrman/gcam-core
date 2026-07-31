@@ -26,6 +26,7 @@
 			<Value name = "transportation">../input/gcamdata/xml/transportation_UCD_CORE.xml</Value>
 			<Value name = "carbon_content">../input/gcamdata/xml/Ccoef.xml</Value>
 			<Value name = "carbon_storage">../input/gcamdata/xml/Cstorage.xml</Value>
+			<Value name = "ccs">../input/gcamdata/xml/ccs_phase_in.xml</Value>
 			
 			
 			<Value name = "ag_base">../input/gcamdata/xml/ag_For_Past_bio_base_IRR_MGMT.xml</Value>
@@ -100,7 +101,6 @@
 			<!-- CCS -->
 			<Value name="ccs">../input/gcamdata/xml/ccs_supply_low.xml</Value>
 			<!--Value name="ccs">../input/gcamdata/xml/no_offshore_ccs.xml</Value-->
-			<Value name = "ccs">../input/gcamdata/xml/CCS_medGrowth.xml</Value>
 
 			<!-- FOSSIL -->
 			<Value name="resource_extraction">../input/gcamdata/xml/resources_SSP2.xml</Value>
@@ -179,13 +179,6 @@
 			<Value name="bio_trade">../input/gcamdata/xml/ssp3_bio_trade.xml</Value>
 			
 			<!-- CCS -->
-			<Value name = "ccs">../input/gcamdata/xml/CCS_slowGrowth.xml</Value>
-
-			<Value name = "Cstorage_resource_prudent_off">../input/gcamdata/xml/cstorage_volume_current_oil_and_gas_potential_Offshore.xml</Value>
-        	<Value name = "Cstorage_resource_prudent_on">../input/gcamdata/xml/cstorage_volume_current_oil_and_gas_potential_Onshore.xml</Value>
-        	<Value name = "Cstorage_cost_lowest_off">../input/gcamdata/xml/cstorage_cost_high_Offshore.xml</Value>
-        	<Value name = "Cstorage_cost_lowest_on">../input/gcamdata/xml/cstorage_cost_high_Onshore.xml</Value>
-			<!--Value name="ccs">../input/gcamdata/xml/no_bio_ccs.xml</Value-->
 			
 			<!-- NON-CO2 -->
 			<Value name="nonco2">../input/gcamdata/xml/delete_gdp_control.xml</Value>
