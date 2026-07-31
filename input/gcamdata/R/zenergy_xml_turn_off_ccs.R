@@ -24,7 +24,8 @@ module_energy_turn_off_ccs_xml <- function(command, ...) {
              "L2327.GlobalTechCapture_paper",
              "L262.GlobalTechCapture_dac"))
   } else if(command == driver.DECLARE_OUTPUTS) {
-    return(c(XML = "turn_off_ccs.xml"))
+    return(c(XML = "turn_off_ccs.xml",
+             XML = "ccs_phase_in.xml"))
   } else if(command == driver.MAKE) {
 
     all_data <- list(...)[[1]]
@@ -102,7 +103,37 @@ module_energy_turn_off_ccs_xml <- function(command, ...) {
                      "L262.GlobalTechCapture_dac") ->
       turn_off_ccs.xml
 
-    return_data(turn_off_ccs.xml)
+    no_ccs_sw %>%
+      bind_rows(CCS_Techs %>%
+                  mutate(share.weight = 1,
+                         year = max(MODEL_FUTURE_YEARS))) %>%
+      filter(!supplysector %in% c("process heat dac", "CO2 removal","desalinated water")) -> ccs_sw
+
+    CCS_Techs %>%
+      mutate(apply.to = "share-weight",
+             from.year = min(MODEL_FUTURE_YEARS),
+             to.year =  max(MODEL_FUTURE_YEARS),
+             interpolation.function = "s-curve") %>%
+      filter(!supplysector %in% c("process heat dac", "CO2 removal","desalinated water")) -> ccs_phasein_interp
+
+
+    create_xml("ccs_phase_in.xml") %>%
+      add_xml_data(ccs_sw, "StubTechShrwt") %>%
+      add_xml_data(ccs_phasein_interp, "StubTechInterp") %>%
+      add_precursors("common/GCAM_region_names",
+                     "L222.GlobalTechCapture_en",
+                     "L223.GlobalTechCapture_elec",
+                     "L225.GlobalTechCapture_h2",
+                     "L2321.GlobalTechCapture_cement",
+                     "L2322.GlobalTechCapture_Fert",
+                     "L2323.GlobalTechCapture_iron_steel",
+                     "L2325.GlobalTechCapture_chemical",
+                     'L2326.GlobalTechCapture_aluminum',
+                     "L2327.GlobalTechCapture_paper") ->
+      ccs_phase_in.xml
+
+    return_data(turn_off_ccs.xml,
+                ccs_phase_in.xml)
   } else {
     stop("Unknown command")
   }
