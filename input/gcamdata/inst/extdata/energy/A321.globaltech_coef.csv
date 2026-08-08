@@ -66,11 +66,11 @@ cement,thermochemical,thermochemical CCS,elect_td_ind,0.001,0.001,0.001,0.001,0.
 cement,thermochemical,thermochemical CCS,gypsum,0.05,0.05,0.05,0.05,0.05,0.05,0.05,0.05
 cement,thermochemical,thermochemical CCS,silicate rock,3.166666667,3.166666667,3.166666667,3.166666667,3.166666667,3.166666667,3.166666667,3.166666667
 cement,thermochemical,thermochemical CCS,process heat cement ccs,0.00625,0.00625,0.00625,0.00625,0.00625,0.00625,0.00625,0.00625
-cement,carbonatable,carbonatable,process heat cement,0.0018,0.0018,0.0018,0.0018,0.0018,0.0018,0.0018,0.0018
+cement,carbonatable,carbonatable,process heat cement,0.0009,0.0009,0.0009,0.0009,0.0009,0.0009,0.0009,0.0009
 cement,carbonatable,carbonatable,limestone,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5
 cement,carbonatable,carbonatable,clinker,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5
 cement,carbonatable,carbonatable,elect_td_ind,0.0005,0.0005,0.0005,0.0005,0.0005,0.0005,0.0005,0.0005
-cement,carbonatable,carbonatable CCS,process heat cement ccs,0.00225,0.00225,0.00225,0.00225,0.00225,0.00225,0.00225,0.00225
+cement,carbonatable,carbonatable CCS,process heat cement ccs,0.001125,0.001125,0.001125,0.001125,0.001125,0.001125,0.001125,0.001125
 cement,carbonatable,carbonatable CCS,limestone,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5
 cement,carbonatable,carbonatable CCS,clinker,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5
 cement,carbonatable,carbonatable CCS,elect_td_ind,0.0005,0.0005,0.0005,0.0005,0.0005,0.0005,0.0005,0.0005
