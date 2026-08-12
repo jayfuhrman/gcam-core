@@ -100,7 +100,7 @@
 			
 			<!-- CCS -->
 			<Value name="ccs">../input/gcamdata/xml/ccs_supply_low.xml</Value>
-			<!--Value name="ccs">../input/gcamdata/xml/no_offshore_ccs.xml</Value-->
+			<Value name="ccs">../input/gcamdata/xml/no_offshore_ccs.xml</Value>
 
 			<!-- FOSSIL -->
 			<Value name="resource_extraction">../input/gcamdata/xml/resources_SSP2.xml</Value>
@@ -179,6 +179,9 @@
 			<Value name="bio_trade">../input/gcamdata/xml/ssp3_bio_trade.xml</Value>
 			
 			<!-- CCS -->
+			<Value name="ccs">../input/gcamdata/xml/ccs_supply_low.xml</Value>
+			<Value name="ccs">../input/gcamdata/xml/no_offshore_ccs.xml</Value>
+			<!--Value name="ccs">../input/gcamdata/xml/no_bio_ccs.xml</Value-->
 			
 			<!-- NON-CO2 -->
 			<Value name="nonco2">../input/gcamdata/xml/delete_gdp_control.xml</Value>
