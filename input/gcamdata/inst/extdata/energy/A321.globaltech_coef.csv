@@ -48,7 +48,7 @@ cement,cement LC3,cement LC3,limestone,0.15,0.15,0.15,0.15,0.15,0.15,0.15,0.15
 cement,cement LC3,cement LC3,clinker,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5
 cement,cement LC3,cement LC3,gypsum,0.05,0.05,0.05,0.05,0.05,0.05,0.05,0.05
 cement,cement LC3,cement LC3,clay,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3
-cement,cement LC3,cement LC3,process heat cement,0.0009015,0.0009015,0.0009015,0.0009015,0.0009015,0.0009015,0.0009015,0.0009015
+cement,cement LC3,cement LC3,process heat cement,0.00075,0.00075,0.00075,0.00075,0.00075,0.00075,0.00075,0.00075
 cement,cement LC3,cement LC3 CCS,elect_td_ind,0.0002265,0.0002265,0.0002265,0.0002265,0.0002265,0.0002265,0.0002265,0.0002265
 cement,cement LC3,cement LC3 CCS,limestone,0.15,0.15,0.15,0.15,0.15,0.15,0.15,0.15
 cement,cement LC3,cement LC3 CCS,clinker,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5
