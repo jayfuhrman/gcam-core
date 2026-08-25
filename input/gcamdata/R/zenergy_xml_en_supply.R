@@ -52,7 +52,8 @@ module_energy_en_supply_xml <- function(command, ...) {
              "L281.TechAccountOutput_entrade",
              "L281.TechAccountInput_entrade"))
   } else if(command == driver.DECLARE_OUTPUTS) {
-    return(c(XML = "en_supply.xml"))
+    return(c(XML = "en_supply.xml",
+             XML = "en_supply_HormuzPriceShock_Oil.xml"))
   } else if(command == driver.MAKE) {
 
     all_data <- list(...)[[1]]
@@ -194,7 +195,21 @@ module_energy_en_supply_xml <- function(command, ...) {
                      "L281.TechAccountInput_entrade") ->
       en_supply.xml
 
-    return_data(en_supply.xml)
+    MidEastPriceShock <- bind_rows(L239.TechCost_tra) %>%
+      filter(subsector == "Middle East traded oil") %>%
+      mutate(input.cost = if_else(year >= 2030, 1, input.cost))
+
+    create_xml("en_supply_HormuzPriceShock_Oil.xml") %>%
+      add_logit_tables_xml(L239.Supplysector_tra %>% filter(supplysector == "traded oil"), "Supplysector") %>%
+      add_logit_tables_xml(L239.SubsectorAll_tra %>% filter(subsector == "Middle East traded oil"), "SubsectorAllTo", base_logit_header = "SubsectorLogit") %>%
+      add_xml_data(MidEastPriceShock, "TechCost") ->
+      en_supply_HormuzPriceShock_Oil.xml
+
+
+
+
+    return_data(en_supply.xml,
+                en_supply_HormuzPriceShock_Oil.xml)
   } else {
     stop("Unknown command")
   }

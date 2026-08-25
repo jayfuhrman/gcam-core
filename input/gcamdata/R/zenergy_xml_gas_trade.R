@@ -41,7 +41,8 @@ module_energy_gas_trade_xml <- function(command, ...) {
              "L281.TechAccountOutput_entrade",
              "L281.TechAccountInput_NG_entrade"))
   } else if(command == driver.DECLARE_OUTPUTS) {
-    return(c(XML = "gas_trade.xml"))
+    return(c(XML = "gas_trade.xml",
+             XML = "gas_trade_HormuzSupplyDisruption.xml"))
   } else if(command == driver.MAKE) {
 
     all_data <- list(...)[[1]]
@@ -170,7 +171,19 @@ module_energy_gas_trade_xml <- function(command, ...) {
                      "L281.TechAccountInput_NG_entrade") ->
       gas_trade.xml
 
-    return_data(gas_trade.xml)
+    create_xml("gas_trade_HormuzSupplyDisruption.xml") %>%
+      add_logit_tables_xml(L2392.Supplysector_tra_NG %>% filter(supplysector == "traded LNG"), "Supplysector") %>%
+      add_logit_tables_xml(L2392.SubsectorAll_tra_NG %>% filter(subsector == "Middle East traded LNG"), "SubsectorAllTo", base_logit_header = "SubsectorLogit") %>%
+      add_xml_data(L2392.TechCost_tra_NG %>%
+                     filter(subsector == "Middle East traded LNG") %>%
+                     mutate(input.cost = if_else(year >= 2030, 3, input.cost),
+                            minicam.non.energy.input = if_else(year >= 2030, "Hormuz price shock", minicam.non.energy.input)) %>%
+                     distinct(), "TechCost") ->
+      gas_trade_HormuzSupplyDisruption.xml
+
+
+    return_data(gas_trade.xml,
+                gas_trade_HormuzSupplyDisruption.xml)
   } else {
     stop("Unknown command")
   }
