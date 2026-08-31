@@ -42,8 +42,8 @@ module_energy_L162.dac <- function(command, ...) {
       summarise(Cstorage = sum(available)) %>%
       ungroup() %>%
       mutate(sector = "CO2 removal",
-             year = MODEL_FINAL_BASE_YEAR,
              value = Cstorage / Cstorage[GCAM_region_ID == gcam.USA_CODE] * energy.DAC_LIMIT_USA_MTC) %>%
+      repeat_add_columns(tibble(year = MODEL_BASE_YEARS)) %>%
       select(GCAM_region_ID, sector, year, value) ->
       L162.out_Mt_R_dac_Yh
 
