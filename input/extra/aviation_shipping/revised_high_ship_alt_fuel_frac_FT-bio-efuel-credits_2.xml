@@ -254,7 +254,7 @@
             </location-info>
         </global-technology-database>
         <region name="USA">
-            <pass-through-sector name="trn_dom_ship_pass">
+            <supplysector name="trn_freight">
                 <tranSubsector name="Domestic Ship">
                     <stub-technology name="Hybrid Liquids">
 
@@ -455,8 +455,8 @@
                         </period>
                     </stub-technology>
                 </tranSubsector>
-            </pass-through-sector>
-            <pass-through-sector name="trn_ship_intl_pass">
+            </supplysector>
+            <supplysector name="trn_ship_intl">
                 <tranSubsector name="International Ship">
                     <stub-technology name="Hybrid Liquids">
 
@@ -657,7 +657,7 @@
                         </period>
                     </stub-technology>
                 </tranSubsector>
-            </pass-through-sector>
+            </supplysector>
             <policy-portfolio-standard name="FT-bio-efuel-credits">
                 <market>global</market>
                 <policyType>RES</policyType>
@@ -683,7 +683,7 @@
             </policy-portfolio-standard>
         </region>
         <region name="Africa_Eastern">
-            <pass-through-sector name="trn_dom_ship_pass">
+            <supplysector name="trn_freight">
                 <tranSubsector name="Domestic Ship">
                     <stub-technology name="Hybrid Liquids">
 
@@ -884,8 +884,8 @@
                         </period>
                     </stub-technology>
                 </tranSubsector>
-            </pass-through-sector>
-            <pass-through-sector name="trn_ship_intl_pass">
+            </supplysector>
+            <supplysector name="trn_ship_intl">
                 <tranSubsector name="International Ship">
                     <stub-technology name="Hybrid Liquids">
 
@@ -1086,7 +1086,7 @@
                         </period>
                     </stub-technology>
                 </tranSubsector>
-            </pass-through-sector>
+            </supplysector>
             <policy-portfolio-standard name="FT-bio-efuel-credits">
                 <market>global</market>
                 <policyType>RES</policyType>
@@ -1112,7 +1112,7 @@
             </policy-portfolio-standard>
         </region>
         <region name="Africa_Northern">
-            <pass-through-sector name="trn_dom_ship_pass">
+            <supplysector name="trn_freight">
                 <tranSubsector name="Domestic Ship">
                     <stub-technology name="Hybrid Liquids">
 
@@ -1313,8 +1313,8 @@
                         </period>
                     </stub-technology>
                 </tranSubsector>
-            </pass-through-sector>
-            <pass-through-sector name="trn_ship_intl_pass">
+            </supplysector>
+            <supplysector name="trn_ship_intl">
                 <tranSubsector name="International Ship">
                     <stub-technology name="Hybrid Liquids">
 
@@ -1515,7 +1515,7 @@
                         </period>
                     </stub-technology>
                 </tranSubsector>
-            </pass-through-sector>
+            </supplysector>
             <policy-portfolio-standard name="FT-bio-efuel-credits">
                 <market>global</market>
                 <policyType>RES</policyType>
@@ -1541,7 +1541,7 @@
             </policy-portfolio-standard>
         </region>
         <region name="Africa_Southern">
-            <pass-through-sector name="trn_dom_ship_pass">
+            <supplysector name="trn_freight">
                 <tranSubsector name="Domestic Ship">
                     <stub-technology name="Hybrid Liquids">
 
@@ -1742,8 +1742,8 @@
                         </period>
                     </stub-technology>
                 </tranSubsector>
-            </pass-through-sector>
-            <pass-through-sector name="trn_ship_intl_pass">
+            </supplysector>
+            <supplysector name="trn_ship_intl">
                 <tranSubsector name="International Ship">
                     <stub-technology name="Hybrid Liquids">
 
@@ -1944,7 +1944,7 @@
                         </period>
                     </stub-technology>
                 </tranSubsector>
-            </pass-through-sector>
+            </supplysector>
             <policy-portfolio-standard name="FT-bio-efuel-credits">
                 <market>global</market>
                 <policyType>RES</policyType>
@@ -1970,7 +1970,7 @@
             </policy-portfolio-standard>
         </region>
         <region name="Africa_Western">
-            <pass-through-sector name="trn_dom_ship_pass">
+            <supplysector name="trn_freight">
                 <tranSubsector name="Domestic Ship">
                     <stub-technology name="Hybrid Liquids">
 
@@ -2171,8 +2171,8 @@
                         </period>
                     </stub-technology>
                 </tranSubsector>
-            </pass-through-sector>
-            <pass-through-sector name="trn_ship_intl_pass">
+            </supplysector>
+            <supplysector name="trn_ship_intl">
                 <tranSubsector name="International Ship">
                     <stub-technology name="Hybrid Liquids">
 
@@ -2373,7 +2373,7 @@
                         </period>
                     </stub-technology>
                 </tranSubsector>
-            </pass-through-sector>
+            </supplysector>
             <policy-portfolio-standard name="FT-bio-efuel-credits">
                 <market>global</market>
                 <policyType>RES</policyType>
@@ -2399,7 +2399,7 @@
             </policy-portfolio-standard>
         </region>
         <region name="Australia_NZ">
-            <pass-through-sector name="trn_dom_ship_pass">
+            <supplysector name="trn_freight">
                 <tranSubsector name="Domestic Ship">
                     <stub-technology name="Hybrid Liquids">
 
@@ -2600,8 +2600,8 @@
                         </period>
                     </stub-technology>
                 </tranSubsector>
-            </pass-through-sector>
-            <pass-through-sector name="trn_ship_intl_pass">
+            </supplysector>
+            <supplysector name="trn_ship_intl">
                 <tranSubsector name="International Ship">
                     <stub-technology name="Hybrid Liquids">
 
@@ -2802,7 +2802,7 @@
                         </period>
                     </stub-technology>
                 </tranSubsector>
-            </pass-through-sector>
+            </supplysector>
             <policy-portfolio-standard name="FT-bio-efuel-credits">
                 <market>global</market>
                 <policyType>RES</policyType>
@@ -2828,7 +2828,7 @@
             </policy-portfolio-standard>
         </region>
         <region name="Brazil">
-            <pass-through-sector name="trn_dom_ship_pass">
+            <supplysector name="trn_freight">
                 <tranSubsector name="Domestic Ship">
                     <stub-technology name="Hybrid Liquids">
 
@@ -3029,8 +3029,8 @@
                         </period>
                     </stub-technology>
                 </tranSubsector>
-            </pass-through-sector>
-            <pass-through-sector name="trn_ship_intl_pass">
+            </supplysector>
+            <supplysector name="trn_ship_intl">
                 <tranSubsector name="International Ship">
                     <stub-technology name="Hybrid Liquids">
 
@@ -3231,7 +3231,7 @@
                         </period>
                     </stub-technology>
                 </tranSubsector>
-            </pass-through-sector>
+            </supplysector>
             <policy-portfolio-standard name="FT-bio-efuel-credits">
                 <market>global</market>
                 <policyType>RES</policyType>
@@ -3257,7 +3257,7 @@
             </policy-portfolio-standard>
         </region>
         <region name="Canada">
-            <pass-through-sector name="trn_dom_ship_pass">
+            <supplysector name="trn_freight">
                 <tranSubsector name="Domestic Ship">
                     <stub-technology name="Hybrid Liquids">
 
@@ -3458,8 +3458,8 @@
                         </period>
                     </stub-technology>
                 </tranSubsector>
-            </pass-through-sector>
-            <pass-through-sector name="trn_ship_intl_pass">
+            </supplysector>
+            <supplysector name="trn_ship_intl">
                 <tranSubsector name="International Ship">
                     <stub-technology name="Hybrid Liquids">
 
@@ -3660,7 +3660,7 @@
                         </period>
                     </stub-technology>
                 </tranSubsector>
-            </pass-through-sector>
+            </supplysector>
             <policy-portfolio-standard name="FT-bio-efuel-credits">
                 <market>global</market>
                 <policyType>RES</policyType>
@@ -3686,7 +3686,7 @@
             </policy-portfolio-standard>
         </region>
         <region name="Central America and Caribbean">
-            <pass-through-sector name="trn_dom_ship_pass">
+            <supplysector name="trn_freight">
                 <tranSubsector name="Domestic Ship">
                     <stub-technology name="Hybrid Liquids">
 
@@ -3887,8 +3887,8 @@
                         </period>
                     </stub-technology>
                 </tranSubsector>
-            </pass-through-sector>
-            <pass-through-sector name="trn_ship_intl_pass">
+            </supplysector>
+            <supplysector name="trn_ship_intl">
                 <tranSubsector name="International Ship">
                     <stub-technology name="Hybrid Liquids">
 
@@ -4089,7 +4089,7 @@
                         </period>
                     </stub-technology>
                 </tranSubsector>
-            </pass-through-sector>
+            </supplysector>
             <policy-portfolio-standard name="FT-bio-efuel-credits">
                 <market>global</market>
                 <policyType>RES</policyType>
@@ -4115,7 +4115,7 @@
             </policy-portfolio-standard>
         </region>
         <region name="Central Asia">
-            <pass-through-sector name="trn_dom_ship_pass">
+            <supplysector name="trn_freight">
                 <tranSubsector name="Domestic Ship">
                     <stub-technology name="Hybrid Liquids">
 
@@ -4316,8 +4316,8 @@
                         </period>
                     </stub-technology>
                 </tranSubsector>
-            </pass-through-sector>
-            <pass-through-sector name="trn_ship_intl_pass">
+            </supplysector>
+            <supplysector name="trn_ship_intl">
                 <tranSubsector name="International Ship">
                     <stub-technology name="Hybrid Liquids">
 
@@ -4518,7 +4518,7 @@
                         </period>
                     </stub-technology>
                 </tranSubsector>
-            </pass-through-sector>
+            </supplysector>
             <policy-portfolio-standard name="FT-bio-efuel-credits">
                 <market>global</market>
                 <policyType>RES</policyType>
@@ -4544,7 +4544,7 @@
             </policy-portfolio-standard>
         </region>
         <region name="China">
-            <pass-through-sector name="trn_dom_ship_pass">
+            <supplysector name="trn_freight">
                 <tranSubsector name="Domestic Ship">
                     <stub-technology name="Hybrid Liquids">
 
@@ -4745,8 +4745,8 @@
                         </period>
                     </stub-technology>
                 </tranSubsector>
-            </pass-through-sector>
-            <pass-through-sector name="trn_ship_intl_pass">
+            </supplysector>
+            <supplysector name="trn_ship_intl">
                 <tranSubsector name="International Ship">
                     <stub-technology name="Hybrid Liquids">
 
@@ -4947,7 +4947,7 @@
                         </period>
                     </stub-technology>
                 </tranSubsector>
-            </pass-through-sector>
+            </supplysector>
             <policy-portfolio-standard name="FT-bio-efuel-credits">
                 <market>global</market>
                 <policyType>RES</policyType>
@@ -4973,7 +4973,7 @@
             </policy-portfolio-standard>
         </region>
         <region name="EU-12">
-            <pass-through-sector name="trn_dom_ship_pass">
+            <supplysector name="trn_freight">
                 <tranSubsector name="Domestic Ship">
                     <stub-technology name="Hybrid Liquids">
 
@@ -5174,8 +5174,8 @@
                         </period>
                     </stub-technology>
                 </tranSubsector>
-            </pass-through-sector>
-            <pass-through-sector name="trn_ship_intl_pass">
+            </supplysector>
+            <supplysector name="trn_ship_intl">
                 <tranSubsector name="International Ship">
                     <stub-technology name="Hybrid Liquids">
 
@@ -5376,7 +5376,7 @@
                         </period>
                     </stub-technology>
                 </tranSubsector>
-            </pass-through-sector>
+            </supplysector>
             <policy-portfolio-standard name="FT-bio-efuel-credits">
                 <market>global</market>
                 <policyType>RES</policyType>
@@ -5402,7 +5402,7 @@
             </policy-portfolio-standard>
         </region>
         <region name="EU-15">
-            <pass-through-sector name="trn_dom_ship_pass">
+            <supplysector name="trn_freight">
                 <tranSubsector name="Domestic Ship">
                     <stub-technology name="Hybrid Liquids">
 
@@ -5603,8 +5603,8 @@
                         </period>
                     </stub-technology>
                 </tranSubsector>
-            </pass-through-sector>
-            <pass-through-sector name="trn_ship_intl_pass">
+            </supplysector>
+            <supplysector name="trn_ship_intl">
                 <tranSubsector name="International Ship">
                     <stub-technology name="Hybrid Liquids">
 
@@ -5805,7 +5805,7 @@
                         </period>
                     </stub-technology>
                 </tranSubsector>
-            </pass-through-sector>
+            </supplysector>
             <policy-portfolio-standard name="FT-bio-efuel-credits">
                 <market>global</market>
                 <policyType>RES</policyType>
@@ -5831,7 +5831,7 @@
             </policy-portfolio-standard>
         </region>
         <region name="Ukraine">
-            <pass-through-sector name="trn_dom_ship_pass">
+            <supplysector name="trn_freight">
                 <tranSubsector name="Domestic Ship">
                     <stub-technology name="Hybrid Liquids">
 
@@ -6032,8 +6032,8 @@
                         </period>
                     </stub-technology>
                 </tranSubsector>
-            </pass-through-sector>
-            <pass-through-sector name="trn_ship_intl_pass">
+            </supplysector>
+            <supplysector name="trn_ship_intl">
                 <tranSubsector name="International Ship">
                     <stub-technology name="Hybrid Liquids">
 
@@ -6234,7 +6234,7 @@
                         </period>
                     </stub-technology>
                 </tranSubsector>
-            </pass-through-sector>
+            </supplysector>
             <policy-portfolio-standard name="FT-bio-efuel-credits">
                 <market>global</market>
                 <policyType>RES</policyType>
@@ -6260,7 +6260,7 @@
             </policy-portfolio-standard>
         </region>
         <region name="Europe_Non_EU">
-            <pass-through-sector name="trn_dom_ship_pass">
+            <supplysector name="trn_freight">
                 <tranSubsector name="Domestic Ship">
                     <stub-technology name="Hybrid Liquids">
 
@@ -6461,8 +6461,8 @@
                         </period>
                     </stub-technology>
                 </tranSubsector>
-            </pass-through-sector>
-            <pass-through-sector name="trn_ship_intl_pass">
+            </supplysector>
+            <supplysector name="trn_ship_intl">
                 <tranSubsector name="International Ship">
                     <stub-technology name="Hybrid Liquids">
 
@@ -6663,7 +6663,7 @@
                         </period>
                     </stub-technology>
                 </tranSubsector>
-            </pass-through-sector>
+            </supplysector>
             <policy-portfolio-standard name="FT-bio-efuel-credits">
                 <market>global</market>
                 <policyType>RES</policyType>
@@ -6689,7 +6689,7 @@
             </policy-portfolio-standard>
         </region>
         <region name="European Free Trade Association">
-            <pass-through-sector name="trn_dom_ship_pass">
+            <supplysector name="trn_freight">
                 <tranSubsector name="Domestic Ship">
                     <stub-technology name="Hybrid Liquids">
 
@@ -6890,8 +6890,8 @@
                         </period>
                     </stub-technology>
                 </tranSubsector>
-            </pass-through-sector>
-            <pass-through-sector name="trn_ship_intl_pass">
+            </supplysector>
+            <supplysector name="trn_ship_intl">
                 <tranSubsector name="International Ship">
                     <stub-technology name="Hybrid Liquids">
 
@@ -7092,7 +7092,7 @@
                         </period>
                     </stub-technology>
                 </tranSubsector>
-            </pass-through-sector>
+            </supplysector>
             <policy-portfolio-standard name="FT-bio-efuel-credits">
                 <market>global</market>
                 <policyType>RES</policyType>
@@ -7118,7 +7118,7 @@
             </policy-portfolio-standard>
         </region>
         <region name="India">
-            <pass-through-sector name="trn_dom_ship_pass">
+            <supplysector name="trn_freight">
                 <tranSubsector name="Domestic Ship">
                     <stub-technology name="Hybrid Liquids">
 
@@ -7319,8 +7319,8 @@
                         </period>
                     </stub-technology>
                 </tranSubsector>
-            </pass-through-sector>
-            <pass-through-sector name="trn_ship_intl_pass">
+            </supplysector>
+            <supplysector name="trn_ship_intl">
                 <tranSubsector name="International Ship">
                     <stub-technology name="Hybrid Liquids">
 
@@ -7521,7 +7521,7 @@
                         </period>
                     </stub-technology>
                 </tranSubsector>
-            </pass-through-sector>
+            </supplysector>
             <policy-portfolio-standard name="FT-bio-efuel-credits">
                 <market>global</market>
                 <policyType>RES</policyType>
@@ -7547,7 +7547,7 @@
             </policy-portfolio-standard>
         </region>
         <region name="Indonesia">
-            <pass-through-sector name="trn_dom_ship_pass">
+            <supplysector name="trn_freight">
                 <tranSubsector name="Domestic Ship">
                     <stub-technology name="Hybrid Liquids">
 
@@ -7748,8 +7748,8 @@
                         </period>
                     </stub-technology>
                 </tranSubsector>
-            </pass-through-sector>
-            <pass-through-sector name="trn_ship_intl_pass">
+            </supplysector>
+            <supplysector name="trn_ship_intl">
                 <tranSubsector name="International Ship">
                     <stub-technology name="Hybrid Liquids">
 
@@ -7950,7 +7950,7 @@
                         </period>
                     </stub-technology>
                 </tranSubsector>
-            </pass-through-sector>
+            </supplysector>
             <policy-portfolio-standard name="FT-bio-efuel-credits">
                 <market>global</market>
                 <policyType>RES</policyType>
@@ -7976,7 +7976,7 @@
             </policy-portfolio-standard>
         </region>
         <region name="Japan">
-            <pass-through-sector name="trn_dom_ship_pass">
+            <supplysector name="trn_freight">
                 <tranSubsector name="Domestic Ship">
                     <stub-technology name="Hybrid Liquids">
 
@@ -8177,8 +8177,8 @@
                         </period>
                     </stub-technology>
                 </tranSubsector>
-            </pass-through-sector>
-            <pass-through-sector name="trn_ship_intl_pass">
+            </supplysector>
+            <supplysector name="trn_ship_intl">
                 <tranSubsector name="International Ship">
                     <stub-technology name="Hybrid Liquids">
 
@@ -8379,7 +8379,7 @@
                         </period>
                     </stub-technology>
                 </tranSubsector>
-            </pass-through-sector>
+            </supplysector>
             <policy-portfolio-standard name="FT-bio-efuel-credits">
                 <market>global</market>
                 <policyType>RES</policyType>
@@ -8405,7 +8405,7 @@
             </policy-portfolio-standard>
         </region>
         <region name="Mexico">
-            <pass-through-sector name="trn_dom_ship_pass">
+            <supplysector name="trn_freight">
                 <tranSubsector name="Domestic Ship">
                     <stub-technology name="Hybrid Liquids">
 
@@ -8606,8 +8606,8 @@
                         </period>
                     </stub-technology>
                 </tranSubsector>
-            </pass-through-sector>
-            <pass-through-sector name="trn_ship_intl_pass">
+            </supplysector>
+            <supplysector name="trn_ship_intl">
                 <tranSubsector name="International Ship">
                     <stub-technology name="Hybrid Liquids">
 
@@ -8808,7 +8808,7 @@
                         </period>
                     </stub-technology>
                 </tranSubsector>
-            </pass-through-sector>
+            </supplysector>
             <policy-portfolio-standard name="FT-bio-efuel-credits">
                 <market>global</market>
                 <policyType>RES</policyType>
@@ -8834,7 +8834,7 @@
             </policy-portfolio-standard>
         </region>
         <region name="Middle East">
-            <pass-through-sector name="trn_dom_ship_pass">
+            <supplysector name="trn_freight">
                 <tranSubsector name="Domestic Ship">
                     <stub-technology name="Hybrid Liquids">
 
@@ -9035,8 +9035,8 @@
                         </period>
                     </stub-technology>
                 </tranSubsector>
-            </pass-through-sector>
-            <pass-through-sector name="trn_ship_intl_pass">
+            </supplysector>
+            <supplysector name="trn_ship_intl">
                 <tranSubsector name="International Ship">
                     <stub-technology name="Hybrid Liquids">
 
@@ -9237,7 +9237,7 @@
                         </period>
                     </stub-technology>
                 </tranSubsector>
-            </pass-through-sector>
+            </supplysector>
             <policy-portfolio-standard name="FT-bio-efuel-credits">
                 <market>global</market>
                 <policyType>RES</policyType>
@@ -9263,7 +9263,7 @@
             </policy-portfolio-standard>
         </region>
         <region name="Pakistan">
-            <pass-through-sector name="trn_dom_ship_pass">
+            <supplysector name="trn_freight">
                 <tranSubsector name="Domestic Ship">
                     <stub-technology name="Hybrid Liquids">
 
@@ -9464,8 +9464,8 @@
                         </period>
                     </stub-technology>
                 </tranSubsector>
-            </pass-through-sector>
-            <pass-through-sector name="trn_ship_intl_pass">
+            </supplysector>
+            <supplysector name="trn_ship_intl">
                 <tranSubsector name="International Ship">
                     <stub-technology name="Hybrid Liquids">
 
@@ -9666,7 +9666,7 @@
                         </period>
                     </stub-technology>
                 </tranSubsector>
-            </pass-through-sector>
+            </supplysector>
             <policy-portfolio-standard name="FT-bio-efuel-credits">
                 <market>global</market>
                 <policyType>RES</policyType>
@@ -9692,7 +9692,7 @@
             </policy-portfolio-standard>
         </region>
         <region name="Russia">
-            <pass-through-sector name="trn_dom_ship_pass">
+            <supplysector name="trn_freight">
                 <tranSubsector name="Domestic Ship">
                     <stub-technology name="Hybrid Liquids">
 
@@ -9893,8 +9893,8 @@
                         </period>
                     </stub-technology>
                 </tranSubsector>
-            </pass-through-sector>
-            <pass-through-sector name="trn_ship_intl_pass">
+            </supplysector>
+            <supplysector name="trn_ship_intl">
                 <tranSubsector name="International Ship">
                     <stub-technology name="Hybrid Liquids">
 
@@ -10095,7 +10095,7 @@
                         </period>
                     </stub-technology>
                 </tranSubsector>
-            </pass-through-sector>
+            </supplysector>
             <policy-portfolio-standard name="FT-bio-efuel-credits">
                 <market>global</market>
                 <policyType>RES</policyType>
@@ -10121,7 +10121,7 @@
             </policy-portfolio-standard>
         </region>
         <region name="South Africa">
-            <pass-through-sector name="trn_dom_ship_pass">
+            <supplysector name="trn_freight">
                 <tranSubsector name="Domestic Ship">
                     <stub-technology name="Hybrid Liquids">
 
@@ -10322,8 +10322,8 @@
                         </period>
                     </stub-technology>
                 </tranSubsector>
-            </pass-through-sector>
-            <pass-through-sector name="trn_ship_intl_pass">
+            </supplysector>
+            <supplysector name="trn_ship_intl">
                 <tranSubsector name="International Ship">
                     <stub-technology name="Hybrid Liquids">
 
@@ -10524,7 +10524,7 @@
                         </period>
                     </stub-technology>
                 </tranSubsector>
-            </pass-through-sector>
+            </supplysector>
             <policy-portfolio-standard name="FT-bio-efuel-credits">
                 <market>global</market>
                 <policyType>RES</policyType>
@@ -10550,7 +10550,7 @@
             </policy-portfolio-standard>
         </region>
         <region name="South America_Northern">
-            <pass-through-sector name="trn_dom_ship_pass">
+            <supplysector name="trn_freight">
                 <tranSubsector name="Domestic Ship">
                     <stub-technology name="Hybrid Liquids">
 
@@ -10751,8 +10751,8 @@
                         </period>
                     </stub-technology>
                 </tranSubsector>
-            </pass-through-sector>
-            <pass-through-sector name="trn_ship_intl_pass">
+            </supplysector>
+            <supplysector name="trn_ship_intl">
                 <tranSubsector name="International Ship">
                     <stub-technology name="Hybrid Liquids">
 
@@ -10953,7 +10953,7 @@
                         </period>
                     </stub-technology>
                 </tranSubsector>
-            </pass-through-sector>
+            </supplysector>
             <policy-portfolio-standard name="FT-bio-efuel-credits">
                 <market>global</market>
                 <policyType>RES</policyType>
@@ -10979,7 +10979,7 @@
             </policy-portfolio-standard>
         </region>
         <region name="South America_Southern">
-            <pass-through-sector name="trn_dom_ship_pass">
+            <supplysector name="trn_freight">
                 <tranSubsector name="Domestic Ship">
                     <stub-technology name="Hybrid Liquids">
 
@@ -11180,8 +11180,8 @@
                         </period>
                     </stub-technology>
                 </tranSubsector>
-            </pass-through-sector>
-            <pass-through-sector name="trn_ship_intl_pass">
+            </supplysector>
+            <supplysector name="trn_ship_intl">
                 <tranSubsector name="International Ship">
                     <stub-technology name="Hybrid Liquids">
 
@@ -11382,7 +11382,7 @@
                         </period>
                     </stub-technology>
                 </tranSubsector>
-            </pass-through-sector>
+            </supplysector>
             <policy-portfolio-standard name="FT-bio-efuel-credits">
                 <market>global</market>
                 <policyType>RES</policyType>
@@ -11408,7 +11408,7 @@
             </policy-portfolio-standard>
         </region>
         <region name="South Asia">
-            <pass-through-sector name="trn_dom_ship_pass">
+            <supplysector name="trn_freight">
                 <tranSubsector name="Domestic Ship">
                     <stub-technology name="Hybrid Liquids">
 
@@ -11609,8 +11609,8 @@
                         </period>
                     </stub-technology>
                 </tranSubsector>
-            </pass-through-sector>
-            <pass-through-sector name="trn_ship_intl_pass">
+            </supplysector>
+            <supplysector name="trn_ship_intl">
                 <tranSubsector name="International Ship">
                     <stub-technology name="Hybrid Liquids">
 
@@ -11811,7 +11811,7 @@
                         </period>
                     </stub-technology>
                 </tranSubsector>
-            </pass-through-sector>
+            </supplysector>
             <policy-portfolio-standard name="FT-bio-efuel-credits">
                 <market>global</market>
                 <policyType>RES</policyType>
@@ -11837,7 +11837,7 @@
             </policy-portfolio-standard>
         </region>
         <region name="South Korea">
-            <pass-through-sector name="trn_dom_ship_pass">
+            <supplysector name="trn_freight">
                 <tranSubsector name="Domestic Ship">
                     <stub-technology name="Hybrid Liquids">
 
@@ -12038,8 +12038,8 @@
                         </period>
                     </stub-technology>
                 </tranSubsector>
-            </pass-through-sector>
-            <pass-through-sector name="trn_ship_intl_pass">
+            </supplysector>
+            <supplysector name="trn_ship_intl">
                 <tranSubsector name="International Ship">
                     <stub-technology name="Hybrid Liquids">
    
@@ -12240,7 +12240,7 @@
                         </period>
                     </stub-technology>
                 </tranSubsector>
-            </pass-through-sector>
+            </supplysector>
             <policy-portfolio-standard name="FT-bio-efuel-credits">
                 <market>global</market>
                 <policyType>RES</policyType>
@@ -12266,7 +12266,7 @@
             </policy-portfolio-standard>
         </region>
         <region name="Southeast Asia">
-            <pass-through-sector name="trn_dom_ship_pass">
+            <supplysector name="trn_freight">
                 <tranSubsector name="Domestic Ship">
                     <stub-technology name="Hybrid Liquids">
 
@@ -12467,8 +12467,8 @@
                         </period>
                     </stub-technology>
                 </tranSubsector>
-            </pass-through-sector>
-            <pass-through-sector name="trn_ship_intl_pass">
+            </supplysector>
+            <supplysector name="trn_ship_intl">
                 <tranSubsector name="International Ship">
                     <stub-technology name="Hybrid Liquids">
 
@@ -12669,7 +12669,7 @@
                         </period>
                     </stub-technology>
                 </tranSubsector>
-            </pass-through-sector>
+            </supplysector>
             <policy-portfolio-standard name="FT-bio-efuel-credits">
                 <market>global</market>
                 <policyType>RES</policyType>
@@ -12695,7 +12695,7 @@
             </policy-portfolio-standard>
         </region>
         <region name="Taiwan">
-            <pass-through-sector name="trn_dom_ship_pass">
+            <supplysector name="trn_freight">
                 <tranSubsector name="Domestic Ship">
                     <stub-technology name="Hybrid Liquids">
 
@@ -12896,8 +12896,8 @@
                         </period>
                     </stub-technology>
                 </tranSubsector>
-            </pass-through-sector>
-            <pass-through-sector name="trn_ship_intl_pass">
+            </supplysector>
+            <supplysector name="trn_ship_intl">
                 <tranSubsector name="International Ship">
                     <stub-technology name="Hybrid Liquids">
 
@@ -13098,7 +13098,7 @@
                         </period>
                     </stub-technology>
                 </tranSubsector>
-            </pass-through-sector>
+            </supplysector>
             <policy-portfolio-standard name="FT-bio-efuel-credits">
                 <market>global</market>
                 <policyType>RES</policyType>
@@ -13124,7 +13124,7 @@
             </policy-portfolio-standard>
         </region>
         <region name="Argentina">
-            <pass-through-sector name="trn_dom_ship_pass">
+            <supplysector name="trn_freight">
                 <tranSubsector name="Domestic Ship">
                     <stub-technology name="Hybrid Liquids">
 
@@ -13325,8 +13325,8 @@
                         </period>
                     </stub-technology>
                 </tranSubsector>
-            </pass-through-sector>
-            <pass-through-sector name="trn_ship_intl_pass">
+            </supplysector>
+            <supplysector name="trn_ship_intl">
                 <tranSubsector name="International Ship">
                     <stub-technology name="Hybrid Liquids">
 
@@ -13527,7 +13527,7 @@
                         </period>
                     </stub-technology>
                 </tranSubsector>
-            </pass-through-sector>
+            </supplysector>
             <policy-portfolio-standard name="FT-bio-efuel-credits">
                 <market>global</market>
                 <policyType>RES</policyType>
@@ -13553,7 +13553,7 @@
             </policy-portfolio-standard>
         </region>
         <region name="Colombia">
-            <pass-through-sector name="trn_dom_ship_pass">
+            <supplysector name="trn_freight">
                 <tranSubsector name="Domestic Ship">
                     <stub-technology name="Hybrid Liquids">
 
@@ -13754,8 +13754,8 @@
                         </period>
                     </stub-technology>
                 </tranSubsector>
-            </pass-through-sector>
-            <pass-through-sector name="trn_ship_intl_pass">
+            </supplysector>
+            <supplysector name="trn_ship_intl">
                 <tranSubsector name="International Ship">
                     <stub-technology name="Hybrid Liquids">
 
@@ -13956,7 +13956,7 @@
                         </period>
                     </stub-technology>
                 </tranSubsector>
-            </pass-through-sector>
+            </supplysector>
             <policy-portfolio-standard name="FT-bio-efuel-credits">
                 <market>global</market>
                 <policyType>RES</policyType>
