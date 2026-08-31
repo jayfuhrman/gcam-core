@@ -456,7 +456,7 @@
                     </stub-technology>
                 </tranSubsector>
             </supplysector>
-            <supplysector name="trn_shiping_intl">
+            <supplysector name="trn_shipping_intl">
                 <tranSubsector name="International Ship">
                     <stub-technology name="Hybrid Liquids">
 
@@ -885,7 +885,7 @@
                     </stub-technology>
                 </tranSubsector>
             </supplysector>
-            <supplysector name="trn_shiping_intl">
+            <supplysector name="trn_shipping_intl">
                 <tranSubsector name="International Ship">
                     <stub-technology name="Hybrid Liquids">
 
@@ -1314,7 +1314,7 @@
                     </stub-technology>
                 </tranSubsector>
             </supplysector>
-            <supplysector name="trn_shiping_intl">
+            <supplysector name="trn_shipping_intl">
                 <tranSubsector name="International Ship">
                     <stub-technology name="Hybrid Liquids">
 
@@ -1743,7 +1743,7 @@
                     </stub-technology>
                 </tranSubsector>
             </supplysector>
-            <supplysector name="trn_shiping_intl">
+            <supplysector name="trn_shipping_intl">
                 <tranSubsector name="International Ship">
                     <stub-technology name="Hybrid Liquids">
 
@@ -2172,7 +2172,7 @@
                     </stub-technology>
                 </tranSubsector>
             </supplysector>
-            <supplysector name="trn_shiping_intl">
+            <supplysector name="trn_shipping_intl">
                 <tranSubsector name="International Ship">
                     <stub-technology name="Hybrid Liquids">
 
@@ -2601,7 +2601,7 @@
                     </stub-technology>
                 </tranSubsector>
             </supplysector>
-            <supplysector name="trn_shiping_intl">
+            <supplysector name="trn_shipping_intl">
                 <tranSubsector name="International Ship">
                     <stub-technology name="Hybrid Liquids">
 
@@ -3030,7 +3030,7 @@
                     </stub-technology>
                 </tranSubsector>
             </supplysector>
-            <supplysector name="trn_shiping_intl">
+            <supplysector name="trn_shipping_intl">
                 <tranSubsector name="International Ship">
                     <stub-technology name="Hybrid Liquids">
 
@@ -3459,7 +3459,7 @@
                     </stub-technology>
                 </tranSubsector>
             </supplysector>
-            <supplysector name="trn_shiping_intl">
+            <supplysector name="trn_shipping_intl">
                 <tranSubsector name="International Ship">
                     <stub-technology name="Hybrid Liquids">
 
@@ -3888,7 +3888,7 @@
                     </stub-technology>
                 </tranSubsector>
             </supplysector>
-            <supplysector name="trn_shiping_intl">
+            <supplysector name="trn_shipping_intl">
                 <tranSubsector name="International Ship">
                     <stub-technology name="Hybrid Liquids">
 
@@ -4317,7 +4317,7 @@
                     </stub-technology>
                 </tranSubsector>
             </supplysector>
-            <supplysector name="trn_shiping_intl">
+            <supplysector name="trn_shipping_intl">
                 <tranSubsector name="International Ship">
                     <stub-technology name="Hybrid Liquids">
 
@@ -4746,7 +4746,7 @@
                     </stub-technology>
                 </tranSubsector>
             </supplysector>
-            <supplysector name="trn_shiping_intl">
+            <supplysector name="trn_shipping_intl">
                 <tranSubsector name="International Ship">
                     <stub-technology name="Hybrid Liquids">
 
@@ -5175,7 +5175,7 @@
                     </stub-technology>
                 </tranSubsector>
             </supplysector>
-            <supplysector name="trn_shiping_intl">
+            <supplysector name="trn_shipping_intl">
                 <tranSubsector name="International Ship">
                     <stub-technology name="Hybrid Liquids">
 
@@ -5604,7 +5604,7 @@
                     </stub-technology>
                 </tranSubsector>
             </supplysector>
-            <supplysector name="trn_shiping_intl">
+            <supplysector name="trn_shipping_intl">
                 <tranSubsector name="International Ship">
                     <stub-technology name="Hybrid Liquids">
 
@@ -6033,7 +6033,7 @@
                     </stub-technology>
                 </tranSubsector>
             </supplysector>
-            <supplysector name="trn_shiping_intl">
+            <supplysector name="trn_shipping_intl">
                 <tranSubsector name="International Ship">
                     <stub-technology name="Hybrid Liquids">
 
@@ -6462,7 +6462,7 @@
                     </stub-technology>
                 </tranSubsector>
             </supplysector>
-            <supplysector name="trn_shiping_intl">
+            <supplysector name="trn_shipping_intl">
                 <tranSubsector name="International Ship">
                     <stub-technology name="Hybrid Liquids">
 
@@ -6891,7 +6891,7 @@
                     </stub-technology>
                 </tranSubsector>
             </supplysector>
-            <supplysector name="trn_shiping_intl">
+            <supplysector name="trn_shipping_intl">
                 <tranSubsector name="International Ship">
                     <stub-technology name="Hybrid Liquids">
 
@@ -7320,7 +7320,7 @@
                     </stub-technology>
                 </tranSubsector>
             </supplysector>
-            <supplysector name="trn_shiping_intl">
+            <supplysector name="trn_shipping_intl">
                 <tranSubsector name="International Ship">
                     <stub-technology name="Hybrid Liquids">
 
@@ -7749,7 +7749,7 @@
                     </stub-technology>
                 </tranSubsector>
             </supplysector>
-            <supplysector name="trn_shiping_intl">
+            <supplysector name="trn_shipping_intl">
                 <tranSubsector name="International Ship">
                     <stub-technology name="Hybrid Liquids">
 
@@ -8178,7 +8178,7 @@
                     </stub-technology>
                 </tranSubsector>
             </supplysector>
-            <supplysector name="trn_shiping_intl">
+            <supplysector name="trn_shipping_intl">
                 <tranSubsector name="International Ship">
                     <stub-technology name="Hybrid Liquids">
 
@@ -8607,7 +8607,7 @@
                     </stub-technology>
                 </tranSubsector>
             </supplysector>
-            <supplysector name="trn_shiping_intl">
+            <supplysector name="trn_shipping_intl">
                 <tranSubsector name="International Ship">
                     <stub-technology name="Hybrid Liquids">
 
@@ -9036,7 +9036,7 @@
                     </stub-technology>
                 </tranSubsector>
             </supplysector>
-            <supplysector name="trn_shiping_intl">
+            <supplysector name="trn_shipping_intl">
                 <tranSubsector name="International Ship">
                     <stub-technology name="Hybrid Liquids">
 
@@ -9465,7 +9465,7 @@
                     </stub-technology>
                 </tranSubsector>
             </supplysector>
-            <supplysector name="trn_shiping_intl">
+            <supplysector name="trn_shipping_intl">
                 <tranSubsector name="International Ship">
                     <stub-technology name="Hybrid Liquids">
 
@@ -9894,7 +9894,7 @@
                     </stub-technology>
                 </tranSubsector>
             </supplysector>
-            <supplysector name="trn_shiping_intl">
+            <supplysector name="trn_shipping_intl">
                 <tranSubsector name="International Ship">
                     <stub-technology name="Hybrid Liquids">
 
@@ -10323,7 +10323,7 @@
                     </stub-technology>
                 </tranSubsector>
             </supplysector>
-            <supplysector name="trn_shiping_intl">
+            <supplysector name="trn_shipping_intl">
                 <tranSubsector name="International Ship">
                     <stub-technology name="Hybrid Liquids">
 
@@ -10752,7 +10752,7 @@
                     </stub-technology>
                 </tranSubsector>
             </supplysector>
-            <supplysector name="trn_shiping_intl">
+            <supplysector name="trn_shipping_intl">
                 <tranSubsector name="International Ship">
                     <stub-technology name="Hybrid Liquids">
 
@@ -11181,7 +11181,7 @@
                     </stub-technology>
                 </tranSubsector>
             </supplysector>
-            <supplysector name="trn_shiping_intl">
+            <supplysector name="trn_shipping_intl">
                 <tranSubsector name="International Ship">
                     <stub-technology name="Hybrid Liquids">
 
@@ -11610,7 +11610,7 @@
                     </stub-technology>
                 </tranSubsector>
             </supplysector>
-            <supplysector name="trn_shiping_intl">
+            <supplysector name="trn_shipping_intl">
                 <tranSubsector name="International Ship">
                     <stub-technology name="Hybrid Liquids">
 
@@ -12039,7 +12039,7 @@
                     </stub-technology>
                 </tranSubsector>
             </supplysector>
-            <supplysector name="trn_shiping_intl">
+            <supplysector name="trn_shipping_intl">
                 <tranSubsector name="International Ship">
                     <stub-technology name="Hybrid Liquids">
    
@@ -12468,7 +12468,7 @@
                     </stub-technology>
                 </tranSubsector>
             </supplysector>
-            <supplysector name="trn_shiping_intl">
+            <supplysector name="trn_shipping_intl">
                 <tranSubsector name="International Ship">
                     <stub-technology name="Hybrid Liquids">
 
@@ -12897,7 +12897,7 @@
                     </stub-technology>
                 </tranSubsector>
             </supplysector>
-            <supplysector name="trn_shiping_intl">
+            <supplysector name="trn_shipping_intl">
                 <tranSubsector name="International Ship">
                     <stub-technology name="Hybrid Liquids">
 
@@ -13326,7 +13326,7 @@
                     </stub-technology>
                 </tranSubsector>
             </supplysector>
-            <supplysector name="trn_shiping_intl">
+            <supplysector name="trn_shipping_intl">
                 <tranSubsector name="International Ship">
                     <stub-technology name="Hybrid Liquids">
 
@@ -13755,7 +13755,7 @@
                     </stub-technology>
                 </tranSubsector>
             </supplysector>
-            <supplysector name="trn_shiping_intl">
+            <supplysector name="trn_shipping_intl">
                 <tranSubsector name="International Ship">
                     <stub-technology name="Hybrid Liquids">
 
