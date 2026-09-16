@@ -97,7 +97,7 @@ module_energy_transportation_UCD_ICEPhaseout_xml <- function(command, ...) {
           add_xml_data(L254.tranSubsectorInterp_SSP %>% filter(region %in% included_regions), "tranSubsectorInterp") %>%
 
           add_xml_data(L254.StubTranTechInterpTo_liquids %>% filter(region %in% included_regions,
-                                                                    from.year == 2025), "DeleteStubTranTechInterpTo") %>%
+                                                                    from.year %in% c(2021,2025)), "DeleteStubTranTechInterpTo") %>%
           add_xml_data(L254.StubTranTechInterpTo_liquids %>% filter(region %in% included_regions,
                                                                     from.year == 2050), "StubTranTechInterpTo") %>%
           add_xml_data(L254.StubTranTechShrwt_liquids %>% filter(region %in% included_regions,
