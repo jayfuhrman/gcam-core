@@ -11,8 +11,6 @@ refining,biorefining 1st gen,sugar cane ethanol,share-weight,final-calibration-y
 refining,biorefining 2nd gen,FT biofuels,share-weight,final-calibration-year,2075,s-curve
 refining,biorefining 2nd gen,cellulosic ethanol,share-weight,final-calibration-year,2075,s-curve
 refining,biorefining 2nd gen,pyrolysis,share-weight,final-calibration-year,2075,s-curve
-refining,biorefining 2nd gen,corn ethanol to jet,share-weight,final-calibration-year,2050,s-curve
-refining,biorefining 2nd gen,cellulosic ethanol to jet,share-weight,final-calibration-year,2050,s-curve
 refining,ctl,Distillate_FuelOil,share-weight,final-calibration-year,2075,s-curve
 refining,ctl,Residual_FuelOil,share-weight,final-calibration-year,2075,s-curve
 refining,ctl,Gasoline,share-weight,final-calibration-year,2075,s-curve

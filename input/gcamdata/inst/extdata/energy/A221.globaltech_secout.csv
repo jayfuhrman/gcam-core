@@ -34,10 +34,6 @@ res-secondary-output,refining,biorefining 2nd gen,pyrolysis,Distillate_FuelOil_b
 res-secondary-output,refining,biorefining 2nd gen,pyrolysis,PetCoke_biomass,0.15,0.15,0.15,0.15,0.15
 res-secondary-output,refining,biorefining 2nd gen,pyrolysis,Gasoline_biomass,0.2,0.2,0.2,0.2,0.2
 res-secondary-output,refining,biorefining 2nd gen,pyrolysis,Other_biomass,0.05,0.05,0.05,0.05,0.05
-res-secondary-output,refining,biorefining 2nd gen,corn ethanol to jet,Gasoline_biomass,0.21,0.21,0.21,0.21,0.21
-res-secondary-output,refining,biorefining 2nd gen,corn ethanol to jet,Jet_Kerosene_biomass,0.79,0.79,0.79,0.79,0.79
-res-secondary-output,refining,biorefining 2nd gen,cellulosic ethanol to jet,Gasoline_biomass,0.21,0.21,0.21,0.21,0.21
-res-secondary-output,refining,biorefining 2nd gen,cellulosic ethanol to jet,Jet_Kerosene_biomass,0.79,0.79,0.79,0.79,0.79
 res-secondary-output,refining,ctl,LPG,LPG_coal,1,1,1,1,1
 res-secondary-output,refining,ctl,Gasoline,Gasoline_coal,1,1,1,1,1
 res-secondary-output,refining,ctl,Jet_Kerosene,Jet_Kerosene_coal,1,1,1,1,1

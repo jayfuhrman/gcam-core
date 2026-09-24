@@ -36,7 +36,6 @@ module_energy_L2221.refining <- function(command, ...) {
       FILE = "energy/calibrated_techs_refining",
       FILE = "energy/refining_mapping",
       FILE = "energy/refining_feed_prices_hist",
-      FILE = "energy/NLR2024_ETJ",
       "LB1092.GCAM_REG_LIQUIDS_PROD_agg",
       "LB1092.GCAM_BIO_LIQUIDS_PROD_agg",
       "LB1092.GCAM_CTL_GTL_LIQUIDS_PROD_agg",
@@ -296,23 +295,10 @@ module_energy_L2221.refining <- function(command, ...) {
 
 
 # Costs -------------------------------------------------------------------
-    NLR2024_ETJ %>%
-    gather_years %>%
-      complete(nesting(supplysector, subsector, technology, minicam.non.energy.input), year = c(year, MODEL_BASE_YEARS, MODEL_FUTURE_YEARS)) %>%
-      arrange(supplysector, subsector, technology, minicam.non.energy.input,year) %>%
-      group_by(supplysector, subsector, technology, minicam.non.energy.input) %>%
-      mutate(input.cost = approx_fun(year, value, rule = 1),
-             input.cost = round(input.cost, energy.DIGITS_COST)) %>%
-      ungroup %>%
-      filter(year %in% c(MODEL_BASE_YEARS, MODEL_FUTURE_YEARS)) %>%
-      rename(sector.name = supplysector,
-             subsector.name = subsector) %>%
-      select(LEVEL2_DATA_NAMES[["GlobalTechCost"]]) -> NLR2024_ETJ
-
     # TODO: refactor into CAPEX and OPEX for macro capital tracking
     A221.globaltech_cost <-
       bind_rows(L1221.globaltech_capital, L1221.globaltech_OMvar,
-                L1221.globaltech_OMfixed, L1221.globaltech_margin, NLR2024_ETJ,
+                L1221.globaltech_OMfixed, L1221.globaltech_margin,
                 L1221.globaltech_margin %>%
                   mutate(value = 0,
                          minicam.non.energy.input = "cost.adjustment")) %>%
