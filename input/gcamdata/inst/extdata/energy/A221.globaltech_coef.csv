@@ -17,6 +17,11 @@ refining,biorefining 2nd gen,FT biofuels,regional biomass,1.961,1.961,1.739
 refining,biorefining 2nd gen,FT biofuels CCS level 1,regional biomass,2.039,2.039,1.809
 refining,biorefining 2nd gen,FT biofuels CCS level 2,regional biomass,2.157,2.157,1.913
 refining,biorefining 2nd gen,pyrolysis,regional biomass,1.961,1.961,1.739
+refining,biorefining 2nd gen,corn ethanol to jet,regional corn for ethanol,1.007659543,1.007659543,1.007659543
+refining,biorefining 2nd gen,corn ethanol to jet,wholesale gas,0.402322046,0.402322046,0.402322046
+refining,biorefining 2nd gen,corn ethanol to jet,elect_td_ind,0.034028385,0.034028385,0.034028385
+refining,biorefining 2nd gen,corn ethanol to jet,H2 industrial,0.066310005,0.066310005,0.066310005
+refining,biorefining 2nd gen,cellulosic ethanol to jet,regional biomass,2.870114275,2.870114275,2.870114275
 refining,ctl,Distillate_FuelOil,regional coal,2.112,2.112,1.959
 refining,ctl,Residual_FuelOil,regional coal,2.112,2.112,1.959
 refining,ctl,Gasoline,regional coal,2.112,2.112,1.959
