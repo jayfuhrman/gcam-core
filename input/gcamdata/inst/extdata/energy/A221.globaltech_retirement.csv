@@ -72,3 +72,7 @@ refining,crude oil refining,high LPG,initial-future-year,60,,25,0.6,-0.1,4
 refining,crude oil refining,high Jet_Kerosene,initial-future-year,60,,25,0.6,-0.1,4
 refining,crude oil refining,high PetCoke,initial-future-year,60,,25,0.6,-0.1,4
 refining,crude oil refining,high Other,initial-future-year,60,,25,0.6,-0.1,4
+refining,biorefining 2nd gen,corn ethanol to jet,initial-future-year,60,,25,0.6,-0.1,4
+refining,biorefining 2nd gen,cellulosic ethanol to jet,initial-future-year,60,,25,0.6,-0.1,4
+refining,biorefining 2nd gen,corn ethanol to jet,final-calibration-year,60,,25,0.6,-0.1,4
+refining,biorefining 2nd gen,cellulosic ethanol to jet,final-calibration-year,60,,25,0.6,-0.1,4

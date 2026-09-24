@@ -66,3 +66,5 @@ Other,Other,biomass,1,1,1,1,1,1
 Other,Other,crude oil,1,1,1,1,1,1
 Other,Other,coal,1,1,1,1,1,1
 Other,Other,natural gas,1,1,1,1,1,1
+refining,biorefining 2nd gen,corn ethanol to jet,0,0,0,1,1,1
+refining,biorefining 2nd gen,cellulosic ethanol to jet,0,0,0,1,1,1
