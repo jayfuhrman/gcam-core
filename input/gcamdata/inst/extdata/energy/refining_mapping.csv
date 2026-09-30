@@ -10,6 +10,8 @@ refining,biorefining 1st gen,corn ethanol,Gasoline,Gasoline,corn
 refining,biorefining 1st gen,sugar cane ethanol,Gasoline,Gasoline,sugar
 refining,biorefining 2nd gen,cellulosic ethanol,Gasoline,Gasoline,biomass
 refining,biorefining 2nd gen,Jet_Kerosene,Jet_Kerosene,Jet_Kerosene,biomass
+refining,biorefining 2nd gen,corn ethanol to jet,refining,biorefining 2nd gen,corn ethanol to jet
+refining,biorefining 2nd gen,cellulosic ethanol to jet,refining,biorefining 2nd gen,cellulosic ethanol to jet
 refining,biorefining 2nd gen,LPG,LPG,LPG,biomass
 refining,biorefining 2nd gen,Other,Other,Other,biomass
 refining,biorefining 2nd gen,biochar,PetCoke,PetCoke,biomass

@@ -47,10 +47,12 @@ module_energy_detailed_refining_xml <- function(command, ...) {
 
              "L226.TechResSecOutCredit",
              "L226.StubTechCoefInputCredit",
-             "L226.PortfolioStdConstraint"))
+             "L226.PortfolioStdConstraint",
+             FILE = "common/GCAM_region_names"))
   } else if(command == driver.DECLARE_OUTPUTS) {
     return(c(XML = "detailed_refining.xml",
-             XML = "USA_ethanol_RFS.xml"))
+             XML = "USA_ethanol_RFS.xml",
+             XML = "SAF_mandate_2050.xml"))
   } else if(command == driver.MAKE) {
 
     all_data <- list(...)[[1]]
@@ -93,6 +95,8 @@ module_energy_detailed_refining_xml <- function(command, ...) {
     L226.StubTechCoefInputCredit <- get_data(all_data, "L226.StubTechCoefInputCredit")
     L226.PortfolioStdConstraint <- get_data(all_data, "L226.PortfolioStdConstraint")
 
+    GCAM_region_names <- get_data(all_data,"common/GCAM_region_names")
+
     L2221.GlobalTechInputPmult <- L2221.GlobalTechCoef_en %>%
       filter(minicam.energy.input == 'refining') %>%
       mutate(price.unit.conversion = 0) %>%
@@ -106,6 +110,8 @@ module_energy_detailed_refining_xml <- function(command, ...) {
       filter(subsector %in% c("ctl","gtl","crude oil refining","biorefining 1st gen")) %>%
       mutate(interpolation.function = "fixed") %>%
       select(LEVEL2_DATA_NAMES[["SubsectorInterp"]])
+
+
 
 
     # ===================================================
@@ -190,8 +196,63 @@ module_energy_detailed_refining_xml <- function(command, ...) {
                      "L226.StubTechCoefInputCredit",
                      "L226.PortfolioStdConstraint") -> USA_ethanol_RFS.xml
 
+    SAF_sec_output_credit <- L226.TechResSecOutCredit %>%
+      select(-region) %>%
+      write_to_all_regions(c("region","year",'output.ratio'),GCAM_region_names) %>%
+      repeat_add_columns(tibble(supplysector = c("Jet_Kerosene","Gasoline","Distillate_FuelOil","Other"))) %>%
+      mutate(subsector = supplysector,
+             technology = if_else(supplysector == "Distillate_FuelOil","biomassOil","biomass"),
+             res.secondary.output = paste0("SAF_credit ",supplysector),
+             output.ratio = 1)
+
+    SAF_PortfolioStdConstraint <- L226.PortfolioStdConstraint %>%
+      select(-region,-market) %>%
+      write_to_all_regions(c("region","policy.portfolio.standard","policyType","year","constraint"),GCAM_region_names) %>%
+      mutate(market = region) %>%
+      select(-policy.portfolio.standard) %>%
+      repeat_add_columns(tibble(policy.portfolio.standard = c("SAF_credit Gasoline",
+                                                              "SAF_credit Distillate_FuelOil",
+                                                              "SAF_credit Jet_Kerosene",
+                                                              "SAF_credit Other")))
+
+
+    SAF_GlobalTechInputCredit <- L226.StubTechCoefInputCredit %>%
+      select(-region) %>%
+      write_to_all_regions(LEVEL2_DATA_NAMES[["StubTechCoef"]],GCAM_region_names) %>%
+      mutate(coefficient = case_when(
+        year > 2025 & year < 2100 ~ NA_real_,
+        year %in% c(2021, 2025) ~ 0,
+        TRUE ~ 1),
+        supplysector = "refined liquids aviation",
+        subsector = "refined liquids aviation") %>%
+     arrange(year) %>%
+     mutate(coefficient = approx_fun(as.numeric(year), coefficient)) %>%
+     ungroup() %>%
+      select(-stub.technology,-minicam.energy.input) %>%
+      repeat_add_columns(tibble(stub.technology = c("refined liquids gasoline",
+                                               "refined liquids distillate_fueloil",
+                                               "refined liquids jet_kerosene",
+                                               "refined liquids other"),
+                                minicam.energy.input = c("SAF_credit Gasoline",
+                                                         "SAF_credit Distillate_FuelOil",
+                                                         "SAF_credit Jet_Kerosene",
+                                                         "SAF_credit Other"))) %>%
+      select(LEVEL2_DATA_NAMES[["StubTechCoef"]])
+
+
+
+    create_xml("SAF_mandate_2050.xml") %>%
+      add_xml_data(SAF_sec_output_credit, "TechRESSecOut") %>%
+      add_xml_data(SAF_GlobalTechInputCredit, "StubTechCoef") %>%
+      add_xml_data(SAF_PortfolioStdConstraint, "PortfolioStdConstraint") %>%
+      add_precursors("L226.TechResSecOutCredit",
+                     "L226.StubTechCoefInputCredit",
+                     "L226.PortfolioStdConstraint") -> SAF_mandate_2050.xml
+
+
     return_data(detailed_refining.xml,
-                USA_ethanol_RFS.xml)
+                USA_ethanol_RFS.xml,
+                SAF_mandate_2050.xml)
   } else {
     stop("Unknown command")
   }

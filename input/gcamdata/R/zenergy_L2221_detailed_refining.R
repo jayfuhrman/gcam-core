@@ -304,10 +304,7 @@ module_energy_L2221.refining <- function(command, ...) {
       mutate(input.cost = approx_fun(year, value, rule = 1),
              input.cost = round(input.cost, energy.DIGITS_COST)) %>%
       ungroup %>%
-      filter(year %in% c(MODEL_BASE_YEARS, MODEL_FUTURE_YEARS)) %>%
-      rename(sector.name = supplysector,
-             subsector.name = subsector) %>%
-      select(LEVEL2_DATA_NAMES[["GlobalTechCost"]]) -> NLR2024_ETJ
+      filter(year %in% c(MODEL_BASE_YEARS, MODEL_FUTURE_YEARS)) -> NLR2024_ETJ
 
     # TODO: refactor into CAPEX and OPEX for macro capital tracking
     A221.globaltech_cost <-
@@ -346,9 +343,10 @@ module_energy_L2221.refining <- function(command, ...) {
       select(-input.cost,-subsector.name,-minicam.non.energy.input)
 
     L2221.GlobalTechCost_CCS <- L2221.GlobalTechCost_en %>%
-      filter(str_detect(technology, "^FT biofuels|^cellulosic ethanol")) %>%
+      filter(str_detect(technology, "^FT biofuels|^cellulosic ethanol") & !str_detect(technology,"to jet")) %>%
       left_join(CCS_cost_ratios, by = c("sector.name","technology","year")) %>%
-      mutate(input.cost = input.cost * NE_cost_ratio,
+      mutate(NE_cost_ratio = if_else(is.na(NE_cost_ratio), 1, NE_cost_ratio),
+             input.cost = input.cost * NE_cost_ratio,
              technology = paste0(technology," ", CCS)) %>%
       filter(!str_detect(technology,"no CCS")) %>%
       select(LEVEL2_DATA_NAMES[["GlobalTechCost"]])
@@ -584,8 +582,23 @@ module_energy_L2221.refining <- function(command, ...) {
       set_subsector_shrwt() %>%
       select(LEVEL2_DATA_NAMES[["StubTechProd"]], "share.weight")
 
+
+    ETJ <- tibble(supplysector = "refining",
+                  subsector = "biorefining 2nd gen",
+                  stub.technology = c("corn ethanol to jet","cellulosic ethanol to jet"),
+                  calOutputValue = 0,
+                  subs.share.weight = 0,
+                  share.weight = 0,
+                  tech.share.weight = 0) %>%
+      repeat_add_columns(tibble(year = MODEL_BASE_YEARS)) %>%
+      mutate(share.weight.year = year) %>%
+      write_to_all_regions(c(LEVEL2_DATA_NAMES[["StubTechProd"]], "share.weight"),
+                           has_traded = FALSE,
+                           GCAM_region_names = GCAM_region_names)
+
     # Add stub.tech share weights for refining technologies
     L2221.StubTechProd_refining <- L2221.StubTechProd_fuels %>%
+      bind_rows(ETJ) %>%
       left_join_error_no_match(
         refining_mapping,
         by = c("supplysector", "subsector", "stub.technology")) %>%
@@ -594,7 +607,7 @@ module_energy_L2221.refining <- function(command, ...) {
              subsector = subsector_2,
              stub.technology = stub.technology_1) %>%
       mutate(stub.technology = if_else(subsector == "biorefining 2nd gen" & stub.technology == "Jet_Kerosene","FT biofuels", stub.technology),
-             stub.technology = if_else(subsector == "biorefining 2nd gen" & !stub.technology %in% c("FT biofuels","cellulosic ethanol"),"pyrolysis", stub.technology),
+             stub.technology = if_else(subsector == "biorefining 2nd gen" & !stub.technology %in% c("FT biofuels","cellulosic ethanol","corn ethanol to jet","cellulosic ethanol to jet"),"pyrolysis", stub.technology),
              calOutputValue = round(calOutputValue, energy.DIGITS_CALOUTPUT),
              share.weight.year = year,
              share.weight = if_else(calOutputValue > 0, 1, 0),
