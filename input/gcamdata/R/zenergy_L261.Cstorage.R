@@ -173,7 +173,7 @@ module_energy_L261.Cstorage <- function(command, ...) {
       `output-unit` <- `price-unit` <- resource <- resource_type <- share.weight <-
       subresource <- subsector <- subsector.name <- supplysector <- technology <-
       value <- year <- region <- resource <- output.unit <- price.unit <-
-      market <- logit.exponent <- coefficient <- input.cost <- NULL
+      market <- logit.exponent <- coefficient <- input.cost <- no.rsrc <- NULL
 
     # Resource-reserve assumptions which just need to get copied to all regions and years
     A61.ResSubresourceProdLifetime %>%
@@ -222,7 +222,7 @@ module_energy_L261.Cstorage <- function(command, ...) {
       group_by(region) %>%
       summarize(max_CO2_injection = max(CO2_injection_MtC)) %>%
       ungroup()
-      #calculate each region's peak oil and gas production volumes in terms of an equivalent mass of CO2 at subsurface conditions
+    #calculate each region's peak oil and gas production volumes in terms of an equivalent mass of CO2 at subsurface conditions
 
     USA_OG_volume_MTC <- OG_fluid_extraction_volume %>%
       filter(region == 'USA')
@@ -339,9 +339,9 @@ module_energy_L261.Cstorage <- function(command, ...) {
 
     L261.StubTechEff <- eff_post_2030 %>%
       mutate(efficiency =
-                     if_else(year > 2030,
-                             1/(1+exp(-k*(year - x0))),
-                             efficiency),
+               if_else(year > 2030,
+                       1/(1+exp(-k*(year - x0))),
+                       efficiency),
              supplysector = 'ccs dynamic-capacity',
              subsector = 'ccs dynamic-capacity',
              stub.technology = 'ccs dynamic-capacity',
@@ -477,6 +477,22 @@ module_energy_L261.Cstorage <- function(command, ...) {
                            GCAM_region_names = GCAM_region_names) ->
       L261.SubsectorShrwtFllt_C # This is a final output table.
 
+    # Some regions have no carbon storage resource available in any grade of the
+    # supply curve.  Zero out the subsector share-weights corresponding to those
+    # resources so that the model does not attempt to use them.
+    L261.NoRsrcAvail_C <- L261.RsrcCurves_C %>%
+      group_by(region, resource) %>%
+      summarise(available = sum(available), .groups = "drop") %>%
+      filter(available == 0) %>%
+      mutate(no.rsrc = TRUE) %>%
+      select(region, resource, no.rsrc)
+
+    L261.SubsectorShrwtFllt_C <- L261.SubsectorShrwtFllt_C %>%
+      # the carbon storage subsector names match the resource names
+      left_join(L261.NoRsrcAvail_C, by = c("region", "subsector" = "resource")) %>%
+      mutate(share.weight = if_else(is.na(no.rsrc), share.weight, 0)) %>%
+      select(c(LEVEL2_DATA_NAMES[["SubsectorShrwtFllt"]], LOGIT_TYPE_COLNAME))
+
 
     # E
     # Technology information
@@ -514,8 +530,8 @@ module_energy_L261.Cstorage <- function(command, ...) {
       select(-value)
 
     L261.GlobalTechCoef_C <- left_join_error_no_match(L261.GlobalTechCoef_C, L261.globaltech_losses,
-                                                    by = c(sector.name = "supplysector", subsector.name = "subsector", "technology", "minicam.energy.input", "year"),
-                                                    ignore_columns = c("Non.CO2", "multiplier")) %>%
+                                                      by = c(sector.name = "supplysector", subsector.name = "subsector", "technology", "minicam.energy.input", "year"),
+                                                      ignore_columns = c("Non.CO2", "multiplier")) %>%
       mutate(coefficient = if_else(is.na(multiplier),
                                    coefficient,
                                    round(coefficient * (1 - multiplier), energy.DIGITS_COEFFICIENT))) %>%
@@ -701,8 +717,9 @@ module_energy_L261.Cstorage <- function(command, ...) {
       add_title("Subsector shareweights of carbon storage sectors") %>%
       add_units("Unitless") %>%
       add_comments("Table on subsector shareweights was expanded to include GCAM region names") %>%
+      add_comments("Share weights are set to zero in regions with no resource available in any grade") %>%
       add_legacy_name("L261.SubsectorShrwtFllt_C") %>%
-      add_precursors("common/GCAM_region_names", "energy/A61.subsector_shrwt") ->
+      add_precursors("common/GCAM_region_names", "energy/A61.subsector_shrwt", "L161.RsrcCurves_MtC_R") ->
       L261.SubsectorShrwtFllt_C
 
     L261.StubTech_C %>%
@@ -842,19 +859,19 @@ module_energy_L261.Cstorage <- function(command, ...) {
       same_precursors_as("L261.ResReserveTechDeclinePhase") ->
       L261.ResReserveTechInvestmentInput
 
-      L261.StubTechShrwt %>%
-        add_title("Zero out shareweights for transport sectors") %>%
-        add_units("NA") %>%
-        add_comments("NA") %>%
-        add_precursors("L254.StubTranTechCalInput") ->
-        L261.StubTechShrwt
+    L261.StubTechShrwt %>%
+      add_title("Zero out shareweights for transport sectors") %>%
+      add_units("NA") %>%
+      add_comments("NA") %>%
+      add_precursors("L254.StubTranTechCalInput") ->
+      L261.StubTechShrwt
 
-      L261.DeleteStubTech %>%
-        add_title("Delete technologies whos transport inputs have zero calibration values") %>%
-        add_units("NA") %>%
-        add_comments("NA") %>%
-        add_precursors("L254.StubTranTechCalInput") ->
-        L261.DeleteStubTech
+    L261.DeleteStubTech %>%
+      add_title("Delete technologies whos transport inputs have zero calibration values") %>%
+      add_units("NA") %>%
+      add_comments("NA") %>%
+      add_precursors("L254.StubTranTechCalInput") ->
+      L261.DeleteStubTech
 
     return_data(L261.Rsrc, L261.UnlimitRsrc, L261.RsrcCurves_C, L261.ResTechShrwt_C, L261.Supplysector_C, L261.SubsectorLogit_C, L261.SubsectorShrwtFllt_C, L261.StubTech_C, L261.GlobalTechCoef_C, L261.GlobalTechCost_C, L261.GlobalTechShrwt_C, L261.GlobalTechCost_C_High, L261.GlobalTechShrwt_C_nooffshore, L261.RsrcCurves_C_high, L261.RsrcCurves_C_low, L261.RsrcCurves_C_lowest,
                 L261.ResSubresourceProdLifetime, L261.ResReserveTechLifetime, L261.ResReserveTechDeclinePhase, L261.ResReserveTechProfitShutdown,
